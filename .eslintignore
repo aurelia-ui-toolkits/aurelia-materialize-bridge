@@ -1,0 +1,10 @@
+build
+dist
+doc
+*.js
+jspm_packages
+node_modules
+sample/jspm_packages
+sample/node_modules
+sample/styles
+sample/config.js

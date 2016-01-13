@@ -1,0 +1,32 @@
+body {
+  margin: 5px;
+  font-family: Arial, sans-serif;
+}
+
+.splash {
+    text-align: center;
+    margin: 10% 0 0 0;
+    box-sizing: border-box;
+}
+
+.splash .message {
+    font-size: 44px;
+    line-height: 44px;
+    font-family: Arial, sans-serif;
+}
+
+.splash .subtitle {
+    font-size: 28px;
+}
+
+.fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+}
+
+.splash .fa-spinner {
+    text-align: center;
+    display: inline-block;
+    font-size: 72px;
+    margin-top: 50px;
+}

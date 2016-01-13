@@ -1,0 +1,109 @@
+{
+  "name": "plugin-builder",
+  "version": "0.0.1",
+  "registry": "github",
+  "description": "Starting point for building Aurelia plugins",
+  "keywords": [
+    "aurelia",
+    "plugin"
+  ],
+  "homepage": "https://github.com/aurelia-ui-toolkits/plugin-builder",
+  "bugs": {
+    "url": "https://github.com/aurelia-ui-toolkits/plugin-builder/issues"
+  },
+  "license": "MIT",
+  "author": "aurelia-ui-toolkits",
+  "directories": {
+    "lib": "dist/system"
+  },
+  "scripts": {
+    "test": "gulp test",
+    "ci": "gulp ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aurelia-ui-toolkits/plugin-builder"
+  },
+  "jspm": {
+    "main": "index",
+    "format": "amd",
+    "directories": {
+      "lib": "dist/amd"
+    },
+    "dependencies": {
+      "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.22",
+      "babel-runtime": "npm:babel-runtime@^5.8.20",
+      "core-js": "npm:core-js@^1.2.6",
+      "polymer/mutationobservers": "^0.4.2",
+      "text": "systemjs/plugin-text@^0.0.4"
+    }
+  },
+  "devDependencies": {
+    "aurelia-tools": "^0.1.18",
+    "babel": "^5.8.22",
+    "babel-dts-generator": "^0.2.17",
+    "babel-eslint": "^4.1.1",
+    "babel-runtime": "^5.8.20",
+    "browser-sync": "^2.9.3",
+    "conventional-changelog": "0.0.11",
+    "del": "^1.1.0",
+    "gulp": "^3.8.10",
+    "gulp-babel": "^5.1.0",
+    "gulp-bump": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-eslint": "^1.0.0",
+    "gulp-insert": "^0.5.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-typedoc": "^1.2.1",
+    "gulp-typedoc-extractor": "0.0.8",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.4.1",
+    "jasmine-core": "^2.1.3",
+    "jspm": "^0.16.6",
+    "jspm-git": "^0.4.2",
+    "karma": "^0.13.15",
+    "karma-babel-preprocessor": "^5.2.1",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-coverage": "^0.5.3",
+    "karma-jasmine": "^0.2.3",
+    "karma-jspm": "^2.0.2",
+    "karma-sourcemap-loader": "^0.3.6",
+    "object.assign": "^1.0.3",
+    "phantomjs-polyfill": "0.0.1",
+    "require-dir": "^0.1.0",
+    "run-sequence": "^1.0.2",
+    "through2": "^2.0.0",
+    "vinyl": "^1.1.0",
+    "vinyl-paths": "^1.0.0",
+    "yargs": "^2.1.1"
+  },
+  "aurelia": {
+    "usedBy": [],
+    "documentation": {
+      "links": [
+        {
+          "rel": "license",
+          "mediaType": "text/plain",
+          "title": "The MIT License (MIT)",
+          "href": "LICENSE"
+        },
+        {
+          "rel": "describedby",
+          "mediaType": "application/aurelia-doc+json",
+          "title": "API",
+          "href": "doc/api.json"
+        },
+        {
+          "rel": "version-history",
+          "mediaType": "text/markdown",
+          "title": "Change Log",
+          "href": "doc/CHANGELOG.md"
+        }
+      ]
+    }
+  }
+}
