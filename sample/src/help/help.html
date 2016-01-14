@@ -1,0 +1,21 @@
+<template>
+    <require from="./doc"></require>
+    <section>
+        <h3>Aurelia-KendoUI Components Catalog Help</h3>
+
+          <div k-tabstrip k-on-select.delegate="tabSelected($event.detail)">
+            <ul>
+                <li class="k-state-active">Components Docs</li>
+                <li>KendoUI Gitter Channel</li>
+            </ul>
+            <div style="height: 790px;">
+              <doc></doc>
+            </div>
+            <div style="height: 790px;">
+              <require from="../shared/gitter-sidecar"></require>
+              <gitter-sidecar room="adriatic/Aurelia-KendoUI" view-model.ref="gitter">
+              </gitter-sidecar>
+            </div>
+          </div>
+    </section>
+</template>

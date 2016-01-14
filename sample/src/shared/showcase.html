@@ -1,0 +1,19 @@
+<template>
+    <!-- Page is shared by all widgets and sets up the sub-navigation pane -->
+    <section>
+    <br>
+        <h3>${ router.title }</h3>
+        <div>
+            <div class="col-md-2">
+                <ul class="well nav nav-pills nav-stacked">
+                    <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                        <a href.bind="row.href">${row.title}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-10" style="padding: 0">
+                <router-view></router-view>
+            </div>
+        </div>
+    </section>
+</template>

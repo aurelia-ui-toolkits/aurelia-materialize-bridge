@@ -1,0 +1,152 @@
+{
+    "About this application":
+    [
+      {
+        "name": "1. Introduction",
+        "path": "help/docs/about-this-application/introduction.md"
+      },
+      {
+        "name": "2. Navigation guide",
+        "path": "help/docs/about-this-application/navigation.md"
+      },
+      {
+        "name": "3. Components catalog",
+        "path": "help/docs/about-this-application/components-catalog.md"
+      },
+      {
+        "name": "4. Internal structure",
+        "path": "help/docs/about-this-application/internal-structure.md"
+      },
+      {
+        "name": "5. Installation",
+        "path": "help/docs/about-this-application/installation.md"
+      },
+
+      {
+        "name": "6. Project status",
+        "path": "help/docs/about-this-application/project-status.md"
+      },
+      {
+        "name": "7. Themes selector",
+        "path": "help/docs/about-this-application/themes-selector.md"
+      },
+    ],
+
+    "About Aurelia":
+    [
+      {
+        "name": "1. Key features",
+        "path": "help/docs/about-aurelia/features.md"
+      },
+
+    ],
+
+    "About KendoUI":
+    [
+      {
+        "name": "1. Integrated with Aurelia",
+        "path": "help/docs/about-kendoui/integrated-with-aurelia.md"
+      },
+      {
+        "name": "2. Why Choose Kendo UI",
+        "path": "help/docs/about-kendoui/why-choose-kendoui.md"
+      }
+    ],
+
+    "App developers tutorials":
+    [
+      {
+        "name": "1. Introduction",
+        "path": "help/docs/app-developers-tutorials/introduction.md"
+      },
+      {
+        "name": "2. Setup",
+        "path": "help/docs/app-developers-tutorials/setup.md"
+      },
+      {
+        "name": "3. Autocomplete component",
+        "path": "help/docs/app-developers-tutorials/autocomplete.md"
+      },
+      {
+        "name": "4. Button component",
+        "path": "help/docs/app-developers-tutorials/button.md"
+      },
+      {
+        "name": "5. Chart component",
+        "path": "help/docs/app-developers-tutorials/chart.md"
+      },
+      {
+        "name": "6. Grid component",
+        "path": "help/docs/app-developers-tutorials/grid.md"
+      },
+      {
+        "name": "7. Next actions",
+        "path": "help/docs/app-developers-tutorials/next-actions.md"
+      },
+    ],
+
+    "Bridge developers tutorials":
+    [
+      {
+        "name": "1. Introduction",
+        "path": "help/docs/bridge-developers-tutorials/introduction.md"
+      },
+      {
+        "name": "2. Setup",
+        "path": "help/docs/bridge-developers-tutorials/setup.md"
+      },
+      {
+        "name": "3. Autocomplete component",
+        "path": "help/docs/bridge-developers-tutorials/autocomplete.md"
+      },
+      {
+        "name": "4. Button component",
+        "path": "help/docs/bridge-developers-tutorials/button.md"
+      },
+      {
+        "name": "5. Chart component",
+        "path": "help/docs/bridge-developers-tutorials/chart.md"
+      },
+      {
+        "name": "6. Grid component",
+        "path": "help/docs/bridge-developers-tutorials/grid.md"
+      },
+      {
+        "name": "7. Next actions",
+        "path": "help/docs/bridge-developers-tutorials/next-actions.md"
+      },
+
+    ],
+
+    "Bridge developers notes":
+    [
+      {
+        "name": "1. Introduction",
+        "path": "help/docs/bridge-developers-notes/introduction.md"
+      },
+      {
+        "name": "2. Bridge utilities",
+        "path": "help/docs/bridge-developers-notes/bridge-utilities.md"
+      },
+      {
+        "name": "3. Generation of 'Bindables'",
+        "path": "help/docs/bridge-developers-notes/bindables.md"
+      },
+      {
+        "name": "4. Babel DTS generator",
+        "path": "help/docs/bridge-developers-notes/babel-dts-generator.md"
+      },
+      {
+        "name": "5. On bundling",
+        "path": "help/docs/bridge-developers-notes/bundling.md"
+      },
+      {
+        "name": "6. Grid HTML API",
+        "path": "help/docs/bridge-developers-notes/html-api-of-kendo-grid.md"
+      },
+      {
+        "name": "7. Template compilation",
+        "path": "help/docs/bridge-developers-notes/template-compilation.md"
+      },
+    ]
+}

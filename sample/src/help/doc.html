@@ -1,0 +1,19 @@
+<template>
+  <div class="row k-content" id="doc">
+    <div class="col-md-3">
+      <br>
+      <ul ref="panelBarDiv" class="help-docs">
+        <li repeat.for="category of categories">
+          ${category.name}
+          <ul>
+            <li repeat.for="file of category.files" click.delegate="routeToPage(file.name, category.name)">${file.name}</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9" ref="markdownCol" id="markdownCol">
+      <au-markdown url.bind="activeDoc" loaded.delegate="scrollToTarget()">
+      </au-markdown>
+    </div>
+  </div>
+</template>
