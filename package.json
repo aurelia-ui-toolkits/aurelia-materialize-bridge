@@ -1,15 +1,15 @@
 {
-  "name": "plugin-builder",
+  "name": "aurelia-materialize-bridge",
   "version": "0.0.1",
   "registry": "github",
-  "description": "Starting point for building Aurelia plugins",
+  "description": "Aurelia interface to http://materializecss.com/",
   "keywords": [
     "aurelia",
     "plugin"
   ],
-  "homepage": "https://github.com/aurelia-ui-toolkits/plugin-builder",
+  "homepage": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge",
   "bugs": {
-    "url": "https://github.com/aurelia-ui-toolkits/plugin-builder/issues"
+    "url": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues"
   },
   "license": "MIT",
   "author": "aurelia-ui-toolkits",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aurelia-ui-toolkits/plugin-builder"
+    "url": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge"
   },
   "jspm": {
     "main": "index",
