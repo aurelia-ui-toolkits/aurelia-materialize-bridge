@@ -22,3 +22,7 @@ button.au-target:focus {
     background-color: inherit;
     outline: inherit;
 }
+
+.page-host {
+  padding-top: 50px;
+}

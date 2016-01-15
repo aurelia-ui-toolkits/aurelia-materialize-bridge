@@ -1,0 +1,45 @@
+<template>
+  <require from="./basic-use.css"></require>
+  <div class="container waves-basic-use">
+      <div class="row">
+          <div class="col s12 m8">
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Basic Waves effect</span>
+                <p>
+                  <a class="btn" md-waves>waves on a button</a>
+                </p>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col s12 m8">
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Code Preview</span>
+                <div>
+                  <!-- <div class="col s12"> -->
+                    <ul class="tabs z-depth-1">
+                      <li class="tab col s4 waves-effect"><a class="active" href="#html">Html</a></li>
+                      <li class="tab col s4 waves-effect"><a href="#js">Javascript</a></li>
+                      <li class="tab col s4 waves-effect"><a href="#css">Css</a></li>
+                    </ul>
+                  <!-- </div> -->
+                  <div id="html" class="z-depth-1">
+                    <au-code language="markup" url="samples/waves/basic-use.html"></au-code>
+                  </div>
+                  <div id="js" class="z-depth-1">
+                    <au-code language="javascript" url="samples/waves/basic-use.js"></au-code>
+                  </div>
+                  <div id="css" class="z-depth-1">
+                    <au-code language="css" url="samples/waves/basic-use.css"></au-code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</template>

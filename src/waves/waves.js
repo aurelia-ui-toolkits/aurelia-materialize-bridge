@@ -9,14 +9,30 @@ import { bindable, bindingMode, customAttribute, inject } from 'aurelia-framewor
 export class MdWaves {
   constructor(element) {
     this.element = element;
+    this.keepWavesCssClasses = false;
   }
+
   attached() {
-    this.element.classList.add('waves-effect');
+    if (this.element.classList.contains('waves-effect')) {
+      this.keepWavesCssClasses = true;
+    } else {
+      this.element.classList.add('waves-effect');
+    }
+    if (this.color && !this.element.classList.contains('waves-' + this.color)) {
+      this.element.classList.add('waves-' + this.color);
+    }
+    // this.toggleCssClasses(true);
     Waves.attach(this.element);
   }
 
   detached() {
-    Waves.calm(this.element);
-    this.element.classList.remove('waves-effect');
+    // throws "Waves.calm is not a function" - not sure why, the api says it should be there
+    // Waves.calm(this.element);
+    if (!this.keepWavesCssClasses) {
+      this.element.classList.remove('waves-effect');
+    }
+    if (this.color && this.element.classList.contains('waves-' + this.color)) {
+      this.element.classList.remove('waves-' + this.color);
+    }
   }
 }
