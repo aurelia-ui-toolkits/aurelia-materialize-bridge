@@ -1,0 +1,16 @@
+/*
+  These are temporary styles to fix some layout problems that occur when mixing
+  bootstrap and materialize (and materialize wins).
+
+  They will be removed when the catalog does not rely on bootstrap anymore.
+*/
+
+nav.navbar {
+  height: 51px;
+  max-height: 51px;
+  line-height: 51px;
+}
+
+nav ul a.au-target {
+  font-size: inherit;
+}

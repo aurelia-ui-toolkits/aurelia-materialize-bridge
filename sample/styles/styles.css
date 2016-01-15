@@ -1,3 +1,5 @@
+@import "temp-bootstrap-materialize-fixes.css";
+
 body {
   margin: 0;
     font-family: Arial, sans-serif;
@@ -13,6 +15,7 @@ body {
     font-size: 44px;
     line-height: 44px;
     font-family: Arial, sans-serif;
+    margin-bottom: 2rem;
 }
 
 .splash .subtitle {
