@@ -28,6 +28,11 @@
       "babel": "npm:babel-core@^5.8.22",
       "babel-runtime": "npm:babel-runtime@^5.8.20",
       "core-js": "npm:core-js@^1.2.6"
+    },
+    "overrides": {
+      "github:google/code-prettify@master": {
+        "main": "src/prettify"
+      }
     }
   },
   "devDependencies": {
