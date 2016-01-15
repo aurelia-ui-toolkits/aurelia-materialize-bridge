@@ -15,6 +15,14 @@ export class ConfigBuilder {
   }
 
   /**
+   * Use ripple/waves effect
+   */
+  useWaves(): ConfigBuilder {
+    this.globalResources.push('./waves/waves');
+    return this;
+  }
+
+  /**
   * Don't globalize any resources
   * Allows you to import yourself via <require></require>
   */
