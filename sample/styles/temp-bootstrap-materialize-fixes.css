@@ -2,6 +2,9 @@
   These are temporary styles to fix some layout problems that occur when mixing
   bootstrap and materialize (and materialize wins).
 
+  DISCLAIMER: these may be hacky (use of .au-target) but since they are
+              temporary I don't really care. :-)
+
   They will be removed when the catalog does not rely on bootstrap anymore.
 */
 
@@ -13,4 +16,9 @@ nav.navbar {
 
 nav ul a.au-target {
   font-size: inherit;
+}
+
+button.au-target:focus {
+    background-color: inherit;
+    outline: inherit;
 }
