@@ -1,6 +1,6 @@
 import { useView } from 'aurelia-framework';
 
-@useView("shared/showcase.html")
+@useView('shared/showcase.html')
 export class Index {
   configureRouter(config, router) {
     config.title = 'Waves';

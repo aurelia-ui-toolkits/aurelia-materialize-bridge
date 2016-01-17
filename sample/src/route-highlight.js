@@ -8,10 +8,10 @@ export class RouteHighlight {
 
     @bindable routes;
 
-    constructor(element, router, ea) {
+    constructor(element, router, eventAggregator) {
       this.element = element;
       this.router = router;
-      this.ea = ea;
+      this.ea = eventAggregator;
 
       this.subscription = this.ea.subscribe('router:navigation:complete', () => this.refresh());
     }
@@ -24,18 +24,17 @@ export class RouteHighlight {
       let instruction = this.router.currentInstruction;
       let isActive = false;
 
-      if(instruction) {
+      if (instruction) {
         let activeRoute = instruction.config.name;
 
-        if(Array.isArray(this.routes)) {
+        if (Array.isArray(this.routes)) {
           isActive = this.routes.includes(activeRoute);
-        }
-        else {
-          isActive = this.routes == activeRoute;
+        } else {
+          isActive = this.routes === activeRoute;
         }
       }
 
-      if(isActive) {
+      if (isActive) {
         this.highlight();
       } else {
         this.unhighlight();
@@ -51,7 +50,7 @@ export class RouteHighlight {
     }
 
     detached() {
-      if(this.subscription) {
+      if (this.subscription) {
         this.subscription();
       }
     }
