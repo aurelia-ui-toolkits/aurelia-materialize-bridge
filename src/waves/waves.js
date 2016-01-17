@@ -26,7 +26,7 @@ export class MdWaves {
   }
 
   detached() {
-    // throws "Waves.calm is not a function" - not sure why, the api says it should be there
+    // throws "Waves.calm is not a function" as Materialize comes bundled with an older version of Waves
     // Waves.calm(this.element);
     if (!this.keepWavesCssClasses) {
       this.element.classList.remove('waves-effect');
