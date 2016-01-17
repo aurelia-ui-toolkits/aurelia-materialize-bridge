@@ -1,11 +1,13 @@
-// is this how we/users import materialize?
-import 'materialize';
+// import 'materialize';
 
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging()
-    .plugin('plugin-builder', plugin => plugin.useClickCounter().useWaves());
+    .plugin('aurelia-materialize-bridge', plugin => {
+      plugin.useClickCounter();
+            // .useWaves();
+    });
 
   aurelia.use.globalResources('shared/collapse-panel');
   aurelia.use.globalResources('shared/markdown');
