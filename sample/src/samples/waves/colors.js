@@ -1,1 +1,5 @@
-export class Colors { }
+export class Colors {
+  attached() {
+    $('ul.tabs').tabs();
+  }
+}

@@ -1,27 +1,14 @@
 <template>
-  <style>
-    .collection.waves-color-demo .collection-item {
-      height: 57px;
-      line-height: 37px;
-    }
+  <require from="./colors.css"></require>
+  <require from="./colors-sample.css"></require>
 
-    .collection.waves-color-demo .collection-item a[md-waves] {
-      background-color: white;
-      color: #212121;
-    }
-    .collection.waves-color-demo .collection-item a[md-waves="color: light;"] {
-      background-color: teal;
-      color: white;
-    }
-  </style>
-
-  <div class="container">
+  <div class="container waves-colors">
       <div class="row">
           <div class="col s12 m8">
             <div class="card">
               <div class="card-content">
                 <span class="card-title">Colored Waves effect</span>
-                <div class="collection waves-color-demo">
+                <div class="collection waves-color-sample">
                   <div class="collection-item">Default<a md-waves class="waves-effect btn secondary-content">Send</a></div>
                   <div class="collection-item"><code class="language-markup">md-waves="color: light;"</code><a md-waves="color: light;" class="btn secondary-content">Send</a></div>
                   <div class="collection-item"><code class="language-markup">md-waves="color: red;"</code><a md-waves="color: red;" class="btn secondary-content">Send</a></div>
@@ -30,6 +17,33 @@
                   <div class="collection-item"><code class="language-markup">md-waves="color: purple;"</code><a md-waves="color: purple;" class="btn secondary-content">Send</a></div>
                   <div class="collection-item"><code class="language-markup">md-waves="color: green;"</code><a md-waves="color: green;" class="btn secondary-content">Send</a></div>
                   <div class="collection-item"><code class="language-markup">md-waves="color: teal;"</code><a md-waves="color: teal;" class="btn secondary-content">Send</a></div>
+                  <div class="collection-item"><code class="language-markup">md-waves="color: indigo;"</code> (custom color)<a md-waves="color: indigo;" class="btn secondary-content">Send</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col s12 m8">
+            <div class="card">
+              <div class="card-content">
+                <span class="card-title">Code Preview</span>
+                <div class="row">
+                  <ul class="tabs z-depth-1">
+                    <li md-waves class="tab col s6"><a class="active" href="#html">Html</a></li>
+                    <!-- <li md-waves class="tab col s4"><a href="#js">Javascript</a></li>-->
+                    <li md-waves class="tab col s6"><a href="#css">Css (custom color)</a></li>
+                  </ul>
+                  <div id="html" class="z-depth-1">
+                    <au-code language="markup" url="samples/waves/colors-sample.html"></au-code>
+                  </div>
+                  <!-- <div id="js" class="z-depth-1">
+                    <au-code language="javascript" url="samples/waves/colors-sample.js"></au-code>
+                  </div>-->
+                  <div id="css" class="z-depth-1">
+                    <au-code language="css" url="samples/waves/colors-sample.css"></au-code>
+                  </div>
                 </div>
               </div>
             </div>
