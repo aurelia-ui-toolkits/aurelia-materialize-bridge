@@ -8,10 +8,10 @@ export class RouteHighlight {
 
     @bindable routes;
 
-    constructor(element, router, ea) {
+    constructor(element, router, eventAggregator) {
       this.element = element;
       this.router = router;
-      this.ea = ea;
+      this.ea = eventAggregator;
 
       this.subscription = this.ea.subscribe('router:navigation:complete', () => this.refresh());
     }
