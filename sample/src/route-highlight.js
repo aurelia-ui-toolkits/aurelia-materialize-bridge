@@ -24,18 +24,17 @@ export class RouteHighlight {
       let instruction = this.router.currentInstruction;
       let isActive = false;
 
-      if(instruction) {
+      if (instruction) {
         let activeRoute = instruction.config.name;
 
-        if(Array.isArray(this.routes)) {
+        if (Array.isArray(this.routes)) {
           isActive = this.routes.includes(activeRoute);
-        }
-        else {
-          isActive = this.routes == activeRoute;
+        } else {
+          isActive = this.routes === activeRoute;
         }
       }
 
-      if(isActive) {
+      if (isActive) {
         this.highlight();
       } else {
         this.unhighlight();
@@ -51,7 +50,7 @@ export class RouteHighlight {
     }
 
     detached() {
-      if(this.subscription) {
+      if (this.subscription) {
         this.subscription();
       }
     }
