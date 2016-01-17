@@ -6,7 +6,8 @@ export function configure(aurelia) {
     .developmentLogging()
     .plugin('aurelia-materialize-bridge', plugin => {
       plugin.useClickCounter()
-            .useWaves();
+        .useTabs()
+        .useWaves();
     });
 
   aurelia.use.globalResources('shared/collapse-panel');

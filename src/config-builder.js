@@ -14,6 +14,12 @@ export class ConfigBuilder {
     return this;
   }
 
+  useTabs(): ConfigBuilder {
+    this.globalResources.push('./tabs/tab');
+    this.globalResources.push('./tabs/tabs');
+    return this;
+  }
+
   /**
    * Use ripple/waves effect
    */
