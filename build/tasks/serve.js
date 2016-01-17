@@ -19,8 +19,8 @@ gulp.task('serve', ['build'], function(done) {
   };
 
   // Create a route to the build output directory so we can load the plugin from the subdir
-  
-  options.server.routes['/src/' + paths.packageName] = path.join(paths.output, 'system');
+
+  options.server.routes['/src/' + paths.packageName] = path.join(paths.output, 'dev');
 
   bs.init(options, done);
 });
