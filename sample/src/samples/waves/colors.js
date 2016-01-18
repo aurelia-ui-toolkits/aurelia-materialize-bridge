@@ -1,5 +1,1 @@
-export class Colors {
-  constructor() {
-  }
-  attached() { }
-}
+export class Colors { }

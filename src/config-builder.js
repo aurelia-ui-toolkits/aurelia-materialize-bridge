@@ -14,8 +14,10 @@ export class ConfigBuilder {
     return this;
   }
 
+  /**
+   * Use materialized tabs
+   */
   useTabs(): ConfigBuilder {
-    // this.globalResources.push('./tabs/tab');
     this.globalResources.push('./tabs/tabs');
     return this;
   }

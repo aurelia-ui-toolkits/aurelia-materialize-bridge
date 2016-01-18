@@ -1,3 +1,1 @@
-export class BasicUse {
-  attached() { }
-}
+export class BasicUse { }

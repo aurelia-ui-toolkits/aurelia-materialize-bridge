@@ -1,5 +1,32 @@
 import { bindable, bindingMode, containerless, customElement, inject, inlineView } from 'aurelia-framework';
 
+/*
+  implementation example
+
+  <div class="row">
+      <div class="col s12 m8">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Code Preview</span>
+            <div class="row">
+              <md-tabs tabs.bind="tabs">
+                <md-tab title="Html" for-element="#html"></md-tab>
+                <md-tab title="Css (custom color)" for-element="#css"></md-tab>
+              </md-tabs>
+
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/waves/colors-sample.html"></au-code>
+              </div>
+              <div id="css" class="z-depth-1">
+                <au-code language="css" url="samples/waves/colors-sample.css"></au-code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+*/
+
 // @bindable({
 //   name: 'title',
 //   defaultBindingMode: bindingMode.oneWay
