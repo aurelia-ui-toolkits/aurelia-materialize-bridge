@@ -2,16 +2,21 @@
   <require from="./help.css"></require>
   <require from="./doc"></require>
 
-  <section class="container">
+  <section>
     <div class="row">
       <div class="col s12">
 
         <h3>Aurelia-Materialize Components Catalog Help</h3>
-        <div>
+        <div class="help-viewer-container">
+          <!-- <div style="width: 600px;"> -->
+
           <ul md-tabs class="tabs">
               <li md-waves="color: primary;" class="tab"><a class="active" href="#doc">Components Docs</a></li>
-              <li md-waves="color: primary;" class="tab"><a href="#gitter">Aurelia-Materialize Gitter Channel</a></li>
+              <li md-waves="color: primary;" class="tab" click.delegate="toggleChat()"><a href="#gitter">Aurelia-Materialize Gitter Channel</a></li>
           </ul>
+
+          <!-- </div> -->
+
           <div id="doc" style="height: 790px;">
             <doc></doc>
           </div>

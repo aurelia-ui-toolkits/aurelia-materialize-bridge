@@ -1,3 +1,7 @@
 .tabs a {
   text-decoration: none;
 }
+
+.help-viewer-container {
+  padding 0 5px;
+}

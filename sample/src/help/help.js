@@ -5,8 +5,11 @@ export class Help {
   //     this.gitter.toggleChat(true);
   //   }
   // }
-  
+
   // attached() {
   //   this.gitter.toggleChat(true);
   // }
+  toggleChat() {
+    this.gitter.toggleChat(true);
+  }
 }
