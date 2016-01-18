@@ -13,6 +13,11 @@ export class MdCollapsible {
     refresh();
   }
   refresh() {
+    if ((this.accordion === true || this.accordion === 'true' )) {
+      this.element.setAttribute('data-collapsible', 'accordion');
+    } else {
+      this.element.setAttribute('data-collapsible', 'expandable');
+    }
     $(this.element).collapsible({
       accordion: (this.accordion === true || this.accordion === 'true' )
     });
