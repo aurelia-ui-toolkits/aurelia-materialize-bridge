@@ -94,7 +94,7 @@ export class Doc {
         // FIXME: reinitialize collapsible since md-collapsible is already
         //        initialized and Materialize has no method to just expand
         // $categoryCandidate.parents('[md-collapsible]').collapsible();
-        this.collapsible.refresh();
+        this.panelBarViewModel.refresh();
 
         let fileLis = $(element).find('ul').children('li');
         $(fileLis).each((i, elem) => {
