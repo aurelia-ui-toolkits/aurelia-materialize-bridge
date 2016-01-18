@@ -1,4 +1,5 @@
 import {customAttribute, bindable, bindingMode, inject} from 'aurelia-framework';
+import { getBooleanFromAttributeValue } from '../common/attributes';
 
 @customAttribute('md-collapsible')
 @bindable({ name: 'accordion', defaultValue: false })
@@ -13,13 +14,14 @@ export class MdCollapsible {
     refresh();
   }
   refresh() {
-    if ((this.accordion === true || this.accordion === 'true' )) {
+    let accordion = getBooleanFromAttributeValue(this.accordion);
+    if (accordion) {
       this.element.setAttribute('data-collapsible', 'accordion');
     } else {
       this.element.setAttribute('data-collapsible', 'expandable');
     }
     $(this.element).collapsible({
-      accordion: (this.accordion === true || this.accordion === 'true' )
+      accordion
     });
   }
 }
