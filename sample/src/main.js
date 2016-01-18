@@ -6,6 +6,7 @@ export function configure(aurelia) {
     .developmentLogging()
     .plugin('aurelia-materialize-bridge', plugin => {
       plugin.useClickCounter()
+        .useCollapsible()
         .useTabs()
         .useWaves();
     });
