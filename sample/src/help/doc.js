@@ -87,10 +87,8 @@ export class Doc {
     $(categoryLis).each((index, element) => {
       let $categoryCandidate = $('div.collapsible-header', element);
       let categoryText = $('span', $categoryCandidate).text().trim().toLowerCase();
-      console.log('[doc] categoryText', categoryText);
 
       if (this.encode(categoryText) === categoryName) {
-        console.log('[doc] found selected:', categoryText);
         // this.panelBar.expand($(element));
         $categoryCandidate.addClass('active');
         // FIXME: reinitialize collapsible since md-collapsible is already
@@ -100,7 +98,6 @@ export class Doc {
         let fileLis = $(element).find('ul').children('li');
         $(fileLis).each((i, elem) => {
           let fileText = $(elem).children('span').text().trim().toLowerCase();
-          console.log('[doc] fileText', fileText);
           if (this.encode(fileText) === fileName) {
             // this.panelBar.select($(elem));
             $('li', this.panelBarDiv).removeClass('primary');
