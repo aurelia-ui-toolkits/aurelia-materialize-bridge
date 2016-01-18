@@ -11,7 +11,7 @@ export class MdCollapsible {
   }
 
   attached() {
-    refresh();
+    this.refresh();
   }
   refresh() {
     let accordion = getBooleanFromAttributeValue(this.accordion);
