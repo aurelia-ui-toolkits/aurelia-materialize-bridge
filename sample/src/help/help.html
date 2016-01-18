@@ -1,21 +1,28 @@
 <template>
-    <require from="./doc"></require>
-    <section>
-        <h3>Aurelia-KendoUI Components Catalog Help</h3>
+  <require from="./help.css"></require>
+  <require from="./doc"></require>
 
-          <div k-tabstrip k-on-select.delegate="tabSelected($event.detail)">
-            <ul>
-                <li class="k-state-active">Components Docs</li>
-                <li>KendoUI Gitter Channel</li>
-            </ul>
-            <div style="height: 790px;">
-              <doc></doc>
-            </div>
-            <div style="height: 790px;">
-              <require from="../shared/gitter-sidecar"></require>
-              <gitter-sidecar room="adriatic/Aurelia-KendoUI" view-model.ref="gitter">
-              </gitter-sidecar>
-            </div>
+  <section class="container">
+    <div class="row">
+      <div class="col s12">
+
+        <h3>Aurelia-Materialize Components Catalog Help</h3>
+        <div>
+          <ul md-tabs class="tabs">
+              <li md-waves="color: primary;" class="tab"><a class="active" href="#doc">Components Docs</a></li>
+              <li md-waves="color: primary;" class="tab"><a href="#gitter">Aurelia-Materialize Gitter Channel</a></li>
+          </ul>
+          <div id="doc" style="height: 790px;">
+            <doc></doc>
           </div>
-    </section>
+          <div id="gitter" style="height: 790px;">
+            <require from="../shared/gitter-sidecar"></require>
+            <gitter-sidecar room="aurelia-ui-toolkits/aurelia-materialize-bridge" view-model.ref="gitter">
+            </gitter-sidecar>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 </template>

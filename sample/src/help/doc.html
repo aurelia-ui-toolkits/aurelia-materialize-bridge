@@ -1,13 +1,22 @@
 <template>
+  <require from="./doc.css"></require>
+
   <div class="row k-content" id="doc">
     <div class="col-md-3">
       <br>
-      <ul ref="panelBarDiv" class="help-docs">
+      <ul ref="panelBarDiv" class="help-docs collapsible" md-collapsible>
         <li repeat.for="category of categories">
-          ${category.name}
-          <ul>
-            <li repeat.for="file of category.files" click.delegate="routeToPage(file.name, category.name)">${file.name}</li>
-          </ul>
+          <div md-waves="color: primary;" class="collapsible-header">
+            <span>${category.name}</span>
+            <i class="mdi-navigation-arrow-drop-down right"></i>
+          </div>
+          <div class="collapsible-body">
+            <ul>
+              <li md-waves repeat.for="file of category.files" click.delegate="routeToPage(file.name, category.name)">
+                <span>${file.name}</span>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
     </div>
