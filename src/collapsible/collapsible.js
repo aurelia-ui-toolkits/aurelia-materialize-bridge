@@ -14,4 +14,9 @@ export class MdCollapsible {
       accordion: (this.accordion === true || this.accordion === 'true' )
     });
   }
+  refresh() {
+    $(this.element).collapsible({
+      accordion: (this.accordion === true || this.accordion === 'true' )
+    });
+  }
 }

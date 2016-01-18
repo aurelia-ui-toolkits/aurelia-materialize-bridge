@@ -93,7 +93,8 @@ export class Doc {
         $categoryCandidate.addClass('active');
         // FIXME: reinitialize collapsible since md-collapsible is already
         //        initialized and Materialize has no method to just expand
-        $categoryCandidate.parents('[md-collapsible]').collapsible();
+        // $categoryCandidate.parents('[md-collapsible]').collapsible();
+        this.collapsible.refresh();
 
         let fileLis = $(element).find('ul').children('li');
         $(fileLis).each((i, elem) => {
