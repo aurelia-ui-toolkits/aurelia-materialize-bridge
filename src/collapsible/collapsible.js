@@ -10,9 +10,7 @@ export class MdCollapsible {
   }
 
   attached() {
-    $(this.element).collapsible({
-      accordion: (this.accordion === true || this.accordion === 'true' )
-    });
+    refresh();
   }
   refresh() {
     $(this.element).collapsible({
