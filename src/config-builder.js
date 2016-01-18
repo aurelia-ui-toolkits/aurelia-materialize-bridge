@@ -15,7 +15,7 @@ export class ConfigBuilder {
   }
 
   useTabs(): ConfigBuilder {
-    this.globalResources.push('./tabs/tab');
+    // this.globalResources.push('./tabs/tab');
     this.globalResources.push('./tabs/tabs');
     return this;
   }
