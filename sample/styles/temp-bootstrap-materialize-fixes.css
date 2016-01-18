@@ -18,11 +18,6 @@ nav ul a.au-target {
   font-size: inherit;
 }
 
-button.au-target:focus {
-    background-color: inherit;
-    outline: inherit;
-}
-
 .page-host {
-  padding-top: 50px;
+  padding-top: 60px;
 }

@@ -3,7 +3,6 @@ import {Router} from 'aurelia-router';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import registry from './registry.json!';
 import jQuery from 'jquery';
-import 'kendo-ui/js/kendo.panelbar.min';
 
 @inject(Router, EventAggregator)
 export class Doc {
@@ -33,7 +32,7 @@ export class Doc {
   }
 
   attached() {
-    this.panelBar = $(this.panelBarDiv).kendoPanelBar().data('kendoPanelBar');
+    // this.panelBar = $(this.panelBarDiv).kendoPanelBar().data('kendoPanelBar');
   }
 
   // - adds the page to route params
@@ -86,15 +85,26 @@ export class Doc {
     let categoryLis = $(this.panelBarDiv).children('li');
 
     $(categoryLis).each((index, element) => {
-      let categoryText = $(element).children('span').text().trim().toLowerCase();
+      let $categoryCandidate = $('div.collapsible-header', element);
+      let categoryText = $('span', $categoryCandidate).text().trim().toLowerCase();
+      console.log('[doc] categoryText', categoryText);
+
       if (this.encode(categoryText) === categoryName) {
-        this.panelBar.expand($(element));
+        console.log('[doc] found selected:', categoryText);
+        // this.panelBar.expand($(element));
+        $categoryCandidate.addClass('active');
+        // FIXME: reinitialize collapsible since md-collapsible is already
+        //        initialized and Materialize has no method to just expand
+        $categoryCandidate.parents('[md-collapsible]').collapsible();
 
         let fileLis = $(element).find('ul').children('li');
         $(fileLis).each((i, elem) => {
           let fileText = $(elem).children('span').text().trim().toLowerCase();
+          console.log('[doc] fileText', fileText);
           if (this.encode(fileText) === fileName) {
-            this.panelBar.select($(elem));
+            // this.panelBar.select($(elem));
+            $('li', this.panelBarDiv).removeClass('primary');
+            $(elem).addClass('primary');
           }
         });
       }

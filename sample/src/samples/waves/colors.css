@@ -1,0 +1,17 @@
+.collection.waves-color-sample .collection-item {
+  height: 57px;
+  line-height: 37px;
+}
+
+.collection.waves-color-sample .collection-item a[md-waves] {
+  background-color: white;
+  color: #212121;
+}
+.collection.waves-color-sample .collection-item a[md-waves="color: light;"] {
+  background-color: teal;
+  color: white;
+}
+
+.waves-colors .tabs a {
+  text-decoration: none;
+}

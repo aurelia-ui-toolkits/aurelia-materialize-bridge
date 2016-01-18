@@ -1,0 +1,11 @@
+.tabs a {
+  text-decoration: none;
+}
+
+.help-viewer-container {
+  padding 0 5px;
+}
+
+#doc, #gitter {
+  margin-top: 10px;
+}

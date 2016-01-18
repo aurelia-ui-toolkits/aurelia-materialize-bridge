@@ -1,0 +1,20 @@
+doc .collapsible-header {
+  line-height: 44px;
+  height: 44px;
+}
+
+doc .collapsible-header i {
+  margin-top: 7px;
+}
+
+doc .collapsible-body ul {
+  /*padding: 0 10px;*/
+}
+
+doc .collapsible-body li {
+  line-height: 44px;
+  height: 44px;
+  cursor: pointer;
+  padding: 0 10px;
+  display: block;
+}

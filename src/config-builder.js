@@ -14,6 +14,19 @@ export class ConfigBuilder {
     return this;
   }
 
+  useCollapsible(): ConfigBuilder {
+    this.globalResources.push('./collapsible/collapsible');
+    return this;
+  }
+
+  /**
+   * Use materialized tabs
+   */
+  useTabs(): ConfigBuilder {
+    this.globalResources.push('./tabs/tabs');
+    return this;
+  }
+
   /**
    * Use ripple/waves effect
    */

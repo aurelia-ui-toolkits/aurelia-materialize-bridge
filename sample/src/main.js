@@ -1,12 +1,14 @@
-// import 'materialize';
+import 'materialize';
 
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging()
     .plugin('aurelia-materialize-bridge', plugin => {
-      plugin.useClickCounter();
-            // .useWaves();
+      plugin.useClickCounter()
+        .useCollapsible()
+        .useTabs()
+        .useWaves();
     });
 
   aurelia.use.globalResources('shared/collapse-panel');
