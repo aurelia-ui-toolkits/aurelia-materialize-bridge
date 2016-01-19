@@ -6,9 +6,13 @@ export class Help {
   //   }
   // }
 
-  // attached() {
-  //   this.gitter.toggleChat(true);
-  // }
+  attached() {
+    this.tabs.addEventListener('md-on-tabSelected', e => {
+      if (e.detail == '#gitter') {
+        this.toggleChat();
+      }
+    });
+  }
   toggleChat() {
     this.gitter.toggleChat(true);
   }
