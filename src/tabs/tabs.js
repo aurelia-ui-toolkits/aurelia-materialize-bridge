@@ -10,18 +10,20 @@ export class MdTabs {
   attached() {
     $(this.element).tabs();
     // $('li a', this.element).on('click', this.fireTabSelectedEvent);
-    this.element.querySelectorAll('li a').forEach(a => {
-      a.addEventListener('click', this.fireTabSelectedEvent);
+    let children = this.element.querySelectorAll('li a');
+    [].forEach.call(children, a => {
+      a.addEventListener('click', this.fireTabSelectedEvent.bind(this));
     });
   }
   detached() {
     // no destroy handler in tabs
-    this.element.querySelectorAll('li a').forEach(a => {
-      a.removeEventListener('click', this.fireTabSelectedEvent);
+    let children = this.element.querySelectorAll('li a');
+    [].forEach.call(children, a => {
+      a.removeEventListener('click', this.fireTabSelectedEvent.bind(this));
     });
   }
-  fireTabSelectedEvent() {
-    let href = $('li a').attr('href');
+  fireTabSelectedEvent(e) {
+    let href = $(e.target).attr('href');
     fireMaterializeEvent(this.element, 'tabSelected', href);
   }
 }
