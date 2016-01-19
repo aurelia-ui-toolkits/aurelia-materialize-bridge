@@ -1,5 +1,5 @@
 import { customAttribute, bindable, bindingMode, inject } from 'aurelia-framework';
-import { fireMaterializeEvent } from '../common/events';
+import { fireEvent, fireMaterializeEvent } from '../common/events';
 
 @customAttribute('md-tabs')
 @inject(Element)
@@ -24,6 +24,6 @@ export class MdTabs {
   }
   fireTabSelectedEvent(e) {
     let href = $(e.target).attr('href');
-    fireMaterializeEvent(this.element, 'tabSelected', href);
+    fireMaterializeEvent(this.element, 'selected', href);
   }
 }
