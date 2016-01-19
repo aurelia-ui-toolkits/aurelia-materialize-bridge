@@ -7,7 +7,7 @@ export class Help {
   // }
 
   attached() {
-    this.tabs.addEventListener('md-on-tabSelected', e => {
+    this.tabs.addEventListener('md-on-selected', e => {
       if (e.detail == '#gitter') {
         this.toggleChat();
       }
