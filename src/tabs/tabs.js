@@ -1,5 +1,5 @@
 import { customAttribute, bindable, bindingMode, inject } from 'aurelia-framework';
-import { fireMaterializeEvent } from '../common/events'
+import { fireMaterializeEvent } from '../common/events';
 
 @customAttribute('md-tabs')
 @inject(Element)
