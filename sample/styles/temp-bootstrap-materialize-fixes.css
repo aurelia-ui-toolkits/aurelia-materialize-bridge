@@ -22,6 +22,6 @@ nav ul a.au-target {
   padding-top: 60px;
 }
 
-.tabs a:hover {
+.tabs a:hover, .tabs a:focus {
   text-decoration: none;
 }
