@@ -10,17 +10,17 @@
         <div class="help-viewer-container">
           <!-- <div style="width: 600px;"> -->
 
-          <ul md-tabs class="tabs" ref="tabs">
+          <ul md-tabs class="tabs z-depth-1" ref="tabs">
               <li md-waves="color: primary;" class="tab"><a class="active" href="#doc">Components Docs</a></li>
               <li md-waves="color: primary;" class="tab"><a href="#gitter">Aurelia-Materialize Gitter Channel</a></li>
           </ul>
 
           <!-- </div> -->
 
-          <div id="doc" style="height: 790px;">
+          <div id="doc" class="z-depth-1" style="height: 790px;">
             <doc></doc>
           </div>
-          <div id="gitter" style="height: 790px;">
+          <div id="gitter" class="z-depth-1" style="height: 790px;">
             <require from="../shared/gitter-sidecar"></require>
             <gitter-sidecar room="aurelia-ui-toolkits/aurelia-materialize-bridge" view-model.ref="gitter">
             </gitter-sidecar>
