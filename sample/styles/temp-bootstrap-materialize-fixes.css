@@ -21,3 +21,7 @@ nav ul a.au-target {
 .page-host {
   padding-top: 60px;
 }
+
+.tabs a:hover {
+  text-decoration: none;
+}
