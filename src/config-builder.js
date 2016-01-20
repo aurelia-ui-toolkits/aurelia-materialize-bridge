@@ -6,6 +6,11 @@ export class ConfigBuilder {
   useGlobalResources: boolean = true;
   globalResources = [];
 
+  useButtons(): ConfigBuilder {
+    this.globalResources.push('./button/button');
+    return this;
+  }
+
   /**
   * Use my control
   */
