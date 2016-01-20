@@ -1,0 +1,48 @@
+<template>
+  <style>
+    div.button-row {
+      padding: 5px 0;
+    }
+  </style>
+  <div class="container collapsible-basic-use">
+    <div class="row">
+      <div class="col s12 m8">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Basic use</span>
+              <div class="button-row">
+                <button md-button>I'm a basic button</button>
+                <button md-button="flat: true;">I'm a flat button</button>
+              </div>
+              <div class="button-row">
+                <button md-button="large: true;">I'm a large button</button>
+                <button md-button="flat: true; large: true;">I'm a large flat button</button>
+              </div>
+              <div class="button-row">
+                <button md-button="disabled: true;">I'm a basic disabled button</button>
+                <button md-button="disabled: true; flat: true;">I'm a flat disabled button</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Code Preview</span>
+              <div class="row">
+                <ul md-tabs class="tabs z-depth-1">
+                  <li md-waves="color: primary;" class="tab col"><a class="active" href="#html">Html</a></li>
+                </ul>
+                <div id="html" class="z-depth-1">
+                  <au-code language="markup" url="samples/button/basic-use-sample.html"></au-code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</template>
