@@ -1,38 +1,35 @@
 import { bindable, bindingMode, customAttribute, inject } from 'aurelia-framework';
+import { CssClassSetter } from '../common/cssClassSetter';
 
 @customAttribute('md-waves')
 @bindable({
   name: 'color',
   defaultBindingMode: bindingMode.oneTime
 })
-@inject(Element)
+@inject(Element/*, CssClassSetter*/)
 export class MdWaves {
-  constructor(element) {
+  constructor(element/*, classSetter*/) {
     this.element = element;
+    this.classSetter = new CssClassSetter(this.element);
     this.keepWavesCssClasses = false;
   }
 
   attached() {
-    if (this.element.classList.contains('waves-effect')) {
-      this.keepWavesCssClasses = true;
-    } else {
-      this.element.classList.add('waves-effect');
+    let classes = ['waves-effect'];
+    if (this.color) {
+      classes.push(`waves-${this.color}`);
     }
-    if (this.color && !this.element.classList.contains('waves-' + this.color)) {
-      this.element.classList.add('waves-' + this.color);
-    }
-    // this.toggleCssClasses(true);
+
+    this.classSetter.addClasses(classes);
     Waves.attach(this.element);
   }
 
   detached() {
-    // throws "Waves.calm is not a function" as Materialize comes bundled with an older version of Waves
-    // Waves.calm(this.element);
-    if (!this.keepWavesCssClasses) {
-      this.element.classList.remove('waves-effect');
+    let classes = ['waves-effect'];
+    if (this.color) {
+      classes.push(`waves-${this.color}`);
     }
-    if (this.color && this.element.classList.contains('waves-' + this.color)) {
-      this.element.classList.remove('waves-' + this.color);
-    }
+
+    this.classSetter.removeClasses(classes);
   }
 }
