@@ -1,6 +1,34 @@
 <template>
   <require from="./route-highlight"></require>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right"><span>${router.title}</span></a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li md-waves route-highlight="routes: about">
+          <a route-href="route: about">About</a>
+        </li>
+
+        <li md-waves route-highlight="routes: installation">
+          <a route-href="route: installation">Installation</a>
+        </li>
+
+        <li md-waves route-highlight="routes: project-status">
+          <a route-href="route: project-status">Project Status</a>
+        </li>
+
+ <!--   <li route-highlight="routes: theme">
+          <a route-href="route: theme">Theme</a>
+        </li> -->
+
+        <li md-waves route-highlight="routes: help">
+          <a route-href="route: help">Help/Docs</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle Navigation</span>
@@ -26,13 +54,13 @@
 
         <li md-waves route-highlight="routes: project-status">
           <a route-href="route: project-status">Project Status</a>
-        </li>
+        </li> -->
 
  <!--   <li route-highlight="routes: theme">
           <a route-href="route: theme">Theme</a>
         </li> -->
 
-        <li md-waves route-highlight="routes: help">
+        <!-- <li md-waves route-highlight="routes: help">
           <a route-href="route: help">Help/Docs</a>
         </li>
 
@@ -44,5 +72,5 @@
         </li>
       </ul>
     </div>
-  </nav>
+  </nav> -->
 </template>

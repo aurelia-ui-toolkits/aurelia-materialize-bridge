@@ -8,19 +8,19 @@
   They will be removed when the catalog does not rely on bootstrap anymore.
 */
 
-nav.navbar {
+/*nav.navbar {
   height: 51px;
   max-height: 51px;
   line-height: 51px;
-}
+}*/
 
 nav ul a.au-target {
   font-size: inherit;
 }
 
-.page-host {
+/*.page-host {
   padding-top: 60px;
-}
+}*/
 
 .tabs a:hover, .tabs a:focus {
   text-decoration: none;
