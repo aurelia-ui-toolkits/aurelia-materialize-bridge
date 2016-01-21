@@ -2,34 +2,33 @@
   <div class="container collapsible-basic-use">
     <div class="row">
       <div class="col s12 m8">
-        <ul class="collapsible" md-collapsible="accordion: true">
-          <li>
-            <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
-            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-          </li>
-          <li>
-            <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
-            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-          </li>
-        </ul>
+        <md-card title="Basic collapsible">
+          <ul class="collapsible" md-collapsible="accordion: true">
+            <li>
+              <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+            <li>
+              <div class="collapsible-header"><i class="mdi-maps-place"></i>Second</div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+          </ul>
+        </md-card>
     </div>
     </div>
 
     <div class="row">
         <div class="col s12 m8">
-          <div class="card">
-            <div class="card-content">
-              <span class="card-title">Code Preview</span>
-              <div class="row">
-                <ul md-tabs class="tabs z-depth-1">
-                  <li md-waves="color: primary;" class="tab col"><a class="active" href="#html">Html</a></li>
-                </ul>
-                <div id="html" class="z-depth-1">
-                  <au-code language="markup" url="samples/collapsible/basic-use-sample.html"></au-code>
-                </div>
+          <md-card title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="tabs z-depth-1">
+                <li md-waves="color: primary;" class="tab col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/collapsible/basic-use-sample.html"></au-code>
               </div>
             </div>
-          </div>
+          </md-card>
         </div>
     </div>
   </div>
