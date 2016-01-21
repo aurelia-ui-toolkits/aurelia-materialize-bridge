@@ -6,8 +6,13 @@ export class ConfigBuilder {
   useGlobalResources: boolean = true;
   globalResources = [];
 
-  useButtons(): ConfigBuilder {
+  useButton(): ConfigBuilder {
     this.globalResources.push('./button/button');
+    return this;
+  }
+
+  useCard(): ConfigBuilder {
+    this.globalResources.push('./card/card');
     return this;
   }
 
