@@ -7,9 +7,9 @@ import { bindable, bindingMode, customElement, inject, inlineView } from 'aureli
 //   <div class="card">
 //     <div class="card-content">
 //       <span class="card-title">${title}</span>
-//       <card>
+//       <div>
 //       <content></content>
-//       </card>
+//       </div>
 //     </div>
 //   </div>
 //   </template>
