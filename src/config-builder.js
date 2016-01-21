@@ -29,6 +29,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useNavbar(): ConfigBuilder {
+    this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
   /**
    * Use materialized tabs
    */
