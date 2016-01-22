@@ -1,0 +1,11 @@
+.control-info.wip {
+  background: url('images/orange.png') left center no-repeat;
+}
+
+.control-info.done {
+  background: url('images/blue.png') left center no-repeat;
+}
+
+.control-info {
+  padding-left: 15px;
+}
