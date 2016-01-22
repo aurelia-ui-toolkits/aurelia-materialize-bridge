@@ -9,3 +9,7 @@
 #doc, #gitter {
   margin-top: 10px;
 }
+
+#gitter {
+  height: 700px;
+}

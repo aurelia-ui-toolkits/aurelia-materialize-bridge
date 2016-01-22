@@ -9,7 +9,8 @@ export function configure(aurelia) {
         .useCollapsible()
         .useNavbar()
         .useTabs()
-        .useWaves();
+        .useWaves()
+        .useWell();
     });
 
   aurelia.use.globalResources('shared/collapse-panel');

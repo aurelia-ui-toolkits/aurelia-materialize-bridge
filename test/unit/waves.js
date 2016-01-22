@@ -16,12 +16,23 @@ describe('Waves', () => {
 
     taskQueue = new TaskQueue();
     waves = new MdWaves(element);
+    expect(waves.element).toBeDefined();
   });
 
   it('applies waves-effect class', () => {
     waves.attached();
     taskQueue.flushMicroTaskQueue();
 
-    expect(element.classList).toContain('waves-effect');
+    expect(element.classList.contains('waves-effect')).toBe(true);
+  });
+
+  it('removes waves-effect class on detached()', () => {
+    waves.attached();
+    taskQueue.flushMicroTaskQueue();
+
+    waves.detached();
+    taskQueue.flushMicroTaskQueue();
+
+    expect(element.classList.contains('waves-effect')).toBe(false);
   });
 });
