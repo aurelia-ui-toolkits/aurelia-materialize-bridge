@@ -16,12 +16,15 @@ describe('Waves', () => {
 
     taskQueue = new TaskQueue();
     waves = new MdWaves(element);
+    expect(waves.element).toBeDefined();
   });
 
   it('applies waves-effect class', () => {
     waves.attached();
     taskQueue.flushMicroTaskQueue();
 
-    expect(element.classList).toContain('waves-effect');
+    // return false although "waves-effect" is set - see below
+    // expect(element.classList).toContain('waves-effect');
+    expect(element.classList.contains('waves-effect')).toBe(true);
   });
 });
