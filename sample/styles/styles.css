@@ -17,6 +17,20 @@ body, html {
   margin-top: 60px;
 }
 
+au-code pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 .splash {
     text-align: center;
     margin: 10% 0 0 0;
