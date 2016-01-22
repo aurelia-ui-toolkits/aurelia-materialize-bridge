@@ -1,10 +1,9 @@
 <template>
   <require from="./doc.css"></require>
 
-  <div class="row k-content" id="doc">
-    <div class="col-md-3">
-      <br>
-      <ul ref="panelBarDiv" class="help-docs collapsible" md-collapsible="accordion: false;" md-collapsible.ref="panelBarViewModel">
+  <div class="row">
+    <div class="col s3">
+      <ul class="panel-bar z-depth-1" ref="panelBarDiv" class="help-docs collapsible" md-collapsible="accordion: false;" md-collapsible.ref="panelBarViewModel">
         <li repeat.for="category of categories">
           <div md-waves="color: primary;" class="collapsible-header">
             <span>${category.name}</span>
@@ -20,7 +19,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-md-9" ref="markdownCol" id="markdownCol">
+    <div class="col s9 z-depth-1" ref="markdownCol">
       <au-markdown url.bind="activeDoc" loaded.delegate="scrollToTarget()">
       </au-markdown>
     </div>

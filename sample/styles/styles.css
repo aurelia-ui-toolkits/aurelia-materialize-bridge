@@ -1,9 +1,20 @@
-@import "temp-bootstrap-materialize-fixes.css";
+/*@import "temp-bootstrap-materialize-fixes.css";*/
 @import "material-colors.css";
 
-body {
+body, html {
   margin: 0;
-    font-family: Arial, sans-serif;
+  /*font-family: Arial, sans-serif;*/
+}
+
+.view-about-images div {
+  height: 205px;
+  text-align: center;
+  line-height: 205px;
+  margin-bottom: 40px;
+}
+
+.view-about-images > div:nth-child(3) > img {
+  margin-top: 60px;
 }
 
 .splash {
