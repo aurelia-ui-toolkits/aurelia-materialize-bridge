@@ -25,4 +25,14 @@ describe('Waves', () => {
 
     expect(element.classList.contains('waves-effect')).toBe(true);
   });
+
+  it('removes waves-effect class on detached()', () => {
+    waves.attached();
+    taskQueue.flushMicroTaskQueue();
+
+    waves.detached();
+    taskQueue.flushMicroTaskQueue();
+
+    expect(element.classList.contains('waves-effect')).toBe(false);
+  });
 });
