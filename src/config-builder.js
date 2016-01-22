@@ -50,6 +50,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useWell(): ConfigBuilder {
+    this.globalResources.push('./well/md-well.html');
+    return this;
+  }
+
   /**
   * Don't globalize any resources
   * Allows you to import yourself via <require></require>
