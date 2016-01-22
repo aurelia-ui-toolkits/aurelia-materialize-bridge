@@ -23,8 +23,6 @@ describe('Waves', () => {
     waves.attached();
     taskQueue.flushMicroTaskQueue();
 
-    // return false although "waves-effect" is set - see below
-    // expect(element.classList).toContain('waves-effect');
     expect(element.classList.contains('waves-effect')).toBe(true);
   });
 });
