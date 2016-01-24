@@ -49,7 +49,7 @@ export class Controls {
         { title: 'SideNav' },
         { title: 'Tabs', link: '#/samples/tabs', status: 'wip' },
         { title: 'Transitions' },
-        { title: 'Waves', link: '#/samples/collapsible', status: 'done' }
+        { title: 'Waves', link: '#/samples/waves', status: 'done' }
       ]
     }
   ]
