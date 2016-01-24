@@ -1,4 +1,13 @@
+import {inject} from 'aurelia-framework';
+import {EventAggregator} from 'aurelia-event-aggregator';
+
+@inject(EventAggregator)
 export class App {
+  constructor(ea) {
+    this.ea = ea;
+    // ea.subscribe('router:navigation:complete', () => this.ripple());
+  }
+
   configureRouter(config, router) {
     config.title = 'Aurelia Materialize Components';
 
@@ -12,5 +21,9 @@ export class App {
     ]);
 
     this.router = router;
+  }
+
+  ripple() {
+    Waves.displayEffect();
   }
 }

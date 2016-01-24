@@ -1,5 +1,6 @@
 import { bindable, bindingMode, customAttribute, inject } from 'aurelia-framework';
 import { CssClassSetter } from '../common/cssClassSetter';
+import 'materialize/js/waves';
 
 @customAttribute('md-waves')
 @bindable({

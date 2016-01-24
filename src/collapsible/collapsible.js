@@ -1,6 +1,8 @@
 import {customAttribute, bindable, bindingMode, inject} from 'aurelia-framework';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 import { CssClassSetter } from '../common/cssClassSetter';
+import 'jquery';
+import * as collapsible from 'materialize/js/collapsible';
 
 @customAttribute('md-collapsible')
 @bindable({ name: 'accordion', defaultValue: false })

@@ -35,7 +35,7 @@
       "aurelia-pal": "npm:aurelia-pal@^1.0.0-beta.1.0.2",
       "aurelia-pal-browser": "npm:aurelia-pal-browser@^1.0.0-beta.1.0.3",
       "aurelia-task-queue": "npm:aurelia-task-queue@^1.0.0-beta.1.0.1",
-      "materialize": "Dogfalo/materialize@^0.97.5"
+      "materialize": "npm:materialize-css@^0.97.5"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.22",
