@@ -1,1 +1,1 @@
-export class SampleSelector {}
+export class Installation {}
