@@ -21,7 +21,8 @@
          <div class="col s12 m2" repeat.for="category of categories">
            <md-card title="${category.title}">
              <div repeat.for="ctrl of category.controls" class="control-info ${ ctrl.status }">
-               <a href="${ ctrl.link ? ctrl.link : '#' }">${ ctrl.title }</a>
+               <a if.bind="ctrl.link" href="${ ctrl.link }">${ ctrl.title }</a>
+               <span if.bind="!ctrl.link">${ ctrl.title }</span>
              </div>
            </md-card>
          </div>
