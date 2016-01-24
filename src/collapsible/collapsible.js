@@ -4,6 +4,7 @@ import { CssClassSetter } from '../common/cssClassSetter';
 
 @customAttribute('md-collapsible')
 @bindable({ name: 'accordion', defaultValue: false })
+@bindable({ name: 'popout', defaultValue: false })
 @inject(Element)
 
 export class MdCollapsible {
@@ -14,11 +15,14 @@ export class MdCollapsible {
 
   attached() {
     this.classSetter.addClasses('collapsible');
+    if (getBooleanFromAttributeValue(this.popout)) {
+      this.classSetter.addClasses('popout');
+    }
     this.refresh();
   }
 
   detached() {
-    this.classSetter.removeClasses('collapsible');
+    this.classSetter.removeClasses(['collapsible', 'popout']);
   }
 
   refresh() {
@@ -28,8 +32,13 @@ export class MdCollapsible {
     } else {
       this.element.setAttribute('data-collapsible', 'expandable');
     }
+
     $(this.element).collapsible({
       accordion
     });
+  }
+
+  accordionChanged() {
+    this.refresh();
   }
 }
