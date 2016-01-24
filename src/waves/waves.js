@@ -11,7 +11,6 @@ export class MdWaves {
   constructor(element/*, classSetter*/) {
     this.element = element;
     this.classSetter = new CssClassSetter(this.element);
-    this.keepWavesCssClasses = false;
   }
 
   attached() {
