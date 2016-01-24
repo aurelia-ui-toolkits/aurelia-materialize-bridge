@@ -41,15 +41,15 @@
 
     ],
 
-    "About KendoUI":
+    "About Materialize":
     [
       {
         "name": "1. Integrated with Aurelia",
-        "path": "help/docs/about-kendoui/integrated-with-aurelia.md"
+        "path": "help/docs/about-materialize/integrated-with-aurelia.md"
       },
       {
-        "name": "2. Why Choose Kendo UI",
-        "path": "help/docs/about-kendoui/why-choose-kendoui.md"
+        "name": "2. Why Choose Materialize",
+        "path": "help/docs/about-materialize/why-choose-materialize.md"
       }
     ],
 
