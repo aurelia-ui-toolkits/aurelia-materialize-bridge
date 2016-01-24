@@ -1,11 +1,6 @@
 export class Controls {
   categories = [
     {
-      title: 'Most Popular',
-      controls: [
-        { title: 'Click counter', link: '#/samples/click-counter', status: 'done' }
-      ]
-    }, {
       title: 'Css',
       controls: [
         { title: 'Color' },
@@ -50,6 +45,12 @@ export class Controls {
         { title: 'Tabs', link: '#/samples/tabs', status: 'wip' },
         { title: 'Transitions' },
         { title: 'Waves', link: '#/samples/waves', status: 'done' }
+      ]
+    }, {
+      title: 'Bonus',
+      controls: [
+        { title: 'Click counter', link: '#/samples/click-counter', status: 'done' },
+        { title: 'Well', status: 'wip' }
       ]
     }
   ]
