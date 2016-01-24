@@ -1,7 +1,8 @@
 <template>
+  <require from="./controls.css"></require>
   <section>
   <div class="row">
-   <div class="col-md-12">
+   <div class="col s12">
      <h4>Project status</h4>
         <div>
            <!-- page title - single column -->
@@ -15,31 +16,19 @@
                  controls in development
              </div>
            </div>
+       <div class="row">
 
-          <div class="row">
-               <div class="col s12 m2">
-                   MOST POPULAR                                              <br>
-                   <img src="images/blue.png">
-                   <a href="#/samples/click-counter">Click counter</a>       <br>
-                   <img src="images/orange.png">
-                   <a href="#/samples/collapsible">Collapsible</a>           <br>
-                   <a href="#">Dialogs</a>                                   <br>
-                   <a href="#">Dropdown</a>                                  <br>
-                   <a href="#">Media</a>                                     <br>
-                   <a href="#">Modals</a>                                    <br>
-                   <img src="images/blue.png">
-                   <a href="#/samples/waves">Waves</a>                       <br>
-                   <img src="images/orange.png">
-                   <a href="#/samples/tabs">Tabs</a>                         <br>
-                   <img src="images/orange.png">
-                   <a href="#/samples/button">Buttons</a>                    <br>
-               </div>
-
-           <h3>Check <a href="http://aurelia-ui-toolkits.github.io/demo-kendo/#/project-status">this page</a> for the definition of what should be the content of this page<h3>
+         <div class="col s12 m2" repeat.for="category of categories">
+           <md-card title="${category.title}">
+             <div repeat.for="ctrl of category.controls" class="control-info ${ ctrl.status }">
+               <a if.bind="ctrl.link" href="${ ctrl.link }">${ ctrl.title }</a>
+               <span if.bind="!ctrl.link">${ ctrl.title }</span>
+             </div>
+           </md-card>
+         </div>
        </div>
-
-
-  </div>
+ </div>
+ </div>
  </div>
  </section>
 </template>
