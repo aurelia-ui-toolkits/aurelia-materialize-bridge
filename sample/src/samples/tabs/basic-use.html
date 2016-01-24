@@ -4,11 +4,11 @@
       <div class="row">
           <div class="col s12 m8">
             <md-card title="Basic Tabs usage">
-              <ul md-tabs md-on-selected.delegate="onTabSelected($event)" class="tabs z-depth-1" ref="tabs">
-                <li md-waves="color: primary;" class="tab"><a class="active" href="#tab1">Tab 1</a></li>
-                <li md-waves="color: primary;" class="tab"><a class="active" href="#tab2">Tab 2</a></li>
-                <li md-waves="color: primary;" class="tab"><a class="active" href="#tab3">Tab 3</a></li>
-                <li md-waves="color: primary;" class="tab"><a class="active" href="#tab4">Tab 4</a></li>
+              <ul md-tabs md-on-selected.delegate="onTabSelected($event)" class="z-depth-1" ref="tabs">
+                <li md-waves="color: primary;"><a class="active" href="#tab1">Tab 1</a></li>
+                <li md-waves="color: primary;"><a class="active" href="#tab2">Tab 2</a></li>
+                <li md-waves="color: primary;"><a class="active" href="#tab3">Tab 3</a></li>
+                <li md-waves="color: primary;"><a class="active" href="#tab4">Tab 4</a></li>
               </ul>
               <div id="tab1" class="tab-content z-depth-1">
                 <p>
@@ -66,8 +66,8 @@
           <div class="col s12 m8">
             <md-card title="Code Preview">
               <div class="row">
-                <ul md-tabs class="tabs z-depth-1">
-                  <li md-waves="color: primary;" class="tab col"><a class="active" href="#html">Html</a></li>
+                <ul md-tabs class="z-depth-1">
+                  <li md-waves="color: primary;"><a class="active" href="#html">Html</a></li>
                 </ul>
                 <div id="html" class="z-depth-1">
                   <au-code language="markup" url="samples/tabs/basic-use-sample.html"></au-code>
