@@ -23,14 +23,14 @@ export class Controls {
         { title: 'Badges' },
         { title: 'Button', link: '#/samples/button', status: 'wip' },
         { title: 'Breadcrumbs' },
-        { title: 'Cards', status: 'wip' },
+        { title: 'Cards', link: '#/samples/card', status: 'wip' },
         { title: 'Chips' },
         { title: 'Collections' },
         { title: 'Footer' },
         { title: 'Forms' },
 
         { title: 'Icons' },
-        { title: 'Navbar', status: 'wip' },
+        { title: 'Navbar', link: '#/samples/navbar', status: 'wip' },
         { title: 'Pagination' },
         { title: 'Preloader' },
       ]
