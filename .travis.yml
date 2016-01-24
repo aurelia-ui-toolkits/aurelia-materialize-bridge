@@ -18,7 +18,7 @@ branches:
 
 install:
   - npm install
-  - jspm config registries.github.auth $JSPM_GITHUB_AUTH_TOKEN
+  - jspm config registries.github.auth JSPM_GITHUB_AUTH_TOKEN
   - node_modules/.bin/jspm install
 
 before_script:
