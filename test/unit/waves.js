@@ -35,4 +35,33 @@ describe('Waves', () => {
 
     expect(element.classList.contains('waves-effect')).toBe(false);
   });
+
+  it('does not remove waves-effect class on detached() if specified beforehand', () => {
+    let element2 = document.createElement('a');
+    element2.setAttribute('md-waves', '');
+    element2.classList.add('waves-effect');
+    document.body.appendChild(element2);
+
+    expect(element2.classList.contains('waves-effect')).toBe(true);
+
+    let waves2 = new MdWaves(element2);
+    waves2.attached();
+    // taskQueue.flushMicroTaskQueue();
+
+    expect(element2.classList.contains('waves-effect')).toBe(true);
+
+    waves2.detached();
+    // taskQueue.flushMicroTaskQueue();
+
+    expect(element2.classList.contains('waves-effect')).toBe(true);
+  });
+
+  it('applies a color class', () => {
+    element.setAttribute('md-waves', 'color: green;');
+    waves.attached();
+    taskQueue.flushMicroTaskQueue();
+
+    expect(element.classList.contains('waves-effect')).toBe(true);
+    expect(element.classList.contains('waves-green')).toBe(true);
+  });
 });
