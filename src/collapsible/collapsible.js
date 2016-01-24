@@ -1,5 +1,6 @@
 import {customAttribute, bindable, bindingMode, inject} from 'aurelia-framework';
 import { getBooleanFromAttributeValue } from '../common/attributes';
+import { CssClassSetter } from '../common/cssClassSetter';
 
 @customAttribute('md-collapsible')
 @bindable({ name: 'accordion', defaultValue: false })
@@ -8,11 +9,18 @@ import { getBooleanFromAttributeValue } from '../common/attributes';
 export class MdCollapsible {
   constructor(element) {
     this.element = element;
+    this.classSetter = new CssClassSetter(this.element);
   }
 
   attached() {
+    this.classSetter.addClasses('collapsible');
     this.refresh();
   }
+
+  detached() {
+    this.classSetter.removeClasses('collapsible');
+  }
+
   refresh() {
     let accordion = getBooleanFromAttributeValue(this.accordion);
     if (accordion) {
