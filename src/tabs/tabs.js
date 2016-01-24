@@ -12,14 +12,15 @@ export class MdTabs {
   }
   attached() {
     this.classSetter.addClasses('tabs');
-    $(this.element).tabs();
 
     let children = this.element.querySelectorAll('li');
     [].forEach.call(children, child => {
       let setter = new CssClassSetter(child);
       setter.addClasses('tab');
-      tabClassSetters.push(setter);
+      this.tabClassSetters.push(setter);
     });
+
+    $(this.element).tabs();
 
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
@@ -31,10 +32,10 @@ export class MdTabs {
 
     // no destroy handler in tabs
 
-    tabClassSetters.foreach(setter => {
+    this.tabClassSetters.forEach(setter => {
       setter.removeClasses('tab');
     });
-    tabClassSetters = [];
+    this.tabClassSetters = [];
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
       a.removeEventListener('click', this.fireTabSelectedEvent.bind(this));
