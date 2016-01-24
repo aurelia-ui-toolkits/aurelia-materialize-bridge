@@ -6,6 +6,17 @@ export class ConfigBuilder {
   useGlobalResources: boolean = true;
   globalResources = [];
 
+  useAll(): ConfigBuilder {
+    return this
+      .useButton()
+      .useCard()
+      .useCollapsible()
+      .useNavbar()
+      .useTabs()
+      .useWaves()
+      .useWell();
+  }
+
   useButton(): ConfigBuilder {
     this.globalResources.push('./button/button');
     return this;
