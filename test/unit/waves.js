@@ -58,6 +58,7 @@ describe('Waves', () => {
 
   it('applies a color class', () => {
     element.setAttribute('md-waves', 'color: green;');
+    waves.color = 'green';
     waves.attached();
     taskQueue.flushMicroTaskQueue();
 
