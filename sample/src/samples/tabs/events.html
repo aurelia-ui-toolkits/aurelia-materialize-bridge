@@ -3,10 +3,10 @@
   <div class="tabs-basic-use">
       <div class="row">
           <div class="col s12 m8">
-            <md-card title="Basic Tabs usage">
+            <md-card title="Events usage">
               <div class="row">
 
-              <ul md-tabs class="z-depth-1" ref="tabs">
+              <ul md-tabs md-on-selected.delegate="onTabSelected($event)" class="z-depth-1" ref="tabs">
                 <li md-waves="color: primary;"><a class="active" href="#tab1">Tab 1</a></li>
                 <li md-waves="color: primary;"><a href="#tab2">Tab 2</a></li>
                 <li md-waves="color: primary;"><a href="#tab3">Tab 3</a></li>
@@ -48,6 +48,11 @@
               </div>
             </md-card>
           </div>
+          <div class="col s4">
+            <md-card title="Console log">
+              <logger class="z-depth-1" view-model.ref="logger"></logger>
+            </md-card>
+          </div>
       </div>
 
       <div class="row">
@@ -56,9 +61,13 @@
               <div class="row">
                 <ul md-tabs class="z-depth-1">
                   <li md-waves="color: primary;"><a class="active" href="#html">Html</a></li>
+                  <li md-waves="color: primary;"><a class="active" href="#js">Javascript</a></li>
                 </ul>
                 <div id="html" class="z-depth-1">
-                  <au-code language="markup" url="samples/tabs/basic-use-sample.html"></au-code>
+                  <au-code language="markup" url="samples/tabs/events-sample.html"></au-code>
+                </div>
+                <div id="js" class="z-depth-1">
+                  <au-code language="javascript" url="samples/tabs/events-sample.js"></au-code>
                 </div>
               </div>
             </md-card>
