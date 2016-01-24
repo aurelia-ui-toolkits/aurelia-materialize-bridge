@@ -4,12 +4,16 @@
       <div class="row">
           <div class="col s12 m8">
             <md-card title="Basic Tabs usage">
+              <div class="row">
+
               <ul md-tabs md-on-selected.delegate="onTabSelected($event)" class="z-depth-1" ref="tabs">
                 <li md-waves="color: primary;"><a class="active" href="#tab1">Tab 1</a></li>
-                <li md-waves="color: primary;"><a class="active" href="#tab2">Tab 2</a></li>
-                <li md-waves="color: primary;"><a class="active" href="#tab3">Tab 3</a></li>
-                <li md-waves="color: primary;"><a class="active" href="#tab4">Tab 4</a></li>
+                <li md-waves="color: primary;"><a href="#tab2">Tab 2</a></li>
+                <li md-waves="color: primary;"><a href="#tab3">Tab 3</a></li>
+                <li md-waves="color: primary;"><a href="#tab4">Tab 4</a></li>
               </ul>
+
+              </div>
               <div id="tab1" class="tab-content z-depth-1">
                 <p>
                   This is tab 1
@@ -50,17 +54,6 @@
             </md-card>
           </div>
       </div>
-
-      <!-- <div class="row">
-        <div class="col s12 m8">
-          <div class="card">
-            <div class="card-content">
-              <span class="card-title">Console log</span>
-              <logger class="z-depth-1" view-model.ref="logger"></logger>
-            </div>
-          </div>
-        </div>
-      </div> -->
 
       <div class="row">
           <div class="col s12 m8">
