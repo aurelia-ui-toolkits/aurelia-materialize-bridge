@@ -50,7 +50,8 @@ export class Controls {
       title: 'Bonus',
       controls: [
         { title: 'Click counter', link: '#/samples/click-counter', status: 'done' },
-        { title: 'Well', status: 'wip' }
+        { title: 'Well', status: 'wip' },
+        { title: 'PanelBar' }
       ]
     }
   ]
