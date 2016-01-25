@@ -12,6 +12,7 @@ export class ConfigBuilder {
       .useCard()
       .useCollapsible()
       .useNavbar()
+      .useSidenav()
       .useTabs()
       .useWaves()
       .useWell();
@@ -42,6 +43,12 @@ export class ConfigBuilder {
 
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useSidenav(): ConfigBuilder {
+    this.globalResources.push('./sidenav/sidenav');
+    this.globalResources.push('./sidenav/sidenav-collapse');
     return this;
   }
 

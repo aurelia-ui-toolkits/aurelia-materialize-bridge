@@ -8,6 +8,7 @@ export function configure(aurelia) {
         .useCard()
         .useCollapsible()
         .useNavbar()
+        .useSidenav()
         .useTabs()
         .useWaves()
         .useWell();
