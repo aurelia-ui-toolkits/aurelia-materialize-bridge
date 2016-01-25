@@ -1,0 +1,609 @@
+'use strict';
+
+exports.__esModule = true;
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+
+exports.configure = configure;
+exports.getBooleanFromAttributeValue = getBooleanFromAttributeValue;
+exports.fireEvent = fireEvent;
+exports.fireMaterializeEvent = fireMaterializeEvent;
+
+function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+require('materialize');
+
+var _aureliaFramework = require('aurelia-framework');
+
+var ClickCounter = (function () {
+  function ClickCounter() {
+    _classCallCheck(this, ClickCounter);
+
+    this.count = 0;
+  }
+
+  ClickCounter.prototype.increment = function increment() {
+    this.count++;
+  };
+
+  return ClickCounter;
+})();
+
+exports.ClickCounter = ClickCounter;
+
+var ConfigBuilder = (function () {
+  function ConfigBuilder() {
+    _classCallCheck(this, ConfigBuilder);
+
+    this.useGlobalResources = true;
+    this.globalResources = [];
+  }
+
+  ConfigBuilder.prototype.useAll = function useAll() {
+    return this.useButton().useCard().useCollapsible().useNavbar().useSidenav().useTabs().useWaves().useWell();
+  };
+
+  ConfigBuilder.prototype.useButton = function useButton() {
+    this.globalResources.push('./button/button');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useCard = function useCard() {
+    this.globalResources.push('./card/card');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useClickCounter = function useClickCounter() {
+    this.globalResources.push('./click-counter');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useCollapsible = function useCollapsible() {
+    this.globalResources.push('./collapsible/collapsible');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useNavbar = function useNavbar() {
+    this.globalResources.push('./navbar/navbar');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useSidenav = function useSidenav() {
+    this.globalResources.push('./sidenav/sidenav');
+    this.globalResources.push('./sidenav/sidenav-collapse');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useTabs = function useTabs() {
+    this.globalResources.push('./tabs/tabs');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useWaves = function useWaves() {
+    this.globalResources.push('./waves/waves');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useWell = function useWell() {
+    this.globalResources.push('./well/md-well.html');
+    return this;
+  };
+
+  ConfigBuilder.prototype.withoutGlobalResources = function withoutGlobalResources() {
+    this.useGlobalResources = false;
+    return this;
+  };
+
+  return ConfigBuilder;
+})();
+
+exports.ConfigBuilder = ConfigBuilder;
+
+function configure(aurelia, configCallback) {
+  var builder = new ConfigBuilder();
+
+  if (configCallback !== undefined && typeof configCallback === 'function') {
+    configCallback(builder);
+  }
+
+  if (builder.useGlobalResources) {
+    aurelia.globalResources(builder.globalResources);
+  }
+}
+
+var MdButton = (function () {
+  var _instanceInitializers = {};
+
+  _createDecoratedClass(MdButton, [{
+    key: 'disabled',
+    decorators: [_aureliaFramework.bindable()],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }, {
+    key: 'flat',
+    decorators: [_aureliaFramework.bindable()],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }, {
+    key: 'large',
+    decorators: [_aureliaFramework.bindable()],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }], null, _instanceInitializers);
+
+  function MdButton(element) {
+    _classCallCheck(this, _MdButton);
+
+    _defineDecoratedPropertyDescriptor(this, 'disabled', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'flat', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'large', _instanceInitializers);
+
+    this.classSetter = new CssClassSetter(element);
+  }
+
+  MdButton.prototype.attached = function attached() {
+    var classes = [];
+
+    if (getBooleanFromAttributeValue(this.flat)) {
+      classes.push('btn-flat');
+    }
+    if (getBooleanFromAttributeValue(this.large)) {
+      classes.push('btn-large');
+    }
+
+    if (classes.length === 0) {
+      classes.push('btn');
+    }
+
+    if (getBooleanFromAttributeValue(this.disabled)) {
+      classes.push('disabled');
+    }
+
+    this.classSetter.addClasses(classes);
+  };
+
+  MdButton.prototype.detached = function detached() {
+    this.classSetter.removeClasses(['btn', 'btn-flat', 'btn-large', 'disabled']);
+  };
+
+  var _MdButton = MdButton;
+  MdButton = _aureliaFramework.inject(Element)(MdButton) || MdButton;
+  MdButton = _aureliaFramework.customAttribute('md-button')(MdButton) || MdButton;
+  return MdButton;
+})();
+
+exports.MdButton = MdButton;
+
+var MdCard = (function () {
+  var _instanceInitializers2 = {};
+
+  _createDecoratedClass(MdCard, [{
+    key: 'title',
+    decorators: [_aureliaFramework.bindable({
+      defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+    })],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers2);
+
+  function MdCard(element) {
+    _classCallCheck(this, _MdCard);
+
+    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers2);
+  }
+
+  var _MdCard = MdCard;
+  MdCard = _aureliaFramework.inject(Element)(MdCard) || MdCard;
+  MdCard = _aureliaFramework.customElement('md-card')(MdCard) || MdCard;
+  return MdCard;
+})();
+
+exports.MdCard = MdCard;
+
+var MdCollapsible = (function () {
+  function MdCollapsible(element) {
+    _classCallCheck(this, _MdCollapsible);
+
+    this.element = element;
+    this.classSetter = new CssClassSetter(this.element);
+  }
+
+  MdCollapsible.prototype.attached = function attached() {
+    this.classSetter.addClasses('collapsible');
+    if (getBooleanFromAttributeValue(this.popout)) {
+      this.classSetter.addClasses('popout');
+    }
+    this.refresh();
+  };
+
+  MdCollapsible.prototype.detached = function detached() {
+    this.classSetter.removeClasses(['collapsible', 'popout']);
+  };
+
+  MdCollapsible.prototype.refresh = function refresh() {
+    var accordion = getBooleanFromAttributeValue(this.accordion);
+    if (accordion) {
+      this.element.setAttribute('data-collapsible', 'accordion');
+    } else {
+      this.element.setAttribute('data-collapsible', 'expandable');
+    }
+
+    $(this.element).collapsible({
+      accordion: accordion
+    });
+  };
+
+  MdCollapsible.prototype.accordionChanged = function accordionChanged() {
+    this.refresh();
+  };
+
+  var _MdCollapsible = MdCollapsible;
+  MdCollapsible = _aureliaFramework.inject(Element)(MdCollapsible) || MdCollapsible;
+  MdCollapsible = _aureliaFramework.bindable({ name: 'popout', defaultValue: false })(MdCollapsible) || MdCollapsible;
+  MdCollapsible = _aureliaFramework.bindable({ name: 'accordion', defaultValue: false })(MdCollapsible) || MdCollapsible;
+  MdCollapsible = _aureliaFramework.customAttribute('md-collapsible')(MdCollapsible) || MdCollapsible;
+  return MdCollapsible;
+})();
+
+exports.MdCollapsible = MdCollapsible;
+
+function getBooleanFromAttributeValue(value) {
+  return value === true || value === 'true';
+}
+
+var constants = {
+  eventPrefix: 'md-on-',
+  bindablePrefix: 'md-'
+};
+
+exports.constants = constants;
+
+var CssClassSetter = (function () {
+  function CssClassSetter(element) {
+    _classCallCheck(this, CssClassSetter);
+
+    this.addedClasses = [];
+
+    this.element = element;
+  }
+
+  CssClassSetter.prototype.addClasses = function addClasses(classes) {
+    var _this = this;
+
+    if (typeof classes === 'string') {
+      classes = [classes];
+    }
+    classes.forEach(function (c) {
+      if (!_this.element.classList.contains(c)) {
+        _this.addedClasses.push(c);
+        _this.element.classList.add(c);
+      }
+    });
+  };
+
+  CssClassSetter.prototype.removeClasses = function removeClasses(classes) {
+    var _this2 = this;
+
+    if (typeof classes === 'string') {
+      classes = [classes];
+    }
+    classes.forEach(function (c) {
+      if (_this2.element.classList.contains(c) && _this2.addedClasses.indexOf(c) > -1) {
+        _this2.element.classList.remove(c);
+        _this2.addedClasses.splice(_this2.addedClasses.indexOf(c), 1);
+      }
+    });
+  };
+
+  return CssClassSetter;
+})();
+
+exports.CssClassSetter = CssClassSetter;
+
+function fireEvent(element, name) {
+  var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+
+  var event = new CustomEvent(name, {
+    detail: data,
+    bubbles: true
+  });
+  element.dispatchEvent(event);
+
+  return event;
+}
+
+function fireMaterializeEvent(element, name) {
+  var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+
+  return fireEvent(element, '' + constants.eventPrefix + name, data);
+}
+
+var MdNavbar = (function () {
+  var _instanceInitializers3 = {};
+
+  _createDecoratedClass(MdNavbar, [{
+    key: 'fixed',
+    decorators: [_aureliaFramework.bindable()],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers3);
+
+  function MdNavbar(element) {
+    _classCallCheck(this, _MdNavbar);
+
+    _defineDecoratedPropertyDescriptor(this, 'fixed', _instanceInitializers3);
+
+    this.element = element;
+  }
+
+  MdNavbar.prototype.attached = function attached() {
+    this.fixedClassSetter = new CssClassSetter(this.fixedAnchor);
+    if (getBooleanFromAttributeValue(this.fixed)) {
+      this.fixedClassSetter.addClasses('navbar-fixed');
+    }
+  };
+
+  MdNavbar.prototype.detached = function detached() {
+    if (getBooleanFromAttributeValue(this.fixed)) {
+      this.fixedClassSetter.removeClasses('navbar-fixed');
+    }
+  };
+
+  var _MdNavbar = MdNavbar;
+  MdNavbar = _aureliaFramework.inject(Element)(MdNavbar) || MdNavbar;
+  MdNavbar = _aureliaFramework.customElement('md-navbar')(MdNavbar) || MdNavbar;
+  return MdNavbar;
+})();
+
+exports.MdNavbar = MdNavbar;
+
+var MdSidenavCollapse = (function () {
+  var _instanceInitializers4 = {};
+
+  _createDecoratedClass(MdSidenavCollapse, [{
+    key: 'ref',
+    decorators: [_aureliaFramework.bindable()],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers4);
+
+  function MdSidenavCollapse(element) {
+    _classCallCheck(this, _MdSidenavCollapse);
+
+    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers4);
+
+    this.element = element;
+  }
+
+  MdSidenavCollapse.prototype.attached = function attached() {
+    this.element.setAttribute('data-activates', this.ref.controlId);
+    $(this.element).sideNav();
+  };
+
+  MdSidenavCollapse.prototype.detached = function detached() {};
+
+  MdSidenavCollapse.prototype.toggleSidenav = function toggleSidenav() {
+    $(this.element).sideNav('show');
+  };
+
+  var _MdSidenavCollapse = MdSidenavCollapse;
+  MdSidenavCollapse = _aureliaFramework.inject(Element)(MdSidenavCollapse) || MdSidenavCollapse;
+  MdSidenavCollapse = _aureliaFramework.customAttribute('md-sidenav-collapse')(MdSidenavCollapse) || MdSidenavCollapse;
+  return MdSidenavCollapse;
+})();
+
+exports.MdSidenavCollapse = MdSidenavCollapse;
+
+var MdSidenav = (function () {
+  _createClass(MdSidenav, null, [{
+    key: 'id',
+    value: 0,
+    enumerable: true
+  }]);
+
+  function MdSidenav(element) {
+    _classCallCheck(this, _MdSidenav);
+
+    this.element = element;
+    this.controlId = 'md-sidenav-' + MdSidenav.id++;
+  }
+
+  MdSidenav.prototype.attached = function attached() {};
+
+  var _MdSidenav = MdSidenav;
+  MdSidenav = _aureliaFramework.inject(Element)(MdSidenav) || MdSidenav;
+  MdSidenav = _aureliaFramework.customElement('md-sidenav')(MdSidenav) || MdSidenav;
+  return MdSidenav;
+})();
+
+exports.MdSidenav = MdSidenav;
+
+var MdTab = (function () {
+  var _instanceInitializers5 = {};
+
+  _createDecoratedClass(MdTab, [{
+    key: 'forElement',
+    decorators: [_aureliaFramework.bindable({
+      attribute: 'for-element',
+      defaultBindingMode: _aureliaFramework.bindingMode.oneWay
+    })],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'tab',
+    decorators: [_aureliaFramework.bindable({
+      defaultBindingMode: _aureliaFramework.bindingMode.oneWay
+    })],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'title',
+    decorators: [_aureliaFramework.bindable({
+      defaultBindingMode: _aureliaFramework.bindingMode.oneWay
+    })],
+    initializer: function initializer() {
+      return '';
+    },
+    enumerable: true
+  }], null, _instanceInitializers5);
+
+  function MdTab(element) {
+    _classCallCheck(this, _MdTab);
+
+    _defineDecoratedPropertyDescriptor(this, 'forElement', _instanceInitializers5);
+
+    _defineDecoratedPropertyDescriptor(this, 'tab', _instanceInitializers5);
+
+    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers5);
+
+    this.element = element;
+  }
+
+  MdTab.prototype.attached = function attached() {};
+
+  MdTab.prototype.detached = function detached() {};
+
+  MdTab.prototype.forElementChanged = function forElementChanged(newValue) {};
+
+  var _MdTab = MdTab;
+  MdTab = _aureliaFramework.inject(Element)(MdTab) || MdTab;
+  MdTab = _aureliaFramework.containerless()(MdTab) || MdTab;
+  MdTab = _aureliaFramework.customElement('md-tab')(MdTab) || MdTab;
+  return MdTab;
+})();
+
+exports.MdTab = MdTab;
+
+var MdTabsElement = (function () {
+  function MdTabsElement(element) {
+    _classCallCheck(this, _MdTabsElement);
+
+    this.element = element;
+  }
+
+  MdTabsElement.prototype.attached = function attached() {
+    $(this.element).tabs();
+  };
+
+  MdTabsElement.prototype.detached = function detached() {};
+
+  var _MdTabsElement = MdTabsElement;
+  MdTabsElement = _aureliaFramework.inlineView('\n  <template>\n    <ul class="tabs">\n      <content></content>\n    </ul>\n  </template>\n')(MdTabsElement) || MdTabsElement;
+  MdTabsElement = _aureliaFramework.inject(Element)(MdTabsElement) || MdTabsElement;
+  MdTabsElement = _aureliaFramework.customElement('md-tabs')(MdTabsElement) || MdTabsElement;
+  MdTabsElement = _aureliaFramework.bindable({
+    name: 'tabs',
+    defaultBindingMode: _aureliaFramework.bindingMode.oneWay
+  })(MdTabsElement) || MdTabsElement;
+  return MdTabsElement;
+})();
+
+exports.MdTabsElement = MdTabsElement;
+
+var MdTabs = (function () {
+  function MdTabs(element) {
+    _classCallCheck(this, _MdTabs);
+
+    this.element = element;
+    this.classSetter = new CssClassSetter(this.element);
+    this.tabClassSetters = [];
+  }
+
+  MdTabs.prototype.attached = function attached() {
+    var _this3 = this;
+
+    this.classSetter.addClasses('tabs');
+
+    var children = this.element.querySelectorAll('li');
+    [].forEach.call(children, function (child) {
+      var setter = new CssClassSetter(child);
+      setter.addClasses('tab');
+      _this3.tabClassSetters.push(setter);
+    });
+
+    $(this.element).tabs();
+
+    var childAnchors = this.element.querySelectorAll('li a');
+    [].forEach.call(childAnchors, function (a) {
+      a.addEventListener('click', _this3.fireTabSelectedEvent.bind(_this3));
+    });
+  };
+
+  MdTabs.prototype.detached = function detached() {
+    var _this4 = this;
+
+    this.classSetter.removeClasses('tabs');
+
+    this.tabClassSetters.forEach(function (setter) {
+      setter.removeClasses('tab');
+    });
+    this.tabClassSetters = [];
+    var childAnchors = this.element.querySelectorAll('li a');
+    [].forEach.call(childAnchors, function (a) {
+      a.removeEventListener('click', _this4.fireTabSelectedEvent.bind(_this4));
+    });
+  };
+
+  MdTabs.prototype.fireTabSelectedEvent = function fireTabSelectedEvent(e) {
+    var href = $(e.target).attr('href');
+    fireMaterializeEvent(this.element, 'selected', href);
+  };
+
+  var _MdTabs = MdTabs;
+  MdTabs = _aureliaFramework.inject(Element)(MdTabs) || MdTabs;
+  MdTabs = _aureliaFramework.customAttribute('md-tabs')(MdTabs) || MdTabs;
+  return MdTabs;
+})();
+
+exports.MdTabs = MdTabs;
+
+var MdWaves = (function () {
+  function MdWaves(element) {
+    _classCallCheck(this, _MdWaves);
+
+    this.element = element;
+    this.classSetter = new CssClassSetter(this.element);
+  }
+
+  MdWaves.prototype.attached = function attached() {
+    var classes = ['waves-effect'];
+    if (this.color) {
+      classes.push('waves-' + this.color);
+    }
+
+    this.classSetter.addClasses(classes);
+    Waves.attach(this.element);
+  };
+
+  MdWaves.prototype.detached = function detached() {
+    var classes = ['waves-effect'];
+    if (this.color) {
+      classes.push('waves-' + this.color);
+    }
+
+    this.classSetter.removeClasses(classes);
+  };
+
+  var _MdWaves = MdWaves;
+  MdWaves = _aureliaFramework.inject(Element)(MdWaves) || MdWaves;
+  MdWaves = _aureliaFramework.bindable({
+    name: 'color',
+    defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+  })(MdWaves) || MdWaves;
+  MdWaves = _aureliaFramework.customAttribute('md-waves')(MdWaves) || MdWaves;
+  return MdWaves;
+})();
+
+exports.MdWaves = MdWaves;
