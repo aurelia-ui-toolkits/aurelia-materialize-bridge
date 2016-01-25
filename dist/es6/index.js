@@ -1,3 +1,4 @@
+import 'materialize';
 import {Aurelia} from 'aurelia-framework';
 import {ConfigBuilder} from './config-builder';
 

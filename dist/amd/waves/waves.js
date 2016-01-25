@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
+define(['exports', 'aurelia-framework', '../common/cssClassSetter'], function (exports, _aureliaFramework, _commonCssClassSetter) {
   'use strict';
 
   exports.__esModule = true;
@@ -10,16 +10,26 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
       _classCallCheck(this, _MdWaves);
 
       this.element = element;
+      this.classSetter = new _commonCssClassSetter.CssClassSetter(this.element);
     }
 
     MdWaves.prototype.attached = function attached() {
-      this.element.classList.add('waves-effect');
+      var classes = ['waves-effect'];
+      if (this.color) {
+        classes.push('waves-' + this.color);
+      }
+
+      this.classSetter.addClasses(classes);
       Waves.attach(this.element);
     };
 
     MdWaves.prototype.detached = function detached() {
-      Waves.calm(this.element);
-      this.element.classList.remove('waves-effect');
+      var classes = ['waves-effect'];
+      if (this.color) {
+        classes.push('waves-' + this.color);
+      }
+
+      this.classSetter.removeClasses(classes);
     };
 
     var _MdWaves = MdWaves;

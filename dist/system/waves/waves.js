@@ -1,7 +1,7 @@
-System.register(['aurelia-framework'], function (_export) {
+System.register(['aurelia-framework', '../common/cssClassSetter'], function (_export) {
   'use strict';
 
-  var bindable, bindingMode, customAttribute, inject, MdWaves;
+  var bindable, bindingMode, customAttribute, inject, CssClassSetter, MdWaves;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -11,6 +11,8 @@ System.register(['aurelia-framework'], function (_export) {
       bindingMode = _aureliaFramework.bindingMode;
       customAttribute = _aureliaFramework.customAttribute;
       inject = _aureliaFramework.inject;
+    }, function (_commonCssClassSetter) {
+      CssClassSetter = _commonCssClassSetter.CssClassSetter;
     }],
     execute: function () {
       MdWaves = (function () {
@@ -18,29 +20,26 @@ System.register(['aurelia-framework'], function (_export) {
           _classCallCheck(this, _MdWaves);
 
           this.element = element;
-          this.keepWavesCssClasses = false;
+          this.classSetter = new CssClassSetter(this.element);
         }
 
         MdWaves.prototype.attached = function attached() {
-          if (this.element.classList.contains('waves-effect')) {
-            this.keepWavesCssClasses = true;
-          } else {
-            this.element.classList.add('waves-effect');
-          }
-          if (this.color && !this.element.classList.contains('waves-' + this.color)) {
-            this.element.classList.add('waves-' + this.color);
+          var classes = ['waves-effect'];
+          if (this.color) {
+            classes.push('waves-' + this.color);
           }
 
+          this.classSetter.addClasses(classes);
           Waves.attach(this.element);
         };
 
         MdWaves.prototype.detached = function detached() {
-          if (!this.keepWavesCssClasses) {
-            this.element.classList.remove('waves-effect');
+          var classes = ['waves-effect'];
+          if (this.color) {
+            classes.push('waves-' + this.color);
           }
-          if (this.color && this.element.classList.contains('waves-' + this.color)) {
-            this.element.classList.remove('waves-' + this.color);
-          }
+
+          this.classSetter.removeClasses(classes);
         };
 
         var _MdWaves = MdWaves;

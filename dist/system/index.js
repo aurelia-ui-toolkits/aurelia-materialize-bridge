@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', './config-builder'], function (_export) {
+System.register(['materialize', 'aurelia-framework', './config-builder'], function (_export) {
   'use strict';
 
   var Aurelia, ConfigBuilder;
@@ -18,7 +18,7 @@ System.register(['aurelia-framework', './config-builder'], function (_export) {
   }
 
   return {
-    setters: [function (_aureliaFramework) {
+    setters: [function (_materialize) {}, function (_aureliaFramework) {
       Aurelia = _aureliaFramework.Aurelia;
     }, function (_configBuilder) {
       ConfigBuilder = _configBuilder.ConfigBuilder;
