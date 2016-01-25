@@ -6,9 +6,9 @@ import { CssClassSetter } from '../common/cssClassSetter';
   name: 'color',
   defaultBindingMode: bindingMode.oneTime
 })
-@inject(Element/*, CssClassSetter*/)
+@inject(Element)
 export class MdWaves {
-  constructor(element/*, classSetter*/) {
+  constructor(element) {
     this.element = element;
     this.classSetter = new CssClassSetter(this.element);
   }

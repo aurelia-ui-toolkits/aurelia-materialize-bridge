@@ -1,4 +1,4 @@
-import { bindable, bindingMode, containerless, customElement, inject/*, inlineView*/ } from 'aurelia-framework';
+import { bindable, bindingMode, containerless, customElement, inject } from 'aurelia-framework';
 
 /*
   implementation example

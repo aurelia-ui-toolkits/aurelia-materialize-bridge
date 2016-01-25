@@ -1,4 +1,4 @@
-import {customAttribute, bindable/*, bindingMode*/, inject} from 'aurelia-framework';
+import {customAttribute, bindable, inject} from 'aurelia-framework';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 import { CssClassSetter } from '../common/cssClassSetter';
 
