@@ -41,7 +41,7 @@ export class Controls {
         { title: 'Pushpin' },
         { title: 'Scrollfire' },
         { title: 'Scrollspy' },
-        { title: 'SideNav' },
+        { title: 'SideNav', link: '#/samples/sidenav', status: 'wip' },
         { title: 'Tabs', link: '#/samples/tabs', status: 'wip' },
         { title: 'Transitions' },
         { title: 'Waves', link: '#/samples/waves', status: 'done' }

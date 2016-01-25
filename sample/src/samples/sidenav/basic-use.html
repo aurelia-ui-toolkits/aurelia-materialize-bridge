@@ -1,0 +1,36 @@
+<template>
+  <div class="collapsible-basic-use">
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card title="Basic SideNav">
+          <div>
+            <a md-sidenav-collapse="ref.bind: sideNav;" md-button md-waves>Toggle SideNav</a>
+          </div>
+          <md-sidenav view-model.ref="sideNav">
+            <ul>
+              <li md-waves><a href="#/samples/sidenav">About</a></li>
+              <li md-waves><a href="#/samples/sidenav">Installation</a></li>
+              <li md-waves><a href="#/samples/sidenav">Project Status</a></li>
+              <li md-waves><a href="#/samples/sidenav">Help/Docs</a></li>
+            </ul>
+          </md-sidenav>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/sidenav/basic-use-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>
