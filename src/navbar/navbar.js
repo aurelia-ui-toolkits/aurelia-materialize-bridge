@@ -8,8 +8,8 @@ export class MdNavbar {
   @bindable() fixed;
   fixedClassSetter;
 
-  constructor (element) {
-    this.element = element
+  constructor(element) {
+    this.element = element;
   }
 
   attached() {

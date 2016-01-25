@@ -14,11 +14,11 @@ import { bindable, bindingMode, customElement, inject, inlineView } from 'aureli
   </template>
 `)
 export class MdTabsElement {
-  constructor (element) {
+  constructor(element) {
     this.element = element;
   }
   attached() {
-    console.log('[MdTabs]', 'attached', this.tabs)
+    // console.log('[MdTabs]', 'attached', this.tabs)
     $(this.element).tabs();
   }
   detached() {

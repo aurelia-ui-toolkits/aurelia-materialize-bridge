@@ -1,4 +1,4 @@
-import { bindable, bindingMode, containerless, customElement, inject, inlineView } from 'aurelia-framework';
+import { bindable, bindingMode, containerless, customElement, inject/*, inlineView*/ } from 'aurelia-framework';
 
 /*
   implementation example
@@ -51,14 +51,14 @@ export class MdTab {
   @bindable({
     defaultBindingMode: bindingMode.oneWay
   }) title = '';
-  constructor (element) {
+  constructor(element) {
     this.element = element;
   }
   attached() {
-    console.log('[MdTab] attached', 'forElement', this.forElement, this.tab)
+    // console.log('[MdTab] attached', 'forElement', this.forElement, this.tab)
   }
   detached() { }
   forElementChanged(newValue) {
-    console.log('[MdTab] forElementChanged', 'newValue', newValue)
+    // console.log('[MdTab] forElementChanged', 'newValue', newValue)
   }
 }

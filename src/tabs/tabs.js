@@ -1,11 +1,11 @@
-import { customAttribute, bindable, bindingMode, inject } from 'aurelia-framework';
-import { fireEvent, fireMaterializeEvent } from '../common/events';
+import { customAttribute, inject } from 'aurelia-framework';
+import { fireMaterializeEvent } from '../common/events';
 import { CssClassSetter } from '../common/cssClassSetter';
 
 @customAttribute('md-tabs')
 @inject(Element)
 export class MdTabs {
-  constructor (element) {
+  constructor(element) {
     this.element = element;
     this.classSetter = new CssClassSetter(this.element);
     this.tabClassSetters = [];

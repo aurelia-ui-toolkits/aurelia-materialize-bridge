@@ -1,11 +1,12 @@
 import {TaskQueue} from 'aurelia-task-queue';
 import {initialize} from 'aurelia-pal-browser';
-import {DOM} from 'aurelia-pal';
 import {CssClassSetter} from 'src/common/cssClassSetter';
 import 'materialize';
 
 describe('CssClassSetter', () => {
-  let element, taskQueue, cssClassSetter;
+  let element;
+  let taskQueue;
+  let cssClassSetter;
   // beforeAll(() => initialize());
   initialize();
 

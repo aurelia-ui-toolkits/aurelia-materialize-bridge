@@ -1,4 +1,4 @@
-import { bindable, bindingMode, customElement, inject, inlineView } from 'aurelia-framework';
+import { bindable, bindingMode, customElement, inject /*, inlineView*/ } from 'aurelia-framework';
 
 @customElement('md-card')
 @inject(Element)

@@ -27,7 +27,7 @@ export class Controls {
         { title: 'Icons' },
         { title: 'Navbar', link: '#/samples/navbar', status: 'wip' },
         { title: 'Pagination' },
-        { title: 'Preloader' },
+        { title: 'Preloader' }
       ]
     }, {
       title: 'Javascript',

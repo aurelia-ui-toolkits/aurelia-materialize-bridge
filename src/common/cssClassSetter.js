@@ -1,5 +1,3 @@
-import { transient } from 'aurelia-framework';
-
 /**
  * Adds css classes to a given element only if these classes are not already
  * present. Keeps a record of css classes which actually have been added.
@@ -7,7 +5,6 @@ import { transient } from 'aurelia-framework';
  * set by the user.
  * Most useful in attached() and detached() handlers.
  */
-// @transient()
 export class CssClassSetter {
   addedClasses = [];
 
@@ -26,7 +23,7 @@ export class CssClassSetter {
       }
     });
   }
-  
+
   removeClasses(classes) {
     if (typeof classes === 'string') {
       classes = [classes];
@@ -34,7 +31,7 @@ export class CssClassSetter {
     classes.forEach(c => {
       if (this.element.classList.contains(c) && this.addedClasses.indexOf(c) > -1) {
         this.element.classList.remove(c);
-        this.addedClasses.splice(this.addedClasses.indexOf(c), 1)
+        this.addedClasses.splice(this.addedClasses.indexOf(c), 1);
       }
     });
   }
