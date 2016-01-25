@@ -1,6 +1,12 @@
 <template>
   <require from="./route-highlight"></require>
 
+  <style>
+    .side-nav .li[md-waves] {
+      display: block;
+    }
+  </style>
+
   <md-navbar fixed="true">
     <a href="#/samples/navbar" class="brand-logo right"><span>${router.title}</span></a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -24,5 +30,28 @@
         <a route-href="route: docs; params.bind: { category: 'about_this_application', file: '1._introduction' };">Help/Docs</a>
       </li>
     </ul>
+
+    <ul id="slide-out" class="side-nav">
+      <li md-waves route-highlight="routes: about">
+        <a route-href="route: about">About</a>
+      </li>
+
+      <li md-waves route-highlight="routes: installation">
+        <a route-href="route: installation">Installation</a>
+      </li>
+
+      <li md-waves route-highlight="routes: project-status">
+        <a route-href="route: project-status">Project Status</a>
+      </li>
+
+<!--   <li route-highlight="routes: theme">
+        <a route-href="route: theme">Theme</a>
+      </li> -->
+
+      <li md-waves route-highlight="routes: help">
+        <a route-href="route: docs; params.bind: { category: 'about_this_application', file: '1._introduction' };">Help/Docs</a>
+      </li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
   </md-navbar>
 </template>
