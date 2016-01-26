@@ -23,15 +23,9 @@ describe('Collapsible', () => {
   });
 
   it('sets popout class if popout is specified', () => {
-    collapsible.attached();
     collapsible.popout = true;
-    expect(element.classList.contains('popout')).toBe(true);
-  });
-
-  it('sets accordion class if accordion is specified', () => {
-    collapsible.accordion = true;
     collapsible.attached();
-    expect(element.classList.contains('accordion')).toBe(true);
+    expect(element.classList.contains('popout')).toBe(true);
   });
 
   it('sets data-collapsible attribute to "accordion" if accordion is specified', () => {
