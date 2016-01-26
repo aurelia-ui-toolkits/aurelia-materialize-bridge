@@ -1,6 +1,6 @@
 import { bindable, customElement, inject } from 'aurelia-framework';
 import { getBooleanFromAttributeValue } from '../common/attributes';
-import { CssClassSetter } from '../common/cssClassSetter';
+import { AttributeManager } from '../common/attributeManager';
 
 @customElement('md-navbar')
 @inject(Element)
@@ -13,17 +13,15 @@ export class MdNavbar {
   }
 
   attached() {
-    this.fixedClassSetter = new CssClassSetter(this.fixedAnchor);
+    this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
     if (getBooleanFromAttributeValue(this.fixed)) {
-      // this.fixedAnchor.classList.add('navbar-fixed');
-      this.fixedClassSetter.addClasses('navbar-fixed');
+      this.fixedAttributeManager.addClasses('navbar-fixed');
     }
   }
 
   detached() {
     if (getBooleanFromAttributeValue(this.fixed)) {
-      // this.fixedAnchor.classList.remove('navbar-fixed');
-      this.fixedClassSetter.removeClasses('navbar-fixed');
+      this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
   }
 }

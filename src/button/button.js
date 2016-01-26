@@ -1,5 +1,5 @@
 import { bindable, customAttribute, inject } from 'aurelia-framework';
-import { CssClassSetter } from '../common/cssClassSetter';
+import { AttributeManager } from '../common/attributeManager';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 
 @customAttribute('md-button')
@@ -10,7 +10,7 @@ export class MdButton {
   @bindable() large = false;
 
   constructor(element) {
-    this.classSetter = new CssClassSetter(element);
+    this.attributeManager = new AttributeManager(element);
   }
 
   attached() {
@@ -34,18 +34,18 @@ export class MdButton {
     if (!getBooleanFromAttributeValue(this.flat)) {
       classes.push('accent');
     }
-    this.classSetter.addClasses(classes);
+    this.attributeManager.addClasses(classes);
   }
 
   detached() {
-    this.classSetter.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+    this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
   }
 
   disabledChanged(newValue) {
     if (getBooleanFromAttributeValue(newValue)) {
-      this.classSetter.addClasses('disabled');
+      this.attributeManager.addClasses('disabled');
     } else {
-      this.classSetter.removeClasses('disabled');
+      this.attributeManager.removeClasses('disabled');
     }
   }
 }

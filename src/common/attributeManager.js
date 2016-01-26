@@ -5,7 +5,7 @@
  * set by the user.
  * Most useful in attached() and detached() handlers.
  */
-export class CssClassSetter {
+export class AttributeManager {
   addedClasses = [];
   addedAttributes = {};
 
