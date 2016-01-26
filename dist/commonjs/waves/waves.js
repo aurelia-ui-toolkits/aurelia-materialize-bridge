@@ -6,14 +6,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _commonCssClassSetter = require('../common/cssClassSetter');
+var _commonAttributeManager = require('../common/attributeManager');
 
 var MdWaves = (function () {
   function MdWaves(element) {
     _classCallCheck(this, _MdWaves);
 
     this.element = element;
-    this.classSetter = new _commonCssClassSetter.CssClassSetter(this.element);
+    this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
   }
 
   MdWaves.prototype.attached = function attached() {
@@ -22,7 +22,7 @@ var MdWaves = (function () {
       classes.push('waves-' + this.color);
     }
 
-    this.classSetter.addClasses(classes);
+    this.attributeManager.addClasses(classes);
     Waves.attach(this.element);
   };
 
@@ -32,7 +32,7 @@ var MdWaves = (function () {
       classes.push('waves-' + this.color);
     }
 
-    this.classSetter.removeClasses(classes);
+    this.attributeManager.removeClasses(classes);
   };
 
   var _MdWaves = MdWaves;

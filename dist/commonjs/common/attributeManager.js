@@ -4,9 +4,9 @@ exports.__esModule = true;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var CssClassSetter = (function () {
-  function CssClassSetter(element) {
-    _classCallCheck(this, CssClassSetter);
+var AttributeManager = (function () {
+  function AttributeManager(element) {
+    _classCallCheck(this, AttributeManager);
 
     this.addedClasses = [];
     this.addedAttributes = {};
@@ -14,7 +14,7 @@ var CssClassSetter = (function () {
     this.element = element;
   }
 
-  CssClassSetter.prototype.addAttributes = function addAttributes(attrs) {
+  AttributeManager.prototype.addAttributes = function addAttributes(attrs) {
     var _this = this;
 
     var keys = Object.keys(attrs);
@@ -28,7 +28,7 @@ var CssClassSetter = (function () {
     });
   };
 
-  CssClassSetter.prototype.removeAttributes = function removeAttributes(attrs) {
+  AttributeManager.prototype.removeAttributes = function removeAttributes(attrs) {
     var _this2 = this;
 
     if (typeof attrs === 'string') {
@@ -43,7 +43,7 @@ var CssClassSetter = (function () {
     });
   };
 
-  CssClassSetter.prototype.addClasses = function addClasses(classes) {
+  AttributeManager.prototype.addClasses = function addClasses(classes) {
     var _this3 = this;
 
     if (typeof classes === 'string') {
@@ -57,7 +57,7 @@ var CssClassSetter = (function () {
     });
   };
 
-  CssClassSetter.prototype.removeClasses = function removeClasses(classes) {
+  AttributeManager.prototype.removeClasses = function removeClasses(classes) {
     var _this4 = this;
 
     if (typeof classes === 'string') {
@@ -71,7 +71,7 @@ var CssClassSetter = (function () {
     });
   };
 
-  return CssClassSetter;
+  return AttributeManager;
 })();
 
-exports.CssClassSetter = CssClassSetter;
+exports.AttributeManager = AttributeManager;

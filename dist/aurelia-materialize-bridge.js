@@ -120,7 +120,7 @@ export class MdButton {
   @bindable() large = false;
 
   constructor(element) {
-    this.classSetter = new CssClassSetter(element);
+    this.attributeManager = new AttributeManager(element);
   }
 
   attached() {
@@ -144,18 +144,18 @@ export class MdButton {
     if (!getBooleanFromAttributeValue(this.flat)) {
       classes.push('accent');
     }
-    this.classSetter.addClasses(classes);
+    this.attributeManager.addClasses(classes);
   }
 
   detached() {
-    this.classSetter.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+    this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
   }
 
   disabledChanged(newValue) {
     if (getBooleanFromAttributeValue(newValue)) {
-      this.classSetter.addClasses('disabled');
+      this.attributeManager.addClasses('disabled');
     } else {
-      this.classSetter.removeClasses('disabled');
+      this.attributeManager.removeClasses('disabled');
     }
   }
 }
@@ -180,30 +180,30 @@ export class MdCard {
 export class MdCollapsible {
   constructor(element) {
     this.element = element;
-    this.classSetter = new CssClassSetter(this.element);
+    this.attributeManager = new AttributeManager(this.element);
   }
 
   attached() {
-    this.classSetter.addClasses('collapsible');
+    this.attributeManager.addClasses('collapsible');
     if (getBooleanFromAttributeValue(this.popout)) {
-      this.classSetter.addClasses('popout');
+      this.attributeManager.addClasses('popout');
     }
     this.refresh();
   }
 
   detached() {
-    this.classSetter.removeClasses(['collapsible', 'popout']);
-    this.classSetter.removeAttributes(['data-collapsible']);
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
   }
 
   refresh() {
     let accordion = getBooleanFromAttributeValue(this.accordion);
     if (accordion) {
       // this.element.setAttribute('data-collapsible', 'accordion');
-      this.classSetter.addAttributes({ 'data-collapsible': 'accordion' });
+      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
     } else {
       // this.element.setAttribute('data-collapsible', 'expandable');
-      this.classSetter.addAttributes({ 'data-collapsible': 'expandable' });
+      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
     }
 
     $(this.element).collapsible({
@@ -252,15 +252,6 @@ export class LightenValueConverter {
   }
 }
 
-export function getBooleanFromAttributeValue(value) {
-  return (value === true || value === 'true');
-}
-
-export const constants = {
-  eventPrefix: 'md-on-',
-  bindablePrefix: 'md-'
-};
-
 /**
  * Adds css classes to a given element only if these classes are not already
  * present. Keeps a record of css classes which actually have been added.
@@ -268,7 +259,7 @@ export const constants = {
  * set by the user.
  * Most useful in attached() and detached() handlers.
  */
-export class CssClassSetter {
+export class AttributeManager {
   addedClasses = [];
   addedAttributes = {};
 
@@ -326,6 +317,15 @@ export class CssClassSetter {
   }
 }
 
+export function getBooleanFromAttributeValue(value) {
+  return (value === true || value === 'true');
+}
+
+export const constants = {
+  eventPrefix: 'md-on-',
+  bindablePrefix: 'md-'
+};
+
 /**
 * Fire DOM event on an element
 * @param element The Element which the DOM event will be fired on
@@ -363,17 +363,15 @@ export class MdNavbar {
   }
 
   attached() {
-    this.fixedClassSetter = new CssClassSetter(this.fixedAnchor);
+    this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
     if (getBooleanFromAttributeValue(this.fixed)) {
-      // this.fixedAnchor.classList.add('navbar-fixed');
-      this.fixedClassSetter.addClasses('navbar-fixed');
+      this.fixedAttributeManager.addClasses('navbar-fixed');
     }
   }
 
   detached() {
     if (getBooleanFromAttributeValue(this.fixed)) {
-      // this.fixedAnchor.classList.remove('navbar-fixed');
-      this.fixedClassSetter.removeClasses('navbar-fixed');
+      this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
   }
 }
@@ -515,17 +513,17 @@ export class MdTabsElement {
 export class MdTabs {
   constructor(element) {
     this.element = element;
-    this.classSetter = new CssClassSetter(this.element);
-    this.tabClassSetters = [];
+    this.attributeManager = new AttributeManager(this.element);
+    this.tabAttributeManagers = [];
   }
   attached() {
-    this.classSetter.addClasses('tabs');
+    this.attributeManager.addClasses('tabs');
 
     let children = this.element.querySelectorAll('li');
     [].forEach.call(children, child => {
-      let setter = new CssClassSetter(child);
+      let setter = new AttributeManager(child);
       setter.addClasses(['tab', 'primary-text']);
-      this.tabClassSetters.push(setter);
+      this.tabAttributeManagers.push(setter);
     });
 
     $(this.element).tabs();
@@ -536,14 +534,14 @@ export class MdTabs {
     });
   }
   detached() {
-    this.classSetter.removeClasses('tabs');
+    this.attributeManager.removeClasses('tabs');
 
     // no destroy handler in tabs
 
-    this.tabClassSetters.forEach(setter => {
+    this.tabAttributeManagers.forEach(setter => {
       setter.removeClasses('tab');
     });
-    this.tabClassSetters = [];
+    this.tabAttributeManagers = [];
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
       a.removeEventListener('click', this.fireTabSelectedEvent.bind(this));
@@ -564,7 +562,7 @@ export class MdTabs {
 export class MdWaves {
   constructor(element) {
     this.element = element;
-    this.classSetter = new CssClassSetter(this.element);
+    this.attributeManager = new AttributeManager(this.element);
   }
 
   attached() {
@@ -573,7 +571,7 @@ export class MdWaves {
       classes.push(`waves-${this.color}`);
     }
 
-    this.classSetter.addClasses(classes);
+    this.attributeManager.addClasses(classes);
     Waves.attach(this.element);
   }
 
@@ -583,6 +581,6 @@ export class MdWaves {
       classes.push(`waves-${this.color}`);
     }
 
-    this.classSetter.removeClasses(classes);
+    this.attributeManager.removeClasses(classes);
   }
 }

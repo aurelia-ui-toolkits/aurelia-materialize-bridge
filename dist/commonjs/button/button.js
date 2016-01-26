@@ -10,7 +10,7 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _commonCssClassSetter = require('../common/cssClassSetter');
+var _commonAttributeManager = require('../common/attributeManager');
 
 var _commonAttributes = require('../common/attributes');
 
@@ -49,7 +49,7 @@ var MdButton = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'large', _instanceInitializers);
 
-    this.classSetter = new _commonCssClassSetter.CssClassSetter(element);
+    this.attributeManager = new _commonAttributeManager.AttributeManager(element);
   }
 
   MdButton.prototype.attached = function attached() {
@@ -73,18 +73,18 @@ var MdButton = (function () {
     if (!_commonAttributes.getBooleanFromAttributeValue(this.flat)) {
       classes.push('accent');
     }
-    this.classSetter.addClasses(classes);
+    this.attributeManager.addClasses(classes);
   };
 
   MdButton.prototype.detached = function detached() {
-    this.classSetter.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+    this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
   };
 
   MdButton.prototype.disabledChanged = function disabledChanged(newValue) {
     if (_commonAttributes.getBooleanFromAttributeValue(newValue)) {
-      this.classSetter.addClasses('disabled');
+      this.attributeManager.addClasses('disabled');
     } else {
-      this.classSetter.removeClasses('disabled');
+      this.attributeManager.removeClasses('disabled');
     }
   };
 

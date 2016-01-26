@@ -8,35 +8,35 @@ var _aureliaFramework = require('aurelia-framework');
 
 var _commonAttributes = require('../common/attributes');
 
-var _commonCssClassSetter = require('../common/cssClassSetter');
+var _commonAttributeManager = require('../common/attributeManager');
 
 var MdCollapsible = (function () {
   function MdCollapsible(element) {
     _classCallCheck(this, _MdCollapsible);
 
     this.element = element;
-    this.classSetter = new _commonCssClassSetter.CssClassSetter(this.element);
+    this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
   }
 
   MdCollapsible.prototype.attached = function attached() {
-    this.classSetter.addClasses('collapsible');
+    this.attributeManager.addClasses('collapsible');
     if (_commonAttributes.getBooleanFromAttributeValue(this.popout)) {
-      this.classSetter.addClasses('popout');
+      this.attributeManager.addClasses('popout');
     }
     this.refresh();
   };
 
   MdCollapsible.prototype.detached = function detached() {
-    this.classSetter.removeClasses(['collapsible', 'popout']);
-    this.classSetter.removeAttributes(['data-collapsible']);
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
   };
 
   MdCollapsible.prototype.refresh = function refresh() {
     var accordion = _commonAttributes.getBooleanFromAttributeValue(this.accordion);
     if (accordion) {
-      this.classSetter.addAttributes({ 'data-collapsible': 'accordion' });
+      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
     } else {
-      this.classSetter.addAttributes({ 'data-collapsible': 'expandable' });
+      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
     }
 
     $(this.element).collapsible({

@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/cssClassSetter'], function (exports, _aureliaFramework, _commonCssClassSetter) {
+define(['exports', 'aurelia-framework', '../common/attributeManager'], function (exports, _aureliaFramework, _commonAttributeManager) {
   'use strict';
 
   exports.__esModule = true;
@@ -10,7 +10,7 @@ define(['exports', 'aurelia-framework', '../common/cssClassSetter'], function (e
       _classCallCheck(this, _MdWaves);
 
       this.element = element;
-      this.classSetter = new _commonCssClassSetter.CssClassSetter(this.element);
+      this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
     }
 
     MdWaves.prototype.attached = function attached() {
@@ -19,7 +19,7 @@ define(['exports', 'aurelia-framework', '../common/cssClassSetter'], function (e
         classes.push('waves-' + this.color);
       }
 
-      this.classSetter.addClasses(classes);
+      this.attributeManager.addClasses(classes);
       Waves.attach(this.element);
     };
 
@@ -29,7 +29,7 @@ define(['exports', 'aurelia-framework', '../common/cssClassSetter'], function (e
         classes.push('waves-' + this.color);
       }
 
-      this.classSetter.removeClasses(classes);
+      this.attributeManager.removeClasses(classes);
     };
 
     var _MdWaves = MdWaves;

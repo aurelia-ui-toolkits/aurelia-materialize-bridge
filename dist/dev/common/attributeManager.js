@@ -1,16 +1,16 @@
 System.register([], function (_export) {
   'use strict';
 
-  var CssClassSetter;
+  var AttributeManager;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   return {
     setters: [],
     execute: function () {
-      CssClassSetter = (function () {
-        function CssClassSetter(element) {
-          _classCallCheck(this, CssClassSetter);
+      AttributeManager = (function () {
+        function AttributeManager(element) {
+          _classCallCheck(this, AttributeManager);
 
           this.addedClasses = [];
           this.addedAttributes = {};
@@ -18,7 +18,7 @@ System.register([], function (_export) {
           this.element = element;
         }
 
-        CssClassSetter.prototype.addAttributes = function addAttributes(attrs) {
+        AttributeManager.prototype.addAttributes = function addAttributes(attrs) {
           var _this = this;
 
           var keys = Object.keys(attrs);
@@ -32,7 +32,7 @@ System.register([], function (_export) {
           });
         };
 
-        CssClassSetter.prototype.removeAttributes = function removeAttributes(attrs) {
+        AttributeManager.prototype.removeAttributes = function removeAttributes(attrs) {
           var _this2 = this;
 
           if (typeof attrs === 'string') {
@@ -47,7 +47,7 @@ System.register([], function (_export) {
           });
         };
 
-        CssClassSetter.prototype.addClasses = function addClasses(classes) {
+        AttributeManager.prototype.addClasses = function addClasses(classes) {
           var _this3 = this;
 
           if (typeof classes === 'string') {
@@ -61,7 +61,7 @@ System.register([], function (_export) {
           });
         };
 
-        CssClassSetter.prototype.removeClasses = function removeClasses(classes) {
+        AttributeManager.prototype.removeClasses = function removeClasses(classes) {
           var _this4 = this;
 
           if (typeof classes === 'string') {
@@ -75,11 +75,11 @@ System.register([], function (_export) {
           });
         };
 
-        return CssClassSetter;
+        return AttributeManager;
       })();
 
-      _export('CssClassSetter', CssClassSetter);
+      _export('AttributeManager', AttributeManager);
     }
   };
 });
-//# sourceMappingURL=../dist/dev/common/cssClassSetter.js.map
+//# sourceMappingURL=../dist/dev/common/attributeManager.js.map

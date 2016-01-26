@@ -1,7 +1,7 @@
-System.register(['aurelia-framework', '../common/attributes', '../common/cssClassSetter'], function (_export) {
+System.register(['aurelia-framework', '../common/attributes', '../common/attributeManager'], function (_export) {
   'use strict';
 
-  var bindable, customElement, inject, getBooleanFromAttributeValue, CssClassSetter, MdNavbar;
+  var bindable, customElement, inject, getBooleanFromAttributeValue, AttributeManager, MdNavbar;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -16,8 +16,8 @@ System.register(['aurelia-framework', '../common/attributes', '../common/cssClas
       inject = _aureliaFramework.inject;
     }, function (_commonAttributes) {
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
-    }, function (_commonCssClassSetter) {
-      CssClassSetter = _commonCssClassSetter.CssClassSetter;
+    }, function (_commonAttributeManager) {
+      AttributeManager = _commonAttributeManager.AttributeManager;
     }],
     execute: function () {
       MdNavbar = (function () {
@@ -39,15 +39,15 @@ System.register(['aurelia-framework', '../common/attributes', '../common/cssClas
         }
 
         MdNavbar.prototype.attached = function attached() {
-          this.fixedClassSetter = new CssClassSetter(this.fixedAnchor);
+          this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
           if (getBooleanFromAttributeValue(this.fixed)) {
-            this.fixedClassSetter.addClasses('navbar-fixed');
+            this.fixedAttributeManager.addClasses('navbar-fixed');
           }
         };
 
         MdNavbar.prototype.detached = function detached() {
           if (getBooleanFromAttributeValue(this.fixed)) {
-            this.fixedClassSetter.removeClasses('navbar-fixed');
+            this.fixedAttributeManager.removeClasses('navbar-fixed');
           }
         };
 

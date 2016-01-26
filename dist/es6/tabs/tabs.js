@@ -1,23 +1,23 @@
 import { customAttribute, inject } from 'aurelia-framework';
 import { fireMaterializeEvent } from '../common/events';
-import { CssClassSetter } from '../common/cssClassSetter';
+import { AttributeManager } from '../common/attributeManager';
 
 @customAttribute('md-tabs')
 @inject(Element)
 export class MdTabs {
   constructor(element) {
     this.element = element;
-    this.classSetter = new CssClassSetter(this.element);
-    this.tabClassSetters = [];
+    this.attributeManager = new AttributeManager(this.element);
+    this.tabAttributeManagers = [];
   }
   attached() {
-    this.classSetter.addClasses('tabs');
+    this.attributeManager.addClasses('tabs');
 
     let children = this.element.querySelectorAll('li');
     [].forEach.call(children, child => {
-      let setter = new CssClassSetter(child);
+      let setter = new AttributeManager(child);
       setter.addClasses(['tab', 'primary-text']);
-      this.tabClassSetters.push(setter);
+      this.tabAttributeManagers.push(setter);
     });
 
     $(this.element).tabs();
@@ -28,14 +28,14 @@ export class MdTabs {
     });
   }
   detached() {
-    this.classSetter.removeClasses('tabs');
+    this.attributeManager.removeClasses('tabs');
 
     // no destroy handler in tabs
 
-    this.tabClassSetters.forEach(setter => {
+    this.tabAttributeManagers.forEach(setter => {
       setter.removeClasses('tab');
     });
-    this.tabClassSetters = [];
+    this.tabAttributeManagers = [];
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
       a.removeEventListener('click', this.fireTabSelectedEvent.bind(this));

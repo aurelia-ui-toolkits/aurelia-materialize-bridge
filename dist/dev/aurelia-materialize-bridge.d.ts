@@ -71,8 +71,6 @@ declare module 'aurelia-materialize-bridge' {
   export class LightenValueConverter {
     toView(value: any, steps: any): any;
   }
-  export function getBooleanFromAttributeValue(value: any): any;
-  export const constants: any;
   
   /**
    * Adds css classes to a given element only if these classes are not already
@@ -81,7 +79,7 @@ declare module 'aurelia-materialize-bridge' {
    * set by the user.
    * Most useful in attached() and detached() handlers.
    */
-  export class CssClassSetter {
+  export class AttributeManager {
     addedClasses: any;
     addedAttributes: any;
     constructor(element: any);
@@ -90,6 +88,8 @@ declare module 'aurelia-materialize-bridge' {
     addClasses(classes: any): any;
     removeClasses(classes: any): any;
   }
+  export function getBooleanFromAttributeValue(value: any): any;
+  export const constants: any;
   
   /**
   * Fire DOM event on an element

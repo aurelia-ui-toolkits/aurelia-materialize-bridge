@@ -1,5 +1,5 @@
 import { bindable, bindingMode, customAttribute, inject } from 'aurelia-framework';
-import { CssClassSetter } from '../common/cssClassSetter';
+import { AttributeManager } from '../common/attributeManager';
 
 @customAttribute('md-waves')
 @bindable({
@@ -10,7 +10,7 @@ import { CssClassSetter } from '../common/cssClassSetter';
 export class MdWaves {
   constructor(element) {
     this.element = element;
-    this.classSetter = new CssClassSetter(this.element);
+    this.attributeManager = new AttributeManager(this.element);
   }
 
   attached() {
@@ -19,7 +19,7 @@ export class MdWaves {
       classes.push(`waves-${this.color}`);
     }
 
-    this.classSetter.addClasses(classes);
+    this.attributeManager.addClasses(classes);
     Waves.attach(this.element);
   }
 
@@ -29,6 +29,6 @@ export class MdWaves {
       classes.push(`waves-${this.color}`);
     }
 
-    this.classSetter.removeClasses(classes);
+    this.attributeManager.removeClasses(classes);
   }
 }

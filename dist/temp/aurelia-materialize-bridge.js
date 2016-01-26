@@ -153,7 +153,7 @@ var MdButton = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'large', _instanceInitializers);
 
-    this.classSetter = new CssClassSetter(element);
+    this.attributeManager = new AttributeManager(element);
   }
 
   MdButton.prototype.attached = function attached() {
@@ -177,18 +177,18 @@ var MdButton = (function () {
     if (!getBooleanFromAttributeValue(this.flat)) {
       classes.push('accent');
     }
-    this.classSetter.addClasses(classes);
+    this.attributeManager.addClasses(classes);
   };
 
   MdButton.prototype.detached = function detached() {
-    this.classSetter.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+    this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
   };
 
   MdButton.prototype.disabledChanged = function disabledChanged(newValue) {
     if (getBooleanFromAttributeValue(newValue)) {
-      this.classSetter.addClasses('disabled');
+      this.attributeManager.addClasses('disabled');
     } else {
-      this.classSetter.removeClasses('disabled');
+      this.attributeManager.removeClasses('disabled');
     }
   };
 
@@ -231,28 +231,28 @@ var MdCollapsible = (function () {
     _classCallCheck(this, _MdCollapsible);
 
     this.element = element;
-    this.classSetter = new CssClassSetter(this.element);
+    this.attributeManager = new AttributeManager(this.element);
   }
 
   MdCollapsible.prototype.attached = function attached() {
-    this.classSetter.addClasses('collapsible');
+    this.attributeManager.addClasses('collapsible');
     if (getBooleanFromAttributeValue(this.popout)) {
-      this.classSetter.addClasses('popout');
+      this.attributeManager.addClasses('popout');
     }
     this.refresh();
   };
 
   MdCollapsible.prototype.detached = function detached() {
-    this.classSetter.removeClasses(['collapsible', 'popout']);
-    this.classSetter.removeAttributes(['data-collapsible']);
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
   };
 
   MdCollapsible.prototype.refresh = function refresh() {
     var accordion = getBooleanFromAttributeValue(this.accordion);
     if (accordion) {
-      this.classSetter.addAttributes({ 'data-collapsible': 'accordion' });
+      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
     } else {
-      this.classSetter.addAttributes({ 'data-collapsible': 'expandable' });
+      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
     }
 
     $(this.element).collapsible({
@@ -332,20 +332,9 @@ var LightenValueConverter = (function () {
 
 exports.LightenValueConverter = LightenValueConverter;
 
-function getBooleanFromAttributeValue(value) {
-  return value === true || value === 'true';
-}
-
-var constants = {
-  eventPrefix: 'md-on-',
-  bindablePrefix: 'md-'
-};
-
-exports.constants = constants;
-
-var CssClassSetter = (function () {
-  function CssClassSetter(element) {
-    _classCallCheck(this, CssClassSetter);
+var AttributeManager = (function () {
+  function AttributeManager(element) {
+    _classCallCheck(this, AttributeManager);
 
     this.addedClasses = [];
     this.addedAttributes = {};
@@ -353,7 +342,7 @@ var CssClassSetter = (function () {
     this.element = element;
   }
 
-  CssClassSetter.prototype.addAttributes = function addAttributes(attrs) {
+  AttributeManager.prototype.addAttributes = function addAttributes(attrs) {
     var _this = this;
 
     var keys = Object.keys(attrs);
@@ -367,7 +356,7 @@ var CssClassSetter = (function () {
     });
   };
 
-  CssClassSetter.prototype.removeAttributes = function removeAttributes(attrs) {
+  AttributeManager.prototype.removeAttributes = function removeAttributes(attrs) {
     var _this2 = this;
 
     if (typeof attrs === 'string') {
@@ -382,7 +371,7 @@ var CssClassSetter = (function () {
     });
   };
 
-  CssClassSetter.prototype.addClasses = function addClasses(classes) {
+  AttributeManager.prototype.addClasses = function addClasses(classes) {
     var _this3 = this;
 
     if (typeof classes === 'string') {
@@ -396,7 +385,7 @@ var CssClassSetter = (function () {
     });
   };
 
-  CssClassSetter.prototype.removeClasses = function removeClasses(classes) {
+  AttributeManager.prototype.removeClasses = function removeClasses(classes) {
     var _this4 = this;
 
     if (typeof classes === 'string') {
@@ -410,10 +399,21 @@ var CssClassSetter = (function () {
     });
   };
 
-  return CssClassSetter;
+  return AttributeManager;
 })();
 
-exports.CssClassSetter = CssClassSetter;
+exports.AttributeManager = AttributeManager;
+
+function getBooleanFromAttributeValue(value) {
+  return value === true || value === 'true';
+}
+
+var constants = {
+  eventPrefix: 'md-on-',
+  bindablePrefix: 'md-'
+};
+
+exports.constants = constants;
 
 function fireEvent(element, name) {
   var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
@@ -452,15 +452,15 @@ var MdNavbar = (function () {
   }
 
   MdNavbar.prototype.attached = function attached() {
-    this.fixedClassSetter = new CssClassSetter(this.fixedAnchor);
+    this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
     if (getBooleanFromAttributeValue(this.fixed)) {
-      this.fixedClassSetter.addClasses('navbar-fixed');
+      this.fixedAttributeManager.addClasses('navbar-fixed');
     }
   };
 
   MdNavbar.prototype.detached = function detached() {
     if (getBooleanFromAttributeValue(this.fixed)) {
-      this.fixedClassSetter.removeClasses('navbar-fixed');
+      this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
   };
 
@@ -639,20 +639,20 @@ var MdTabs = (function () {
     _classCallCheck(this, _MdTabs);
 
     this.element = element;
-    this.classSetter = new CssClassSetter(this.element);
-    this.tabClassSetters = [];
+    this.attributeManager = new AttributeManager(this.element);
+    this.tabAttributeManagers = [];
   }
 
   MdTabs.prototype.attached = function attached() {
     var _this5 = this;
 
-    this.classSetter.addClasses('tabs');
+    this.attributeManager.addClasses('tabs');
 
     var children = this.element.querySelectorAll('li');
     [].forEach.call(children, function (child) {
-      var setter = new CssClassSetter(child);
+      var setter = new AttributeManager(child);
       setter.addClasses(['tab', 'primary-text']);
-      _this5.tabClassSetters.push(setter);
+      _this5.tabAttributeManagers.push(setter);
     });
 
     $(this.element).tabs();
@@ -666,12 +666,12 @@ var MdTabs = (function () {
   MdTabs.prototype.detached = function detached() {
     var _this6 = this;
 
-    this.classSetter.removeClasses('tabs');
+    this.attributeManager.removeClasses('tabs');
 
-    this.tabClassSetters.forEach(function (setter) {
+    this.tabAttributeManagers.forEach(function (setter) {
       setter.removeClasses('tab');
     });
-    this.tabClassSetters = [];
+    this.tabAttributeManagers = [];
     var childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, function (a) {
       a.removeEventListener('click', _this6.fireTabSelectedEvent.bind(_this6));
@@ -696,7 +696,7 @@ var MdWaves = (function () {
     _classCallCheck(this, _MdWaves);
 
     this.element = element;
-    this.classSetter = new CssClassSetter(this.element);
+    this.attributeManager = new AttributeManager(this.element);
   }
 
   MdWaves.prototype.attached = function attached() {
@@ -705,7 +705,7 @@ var MdWaves = (function () {
       classes.push('waves-' + this.color);
     }
 
-    this.classSetter.addClasses(classes);
+    this.attributeManager.addClasses(classes);
     Waves.attach(this.element);
   };
 
@@ -715,7 +715,7 @@ var MdWaves = (function () {
       classes.push('waves-' + this.color);
     }
 
-    this.classSetter.removeClasses(classes);
+    this.attributeManager.removeClasses(classes);
   };
 
   var _MdWaves = MdWaves;

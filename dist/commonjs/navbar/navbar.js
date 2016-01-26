@@ -12,7 +12,7 @@ var _aureliaFramework = require('aurelia-framework');
 
 var _commonAttributes = require('../common/attributes');
 
-var _commonCssClassSetter = require('../common/cssClassSetter');
+var _commonAttributeManager = require('../common/attributeManager');
 
 var MdNavbar = (function () {
   var _instanceInitializers = {};
@@ -33,15 +33,15 @@ var MdNavbar = (function () {
   }
 
   MdNavbar.prototype.attached = function attached() {
-    this.fixedClassSetter = new _commonCssClassSetter.CssClassSetter(this.fixedAnchor);
+    this.fixedAttributeManager = new _commonAttributeManager.AttributeManager(this.fixedAnchor);
     if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
-      this.fixedClassSetter.addClasses('navbar-fixed');
+      this.fixedAttributeManager.addClasses('navbar-fixed');
     }
   };
 
   MdNavbar.prototype.detached = function detached() {
     if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
-      this.fixedClassSetter.removeClasses('navbar-fixed');
+      this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
   };
 

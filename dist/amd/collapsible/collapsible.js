@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/attributes', '../common/cssClassSetter'], function (exports, _aureliaFramework, _commonAttributes, _commonCssClassSetter) {
+define(['exports', 'aurelia-framework', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaFramework, _commonAttributes, _commonAttributeManager) {
   'use strict';
 
   exports.__esModule = true;
@@ -10,28 +10,28 @@ define(['exports', 'aurelia-framework', '../common/attributes', '../common/cssCl
       _classCallCheck(this, _MdCollapsible);
 
       this.element = element;
-      this.classSetter = new _commonCssClassSetter.CssClassSetter(this.element);
+      this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
     }
 
     MdCollapsible.prototype.attached = function attached() {
-      this.classSetter.addClasses('collapsible');
+      this.attributeManager.addClasses('collapsible');
       if (_commonAttributes.getBooleanFromAttributeValue(this.popout)) {
-        this.classSetter.addClasses('popout');
+        this.attributeManager.addClasses('popout');
       }
       this.refresh();
     };
 
     MdCollapsible.prototype.detached = function detached() {
-      this.classSetter.removeClasses(['collapsible', 'popout']);
-      this.classSetter.removeAttributes(['data-collapsible']);
+      this.attributeManager.removeClasses(['collapsible', 'popout']);
+      this.attributeManager.removeAttributes(['data-collapsible']);
     };
 
     MdCollapsible.prototype.refresh = function refresh() {
       var accordion = _commonAttributes.getBooleanFromAttributeValue(this.accordion);
       if (accordion) {
-        this.classSetter.addAttributes({ 'data-collapsible': 'accordion' });
+        this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
       } else {
-        this.classSetter.addAttributes({ 'data-collapsible': 'expandable' });
+        this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
       }
 
       $(this.element).collapsible({

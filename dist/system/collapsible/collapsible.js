@@ -1,7 +1,7 @@
-System.register(['aurelia-framework', '../common/attributes', '../common/cssClassSetter'], function (_export) {
+System.register(['aurelia-framework', '../common/attributes', '../common/attributeManager'], function (_export) {
   'use strict';
 
-  var customAttribute, bindable, inject, getBooleanFromAttributeValue, CssClassSetter, MdCollapsible;
+  var customAttribute, bindable, inject, getBooleanFromAttributeValue, AttributeManager, MdCollapsible;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -12,8 +12,8 @@ System.register(['aurelia-framework', '../common/attributes', '../common/cssClas
       inject = _aureliaFramework.inject;
     }, function (_commonAttributes) {
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
-    }, function (_commonCssClassSetter) {
-      CssClassSetter = _commonCssClassSetter.CssClassSetter;
+    }, function (_commonAttributeManager) {
+      AttributeManager = _commonAttributeManager.AttributeManager;
     }],
     execute: function () {
       MdCollapsible = (function () {
@@ -21,28 +21,28 @@ System.register(['aurelia-framework', '../common/attributes', '../common/cssClas
           _classCallCheck(this, _MdCollapsible);
 
           this.element = element;
-          this.classSetter = new CssClassSetter(this.element);
+          this.attributeManager = new AttributeManager(this.element);
         }
 
         MdCollapsible.prototype.attached = function attached() {
-          this.classSetter.addClasses('collapsible');
+          this.attributeManager.addClasses('collapsible');
           if (getBooleanFromAttributeValue(this.popout)) {
-            this.classSetter.addClasses('popout');
+            this.attributeManager.addClasses('popout');
           }
           this.refresh();
         };
 
         MdCollapsible.prototype.detached = function detached() {
-          this.classSetter.removeClasses(['collapsible', 'popout']);
-          this.classSetter.removeAttributes(['data-collapsible']);
+          this.attributeManager.removeClasses(['collapsible', 'popout']);
+          this.attributeManager.removeAttributes(['data-collapsible']);
         };
 
         MdCollapsible.prototype.refresh = function refresh() {
           var accordion = getBooleanFromAttributeValue(this.accordion);
           if (accordion) {
-            this.classSetter.addAttributes({ 'data-collapsible': 'accordion' });
+            this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
           } else {
-            this.classSetter.addAttributes({ 'data-collapsible': 'expandable' });
+            this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
           }
 
           $(this.element).collapsible({

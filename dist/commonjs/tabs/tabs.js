@@ -8,27 +8,27 @@ var _aureliaFramework = require('aurelia-framework');
 
 var _commonEvents = require('../common/events');
 
-var _commonCssClassSetter = require('../common/cssClassSetter');
+var _commonAttributeManager = require('../common/attributeManager');
 
 var MdTabs = (function () {
   function MdTabs(element) {
     _classCallCheck(this, _MdTabs);
 
     this.element = element;
-    this.classSetter = new _commonCssClassSetter.CssClassSetter(this.element);
-    this.tabClassSetters = [];
+    this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
+    this.tabAttributeManagers = [];
   }
 
   MdTabs.prototype.attached = function attached() {
     var _this = this;
 
-    this.classSetter.addClasses('tabs');
+    this.attributeManager.addClasses('tabs');
 
     var children = this.element.querySelectorAll('li');
     [].forEach.call(children, function (child) {
-      var setter = new _commonCssClassSetter.CssClassSetter(child);
+      var setter = new _commonAttributeManager.AttributeManager(child);
       setter.addClasses(['tab', 'primary-text']);
-      _this.tabClassSetters.push(setter);
+      _this.tabAttributeManagers.push(setter);
     });
 
     $(this.element).tabs();
@@ -42,12 +42,12 @@ var MdTabs = (function () {
   MdTabs.prototype.detached = function detached() {
     var _this2 = this;
 
-    this.classSetter.removeClasses('tabs');
+    this.attributeManager.removeClasses('tabs');
 
-    this.tabClassSetters.forEach(function (setter) {
+    this.tabAttributeManagers.forEach(function (setter) {
       setter.removeClasses('tab');
     });
-    this.tabClassSetters = [];
+    this.tabAttributeManagers = [];
     var childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, function (a) {
       a.removeEventListener('click', _this2.fireTabSelectedEvent.bind(_this2));

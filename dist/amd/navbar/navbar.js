@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/attributes', '../common/cssClassSetter'], function (exports, _aureliaFramework, _commonAttributes, _commonCssClassSetter) {
+define(['exports', 'aurelia-framework', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaFramework, _commonAttributes, _commonAttributeManager) {
   'use strict';
 
   exports.__esModule = true;
@@ -28,15 +28,15 @@ define(['exports', 'aurelia-framework', '../common/attributes', '../common/cssCl
     }
 
     MdNavbar.prototype.attached = function attached() {
-      this.fixedClassSetter = new _commonCssClassSetter.CssClassSetter(this.fixedAnchor);
+      this.fixedAttributeManager = new _commonAttributeManager.AttributeManager(this.fixedAnchor);
       if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
-        this.fixedClassSetter.addClasses('navbar-fixed');
+        this.fixedAttributeManager.addClasses('navbar-fixed');
       }
     };
 
     MdNavbar.prototype.detached = function detached() {
       if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
-        this.fixedClassSetter.removeClasses('navbar-fixed');
+        this.fixedAttributeManager.removeClasses('navbar-fixed');
       }
     };
 

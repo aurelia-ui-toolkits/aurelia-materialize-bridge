@@ -1,7 +1,7 @@
-System.register(['aurelia-framework', '../common/cssClassSetter'], function (_export) {
+System.register(['aurelia-framework', '../common/attributeManager'], function (_export) {
   'use strict';
 
-  var bindable, bindingMode, customAttribute, inject, CssClassSetter, MdWaves;
+  var bindable, bindingMode, customAttribute, inject, AttributeManager, MdWaves;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -11,8 +11,8 @@ System.register(['aurelia-framework', '../common/cssClassSetter'], function (_ex
       bindingMode = _aureliaFramework.bindingMode;
       customAttribute = _aureliaFramework.customAttribute;
       inject = _aureliaFramework.inject;
-    }, function (_commonCssClassSetter) {
-      CssClassSetter = _commonCssClassSetter.CssClassSetter;
+    }, function (_commonAttributeManager) {
+      AttributeManager = _commonAttributeManager.AttributeManager;
     }],
     execute: function () {
       MdWaves = (function () {
@@ -20,7 +20,7 @@ System.register(['aurelia-framework', '../common/cssClassSetter'], function (_ex
           _classCallCheck(this, _MdWaves);
 
           this.element = element;
-          this.classSetter = new CssClassSetter(this.element);
+          this.attributeManager = new AttributeManager(this.element);
         }
 
         MdWaves.prototype.attached = function attached() {
@@ -29,7 +29,7 @@ System.register(['aurelia-framework', '../common/cssClassSetter'], function (_ex
             classes.push('waves-' + this.color);
           }
 
-          this.classSetter.addClasses(classes);
+          this.attributeManager.addClasses(classes);
           Waves.attach(this.element);
         };
 
@@ -39,7 +39,7 @@ System.register(['aurelia-framework', '../common/cssClassSetter'], function (_ex
             classes.push('waves-' + this.color);
           }
 
-          this.classSetter.removeClasses(classes);
+          this.attributeManager.removeClasses(classes);
         };
 
         var _MdWaves = MdWaves;
