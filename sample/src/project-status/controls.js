@@ -47,7 +47,7 @@ export class Controls {
         { title: 'Waves', link: '#/samples/waves', status: 'done' }
       ]
     }, {
-      title: 'Bonus',
+      title: 'Internal',
       controls: [
         { title: 'Click counter', link: '#/samples/click-counter', status: 'done' },
         { title: 'Well', status: 'wip' },
