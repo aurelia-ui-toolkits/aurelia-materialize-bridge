@@ -29,6 +29,8 @@
     color: ${accent};
   }
 
+  /* buttons */
+
   .btn.primary, .btn-flat.primary, .btn-large.primary {
     transition: .2s ease-out;
   }
@@ -53,6 +55,15 @@
     transition: .2s ease-out;
   }
 
+  /* checkbox */
+
+  [type="checkbox"]:checked + label:before {
+    border-right-color: ${accent};
+    border-bottom-color: ${accent};
+  }
+
+  /* tabs */
+
   .tab.primary-text a {
     color: ${primary};
   }
@@ -61,6 +72,13 @@
   }
   .tabs .indicator {
     background-color: ${primary | lighten:2};
+  }
+
+  /* well */
+
+  md-well li.active {
+    border-right: 2px solid ${accent};
+    background-color: ${accent | lighten:3};
   }
   </style>
 </template>

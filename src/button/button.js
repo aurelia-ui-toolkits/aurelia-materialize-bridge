@@ -30,7 +30,9 @@ export class MdButton {
       classes.push('disabled');
     }
 
-    classes.push('accent');
+    if (!getBooleanFromAttributeValue(this.flat)) {
+      classes.push('accent');
+    }
     this.classSetter.addClasses(classes);
   }
   detached() {
