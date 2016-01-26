@@ -9,7 +9,7 @@
       <div class="col s12 m8">
         <md-card title="Basic use">
           <div class="button-row">
-            <button md-button>I'm a basic button</button>
+            <button md-button="disabled.bind: firstButtonDisabled">I'm a basic button</button>
             <button md-button="flat: true;">I'm a flat button</button>
           </div>
           <div class="button-row">
@@ -19,6 +19,11 @@
           <div class="button-row">
             <button md-button="disabled: true;">I'm a basic disabled button</button>
             <button md-button="disabled: true; flat: true;">I'm a flat disabled button</button>
+          </div>
+          <div class="actions">
+            <hr />
+            <button md-button click.trigger="enableFirstButton()">enable the first button</button>
+            <button md-button click.trigger="disableFirstButton()">disable the first button</button>
           </div>
         </md-card>
     </div>
