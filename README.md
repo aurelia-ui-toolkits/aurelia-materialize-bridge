@@ -5,6 +5,6 @@
 [![Build Status](https://travis-ci.org/aurelia-ui-toolkits/aurelia-materialize-bridge.svg?branch=master)](https://travis-ci.org/aurelia-ui-toolkits/aurelia-materialize-bridge)
 [![Coverage Status](https://coveralls.io/repos/github/aurelia-ui-toolkits/aurelia-materialize-bridge/badge.svg?branch=master)](https://coveralls.io/github/aurelia-ui-toolkits/aurelia-materialize-bridge?branch=master)
 
-Aurelia interface to http://materializecss.com/
+Aurelia components for http://materializecss.com/
 
 ## This project is under development and not ready to be used in any way
