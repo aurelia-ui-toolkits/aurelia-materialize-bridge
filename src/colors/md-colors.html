@@ -1,5 +1,19 @@
 <template bindable="primary, accent">
   <require from="./colorValueConverters"></require>
+
+  <!--
+    According to Material color spec (https://www.google.com/design/spec/style/color.html#color-ui-color-application)
+    and using Materialize terminology (darken/lighten instead of hue numbers)
+    the used palettes here consist of:
+    Primary - lighten-1 (400), lighten-2 (300), lighten-3 (200)
+    Accent  - lighten-1 (400), lighten-3 (200)
+
+    These should optionally be defined by the user.
+
+    Focused elements are an exception, these use "lighten-0.5" which is
+    not specified anywhere.
+  -->
+
   <style>
   .primary {
     background-color: ${primary};
