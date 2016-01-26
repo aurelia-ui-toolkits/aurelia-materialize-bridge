@@ -12,6 +12,7 @@ export class MdButton {
   constructor(element) {
     this.classSetter = new CssClassSetter(element);
   }
+
   attached() {
     let classes = [];
 
@@ -35,7 +36,16 @@ export class MdButton {
     }
     this.classSetter.addClasses(classes);
   }
+
   detached() {
     this.classSetter.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+  }
+
+  disabledChanged(newValue) {
+    if (getBooleanFromAttributeValue(newValue)) {
+      this.classSetter.addClasses('disabled');
+    } else {
+      this.classSetter.removeClasses('disabled');
+    }
   }
 }
