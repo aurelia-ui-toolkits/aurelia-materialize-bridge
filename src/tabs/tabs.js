@@ -16,7 +16,7 @@ export class MdTabs {
     let children = this.element.querySelectorAll('li');
     [].forEach.call(children, child => {
       let setter = new CssClassSetter(child);
-      setter.addClasses('tab');
+      setter.addClasses(['tab', 'primary-text']);
       this.tabClassSetters.push(setter);
     });
 
