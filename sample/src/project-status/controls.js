@@ -3,7 +3,7 @@ export class Controls {
     {
       title: 'Css',
       controls: [
-        { title: 'Color' },
+        { title: 'Color', status: 'wip' },
         { title: 'Grid' },
         { title: 'Helpers' },
         { title: 'Media' },
