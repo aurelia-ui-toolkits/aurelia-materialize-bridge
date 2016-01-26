@@ -30,9 +30,10 @@ export class MdButton {
       classes.push('disabled');
     }
 
+    classes.push('accent');
     this.classSetter.addClasses(classes);
   }
   detached() {
-    this.classSetter.removeClasses(['btn', 'btn-flat', 'btn-large', 'disabled']);
+    this.classSetter.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
   }
 }

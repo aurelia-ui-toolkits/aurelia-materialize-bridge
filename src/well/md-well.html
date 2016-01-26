@@ -14,7 +14,7 @@
   }
 </style>
   <ul class="z-depth-1">
-      <li md-waves="color: primary;" repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+      <li md-waves="color: accent;" repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
           <a href.bind="row.href">${row.title}</a>
       </li>
   </ul>

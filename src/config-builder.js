@@ -11,6 +11,7 @@ export class ConfigBuilder {
       .useButton()
       .useCard()
       .useCollapsible()
+      .useColors()
       .useNavbar()
       .useSidenav()
       .useTabs()
@@ -38,6 +39,11 @@ export class ConfigBuilder {
 
   useCollapsible(): ConfigBuilder {
     this.globalResources.push('./collapsible/collapsible');
+    return this;
+  }
+
+  useColors() : ConfigBuilder {
+    this.globalResources.push('./colors/md-colors.html');
     return this;
   }
 

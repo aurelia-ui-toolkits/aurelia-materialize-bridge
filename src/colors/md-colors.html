@@ -1,0 +1,66 @@
+<template bindable="primary, accent">
+  <require from="./colorValueConverters"></require>
+  <style>
+  .primary {
+    background-color: ${primary};
+    color: white;
+  }
+
+  .primary-text {
+    /*background-color: white;*/
+    color: ${primary};
+  }
+
+  .waves-effect.waves-primary .waves-ripple {
+    background-color: ${primary};
+  }
+
+  .waves-effect.waves-accent .waves-ripple {
+    background-color: ${accent};
+  }
+
+  .accent {
+    background-color: ${accent};
+    color: white;
+  }
+
+  .accent-text {
+    /*background-color: white;*/
+    color: ${accent};
+  }
+
+  .btn.primary, .btn-flat.primary, .btn-large.primary {
+    transition: .2s ease-out;
+  }
+  .btn.primary:hover, .btn-flat.primary:hover, .btn-large.primary:hover {
+    background-color: ${primary | lighten:1};
+    transition: .2s ease-out;
+  }
+  .btn.primary:focus, .btn-flat.primary:focus, .btn-large.primary:focus {
+    background-color: ${primary | lighten:0.5};
+    transition: .2s ease-out;
+  }
+
+  .btn.accent, .btn-flat.accent, .btn-large.accent {
+    transition: .2s ease-out;
+  }
+  .btn.accent:hover, .btn-flat.accent:hover, .btn-large.accent:hover {
+    background-color: ${accent | lighten:1};
+    transition: .2s ease-out;
+  }
+  .btn.accent:focus, .btn-flat.accent:focus, .btn-large.accent:focus {
+    background-color: ${accent | lighten:0.5};
+    transition: .2s ease-out;
+  }
+
+  .tab.primary-text a {
+    color: ${primary};
+  }
+  .tab.primary-text a:hover {
+    color: ${primary | lighten:2};
+  }
+  .tabs .indicator {
+    background-color: ${primary | lighten:2};
+  }
+  </style>
+</template>
