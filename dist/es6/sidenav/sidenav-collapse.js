@@ -10,7 +10,10 @@ export class MdSidenavCollapse {
 
   attached() {
     this.element.setAttribute('data-activates', this.ref.controlId);
-    $(this.element).sideNav();
+    $(this.element).sideNav({
+      edge: this.ref.edge || 'left',
+      closeOnClick: this.ref.closeOnClick
+    });
     // this.element.addEventListener('click', this.toggleSidenav);
   }
 
@@ -18,7 +21,7 @@ export class MdSidenavCollapse {
     // this.element.removeEventListener('click', this.toggleSidenav);
   }
 
-  toggleSidenav() {
-    $(this.element).sideNav('show');
-  }
+  // toggleSidenav() {
+  //   $(this.element).sideNav('show');
+  // }
 }

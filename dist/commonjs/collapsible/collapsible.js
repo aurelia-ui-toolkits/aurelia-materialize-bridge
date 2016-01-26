@@ -28,14 +28,15 @@ var MdCollapsible = (function () {
 
   MdCollapsible.prototype.detached = function detached() {
     this.classSetter.removeClasses(['collapsible', 'popout']);
+    this.classSetter.removeAttributes(['data-collapsible']);
   };
 
   MdCollapsible.prototype.refresh = function refresh() {
     var accordion = _commonAttributes.getBooleanFromAttributeValue(this.accordion);
     if (accordion) {
-      this.element.setAttribute('data-collapsible', 'accordion');
+      this.classSetter.addAttributes({ 'data-collapsible': 'accordion' });
     } else {
-      this.element.setAttribute('data-collapsible', 'expandable');
+      this.classSetter.addAttributes({ 'data-collapsible': 'expandable' });
     }
 
     $(this.element).collapsible({

@@ -22,7 +22,7 @@ define(['exports', 'aurelia-framework', '../common/events', '../common/cssClassS
       var children = this.element.querySelectorAll('li');
       [].forEach.call(children, function (child) {
         var setter = new _commonCssClassSetter.CssClassSetter(child);
-        setter.addClasses('tab');
+        setter.addClasses(['tab', 'primary-text']);
         _this.tabClassSetters.push(setter);
       });
 

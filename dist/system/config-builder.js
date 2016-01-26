@@ -17,7 +17,7 @@ System.register([], function (_export) {
         }
 
         ConfigBuilder.prototype.useAll = function useAll() {
-          return this.useButton().useCard().useCollapsible().useNavbar().useSidenav().useTabs().useWaves().useWell();
+          return this.useButton().useCard().useCollapsible().useColors().useNavbar().useSidenav().useTabs().useWaves().useWell();
         };
 
         ConfigBuilder.prototype.useButton = function useButton() {
@@ -37,6 +37,11 @@ System.register([], function (_export) {
 
         ConfigBuilder.prototype.useCollapsible = function useCollapsible() {
           this.globalResources.push('./collapsible/collapsible');
+          return this;
+        };
+
+        ConfigBuilder.prototype.useColors = function useColors() {
+          this.globalResources.push('./colors/md-colors.html');
           return this;
         };
 

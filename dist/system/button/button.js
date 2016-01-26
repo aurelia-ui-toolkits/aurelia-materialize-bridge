@@ -76,11 +76,22 @@ System.register(['aurelia-framework', '../common/cssClassSetter', '../common/att
             classes.push('disabled');
           }
 
+          if (!getBooleanFromAttributeValue(this.flat)) {
+            classes.push('accent');
+          }
           this.classSetter.addClasses(classes);
         };
 
         MdButton.prototype.detached = function detached() {
-          this.classSetter.removeClasses(['btn', 'btn-flat', 'btn-large', 'disabled']);
+          this.classSetter.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+        };
+
+        MdButton.prototype.disabledChanged = function disabledChanged(newValue) {
+          if (getBooleanFromAttributeValue(newValue)) {
+            this.classSetter.addClasses('disabled');
+          } else {
+            this.classSetter.removeClasses('disabled');
+          }
         };
 
         var _MdButton = MdButton;

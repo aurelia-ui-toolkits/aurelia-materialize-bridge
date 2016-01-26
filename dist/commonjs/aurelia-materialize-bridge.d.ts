@@ -21,6 +21,7 @@ declare module 'aurelia-materialize-bridge' {
       */
     useClickCounter(): ConfigBuilder;
     useCollapsible(): ConfigBuilder;
+    useColors(): ConfigBuilder;
     useNavbar(): ConfigBuilder;
     useSidenav(): ConfigBuilder;
     
@@ -49,20 +50,8 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
     detached(): any;
+    disabledChanged(newValue: any): any;
   }
-  
-  //  @inlineView(`
-  //    <template>
-  //    <div class="card">
-  //      <div class="card-content">
-  //        <span class="card-title">${title}</span>
-  //        <div>
-  //        <content></content>
-  //        </div>
-  //      </div>
-  //    </div>
-  //    </template>
-  //  `)
   export class MdCard {
     title: any;
     constructor(element: any);
@@ -73,6 +62,14 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     refresh(): any;
     accordionChanged(): any;
+  }
+  
+  /* eslint-enable */
+  export class DarkenValueConverter {
+    toView(value: any, steps: any): any;
+  }
+  export class LightenValueConverter {
+    toView(value: any, steps: any): any;
   }
   export function getBooleanFromAttributeValue(value: any): any;
   export const constants: any;
@@ -86,7 +83,10 @@ declare module 'aurelia-materialize-bridge' {
    */
   export class CssClassSetter {
     addedClasses: any;
+    addedAttributes: any;
     constructor(element: any);
+    addAttributes(attrs: any): any;
+    removeAttributes(attrs: any): any;
     addClasses(classes: any): any;
     removeClasses(classes: any): any;
   }
@@ -120,12 +120,16 @@ declare module 'aurelia-materialize-bridge' {
     
     //  this.element.addEventListener('click', this.toggleSidenav);
     detached(): any;
-    
-    //  this.element.removeEventListener('click', this.toggleSidenav);
-    toggleSidenav(): any;
   }
+  
+  //  this.element.removeEventListener('click', this.toggleSidenav);
+  //  toggleSidenav() {
+  //    $(this.element).sideNav('show');
+  //  }
   export class MdSidenav {
     static id: any;
+    edge: any;
+    closeOnClick: any;
     constructor(element: any);
     attached(): any;
   }

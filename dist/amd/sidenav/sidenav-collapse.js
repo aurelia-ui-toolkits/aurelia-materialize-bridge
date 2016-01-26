@@ -29,14 +29,13 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
 
     MdSidenavCollapse.prototype.attached = function attached() {
       this.element.setAttribute('data-activates', this.ref.controlId);
-      $(this.element).sideNav();
+      $(this.element).sideNav({
+        edge: this.ref.edge || 'left',
+        closeOnClick: this.ref.closeOnClick
+      });
     };
 
     MdSidenavCollapse.prototype.detached = function detached() {};
-
-    MdSidenavCollapse.prototype.toggleSidenav = function toggleSidenav() {
-      $(this.element).sideNav('show');
-    };
 
     var _MdSidenavCollapse = MdSidenavCollapse;
     MdSidenavCollapse = _aureliaFramework.inject(Element)(MdSidenavCollapse) || MdSidenavCollapse;

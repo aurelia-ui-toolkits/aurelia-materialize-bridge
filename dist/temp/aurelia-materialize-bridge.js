@@ -2,8 +2,6 @@
 
 exports.__esModule = true;
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
 var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
 exports.configure = configure;
@@ -44,7 +42,7 @@ var ConfigBuilder = (function () {
   }
 
   ConfigBuilder.prototype.useAll = function useAll() {
-    return this.useButton().useCard().useCollapsible().useNavbar().useSidenav().useTabs().useWaves().useWell();
+    return this.useButton().useCard().useCollapsible().useColors().useNavbar().useSidenav().useTabs().useWaves().useWell();
   };
 
   ConfigBuilder.prototype.useButton = function useButton() {
@@ -64,6 +62,11 @@ var ConfigBuilder = (function () {
 
   ConfigBuilder.prototype.useCollapsible = function useCollapsible() {
     this.globalResources.push('./collapsible/collapsible');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useColors = function useColors() {
+    this.globalResources.push('./colors/md-colors.html');
     return this;
   };
 
@@ -171,11 +174,22 @@ var MdButton = (function () {
       classes.push('disabled');
     }
 
+    if (!getBooleanFromAttributeValue(this.flat)) {
+      classes.push('accent');
+    }
     this.classSetter.addClasses(classes);
   };
 
   MdButton.prototype.detached = function detached() {
-    this.classSetter.removeClasses(['btn', 'btn-flat', 'btn-large', 'disabled']);
+    this.classSetter.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+  };
+
+  MdButton.prototype.disabledChanged = function disabledChanged(newValue) {
+    if (getBooleanFromAttributeValue(newValue)) {
+      this.classSetter.addClasses('disabled');
+    } else {
+      this.classSetter.removeClasses('disabled');
+    }
   };
 
   var _MdButton = MdButton;
@@ -230,14 +244,15 @@ var MdCollapsible = (function () {
 
   MdCollapsible.prototype.detached = function detached() {
     this.classSetter.removeClasses(['collapsible', 'popout']);
+    this.classSetter.removeAttributes(['data-collapsible']);
   };
 
   MdCollapsible.prototype.refresh = function refresh() {
     var accordion = getBooleanFromAttributeValue(this.accordion);
     if (accordion) {
-      this.element.setAttribute('data-collapsible', 'accordion');
+      this.classSetter.addAttributes({ 'data-collapsible': 'accordion' });
     } else {
-      this.element.setAttribute('data-collapsible', 'expandable');
+      this.classSetter.addAttributes({ 'data-collapsible': 'expandable' });
     }
 
     $(this.element).collapsible({
@@ -259,6 +274,64 @@ var MdCollapsible = (function () {
 
 exports.MdCollapsible = MdCollapsible;
 
+function shadeBlendConvert(p, from, to) {
+  if (typeof p != "number" || p < -1 || p > 1 || typeof from != "string" || from[0] != 'r' && from[0] != '#' || typeof to != "string" && typeof to != "undefined") return null;
+  var sbcRip = function sbcRip(d) {
+    var l = d.length,
+        RGB = new Object();
+    if (l > 9) {
+      d = d.split(",");
+      if (d.length < 3 || d.length > 4) return null;
+      RGB[0] = i(d[0].slice(4)), RGB[1] = i(d[1]), RGB[2] = i(d[2]), RGB[3] = d[3] ? parseFloat(d[3]) : -1;
+    } else {
+      switch (l) {case 8:case 6:case 3:case 2:case 1:
+          return null;}
+      if (l < 6) d = "#" + d[1] + d[1] + d[2] + d[2] + d[3] + d[3] + (l > 4 ? d[4] + "" + d[4] : "");
+      d = i(d.slice(1), 16), RGB[0] = d >> 16 & 255, RGB[1] = d >> 8 & 255, RGB[2] = d & 255, RGB[3] = l == 9 || l == 5 ? r((d >> 24 & 255) / 255 * 10000) / 10000 : -1;
+    }
+    return RGB;
+  };
+  var i = parseInt,
+      r = Math.round,
+      h = from.length > 9,
+      h = typeof to == "string" ? to.length > 9 ? true : to == "c" ? !h : false : h,
+      b = p < 0,
+      p = b ? p * -1 : p,
+      to = to && to != "c" ? to : b ? "#000000" : "#FFFFFF",
+      f = sbcRip(from),
+      t = sbcRip(to);
+  if (!f || !t) return null;
+  if (h) return "rgb(" + r((t[0] - f[0]) * p + f[0]) + "," + r((t[1] - f[1]) * p + f[1]) + "," + r((t[2] - f[2]) * p + f[2]) + (f[3] < 0 && t[3] < 0 ? ")" : "," + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 10000) / 10000 : t[3] < 0 ? f[3] : t[3]) + ")");else return "#" + (0x100000000 + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 255) : t[3] > -1 ? r(t[3] * 255) : f[3] > -1 ? r(f[3] * 255) : 255) * 0x1000000 + r((t[0] - f[0]) * p + f[0]) * 0x10000 + r((t[1] - f[1]) * p + f[1]) * 0x100 + r((t[2] - f[2]) * p + f[2])).toString(16).slice(f[3] > -1 || t[3] > -1 ? 1 : 3);
+}
+
+var DarkenValueConverter = (function () {
+  function DarkenValueConverter() {
+    _classCallCheck(this, DarkenValueConverter);
+  }
+
+  DarkenValueConverter.prototype.toView = function toView(value, steps) {
+    return shadeBlendConvert(-0.3 * parseFloat(steps, 10), value);
+  };
+
+  return DarkenValueConverter;
+})();
+
+exports.DarkenValueConverter = DarkenValueConverter;
+
+var LightenValueConverter = (function () {
+  function LightenValueConverter() {
+    _classCallCheck(this, LightenValueConverter);
+  }
+
+  LightenValueConverter.prototype.toView = function toView(value, steps) {
+    return shadeBlendConvert(0.3 * parseFloat(steps, 10), value);
+  };
+
+  return LightenValueConverter;
+})();
+
+exports.LightenValueConverter = LightenValueConverter;
+
 function getBooleanFromAttributeValue(value) {
   return value === true || value === 'true';
 }
@@ -275,34 +348,64 @@ var CssClassSetter = (function () {
     _classCallCheck(this, CssClassSetter);
 
     this.addedClasses = [];
+    this.addedAttributes = {};
 
     this.element = element;
   }
 
-  CssClassSetter.prototype.addClasses = function addClasses(classes) {
+  CssClassSetter.prototype.addAttributes = function addAttributes(attrs) {
     var _this = this;
+
+    var keys = Object.keys(attrs);
+    keys.forEach(function (k) {
+      if (!_this.element.getAttribute(k)) {
+        _this.addedAttributes[k] = attrs[k];
+        _this.element.setAttribute(k, attrs[k]);
+      } else if (_this.element.getAttribute(k) !== attrs[k]) {
+        _this.element.setAttribute(k, attrs[k]);
+      }
+    });
+  };
+
+  CssClassSetter.prototype.removeAttributes = function removeAttributes(attrs) {
+    var _this2 = this;
+
+    if (typeof attrs === 'string') {
+      attrs = [attrs];
+    }
+    attrs.forEach(function (a) {
+      if (_this2.element.getAttribute(a) && !!_this2.addedAttributes[a]) {
+        _this2.element.removeAttribute(a);
+        _this2.addedAttributes[a] = null;
+        delete _this2.addedAttributes[a];
+      }
+    });
+  };
+
+  CssClassSetter.prototype.addClasses = function addClasses(classes) {
+    var _this3 = this;
 
     if (typeof classes === 'string') {
       classes = [classes];
     }
     classes.forEach(function (c) {
-      if (!_this.element.classList.contains(c)) {
-        _this.addedClasses.push(c);
-        _this.element.classList.add(c);
+      if (!_this3.element.classList.contains(c)) {
+        _this3.addedClasses.push(c);
+        _this3.element.classList.add(c);
       }
     });
   };
 
   CssClassSetter.prototype.removeClasses = function removeClasses(classes) {
-    var _this2 = this;
+    var _this4 = this;
 
     if (typeof classes === 'string') {
       classes = [classes];
     }
     classes.forEach(function (c) {
-      if (_this2.element.classList.contains(c) && _this2.addedClasses.indexOf(c) > -1) {
-        _this2.element.classList.remove(c);
-        _this2.addedClasses.splice(_this2.addedClasses.indexOf(c), 1);
+      if (_this4.element.classList.contains(c) && _this4.addedClasses.indexOf(c) > -1) {
+        _this4.element.classList.remove(c);
+        _this4.addedClasses.splice(_this4.addedClasses.indexOf(c), 1);
       }
     });
   };
@@ -389,14 +492,13 @@ var MdSidenavCollapse = (function () {
 
   MdSidenavCollapse.prototype.attached = function attached() {
     this.element.setAttribute('data-activates', this.ref.controlId);
-    $(this.element).sideNav();
+    $(this.element).sideNav({
+      edge: this.ref.edge || 'left',
+      closeOnClick: this.ref.closeOnClick
+    });
   };
 
   MdSidenavCollapse.prototype.detached = function detached() {};
-
-  MdSidenavCollapse.prototype.toggleSidenav = function toggleSidenav() {
-    $(this.element).sideNav('show');
-  };
 
   var _MdSidenavCollapse = MdSidenavCollapse;
   MdSidenavCollapse = _aureliaFramework.inject(Element)(MdSidenavCollapse) || MdSidenavCollapse;
@@ -407,14 +509,34 @@ var MdSidenavCollapse = (function () {
 exports.MdSidenavCollapse = MdSidenavCollapse;
 
 var MdSidenav = (function () {
-  _createClass(MdSidenav, null, [{
+  var _instanceInitializers5 = {};
+
+  _createDecoratedClass(MdSidenav, [{
+    key: 'edge',
+    decorators: [_aureliaFramework.bindable()],
+    initializer: function initializer() {
+      return 'left';
+    },
+    enumerable: true
+  }, {
+    key: 'closeOnClick',
+    decorators: [_aureliaFramework.bindable()],
+    initializer: function initializer() {
+      return true;
+    },
+    enumerable: true
+  }], [{
     key: 'id',
     value: 0,
     enumerable: true
-  }]);
+  }], _instanceInitializers5);
 
   function MdSidenav(element) {
     _classCallCheck(this, _MdSidenav);
+
+    _defineDecoratedPropertyDescriptor(this, 'edge', _instanceInitializers5);
+
+    _defineDecoratedPropertyDescriptor(this, 'closeOnClick', _instanceInitializers5);
 
     this.element = element;
     this.controlId = 'md-sidenav-' + MdSidenav.id++;
@@ -431,7 +553,7 @@ var MdSidenav = (function () {
 exports.MdSidenav = MdSidenav;
 
 var MdTab = (function () {
-  var _instanceInitializers5 = {};
+  var _instanceInitializers6 = {};
 
   _createDecoratedClass(MdTab, [{
     key: 'forElement',
@@ -457,16 +579,16 @@ var MdTab = (function () {
       return '';
     },
     enumerable: true
-  }], null, _instanceInitializers5);
+  }], null, _instanceInitializers6);
 
   function MdTab(element) {
     _classCallCheck(this, _MdTab);
 
-    _defineDecoratedPropertyDescriptor(this, 'forElement', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'forElement', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'tab', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'tab', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers6);
 
     this.element = element;
   }
@@ -522,27 +644,27 @@ var MdTabs = (function () {
   }
 
   MdTabs.prototype.attached = function attached() {
-    var _this3 = this;
+    var _this5 = this;
 
     this.classSetter.addClasses('tabs');
 
     var children = this.element.querySelectorAll('li');
     [].forEach.call(children, function (child) {
       var setter = new CssClassSetter(child);
-      setter.addClasses('tab');
-      _this3.tabClassSetters.push(setter);
+      setter.addClasses(['tab', 'primary-text']);
+      _this5.tabClassSetters.push(setter);
     });
 
     $(this.element).tabs();
 
     var childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, function (a) {
-      a.addEventListener('click', _this3.fireTabSelectedEvent.bind(_this3));
+      a.addEventListener('click', _this5.fireTabSelectedEvent.bind(_this5));
     });
   };
 
   MdTabs.prototype.detached = function detached() {
-    var _this4 = this;
+    var _this6 = this;
 
     this.classSetter.removeClasses('tabs');
 
@@ -552,7 +674,7 @@ var MdTabs = (function () {
     this.tabClassSetters = [];
     var childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, function (a) {
-      a.removeEventListener('click', _this4.fireTabSelectedEvent.bind(_this4));
+      a.removeEventListener('click', _this6.fireTabSelectedEvent.bind(_this6));
     });
   };
 
