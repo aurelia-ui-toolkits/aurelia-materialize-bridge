@@ -13,6 +13,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
+
   meta: {
     "materialize/bin/materialize": {
       "format": "system"
@@ -34,8 +35,8 @@ System.config({
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "core-js": "npm:core-js@1.2.6",
-    "jquery": "github:components/jquery@2.2.0",
     "jQuery": "github:components/jquery@2.2.0",
+    "jquery": "github:components/jquery@2.2.0",
     "materialize": "npm:materialize-css@0.97.5",
     "polymer/mutationobservers": "github:polymer/mutationobservers@0.4.2",
     "text": "github:systemjs/plugin-text@0.0.4",
