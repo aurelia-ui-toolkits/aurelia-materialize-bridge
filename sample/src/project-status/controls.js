@@ -23,7 +23,7 @@ export class Controls {
         { title: 'Collections' },
         { title: 'Footer' },
         { title: 'Forms' },
-
+        { title: 'Select', link: '#/samples/select', status: 'wip' },
         { title: 'Icons' },
         { title: 'Navbar', link: '#/samples/navbar', status: 'wip' },
         { title: 'Pagination' },
