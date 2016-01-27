@@ -22,8 +22,7 @@ export class Controls {
         { title: 'Chips' },
         { title: 'Collections' },
         { title: 'Footer' },
-        { title: 'Forms' },
-        { title: 'Select', link: '#/samples/select', status: 'wip' },
+        { title: 'Forms (see on the right)' },
         { title: 'Icons' },
         { title: 'Navbar', link: '#/samples/navbar', status: 'wip' },
         { title: 'Pagination' },
@@ -45,6 +44,19 @@ export class Controls {
         { title: 'Tabs', link: '#/samples/tabs', status: 'wip' },
         { title: 'Transitions' },
         { title: 'Waves', link: '#/samples/waves', status: 'done' }
+      ]
+    }, {
+      title: 'Forms',
+      controls: [
+        { title: 'Input fields' },
+        { title: 'Select', link: '#/samples/select', status: 'wip' },
+        { title: 'Radio buttons' },
+        { title: 'Checkboxes' },
+        { title: 'Switches' },
+        { title: 'File input button' },
+        { title: 'Range' },
+        { title: 'Datepicker' },
+        { title: 'Character counter' }
       ]
     }, {
       title: 'Internal',
