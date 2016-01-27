@@ -7,7 +7,9 @@ export function configure(aurelia) {
         .useButton()
         .useCard()
         .useCollapsible()
+        .useColors()
         .useNavbar()
+        .useSidenav()
         .useTabs()
         .useWaves()
         .useWell();

@@ -3,9 +3,9 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 
 @inject(EventAggregator)
 export class App {
-  constructor(ea) {
-    this.ea = ea;
-    // ea.subscribe('router:navigation:complete', () => this.ripple());
+  primaryColor = '#ee6e73';
+  accentColor = '#2bbbad';
+
   }
 
   configureRouter(config, router) {

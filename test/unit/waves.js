@@ -1,11 +1,12 @@
 import {TaskQueue} from 'aurelia-task-queue';
 import {initialize} from 'aurelia-pal-browser';
-import {DOM} from 'aurelia-pal';
 import {MdWaves} from 'src/waves/waves';
 import 'materialize';
 
 describe('Waves', () => {
-  let element, taskQueue, waves;
+  let element;
+  let taskQueue;
+  let waves;
   // beforeAll(() => initialize());
   initialize();
 

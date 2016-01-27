@@ -1,6 +1,6 @@
-import {customAttribute, bindable, bindingMode, inject} from 'aurelia-framework';
+import {customAttribute, bindable, inject} from 'aurelia-framework';
 import { getBooleanFromAttributeValue } from '../common/attributes';
-import { CssClassSetter } from '../common/cssClassSetter';
+import { AttributeManager } from '../common/attributeManager';
 import 'jquery';
 import * as collapsible from 'materialize/js/collapsible';
 
@@ -12,27 +12,30 @@ import * as collapsible from 'materialize/js/collapsible';
 export class MdCollapsible {
   constructor(element) {
     this.element = element;
-    this.classSetter = new CssClassSetter(this.element);
+    this.attributeManager = new AttributeManager(this.element);
   }
 
   attached() {
-    this.classSetter.addClasses('collapsible');
+    this.attributeManager.addClasses('collapsible');
     if (getBooleanFromAttributeValue(this.popout)) {
-      this.classSetter.addClasses('popout');
+      this.attributeManager.addClasses('popout');
     }
     this.refresh();
   }
 
   detached() {
-    this.classSetter.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
   }
 
   refresh() {
     let accordion = getBooleanFromAttributeValue(this.accordion);
     if (accordion) {
-      this.element.setAttribute('data-collapsible', 'accordion');
+      // this.element.setAttribute('data-collapsible', 'accordion');
+      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
     } else {
-      this.element.setAttribute('data-collapsible', 'expandable');
+      // this.element.setAttribute('data-collapsible', 'expandable');
+      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
     }
 
     $(this.element).collapsible({

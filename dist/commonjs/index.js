@@ -3,6 +3,8 @@
 exports.__esModule = true;
 exports.configure = configure;
 
+require('materialize');
+
 var _aureliaFramework = require('aurelia-framework');
 
 var _configBuilder = require('./config-builder');

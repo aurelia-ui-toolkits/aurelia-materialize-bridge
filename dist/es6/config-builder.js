@@ -6,11 +6,76 @@ export class ConfigBuilder {
   useGlobalResources: boolean = true;
   globalResources = [];
 
+  useAll(): ConfigBuilder {
+    return this
+      .useButton()
+      .useCard()
+      .useCollapsible()
+      .useColors()
+      .useNavbar()
+      .useSidenav()
+      .useTabs()
+      .useWaves()
+      .useWell();
+  }
+
+  useButton(): ConfigBuilder {
+    this.globalResources.push('./button/button');
+    return this;
+  }
+
+  useCard(): ConfigBuilder {
+    this.globalResources.push('./card/card');
+    return this;
+  }
+
   /**
   * Use my control
   */
   useClickCounter(): ConfigBuilder {
     this.globalResources.push('./click-counter');
+    return this;
+  }
+
+  useCollapsible(): ConfigBuilder {
+    this.globalResources.push('./collapsible/collapsible');
+    return this;
+  }
+
+  useColors() : ConfigBuilder {
+    this.globalResources.push('./colors/md-colors.html');
+    return this;
+  }
+
+  useNavbar(): ConfigBuilder {
+    this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useSidenav(): ConfigBuilder {
+    this.globalResources.push('./sidenav/sidenav');
+    this.globalResources.push('./sidenav/sidenav-collapse');
+    return this;
+  }
+
+  /**
+   * Use materialized tabs
+   */
+  useTabs(): ConfigBuilder {
+    this.globalResources.push('./tabs/tabs');
+    return this;
+  }
+
+  /**
+   * Use ripple/waves effect
+   */
+  useWaves(): ConfigBuilder {
+    this.globalResources.push('./waves/waves');
+    return this;
+  }
+
+  useWell(): ConfigBuilder {
+    this.globalResources.push('./well/md-well.html');
     return this;
   }
 

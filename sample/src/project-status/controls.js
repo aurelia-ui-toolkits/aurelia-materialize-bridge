@@ -3,7 +3,7 @@ export class Controls {
     {
       title: 'Css',
       controls: [
-        { title: 'Color' },
+        { title: 'Color', status: 'wip' },
         { title: 'Grid' },
         { title: 'Helpers' },
         { title: 'Media' },
@@ -27,7 +27,7 @@ export class Controls {
         { title: 'Icons' },
         { title: 'Navbar', link: '#/samples/navbar', status: 'wip' },
         { title: 'Pagination' },
-        { title: 'Preloader' },
+        { title: 'Preloader' }
       ]
     }, {
       title: 'Javascript',
@@ -41,16 +41,17 @@ export class Controls {
         { title: 'Pushpin' },
         { title: 'Scrollfire' },
         { title: 'Scrollspy' },
-        { title: 'SideNav' },
+        { title: 'SideNav', link: '#/samples/sidenav', status: 'wip' },
         { title: 'Tabs', link: '#/samples/tabs', status: 'wip' },
         { title: 'Transitions' },
         { title: 'Waves', link: '#/samples/waves', status: 'done' }
       ]
     }, {
-      title: 'Bonus',
+      title: 'Internal',
       controls: [
         { title: 'Click counter', link: '#/samples/click-counter', status: 'done' },
-        { title: 'Well', status: 'wip' }
+        { title: 'Well', status: 'wip' },
+        { title: 'PanelBar' }
       ]
     }
   ]

@@ -1,0 +1,98 @@
+<template bindable="primary, accent">
+  <require from="./colorValueConverters"></require>
+
+  <!--
+    According to Material color spec (https://www.google.com/design/spec/style/color.html#color-ui-color-application)
+    and using Materialize terminology (darken/lighten instead of hue numbers)
+    the used palettes here consist of:
+    Primary - lighten-1 (400), lighten-2 (300), lighten-3 (200)
+    Accent  - lighten-1 (400), lighten-3 (200)
+
+    These should optionally be defined by the user.
+
+    Focused elements are an exception, these use "lighten-0.5" which is
+    not specified anywhere.
+  -->
+
+  <style>
+  .primary {
+    background-color: ${primary};
+    color: white;
+  }
+
+  .primary-text {
+    /*background-color: white;*/
+    color: ${primary};
+  }
+
+  .waves-effect.waves-primary .waves-ripple {
+    background-color: ${primary};
+  }
+
+  .waves-effect.waves-accent .waves-ripple {
+    background-color: ${accent};
+  }
+
+  .accent {
+    background-color: ${accent};
+    color: white;
+  }
+
+  .accent-text {
+    /*background-color: white;*/
+    color: ${accent};
+  }
+
+  /* buttons */
+
+  .btn.primary, .btn-flat.primary, .btn-large.primary {
+    transition: .2s ease-out;
+  }
+  .btn.primary:hover, .btn-flat.primary:hover, .btn-large.primary:hover {
+    background-color: ${primary | lighten:1};
+    transition: .2s ease-out;
+  }
+  .btn.primary:focus, .btn-flat.primary:focus, .btn-large.primary:focus {
+    background-color: ${primary | lighten:0.5};
+    transition: .2s ease-out;
+  }
+
+  .btn.accent, .btn-flat.accent, .btn-large.accent {
+    transition: .2s ease-out;
+  }
+  .btn.accent:hover, .btn-flat.accent:hover, .btn-large.accent:hover {
+    background-color: ${accent | lighten:1};
+    transition: .2s ease-out;
+  }
+  .btn.accent:focus, .btn-flat.accent:focus, .btn-large.accent:focus {
+    background-color: ${accent | lighten:0.5};
+    transition: .2s ease-out;
+  }
+
+  /* checkbox */
+
+  [type="checkbox"]:checked + label:before {
+    border-right-color: ${accent};
+    border-bottom-color: ${accent};
+  }
+
+  /* tabs */
+
+  .tab.primary-text a {
+    color: ${primary};
+  }
+  .tab.primary-text a:hover {
+    color: ${primary | lighten:2};
+  }
+  .tabs .indicator {
+    background-color: ${primary | lighten:2};
+  }
+
+  /* well */
+
+  md-well li.active {
+    border-right: 2px solid ${primary};
+    background-color: ${primary | lighten:3};
+  }
+  </style>
+</template>

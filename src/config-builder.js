@@ -11,7 +11,9 @@ export class ConfigBuilder {
       .useButton()
       .useCard()
       .useCollapsible()
+      .useColors()
       .useNavbar()
+      .useSidenav()
       .useTabs()
       .useWaves()
       .useWell();
@@ -40,8 +42,19 @@ export class ConfigBuilder {
     return this;
   }
 
+  useColors() : ConfigBuilder {
+    this.globalResources.push('./colors/md-colors.html');
+    return this;
+  }
+
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useSidenav(): ConfigBuilder {
+    this.globalResources.push('./sidenav/sidenav');
+    this.globalResources.push('./sidenav/sidenav-collapse');
     return this;
   }
 
