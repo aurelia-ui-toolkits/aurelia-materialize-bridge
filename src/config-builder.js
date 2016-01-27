@@ -13,6 +13,7 @@ export class ConfigBuilder {
       .useCollapsible()
       .useColors()
       .useNavbar()
+      .useSelect()
       .useSidenav()
       .useTabs()
       .useWaves()
@@ -49,6 +50,11 @@ export class ConfigBuilder {
 
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useSelect(): ConfigBuilder {
+    this.globalResources.push('./select/select');
     return this;
   }
 
