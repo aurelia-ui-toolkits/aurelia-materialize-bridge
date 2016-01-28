@@ -9,7 +9,7 @@ export class MdSidenav {
 
   constructor(element) {
     this.element = element;
-    this.controlId = 'md-sidenav-' + MdSidenav.id++;
+    this.controlId = `md-sidenav-${MdSidenav.id++}`;
   }
 
   attached() {
