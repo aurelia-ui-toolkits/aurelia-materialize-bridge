@@ -6,6 +6,7 @@ export function configure(aurelia) {
       plugin.useClickCounter()
         .useButton()
         .useCard()
+        .useCheckbox()
         .useCollapsible()
         .useColors()
         .useNavbar()
