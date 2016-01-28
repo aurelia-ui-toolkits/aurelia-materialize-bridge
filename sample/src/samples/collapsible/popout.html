@@ -2,7 +2,7 @@
   <div class="collapsible-popout">
     <div class="row">
       <div class="col s12 m8">
-        <md-card title="Popout collapsible">
+        <md-card md-title="Popout collapsible">
           <ul md-collapsible="accordion.bind: accordion; popout: true;">
             <li>
               <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First</div>
@@ -18,8 +18,7 @@
             </li>
           </ul>
           <p>
-            <input id="useAccordion" type="checkbox" checked.bind="accordion" />
-            <label for="useAccordion">use accordion (FIXME: doesn't do anything)</label>
+            <md-checkbox md-checked.bind="accordion">use accordion</md-checkbox>
           </p>
         </md-card>
     </div>
@@ -27,7 +26,7 @@
 
     <div class="row">
         <div class="col s12 m8">
-          <md-card title="Code Preview">
+          <md-card md-title="Code Preview">
             <div class="row">
               <ul md-tabs class="z-depth-1">
                 <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>

@@ -5,7 +5,8 @@ export class Index {
   configureRouter(config, router) {
     config.title = 'SideNav';
     config.map([
-      { route: ['', 'basic-use'], moduleId: './basic-use', nav: true,  title: 'Basic use' }
+      { route: ['', 'basic-use'], moduleId: './basic-use', nav: true,  title: 'Basic use' },
+      { route: 'options', moduleId: './options', nav: true,  title: 'Options' }
     ]);
 
     this.router = router;

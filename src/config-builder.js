@@ -10,9 +10,11 @@ export class ConfigBuilder {
     return this
       .useButton()
       .useCard()
+      .useCheckbox()
       .useCollapsible()
       .useColors()
       .useNavbar()
+      .useSelect()
       .useSidenav()
       .useTabs()
       .useWaves()
@@ -26,6 +28,11 @@ export class ConfigBuilder {
 
   useCard(): ConfigBuilder {
     this.globalResources.push('./card/card');
+    return this;
+  }
+
+  useCheckbox(): ConfigBuilder {
+    this.globalResources.push('./checkbox/checkbox');
     return this;
   }
 
@@ -49,6 +56,11 @@ export class ConfigBuilder {
 
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useSelect(): ConfigBuilder {
+    this.globalResources.push('./select/select');
     return this;
   }
 

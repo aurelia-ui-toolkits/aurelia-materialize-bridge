@@ -1,15 +1,6 @@
 <template>
-  <style>
-    md-sidenav li[md-waves] {
-      display: block;
-    }
-    md-sidenav li a:hover {
-      background-color: transparent;
-      display: inline-block;
-      width: 100%;
-    }
-  </style>
-  <div id="${ controlId }" class="side-nav">
+  <require from="./sidenav.css"></require>
+  <div id="${ controlId }" class="side-nav" ref="sidenav">
     <content></content>
   </div>
 </template>
