@@ -1,0 +1,49 @@
+<template>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="SideNav options">
+          <div>
+            <a md-sidenav-collapse="ref.bind: sideNavLeft;" md-button md-waves>Left SideNav</a>
+            <a md-sidenav-collapse="ref.bind: sideNavRight;" md-button md-waves>Right SideNav</a>
+          </div>
+          <div style="padding-top: 10px;">
+            <md-checkbox md-checked.bind="fixed">Fixed</md-checkbox>
+          </div>
+
+          <md-sidenav view-model.ref="sideNavLeft" fixed.bind="fixed">
+            <ul>
+              <li md-waves><a href="#/samples/sidenav">About</a></li>
+              <li md-waves><a href="#/samples/sidenav">Installation</a></li>
+              <li md-waves><a href="#/samples/sidenav">Project Status</a></li>
+              <li md-waves><a href="#/samples/sidenav">Help/Docs</a></li>
+            </ul>
+          </md-sidenav>
+          <md-sidenav view-model.ref="sideNavRight" edge="right">
+            <ul>
+              <li md-waves><a href="#/samples/sidenav">About</a></li>
+              <li md-waves><a href="#/samples/sidenav">Installation</a></li>
+              <li md-waves><a href="#/samples/sidenav">Project Status</a></li>
+              <li md-waves><a href="#/samples/sidenav">Help/Docs</a></li>
+            </ul>
+          </md-sidenav>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/sidenav/basic-use-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>
