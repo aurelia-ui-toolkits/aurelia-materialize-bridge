@@ -3,6 +3,7 @@ export class Samples {
     config.map([
       { name: 'button', route: 'button', moduleId: 'samples/button/index', title: 'button' },
       { name: 'card', route: 'card', moduleId: 'samples/card/index', title: 'card' },
+      { name: 'checkbox', route: 'checkbox', moduleId: 'samples/checkbox/index', title: 'checkbox' },
       { name: 'click-counter', route: 'click-counter', moduleId: 'samples/click-counter/index', title: 'click-counter' },
       { name: 'collapsible', route: 'collapsible', moduleId: 'samples/collapsible/index', title: 'collapsible' },
       { name: 'navbar', route: 'navbar', moduleId: 'samples/navbar/index', title: 'navbar' },

@@ -51,7 +51,7 @@ export class Controls {
         { title: 'Input fields' },
         { title: 'Select', link: '#/samples/select', status: 'wip' },
         { title: 'Radio buttons' },
-        { title: 'Checkboxes', status: 'wip' },
+        { title: 'Checkboxes', link: '#/samples/checkbox', status: 'wip' },
         { title: 'Switches' },
         { title: 'File input button' },
         { title: 'Range' },
