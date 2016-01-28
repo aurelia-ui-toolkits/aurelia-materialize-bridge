@@ -5,7 +5,7 @@ import { bindable, bindingMode, customElement, inject } from 'aurelia-framework'
 export class MdCard {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
-  }) title;
+  }) mdTitle;
 
   constructor(element) {
 
