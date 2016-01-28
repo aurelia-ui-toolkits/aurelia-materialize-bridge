@@ -1,4 +1,4 @@
-<template bindable="primary, accent">
+<template bindable="mdPrimaryColor, mdAccentColor">
   <require from="./colorValueConverters"></require>
 
   <!--
@@ -17,31 +17,31 @@
 
   <style>
   .primary {
-    background-color: ${primary};
+    background-color: ${mdPrimaryColor};
     color: white;
   }
 
   .primary-text {
     /*background-color: white;*/
-    color: ${primary};
+    color: ${mdPrimaryColor};
   }
 
   .waves-effect.waves-primary .waves-ripple {
-    background-color: ${primary};
+    background-color: ${mdPrimaryColor};
   }
 
   .waves-effect.waves-accent .waves-ripple {
-    background-color: ${accent};
+    background-color: ${mdAccentColor};
   }
 
   .accent {
-    background-color: ${accent};
+    background-color: ${mdAccentColor};
     color: white;
   }
 
   .accent-text {
     /*background-color: white;*/
-    color: ${accent};
+    color: ${mdAccentColor};
   }
 
   /* buttons */
@@ -50,11 +50,11 @@
     transition: .2s ease-out;
   }
   .btn.primary:hover, .btn-flat.primary:hover, .btn-large.primary:hover {
-    background-color: ${primary | lighten:1};
+    background-color: ${mdPrimaryColor | lighten:1};
     transition: .2s ease-out;
   }
   .btn.primary:focus, .btn-flat.primary:focus, .btn-large.primary:focus {
-    background-color: ${primary | lighten:0.5};
+    background-color: ${mdPrimaryColor | lighten:0.5};
     transition: .2s ease-out;
   }
 
@@ -62,52 +62,52 @@
     transition: .2s ease-out;
   }
   .btn.accent:hover, .btn-flat.accent:hover, .btn-large.accent:hover {
-    background-color: ${accent | lighten:1};
+    background-color: ${mdAccentColor | lighten:1};
     transition: .2s ease-out;
   }
   .btn.accent:focus, .btn-flat.accent:focus, .btn-large.accent:focus {
-    background-color: ${accent | lighten:0.5};
+    background-color: ${mdAccentColor | lighten:0.5};
     transition: .2s ease-out;
   }
 
   /* checkbox */
 
   [type="checkbox"]:checked + label:before {
-    border-right-color: ${accent};
-    border-bottom-color: ${accent};
+    border-right-color: ${mdAccentColor};
+    border-bottom-color: ${mdAccentColor};
   }
 
   [type="checkbox"].filled-in:checked + label:after {
-    border-color: ${accent};
-    background-color: ${accent};
+    border-color: ${mdAccentColor};
+    background-color: ${mdAccentColor};
   }
 
   [type="checkbox"]:indeterminate + label:before {
-    border-right-color: ${accent};
+    border-right-color: ${mdAccentColor};
   }
 
   /* select */
   .dropdown-content li > a, .dropdown-content li > span {
-    color: ${accent};
+    color: ${mdAccentColor};
   }
 
   /* tabs */
 
   .tab.primary-text a {
-    color: ${primary};
+    color: ${mdPrimaryColor};
   }
   .tab.primary-text a:hover {
-    color: ${primary | lighten:2};
+    color: ${mdPrimaryColor | lighten:2};
   }
   .tabs .indicator {
-    background-color: ${primary | lighten:2};
+    background-color: ${mdPrimaryColor | lighten:2};
   }
 
   /* well */
 
   md-well li.active {
-    border-right: 2px solid ${primary};
-    background-color: ${primary | lighten:3};
+    border-right: 2px solid ${mdPrimaryColor};
+    background-color: ${mdPrimaryColor | lighten:3};
   }
   </style>
 </template>
