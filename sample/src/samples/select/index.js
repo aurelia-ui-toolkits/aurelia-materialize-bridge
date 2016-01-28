@@ -5,7 +5,8 @@ export class Index {
   configureRouter(config, router) {
     config.title = 'Select';
     config.map([
-      { route: ['', 'basic-use'], moduleId: './basic-use', nav: true, title: 'Basic use' }
+      { route: ['', 'basic-use'], moduleId: './basic-use', nav: true, title: 'Basic use' },
+      { route: 'multiple', moduleId: './multiple', nav: true, title: 'Multiple' }
     ]);
 
     this.router = router;
