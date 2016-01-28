@@ -2,12 +2,11 @@ import { bindable, bindingMode, customAttribute, inject } from 'aurelia-framewor
 import { AttributeManager } from '../common/attributeManager';
 
 @customAttribute('md-waves')
-@bindable({
-  name: 'color',
-  defaultBindingMode: bindingMode.oneTime
-})
 @inject(Element)
 export class MdWaves {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) color;
   constructor(element) {
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
