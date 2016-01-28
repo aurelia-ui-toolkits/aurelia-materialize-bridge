@@ -6,7 +6,7 @@ import { AttributeManager } from '../common/attributeManager';
 @inject(Element)
 export class MdNavbar {
   @bindable() fixed;
-  fixedClassSetter;
+  fixedAttributeManager;
 
   constructor(element) {
     this.element = element;
