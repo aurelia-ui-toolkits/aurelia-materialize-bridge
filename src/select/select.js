@@ -25,13 +25,13 @@ export class MdSelect {
    * This handler is called when the native <select> changes.
    */
   handleChangeFromNativeSelect() {
-    this.selected = this.element.value;
-    this.log.debug('handleChangeFromNativeSelect', $(this.element).val());
+    // this.selected = this.element.value;
+    this.selected = $(this.element).val();
   }
 
   selectedChanged() {
-    this.element.value = this.selected;
-    this.log.debug('selectedChanged', this.selected);
+    // this.element.value = this.selected;
+    $(this.element).val(this.selected);
     $(this.element).material_select();
   }
 }
