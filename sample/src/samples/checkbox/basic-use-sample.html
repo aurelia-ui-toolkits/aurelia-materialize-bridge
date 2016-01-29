@@ -1,9 +1,7 @@
 <template>
-  <select md-select="selected.two-way: selectedValue;">
-    <option value="" selected>select</option>
-    <option value="item1">item 1</option>
-    <option value="item2">item 2</option>
-    <option value="item3">item 3</option>
-    <option value="item4">item 4</option>
-  </select>
+  <p><md-checkbox md-checked.bind="checked">A default checkbox</md-checkbox></p>
+  <p><md-checkbox md-checked.bind="checked" md-disabled="true">A disabled checkbox</md-checkbox></p>
+  <hr />
+  <p><md-checkbox md-checked.bind="checked" md-filled-in="true">A filled-in checkbox</md-checkbox></p>
+  <p><md-checkbox md-checked.bind="checked" md-disabled="true" md-filled-in="true">A disabled filled-in checkbox</md-checkbox></p>
 </template>
