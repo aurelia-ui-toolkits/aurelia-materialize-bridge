@@ -9,6 +9,7 @@ export class MdSidenav {
   @bindable() closeOnClick = true;
   @bindable() edge = 'left';
   @bindable() fixed = false;
+  @bindable() mdWidth = 250;
 
   constructor(element) {
     this.element = element;
