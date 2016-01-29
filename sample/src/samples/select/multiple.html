@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col s12 m8">
         <md-card md-title="Select multiple values">
-          <select multiple md-select="selected.two-way: selectedValue;">
+          <select multiple md-select="selected.two-way: selectedValues;">
             <option value="" disabled selected>select an item</option>
             <option value="item1">item 1</option>
             <option value="item2">item 2</option>
@@ -11,8 +11,8 @@
             <option value="item4">item 4</option>
           </select>
 
-          <button md-button click.trigger="setSelectedValue()">set to item 3</button>
-          You selected: ${selectedValue}
+          <a md-button="flat: true;" md-waves click.trigger="setSelectedValues()" class="accent-text">set to item 3, item 4</a>
+          You selected: ${selectedValues | stringify}
         </md-card>
     </div>
     </div>
