@@ -1,14 +1,15 @@
-import { bindable, bindingMode, inject, customAttribute } from 'aurelia-framework';
+import { bindable, bindingMode, inject, customAttribute, LogManager } from 'aurelia-framework';
 
-@inject(Element)
+@inject(Element, LogManager)
 @customAttribute('md-select')
 export class MdSelect {
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) selected;
-  constructor(element) {
+  constructor(element, logManager) {
     this.element = element;
-    this.changeHandler = this.syncValue.bind(this);
+    this.changeHandler = this.handleChangeFromNativeSelect.bind(this);
+    this.log = LogManager.getLogger('md-select');
   }
   attached() {
     $(this.element).material_select();
@@ -20,12 +21,17 @@ export class MdSelect {
     $(this.element).material_select('destroy');
   }
 
-  syncValue() {
+  /*
+   * This handler is called when the native <select> changes.
+   */
+  handleChangeFromNativeSelect() {
     this.selected = this.element.value;
+    this.log.debug('handleChangeFromNativeSelect', $(this.element).val());
   }
 
   selectedChanged() {
     this.element.value = this.selected;
+    this.log.debug('selectedChanged', this.selected);
     $(this.element).material_select();
   }
 }
