@@ -1,0 +1,52 @@
+<template>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Fixed SideNav">
+          <div>
+            It's on the right edge.
+          </div>
+
+          <!-- <md-sidenav view-model.ref="sideNav" fixed="true" edge="right">
+            <ul>
+              <li md-waves><a href="#/samples/sidenav">About</a></li>
+              <li md-waves><a href="#/samples/sidenav">Installation</a></li>
+              <li md-waves><a href="#/samples/sidenav">Project Status</a></li>
+              <li md-waves><a href="#/samples/sidenav">Help/Docs</a></li>
+            </ul>
+          </md-sidenav>
+          <div>
+            <a md-sidenav-collapse="ref.bind: sideNav;" md-button md-waves>Left SideNav</a>
+          </div> -->
+
+          <!--
+            for an explanation, see:
+            https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/53
+          -->
+
+          <ul id="slide-out" class="side-nav fixed right-aligned">
+            <li><a href="#!">First Sidebar Link</a></li>
+            <li><a href="#!">Second Sidebar Link</a></li>
+          </ul>
+    <!-- <a data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a> -->
+
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/sidenav/basic-use-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>
