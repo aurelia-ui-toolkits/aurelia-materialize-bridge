@@ -7,11 +7,8 @@
             <a md-sidenav-collapse="ref.bind: sideNavLeft;" md-button md-waves>Left SideNav</a>
             <a md-sidenav-collapse="ref.bind: sideNavRight;" md-button md-waves>Right SideNav</a>
           </div>
-          <div style="padding-top: 10px;">
-            <md-checkbox md-checked.bind="fixed">Fixed</md-checkbox>
-          </div>
 
-          <md-sidenav view-model.ref="sideNavLeft" fixed.bind="fixed">
+          <md-sidenav view-model.ref="sideNavLeft">
             <ul>
               <li md-waves><a href="#/samples/sidenav">About</a></li>
               <li md-waves><a href="#/samples/sidenav">Installation</a></li>
