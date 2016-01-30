@@ -8,6 +8,7 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useBox()
       .useButton()
       .useCard()
       .useCheckbox()
@@ -21,6 +22,11 @@ export class ConfigBuilder {
       .useTooltip()
       .useWaves()
       .useWell();
+  }
+
+  useBox(): ConfigBuilder {
+    this.globalResources.push('./box/box');
+    return this;
   }
 
   useButton(): ConfigBuilder {
