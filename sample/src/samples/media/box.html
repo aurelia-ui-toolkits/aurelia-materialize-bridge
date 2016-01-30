@@ -1,0 +1,31 @@
+<template>
+  <style>
+    div.button-row {
+      padding: 5px 0;
+    }
+  </style>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Material Box">
+          <img md-box src="images/box-sample-1.jpg" width="650" />
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/media/box-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

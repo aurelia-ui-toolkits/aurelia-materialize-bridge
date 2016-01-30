@@ -9,6 +9,7 @@ export class Samples {
       { name: 'dialogs', route: 'dialogs', moduleId: 'samples/dialogs/index', title: 'dialogs' },
       { name: 'dropdown', route: 'dropdown', moduleId: 'samples/dropdown/index', title: 'dropdown' },
       { name: 'navbar', route: 'navbar', moduleId: 'samples/navbar/index', title: 'navbar' },
+      { name: 'media', route: 'media', moduleId: 'samples/media/index', title: 'media' },
       { name: 'select', route: 'select', moduleId: 'samples/select/index', title: 'select' },
       { name: 'sidenav', route: 'sidenav', moduleId: 'samples/sidenav/index', title: 'sidenav' },
       { name: 'tabs', route: 'tabs', moduleId: 'samples/tabs/index', title: 'tabs' },

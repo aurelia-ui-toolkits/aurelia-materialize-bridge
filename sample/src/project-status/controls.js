@@ -34,7 +34,7 @@ export class Controls {
         { title: 'Collapsible', link: '#/samples/collapsible', status: 'wip' },
         { title: 'Dialogs (toast/tooltip)', link: '#/samples/dialogs', status: 'wip' },
         { title: 'Dropdown', link: '#/samples/dropdown', status: 'wip' },
-        { title: 'Media' },
+        { title: 'Media (Box/Slider/Carousel)', link: '#/samples/media', status: 'wip' },
         { title: 'Modals' },
         { title: 'Parallax' },
         { title: 'Pushpin' },
