@@ -32,7 +32,7 @@ export class Controls {
       title: 'Javascript',
       controls: [
         { title: 'Collapsible', link: '#/samples/collapsible', status: 'wip' },
-        { title: 'Dialogs', status: 'wip' },
+        { title: 'Dialogs (toast/tooltip)', link: '#/samples/dialogs', status: 'wip' },
         { title: 'Dropdown' },
         { title: 'Media' },
         { title: 'Modals' },
