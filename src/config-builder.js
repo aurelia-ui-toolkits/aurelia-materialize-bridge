@@ -13,6 +13,7 @@ export class ConfigBuilder {
       .useCheckbox()
       .useCollapsible()
       .useColors()
+      .useDropdown()
       .useNavbar()
       .useSelect()
       .useSidenav()
@@ -52,6 +53,11 @@ export class ConfigBuilder {
 
   useColors() : ConfigBuilder {
     this.globalResources.push('./colors/md-colors.html');
+    return this;
+  }
+
+  useDropdown() : ConfigBuilder {
+    this.globalResources.push('./dropdown/dropdown');
     return this;
   }
 
