@@ -33,7 +33,7 @@ export class Controls {
       controls: [
         { title: 'Collapsible', link: '#/samples/collapsible', status: 'wip' },
         { title: 'Dialogs (toast/tooltip)', link: '#/samples/dialogs', status: 'wip' },
-        { title: 'Dropdown' },
+        { title: 'Dropdown', link: '#/samples/dropdown', status: 'wip' },
         { title: 'Media' },
         { title: 'Modals' },
         { title: 'Parallax' },

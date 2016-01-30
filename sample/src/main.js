@@ -9,6 +9,7 @@ export function configure(aurelia) {
         .useCheckbox()
         .useCollapsible()
         .useColors()
+        .useDropdown()
         .useNavbar()
         .useSelect()
         .useSidenav()
