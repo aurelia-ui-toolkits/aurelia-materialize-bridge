@@ -1,0 +1,90 @@
+<template>
+  <style>
+    div.actions {
+      margin-top: 10px;
+    }
+  </style>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Basic use">
+            <div class="actions">
+              <md-dropdown md-title="below origin" below-origin="true">
+                <ul>
+                  <li><a click.trigger="showToast($event)">one</a></li>
+                  <li><a click.trigger="showToast($event)">two</a></li>
+                  <li class="divider"></li>
+                  <li><a click.trigger="showToast($event)">three</a></li>
+                </ul>
+              </md-dropdown>
+            </div>
+            <div class="actions">
+              <md-dropdown md-title="open on hover" hover="true">
+                <ul>
+                  <li><a click.trigger="showToast($event)">one</a></li>
+                  <li><a click.trigger="showToast($event)">two</a></li>
+                  <li class="divider"></li>
+                  <li><a click.trigger="showToast($event)">three</a></li>
+                </ul>
+              </md-dropdown>
+            </div>
+            <div class="actions">
+              <md-dropdown md-title="no constrainWidth" constrain-width="false">
+                <ul>
+                  <li><a click.trigger="showToast($event)">one</a></li>
+                  <li><a click.trigger="showToast($event)">two</a></li>
+                  <li class="divider"></li>
+                  <li><a click.trigger="showToast($event)">three</a></li>
+                </ul>
+              </md-dropdown>
+            </div>
+            <div class="actions">
+              <md-dropdown md-title="gutter 20" gutter="20">
+                <ul>
+                  <li><a click.trigger="showToast($event)">one</a></li>
+                  <li><a click.trigger="showToast($event)">two</a></li>
+                  <li class="divider"></li>
+                  <li><a click.trigger="showToast($event)">three</a></li>
+                </ul>
+              </md-dropdown>
+            </div>
+            <div class="actions">
+              <md-dropdown md-title="alignment right" alignment="right" constrain-width="false">
+                <ul>
+                  <li><a click.trigger="showToast($event)">one</a></li>
+                  <li><a click.trigger="showToast($event)">two</a></li>
+                  <li class="divider"></li>
+                  <li><a click.trigger="showToast($event)">three</a></li>
+                </ul>
+              </md-dropdown>
+            </div>
+            <div class="actions">
+              <md-dropdown md-title="custom durations (both at 1000)" in-duration="1000" out-duration="1000">
+                <ul>
+                  <li><a click.trigger="showToast($event)">one</a></li>
+                  <li><a click.trigger="showToast($event)">two</a></li>
+                  <li class="divider"></li>
+                  <li><a click.trigger="showToast($event)">three</a></li>
+                </ul>
+              </md-dropdown>
+            </div>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/dropdown/options-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

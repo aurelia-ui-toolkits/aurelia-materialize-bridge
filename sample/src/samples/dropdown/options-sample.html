@@ -1,0 +1,62 @@
+<template>
+  <div class="actions">
+    <md-dropdown md-title="below origin" below-origin="true">
+      <ul>
+        <li><a click.trigger="showToast($event)">one</a></li>
+        <li><a click.trigger="showToast($event)">two</a></li>
+        <li class="divider"></li>
+        <li><a click.trigger="showToast($event)">three</a></li>
+      </ul>
+    </md-dropdown>
+  </div>
+  <div class="actions">
+    <md-dropdown md-title="open on hover" hover="true">
+      <ul>
+        <li><a click.trigger="showToast($event)">one</a></li>
+        <li><a click.trigger="showToast($event)">two</a></li>
+        <li class="divider"></li>
+        <li><a click.trigger="showToast($event)">three</a></li>
+      </ul>
+    </md-dropdown>
+  </div>
+  <div class="actions">
+    <md-dropdown md-title="no constrainWidth" constrain-width="false">
+      <ul>
+        <li><a click.trigger="showToast($event)">one</a></li>
+        <li><a click.trigger="showToast($event)">two</a></li>
+        <li class="divider"></li>
+        <li><a click.trigger="showToast($event)">three</a></li>
+      </ul>
+    </md-dropdown>
+  </div>
+  <div class="actions">
+    <md-dropdown md-title="gutter 20" gutter="20">
+      <ul>
+        <li><a click.trigger="showToast($event)">one</a></li>
+        <li><a click.trigger="showToast($event)">two</a></li>
+        <li class="divider"></li>
+        <li><a click.trigger="showToast($event)">three</a></li>
+      </ul>
+    </md-dropdown>
+  </div>
+  <div class="actions">
+    <md-dropdown md-title="alignment right" alignment="right" constrain-width="false">
+      <ul>
+        <li><a click.trigger="showToast($event)">one</a></li>
+        <li><a click.trigger="showToast($event)">two</a></li>
+        <li class="divider"></li>
+        <li><a click.trigger="showToast($event)">three</a></li>
+      </ul>
+    </md-dropdown>
+  </div>
+  <div class="actions">
+    <md-dropdown md-title="custom durations (both at 1000)" in-duration="1000" out-duration="1000">
+      <ul>
+        <li><a click.trigger="showToast($event)">one</a></li>
+        <li><a click.trigger="showToast($event)">two</a></li>
+        <li class="divider"></li>
+        <li><a click.trigger="showToast($event)">three</a></li>
+      </ul>
+    </md-dropdown>
+  </div>
+</template>
