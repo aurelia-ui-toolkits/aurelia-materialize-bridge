@@ -17,6 +17,7 @@ export class ConfigBuilder {
       .useSelect()
       .useSidenav()
       .useTabs()
+      .useTooltip()
       .useWaves()
       .useWell();
   }
@@ -75,6 +76,11 @@ export class ConfigBuilder {
    */
   useTabs(): ConfigBuilder {
     this.globalResources.push('./tabs/tabs');
+    return this;
+  }
+
+  useTooltip(): ConfigBuilder {
+    this.globalResources.push('./tooltip/tooltip');
     return this;
   }
 
