@@ -1,30 +1,48 @@
-import { customElement, inject, bindable } from 'aurelia-framework';
+import { customElement, inject, bindable, bindingMode } from 'aurelia-framework';
+import { getBooleanFromAttributeValue } from '../common/attributes';
 
 @customElement('md-dropdown')
 @inject(Element)
 export class MdDropdown {
   static id = 0;
-  @bindable() constrainWidth = true;
-  @bindable() mdTitle;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) alignment = 'left';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) belowOrigin = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) constrainWidth = true;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) gutter = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) hover = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) inDuration = 300;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) outDuration = 225;
+
   constructor(element) {
     this.element = element;
     this.controlId = `md-dropdown-${MdDropdown.id++}`;
   }
   attached() {
-    /*
-    $('.dropdown-button').dropdown({
-      inDuration: 300,
-      outDuration: 225,
-      //constrain_width: false, // Does not change width of dropdown to that of the activator
-      hover: true, // Activate on hover
-      gutter: 0, // Spacing from edge
-      belowOrigin: false, // Displays dropdown below the button
-      alignment: 'left' // Displays dropdown with edge aligned to the left of button
-    });
-    */
-    // console.log('this.constrainWidth', this.constrainWidth);
     $(this.element).dropdown({
-      constrain_width: (this.constrainWidth === true || this.constrainWidth === 'true')
+      alignment: this.alignment,
+      belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
+      constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
+      gutter: parseInt(this.gutter, 10),
+      hover: getBooleanFromAttributeValue(this.hover),
+      inDuration: parseInt(this.inDuration, 10),
+      outDuration: parseInt(this.outDuration, 10)
     });
   }
 }
