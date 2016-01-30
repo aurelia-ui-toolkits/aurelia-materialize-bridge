@@ -1,10 +1,20 @@
 <template>
   <md-dropdown md-title="drop me">
-    <ul>
-      <li><a click.trigger="showToast()">one</a></li>
-      <li><a click.trigger="showToast()">two</a></li>
+    <!-- <md-dropdown md-title="drop me">
+      <ul>
+        <li><a click.trigger="showToast($event)">one</a></li>
+        <li><a click.trigger="showToast($event)">two</a></li>
+        <li class="divider"></li>
+        <li><a click.trigger="showToast($event)">three</a></li>
+      </ul>
+    </md-dropdown> -->
+
+    <a md-button md-dropdown="activates: dropdown1;">drop me!</a>
+    <ul id="dropdown1">
+      <li><a click.trigger="showToast($event)">one</a></li>
+      <li><a click.trigger="showToast($event)">two</a></li>
       <li class="divider"></li>
-      <li><a click.trigger="showToast()">three</a></li>
+      <li><a click.trigger="showToast($event)">three</a></li>
     </ul>
   </md-dropdown>
 </template>
