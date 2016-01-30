@@ -63,6 +63,7 @@ export class ConfigBuilder {
   }
 
   useDropdown() : ConfigBuilder {
+    // this.globalResources.push('./dropdown/dropdown-element');
     this.globalResources.push('./dropdown/dropdown');
     return this;
   }

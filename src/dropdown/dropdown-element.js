@@ -1,13 +1,10 @@
-import { customAttribute, inject, bindable, bindingMode } from 'aurelia-framework';
-import { AttributeManager } from '../common/attributeManager';
+import { customElement, inject, bindable, bindingMode } from 'aurelia-framework';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 
-@customAttribute('md-dropdown')
+@customElement('md-dropdown')
 @inject(Element)
 export class MdDropdown {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) activates = '';
+  static id = 0;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) alignment = 'left';
@@ -35,15 +32,9 @@ export class MdDropdown {
 
   constructor(element) {
     this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
+    this.controlId = `md-dropdown-${MdDropdown.id++}`;
   }
-
   attached() {
-    this.contentAttributeManager = new AttributeManager(document.getElementById(this.activates));
-
-    this.attributeManager.addClasses('dropdown-button');
-    this.contentAttributeManager.addClasses('dropdown-content');
-    this.attributeManager.addAttributes({ 'data-activates': this.activates });
     $(this.element).dropdown({
       alignment: this.alignment,
       belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
@@ -53,11 +44,5 @@ export class MdDropdown {
       inDuration: parseInt(this.inDuration, 10),
       outDuration: parseInt(this.outDuration, 10)
     });
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes('data-activates');
-    this.attributeManager.removeClasses('dropdown-button');
-    this.contentAttributeManager.removeClasses('dropdown-content');
   }
 }
