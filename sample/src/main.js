@@ -13,6 +13,7 @@ export function configure(aurelia) {
         .useSelect()
         .useSidenav()
         .useTabs()
+        .useTooltip()
         .useWaves()
         .useWell();
     });
