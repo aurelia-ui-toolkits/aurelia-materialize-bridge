@@ -3,7 +3,7 @@ import { getBooleanFromAttributeValue } from '../common/attributes';
 
 @customElement('md-dropdown')
 @inject(Element)
-export class MdDropdown {
+export class MdDropdownElement {
   static id = 0;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
