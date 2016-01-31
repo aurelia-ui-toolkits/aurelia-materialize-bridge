@@ -1,4 +1,5 @@
-import { bindable, bindingMode, customElement } from 'aurelia-templating';
+import { bindable, customElement } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 

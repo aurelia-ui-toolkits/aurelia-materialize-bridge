@@ -1,4 +1,5 @@
-import { bindable, bindingMode, customAttribute } from 'aurelia-templating';
+import { bindable, customAttribute } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { AttributeManager } from '../common/attributeManager';
 import 'materialize';

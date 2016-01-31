@@ -1,5 +1,6 @@
-import { bindable, bindingMode, customElement } from 'aurelia-templating';
+import { bindable, customElement } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
+import { bindingMode } from 'aurelia-binding';
 
 @customElement('md-card')
 @inject(Element)

@@ -1,5 +1,7 @@
-import { bindable, bindingMode, customAttribute, LogManager } from 'aurelia-templating';
+import { bindable, customAttribute } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
+import * as LogManager from 'aurelia-logging';
 
 @inject(Element, LogManager)
 @customAttribute('md-select')
@@ -11,6 +13,7 @@ export class MdSelect {
     this.element = element;
     this.changeHandler = this.handleChangeFromNativeSelect.bind(this);
     this.log = LogManager.getLogger('md-select');
+    // this.log = getLogger('md-select');
   }
   attached() {
     $(this.element).material_select();
