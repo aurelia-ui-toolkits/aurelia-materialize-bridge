@@ -13,6 +13,7 @@ export class Samples {
       { name: 'select', route: 'select', moduleId: 'samples/select/index', title: 'select' },
       { name: 'sidenav', route: 'sidenav', moduleId: 'samples/sidenav/index', title: 'sidenav' },
       { name: 'tabs', route: 'tabs', moduleId: 'samples/tabs/index', title: 'tabs' },
+      { name: 'transitions', route: 'transitions', moduleId: 'samples/transitions/index', title: 'transitions' },
       { name: 'waves', route: 'waves', moduleId: 'samples/waves/index', title: 'waves' }
     ]);
     this.router = router;
