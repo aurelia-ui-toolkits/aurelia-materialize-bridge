@@ -1,4 +1,5 @@
-import { bindable, customElement, inject } from 'aurelia-framework';
+import { bindable, customElement } from 'aurelia-templating';
+import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 import { AttributeManager } from '../common/attributeManager';
 

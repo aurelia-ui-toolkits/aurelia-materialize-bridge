@@ -1,4 +1,5 @@
-import { bindable, bindingMode, inject, customAttribute, LogManager } from 'aurelia-framework';
+import { bindable, bindingMode, customAttribute, LogManager } from 'aurelia-templating';
+import { inject } from 'aurelia-dependency-injection';
 
 @inject(Element, LogManager)
 @customAttribute('md-select')

@@ -1,4 +1,5 @@
-import { bindable, customAttribute, inject, ObserverLocator } from 'aurelia-framework';
+import { bindable, customAttribute, ObserverLocator } from 'aurelia-templating';
+import { inject } from 'aurelia-dependency-injection';
 
 @customAttribute('md-sidenav-collapse')
 @inject(Element, ObserverLocator)

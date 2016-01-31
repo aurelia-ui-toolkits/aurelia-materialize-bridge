@@ -1,4 +1,5 @@
-import { customElement, inject, bindable, bindingMode } from 'aurelia-framework';
+import { bindable, bindingMode, customElement } from 'aurelia-templating';
+import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 
 @customElement('md-dropdown')
