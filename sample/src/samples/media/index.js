@@ -6,7 +6,8 @@ export class Index {
     config.title = 'Media';
     config.map([
       { route: ['', 'box'], moduleId: './box', nav: true, title: 'Material Box (basic)' },
-      { route: 'box-caption', moduleId: './box-caption', nav: true, title: 'Material Box (caption)' }
+      { route: 'box-caption', moduleId: './box-caption', nav: true, title: 'Material Box (caption)' },
+      { route: 'slider', moduleId: './slider', nav: true, title: 'Slider' }
     ]);
 
     this.router = router;

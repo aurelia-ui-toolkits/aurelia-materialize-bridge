@@ -1,0 +1,48 @@
+<template>
+  <style>
+    div.button-row {
+      padding: 5px 0;
+    }
+  </style>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Slider">
+          <md-slider>
+            <md-slide img="http://lorempixel.com/580/250/nature/1" caption-align="center">
+              <h3>This is our big Tagline!</h3>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </md-slide>
+            <md-slide img="http://lorempixel.com/580/250/nature/2" caption-align="left">
+              <h3>Left Aligned Caption</h3>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </md-slide>
+            <md-slide img="http://lorempixel.com/580/250/nature/3" caption-align="right">
+              <h3>Right Aligned Caption</h3>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </md-slide>
+            <md-slide img="http://lorempixel.com/580/250/nature/4" caption-align="center">
+              <h3>This is our big Tagline!</h3>
+              <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+            </md-slide>
+          </md-slider>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/media/slider-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>
