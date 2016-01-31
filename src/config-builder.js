@@ -20,6 +20,7 @@ export class ConfigBuilder {
       .useSidenav()
       .useTabs()
       .useTooltip()
+      .useTransitions()
       .useWaves()
       .useWell();
   }
@@ -94,6 +95,12 @@ export class ConfigBuilder {
 
   useTooltip(): ConfigBuilder {
     this.globalResources.push('./tooltip/tooltip');
+    return this;
+  }
+
+  useTransitions(): ConfigBuilder {
+    this.globalResources.push('./transitions/fadein-image');
+    this.globalResources.push('./transitions/staggered-list');
     return this;
   }
 
