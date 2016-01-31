@@ -18,6 +18,7 @@ export class ConfigBuilder {
       .useNavbar()
       .useSelect()
       .useSidenav()
+      .useSlider()
       .useTabs()
       .useTooltip()
       .useTransitions()
@@ -82,6 +83,12 @@ export class ConfigBuilder {
   useSidenav(): ConfigBuilder {
     this.globalResources.push('./sidenav/sidenav');
     this.globalResources.push('./sidenav/sidenav-collapse');
+    return this;
+  }
+
+  useSlider(): ConfigBuilder {
+    this.globalResources.push('./slider/slider');
+    this.globalResources.push('./slider/slide');
     return this;
   }
 
