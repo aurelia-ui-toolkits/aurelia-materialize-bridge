@@ -1,23 +1,27 @@
 <template>
   <a md-button md-staggered-list="ref.bind: list">stagger list</a>
+  <!--
+    when attached, all li children of the referenced element will have
+    their opacity set to 0
+  -->
   <ul ref="list">
-    <li style="opacity: 0;">
+    <li>
       <h4><a>List Item</a></h4>
       <p>This is a description</p>
     </li>
-    <li style="opacity: 0;">
+    <li>
       <h4><a>List Item</a></h4>
       <p>This is a description</p>
     </li>
-    <li style="opacity: 0;">
+    <li>
       <h4><a>List Item</a></h4>
       <p>This is a description</p>
     </li>
-    <li style="opacity: 0;">
+    <li>
       <h4><a>List Item</a></h4>
       <p>This is a description</p>
     </li>
-    <li style="opacity: 0;">
+    <li>
       <h4><a>List Item</a></h4>
       <p>This is a description</p>
     </li>
