@@ -52,7 +52,7 @@ export class Controls {
         { title: 'Select', link: '#/samples/select', status: 'wip' },
         { title: 'Radio buttons' },
         { title: 'Checkboxes', link: '#/samples/checkbox', status: 'wip' },
-        { title: 'Switches' },
+        { title: 'Switches', status: 'wip' },
         { title: 'File input button' },
         { title: 'Range' },
         { title: 'Datepicker' },

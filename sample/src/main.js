@@ -15,6 +15,7 @@ export function configure(aurelia) {
         .useSelect()
         .useSidenav()
         .useSlider()
+        .useSwitch()
         .useTabs()
         .useTooltip()
         .useTransitions()
