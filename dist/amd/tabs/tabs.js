@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/events', '../common/attributeManager'], function (exports, _aureliaFramework, _commonEvents, _commonAttributeManager) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/events', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _commonEvents, _commonAttributeManager) {
   'use strict';
 
   exports.__esModule = true;
@@ -55,8 +55,8 @@ define(['exports', 'aurelia-framework', '../common/events', '../common/attribute
     };
 
     var _MdTabs = MdTabs;
-    MdTabs = _aureliaFramework.inject(Element)(MdTabs) || MdTabs;
-    MdTabs = _aureliaFramework.customAttribute('md-tabs')(MdTabs) || MdTabs;
+    MdTabs = _aureliaDependencyInjection.inject(Element)(MdTabs) || MdTabs;
+    MdTabs = _aureliaTemplating.customAttribute('md-tabs')(MdTabs) || MdTabs;
     return MdTabs;
   })();
 

@@ -13,7 +13,12 @@ var ConfigBuilder = (function () {
   }
 
   ConfigBuilder.prototype.useAll = function useAll() {
-    return this.useButton().useCard().useCollapsible().useColors().useNavbar().useSidenav().useTabs().useWaves().useWell();
+    return this.useBox().useButton().useCard().useCheckbox().useCollapsible().useColors().useDropdown().useNavbar().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+  };
+
+  ConfigBuilder.prototype.useBox = function useBox() {
+    this.globalResources.push('./box/box');
+    return this;
   };
 
   ConfigBuilder.prototype.useButton = function useButton() {
@@ -23,6 +28,11 @@ var ConfigBuilder = (function () {
 
   ConfigBuilder.prototype.useCard = function useCard() {
     this.globalResources.push('./card/card');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useCheckbox = function useCheckbox() {
+    this.globalResources.push('./checkbox/checkbox');
     return this;
   };
 
@@ -41,8 +51,18 @@ var ConfigBuilder = (function () {
     return this;
   };
 
+  ConfigBuilder.prototype.useDropdown = function useDropdown() {
+    this.globalResources.push('./dropdown/dropdown');
+    return this;
+  };
+
   ConfigBuilder.prototype.useNavbar = function useNavbar() {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useSelect = function useSelect() {
+    this.globalResources.push('./select/select');
     return this;
   };
 
@@ -52,8 +72,30 @@ var ConfigBuilder = (function () {
     return this;
   };
 
+  ConfigBuilder.prototype.useSlider = function useSlider() {
+    this.globalResources.push('./slider/slider');
+    this.globalResources.push('./slider/slide');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useSwitch = function useSwitch() {
+    this.globalResources.push('./switch/switch');
+    return this;
+  };
+
   ConfigBuilder.prototype.useTabs = function useTabs() {
     this.globalResources.push('./tabs/tabs');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useTooltip = function useTooltip() {
+    this.globalResources.push('./tooltip/tooltip');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useTransitions = function useTransitions() {
+    this.globalResources.push('./transitions/fadein-image');
+    this.globalResources.push('./transitions/staggered-list');
     return this;
   };
 

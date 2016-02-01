@@ -1,6 +1,10 @@
 declare module 'aurelia-materialize-bridge' {
   import 'materialize';
-  import { Aurelia, bindable, customAttribute, inject, bindingMode, customElement, containerless, inlineView }  from 'aurelia-framework';
+  import * as LogManager from 'aurelia-logging';
+  import { Aurelia }  from 'aurelia-framework';
+  import { bindable, customAttribute, customElement, containerless, inlineView }  from 'aurelia-templating';
+  import { bindingMode, ObserverLocator }  from 'aurelia-binding';
+  import { inject }  from 'aurelia-dependency-injection';
   export class ClickCounter {
     count: any;
     increment(): any;
@@ -13,8 +17,10 @@ declare module 'aurelia-materialize-bridge' {
     useGlobalResources: boolean;
     globalResources: any;
     useAll(): ConfigBuilder;
+    useBox(): ConfigBuilder;
     useButton(): ConfigBuilder;
     useCard(): ConfigBuilder;
+    useCheckbox(): ConfigBuilder;
     
     /**
       * Use my control
@@ -22,13 +28,19 @@ declare module 'aurelia-materialize-bridge' {
     useClickCounter(): ConfigBuilder;
     useCollapsible(): ConfigBuilder;
     useColors(): ConfigBuilder;
+    useDropdown(): ConfigBuilder;
     useNavbar(): ConfigBuilder;
+    useSelect(): ConfigBuilder;
     useSidenav(): ConfigBuilder;
+    useSlider(): ConfigBuilder;
+    useSwitch(): ConfigBuilder;
     
     /**
        * Use materialized tabs
        */
     useTabs(): ConfigBuilder;
+    useTooltip(): ConfigBuilder;
+    useTransitions(): ConfigBuilder;
     
     /**
        * Use ripple/waves effect
@@ -43,6 +55,12 @@ declare module 'aurelia-materialize-bridge' {
     withoutGlobalResources(): ConfigBuilder;
   }
   export function configure(aurelia: Aurelia, configCallback?: ((builder: ConfigBuilder) => void)): any;
+  export class MdBox {
+    caption: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   export class MdButton {
     disabled: any;
     flat: any;
@@ -51,10 +69,23 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
     disabledChanged(newValue: any): any;
+    flatChanged(newValue: any): any;
   }
   export class MdCard {
-    title: any;
+    mdTitle: any;
     constructor(element: any);
+  }
+  export class MdCheckbox {
+    static id: any;
+    mdChecked: any;
+    mdDisabled: any;
+    mdFilledIn: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    handleChange(): any;
+    mdCheckedChanged(newValue: any): any;
+    mdDisabledChanged(newValue: any): any;
   }
   export class MdCollapsible {
     constructor(element: any);
@@ -106,99 +137,135 @@ declare module 'aurelia-materialize-bridge' {
   * @param data Addition data to attach to an event
   */
   export function fireMaterializeEvent(element: Element, name: string, data?: any): any;
-  export class MdNavbar {
-    fixed: any;
-    fixedClassSetter: any;
+  export class MdDropdownElement {
+    static id: any;
+    alignment: any;
+    belowOrigin: any;
+    constrainWidth: any;
+    gutter: any;
+    hover: any;
+    mdTitle: any;
+    inDuration: any;
+    outDuration: any;
+    constructor(element: any);
+    attached(): any;
+  }
+  export class MdDropdown {
+    activates: any;
+    alignment: any;
+    belowOrigin: any;
+    constrainWidth: any;
+    gutter: any;
+    hover: any;
+    mdTitle: any;
+    inDuration: any;
+    outDuration: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
+  }
+  export class MdNavbar {
+    fixed: any;
+    fixedAttributeManager: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  export class MdSelect {
+    selected: any;
+    constructor(element: any, logManager: any);
+    
+    //  this.log = getLogger('md-select');
+    attached(): any;
+    detached(): any;
+    
+    /*
+       * This handler is called when the native <select> changes.
+       */
+    handleChangeFromNativeSelect(): any;
+    selectedChanged(): any;
   }
   export class MdSidenavCollapse {
     ref: any;
-    constructor(element: any);
+    constructor(element: any, observerLocator: any);
     attached(): any;
-    
-    //  this.element.addEventListener('click', this.toggleSidenav);
     detached(): any;
+    
+    //  this.widthSubscription.unsubscribe();
+    widthChanged(): any;
   }
-  
-  //  this.element.removeEventListener('click', this.toggleSidenav);
-  //  toggleSidenav() {
-  //    $(this.element).sideNav('show');
-  //  }
   export class MdSidenav {
     static id: any;
-    edge: any;
     closeOnClick: any;
+    edge: any;
+    fixed: any;
+    mdWidth: any;
     constructor(element: any);
     attached(): any;
-  }
-  
-  //  this.controlId = 'md-sidenav-' + id++;
-  /*
-    implementation example
-  
-    <div class="row">
-        <div class="col s12 m8">
-          <div class="card">
-            <div class="card-content">
-              <span class="card-title">Code Preview</span>
-              <div class="row">
-                <md-tabs tabs.bind="tabs">
-                  <md-tab title="Html" for-element="#html"></md-tab>
-                  <md-tab title="Css (custom color)" for-element="#css"></md-tab>
-                </md-tabs>
-  
-                <div id="html" class="z-depth-1">
-                  <au-code language="markup" url="samples/waves/colors-sample.html"></au-code>
-                </div>
-                <div id="css" class="z-depth-1">
-                  <au-code language="css" url="samples/waves/colors-sample.css"></au-code>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-  */
-  //  @bindable({
-  //    name: 'title',
-  //    defaultBindingMode: bindingMode.oneWay
-  //  })
-  
-  //  @inlineView won't work, throwing "title is not defined"
-  //  @inlineView(`
-  //    <template>
-  //      <li md-waves class="tab">${title}</li>
-  //    </template>
-  //  `)
-  export class MdTab {
-    forElement: any;
-    tab: any;
-    title: any;
-    constructor(element: any);
-    attached(): any;
-    
-    //  console.log('[MdTab] attached', 'forElement', this.forElement, this.tab)
     detached(): any;
-    forElementChanged(newValue: any): any;
+    fixedChanged(newValue: any): any;
   }
-  
-  //  console.log('[MdTab] forElementChanged', 'newValue', newValue)
-  export class MdTabsElement {
+  export class MdSlide {
+    captionAlign: any;
+    img: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
   }
-  
-  //  no destroy handler in tabs :-(
+  export class MdSlider {
+    mdFillContainer: any;
+    mdHeight: any;
+    mdIndicators: any;
+    mdInterval: any;
+    mdTransition: any;
+    constructor(element: any);
+    attached(): any;
+  }
+  export class MdSwitch {
+    mdChecked: any;
+    mdLabelOff: any;
+    mdLabelOn: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    handleChange(): any;
+    mdCheckedChanged(newValue: any): any;
+  }
   export class MdTabs {
     constructor(element: any);
     attached(): any;
     detached(): any;
     fireTabSelectedEvent(e: any): any;
   }
+  export class MdToastService {
+    show(message: any, displayLength: any, className: any): any;
+  }
+  
+  //  @customAttribute('md-tooltip')
+  export class MdTooltip {
+    position: any;
+    delay: any;
+    text: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  export class MdFadeinImage {
+    ref: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    fadeInImage(): any;
+  }
+  export class MdStaggeredList {
+    ref: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    staggerList(): any;
+  }
   export class MdWaves {
+    color: any;
     constructor(element: any);
     attached(): any;
     detached(): any;

@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/events', '../common/attributeManager'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/events', '../common/attributeManager'], function (_export) {
   'use strict';
 
   var customAttribute, inject, fireMaterializeEvent, AttributeManager, MdTabs;
@@ -6,9 +6,10 @@ System.register(['aurelia-framework', '../common/events', '../common/attributeMa
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   return {
-    setters: [function (_aureliaFramework) {
-      customAttribute = _aureliaFramework.customAttribute;
-      inject = _aureliaFramework.inject;
+    setters: [function (_aureliaTemplating) {
+      customAttribute = _aureliaTemplating.customAttribute;
+    }, function (_aureliaDependencyInjection) {
+      inject = _aureliaDependencyInjection.inject;
     }, function (_commonEvents) {
       fireMaterializeEvent = _commonEvents.fireMaterializeEvent;
     }, function (_commonAttributeManager) {

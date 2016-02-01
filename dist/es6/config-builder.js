@@ -8,15 +8,28 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useBox()
       .useButton()
       .useCard()
+      .useCheckbox()
       .useCollapsible()
       .useColors()
+      .useDropdown()
       .useNavbar()
+      .useSelect()
       .useSidenav()
+      .useSlider()
+      .useSwitch()
       .useTabs()
+      .useTooltip()
+      .useTransitions()
       .useWaves()
       .useWell();
+  }
+
+  useBox(): ConfigBuilder {
+    this.globalResources.push('./box/box');
+    return this;
   }
 
   useButton(): ConfigBuilder {
@@ -26,6 +39,11 @@ export class ConfigBuilder {
 
   useCard(): ConfigBuilder {
     this.globalResources.push('./card/card');
+    return this;
+  }
+
+  useCheckbox(): ConfigBuilder {
+    this.globalResources.push('./checkbox/checkbox');
     return this;
   }
 
@@ -47,8 +65,19 @@ export class ConfigBuilder {
     return this;
   }
 
+  useDropdown() : ConfigBuilder {
+    // this.globalResources.push('./dropdown/dropdown-element');
+    this.globalResources.push('./dropdown/dropdown');
+    return this;
+  }
+
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useSelect(): ConfigBuilder {
+    this.globalResources.push('./select/select');
     return this;
   }
 
@@ -58,11 +87,33 @@ export class ConfigBuilder {
     return this;
   }
 
+  useSlider(): ConfigBuilder {
+    this.globalResources.push('./slider/slider');
+    this.globalResources.push('./slider/slide');
+    return this;
+  }
+
+  useSwitch(): ConfigBuilder {
+    this.globalResources.push('./switch/switch');
+    return this;
+  }
+
   /**
    * Use materialized tabs
    */
   useTabs(): ConfigBuilder {
     this.globalResources.push('./tabs/tabs');
+    return this;
+  }
+
+  useTooltip(): ConfigBuilder {
+    this.globalResources.push('./tooltip/tooltip');
+    return this;
+  }
+
+  useTransitions(): ConfigBuilder {
+    this.globalResources.push('./transitions/fadein-image');
+    this.globalResources.push('./transitions/staggered-list');
     return this;
   }
 

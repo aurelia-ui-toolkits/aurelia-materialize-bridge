@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _commonAttributes, _commonAttributeManager) {
   'use strict';
 
   exports.__esModule = true;
@@ -13,17 +13,31 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
     var _instanceInitializers = {};
 
     _createDecoratedClass(MdSidenav, [{
+      key: 'closeOnClick',
+      decorators: [_aureliaTemplating.bindable()],
+      initializer: function initializer() {
+        return true;
+      },
+      enumerable: true
+    }, {
       key: 'edge',
-      decorators: [_aureliaFramework.bindable()],
+      decorators: [_aureliaTemplating.bindable()],
       initializer: function initializer() {
         return 'left';
       },
       enumerable: true
     }, {
-      key: 'closeOnClick',
-      decorators: [_aureliaFramework.bindable()],
+      key: 'fixed',
+      decorators: [_aureliaTemplating.bindable()],
       initializer: function initializer() {
-        return true;
+        return false;
+      },
+      enumerable: true
+    }, {
+      key: 'mdWidth',
+      decorators: [_aureliaTemplating.bindable()],
+      initializer: function initializer() {
+        return 250;
       },
       enumerable: true
     }], [{
@@ -35,19 +49,42 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
     function MdSidenav(element) {
       _classCallCheck(this, _MdSidenav);
 
+      _defineDecoratedPropertyDescriptor(this, 'closeOnClick', _instanceInitializers);
+
       _defineDecoratedPropertyDescriptor(this, 'edge', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'closeOnClick', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'fixed', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'mdWidth', _instanceInitializers);
 
       this.element = element;
       this.controlId = 'md-sidenav-' + MdSidenav.id++;
     }
 
-    MdSidenav.prototype.attached = function attached() {};
+    MdSidenav.prototype.attached = function attached() {
+      this.attributeManager = new _commonAttributeManager.AttributeManager(this.sidenav);
+      if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
+        this.attributeManager.addClasses('fixed');
+      }
+    };
+
+    MdSidenav.prototype.detached = function detached() {
+      this.attributeManager.removeClasses('fixed');
+    };
+
+    MdSidenav.prototype.fixedChanged = function fixedChanged(newValue) {
+      if (this.attributeManager) {
+        if (newValue) {
+          this.attributeManager.addClasses('fixed');
+        } else {
+          this.attributeManager.removeClasses('fixed');
+        }
+      }
+    };
 
     var _MdSidenav = MdSidenav;
-    MdSidenav = _aureliaFramework.inject(Element)(MdSidenav) || MdSidenav;
-    MdSidenav = _aureliaFramework.customElement('md-sidenav')(MdSidenav) || MdSidenav;
+    MdSidenav = _aureliaDependencyInjection.inject(Element)(MdSidenav) || MdSidenav;
+    MdSidenav = _aureliaTemplating.customElement('md-sidenav')(MdSidenav) || MdSidenav;
     return MdSidenav;
   })();
 

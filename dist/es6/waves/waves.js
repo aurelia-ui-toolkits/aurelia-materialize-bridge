@@ -1,13 +1,14 @@
-import { bindable, bindingMode, customAttribute, inject } from 'aurelia-framework';
+import { bindable, customAttribute } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
+import { inject } from 'aurelia-dependency-injection';
 import { AttributeManager } from '../common/attributeManager';
 
 @customAttribute('md-waves')
-@bindable({
-  name: 'color',
-  defaultBindingMode: bindingMode.oneTime
-})
 @inject(Element)
 export class MdWaves {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) color;
   constructor(element) {
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);

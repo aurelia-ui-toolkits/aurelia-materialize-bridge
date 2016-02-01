@@ -4,7 +4,9 @@ exports.__esModule = true;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _commonEvents = require('../common/events');
 
@@ -60,8 +62,8 @@ var MdTabs = (function () {
   };
 
   var _MdTabs = MdTabs;
-  MdTabs = _aureliaFramework.inject(Element)(MdTabs) || MdTabs;
-  MdTabs = _aureliaFramework.customAttribute('md-tabs')(MdTabs) || MdTabs;
+  MdTabs = _aureliaDependencyInjection.inject(Element)(MdTabs) || MdTabs;
+  MdTabs = _aureliaTemplating.customAttribute('md-tabs')(MdTabs) || MdTabs;
   return MdTabs;
 })();
 

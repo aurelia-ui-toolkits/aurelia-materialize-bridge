@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaFramework, _commonAttributes, _commonAttributeManager) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _commonAttributes, _commonAttributeManager) {
   'use strict';
 
   exports.__esModule = true;
@@ -14,7 +14,9 @@ define(['exports', 'aurelia-framework', '../common/attributes', '../common/attri
 
     _createDecoratedClass(MdNavbar, [{
       key: 'fixed',
-      decorators: [_aureliaFramework.bindable()],
+      decorators: [_aureliaTemplating.bindable({
+        defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+      })],
       initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
@@ -41,8 +43,8 @@ define(['exports', 'aurelia-framework', '../common/attributes', '../common/attri
     };
 
     var _MdNavbar = MdNavbar;
-    MdNavbar = _aureliaFramework.inject(Element)(MdNavbar) || MdNavbar;
-    MdNavbar = _aureliaFramework.customElement('md-navbar')(MdNavbar) || MdNavbar;
+    MdNavbar = _aureliaDependencyInjection.inject(Element)(MdNavbar) || MdNavbar;
+    MdNavbar = _aureliaTemplating.customElement('md-navbar')(MdNavbar) || MdNavbar;
     return MdNavbar;
   })();
 

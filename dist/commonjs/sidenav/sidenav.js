@@ -8,23 +8,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _commonAttributes = require('../common/attributes');
+
+var _commonAttributeManager = require('../common/attributeManager');
 
 var MdSidenav = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(MdSidenav, [{
+    key: 'closeOnClick',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: function initializer() {
+      return true;
+    },
+    enumerable: true
+  }, {
     key: 'edge',
-    decorators: [_aureliaFramework.bindable()],
+    decorators: [_aureliaTemplating.bindable()],
     initializer: function initializer() {
       return 'left';
     },
     enumerable: true
   }, {
-    key: 'closeOnClick',
-    decorators: [_aureliaFramework.bindable()],
+    key: 'fixed',
+    decorators: [_aureliaTemplating.bindable()],
     initializer: function initializer() {
-      return true;
+      return false;
+    },
+    enumerable: true
+  }, {
+    key: 'mdWidth',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: function initializer() {
+      return 250;
     },
     enumerable: true
   }], [{
@@ -36,19 +56,42 @@ var MdSidenav = (function () {
   function MdSidenav(element) {
     _classCallCheck(this, _MdSidenav);
 
+    _defineDecoratedPropertyDescriptor(this, 'closeOnClick', _instanceInitializers);
+
     _defineDecoratedPropertyDescriptor(this, 'edge', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'closeOnClick', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'fixed', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdWidth', _instanceInitializers);
 
     this.element = element;
     this.controlId = 'md-sidenav-' + MdSidenav.id++;
   }
 
-  MdSidenav.prototype.attached = function attached() {};
+  MdSidenav.prototype.attached = function attached() {
+    this.attributeManager = new _commonAttributeManager.AttributeManager(this.sidenav);
+    if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
+      this.attributeManager.addClasses('fixed');
+    }
+  };
+
+  MdSidenav.prototype.detached = function detached() {
+    this.attributeManager.removeClasses('fixed');
+  };
+
+  MdSidenav.prototype.fixedChanged = function fixedChanged(newValue) {
+    if (this.attributeManager) {
+      if (newValue) {
+        this.attributeManager.addClasses('fixed');
+      } else {
+        this.attributeManager.removeClasses('fixed');
+      }
+    }
+  };
 
   var _MdSidenav = MdSidenav;
-  MdSidenav = _aureliaFramework.inject(Element)(MdSidenav) || MdSidenav;
-  MdSidenav = _aureliaFramework.customElement('md-sidenav')(MdSidenav) || MdSidenav;
+  MdSidenav = _aureliaDependencyInjection.inject(Element)(MdSidenav) || MdSidenav;
+  MdSidenav = _aureliaTemplating.customElement('md-sidenav')(MdSidenav) || MdSidenav;
   return MdSidenav;
 })();
 

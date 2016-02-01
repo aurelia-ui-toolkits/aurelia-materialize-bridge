@@ -1,15 +1,16 @@
-System.register(['aurelia-framework', '../common/attributes', '../common/attributeManager'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (_export) {
   'use strict';
 
-  var customAttribute, bindable, inject, getBooleanFromAttributeValue, AttributeManager, MdCollapsible;
+  var bindable, customAttribute, inject, getBooleanFromAttributeValue, AttributeManager, MdCollapsible;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   return {
-    setters: [function (_aureliaFramework) {
-      customAttribute = _aureliaFramework.customAttribute;
-      bindable = _aureliaFramework.bindable;
-      inject = _aureliaFramework.inject;
+    setters: [function (_aureliaTemplating) {
+      bindable = _aureliaTemplating.bindable;
+      customAttribute = _aureliaTemplating.customAttribute;
+    }, function (_aureliaDependencyInjection) {
+      inject = _aureliaDependencyInjection.inject;
     }, function (_commonAttributes) {
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }, function (_commonAttributeManager) {
