@@ -19,6 +19,7 @@ export class ConfigBuilder {
       .useSelect()
       .useSidenav()
       .useSlider()
+      .useSwitch()
       .useTabs()
       .useTooltip()
       .useTransitions()
@@ -89,6 +90,11 @@ export class ConfigBuilder {
   useSlider(): ConfigBuilder {
     this.globalResources.push('./slider/slider');
     this.globalResources.push('./slider/slide');
+    return this;
+  }
+
+  useSwitch(): ConfigBuilder {
+    this.globalResources.push('./switch/switch');
     return this;
   }
 

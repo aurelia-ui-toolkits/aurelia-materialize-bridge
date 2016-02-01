@@ -108,6 +108,14 @@
     background-color: ${mdAccentColor};
   }
 
+  /* switch */
+  md-switch.switch label input[type=checkbox]:checked + .lever {
+    background-color: ${mdAccentColor | lighten:1};
+  }
+  md-switch.switch label input[type=checkbox]:checked + .lever:after {
+    background-color: ${mdAccentColor};
+  }
+
   /* tabs */
 
   .tab.primary-text a {
