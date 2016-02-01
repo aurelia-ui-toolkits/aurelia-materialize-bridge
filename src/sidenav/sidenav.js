@@ -13,15 +13,8 @@ export class MdSidenav {
   @bindable() mdFixed = false;
   @bindable() mdWidth = 250;
 
-  // isAttached;
-  // attachedDeferred = (() => {
-  //   let dfd;
-  //   this.isAttached = new Promise((resolve, reject) => {
-  //     dfd =
-  //   });
-  // });
   attachedResolver;
-  isAttached;
+  whenAttached;
 
   constructor(element) {
     this.element = element;
@@ -30,12 +23,9 @@ export class MdSidenav {
     this.whenAttached = new Promise((resolve, reject) => {
       this.attachedResolver = resolve;
     });
-    this.log.debug('ctor');
   }
 
   attached() {
-    this.log.debug('attached');
-
     this.attributeManager = new AttributeManager(this.sidenav);
     if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.attributeManager.addClasses('fixed');

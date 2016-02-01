@@ -11,11 +11,9 @@ export class MdSidenavCollapse {
     this.element = element;
     this.observerLocator = observerLocator;
     this.log = getLogger('md-sidenav-collapse');
-    this.log.debug('ctor');
   }
 
   attached() {
-    this.log.debug('attached');
     this.ref.whenAttached.then(() => {
       // this.widthSubscription = this.observerLocator.getObserver(this.ref, 'mdWidth').subscribe(this.widthChanged.bind(this));
       // this.fixedSubscription = this.observerLocator.getObserver(this.ref, 'fixed').subscribe(this.fixedChanged.bind(this));
