@@ -1,0 +1,37 @@
+<template>
+  <div>
+    <a md-sidenav-collapse="ref.bind: sideNavLeft;" md-button md-waves>Left SideNav</a>
+    <a md-sidenav-collapse="ref.bind: sideNavRight;" md-button md-waves>Right SideNav</a>
+    <a md-sidenav-collapse="ref.bind: sideNavLarge;" md-button md-waves>Larger right SideNav</a>
+  </div>
+  
+  <!-- left sidenav -->
+  <md-sidenav view-model.ref="sideNavLeft">
+    <ul>
+      <li md-waves><a>About</a></li>
+      <li md-waves><a>Installation</a></li>
+      <li md-waves><a>Project Status</a></li>
+      <li md-waves><a>Help/Docs</a></li>
+    </ul>
+  </md-sidenav>
+
+  <!-- right sidenav -->
+  <md-sidenav view-model.ref="sideNavRight" md-edge="right">
+    <ul>
+      <li md-waves><a>About</a></li>
+      <li md-waves><a>Installation</a></li>
+      <li md-waves><a>Project Status</a></li>
+      <li md-waves><a>Help/Docs</a></li>
+    </ul>
+  </md-sidenav>
+
+  <!-- right sidenav with custom width -->
+  <md-sidenav md-width="350" view-model.ref="sideNavLarge" md-edge="right">
+    <ul>
+      <li md-waves><a>About</a></li>
+      <li md-waves><a>Installation</a></li>
+      <li md-waves><a>Project Status</a></li>
+      <li md-waves><a>Help/Docs</a></li>
+    </ul>
+  </md-sidenav>
+</template>
