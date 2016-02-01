@@ -6,7 +6,13 @@ export class Help {
       }
     });
   }
+
   toggleChat() {
     this.gitter.toggleChat(true);
+  }
+
+  scrollToTop() {
+    // window.scrollTo(0, 0);
+    $('html, body').animate({ scrollTop: 0 });
   }
 }
