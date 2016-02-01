@@ -1,0 +1,26 @@
+<template>
+  <div style="margin-bottom: 10px;">
+    <a md-button click.delegate="slider.pause()">pause</a>
+    <a md-button click.delegate="slider.start()">start</a>
+    <a md-button click.delegate="slider.prev()">prev</a>
+    <a md-button click.delegate="slider.next()">next</a>
+  </div>
+  <md-slider view-model.ref="slider">
+    <md-slide img="http://lorempixel.com/580/250/nature/1" caption-align="center">
+      <h3>This is our big Tagline!</h3>
+      <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+    </md-slide>
+    <md-slide img="http://lorempixel.com/580/250/nature/2" caption-align="left">
+      <h3>Left Aligned Caption</h3>
+      <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+    </md-slide>
+    <md-slide img="http://lorempixel.com/580/250/nature/3" caption-align="right">
+      <h3>Right Aligned Caption</h3>
+      <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+    </md-slide>
+    <md-slide img="http://lorempixel.com/580/250/nature/4" caption-align="center">
+      <h3>This is our big Tagline!</h3>
+      <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+    </md-slide>
+  </md-slider>
+</template>
