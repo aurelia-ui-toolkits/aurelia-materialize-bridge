@@ -35,4 +35,20 @@ export class MdSlider {
       transition: parseInt(this.mdTransition, 10)
     });
   }
+
+  pause() {
+    $(this.element).slider('pause');
+  }
+
+  start() {
+    $(this.element).slider('start');
+  }
+
+  next() {
+    $(this.element).slider('next');
+  }
+
+  prev() {
+    $(this.element).slider('prev');
+  }
 }
