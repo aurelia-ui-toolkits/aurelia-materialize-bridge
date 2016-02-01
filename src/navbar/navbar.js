@@ -9,7 +9,7 @@ import { AttributeManager } from '../common/attributeManager';
 export class MdNavbar {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
-  }) fixed;
+  }) mdFixed;
   fixedAttributeManager;
 
   constructor(element) {
@@ -18,13 +18,13 @@ export class MdNavbar {
 
   attached() {
     this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
-    if (getBooleanFromAttributeValue(this.fixed)) {
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.addClasses('navbar-fixed');
     }
   }
 
   detached() {
-    if (getBooleanFromAttributeValue(this.fixed)) {
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
   }
