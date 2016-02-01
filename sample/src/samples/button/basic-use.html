@@ -9,7 +9,7 @@
       <div class="col s12 m8">
         <md-card md-title="Basic use">
           <div class="button-row">
-            <button md-button="disabled.bind: !firstButtonEnabled"><i class="mdi-file-cloud left"></i>I'm a basic button</button>
+            <button md-button="disabled.bind: !firstButtonEnabled; flat.bind: !firstButtonRaised"><i class="mdi-file-cloud left"></i>I'm a basic button</button>
             <button md-button="flat: true;">I'm a flat button</button>
           </div>
           <div class="button-row">
@@ -24,6 +24,7 @@
             <hr />
             First button:
             <md-switch md-label-on="enabled" md-label-off="disabled" md-checked.bind="firstButtonEnabled"></md-switch>
+            <md-switch md-label-on="raised" md-label-off="flst" md-checked.bind="firstButtonRaised"></md-switch>
           </div>
         </md-card>
     </div>
