@@ -42,7 +42,7 @@ export class Controls {
         { title: 'Scrollspy' },
         { title: 'SideNav', link: '#/samples/sidenav', status: 'wip' },
         { title: 'Tabs', link: '#/samples/tabs', status: 'wip' },
-        { title: 'Transitions', link: '#/samples/transitions', status: 'wip' },
+        { title: 'Transitions', link: '#/samples/transitions', status: 'done' },
         { title: 'Waves', link: '#/samples/waves', status: 'done' }
       ]
     }, {
