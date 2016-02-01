@@ -3,6 +3,12 @@
     <div class="row">
       <div class="col s12 m8">
         <md-card md-title="Slider">
+          <div style="margin-bottom: 10px;">
+            <a md-button click.delegate="slider.pause()">pause</a>
+            <a md-button click.delegate="slider.start()">start</a>
+            <a md-button click.delegate="slider.prev()">prev</a>
+            <a md-button click.delegate="slider.next()">next</a>
+          </div>
           <md-slider view-model.ref="slider">
             <md-slide img="http://lorempixel.com/580/250/nature/1" caption-align="center">
               <h3>This is our big Tagline!</h3>
