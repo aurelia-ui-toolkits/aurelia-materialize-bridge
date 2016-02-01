@@ -2,30 +2,54 @@ import { bindable, customElement } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 import { AttributeManager } from '../common/attributeManager';
+import { getLogger } from 'aurelia-logging';
 
 @customElement('md-sidenav')
 @inject(Element)
 export class MdSidenav {
   static id = 0;
-  @bindable() closeOnClick = true;
-  @bindable() edge = 'left';
-  @bindable() fixed = false;
+  @bindable() mdCloseOnClick = false;
+  @bindable() mdEdge = 'left';
+  @bindable() mdFixed = false;
   @bindable() mdWidth = 250;
+
+  // isAttached;
+  // attachedDeferred = (() => {
+  //   let dfd;
+  //   this.isAttached = new Promise((resolve, reject) => {
+  //     dfd =
+  //   });
+  // });
+  attachedResolver;
+  isAttached;
 
   constructor(element) {
     this.element = element;
     this.controlId = `md-sidenav-${MdSidenav.id++}`;
+    this.log = getLogger('md-sidenav');
+    this.whenAttached = new Promise((resolve, reject) => {
+      this.attachedResolver = resolve;
+    });
+    this.log.debug('ctor');
   }
 
   attached() {
+    this.log.debug('attached');
+
     this.attributeManager = new AttributeManager(this.sidenav);
-    if (getBooleanFromAttributeValue(this.fixed)) {
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.attributeManager.addClasses('fixed');
+      if (this.mdEdge === 'right') {
+        // see: https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/53
+        this.attributeManager.addClasses('right-aligned');
+      }
     }
+
+    this.attachedResolver();
   }
 
   detached() {
-    this.attributeManager.removeClasses('fixed');
+    this.attributeManager.removeClasses(['fixed', 'right-aligned']);
   }
 
   fixedChanged(newValue) {
