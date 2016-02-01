@@ -7,7 +7,8 @@ export class Index {
     config.map([
       { route: ['', 'box'], moduleId: './box', nav: true, title: 'Material Box (basic)' },
       { route: 'box-caption', moduleId: './box-caption', nav: true, title: 'Material Box (caption)' },
-      { route: 'slider', moduleId: './slider', nav: true, title: 'Slider' }
+      { route: 'slider', moduleId: './slider', nav: true, title: 'Slider' },
+      { route: 'slider-fullscreen', moduleId: './slider-fullscreen', nav: true, title: 'Slider (fullscreen)' }
     ]);
 
     this.router = router;
