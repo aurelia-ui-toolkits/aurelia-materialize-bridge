@@ -1,0 +1,13 @@
+<template>
+  <md-sidenav view-model.ref="sideNav" md-fixed="true" md-edge="right">
+    <ul>
+      <li md-waves><a>About</a></li>
+      <li md-waves><a>Installation</a></li>
+      <li md-waves><a>Project Status</a></li>
+      <li md-waves><a>Help/Docs</a></li>
+    </ul>
+  </md-sidenav>
+  <div>
+    <a md-sidenav-collapse="ref.bind: sideNav;" md-button md-waves>Right SideNav</a>
+  </div>
+</template>
