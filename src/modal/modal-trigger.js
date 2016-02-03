@@ -1,4 +1,5 @@
-import { customAttribute, inject } from 'aurelia-templating';
+import { customAttribute } from 'aurelia-templating';
+import { inject } from 'aurelia-dependency-injection';
 import { AttributeManager } from '../common/attributeManager';
 
 @customAttribute('md-modal-trigger')
