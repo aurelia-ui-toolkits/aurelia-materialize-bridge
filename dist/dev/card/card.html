@@ -1,7 +1,11 @@
 <template>
   <div class="card">
-    <div class="card-content">
+    <div if.bind="mdImage !== null" class="card-image">
+      <img src.bind="mdImage" />
       <span class="card-title">${mdTitle}</span>
+    </div>
+    <div class="card-content">
+      <span if.bind="mdImage === null" class="card-title">${mdTitle}</span>
       <content></content>
     </div>
   </div>

@@ -17,7 +17,7 @@ System.register([], function (_export) {
         }
 
         ConfigBuilder.prototype.useAll = function useAll() {
-          return this.useBox().useButton().useCard().useCheckbox().useCollapsible().useColors().useDropdown().useNavbar().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+          return this.useBox().useButton().useCard().useCarousel().useCheckbox().useCollapsible().useColors().useDropdown().useNavbar().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
         };
 
         ConfigBuilder.prototype.useBox = function useBox() {
@@ -27,6 +27,12 @@ System.register([], function (_export) {
 
         ConfigBuilder.prototype.useButton = function useButton() {
           this.globalResources.push('./button/button');
+          return this;
+        };
+
+        ConfigBuilder.prototype.useCarousel = function useCarousel() {
+          this.globalResources.push('./carousel/carousel');
+          this.globalResources.push('./carousel/carousel-item');
           return this;
         };
 

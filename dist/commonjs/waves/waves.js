@@ -16,10 +16,21 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _commonAttributeManager = require('../common/attributeManager');
 
+var _commonAttributes = require('../common/attributes');
+
 var MdWaves = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(MdWaves, [{
+    key: 'block',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }, {
     key: 'color',
     decorators: [_aureliaTemplating.bindable({
       defaultBindingMode: _aureliaBinding.bindingMode.oneTime
@@ -31,6 +42,8 @@ var MdWaves = (function () {
   function MdWaves(element) {
     _classCallCheck(this, _MdWaves);
 
+    _defineDecoratedPropertyDescriptor(this, 'block', _instanceInitializers);
+
     _defineDecoratedPropertyDescriptor(this, 'color', _instanceInitializers);
 
     this.element = element;
@@ -39,6 +52,9 @@ var MdWaves = (function () {
 
   MdWaves.prototype.attached = function attached() {
     var classes = ['waves-effect'];
+    if (_commonAttributes.getBooleanFromAttributeValue(this.block)) {
+      classes.push('waves-block');
+    }
     if (this.color) {
       classes.push('waves-' + this.color);
     }
@@ -48,7 +64,7 @@ var MdWaves = (function () {
   };
 
   MdWaves.prototype.detached = function detached() {
-    var classes = ['waves-effect'];
+    var classes = ['waves-effect', 'waves-block'];
     if (this.color) {
       classes.push('waves-' + this.color);
     }

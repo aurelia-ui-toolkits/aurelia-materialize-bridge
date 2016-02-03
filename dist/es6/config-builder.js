@@ -11,6 +11,7 @@ export class ConfigBuilder {
       .useBox()
       .useButton()
       .useCard()
+      .useCarousel()
       .useCheckbox()
       .useCollapsible()
       .useColors()
@@ -34,6 +35,12 @@ export class ConfigBuilder {
 
   useButton(): ConfigBuilder {
     this.globalResources.push('./button/button');
+    return this;
+  }
+
+  useCarousel(): ConfigBuilder {
+    this.globalResources.push('./carousel/carousel');
+    this.globalResources.push('./carousel/carousel-item');
     return this;
   }
 

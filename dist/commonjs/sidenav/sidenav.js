@@ -16,25 +16,27 @@ var _commonAttributes = require('../common/attributes');
 
 var _commonAttributeManager = require('../common/attributeManager');
 
+var _aureliaLogging = require('aurelia-logging');
+
 var MdSidenav = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(MdSidenav, [{
-    key: 'closeOnClick',
+    key: 'mdCloseOnClick',
     decorators: [_aureliaTemplating.bindable()],
     initializer: function initializer() {
-      return true;
+      return false;
     },
     enumerable: true
   }, {
-    key: 'edge',
+    key: 'mdEdge',
     decorators: [_aureliaTemplating.bindable()],
     initializer: function initializer() {
       return 'left';
     },
     enumerable: true
   }, {
-    key: 'fixed',
+    key: 'mdFixed',
     decorators: [_aureliaTemplating.bindable()],
     initializer: function initializer() {
       return false;
@@ -54,29 +56,40 @@ var MdSidenav = (function () {
   }], _instanceInitializers);
 
   function MdSidenav(element) {
+    var _this = this;
+
     _classCallCheck(this, _MdSidenav);
 
-    _defineDecoratedPropertyDescriptor(this, 'closeOnClick', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'mdCloseOnClick', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'edge', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'mdEdge', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'fixed', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'mdFixed', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'mdWidth', _instanceInitializers);
 
     this.element = element;
     this.controlId = 'md-sidenav-' + MdSidenav.id++;
+    this.log = _aureliaLogging.getLogger('md-sidenav');
+    this.whenAttached = new Promise(function (resolve, reject) {
+      _this.attachedResolver = resolve;
+    });
   }
 
   MdSidenav.prototype.attached = function attached() {
     this.attributeManager = new _commonAttributeManager.AttributeManager(this.sidenav);
-    if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
+    if (_commonAttributes.getBooleanFromAttributeValue(this.mdFixed)) {
       this.attributeManager.addClasses('fixed');
+      if (this.mdEdge === 'right') {
+        this.attributeManager.addClasses('right-aligned');
+      }
     }
+
+    this.attachedResolver();
   };
 
   MdSidenav.prototype.detached = function detached() {
-    this.attributeManager.removeClasses('fixed');
+    this.attributeManager.removeClasses(['fixed', 'right-aligned']);
   };
 
   MdSidenav.prototype.fixedChanged = function fixedChanged(newValue) {

@@ -4,6 +4,7 @@ import {Aurelia} from 'aurelia-framework';
 import {bindable,customAttribute,customElement,containerless,inlineView} from 'aurelia-templating';
 import {bindingMode,ObserverLocator} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
+import {getLogger} from 'aurelia-logging';
 
 export class ClickCounter {
   count = 0;
@@ -26,6 +27,7 @@ export class ConfigBuilder {
       .useBox()
       .useButton()
       .useCard()
+      .useCarousel()
       .useCheckbox()
       .useCollapsible()
       .useColors()
@@ -49,6 +51,12 @@ export class ConfigBuilder {
 
   useButton(): ConfigBuilder {
     this.globalResources.push('./button/button');
+    return this;
+  }
+
+  useCarousel(): ConfigBuilder {
+    this.globalResources.push('./carousel/carousel');
+    this.globalResources.push('./carousel/carousel-item');
     return this;
   }
 
@@ -254,12 +262,54 @@ export class MdButton {
 @customElement('md-card')
 @inject(Element)
 export class MdCard {
+  @bindable() mdImage = null;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdTitle;
 
   constructor(element) {
+    this.element = element;
+  }
 
+  attached() {
+    //
+  }
+}
+
+// @customElement('md-carousel-item')
+@inject(Element)
+export class MdCarouselItem {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdHref = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdImage = '';
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() { }
+}
+
+@customElement('md-carousel')
+@inject(Element)
+export class MdCarousel {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdSlider = false;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    if (getBooleanFromAttributeValue(this.mdSlider)) {
+      this.element.classList.add('carousel-slider');
+    }
+
+    $(this.element).carousel();
   }
 }
 
@@ -604,12 +654,29 @@ export class MdDropdown {
   }
 }
 
+@customAttribute('md-modal-trigger')
+@inject(Element)
+export class MdModalTrigger {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('modal-trigger');
+  }
+
+  detached() {
+    this.attributeManager.removeClasses('modal-trigger');
+  }
+}
+
 @customElement('md-navbar')
 @inject(Element)
 export class MdNavbar {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
-  }) fixed;
+  }) mdFixed;
   fixedAttributeManager;
 
   constructor(element) {
@@ -618,13 +685,13 @@ export class MdNavbar {
 
   attached() {
     this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
-    if (getBooleanFromAttributeValue(this.fixed)) {
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.addClasses('navbar-fixed');
     }
   }
 
   detached() {
-    if (getBooleanFromAttributeValue(this.fixed)) {
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
   }
@@ -660,10 +727,30 @@ export class MdSelect {
     this.selected = $(this.element).val();
   }
 
+  arraysAreEqual(array1, array2) {
+    let result = true;
+    if (array1 && array2) {
+      if (typeof array1 === 'string') {
+        // single select
+        result = false;
+      } else {
+        result = (array1.length === array2.length) && array1.every(function(element, index) {
+          return element === array2[index];
+        });
+      }
+    } else {
+      result = false;
+    }
+
+    return result;
+  }
+
   selectedChanged() {
     // this.element.value = this.selected;
-    $(this.element).val(this.selected);
-    $(this.element).material_select();
+    if (!this.arraysAreEqual($(this.element).val(), this.selected)) {
+      $(this.element).val(this.selected);
+      $(this.element).material_select();
+    }
   }
 }
 
@@ -674,16 +761,22 @@ export class MdSidenavCollapse {
   constructor(element, observerLocator) {
     this.element = element;
     this.observerLocator = observerLocator;
+    this.log = getLogger('md-sidenav-collapse');
   }
 
   attached() {
-    // this.widthSubscription = this.observerLocator.getObserver(this.ref, 'mdWidth')
-    //   .subscribe(this.widthChanged.bind(this));
-    this.element.setAttribute('data-activates', this.ref.controlId);
-    $(this.element).sideNav({
-      edge: this.ref.edge || 'left',
-      closeOnClick: this.ref.closeOnClick,
-      menuWidth: parseInt(this.ref.mdWidth, 10)
+    this.ref.whenAttached.then(() => {
+      // this.widthSubscription = this.observerLocator.getObserver(this.ref, 'mdWidth').subscribe(this.widthChanged.bind(this));
+      // this.fixedSubscription = this.observerLocator.getObserver(this.ref, 'fixed').subscribe(this.fixedChanged.bind(this));
+
+      this.element.setAttribute('data-activates', this.ref.controlId);
+      let sideNavConfig = {
+        edge: this.ref.mdEdge || 'left',
+        closeOnClick: this.ref.mdCloseOnClick,
+        menuWidth: parseInt(this.ref.mdWidth, 10)
+      };
+      // this.log.debug('sideNavConfig:', sideNavConfig);
+      $(this.element).sideNav(sideNavConfig);
     });
   }
 
@@ -691,38 +784,61 @@ export class MdSidenavCollapse {
     // this.widthSubscription.unsubscribe();
   }
 
-  widthChanged() {
-    $(this.element).sideNav({
-      edge: this.ref.edge || 'left',
-      closeOnClick: this.ref.closeOnClick,
-      menuWidth: parseInt(this.ref.mdWidth, 10)
-    });
-  }
+  // fixedChanged() {
+  //   this.log.debug('fixedChanged');
+  //   $(this.element).sideNav({
+  //     edge: this.ref.edge || 'left',
+  //     closeOnClick: this.ref.closeOnClick,
+  //     menuWidth: parseInt(this.ref.mdWidth, 10)
+  //   });
+  // }
+  //
+  // widthChanged() {
+  //   this.log.debug('widthChanged');
+  //   $(this.element).sideNav({
+  //     edge: this.ref.edge || 'left',
+  //     closeOnClick: this.ref.closeOnClick,
+  //     menuWidth: parseInt(this.ref.mdWidth, 10)
+  //   });
+  // }
 }
 
 @customElement('md-sidenav')
 @inject(Element)
 export class MdSidenav {
   static id = 0;
-  @bindable() closeOnClick = true;
-  @bindable() edge = 'left';
-  @bindable() fixed = false;
+  @bindable() mdCloseOnClick = false;
+  @bindable() mdEdge = 'left';
+  @bindable() mdFixed = false;
   @bindable() mdWidth = 250;
+
+  attachedResolver;
+  whenAttached;
 
   constructor(element) {
     this.element = element;
     this.controlId = `md-sidenav-${MdSidenav.id++}`;
+    this.log = getLogger('md-sidenav');
+    this.whenAttached = new Promise((resolve, reject) => {
+      this.attachedResolver = resolve;
+    });
   }
 
   attached() {
     this.attributeManager = new AttributeManager(this.sidenav);
-    if (getBooleanFromAttributeValue(this.fixed)) {
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.attributeManager.addClasses('fixed');
+      if (this.mdEdge === 'right') {
+        // see: https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/53
+        this.attributeManager.addClasses('right-aligned');
+      }
     }
+
+    this.attachedResolver();
   }
 
   detached() {
-    this.attributeManager.removeClasses('fixed');
+    this.attributeManager.removeClasses(['fixed', 'right-aligned']);
   }
 
   fixedChanged(newValue) {
@@ -804,6 +920,22 @@ export class MdSlider {
       interval: parseInt(this.mdInterval, 10),
       transition: parseInt(this.mdTransition, 10)
     });
+  }
+
+  pause() {
+    $(this.element).slider('pause');
+  }
+
+  start() {
+    $(this.element).slider('start');
+  }
+
+  next() {
+    $(this.element).slider('next');
+  }
+
+  prev() {
+    $(this.element).slider('prev');
   }
 }
 
@@ -929,10 +1061,12 @@ export class MdFadeinImage {
   constructor(element) {
     this.element = element;
     this.fadeInImage = this.fadeInImage.bind(this);
+    this.log = getLogger('md-fadein-image');
   }
 
   attached() {
     this.element.addEventListener('click', this.fadeInImage);
+    this.ensureOpacity();
   }
 
   detached() {
@@ -941,6 +1075,13 @@ export class MdFadeinImage {
 
   fadeInImage() {
     Materialize.fadeInImage(this.ref);
+  }
+
+  ensureOpacity() {
+    let opacity = window.getComputedStyle(this.ref).opacity;
+    if (opacity !== 0) {
+      this.ref.style.opacity = 0;
+    }
   }
 }
 
@@ -952,10 +1093,12 @@ export class MdStaggeredList {
   constructor(element) {
     this.element = element;
     this.staggerList = this.staggerList.bind(this);
+    this.log = getLogger('md-staggered-list');
   }
 
   attached() {
     this.element.addEventListener('click', this.staggerList);
+    this.ensureOpacity();
   }
 
   detached() {
@@ -965,11 +1108,24 @@ export class MdStaggeredList {
   staggerList() {
     Materialize.showStaggeredList(this.ref);
   }
+
+  ensureOpacity() {
+    let items = this.ref.querySelectorAll('li');
+    [].forEach.call(items, item => {
+      let opacity = window.getComputedStyle(item).opacity;
+      if (opacity !== 0) {
+        item.style.opacity = 0;
+      }
+    });
+  }
 }
 
 @customAttribute('md-waves')
 @inject(Element)
 export class MdWaves {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) block = false;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) color;
@@ -980,6 +1136,9 @@ export class MdWaves {
 
   attached() {
     let classes = ['waves-effect'];
+    if (getBooleanFromAttributeValue(this.block)) {
+      classes.push('waves-block');
+    }
     if (this.color) {
       classes.push(`waves-${this.color}`);
     }
@@ -989,7 +1148,7 @@ export class MdWaves {
   }
 
   detached() {
-    let classes = ['waves-effect'];
+    let classes = ['waves-effect', 'waves-block'];
     if (this.color) {
       classes.push(`waves-${this.color}`);
     }

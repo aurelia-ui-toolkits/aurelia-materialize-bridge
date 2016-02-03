@@ -27,7 +27,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         var _instanceInitializers = {};
 
         _createDecoratedClass(MdNavbar, [{
-          key: 'fixed',
+          key: 'mdFixed',
           decorators: [bindable({
             defaultBindingMode: bindingMode.oneTime
           })],
@@ -38,20 +38,20 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         function MdNavbar(element) {
           _classCallCheck(this, _MdNavbar);
 
-          _defineDecoratedPropertyDescriptor(this, 'fixed', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'mdFixed', _instanceInitializers);
 
           this.element = element;
         }
 
         MdNavbar.prototype.attached = function attached() {
           this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
-          if (getBooleanFromAttributeValue(this.fixed)) {
+          if (getBooleanFromAttributeValue(this.mdFixed)) {
             this.fixedAttributeManager.addClasses('navbar-fixed');
           }
         };
 
         MdNavbar.prototype.detached = function detached() {
-          if (getBooleanFromAttributeValue(this.fixed)) {
+          if (getBooleanFromAttributeValue(this.mdFixed)) {
             this.fixedAttributeManager.removeClasses('navbar-fixed');
           }
         };

@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'materialize'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _materialize) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging', 'materialize'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging, _materialize) {
   'use strict';
 
   exports.__esModule = true;
@@ -26,10 +26,12 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'materi
 
       this.element = element;
       this.fadeInImage = this.fadeInImage.bind(this);
+      this.log = _aureliaLogging.getLogger('md-fadein-image');
     }
 
     MdFadeinImage.prototype.attached = function attached() {
       this.element.addEventListener('click', this.fadeInImage);
+      this.ensureOpacity();
     };
 
     MdFadeinImage.prototype.detached = function detached() {
@@ -38,6 +40,13 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'materi
 
     MdFadeinImage.prototype.fadeInImage = function fadeInImage() {
       Materialize.fadeInImage(this.ref);
+    };
+
+    MdFadeinImage.prototype.ensureOpacity = function ensureOpacity() {
+      var opacity = window.getComputedStyle(this.ref).opacity;
+      if (opacity !== 0) {
+        this.ref.style.opacity = 0;
+      }
     };
 
     var _MdFadeinImage = MdFadeinImage;

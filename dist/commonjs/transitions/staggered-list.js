@@ -12,6 +12,8 @@ var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
+var _aureliaLogging = require('aurelia-logging');
+
 require('materialize');
 
 var MdStaggeredList = (function () {
@@ -31,10 +33,12 @@ var MdStaggeredList = (function () {
 
     this.element = element;
     this.staggerList = this.staggerList.bind(this);
+    this.log = _aureliaLogging.getLogger('md-staggered-list');
   }
 
   MdStaggeredList.prototype.attached = function attached() {
     this.element.addEventListener('click', this.staggerList);
+    this.ensureOpacity();
   };
 
   MdStaggeredList.prototype.detached = function detached() {
@@ -43,6 +47,16 @@ var MdStaggeredList = (function () {
 
   MdStaggeredList.prototype.staggerList = function staggerList() {
     Materialize.showStaggeredList(this.ref);
+  };
+
+  MdStaggeredList.prototype.ensureOpacity = function ensureOpacity() {
+    var items = this.ref.querySelectorAll('li');
+    [].forEach.call(items, function (item) {
+      var opacity = window.getComputedStyle(item).opacity;
+      if (opacity !== 0) {
+        item.style.opacity = 0;
+      }
+    });
   };
 
   var _MdStaggeredList = MdStaggeredList;

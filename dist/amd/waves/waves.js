@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _commonAttributeManager) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _commonAttributeManager, _commonAttributes) {
   'use strict';
 
   exports.__esModule = true;
@@ -13,6 +13,15 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     var _instanceInitializers = {};
 
     _createDecoratedClass(MdWaves, [{
+      key: 'block',
+      decorators: [_aureliaTemplating.bindable({
+        defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+      })],
+      initializer: function initializer() {
+        return false;
+      },
+      enumerable: true
+    }, {
       key: 'color',
       decorators: [_aureliaTemplating.bindable({
         defaultBindingMode: _aureliaBinding.bindingMode.oneTime
@@ -24,6 +33,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     function MdWaves(element) {
       _classCallCheck(this, _MdWaves);
 
+      _defineDecoratedPropertyDescriptor(this, 'block', _instanceInitializers);
+
       _defineDecoratedPropertyDescriptor(this, 'color', _instanceInitializers);
 
       this.element = element;
@@ -32,6 +43,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
     MdWaves.prototype.attached = function attached() {
       var classes = ['waves-effect'];
+      if (_commonAttributes.getBooleanFromAttributeValue(this.block)) {
+        classes.push('waves-block');
+      }
       if (this.color) {
         classes.push('waves-' + this.color);
       }
@@ -41,7 +55,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     };
 
     MdWaves.prototype.detached = function detached() {
-      var classes = ['waves-effect'];
+      var classes = ['waves-effect', 'waves-block'];
       if (this.color) {
         classes.push('waves-' + this.color);
       }

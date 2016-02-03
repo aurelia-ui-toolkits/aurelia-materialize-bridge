@@ -1,7 +1,7 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export) {
   'use strict';
 
-  var bindable, customAttribute, ObserverLocator, inject, MdSidenavCollapse;
+  var bindable, customAttribute, ObserverLocator, inject, getLogger, MdSidenavCollapse;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -17,6 +17,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       ObserverLocator = _aureliaBinding.ObserverLocator;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+    }, function (_aureliaLogging) {
+      getLogger = _aureliaLogging.getLogger;
     }],
     execute: function () {
       MdSidenavCollapse = (function () {
@@ -36,26 +38,26 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
           this.element = element;
           this.observerLocator = observerLocator;
+          this.log = getLogger('md-sidenav-collapse');
         }
 
         MdSidenavCollapse.prototype.attached = function attached() {
-          this.element.setAttribute('data-activates', this.ref.controlId);
-          $(this.element).sideNav({
-            edge: this.ref.edge || 'left',
-            closeOnClick: this.ref.closeOnClick,
-            menuWidth: parseInt(this.ref.mdWidth, 10)
+          var _this = this;
+
+          this.ref.whenAttached.then(function () {
+
+            _this.element.setAttribute('data-activates', _this.ref.controlId);
+            var sideNavConfig = {
+              edge: _this.ref.mdEdge || 'left',
+              closeOnClick: _this.ref.mdCloseOnClick,
+              menuWidth: parseInt(_this.ref.mdWidth, 10)
+            };
+
+            $(_this.element).sideNav(sideNavConfig);
           });
         };
 
         MdSidenavCollapse.prototype.detached = function detached() {};
-
-        MdSidenavCollapse.prototype.widthChanged = function widthChanged() {
-          $(this.element).sideNav({
-            edge: this.ref.edge || 'left',
-            closeOnClick: this.ref.closeOnClick,
-            menuWidth: parseInt(this.ref.mdWidth, 10)
-          });
-        };
 
         var _MdSidenavCollapse = MdSidenavCollapse;
         MdSidenavCollapse = inject(Element, ObserverLocator)(MdSidenavCollapse) || MdSidenavCollapse;

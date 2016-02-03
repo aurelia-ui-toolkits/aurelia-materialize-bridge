@@ -78,6 +78,22 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       });
     };
 
+    MdSlider.prototype.pause = function pause() {
+      $(this.element).slider('pause');
+    };
+
+    MdSlider.prototype.start = function start() {
+      $(this.element).slider('start');
+    };
+
+    MdSlider.prototype.next = function next() {
+      $(this.element).slider('next');
+    };
+
+    MdSlider.prototype.prev = function prev() {
+      $(this.element).slider('prev');
+    };
+
     var _MdSlider = MdSlider;
     MdSlider = _aureliaTemplating.inlineView('\n  <template class="slider">\n  <require from="./slider.css"></require>\n  <ul class="slides">\n    <content select="li"></content>\n  </ul>\n  </template>\n')(MdSlider) || MdSlider;
     MdSlider = _aureliaDependencyInjection.inject(Element)(MdSlider) || MdSlider;

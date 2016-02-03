@@ -22,7 +22,7 @@ var MdNavbar = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(MdNavbar, [{
-    key: 'fixed',
+    key: 'mdFixed',
     decorators: [_aureliaTemplating.bindable({
       defaultBindingMode: _aureliaBinding.bindingMode.oneTime
     })],
@@ -33,20 +33,20 @@ var MdNavbar = (function () {
   function MdNavbar(element) {
     _classCallCheck(this, _MdNavbar);
 
-    _defineDecoratedPropertyDescriptor(this, 'fixed', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'mdFixed', _instanceInitializers);
 
     this.element = element;
   }
 
   MdNavbar.prototype.attached = function attached() {
     this.fixedAttributeManager = new _commonAttributeManager.AttributeManager(this.fixedAnchor);
-    if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
+    if (_commonAttributes.getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.addClasses('navbar-fixed');
     }
   };
 
   MdNavbar.prototype.detached = function detached() {
-    if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
+    if (_commonAttributes.getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
   };

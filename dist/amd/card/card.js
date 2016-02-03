@@ -13,6 +13,13 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
     var _instanceInitializers = {};
 
     _createDecoratedClass(MdCard, [{
+      key: 'mdImage',
+      decorators: [_aureliaTemplating.bindable()],
+      initializer: function initializer() {
+        return null;
+      },
+      enumerable: true
+    }, {
       key: 'mdTitle',
       decorators: [_aureliaTemplating.bindable({
         defaultBindingMode: _aureliaBinding.bindingMode.oneTime
@@ -24,8 +31,14 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
     function MdCard(element) {
       _classCallCheck(this, _MdCard);
 
+      _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers);
+
       _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers);
+
+      this.element = element;
     }
+
+    MdCard.prototype.attached = function attached() {};
 
     var _MdCard = MdCard;
     MdCard = _aureliaDependencyInjection.inject(Element)(MdCard) || MdCard;

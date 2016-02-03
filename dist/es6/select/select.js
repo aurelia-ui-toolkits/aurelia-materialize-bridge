@@ -33,9 +33,29 @@ export class MdSelect {
     this.selected = $(this.element).val();
   }
 
+  arraysAreEqual(array1, array2) {
+    let result = true;
+    if (array1 && array2) {
+      if (typeof array1 === 'string') {
+        // single select
+        result = false;
+      } else {
+        result = (array1.length === array2.length) && array1.every(function(element, index) {
+          return element === array2[index];
+        });
+      }
+    } else {
+      result = false;
+    }
+
+    return result;
+  }
+
   selectedChanged() {
     // this.element.value = this.selected;
-    $(this.element).val(this.selected);
-    $(this.element).material_select();
+    if (!this.arraysAreEqual($(this.element).val(), this.selected)) {
+      $(this.element).val(this.selected);
+      $(this.element).material_select();
+    }
   }
 }

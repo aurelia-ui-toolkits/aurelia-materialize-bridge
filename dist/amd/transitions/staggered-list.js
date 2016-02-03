@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'materialize'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _materialize) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging', 'materialize'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging, _materialize) {
   'use strict';
 
   exports.__esModule = true;
@@ -26,10 +26,12 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'materi
 
       this.element = element;
       this.staggerList = this.staggerList.bind(this);
+      this.log = _aureliaLogging.getLogger('md-staggered-list');
     }
 
     MdStaggeredList.prototype.attached = function attached() {
       this.element.addEventListener('click', this.staggerList);
+      this.ensureOpacity();
     };
 
     MdStaggeredList.prototype.detached = function detached() {
@@ -38,6 +40,16 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'materi
 
     MdStaggeredList.prototype.staggerList = function staggerList() {
       Materialize.showStaggeredList(this.ref);
+    };
+
+    MdStaggeredList.prototype.ensureOpacity = function ensureOpacity() {
+      var items = this.ref.querySelectorAll('li');
+      [].forEach.call(items, function (item) {
+        var opacity = window.getComputedStyle(item).opacity;
+        if (opacity !== 0) {
+          item.style.opacity = 0;
+        }
+      });
     };
 
     var _MdStaggeredList = MdStaggeredList;

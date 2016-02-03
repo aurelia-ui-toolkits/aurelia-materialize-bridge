@@ -45,9 +45,28 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this.selected = $(this.element).val();
     };
 
+    MdSelect.prototype.arraysAreEqual = function arraysAreEqual(array1, array2) {
+      var result = true;
+      if (array1 && array2) {
+        if (typeof array1 === 'string') {
+          result = false;
+        } else {
+          result = array1.length === array2.length && array1.every(function (element, index) {
+            return element === array2[index];
+          });
+        }
+      } else {
+        result = false;
+      }
+
+      return result;
+    };
+
     MdSelect.prototype.selectedChanged = function selectedChanged() {
-      $(this.element).val(this.selected);
-      $(this.element).material_select();
+      if (!this.arraysAreEqual($(this.element).val(), this.selected)) {
+        $(this.element).val(this.selected);
+        $(this.element).material_select();
+      }
     };
 
     var _MdSelect = MdSelect;

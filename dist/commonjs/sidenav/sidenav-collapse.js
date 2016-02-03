@@ -14,6 +14,8 @@ var _aureliaBinding = require('aurelia-binding');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
+var _aureliaLogging = require('aurelia-logging');
+
 var MdSidenavCollapse = (function () {
   var _instanceInitializers = {};
 
@@ -31,26 +33,26 @@ var MdSidenavCollapse = (function () {
 
     this.element = element;
     this.observerLocator = observerLocator;
+    this.log = _aureliaLogging.getLogger('md-sidenav-collapse');
   }
 
   MdSidenavCollapse.prototype.attached = function attached() {
-    this.element.setAttribute('data-activates', this.ref.controlId);
-    $(this.element).sideNav({
-      edge: this.ref.edge || 'left',
-      closeOnClick: this.ref.closeOnClick,
-      menuWidth: parseInt(this.ref.mdWidth, 10)
+    var _this = this;
+
+    this.ref.whenAttached.then(function () {
+
+      _this.element.setAttribute('data-activates', _this.ref.controlId);
+      var sideNavConfig = {
+        edge: _this.ref.mdEdge || 'left',
+        closeOnClick: _this.ref.mdCloseOnClick,
+        menuWidth: parseInt(_this.ref.mdWidth, 10)
+      };
+
+      $(_this.element).sideNav(sideNavConfig);
     });
   };
 
   MdSidenavCollapse.prototype.detached = function detached() {};
-
-  MdSidenavCollapse.prototype.widthChanged = function widthChanged() {
-    $(this.element).sideNav({
-      edge: this.ref.edge || 'left',
-      closeOnClick: this.ref.closeOnClick,
-      menuWidth: parseInt(this.ref.mdWidth, 10)
-    });
-  };
 
   var _MdSidenavCollapse = MdSidenavCollapse;
   MdSidenavCollapse = _aureliaDependencyInjection.inject(Element, _aureliaBinding.ObserverLocator)(MdSidenavCollapse) || MdSidenavCollapse;

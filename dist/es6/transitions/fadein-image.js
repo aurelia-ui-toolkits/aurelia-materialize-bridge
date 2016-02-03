@@ -1,5 +1,6 @@
 import { bindable, customAttribute } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
+import { getLogger } from 'aurelia-logging';
 import 'materialize';
 
 @customAttribute('md-fadein-image')
@@ -10,10 +11,12 @@ export class MdFadeinImage {
   constructor(element) {
     this.element = element;
     this.fadeInImage = this.fadeInImage.bind(this);
+    this.log = getLogger('md-fadein-image');
   }
 
   attached() {
     this.element.addEventListener('click', this.fadeInImage);
+    this.ensureOpacity();
   }
 
   detached() {
@@ -22,5 +25,12 @@ export class MdFadeinImage {
 
   fadeInImage() {
     Materialize.fadeInImage(this.ref);
+  }
+
+  ensureOpacity() {
+    let opacity = window.getComputedStyle(this.ref).opacity;
+    if (opacity !== 0) {
+      this.ref.style.opacity = 0;
+    }
   }
 }

@@ -5,6 +5,7 @@ declare module 'aurelia-materialize-bridge' {
   import { bindable, customAttribute, customElement, containerless, inlineView }  from 'aurelia-templating';
   import { bindingMode, ObserverLocator }  from 'aurelia-binding';
   import { inject }  from 'aurelia-dependency-injection';
+  import { getLogger }  from 'aurelia-logging';
   export class ClickCounter {
     count: any;
     increment(): any;
@@ -19,6 +20,7 @@ declare module 'aurelia-materialize-bridge' {
     useAll(): ConfigBuilder;
     useBox(): ConfigBuilder;
     useButton(): ConfigBuilder;
+    useCarousel(): ConfigBuilder;
     useCard(): ConfigBuilder;
     useCheckbox(): ConfigBuilder;
     
@@ -72,8 +74,24 @@ declare module 'aurelia-materialize-bridge' {
     flatChanged(newValue: any): any;
   }
   export class MdCard {
+    mdImage: any;
     mdTitle: any;
     constructor(element: any);
+    attached(): any;
+  }
+  
+  // 
+  //  @customElement('md-carousel-item')
+  export class MdCarouselItem {
+    mdHref: any;
+    mdImage: any;
+    constructor(element: any);
+    attached(): any;
+  }
+  export class MdCarousel {
+    mdSlider: any;
+    constructor(element: any);
+    attached(): any;
   }
   export class MdCheckbox {
     static id: any;
@@ -164,8 +182,13 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
+  export class MdModalTrigger {
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   export class MdNavbar {
-    fixed: any;
+    mdFixed: any;
     fixedAttributeManager: any;
     constructor(element: any);
     attached(): any;
@@ -183,6 +206,7 @@ declare module 'aurelia-materialize-bridge' {
        * This handler is called when the native <select> changes.
        */
     handleChangeFromNativeSelect(): any;
+    arraysAreEqual(array1: any, array2: any): any;
     selectedChanged(): any;
   }
   export class MdSidenavCollapse {
@@ -190,16 +214,34 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any, observerLocator: any);
     attached(): any;
     detached(): any;
-    
-    //  this.widthSubscription.unsubscribe();
-    widthChanged(): any;
   }
+  
+  //  this.widthSubscription.unsubscribe();
+  //  fixedChanged() {
+  //    this.log.debug('fixedChanged');
+  //    $(this.element).sideNav({
+  //      edge: this.ref.edge || 'left',
+  //      closeOnClick: this.ref.closeOnClick,
+  //      menuWidth: parseInt(this.ref.mdWidth, 10)
+  //    });
+  //  }
+  // 
+  //  widthChanged() {
+  //    this.log.debug('widthChanged');
+  //    $(this.element).sideNav({
+  //      edge: this.ref.edge || 'left',
+  //      closeOnClick: this.ref.closeOnClick,
+  //      menuWidth: parseInt(this.ref.mdWidth, 10)
+  //    });
+  //  }
   export class MdSidenav {
     static id: any;
-    closeOnClick: any;
-    edge: any;
-    fixed: any;
+    mdCloseOnClick: any;
+    mdEdge: any;
+    mdFixed: any;
     mdWidth: any;
+    attachedResolver: any;
+    whenAttached: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
@@ -220,6 +262,10 @@ declare module 'aurelia-materialize-bridge' {
     mdTransition: any;
     constructor(element: any);
     attached(): any;
+    pause(): any;
+    start(): any;
+    next(): any;
+    prev(): any;
   }
   export class MdSwitch {
     mdChecked: any;
@@ -256,6 +302,7 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
     fadeInImage(): any;
+    ensureOpacity(): any;
   }
   export class MdStaggeredList {
     ref: any;
@@ -263,8 +310,10 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
     staggerList(): any;
+    ensureOpacity(): any;
   }
   export class MdWaves {
+    block: any;
     color: any;
     constructor(element: any);
     attached(): any;

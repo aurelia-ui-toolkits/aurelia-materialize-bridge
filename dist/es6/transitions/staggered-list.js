@@ -1,5 +1,6 @@
 import { bindable, customAttribute } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
+import { getLogger } from 'aurelia-logging';
 import 'materialize';
 
 @customAttribute('md-staggered-list')
@@ -10,10 +11,12 @@ export class MdStaggeredList {
   constructor(element) {
     this.element = element;
     this.staggerList = this.staggerList.bind(this);
+    this.log = getLogger('md-staggered-list');
   }
 
   attached() {
     this.element.addEventListener('click', this.staggerList);
+    this.ensureOpacity();
   }
 
   detached() {
@@ -22,5 +25,15 @@ export class MdStaggeredList {
 
   staggerList() {
     Materialize.showStaggeredList(this.ref);
+  }
+
+  ensureOpacity() {
+    let items = this.ref.querySelectorAll('li');
+    [].forEach.call(items, item => {
+      let opacity = window.getComputedStyle(item).opacity;
+      if (opacity !== 0) {
+        item.style.opacity = 0;
+      }
+    });
   }
 }

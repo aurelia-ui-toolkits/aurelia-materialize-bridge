@@ -1,7 +1,7 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export) {
   'use strict';
 
-  var bindable, customAttribute, bindingMode, inject, AttributeManager, MdWaves;
+  var bindable, customAttribute, bindingMode, inject, AttributeManager, getBooleanFromAttributeValue, MdWaves;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -19,12 +19,23 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       inject = _aureliaDependencyInjection.inject;
     }, function (_commonAttributeManager) {
       AttributeManager = _commonAttributeManager.AttributeManager;
+    }, function (_commonAttributes) {
+      getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
       MdWaves = (function () {
         var _instanceInitializers = {};
 
         _createDecoratedClass(MdWaves, [{
+          key: 'block',
+          decorators: [bindable({
+            defaultBindingMode: bindingMode.oneTime
+          })],
+          initializer: function initializer() {
+            return false;
+          },
+          enumerable: true
+        }, {
           key: 'color',
           decorators: [bindable({
             defaultBindingMode: bindingMode.oneTime
@@ -36,6 +47,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         function MdWaves(element) {
           _classCallCheck(this, _MdWaves);
 
+          _defineDecoratedPropertyDescriptor(this, 'block', _instanceInitializers);
+
           _defineDecoratedPropertyDescriptor(this, 'color', _instanceInitializers);
 
           this.element = element;
@@ -44,6 +57,9 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
         MdWaves.prototype.attached = function attached() {
           var classes = ['waves-effect'];
+          if (getBooleanFromAttributeValue(this.block)) {
+            classes.push('waves-block');
+          }
           if (this.color) {
             classes.push('waves-' + this.color);
           }
@@ -53,7 +69,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         };
 
         MdWaves.prototype.detached = function detached() {
-          var classes = ['waves-effect'];
+          var classes = ['waves-effect', 'waves-block'];
           if (this.color) {
             classes.push('waves-' + this.color);
           }
