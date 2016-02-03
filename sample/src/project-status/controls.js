@@ -35,7 +35,7 @@ export class Controls {
         { title: 'Dialogs (toast/tooltip)', link: '#/samples/dialogs', status: 'done' },
         { title: 'Dropdown', link: '#/samples/dropdown', status: 'wip' },
         { title: 'Media (Box/Slider/Carousel)', link: '#/samples/media', status: 'wip' },
-        { title: 'Modals' },
+        { title: 'Modals', status: 'wip' },
         { title: 'Parallax' },
         { title: 'Pushpin' },
         { title: 'Scrollfire' },
