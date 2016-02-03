@@ -64,8 +64,8 @@
         "path": "help/docs/app-developers-tutorials/setup.md"
       },
       {
-        "name": "3. Autocomplete component",
-        "path": "help/docs/app-developers-tutorials/autocomplete.md"
+        "name": "3. Select component",
+        "path": "help/docs/app-developers-tutorials/select.md"
       },
       {
         "name": "4. Button component",
