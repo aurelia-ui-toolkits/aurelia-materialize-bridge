@@ -7,6 +7,7 @@ export function configure(aurelia) {
         .useBox()
         .useButton()
         .useCard()
+        .useCarousel()
         .useCheckbox()
         .useCollapsible()
         .useColors()
