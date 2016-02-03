@@ -6,6 +6,7 @@
 Citation from **[Aurelia Documentation](http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.0.7/doc/article/creating-components)**
 
 > In Aurelia, user interface components are composed of view and view-model pairs. The view is written with HTML and is rendered into the DOM. The view-model is written with ES 2016 and provides data and behavior to the view. The Templating Engine along with Dependency Injection are responsible for creating these pairs and enforcing a predictable lifecycle for the component. Once instantiated, Aurelia's powerful databinding links the two pieces together allowing changes in your view-model to be reflected in the view and changes in your view to reflected in your view-model. This Separation of Concerns is great for developer/designer collaboration, maintainability, architectural flexibility, and even source control.
+
 To create a UI component, you need only create two files, one for each of the component parts.
 
 ##### View:  md-select.html
@@ -70,6 +71,26 @@ export class Food {
 
 <br>
 
+Finally, add the new component to your router-configuration:
+
+#### File `app.js`
+
+```javascript
+export class App {
+  configureRouter(config, router) {
+    config.title = 'Aurelia';
+    config.map([
+      { route: ['', 'welcome'], name: 'welcome',      moduleId: 'welcome',      nav: true, title: 'Welcome' },
+      { route: 'users',         name: 'users',        moduleId: 'users',        nav: true, title: 'Github Users' },
+      { route: 'child-router',  name: 'child-router', moduleId: 'child-router', nav: true, title: 'Child Router' },
+      { route: 'md-select',  name: 'md-select', moduleId: 'material/select/md-select', nav: true, title: 'Select' }
+    ]);
+
+    this.router = router;
+  }
+}
+
+```
 
 * * *
 <br>
