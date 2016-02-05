@@ -91,7 +91,7 @@ export class Doc {
       if (this.encode(categoryText) === categoryName) {
         // this.panelBar.expand($(element));
         $categoryCandidate.addClass('active');
-        // FIXME: reinitialize collapsible since md-collapsible is already
+        // DOING:0 reinitialize collapsible since md-collapsible is already
         //        initialized and Materialize has no method to just expand
         // $categoryCandidate.parents('[md-collapsible]').collapsible();
         this.panelBarViewModel.refresh();
