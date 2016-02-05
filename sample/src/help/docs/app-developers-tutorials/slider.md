@@ -82,4 +82,4 @@ export class App {
 * * *
 <br>
 #### More details: [Components catalog](#/samples/chart)
-#### Next page: &nbsp;&nbsp; [Grid component tutorial](#/help/docs/app_developers_tutorials/6._grid_component)
+#### Next page: &nbsp;&nbsp; [Collapsible component tutorial](#/help/docs/app_developers_tutorials/6._collapsible_component)

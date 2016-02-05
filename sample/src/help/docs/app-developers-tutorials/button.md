@@ -86,4 +86,4 @@ export class App {
 * * *
 <br>
 #### More details: [Components catalog](#/samples/button)
-#### Next page: &nbsp;&nbsp; [Chart component tutorial](#/help/docs/app_developers_tutorials/5._chart_component)
+#### Next page: &nbsp;&nbsp; [Slider component tutorial](#/help/docs/app_developers_tutorials/5._slider_component)
