@@ -27,8 +27,8 @@
         "path": "help/docs/about-this-application/project-status.md"
       },
       {
-        "name": "7. Themes selector",
-        "path": "help/docs/about-this-application/themes-selector.md"
+        "name": "7. Color switcher",
+        "path": "help/docs/about-this-application/color-switcher.md"
       },
     ],
 
@@ -72,12 +72,12 @@
         "path": "help/docs/app-developers-tutorials/button.md"
       },
       {
-        "name": "5. Chart component",
-        "path": "help/docs/app-developers-tutorials/chart.md"
+        "name": "5. Slider component",
+        "path": "help/docs/app-developers-tutorials/Slider.md"
       },
       {
-        "name": "6. Grid component",
-        "path": "help/docs/app-developers-tutorials/grid.md"
+        "name": "6. Collapsible component",
+        "path": "help/docs/app-developers-tutorials/collapsible.md"
       },
       {
         "name": "7. Next actions",

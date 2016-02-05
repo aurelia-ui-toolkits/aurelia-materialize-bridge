@@ -9,7 +9,7 @@ It features an Aurelia plugin wrapping a UI library (thus the term bridge here) 
 
 As with the KendoUI bridge catalog, this application can now be seen as the **[Catalog](#/samples)** with the __embedded__ **[plugin](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/tree/master/src)**.
 
-This help category named **"About this application"** (the article you are reading now) refers to the **[standalone instance](http://aurelia-ui-toolkits.github.io/demo-materialize)** of the **[embedded sample application](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/tree/master/sample)** in the **[Aurelia-Materialize bridge](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge)** project.
+This help category named **"About this application"** (the article you are reading now) refers to the **[standalone instance](http://aurelia-ui-toolkits.github.io/aurelia-materialize-catalog)** of the **[embedded sample application](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/tree/master/sample)** in the **[Aurelia-Materialize bridge](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge)** project.
 <br><br>
 
 
