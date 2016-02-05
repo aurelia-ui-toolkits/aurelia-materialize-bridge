@@ -158,4 +158,4 @@ export function configure(aurelia) {
 
 * * *
 <br>
-#### Next page: [Select component](#/help/docs/app_developers_tutorials/3._autocomplete_component)
+#### Next page: [Select component](#/help/docs/app_developers_tutorials/3._select_component)
