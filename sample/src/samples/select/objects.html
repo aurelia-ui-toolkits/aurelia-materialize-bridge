@@ -3,15 +3,13 @@
     <div class="row">
       <div class="col s12 m8">
         <md-card md-title="Binding to objects">
-          <select md-select="selected.two-way: selectedMeal;">
+          <select md-select value.two-way="selectedMeal">
             <option disabled>Select your meal</option>
-            <option repeat.for="meal of food" model.bind="meal">
-              ${meal.name}
-            </option>
+            <option repeat.for="meal of food" model.bind="meal">${meal.name}</option>
           </select>
 
           <a md-button="flat: true;" md-waves click.trigger="setSelectedMeal()" class="accent-text">select steak</a>
-          You selected: ${selectedMeal}
+          You selected: ${selectedMeal | stringify}
         </md-card>
     </div>
     </div>
