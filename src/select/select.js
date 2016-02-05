@@ -2,6 +2,7 @@ import { customAttribute } from 'aurelia-templating';
 import { ObserverLocator } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import * as LogManager from 'aurelia-logging';
+import { fireEvent } from '../common/events';
 
 @inject(Element, LogManager, ObserverLocator)
 @customAttribute('md-select')
@@ -18,6 +19,9 @@ export class MdSelect {
   }
   attached() {
     this.valueObserver.subscribe(this.handleChangeFromViewModel);
+    // $(this.element).material_select(() => {
+    //   this.log.warn('materialize callback', $(this.element).val());
+    // });
     $(this.element).material_select();
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   }
@@ -33,12 +37,19 @@ export class MdSelect {
     // Aurelia's select observer doesn't get noticed when something changes the
     // select value directly (this.element.value = "something"). So we trigger
     // the change here.
-    this.valueObserver.value = $(this.element).val();
-    this.valueObserver.synchronizeValue();
-    this.valueObserver.synchronizeOptions();
-    this._suspendUpdate = true;
-    this.valueObserver.notify();
-    this._suspendUpdate = false;
+    // this.valueObserver.value = $(this.element).val();
+    // this.valueObserver.synchronizeValue();
+    // this.valueObserver.synchronizeOptions();
+    // this._suspendUpdate = true;
+    // this.valueObserver.notify();
+    // this._suspendUpdate = false;
+
+    if (!this._suspendUpdate) {
+      this._suspendUpdate = true;
+      fireEvent(this.element, 'change');
+      // this.valueObserver.notify();
+      this._suspendUpdate = false;
+    }
   }
 
   handleChangeFromViewModel(newValue) {
