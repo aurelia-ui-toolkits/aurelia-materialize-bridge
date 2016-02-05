@@ -19,6 +19,11 @@ export class MdCarousel {
       this.element.classList.add('carousel-slider');
     }
 
-    $(this.element).carousel();
+    // workaround for: https://github.com/Dogfalo/materialize/issues/2741
+    if (getBooleanFromAttributeValue(this.mdSlider)) {
+      $(this.element).carousel({full_width: true});
+    } else {
+      $(this.element).carousel();
+    }
   }
 }
