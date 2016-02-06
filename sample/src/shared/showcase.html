@@ -1,14 +1,36 @@
 <template>
-    <!-- Page is shared by all widgets and sets up the sub-navigation pane -->
-    <section class="view-showcase">
-        <h4>${ router.title }</h4>
-        <div class="row">
-            <div class="col s2">
-                <md-well router.bind="router"></md-well>
-            </div>
-            <div class="col s10">
-                <router-view></router-view>
-            </div>
+  <style>
+    header, main, footer {
+      padding-left: 240px;
+    }
+    md-navbar nav {
+      padding-right: 240px;
+    }
+  </style>
+  <md-sidenav view-model.ref="sideNav" md-fixed="true" md-edge="left">
+    <ul md-collapsible="accordion: true;" repeat.for="cat of categories">
+      <li>
+        <div md-waves class="collapsible-header">${ cat.title }<i class="mdi-navigation-arrow-drop-down right"></i></div>
+        <div class="collapsible-body">
+          <ul>
+            <li repeat.for="ctrl of cat.controls" md-waves>
+              <span show.bind="!!ctrl.link"><a href.bind="ctrl.link">${ ctrl.title }</a></span>
+            </li>
+          </ul>
         </div>
-    </section>
+      </li>
+    </ul>
+  </md-sidenav>
+  <!-- Page is shared by all widgets and sets up the sub-navigation pane -->
+  <section class="view-showcase">
+      <h4>${ router.title }</h4>
+      <div class="row">
+          <div class="col s2">
+              <md-well router.bind="router"></md-well>
+          </div>
+          <div class="col s10">
+              <router-view></router-view>
+          </div>
+      </div>
+  </section>
 </template>

@@ -1,7 +1,8 @@
 import {useView} from 'aurelia-framework';
+import { Showcase } from 'shared/showcase';
 
 @useView('shared/showcase.html')
-export class Index {
+export class Index extends Showcase {
   configureRouter(config, router) {
     config.title = 'Click counter';
     config.map([
