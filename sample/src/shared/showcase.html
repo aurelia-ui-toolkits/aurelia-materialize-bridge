@@ -14,7 +14,7 @@
         <div class="collapsible-body">
           <ul>
             <li repeat.for="ctrl of cat.controls" md-waves>
-              <span show.bind="!!ctrl.link"><a href.bind="ctrl.link">${ ctrl.title }</a></span>
+              <span show.bind="!!ctrl.link"><a href.bind="ctrl.link" click.delegate="setActive(ctrl)">${ ctrl.title }</a></span>
             </li>
           </ul>
         </div>

@@ -4,4 +4,8 @@ export class Showcase {
   constructor() {
     this.categories = new Controls().categories;
   }
+
+  setActive(ctrl) {
+    console.log(ctrl);
+  }
 }
