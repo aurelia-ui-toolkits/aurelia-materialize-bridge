@@ -11,7 +11,7 @@ In order to simplify this set of tutorials we will take a slight tack away from 
 <br>
 
 
-Having the standard Aurelia Skeleton Plugin installed (unzipped) and built, we need to do several changes to get everything ready for development of Materialize components
+Having the standard Aurelia Skeleton Plugin installed (unzipped) and built, we need to do several changes to get everything ready for development of Materialize components.
 <br>
 
 <p align=center>
@@ -35,11 +35,15 @@ We will define the content for `autocomplete.js`, `button.js`, `chart.js` and `g
 <br><br>
 
 #### Step 2
-Replace the complete content of the `package.json` file with the content of **[this](https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo/blob/master/package.json)** `package.json` file. **Make sure** that you replace all references to [https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo](https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo) with the "path" to your own repository to be used in the course of these tutorials.
+Replace the complete content of the `package.json` file with the content of
+
+* **(revisit)** **[this](https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo/blob/master/package.json)** `package.json` file.
+
+**Make sure** that you replace all references to [https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo](https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo) with the "path" to your own repository to be used in the course of these tutorials.
 <br><br>
 
 #### Step 3
-Edit the "root level" `config.js` file and ensure that the lines 8, 9 and 15 are as shown in the code section below (in particular is is the line 15 -  `'kendo-ui/*': 'vendors/*'` that sets this project to use the settings defined in the "HAVING KENDOUI ALREADY: VENDORS" tab on the [Installation](#/installation) page)
+Edit the "root level" `config.js` file and ensure that the lines 8 and 9 are as shown in the code section below.
 <br>
 ```javascript
 System.config({
@@ -55,8 +59,7 @@ System.config({
   },
   paths: {
     'github:*': 'jspm_packages/github/*',
-    'npm:*': 'jspm_packages/npm/*',
-    'kendo-ui/*': 'vendors/*'
+    'npm:*': 'jspm_packages/npm/*'
   },
 
   map: {
@@ -70,30 +73,19 @@ System.config({
 Add the the following code to define the (so far empty) file `index.js` - this is the plugin's interface to the consumer application, used for plugin initialization.
 <br>
 ```javascript
+import 'materialize';
 import {Aurelia} from 'aurelia-framework';
-import * as LogManager from 'aurelia-logging';
-let logger = LogManager.getLogger('aurelia-kendoui-plugin');
-import {KendoConfigBuilder} from './config-builder';
-import 'jquery';
+import {ConfigBuilder} from './config-builder';
 
-export function configure(aurelia: Aurelia, configCallback?: (builder: KendoConfigBuilder) => void) {
-  let builder = new KendoConfigBuilder();
+export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBuilder) => void) {
+  let builder = new ConfigBuilder();
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
     configCallback(builder);
   }
 
-    // Provide core if nothing was specified
-  if (builder.resources.length === 0) {
-    logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
-    builder.core();
-  }
-
-    // Pull the data off the builder
-  let resources = builder.resources;
-
   if (builder.useGlobalResources) {
-    aurelia.globalResources(resources);
+    aurelia.globalResources(builder.globalResources);
   }
 }
 ```
@@ -105,62 +97,45 @@ Add the the following code to define the (so far empty) file `config-builder.js`
 /**
 * Configure the Aurelia-KendoUI-plugin
 */
-export class KendoConfigBuilder {
+export class ConfigBuilder {
 
-    resources: string[] = [];
   useGlobalResources: boolean = true;
+  globalResources = [];
 
-  /**
-  * Globally register all Kendo Core wrappers
-  */
-  core(): KendoConfigBuilder {
-    this.kendoButton()
-      .kendoTabStrip()
-      .kendoProgressBar()
-      .kendoSlider()
-      .kendoColorPicker()
-      .kendoDropDownList();
+  useAll(): ConfigBuilder {
+    return this
+      .useButton()
+      .useCollapsible()
+      .useNavbar()
+      .useSelect();
+  }
+
+  useButton(): ConfigBuilder {
+    this.globalResources.push('./button/button');
     return this;
   }
 
-  /**
-  * Globally register all Kendo Core and Kendo Pro wrappers
-  */
-  pro(): KendoConfigBuilder {
-    this.core()
-      .kendoGrid()
-            .kendoAutoComplete()
-      .kendoChart();
+  useCollapsible(): ConfigBuilder {
+    this.globalResources.push('./collapsible/collapsible');
+    return this;
+  }
+
+  useNavbar(): ConfigBuilder {
+    this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useSelect(): ConfigBuilder {
+    this.globalResources.push('./select/select');
     return this;
   }
 
   /**
   * Don't globalize any resources
-  * Allows you to import wrappers yourself via <require></require>
+  * Allows you to import yourself via <require></require>
   */
-  withoutGlobalResources(): KendoConfigBuilder {
+  withoutGlobalResources(): ConfigBuilder {
     this.useGlobalResources = false;
-    return this;
-  }
-
-  kendoAutoComplete(): KendoConfigBuilder {
-    this.resources.push('autocomplete/autocomplete');
-    return this;
-  }
-
-  kendoButton(): KendoConfigBuilder {
-    this.resources.push('button/button');
-    return this;
-  }
-
-  kendoGrid(): KendoConfigBuilder {
-    this.resources.push('grid/grid');
-    this.resources.push('grid/au-col');
-    return this;
-  }
-
-  kendoChart(): KendoConfigBuilder {
-    this.resources.push('chart/chart');
     return this;
   }
 }
