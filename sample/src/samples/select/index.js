@@ -1,8 +1,7 @@
 import { useView } from 'aurelia-framework';
-import { Showcase } from 'shared/showcase';
 
 @useView('shared/showcase.html')
-export class Index extends Showcase {
+export class Index {
   configureRouter(config, router) {
     config.title = 'Select';
     config.map([

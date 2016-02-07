@@ -1,0 +1,56 @@
+{
+  "Css": {
+    "Color": { "status": "wip", "nav": false },
+    "Grid": { },
+    "Helpers": { },
+    "Media": { },
+    "Sass": { },
+    "Shadow": { },
+    "Table": { },
+    "Typography": { }
+  },
+  "Components": {
+    "Badges": { },
+    "Button": { "status": "wip" },
+    "Breadcrumbs": { },
+    "Cards": { "moduleId": "card", "status": "wip" },
+    "Chips": { },
+    "Collections": { },
+    "Footer": { },
+    "Navbar": { "status": "wip" },
+    "Pagination": { },
+    "Preloader": { },
+  },
+  "Javascript": {
+    "Collapsible": { "status": "wip" },
+    "Dialogs (toast/tooltip)": { "moduleId": "dialogs", "status": "wip" },
+    "Dropdown": { "status": "wip" },
+    "Media (Box/Slider/Carousel)": { "moduleId": "media", "status": "wip" },
+    "Modals": { "status": "wip", "nav": false },
+    "Parallax": { },
+    "Pushpin": { },
+    "Scrollfire": { },
+    "Scrollspy": { },
+    "SideNav": { "status": "wip" },
+    "Tabs": { "status": "wip" },
+    "Transitions": { "status": "done" },
+    "Waves": { "status": "done" }
+  },
+  "Forms": {
+    "Input fields": { },
+    "Select": { "status": "wip" },
+    "Input fields": { },
+    "Radio buttons": { },
+    "Checkboxes": { "moduleId": "checkbox", "status": "wip" },
+    "Switches": { "status": "wip", "nav": false },
+    "File input button": { },
+    "Range": { },
+    "Datepicker": { },
+    "Character counter": { },
+  },
+  "Internal": {
+    "Click counter": { "moduleId": "click-counter", "status": "done" },
+    "Well": { "status": "wip", "nav": false },
+    "PanelBar": { }
+  }
+}
