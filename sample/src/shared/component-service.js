@@ -46,6 +46,21 @@ export class ComponentService {
     return categories;
   }
 
+  getRouterConfig() {
+    let routes = [];
+    for (let cat of Object.keys(this.components)) {
+      let cfg = this.components[cat];
+      for (let title of Object.keys(cfg)) {
+        if (cfg[title].status && cfg[title].nav !== false) {
+          let shortModuleId = cfg[title].moduleId || title.toLowerCase();
+          let moduleId = `samples/${shortModuleId}/index`;
+          routes.push({ name: shortModuleId, route: shortModuleId, moduleId, title });
+        }
+      }
+    }
+    return routes;
+  }
+
   // getProjectStatus() {
   //   let categories = [];
   //   for (let [cat, cfg] of this.components) {
