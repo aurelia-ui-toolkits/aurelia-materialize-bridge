@@ -5,7 +5,7 @@ This is the most likely fashion this application is being used. Invoked via URL:
 
 <br>
 <p align=center>
-<img src="http://i.imgur.com/WxhJs98.png"></img>
+<img src="http://i.imgur.com/3FPZJnV.png"></img>
 <br>
   Image 1
 </p>
