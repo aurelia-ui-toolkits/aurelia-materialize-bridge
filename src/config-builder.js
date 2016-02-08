@@ -78,6 +78,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useModal(): ConfigBuilder {
+    this.globalResources.push('./modal/modal-trigger');
+    return this;
+  }
+
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
     return this;
