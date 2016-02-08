@@ -29,7 +29,7 @@
     "Modals": { "status": "wip" },
     "Parallax": { },
     "Pushpin": { },
-    "Scrollfire": { },
+    "Scrollfire": { "status": "wip" },
     "Scrollspy": { },
     "SideNav": { "status": "wip" },
     "Tabs": { "status": "wip" },
