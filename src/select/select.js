@@ -21,6 +21,7 @@ export class MdSelect {
     this.valueObserver.subscribe(this.handleChangeFromViewModel);
     // $(this.element).material_select(() => {
     //   this.log.warn('materialize callback', $(this.element).val());
+    //   this.handleChangeFromNativeSelect();
     // });
     $(this.element).material_select();
     $(this.element).on('change', this.handleChangeFromNativeSelect);
