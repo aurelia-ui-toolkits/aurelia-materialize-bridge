@@ -1,6 +1,7 @@
 import { bindable, customElement, inlineView } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
+import { getLogger } from 'aurelia-logging';
 
 @customElement('md-slider')
 @inject(Element)
@@ -21,19 +22,14 @@ export class MdSlider {
 
   constructor(element) {
     this.element = element;
+    this.log = getLogger('md-slider');
   }
 
   attached() {
     if (getBooleanFromAttributeValue(this.mdFillContainer)) {
       this.element.classList.add('fullscreen');
     }
-    // $(this.element).slider({full_width: true});
-    $(this.element).slider({
-      height: parseInt(this.mdHeight, 10),
-      indicators: getBooleanFromAttributeValue(this.mdIndicators),
-      interval: parseInt(this.mdInterval, 10),
-      transition: parseInt(this.mdTransition, 10)
-    });
+    this.refresh();
   }
 
   pause() {
@@ -50,5 +46,24 @@ export class MdSlider {
 
   prev() {
     $(this.element).slider('prev');
+  }
+
+  refresh() {
+    let options = {
+      height: parseInt(this.mdHeight, 10),
+      indicators: getBooleanFromAttributeValue(this.mdIndicators),
+      interval: parseInt(this.mdInterval, 10),
+      transition: parseInt(this.mdTransition, 10)
+    };
+    this.log.debug('refreshing slider, params:', options);
+    $(this.element).slider(options);
+  }
+
+  mdIndicatorsChanged() {
+    this.refresh();
+  }
+
+  mdIntervalChanged() {
+    this.refresh();
   }
 }
