@@ -26,20 +26,18 @@ Replace the original content of the `src` folder with the folders and (empty) fi
 <br><br>
 
 <p align=center>
-  <img src="http://i.imgur.com/PlW1GbD.png"></img>
+  <img src="http://i.imgur.com/mk6QDQ7.png"></img>
  <br><br>
  Image 2
 </p>
 
-We will define the content for `autocomplete.js`, `button.js`, `chart.js` and `grid.js` files in subsequent tutorials pages, starting with [Autocomplete component](#/help/docs/bridge_developers_tutorials/3._autocomplete_component) first.
+We will define the content for `select.js`, `button.js`, `slider.js` and `collapsible.js` files in subsequent tutorials pages, starting with [Autocomplete component](#/help/docs/bridge_developers_tutorials/3._select_component) first.
 <br><br>
 
 #### Step 2
-Replace the complete content of the `package.json` file with the content of
+Replace the complete content of the `package.json` file with the content of **[this](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/blob/master/package.json)** `package.json` file.
 
-* **(revisit)** **[this](https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo/blob/master/package.json)** `package.json` file.
-
-**Make sure** that you replace all references to [https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo](https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo) with the "path" to your own repository to be used in the course of these tutorials.
+**Make sure** that you replace all references to [https://github.com/aurelia-ui-toolkits/skeleton-plugin-materialize](https://github.com/aurelia-ui-toolkits/skeleton-plugin-materialize) with the "path" to your own repository to be used in the course of these tutorials.
 <br><br>
 
 #### Step 3

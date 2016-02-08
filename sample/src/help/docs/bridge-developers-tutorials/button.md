@@ -3,7 +3,7 @@
 ### 4. Button
 <br>
 
-This wrapper encapsulates the Materialize button control, ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/samples/button)**.
+This wrapper encapsulates the Materialize [button control](http://materializecss.com/buttons.html), ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/samples/button)**.
 <br>
 
 File `button.js`
@@ -76,4 +76,4 @@ export class MdButton {
 
 <br>
 * * *
-#### Next page: &nbsp;&nbsp; [Collapsible component](#/help/docs/bridge_developers_tutorials/5._collapsible_component)
+#### Next page: &nbsp;&nbsp; [Slider component](#/help/docs/bridge_developers_tutorials/5._slider_component)

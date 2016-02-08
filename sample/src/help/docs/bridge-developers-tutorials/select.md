@@ -3,7 +3,7 @@
 ### 3. Select
 <br>
 
-This wrapper encapsulates the Materialize select control, ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/samples/select)**.
+This wrapper encapsulates the Materialize [select control](http://materializecss.com/forms.html#select), ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/samples/select)**.
 <br>
 
 File `select.js`

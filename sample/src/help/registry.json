@@ -104,12 +104,12 @@
         "path": "help/docs/bridge-developers-tutorials/button.md"
       },
       {
-        "name": "5. Chart component",
-        "path": "help/docs/bridge-developers-tutorials/chart.md"
+        "name": "5. Slider component",
+        "path": "help/docs/bridge-developers-tutorials/slider.md"
       },
       {
-        "name": "6. Grid component",
-        "path": "help/docs/bridge-developers-tutorials/grid.md"
+        "name": "6. Collapsible component",
+        "path": "help/docs/bridge-developers-tutorials/collapsible.md"
       },
       {
         "name": "7. Next actions",
