@@ -63,9 +63,9 @@ export class ComponentService {
     return routes;
   }
 
-  // getProjectStatus() {
+  // getProjectStatusFromMap() {
   //   let categories = [];
-  //   for (let [cat, cfg] of this.components) {
+  //   for (let [cat, cfg] of this.componentsMap) {
   //     if (cat === 'default') {
   //       continue;
   //     }
