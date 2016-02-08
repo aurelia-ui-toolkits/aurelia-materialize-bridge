@@ -12,6 +12,7 @@ export function configure(aurelia) {
         .useCollapsible()
         .useColors()
         .useDropdown()
+        .useModal()
         .useNavbar()
         .useSelect()
         .useSidenav()
