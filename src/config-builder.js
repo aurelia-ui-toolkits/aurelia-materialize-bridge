@@ -17,6 +17,7 @@ export class ConfigBuilder {
       .useColors()
       .useDropdown()
       .useNavbar()
+      .useScrollfire()
       .useSelect()
       .useSidenav()
       .useSlider()
@@ -85,6 +86,12 @@ export class ConfigBuilder {
 
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useScrollfire(): ConfigBuilder {
+    this.globalResources.push('./scrollfire/scrollfire');
+    this.globalResources.push('./scrollfire/scrollfire-target');
     return this;
   }
 
