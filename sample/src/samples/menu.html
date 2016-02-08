@@ -13,7 +13,7 @@
         <div md-waves class="collapsible-header">${ cat.title }<i class="mdi-navigation-arrow-drop-down right"></i></div>
         <div class="collapsible-body">
           <ul>
-            <li md-waves repeat.for="ctrl of cat.controls" if.bind="!!ctrl.link" class="${ activeItem === ctrl.link ? 'active' : '' }">
+            <li repeat.for="ctrl of cat.controls" if.bind="!!ctrl.link" class="${ activeItem === ctrl.link ? 'active' : '' }">
               <a href.bind="ctrl.link" click.delegate="setActive(ctrl)">${ ctrl.title }</a>
             </li>
           </ul>
