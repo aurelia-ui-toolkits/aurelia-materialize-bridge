@@ -61,5 +61,5 @@ Image 6
 <p align=center>
   <img src="http://i.imgur.com/VmRmBVQ.png"></img>
  <br><br>
-Image 6
+Image 7
 </p>
