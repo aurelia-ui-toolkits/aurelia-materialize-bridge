@@ -62,5 +62,9 @@ describe('AttributeManager', () => {
   it('can still assign a new value to an existing attribute', () => {
     attributeManager.addAttributes({ 'data-handle': 'test-handle', 'preserved-attribute': 'newValue' });
     expect(element.getAttribute('preserved-attribute')).toBe('newValue');
+
+    attributeManager.removeAttributes([ 'data-handle', 'preserved-attribute' ]);
+    expect(element.getAttribute('data-handle')).toBeNull();
+    expect(element.getAttribute('preserved-attribute')).toBe('newValue');
   });
 });
