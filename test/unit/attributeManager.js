@@ -45,9 +45,16 @@ describe('AttributeManager', () => {
     expect(element.getAttribute('data-handle')).not.toBeNull();
   });
 
-  it('removes data-handle attribute', () => {
+  it('removes data-handle attribute when provided as an array', () => {
     attributeManager.addAttributes({ 'data-handle': 'test-handle' });
     attributeManager.removeAttributes([ 'data-handle' ]);
+    // expect(element.getAttribute('data-handle')).not.toBeDefined();
+    expect(element.getAttribute('data-handle')).toBeNull();
+  });
+
+  it('removes data-handle attribute when provided as a string', () => {
+    attributeManager.addAttributes({ 'data-handle': 'test-handle' });
+    attributeManager.removeAttributes('data-handle');
     // expect(element.getAttribute('data-handle')).not.toBeDefined();
     expect(element.getAttribute('data-handle')).toBeNull();
   });
