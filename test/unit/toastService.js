@@ -1,3 +1,4 @@
+import {initialize} from 'aurelia-pal-browser';
 import { MdToastService } from 'src/toast/toastService';
 import 'materialize';
 
@@ -5,6 +6,8 @@ describe('MdToastService', () => {
   let service;
 
   beforeEach(() => {
+    initialize();
+
     service = new MdToastService();
     spyOn(Materialize, 'toast');
   });
