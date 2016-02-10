@@ -1,20 +1,18 @@
 import { bindable, customAttribute } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 import { getLogger } from 'aurelia-logging';
+import { ScrollfirePatch } from './scrollfire-patch';
 
 @customAttribute('md-scrollfire')
-@inject(Element)
+@inject(Element, ScrollfirePatch)
 export class MdScrollfire {
   @bindable() callback = null;
   @bindable() offset = 0;
   targetId = 0;
-  constructor(element) {
+  constructor(element, scrollfirePatch) {
+    scrollfirePatch.patch();
     this.element = element;
     this.log = getLogger('md-scrollfire');
-
-    window.testScrollfire = function() {
-      console.log('scrollfire test');
-    };
   }
 
   attached() {
