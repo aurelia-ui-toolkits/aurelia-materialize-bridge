@@ -48,7 +48,10 @@ export class MdSelect {
       this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
       this._suspendUpdate = true;
       fireEvent(this.element, 'change');
+      this.log.debug('this.valueObserver.value', this.valueObserver.value);
+      // this.valueObserver.value = $(this.element).val();
       // this.valueObserver.notify();
+
       this._suspendUpdate = false;
     }
   }
