@@ -28,7 +28,7 @@
     "Media (Box/Slider/Carousel)": { "moduleId": "media", "status": "wip" },
     "Modals": { "status": "wip" },
     "Parallax": { },
-    "Pushpin": { },
+    "Pushpin": { "status": "wip" },
     "Scrollfire": { "status": "wip" },
     "Scrollspy": { },
     "SideNav": { "status": "wip" },

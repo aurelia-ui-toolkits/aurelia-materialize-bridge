@@ -1,0 +1,26 @@
+<template>
+  <div md-scrollfire>
+    <div md-scrollfire-target="callback.call: firstTarget(); offset: 200;">Target #1</div>
+    <div>
+      <p>
+        Scroll down to see Scrollfire in action.
+      </p>
+    </div>
+    <div>
+      <ul ref="list">
+        <li style="opacity: 0;">
+          <h4><a>List Item</a></h4>
+          <p>This is a description</p>
+        </li>
+        <li style="opacity: 0;">
+          <h4><a>List Item</a></h4>
+          <p>This is a description</p>
+        </li>
+      </ul>
+    </div>
+    <div md-scrollfire-target="callback.call: secondTarget(); offset: 200;">Target #2</div>
+    <div>
+      <img ref="image" src="images/transition-sample-1.jpg" style="width: 500px; opacity: 0;" />
+    </div>
+  </div>
+</template>

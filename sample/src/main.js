@@ -14,6 +14,7 @@ export function configure(aurelia) {
         .useDropdown()
         .useModal()
         .useNavbar()
+        .usePushpin()
         .useScrollfire()
         .useSelect()
         .useSidenav()
