@@ -1,9 +1,8 @@
-import { bindable, containerless, customElement, inlineView } from 'aurelia-templating';
+import { bindable, customElement, inlineView } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 
 @customElement('md-slide')
 @inject(Element)
-@containerless()
 @inlineView(`
   <template>
   <li>
