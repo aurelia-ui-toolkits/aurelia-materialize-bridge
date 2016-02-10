@@ -9,7 +9,7 @@ import { getLogger } from 'aurelia-logging';
   <template class="slider">
   <require from="./slider.css"></require>
   <ul class="slides">
-    <content select="li"></content>
+    <content select="md-slide"></content>
   </ul>
   </template>
 `)
