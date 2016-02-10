@@ -40,7 +40,7 @@ export class Menu {
   routeChanged(e) {
     this.log.debug('routeChanged', e);
     let link = `#${e.instruction.fragment}`;
-    this.activeItem = link;
+    this.activeItem = link.split('/').splice(0, 3).join('/');
   }
 
   detached() {
