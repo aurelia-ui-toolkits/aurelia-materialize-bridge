@@ -19,9 +19,9 @@ export class BasicUse {
     // Materialize.scrollFire(options);
   }
   firstTarget() {
-    console.log('scrollfire #1');
+    Materialize.showStaggeredList(this.list);
   }
   secondTarget() {
-    console.log('scrollfire #2');
+    Materialize.fadeInImage(this.image);
   }
 }
