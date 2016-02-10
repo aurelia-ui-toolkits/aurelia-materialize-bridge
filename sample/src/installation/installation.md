@@ -25,11 +25,27 @@ In your project install the plugin via jspm with following command:
       // Install and configure the plugin
       .plugin('aurelia-materialize-bridge', bridge => {
         bridge
+          .useBox()
           .useButton()
           .useCard()
+          .useCarousel()
+          .useCheckbox()
           .useCollapsible()
+          .useColors()
+          .useDropdown()
+          .useModal()
           .useNavbar()
+          .useParallax()
+          .usePushpin()
+          .useScrollfire()
+          .useScrollSpy()
+          .useSelect()
+          .useSidenav()
+          .useSlider()
+          .useSwitch()
           .useTabs()
+          .useTooltip()
+          .useTransitions()
           .useWaves()
           .useWell();
       });
