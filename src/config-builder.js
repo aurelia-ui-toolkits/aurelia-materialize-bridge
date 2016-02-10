@@ -17,6 +17,7 @@ export class ConfigBuilder {
       .useColors()
       .useDropdown()
       .useNavbar()
+      .usePushpin()
       .useScrollfire()
       .useSelect()
       .useSidenav()
@@ -86,6 +87,11 @@ export class ConfigBuilder {
 
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  usePushpin(): ConfigBuilder {
+    this.globalResources.push('./pushpin/pushpin');
     return this;
   }
 
