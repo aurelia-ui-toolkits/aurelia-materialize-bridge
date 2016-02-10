@@ -30,7 +30,7 @@
     "Parallax": { "status": "wip", "nav": false },
     "Pushpin": { "status": "wip" },
     "Scrollfire": { "status": "wip" },
-    "Scrollspy": { },
+    "Scrollspy": { "status": "wip" },
     "SideNav": { "status": "wip" },
     "Tabs": { "status": "wip" },
     "Transitions": { "status": "done" },
