@@ -125,7 +125,7 @@ export class ConfigBuilder {
 
   useSlider(): ConfigBuilder {
     this.globalResources.push('./slider/slider');
-    this.globalResources.push('./slider/slide');
+    // this.globalResources.push('./slider/slide');
     return this;
   }
 
