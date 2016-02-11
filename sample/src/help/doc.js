@@ -3,7 +3,7 @@ import {Router} from 'aurelia-router';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import registry from './registry.json!';
 import jQuery from 'jquery';
-import Split from 'split.js';
+import {Split as split} from 'split.js';
 
 @inject(Router, EventAggregator)
 export class Doc {
@@ -34,9 +34,10 @@ export class Doc {
 
   attached() {
     // this.panelBar = $(this.panelBarDiv).kendoPanelBar().data('kendoPanelBar');
-    Split(['.left-panel', '.right-panel'], {
+    split(['.left-panel', '.right-panel'], {
       sizes: [25, 75],
-      minSize: 200
+      minSize: 200,
+      gutterSize: 15
     });
   }
 
