@@ -1,4 +1,4 @@
-import { bindable, customAttribute } from 'aurelia-templating';
+import { customAttribute } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 import { getLogger } from 'aurelia-logging';
 import { ScrollfirePatch } from './scrollfire-patch';
@@ -6,8 +6,6 @@ import { ScrollfirePatch } from './scrollfire-patch';
 @customAttribute('md-scrollfire')
 @inject(Element, ScrollfirePatch)
 export class MdScrollfire {
-  @bindable() callback = null;
-  @bindable() offset = 0;
   targetId = 0;
   constructor(element, scrollfirePatch) {
     scrollfirePatch.patch();
@@ -30,7 +28,7 @@ export class MdScrollfire {
           selector: '#' + target.attr('id'),
           callback: target.get(0).au['md-scrollfire-target'].viewModel.callback,
           // callback: 'testScrollfire()',
-          offset: target.get(0).au['md-scrollfire-target'].viewModel.offset
+          offset: parseInt(target.get(0).au['md-scrollfire-target'].viewModel.offset, 10)
         });
       });
       if (options.length > 0) {
