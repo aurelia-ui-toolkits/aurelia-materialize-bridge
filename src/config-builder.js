@@ -17,6 +17,8 @@ export class ConfigBuilder {
       .useColors()
       .useDropdown()
       .useNavbar()
+      .useParallax()
+      .usePushpin()
       .useScrollfire()
       .useSelect()
       .useSidenav()
@@ -89,9 +91,24 @@ export class ConfigBuilder {
     return this;
   }
 
+  useParallax(): ConfigBuilder {
+    this.globalResources.push('./parallax/parallax');
+    return this;
+  }
+
+  usePushpin(): ConfigBuilder {
+    this.globalResources.push('./pushpin/pushpin');
+    return this;
+  }
+
   useScrollfire(): ConfigBuilder {
     this.globalResources.push('./scrollfire/scrollfire');
     this.globalResources.push('./scrollfire/scrollfire-target');
+    return this;
+  }
+
+  useScrollSpy(): ConfigBuilder {
+    this.globalResources.push('./scrollspy/scrollspy');
     return this;
   }
 

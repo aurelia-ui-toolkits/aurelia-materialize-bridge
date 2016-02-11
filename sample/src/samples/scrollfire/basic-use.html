@@ -4,55 +4,55 @@
       <div class="col s12 m8">
         <md-card md-title="Basic use">
           <div md-scrollfire>
-            <div md-scrollfire-target="callback.call: firstTarget();">Target #1</div>
+            <div md-scrollfire-target="callback.call: firstTarget(); offset: 200;">Target #1</div>
             <div>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
+              <p>
+                Scroll down to see Scrollfire in action.
+              </p>
             </div>
-            <div md-scrollfire-target="callback.call: secondTarget();">Target #2</div>
             <div>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
-              <p>Some content to make this page scrollable.</p>
+              <ul ref="list">
+                <li style="opacity: 0;">
+                  <h4><a>List Item</a></h4>
+                  <p>This is a description</p>
+                </li>
+                <li style="opacity: 0;">
+                  <h4><a>List Item</a></h4>
+                  <p>This is a description</p>
+                </li>
+                <li style="opacity: 0;">
+                  <h4><a>List Item</a></h4>
+                  <p>This is a description</p>
+                </li>
+                <li style="opacity: 0;">
+                  <h4><a>List Item</a></h4>
+                  <p>This is a description</p>
+                </li>
+                <li style="opacity: 0;">
+                  <h4><a>List Item</a></h4>
+                  <p>This is a description</p>
+                </li>
+                <li style="opacity: 0;">
+                  <h4><a>List Item</a></h4>
+                  <p>This is a description</p>
+                </li>
+                <li style="opacity: 0;">
+                  <h4><a>List Item</a></h4>
+                  <p>This is a description</p>
+                </li>
+                <li style="opacity: 0;">
+                  <h4><a>List Item</a></h4>
+                  <p>This is a description</p>
+                </li>
+                <li style="opacity: 0;">
+                  <h4><a>List Item</a></h4>
+                  <p>This is a description</p>
+                </li>
+              </ul>
+            </div>
+            <div md-scrollfire-target="callback.call: secondTarget(); offset: 200;">Target #2</div>
+            <div>
+              <img ref="image" src="images/transition-sample-1.jpg" style="width: 500px; opacity: 0;" />
             </div>
           </div>
         </md-card>
@@ -65,9 +65,13 @@
             <div class="row">
               <ul md-tabs class="z-depth-1">
                 <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+                <li md-waves="color: primary;" class="col"><a class="active" href="#js">Javascript</a></li>
               </ul>
               <div id="html" class="z-depth-1">
-                <au-code language="markup" url="samples/select/basic-use-sample.html"></au-code>
+                <au-code language="markup" url="samples/scrollfire/basic-use-sample.html"></au-code>
+              </div>
+              <div id="js" class="z-depth-1">
+                <au-code language="javascript" url="samples/scrollfire/basic-use-sample.js"></au-code>
               </div>
             </div>
           </md-card>
