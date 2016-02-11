@@ -1,8 +1,55 @@
 <template>
   <require from="./doc.css"></require>
 
-  <div class="row">
-    <div class="col s3">
+  <style>
+  .split {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /*.content {
+    border: 1px solid #C0C0C0;
+    box-shadow: inset 0 1px 2px #e4e4e4;
+    background-color: #fff;
+  }*/
+
+  .left-panel {
+    float: left;
+  }
+
+  .right-panel {
+    float: right;
+  }
+
+  .gutter {
+    background-color: transparent;
+
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
+
+  .gutter.gutter-horizontal {
+    cursor: col-resize;
+    background-image: url('images/vertical.png');
+  }
+
+  .gutter.gutter-vertical {
+    cursor: row-resize;
+    background-image: url('images/horizontal.png');
+  }
+
+  .split.split-horizontal, .gutter.gutter-horizontal {
+    height: 100%;
+    float: left;
+  }
+  </style>
+
+  <div class="row" style="height: 600px;">
+    <!-- <div class="col s3">
       <ul class="panel-bar z-depth-1" ref="panelBarDiv" class="help-docs collapsible" md-collapsible="accordion: false;" md-collapsible.ref="panelBarViewModel">
         <li repeat.for="category of categories">
           <div md-waves="color: primary;" class="collapsible-header">
@@ -22,6 +69,29 @@
     <div class="col s9 z-depth-1" ref="markdownCol">
       <au-markdown url.bind="activeDoc" loaded.delegate="scrollToTarget()">
       </au-markdown>
+    </div> -->
+
+    <div class="left-panel">
+      <ul class="panel-bar z-depth-1" ref="panelBarDiv" class="help-docs collapsible" md-collapsible="accordion: false;" md-collapsible.ref="panelBarViewModel">
+        <li repeat.for="category of categories">
+          <div md-waves="color: primary;" class="collapsible-header">
+            <span>${category.name}</span>
+            <i class="mdi-navigation-arrow-drop-down right"></i>
+          </div>
+          <div class="collapsible-body">
+            <ul>
+              <li md-waves repeat.for="file of category.files" click.delegate="routeToPage(file.name, category.name)">
+                <span>${file.name}</span>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
     </div>
+    <div class="right-panel z-depth-1">
+      <au-markdown url.bind="activeDoc" loaded.delegate="scrollToTarget()">
+      </au-markdown>
+    </div>
+
   </div>
 </template>
