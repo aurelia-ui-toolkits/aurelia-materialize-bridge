@@ -8,7 +8,7 @@ import 'materialize';
 @inject(Element)
 export class MdBox {
   @bindable({
-    defaultBindingMode: bindingMode.oneTome
+    defaultBindingMode: bindingMode.oneTime
   }) caption;
   constructor(element) {
     this.element = element;
