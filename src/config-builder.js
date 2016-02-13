@@ -15,6 +15,7 @@ export class ConfigBuilder {
       .useCheckbox()
       .useCollapsible()
       .useColors()
+      .useDatePicker()
       .useDropdown()
       .useNavbar()
       .useParallax()
@@ -72,6 +73,11 @@ export class ConfigBuilder {
 
   useColors() : ConfigBuilder {
     this.globalResources.push('./colors/md-colors.html');
+    return this;
+  }
+
+  useDatePicker() : ConfigBuilder {
+    this.globalResources.push('./datepicker/datepicker');
     return this;
   }
 
