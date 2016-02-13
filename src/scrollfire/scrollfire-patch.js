@@ -1,3 +1,4 @@
+/* eslint no-new-func:0 */
 export class ScrollfirePatch {
   patched = false;
 
