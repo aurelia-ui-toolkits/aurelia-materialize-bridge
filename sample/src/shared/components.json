@@ -45,7 +45,7 @@
     "Switches": { "status": "wip", "nav": false },
     "File input button": { },
     "Range": { },
-    "Datepicker": { },
+    "DatePicker": { "status": "wip" },
     "Character counter": { },
   },
   "Internal": {
