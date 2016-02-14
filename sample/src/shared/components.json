@@ -27,7 +27,7 @@
     "Dropdown": { "status": "wip" },
     "Media (Box/Slider/Carousel)": { "moduleId": "media", "status": "wip" },
     "Modals": { "status": "wip" },
-    "Parallax": { "status": "wip", "nav": false },
+    "Parallax": { "status": "wip" },
     "Pushpin": { "status": "wip" },
     "Scrollfire": { "status": "wip" },
     "Scrollspy": { "status": "wip" },
