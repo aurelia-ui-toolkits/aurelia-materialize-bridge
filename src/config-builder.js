@@ -17,6 +17,8 @@ export class ConfigBuilder {
       .useColors()
       .useDatePicker()
       .useDropdown()
+      .useFab()
+      .useModal()
       .useNavbar()
       .useParallax()
       .usePushpin()
@@ -84,6 +86,11 @@ export class ConfigBuilder {
   useDropdown() : ConfigBuilder {
     // this.globalResources.push('./dropdown/dropdown-element');
     this.globalResources.push('./dropdown/dropdown');
+    return this;
+  }
+
+  useFab() : ConfigBuilder {
+    this.globalResources.push('./fab/fab');
     return this;
   }
 
