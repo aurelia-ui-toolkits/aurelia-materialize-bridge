@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col s12 m8">
         <md-card md-title="Slider">
-          <md-slider view-model.ref="slider" md-indicators.bind="indicatorsVisible" md-interval.bind="interval & debounce">
+          <md-slider view-model.ref="slider" md-indicators.bind="indicatorsVisible">
             <li>
               <img src="http://lorempixel.com/580/250/nature/1" />
               <div class="caption center-align">
@@ -38,12 +38,18 @@
               Indicators:
             </p>
             <md-switch md-label-on="enabled" md-label-off="disabled" md-checked.bind="indicatorsVisible"></md-switch>
-            <p>
+            <!-- <p>
               Interval (has some problems):
             </p>
             <p class="range-field">
               <input type="range" value.bind="interval" min="2000" max="10000" />&nbsp;${interval}ms
             </p>
+            <p>
+              Transition:
+            </p>
+            <p class="range-field">
+              <input type="range" value.bind="transition" min="200" max="2000" />&nbsp;${transition}ms
+            </p> -->
           </div>
         </md-card>
     </div>
@@ -55,9 +61,13 @@
             <div class="row">
               <ul md-tabs class="z-depth-1">
                 <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+                <li md-waves="color: primary;" class="col"><a class="active" href="#js">Javascript</a></li>
               </ul>
               <div id="html" class="z-depth-1">
-                <au-code language="markup" url="samples/media/slider-sample.html"></au-code>
+                <au-code language="markup" url="samples/media/slider-options-sample.html"></au-code>
+              </div>
+              <div id="js" class="z-depth-1">
+                <au-code language="javascript" url="samples/media/slider-options-sample.js"></au-code>
               </div>
             </div>
           </md-card>
