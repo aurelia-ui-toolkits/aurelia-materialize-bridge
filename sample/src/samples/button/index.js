@@ -5,7 +5,8 @@ export class Index {
   configureRouter(config, router) {
     config.title = 'Button';
     config.map([
-      { route: ['', 'basic-use'], moduleId: './basic-use', nav: true, title: 'Basic use' }
+      { route: ['', 'basic-use'], moduleId: './basic-use', nav: true, title: 'Basic use' },
+      { route: 'fab', moduleId: './fab', nav: true, title: 'Floating action button' }
     ]);
 
     this.router = router;
