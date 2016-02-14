@@ -5,6 +5,7 @@ import { inject } from 'aurelia-dependency-injection';
 @customAttribute('md-datepicker')
 export class MdDatePicker {
   @bindable() container;
+  @bindable() translation;
   constructor(element) { this.element = element; }
   attached() {
     this.element.classList.add('date-picker');
@@ -37,6 +38,7 @@ export class MdDatePicker {
     }
     this.picker = $(this.element).pickadate(options);
   }
+
   detached() {
     if (this.picker) {
       this.picker.stop();
