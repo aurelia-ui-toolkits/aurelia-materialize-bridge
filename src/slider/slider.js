@@ -1,4 +1,4 @@
-import { bindable, customElement, inlineView } from 'aurelia-templating';
+import { bindable, bindingMode, customElement, inlineView } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 import { getLogger } from 'aurelia-logging';
@@ -14,11 +14,11 @@ import { getLogger } from 'aurelia-logging';
   </template>
 `)
 export class MdSlider {
-  @bindable() mdFillContainer = false;
-  @bindable() mdHeight = 400;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdFillContainer = false;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdHeight = 400;
   @bindable() mdIndicators = true;
-  @bindable() mdInterval = 6000;
-  @bindable() mdTransition = 500;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdInterval = 6000;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdTransition = 500;
 
   constructor(element) {
     this.element = element;
@@ -63,7 +63,12 @@ export class MdSlider {
     this.refresh();
   }
 
-  mdIntervalChanged() {
-    this.refresh();
-  }
+  // commented since that leads to strange effects
+  // mdIntervalChanged() {
+  //   this.refresh();
+  // }
+  //
+  // mdTransitionChanged() {
+  //   this.refresh();
+  // }
 }
