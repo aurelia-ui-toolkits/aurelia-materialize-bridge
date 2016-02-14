@@ -1,4 +1,5 @@
-import { bindable, bindingMode, customElement, inlineView } from 'aurelia-templating';
+import { bindable, customElement, inlineView } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 import { getLogger } from 'aurelia-logging';
