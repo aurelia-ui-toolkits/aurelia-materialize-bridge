@@ -27,7 +27,6 @@ export class MdScrollfire {
         options.push({
           selector: '#' + target.attr('id'),
           callback: target.get(0).au['md-scrollfire-target'].viewModel.callback,
-          // callback: 'testScrollfire()',
           offset: parseInt(target.get(0).au['md-scrollfire-target'].viewModel.offset, 10)
         });
       });
