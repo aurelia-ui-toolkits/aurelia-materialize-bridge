@@ -30,10 +30,8 @@ export class MdCollapsible {
   refresh() {
     let accordion = getBooleanFromAttributeValue(this.accordion);
     if (accordion) {
-      // this.element.setAttribute('data-collapsible', 'accordion');
       this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
     } else {
-      // this.element.setAttribute('data-collapsible', 'expandable');
       this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
     }
 
