@@ -10,7 +10,11 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaTemplating = require('aurelia-templating');
 
+var _aureliaBinding = require('aurelia-binding');
+
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaLogging = require('aurelia-logging');
 
 var MdDatePicker = (function () {
   var _instanceInitializers = {};
@@ -25,6 +29,11 @@ var MdDatePicker = (function () {
     decorators: [_aureliaTemplating.bindable()],
     initializer: null,
     enumerable: true
+  }, {
+    key: 'value',
+    decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay })],
+    initializer: null,
+    enumerable: true
   }], null, _instanceInitializers);
 
   function MdDatePicker(element) {
@@ -34,7 +43,10 @@ var MdDatePicker = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'translation', _instanceInitializers);
 
+    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers);
+
     this.element = element;
+    this.log = _aureliaLogging.getLogger('md-datepicker');
   }
 
   MdDatePicker.prototype.attached = function attached() {
@@ -50,13 +62,27 @@ var MdDatePicker = (function () {
     if (this.container) {
       options.container = this.container;
     }
-    this.picker = $(this.element).pickadate(options);
+    this.picker = $(this.element).pickadate(options).pickadate('picker');
+    this.picker.on({
+      'close': this.onClose.bind(this),
+      'set': this.onSet.bind(this)
+    });
   };
 
   MdDatePicker.prototype.detached = function detached() {
     if (this.picker) {
       this.picker.stop();
     }
+  };
+
+  MdDatePicker.prototype.onClose = function onClose() {
+    this.value = this.picker.get('select').obj;
+  };
+
+  MdDatePicker.prototype.onSet = function onSet(value) {};
+
+  MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
+    this.log.debug('selectedChanged', this.selected);
   };
 
   var _MdDatePicker = MdDatePicker;

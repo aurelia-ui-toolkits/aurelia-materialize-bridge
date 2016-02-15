@@ -166,9 +166,15 @@ declare module 'aurelia-materialize-bridge' {
   export class MdDatePicker {
     container: any;
     translation: any;
+    value: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
+    onClose(): any;
+    onSet(value: any): any;
+    
+    //  this.value = new Date(value.select);
+    valueChanged(newValue: any): any;
   }
   export class MdDropdownElement {
     static id: any;
@@ -353,14 +359,6 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
-  export class MdWaves {
-    block: any;
-    circle: any;
-    color: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-  }
   export class MdFadeinImage {
     ref: any;
     constructor(element: any);
@@ -376,5 +374,13 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     staggerList(): any;
     ensureOpacity(): any;
+  }
+  export class MdWaves {
+    block: any;
+    circle: any;
+    color: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
   }
 }

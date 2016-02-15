@@ -790,6 +790,11 @@ var MdDatePicker = (function () {
     decorators: [_aureliaTemplating.bindable()],
     initializer: null,
     enumerable: true
+  }, {
+    key: 'value',
+    decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay })],
+    initializer: null,
+    enumerable: true
   }], null, _instanceInitializers7);
 
   function MdDatePicker(element) {
@@ -799,7 +804,10 @@ var MdDatePicker = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'translation', _instanceInitializers7);
 
+    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers7);
+
     this.element = element;
+    this.log = _aureliaLogging.getLogger('md-datepicker');
   }
 
   MdDatePicker.prototype.attached = function attached() {
@@ -815,13 +823,27 @@ var MdDatePicker = (function () {
     if (this.container) {
       options.container = this.container;
     }
-    this.picker = $(this.element).pickadate(options);
+    this.picker = $(this.element).pickadate(options).pickadate('picker');
+    this.picker.on({
+      'close': this.onClose.bind(this),
+      'set': this.onSet.bind(this)
+    });
   };
 
   MdDatePicker.prototype.detached = function detached() {
     if (this.picker) {
       this.picker.stop();
     }
+  };
+
+  MdDatePicker.prototype.onClose = function onClose() {
+    this.value = this.picker.get('select').obj;
+  };
+
+  MdDatePicker.prototype.onSet = function onSet(value) {};
+
+  MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
+    this.log.debug('selectedChanged', this.selected);
   };
 
   var _MdDatePicker = MdDatePicker;
@@ -1946,8 +1968,107 @@ var MdTooltip = (function () {
 
 exports.MdTooltip = MdTooltip;
 
-var MdWaves = (function () {
+var MdFadeinImage = (function () {
   var _instanceInitializers20 = {};
+
+  _createDecoratedClass(MdFadeinImage, [{
+    key: 'ref',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers20);
+
+  function MdFadeinImage(element) {
+    _classCallCheck(this, _MdFadeinImage);
+
+    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers20);
+
+    this.element = element;
+    this.fadeInImage = this.fadeInImage.bind(this);
+    this.log = _aureliaLogging.getLogger('md-fadein-image');
+  }
+
+  MdFadeinImage.prototype.attached = function attached() {
+    this.element.addEventListener('click', this.fadeInImage);
+    this.ensureOpacity();
+  };
+
+  MdFadeinImage.prototype.detached = function detached() {
+    this.element.removeEventListener('click', this.fadeInImage);
+  };
+
+  MdFadeinImage.prototype.fadeInImage = function fadeInImage() {
+    Materialize.fadeInImage(this.ref);
+  };
+
+  MdFadeinImage.prototype.ensureOpacity = function ensureOpacity() {
+    var opacity = window.getComputedStyle(this.ref).opacity;
+    if (opacity !== 0) {
+      this.ref.style.opacity = 0;
+    }
+  };
+
+  var _MdFadeinImage = MdFadeinImage;
+  MdFadeinImage = _aureliaDependencyInjection.inject(Element)(MdFadeinImage) || MdFadeinImage;
+  MdFadeinImage = _aureliaTemplating.customAttribute('md-fadein-image')(MdFadeinImage) || MdFadeinImage;
+  return MdFadeinImage;
+})();
+
+exports.MdFadeinImage = MdFadeinImage;
+
+var MdStaggeredList = (function () {
+  var _instanceInitializers21 = {};
+
+  _createDecoratedClass(MdStaggeredList, [{
+    key: 'ref',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers21);
+
+  function MdStaggeredList(element) {
+    _classCallCheck(this, _MdStaggeredList);
+
+    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers21);
+
+    this.element = element;
+    this.staggerList = this.staggerList.bind(this);
+    this.log = _aureliaLogging.getLogger('md-staggered-list');
+  }
+
+  MdStaggeredList.prototype.attached = function attached() {
+    this.element.addEventListener('click', this.staggerList);
+    this.ensureOpacity();
+  };
+
+  MdStaggeredList.prototype.detached = function detached() {
+    this.element.removeEventListener('click', this.staggerList);
+  };
+
+  MdStaggeredList.prototype.staggerList = function staggerList() {
+    Materialize.showStaggeredList(this.ref);
+  };
+
+  MdStaggeredList.prototype.ensureOpacity = function ensureOpacity() {
+    var items = this.ref.querySelectorAll('li');
+    [].forEach.call(items, function (item) {
+      var opacity = window.getComputedStyle(item).opacity;
+      if (opacity !== 0) {
+        item.style.opacity = 0;
+      }
+    });
+  };
+
+  var _MdStaggeredList = MdStaggeredList;
+  MdStaggeredList = _aureliaDependencyInjection.inject(Element)(MdStaggeredList) || MdStaggeredList;
+  MdStaggeredList = _aureliaTemplating.customAttribute('md-staggered-list')(MdStaggeredList) || MdStaggeredList;
+  return MdStaggeredList;
+})();
+
+exports.MdStaggeredList = MdStaggeredList;
+
+var MdWaves = (function () {
+  var _instanceInitializers22 = {};
 
   _createDecoratedClass(MdWaves, [{
     key: 'block',
@@ -1974,16 +2095,16 @@ var MdWaves = (function () {
     })],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers20);
+  }], null, _instanceInitializers22);
 
   function MdWaves(element) {
     _classCallCheck(this, _MdWaves);
 
-    _defineDecoratedPropertyDescriptor(this, 'block', _instanceInitializers20);
+    _defineDecoratedPropertyDescriptor(this, 'block', _instanceInitializers22);
 
-    _defineDecoratedPropertyDescriptor(this, 'circle', _instanceInitializers20);
+    _defineDecoratedPropertyDescriptor(this, 'circle', _instanceInitializers22);
 
-    _defineDecoratedPropertyDescriptor(this, 'color', _instanceInitializers20);
+    _defineDecoratedPropertyDescriptor(this, 'color', _instanceInitializers22);
 
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
@@ -2021,102 +2142,3 @@ var MdWaves = (function () {
 })();
 
 exports.MdWaves = MdWaves;
-
-var MdFadeinImage = (function () {
-  var _instanceInitializers21 = {};
-
-  _createDecoratedClass(MdFadeinImage, [{
-    key: 'ref',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers21);
-
-  function MdFadeinImage(element) {
-    _classCallCheck(this, _MdFadeinImage);
-
-    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers21);
-
-    this.element = element;
-    this.fadeInImage = this.fadeInImage.bind(this);
-    this.log = _aureliaLogging.getLogger('md-fadein-image');
-  }
-
-  MdFadeinImage.prototype.attached = function attached() {
-    this.element.addEventListener('click', this.fadeInImage);
-    this.ensureOpacity();
-  };
-
-  MdFadeinImage.prototype.detached = function detached() {
-    this.element.removeEventListener('click', this.fadeInImage);
-  };
-
-  MdFadeinImage.prototype.fadeInImage = function fadeInImage() {
-    Materialize.fadeInImage(this.ref);
-  };
-
-  MdFadeinImage.prototype.ensureOpacity = function ensureOpacity() {
-    var opacity = window.getComputedStyle(this.ref).opacity;
-    if (opacity !== 0) {
-      this.ref.style.opacity = 0;
-    }
-  };
-
-  var _MdFadeinImage = MdFadeinImage;
-  MdFadeinImage = _aureliaDependencyInjection.inject(Element)(MdFadeinImage) || MdFadeinImage;
-  MdFadeinImage = _aureliaTemplating.customAttribute('md-fadein-image')(MdFadeinImage) || MdFadeinImage;
-  return MdFadeinImage;
-})();
-
-exports.MdFadeinImage = MdFadeinImage;
-
-var MdStaggeredList = (function () {
-  var _instanceInitializers22 = {};
-
-  _createDecoratedClass(MdStaggeredList, [{
-    key: 'ref',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers22);
-
-  function MdStaggeredList(element) {
-    _classCallCheck(this, _MdStaggeredList);
-
-    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers22);
-
-    this.element = element;
-    this.staggerList = this.staggerList.bind(this);
-    this.log = _aureliaLogging.getLogger('md-staggered-list');
-  }
-
-  MdStaggeredList.prototype.attached = function attached() {
-    this.element.addEventListener('click', this.staggerList);
-    this.ensureOpacity();
-  };
-
-  MdStaggeredList.prototype.detached = function detached() {
-    this.element.removeEventListener('click', this.staggerList);
-  };
-
-  MdStaggeredList.prototype.staggerList = function staggerList() {
-    Materialize.showStaggeredList(this.ref);
-  };
-
-  MdStaggeredList.prototype.ensureOpacity = function ensureOpacity() {
-    var items = this.ref.querySelectorAll('li');
-    [].forEach.call(items, function (item) {
-      var opacity = window.getComputedStyle(item).opacity;
-      if (opacity !== 0) {
-        item.style.opacity = 0;
-      }
-    });
-  };
-
-  var _MdStaggeredList = MdStaggeredList;
-  MdStaggeredList = _aureliaDependencyInjection.inject(Element)(MdStaggeredList) || MdStaggeredList;
-  MdStaggeredList = _aureliaTemplating.customAttribute('md-staggered-list')(MdStaggeredList) || MdStaggeredList;
-  return MdStaggeredList;
-})();
-
-exports.MdStaggeredList = MdStaggeredList;

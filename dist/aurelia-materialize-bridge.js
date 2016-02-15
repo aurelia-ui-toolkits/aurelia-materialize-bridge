@@ -602,7 +602,11 @@ export function fireMaterializeEvent(element: Element, name: string, data? = {})
 export class MdDatePicker {
   @bindable() container;
   @bindable() translation;
-  constructor(element) { this.element = element; }
+  @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-datepicker');
+  }
   attached() {
     this.element.classList.add('date-picker');
     let options = {
@@ -632,13 +636,29 @@ export class MdDatePicker {
     if (this.container) {
       options.container = this.container;
     }
-    this.picker = $(this.element).pickadate(options);
+    this.picker = $(this.element).pickadate(options).pickadate('picker');
+    this.picker.on({
+      'close': this.onClose.bind(this),
+      'set': this.onSet.bind(this)
+    });
   }
 
   detached() {
     if (this.picker) {
       this.picker.stop();
     }
+  }
+
+  onClose() {
+    this.value = this.picker.get('select').obj;
+  }
+
+  onSet(value) {
+    // this.value = new Date(value.select);
+  }
+
+  valueChanged(newValue) {
+    this.log.debug('selectedChanged', this.selected);
   }
 }
 
@@ -1303,49 +1323,6 @@ export class MdTooltip {
   }
 }
 
-@customAttribute('md-waves')
-@inject(Element)
-export class MdWaves {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) block = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) circle = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) color;
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    let classes = ['waves-effect'];
-    if (getBooleanFromAttributeValue(this.block)) {
-      classes.push('waves-block');
-    }
-    if (getBooleanFromAttributeValue(this.circle)) {
-      classes.push('waves-circle');
-    }
-    if (this.color) {
-      classes.push(`waves-${this.color}`);
-    }
-
-    this.attributeManager.addClasses(classes);
-    Waves.attach(this.element);
-  }
-
-  detached() {
-    let classes = ['waves-effect', 'waves-block'];
-    if (this.color) {
-      classes.push(`waves-${this.color}`);
-    }
-
-    this.attributeManager.removeClasses(classes);
-  }
-}
-
 @customAttribute('md-fadein-image')
 @inject(Element)
 export class MdFadeinImage {
@@ -1410,5 +1387,48 @@ export class MdStaggeredList {
         item.style.opacity = 0;
       }
     });
+  }
+}
+
+@customAttribute('md-waves')
+@inject(Element)
+export class MdWaves {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) block = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) circle = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) color;
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    let classes = ['waves-effect'];
+    if (getBooleanFromAttributeValue(this.block)) {
+      classes.push('waves-block');
+    }
+    if (getBooleanFromAttributeValue(this.circle)) {
+      classes.push('waves-circle');
+    }
+    if (this.color) {
+      classes.push(`waves-${this.color}`);
+    }
+
+    this.attributeManager.addClasses(classes);
+    Waves.attach(this.element);
+  }
+
+  detached() {
+    let classes = ['waves-effect', 'waves-block'];
+    if (this.color) {
+      classes.push(`waves-${this.color}`);
+    }
+
+    this.attributeManager.removeClasses(classes);
   }
 }

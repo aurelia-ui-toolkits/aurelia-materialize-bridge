@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaLogging) {
   'use strict';
 
   exports.__esModule = true;
@@ -22,6 +22,11 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], functi
       decorators: [_aureliaTemplating.bindable()],
       initializer: null,
       enumerable: true
+    }, {
+      key: 'value',
+      decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay })],
+      initializer: null,
+      enumerable: true
     }], null, _instanceInitializers);
 
     function MdDatePicker(element) {
@@ -31,7 +36,10 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], functi
 
       _defineDecoratedPropertyDescriptor(this, 'translation', _instanceInitializers);
 
+      _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers);
+
       this.element = element;
+      this.log = _aureliaLogging.getLogger('md-datepicker');
     }
 
     MdDatePicker.prototype.attached = function attached() {
@@ -47,13 +55,27 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], functi
       if (this.container) {
         options.container = this.container;
       }
-      this.picker = $(this.element).pickadate(options);
+      this.picker = $(this.element).pickadate(options).pickadate('picker');
+      this.picker.on({
+        'close': this.onClose.bind(this),
+        'set': this.onSet.bind(this)
+      });
     };
 
     MdDatePicker.prototype.detached = function detached() {
       if (this.picker) {
         this.picker.stop();
       }
+    };
+
+    MdDatePicker.prototype.onClose = function onClose() {
+      this.value = this.picker.get('select').obj;
+    };
+
+    MdDatePicker.prototype.onSet = function onSet(value) {};
+
+    MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
+      this.log.debug('selectedChanged', this.selected);
     };
 
     var _MdDatePicker = MdDatePicker;
