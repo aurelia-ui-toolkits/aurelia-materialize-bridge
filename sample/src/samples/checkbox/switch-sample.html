@@ -1,0 +1,16 @@
+<template>
+  <div style="margin-top: 10px;">
+    Default:
+    <md-switch md-checked.bind="checked"></md-switch>
+    With value: ${checked | stringify}
+  </div>
+  <div style="margin-top: 10px;">
+    Custom labels:
+    <md-switch md-label-on="enabled" md-label-off="disabled" md-checked.bind="checked"></md-switch>
+    With value: ${checked | stringify}
+  </div>
+  <div style="margin-top: 10px;">
+    Disabled:
+    <md-switch md-disabled="true"></md-switch>
+  </div>
+</template>
