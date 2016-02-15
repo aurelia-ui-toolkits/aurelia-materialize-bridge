@@ -27,6 +27,13 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       },
       enumerable: true
     }, {
+      key: 'floating',
+      decorators: [_aureliaTemplating.bindable()],
+      initializer: function initializer() {
+        return false;
+      },
+      enumerable: true
+    }, {
       key: 'large',
       decorators: [_aureliaTemplating.bindable()],
       initializer: function initializer() {
@@ -42,6 +49,8 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
 
       _defineDecoratedPropertyDescriptor(this, 'flat', _instanceInitializers);
 
+      _defineDecoratedPropertyDescriptor(this, 'floating', _instanceInitializers);
+
       _defineDecoratedPropertyDescriptor(this, 'large', _instanceInitializers);
 
       this.attributeManager = new _commonAttributeManager.AttributeManager(element);
@@ -52,6 +61,9 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
 
       if (_commonAttributes.getBooleanFromAttributeValue(this.flat)) {
         classes.push('btn-flat');
+      }
+      if (_commonAttributes.getBooleanFromAttributeValue(this.floating)) {
+        classes.push('btn-floating');
       }
       if (_commonAttributes.getBooleanFromAttributeValue(this.large)) {
         classes.push('btn-large');

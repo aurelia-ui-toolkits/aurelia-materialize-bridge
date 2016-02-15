@@ -12,53 +12,58 @@ var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
-var MdSlide = (function () {
+var MdPushpin = (function () {
   var _instanceInitializers = {};
 
-  _createDecoratedClass(MdSlide, [{
-    key: 'captionAlign',
+  _createDecoratedClass(MdPushpin, [{
+    key: 'bottom',
     decorators: [_aureliaTemplating.bindable()],
     initializer: function initializer() {
-      return 'left';
+      return Infinity;
     },
     enumerable: true
   }, {
-    key: 'img',
+    key: 'offset',
     decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
+    initializer: function initializer() {
+      return 0;
+    },
+    enumerable: true
+  }, {
+    key: 'top',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: function initializer() {
+      return 0;
+    },
     enumerable: true
   }], null, _instanceInitializers);
 
-  function MdSlide(element) {
-    _classCallCheck(this, _MdSlide);
+  function MdPushpin(element) {
+    _classCallCheck(this, _MdPushpin);
 
-    _defineDecoratedPropertyDescriptor(this, 'captionAlign', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'bottom', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'img', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'offset', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'top', _instanceInitializers);
 
     this.element = element;
   }
 
-  MdSlide.prototype.attached = function attached() {
-    if (this.captionAlign) {
-      var align = this.captionAlign + '-align';
-      this.caption.classList.add(align);
-    }
+  MdPushpin.prototype.attached = function attached() {
+    $(this.element).pushpin({
+      bottom: this.bottom === Infinity ? Infinity : parseInt(this.bottom, 10),
+      offset: parseInt(this.offset, 10),
+      top: parseInt(this.top, 10)
+    });
   };
 
-  MdSlide.prototype.detached = function detached() {
-    if (this.captionAlign) {
-      var align = this.captionAlign + '-align';
-      this.caption.classList.remove(align);
-    }
-  };
+  MdPushpin.prototype.detached = function detached() {};
 
-  var _MdSlide = MdSlide;
-  MdSlide = _aureliaTemplating.inlineView('\n  <template>\n  <li>\n    <img src.bind="img" />\n    <div class="caption" ref="caption">\n      <content></content>\n    </div>\n  </li>\n  </template>\n')(MdSlide) || MdSlide;
-  MdSlide = _aureliaTemplating.containerless()(MdSlide) || MdSlide;
-  MdSlide = _aureliaDependencyInjection.inject(Element)(MdSlide) || MdSlide;
-  MdSlide = _aureliaTemplating.customElement('md-slide')(MdSlide) || MdSlide;
-  return MdSlide;
+  var _MdPushpin = MdPushpin;
+  MdPushpin = _aureliaDependencyInjection.inject(Element)(MdPushpin) || MdPushpin;
+  MdPushpin = _aureliaTemplating.customAttribute('md-pushpin')(MdPushpin) || MdPushpin;
+  return MdPushpin;
 })();
 
-exports.MdSlide = MdSlide;
+exports.MdPushpin = MdPushpin;

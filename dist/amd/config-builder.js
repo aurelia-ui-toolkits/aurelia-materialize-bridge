@@ -14,7 +14,7 @@ define(['exports'], function (exports) {
     }
 
     ConfigBuilder.prototype.useAll = function useAll() {
-      return this.useBox().useButton().useCard().useCarousel().useCheckbox().useCollapsible().useColors().useDropdown().useNavbar().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+      return this.useBox().useButton().useCard().useCarousel().useCheckbox().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useModal().useNavbar().useParallax().usePushpin().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
     };
 
     ConfigBuilder.prototype.useBox = function useBox() {
@@ -58,13 +58,49 @@ define(['exports'], function (exports) {
       return this;
     };
 
+    ConfigBuilder.prototype.useDatePicker = function useDatePicker() {
+      this.globalResources.push('./datepicker/datepicker');
+      return this;
+    };
+
     ConfigBuilder.prototype.useDropdown = function useDropdown() {
       this.globalResources.push('./dropdown/dropdown');
       return this;
     };
 
+    ConfigBuilder.prototype.useFab = function useFab() {
+      this.globalResources.push('./fab/fab');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useModal = function useModal() {
+      this.globalResources.push('./modal/modal-trigger');
+      return this;
+    };
+
     ConfigBuilder.prototype.useNavbar = function useNavbar() {
       this.globalResources.push('./navbar/navbar');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useParallax = function useParallax() {
+      this.globalResources.push('./parallax/parallax');
+      return this;
+    };
+
+    ConfigBuilder.prototype.usePushpin = function usePushpin() {
+      this.globalResources.push('./pushpin/pushpin');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useScrollfire = function useScrollfire() {
+      this.globalResources.push('./scrollfire/scrollfire');
+      this.globalResources.push('./scrollfire/scrollfire-target');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useScrollSpy = function useScrollSpy() {
+      this.globalResources.push('./scrollspy/scrollspy');
       return this;
     };
 
@@ -81,7 +117,7 @@ define(['exports'], function (exports) {
 
     ConfigBuilder.prototype.useSlider = function useSlider() {
       this.globalResources.push('./slider/slider');
-      this.globalResources.push('./slider/slide');
+
       return this;
     };
 

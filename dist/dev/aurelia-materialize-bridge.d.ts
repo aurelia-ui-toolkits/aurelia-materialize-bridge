@@ -2,7 +2,7 @@ declare module 'aurelia-materialize-bridge' {
   import 'materialize';
   import * as LogManager from 'aurelia-logging';
   import { Aurelia }  from 'aurelia-framework';
-  import { bindable, customAttribute, customElement, containerless, inlineView }  from 'aurelia-templating';
+  import { bindable, customAttribute, customElement, inlineView }  from 'aurelia-templating';
   import { bindingMode, ObserverLocator }  from 'aurelia-binding';
   import { inject }  from 'aurelia-dependency-injection';
   import { getLogger }  from 'aurelia-logging';
@@ -30,8 +30,15 @@ declare module 'aurelia-materialize-bridge' {
     useClickCounter(): ConfigBuilder;
     useCollapsible(): ConfigBuilder;
     useColors(): ConfigBuilder;
+    useDatePicker(): ConfigBuilder;
     useDropdown(): ConfigBuilder;
+    useFab(): ConfigBuilder;
+    useModal(): ConfigBuilder;
     useNavbar(): ConfigBuilder;
+    useParallax(): ConfigBuilder;
+    usePushpin(): ConfigBuilder;
+    useScrollfire(): ConfigBuilder;
+    useScrollSpy(): ConfigBuilder;
     useSelect(): ConfigBuilder;
     useSidenav(): ConfigBuilder;
     useSlider(): ConfigBuilder;
@@ -66,6 +73,7 @@ declare module 'aurelia-materialize-bridge' {
   export class MdButton {
     disabled: any;
     flat: any;
+    floating: any;
     large: any;
     constructor(element: any);
     attached(): any;
@@ -155,6 +163,13 @@ declare module 'aurelia-materialize-bridge' {
   * @param data Addition data to attach to an event
   */
   export function fireMaterializeEvent(element: Element, name: string, data?: any): any;
+  export class MdDatePicker {
+    container: any;
+    translation: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   export class MdDropdownElement {
     static id: any;
     alignment: any;
@@ -182,6 +197,12 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
+  export class MdFab {
+    mdFixed: any;
+    mdLarge: any;
+    constructor(element: any);
+    attached(): any;
+  }
   export class MdModalTrigger {
     constructor(element: any);
     attached(): any;
@@ -194,20 +215,52 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
-  export class MdSelect {
-    selected: any;
-    constructor(element: any, logManager: any);
-    
-    //  this.log = getLogger('md-select');
+  export class MdParallax {
+    constructor(element: any);
     attached(): any;
     detached(): any;
-    
-    /*
-       * This handler is called when the native <select> changes.
-       */
+  }
+  
+  //  destroy handler not available
+  export class MdPushpin {
+    bottom: any;
+    offset: any;
+    top: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  
+  //  destroy handler not available
+  /* eslint no-new-func:0 */
+  export class ScrollfirePatch {
+    patched: any;
+    patch(): any;
+  }
+  export class MdScrollfireTarget {
+    callback: any;
+    offset: any;
+    constructor(element: any);
+  }
+  export class MdScrollfire {
+    targetId: any;
+    constructor(element: any, scrollfirePatch: any);
+    attached(): any;
+  }
+  export class MdScrollSpy {
+    target: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  
+  //  destroy handler not available
+  export class MdSelect {
+    constructor(element: any, logManager: any, observerLocator: any);
+    attached(): any;
+    detached(): any;
     handleChangeFromNativeSelect(): any;
-    arraysAreEqual(array1: any, array2: any): any;
-    selectedChanged(): any;
+    handleChangeFromViewModel(newValue: any): any;
   }
   export class MdSidenavCollapse {
     ref: any;
@@ -247,13 +300,6 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     fixedChanged(newValue: any): any;
   }
-  export class MdSlide {
-    captionAlign: any;
-    img: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-  }
   export class MdSlider {
     mdFillContainer: any;
     mdHeight: any;
@@ -266,7 +312,18 @@ declare module 'aurelia-materialize-bridge' {
     start(): any;
     next(): any;
     prev(): any;
+    refresh(): any;
+    mdIndicatorsChanged(): any;
   }
+  
+  //  commented since that leads to strange effects
+  //  mdIntervalChanged() {
+  //    this.refresh();
+  //  }
+  // 
+  //  mdTransitionChanged() {
+  //    this.refresh();
+  //  }
   export class MdSwitch {
     mdChecked: any;
     mdLabelOff: any;
@@ -296,6 +353,14 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
+  export class MdWaves {
+    block: any;
+    circle: any;
+    color: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   export class MdFadeinImage {
     ref: any;
     constructor(element: any);
@@ -311,12 +376,5 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     staggerList(): any;
     ensureOpacity(): any;
-  }
-  export class MdWaves {
-    block: any;
-    color: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
   }
 }

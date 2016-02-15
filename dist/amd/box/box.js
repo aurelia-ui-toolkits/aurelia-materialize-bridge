@@ -15,7 +15,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     _createDecoratedClass(MdBox, [{
       key: 'caption',
       decorators: [_aureliaTemplating.bindable({
-        defaultBindingMode: _aureliaBinding.bindingMode.oneTome
+        defaultBindingMode: _aureliaBinding.bindingMode.oneTime
       })],
       initializer: null,
       enumerable: true

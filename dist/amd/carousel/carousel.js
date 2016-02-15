@@ -36,7 +36,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         this.element.classList.add('carousel-slider');
       }
 
-      $(this.element).carousel();
+      if (_commonAttributes.getBooleanFromAttributeValue(this.mdSlider)) {
+        $(this.element).carousel({ full_width: true });
+      } else {
+        $(this.element).carousel();
+      }
     };
 
     var _MdCarousel = MdCarousel;

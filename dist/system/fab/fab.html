@@ -1,0 +1,12 @@
+<template>
+  <a if.bind="mdFixed === false" md-button="large.bind: mdLarge;" md-waves="color: light;" class="btn-floating">
+    <content select=".material-icons"></content>
+  </a>
+
+  <div if.bind="mdFixed === true" class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a md-button="large: true;" md-waves="color: light;" class="btn-floating">
+      <content select=".material-icons"></content>
+    </a>
+    <content select="ul"></content>
+  </div>
+</template>

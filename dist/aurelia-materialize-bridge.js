@@ -1,7 +1,7 @@
 import 'materialize';
 import * as LogManager from 'aurelia-logging';
 import {Aurelia} from 'aurelia-framework';
-import {bindable,customAttribute,customElement,containerless,inlineView} from 'aurelia-templating';
+import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
 import {bindingMode,ObserverLocator} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
 import {getLogger} from 'aurelia-logging';
@@ -31,8 +31,14 @@ export class ConfigBuilder {
       .useCheckbox()
       .useCollapsible()
       .useColors()
+      .useDatePicker()
       .useDropdown()
+      .useFab()
+      .useModal()
       .useNavbar()
+      .useParallax()
+      .usePushpin()
+      .useScrollfire()
       .useSelect()
       .useSidenav()
       .useSlider()
@@ -88,14 +94,50 @@ export class ConfigBuilder {
     return this;
   }
 
+  useDatePicker() : ConfigBuilder {
+    this.globalResources.push('./datepicker/datepicker');
+    return this;
+  }
+
   useDropdown() : ConfigBuilder {
     // this.globalResources.push('./dropdown/dropdown-element');
     this.globalResources.push('./dropdown/dropdown');
     return this;
   }
 
+  useFab() : ConfigBuilder {
+    this.globalResources.push('./fab/fab');
+    return this;
+  }
+
+  useModal(): ConfigBuilder {
+    this.globalResources.push('./modal/modal-trigger');
+    return this;
+  }
+
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useParallax(): ConfigBuilder {
+    this.globalResources.push('./parallax/parallax');
+    return this;
+  }
+
+  usePushpin(): ConfigBuilder {
+    this.globalResources.push('./pushpin/pushpin');
+    return this;
+  }
+
+  useScrollfire(): ConfigBuilder {
+    this.globalResources.push('./scrollfire/scrollfire');
+    this.globalResources.push('./scrollfire/scrollfire-target');
+    return this;
+  }
+
+  useScrollSpy(): ConfigBuilder {
+    this.globalResources.push('./scrollspy/scrollspy');
     return this;
   }
 
@@ -112,7 +154,7 @@ export class ConfigBuilder {
 
   useSlider(): ConfigBuilder {
     this.globalResources.push('./slider/slider');
-    this.globalResources.push('./slider/slide');
+    // this.globalResources.push('./slider/slide');
     return this;
   }
 
@@ -179,7 +221,7 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBui
 @inject(Element)
 export class MdBox {
   @bindable({
-    defaultBindingMode: bindingMode.oneTome
+    defaultBindingMode: bindingMode.oneTime
   }) caption;
   constructor(element) {
     this.element = element;
@@ -191,7 +233,7 @@ export class MdBox {
     if (this.caption) {
       this.attributeManager.addAttributes({ 'data-caption': this.caption });
     }
-    // FIXME: thwrows "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
+    // FIXME:0 throws "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
     $(this.element).materialbox();
   }
 
@@ -206,6 +248,7 @@ export class MdBox {
 export class MdButton {
   @bindable() disabled = false;
   @bindable() flat = false;
+  @bindable() floating = false;
   @bindable() large = false;
 
   constructor(element) {
@@ -217,6 +260,9 @@ export class MdButton {
 
     if (getBooleanFromAttributeValue(this.flat)) {
       classes.push('btn-flat');
+    }
+    if (getBooleanFromAttributeValue(this.floating)) {
+      classes.push('btn-floating');
     }
     if (getBooleanFromAttributeValue(this.large)) {
       classes.push('btn-large');
@@ -309,7 +355,12 @@ export class MdCarousel {
       this.element.classList.add('carousel-slider');
     }
 
-    $(this.element).carousel();
+    // workaround for: https://github.com/Dogfalo/materialize/issues/2741
+    if (getBooleanFromAttributeValue(this.mdSlider)) {
+      $(this.element).carousel({full_width: true});
+    } else {
+      $(this.element).carousel();
+    }
   }
 }
 
@@ -395,10 +446,8 @@ export class MdCollapsible {
   refresh() {
     let accordion = getBooleanFromAttributeValue(this.accordion);
     if (accordion) {
-      // this.element.setAttribute('data-collapsible', 'accordion');
       this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
     } else {
-      // this.element.setAttribute('data-collapsible', 'expandable');
       this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
     }
 
@@ -548,6 +597,51 @@ export function fireMaterializeEvent(element: Element, name: string, data? = {})
   return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
 
+@inject(Element)
+@customAttribute('md-datepicker')
+export class MdDatePicker {
+  @bindable() container;
+  @bindable() translation;
+  constructor(element) { this.element = element; }
+  attached() {
+    this.element.classList.add('date-picker');
+    let options = {
+      onClose: function() {
+        // see https://github.com/Dogfalo/materialize/issues/2067
+        // and: https://github.com/amsul/pickadate.js/issues/160
+        $(document.activeElement).blur();
+        // $(this.element).blur();
+      }
+    };
+    let i18n = {};
+    // let i18n = {
+    //   selectMonths: true, // Creates a dropdown to control month
+    //   selectYears: 15, // Creates a dropdown of 15 years to control year
+    //   monthsFull: [ 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ],
+    //   monthsShort: [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
+    //   weekdaysFull: [ 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag' ],
+    //   weekdaysShort: [ 'So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa' ],
+    //   today: 'Heute',
+    //   clear: 'Löschen',
+    //   close: 'Schließen',
+    //   firstDay: 1,
+    //   format: 'dddd, dd. mmmm yyyy',
+    //   formatSubmit: 'yyyy/mm/dd'
+    // };
+    Object.assign(options, i18n);
+    if (this.container) {
+      options.container = this.container;
+    }
+    this.picker = $(this.element).pickadate(options);
+  }
+
+  detached() {
+    if (this.picker) {
+      this.picker.stop();
+    }
+  }
+}
+
 @customElement('md-dropdown')
 @inject(Element)
 export class MdDropdownElement {
@@ -654,6 +748,22 @@ export class MdDropdown {
   }
 }
 
+@customElement('md-fab')
+@inject(Element)
+export class MdFab {
+  @bindable() mdFixed = false;
+  @bindable() mdLarge = false;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.mdFixed = getBooleanFromAttributeValue(this.mdFixed);
+    this.mdLarge = getBooleanFromAttributeValue(this.mdLarge);
+  }
+}
+
 @customAttribute('md-modal-trigger')
 @inject(Element)
 export class MdModalTrigger {
@@ -664,6 +774,7 @@ export class MdModalTrigger {
 
   attached() {
     this.attributeManager.addClasses('modal-trigger');
+    $(this.element).leanModal();
   }
 
   detached() {
@@ -697,58 +808,214 @@ export class MdNavbar {
   }
 }
 
-@inject(Element, LogManager)
-@customAttribute('md-select')
-export class MdSelect {
-  @bindable({
-    defaultBindingMode: bindingMode.twoWay
-  }) selected;
-  constructor(element, logManager) {
+@customAttribute('md-parallax')
+@inject(Element)
+export class MdParallax {
+  constructor(element) {
     this.element = element;
-    this.changeHandler = this.handleChangeFromNativeSelect.bind(this);
-    this.log = LogManager.getLogger('md-select');
-    // this.log = getLogger('md-select');
   }
+
   attached() {
-    $(this.element).material_select();
-    $(this.element).on('change', this.changeHandler);
+    $(this.element).parallax();
   }
 
   detached() {
-    $(this.element).off('change', this.changeHandler);
-    $(this.element).material_select('destroy');
+    // destroy handler not available
+  }
+}
+
+@customAttribute('md-pushpin')
+@inject(Element)
+export class MdPushpin {
+  @bindable() bottom = Infinity;
+  @bindable() offset = 0;
+  @bindable() top = 0;
+
+  constructor(element) {
+    this.element = element;
   }
 
-  /*
-   * This handler is called when the native <select> changes.
-   */
-  handleChangeFromNativeSelect() {
-    // this.selected = this.element.value;
-    this.selected = $(this.element).val();
+  attached() {
+    $(this.element).pushpin({
+      bottom: (this.bottom === Infinity ? Infinity : parseInt(this.bottom, 10)),
+      offset: parseInt(this.offset, 10),
+      top: parseInt(this.top, 10)
+    });
   }
 
-  arraysAreEqual(array1, array2) {
-    let result = true;
-    if (array1 && array2) {
-      if (typeof array1 === 'string') {
-        // single select
-        result = false;
-      } else {
-        result = (array1.length === array2.length) && array1.every(function(element, index) {
-          return element === array2[index];
+  detached() {
+    // destroy handler not available
+  }
+}
+
+/* eslint no-new-func:0 */
+export class ScrollfirePatch {
+  patched = false;
+
+  patch() {
+    if (!this.patched) {
+      this.patched = true;
+
+      window.Materialize.scrollFire = function(options) {
+        let didScroll = false;
+        window.addEventListener('scroll', function() {
+          didScroll = true;
         });
-      }
-    } else {
-      result = false;
-    }
 
-    return result;
+        // Rate limit to 100ms
+        setInterval(function() {
+          if (didScroll) {
+            didScroll = false;
+
+            let windowScroll = window.pageYOffset + window.innerHeight;
+            for (let i = 0; i < options.length; i++) {
+              // Get options from each line
+              let value = options[i];
+              let selector = value.selector;
+              let offset = value.offset;
+              let callback = value.callback;
+
+              let currentElement = document.querySelector(selector);
+              if ( currentElement !== null) {
+                let elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
+
+                if (windowScroll > (elementOffset + offset)) {
+                  if (value.done !== true) {
+                    if (typeof(callback) === 'string') {
+                      let callbackFunc = new Function(callback);
+                      callbackFunc();
+                    } else if (typeof(callback) === 'function') {
+                      callback();
+                    }
+                    value.done = true;
+                  }
+                }
+              }
+            }
+          }
+        }, 100);
+      };
+    }
+  }
+}
+
+@customAttribute('md-scrollfire-target')
+@inject(Element)
+export class MdScrollfireTarget {
+  @bindable() callback = null;
+  @bindable() offset = 0;
+  constructor(element) {
+    this.element = element;
+  }
+}
+
+@customAttribute('md-scrollfire')
+@inject(Element, ScrollfirePatch)
+export class MdScrollfire {
+  targetId = 0;
+  constructor(element, scrollfirePatch) {
+    scrollfirePatch.patch();
+    this.element = element;
+    this.log = getLogger('md-scrollfire');
   }
 
-  selectedChanged() {
-    // this.element.value = this.selected;
-    if (!this.arraysAreEqual($(this.element).val(), this.selected)) {
-      $(this.element).val(this.selected);
+  attached() {
+    let targets = $('[md-scrollfire-target]', this.element);
+    if (targets.length > 0) {
+      this.log.debug('targets', targets);
+      let self = this;
+      let options = [];
+      targets.each((i, el) => {
+        let target = $(el);
+        if (!target.attr('id')) {
+          target.attr('id', `md-scrollfire-target-${self.targetId++}`);
+        }
+        options.push({
+          selector: '#' + target.attr('id'),
+          callback: target.get(0).au['md-scrollfire-target'].viewModel.callback,
+          offset: parseInt(target.get(0).au['md-scrollfire-target'].viewModel.offset, 10)
+        });
+      });
+      if (options.length > 0) {
+        this.log.debug('configuring scrollFire with these options:', options);
+        Materialize.scrollFire(options);
+      }
+    }
+  }
+}
+
+@customAttribute('md-scrollspy')
+@inject(Element)
+export class MdScrollSpy {
+  @bindable() target;
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.target, this.element).scrollSpy();
+  }
+
+  detached() {
+    // destroy handler not available
+  }
+}
+
+@inject(Element, LogManager, ObserverLocator)
+@customAttribute('md-select')
+export class MdSelect {
+  _suspendUpdate = false;
+
+  constructor(element, logManager, observerLocator) {
+    this.element = element;
+    this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
+    this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
+    this.log = LogManager.getLogger('md-select');
+    this.observerLocator = observerLocator;
+    this.valueObserver = this.observerLocator.getObserver(this.element, 'value');
+  }
+  attached() {
+    this.valueObserver.subscribe(this.handleChangeFromViewModel);
+    // $(this.element).material_select(() => {
+    //   this.log.warn('materialize callback', $(this.element).val());
+    //   this.handleChangeFromNativeSelect();
+    // });
+    $(this.element).material_select();
+    $(this.element).on('change', this.handleChangeFromNativeSelect);
+  }
+
+  detached() {
+    $(this.element).off('change', this.handleChangeFromNativeSelect);
+    $(this.element).material_select('destroy');
+    this.valueObserver.unsubscribe();
+  }
+
+  handleChangeFromNativeSelect() {
+    // Aurelia's select observer doesn't get noticed when something changes the
+    // select value directly (this.element.value = "something"). So we trigger
+    // the change here.
+    // this.valueObserver.value = $(this.element).val();
+    // this.valueObserver.synchronizeValue();
+    // this.valueObserver.synchronizeOptions();
+    // this._suspendUpdate = true;
+    // this.valueObserver.notify();
+    // this._suspendUpdate = false;
+
+    if (!this._suspendUpdate) {
+      this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
+      this._suspendUpdate = true;
+      fireEvent(this.element, 'change');
+      this.log.debug('this.valueObserver.value', this.valueObserver.value);
+      // this.valueObserver.value = $(this.element).val();
+      // this.valueObserver.notify();
+
+      this._suspendUpdate = false;
+    }
+  }
+
+  handleChangeFromViewModel(newValue) {
+    this.log.debug('handleChangeFromViewModel', newValue, $(this.element).val());
+    if (!this._suspendUpdate) {
       $(this.element).material_select();
     }
   }
@@ -852,42 +1119,6 @@ export class MdSidenav {
   }
 }
 
-@customElement('md-slide')
-@inject(Element)
-@containerless()
-@inlineView(`
-  <template>
-  <li>
-    <img src.bind="img" />
-    <div class="caption" ref="caption">
-      <content></content>
-    </div>
-  </li>
-  </template>
-`)
-export class MdSlide {
-  @bindable() captionAlign = 'left';
-  @bindable() img;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    if (this.captionAlign) {
-      let align = `${this.captionAlign}-align`;
-      this.caption.classList.add(align);
-    }
-  }
-
-  detached() {
-    if (this.captionAlign) {
-      let align = `${this.captionAlign}-align`;
-      this.caption.classList.remove(align);
-    }
-  }
-}
-
 @customElement('md-slider')
 @inject(Element)
 @inlineView(`
@@ -899,27 +1130,22 @@ export class MdSlide {
   </template>
 `)
 export class MdSlider {
-  @bindable() mdFillContainer = false;
-  @bindable() mdHeight = 400;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdFillContainer = false;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdHeight = 400;
   @bindable() mdIndicators = true;
-  @bindable() mdInterval = 6000;
-  @bindable() mdTransition = 500;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdInterval = 6000;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdTransition = 500;
 
   constructor(element) {
     this.element = element;
+    this.log = getLogger('md-slider');
   }
 
   attached() {
     if (getBooleanFromAttributeValue(this.mdFillContainer)) {
       this.element.classList.add('fullscreen');
     }
-    // $(this.element).slider({full_width: true});
-    $(this.element).slider({
-      height: parseInt(this.mdHeight, 10),
-      indicators: getBooleanFromAttributeValue(this.mdIndicators),
-      interval: parseInt(this.mdInterval, 10),
-      transition: parseInt(this.mdTransition, 10)
-    });
+    this.refresh();
   }
 
   pause() {
@@ -937,6 +1163,30 @@ export class MdSlider {
   prev() {
     $(this.element).slider('prev');
   }
+
+  refresh() {
+    let options = {
+      height: parseInt(this.mdHeight, 10),
+      indicators: getBooleanFromAttributeValue(this.mdIndicators),
+      interval: parseInt(this.mdInterval, 10),
+      transition: parseInt(this.mdTransition, 10)
+    };
+    this.log.debug('refreshing slider, params:', options);
+    $(this.element).slider(options);
+  }
+
+  mdIndicatorsChanged() {
+    this.refresh();
+  }
+
+  // commented since that leads to strange effects
+  // mdIntervalChanged() {
+  //   this.refresh();
+  // }
+  //
+  // mdTransitionChanged() {
+  //   this.refresh();
+  // }
 }
 
 @customElement('md-switch')
@@ -1053,6 +1303,49 @@ export class MdTooltip {
   }
 }
 
+@customAttribute('md-waves')
+@inject(Element)
+export class MdWaves {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) block = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) circle = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) color;
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    let classes = ['waves-effect'];
+    if (getBooleanFromAttributeValue(this.block)) {
+      classes.push('waves-block');
+    }
+    if (getBooleanFromAttributeValue(this.circle)) {
+      classes.push('waves-circle');
+    }
+    if (this.color) {
+      classes.push(`waves-${this.color}`);
+    }
+
+    this.attributeManager.addClasses(classes);
+    Waves.attach(this.element);
+  }
+
+  detached() {
+    let classes = ['waves-effect', 'waves-block'];
+    if (this.color) {
+      classes.push(`waves-${this.color}`);
+    }
+
+    this.attributeManager.removeClasses(classes);
+  }
+}
+
 @customAttribute('md-fadein-image')
 @inject(Element)
 export class MdFadeinImage {
@@ -1117,42 +1410,5 @@ export class MdStaggeredList {
         item.style.opacity = 0;
       }
     });
-  }
-}
-
-@customAttribute('md-waves')
-@inject(Element)
-export class MdWaves {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) block = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) color;
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    let classes = ['waves-effect'];
-    if (getBooleanFromAttributeValue(this.block)) {
-      classes.push('waves-block');
-    }
-    if (this.color) {
-      classes.push(`waves-${this.color}`);
-    }
-
-    this.attributeManager.addClasses(classes);
-    Waves.attach(this.element);
-  }
-
-  detached() {
-    let classes = ['waves-effect', 'waves-block'];
-    if (this.color) {
-      classes.push(`waves-${this.color}`);
-    }
-
-    this.attributeManager.removeClasses(classes);
   }
 }

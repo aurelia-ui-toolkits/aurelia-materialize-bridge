@@ -36,6 +36,15 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           },
           enumerable: true
         }, {
+          key: 'circle',
+          decorators: [bindable({
+            defaultBindingMode: bindingMode.oneTime
+          })],
+          initializer: function initializer() {
+            return false;
+          },
+          enumerable: true
+        }, {
           key: 'color',
           decorators: [bindable({
             defaultBindingMode: bindingMode.oneTime
@@ -49,6 +58,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
           _defineDecoratedPropertyDescriptor(this, 'block', _instanceInitializers);
 
+          _defineDecoratedPropertyDescriptor(this, 'circle', _instanceInitializers);
+
           _defineDecoratedPropertyDescriptor(this, 'color', _instanceInitializers);
 
           this.element = element;
@@ -59,6 +70,9 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           var classes = ['waves-effect'];
           if (getBooleanFromAttributeValue(this.block)) {
             classes.push('waves-block');
+          }
+          if (getBooleanFromAttributeValue(this.circle)) {
+            classes.push('waves-circle');
           }
           if (this.color) {
             classes.push('waves-' + this.color);

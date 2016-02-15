@@ -31,6 +31,15 @@ var MdWaves = (function () {
     },
     enumerable: true
   }, {
+    key: 'circle',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }, {
     key: 'color',
     decorators: [_aureliaTemplating.bindable({
       defaultBindingMode: _aureliaBinding.bindingMode.oneTime
@@ -44,6 +53,8 @@ var MdWaves = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'block', _instanceInitializers);
 
+    _defineDecoratedPropertyDescriptor(this, 'circle', _instanceInitializers);
+
     _defineDecoratedPropertyDescriptor(this, 'color', _instanceInitializers);
 
     this.element = element;
@@ -54,6 +65,9 @@ var MdWaves = (function () {
     var classes = ['waves-effect'];
     if (_commonAttributes.getBooleanFromAttributeValue(this.block)) {
       classes.push('waves-block');
+    }
+    if (_commonAttributes.getBooleanFromAttributeValue(this.circle)) {
+      classes.push('waves-circle');
     }
     if (this.color) {
       classes.push('waves-' + this.color);

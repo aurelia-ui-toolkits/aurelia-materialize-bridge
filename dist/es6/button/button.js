@@ -8,6 +8,7 @@ import { getBooleanFromAttributeValue } from '../common/attributes';
 export class MdButton {
   @bindable() disabled = false;
   @bindable() flat = false;
+  @bindable() floating = false;
   @bindable() large = false;
 
   constructor(element) {
@@ -19,6 +20,9 @@ export class MdButton {
 
     if (getBooleanFromAttributeValue(this.flat)) {
       classes.push('btn-flat');
+    }
+    if (getBooleanFromAttributeValue(this.floating)) {
+      classes.push('btn-floating');
     }
     if (getBooleanFromAttributeValue(this.large)) {
       classes.push('btn-large');

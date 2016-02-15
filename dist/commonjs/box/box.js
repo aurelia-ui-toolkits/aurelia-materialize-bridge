@@ -24,7 +24,7 @@ var MdBox = (function () {
   _createDecoratedClass(MdBox, [{
     key: 'caption',
     decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTome
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
     })],
     initializer: null,
     enumerable: true

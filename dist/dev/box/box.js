@@ -27,7 +27,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         _createDecoratedClass(MdBox, [{
           key: 'caption',
           decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTome
+            defaultBindingMode: bindingMode.oneTime
           })],
           initializer: null,
           enumerable: true

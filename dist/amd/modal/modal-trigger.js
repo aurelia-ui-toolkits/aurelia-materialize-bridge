@@ -15,6 +15,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
 
     MdModalTrigger.prototype.attached = function attached() {
       this.attributeManager.addClasses('modal-trigger');
+      $(this.element).leanModal();
     };
 
     MdModalTrigger.prototype.detached = function detached() {

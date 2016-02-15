@@ -15,8 +15,14 @@ export class ConfigBuilder {
       .useCheckbox()
       .useCollapsible()
       .useColors()
+      .useDatePicker()
       .useDropdown()
+      .useFab()
+      .useModal()
       .useNavbar()
+      .useParallax()
+      .usePushpin()
+      .useScrollfire()
       .useSelect()
       .useSidenav()
       .useSlider()
@@ -72,14 +78,50 @@ export class ConfigBuilder {
     return this;
   }
 
+  useDatePicker() : ConfigBuilder {
+    this.globalResources.push('./datepicker/datepicker');
+    return this;
+  }
+
   useDropdown() : ConfigBuilder {
     // this.globalResources.push('./dropdown/dropdown-element');
     this.globalResources.push('./dropdown/dropdown');
     return this;
   }
 
+  useFab() : ConfigBuilder {
+    this.globalResources.push('./fab/fab');
+    return this;
+  }
+
+  useModal(): ConfigBuilder {
+    this.globalResources.push('./modal/modal-trigger');
+    return this;
+  }
+
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useParallax(): ConfigBuilder {
+    this.globalResources.push('./parallax/parallax');
+    return this;
+  }
+
+  usePushpin(): ConfigBuilder {
+    this.globalResources.push('./pushpin/pushpin');
+    return this;
+  }
+
+  useScrollfire(): ConfigBuilder {
+    this.globalResources.push('./scrollfire/scrollfire');
+    this.globalResources.push('./scrollfire/scrollfire-target');
+    return this;
+  }
+
+  useScrollSpy(): ConfigBuilder {
+    this.globalResources.push('./scrollspy/scrollspy');
     return this;
   }
 
@@ -96,7 +138,7 @@ export class ConfigBuilder {
 
   useSlider(): ConfigBuilder {
     this.globalResources.push('./slider/slider');
-    this.globalResources.push('./slider/slide');
+    // this.globalResources.push('./slider/slide');
     return this;
   }
 

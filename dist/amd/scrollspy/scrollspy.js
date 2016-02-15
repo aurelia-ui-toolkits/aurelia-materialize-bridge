@@ -9,54 +9,35 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], functi
 
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-  var MdSlide = (function () {
+  var MdScrollSpy = (function () {
     var _instanceInitializers = {};
 
-    _createDecoratedClass(MdSlide, [{
-      key: 'captionAlign',
-      decorators: [_aureliaTemplating.bindable()],
-      initializer: function initializer() {
-        return 'left';
-      },
-      enumerable: true
-    }, {
-      key: 'img',
+    _createDecoratedClass(MdScrollSpy, [{
+      key: 'target',
       decorators: [_aureliaTemplating.bindable()],
       initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
 
-    function MdSlide(element) {
-      _classCallCheck(this, _MdSlide);
+    function MdScrollSpy(element) {
+      _classCallCheck(this, _MdScrollSpy);
 
-      _defineDecoratedPropertyDescriptor(this, 'captionAlign', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'img', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'target', _instanceInitializers);
 
       this.element = element;
     }
 
-    MdSlide.prototype.attached = function attached() {
-      if (this.captionAlign) {
-        var align = this.captionAlign + '-align';
-        this.caption.classList.add(align);
-      }
+    MdScrollSpy.prototype.attached = function attached() {
+      $(this.target, this.element).scrollSpy();
     };
 
-    MdSlide.prototype.detached = function detached() {
-      if (this.captionAlign) {
-        var align = this.captionAlign + '-align';
-        this.caption.classList.remove(align);
-      }
-    };
+    MdScrollSpy.prototype.detached = function detached() {};
 
-    var _MdSlide = MdSlide;
-    MdSlide = _aureliaTemplating.inlineView('\n  <template>\n  <li>\n    <img src.bind="img" />\n    <div class="caption" ref="caption">\n      <content></content>\n    </div>\n  </li>\n  </template>\n')(MdSlide) || MdSlide;
-    MdSlide = _aureliaTemplating.containerless()(MdSlide) || MdSlide;
-    MdSlide = _aureliaDependencyInjection.inject(Element)(MdSlide) || MdSlide;
-    MdSlide = _aureliaTemplating.customElement('md-slide')(MdSlide) || MdSlide;
-    return MdSlide;
+    var _MdScrollSpy = MdScrollSpy;
+    MdScrollSpy = _aureliaDependencyInjection.inject(Element)(MdScrollSpy) || MdScrollSpy;
+    MdScrollSpy = _aureliaTemplating.customAttribute('md-scrollspy')(MdScrollSpy) || MdScrollSpy;
+    return MdScrollSpy;
   })();
 
-  exports.MdSlide = MdSlide;
+  exports.MdScrollSpy = MdScrollSpy;
 });

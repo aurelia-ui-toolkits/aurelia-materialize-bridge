@@ -8,7 +8,7 @@ import 'materialize';
 @inject(Element)
 export class MdBox {
   @bindable({
-    defaultBindingMode: bindingMode.oneTome
+    defaultBindingMode: bindingMode.oneTime
   }) caption;
   constructor(element) {
     this.element = element;
@@ -20,7 +20,7 @@ export class MdBox {
     if (this.caption) {
       this.attributeManager.addAttributes({ 'data-caption': this.caption });
     }
-    // FIXME: thwrows "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
+    // FIXME:0 throws "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
     $(this.element).materialbox();
   }
 

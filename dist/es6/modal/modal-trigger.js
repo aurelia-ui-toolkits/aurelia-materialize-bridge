@@ -12,6 +12,7 @@ export class MdModalTrigger {
 
   attached() {
     this.attributeManager.addClasses('modal-trigger');
+    $(this.element).leanModal();
   }
 
   detached() {

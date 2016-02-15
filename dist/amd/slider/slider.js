@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _commonAttributes) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _commonAttributes, _aureliaLogging) {
   'use strict';
 
   exports.__esModule = true;
@@ -14,14 +14,14 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
 
     _createDecoratedClass(MdSlider, [{
       key: 'mdFillContainer',
-      decorators: [_aureliaTemplating.bindable()],
+      decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime })],
       initializer: function initializer() {
         return false;
       },
       enumerable: true
     }, {
       key: 'mdHeight',
-      decorators: [_aureliaTemplating.bindable()],
+      decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime })],
       initializer: function initializer() {
         return 400;
       },
@@ -35,14 +35,14 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       enumerable: true
     }, {
       key: 'mdInterval',
-      decorators: [_aureliaTemplating.bindable()],
+      decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime })],
       initializer: function initializer() {
         return 6000;
       },
       enumerable: true
     }, {
       key: 'mdTransition',
-      decorators: [_aureliaTemplating.bindable()],
+      decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime })],
       initializer: function initializer() {
         return 500;
       },
@@ -63,19 +63,14 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       _defineDecoratedPropertyDescriptor(this, 'mdTransition', _instanceInitializers);
 
       this.element = element;
+      this.log = _aureliaLogging.getLogger('md-slider');
     }
 
     MdSlider.prototype.attached = function attached() {
       if (_commonAttributes.getBooleanFromAttributeValue(this.mdFillContainer)) {
         this.element.classList.add('fullscreen');
       }
-
-      $(this.element).slider({
-        height: parseInt(this.mdHeight, 10),
-        indicators: _commonAttributes.getBooleanFromAttributeValue(this.mdIndicators),
-        interval: parseInt(this.mdInterval, 10),
-        transition: parseInt(this.mdTransition, 10)
-      });
+      this.refresh();
     };
 
     MdSlider.prototype.pause = function pause() {
@@ -92,6 +87,21 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
 
     MdSlider.prototype.prev = function prev() {
       $(this.element).slider('prev');
+    };
+
+    MdSlider.prototype.refresh = function refresh() {
+      var options = {
+        height: parseInt(this.mdHeight, 10),
+        indicators: _commonAttributes.getBooleanFromAttributeValue(this.mdIndicators),
+        interval: parseInt(this.mdInterval, 10),
+        transition: parseInt(this.mdTransition, 10)
+      };
+      this.log.debug('refreshing slider, params:', options);
+      $(this.element).slider(options);
+    };
+
+    MdSlider.prototype.mdIndicatorsChanged = function mdIndicatorsChanged() {
+      this.refresh();
     };
 
     var _MdSlider = MdSlider;

@@ -10,23 +10,27 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaTemplating = require('aurelia-templating');
 
+var _aureliaBinding = require('aurelia-binding');
+
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _commonAttributes = require('../common/attributes');
+
+var _aureliaLogging = require('aurelia-logging');
 
 var MdSlider = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(MdSlider, [{
     key: 'mdFillContainer',
-    decorators: [_aureliaTemplating.bindable()],
+    decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime })],
     initializer: function initializer() {
       return false;
     },
     enumerable: true
   }, {
     key: 'mdHeight',
-    decorators: [_aureliaTemplating.bindable()],
+    decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime })],
     initializer: function initializer() {
       return 400;
     },
@@ -40,14 +44,14 @@ var MdSlider = (function () {
     enumerable: true
   }, {
     key: 'mdInterval',
-    decorators: [_aureliaTemplating.bindable()],
+    decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime })],
     initializer: function initializer() {
       return 6000;
     },
     enumerable: true
   }, {
     key: 'mdTransition',
-    decorators: [_aureliaTemplating.bindable()],
+    decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime })],
     initializer: function initializer() {
       return 500;
     },
@@ -68,19 +72,14 @@ var MdSlider = (function () {
     _defineDecoratedPropertyDescriptor(this, 'mdTransition', _instanceInitializers);
 
     this.element = element;
+    this.log = _aureliaLogging.getLogger('md-slider');
   }
 
   MdSlider.prototype.attached = function attached() {
     if (_commonAttributes.getBooleanFromAttributeValue(this.mdFillContainer)) {
       this.element.classList.add('fullscreen');
     }
-
-    $(this.element).slider({
-      height: parseInt(this.mdHeight, 10),
-      indicators: _commonAttributes.getBooleanFromAttributeValue(this.mdIndicators),
-      interval: parseInt(this.mdInterval, 10),
-      transition: parseInt(this.mdTransition, 10)
-    });
+    this.refresh();
   };
 
   MdSlider.prototype.pause = function pause() {
@@ -97,6 +96,21 @@ var MdSlider = (function () {
 
   MdSlider.prototype.prev = function prev() {
     $(this.element).slider('prev');
+  };
+
+  MdSlider.prototype.refresh = function refresh() {
+    var options = {
+      height: parseInt(this.mdHeight, 10),
+      indicators: _commonAttributes.getBooleanFromAttributeValue(this.mdIndicators),
+      interval: parseInt(this.mdInterval, 10),
+      transition: parseInt(this.mdTransition, 10)
+    };
+    this.log.debug('refreshing slider, params:', options);
+    $(this.element).slider(options);
+  };
+
+  MdSlider.prototype.mdIndicatorsChanged = function mdIndicatorsChanged() {
+    this.refresh();
   };
 
   var _MdSlider = MdSlider;

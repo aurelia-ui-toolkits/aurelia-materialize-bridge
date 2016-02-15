@@ -39,6 +39,13 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           },
           enumerable: true
         }, {
+          key: 'floating',
+          decorators: [bindable()],
+          initializer: function initializer() {
+            return false;
+          },
+          enumerable: true
+        }, {
           key: 'large',
           decorators: [bindable()],
           initializer: function initializer() {
@@ -54,6 +61,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
 
           _defineDecoratedPropertyDescriptor(this, 'flat', _instanceInitializers);
 
+          _defineDecoratedPropertyDescriptor(this, 'floating', _instanceInitializers);
+
           _defineDecoratedPropertyDescriptor(this, 'large', _instanceInitializers);
 
           this.attributeManager = new AttributeManager(element);
@@ -64,6 +73,9 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
 
           if (getBooleanFromAttributeValue(this.flat)) {
             classes.push('btn-flat');
+          }
+          if (getBooleanFromAttributeValue(this.floating)) {
+            classes.push('btn-floating');
           }
           if (getBooleanFromAttributeValue(this.large)) {
             classes.push('btn-large');
