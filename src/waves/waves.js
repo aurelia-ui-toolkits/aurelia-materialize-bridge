@@ -12,6 +12,9 @@ export class MdWaves {
   }) block = false;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
+  }) circle = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
   }) color;
   constructor(element) {
     this.element = element;
@@ -22,6 +25,9 @@ export class MdWaves {
     let classes = ['waves-effect'];
     if (getBooleanFromAttributeValue(this.block)) {
       classes.push('waves-block');
+    }
+    if (getBooleanFromAttributeValue(this.circle)) {
+      classes.push('waves-circle');
     }
     if (this.color) {
       classes.push(`waves-${this.color}`);
