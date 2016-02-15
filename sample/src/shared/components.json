@@ -23,8 +23,8 @@
   },
   "Javascript": {
     "Collapsible": { "status": "wip" },
-    "Dialogs (toast/tooltip)": { "moduleId": "dialogs", "status": "wip" },
-    "Dropdown": { "status": "wip" },
+    "Dialogs (toast/tooltip)": { "moduleId": "dialogs", "status": "done" },
+    "Dropdown": { "status": "done" },
     "Media (Box/Slider/Carousel)": { "moduleId": "media", "status": "wip" },
     "Modals": { "status": "wip" },
     "Parallax": { "status": "wip" },
