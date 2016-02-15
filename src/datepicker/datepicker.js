@@ -1,12 +1,18 @@
 import { bindable, customAttribute } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
+import { getLogger } from 'aurelia-logging';
 
 @inject(Element)
 @customAttribute('md-datepicker')
 export class MdDatePicker {
   @bindable() container;
   @bindable() translation;
-  constructor(element) { this.element = element; }
+  @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-datepicker');
+  }
   attached() {
     this.element.classList.add('date-picker');
     let options = {
@@ -36,12 +42,28 @@ export class MdDatePicker {
     if (this.container) {
       options.container = this.container;
     }
-    this.picker = $(this.element).pickadate(options);
+    this.picker = $(this.element).pickadate(options).pickadate('picker');
+    this.picker.on({
+      'close': this.onClose.bind(this),
+      'set': this.onSet.bind(this)
+    });
   }
 
   detached() {
     if (this.picker) {
       this.picker.stop();
     }
+  }
+
+  onClose() {
+    this.value = this.picker.get('select').obj;
+  }
+
+  onSet(value) {
+    // this.value = new Date(value.select);
+  }
+
+  valueChanged(newValue) {
+    this.log.debug('selectedChanged', this.selected);
   }
 }
