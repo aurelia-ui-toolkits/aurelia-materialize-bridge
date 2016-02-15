@@ -9,7 +9,10 @@
       <div class="col s12 m8">
         <md-card md-title="Basic use">
           <div>
-            <input md-datepicker="container: body;" type="date" placeholder="pick a date" />
+            <input md-datepicker="container: body; value.bind: selectedDate;" type="date" placeholder="pick a date" />
+          </div>
+          <div>
+            <span if.bind="selectedDate">You selected: ${selectedDate | stringify}</span>
           </div>
         </md-card>
     </div>
