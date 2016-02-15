@@ -5,13 +5,16 @@
           <div class="col s12 m8">
             <md-card md-title="Basic Tabs usage">
               <div class="row">
+                <div style="margin-bottom: 10px;">
+                  <button md-button click.delegate="selectTab2()">select tab 2</button>
+                </div>
 
-              <ul md-tabs class="z-depth-1">
-                <li md-waves="color: primary;"><a class="active" href="#tab1">Tab 1</a></li>
-                <li md-waves="color: primary;"><a href="#tab2">Tab 2</a></li>
-                <li md-waves="color: primary;"><a href="#tab3">Tab 3</a></li>
-                <li md-waves="color: primary;"><a href="#tab4">Tab 4</a></li>
-              </ul>
+                <ul md-tabs md-tabs.ref="tabs" class="z-depth-1">
+                  <li md-waves="color: primary;"><a class="active" href="#tab1">Tab 1</a></li>
+                  <li md-waves="color: primary;"><a href="#tab2">Tab 2</a></li>
+                  <li md-waves="color: primary;"><a href="#tab3">Tab 3</a></li>
+                  <li md-waves="color: primary;"><a href="#tab4">Tab 4</a></li>
+                </ul>
 
               </div>
               <div id="tab1" class="tab-content z-depth-1">
@@ -56,9 +59,13 @@
               <div class="row">
                 <ul md-tabs class="z-depth-1">
                   <li md-waves="color: primary;"><a class="active" href="#html">Html</a></li>
+                  <li md-waves="color: primary;"><a class="active" href="#js">Javascript</a></li>
                 </ul>
                 <div id="html" class="z-depth-1">
-                  <au-code language="markup" url="samples/tabs/basic-use-sample.html"></au-code>
+                  <au-code language="markup" url="samples/tabs/api-sample.html"></au-code>
+                </div>
+                <div id="js" class="z-depth-1">
+                  <au-code language="javascript" url="samples/tabs/api-sample.js"></au-code>
                 </div>
               </div>
             </md-card>
