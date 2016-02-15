@@ -12,7 +12,7 @@
             <input md-datepicker="container: body; value.bind: selectedDate;" type="date" placeholder="pick a date" />
           </div>
           <div>
-            <span if.bind="selectedDate">You selected: ${selectedDate | stringify}</span>
+            <span if.bind="selectedDate">You selected (UTC time): ${selectedDate | stringify}</span>
           </div>
         </md-card>
     </div>
