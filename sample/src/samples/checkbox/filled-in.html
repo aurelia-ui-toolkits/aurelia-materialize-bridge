@@ -2,15 +2,12 @@
   <div>
     <div class="row">
       <div class="col s12 m8">
-        <md-card md-title="Default checkbox">
+        <md-card md-title="Filled-in checkbox">
           <p>
-            <md-checkbox md-checked.bind="checked">A default checkbox</md-checkbox> with value: ${checked | stringify}
+            <md-checkbox md-checked.bind="checked" md-filled-in="true">A filled-in checkbox</md-checkbox> with value: ${checked | stringify}
           </p>
           <p>
-            <md-checkbox md-checked="false" md-disabled="true">A disabled checkbox</md-checkbox>
-          </p>
-          <p>
-            <md-checkbox md-checked.bind="indeterminateChecked">An indeterminate checkbox</md-checkbox> with value: ${indeterminateChecked | stringify}
+            <md-checkbox md-disabled="true" md-filled-in="true">A disabled filled-in checkbox</md-checkbox>
           </p>
         </md-card>
     </div>
@@ -24,7 +21,7 @@
                 <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
               </ul>
               <div id="html" class="z-depth-1">
-                <au-code language="markup" url="samples/checkbox/basic-use-sample.html"></au-code>
+                <au-code language="markup" url="samples/checkbox/filled-in-sample.html"></au-code>
               </div>
             </div>
           </md-card>
