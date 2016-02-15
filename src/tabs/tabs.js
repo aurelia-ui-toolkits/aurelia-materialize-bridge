@@ -11,6 +11,7 @@ export class MdTabs {
     this.attributeManager = new AttributeManager(this.element);
     this.tabAttributeManagers = [];
   }
+
   attached() {
     this.attributeManager.addClasses('tabs');
 
@@ -28,6 +29,7 @@ export class MdTabs {
       a.addEventListener('click', this.fireTabSelectedEvent.bind(this));
     });
   }
+
   detached() {
     this.attributeManager.removeClasses('tabs');
 
@@ -42,8 +44,13 @@ export class MdTabs {
       a.removeEventListener('click', this.fireTabSelectedEvent.bind(this));
     });
   }
+
   fireTabSelectedEvent(e) {
     let href = $(e.target).attr('href');
     fireMaterializeEvent(this.element, 'selected', href);
+  }
+
+  selectTab(id) {
+    $(this.element).tabs('select_tab', id);
   }
 }
