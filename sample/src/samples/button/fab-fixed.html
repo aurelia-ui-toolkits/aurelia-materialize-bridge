@@ -1,0 +1,65 @@
+<template>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Floating action button">
+          <div style="position: relative;">
+            <p>
+              The button on the right of this card is a FAB with absolute positioning.<br />
+              It has a child list of smaller buttons. <br />
+              These buttons appear when you hover over the FAB.
+            </p>
+            <p style="margin-top: 15px;">
+              Have a look at the lower right edge of the window.<br />
+              The button has a fixed positioning and a child list of smaller buttons.<br />
+              These buttons appear when you hover over the FAB.
+            </p>
+
+            <div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 24px; top: 10px;">
+              <a md-button="floating: true; large: true;" md-tooltip="position: bottom; text: edit;" md-waves="color: light; circle: true;">
+                <i class="large material-icons">mode_edit</i>
+              </a>
+              <ul>
+                <li><a md-button="floating: true;" md-tooltip="position: bottom; text: charts;" md-waves="color: light; circle: true;" class="red"><i class="material-icons">insert_chart</i></a></li>
+                <li><a md-button="floating: true;" md-tooltip="position: bottom; text: quote;" md-waves="color: light; circle: true;" class="yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                <li><a md-button="floating: true;" md-tooltip="position: bottom; text: publish;" md-waves="color: light; circle: true;" class="green"><i class="material-icons">publish</i></a></li>
+                <li><a md-button="floating: true;" md-tooltip="position: bottom; text: attach file;" md-waves="color: light; circle: true;" class="blue"><i class="material-icons">attach_file</i></a></li>
+              </ul>
+            </div>
+
+            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+              <a md-button="floating: true; large: true;" md-tooltip="position: left; text: edit;" md-waves="color: light; circle: true;">
+                <i class="large material-icons">mode_edit</i>
+              </a>
+              <ul>
+                <li><a md-button="floating: true;" md-tooltip="position: left; text: charts;" md-waves="color: light; circle: true;" class="red"><i class="material-icons">insert_chart</i></a></li>
+                <li><a md-button="floating: true;" md-tooltip="position: left; text: quote;" md-waves="color: light; circle: true;" class="yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                <li><a md-button="floating: true;" md-tooltip="position: left; text: publish;" md-waves="color: light; circle: true;" class="green"><i class="material-icons">publish</i></a></li>
+                <li><a md-button="floating: true;" md-tooltip="position: left; text: attach file;" md-waves="color: light; circle: true;" class="blue"><i class="material-icons">attach_file</i></a></li>
+              </ul>
+            </div>
+          </div>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Fixed</a></li>
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html-horizontal">Fixed Horizontal</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/button/fab-fixed-sample.html"></au-code>
+              </div>
+              <div id="html-horizontal" class="z-depth-1">
+                <au-code language="markup" url="samples/button/fab-fixed-sample-horizontal.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>
