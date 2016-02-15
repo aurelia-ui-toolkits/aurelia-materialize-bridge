@@ -46,11 +46,29 @@ export class MdTabs {
   }
 
   fireTabSelectedEvent(e) {
-    let href = $(e.target).attr('href');
+    let href = e.target.getAttribute('href');
     fireMaterializeEvent(this.element, 'selected', href);
   }
 
   selectTab(id) {
     $(this.element).tabs('select_tab', id);
+    this.fireTabSelectedEvent({
+      target: { getAttribute: () => `#${id}` }
+    });
+  }
+
+  // FIXME: probably bad
+  get selectedTab() {
+    let children = this.element.querySelectorAll('li.tab a');
+    let index = -1;
+    let href = null;
+    [].forEach.call(children, (a, i) => {
+      if (a.classList.contains('active')) {
+        index = i;
+        href = a.href;
+        return;
+      }
+    });
+    return { href, index };
   }
 }
