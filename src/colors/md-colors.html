@@ -83,7 +83,6 @@
   }
 
   /* checkbox */
-
   [type="checkbox"]:checked + label:before {
     border-right-color: ${mdAccentColor};
     border-bottom-color: ${mdAccentColor};
@@ -96,6 +95,26 @@
 
   [type="checkbox"]:indeterminate + label:before {
     border-right-color: ${mdAccentColor};
+  }
+
+  /* datepicker */
+  .picker__date-display {
+    background-color: ${mdAccentColor};
+  }
+  .picker__weekday-display {
+    background-color: ${mdAccentColor | darken:1};
+  }
+  .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+    background-color: ${mdAccentColor};
+  }
+  .picker__day.picker__day--today {
+    color: ${mdAccentColor}
+  }
+  .picker__footer button:not(.picker__clear) {
+    color: ${mdAccentColor}
+  }
+  .picker__footer button:focus {
+    background-color: ${mdAccentColor | lighten:2};
   }
 
   /* select */
