@@ -4,10 +4,10 @@
       <div class="col s12 m8">
         <md-card md-title="Floating action button">
           <div>
-            <md-fab md-fixed="false" md-large="true">
+            <a md-button="floating: true; large: true;" md-waves="color: light; circle: true;">
               <i class="large material-icons">mode_edit</i>
-            </md-fab>
-            <md-fab md-fixed="true" md-large="true">
+            </a>
+            <!-- <md-fab md-fixed="true" md-large="true">
               <i class="large material-icons">mode_edit</i>
               <ul>
                 <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
@@ -15,7 +15,18 @@
                 <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
                 <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
               </ul>
-            </md-fab>
+            </md-fab> -->
+            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+              <a md-button="floating: true; large: true;" md-waves="color: light; circle: true;">
+                <i class="large material-icons">mode_edit</i>
+              </a>
+              <ul>
+                <li><a md-button="floating: true;" md-waves="color: light; circle: true;" class="red"><i class="material-icons">insert_chart</i></a></li>
+                <li><a md-button="floating: true;" md-waves="color: light; circle: true;" class="yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                <li><a md-button="floating: true;" md-waves="color: light; circle: true;" class="green"><i class="material-icons">publish</i></a></li>
+                <li><a md-button="floating: true;" md-waves="color: light; circle: true;" class="blue"><i class="material-icons">attach_file</i></a></li>
+              </ul>
+            </div>
           </div>
         </md-card>
     </div>
