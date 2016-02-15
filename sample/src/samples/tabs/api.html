@@ -6,7 +6,8 @@
             <md-card md-title="Basic Tabs usage">
               <div class="row">
                 <div style="margin-bottom: 10px;">
-                  <button md-button click.delegate="selectTab2()">select tab 2</button>
+                  <button md-button click.delegate="selectTab2()">select tab 2</button><br /><br />
+                  Selected tab: ${tabs.selectedTab | stringify}
                 </div>
 
                 <ul md-tabs md-tabs.ref="tabs" class="z-depth-1">
