@@ -5,11 +5,3 @@ menu md-sidenav .side-nav.fixed {
 menu md-sidenav .side-nav.fixed:hover {
   overflow: auto;
 }
-
-
-header, main, footer {
-  padding-left: 240px;
-}
-md-navbar[md-fixed="true"] nav {
-  padding-right: 240px;
-}
