@@ -1,12 +1,5 @@
 <template>
-  <style>
-    header, main, footer {
-      padding-left: 240px;
-    }
-    md-navbar[md-fixed="true"] nav {
-      padding-right: 240px;
-    }
-  </style>
+  <require from="./menu.css"></require>
   <md-sidenav view-model.ref="sideNav" md-fixed="true" md-edge="left">
     <ul md-collapsible="accordion: true;">
       <li repeat.for="cat of categories">
