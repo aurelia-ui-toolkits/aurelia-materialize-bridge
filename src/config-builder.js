@@ -18,6 +18,7 @@ export class ConfigBuilder {
       .useDatePicker()
       .useDropdown()
       .useFab()
+      .useInput()
       .useModal()
       .useNavbar()
       .useParallax()
@@ -91,6 +92,11 @@ export class ConfigBuilder {
 
   useFab() : ConfigBuilder {
     this.globalResources.push('./fab/fab');
+    return this;
+  }
+
+  useInput() : ConfigBuilder {
+    this.globalResources.push('./input/input');
     return this;
   }
 
