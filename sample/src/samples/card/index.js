@@ -6,7 +6,8 @@ export class Index {
     config.title = 'Card';
     config.map([
       { route: ['', 'basic-use'], moduleId: './basic-use', nav: true,  title: 'Basic use' },
-      { route: 'image', moduleId: './image', nav: true,  title: 'Image card' }
+      { route: 'image', moduleId: './image', nav: true,  title: 'Image card' },
+      { route: 'reveal', moduleId: './reveal', nav: true,  title: 'Reveal card' }
     ]);
 
     this.router = router;
