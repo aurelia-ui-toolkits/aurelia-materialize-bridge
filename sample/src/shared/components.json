@@ -13,7 +13,7 @@
     "Badges": { },
     "Button": { "status": "wip" },
     "Breadcrumbs": { },
-    "Cards": { "moduleId": "card", "status": "wip" },
+    "Cards": { "moduleId": "card", "status": "done" },
     "Chips": { },
     "Collections": { },
     "Footer": { },
