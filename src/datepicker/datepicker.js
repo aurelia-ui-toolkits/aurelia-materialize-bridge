@@ -58,7 +58,8 @@ export class MdDatePicker {
   }
 
   onClose() {
-    this.value = this.picker.get('select').obj;
+    let selected = this.picker.get('select');
+    this.value = selected ? selected.obj : null;
   }
 
   onSet(value) {
