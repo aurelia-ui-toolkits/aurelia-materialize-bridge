@@ -13,6 +13,9 @@ export class MdCard {
     defaultBindingMode: bindingMode.oneTime
   }) mdReveal = false;
   @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdSize = '';
+  @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdTitle;
 

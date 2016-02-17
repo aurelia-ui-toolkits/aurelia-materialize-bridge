@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card ${ mdSize || '' }">
     <div if.bind="mdImage !== null" md-waves="color: light; block: true;" class="card-image">
       <img class="${ mdReveal === true ? 'activator' : '' }" src.bind="mdImage" />
       <span if.bind="mdReveal === false" class="card-title">${mdTitle}</span>
