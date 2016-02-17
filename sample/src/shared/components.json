@@ -37,9 +37,8 @@
     "Waves": { "status": "done" }
   },
   "Forms": {
-    "Input fields": { },
+    "Input fields": { "moduleId": "input", "status": "wip" },
     "Select": { "status": "wip" },
-    "Input fields": { },
     "Radio buttons": { },
     "Checkbox/Switch": { "moduleId": "checkbox", "status": "done" },
     "File input button": { },
