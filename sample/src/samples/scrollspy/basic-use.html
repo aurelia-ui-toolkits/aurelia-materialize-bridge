@@ -1,5 +1,8 @@
 <template>
   <style>
+  .card .card-content p.more-space {
+    margin: 20px 0;
+  }
   [md-pushpin] a {
     padding-left: 20px;
   }
@@ -14,20 +17,26 @@
       <div class="col s12 m8">
         <md-card md-title="Basic use">
           <div md-scrollspy="target: .scrollspy">
-            <p id="spy1" class="section scrollspy">
+            <p id="spy1" class="more-space section scrollspy">
               Look at the right edge.
             </p>
-            <p id="spy2" class="section scrollspy">
+            <p class="more-space section scrollspy">
               For demonstration purposes, this page has to be much longer.
             </p>
-            <p id="spy3" class="section scrollspy">
+            <p class="more-space section scrollspy">
               Or else the scrollspy wouldn't make any sense.
             </p>
-            <p id="spy4" class="section scrollspy">
+            <p class="more-space section scrollspy">
               So we put an image here.
             </p>
-            <p id="spy5" class="section scrollspy">
+            <p id="spy2" class="more-space section scrollspy">
               <img src="images/transition-sample-1.jpg" style="width: 500px;" />
+            </p>
+            <p class="more-space section scrollspy">
+              And another one to make it really interesting...
+            </p>
+            <p id="spy3" class="more-space section scrollspy">
+              <img src="images/parallax-2.jpg" style="width: 500px;" />
             </p>
           </div>
         </md-card>
@@ -38,8 +47,8 @@
           <div>
             <ul class="section">
               <li><a href="#spy1">I'm a pushpin!</a></li>
-              <li><a href="#spy3">And a scrollSpy!</a></li>
-              <li><a href="#spy5">Even a card!</a></li>
+              <li><a href="#spy2">And a scrollSpy!</a></li>
+              <li><a href="#spy3">Even a card!</a></li>
             </ul>
           </div>
         </md-card>
