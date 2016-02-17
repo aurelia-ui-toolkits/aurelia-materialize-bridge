@@ -12,7 +12,9 @@ export class MdInput {
   @bindable() mdLabel = '';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
-  }) mdPlaceholder = '';
+  }) mdPlaceholder = '';@bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTextArea = false;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdValidate = false;
@@ -27,6 +29,7 @@ export class MdInput {
   }
 
   attached() {
+    this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
     if (getBooleanFromAttributeValue(this.mdValidate)) {
       this.input.classList.add('validate');
     }
@@ -43,6 +46,9 @@ export class MdInput {
   update() {
     this.taskQueue.queueMicroTask(() => {
       Materialize.updateTextFields();
+      if (this.mdTextArea) {
+        $(this.input).trigger('autoresize');
+      }
     });
   }
 }
