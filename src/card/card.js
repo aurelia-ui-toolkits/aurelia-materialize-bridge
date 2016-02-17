@@ -1,11 +1,13 @@
 import { bindable, customElement } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 import { bindingMode } from 'aurelia-binding';
+import { getBooleanFromAttributeValue } from '../common/attributes';
 
 @customElement('md-card')
 @inject(Element)
 export class MdCard {
   @bindable() mdImage = null;
+  @bindable() mdReveal = false;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdTitle;
@@ -15,6 +17,6 @@ export class MdCard {
   }
 
   attached() {
-    //
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
