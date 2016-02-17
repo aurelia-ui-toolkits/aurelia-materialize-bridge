@@ -6,8 +6,12 @@ import { getBooleanFromAttributeValue } from '../common/attributes';
 @customElement('md-card')
 @inject(Element)
 export class MdCard {
-  @bindable() mdImage = null;
-  @bindable() mdReveal = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdReveal = false;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdTitle;
