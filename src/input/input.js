@@ -32,13 +32,15 @@ export class MdInput {
     }
     if (this.mdPlaceholder) {
       this.input.setAttribute('placeholder', this.mdPlaceholder);
-      // this.taskQueue.queueMicroTask(() => {
-      Materialize.updateTextFields();
-      // });
+      this.update();
     }
   }
 
   mdValueChanged() {
+    this.update();
+  }
+
+  update() {
     this.taskQueue.queueMicroTask(() => {
       Materialize.updateTextFields();
     });
