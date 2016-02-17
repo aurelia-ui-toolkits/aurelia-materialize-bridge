@@ -11,6 +11,7 @@
       "aurelia-logging": "npm:aurelia-logging@^1.0.0-beta.1",
       "aurelia-metadata": "npm:aurelia-metadata@^1.0.0-beta.1",
       "aurelia-pal": "npm:aurelia-pal@^1.0.0-beta.1.0.2",
+      "aurelia-task-queue": "npm:aurelia-task-queue@^1.0.0-beta.1.1.1",
       "aurelia-templating": "npm:aurelia-templating@^1.0.0-beta.1.0.2",
       "css": "github:systemjs/plugin-css@0.1.20",
       "font-awesome": "npm:font-awesome@^4.5.0",

@@ -33,6 +33,7 @@ System.config({
     "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.1.1",
     "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.1.3",
     "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.1.1",
+    "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.1.1",
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.1.0",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
@@ -99,7 +100,7 @@ System.config({
     "npm:aurelia-binding@1.0.0-beta.1.1.1": {
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.1.3",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.1.1",
-      "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.1.0",
+      "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.1.1",
       "core-js": "npm:core-js@2.0.3"
     },
     "npm:aurelia-bootstrapper@1.0.0-beta.1": {
@@ -135,7 +136,7 @@ System.config({
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.1.3",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.1.1",
       "aurelia-path": "npm:aurelia-path@1.0.0-beta.1.1.0",
-      "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.1.0",
+      "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.1.1",
       "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.1.0",
       "core-js": "npm:core-js@2.0.3"
     },
@@ -186,6 +187,9 @@ System.config({
     "npm:aurelia-task-queue@1.0.0-beta.1.1.0": {
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.1.1"
     },
+    "npm:aurelia-task-queue@1.0.0-beta.1.1.1": {
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.1.1"
+    },
     "npm:aurelia-templating-binding@1.0.0-beta.1.1.0": {
       "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.1.1",
       "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.1.1",
@@ -198,7 +202,7 @@ System.config({
       "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.1.1",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.1.1",
       "aurelia-path": "npm:aurelia-path@1.0.0-beta.1.1.0",
-      "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.1.0",
+      "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.1.1",
       "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.1.0",
       "core-js": "npm:core-js@2.0.3"
     },
@@ -219,7 +223,7 @@ System.config({
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.1.3",
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.1.1",
       "aurelia-path": "npm:aurelia-path@1.0.0-beta.1.1.0",
-      "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.1.0",
+      "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.1.1",
       "core-js": "npm:core-js@2.0.3"
     },
     "npm:babel-runtime@5.8.35": {
