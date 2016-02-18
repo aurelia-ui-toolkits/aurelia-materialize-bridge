@@ -13,6 +13,7 @@ export class MdRadio {
   }) mdChecked;
   @bindable() mdDisabled = false;
   @bindable() mdGap = false;
+  @bindable() mdModel;
   @bindable() mdName = '';
   @bindable() mdValue = '';
 
