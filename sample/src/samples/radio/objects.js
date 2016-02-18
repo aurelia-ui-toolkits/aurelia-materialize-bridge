@@ -5,4 +5,7 @@ export class Objects {
     { name: 'blue', hex: '#0000ff' }
   ];
   selectedColor = this.colors[1];
+  selectRed() {
+    this.selectedColor = this.colors[0];
+  }
 }
