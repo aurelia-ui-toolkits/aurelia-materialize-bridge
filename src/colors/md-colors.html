@@ -127,6 +127,19 @@
      color: ${mdAccentColor};
    }
 
+   /* radio input */
+   md-radio input[type="radio"]:checked + label:after {
+     border: 2px solid ${mdAccentColor};
+     background-color: ${mdAccentColor};
+   }
+   md-radio [type="radio"].with-gap:checked + label:before {
+     border: 2px solid ${mdAccentColor};
+   }
+   md-radio [type="radio"].with-gap:checked + label:after {
+     border: 2px solid ${mdAccentColor};
+     background-color: ${mdAccentColor};
+   }
+
   /* select */
   .dropdown-content li > a, .dropdown-content li > span {
     color: ${mdAccentColor};
