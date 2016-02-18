@@ -4,18 +4,30 @@ import { inject } from 'aurelia-dependency-injection';
 import { ComponentService } from '../shared/component-service';
 import { getLogger } from 'aurelia-logging';
 import { TaskQueue } from 'aurelia-framework';
+import { MdSidenavService } from 'aurelia-materialize-bridge/sidenav/sidenav-service';
 
-@inject(Element, ComponentService, EventAggregator, TaskQueue)
+@inject(Element, ComponentService, EventAggregator, TaskQueue, MdSidenavService)
 export class Menu {
   @bindable() activeItem;
   subscriptions = [];
 
-  constructor(element, componentService, eventAggregator, taskQueue) {
+  constructor(element, componentService, eventAggregator, taskQueue, sidenavService) {
     this.categories = componentService.getIterableComponents(true);
+    this.eventAggregator = eventAggregator;
     this.element = element;
     this.taskQueue = taskQueue;
     this.subscriptions.push(eventAggregator.subscribe('router:navigation:complete', e => this.routeChanged(e)));
     this.log = getLogger('menu');
+    this.sidenavService = sidenavService;
+  }
+
+  tryCollapseSidenav() {
+    this.sideNav.mdFixed = !this.sideNav.mdFixed;
+    if (this.sideNav.mdFixed) {
+      this.eventAggregator.publish('sidenav:visible', { edge: 'left' });
+    } else {
+      this.eventAggregator.publish('sidenav:hidden', { edge: 'left' });
+    }
   }
 
   setActive(ctrl) {

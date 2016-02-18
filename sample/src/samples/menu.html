@@ -7,8 +7,16 @@
     md-navbar[md-fixed="true"] nav {
       padding-right: 240px;
     }
+    img.brand-logo {
+      width: 100%;
+      margin: 5px 0;
+    }
   </style>
+  <a md-sidenav-collapse="ref.bind: sideNav;"><i class="mdi-navigation-menu"></i></a>
   <md-sidenav view-model.ref="sideNav" md-fixed="true" md-edge="left">
+    <div>
+      <img click.delegate="tryCollapseSidenav()" class="brand-logo" src="images/aurelia-materialize-logo.png" />
+    </div>
     <ul md-collapsible="accordion: true;">
       <li repeat.for="cat of categories">
         <div md-waves class="collapsible-header">
