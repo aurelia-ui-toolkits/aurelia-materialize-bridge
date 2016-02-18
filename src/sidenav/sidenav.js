@@ -1,11 +1,13 @@
 import { bindable, customElement } from 'aurelia-templating';
+import { EventAggregator } from 'aurelia-event-aggregator';
 import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 import { AttributeManager } from '../common/attributeManager';
 import { getLogger } from 'aurelia-logging';
+import { MdSidenavService } from './sidenav-service';
 
 @customElement('md-sidenav')
-@inject(Element)
+@inject(Element, EventAggregator, MdSidenavService)
 export class MdSidenav {
   static id = 0;
   @bindable() mdCloseOnClick = false;
@@ -16,8 +18,10 @@ export class MdSidenav {
   attachedResolver;
   whenAttached;
 
-  constructor(element) {
+  constructor(element, eventAggregator, sidenavService) {
     this.element = element;
+    this.eventAggregator = eventAggregator;
+    this.sidenavService = sidenavService;
     this.controlId = `md-sidenav-${MdSidenav.id++}`;
     this.log = getLogger('md-sidenav');
     this.whenAttached = new Promise((resolve, reject) => {
@@ -46,8 +50,13 @@ export class MdSidenav {
     if (this.attributeManager) {
       if (newValue) {
         this.attributeManager.addClasses('fixed');
+        this.sidenavService.setFixed(this);
       } else {
         this.attributeManager.removeClasses('fixed');
+        this.sidenavService.setFloating(this);
+        // $(this.element).sideNav('hide');
+        // let factor = (this.edge === 'right' ? 1 : -1);
+        // $(this.sidenav).css({ 'transform': `translateX(${factor * this.mdWidth}px)` });
       }
     }
   }

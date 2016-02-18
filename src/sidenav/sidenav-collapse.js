@@ -16,7 +16,7 @@ export class MdSidenavCollapse {
   attached() {
     this.ref.whenAttached.then(() => {
       // this.widthSubscription = this.observerLocator.getObserver(this.ref, 'mdWidth').subscribe(this.widthChanged.bind(this));
-      // this.fixedSubscription = this.observerLocator.getObserver(this.ref, 'fixed').subscribe(this.fixedChanged.bind(this));
+      this.fixedSubscription = this.observerLocator.getObserver(this.ref, 'mdFixed').subscribe(this.fixedChanged.bind(this));
 
       this.element.setAttribute('data-activates', this.ref.controlId);
       let sideNavConfig = {
@@ -33,8 +33,13 @@ export class MdSidenavCollapse {
     // this.widthSubscription.unsubscribe();
   }
 
-  // fixedChanged() {
-  //   this.log.debug('fixedChanged');
+  // fixedChanged(newValue) {
+  //   if (newValue) {
+  //     let $clone = $(this.ref.sidenav).clone();
+  //     $(this.ref.sidenav).remove();
+  //     $('#sidenav-overlay').remove();
+  //     this.ref.sidenav = $clone;
+  //   }
   //   $(this.element).sideNav({
   //     edge: this.ref.edge || 'left',
   //     closeOnClick: this.ref.closeOnClick,

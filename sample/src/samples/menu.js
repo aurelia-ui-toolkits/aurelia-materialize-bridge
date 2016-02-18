@@ -23,11 +23,6 @@ export class Menu {
 
   tryCollapseSidenav() {
     this.sideNav.mdFixed = !this.sideNav.mdFixed;
-    if (this.sideNav.mdFixed) {
-      this.eventAggregator.publish('sidenav:visible', { edge: 'left' });
-    } else {
-      this.eventAggregator.publish('sidenav:hidden', { edge: 'left' });
-    }
   }
 
   setActive(ctrl) {
