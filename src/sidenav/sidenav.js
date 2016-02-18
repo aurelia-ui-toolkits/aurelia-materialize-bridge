@@ -42,7 +42,7 @@ export class MdSidenav {
     this.attributeManager.removeClasses(['fixed', 'right-aligned']);
   }
 
-  fixedChanged(newValue) {
+  mdFixedChanged(newValue) {
     if (this.attributeManager) {
       if (newValue) {
         this.attributeManager.addClasses('fixed');
