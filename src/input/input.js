@@ -3,9 +3,10 @@ import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { TaskQueue } from 'aurelia-task-queue';
 import { getBooleanFromAttributeValue } from '../common/attributes';
+import { MdInputUpdateService } from './input-update-service';
 
 @customElement('md-input')
-@inject(Element, TaskQueue)
+@inject(Element, TaskQueue, MdInputUpdateService)
 export class MdInput {
   static id = 0;
 
@@ -26,10 +27,11 @@ export class MdInput {
     defaultBindingMode: bindingMode.twoWay
   }) mdValue = '';
 
-  constructor(element, taskQueue) {
+  constructor(element, taskQueue, updateService) {
     this.element = element;
     this.taskQueue = taskQueue;
     this.controlId = `md-input-${MdInput.id++}`;
+    this.updateService = updateService;
   }
 
   attached() {
@@ -44,7 +46,8 @@ export class MdInput {
   }
 
   mdValueChanged() {
-    this.update();
+    // this.update();
+    this.updateService.update();
   }
 
   update() {
