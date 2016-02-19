@@ -23,6 +23,7 @@ export class ConfigBuilder {
       .useNavbar()
       .useParallax()
       .usePushpin()
+      .useRadio()
       .useScrollfire()
       .useSelect()
       .useSidenav()
@@ -117,6 +118,11 @@ export class ConfigBuilder {
 
   usePushpin(): ConfigBuilder {
     this.globalResources.push('./pushpin/pushpin');
+    return this;
+  }
+
+  useRadio(): ConfigBuilder {
+    this.globalResources.push('./radio/radio');
     return this;
   }
 

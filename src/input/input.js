@@ -3,18 +3,23 @@ import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { TaskQueue } from 'aurelia-task-queue';
 import { getBooleanFromAttributeValue } from '../common/attributes';
+import { MdInputUpdateService } from './input-update-service';
 
 @customElement('md-input')
-@inject(Element, TaskQueue)
+@inject(Element, TaskQueue, MdInputUpdateService)
 export class MdInput {
   static id = 0;
 
   @bindable() mdLabel = '';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
-  }) mdPlaceholder = '';@bindable({
+  }) mdPlaceholder = '';
+  @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdTextArea = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdType = 'text';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdValidate = false;
@@ -22,10 +27,11 @@ export class MdInput {
     defaultBindingMode: bindingMode.twoWay
   }) mdValue = '';
 
-  constructor(element, taskQueue) {
+  constructor(element, taskQueue, updateService) {
     this.element = element;
     this.taskQueue = taskQueue;
     this.controlId = `md-input-${MdInput.id++}`;
+    this.updateService = updateService;
   }
 
   attached() {
@@ -40,15 +46,9 @@ export class MdInput {
   }
 
   mdValueChanged() {
-    this.update();
-  }
-
-  update() {
-    this.taskQueue.queueMicroTask(() => {
-      Materialize.updateTextFields();
-      if (this.mdTextArea) {
-        $(this.input).trigger('autoresize');
-      }
-    });
+    this.updateService.update();
+    if (this.mdTextArea) {
+      $(this.input).trigger('autoresize');
+    }
   }
 }

@@ -19,6 +19,7 @@ export function configure(aurelia) {
         .useNavbar()
         .useParallax()
         .usePushpin()
+        .useRadio()
         .useScrollfire()
         .useScrollSpy()
         .useSelect()

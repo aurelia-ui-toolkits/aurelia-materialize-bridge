@@ -1,0 +1,53 @@
+<template>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Basic use">
+          <div>
+            <p>
+              <md-radio md-name="myOption" md-value="option1" md-checked.bind="choice">Option 1</md-radio>
+              <md-radio md-name="myOption" md-value="option2" md-checked.bind="choice">Option 2</md-radio>
+              <md-radio md-name="myOption" md-value="option3" md-checked.bind="choice">Option 3</md-radio>
+            </p>
+            <p>
+              Your choice: ${choice}
+            </p>
+          </div>
+          <div style="margin-top: 15px;">
+            <p style="font-weight: bold;">with gap</p>
+            <p>
+              <md-radio md-gap="true" md-name="myGapOption" md-value="option1" md-checked.bind="gapChoice">Option 1</md-radio>
+              <md-radio md-gap="true" md-name="myGapOption" md-value="option2" md-checked.bind="gapChoice">Option 2</md-radio>
+              <md-radio md-gap="true" md-name="myGapOption" md-value="option3" md-checked.bind="gapChoice">Option 3</md-radio>
+            </p>
+            <p>
+              Your choice: ${gapChoice}
+            </p>
+            <p>
+              <a md-button="flat: true;" md-waves class="accent-text" click.delegate="selectOption1()">select option 1</a>
+            </p>
+          </div>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+                <li md-waves="color: primary;" class="col"><a class="active" href="#js">Javascript</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/radio/basic-use-sample.html"></au-code>
+              </div>
+              <div id="js" class="z-depth-1">
+                <au-code language="javascript" url="samples/radio/basic-use-sample.js"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

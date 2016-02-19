@@ -3,11 +3,10 @@ import { useView } from 'aurelia-framework';
 @useView('shared/showcase.html')
 export class Index {
   configureRouter(config, router) {
-    config.title = 'Input';
+    config.title = 'Radio Buttons';
     config.map([
       { route: ['', 'basic-use'], moduleId: './basic-use', nav: true, title: 'Basic use' },
-      { route: 'textarea', moduleId: './textarea', nav: true, title: 'Textarea' },
-      { route: 'input-types', moduleId: './input-types', nav: true, title: 'Input types' }
+      { route: 'objects', moduleId: './objects', nav: true, title: 'Binding to objects' }
     ]);
 
     this.router = router;

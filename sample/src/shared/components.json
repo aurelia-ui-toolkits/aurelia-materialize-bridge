@@ -39,7 +39,7 @@
   "Forms": {
     "Input fields": { "moduleId": "input", "status": "wip" },
     "Select": { "status": "wip" },
-    "Radio buttons": { },
+    "Radio buttons": { "moduleId": "radio", "status": "wip" },
     "Checkbox/Switch": { "moduleId": "checkbox", "status": "done" },
     "File input button": { },
     "Range": { },

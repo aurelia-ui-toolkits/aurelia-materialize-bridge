@@ -118,6 +118,42 @@
     background-color: ${mdAccentColor | lighten:2};
   }
 
+  /* text input */
+  md-input .input-field input[type=text]:focus {
+    border-bottom: 1px solid ${mdAccentColor};
+    box-shadow: 0 1px 0 0 ${mdAccentColor};
+  }
+  md-input .input-field input[type=text]:focus + label {
+    color: ${mdAccentColor};
+  }
+  md-input .input-field input[type=email]:focus {
+    border-bottom: 1px solid ${mdAccentColor};
+    box-shadow: 0 1px 0 0 ${mdAccentColor};
+  }
+  md-input .input-field input[type=email]:focus + label {
+    color: ${mdAccentColor};
+  }
+  md-input .input-field input[type=password]:focus {
+    border-bottom: 1px solid ${mdAccentColor};
+    box-shadow: 0 1px 0 0 ${mdAccentColor};
+  }
+  md-input .input-field input[type=password]:focus + label {
+    color: ${mdAccentColor};
+  }
+
+  /* radio input */
+  md-radio input[type="radio"]:checked + label:after {
+    border: 2px solid ${mdAccentColor};
+    background-color: ${mdAccentColor};
+  }
+  md-radio [type="radio"].with-gap:checked + label:before {
+    border: 2px solid ${mdAccentColor};
+  }
+  md-radio [type="radio"].with-gap:checked + label:after {
+    border: 2px solid ${mdAccentColor};
+    background-color: ${mdAccentColor};
+  }
+
   /* select */
   .dropdown-content li > a, .dropdown-content li > span {
     color: ${mdAccentColor};
