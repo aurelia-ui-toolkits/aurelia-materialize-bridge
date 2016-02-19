@@ -10,7 +10,7 @@
     "Typography": { }
   },
   "Components": {
-    "Badges": { },
+    "Badges": { "moduleId": "badge", "status": "wip" },
     "Button": { "status": "wip" },
     "Breadcrumbs": { },
     "Cards": { "moduleId": "card", "status": "done" },
