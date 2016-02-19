@@ -3,6 +3,8 @@ import { ObserverLocator } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import * as LogManager from 'aurelia-logging';
 import { fireEvent } from '../common/events';
+import 'materialize';
+import 'materialize/js/forms';
 
 @inject(Element, LogManager, ObserverLocator)
 @customAttribute('md-select')

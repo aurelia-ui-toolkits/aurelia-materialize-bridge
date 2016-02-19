@@ -1,4 +1,6 @@
 import 'materialize';
+import 'materialize/js/jquery.hammer';
+import 'materialize/js/jquery.easing.1.3';
 import {Aurelia} from 'aurelia-framework';
 import {ConfigBuilder} from './config-builder';
 
