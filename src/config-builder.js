@@ -8,6 +8,7 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useBadge()
       .useBox()
       .useButton()
       .useCard()
@@ -34,6 +35,11 @@ export class ConfigBuilder {
       .useTransitions()
       .useWaves()
       .useWell();
+  }
+
+  useBadge(): ConfigBuilder {
+    this.globalResources.push('./badge/badge');
+    return this;
   }
 
   useBox(): ConfigBuilder {
