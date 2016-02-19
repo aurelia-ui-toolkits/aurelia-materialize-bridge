@@ -12,9 +12,13 @@ export class MdInput {
   @bindable() mdLabel = '';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
-  }) mdPlaceholder = '';@bindable({
+  }) mdPlaceholder = '';
+  @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdTextArea = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdType = 'text';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdValidate = false;
