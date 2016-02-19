@@ -46,16 +46,9 @@ export class MdInput {
   }
 
   mdValueChanged() {
-    // this.update();
     this.updateService.update();
-  }
-
-  update() {
-    this.taskQueue.queueMicroTask(() => {
-      Materialize.updateTextFields();
-      if (this.mdTextArea) {
-        $(this.input).trigger('autoresize');
-      }
-    });
+    if (this.mdTextArea) {
+      $(this.input).trigger('autoresize');
+    }
   }
 }
