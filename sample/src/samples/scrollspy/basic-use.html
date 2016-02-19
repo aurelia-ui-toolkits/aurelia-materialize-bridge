@@ -1,0 +1,74 @@
+<template>
+  <style>
+  .card .card-content p.more-space {
+    margin: 20px 0;
+  }
+  [md-pushpin] a {
+    padding-left: 20px;
+  }
+  [md-pushpin] a.active {
+    font-weight: 500;
+    padding-left: 18px;
+    border-left: 2px solid #ea4a4f;
+  }
+  </style>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Basic use">
+          <div md-scrollspy="target: .scrollspy">
+            <p id="spy1" class="more-space section scrollspy">
+              Look at the right edge.
+            </p>
+            <p class="more-space section scrollspy">
+              For demonstration purposes, this page has to be much longer.
+            </p>
+            <p class="more-space section scrollspy">
+              Or else the scrollspy wouldn't make any sense.
+            </p>
+            <p class="more-space section scrollspy">
+              So we put an image here.
+            </p>
+            <p id="spy2" class="more-space section scrollspy">
+              <img src="images/transition-sample-1.jpg" style="width: 500px;" />
+            </p>
+            <p class="more-space section scrollspy">
+              And another one to make it really interesting...
+            </p>
+            <p id="spy3" class="more-space section scrollspy">
+              <img src="images/parallax-2.jpg" style="width: 500px;" />
+            </p>
+          </div>
+        </md-card>
+    </div>
+    <div class="col m4">
+      <div md-pushpin="top: 320; offset: 150;">
+        <md-card md-title="Look!">
+          <div>
+            <ul class="section">
+              <li><a href="#spy1">I'm a pushpin!</a></li>
+              <li><a href="#spy2">And a scrollSpy!</a></li>
+              <li><a href="#spy3">Even a card!</a></li>
+            </ul>
+          </div>
+        </md-card>
+      </div>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/scrollspy/basic-use-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

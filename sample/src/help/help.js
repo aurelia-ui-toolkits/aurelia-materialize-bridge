@@ -1,12 +1,13 @@
+// import { computedFrom } from 'aurelia-binding';
+
 export class Help {
-  attached() {
-    this.tabs.addEventListener('md-on-selected', e => {
-      if (e.detail === '#gitter') {
-        this.toggleChat();
-      }
-    });
+  scrollToTop() {
+    // window.scrollTo(0, 0);
+    $('html, body').animate({ scrollTop: 0 });
   }
-  toggleChat() {
-    this.gitter.toggleChat(true);
+  // @computedFrom('document.body.scrollTop')
+  showScrollFAB() {
+    // return document.body.scrollTop > 200;
+    return true;
   }
 }

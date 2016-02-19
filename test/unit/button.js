@@ -51,4 +51,54 @@ describe('Button', () => {
     button.attached();
     expect(element.classList.contains('disabled')).toBe(true);
   });
+
+  it('removes set classes on detached', () => {
+    button.flat = true;
+    button.attached();
+    expect(element.classList.contains('btn-flat')).toBe(true);
+    button.detached();
+    expect(element.classList.contains('btn-flat')).toBe(false);
+  });
+
+  it('removes btn-flat if flat is changed from true to false', () => {
+    button.flat = true;
+    button.attached();
+    expect(element.classList.contains('btn-flat')).toBe(true);
+    button.flat = false;
+    button.flatChanged(false, true);
+    expect(element.classList.contains('btn-flat')).toBe(false);
+  });
+
+  it('restores btn-flat if flat is changed from true to false and back', () => {
+    button.flat = true;
+    button.attached();
+    expect(element.classList.contains('btn-flat')).toBe(true);
+    button.flat = false;
+    button.flatChanged(false, true);
+    expect(element.classList.contains('btn-flat')).toBe(false);
+    button.flat = true;
+    button.flatChanged(true, false);
+    expect(element.classList.contains('btn-flat')).toBe(true);
+  });
+
+  it('removed disabled if disabled is changed from true to false', () => {
+    button.disabled = true;
+    button.attached();
+    expect(element.classList.contains('disabled')).toBe(true);
+    button.disabled = false;
+    button.disabledChanged(false, true);
+    expect(element.classList.contains('disabled')).toBe(false);
+  });
+
+  it('restores disabled if disabled is changed from true to false and back', () => {
+    button.disabled = true;
+    button.attached();
+    expect(element.classList.contains('disabled')).toBe(true);
+    button.disabled = false;
+    button.disabledChanged(false, true);
+    expect(element.classList.contains('disabled')).toBe(false);
+    button.disabled = true;
+    button.disabledChanged(true, false);
+    expect(element.classList.contains('disabled')).toBe(true);
+  });
 });

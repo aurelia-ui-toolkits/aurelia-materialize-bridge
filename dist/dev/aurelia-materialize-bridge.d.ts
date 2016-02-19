@@ -1,6 +1,11 @@
 declare module 'aurelia-materialize-bridge' {
   import 'materialize';
-  import { Aurelia, bindable, customAttribute, inject, bindingMode, customElement, containerless, inlineView }  from 'aurelia-framework';
+  import * as LogManager from 'aurelia-logging';
+  import { Aurelia }  from 'aurelia-framework';
+  import { bindable, customAttribute, customElement, inlineView }  from 'aurelia-templating';
+  import { bindingMode, ObserverLocator }  from 'aurelia-binding';
+  import { inject }  from 'aurelia-dependency-injection';
+  import { getLogger }  from 'aurelia-logging';
   export class ClickCounter {
     count: any;
     increment(): any;
@@ -13,8 +18,11 @@ declare module 'aurelia-materialize-bridge' {
     useGlobalResources: boolean;
     globalResources: any;
     useAll(): ConfigBuilder;
+    useBox(): ConfigBuilder;
     useButton(): ConfigBuilder;
+    useCarousel(): ConfigBuilder;
     useCard(): ConfigBuilder;
+    useCheckbox(): ConfigBuilder;
     
     /**
       * Use my control
@@ -22,13 +30,26 @@ declare module 'aurelia-materialize-bridge' {
     useClickCounter(): ConfigBuilder;
     useCollapsible(): ConfigBuilder;
     useColors(): ConfigBuilder;
+    useDatePicker(): ConfigBuilder;
+    useDropdown(): ConfigBuilder;
+    useFab(): ConfigBuilder;
+    useModal(): ConfigBuilder;
     useNavbar(): ConfigBuilder;
+    useParallax(): ConfigBuilder;
+    usePushpin(): ConfigBuilder;
+    useScrollfire(): ConfigBuilder;
+    useScrollSpy(): ConfigBuilder;
+    useSelect(): ConfigBuilder;
     useSidenav(): ConfigBuilder;
+    useSlider(): ConfigBuilder;
+    useSwitch(): ConfigBuilder;
     
     /**
        * Use materialized tabs
        */
     useTabs(): ConfigBuilder;
+    useTooltip(): ConfigBuilder;
+    useTransitions(): ConfigBuilder;
     
     /**
        * Use ripple/waves effect
@@ -43,18 +64,54 @@ declare module 'aurelia-materialize-bridge' {
     withoutGlobalResources(): ConfigBuilder;
   }
   export function configure(aurelia: Aurelia, configCallback?: ((builder: ConfigBuilder) => void)): any;
+  export class MdBox {
+    caption: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   export class MdButton {
     disabled: any;
     flat: any;
+    floating: any;
     large: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
     disabledChanged(newValue: any): any;
+    flatChanged(newValue: any): any;
   }
   export class MdCard {
-    title: any;
+    mdImage: any;
+    mdTitle: any;
     constructor(element: any);
+    attached(): any;
+  }
+  
+  // 
+  //  @customElement('md-carousel-item')
+  export class MdCarouselItem {
+    mdHref: any;
+    mdImage: any;
+    constructor(element: any);
+    attached(): any;
+  }
+  export class MdCarousel {
+    mdSlider: any;
+    constructor(element: any);
+    attached(): any;
+  }
+  export class MdCheckbox {
+    static id: any;
+    mdChecked: any;
+    mdDisabled: any;
+    mdFilledIn: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    handleChange(): any;
+    mdCheckedChanged(newValue: any): any;
+    mdDisabledChanged(newValue: any): any;
   }
   export class MdCollapsible {
     constructor(element: any);
@@ -106,99 +163,222 @@ declare module 'aurelia-materialize-bridge' {
   * @param data Addition data to attach to an event
   */
   export function fireMaterializeEvent(element: Element, name: string, data?: any): any;
-  export class MdNavbar {
-    fixed: any;
-    fixedClassSetter: any;
+  export class MdDatePicker {
+    container: any;
+    translation: any;
+    value: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
+    onClose(): any;
+    onSet(value: any): any;
+    
+    //  this.value = new Date(value.select);
+    valueChanged(newValue: any): any;
+  }
+  export class MdDropdownElement {
+    static id: any;
+    alignment: any;
+    belowOrigin: any;
+    constrainWidth: any;
+    gutter: any;
+    hover: any;
+    mdTitle: any;
+    inDuration: any;
+    outDuration: any;
+    constructor(element: any);
+    attached(): any;
+  }
+  export class MdDropdown {
+    activates: any;
+    alignment: any;
+    belowOrigin: any;
+    constrainWidth: any;
+    gutter: any;
+    hover: any;
+    mdTitle: any;
+    inDuration: any;
+    outDuration: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  export class MdFab {
+    mdFixed: any;
+    mdLarge: any;
+    constructor(element: any);
+    attached(): any;
+  }
+  export class MdModalTrigger {
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  export class MdNavbar {
+    mdFixed: any;
+    fixedAttributeManager: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  export class MdParallax {
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  
+  //  destroy handler not available
+  export class MdPushpin {
+    bottom: any;
+    offset: any;
+    top: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  
+  //  destroy handler not available
+  /* eslint no-new-func:0 */
+  export class ScrollfirePatch {
+    patched: any;
+    patch(): any;
+  }
+  export class MdScrollfireTarget {
+    callback: any;
+    offset: any;
+    constructor(element: any);
+  }
+  export class MdScrollfire {
+    targetId: any;
+    constructor(element: any, scrollfirePatch: any);
+    attached(): any;
+  }
+  export class MdScrollSpy {
+    target: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  
+  //  destroy handler not available
+  export class MdSelect {
+    constructor(element: any, logManager: any, observerLocator: any);
+    attached(): any;
+    detached(): any;
+    handleChangeFromNativeSelect(): any;
+    handleChangeFromViewModel(newValue: any): any;
   }
   export class MdSidenavCollapse {
     ref: any;
-    constructor(element: any);
+    constructor(element: any, observerLocator: any);
     attached(): any;
-    
-    //  this.element.addEventListener('click', this.toggleSidenav);
     detached(): any;
   }
   
-  //  this.element.removeEventListener('click', this.toggleSidenav);
-  //  toggleSidenav() {
-  //    $(this.element).sideNav('show');
+  //  this.widthSubscription.unsubscribe();
+  //  fixedChanged() {
+  //    this.log.debug('fixedChanged');
+  //    $(this.element).sideNav({
+  //      edge: this.ref.edge || 'left',
+  //      closeOnClick: this.ref.closeOnClick,
+  //      menuWidth: parseInt(this.ref.mdWidth, 10)
+  //    });
+  //  }
+  // 
+  //  widthChanged() {
+  //    this.log.debug('widthChanged');
+  //    $(this.element).sideNav({
+  //      edge: this.ref.edge || 'left',
+  //      closeOnClick: this.ref.closeOnClick,
+  //      menuWidth: parseInt(this.ref.mdWidth, 10)
+  //    });
   //  }
   export class MdSidenav {
     static id: any;
-    edge: any;
-    closeOnClick: any;
-    constructor(element: any);
-    attached(): any;
-  }
-  
-  //  this.controlId = 'md-sidenav-' + id++;
-  /*
-    implementation example
-  
-    <div class="row">
-        <div class="col s12 m8">
-          <div class="card">
-            <div class="card-content">
-              <span class="card-title">Code Preview</span>
-              <div class="row">
-                <md-tabs tabs.bind="tabs">
-                  <md-tab title="Html" for-element="#html"></md-tab>
-                  <md-tab title="Css (custom color)" for-element="#css"></md-tab>
-                </md-tabs>
-  
-                <div id="html" class="z-depth-1">
-                  <au-code language="markup" url="samples/waves/colors-sample.html"></au-code>
-                </div>
-                <div id="css" class="z-depth-1">
-                  <au-code language="css" url="samples/waves/colors-sample.css"></au-code>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-  */
-  //  @bindable({
-  //    name: 'title',
-  //    defaultBindingMode: bindingMode.oneWay
-  //  })
-  
-  //  @inlineView won't work, throwing "title is not defined"
-  //  @inlineView(`
-  //    <template>
-  //      <li md-waves class="tab">${title}</li>
-  //    </template>
-  //  `)
-  export class MdTab {
-    forElement: any;
-    tab: any;
-    title: any;
-    constructor(element: any);
-    attached(): any;
-    
-    //  console.log('[MdTab] attached', 'forElement', this.forElement, this.tab)
-    detached(): any;
-    forElementChanged(newValue: any): any;
-  }
-  
-  //  console.log('[MdTab] forElementChanged', 'newValue', newValue)
-  export class MdTabsElement {
+    mdCloseOnClick: any;
+    mdEdge: any;
+    mdFixed: any;
+    mdWidth: any;
+    attachedResolver: any;
+    whenAttached: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
+    fixedChanged(newValue: any): any;
+  }
+  export class MdSlider {
+    mdFillContainer: any;
+    mdHeight: any;
+    mdIndicators: any;
+    mdInterval: any;
+    mdTransition: any;
+    constructor(element: any);
+    attached(): any;
+    pause(): any;
+    start(): any;
+    next(): any;
+    prev(): any;
+    refresh(): any;
+    mdIndicatorsChanged(): any;
   }
   
-  //  no destroy handler in tabs :-(
+  //  commented since that leads to strange effects
+  //  mdIntervalChanged() {
+  //    this.refresh();
+  //  }
+  // 
+  //  mdTransitionChanged() {
+  //    this.refresh();
+  //  }
+  export class MdSwitch {
+    mdChecked: any;
+    mdLabelOff: any;
+    mdLabelOn: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    handleChange(): any;
+    mdCheckedChanged(newValue: any): any;
+  }
   export class MdTabs {
     constructor(element: any);
     attached(): any;
     detached(): any;
     fireTabSelectedEvent(e: any): any;
   }
+  export class MdToastService {
+    show(message: any, displayLength: any, className: any): any;
+  }
+  
+  //  @customAttribute('md-tooltip')
+  export class MdTooltip {
+    position: any;
+    delay: any;
+    text: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  export class MdFadeinImage {
+    ref: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    fadeInImage(): any;
+    ensureOpacity(): any;
+  }
+  export class MdStaggeredList {
+    ref: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    staggerList(): any;
+    ensureOpacity(): any;
+  }
   export class MdWaves {
+    block: any;
+    circle: any;
+    color: any;
     constructor(element: any);
     attached(): any;
     detached(): any;

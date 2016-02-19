@@ -1,5 +1,10 @@
 import 'materialize';
-import {Aurelia,bindable,customAttribute,inject,bindingMode,customElement,containerless,inlineView} from 'aurelia-framework';
+import * as LogManager from 'aurelia-logging';
+import {Aurelia} from 'aurelia-framework';
+import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
+import {bindingMode,ObserverLocator} from 'aurelia-binding';
+import {inject} from 'aurelia-dependency-injection';
+import {getLogger} from 'aurelia-logging';
 
 export class ClickCounter {
   count = 0;
@@ -19,15 +24,35 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useBox()
       .useButton()
       .useCard()
+      .useCarousel()
+      .useCheckbox()
       .useCollapsible()
       .useColors()
+      .useDatePicker()
+      .useDropdown()
+      .useFab()
+      .useModal()
       .useNavbar()
+      .useParallax()
+      .usePushpin()
+      .useScrollfire()
+      .useSelect()
       .useSidenav()
+      .useSlider()
+      .useSwitch()
       .useTabs()
+      .useTooltip()
+      .useTransitions()
       .useWaves()
       .useWell();
+  }
+
+  useBox(): ConfigBuilder {
+    this.globalResources.push('./box/box');
+    return this;
   }
 
   useButton(): ConfigBuilder {
@@ -35,8 +60,19 @@ export class ConfigBuilder {
     return this;
   }
 
+  useCarousel(): ConfigBuilder {
+    this.globalResources.push('./carousel/carousel');
+    this.globalResources.push('./carousel/carousel-item');
+    return this;
+  }
+
   useCard(): ConfigBuilder {
     this.globalResources.push('./card/card');
+    return this;
+  }
+
+  useCheckbox(): ConfigBuilder {
+    this.globalResources.push('./checkbox/checkbox');
     return this;
   }
 
@@ -58,8 +94,55 @@ export class ConfigBuilder {
     return this;
   }
 
+  useDatePicker() : ConfigBuilder {
+    this.globalResources.push('./datepicker/datepicker');
+    return this;
+  }
+
+  useDropdown() : ConfigBuilder {
+    // this.globalResources.push('./dropdown/dropdown-element');
+    this.globalResources.push('./dropdown/dropdown');
+    return this;
+  }
+
+  useFab() : ConfigBuilder {
+    this.globalResources.push('./fab/fab');
+    return this;
+  }
+
+  useModal(): ConfigBuilder {
+    this.globalResources.push('./modal/modal-trigger');
+    return this;
+  }
+
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useParallax(): ConfigBuilder {
+    this.globalResources.push('./parallax/parallax');
+    return this;
+  }
+
+  usePushpin(): ConfigBuilder {
+    this.globalResources.push('./pushpin/pushpin');
+    return this;
+  }
+
+  useScrollfire(): ConfigBuilder {
+    this.globalResources.push('./scrollfire/scrollfire');
+    this.globalResources.push('./scrollfire/scrollfire-target');
+    return this;
+  }
+
+  useScrollSpy(): ConfigBuilder {
+    this.globalResources.push('./scrollspy/scrollspy');
+    return this;
+  }
+
+  useSelect(): ConfigBuilder {
+    this.globalResources.push('./select/select');
     return this;
   }
 
@@ -69,11 +152,33 @@ export class ConfigBuilder {
     return this;
   }
 
+  useSlider(): ConfigBuilder {
+    this.globalResources.push('./slider/slider');
+    // this.globalResources.push('./slider/slide');
+    return this;
+  }
+
+  useSwitch(): ConfigBuilder {
+    this.globalResources.push('./switch/switch');
+    return this;
+  }
+
   /**
    * Use materialized tabs
    */
   useTabs(): ConfigBuilder {
     this.globalResources.push('./tabs/tabs');
+    return this;
+  }
+
+  useTooltip(): ConfigBuilder {
+    this.globalResources.push('./tooltip/tooltip');
+    return this;
+  }
+
+  useTransitions(): ConfigBuilder {
+    this.globalResources.push('./transitions/fadein-image');
+    this.globalResources.push('./transitions/staggered-list');
     return this;
   }
 
@@ -112,11 +217,38 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBui
   }
 }
 
+@customAttribute('md-box')
+@inject(Element)
+export class MdBox {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) caption;
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('materialboxed');
+    if (this.caption) {
+      this.attributeManager.addAttributes({ 'data-caption': this.caption });
+    }
+    // FIXME:0 throws "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
+    $(this.element).materialbox();
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes('data-caption');
+    this.attributeManager.removeClasses('materialboxed');
+  }
+}
+
 @customAttribute('md-button')
 @inject(Element)
 export class MdButton {
   @bindable() disabled = false;
   @bindable() flat = false;
+  @bindable() floating = false;
   @bindable() large = false;
 
   constructor(element) {
@@ -128,6 +260,9 @@ export class MdButton {
 
     if (getBooleanFromAttributeValue(this.flat)) {
       classes.push('btn-flat');
+    }
+    if (getBooleanFromAttributeValue(this.floating)) {
+      classes.push('btn-floating');
     }
     if (getBooleanFromAttributeValue(this.large)) {
       classes.push('btn-large');
@@ -158,17 +293,129 @@ export class MdButton {
       this.attributeManager.removeClasses('disabled');
     }
   }
+
+  flatChanged(newValue) {
+    if (getBooleanFromAttributeValue(newValue)) {
+      this.attributeManager.removeClasses(['btn', 'accent']);
+      this.attributeManager.addClasses('btn-flat');
+    } else {
+      this.attributeManager.removeClasses('btn-flat');
+      this.attributeManager.addClasses(['btn', 'accent']);
+    }
+  }
 }
 
 @customElement('md-card')
 @inject(Element)
 export class MdCard {
+  @bindable() mdImage = null;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
-  }) title;
+  }) mdTitle;
 
   constructor(element) {
+    this.element = element;
+  }
 
+  attached() {
+    //
+  }
+}
+
+// @customElement('md-carousel-item')
+@inject(Element)
+export class MdCarouselItem {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdHref = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdImage = '';
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() { }
+}
+
+@customElement('md-carousel')
+@inject(Element)
+export class MdCarousel {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdSlider = false;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    if (getBooleanFromAttributeValue(this.mdSlider)) {
+      this.element.classList.add('carousel-slider');
+    }
+
+    // workaround for: https://github.com/Dogfalo/materialize/issues/2741
+    if (getBooleanFromAttributeValue(this.mdSlider)) {
+      $(this.element).carousel({full_width: true});
+    } else {
+      $(this.element).carousel();
+    }
+  }
+}
+
+@customElement('md-checkbox')
+@inject(Element)
+export class MdCheckbox {
+  static id = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdChecked;
+  @bindable() mdDisabled;
+  @bindable() mdFilledIn;
+
+  constructor(element) {
+    this.element = element;
+    this.controlId = `md-checkbox-${MdCheckbox.id++}`;
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  attached() {
+    this.attributeManager = new AttributeManager(this.checkbox);
+    if (getBooleanFromAttributeValue(this.mdFilledIn)) {
+      this.attributeManager.addClasses('filled-in');
+    }
+    if (this.mdChecked === null) {
+      this.checkbox.indeterminate = true;
+    } else {
+      this.checkbox.indeterminate = false;
+    }
+    if (getBooleanFromAttributeValue(this.mdDisabled)) {
+      this.checkbox.disabled = true;
+    }
+    this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
+    this.checkbox.addEventListener('change', this.handleChange);
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['filled-in', 'disabled']);
+    this.checkbox.removeEventListener('change', this.handleChange);
+  }
+
+  handleChange() {
+    this.mdChecked = this.checkbox.checked;
+  }
+
+  mdCheckedChanged(newValue) {
+    if (this.checkbox) {
+      this.checkbox.checked = !!newValue;
+    }
+  }
+
+  mdDisabledChanged(newValue) {
+    if (this.checkbox) {
+      this.checkbox.disabled = !!newValue;
+    }
   }
 }
 
@@ -199,10 +446,8 @@ export class MdCollapsible {
   refresh() {
     let accordion = getBooleanFromAttributeValue(this.accordion);
     if (accordion) {
-      // this.element.setAttribute('data-collapsible', 'accordion');
       this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
     } else {
-      // this.element.setAttribute('data-collapsible', 'expandable');
       this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
     }
 
@@ -352,11 +597,218 @@ export function fireMaterializeEvent(element: Element, name: string, data? = {})
   return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
 
+@inject(Element)
+@customAttribute('md-datepicker')
+export class MdDatePicker {
+  @bindable() container;
+  @bindable() translation;
+  @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-datepicker');
+  }
+  attached() {
+    this.element.classList.add('date-picker');
+    let options = {
+      onClose: function() {
+        // see https://github.com/Dogfalo/materialize/issues/2067
+        // and: https://github.com/amsul/pickadate.js/issues/160
+        $(document.activeElement).blur();
+        // $(this.element).blur();
+      }
+    };
+    let i18n = {};
+    // let i18n = {
+    //   selectMonths: true, // Creates a dropdown to control month
+    //   selectYears: 15, // Creates a dropdown of 15 years to control year
+    //   monthsFull: [ 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ],
+    //   monthsShort: [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
+    //   weekdaysFull: [ 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag' ],
+    //   weekdaysShort: [ 'So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa' ],
+    //   today: 'Heute',
+    //   clear: 'Löschen',
+    //   close: 'Schließen',
+    //   firstDay: 1,
+    //   format: 'dddd, dd. mmmm yyyy',
+    //   formatSubmit: 'yyyy/mm/dd'
+    // };
+    Object.assign(options, i18n);
+    if (this.container) {
+      options.container = this.container;
+    }
+    this.picker = $(this.element).pickadate(options).pickadate('picker');
+    this.picker.on({
+      'close': this.onClose.bind(this),
+      'set': this.onSet.bind(this)
+    });
+  }
+
+  detached() {
+    if (this.picker) {
+      this.picker.stop();
+    }
+  }
+
+  onClose() {
+    this.value = this.picker.get('select').obj;
+  }
+
+  onSet(value) {
+    // this.value = new Date(value.select);
+  }
+
+  valueChanged(newValue) {
+    this.log.debug('selectedChanged', this.selected);
+  }
+}
+
+@customElement('md-dropdown')
+@inject(Element)
+export class MdDropdownElement {
+  static id = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) alignment = 'left';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) belowOrigin = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) constrainWidth = true;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) gutter = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) hover = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) inDuration = 300;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) outDuration = 225;
+
+  constructor(element) {
+    this.element = element;
+    this.controlId = `md-dropdown-${MdDropdown.id++}`;
+  }
+  attached() {
+    $(this.element).dropdown({
+      alignment: this.alignment,
+      belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
+      constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
+      gutter: parseInt(this.gutter, 10),
+      hover: getBooleanFromAttributeValue(this.hover),
+      inDuration: parseInt(this.inDuration, 10),
+      outDuration: parseInt(this.outDuration, 10)
+    });
+  }
+}
+
+@customAttribute('md-dropdown')
+@inject(Element)
+export class MdDropdown {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) activates = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) alignment = 'left';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) belowOrigin = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) constrainWidth = true;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) gutter = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) hover = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) inDuration = 300;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) outDuration = 225;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.contentAttributeManager = new AttributeManager(document.getElementById(this.activates));
+
+    this.attributeManager.addClasses('dropdown-button');
+    this.contentAttributeManager.addClasses('dropdown-content');
+    this.attributeManager.addAttributes({ 'data-activates': this.activates });
+    $(this.element).dropdown({
+      alignment: this.alignment,
+      belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
+      constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
+      gutter: parseInt(this.gutter, 10),
+      hover: getBooleanFromAttributeValue(this.hover),
+      inDuration: parseInt(this.inDuration, 10),
+      outDuration: parseInt(this.outDuration, 10)
+    });
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes('data-activates');
+    this.attributeManager.removeClasses('dropdown-button');
+    this.contentAttributeManager.removeClasses('dropdown-content');
+  }
+}
+
+@customElement('md-fab')
+@inject(Element)
+export class MdFab {
+  @bindable() mdFixed = false;
+  @bindable() mdLarge = false;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.mdFixed = getBooleanFromAttributeValue(this.mdFixed);
+    this.mdLarge = getBooleanFromAttributeValue(this.mdLarge);
+  }
+}
+
+@customAttribute('md-modal-trigger')
+@inject(Element)
+export class MdModalTrigger {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('modal-trigger');
+    $(this.element).leanModal();
+  }
+
+  detached() {
+    this.attributeManager.removeClasses('modal-trigger');
+  }
+}
+
 @customElement('md-navbar')
 @inject(Element)
 export class MdNavbar {
-  @bindable() fixed;
-  fixedClassSetter;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdFixed;
+  fixedAttributeManager;
 
   constructor(element) {
     this.element = element;
@@ -364,41 +816,277 @@ export class MdNavbar {
 
   attached() {
     this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
-    if (getBooleanFromAttributeValue(this.fixed)) {
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.addClasses('navbar-fixed');
     }
   }
 
   detached() {
-    if (getBooleanFromAttributeValue(this.fixed)) {
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
   }
 }
 
-@customAttribute('md-sidenav-collapse')
+@customAttribute('md-parallax')
 @inject(Element)
-export class MdSidenavCollapse {
-  @bindable() ref;
+export class MdParallax {
   constructor(element) {
     this.element = element;
   }
 
   attached() {
-    this.element.setAttribute('data-activates', this.ref.controlId);
-    $(this.element).sideNav({
-      edge: this.ref.edge || 'left',
-      closeOnClick: this.ref.closeOnClick
-    });
-    // this.element.addEventListener('click', this.toggleSidenav);
+    $(this.element).parallax();
   }
 
   detached() {
-    // this.element.removeEventListener('click', this.toggleSidenav);
+    // destroy handler not available
+  }
+}
+
+@customAttribute('md-pushpin')
+@inject(Element)
+export class MdPushpin {
+  @bindable() bottom = Infinity;
+  @bindable() offset = 0;
+  @bindable() top = 0;
+
+  constructor(element) {
+    this.element = element;
   }
 
-  // toggleSidenav() {
-  //   $(this.element).sideNav('show');
+  attached() {
+    $(this.element).pushpin({
+      bottom: (this.bottom === Infinity ? Infinity : parseInt(this.bottom, 10)),
+      offset: parseInt(this.offset, 10),
+      top: parseInt(this.top, 10)
+    });
+  }
+
+  detached() {
+    // destroy handler not available
+  }
+}
+
+/* eslint no-new-func:0 */
+export class ScrollfirePatch {
+  patched = false;
+
+  patch() {
+    if (!this.patched) {
+      this.patched = true;
+
+      window.Materialize.scrollFire = function(options) {
+        let didScroll = false;
+        window.addEventListener('scroll', function() {
+          didScroll = true;
+        });
+
+        // Rate limit to 100ms
+        setInterval(function() {
+          if (didScroll) {
+            didScroll = false;
+
+            let windowScroll = window.pageYOffset + window.innerHeight;
+            for (let i = 0; i < options.length; i++) {
+              // Get options from each line
+              let value = options[i];
+              let selector = value.selector;
+              let offset = value.offset;
+              let callback = value.callback;
+
+              let currentElement = document.querySelector(selector);
+              if ( currentElement !== null) {
+                let elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
+
+                if (windowScroll > (elementOffset + offset)) {
+                  if (value.done !== true) {
+                    if (typeof(callback) === 'string') {
+                      let callbackFunc = new Function(callback);
+                      callbackFunc();
+                    } else if (typeof(callback) === 'function') {
+                      callback();
+                    }
+                    value.done = true;
+                  }
+                }
+              }
+            }
+          }
+        }, 100);
+      };
+    }
+  }
+}
+
+@customAttribute('md-scrollfire-target')
+@inject(Element)
+export class MdScrollfireTarget {
+  @bindable() callback = null;
+  @bindable() offset = 0;
+  constructor(element) {
+    this.element = element;
+  }
+}
+
+@customAttribute('md-scrollfire')
+@inject(Element, ScrollfirePatch)
+export class MdScrollfire {
+  targetId = 0;
+  constructor(element, scrollfirePatch) {
+    scrollfirePatch.patch();
+    this.element = element;
+    this.log = getLogger('md-scrollfire');
+  }
+
+  attached() {
+    let targets = $('[md-scrollfire-target]', this.element);
+    if (targets.length > 0) {
+      this.log.debug('targets', targets);
+      let self = this;
+      let options = [];
+      targets.each((i, el) => {
+        let target = $(el);
+        if (!target.attr('id')) {
+          target.attr('id', `md-scrollfire-target-${self.targetId++}`);
+        }
+        options.push({
+          selector: '#' + target.attr('id'),
+          callback: target.get(0).au['md-scrollfire-target'].viewModel.callback,
+          offset: parseInt(target.get(0).au['md-scrollfire-target'].viewModel.offset, 10)
+        });
+      });
+      if (options.length > 0) {
+        this.log.debug('configuring scrollFire with these options:', options);
+        Materialize.scrollFire(options);
+      }
+    }
+  }
+}
+
+@customAttribute('md-scrollspy')
+@inject(Element)
+export class MdScrollSpy {
+  @bindable() target;
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.target, this.element).scrollSpy();
+  }
+
+  detached() {
+    // destroy handler not available
+  }
+}
+
+@inject(Element, LogManager, ObserverLocator)
+@customAttribute('md-select')
+export class MdSelect {
+  _suspendUpdate = false;
+
+  constructor(element, logManager, observerLocator) {
+    this.element = element;
+    this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
+    this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
+    this.log = LogManager.getLogger('md-select');
+    this.observerLocator = observerLocator;
+    this.valueObserver = this.observerLocator.getObserver(this.element, 'value');
+  }
+  attached() {
+    this.valueObserver.subscribe(this.handleChangeFromViewModel);
+    // $(this.element).material_select(() => {
+    //   this.log.warn('materialize callback', $(this.element).val());
+    //   this.handleChangeFromNativeSelect();
+    // });
+    $(this.element).material_select();
+    $(this.element).on('change', this.handleChangeFromNativeSelect);
+  }
+
+  detached() {
+    $(this.element).off('change', this.handleChangeFromNativeSelect);
+    $(this.element).material_select('destroy');
+    this.valueObserver.unsubscribe();
+  }
+
+  handleChangeFromNativeSelect() {
+    // Aurelia's select observer doesn't get noticed when something changes the
+    // select value directly (this.element.value = "something"). So we trigger
+    // the change here.
+    // this.valueObserver.value = $(this.element).val();
+    // this.valueObserver.synchronizeValue();
+    // this.valueObserver.synchronizeOptions();
+    // this._suspendUpdate = true;
+    // this.valueObserver.notify();
+    // this._suspendUpdate = false;
+
+    if (!this._suspendUpdate) {
+      this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
+      this._suspendUpdate = true;
+      fireEvent(this.element, 'change');
+      this.log.debug('this.valueObserver.value', this.valueObserver.value);
+      // this.valueObserver.value = $(this.element).val();
+      // this.valueObserver.notify();
+
+      this._suspendUpdate = false;
+    }
+  }
+
+  handleChangeFromViewModel(newValue) {
+    this.log.debug('handleChangeFromViewModel', newValue, $(this.element).val());
+    if (!this._suspendUpdate) {
+      $(this.element).material_select();
+    }
+  }
+}
+
+@customAttribute('md-sidenav-collapse')
+@inject(Element, ObserverLocator)
+export class MdSidenavCollapse {
+  @bindable() ref;
+  constructor(element, observerLocator) {
+    this.element = element;
+    this.observerLocator = observerLocator;
+    this.log = getLogger('md-sidenav-collapse');
+  }
+
+  attached() {
+    this.ref.whenAttached.then(() => {
+      // this.widthSubscription = this.observerLocator.getObserver(this.ref, 'mdWidth').subscribe(this.widthChanged.bind(this));
+      // this.fixedSubscription = this.observerLocator.getObserver(this.ref, 'fixed').subscribe(this.fixedChanged.bind(this));
+
+      this.element.setAttribute('data-activates', this.ref.controlId);
+      let sideNavConfig = {
+        edge: this.ref.mdEdge || 'left',
+        closeOnClick: this.ref.mdCloseOnClick,
+        menuWidth: parseInt(this.ref.mdWidth, 10)
+      };
+      // this.log.debug('sideNavConfig:', sideNavConfig);
+      $(this.element).sideNav(sideNavConfig);
+    });
+  }
+
+  detached() {
+    // this.widthSubscription.unsubscribe();
+  }
+
+  // fixedChanged() {
+  //   this.log.debug('fixedChanged');
+  //   $(this.element).sideNav({
+  //     edge: this.ref.edge || 'left',
+  //     closeOnClick: this.ref.closeOnClick,
+  //     menuWidth: parseInt(this.ref.mdWidth, 10)
+  //   });
+  // }
+  //
+  // widthChanged() {
+  //   this.log.debug('widthChanged');
+  //   $(this.element).sideNav({
+  //     edge: this.ref.edge || 'left',
+  //     closeOnClick: this.ref.closeOnClick,
+  //     menuWidth: parseInt(this.ref.mdWidth, 10)
+  //   });
   // }
 }
 
@@ -406,105 +1094,152 @@ export class MdSidenavCollapse {
 @inject(Element)
 export class MdSidenav {
   static id = 0;
-  @bindable() edge = 'left';
-  @bindable() closeOnClick = true;
+  @bindable() mdCloseOnClick = false;
+  @bindable() mdEdge = 'left';
+  @bindable() mdFixed = false;
+  @bindable() mdWidth = 250;
+
+  attachedResolver;
+  whenAttached;
 
   constructor(element) {
     this.element = element;
-    this.controlId = 'md-sidenav-' + MdSidenav.id++;
+    this.controlId = `md-sidenav-${MdSidenav.id++}`;
+    this.log = getLogger('md-sidenav');
+    this.whenAttached = new Promise((resolve, reject) => {
+      this.attachedResolver = resolve;
+    });
   }
 
   attached() {
-    // this.controlId = 'md-sidenav-' + id++;
+    this.attributeManager = new AttributeManager(this.sidenav);
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
+      this.attributeManager.addClasses('fixed');
+      if (this.mdEdge === 'right') {
+        // see: https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/53
+        this.attributeManager.addClasses('right-aligned');
+      }
+    }
+
+    this.attachedResolver();
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['fixed', 'right-aligned']);
+  }
+
+  fixedChanged(newValue) {
+    if (this.attributeManager) {
+      if (newValue) {
+        this.attributeManager.addClasses('fixed');
+      } else {
+        this.attributeManager.removeClasses('fixed');
+      }
+    }
   }
 }
 
-/*
-  implementation example
-
-  <div class="row">
-      <div class="col s12 m8">
-        <div class="card">
-          <div class="card-content">
-            <span class="card-title">Code Preview</span>
-            <div class="row">
-              <md-tabs tabs.bind="tabs">
-                <md-tab title="Html" for-element="#html"></md-tab>
-                <md-tab title="Css (custom color)" for-element="#css"></md-tab>
-              </md-tabs>
-
-              <div id="html" class="z-depth-1">
-                <au-code language="markup" url="samples/waves/colors-sample.html"></au-code>
-              </div>
-              <div id="css" class="z-depth-1">
-                <au-code language="css" url="samples/waves/colors-sample.css"></au-code>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-*/
-
-// @bindable({
-//   name: 'title',
-//   defaultBindingMode: bindingMode.oneWay
-// })
-@customElement('md-tab')
-@containerless()
-@inject(Element)
-// @inlineView won't work, throwing "title is not defined"
-// @inlineView(`
-//   <template>
-//     <li md-waves class="tab">${title}</li>
-//   </template>
-// `)
-export class MdTab {
-  @bindable({
-    attribute: 'for-element',
-    defaultBindingMode: bindingMode.oneWay
-  }) forElement;
-  @bindable({
-    defaultBindingMode: bindingMode.oneWay
-  }) tab;
-  @bindable({
-    defaultBindingMode: bindingMode.oneWay
-  }) title = '';
-  constructor(element) {
-    this.element = element;
-  }
-  attached() {
-    // console.log('[MdTab] attached', 'forElement', this.forElement, this.tab)
-  }
-  detached() { }
-  forElementChanged(newValue) {
-    // console.log('[MdTab] forElementChanged', 'newValue', newValue)
-  }
-}
-
-@bindable({
-  name: 'tabs',
-  defaultBindingMode: bindingMode.oneWay
-})
-@customElement('md-tabs')
+@customElement('md-slider')
 @inject(Element)
 @inlineView(`
-  <template>
-    <ul class="tabs">
-      <content></content>
-    </ul>
+  <template class="slider">
+  <require from="./slider.css"></require>
+  <ul class="slides">
+    <content select="li"></content>
+  </ul>
   </template>
 `)
-export class MdTabsElement {
+export class MdSlider {
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdFillContainer = false;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdHeight = 400;
+  @bindable() mdIndicators = true;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdInterval = 6000;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdTransition = 500;
+
   constructor(element) {
     this.element = element;
+    this.log = getLogger('md-slider');
   }
+
   attached() {
-    // console.log('[MdTabs]', 'attached', this.tabs)
-    $(this.element).tabs();
+    if (getBooleanFromAttributeValue(this.mdFillContainer)) {
+      this.element.classList.add('fullscreen');
+    }
+    this.refresh();
   }
+
+  pause() {
+    $(this.element).slider('pause');
+  }
+
+  start() {
+    $(this.element).slider('start');
+  }
+
+  next() {
+    $(this.element).slider('next');
+  }
+
+  prev() {
+    $(this.element).slider('prev');
+  }
+
+  refresh() {
+    let options = {
+      height: parseInt(this.mdHeight, 10),
+      indicators: getBooleanFromAttributeValue(this.mdIndicators),
+      interval: parseInt(this.mdInterval, 10),
+      transition: parseInt(this.mdTransition, 10)
+    };
+    this.log.debug('refreshing slider, params:', options);
+    $(this.element).slider(options);
+  }
+
+  mdIndicatorsChanged() {
+    this.refresh();
+  }
+
+  // commented since that leads to strange effects
+  // mdIntervalChanged() {
+  //   this.refresh();
+  // }
+  //
+  // mdTransitionChanged() {
+  //   this.refresh();
+  // }
+}
+
+@customElement('md-switch')
+@inject(Element)
+export class MdSwitch {
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdChecked;
+  @bindable() mdLabelOff = 'Off';
+  @bindable() mdLabelOn = 'On';
+
+  constructor(element) {
+    this.element = element;
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  attached() {
+    this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
+    this.checkbox.addEventListener('change', this.handleChange);
+  }
+
   detached() {
-    // no destroy handler in tabs :-(
+    this.checkbox.removeEventListener('change', this.handleChange);
+  }
+
+  handleChange() {
+    this.mdChecked = this.checkbox.checked;
+  }
+
+  mdCheckedChanged(newValue) {
+    if (this.checkbox) {
+      this.checkbox.checked = !!newValue;
+    }
   }
 }
 
@@ -553,13 +1288,120 @@ export class MdTabs {
   }
 }
 
+export class MdToastService {
+  show(message, displayLength, className) {
+    return new Promise((resolve, reject) => {
+      Materialize.toast(message, displayLength, className, () => {
+        resolve();
+      });
+    });
+  }
+}
+
+// @customAttribute('md-tooltip')
+@inject(Element)
+export class MdTooltip {
+  @bindable() position = 'bottom';
+  @bindable() delay = 50;
+  @bindable() text = '';
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('tooltipped');
+    this.attributeManager.addAttributes({ 'data-position': this.position, 'data-tooltip': this.text });
+    $(this.element).tooltip({ delay: parseInt(this.delay, 10) });
+  }
+
+  detached() {
+    $(this.element).tooltip('remove');
+    this.attributeManager.removeClasses('tooltipped');
+    this.attributeManager.removeAttributes(['data-position', 'data-tooltip']);
+  }
+}
+
+@customAttribute('md-fadein-image')
+@inject(Element)
+export class MdFadeinImage {
+  @bindable() ref;
+
+  constructor(element) {
+    this.element = element;
+    this.fadeInImage = this.fadeInImage.bind(this);
+    this.log = getLogger('md-fadein-image');
+  }
+
+  attached() {
+    this.element.addEventListener('click', this.fadeInImage);
+    this.ensureOpacity();
+  }
+
+  detached() {
+    this.element.removeEventListener('click', this.fadeInImage);
+  }
+
+  fadeInImage() {
+    Materialize.fadeInImage(this.ref);
+  }
+
+  ensureOpacity() {
+    let opacity = window.getComputedStyle(this.ref).opacity;
+    if (opacity !== 0) {
+      this.ref.style.opacity = 0;
+    }
+  }
+}
+
+@customAttribute('md-staggered-list')
+@inject(Element)
+export class MdStaggeredList {
+  @bindable() ref;
+
+  constructor(element) {
+    this.element = element;
+    this.staggerList = this.staggerList.bind(this);
+    this.log = getLogger('md-staggered-list');
+  }
+
+  attached() {
+    this.element.addEventListener('click', this.staggerList);
+    this.ensureOpacity();
+  }
+
+  detached() {
+    this.element.removeEventListener('click', this.staggerList);
+  }
+
+  staggerList() {
+    Materialize.showStaggeredList(this.ref);
+  }
+
+  ensureOpacity() {
+    let items = this.ref.querySelectorAll('li');
+    [].forEach.call(items, item => {
+      let opacity = window.getComputedStyle(item).opacity;
+      if (opacity !== 0) {
+        item.style.opacity = 0;
+      }
+    });
+  }
+}
+
 @customAttribute('md-waves')
-@bindable({
-  name: 'color',
-  defaultBindingMode: bindingMode.oneTime
-})
 @inject(Element)
 export class MdWaves {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) block = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) circle = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) color;
   constructor(element) {
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
@@ -567,6 +1409,12 @@ export class MdWaves {
 
   attached() {
     let classes = ['waves-effect'];
+    if (getBooleanFromAttributeValue(this.block)) {
+      classes.push('waves-block');
+    }
+    if (getBooleanFromAttributeValue(this.circle)) {
+      classes.push('waves-circle');
+    }
     if (this.color) {
       classes.push(`waves-${this.color}`);
     }
@@ -576,7 +1424,7 @@ export class MdWaves {
   }
 
   detached() {
-    let classes = ['waves-effect'];
+    let classes = ['waves-effect', 'waves-block'];
     if (this.color) {
       classes.push(`waves-${this.color}`);
     }

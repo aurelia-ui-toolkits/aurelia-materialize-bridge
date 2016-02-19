@@ -1,4 +1,5 @@
-import { customAttribute, inject } from 'aurelia-framework';
+import { customAttribute } from 'aurelia-templating';
+import { inject } from 'aurelia-dependency-injection';
 import { fireMaterializeEvent } from '../common/events';
 import { AttributeManager } from '../common/attributeManager';
 

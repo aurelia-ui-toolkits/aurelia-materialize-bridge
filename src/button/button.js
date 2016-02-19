@@ -1,4 +1,5 @@
-import { bindable, customAttribute, inject } from 'aurelia-framework';
+import { bindable, customAttribute } from 'aurelia-templating';
+import { inject } from 'aurelia-dependency-injection';
 import { AttributeManager } from '../common/attributeManager';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 
@@ -7,6 +8,7 @@ import { getBooleanFromAttributeValue } from '../common/attributes';
 export class MdButton {
   @bindable() disabled = false;
   @bindable() flat = false;
+  @bindable() floating = false;
   @bindable() large = false;
 
   constructor(element) {
@@ -18,6 +20,9 @@ export class MdButton {
 
     if (getBooleanFromAttributeValue(this.flat)) {
       classes.push('btn-flat');
+    }
+    if (getBooleanFromAttributeValue(this.floating)) {
+      classes.push('btn-floating');
     }
     if (getBooleanFromAttributeValue(this.large)) {
       classes.push('btn-large');
@@ -46,6 +51,16 @@ export class MdButton {
       this.attributeManager.addClasses('disabled');
     } else {
       this.attributeManager.removeClasses('disabled');
+    }
+  }
+
+  flatChanged(newValue) {
+    if (getBooleanFromAttributeValue(newValue)) {
+      this.attributeManager.removeClasses(['btn', 'accent']);
+      this.attributeManager.addClasses('btn-flat');
+    } else {
+      this.attributeManager.removeClasses('btn-flat');
+      this.attributeManager.addClasses(['btn', 'accent']);
     }
   }
 }

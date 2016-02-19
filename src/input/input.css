@@ -1,0 +1,6 @@
+md-input .input-field label {
+  transform: translateX(-10%);
+}
+md-input .input-field label.active {
+  transform: translateX(-10%) translateY(-140%);
+}

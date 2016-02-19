@@ -8,3 +8,4 @@ sample/jspm_packages
 sample/node_modules
 sample/styles
 sample/config.js
+src/datepicker/translations

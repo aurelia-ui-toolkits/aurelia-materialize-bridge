@@ -3,6 +3,7 @@ import {Router} from 'aurelia-router';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import registry from './registry.json!';
 import jQuery from 'jquery';
+import {Split as split} from 'split.js';
 
 @inject(Router, EventAggregator)
 export class Doc {
@@ -33,6 +34,11 @@ export class Doc {
 
   attached() {
     // this.panelBar = $(this.panelBarDiv).kendoPanelBar().data('kendoPanelBar');
+    split(['.left-panel', '.right-panel'], {
+      sizes: [25, 75],
+      minSize: 200,
+      gutterSize: 15
+    });
   }
 
   // - adds the page to route params
@@ -91,7 +97,7 @@ export class Doc {
       if (this.encode(categoryText) === categoryName) {
         // this.panelBar.expand($(element));
         $categoryCandidate.addClass('active');
-        // FIXME: reinitialize collapsible since md-collapsible is already
+        // DOING:0 reinitialize collapsible since md-collapsible is already
         //        initialized and Materialize has no method to just expand
         // $categoryCandidate.parents('[md-collapsible]').collapsible();
         this.panelBarViewModel.refresh();

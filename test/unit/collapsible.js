@@ -40,4 +40,22 @@ describe('Collapsible', () => {
     expect(element.getAttribute('data-collapsible')).not.toBeNull();
     expect(element.getAttribute('data-collapsible')).toBe('expandable');
   });
+
+  it('removes classes and attributes on detached()', () => {
+    collapsible.attached();
+    expect(element.classList.contains('collapsible')).toBe(true);
+    expect(element.getAttribute('data-collapsible')).toBe('expandable');
+
+    collapsible.detached();
+    expect(element.classList.contains('collapsible')).toBe(false);
+    expect(element.getAttribute('data-collapsible')).toBeNull();
+  });
+
+  it('can change accordion state at runtime', () => {
+    collapsible.attached();
+    expect(element.getAttribute('data-collapsible')).toBe('expandable');
+    collapsible.accordion = true;
+    collapsible.accordionChanged(true, false);
+    expect(element.getAttribute('data-collapsible')).toBe('accordion');
+  });
 });

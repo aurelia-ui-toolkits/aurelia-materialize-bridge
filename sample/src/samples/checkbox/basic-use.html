@@ -1,20 +1,16 @@
 <template>
-  <div class="collapsible-basic-use">
+  <div>
     <div class="row">
       <div class="col s12 m8">
-        <md-card md-title="Basic checkbox">
+        <md-card md-title="Default checkbox">
           <p>
-            <md-checkbox md-checked.bind="checked">A default checkbox</md-checkbox>
+            <md-checkbox md-checked.bind="checked">A default checkbox</md-checkbox> with value: ${checked | stringify}
           </p>
           <p>
-            <md-checkbox md-checked.bind="checked" md-disabled="true">A disabled checkbox</md-checkbox>
-          </p>
-          <hr />
-          <p>
-            <md-checkbox md-checked.bind="checked" md-filled-in="true">A filled-in checkbox</md-checkbox>
+            <md-checkbox md-checked="false" md-disabled="true">A disabled checkbox</md-checkbox>
           </p>
           <p>
-            <md-checkbox md-checked.bind="checked" md-disabled="true" md-filled-in="true">A disabled filled-in checkbox</md-checkbox>
+            <md-checkbox md-checked.bind="indeterminateChecked">An indeterminate checkbox</md-checkbox> with value: ${indeterminateChecked | stringify}
           </p>
         </md-card>
     </div>

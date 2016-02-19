@@ -45,9 +45,16 @@ describe('AttributeManager', () => {
     expect(element.getAttribute('data-handle')).not.toBeNull();
   });
 
-  it('removes data-handle attribute', () => {
+  it('removes data-handle attribute when provided as an array', () => {
     attributeManager.addAttributes({ 'data-handle': 'test-handle' });
     attributeManager.removeAttributes([ 'data-handle' ]);
+    // expect(element.getAttribute('data-handle')).not.toBeDefined();
+    expect(element.getAttribute('data-handle')).toBeNull();
+  });
+
+  it('removes data-handle attribute when provided as a string', () => {
+    attributeManager.addAttributes({ 'data-handle': 'test-handle' });
+    attributeManager.removeAttributes('data-handle');
     // expect(element.getAttribute('data-handle')).not.toBeDefined();
     expect(element.getAttribute('data-handle')).toBeNull();
   });
@@ -61,6 +68,10 @@ describe('AttributeManager', () => {
 
   it('can still assign a new value to an existing attribute', () => {
     attributeManager.addAttributes({ 'data-handle': 'test-handle', 'preserved-attribute': 'newValue' });
+    expect(element.getAttribute('preserved-attribute')).toBe('newValue');
+
+    attributeManager.removeAttributes([ 'data-handle', 'preserved-attribute' ]);
+    expect(element.getAttribute('data-handle')).toBeNull();
     expect(element.getAttribute('preserved-attribute')).toBe('newValue');
   });
 });

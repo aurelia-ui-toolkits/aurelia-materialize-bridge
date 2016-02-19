@@ -8,21 +8,47 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useBox()
       .useButton()
       .useCard()
+      .useCarousel()
       .useCheckbox()
       .useCollapsible()
       .useColors()
+      .useDatePicker()
+      .useDropdown()
+      .useFab()
+      .useInput()
+      .useModal()
       .useNavbar()
+      .useParallax()
+      .usePushpin()
+      .useRadio()
+      .useScrollfire()
       .useSelect()
       .useSidenav()
+      .useSlider()
+      .useSwitch()
       .useTabs()
+      .useTooltip()
+      .useTransitions()
       .useWaves()
       .useWell();
   }
 
+  useBox(): ConfigBuilder {
+    this.globalResources.push('./box/box');
+    return this;
+  }
+
   useButton(): ConfigBuilder {
     this.globalResources.push('./button/button');
+    return this;
+  }
+
+  useCarousel(): ConfigBuilder {
+    this.globalResources.push('./carousel/carousel');
+    this.globalResources.push('./carousel/carousel-item');
     return this;
   }
 
@@ -54,8 +80,60 @@ export class ConfigBuilder {
     return this;
   }
 
+  useDatePicker() : ConfigBuilder {
+    this.globalResources.push('./datepicker/datepicker');
+    return this;
+  }
+
+  useDropdown() : ConfigBuilder {
+    // this.globalResources.push('./dropdown/dropdown-element');
+    this.globalResources.push('./dropdown/dropdown');
+    return this;
+  }
+
+  useFab() : ConfigBuilder {
+    this.globalResources.push('./fab/fab');
+    return this;
+  }
+
+  useInput() : ConfigBuilder {
+    this.globalResources.push('./input/input');
+    return this;
+  }
+
+  useModal(): ConfigBuilder {
+    this.globalResources.push('./modal/modal-trigger');
+    return this;
+  }
+
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useParallax(): ConfigBuilder {
+    this.globalResources.push('./parallax/parallax');
+    return this;
+  }
+
+  usePushpin(): ConfigBuilder {
+    this.globalResources.push('./pushpin/pushpin');
+    return this;
+  }
+
+  useRadio(): ConfigBuilder {
+    this.globalResources.push('./radio/radio');
+    return this;
+  }
+
+  useScrollfire(): ConfigBuilder {
+    this.globalResources.push('./scrollfire/scrollfire');
+    this.globalResources.push('./scrollfire/scrollfire-target');
+    return this;
+  }
+
+  useScrollSpy(): ConfigBuilder {
+    this.globalResources.push('./scrollspy/scrollspy');
     return this;
   }
 
@@ -70,11 +148,33 @@ export class ConfigBuilder {
     return this;
   }
 
+  useSlider(): ConfigBuilder {
+    this.globalResources.push('./slider/slider');
+    // this.globalResources.push('./slider/slide');
+    return this;
+  }
+
+  useSwitch(): ConfigBuilder {
+    this.globalResources.push('./switch/switch');
+    return this;
+  }
+
   /**
    * Use materialized tabs
    */
   useTabs(): ConfigBuilder {
     this.globalResources.push('./tabs/tabs');
+    return this;
+  }
+
+  useTooltip(): ConfigBuilder {
+    this.globalResources.push('./tooltip/tooltip');
+    return this;
+  }
+
+  useTransitions(): ConfigBuilder {
+    this.globalResources.push('./transitions/fadein-image');
+    this.globalResources.push('./transitions/staggered-list');
     return this;
   }
 

@@ -3,10 +3,10 @@
 ### 2. Setup
 <br>
 
-Most people like explanations that are done in the context of doing what is just being explained - so let's do something very simple as the first step in showing how to use KendoUI bridge to add several interesting pages rendering KendoUI controls to the well known application: **Aurelia Skeleton Navigation**, a starter kit for building a standard navigation-style app with Aurelia.
+Most people like explanations that are done in the context of doing what is just being explained - so let's do something very simple as the first step in showing how to use Materialize bridge. We will add several interesting pages rendering Materialize controls to the well known **Aurelia Skeleton Navigation**, a starter kit for building a standard navigation-style app with Aurelia.
 <br>
 
-Get it from **[here](https://github.com/aurelia/skeleton-navigation)** and use the Download ZIP method so we do not have to deal with Git issues in this simple context. After downloading this application, extract its content into the folder conveniently named `skeleton-navigation-kendo` and use the instructions to build and run this app. Specifically, assuming that you already have the NodeJS, jspm and gulp installed, this application should be running after you execute
+Get it from **[here](https://github.com/aurelia/skeleton-navigation)** and use the Download ZIP method so we do not have to deal with Git issues in this simple context. After downloading this application, extract the contents of the folder named **skeleton-es2016** into the folder conveniently named `skeleton-navigation-materialize` and use the instructions to build and run this app. Specifically, assuming that you already have the NodeJS, jspm and gulp installed, this application should be running after you execute
 <br>
 
 ```
@@ -25,42 +25,35 @@ and subsequently browse to http://localhost:9000, resulting with the following:
  Image 1
 </p>
 
-Now, we want to add several (four) additional pages to this application that would show KendoUI **autocomplete**, **button** and **grid** components ( the last one shown below rendered in Material black theme:)
-
+Next, install aurelia-materialize-bridge as described in the [installation instructions](#/installation) (Image 3 below):
+<br>
 
 <p align=center>
-  <img src="http://i.imgur.com/kaDmsH5.png"></img>
+  <img src="http://i.imgur.com/znag6xt.png"></img>
+ <br><br>
+ Image 3
+</p>
+
+Now, we want to add several (four) additional pages to this application that would show Materialize **select**, **button**, **slider** and **collapsible** components (the last one shown below rendered in its popout variant):
+
+<p align=center>
+  <img src="http://i.imgur.com/Kmi4Y3r.png"></img>
  <br><br>
  Image 2
 </p>
 
 * * *
-
-At this point, while following the series of steps described next, it is assumed that you have the KendoUI package already installed on your computer as described in the HAVING KENDOUI ALREADY: VENDORS type of installation (Image 3 below):
-<br>
-<br>
-
-<p align=center>
-  <img src="http://i.imgur.com/GAWgTsM.png"></img>
- <br><br>
- Image 3
-</p>
-
-<br>
-
-and that you executed all 8 steps (partially) shown on image 3 above. While all of them are equally important, at this point verify that your  `main.js` class looks like this:
-<br>
+At this point verify that your  `main.js` class looks like this:
 <br>
 ```javascript
-import 'bootstrap';
-
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging()
-    .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
+    .plugin('aurelia-materialize-bridge', bridge => bridge.useAll());
 
-  aurelia.start().then(a => a.setRoot());
+  aurelia.start()
+    .then(au => au.setRoot('app'));
 }
 
 ```
@@ -68,21 +61,22 @@ export function configure(aurelia) {
 <br>
 <br>
 
-as this will ensure that the application we are about to augment from its original form, loads the Aurelia KendoUI bridge (named plugin in the above code).
+as this will ensure that the application we are about to augment from its original form, loads the Aurelia Materialize bridge (named bridge in the above code).
 
+<br>
 <br>
 
 The next screenshot depicts the final UI for the application we are about to create, with four additional menubar items
 
-    - KendoUI autocomplete
-    - KendoUI button
-    - KendoUI chart
-    - KendoUI grid
+* Materialize select
+* Materialize button
+* Materialize slider
+* Materialize collapsible
 
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/SwhrDwY.png"></img>
+  <img src="http://i.imgur.com/kcCLiy7.jpg"></img>
  <br><br>
  Image 4
 </p>
@@ -92,10 +86,13 @@ In order to clearly separate the added code from the original Aurelia Navigation
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/CRnYzV0.png"></img>
+  <img src="http://i.imgur.com/i4PJFWV.png"></img>
  <br><br>
  Image 5
 </p>
+
+<br>
+In the following articles you will fill the blue box.
 
 <br>
 
@@ -107,9 +104,6 @@ As the last actions in this **Setup** section of the tutorial, you need to make 
 ```html
 <template>
   <require from="nav-bar.html"></require>
-  <require from="bootstrap/css/bootstrap.css"></require>
-  <require from="kendo-ui/styles/kendo.common.min.css"></require>
-  <require from="kendo-ui/styles/kendo.bootstrap.min.css"></require>
 
   <nav-bar router.bind="router"></nav-bar>
 
@@ -123,53 +117,45 @@ As the last actions in this **Setup** section of the tutorial, you need to make 
 <br>
 <br>
 
-##### File `app.js`
-
-<br>
-
-```javascript
-export class App {
-  configureRouter(config, router) {
-    config.title = 'Aurelia';
-    config.map([
-      { route: ['', 'welcome'],   name: 'welcome',      moduleId: 'welcome',                              nav: true, title: 'Welcome' },
-      { route: 'users',           name: 'users',        moduleId: 'users',                                nav: true, title: 'Github Users' },
-      { route: 'k-autocomplete',  name: 'k-button',     moduleId: 'kendoui/autocomplete/k-autocomplete',  nav: true, title: 'KendoUI autocomplete' },
-      { route: 'k-button',        name: 'k-button',     moduleId: 'kendoui/button/k-button',              nav: true, title: 'KendoUI button' },
-      { route: 'k-chart',         name: 'k-chart',      moduleId: 'kendoui/chart/k-chart',                nav: true, title: 'KendoUI chart' },
-      { route: 'k-grid',          name: 'k-grid',       moduleId: 'kendoui/grid/k-grid',                  nav: true, title: 'KendoUI grid' },
-      { route: 'child-router',    name: 'child-router', moduleId: 'child-router',                         nav: true, title: 'Child Router' }
-    ]);
-
-    this.router = router;
-  }
-}
-
-```
-
-<br>
-<br>
-
 ##### File `main.js`
 
 <br>
 
-```
-import 'bootstrap';
-
+```javascript
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging()
-    .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
+    .plugin('aurelia-materialize-bridge', bridge => bridge.useAll());
 
-  aurelia.start().then(a => a.setRoot());
+  aurelia.start()
+    .then(au => au.setRoot('app'));
 }
+
 ```
+<br>
+<br>
+
+##### File `nav-bar.html`
+
+<br>
+
+```javascript
+<template bindable="router">
+  <md-navbar fixed="true">
+    <a href="#" class="brand-logo left"><span class="flow-text">${router.title}</span></a>
+    <ul class="right hide-on-med-and-down">
+      <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+        <a href.bind="row.href">${row.title}</a>
+      </li>
+    </ul>
+  </md-navbar>
+</template>
+```
+
 <br>
 <br>
 
 * * *
 <br>
-#### Next page: [Autocomplete component](#/help/docs/app_developers_tutorials/3._autocomplete_component)
-
+#### Next page: [Select component](#/help/docs/app_developers_tutorials/3._select_component)

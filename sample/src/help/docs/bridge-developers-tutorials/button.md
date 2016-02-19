@@ -3,49 +3,77 @@
 ### 4. Button
 <br>
 
-This wrapper encapsulates the KendoUI module `kendo.button.min.js`, ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/help/docs/app_developers_tutorials/4._button_component)** and **[here](#/samples/button)**.
+This wrapper encapsulates the Materialize [button control](http://materializecss.com/buttons.html), ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/samples/button)**.
 <br>
 
 File `button.js`
 <br>
 ```javascript
-import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {WidgetBase} from '../common/widget-base';
-import {generateBindables} from '../common/decorators';
-import 'kendo-ui/js/kendo.button.min';
+import { bindable, customAttribute } from 'aurelia-templating';
+import { inject } from 'aurelia-dependency-injection';
+import { AttributeManager } from '../common/attributeManager';
+import { getBooleanFromAttributeValue } from '../common/attributes';
 
-@customAttribute('k-button')
-@generateBindables('kendoButton')
+@customAttribute('md-button')
 @inject(Element)
-export class Button extends WidgetBase {
-
-  @bindable options = {};
+export class MdButton {
+  @bindable() disabled = false;
+  @bindable() flat = false;
+  @bindable() large = false;
 
   constructor(element) {
-    super('kendoButton', element);
+    this.attributeManager = new AttributeManager(element);
   }
 
-  bind(ctx) {
-    super.bind(ctx);
+  attached() {
+    let classes = [];
 
-    this._initialize();
+    if (getBooleanFromAttributeValue(this.flat)) {
+      classes.push('btn-flat');
+    }
+    if (getBooleanFromAttributeValue(this.large)) {
+      classes.push('btn-large');
+    }
+
+    if (classes.length === 0) {
+      classes.push('btn');
+    }
+
+    if (getBooleanFromAttributeValue(this.disabled)) {
+      classes.push('disabled');
+    }
+
+    if (!getBooleanFromAttributeValue(this.flat)) {
+      classes.push('accent');
+    }
+    this.attributeManager.addClasses(classes);
   }
 
-  kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
+  detached() {
+    this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+  }
+
+  disabledChanged(newValue) {
+    if (getBooleanFromAttributeValue(newValue)) {
+      this.attributeManager.addClasses('disabled');
+    } else {
+      this.attributeManager.removeClasses('disabled');
     }
   }
 
-  enable(enable) {
-    if (this.widget) {
-      this.widget.enable(enable);
+  flatChanged(newValue) {
+    if (getBooleanFromAttributeValue(newValue)) {
+      this.attributeManager.removeClasses(['btn', 'accent']);
+      this.attributeManager.addClasses('btn-flat');
+    } else {
+      this.attributeManager.removeClasses('btn-flat');
+      this.attributeManager.addClasses(['btn', 'accent']);
     }
   }
 }
+
 ```
 
 <br>
 * * *
-#### Next page: &nbsp;&nbsp; [Chart component](#/help/docs/bridge_developers_tutorials/5._chart_component)
-
+#### Next page: &nbsp;&nbsp; [Slider component](#/help/docs/bridge_developers_tutorials/5._slider_component)

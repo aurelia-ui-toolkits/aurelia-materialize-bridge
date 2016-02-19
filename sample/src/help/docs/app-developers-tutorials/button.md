@@ -1,37 +1,24 @@
 <br>
 
-### 4. Button
+### 4. Button and Toasts
 <br>
 
-##### View: k-button.html
+##### View: md-button.html
 
 ```html
 <template>
-    <require from="./k-button.css"></require>
-    <section>
-        <br>
-        <h3>Basic KendoUI Button API sample</h3>
-
-        <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample/src/samples/button">See KendoUI Bridge button folder for more details</a>
-        <br>
-        <br>
-
-        <button k-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>
-        <br>
-        <br>
-        <button k-button click.delegate="disable()">Disable</button>
-        &nbsp;&nbsp
-        <button k-button click.delegate="enable()">Enable</button>
-
-    </section>
+  <h4>Materialize button demo</h4>
+  <div class="row">
+    <div class="col s4">
+      <button md-button="disabled.bind: disabled;" click.trigger="showToast()">Materialize Button</button>
+    </div>
+  </div>
 </template>
+
 ```
 <br>
 
-Just like in the case of the Autocomplete control, the statement
-
-<br>
-&nbsp; &nbsp; &nbsp; &nbsp; `<button k-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>`
+Just like in the case of the Select control, the statement `<button md-button="disabled.bind: disabled;" click.trigger="showToast()">Materialize Button</button>`
 
 <br>
 
@@ -41,56 +28,62 @@ results with the instantiation of the button:
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/7JVqTSU.png"></img>
+  <img src="http://i.imgur.com/lf0CQmM.png"></img>
  <br><br>
  Image 1
 </p>
 
 <br>
 
-**Observe** that the button control, just like the autocomplete control are HTML native elements and that KendoUI Aurelia bridge adds several custom attributes (`k-enable`, `k-icon` that are bound to [KendoUI button](http://docs.telerik.com/kendo-ui/api/javascript/ui/button))  "matching native properties" . Note also the definition of the event triggers that are activating the code in the view model:
+**Observe** that the button control, just like the select control are HTML native elements and that Materialize Aurelia bridge adds custom attributes (`md-enable`) that are bound to [Materialize button](http://materializecss.com/buttons.html))  "matching native properties" . Note also the definition of the event triggers that are activating the code in the view model:
 
 
 <br>
 
-##### View model:  k-button.js
+##### View model:  md-button.js
 
 ```javascript
-export class ButtonApi {
-    enabled = true;
+import { inject } from 'aurelia-dependency-injection';
+import { MdToastService } from 'aurelia-materialize-bridge/toast/toastService';
 
-    disable() {
-      this.enabled = false;
-    }
+@inject(MdToastService)
+export class MdButtonDemo {
+  disabled = false;
 
-    enable() {
-      this.enabled = true;
-    }
+  constructor(toast) {
+    this.toast = toast;
+  }
 
-    test() {
-      alert('You clicked me');
-    }
+  showToast() {
+    this.toast.show('You clicked me!', 2000);
+  }
 }
 ```
+Finally, add the new component to your router-configuration:
 
-<br>
+#### File `app.js`
 
+```javascript
+export class App {
+  configureRouter(config, router) {
+    config.title = 'Aurelia';
+    config.map([
+      { route: ['', 'welcome'], name: 'welcome',      moduleId: 'welcome',      nav: true, title: 'Welcome' },
+      { route: 'users',         name: 'users',        moduleId: 'users',        nav: true, title: 'Github Users' },
+      { route: 'child-router',  name: 'child-router', moduleId: 'child-router', nav: true, title: 'Child Router' },
+      { route: 'md-select',  name: 'md-select', moduleId: 'material/select/md-select', nav: true, title: 'Select' },
+      { route: 'md-button',  name: 'md-button', moduleId: 'material/button/md-button', nav: true, title: 'Button' }
+    ]);
 
-##### File k-button.css
-
-```
-.demo-section {
-    text-align: center;
+    this.router = router;
+  }
 }
-.box .k-textbox {
-    margin: 0;
-    width: 80px;
-}
+
+
 ```
 
 <br>
 * * *
 <br>
 #### More details: [Components catalog](#/samples/button)
-#### Next page: &nbsp;&nbsp; [Chart component tutorial](#/help/docs/app_developers_tutorials/5._chart_component)
-
+#### Next page: &nbsp;&nbsp; [Slider component tutorial](#/help/docs/app_developers_tutorials/5._slider_component)

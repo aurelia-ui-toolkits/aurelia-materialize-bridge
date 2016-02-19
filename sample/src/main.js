@@ -4,15 +4,31 @@ export function configure(aurelia) {
     .developmentLogging()
     .plugin('aurelia-materialize-bridge', plugin => {
       plugin.useClickCounter()
+        .useBox()
         .useButton()
         .useCard()
+        .useCarousel()
         .useCheckbox()
         .useCollapsible()
         .useColors()
+        .useDatePicker()
+        .useDropdown()
+        .useFab()
+        .useInput()
+        .useModal()
         .useNavbar()
+        .useParallax()
+        .usePushpin()
+        .useRadio()
+        .useScrollfire()
+        .useScrollSpy()
         .useSelect()
         .useSidenav()
+        .useSlider()
+        .useSwitch()
         .useTabs()
+        .useTooltip()
+        .useTransitions()
         .useWaves()
         .useWell();
     });
@@ -21,6 +37,7 @@ export function configure(aurelia) {
   aurelia.use.globalResources('shared/markdown');
   aurelia.use.globalResources('shared/logger');
   aurelia.use.globalResources('shared/au-code');
+  aurelia.use.globalResources('shared/sampleValueConverters');
 
   aurelia.start()
     .then(au => au.setRoot('app'));

@@ -8,7 +8,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaBinding = require('aurelia-binding');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _commonAttributes = require('../common/attributes');
 
@@ -18,8 +22,10 @@ var MdNavbar = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(MdNavbar, [{
-    key: 'fixed',
-    decorators: [_aureliaFramework.bindable()],
+    key: 'mdFixed',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
     initializer: null,
     enumerable: true
   }], null, _instanceInitializers);
@@ -27,27 +33,27 @@ var MdNavbar = (function () {
   function MdNavbar(element) {
     _classCallCheck(this, _MdNavbar);
 
-    _defineDecoratedPropertyDescriptor(this, 'fixed', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'mdFixed', _instanceInitializers);
 
     this.element = element;
   }
 
   MdNavbar.prototype.attached = function attached() {
     this.fixedAttributeManager = new _commonAttributeManager.AttributeManager(this.fixedAnchor);
-    if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
+    if (_commonAttributes.getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.addClasses('navbar-fixed');
     }
   };
 
   MdNavbar.prototype.detached = function detached() {
-    if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
+    if (_commonAttributes.getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
   };
 
   var _MdNavbar = MdNavbar;
-  MdNavbar = _aureliaFramework.inject(Element)(MdNavbar) || MdNavbar;
-  MdNavbar = _aureliaFramework.customElement('md-navbar')(MdNavbar) || MdNavbar;
+  MdNavbar = _aureliaDependencyInjection.inject(Element)(MdNavbar) || MdNavbar;
+  MdNavbar = _aureliaTemplating.customElement('md-navbar')(MdNavbar) || MdNavbar;
   return MdNavbar;
 })();
 

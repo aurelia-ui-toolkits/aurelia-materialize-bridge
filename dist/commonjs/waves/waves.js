@@ -2,15 +2,60 @@
 
 exports.__esModule = true;
 
+var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _aureliaFramework = require('aurelia-framework');
+function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaBinding = require('aurelia-binding');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _commonAttributeManager = require('../common/attributeManager');
 
+var _commonAttributes = require('../common/attributes');
+
 var MdWaves = (function () {
+  var _instanceInitializers = {};
+
+  _createDecoratedClass(MdWaves, [{
+    key: 'block',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }, {
+    key: 'circle',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }, {
+    key: 'color',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers);
+
   function MdWaves(element) {
     _classCallCheck(this, _MdWaves);
+
+    _defineDecoratedPropertyDescriptor(this, 'block', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'circle', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'color', _instanceInitializers);
 
     this.element = element;
     this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
@@ -18,6 +63,12 @@ var MdWaves = (function () {
 
   MdWaves.prototype.attached = function attached() {
     var classes = ['waves-effect'];
+    if (_commonAttributes.getBooleanFromAttributeValue(this.block)) {
+      classes.push('waves-block');
+    }
+    if (_commonAttributes.getBooleanFromAttributeValue(this.circle)) {
+      classes.push('waves-circle');
+    }
     if (this.color) {
       classes.push('waves-' + this.color);
     }
@@ -27,7 +78,7 @@ var MdWaves = (function () {
   };
 
   MdWaves.prototype.detached = function detached() {
-    var classes = ['waves-effect'];
+    var classes = ['waves-effect', 'waves-block'];
     if (this.color) {
       classes.push('waves-' + this.color);
     }
@@ -36,12 +87,8 @@ var MdWaves = (function () {
   };
 
   var _MdWaves = MdWaves;
-  MdWaves = _aureliaFramework.inject(Element)(MdWaves) || MdWaves;
-  MdWaves = _aureliaFramework.bindable({
-    name: 'color',
-    defaultBindingMode: _aureliaFramework.bindingMode.oneTime
-  })(MdWaves) || MdWaves;
-  MdWaves = _aureliaFramework.customAttribute('md-waves')(MdWaves) || MdWaves;
+  MdWaves = _aureliaDependencyInjection.inject(Element)(MdWaves) || MdWaves;
+  MdWaves = _aureliaTemplating.customAttribute('md-waves')(MdWaves) || MdWaves;
   return MdWaves;
 })();
 

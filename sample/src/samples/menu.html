@@ -1,0 +1,30 @@
+<template>
+  <require from="./menu.css"></require>
+  <style>
+    header, main, footer {
+      padding-left: 240px;
+    }
+    md-navbar[md-fixed="true"] nav {
+      padding-right: 240px;
+    }
+  </style>
+  <md-sidenav view-model.ref="sideNav" md-fixed="true" md-edge="left">
+    <ul md-collapsible="accordion: true;">
+      <li repeat.for="cat of categories">
+        <div md-waves class="collapsible-header">
+          <span>${ cat.title }</span>
+          <i class="mdi-navigation-arrow-drop-down right"></i>
+        </div>
+        <div class="collapsible-body">
+          <ul>
+            <template repeat.for="ctrl of cat.controls">
+              <li md-waves="color: primary;" if.bind="!!ctrl.link" class="${ activeItem === ctrl.link ? 'active' : '' }">
+                <a href.bind="ctrl.link" click.delegate="setActive(ctrl)">${ ctrl.title }</a>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </md-sidenav>
+</template>

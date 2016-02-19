@@ -6,25 +6,37 @@
           <div>
             <a md-sidenav-collapse="ref.bind: sideNavLeft;" md-button md-waves>Left SideNav</a>
             <a md-sidenav-collapse="ref.bind: sideNavRight;" md-button md-waves>Right SideNav</a>
+            <a md-sidenav-collapse="ref.bind: sideNavLarge;" md-button md-waves>Larger right SideNav</a>
           </div>
-          <div style="padding-top: 10px;">
-            <md-checkbox md-checked.bind="fixed">Fixed</md-checkbox>
-          </div>
+          <!-- <div>
+            width: <input type="text" value.bind="sidenavWidth" />
+          </div> -->
 
-          <md-sidenav view-model.ref="sideNavLeft" fixed.bind="fixed">
+          <md-sidenav view-model.ref="sideNavLeft">
             <ul>
-              <li md-waves><a href="#/samples/sidenav">About</a></li>
-              <li md-waves><a href="#/samples/sidenav">Installation</a></li>
-              <li md-waves><a href="#/samples/sidenav">Project Status</a></li>
-              <li md-waves><a href="#/samples/sidenav">Help/Docs</a></li>
+              <li md-waves><a>About</a></li>
+              <li md-waves><a>Installation</a></li>
+              <li md-waves><a>Project Status</a></li>
+              <li md-waves><a>Help/Docs</a></li>
             </ul>
           </md-sidenav>
-          <md-sidenav view-model.ref="sideNavRight" edge="right">
+          <!-- FIXME: causes serious issues with sideNav, even if the bound variable is not processed -->
+          <!-- <md-sidenav md-width.one-time="sidenavWidth" view-model.ref="sideNavRight" edge="right"> -->
+          <md-sidenav view-model.ref="sideNavRight" md-edge="right">
             <ul>
-              <li md-waves><a href="#/samples/sidenav">About</a></li>
-              <li md-waves><a href="#/samples/sidenav">Installation</a></li>
-              <li md-waves><a href="#/samples/sidenav">Project Status</a></li>
-              <li md-waves><a href="#/samples/sidenav">Help/Docs</a></li>
+              <li md-waves><a>About</a></li>
+              <li md-waves><a>Installation</a></li>
+              <li md-waves><a>Project Status</a></li>
+              <li md-waves><a>Help/Docs</a></li>
+            </ul>
+          </md-sidenav>
+
+          <md-sidenav md-width="350" view-model.ref="sideNavLarge" md-edge="right">
+            <ul>
+              <li md-waves><a>About</a></li>
+              <li md-waves><a>Installation</a></li>
+              <li md-waves><a>Project Status</a></li>
+              <li md-waves><a>Help/Docs</a></li>
             </ul>
           </md-sidenav>
         </md-card>
@@ -39,7 +51,7 @@
                 <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
               </ul>
               <div id="html" class="z-depth-1">
-                <au-code language="markup" url="samples/sidenav/basic-use-sample.html"></au-code>
+                <au-code language="markup" url="samples/sidenav/options-sample.html"></au-code>
               </div>
             </div>
           </md-card>

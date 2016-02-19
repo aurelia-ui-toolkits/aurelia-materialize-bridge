@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-binding'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaBinding) {
   'use strict';
 
   exports.__esModule = true;
@@ -13,9 +13,16 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
     var _instanceInitializers = {};
 
     _createDecoratedClass(MdCard, [{
-      key: 'title',
-      decorators: [_aureliaFramework.bindable({
-        defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+      key: 'mdImage',
+      decorators: [_aureliaTemplating.bindable()],
+      initializer: function initializer() {
+        return null;
+      },
+      enumerable: true
+    }, {
+      key: 'mdTitle',
+      decorators: [_aureliaTemplating.bindable({
+        defaultBindingMode: _aureliaBinding.bindingMode.oneTime
       })],
       initializer: null,
       enumerable: true
@@ -24,12 +31,18 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
     function MdCard(element) {
       _classCallCheck(this, _MdCard);
 
-      _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers);
+
+      this.element = element;
     }
 
+    MdCard.prototype.attached = function attached() {};
+
     var _MdCard = MdCard;
-    MdCard = _aureliaFramework.inject(Element)(MdCard) || MdCard;
-    MdCard = _aureliaFramework.customElement('md-card')(MdCard) || MdCard;
+    MdCard = _aureliaDependencyInjection.inject(Element)(MdCard) || MdCard;
+    MdCard = _aureliaTemplating.customElement('md-card')(MdCard) || MdCard;
     return MdCard;
   })();
 

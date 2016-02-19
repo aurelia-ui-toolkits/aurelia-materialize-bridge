@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaFramework, _commonAttributes, _commonAttributeManager) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _commonAttributes, _commonAttributeManager) {
   'use strict';
 
   exports.__esModule = true;
@@ -44,10 +44,10 @@ define(['exports', 'aurelia-framework', '../common/attributes', '../common/attri
     };
 
     var _MdCollapsible = MdCollapsible;
-    MdCollapsible = _aureliaFramework.inject(Element)(MdCollapsible) || MdCollapsible;
-    MdCollapsible = _aureliaFramework.bindable({ name: 'popout', defaultValue: false })(MdCollapsible) || MdCollapsible;
-    MdCollapsible = _aureliaFramework.bindable({ name: 'accordion', defaultValue: false })(MdCollapsible) || MdCollapsible;
-    MdCollapsible = _aureliaFramework.customAttribute('md-collapsible')(MdCollapsible) || MdCollapsible;
+    MdCollapsible = _aureliaDependencyInjection.inject(Element)(MdCollapsible) || MdCollapsible;
+    MdCollapsible = _aureliaTemplating.bindable({ name: 'popout', defaultValue: false })(MdCollapsible) || MdCollapsible;
+    MdCollapsible = _aureliaTemplating.bindable({ name: 'accordion', defaultValue: false })(MdCollapsible) || MdCollapsible;
+    MdCollapsible = _aureliaTemplating.customAttribute('md-collapsible')(MdCollapsible) || MdCollapsible;
     return MdCollapsible;
   })();
 

@@ -1,3 +1,3 @@
 export class Popout {
-  accordion = true;
+  accordion = false;
 }

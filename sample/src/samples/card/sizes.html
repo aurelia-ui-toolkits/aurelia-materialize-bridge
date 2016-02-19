@@ -1,0 +1,45 @@
+<template>
+  <div class="collapsible-basic-use">
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Card sizes">
+          <div>
+            <span class="accent-text">Select size:</span>
+            <select md-select value.two-way="size">
+              <option value="">no size</option>
+              <option value="small">small</option>
+              <option value="medium">medium</option>
+              <option value="large">large</option>
+            </select>
+          </div>
+          <md-card md-image="images/card-sample-1.jpg" md-title="Card title" md-size.bind="size">
+            <div>
+              I am a very simple card. I am good at containing small bits of
+              information. I am convenient because I require little markup to
+              use effectively.
+            </div>
+          </md-card>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+                <li md-waves="color: primary;" class="col"><a class="active" href="#js">Javascript</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/card/sizes-sample.html"></au-code>
+              </div>
+              <div id="js" class="z-depth-1">
+                <au-code language="javascript" url="samples/card/sizes-sample.js"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

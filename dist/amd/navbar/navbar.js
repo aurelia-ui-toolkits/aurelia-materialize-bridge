@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaFramework, _commonAttributes, _commonAttributeManager) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _commonAttributes, _commonAttributeManager) {
   'use strict';
 
   exports.__esModule = true;
@@ -13,8 +13,10 @@ define(['exports', 'aurelia-framework', '../common/attributes', '../common/attri
     var _instanceInitializers = {};
 
     _createDecoratedClass(MdNavbar, [{
-      key: 'fixed',
-      decorators: [_aureliaFramework.bindable()],
+      key: 'mdFixed',
+      decorators: [_aureliaTemplating.bindable({
+        defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+      })],
       initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
@@ -22,27 +24,27 @@ define(['exports', 'aurelia-framework', '../common/attributes', '../common/attri
     function MdNavbar(element) {
       _classCallCheck(this, _MdNavbar);
 
-      _defineDecoratedPropertyDescriptor(this, 'fixed', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'mdFixed', _instanceInitializers);
 
       this.element = element;
     }
 
     MdNavbar.prototype.attached = function attached() {
       this.fixedAttributeManager = new _commonAttributeManager.AttributeManager(this.fixedAnchor);
-      if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
+      if (_commonAttributes.getBooleanFromAttributeValue(this.mdFixed)) {
         this.fixedAttributeManager.addClasses('navbar-fixed');
       }
     };
 
     MdNavbar.prototype.detached = function detached() {
-      if (_commonAttributes.getBooleanFromAttributeValue(this.fixed)) {
+      if (_commonAttributes.getBooleanFromAttributeValue(this.mdFixed)) {
         this.fixedAttributeManager.removeClasses('navbar-fixed');
       }
     };
 
     var _MdNavbar = MdNavbar;
-    MdNavbar = _aureliaFramework.inject(Element)(MdNavbar) || MdNavbar;
-    MdNavbar = _aureliaFramework.customElement('md-navbar')(MdNavbar) || MdNavbar;
+    MdNavbar = _aureliaDependencyInjection.inject(Element)(MdNavbar) || MdNavbar;
+    MdNavbar = _aureliaTemplating.customElement('md-navbar')(MdNavbar) || MdNavbar;
     return MdNavbar;
   })();
 

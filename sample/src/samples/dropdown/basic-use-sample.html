@@ -1,0 +1,11 @@
+<template>
+  <md-dropdown md-title="drop me">
+    <a md-button md-dropdown="activates: dropdown1;">drop me!</a>
+    <ul id="dropdown1">
+      <li><a click.trigger="showToast($event)">one</a></li>
+      <li><a click.trigger="showToast($event)">two</a></li>
+      <li class="divider"></li>
+      <li><a click.trigger="showToast($event)">three</a></li>
+    </ul>
+  </md-dropdown>
+</template>

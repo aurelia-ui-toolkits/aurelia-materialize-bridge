@@ -1,13 +1,21 @@
-import { bindable, bindingMode, customAttribute, inject } from 'aurelia-framework';
+import { bindable, customAttribute } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
+import { inject } from 'aurelia-dependency-injection';
 import { AttributeManager } from '../common/attributeManager';
+import { getBooleanFromAttributeValue } from '../common/attributes';
 
 @customAttribute('md-waves')
-@bindable({
-  name: 'color',
-  defaultBindingMode: bindingMode.oneTime
-})
 @inject(Element)
 export class MdWaves {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) block = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) circle = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) color;
   constructor(element) {
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
@@ -15,6 +23,12 @@ export class MdWaves {
 
   attached() {
     let classes = ['waves-effect'];
+    if (getBooleanFromAttributeValue(this.block)) {
+      classes.push('waves-block');
+    }
+    if (getBooleanFromAttributeValue(this.circle)) {
+      classes.push('waves-circle');
+    }
     if (this.color) {
       classes.push(`waves-${this.color}`);
     }
@@ -24,7 +38,7 @@ export class MdWaves {
   }
 
   detached() {
-    let classes = ['waves-effect'];
+    let classes = ['waves-effect', 'waves-block'];
     if (this.color) {
       classes.push(`waves-${this.color}`);
     }

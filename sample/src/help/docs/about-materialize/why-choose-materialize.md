@@ -1,25 +1,31 @@
 <br>
 
-### 2. Why Choose KendoUI
+### 2. Why Choose Materialize
 <br>
 
 ***Note: each of the enumerated advantages below have to be augmented by a lot of Aurelia specific added advantages***
 * * *
 
 <br>
-#### Ultimate Performance with Minimum Resources
+#### Speeds up development
 
-Fast and light. Every Kendo UI widget is rendered with the fastest possible mark-up to deliver ultimate JavaScript performance.
+The Materialize team did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, they refined animations and transitions to provide a smoother experience for developers.
 <br> <br> <br>
-#### Mobile-Friendly and Responsive
+#### User Experience Focused
 
-Touch support, easy mobile rendering, responsive capabilities and integration with Bootstrap. **[Learn more](http://www.telerik.com/kendo-ui/responsive-features)** about the rich Kendo UI responsive features.
+By utilizing elements and principles of Material Design, Materialize is a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.
 
 <br> <br> <br>
 
-#### Built-In, Customizable Themes
+#### Easy to work with
 
-Apply one of the 16 built-in themes, such as High Contrast, SAP Fiori theme or Material Design theme:
-<br>
+The Materialize team provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.
 
-![](http://i.imgur.com/tH2FU7n.png)
+<br> <br> <br>
+
+#### Aurelia Materialize Bridge advantages
+
+We have augmented Materialize with some additional features specific for Aurelia Materialize Bridge:
+
+* Theming: Choose a global color theme throughout your application, covering all Materialize components.
+* Aurelia integration: leverage the possibilities of Aurelia's powerful binding engine to enhance your apps.

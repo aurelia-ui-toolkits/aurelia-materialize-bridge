@@ -2,19 +2,20 @@
 
 ### 2. Setup
 <br>
-Similarly to the **[Setup page](#/help/docs/app_developers_tutorials/2._setup)** of the Application developers tutorial section, let's do something very simple as the first step in showing how to use the **[Aurelia skeleton plugin](https://github.com/aurelia/skeleton-plugin)** to create the initial few "wrappers" for KendoUI controls. Get it from **[here](https://github.com/aurelia/skeleton-plugin)** and use the Download ZIP method so we do not have to deal with Git issues in this simple context. After downloading this application, extract its content into the folder conveniently named `skeleton-plugin-kendo` and use **[these instructions](https://github.com/aurelia/skeleton-plugin/blob/master/README.md)** to build this code.
+Let's do something very simple as the first step in showing how to use the **[Aurelia skeleton plugin](https://github.com/aurelia/skeleton-plugin)** to create the initial few "wrappers" for Materialize controls. Get it from **[here](https://github.com/aurelia/skeleton-plugin)** and use the Download ZIP method so we do not have to deal with Git issues in this simple context. After downloading this application, extract its content into the folder conveniently named `materialize-bridge-developers-tutorial` and use **[these instructions](https://github.com/aurelia/skeleton-plugin/blob/master/README.md)** to build this code.
+
 <br>
-<br>
-#### 2.1 Plan of actions (stated as "steps" below)
-In order to simplify this set of tutorials we will take a slight tack away from the "embedded application" approach described in **[introduction section](#/help/docs/about_this_application/1._introduction)** of the About this application help page. In order to verify the correctness of our wrappers code, we will use the **[application](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)** developed in the **[App developers tutorials](#/help/docs/app_developers_tutorials/1._introduction)**, to act in the role of the "consumer" of our newly created wrappers. Here is how to we do this:
+
+#### 2.1 Plan of actions
+In order to simplify this set of tutorials we will take a slight tack away from the "[embedded application approach](#/help/docs/about_this_application/1._introduction)"  In order to verify the correctness of our wrappers code, we will use the **[application](https://github.com/aurelia-ui-toolkits/https://github.com/aurelia-ui-toolkits/materialize-app-developers-tutorial)** developed in the **[App developers tutorials](#/help/docs/app_developers_tutorials/1._introduction)**, to act in the role of the "consumer" of our newly created wrappers. Here is how to we do this:
 <br>
 
 
-Having the standard Aurelia Skeleton Plugin installed (unzipped) and built, we need to do several changes to get everything ready for development of KendoUI components
+Having the standard Aurelia Skeleton Plugin installed (unzipped) and built, we need to do several changes to get everything ready for development of Materialize components.
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/XW61hnA.png"></img>
+  <img src="http://i.imgur.com/NiT7L16.png"></img>
  <br><br>
  Image 1
 </p>
@@ -25,20 +26,22 @@ Replace the original content of the `src` folder with the folders and (empty) fi
 <br><br>
 
 <p align=center>
-  <img src="http://i.imgur.com/PlW1GbD.png"></img>
+  <img src="http://i.imgur.com/mk6QDQ7.png"></img>
  <br><br>
  Image 2
 </p>
 
-We will define the content for `autocomplete.js`, `button.js`, `chart.js` and `grid.js` files in subsequent tutorials pages, starting with [Autocomplete component](#/help/docs/bridge_developers_tutorials/3._autocomplete_component) first.
+We will define the content for `select.js`, `button.js`, `slider.js` and `collapsible.js` files in subsequent tutorials pages, starting with [Autocomplete component](#/help/docs/bridge_developers_tutorials/3._select_component) first.
 <br><br>
 
 #### Step 2
-Replace the complete content of the `package.json` file with the content of **[this](https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo/blob/master/package.json)** `package.json` file. **Make sure** that you replace all references to [https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo](https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo) with the "path" to your own repository to be used in the course of these tutorials.
+Replace the complete content of the `package.json` file with the content of **[this](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/blob/master/package.json)** `package.json` file.
+
+**Make sure** that you replace all references to [https://github.com/aurelia-ui-toolkits/skeleton-plugin-materialize](https://github.com/aurelia-ui-toolkits/skeleton-plugin-materialize) with the "path" to your own repository to be used in the course of these tutorials.
 <br><br>
 
 #### Step 3
-Edit the "root level" `config.js` file and ensure that the lines 8, 9 and 15 are as shown in the code section below (in particular is is the line 15 -  `'kendo-ui/*': 'vendors/*'` that sets this project to use the settings defined in the "HAVING KENDOUI ALREADY: VENDORS" tab on the [Installation](#/installation) page)
+Edit the "root level" `config.js` file and ensure that the lines 8 and 9 are as shown in the code section below.
 <br>
 ```javascript
 System.config({
@@ -54,8 +57,7 @@ System.config({
   },
   paths: {
     'github:*': 'jspm_packages/github/*',
-    'npm:*': 'jspm_packages/npm/*',
-    'kendo-ui/*': 'vendors/*'
+    'npm:*': 'jspm_packages/npm/*'
   },
 
   map: {
@@ -69,30 +71,19 @@ System.config({
 Add the the following code to define the (so far empty) file `index.js` - this is the plugin's interface to the consumer application, used for plugin initialization.
 <br>
 ```javascript
+import 'materialize';
 import {Aurelia} from 'aurelia-framework';
-import * as LogManager from 'aurelia-logging';
-let logger = LogManager.getLogger('aurelia-kendoui-plugin');
-import {KendoConfigBuilder} from './config-builder';
-import 'jquery';
+import {ConfigBuilder} from './config-builder';
 
-export function configure(aurelia: Aurelia, configCallback?: (builder: KendoConfigBuilder) => void) {
-  let builder = new KendoConfigBuilder();
+export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBuilder) => void) {
+  let builder = new ConfigBuilder();
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
     configCallback(builder);
   }
 
-    // Provide core if nothing was specified
-  if (builder.resources.length === 0) {
-    logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
-    builder.core();
-  }
-
-    // Pull the data off the builder
-  let resources = builder.resources;
-
   if (builder.useGlobalResources) {
-    aurelia.globalResources(resources);
+    aurelia.globalResources(builder.globalResources);
   }
 }
 ```
@@ -104,62 +95,45 @@ Add the the following code to define the (so far empty) file `config-builder.js`
 /**
 * Configure the Aurelia-KendoUI-plugin
 */
-export class KendoConfigBuilder {
+export class ConfigBuilder {
 
-    resources: string[] = [];
   useGlobalResources: boolean = true;
+  globalResources = [];
 
-  /**
-  * Globally register all Kendo Core wrappers
-  */
-  core(): KendoConfigBuilder {
-    this.kendoButton()
-      .kendoTabStrip()
-      .kendoProgressBar()
-      .kendoSlider()
-      .kendoColorPicker()
-      .kendoDropDownList();
+  useAll(): ConfigBuilder {
+    return this
+      .useButton()
+      .useCollapsible()
+      .useNavbar()
+      .useSelect();
+  }
+
+  useButton(): ConfigBuilder {
+    this.globalResources.push('./button/button');
     return this;
   }
 
-  /**
-  * Globally register all Kendo Core and Kendo Pro wrappers
-  */
-  pro(): KendoConfigBuilder {
-    this.core()
-      .kendoGrid()
-            .kendoAutoComplete()
-      .kendoChart();
+  useCollapsible(): ConfigBuilder {
+    this.globalResources.push('./collapsible/collapsible');
+    return this;
+  }
+
+  useNavbar(): ConfigBuilder {
+    this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useSelect(): ConfigBuilder {
+    this.globalResources.push('./select/select');
     return this;
   }
 
   /**
   * Don't globalize any resources
-  * Allows you to import wrappers yourself via <require></require>
+  * Allows you to import yourself via <require></require>
   */
-  withoutGlobalResources(): KendoConfigBuilder {
+  withoutGlobalResources(): ConfigBuilder {
     this.useGlobalResources = false;
-    return this;
-  }
-
-  kendoAutoComplete(): KendoConfigBuilder {
-    this.resources.push('autocomplete/autocomplete');
-    return this;
-  }
-
-  kendoButton(): KendoConfigBuilder {
-    this.resources.push('button/button');
-    return this;
-  }
-
-  kendoGrid(): KendoConfigBuilder {
-    this.resources.push('grid/grid');
-    this.resources.push('grid/au-col');
-    return this;
-  }
-
-  kendoChart(): KendoConfigBuilder {
-    this.resources.push('chart/chart');
     return this;
   }
 }
@@ -172,4 +146,3 @@ This is not an action step - it is rather a reminder that the document **[Bridge
 * * *
 <br>
 #### Next page: [Autocomplete component](#/help/docs/bridge_developers_tutorials/3._autocomplete_component)
-

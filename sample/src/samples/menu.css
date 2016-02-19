@@ -1,0 +1,7 @@
+menu md-sidenav .side-nav.fixed {
+  overflow: hidden;
+}
+
+menu md-sidenav .side-nav.fixed:hover {
+  overflow: auto;
+}

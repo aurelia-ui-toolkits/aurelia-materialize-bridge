@@ -23,26 +23,55 @@ In your project install the plugin via jspm with following command:
       .standardConfiguration()
       .developmentLogging()
       // Install and configure the plugin
-      .plugin('aurelia-materialize-bridge', bridge => {
-        bridge
-          .useButton()
-          .useCard()
-          .useCollapsible()
-          .useNavbar()
-          .useTabs()
-          .useWaves()
-          .useWell();
-      });
+      .plugin('aurelia-materialize-bridge', bridge => bridge.useAll() );
 
-    aurelia.start().then(a => a.setRoot());
+  aurelia.start().then(a => a.setRoot());
   }
   ```
 
-  **Note:** The list above shows all available controls. If you choose to not use some of them, simply leave them out.
+  **Note:** The above shows how to use all available controls at once. If you choose to pick which you'd like to use, you can ```use``` single components like this:
 
-  If you'd like to use all controls at once, simply specify:
   ```javascript
-  .plugin('aurelia-materialize-bridge', bridge => bridge.useAll() );
+  .plugin('aurelia-materialize-bridge', bridge => {
+    bridge
+      .useButton()
+      .useCollapsible()
+      .useModal()
+      .useTabs();
+  });
+  ```
+
+  Here is a full list of currently available options:
+
+  ```javascript
+  .plugin('aurelia-materialize-bridge', bridge => {
+    bridge
+      .useBox()
+      .useButton()
+      .useCard()
+      .useCarousel()
+      .useCheckbox()
+      .useCollapsible()
+      .useColors()
+      .useDatePicker()
+      .useDropdown()
+      .useFab()
+      .useModal()
+      .useNavbar()
+      .useParallax()
+      .usePushpin()
+      .useScrollfire()
+      .useScrollSpy()
+      .useSelect()
+      .useSidenav()
+      .useSlider()
+      .useSwitch()
+      .useTabs()
+      .useTooltip()
+      .useTransitions()
+      .useWaves()
+      .useWell();
+  });
   ```
 
 #### You are done!

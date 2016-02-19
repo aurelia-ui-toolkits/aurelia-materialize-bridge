@@ -1,0 +1,26 @@
+<template>
+  <div class="actions">
+    <a md-button md-dropdown="activates: dropdown1; below-origin: true;">below origin</a>
+  </div>
+  <div class="actions">
+    <a md-button md-dropdown="activates: dropdown1; hover: true;">open on hover</a>
+  </div>
+  <div class="actions">
+    <a md-button md-dropdown="activates: dropdown1; constrain-width: false;">no constrainWidth</a>
+  </div>
+  <div class="actions">
+    <a md-button md-dropdown="activates: dropdown1; gutter: 20;">gutter 20</a>
+  </div>
+  <div class="actions">
+    <a md-button md-dropdown="activates: dropdown1; alignment: right; constrain-width: false;">alignment right</a>
+  </div>
+  <div class="actions">
+    <a md-button md-dropdown="activates: dropdown1; in-duration: 1000; out-duration: 1000;">custom durations (both at 1000)</a>
+  </div>
+  <ul id="dropdown1">
+    <li><a click.trigger="showToast($event)">one</a></li>
+    <li><a click.trigger="showToast($event)">two</a></li>
+    <li class="divider"></li>
+    <li><a click.trigger="showToast($event)">three</a></li>
+  </ul>
+</template>

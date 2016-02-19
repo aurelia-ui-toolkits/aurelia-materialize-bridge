@@ -6,10 +6,10 @@
   padding 0 5px;
 }
 
-#doc, #gitter {
+#doc {
   margin-top: 10px;
 }
 
-#gitter {
-  height: 700px;
+#support {
+  padding: 10px;
 }

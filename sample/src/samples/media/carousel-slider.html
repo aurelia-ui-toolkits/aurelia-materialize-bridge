@@ -1,0 +1,31 @@
+<template>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Slider carousel">
+          <md-carousel md-slider="true" style="height: 400px;">
+            <md-carousel-item md-href="#one!" md-image="http://lorempixel.com/800/400/food/1"></md-carousel-item>
+            <md-carousel-item md-href="#two!" md-image="http://lorempixel.com/800/400/food/2"></md-carousel-item>
+            <md-carousel-item md-href="#three!" md-image="http://lorempixel.com/800/400/food/3"></md-carousel-item>
+            <md-carousel-item md-href="#four!" md-image="http://lorempixel.com/800/400/food/4"></md-carousel-item>
+          </md-carousel>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/media/carousel-slider-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

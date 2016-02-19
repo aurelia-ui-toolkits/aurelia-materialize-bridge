@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/attributeManager', '../common/attributes'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export) {
   'use strict';
 
   var bindable, customAttribute, inject, AttributeManager, getBooleanFromAttributeValue, MdButton;
@@ -10,10 +10,11 @@ System.register(['aurelia-framework', '../common/attributeManager', '../common/a
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
   return {
-    setters: [function (_aureliaFramework) {
-      bindable = _aureliaFramework.bindable;
-      customAttribute = _aureliaFramework.customAttribute;
-      inject = _aureliaFramework.inject;
+    setters: [function (_aureliaTemplating) {
+      bindable = _aureliaTemplating.bindable;
+      customAttribute = _aureliaTemplating.customAttribute;
+    }, function (_aureliaDependencyInjection) {
+      inject = _aureliaDependencyInjection.inject;
     }, function (_commonAttributeManager) {
       AttributeManager = _commonAttributeManager.AttributeManager;
     }, function (_commonAttributes) {
@@ -38,6 +39,13 @@ System.register(['aurelia-framework', '../common/attributeManager', '../common/a
           },
           enumerable: true
         }, {
+          key: 'floating',
+          decorators: [bindable()],
+          initializer: function initializer() {
+            return false;
+          },
+          enumerable: true
+        }, {
           key: 'large',
           decorators: [bindable()],
           initializer: function initializer() {
@@ -53,6 +61,8 @@ System.register(['aurelia-framework', '../common/attributeManager', '../common/a
 
           _defineDecoratedPropertyDescriptor(this, 'flat', _instanceInitializers);
 
+          _defineDecoratedPropertyDescriptor(this, 'floating', _instanceInitializers);
+
           _defineDecoratedPropertyDescriptor(this, 'large', _instanceInitializers);
 
           this.attributeManager = new AttributeManager(element);
@@ -63,6 +73,9 @@ System.register(['aurelia-framework', '../common/attributeManager', '../common/a
 
           if (getBooleanFromAttributeValue(this.flat)) {
             classes.push('btn-flat');
+          }
+          if (getBooleanFromAttributeValue(this.floating)) {
+            classes.push('btn-floating');
           }
           if (getBooleanFromAttributeValue(this.large)) {
             classes.push('btn-large');
@@ -91,6 +104,16 @@ System.register(['aurelia-framework', '../common/attributeManager', '../common/a
             this.attributeManager.addClasses('disabled');
           } else {
             this.attributeManager.removeClasses('disabled');
+          }
+        };
+
+        MdButton.prototype.flatChanged = function flatChanged(newValue) {
+          if (getBooleanFromAttributeValue(newValue)) {
+            this.attributeManager.removeClasses(['btn', 'accent']);
+            this.attributeManager.addClasses('btn-flat');
+          } else {
+            this.attributeManager.removeClasses('btn-flat');
+            this.attributeManager.addClasses(['btn', 'accent']);
           }
         };
 

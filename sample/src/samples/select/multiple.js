@@ -1,3 +1,7 @@
 export class Multiple {
-  selectedValue = '';
+  selectedValues = [];
+
+  setSelectedValues() {
+    this.selectedValues = ['item3', 'item4'];
+  }
 }

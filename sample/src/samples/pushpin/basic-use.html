@@ -1,0 +1,62 @@
+<template>
+  <style>
+    .card .card-content p.more-space {
+      margin: 20px 0;
+    }
+  </style>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Basic use">
+          <div>
+            <p class="more-space">
+              Look at the right edge.
+            </p>
+            <p class="more-space">
+              For demonstration purposes, this page has to be much longer.
+            </p>
+            <p class="more-space">
+              Or else the pushpin wouldn't make any sense.
+            </p>
+            <p class="more-space">
+              So we put an image here.
+            </p>
+            <p class="more-space">
+              <img src="images/transition-sample-1.jpg" style="width: 500px;" />
+            </p>
+            <p class="more-space">
+              And another one to make it really interesting...
+            </p>
+            <p class="more-space">
+              <img src="images/parallax-2.jpg" style="width: 500px;" />
+            </p>
+          </div>
+        </md-card>
+    </div>
+    <div class="col m4">
+      <div md-pushpin="top: 320; offset: 150;">
+        <md-card md-title="Look!">
+          <div>
+            I'm a pushpin!
+          </div>
+        </md-card>
+      </div>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/pushpin/basic-use-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

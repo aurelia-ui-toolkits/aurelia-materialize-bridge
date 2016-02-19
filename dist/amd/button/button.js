@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaFramework, _commonAttributeManager, _commonAttributes) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _commonAttributeManager, _commonAttributes) {
   'use strict';
 
   exports.__esModule = true;
@@ -14,21 +14,28 @@ define(['exports', 'aurelia-framework', '../common/attributeManager', '../common
 
     _createDecoratedClass(MdButton, [{
       key: 'disabled',
-      decorators: [_aureliaFramework.bindable()],
+      decorators: [_aureliaTemplating.bindable()],
       initializer: function initializer() {
         return false;
       },
       enumerable: true
     }, {
       key: 'flat',
-      decorators: [_aureliaFramework.bindable()],
+      decorators: [_aureliaTemplating.bindable()],
+      initializer: function initializer() {
+        return false;
+      },
+      enumerable: true
+    }, {
+      key: 'floating',
+      decorators: [_aureliaTemplating.bindable()],
       initializer: function initializer() {
         return false;
       },
       enumerable: true
     }, {
       key: 'large',
-      decorators: [_aureliaFramework.bindable()],
+      decorators: [_aureliaTemplating.bindable()],
       initializer: function initializer() {
         return false;
       },
@@ -42,6 +49,8 @@ define(['exports', 'aurelia-framework', '../common/attributeManager', '../common
 
       _defineDecoratedPropertyDescriptor(this, 'flat', _instanceInitializers);
 
+      _defineDecoratedPropertyDescriptor(this, 'floating', _instanceInitializers);
+
       _defineDecoratedPropertyDescriptor(this, 'large', _instanceInitializers);
 
       this.attributeManager = new _commonAttributeManager.AttributeManager(element);
@@ -52,6 +61,9 @@ define(['exports', 'aurelia-framework', '../common/attributeManager', '../common
 
       if (_commonAttributes.getBooleanFromAttributeValue(this.flat)) {
         classes.push('btn-flat');
+      }
+      if (_commonAttributes.getBooleanFromAttributeValue(this.floating)) {
+        classes.push('btn-floating');
       }
       if (_commonAttributes.getBooleanFromAttributeValue(this.large)) {
         classes.push('btn-large');
@@ -83,9 +95,19 @@ define(['exports', 'aurelia-framework', '../common/attributeManager', '../common
       }
     };
 
+    MdButton.prototype.flatChanged = function flatChanged(newValue) {
+      if (_commonAttributes.getBooleanFromAttributeValue(newValue)) {
+        this.attributeManager.removeClasses(['btn', 'accent']);
+        this.attributeManager.addClasses('btn-flat');
+      } else {
+        this.attributeManager.removeClasses('btn-flat');
+        this.attributeManager.addClasses(['btn', 'accent']);
+      }
+    };
+
     var _MdButton = MdButton;
-    MdButton = _aureliaFramework.inject(Element)(MdButton) || MdButton;
-    MdButton = _aureliaFramework.customAttribute('md-button')(MdButton) || MdButton;
+    MdButton = _aureliaDependencyInjection.inject(Element)(MdButton) || MdButton;
+    MdButton = _aureliaTemplating.customAttribute('md-button')(MdButton) || MdButton;
     return MdButton;
   })();
 

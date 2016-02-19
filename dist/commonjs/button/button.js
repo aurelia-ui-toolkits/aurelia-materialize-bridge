@@ -8,7 +8,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _commonAttributeManager = require('../common/attributeManager');
 
@@ -19,21 +21,28 @@ var MdButton = (function () {
 
   _createDecoratedClass(MdButton, [{
     key: 'disabled',
-    decorators: [_aureliaFramework.bindable()],
+    decorators: [_aureliaTemplating.bindable()],
     initializer: function initializer() {
       return false;
     },
     enumerable: true
   }, {
     key: 'flat',
-    decorators: [_aureliaFramework.bindable()],
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }, {
+    key: 'floating',
+    decorators: [_aureliaTemplating.bindable()],
     initializer: function initializer() {
       return false;
     },
     enumerable: true
   }, {
     key: 'large',
-    decorators: [_aureliaFramework.bindable()],
+    decorators: [_aureliaTemplating.bindable()],
     initializer: function initializer() {
       return false;
     },
@@ -47,6 +56,8 @@ var MdButton = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'flat', _instanceInitializers);
 
+    _defineDecoratedPropertyDescriptor(this, 'floating', _instanceInitializers);
+
     _defineDecoratedPropertyDescriptor(this, 'large', _instanceInitializers);
 
     this.attributeManager = new _commonAttributeManager.AttributeManager(element);
@@ -57,6 +68,9 @@ var MdButton = (function () {
 
     if (_commonAttributes.getBooleanFromAttributeValue(this.flat)) {
       classes.push('btn-flat');
+    }
+    if (_commonAttributes.getBooleanFromAttributeValue(this.floating)) {
+      classes.push('btn-floating');
     }
     if (_commonAttributes.getBooleanFromAttributeValue(this.large)) {
       classes.push('btn-large');
@@ -88,9 +102,19 @@ var MdButton = (function () {
     }
   };
 
+  MdButton.prototype.flatChanged = function flatChanged(newValue) {
+    if (_commonAttributes.getBooleanFromAttributeValue(newValue)) {
+      this.attributeManager.removeClasses(['btn', 'accent']);
+      this.attributeManager.addClasses('btn-flat');
+    } else {
+      this.attributeManager.removeClasses('btn-flat');
+      this.attributeManager.addClasses(['btn', 'accent']);
+    }
+  };
+
   var _MdButton = MdButton;
-  MdButton = _aureliaFramework.inject(Element)(MdButton) || MdButton;
-  MdButton = _aureliaFramework.customAttribute('md-button')(MdButton) || MdButton;
+  MdButton = _aureliaDependencyInjection.inject(Element)(MdButton) || MdButton;
+  MdButton = _aureliaTemplating.customAttribute('md-button')(MdButton) || MdButton;
   return MdButton;
 })();
 

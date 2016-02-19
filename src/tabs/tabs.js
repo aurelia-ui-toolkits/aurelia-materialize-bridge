@@ -1,4 +1,5 @@
-import { customAttribute, inject } from 'aurelia-framework';
+import { customAttribute } from 'aurelia-templating';
+import { inject } from 'aurelia-dependency-injection';
 import { fireMaterializeEvent } from '../common/events';
 import { AttributeManager } from '../common/attributeManager';
 
@@ -10,6 +11,7 @@ export class MdTabs {
     this.attributeManager = new AttributeManager(this.element);
     this.tabAttributeManagers = [];
   }
+
   attached() {
     this.attributeManager.addClasses('tabs');
 
@@ -27,6 +29,7 @@ export class MdTabs {
       a.addEventListener('click', this.fireTabSelectedEvent.bind(this));
     });
   }
+
   detached() {
     this.attributeManager.removeClasses('tabs');
 
@@ -41,8 +44,31 @@ export class MdTabs {
       a.removeEventListener('click', this.fireTabSelectedEvent.bind(this));
     });
   }
+
   fireTabSelectedEvent(e) {
-    let href = $(e.target).attr('href');
+    let href = e.target.getAttribute('href');
     fireMaterializeEvent(this.element, 'selected', href);
+  }
+
+  selectTab(id) {
+    $(this.element).tabs('select_tab', id);
+    this.fireTabSelectedEvent({
+      target: { getAttribute: () => `#${id}` }
+    });
+  }
+
+  // FIXME: probably bad
+  get selectedTab() {
+    let children = this.element.querySelectorAll('li.tab a');
+    let index = -1;
+    let href = null;
+    [].forEach.call(children, (a, i) => {
+      if (a.classList.contains('active')) {
+        index = i;
+        href = a.href;
+        return;
+      }
+    });
+    return { href, index };
   }
 }

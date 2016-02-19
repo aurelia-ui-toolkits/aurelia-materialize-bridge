@@ -2,20 +2,13 @@
 <html>
   <head>
     <title>Aurelia Materialize Catalog</title>
-    <link rel="stylesheet" href="jspm_packages/npm/font-awesome@4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body aurelia-app="main">
-    <script>
-      ((window.gitter = {}).chat = {}).options = {
-        disableDefaultChat: true
-      };
-    </script>
-    <!-- <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script> -->
-
     <div class="splash">
       <div class="message">Aurelia Materialize</div>
       <!-- <i class="fa fa-spinner fa-spin"></i> -->
@@ -72,6 +65,7 @@
 
     </div>
 
+    <script src="vendor/bluebird.js"></script>
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
     <script>

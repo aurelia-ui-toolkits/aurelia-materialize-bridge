@@ -4,7 +4,7 @@
 
 <br>
 
-The Kendo UI framework is seamlessly integrated with Aurelia. From Grid to Scheduler to Chart, the tight Aurelia integration in Kendo UI tools enables you to drop a few script and style files into your page and get instant—and complete—Kendo UI access via directives. Learn more about the Aurelia integration in Kendo UI.
+The Materialize framework is seamlessly integrated with Aurelia. From NavBar to Select to Waves, the tight Aurelia integration in Materialize controls enables you to drop a few script and style files into your page and get instant—and complete Material access via directives. Learn more about the Aurelia integration in Materialize.
 
 * * *
-***Note: all pages from the Intro to KendoUI help section will be augmented***
+***Note: all pages from the Intro to Materialize help section will be augmented***

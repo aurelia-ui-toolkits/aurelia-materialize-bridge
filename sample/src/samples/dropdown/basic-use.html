@@ -1,0 +1,43 @@
+<template>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Basic use">
+            <div class="actions">
+              <!-- <md-dropdown md-title="drop me">
+                <ul>
+                  <li><a click.trigger="showToast($event)">one</a></li>
+                  <li><a click.trigger="showToast($event)">two</a></li>
+                  <li class="divider"></li>
+                  <li><a click.trigger="showToast($event)">three</a></li>
+                </ul>
+              </md-dropdown> -->
+
+              <a md-button md-dropdown="activates: dropdown1;">drop me!</a>
+              <ul id="dropdown1">
+                <li><a click.trigger="showToast($event)">one</a></li>
+                <li><a click.trigger="showToast($event)">two</a></li>
+                <li class="divider"></li>
+                <li><a click.trigger="showToast($event)">three</a></li>
+              </ul>
+            </div>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/dropdown/basic-use-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

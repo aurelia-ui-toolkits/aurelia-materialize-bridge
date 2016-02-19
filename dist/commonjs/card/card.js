@@ -8,15 +8,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaBinding = require('aurelia-binding');
 
 var MdCard = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(MdCard, [{
-    key: 'title',
-    decorators: [_aureliaFramework.bindable({
-      defaultBindingMode: _aureliaFramework.bindingMode.oneTime
+    key: 'mdImage',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: function initializer() {
+      return null;
+    },
+    enumerable: true
+  }, {
+    key: 'mdTitle',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
     })],
     initializer: null,
     enumerable: true
@@ -25,12 +36,18 @@ var MdCard = (function () {
   function MdCard(element) {
     _classCallCheck(this, _MdCard);
 
-    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers);
+
+    this.element = element;
   }
 
+  MdCard.prototype.attached = function attached() {};
+
   var _MdCard = MdCard;
-  MdCard = _aureliaFramework.inject(Element)(MdCard) || MdCard;
-  MdCard = _aureliaFramework.customElement('md-card')(MdCard) || MdCard;
+  MdCard = _aureliaDependencyInjection.inject(Element)(MdCard) || MdCard;
+  MdCard = _aureliaTemplating.customElement('md-card')(MdCard) || MdCard;
   return MdCard;
 })();
 

@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Aurelia Materialize Catalog</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body aurelia-app="main">
+    <div class="splash">
+      <div class="message">Aurelia Materialize</div>
+      <!-- <i class="fa fa-spinner fa-spin"></i> -->
+
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-red">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-yellow">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-green">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="vendor/bluebird.js"></script>
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>
+      System.import('aurelia-bootstrapper');
+
+      // Load the package.json from the root to get the package name
+      System.import("root/package.json!").then(function(m) {
+        var cfg = {
+           packages: {}
+        };
+
+        // Create a new systemjs package with the package name
+        cfg.packages[m.name] = {
+            "main": "index",
+            "dependencies": m.jspm.dependencies
+        };
+
+        System.config(cfg);
+      });
+<<<<<<< HEAD
+      System.import('materialize/bin/materialize.css!');
+=======
+      System.import('materialize/css/materialize.css!');
+>>>>>>> origin/master
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<template>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Binding to objects">
+          <div>
+            <p>
+              <md-radio repeat.for="color of colors" md-name="color" md-model.bind="color" md-checked.bind="selectedColor">${color.name}</md-radio>
+            </p>
+            <p>
+              Your choice: ${selectedColor | stringify}
+            </p>
+            <p>
+              <a md-button="flat: true;" md-waves class="accent-text" click.delegate="selectRed()">select red</a>
+            </p>
+          </div>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+                <li md-waves="color: primary;" class="col"><a class="active" href="#js">Javascript</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/radio/objects-sample.html"></au-code>
+              </div>
+              <div id="js" class="z-depth-1">
+                <au-code language="javascript" url="samples/radio/objects-sample.js"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

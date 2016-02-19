@@ -1,0 +1,39 @@
+<template>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Switch">
+          <div style="margin-top: 10px;">
+            Default:
+            <md-switch md-checked.bind="checked"></md-switch>
+            With value: ${checked | stringify}
+          </div>
+          <div style="margin-top: 10px;">
+            Custom labels:
+            <md-switch md-label-on="enabled" md-label-off="disabled" md-checked.bind="checked"></md-switch>
+            With value: ${checked | stringify}
+          </div>
+          <div style="margin-top: 10px;">
+            Disabled:
+            <md-switch md-disabled="true"></md-switch>
+          </div>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/checkbox/switch-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

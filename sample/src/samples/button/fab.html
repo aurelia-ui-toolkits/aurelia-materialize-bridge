@@ -1,0 +1,35 @@
+<template>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Floating action button">
+          <div>
+            <div>
+              <a md-button="floating: true; large: true;" md-waves="color: light; circle: true;">
+                <i class="large material-icons">mode_edit</i>
+              </a>
+              <a md-button="floating: true;" md-waves="color: light; circle: true;">
+                <i class="material-icons">thumb_up</i>
+              </a>
+            </div>
+          </div>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/button/fab-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

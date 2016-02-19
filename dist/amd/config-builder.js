@@ -14,7 +14,12 @@ define(['exports'], function (exports) {
     }
 
     ConfigBuilder.prototype.useAll = function useAll() {
-      return this.useButton().useCard().useCollapsible().useColors().useNavbar().useSidenav().useTabs().useWaves().useWell();
+      return this.useBox().useButton().useCard().useCarousel().useCheckbox().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useModal().useNavbar().useParallax().usePushpin().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+    };
+
+    ConfigBuilder.prototype.useBox = function useBox() {
+      this.globalResources.push('./box/box');
+      return this;
     };
 
     ConfigBuilder.prototype.useButton = function useButton() {
@@ -22,8 +27,19 @@ define(['exports'], function (exports) {
       return this;
     };
 
+    ConfigBuilder.prototype.useCarousel = function useCarousel() {
+      this.globalResources.push('./carousel/carousel');
+      this.globalResources.push('./carousel/carousel-item');
+      return this;
+    };
+
     ConfigBuilder.prototype.useCard = function useCard() {
       this.globalResources.push('./card/card');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useCheckbox = function useCheckbox() {
+      this.globalResources.push('./checkbox/checkbox');
       return this;
     };
 
@@ -42,8 +58,54 @@ define(['exports'], function (exports) {
       return this;
     };
 
+    ConfigBuilder.prototype.useDatePicker = function useDatePicker() {
+      this.globalResources.push('./datepicker/datepicker');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useDropdown = function useDropdown() {
+      this.globalResources.push('./dropdown/dropdown');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useFab = function useFab() {
+      this.globalResources.push('./fab/fab');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useModal = function useModal() {
+      this.globalResources.push('./modal/modal-trigger');
+      return this;
+    };
+
     ConfigBuilder.prototype.useNavbar = function useNavbar() {
       this.globalResources.push('./navbar/navbar');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useParallax = function useParallax() {
+      this.globalResources.push('./parallax/parallax');
+      return this;
+    };
+
+    ConfigBuilder.prototype.usePushpin = function usePushpin() {
+      this.globalResources.push('./pushpin/pushpin');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useScrollfire = function useScrollfire() {
+      this.globalResources.push('./scrollfire/scrollfire');
+      this.globalResources.push('./scrollfire/scrollfire-target');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useScrollSpy = function useScrollSpy() {
+      this.globalResources.push('./scrollspy/scrollspy');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useSelect = function useSelect() {
+      this.globalResources.push('./select/select');
       return this;
     };
 
@@ -53,8 +115,30 @@ define(['exports'], function (exports) {
       return this;
     };
 
+    ConfigBuilder.prototype.useSlider = function useSlider() {
+      this.globalResources.push('./slider/slider');
+
+      return this;
+    };
+
+    ConfigBuilder.prototype.useSwitch = function useSwitch() {
+      this.globalResources.push('./switch/switch');
+      return this;
+    };
+
     ConfigBuilder.prototype.useTabs = function useTabs() {
       this.globalResources.push('./tabs/tabs');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useTooltip = function useTooltip() {
+      this.globalResources.push('./tooltip/tooltip');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useTransitions = function useTransitions() {
+      this.globalResources.push('./transitions/fadein-image');
+      this.globalResources.push('./transitions/staggered-list');
       return this;
     };
 

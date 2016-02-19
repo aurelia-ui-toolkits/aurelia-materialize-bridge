@@ -8,15 +8,35 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useBox()
       .useButton()
       .useCard()
+      .useCarousel()
+      .useCheckbox()
       .useCollapsible()
       .useColors()
+      .useDatePicker()
+      .useDropdown()
+      .useFab()
+      .useModal()
       .useNavbar()
+      .useParallax()
+      .usePushpin()
+      .useScrollfire()
+      .useSelect()
       .useSidenav()
+      .useSlider()
+      .useSwitch()
       .useTabs()
+      .useTooltip()
+      .useTransitions()
       .useWaves()
       .useWell();
+  }
+
+  useBox(): ConfigBuilder {
+    this.globalResources.push('./box/box');
+    return this;
   }
 
   useButton(): ConfigBuilder {
@@ -24,8 +44,19 @@ export class ConfigBuilder {
     return this;
   }
 
+  useCarousel(): ConfigBuilder {
+    this.globalResources.push('./carousel/carousel');
+    this.globalResources.push('./carousel/carousel-item');
+    return this;
+  }
+
   useCard(): ConfigBuilder {
     this.globalResources.push('./card/card');
+    return this;
+  }
+
+  useCheckbox(): ConfigBuilder {
+    this.globalResources.push('./checkbox/checkbox');
     return this;
   }
 
@@ -47,8 +78,55 @@ export class ConfigBuilder {
     return this;
   }
 
+  useDatePicker() : ConfigBuilder {
+    this.globalResources.push('./datepicker/datepicker');
+    return this;
+  }
+
+  useDropdown() : ConfigBuilder {
+    // this.globalResources.push('./dropdown/dropdown-element');
+    this.globalResources.push('./dropdown/dropdown');
+    return this;
+  }
+
+  useFab() : ConfigBuilder {
+    this.globalResources.push('./fab/fab');
+    return this;
+  }
+
+  useModal(): ConfigBuilder {
+    this.globalResources.push('./modal/modal-trigger');
+    return this;
+  }
+
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  useParallax(): ConfigBuilder {
+    this.globalResources.push('./parallax/parallax');
+    return this;
+  }
+
+  usePushpin(): ConfigBuilder {
+    this.globalResources.push('./pushpin/pushpin');
+    return this;
+  }
+
+  useScrollfire(): ConfigBuilder {
+    this.globalResources.push('./scrollfire/scrollfire');
+    this.globalResources.push('./scrollfire/scrollfire-target');
+    return this;
+  }
+
+  useScrollSpy(): ConfigBuilder {
+    this.globalResources.push('./scrollspy/scrollspy');
+    return this;
+  }
+
+  useSelect(): ConfigBuilder {
+    this.globalResources.push('./select/select');
     return this;
   }
 
@@ -58,11 +136,33 @@ export class ConfigBuilder {
     return this;
   }
 
+  useSlider(): ConfigBuilder {
+    this.globalResources.push('./slider/slider');
+    // this.globalResources.push('./slider/slide');
+    return this;
+  }
+
+  useSwitch(): ConfigBuilder {
+    this.globalResources.push('./switch/switch');
+    return this;
+  }
+
   /**
    * Use materialized tabs
    */
   useTabs(): ConfigBuilder {
     this.globalResources.push('./tabs/tabs');
+    return this;
+  }
+
+  useTooltip(): ConfigBuilder {
+    this.globalResources.push('./tooltip/tooltip');
+    return this;
+  }
+
+  useTransitions(): ConfigBuilder {
+    this.globalResources.push('./transitions/fadein-image');
+    this.globalResources.push('./transitions/staggered-list');
     return this;
   }
 
