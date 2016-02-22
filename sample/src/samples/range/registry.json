@@ -9,7 +9,7 @@
       "route": "steps",
       "files": ["html"]
     },
-    "minmax": {
+    "min-and-max": {
       "route": "minmax",
       "files": ["html"]
     }
