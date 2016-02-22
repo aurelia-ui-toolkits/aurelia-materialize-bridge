@@ -42,7 +42,7 @@
     "Radio buttons": { "moduleId": "radio", "status": "wip" },
     "Checkbox/Switch": { "moduleId": "checkbox", "status": "done" },
     "File input button": { },
-    "Range": { },
+    "Range": { "status": "wip" },
     "DatePicker": { "status": "wip" },
     "Character counter": { },
   },
