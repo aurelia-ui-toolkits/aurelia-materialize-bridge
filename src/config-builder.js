@@ -25,6 +25,7 @@ export class ConfigBuilder {
       .useParallax()
       .usePushpin()
       .useRadio()
+      .useRange()
       .useScrollfire()
       .useSelect()
       .useSidenav()
@@ -129,6 +130,11 @@ export class ConfigBuilder {
 
   useRadio(): ConfigBuilder {
     this.globalResources.push('./radio/radio');
+    return this;
+  }
+
+  useRange(): ConfigBuilder {
+    this.globalResources.push('./range/range');
     return this;
   }
 
