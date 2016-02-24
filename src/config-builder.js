@@ -13,6 +13,7 @@ export class ConfigBuilder {
       .useButton()
       .useCard()
       .useCarousel()
+      .useCharacterCounter()
       .useCheckbox()
       .useCollapsible()
       .useColors()
@@ -57,6 +58,11 @@ export class ConfigBuilder {
   useCarousel(): ConfigBuilder {
     this.globalResources.push('./carousel/carousel');
     this.globalResources.push('./carousel/carousel-item');
+    return this;
+  }
+
+  useCharacterCounter(): ConfigBuilder {
+    this.globalResources.push('./char-counter/char-counter');
     return this;
   }
 
