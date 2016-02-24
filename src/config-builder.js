@@ -19,6 +19,7 @@ export class ConfigBuilder {
       .useDatePicker()
       .useDropdown()
       .useFab()
+      .useFile()
       .useInput()
       .useModal()
       .useNavbar()
@@ -100,6 +101,11 @@ export class ConfigBuilder {
 
   useFab() : ConfigBuilder {
     this.globalResources.push('./fab/fab');
+    return this;
+  }
+
+  useFile() : ConfigBuilder {
+    this.globalResources.push('./file/file');
     return this;
   }
 
