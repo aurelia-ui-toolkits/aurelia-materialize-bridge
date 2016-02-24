@@ -9,6 +9,7 @@ export function configure(aurelia) {
         .useButton()
         .useCard()
         .useCarousel()
+        .useCharacterCounter()
         .useCheckbox()
         .useCollapsible()
         .useColors()

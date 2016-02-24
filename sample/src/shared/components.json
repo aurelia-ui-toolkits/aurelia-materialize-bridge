@@ -44,7 +44,7 @@
     "File input button": { "moduleId": "file", "status": "wip" },
     "Range": { "status": "wip" },
     "DatePicker": { "status": "wip" },
-    "Character counter": { },
+    "Character counter": { "moduleId": "input", "status": "wip" },
   },
   "Internal": {
     "Click counter": { "moduleId": "click-counter", "status": "done" },
