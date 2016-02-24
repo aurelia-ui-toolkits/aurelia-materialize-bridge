@@ -4,6 +4,10 @@
     "basic-use": {
       "route": ["", "basic-use"],
       "files": ["html"]
+    },
+    "multiple": {
+      "route": "multiple",
+      "files": ["html"]
     }
   }
 }
