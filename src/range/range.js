@@ -23,18 +23,4 @@ export class MdRange {
     this.element = element;
     this.log = getLogger('md-range');
   }
-
-  attached() {
-    // this.mdMin = parseFloat(this.mdMin, 10);
-    // this.mdMax = parseFloat(this.mdMax, 10);
-    // this.mdStep = parseFloat(this.mdStep, 10);
-
-    // causes an infinite loop when min/max are floats
-    // this.mdValue = parseFloat(this.mdValue, 10);
-  }
-
-  // mdValueChanged(newValue) {
-  //   this.mdValue = parseFloat(newValue, 10);
-  //   this.log.debug('mdValueChanged', newValue);
-  // }
 }
