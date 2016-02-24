@@ -1,10 +1,13 @@
 import { bindable, customElement } from 'aurelia-templating';
+import { bindingMode } from 'aurelia-binding';
 import { fireEvent } from '../common/events';
 
 @customElement('md-file')
 export class MdFileInput {
   @bindable() mdCaption = 'File';
-  @bindable() mdValue;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue;
 
   _suspendUpdate = false;
 
@@ -26,9 +29,5 @@ export class MdFileInput {
       fireEvent(this.filePath, 'change');
       this._suspendUpdate = false;
     }
-  }
-
-  mdValueChanged() {
-    console.log('value changed', this.mdValue);
   }
 }
