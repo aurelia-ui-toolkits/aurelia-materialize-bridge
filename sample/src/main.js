@@ -15,6 +15,7 @@ export function configure(aurelia) {
         .useDatePicker()
         .useDropdown()
         .useFab()
+        .useFile()
         .useInput()
         .useModal()
         .useNavbar()
