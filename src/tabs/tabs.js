@@ -8,6 +8,7 @@ import { AttributeManager } from '../common/attributeManager';
 export class MdTabs {
   constructor(element) {
     this.element = element;
+    this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
     this.attributeManager = new AttributeManager(this.element);
     this.tabAttributeManagers = [];
   }
@@ -26,7 +27,7 @@ export class MdTabs {
 
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
-      a.addEventListener('click', this.fireTabSelectedEvent.bind(this));
+      a.addEventListener('click', this.fireTabSelectedEvent);
     });
   }
 
@@ -41,11 +42,20 @@ export class MdTabs {
     this.tabAttributeManagers = [];
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
-      a.removeEventListener('click', this.fireTabSelectedEvent.bind(this));
+      a.removeEventListener('click', this.fireTabSelectedEvent);
     });
   }
 
   fireTabSelectedEvent(e) {
+    // fix Materialize tab indicator (see: https://github.com/Dogfalo/materialize/pull/2809)
+    // happens only when the Waves animation is finished
+    // Waves animation frames: 0.250, 0.460, 0.450, 0.940
+    window.setTimeout(() => {
+      let indicatorRight = $('.indicator', this.element).css('right');
+      if (indicatorRight.indexOf('-') === 0) {
+        $('.indicator', this.element).css('right', 0);
+      }
+    }, 320);
     let href = e.target.getAttribute('href');
     fireMaterializeEvent(this.element, 'selected', href);
   }
