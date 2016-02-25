@@ -8,22 +8,26 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useBadge()
       .useBox()
       .useButton()
       .useCard()
       .useCarousel()
+      .useCharacterCounter()
       .useCheckbox()
       .useCollapsible()
       .useColors()
       .useDatePicker()
       .useDropdown()
       .useFab()
+      .useFile()
       .useInput()
       .useModal()
       .useNavbar()
       .useParallax()
       .usePushpin()
       .useRadio()
+      .useRange()
       .useScrollfire()
       .useSelect()
       .useSidenav()
@@ -34,6 +38,11 @@ export class ConfigBuilder {
       .useTransitions()
       .useWaves()
       .useWell();
+  }
+
+  useBadge(): ConfigBuilder {
+    this.globalResources.push('./badge/badge');
+    return this;
   }
 
   useBox(): ConfigBuilder {
@@ -49,6 +58,11 @@ export class ConfigBuilder {
   useCarousel(): ConfigBuilder {
     this.globalResources.push('./carousel/carousel');
     this.globalResources.push('./carousel/carousel-item');
+    return this;
+  }
+
+  useCharacterCounter(): ConfigBuilder {
+    this.globalResources.push('./char-counter/char-counter');
     return this;
   }
 
@@ -96,6 +110,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useFile() : ConfigBuilder {
+    this.globalResources.push('./file/file');
+    return this;
+  }
+
   useInput() : ConfigBuilder {
     this.globalResources.push('./input/input');
     return this;
@@ -123,6 +142,11 @@ export class ConfigBuilder {
 
   useRadio(): ConfigBuilder {
     this.globalResources.push('./radio/radio');
+    return this;
+  }
+
+  useRange(): ConfigBuilder {
+    this.globalResources.push('./range/range');
     return this;
   }
 

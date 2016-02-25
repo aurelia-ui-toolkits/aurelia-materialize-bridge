@@ -10,7 +10,7 @@
     "Typography": { }
   },
   "Components": {
-    "Badges": { },
+    "Badges": { "moduleId": "badge", "status": "wip" },
     "Button": { "status": "wip" },
     "Breadcrumbs": { },
     "Cards": { "moduleId": "card", "status": "done" },
@@ -41,10 +41,10 @@
     "Select": { "status": "wip" },
     "Radio buttons": { "moduleId": "radio", "status": "wip" },
     "Checkbox/Switch": { "moduleId": "checkbox", "status": "done" },
-    "File input button": { },
-    "Range": { },
+    "File input button": { "moduleId": "file", "status": "wip" },
+    "Range": { "status": "wip" },
     "DatePicker": { "status": "wip" },
-    "Character counter": { },
+    "Character counter": { "moduleId": "input", "status": "wip" },
   },
   "Internal": {
     "Click counter": { "moduleId": "click-counter", "status": "done" },

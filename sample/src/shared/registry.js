@@ -12,13 +12,13 @@ export class Registry {
         sample.path = `samples/${control}/${_sample}`;
         sample.route = sample.route || _sample;
         sample.title = sample.title || this.getTitleFromRoute(_sample);
-        sample.moduleId = sample.moduleId || 'sample-runner';
+        sample.moduleId = sample.moduleId || 'shared/sample-runner';
         sample.nav = sample.nav || true;
         sample.files = sample.files || ['html', 'js'];
         sample.files.forEach(extension => {
           sample[extension] = `${sample.path}.${extension}`;
         });
-
+        
         if (sample.default === true) {
           map.push({
             title: sample.title,

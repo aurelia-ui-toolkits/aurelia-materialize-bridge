@@ -1,0 +1,17 @@
+{
+  "title": "Range input",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html"]
+    },
+    "steps": {
+      "route": "steps",
+      "files": ["html"]
+    },
+    "min-and-max": {
+      "route": "minmax",
+      "files": ["html"]
+    }
+  }
+}

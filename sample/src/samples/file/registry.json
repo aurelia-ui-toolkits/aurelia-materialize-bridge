@@ -1,0 +1,13 @@
+{
+  "title": "File input",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    },
+    "multiple": {
+      "route": "multiple",
+      "files": ["html", "js"]
+    }
+  }
+}
