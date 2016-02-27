@@ -7,7 +7,7 @@
 
 Aurelia components for http://materializecss.com/
 
-## NOTE: This plugin is in active development and we would love to hear your feedback**
+### NOTE: This plugin is in active development and we would love to hear your feedback
 
 ### [Component catalog (demo's)](http://aurelia-ui-toolkits.github.io/demo-materialize/)
 
