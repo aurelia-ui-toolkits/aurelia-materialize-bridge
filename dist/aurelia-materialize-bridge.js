@@ -2,9 +2,10 @@ import 'materialize';
 import * as LogManager from 'aurelia-logging';
 import {Aurelia} from 'aurelia-framework';
 import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
-import {bindingMode,ObserverLocator} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
+import {bindingMode,ObserverLocator} from 'aurelia-binding';
 import {getLogger} from 'aurelia-logging';
+import {TaskQueue} from 'aurelia-task-queue';
 
 export class ClickCounter {
   count = 0;
@@ -24,20 +25,26 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useBadge()
       .useBox()
       .useButton()
       .useCard()
       .useCarousel()
+      .useCharacterCounter()
       .useCheckbox()
       .useCollapsible()
       .useColors()
       .useDatePicker()
       .useDropdown()
       .useFab()
+      .useFile()
+      .useInput()
       .useModal()
       .useNavbar()
       .useParallax()
       .usePushpin()
+      .useRadio()
+      .useRange()
       .useScrollfire()
       .useSelect()
       .useSidenav()
@@ -48,6 +55,11 @@ export class ConfigBuilder {
       .useTransitions()
       .useWaves()
       .useWell();
+  }
+
+  useBadge(): ConfigBuilder {
+    this.globalResources.push('./badge/badge');
+    return this;
   }
 
   useBox(): ConfigBuilder {
@@ -63,6 +75,11 @@ export class ConfigBuilder {
   useCarousel(): ConfigBuilder {
     this.globalResources.push('./carousel/carousel');
     this.globalResources.push('./carousel/carousel-item');
+    return this;
+  }
+
+  useCharacterCounter(): ConfigBuilder {
+    this.globalResources.push('./char-counter/char-counter');
     return this;
   }
 
@@ -110,6 +127,16 @@ export class ConfigBuilder {
     return this;
   }
 
+  useFile() : ConfigBuilder {
+    this.globalResources.push('./file/file');
+    return this;
+  }
+
+  useInput() : ConfigBuilder {
+    this.globalResources.push('./input/input');
+    return this;
+  }
+
   useModal(): ConfigBuilder {
     this.globalResources.push('./modal/modal-trigger');
     return this;
@@ -127,6 +154,16 @@ export class ConfigBuilder {
 
   usePushpin(): ConfigBuilder {
     this.globalResources.push('./pushpin/pushpin');
+    return this;
+  }
+
+  useRadio(): ConfigBuilder {
+    this.globalResources.push('./radio/radio');
+    return this;
+  }
+
+  useRange(): ConfigBuilder {
+    this.globalResources.push('./range/range');
     return this;
   }
 
@@ -214,6 +251,31 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBui
 
   if (builder.useGlobalResources) {
     aurelia.globalResources(builder.globalResources);
+  }
+}
+
+@customAttribute('md-badge')
+@inject(Element)
+export class mMBadge {
+  @bindable() isNew = false;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    let classes = [
+      'badge'
+    ];
+    if (getBooleanFromAttributeValue(this.isNew)) {
+      classes.push('new');
+    }
+    this.attributeManager.addClasses(classes);
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['badge', 'new']);
   }
 }
 
@@ -308,7 +370,15 @@ export class MdButton {
 @customElement('md-card')
 @inject(Element)
 export class MdCard {
-  @bindable() mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdReveal = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdSize = '';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdTitle;
@@ -318,7 +388,7 @@ export class MdCard {
   }
 
   attached() {
-    //
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
 
@@ -361,6 +431,35 @@ export class MdCarousel {
     } else {
       $(this.element).carousel();
     }
+  }
+}
+
+@customAttribute('md-char-counter')
+@inject(Element)
+export class MdCharCounter {
+  @bindable() length = 120;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.length = parseInt(this.length, 10);
+
+    // attach to input element explicitly, so this counter can be used on
+    // containers (or custom elements like md-input)
+    if (this.element.tagName.toUpperCase() === 'INPUT') {
+      this.attributeManager.addAttributes({ 'length': this.length });
+      $(this.element).characterCounter();
+    } else {
+      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
+      $(this.element).find('input').characterCounter();
+    }
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes(['length']);
   }
 }
 
@@ -610,6 +709,8 @@ export class MdDatePicker {
   attached() {
     this.element.classList.add('date-picker');
     let options = {
+      selectMonths: true,
+      selectYears: 15,
       onClose: function() {
         // see https://github.com/Dogfalo/materialize/issues/2067
         // and: https://github.com/amsul/pickadate.js/issues/160
@@ -650,7 +751,8 @@ export class MdDatePicker {
   }
 
   onClose() {
-    this.value = this.picker.get('select').obj;
+    let selected = this.picker.get('select');
+    this.value = selected ? selected.obj : null;
   }
 
   onSet(value) {
@@ -784,6 +886,113 @@ export class MdFab {
   }
 }
 
+@customElement('md-file')
+@inject(Element)
+export class MdFileInput {
+  @bindable() mdCaption = 'File';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMultiple = false;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue;
+
+  _suspendUpdate = false;
+
+  constructor(element) {
+    this.element = element;
+    this.handleChangeFromNativeInput = this.handleChangeFromNativeInput.bind(this);
+  }
+
+  attached() {
+    this.mdMultiple = getBooleanFromAttributeValue(this.mdMultiple);
+    $(this.filePath).on('change', this.handleChangeFromNativeInput);
+  }
+
+  detached() {
+    $(this.element).off('change', this.handleChangeFromNativeInput);
+  }
+
+  handleChangeFromNativeInput() {
+    if (!this._suspendUpdate) {
+      this._suspendUpdate = true;
+      fireEvent(this.filePath, 'change');
+      this._suspendUpdate = false;
+    }
+  }
+}
+
+@inject(TaskQueue)
+export class MdInputUpdateService {
+  _updateCalled = false;
+  constructor(taskQueue) {
+    this.log = getLogger('MdInputUpdateService');
+    this.taskQueue = taskQueue;
+  }
+
+  materializeUpdate() {
+    this.log.debug('executing Materialize.updateTextFields');
+    Materialize.updateTextFields();
+    this._updateCalled = false;
+  }
+
+  update() {
+    this.log.debug('update called');
+    if (!this._updateCalled) {
+      this._updateCalled = true;
+      this.taskQueue.queueMicroTask(this.materializeUpdate.bind(this));
+    }
+  }
+}
+
+@customElement('md-input')
+@inject(Element, TaskQueue, MdInputUpdateService)
+export class MdInput {
+  static id = 0;
+
+  @bindable() mdLabel = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdPlaceholder = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTextArea = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdType = 'text';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdValidate = false;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue = '';
+
+  constructor(element, taskQueue, updateService) {
+    this.element = element;
+    this.taskQueue = taskQueue;
+    this.controlId = `md-input-${MdInput.id++}`;
+    this.updateService = updateService;
+  }
+
+  attached() {
+    this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
+    if (getBooleanFromAttributeValue(this.mdValidate)) {
+      this.input.classList.add('validate');
+    }
+    if (this.mdPlaceholder) {
+      this.input.setAttribute('placeholder', this.mdPlaceholder);
+      this.update();
+    }
+  }
+
+  mdValueChanged() {
+    this.updateService.update();
+    if (this.mdTextArea) {
+      $(this.input).trigger('autoresize');
+    }
+  }
+}
+
 @customAttribute('md-modal-trigger')
 @inject(Element)
 export class MdModalTrigger {
@@ -865,6 +1074,81 @@ export class MdPushpin {
 
   detached() {
     // destroy handler not available
+  }
+}
+
+@customElement('md-radio')
+@inject(Element)
+export class MdRadio {
+  static id = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdChecked;
+  @bindable() mdDisabled = false;
+  @bindable() mdGap = false;
+  @bindable() mdModel;
+  @bindable() mdName = '';
+  @bindable() mdValue = '';
+
+  constructor(element) {
+    this.element = element;
+    this.controlId = `md-radio-${MdRadio.id++}`;
+    // this.handleChange = this.handleChange.bind(this);
+  }
+
+  attached() {
+    this.attributeManager = new AttributeManager(this.radio);
+    if (getBooleanFromAttributeValue(this.mdGap)) {
+      this.attributeManager.addClasses('with-gap');
+    }
+    if (getBooleanFromAttributeValue(this.mdDisabled)) {
+      this.radio.disabled = true;
+    }
+    this.radio.checked = getBooleanFromAttributeValue(this.mdChecked);
+    // this.radio.addEventListener('change', this.handleChange);
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['with-gap', 'disabled']);
+    // this.radio.removeEventListener('change', this.handleChange);
+  }
+
+  // handleChange() {
+  //   this.mdChecked = this.radio.checked;
+  // }
+
+  // mdCheckedChanged(newValue) {
+  //   if (this.radio) {
+  //     this.radio.checked = !!newValue;
+  //   }
+  // }
+
+  mdDisabledChanged(newValue) {
+    if (this.radio) {
+      this.radio.disabled = !!newValue;
+    }
+  }
+}
+
+@customElement('md-range')
+@inject(Element)
+export class MdRange {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMin = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMax = 100;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdStep = 1;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue = 0;
+
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-range');
   }
 }
 
@@ -1059,7 +1343,7 @@ export class MdSidenavCollapse {
       this.element.setAttribute('data-activates', this.ref.controlId);
       let sideNavConfig = {
         edge: this.ref.mdEdge || 'left',
-        closeOnClick: this.ref.mdCloseOnClick,
+        closeOnClick: (this.ref.mdFixed ? false : this.ref.mdCloseOnClick),
         menuWidth: parseInt(this.ref.mdWidth, 10)
       };
       // this.log.debug('sideNavConfig:', sideNavConfig);
@@ -1215,6 +1499,7 @@ export class MdSwitch {
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) mdChecked;
+  @bindable() mdDisabled;
   @bindable() mdLabelOff = 'Off';
   @bindable() mdLabelOn = 'On';
 
@@ -1225,6 +1510,9 @@ export class MdSwitch {
 
   attached() {
     this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
+    if (getBooleanFromAttributeValue(this.mdDisabled)) {
+      this.checkbox.disabled = true;
+    }
     this.checkbox.addEventListener('change', this.handleChange);
   }
 
@@ -1248,9 +1536,11 @@ export class MdSwitch {
 export class MdTabs {
   constructor(element) {
     this.element = element;
+    this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
     this.attributeManager = new AttributeManager(this.element);
     this.tabAttributeManagers = [];
   }
+
   attached() {
     this.attributeManager.addClasses('tabs');
 
@@ -1265,9 +1555,10 @@ export class MdTabs {
 
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
-      a.addEventListener('click', this.fireTabSelectedEvent.bind(this));
+      a.addEventListener('click', this.fireTabSelectedEvent);
     });
   }
+
   detached() {
     this.attributeManager.removeClasses('tabs');
 
@@ -1279,12 +1570,44 @@ export class MdTabs {
     this.tabAttributeManagers = [];
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
-      a.removeEventListener('click', this.fireTabSelectedEvent.bind(this));
+      a.removeEventListener('click', this.fireTabSelectedEvent);
     });
   }
+
   fireTabSelectedEvent(e) {
-    let href = $(e.target).attr('href');
+    // fix Materialize tab indicator (see: https://github.com/Dogfalo/materialize/pull/2809)
+    // happens only when the indicator animation is finished
+    // Waves animation duration: 300ms, delay: 90ms
+    window.setTimeout(() => {
+      let indicatorRight = $('.indicator', this.element).css('right');
+      if (indicatorRight.indexOf('-') === 0) {
+        $('.indicator', this.element).css('right', 0);
+      }
+    }, 310);
+    let href = e.target.getAttribute('href');
     fireMaterializeEvent(this.element, 'selected', href);
+  }
+
+  selectTab(id) {
+    $(this.element).tabs('select_tab', id);
+    this.fireTabSelectedEvent({
+      target: { getAttribute: () => `#${id}` }
+    });
+  }
+
+  // FIXME: probably bad
+  get selectedTab() {
+    let children = this.element.querySelectorAll('li.tab a');
+    let index = -1;
+    let href = null;
+    [].forEach.call(children, (a, i) => {
+      if (a.classList.contains('active')) {
+        index = i;
+        href = a.href;
+        return;
+      }
+    });
+    return { href, index };
   }
 }
 

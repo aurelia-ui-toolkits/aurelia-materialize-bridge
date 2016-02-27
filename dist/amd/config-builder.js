@@ -14,7 +14,12 @@ define(['exports'], function (exports) {
     }
 
     ConfigBuilder.prototype.useAll = function useAll() {
-      return this.useBox().useButton().useCard().useCarousel().useCheckbox().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useModal().useNavbar().useParallax().usePushpin().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+      return this.useBadge().useBox().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().useParallax().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+    };
+
+    ConfigBuilder.prototype.useBadge = function useBadge() {
+      this.globalResources.push('./badge/badge');
+      return this;
     };
 
     ConfigBuilder.prototype.useBox = function useBox() {
@@ -30,6 +35,11 @@ define(['exports'], function (exports) {
     ConfigBuilder.prototype.useCarousel = function useCarousel() {
       this.globalResources.push('./carousel/carousel');
       this.globalResources.push('./carousel/carousel-item');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useCharacterCounter = function useCharacterCounter() {
+      this.globalResources.push('./char-counter/char-counter');
       return this;
     };
 
@@ -73,6 +83,16 @@ define(['exports'], function (exports) {
       return this;
     };
 
+    ConfigBuilder.prototype.useFile = function useFile() {
+      this.globalResources.push('./file/file');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useInput = function useInput() {
+      this.globalResources.push('./input/input');
+      return this;
+    };
+
     ConfigBuilder.prototype.useModal = function useModal() {
       this.globalResources.push('./modal/modal-trigger');
       return this;
@@ -90,6 +110,16 @@ define(['exports'], function (exports) {
 
     ConfigBuilder.prototype.usePushpin = function usePushpin() {
       this.globalResources.push('./pushpin/pushpin');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useRadio = function useRadio() {
+      this.globalResources.push('./radio/radio');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useRange = function useRange() {
+      this.globalResources.push('./range/range');
       return this;
     };
 

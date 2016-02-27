@@ -16,6 +16,8 @@ export class MdDatePicker {
   attached() {
     this.element.classList.add('date-picker');
     let options = {
+      selectMonths: true,
+      selectYears: 15,
       onClose: function() {
         // see https://github.com/Dogfalo/materialize/issues/2067
         // and: https://github.com/amsul/pickadate.js/issues/160
@@ -56,7 +58,8 @@ export class MdDatePicker {
   }
 
   onClose() {
-    this.value = this.picker.get('select').obj;
+    let selected = this.picker.get('select');
+    this.value = selected ? selected.obj : null;
   }
 
   onSet(value) {

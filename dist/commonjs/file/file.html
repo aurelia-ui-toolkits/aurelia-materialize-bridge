@@ -1,0 +1,11 @@
+<template>
+    <div class="file-field input-field">
+        <div class="btn accent">
+            <span>${mdCaption}</span>
+            <input type="file" multiple.bind="mdMultiple" />
+        </div>
+        <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" value.bind="mdValue" ref="filePath" />
+        </div>
+    </div>
+</template>

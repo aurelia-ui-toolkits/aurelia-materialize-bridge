@@ -14,14 +14,36 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaBinding = require('aurelia-binding');
 
+var _commonAttributes = require('../common/attributes');
+
 var MdCard = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(MdCard, [{
     key: 'mdImage',
-    decorators: [_aureliaTemplating.bindable()],
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
     initializer: function initializer() {
       return null;
+    },
+    enumerable: true
+  }, {
+    key: 'mdReveal',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }, {
+    key: 'mdSize',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+    })],
+    initializer: function initializer() {
+      return '';
     },
     enumerable: true
   }, {
@@ -38,12 +60,18 @@ var MdCard = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers);
 
+    _defineDecoratedPropertyDescriptor(this, 'mdReveal', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdSize', _instanceInitializers);
+
     _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers);
 
     this.element = element;
   }
 
-  MdCard.prototype.attached = function attached() {};
+  MdCard.prototype.attached = function attached() {
+    this.mdReveal = _commonAttributes.getBooleanFromAttributeValue(this.mdReveal);
+  };
 
   var _MdCard = MdCard;
   MdCard = _aureliaDependencyInjection.inject(Element)(MdCard) || MdCard;
