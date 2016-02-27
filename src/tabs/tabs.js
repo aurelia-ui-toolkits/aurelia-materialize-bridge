@@ -55,7 +55,7 @@ export class MdTabs {
       if (indicatorRight.indexOf('-') === 0) {
         $('.indicator', this.element).css('right', 0);
       }
-    }, 320);
+    }, 310);
     let href = e.target.getAttribute('href');
     fireMaterializeEvent(this.element, 'selected', href);
   }
