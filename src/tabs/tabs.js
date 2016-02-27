@@ -48,8 +48,8 @@ export class MdTabs {
 
   fireTabSelectedEvent(e) {
     // fix Materialize tab indicator (see: https://github.com/Dogfalo/materialize/pull/2809)
-    // happens only when the Waves animation is finished
-    // Waves animation frames: 0.250, 0.460, 0.450, 0.940
+    // happens only when the indicator animation is finished
+    // Waves animation duration: 300ms, delay: 90ms
     window.setTimeout(() => {
       let indicatorRight = $('.indicator', this.element).css('right');
       if (indicatorRight.indexOf('-') === 0) {
