@@ -184,9 +184,6 @@ System.config({
       "aurelia-route-recognizer": "npm:aurelia-route-recognizer@1.0.0-beta.1.1.0",
       "core-js": "npm:core-js@2.0.3"
     },
-    "npm:aurelia-task-queue@1.0.0-beta.1.1.0": {
-      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.1.1"
-    },
     "npm:aurelia-task-queue@1.0.0-beta.1.1.1": {
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.1.1"
     },
