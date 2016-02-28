@@ -28,7 +28,7 @@ results with the instantiation of the button:
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/lf0CQmM.png"></img>
+  <img src="http://i.imgur.com/lf0CQmM.png" class="responsive-img"></img>
  <br><br>
  Image 1
 </p>

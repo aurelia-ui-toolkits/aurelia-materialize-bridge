@@ -40,7 +40,7 @@ is responsible for the instantiation of the select control:
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/LEGsSjU.png"></img>
+  <img src="http://i.imgur.com/LEGsSjU.png" class="responsive-img"></img>
  <br><br>
  Image 1
 </p>
