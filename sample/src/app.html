@@ -1,5 +1,6 @@
 <template>
     <require from='./nav-bar'></require>
+    <require from="./color-switcher.html"></require>
     <md-colors md-primary-color.bind="primaryColor" md-accent-color.bind="accentColor"></md-colors>
     <header>
       <nav-bar router.bind="router"></nav-bar>
@@ -7,65 +8,10 @@
       <main>
 
         <div class="row">
-          <div class="col s12 m2">
-            <ul md-collapsible>
-              <li>
-                <div class="collapsible-header">
-                  <i class="mdi-navigation-arrow-drop-down left"></i>Color switcher
-                </div>
-                <div class="collapsible-body" style="padding: 10px;">
-                  primary color:
-                  <select md-select value.two-way="primaryColor">
-                    <option value="#ee6e73">[Materialize] red</option>
-                    <option value="#3f51b5">[Paper] indigo</option>
-                    <option value="#00bcd4">[Material-UI] light blue</option>
-                    <option value="#78909C">[MuiCss] blue grey (I think)</option>
-                    <option value="#4caf50">green</option>
-                    <option value="#ff9800">orange</option>
-                  </select>
-
-                  accent color:
-                  <select md-select value.two-way="accentColor">
-                    <option value="#009688">[Materialize] teal</option>
-                    <option value="#e91e63">[Paper] pink</option>
-                    <option value="#ff4081">[Material-UI] pink</option>
-                    <option value="#FF80AB">[MuiCss] another pink</option>
-                    <option value="#4caf50">green</option>
-                    <option value="#ff9800">orange</option>
-                  </select>
-                </div>
-              </li>
-            </ul>
+          <div class="col s12 m3">
+            <color-switcher primary-color.two-way="primaryColor" accent-color.two-way="accentColor"></color-switcher>
           </div>
         </div>
-
-        <!-- <div class="">
-          <div class="row">
-            <div class="col s6 m2 offset-m8">
-              primary color:
-              <select md-select="selected.two-way: primaryColor;">
-                <option value="#ee6e73">[Materialize] red</option>
-                <option value="#3f51b5">[Paper] indigo</option>
-                <option value="#00bcd4">[Material-UI] light blue</option>
-                <option value="#78909C">[MuiCss] blue grey (I think)</option>
-                <option value="#4caf50">green</option>
-                <option value="#ff9800">orange</option>
-              </select>
-            </div>
-
-            <div class="col s6 m2">
-              accent color:
-              <select md-select="selected.two-way: accentColor;">
-                <option value="#009688">[Materialize] teal</option>
-                <option value="#e91e63">[Paper] pink</option>
-                <option value="#ff4081">[Material-UI] pink</option>
-                <option value="#FF80AB">[MuiCss] another pink</option>
-                <option value="#4caf50">green</option>
-                <option value="#ff9800">orange</option>
-              </select>
-            </div>
-          </div>
-        </div> -->
 
         <div class="page-host">
           <router-view></router-view>
