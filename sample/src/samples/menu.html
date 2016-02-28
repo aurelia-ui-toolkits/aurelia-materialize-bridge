@@ -1,11 +1,22 @@
 <template>
   <require from="./menu.css"></require>
   <style>
-    header, main, footer {
-      padding-left: 240px;
+    @media all and (min-width: 992px) {
+      header, main, footer {
+        padding-left: 240px;
+      }
+      md-navbar[md-fixed="true"] nav {
+        padding-right: 240px;
+      }
     }
-    md-navbar[md-fixed="true"] nav {
-      padding-right: 240px;
+
+    @media all and (max-width: 992px) {
+        header, main, footer {
+            padding-left: 0;
+        }
+        md-navbar[md-fixed="true"] nav {
+          padding-right: 0;
+        }
     }
   </style>
   <md-sidenav view-model.ref="sideNav" md-fixed="true" md-edge="left">
