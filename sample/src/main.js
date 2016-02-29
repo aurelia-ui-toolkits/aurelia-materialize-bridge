@@ -21,6 +21,7 @@ export function configure(aurelia) {
         .useInput()
         .useModal()
         .useNavbar()
+        .usePagination()
         .useParallax()
         .usePushpin()
         .useRadio()

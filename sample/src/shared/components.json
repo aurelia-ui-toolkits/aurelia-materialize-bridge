@@ -18,7 +18,7 @@
     "Collections": { },
     "Footer": { },
     "Navbar": { "status": "wip" },
-    "Pagination": { },
+    "Pagination": { "status": "wip" },
     "Preloader": { },
   },
   "Javascript": {
