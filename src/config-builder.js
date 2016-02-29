@@ -25,6 +25,7 @@ export class ConfigBuilder {
       .useInput()
       .useModal()
       .useNavbar()
+      .usePagination()
       .useParallax()
       .usePushpin()
       .useRadio()
@@ -133,6 +134,11 @@ export class ConfigBuilder {
 
   useNavbar(): ConfigBuilder {
     this.globalResources.push('./navbar/navbar');
+    return this;
+  }
+
+  usePagination(): ConfigBuilder {
+    this.globalResources.push('./pagination/pagination');
     return this;
   }
 
