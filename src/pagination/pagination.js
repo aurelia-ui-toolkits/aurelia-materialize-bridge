@@ -7,6 +7,10 @@ export class MdPagination {
   @bindable() mdPages = 5;
   activePage = 1;
 
+  constructor(element) {
+    this.element = element;
+  }
+
   attached() {
     this.mdPages = parseInt(this.mdPages, 10);
   }
