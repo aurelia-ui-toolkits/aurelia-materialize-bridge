@@ -5,4 +5,10 @@
   <div>
     <md-input md-label="value" md-value.bind="value"></md-input>
   </div>
+  <div>
+    <button md-button="flat: true;" md-waves class="accent-text" click.delegate="setNull()">set value = null (indeterminate)</button>
+  </div>
+  <div>
+    unfortunately, right now you'll have to click twice to get an indeterminate progress bar
+  </div>
 </template>
