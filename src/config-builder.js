@@ -27,6 +27,7 @@ export class ConfigBuilder {
       .useNavbar()
       .usePagination()
       .useParallax()
+      .useProgress()
       .usePushpin()
       .useRadio()
       .useRange()
@@ -144,6 +145,11 @@ export class ConfigBuilder {
 
   useParallax(): ConfigBuilder {
     this.globalResources.push('./parallax/parallax');
+    return this;
+  }
+
+  useProgress(): ConfigBuilder {
+    this.globalResources.push('./progress/progress');
     return this;
   }
 
