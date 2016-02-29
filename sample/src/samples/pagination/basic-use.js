@@ -1,3 +1,3 @@
 export class BasicUse {
-  activePage = 0;
+  activePage = 1;
 }
