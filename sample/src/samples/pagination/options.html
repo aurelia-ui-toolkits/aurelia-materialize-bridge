@@ -1,0 +1,16 @@
+<template>
+  <div>
+    <md-pagination md-show-first-last.two-way="showFirstLast" md-show-prev-next.two-way="showPrevNext" md-pages="6" md-active-page.bind="activePage"></md-pagination>
+  </div>
+  <div>
+    active page: ${activePage}
+  </div>
+  <div style="margin-top: 15px;">
+    Show first/last page:
+    <md-switch md-checked.bind="showFirstLast"></md-switch>
+  </div>
+  <div style="margin-top: 15px;">
+    Show previous/next page:
+    <md-switch md-checked.bind="showPrevNext"></md-switch>
+  </div>
+</template>

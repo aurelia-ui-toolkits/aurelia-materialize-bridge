@@ -1,4 +1,4 @@
-export class BasicUse {
+export class Events {
   activePage = 1;
 
   onPageChanged(e) {
