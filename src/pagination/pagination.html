@@ -1,6 +1,6 @@
 <template>
   <ul class="pagination">
-    <li md-waves repeat.for="p of mdPages" class="${ p+1 === activePage ? 'active' : ''}">
+    <li md-waves click.delegate="setActivePage(p)" repeat.for="p of mdPages" class="${ p === mdActivePage ? 'active' : ''}">
       <a>${p+1}</a>
     </li>
   </ul>
