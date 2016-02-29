@@ -11,7 +11,7 @@ export class MdPagination {
   }) mdPages = 5;
   @bindable({
     defaultBindingMode: bindingMode.twoWay
-  }) mdActivePage = 0;
+  }) mdActivePage = 1;
 
   constructor(element) {
     this.element = element;
