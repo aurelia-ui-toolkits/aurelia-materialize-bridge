@@ -1,7 +1,7 @@
 <template>
-  <ul>
-    <li md-waves repeat.for="p of mdPages">
-      <a>${p}</a>
+  <ul class="pagination">
+    <li md-waves repeat.for="p of mdPages" class="${ p+1 === activePage ? 'active' : ''}">
+      <a>${p+1}</a>
     </li>
   </ul>
 </template>
