@@ -23,6 +23,7 @@ export function configure(aurelia) {
         .useNavbar()
         .usePagination()
         .useParallax()
+        .useProgress()
         .usePushpin()
         .useRadio()
         .useRange()
