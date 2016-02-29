@@ -13,6 +13,7 @@ export class MdPagination {
   @bindable({
     defaultBindingMode: bindingMode.oneWay
   }) mdPages = 5;
+  @bindable() mdShowFirstLast = true;
   @bindable() mdShowPrevNext = true;
 
   constructor(element) {
@@ -28,6 +29,18 @@ export class MdPagination {
   setActivePage(page) {
     this.mdActivePage = page;
     fireMaterializeEvent(this.element, 'page-changed', this.mdActivePage);
+  }
+
+  setFirstPage() {
+    if (this.mdActivePage > 1) {
+      this.setActivePage(1);
+    }
+  }
+
+  setLastPage() {
+    if (this.mdActivePage < this.mdPages) {
+      this.setActivePage(this.mdPages);
+    }
   }
 
   setPreviousPage() {
