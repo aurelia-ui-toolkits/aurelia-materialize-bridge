@@ -43,6 +43,7 @@ declare module 'aurelia-materialize-bridge' {
     useNavbar(): ConfigBuilder;
     usePagination(): ConfigBuilder;
     useParallax(): ConfigBuilder;
+    useProgress(): ConfigBuilder;
     usePushpin(): ConfigBuilder;
     useRadio(): ConfigBuilder;
     useRange(): ConfigBuilder;
@@ -273,13 +274,6 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
-  export class MdParallax {
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-  }
-  
-  //  destroy handler not available
   export class MdPagination {
     mdActivePage: any;
     mdPages: any;
@@ -292,6 +286,19 @@ declare module 'aurelia-materialize-bridge' {
     setLastPage(): any;
     setPreviousPage(): any;
     setNextPage(): any;
+  }
+  export class MdParallax {
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  
+  //  destroy handler not available
+  export class MdProgress {
+    mdColor: any;
+    mdType: any;
+    mdValue: any;
+    constructor(element: any);
   }
   export class MdPushpin {
     bottom: any;

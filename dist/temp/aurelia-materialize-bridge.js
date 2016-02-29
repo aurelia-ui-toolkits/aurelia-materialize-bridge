@@ -58,7 +58,7 @@ var ConfigBuilder = (function () {
   }
 
   ConfigBuilder.prototype.useAll = function useAll() {
-    return this.useBadge().useBox().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().usePagination().useParallax().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+    return this.useBadge().useBox().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
   };
 
   ConfigBuilder.prototype.useBadge = function useBadge() {
@@ -159,6 +159,11 @@ var ConfigBuilder = (function () {
 
   ConfigBuilder.prototype.useParallax = function useParallax() {
     this.globalResources.push('./parallax/parallax');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useProgress = function useProgress() {
+    this.globalResources.push('./progress/progress');
     return this;
   };
 
@@ -1624,27 +1629,6 @@ var MdNavbar = (function () {
 
 exports.MdNavbar = MdNavbar;
 
-var MdParallax = (function () {
-  function MdParallax(element) {
-    _classCallCheck(this, _MdParallax);
-
-    this.element = element;
-  }
-
-  MdParallax.prototype.attached = function attached() {
-    $(this.element).parallax();
-  };
-
-  MdParallax.prototype.detached = function detached() {};
-
-  var _MdParallax = MdParallax;
-  MdParallax = _aureliaDependencyInjection.inject(Element)(MdParallax) || MdParallax;
-  MdParallax = _aureliaTemplating.customAttribute('md-parallax')(MdParallax) || MdParallax;
-  return MdParallax;
-})();
-
-exports.MdParallax = MdParallax;
-
 var MdPagination = (function () {
   var _instanceInitializers17 = {};
 
@@ -1738,8 +1722,79 @@ var MdPagination = (function () {
 
 exports.MdPagination = MdPagination;
 
-var MdPushpin = (function () {
+var MdParallax = (function () {
+  function MdParallax(element) {
+    _classCallCheck(this, _MdParallax);
+
+    this.element = element;
+  }
+
+  MdParallax.prototype.attached = function attached() {
+    $(this.element).parallax();
+  };
+
+  MdParallax.prototype.detached = function detached() {};
+
+  var _MdParallax = MdParallax;
+  MdParallax = _aureliaDependencyInjection.inject(Element)(MdParallax) || MdParallax;
+  MdParallax = _aureliaTemplating.customAttribute('md-parallax')(MdParallax) || MdParallax;
+  return MdParallax;
+})();
+
+exports.MdParallax = MdParallax;
+
+var MdProgress = (function () {
   var _instanceInitializers18 = {};
+
+  _createDecoratedClass(MdProgress, [{
+    key: 'mdColor',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: function initializer() {
+      return null;
+    },
+    enumerable: true
+  }, {
+    key: 'mdType',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return 'linear';
+    },
+    enumerable: true
+  }, {
+    key: 'mdValue',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+    })],
+    initializer: function initializer() {
+      return null;
+    },
+    enumerable: true
+  }], null, _instanceInitializers18);
+
+  function MdProgress(element) {
+    _classCallCheck(this, _MdProgress);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdColor', _instanceInitializers18);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdType', _instanceInitializers18);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdValue', _instanceInitializers18);
+
+    this.element = element;
+  }
+
+  var _MdProgress = MdProgress;
+  MdProgress = _aureliaDependencyInjection.inject(Element)(MdProgress) || MdProgress;
+  MdProgress = _aureliaTemplating.customElement('md-progress')(MdProgress) || MdProgress;
+  return MdProgress;
+})();
+
+exports.MdProgress = MdProgress;
+
+var MdPushpin = (function () {
+  var _instanceInitializers19 = {};
 
   _createDecoratedClass(MdPushpin, [{
     key: 'bottom',
@@ -1762,16 +1817,16 @@ var MdPushpin = (function () {
       return 0;
     },
     enumerable: true
-  }], null, _instanceInitializers18);
+  }], null, _instanceInitializers19);
 
   function MdPushpin(element) {
     _classCallCheck(this, _MdPushpin);
 
-    _defineDecoratedPropertyDescriptor(this, 'bottom', _instanceInitializers18);
+    _defineDecoratedPropertyDescriptor(this, 'bottom', _instanceInitializers19);
 
-    _defineDecoratedPropertyDescriptor(this, 'offset', _instanceInitializers18);
+    _defineDecoratedPropertyDescriptor(this, 'offset', _instanceInitializers19);
 
-    _defineDecoratedPropertyDescriptor(this, 'top', _instanceInitializers18);
+    _defineDecoratedPropertyDescriptor(this, 'top', _instanceInitializers19);
 
     this.element = element;
   }
@@ -1795,7 +1850,7 @@ var MdPushpin = (function () {
 exports.MdPushpin = MdPushpin;
 
 var MdRadio = (function () {
-  var _instanceInitializers19 = {};
+  var _instanceInitializers20 = {};
 
   _createDecoratedClass(MdRadio, [{
     key: 'mdChecked',
@@ -1841,22 +1896,22 @@ var MdRadio = (function () {
     key: 'id',
     value: 0,
     enumerable: true
-  }], _instanceInitializers19);
+  }], _instanceInitializers20);
 
   function MdRadio(element) {
     _classCallCheck(this, _MdRadio);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdChecked', _instanceInitializers19);
+    _defineDecoratedPropertyDescriptor(this, 'mdChecked', _instanceInitializers20);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdDisabled', _instanceInitializers19);
+    _defineDecoratedPropertyDescriptor(this, 'mdDisabled', _instanceInitializers20);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdGap', _instanceInitializers19);
+    _defineDecoratedPropertyDescriptor(this, 'mdGap', _instanceInitializers20);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdModel', _instanceInitializers19);
+    _defineDecoratedPropertyDescriptor(this, 'mdModel', _instanceInitializers20);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdName', _instanceInitializers19);
+    _defineDecoratedPropertyDescriptor(this, 'mdName', _instanceInitializers20);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdValue', _instanceInitializers19);
+    _defineDecoratedPropertyDescriptor(this, 'mdValue', _instanceInitializers20);
 
     this.element = element;
     this.controlId = 'md-radio-' + MdRadio.id++;
@@ -1892,7 +1947,7 @@ var MdRadio = (function () {
 exports.MdRadio = MdRadio;
 
 var MdRange = (function () {
-  var _instanceInitializers20 = {};
+  var _instanceInitializers21 = {};
 
   _createDecoratedClass(MdRange, [{
     key: 'mdMin',
@@ -1930,18 +1985,18 @@ var MdRange = (function () {
       return 0;
     },
     enumerable: true
-  }], null, _instanceInitializers20);
+  }], null, _instanceInitializers21);
 
   function MdRange(element) {
     _classCallCheck(this, _MdRange);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdMin', _instanceInitializers20);
+    _defineDecoratedPropertyDescriptor(this, 'mdMin', _instanceInitializers21);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdMax', _instanceInitializers20);
+    _defineDecoratedPropertyDescriptor(this, 'mdMax', _instanceInitializers21);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdStep', _instanceInitializers20);
+    _defineDecoratedPropertyDescriptor(this, 'mdStep', _instanceInitializers21);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdValue', _instanceInitializers20);
+    _defineDecoratedPropertyDescriptor(this, 'mdValue', _instanceInitializers21);
 
     this.element = element;
     this.log = _aureliaLogging.getLogger('md-range');
@@ -2012,7 +2067,7 @@ var ScrollfirePatch = (function () {
 exports.ScrollfirePatch = ScrollfirePatch;
 
 var MdScrollfireTarget = (function () {
-  var _instanceInitializers21 = {};
+  var _instanceInitializers22 = {};
 
   _createDecoratedClass(MdScrollfireTarget, [{
     key: 'callback',
@@ -2028,14 +2083,14 @@ var MdScrollfireTarget = (function () {
       return 0;
     },
     enumerable: true
-  }], null, _instanceInitializers21);
+  }], null, _instanceInitializers22);
 
   function MdScrollfireTarget(element) {
     _classCallCheck(this, _MdScrollfireTarget);
 
-    _defineDecoratedPropertyDescriptor(this, 'callback', _instanceInitializers21);
+    _defineDecoratedPropertyDescriptor(this, 'callback', _instanceInitializers22);
 
-    _defineDecoratedPropertyDescriptor(this, 'offset', _instanceInitializers21);
+    _defineDecoratedPropertyDescriptor(this, 'offset', _instanceInitializers22);
 
     this.element = element;
   }
@@ -2096,19 +2151,19 @@ var MdScrollfire = (function () {
 exports.MdScrollfire = MdScrollfire;
 
 var MdScrollSpy = (function () {
-  var _instanceInitializers22 = {};
+  var _instanceInitializers23 = {};
 
   _createDecoratedClass(MdScrollSpy, [{
     key: 'target',
     decorators: [_aureliaTemplating.bindable()],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers22);
+  }], null, _instanceInitializers23);
 
   function MdScrollSpy(element) {
     _classCallCheck(this, _MdScrollSpy);
 
-    _defineDecoratedPropertyDescriptor(this, 'target', _instanceInitializers22);
+    _defineDecoratedPropertyDescriptor(this, 'target', _instanceInitializers23);
 
     this.element = element;
   }
@@ -2182,19 +2237,19 @@ var MdSelect = (function () {
 exports.MdSelect = MdSelect;
 
 var MdSidenavCollapse = (function () {
-  var _instanceInitializers23 = {};
+  var _instanceInitializers24 = {};
 
   _createDecoratedClass(MdSidenavCollapse, [{
     key: 'ref',
     decorators: [_aureliaTemplating.bindable()],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers23);
+  }], null, _instanceInitializers24);
 
   function MdSidenavCollapse(element, observerLocator) {
     _classCallCheck(this, _MdSidenavCollapse);
 
-    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers23);
+    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers24);
 
     this.element = element;
     this.observerLocator = observerLocator;
@@ -2228,7 +2283,7 @@ var MdSidenavCollapse = (function () {
 exports.MdSidenavCollapse = MdSidenavCollapse;
 
 var MdSidenav = (function () {
-  var _instanceInitializers24 = {};
+  var _instanceInitializers25 = {};
 
   _createDecoratedClass(MdSidenav, [{
     key: 'mdCloseOnClick',
@@ -2262,20 +2317,20 @@ var MdSidenav = (function () {
     key: 'id',
     value: 0,
     enumerable: true
-  }], _instanceInitializers24);
+  }], _instanceInitializers25);
 
   function MdSidenav(element) {
     var _this8 = this;
 
     _classCallCheck(this, _MdSidenav);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdCloseOnClick', _instanceInitializers24);
+    _defineDecoratedPropertyDescriptor(this, 'mdCloseOnClick', _instanceInitializers25);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdEdge', _instanceInitializers24);
+    _defineDecoratedPropertyDescriptor(this, 'mdEdge', _instanceInitializers25);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdFixed', _instanceInitializers24);
+    _defineDecoratedPropertyDescriptor(this, 'mdFixed', _instanceInitializers25);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdWidth', _instanceInitializers24);
+    _defineDecoratedPropertyDescriptor(this, 'mdWidth', _instanceInitializers25);
 
     this.element = element;
     this.controlId = 'md-sidenav-' + MdSidenav.id++;
@@ -2320,7 +2375,7 @@ var MdSidenav = (function () {
 exports.MdSidenav = MdSidenav;
 
 var MdSlider = (function () {
-  var _instanceInitializers25 = {};
+  var _instanceInitializers26 = {};
 
   _createDecoratedClass(MdSlider, [{
     key: 'mdFillContainer',
@@ -2357,20 +2412,20 @@ var MdSlider = (function () {
       return 500;
     },
     enumerable: true
-  }], null, _instanceInitializers25);
+  }], null, _instanceInitializers26);
 
   function MdSlider(element) {
     _classCallCheck(this, _MdSlider);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdFillContainer', _instanceInitializers25);
+    _defineDecoratedPropertyDescriptor(this, 'mdFillContainer', _instanceInitializers26);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdHeight', _instanceInitializers25);
+    _defineDecoratedPropertyDescriptor(this, 'mdHeight', _instanceInitializers26);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdIndicators', _instanceInitializers25);
+    _defineDecoratedPropertyDescriptor(this, 'mdIndicators', _instanceInitializers26);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdInterval', _instanceInitializers25);
+    _defineDecoratedPropertyDescriptor(this, 'mdInterval', _instanceInitializers26);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdTransition', _instanceInitializers25);
+    _defineDecoratedPropertyDescriptor(this, 'mdTransition', _instanceInitializers26);
 
     this.element = element;
     this.log = _aureliaLogging.getLogger('md-slider');
@@ -2424,7 +2479,7 @@ var MdSlider = (function () {
 exports.MdSlider = MdSlider;
 
 var MdSwitch = (function () {
-  var _instanceInitializers26 = {};
+  var _instanceInitializers27 = {};
 
   _createDecoratedClass(MdSwitch, [{
     key: 'mdChecked',
@@ -2452,18 +2507,18 @@ var MdSwitch = (function () {
       return 'On';
     },
     enumerable: true
-  }], null, _instanceInitializers26);
+  }], null, _instanceInitializers27);
 
   function MdSwitch(element) {
     _classCallCheck(this, _MdSwitch);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdChecked', _instanceInitializers26);
+    _defineDecoratedPropertyDescriptor(this, 'mdChecked', _instanceInitializers27);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdDisabled', _instanceInitializers26);
+    _defineDecoratedPropertyDescriptor(this, 'mdDisabled', _instanceInitializers27);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdLabelOff', _instanceInitializers26);
+    _defineDecoratedPropertyDescriptor(this, 'mdLabelOff', _instanceInitializers27);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdLabelOn', _instanceInitializers26);
+    _defineDecoratedPropertyDescriptor(this, 'mdLabelOn', _instanceInitializers27);
 
     this.element = element;
     this.handleChange = this.handleChange.bind(this);
@@ -2610,7 +2665,7 @@ var MdToastService = (function () {
 exports.MdToastService = MdToastService;
 
 var MdTooltip = (function () {
-  var _instanceInitializers27 = {};
+  var _instanceInitializers28 = {};
 
   _createDecoratedClass(MdTooltip, [{
     key: 'position',
@@ -2633,16 +2688,16 @@ var MdTooltip = (function () {
       return '';
     },
     enumerable: true
-  }], null, _instanceInitializers27);
+  }], null, _instanceInitializers28);
 
   function MdTooltip(element) {
     _classCallCheck(this, _MdTooltip);
 
-    _defineDecoratedPropertyDescriptor(this, 'position', _instanceInitializers27);
+    _defineDecoratedPropertyDescriptor(this, 'position', _instanceInitializers28);
 
-    _defineDecoratedPropertyDescriptor(this, 'delay', _instanceInitializers27);
+    _defineDecoratedPropertyDescriptor(this, 'delay', _instanceInitializers28);
 
-    _defineDecoratedPropertyDescriptor(this, 'text', _instanceInitializers27);
+    _defineDecoratedPropertyDescriptor(this, 'text', _instanceInitializers28);
 
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
@@ -2668,19 +2723,19 @@ var MdTooltip = (function () {
 exports.MdTooltip = MdTooltip;
 
 var MdFadeinImage = (function () {
-  var _instanceInitializers28 = {};
+  var _instanceInitializers29 = {};
 
   _createDecoratedClass(MdFadeinImage, [{
     key: 'ref',
     decorators: [_aureliaTemplating.bindable()],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers28);
+  }], null, _instanceInitializers29);
 
   function MdFadeinImage(element) {
     _classCallCheck(this, _MdFadeinImage);
 
-    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers28);
+    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers29);
 
     this.element = element;
     this.fadeInImage = this.fadeInImage.bind(this);
@@ -2716,19 +2771,19 @@ var MdFadeinImage = (function () {
 exports.MdFadeinImage = MdFadeinImage;
 
 var MdStaggeredList = (function () {
-  var _instanceInitializers29 = {};
+  var _instanceInitializers30 = {};
 
   _createDecoratedClass(MdStaggeredList, [{
     key: 'ref',
     decorators: [_aureliaTemplating.bindable()],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers29);
+  }], null, _instanceInitializers30);
 
   function MdStaggeredList(element) {
     _classCallCheck(this, _MdStaggeredList);
 
-    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers29);
+    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers30);
 
     this.element = element;
     this.staggerList = this.staggerList.bind(this);
@@ -2767,7 +2822,7 @@ var MdStaggeredList = (function () {
 exports.MdStaggeredList = MdStaggeredList;
 
 var MdWaves = (function () {
-  var _instanceInitializers30 = {};
+  var _instanceInitializers31 = {};
 
   _createDecoratedClass(MdWaves, [{
     key: 'block',
@@ -2794,16 +2849,16 @@ var MdWaves = (function () {
     })],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers30);
+  }], null, _instanceInitializers31);
 
   function MdWaves(element) {
     _classCallCheck(this, _MdWaves);
 
-    _defineDecoratedPropertyDescriptor(this, 'block', _instanceInitializers30);
+    _defineDecoratedPropertyDescriptor(this, 'block', _instanceInitializers31);
 
-    _defineDecoratedPropertyDescriptor(this, 'circle', _instanceInitializers30);
+    _defineDecoratedPropertyDescriptor(this, 'circle', _instanceInitializers31);
 
-    _defineDecoratedPropertyDescriptor(this, 'color', _instanceInitializers30);
+    _defineDecoratedPropertyDescriptor(this, 'color', _instanceInitializers31);
 
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);

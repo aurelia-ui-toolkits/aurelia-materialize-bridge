@@ -44,6 +44,7 @@ export class ConfigBuilder {
       .useNavbar()
       .usePagination()
       .useParallax()
+      .useProgress()
       .usePushpin()
       .useRadio()
       .useRange()
@@ -161,6 +162,11 @@ export class ConfigBuilder {
 
   useParallax(): ConfigBuilder {
     this.globalResources.push('./parallax/parallax');
+    return this;
+  }
+
+  useProgress(): ConfigBuilder {
+    this.globalResources.push('./progress/progress');
     return this;
   }
 
@@ -1059,22 +1065,6 @@ export class MdNavbar {
   }
 }
 
-@customAttribute('md-parallax')
-@inject(Element)
-export class MdParallax {
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.element).parallax();
-  }
-
-  detached() {
-    // destroy handler not available
-  }
-}
-
 @customElement('md-pagination')
 @inject(Element)
 export class MdPagination {
@@ -1124,6 +1114,38 @@ export class MdPagination {
     if (this.mdActivePage < this.mdPages) {
       this.setActivePage(this.mdActivePage + 1);
     }
+  }
+}
+
+@customAttribute('md-parallax')
+@inject(Element)
+export class MdParallax {
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.element).parallax();
+  }
+
+  detached() {
+    // destroy handler not available
+  }
+}
+
+@customElement('md-progress')
+@inject(Element)
+export class MdProgress {
+  @bindable() mdColor = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdType = 'linear';
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue = null;
+
+  constructor(element) {
+    this.element = element;
   }
 }
 

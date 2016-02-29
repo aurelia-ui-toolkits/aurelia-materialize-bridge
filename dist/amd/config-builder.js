@@ -14,7 +14,7 @@ define(['exports'], function (exports) {
     }
 
     ConfigBuilder.prototype.useAll = function useAll() {
-      return this.useBadge().useBox().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().usePagination().useParallax().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+      return this.useBadge().useBox().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
     };
 
     ConfigBuilder.prototype.useBadge = function useBadge() {
@@ -115,6 +115,11 @@ define(['exports'], function (exports) {
 
     ConfigBuilder.prototype.useParallax = function useParallax() {
       this.globalResources.push('./parallax/parallax');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useProgress = function useProgress() {
+      this.globalResources.push('./progress/progress');
       return this;
     };
 
