@@ -16,10 +16,21 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _commonEvents = require('../common/events');
 
+var _commonAttributes = require('../common/attributes');
+
 var MdPagination = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(MdPagination, [{
+    key: 'mdActivePage',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+    })],
+    initializer: function initializer() {
+      return 1;
+    },
+    enumerable: true
+  }, {
     key: 'mdPages',
     decorators: [_aureliaTemplating.bindable({
       defaultBindingMode: _aureliaBinding.bindingMode.oneWay
@@ -29,12 +40,17 @@ var MdPagination = (function () {
     },
     enumerable: true
   }, {
-    key: 'mdActivePage',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-    })],
+    key: 'mdShowFirstLast',
+    decorators: [_aureliaTemplating.bindable()],
     initializer: function initializer() {
-      return 0;
+      return true;
+    },
+    enumerable: true
+  }, {
+    key: 'mdShowPrevNext',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: function initializer() {
+      return true;
     },
     enumerable: true
   }], null, _instanceInitializers);
@@ -42,20 +58,49 @@ var MdPagination = (function () {
   function MdPagination(element) {
     _classCallCheck(this, _MdPagination);
 
+    _defineDecoratedPropertyDescriptor(this, 'mdActivePage', _instanceInitializers);
+
     _defineDecoratedPropertyDescriptor(this, 'mdPages', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdActivePage', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'mdShowFirstLast', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdShowPrevNext', _instanceInitializers);
 
     this.element = element;
   }
 
   MdPagination.prototype.bind = function bind() {
     this.mdPages = parseInt(this.mdPages, 10);
+    this.mdShowPrevNext = _commonAttributes.getBooleanFromAttributeValue(this.mdShowPrevNext);
   };
 
   MdPagination.prototype.setActivePage = function setActivePage(page) {
     this.mdActivePage = page;
     _commonEvents.fireMaterializeEvent(this.element, 'page-changed', this.mdActivePage);
+  };
+
+  MdPagination.prototype.setFirstPage = function setFirstPage() {
+    if (this.mdActivePage > 1) {
+      this.setActivePage(1);
+    }
+  };
+
+  MdPagination.prototype.setLastPage = function setLastPage() {
+    if (this.mdActivePage < this.mdPages) {
+      this.setActivePage(this.mdPages);
+    }
+  };
+
+  MdPagination.prototype.setPreviousPage = function setPreviousPage() {
+    if (this.mdActivePage > 1) {
+      this.setActivePage(this.mdActivePage - 1);
+    }
+  };
+
+  MdPagination.prototype.setNextPage = function setNextPage() {
+    if (this.mdActivePage < this.mdPages) {
+      this.setActivePage(this.mdActivePage + 1);
+    }
   };
 
   var _MdPagination = MdPagination;

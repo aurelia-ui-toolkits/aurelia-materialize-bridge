@@ -123,10 +123,6 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
-  export class MdChip {
-    mdClose: any;
-    attached(): any;
-  }
   export class MdCheckbox {
     static id: any;
     mdChecked: any;
@@ -139,13 +135,9 @@ declare module 'aurelia-materialize-bridge' {
     mdCheckedChanged(newValue: any): any;
     mdDisabledChanged(newValue: any): any;
   }
-  
-  /* eslint-enable */
-  export class DarkenValueConverter {
-    toView(value: any, steps: any): any;
-  }
-  export class LightenValueConverter {
-    toView(value: any, steps: any): any;
+  export class MdChip {
+    mdClose: any;
+    attached(): any;
   }
   export class MdCollapsible {
     constructor(element: any);
@@ -153,6 +145,14 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     refresh(): any;
     accordionChanged(): any;
+  }
+  
+  /* eslint-enable */
+  export class DarkenValueConverter {
+    toView(value: any, steps: any): any;
+  }
+  export class LightenValueConverter {
+    toView(value: any, steps: any): any;
   }
   
   /**
@@ -273,13 +273,6 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
-  export class MdPagination {
-    mdPages: any;
-    mdActivePage: any;
-    constructor(element: any);
-    bind(): any;
-    setActivePage(page: any): any;
-  }
   export class MdParallax {
     constructor(element: any);
     attached(): any;
@@ -287,6 +280,19 @@ declare module 'aurelia-materialize-bridge' {
   }
   
   //  destroy handler not available
+  export class MdPagination {
+    mdActivePage: any;
+    mdPages: any;
+    mdShowFirstLast: any;
+    mdShowPrevNext: any;
+    constructor(element: any);
+    bind(): any;
+    setActivePage(page: any): any;
+    setFirstPage(): any;
+    setLastPage(): any;
+    setPreviousPage(): any;
+    setNextPage(): any;
+  }
   export class MdPushpin {
     bottom: any;
     offset: any;

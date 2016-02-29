@@ -644,38 +644,8 @@ var MdCharCounter = (function () {
 
 exports.MdCharCounter = MdCharCounter;
 
-var MdChip = (function () {
-  var _instanceInitializers8 = {};
-
-  function MdChip() {
-    _classCallCheck(this, _MdChip);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdClose', _instanceInitializers8);
-  }
-
-  MdChip.prototype.attached = function attached() {
-    this.mdClose = getBooleanFromAttributeValue(this.mdClose);
-  };
-
-  _createDecoratedClass(MdChip, [{
-    key: 'mdClose',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: function initializer() {
-      return false;
-    },
-    enumerable: true
-  }], null, _instanceInitializers8);
-
-  var _MdChip = MdChip;
-  MdChip = _aureliaDependencyInjection.inject(Element)(MdChip) || MdChip;
-  MdChip = _aureliaTemplating.customElement('md-chip')(MdChip) || MdChip;
-  return MdChip;
-})();
-
-exports.MdChip = MdChip;
-
 var MdCheckbox = (function () {
-  var _instanceInitializers9 = {};
+  var _instanceInitializers8 = {};
 
   _createDecoratedClass(MdCheckbox, [{
     key: 'mdChecked',
@@ -698,16 +668,16 @@ var MdCheckbox = (function () {
     key: 'id',
     value: 0,
     enumerable: true
-  }], _instanceInitializers9);
+  }], _instanceInitializers8);
 
   function MdCheckbox(element) {
     _classCallCheck(this, _MdCheckbox);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdChecked', _instanceInitializers9);
+    _defineDecoratedPropertyDescriptor(this, 'mdChecked', _instanceInitializers8);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdDisabled', _instanceInitializers9);
+    _defineDecoratedPropertyDescriptor(this, 'mdDisabled', _instanceInitializers8);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdFilledIn', _instanceInitializers9);
+    _defineDecoratedPropertyDescriptor(this, 'mdFilledIn', _instanceInitializers8);
 
     this.element = element;
     this.controlId = 'md-checkbox-' + MdCheckbox.id++;
@@ -759,6 +729,84 @@ var MdCheckbox = (function () {
 })();
 
 exports.MdCheckbox = MdCheckbox;
+
+var MdChip = (function () {
+  var _instanceInitializers9 = {};
+
+  function MdChip() {
+    _classCallCheck(this, _MdChip);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdClose', _instanceInitializers9);
+  }
+
+  MdChip.prototype.attached = function attached() {
+    this.mdClose = getBooleanFromAttributeValue(this.mdClose);
+  };
+
+  _createDecoratedClass(MdChip, [{
+    key: 'mdClose',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }], null, _instanceInitializers9);
+
+  var _MdChip = MdChip;
+  MdChip = _aureliaDependencyInjection.inject(Element)(MdChip) || MdChip;
+  MdChip = _aureliaTemplating.customElement('md-chip')(MdChip) || MdChip;
+  return MdChip;
+})();
+
+exports.MdChip = MdChip;
+
+var MdCollapsible = (function () {
+  function MdCollapsible(element) {
+    _classCallCheck(this, _MdCollapsible);
+
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  MdCollapsible.prototype.attached = function attached() {
+    this.attributeManager.addClasses('collapsible');
+    if (getBooleanFromAttributeValue(this.popout)) {
+      this.attributeManager.addClasses('popout');
+    }
+    this.refresh();
+  };
+
+  MdCollapsible.prototype.detached = function detached() {
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
+  };
+
+  MdCollapsible.prototype.refresh = function refresh() {
+    var accordion = getBooleanFromAttributeValue(this.accordion);
+    if (accordion) {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
+    } else {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
+    }
+
+    $(this.element).collapsible({
+      accordion: accordion
+    });
+  };
+
+  MdCollapsible.prototype.accordionChanged = function accordionChanged() {
+    this.refresh();
+  };
+
+  var _MdCollapsible = MdCollapsible;
+  MdCollapsible = _aureliaDependencyInjection.inject(Element)(MdCollapsible) || MdCollapsible;
+  MdCollapsible = _aureliaTemplating.bindable({ name: 'popout', defaultValue: false })(MdCollapsible) || MdCollapsible;
+  MdCollapsible = _aureliaTemplating.bindable({ name: 'accordion', defaultValue: false })(MdCollapsible) || MdCollapsible;
+  MdCollapsible = _aureliaTemplating.customAttribute('md-collapsible')(MdCollapsible) || MdCollapsible;
+  return MdCollapsible;
+})();
+
+exports.MdCollapsible = MdCollapsible;
 
 function shadeBlendConvert(p, from, to) {
   if (typeof p != "number" || p < -1 || p > 1 || typeof from != "string" || from[0] != 'r' && from[0] != '#' || typeof to != "string" && typeof to != "undefined") return null;
@@ -817,54 +865,6 @@ var LightenValueConverter = (function () {
 })();
 
 exports.LightenValueConverter = LightenValueConverter;
-
-var MdCollapsible = (function () {
-  function MdCollapsible(element) {
-    _classCallCheck(this, _MdCollapsible);
-
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  MdCollapsible.prototype.attached = function attached() {
-    this.attributeManager.addClasses('collapsible');
-    if (getBooleanFromAttributeValue(this.popout)) {
-      this.attributeManager.addClasses('popout');
-    }
-    this.refresh();
-  };
-
-  MdCollapsible.prototype.detached = function detached() {
-    this.attributeManager.removeClasses(['collapsible', 'popout']);
-    this.attributeManager.removeAttributes(['data-collapsible']);
-  };
-
-  MdCollapsible.prototype.refresh = function refresh() {
-    var accordion = getBooleanFromAttributeValue(this.accordion);
-    if (accordion) {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
-    } else {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
-    }
-
-    $(this.element).collapsible({
-      accordion: accordion
-    });
-  };
-
-  MdCollapsible.prototype.accordionChanged = function accordionChanged() {
-    this.refresh();
-  };
-
-  var _MdCollapsible = MdCollapsible;
-  MdCollapsible = _aureliaDependencyInjection.inject(Element)(MdCollapsible) || MdCollapsible;
-  MdCollapsible = _aureliaTemplating.bindable({ name: 'popout', defaultValue: false })(MdCollapsible) || MdCollapsible;
-  MdCollapsible = _aureliaTemplating.bindable({ name: 'accordion', defaultValue: false })(MdCollapsible) || MdCollapsible;
-  MdCollapsible = _aureliaTemplating.customAttribute('md-collapsible')(MdCollapsible) || MdCollapsible;
-  return MdCollapsible;
-})();
-
-exports.MdCollapsible = MdCollapsible;
 
 var AttributeManager = (function () {
   function AttributeManager(element) {
@@ -1624,56 +1624,6 @@ var MdNavbar = (function () {
 
 exports.MdNavbar = MdNavbar;
 
-var MdPagination = (function () {
-  var _instanceInitializers17 = {};
-
-  _createDecoratedClass(MdPagination, [{
-    key: 'mdPages',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-    })],
-    initializer: function initializer() {
-      return 5;
-    },
-    enumerable: true
-  }, {
-    key: 'mdActivePage',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-    })],
-    initializer: function initializer() {
-      return 0;
-    },
-    enumerable: true
-  }], null, _instanceInitializers17);
-
-  function MdPagination(element) {
-    _classCallCheck(this, _MdPagination);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdPages', _instanceInitializers17);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdActivePage', _instanceInitializers17);
-
-    this.element = element;
-  }
-
-  MdPagination.prototype.bind = function bind() {
-    this.mdPages = parseInt(this.mdPages, 10);
-  };
-
-  MdPagination.prototype.setActivePage = function setActivePage(page) {
-    this.mdActivePage = page;
-    fireMaterializeEvent(this.element, 'page-changed', this.mdActivePage);
-  };
-
-  var _MdPagination = MdPagination;
-  MdPagination = _aureliaDependencyInjection.inject(Element)(MdPagination) || MdPagination;
-  MdPagination = _aureliaTemplating.customElement('md-pagination')(MdPagination) || MdPagination;
-  return MdPagination;
-})();
-
-exports.MdPagination = MdPagination;
-
 var MdParallax = (function () {
   function MdParallax(element) {
     _classCallCheck(this, _MdParallax);
@@ -1694,6 +1644,99 @@ var MdParallax = (function () {
 })();
 
 exports.MdParallax = MdParallax;
+
+var MdPagination = (function () {
+  var _instanceInitializers17 = {};
+
+  _createDecoratedClass(MdPagination, [{
+    key: 'mdActivePage',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+    })],
+    initializer: function initializer() {
+      return 1;
+    },
+    enumerable: true
+  }, {
+    key: 'mdPages',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+    })],
+    initializer: function initializer() {
+      return 5;
+    },
+    enumerable: true
+  }, {
+    key: 'mdShowFirstLast',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: function initializer() {
+      return true;
+    },
+    enumerable: true
+  }, {
+    key: 'mdShowPrevNext',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: function initializer() {
+      return true;
+    },
+    enumerable: true
+  }], null, _instanceInitializers17);
+
+  function MdPagination(element) {
+    _classCallCheck(this, _MdPagination);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdActivePage', _instanceInitializers17);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdPages', _instanceInitializers17);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdShowFirstLast', _instanceInitializers17);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdShowPrevNext', _instanceInitializers17);
+
+    this.element = element;
+  }
+
+  MdPagination.prototype.bind = function bind() {
+    this.mdPages = parseInt(this.mdPages, 10);
+    this.mdShowPrevNext = getBooleanFromAttributeValue(this.mdShowPrevNext);
+  };
+
+  MdPagination.prototype.setActivePage = function setActivePage(page) {
+    this.mdActivePage = page;
+    fireMaterializeEvent(this.element, 'page-changed', this.mdActivePage);
+  };
+
+  MdPagination.prototype.setFirstPage = function setFirstPage() {
+    if (this.mdActivePage > 1) {
+      this.setActivePage(1);
+    }
+  };
+
+  MdPagination.prototype.setLastPage = function setLastPage() {
+    if (this.mdActivePage < this.mdPages) {
+      this.setActivePage(this.mdPages);
+    }
+  };
+
+  MdPagination.prototype.setPreviousPage = function setPreviousPage() {
+    if (this.mdActivePage > 1) {
+      this.setActivePage(this.mdActivePage - 1);
+    }
+  };
+
+  MdPagination.prototype.setNextPage = function setNextPage() {
+    if (this.mdActivePage < this.mdPages) {
+      this.setActivePage(this.mdActivePage + 1);
+    }
+  };
+
+  var _MdPagination = MdPagination;
+  MdPagination = _aureliaDependencyInjection.inject(Element)(MdPagination) || MdPagination;
+  MdPagination = _aureliaTemplating.customElement('md-pagination')(MdPagination) || MdPagination;
+  return MdPagination;
+})();
+
+exports.MdPagination = MdPagination;
 
 var MdPushpin = (function () {
   var _instanceInitializers18 = {};
