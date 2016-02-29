@@ -15,6 +15,7 @@ export class ConfigBuilder {
       .useCarousel()
       .useCharacterCounter()
       .useCheckbox()
+      .useChip()
       .useCollapsible()
       .useColors()
       .useDatePicker()
@@ -73,6 +74,11 @@ export class ConfigBuilder {
 
   useCheckbox(): ConfigBuilder {
     this.globalResources.push('./checkbox/checkbox');
+    return this;
+  }
+
+  useChip(): ConfigBuilder {
+    this.globalResources.push('./chip/chip');
     return this;
   }
 
