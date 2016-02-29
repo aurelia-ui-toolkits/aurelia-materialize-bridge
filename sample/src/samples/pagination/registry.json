@@ -4,6 +4,10 @@
     "basic-use": {
       "route": ["", "basic-use"],
       "files": ["html"]
+    },
+    "events": {
+      "route": "",
+      "files": ["html", "js"]
     }
   }
 }
