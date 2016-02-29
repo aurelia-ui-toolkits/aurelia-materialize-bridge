@@ -4,6 +4,10 @@
     "basic-use": {
       "route": ["", "basic-use"],
       "files": ["html", "js"]
+    },
+    "circular": {
+      "route": "circular",
+      "files": ["html", "js"]
     }
   }
 }
