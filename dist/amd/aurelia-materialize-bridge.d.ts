@@ -26,6 +26,7 @@ declare module 'aurelia-materialize-bridge' {
     useCharacterCounter(): ConfigBuilder;
     useCard(): ConfigBuilder;
     useCheckbox(): ConfigBuilder;
+    useChip(): ConfigBuilder;
     
     /**
       * Use my control
@@ -40,6 +41,7 @@ declare module 'aurelia-materialize-bridge' {
     useInput(): ConfigBuilder;
     useModal(): ConfigBuilder;
     useNavbar(): ConfigBuilder;
+    usePagination(): ConfigBuilder;
     useParallax(): ConfigBuilder;
     usePushpin(): ConfigBuilder;
     useRadio(): ConfigBuilder;
@@ -121,6 +123,10 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
+  export class MdChip {
+    mdClose: any;
+    attached(): any;
+  }
   export class MdCheckbox {
     static id: any;
     mdChecked: any;
@@ -133,13 +139,6 @@ declare module 'aurelia-materialize-bridge' {
     mdCheckedChanged(newValue: any): any;
     mdDisabledChanged(newValue: any): any;
   }
-  export class MdCollapsible {
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-    refresh(): any;
-    accordionChanged(): any;
-  }
   
   /* eslint-enable */
   export class DarkenValueConverter {
@@ -147,6 +146,13 @@ declare module 'aurelia-materialize-bridge' {
   }
   export class LightenValueConverter {
     toView(value: any, steps: any): any;
+  }
+  export class MdCollapsible {
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    refresh(): any;
+    accordionChanged(): any;
   }
   
   /**
@@ -266,6 +272,13 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
     detached(): any;
+  }
+  export class MdPagination {
+    mdPages: any;
+    mdActivePage: any;
+    constructor(element: any);
+    bind(): any;
+    setActivePage(page: any): any;
   }
   export class MdParallax {
     constructor(element: any);

@@ -14,7 +14,7 @@ define(['exports'], function (exports) {
     }
 
     ConfigBuilder.prototype.useAll = function useAll() {
-      return this.useBadge().useBox().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().useParallax().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+      return this.useBadge().useBox().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().usePagination().useParallax().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
     };
 
     ConfigBuilder.prototype.useBadge = function useBadge() {
@@ -50,6 +50,11 @@ define(['exports'], function (exports) {
 
     ConfigBuilder.prototype.useCheckbox = function useCheckbox() {
       this.globalResources.push('./checkbox/checkbox');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useChip = function useChip() {
+      this.globalResources.push('./chip/chip');
       return this;
     };
 
@@ -100,6 +105,11 @@ define(['exports'], function (exports) {
 
     ConfigBuilder.prototype.useNavbar = function useNavbar() {
       this.globalResources.push('./navbar/navbar');
+      return this;
+    };
+
+    ConfigBuilder.prototype.usePagination = function usePagination() {
+      this.globalResources.push('./pagination/pagination');
       return this;
     };
 
