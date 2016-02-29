@@ -11,6 +11,7 @@ export function configure(aurelia) {
         .useCarousel()
         .useCharacterCounter()
         .useCheckbox()
+        .useChip()
         .useCollapsible()
         .useColors()
         .useDatePicker()
