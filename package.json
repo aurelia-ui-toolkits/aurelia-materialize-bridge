@@ -46,7 +46,6 @@
       "aurelia-path": "npm:aurelia-path@^1.0.0-beta.1.1.0",
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^2.0.3",
       "jquery": "components/jquery@^2.1.4",
       "polymer/mutationobservers": "^0.4.2",
       "text": "systemjs/plugin-text@^0.0.4"
