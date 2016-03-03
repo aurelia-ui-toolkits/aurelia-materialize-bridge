@@ -41,10 +41,12 @@ module.exports = function(config) {
 
     'babelPreprocessor': {
       options: {
-        loose: babelOptions.loose,
-        stage: babelOptions.stage,
-        optional: babelOptions.optional,
-        sourceMap: 'inline'
+        sourceMap: 'inline',
+        moduleIds: false,
+        optional: [
+          'es7.decorators',
+          'es7.classProperties'
+        ]
       }
     },
 
