@@ -19,7 +19,7 @@
     "Footer": { },
     "Navbar": { "status": "wip" },
     "Pagination": { "status": "done" },
-    "Preloader": { "moduleId": "progress", "status": "wip" },
+    "Preloader": { "moduleId": "progress", "status": "done" },
   },
   "Javascript": {
     "Collapsible": { "status": "wip" },
