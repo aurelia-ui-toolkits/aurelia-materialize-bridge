@@ -35,8 +35,6 @@ System.config({
     "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.1.1",
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.1.2",
     "babel": "npm:babel-core@5.8.35",
-    "babel-runtime": "npm:babel-runtime@5.8.35",
-    "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
     "google/code-prettify": "github:google/code-prettify@master",
@@ -205,9 +203,6 @@ System.config({
       "aurelia-path": "npm:aurelia-path@1.0.0-beta.1.1.1",
       "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.1.1"
     },
-    "npm:babel-runtime@5.8.35": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
     "npm:buffer@3.6.0": {
       "base64-js": "npm:base64-js@0.0.8",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
@@ -227,12 +222,6 @@ System.config({
     "npm:config-chain@1.1.10": {
       "ini": "npm:ini@1.3.4",
       "proto-list": "npm:proto-list@1.2.4"
-    },
-    "npm:core-js@1.2.6": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:core-util-is@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
