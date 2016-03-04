@@ -97,14 +97,6 @@ declare module 'aurelia-materialize-bridge' {
     disabledChanged(newValue: any): any;
     flatChanged(newValue: any): any;
   }
-  export class MdCard {
-    mdImage: any;
-    mdReveal: any;
-    mdSize: any;
-    mdTitle: any;
-    constructor(element: any);
-    attached(): any;
-  }
   
   //  @customElement('md-carousel-item')
   export class MdCarouselItem {
@@ -115,6 +107,14 @@ declare module 'aurelia-materialize-bridge' {
   }
   export class MdCarousel {
     mdSlider: any;
+    constructor(element: any);
+    attached(): any;
+  }
+  export class MdCard {
+    mdImage: any;
+    mdReveal: any;
+    mdSize: any;
+    mdTitle: any;
     constructor(element: any);
     attached(): any;
   }
@@ -300,6 +300,10 @@ declare module 'aurelia-materialize-bridge' {
     mdValue: any;
     constructor(element: any);
   }
+  
+  //  mdValueChanged(newValue, oldValue) {
+  //    console.log('mdValueChanged, newValue:', JSON.stringify(newValue), 'oldValue:', JSON.stringify(oldValue));
+  //  }
   export class MdPushpin {
     bottom: any;
     offset: any;

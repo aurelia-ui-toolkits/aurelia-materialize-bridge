@@ -385,31 +385,6 @@ export class MdButton {
   }
 }
 
-@customElement('md-card')
-@inject(Element)
-export class MdCard {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdImage = null;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdReveal = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneWay
-  }) mdSize = '';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdTitle;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
-  }
-}
-
 // @customElement('md-carousel-item')
 @inject(Element)
 export class MdCarouselItem {
@@ -449,6 +424,31 @@ export class MdCarousel {
     } else {
       $(this.element).carousel();
     }
+  }
+}
+
+@customElement('md-card')
+@inject(Element)
+export class MdCard {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdReveal = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdSize = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
 
@@ -1147,6 +1147,10 @@ export class MdProgress {
   constructor(element) {
     this.element = element;
   }
+
+  // mdValueChanged(newValue, oldValue) {
+  //   console.log('mdValueChanged, newValue:', JSON.stringify(newValue), 'oldValue:', JSON.stringify(oldValue));
+  // }
 }
 
 @customAttribute('md-pushpin')

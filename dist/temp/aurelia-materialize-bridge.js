@@ -451,8 +451,92 @@ var MdButton = (function () {
 
 exports.MdButton = MdButton;
 
-var MdCard = (function () {
+var MdCarouselItem = (function () {
   var _instanceInitializers4 = {};
+
+  _createDecoratedClass(MdCarouselItem, [{
+    key: 'mdHref',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return '';
+    },
+    enumerable: true
+  }, {
+    key: 'mdImage',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+    })],
+    initializer: function initializer() {
+      return '';
+    },
+    enumerable: true
+  }], null, _instanceInitializers4);
+
+  function MdCarouselItem(element) {
+    _classCallCheck(this, _MdCarouselItem);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdHref', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers4);
+
+    this.element = element;
+  }
+
+  MdCarouselItem.prototype.attached = function attached() {};
+
+  var _MdCarouselItem = MdCarouselItem;
+  MdCarouselItem = _aureliaDependencyInjection.inject(Element)(MdCarouselItem) || MdCarouselItem;
+  return MdCarouselItem;
+})();
+
+exports.MdCarouselItem = MdCarouselItem;
+
+var MdCarousel = (function () {
+  var _instanceInitializers5 = {};
+
+  _createDecoratedClass(MdCarousel, [{
+    key: 'mdSlider',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }], null, _instanceInitializers5);
+
+  function MdCarousel(element) {
+    _classCallCheck(this, _MdCarousel);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdSlider', _instanceInitializers5);
+
+    this.element = element;
+  }
+
+  MdCarousel.prototype.attached = function attached() {
+    if (getBooleanFromAttributeValue(this.mdSlider)) {
+      this.element.classList.add('carousel-slider');
+    }
+
+    if (getBooleanFromAttributeValue(this.mdSlider)) {
+      $(this.element).carousel({ full_width: true });
+    } else {
+      $(this.element).carousel();
+    }
+  };
+
+  var _MdCarousel = MdCarousel;
+  MdCarousel = _aureliaDependencyInjection.inject(Element)(MdCarousel) || MdCarousel;
+  MdCarousel = _aureliaTemplating.customElement('md-carousel')(MdCarousel) || MdCarousel;
+  return MdCarousel;
+})();
+
+exports.MdCarousel = MdCarousel;
+
+var MdCard = (function () {
+  var _instanceInitializers6 = {};
 
   _createDecoratedClass(MdCard, [{
     key: 'mdImage',
@@ -488,18 +572,18 @@ var MdCard = (function () {
     })],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers4);
+  }], null, _instanceInitializers6);
 
   function MdCard(element) {
     _classCallCheck(this, _MdCard);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdReveal', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'mdReveal', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdSize', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'mdSize', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers6);
 
     this.element = element;
   }
@@ -515,90 +599,6 @@ var MdCard = (function () {
 })();
 
 exports.MdCard = MdCard;
-
-var MdCarouselItem = (function () {
-  var _instanceInitializers5 = {};
-
-  _createDecoratedClass(MdCarouselItem, [{
-    key: 'mdHref',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-    })],
-    initializer: function initializer() {
-      return '';
-    },
-    enumerable: true
-  }, {
-    key: 'mdImage',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-    })],
-    initializer: function initializer() {
-      return '';
-    },
-    enumerable: true
-  }], null, _instanceInitializers5);
-
-  function MdCarouselItem(element) {
-    _classCallCheck(this, _MdCarouselItem);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdHref', _instanceInitializers5);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers5);
-
-    this.element = element;
-  }
-
-  MdCarouselItem.prototype.attached = function attached() {};
-
-  var _MdCarouselItem = MdCarouselItem;
-  MdCarouselItem = _aureliaDependencyInjection.inject(Element)(MdCarouselItem) || MdCarouselItem;
-  return MdCarouselItem;
-})();
-
-exports.MdCarouselItem = MdCarouselItem;
-
-var MdCarousel = (function () {
-  var _instanceInitializers6 = {};
-
-  _createDecoratedClass(MdCarousel, [{
-    key: 'mdSlider',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-    })],
-    initializer: function initializer() {
-      return false;
-    },
-    enumerable: true
-  }], null, _instanceInitializers6);
-
-  function MdCarousel(element) {
-    _classCallCheck(this, _MdCarousel);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdSlider', _instanceInitializers6);
-
-    this.element = element;
-  }
-
-  MdCarousel.prototype.attached = function attached() {
-    if (getBooleanFromAttributeValue(this.mdSlider)) {
-      this.element.classList.add('carousel-slider');
-    }
-
-    if (getBooleanFromAttributeValue(this.mdSlider)) {
-      $(this.element).carousel({ full_width: true });
-    } else {
-      $(this.element).carousel();
-    }
-  };
-
-  var _MdCarousel = MdCarousel;
-  MdCarousel = _aureliaDependencyInjection.inject(Element)(MdCarousel) || MdCarousel;
-  MdCarousel = _aureliaTemplating.customElement('md-carousel')(MdCarousel) || MdCarousel;
-  return MdCarousel;
-})();
-
-exports.MdCarousel = MdCarousel;
 
 var MdCharCounter = (function () {
   var _instanceInitializers7 = {};

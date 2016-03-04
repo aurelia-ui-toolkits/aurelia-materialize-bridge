@@ -16,4 +16,8 @@ export class MdProgress {
   constructor(element) {
     this.element = element;
   }
+
+  // mdValueChanged(newValue, oldValue) {
+  //   console.log('mdValueChanged, newValue:', JSON.stringify(newValue), 'oldValue:', JSON.stringify(oldValue));
+  // }
 }
