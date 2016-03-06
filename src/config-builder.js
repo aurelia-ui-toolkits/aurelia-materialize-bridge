@@ -15,6 +15,7 @@ export class ConfigBuilder {
       .useCarousel()
       .useCharacterCounter()
       .useCheckbox()
+      .useChip()
       .useCollapsible()
       .useColors()
       .useDatePicker()
@@ -24,7 +25,9 @@ export class ConfigBuilder {
       .useInput()
       .useModal()
       .useNavbar()
+      .usePagination()
       .useParallax()
+      .useProgress()
       .usePushpin()
       .useRadio()
       .useRange()
@@ -73,6 +76,11 @@ export class ConfigBuilder {
 
   useCheckbox(): ConfigBuilder {
     this.globalResources.push('./checkbox/checkbox');
+    return this;
+  }
+
+  useChip(): ConfigBuilder {
+    this.globalResources.push('./chip/chip');
     return this;
   }
 
@@ -130,8 +138,18 @@ export class ConfigBuilder {
     return this;
   }
 
+  usePagination(): ConfigBuilder {
+    this.globalResources.push('./pagination/pagination');
+    return this;
+  }
+
   useParallax(): ConfigBuilder {
     this.globalResources.push('./parallax/parallax');
+    return this;
+  }
+
+  useProgress(): ConfigBuilder {
+    this.globalResources.push('./progress/progress');
     return this;
   }
 

@@ -7,3 +7,15 @@ After Aurelia takes control, it replaces the content of its container (meaning `
 <br/>
 
 The reference to ```hiddenDiv``` (a variable) is essentially broken once Aurelia kicks in. I'm not sure if there is any good workaround apart from creating such a div manually and outside of Aurelia scope.
+
+<br/>
+
+We've added such a div in this catalog app:
+
+```html
+<body>
+  <div class="hiddendiv"></div>
+  <div aurelia-app="main">
+  </div>
+</body>
+```

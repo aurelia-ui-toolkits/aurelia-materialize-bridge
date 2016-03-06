@@ -7,7 +7,7 @@ The **[Project status](#/project-status)** page is a temporary structure designe
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/XbBZp40.png"></img>
+  <img src="http://i.imgur.com/XbBZp40.png" class="responsive-img"></img>
  <br><br>
 Image 1
 </p>

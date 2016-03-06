@@ -20,6 +20,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       initializer: null,
       enumerable: true
     }, {
+      key: 'mdDisabled',
+      decorators: [_aureliaTemplating.bindable()],
+      initializer: null,
+      enumerable: true
+    }, {
       key: 'mdLabelOff',
       decorators: [_aureliaTemplating.bindable()],
       initializer: function initializer() {
@@ -40,6 +45,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
       _defineDecoratedPropertyDescriptor(this, 'mdChecked', _instanceInitializers);
 
+      _defineDecoratedPropertyDescriptor(this, 'mdDisabled', _instanceInitializers);
+
       _defineDecoratedPropertyDescriptor(this, 'mdLabelOff', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'mdLabelOn', _instanceInitializers);
@@ -50,6 +57,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
     MdSwitch.prototype.attached = function attached() {
       this.checkbox.checked = _commonAttributes.getBooleanFromAttributeValue(this.mdChecked);
+      if (_commonAttributes.getBooleanFromAttributeValue(this.mdDisabled)) {
+        this.checkbox.disabled = true;
+      }
       this.checkbox.addEventListener('change', this.handleChange);
     };
 

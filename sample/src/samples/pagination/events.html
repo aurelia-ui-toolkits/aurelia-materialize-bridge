@@ -1,0 +1,17 @@
+<template>
+  <div class="row">
+    <div class="col s12 m8">
+      <div>
+        <md-pagination md-on-page-changed.delegate="onPageChanged($event)" md-pages="4" md-active-page.bind="activePage"></md-pagination>
+      </div>
+      <div>
+        active page: ${activePage}
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <md-card md-title="Console log">
+        <logger class="z-depth-1" view-model.ref="logger"></logger>
+      </md-card>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,19 @@
+<template>
+  <ul class="pagination">
+    <template if.bind="mdShowFirstLast">
+      <li md-waves click.delegate="setFirstPage()" class="${ mdActivePage === 1 ? 'disabled' : '' }"><a><i class="material-icons">first_page</i></a></li>
+    </template>
+    <template if.bind="mdShowPrevNext">
+      <li md-waves click.delegate="setPreviousPage()" class="${ mdActivePage === 1 ? 'disabled' : '' }"><a><i class="material-icons">chevron_left</i></a></li>
+    </template>
+    <li md-waves click.delegate="setActivePage(p+1)" repeat.for="p of mdPages" class="${ p+1 === mdActivePage ? 'active' : ''}">
+      <a>${p+1}</a>
+    </li>
+    <template if.bind="mdShowPrevNext">
+      <li md-waves click.delegate="setNextPage()" class="${ mdActivePage === mdPages ? 'disabled' : '' }"><a><i class="material-icons">chevron_right</i></a></li>
+    </template>
+    <template if.bind="mdShowFirstLast">
+      <li md-waves click.delegate="setLastPage()" class="${ mdActivePage === mdPages ? 'disabled' : '' }"><a><i class="material-icons">last_page</i></a></li>
+    </template>
+  </ul>
+</template>

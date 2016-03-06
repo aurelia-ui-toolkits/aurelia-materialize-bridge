@@ -141,6 +141,20 @@
     color: ${mdAccentColor};
   }
 
+  /* pagination */
+  md-pagination .pagination li.active {
+    background-color: ${mdPrimaryColor}
+  }
+
+  /* progress */
+  md-progress .progress {
+    background-color: ${mdAccentColor | lighten:2};
+  }
+
+  md-progress .progress .determinate, md-progress .progress .indeterminate {
+    background-color: ${mdAccentColor};
+  }
+
   /* radio input */
   md-radio input[type="radio"]:checked + label:after {
     border: 2px solid ${mdAccentColor};

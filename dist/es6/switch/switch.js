@@ -9,6 +9,7 @@ export class MdSwitch {
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) mdChecked;
+  @bindable() mdDisabled;
   @bindable() mdLabelOff = 'Off';
   @bindable() mdLabelOn = 'On';
 
@@ -19,6 +20,9 @@ export class MdSwitch {
 
   attached() {
     this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
+    if (getBooleanFromAttributeValue(this.mdDisabled)) {
+      this.checkbox.disabled = true;
+    }
     this.checkbox.addEventListener('change', this.handleChange);
   }
 

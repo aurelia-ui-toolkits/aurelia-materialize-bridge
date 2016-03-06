@@ -8,20 +8,29 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useBadge()
       .useBox()
       .useButton()
       .useCard()
       .useCarousel()
+      .useCharacterCounter()
       .useCheckbox()
+      .useChip()
       .useCollapsible()
       .useColors()
       .useDatePicker()
       .useDropdown()
       .useFab()
+      .useFile()
+      .useInput()
       .useModal()
       .useNavbar()
+      .usePagination()
       .useParallax()
+      .useProgress()
       .usePushpin()
+      .useRadio()
+      .useRange()
       .useScrollfire()
       .useSelect()
       .useSidenav()
@@ -32,6 +41,11 @@ export class ConfigBuilder {
       .useTransitions()
       .useWaves()
       .useWell();
+  }
+
+  useBadge(): ConfigBuilder {
+    this.globalResources.push('./badge/badge');
+    return this;
   }
 
   useBox(): ConfigBuilder {
@@ -50,6 +64,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useCharacterCounter(): ConfigBuilder {
+    this.globalResources.push('./char-counter/char-counter');
+    return this;
+  }
+
   useCard(): ConfigBuilder {
     this.globalResources.push('./card/card');
     return this;
@@ -57,6 +76,11 @@ export class ConfigBuilder {
 
   useCheckbox(): ConfigBuilder {
     this.globalResources.push('./checkbox/checkbox');
+    return this;
+  }
+
+  useChip(): ConfigBuilder {
+    this.globalResources.push('./chip/chip');
     return this;
   }
 
@@ -94,6 +118,16 @@ export class ConfigBuilder {
     return this;
   }
 
+  useFile() : ConfigBuilder {
+    this.globalResources.push('./file/file');
+    return this;
+  }
+
+  useInput() : ConfigBuilder {
+    this.globalResources.push('./input/input');
+    return this;
+  }
+
   useModal(): ConfigBuilder {
     this.globalResources.push('./modal/modal-trigger');
     return this;
@@ -104,13 +138,33 @@ export class ConfigBuilder {
     return this;
   }
 
+  usePagination(): ConfigBuilder {
+    this.globalResources.push('./pagination/pagination');
+    return this;
+  }
+
   useParallax(): ConfigBuilder {
     this.globalResources.push('./parallax/parallax');
     return this;
   }
 
+  useProgress(): ConfigBuilder {
+    this.globalResources.push('./progress/progress');
+    return this;
+  }
+
   usePushpin(): ConfigBuilder {
     this.globalResources.push('./pushpin/pushpin');
+    return this;
+  }
+
+  useRadio(): ConfigBuilder {
+    this.globalResources.push('./radio/radio');
+    return this;
+  }
+
+  useRange(): ConfigBuilder {
+    this.globalResources.push('./range/range');
     return this;
   }
 

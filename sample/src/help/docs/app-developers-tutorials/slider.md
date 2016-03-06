@@ -31,7 +31,7 @@ Here is this view rendered by the application associated with this tutorial.
 <br><br>
 
 <p align=center>
-  <img src="http://i.imgur.com/uH0kQCn.png"></img>
+  <img src="http://i.imgur.com/uH0kQCn.png" class="responsive-img"></img>
  <br><br>
 Image 1
 </p>

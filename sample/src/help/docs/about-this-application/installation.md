@@ -14,7 +14,7 @@ The screen shot below depicts the Aurelia-Materialize bridge **[Installation pag
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/KiVWe7Z.png"></img>
+  <img src="http://i.imgur.com/KiVWe7Z.png" class="responsive-img"></img>
  <br><br>
 Image 1
 </p>

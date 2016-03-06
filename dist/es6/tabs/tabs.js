@@ -8,9 +8,11 @@ import { AttributeManager } from '../common/attributeManager';
 export class MdTabs {
   constructor(element) {
     this.element = element;
+    this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
     this.attributeManager = new AttributeManager(this.element);
     this.tabAttributeManagers = [];
   }
+
   attached() {
     this.attributeManager.addClasses('tabs');
 
@@ -25,9 +27,10 @@ export class MdTabs {
 
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
-      a.addEventListener('click', this.fireTabSelectedEvent.bind(this));
+      a.addEventListener('click', this.fireTabSelectedEvent);
     });
   }
+
   detached() {
     this.attributeManager.removeClasses('tabs');
 
@@ -39,11 +42,43 @@ export class MdTabs {
     this.tabAttributeManagers = [];
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
-      a.removeEventListener('click', this.fireTabSelectedEvent.bind(this));
+      a.removeEventListener('click', this.fireTabSelectedEvent);
     });
   }
+
   fireTabSelectedEvent(e) {
-    let href = $(e.target).attr('href');
+    // fix Materialize tab indicator (see: https://github.com/Dogfalo/materialize/pull/2809)
+    // happens only when the indicator animation is finished
+    // Waves animation duration: 300ms, delay: 90ms
+    window.setTimeout(() => {
+      let indicatorRight = $('.indicator', this.element).css('right');
+      if (indicatorRight.indexOf('-') === 0) {
+        $('.indicator', this.element).css('right', 0);
+      }
+    }, 310);
+    let href = e.target.getAttribute('href');
     fireMaterializeEvent(this.element, 'selected', href);
+  }
+
+  selectTab(id) {
+    $(this.element).tabs('select_tab', id);
+    this.fireTabSelectedEvent({
+      target: { getAttribute: () => `#${id}` }
+    });
+  }
+
+  // FIXME: probably bad
+  get selectedTab() {
+    let children = this.element.querySelectorAll('li.tab a');
+    let index = -1;
+    let href = null;
+    [].forEach.call(children, (a, i) => {
+      if (a.classList.contains('active')) {
+        index = i;
+        href = a.href;
+        return;
+      }
+    });
+    return { href, index };
   }
 }

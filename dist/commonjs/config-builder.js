@@ -13,7 +13,12 @@ var ConfigBuilder = (function () {
   }
 
   ConfigBuilder.prototype.useAll = function useAll() {
-    return this.useBox().useButton().useCard().useCarousel().useCheckbox().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useModal().useNavbar().useParallax().usePushpin().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+    return this.useBadge().useBox().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+  };
+
+  ConfigBuilder.prototype.useBadge = function useBadge() {
+    this.globalResources.push('./badge/badge');
+    return this;
   };
 
   ConfigBuilder.prototype.useBox = function useBox() {
@@ -32,6 +37,11 @@ var ConfigBuilder = (function () {
     return this;
   };
 
+  ConfigBuilder.prototype.useCharacterCounter = function useCharacterCounter() {
+    this.globalResources.push('./char-counter/char-counter');
+    return this;
+  };
+
   ConfigBuilder.prototype.useCard = function useCard() {
     this.globalResources.push('./card/card');
     return this;
@@ -39,6 +49,11 @@ var ConfigBuilder = (function () {
 
   ConfigBuilder.prototype.useCheckbox = function useCheckbox() {
     this.globalResources.push('./checkbox/checkbox');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useChip = function useChip() {
+    this.globalResources.push('./chip/chip');
     return this;
   };
 
@@ -72,6 +87,16 @@ var ConfigBuilder = (function () {
     return this;
   };
 
+  ConfigBuilder.prototype.useFile = function useFile() {
+    this.globalResources.push('./file/file');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useInput = function useInput() {
+    this.globalResources.push('./input/input');
+    return this;
+  };
+
   ConfigBuilder.prototype.useModal = function useModal() {
     this.globalResources.push('./modal/modal-trigger');
     return this;
@@ -82,13 +107,33 @@ var ConfigBuilder = (function () {
     return this;
   };
 
+  ConfigBuilder.prototype.usePagination = function usePagination() {
+    this.globalResources.push('./pagination/pagination');
+    return this;
+  };
+
   ConfigBuilder.prototype.useParallax = function useParallax() {
     this.globalResources.push('./parallax/parallax');
     return this;
   };
 
+  ConfigBuilder.prototype.useProgress = function useProgress() {
+    this.globalResources.push('./progress/progress');
+    return this;
+  };
+
   ConfigBuilder.prototype.usePushpin = function usePushpin() {
     this.globalResources.push('./pushpin/pushpin');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useRadio = function useRadio() {
+    this.globalResources.push('./radio/radio');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useRange = function useRange() {
+    this.globalResources.push('./range/range');
     return this;
   };
 

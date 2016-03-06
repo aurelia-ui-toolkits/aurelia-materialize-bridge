@@ -8,7 +8,7 @@ Clicking on the **Color switcher** below the main navigation bar opens a color s
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/2Gt7K7x.png"></img>
+  <img src="http://i.imgur.com/2Gt7K7x.png" class="responsive-img"></img>
  <br><br>
 </p>
 
@@ -23,6 +23,6 @@ Selecting a primary and accent color results of the application and all elements
 The button sample page rendered with Polymer Paper colors (indigo/pink) selected.
 
 <p align=center>
-<img src="http://i.imgur.com/ee9PTMf.png"></img>
+<img src="http://i.imgur.com/ee9PTMf.png" class="responsive-img"></img>
 <br><br>
 </p>

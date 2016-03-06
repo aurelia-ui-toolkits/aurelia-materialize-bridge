@@ -7,4 +7,18 @@
 
 Aurelia components for http://materializecss.com/
 
-## This project is under development and not ready to be used in any way
+### NOTE: This plugin is in active development and we would love to hear your feedback
+
+### [Component catalog (demos)](http://aurelia-ui-toolkits.github.io/demo-materialize/)
+
+## Installing the plugin
+[![Installation](http://dabuttonfactory.com/button.png?t=Installation+wizard&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)](http://aurelia-ui-toolkits.github.io/demo-materialize/#/installation)
+
+## Running tests
+1. `npm install`
+2. `jspm install`
+3. `gulp test`
+
+
+## Contributing
+Do you want to help us develop the `aurelia-materialize-bridge`? Great! We would love for you to send us pull requests. For more information, please check [contributing.md](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/blob/master/CONTRIBUTING.md) - and if these instructions look "too terse" here is a **[great set set of lessons](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**

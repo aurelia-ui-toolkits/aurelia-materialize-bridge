@@ -1,3 +1,4 @@
+import './setup';
 // import {TaskQueue} from 'aurelia-task-queue';
 import {initialize} from 'aurelia-pal-browser';
 import {MdButton} from 'src/button/button';

@@ -45,6 +45,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     MdDatePicker.prototype.attached = function attached() {
       this.element.classList.add('date-picker');
       var options = {
+        selectMonths: true,
+        selectYears: 15,
         onClose: function onClose() {
           $(document.activeElement).blur();
         }
@@ -69,7 +71,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     };
 
     MdDatePicker.prototype.onClose = function onClose() {
-      this.value = this.picker.get('select').obj;
+      var selected = this.picker.get('select');
+      this.value = selected ? selected.obj : null;
     };
 
     MdDatePicker.prototype.onSet = function onSet(value) {};

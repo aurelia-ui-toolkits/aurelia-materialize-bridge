@@ -25,13 +25,13 @@ doc .panel-bar {
 }
 
 .left-panel {
-  float: left;
+  /*float: left;*/
   height: 100%;
   overflow: auto;
 }
 
 .right-panel {
-  float: right;
+  /*float: right;*/
   height: 100%;
   overflow: auto;
 }

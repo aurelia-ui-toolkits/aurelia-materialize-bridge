@@ -1,7 +1,7 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-binding'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-binding', '../common/attributes'], function (_export) {
   'use strict';
 
-  var bindable, customElement, inject, bindingMode, MdCard;
+  var bindable, customElement, inject, bindingMode, getBooleanFromAttributeValue, MdCard;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -17,6 +17,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaBinding) {
       bindingMode = _aureliaBinding.bindingMode;
+    }, function (_commonAttributes) {
+      getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
       MdCard = (function () {
@@ -24,9 +26,29 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
 
         _createDecoratedClass(MdCard, [{
           key: 'mdImage',
-          decorators: [bindable()],
+          decorators: [bindable({
+            defaultBindingMode: bindingMode.oneTime
+          })],
           initializer: function initializer() {
             return null;
+          },
+          enumerable: true
+        }, {
+          key: 'mdReveal',
+          decorators: [bindable({
+            defaultBindingMode: bindingMode.oneTime
+          })],
+          initializer: function initializer() {
+            return false;
+          },
+          enumerable: true
+        }, {
+          key: 'mdSize',
+          decorators: [bindable({
+            defaultBindingMode: bindingMode.oneWay
+          })],
+          initializer: function initializer() {
+            return '';
           },
           enumerable: true
         }, {
@@ -43,12 +65,18 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
 
           _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers);
 
+          _defineDecoratedPropertyDescriptor(this, 'mdReveal', _instanceInitializers);
+
+          _defineDecoratedPropertyDescriptor(this, 'mdSize', _instanceInitializers);
+
           _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers);
 
           this.element = element;
         }
 
-        MdCard.prototype.attached = function attached() {};
+        MdCard.prototype.attached = function attached() {
+          this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
+        };
 
         var _MdCard = MdCard;
         MdCard = inject(Element)(MdCard) || MdCard;

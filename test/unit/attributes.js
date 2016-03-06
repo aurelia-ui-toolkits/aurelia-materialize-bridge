@@ -1,3 +1,4 @@
+import './setup';
 import {getBooleanFromAttributeValue} from 'src/common/attributes';
 
 describe('Attributes', () => {
