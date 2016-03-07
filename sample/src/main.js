@@ -5,6 +5,7 @@ export function configure(aurelia) {
     .plugin('aurelia-materialize-bridge', plugin => {
       plugin.useClickCounter()
         .useBadge()
+        .useBreadcrumbs()
         .useBox()
         .useButton()
         .useCard()
