@@ -140,6 +140,13 @@
   md-input .input-field input[type=password]:focus + label {
     color: ${mdAccentColor};
   }
+  md-input textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid ${mdAccentColor};
+    box-shadow: 0 1px 0 0 ${mdAccentColor};
+  }
+  md-input textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: ${mdAccentColor}
+  }
 
   /* pagination */
   md-pagination .pagination li.active {

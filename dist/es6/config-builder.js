@@ -10,6 +10,7 @@ export class ConfigBuilder {
     return this
       .useBadge()
       .useBox()
+      .useBreadcrumbs()
       .useButton()
       .useCard()
       .useCarousel()
@@ -50,6 +51,11 @@ export class ConfigBuilder {
 
   useBox(): ConfigBuilder {
     this.globalResources.push('./box/box');
+    return this;
+  }
+
+  useBreadcrumbs(): ConfigBuilder {
+    this.globalResources.push('./breadcrumbs/breadcrumbs');
     return this;
   }
 

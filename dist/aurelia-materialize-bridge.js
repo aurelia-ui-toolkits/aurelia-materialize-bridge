@@ -4,6 +4,7 @@ import {Aurelia} from 'aurelia-framework';
 import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
 import {bindingMode,ObserverLocator} from 'aurelia-binding';
+import {Router} from 'aurelia-router';
 import {getLogger} from 'aurelia-logging';
 import {TaskQueue} from 'aurelia-task-queue';
 
@@ -27,6 +28,7 @@ export class ConfigBuilder {
     return this
       .useBadge()
       .useBox()
+      .useBreadcrumbs()
       .useButton()
       .useCard()
       .useCarousel()
@@ -67,6 +69,11 @@ export class ConfigBuilder {
 
   useBox(): ConfigBuilder {
     this.globalResources.push('./box/box');
+    return this;
+  }
+
+  useBreadcrumbs(): ConfigBuilder {
+    this.globalResources.push('./breadcrumbs/breadcrumbs');
     return this;
   }
 
@@ -323,6 +330,36 @@ export class MdBox {
   }
 }
 
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+
+@customElement('md-breadcrumbs')
+@inject(Element, Router)
+export class MdBreadcrumbs {
+  constructor(element, router) {
+    this.element = element;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  navigate(navigationInstruction) {
+    // this.router.navigateToRoute(navigationInstruction.config.name);
+  }
+}
+
+export class InstructionFilterValueConverter {
+  toView(navigationInstructions) {
+    return navigationInstructions.filter(i => {
+      let result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
+  }
+}
+
 @customAttribute('md-button')
 @inject(Element)
 export class MdButton {
@@ -385,6 +422,31 @@ export class MdButton {
   }
 }
 
+@customElement('md-card')
+@inject(Element)
+export class MdCard {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdReveal = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdSize = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
+  }
+}
+
 // @customElement('md-carousel-item')
 @inject(Element)
 export class MdCarouselItem {
@@ -424,31 +486,6 @@ export class MdCarousel {
     } else {
       $(this.element).carousel();
     }
-  }
-}
-
-@customElement('md-card')
-@inject(Element)
-export class MdCard {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdImage = null;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdReveal = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneWay
-  }) mdSize = '';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdTitle;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
 
@@ -968,7 +1005,7 @@ export class MdInputUpdateService {
     this.log.debug('update called');
     if (!this._updateCalled) {
       this._updateCalled = true;
-      this.taskQueue.queueMicroTask(this.materializeUpdate.bind(this));
+      this.taskQueue.queueTask(this.materializeUpdate.bind(this));
     }
   }
 }

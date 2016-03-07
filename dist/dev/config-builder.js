@@ -17,7 +17,7 @@ System.register([], function (_export) {
         }
 
         ConfigBuilder.prototype.useAll = function useAll() {
-          return this.useBadge().useBox().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+          return this.useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
         };
 
         ConfigBuilder.prototype.useBadge = function useBadge() {
@@ -27,6 +27,11 @@ System.register([], function (_export) {
 
         ConfigBuilder.prototype.useBox = function useBox() {
           this.globalResources.push('./box/box');
+          return this;
+        };
+
+        ConfigBuilder.prototype.useBreadcrumbs = function useBreadcrumbs() {
+          this.globalResources.push('./breadcrumbs/breadcrumbs');
           return this;
         };
 

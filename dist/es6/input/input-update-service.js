@@ -20,7 +20,7 @@ export class MdInputUpdateService {
     this.log.debug('update called');
     if (!this._updateCalled) {
       this._updateCalled = true;
-      this.taskQueue.queueMicroTask(this.materializeUpdate.bind(this));
+      this.taskQueue.queueTask(this.materializeUpdate.bind(this));
     }
   }
 }

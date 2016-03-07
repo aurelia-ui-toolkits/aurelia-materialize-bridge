@@ -5,6 +5,7 @@ declare module 'aurelia-materialize-bridge' {
   import { bindable, customAttribute, customElement, inlineView }  from 'aurelia-templating';
   import { inject }  from 'aurelia-dependency-injection';
   import { bindingMode, ObserverLocator }  from 'aurelia-binding';
+  import { Router }  from 'aurelia-router';
   import { getLogger }  from 'aurelia-logging';
   import { TaskQueue }  from 'aurelia-task-queue';
   export class ClickCounter {
@@ -21,6 +22,7 @@ declare module 'aurelia-materialize-bridge' {
     useAll(): ConfigBuilder;
     useBadge(): ConfigBuilder;
     useBox(): ConfigBuilder;
+    useBreadcrumbs(): ConfigBuilder;
     useButton(): ConfigBuilder;
     useCarousel(): ConfigBuilder;
     useCharacterCounter(): ConfigBuilder;
@@ -86,6 +88,17 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
+  
+  //  taken from: https://github.com/heruan/aurelia-breadcrumbs
+  export class MdBreadcrumbs {
+    constructor(element: any, router: any);
+    navigate(navigationInstruction: any): any;
+  }
+  
+  //  this.router.navigateToRoute(navigationInstruction.config.name);
+  export class InstructionFilterValueConverter {
+    toView(navigationInstructions: any): any;
+  }
   export class MdButton {
     disabled: any;
     flat: any;
@@ -97,6 +110,14 @@ declare module 'aurelia-materialize-bridge' {
     disabledChanged(newValue: any): any;
     flatChanged(newValue: any): any;
   }
+  export class MdCard {
+    mdImage: any;
+    mdReveal: any;
+    mdSize: any;
+    mdTitle: any;
+    constructor(element: any);
+    attached(): any;
+  }
   
   //  @customElement('md-carousel-item')
   export class MdCarouselItem {
@@ -107,14 +128,6 @@ declare module 'aurelia-materialize-bridge' {
   }
   export class MdCarousel {
     mdSlider: any;
-    constructor(element: any);
-    attached(): any;
-  }
-  export class MdCard {
-    mdImage: any;
-    mdReveal: any;
-    mdSize: any;
-    mdTitle: any;
     constructor(element: any);
     attached(): any;
   }

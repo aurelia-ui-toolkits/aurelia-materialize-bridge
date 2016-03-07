@@ -31,6 +31,8 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaBinding = require('aurelia-binding');
 
+var _aureliaRouter = require('aurelia-router');
+
 var _aureliaTaskQueue = require('aurelia-task-queue');
 
 var ClickCounter = (function () {
@@ -58,7 +60,7 @@ var ConfigBuilder = (function () {
   }
 
   ConfigBuilder.prototype.useAll = function useAll() {
-    return this.useBadge().useBox().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+    return this.useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
   };
 
   ConfigBuilder.prototype.useBadge = function useBadge() {
@@ -68,6 +70,11 @@ var ConfigBuilder = (function () {
 
   ConfigBuilder.prototype.useBox = function useBox() {
     this.globalResources.push('./box/box');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useBreadcrumbs = function useBreadcrumbs() {
+    this.globalResources.push('./breadcrumbs/breadcrumbs');
     return this;
   };
 
@@ -347,6 +354,47 @@ var MdBox = (function () {
 
 exports.MdBox = MdBox;
 
+var MdBreadcrumbs = (function () {
+  function MdBreadcrumbs(element, router) {
+    _classCallCheck(this, _MdBreadcrumbs);
+
+    this.element = element;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {};
+
+  var _MdBreadcrumbs = MdBreadcrumbs;
+  MdBreadcrumbs = _aureliaDependencyInjection.inject(Element, _aureliaRouter.Router)(MdBreadcrumbs) || MdBreadcrumbs;
+  MdBreadcrumbs = _aureliaTemplating.customElement('md-breadcrumbs')(MdBreadcrumbs) || MdBreadcrumbs;
+  return MdBreadcrumbs;
+})();
+
+exports.MdBreadcrumbs = MdBreadcrumbs;
+
+var InstructionFilterValueConverter = (function () {
+  function InstructionFilterValueConverter() {
+    _classCallCheck(this, InstructionFilterValueConverter);
+  }
+
+  InstructionFilterValueConverter.prototype.toView = function toView(navigationInstructions) {
+    return navigationInstructions.filter(function (i) {
+      var result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
+  };
+
+  return InstructionFilterValueConverter;
+})();
+
+exports.InstructionFilterValueConverter = InstructionFilterValueConverter;
+
 var MdButton = (function () {
   var _instanceInitializers3 = {};
 
@@ -451,92 +499,8 @@ var MdButton = (function () {
 
 exports.MdButton = MdButton;
 
-var MdCarouselItem = (function () {
-  var _instanceInitializers4 = {};
-
-  _createDecoratedClass(MdCarouselItem, [{
-    key: 'mdHref',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-    })],
-    initializer: function initializer() {
-      return '';
-    },
-    enumerable: true
-  }, {
-    key: 'mdImage',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-    })],
-    initializer: function initializer() {
-      return '';
-    },
-    enumerable: true
-  }], null, _instanceInitializers4);
-
-  function MdCarouselItem(element) {
-    _classCallCheck(this, _MdCarouselItem);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdHref', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers4);
-
-    this.element = element;
-  }
-
-  MdCarouselItem.prototype.attached = function attached() {};
-
-  var _MdCarouselItem = MdCarouselItem;
-  MdCarouselItem = _aureliaDependencyInjection.inject(Element)(MdCarouselItem) || MdCarouselItem;
-  return MdCarouselItem;
-})();
-
-exports.MdCarouselItem = MdCarouselItem;
-
-var MdCarousel = (function () {
-  var _instanceInitializers5 = {};
-
-  _createDecoratedClass(MdCarousel, [{
-    key: 'mdSlider',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-    })],
-    initializer: function initializer() {
-      return false;
-    },
-    enumerable: true
-  }], null, _instanceInitializers5);
-
-  function MdCarousel(element) {
-    _classCallCheck(this, _MdCarousel);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdSlider', _instanceInitializers5);
-
-    this.element = element;
-  }
-
-  MdCarousel.prototype.attached = function attached() {
-    if (getBooleanFromAttributeValue(this.mdSlider)) {
-      this.element.classList.add('carousel-slider');
-    }
-
-    if (getBooleanFromAttributeValue(this.mdSlider)) {
-      $(this.element).carousel({ full_width: true });
-    } else {
-      $(this.element).carousel();
-    }
-  };
-
-  var _MdCarousel = MdCarousel;
-  MdCarousel = _aureliaDependencyInjection.inject(Element)(MdCarousel) || MdCarousel;
-  MdCarousel = _aureliaTemplating.customElement('md-carousel')(MdCarousel) || MdCarousel;
-  return MdCarousel;
-})();
-
-exports.MdCarousel = MdCarousel;
-
 var MdCard = (function () {
-  var _instanceInitializers6 = {};
+  var _instanceInitializers4 = {};
 
   _createDecoratedClass(MdCard, [{
     key: 'mdImage',
@@ -572,18 +536,18 @@ var MdCard = (function () {
     })],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers6);
+  }], null, _instanceInitializers4);
 
   function MdCard(element) {
     _classCallCheck(this, _MdCard);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers6);
+    _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdReveal', _instanceInitializers6);
+    _defineDecoratedPropertyDescriptor(this, 'mdReveal', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdSize', _instanceInitializers6);
+    _defineDecoratedPropertyDescriptor(this, 'mdSize', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers6);
+    _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers4);
 
     this.element = element;
   }
@@ -599,6 +563,90 @@ var MdCard = (function () {
 })();
 
 exports.MdCard = MdCard;
+
+var MdCarouselItem = (function () {
+  var _instanceInitializers5 = {};
+
+  _createDecoratedClass(MdCarouselItem, [{
+    key: 'mdHref',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return '';
+    },
+    enumerable: true
+  }, {
+    key: 'mdImage',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+    })],
+    initializer: function initializer() {
+      return '';
+    },
+    enumerable: true
+  }], null, _instanceInitializers5);
+
+  function MdCarouselItem(element) {
+    _classCallCheck(this, _MdCarouselItem);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdHref', _instanceInitializers5);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers5);
+
+    this.element = element;
+  }
+
+  MdCarouselItem.prototype.attached = function attached() {};
+
+  var _MdCarouselItem = MdCarouselItem;
+  MdCarouselItem = _aureliaDependencyInjection.inject(Element)(MdCarouselItem) || MdCarouselItem;
+  return MdCarouselItem;
+})();
+
+exports.MdCarouselItem = MdCarouselItem;
+
+var MdCarousel = (function () {
+  var _instanceInitializers6 = {};
+
+  _createDecoratedClass(MdCarousel, [{
+    key: 'mdSlider',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }], null, _instanceInitializers6);
+
+  function MdCarousel(element) {
+    _classCallCheck(this, _MdCarousel);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdSlider', _instanceInitializers6);
+
+    this.element = element;
+  }
+
+  MdCarousel.prototype.attached = function attached() {
+    if (getBooleanFromAttributeValue(this.mdSlider)) {
+      this.element.classList.add('carousel-slider');
+    }
+
+    if (getBooleanFromAttributeValue(this.mdSlider)) {
+      $(this.element).carousel({ full_width: true });
+    } else {
+      $(this.element).carousel();
+    }
+  };
+
+  var _MdCarousel = MdCarousel;
+  MdCarousel = _aureliaDependencyInjection.inject(Element)(MdCarousel) || MdCarousel;
+  MdCarousel = _aureliaTemplating.customElement('md-carousel')(MdCarousel) || MdCarousel;
+  return MdCarousel;
+})();
+
+exports.MdCarousel = MdCarousel;
 
 var MdCharCounter = (function () {
   var _instanceInitializers7 = {};
@@ -1444,7 +1492,7 @@ var MdInputUpdateService = (function () {
     this.log.debug('update called');
     if (!this._updateCalled) {
       this._updateCalled = true;
-      this.taskQueue.queueMicroTask(this.materializeUpdate.bind(this));
+      this.taskQueue.queueTask(this.materializeUpdate.bind(this));
     }
   };
 
