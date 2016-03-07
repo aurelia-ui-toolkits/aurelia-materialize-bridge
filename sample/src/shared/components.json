@@ -43,8 +43,7 @@
     "Checkbox/Switch": { "moduleId": "checkbox", "status": "done" },
     "File input button": { "moduleId": "file", "status": "done" },
     "Range": { "status": "wip" },
-    "DatePicker": { "status": "wip" },
-    "Character counter": { "moduleId": "input", "status": "wip" },
+    "DatePicker": { "status": "wip" }
   },
   "Internal": {
     "Click counter": { "moduleId": "click-counter", "status": "done" },
