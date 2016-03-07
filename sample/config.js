@@ -45,7 +45,6 @@ System.config({
     "prism": "github:PrismJS/prism@1.3.0",
     "showdown": "github:showdownjs/showdown@1.3.0",
     "showdown-prettify": "npm:showdown-prettify@1.3.0",
-    "split.js": "npm:split.js@1.0.6",
     "text": "github:systemjs/plugin-text@0.0.4",
     "github:Dogfalo/materialize@0.97.5": {
       "css": "github:systemjs/plugin-css@0.1.20",
