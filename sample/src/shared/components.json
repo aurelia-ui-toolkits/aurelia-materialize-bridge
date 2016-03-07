@@ -1,6 +1,6 @@
 {
   "Css": {
-    "Color": { "status": "wip", "nav": false },
+    "Color": { "status": "wip" },
     "Grid": { },
     "Helpers": { },
     "Media": { },

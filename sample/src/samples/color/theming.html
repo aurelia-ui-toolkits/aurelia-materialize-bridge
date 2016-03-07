@@ -1,0 +1,33 @@
+<template>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Basic use">
+          <div>
+            See the color switcher below the top navigation bar.<br / />
+            It changes the <code>primaryColor</code> and <code>accentColor</code> variables of the view model.
+          </div>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+                <li md-waves="color: primary;" class="col"><a class="active" href="#js">Javascript</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/color/theming-sample.html"></au-code>
+              </div>
+              <div id="js" class="z-depth-1">
+                <au-code language="javascript" url="samples/color/theming-sample.js"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>
