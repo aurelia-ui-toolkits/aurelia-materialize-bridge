@@ -1,12 +1,24 @@
 <template>
+<style>
+  div.button-row {
+    padding: 5px 0;
+  }
+</style>
   <div>
     <div class="row">
       <div class="col s12 m8">
         <md-card md-title="SideNav options">
-          <div>
+          <div class="button-row">
             <a md-sidenav-collapse="ref.bind: sideNavLeft;" md-button md-waves>Left SideNav</a>
+          </div>
+          <div class="button-row">
             <a md-sidenav-collapse="ref.bind: sideNavRight;" md-button md-waves>Right SideNav</a>
+          </div>
+          <div class="button-row">
             <a md-sidenav-collapse="ref.bind: sideNavLarge;" md-button md-waves>Larger right SideNav</a>
+          </div>
+          <div class="button-row">
+            <a md-sidenav-collapse="ref.bind: sideNavCloseOnClick;" md-button md-waves>Close on click</a>
           </div>
           <!-- <div>
             width: <input type="text" value.bind="sidenavWidth" />
@@ -32,6 +44,15 @@
           </md-sidenav>
 
           <md-sidenav md-width="350" view-model.ref="sideNavLarge" md-edge="right">
+            <ul>
+              <li md-waves><a>About</a></li>
+              <li md-waves><a>Installation</a></li>
+              <li md-waves><a>Project Status</a></li>
+              <li md-waves><a>Help/Docs</a></li>
+            </ul>
+          </md-sidenav>
+
+          <md-sidenav view-model.ref="sideNavCloseOnClick" md-edge="right" md-close-on-click="true">
             <ul>
               <li md-waves><a>About</a></li>
               <li md-waves><a>Installation</a></li>
