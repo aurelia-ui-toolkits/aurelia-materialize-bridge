@@ -1,6 +1,7 @@
 ##### DatePicker does not open on click
 
 Sometimes the DatePicker does not open on click. It is yet unclear why it doesn't, since it works in this catalog application.
+The workaround mentioned below is now implemented in this custom attribute.
 
 <br />
 
