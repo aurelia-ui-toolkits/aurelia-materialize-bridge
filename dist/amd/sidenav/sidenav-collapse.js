@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaLogging) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _commonAttributes, _aureliaLogging) {
   'use strict';
 
   exports.__esModule = true;
@@ -37,7 +37,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         _this.element.setAttribute('data-activates', _this.ref.controlId);
         var sideNavConfig = {
           edge: _this.ref.mdEdge || 'left',
-          closeOnClick: _this.ref.mdFixed ? false : _this.ref.mdCloseOnClick,
+          closeOnClick: _this.ref.mdFixed ? false : _commonAttributes.getBooleanFromAttributeValue(_this.ref.mdCloseOnClick),
           menuWidth: parseInt(_this.ref.mdWidth, 10)
         };
 

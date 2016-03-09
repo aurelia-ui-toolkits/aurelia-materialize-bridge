@@ -1480,7 +1480,7 @@ export class MdSidenavCollapse {
       this.element.setAttribute('data-activates', this.ref.controlId);
       let sideNavConfig = {
         edge: this.ref.mdEdge || 'left',
-        closeOnClick: (this.ref.mdFixed ? false : this.ref.mdCloseOnClick),
+        closeOnClick: (this.ref.mdFixed ? false : getBooleanFromAttributeValue(this.ref.mdCloseOnClick)),
         menuWidth: parseInt(this.ref.mdWidth, 10)
       };
       // this.log.debug('sideNavConfig:', sideNavConfig);

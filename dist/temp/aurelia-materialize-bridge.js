@@ -2312,7 +2312,7 @@ var MdSidenavCollapse = (function () {
       _this7.element.setAttribute('data-activates', _this7.ref.controlId);
       var sideNavConfig = {
         edge: _this7.ref.mdEdge || 'left',
-        closeOnClick: _this7.ref.mdFixed ? false : _this7.ref.mdCloseOnClick,
+        closeOnClick: _this7.ref.mdFixed ? false : getBooleanFromAttributeValue(_this7.ref.mdCloseOnClick),
         menuWidth: parseInt(_this7.ref.mdWidth, 10)
       };
 

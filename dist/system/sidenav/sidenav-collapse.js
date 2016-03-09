@@ -1,7 +1,7 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (_export) {
   'use strict';
 
-  var bindable, customAttribute, ObserverLocator, inject, getLogger, MdSidenavCollapse;
+  var bindable, customAttribute, ObserverLocator, inject, getBooleanFromAttributeValue, getLogger, MdSidenavCollapse;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -17,6 +17,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       ObserverLocator = _aureliaBinding.ObserverLocator;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+    }, function (_commonAttributes) {
+      getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }, function (_aureliaLogging) {
       getLogger = _aureliaLogging.getLogger;
     }],
@@ -49,7 +51,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             _this.element.setAttribute('data-activates', _this.ref.controlId);
             var sideNavConfig = {
               edge: _this.ref.mdEdge || 'left',
-              closeOnClick: _this.ref.mdFixed ? false : _this.ref.mdCloseOnClick,
+              closeOnClick: _this.ref.mdFixed ? false : getBooleanFromAttributeValue(_this.ref.mdCloseOnClick),
               menuWidth: parseInt(_this.ref.mdWidth, 10)
             };
 

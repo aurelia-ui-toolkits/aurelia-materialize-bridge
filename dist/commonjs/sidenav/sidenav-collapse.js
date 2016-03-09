@@ -14,6 +14,8 @@ var _aureliaBinding = require('aurelia-binding');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
+var _commonAttributes = require('../common/attributes');
+
 var _aureliaLogging = require('aurelia-logging');
 
 var MdSidenavCollapse = (function () {
@@ -44,7 +46,7 @@ var MdSidenavCollapse = (function () {
       _this.element.setAttribute('data-activates', _this.ref.controlId);
       var sideNavConfig = {
         edge: _this.ref.mdEdge || 'left',
-        closeOnClick: _this.ref.mdFixed ? false : _this.ref.mdCloseOnClick,
+        closeOnClick: _this.ref.mdFixed ? false : _commonAttributes.getBooleanFromAttributeValue(_this.ref.mdCloseOnClick),
         menuWidth: parseInt(_this.ref.mdWidth, 10)
       };
 
