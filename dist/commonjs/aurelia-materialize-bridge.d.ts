@@ -76,6 +76,7 @@ declare module 'aurelia-materialize-bridge' {
     withoutGlobalResources(): ConfigBuilder;
   }
   export function configure(aurelia: Aurelia, configCallback?: ((builder: ConfigBuilder) => void)): any;
+  export * from 'aurelia-materialize-bridge/toast/toastService';
   export class mMBadge {
     isNew: any;
     constructor(element: any);
@@ -99,6 +100,14 @@ declare module 'aurelia-materialize-bridge' {
   export class InstructionFilterValueConverter {
     toView(navigationInstructions: any): any;
   }
+  export class MdCard {
+    mdImage: any;
+    mdReveal: any;
+    mdSize: any;
+    mdTitle: any;
+    constructor(element: any);
+    attached(): any;
+  }
   export class MdButton {
     disabled: any;
     flat: any;
@@ -109,14 +118,6 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     disabledChanged(newValue: any): any;
     flatChanged(newValue: any): any;
-  }
-  export class MdCard {
-    mdImage: any;
-    mdReveal: any;
-    mdSize: any;
-    mdTitle: any;
-    constructor(element: any);
-    attached(): any;
   }
   
   //  @customElement('md-carousel-item')
@@ -476,7 +477,7 @@ declare module 'aurelia-materialize-bridge' {
     selectedTab: any;
   }
   export class MdToastService {
-    show(message: any, displayLength: any, className: any): any;
+    show(message: string, displayLength: int, className?: string): any;
   }
   
   //  @customAttribute('md-tooltip')

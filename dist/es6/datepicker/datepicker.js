@@ -49,6 +49,7 @@ export class MdDatePicker {
       'close': this.onClose.bind(this),
       'set': this.onSet.bind(this)
     });
+    $(this.element).on('focusin', () => { $(this.element).pickadate('open'); });
   }
 
   detached() {

@@ -13,3 +13,5 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBui
     aurelia.globalResources(builder.globalResources);
   }
 }
+
+export * from 'aurelia-materialize-bridge/toast/toastService';

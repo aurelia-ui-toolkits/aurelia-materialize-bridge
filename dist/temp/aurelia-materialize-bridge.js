@@ -11,6 +11,10 @@ exports.getBooleanFromAttributeValue = getBooleanFromAttributeValue;
 exports.fireEvent = fireEvent;
 exports.fireMaterializeEvent = fireMaterializeEvent;
 
+function _interopExportWildcard(obj, defaults) { var newObj = defaults({}, obj); delete newObj['default']; return newObj; }
+
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
@@ -270,6 +274,10 @@ function configure(aurelia, configCallback) {
   }
 }
 
+var _aureliaMaterializeBridgeToastToastService = require('aurelia-materialize-bridge/toast/toastService');
+
+_defaults(exports, _interopExportWildcard(_aureliaMaterializeBridgeToastToastService, _defaults));
+
 var mMBadge = (function () {
   var _instanceInitializers = {};
 
@@ -395,8 +403,73 @@ var InstructionFilterValueConverter = (function () {
 
 exports.InstructionFilterValueConverter = InstructionFilterValueConverter;
 
-var MdButton = (function () {
+var MdCard = (function () {
   var _instanceInitializers3 = {};
+
+  _createDecoratedClass(MdCard, [{
+    key: 'mdImage',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return null;
+    },
+    enumerable: true
+  }, {
+    key: 'mdReveal',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }, {
+    key: 'mdSize',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+    })],
+    initializer: function initializer() {
+      return '';
+    },
+    enumerable: true
+  }, {
+    key: 'mdTitle',
+    decorators: [_aureliaTemplating.bindable({
+      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+    })],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers3);
+
+  function MdCard(element) {
+    _classCallCheck(this, _MdCard);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdReveal', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdSize', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers3);
+
+    this.element = element;
+  }
+
+  MdCard.prototype.attached = function attached() {
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
+  };
+
+  var _MdCard = MdCard;
+  MdCard = _aureliaDependencyInjection.inject(Element)(MdCard) || MdCard;
+  MdCard = _aureliaTemplating.customElement('md-card')(MdCard) || MdCard;
+  return MdCard;
+})();
+
+exports.MdCard = MdCard;
+
+var MdButton = (function () {
+  var _instanceInitializers4 = {};
 
   _createDecoratedClass(MdButton, [{
     key: 'disabled',
@@ -426,18 +499,18 @@ var MdButton = (function () {
       return false;
     },
     enumerable: true
-  }], null, _instanceInitializers3);
+  }], null, _instanceInitializers4);
 
   function MdButton(element) {
     _classCallCheck(this, _MdButton);
 
-    _defineDecoratedPropertyDescriptor(this, 'disabled', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'disabled', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'flat', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'flat', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'floating', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'floating', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'large', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'large', _instanceInitializers4);
 
     this.attributeManager = new AttributeManager(element);
   }
@@ -498,71 +571,6 @@ var MdButton = (function () {
 })();
 
 exports.MdButton = MdButton;
-
-var MdCard = (function () {
-  var _instanceInitializers4 = {};
-
-  _createDecoratedClass(MdCard, [{
-    key: 'mdImage',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-    })],
-    initializer: function initializer() {
-      return null;
-    },
-    enumerable: true
-  }, {
-    key: 'mdReveal',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-    })],
-    initializer: function initializer() {
-      return false;
-    },
-    enumerable: true
-  }, {
-    key: 'mdSize',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-    })],
-    initializer: function initializer() {
-      return '';
-    },
-    enumerable: true
-  }, {
-    key: 'mdTitle',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-    })],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers4);
-
-  function MdCard(element) {
-    _classCallCheck(this, _MdCard);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdImage', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdReveal', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdSize', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers4);
-
-    this.element = element;
-  }
-
-  MdCard.prototype.attached = function attached() {
-    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
-  };
-
-  var _MdCard = MdCard;
-  MdCard = _aureliaDependencyInjection.inject(Element)(MdCard) || MdCard;
-  MdCard = _aureliaTemplating.customElement('md-card')(MdCard) || MdCard;
-  return MdCard;
-})();
-
-exports.MdCard = MdCard;
 
 var MdCarouselItem = (function () {
   var _instanceInitializers5 = {};
@@ -923,6 +931,7 @@ var AttributeManager = (function () {
   function AttributeManager(element) {
     _classCallCheck(this, AttributeManager);
 
+    this._colorClasses = ['accent', 'primary'];
     this.addedClasses = [];
     this.addedAttributes = {};
 
@@ -965,10 +974,15 @@ var AttributeManager = (function () {
       classes = [classes];
     }
     classes.forEach(function (c) {
-      if (!_this4.element.classList.contains(c)) {
-        _this4.addedClasses.push(c);
-        _this4.element.classList.add(c);
-      }
+      var classListHasColor = _this4._colorClasses.filter(function (cc) {
+        return _this4.element.classList.contains(cc);
+      }).length > 0;
+      if (_this4._colorClasses.indexOf(c) > -1 && classListHasColor) {} else {
+          if (!_this4.element.classList.contains(c)) {
+            _this4.addedClasses.push(c);
+            _this4.element.classList.add(c);
+          }
+        }
     });
   };
 
@@ -1054,6 +1068,8 @@ var MdDatePicker = (function () {
   }
 
   MdDatePicker.prototype.attached = function attached() {
+    var _this6 = this;
+
     this.element.classList.add('date-picker');
     var options = {
       selectMonths: true,
@@ -1072,6 +1088,9 @@ var MdDatePicker = (function () {
     this.picker.on({
       'close': this.onClose.bind(this),
       'set': this.onSet.bind(this)
+    });
+    $(this.element).on('focusin', function () {
+      $(_this6.element).pickadate('open');
     });
   };
 
@@ -2163,13 +2182,13 @@ var MdScrollfire = (function () {
   }
 
   MdScrollfire.prototype.attached = function attached() {
-    var _this6 = this;
+    var _this7 = this;
 
     var targets = $('[md-scrollfire-target]', this.element);
     if (targets.length > 0) {
       (function () {
-        _this6.log.debug('targets', targets);
-        var self = _this6;
+        _this7.log.debug('targets', targets);
+        var self = _this7;
         var options = [];
         targets.each(function (i, el) {
           var target = $(el);
@@ -2183,7 +2202,7 @@ var MdScrollfire = (function () {
           });
         });
         if (options.length > 0) {
-          _this6.log.debug('configuring scrollFire with these options:', options);
+          _this7.log.debug('configuring scrollFire with these options:', options);
           Materialize.scrollFire(options);
         }
       })();
@@ -2305,18 +2324,18 @@ var MdSidenavCollapse = (function () {
   }
 
   MdSidenavCollapse.prototype.attached = function attached() {
-    var _this7 = this;
+    var _this8 = this;
 
     this.ref.whenAttached.then(function () {
 
-      _this7.element.setAttribute('data-activates', _this7.ref.controlId);
+      _this8.element.setAttribute('data-activates', _this8.ref.controlId);
       var sideNavConfig = {
-        edge: _this7.ref.mdEdge || 'left',
-        closeOnClick: _this7.ref.mdFixed ? false : getBooleanFromAttributeValue(_this7.ref.mdCloseOnClick),
-        menuWidth: parseInt(_this7.ref.mdWidth, 10)
+        edge: _this8.ref.mdEdge || 'left',
+        closeOnClick: _this8.ref.mdFixed ? false : getBooleanFromAttributeValue(_this8.ref.mdCloseOnClick),
+        menuWidth: parseInt(_this8.ref.mdWidth, 10)
       };
 
-      $(_this7.element).sideNav(sideNavConfig);
+      $(_this8.element).sideNav(sideNavConfig);
     });
   };
 
@@ -2368,7 +2387,7 @@ var MdSidenav = (function () {
   }], _instanceInitializers25);
 
   function MdSidenav(element) {
-    var _this8 = this;
+    var _this9 = this;
 
     _classCallCheck(this, _MdSidenav);
 
@@ -2384,7 +2403,7 @@ var MdSidenav = (function () {
     this.controlId = 'md-sidenav-' + MdSidenav.id++;
     this.log = _aureliaLogging.getLogger('md-sidenav');
     this.whenAttached = new Promise(function (resolve, reject) {
-      _this8.attachedResolver = resolve;
+      _this9.attachedResolver = resolve;
     });
   }
 
@@ -2613,7 +2632,7 @@ var MdTabs = (function () {
   }
 
   MdTabs.prototype.attached = function attached() {
-    var _this9 = this;
+    var _this10 = this;
 
     this.attributeManager.addClasses('tabs');
 
@@ -2621,19 +2640,19 @@ var MdTabs = (function () {
     [].forEach.call(children, function (child) {
       var setter = new AttributeManager(child);
       setter.addClasses(['tab', 'primary-text']);
-      _this9.tabAttributeManagers.push(setter);
+      _this10.tabAttributeManagers.push(setter);
     });
 
     $(this.element).tabs();
 
     var childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, function (a) {
-      a.addEventListener('click', _this9.fireTabSelectedEvent);
+      a.addEventListener('click', _this10.fireTabSelectedEvent);
     });
   };
 
   MdTabs.prototype.detached = function detached() {
-    var _this10 = this;
+    var _this11 = this;
 
     this.attributeManager.removeClasses('tabs');
 
@@ -2643,17 +2662,17 @@ var MdTabs = (function () {
     this.tabAttributeManagers = [];
     var childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, function (a) {
-      a.removeEventListener('click', _this10.fireTabSelectedEvent);
+      a.removeEventListener('click', _this11.fireTabSelectedEvent);
     });
   };
 
   MdTabs.prototype.fireTabSelectedEvent = function fireTabSelectedEvent(e) {
-    var _this11 = this;
+    var _this12 = this;
 
     window.setTimeout(function () {
-      var indicatorRight = $('.indicator', _this11.element).css('right');
+      var indicatorRight = $('.indicator', _this12.element).css('right');
       if (indicatorRight.indexOf('-') === 0) {
-        $('.indicator', _this11.element).css('right', 0);
+        $('.indicator', _this12.element).css('right', 0);
       }
     }, 310);
     var href = e.target.getAttribute('href');

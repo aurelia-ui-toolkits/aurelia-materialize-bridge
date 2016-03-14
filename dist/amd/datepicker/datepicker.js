@@ -43,6 +43,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     }
 
     MdDatePicker.prototype.attached = function attached() {
+      var _this = this;
+
       this.element.classList.add('date-picker');
       var options = {
         selectMonths: true,
@@ -61,6 +63,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this.picker.on({
         'close': this.onClose.bind(this),
         'set': this.onSet.bind(this)
+      });
+      $(this.element).on('focusin', function () {
+        $(_this.element).pickadate('open');
       });
     };
 

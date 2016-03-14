@@ -6,6 +6,10 @@
  * Most useful in attached() and detached() handlers.
  */
 export class AttributeManager {
+  _colorClasses = [
+    'accent',
+    'primary'
+  ];
   addedClasses = [];
   addedAttributes = {};
 
@@ -43,9 +47,14 @@ export class AttributeManager {
       classes = [classes];
     }
     classes.forEach(c => {
-      if (!this.element.classList.contains(c)) {
-        this.addedClasses.push(c);
-        this.element.classList.add(c);
+      let classListHasColor = this._colorClasses.filter(cc => this.element.classList.contains(cc)).length > 0;
+      if (this._colorClasses.indexOf(c) > -1 && classListHasColor) {
+        //
+      } else {
+        if (!this.element.classList.contains(c)) {
+          this.addedClasses.push(c);
+          this.element.classList.add(c);
+        }
       }
     });
   }

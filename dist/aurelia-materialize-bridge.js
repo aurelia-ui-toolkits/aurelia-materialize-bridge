@@ -279,6 +279,8 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBui
   }
 }
 
+export * from 'aurelia-materialize-bridge/toast/toastService';
+
 @customAttribute('md-badge')
 @inject(Element)
 export class mMBadge {
@@ -360,6 +362,31 @@ export class InstructionFilterValueConverter {
   }
 }
 
+@customElement('md-card')
+@inject(Element)
+export class MdCard {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdReveal = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdSize = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
+  }
+}
+
 @customAttribute('md-button')
 @inject(Element)
 export class MdButton {
@@ -419,31 +446,6 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
-  }
-}
-
-@customElement('md-card')
-@inject(Element)
-export class MdCard {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdImage = null;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdReveal = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneWay
-  }) mdSize = '';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdTitle;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
 
@@ -669,6 +671,10 @@ export class LightenValueConverter {
  * Most useful in attached() and detached() handlers.
  */
 export class AttributeManager {
+  _colorClasses = [
+    'accent',
+    'primary'
+  ];
   addedClasses = [];
   addedAttributes = {};
 
@@ -706,9 +712,14 @@ export class AttributeManager {
       classes = [classes];
     }
     classes.forEach(c => {
-      if (!this.element.classList.contains(c)) {
-        this.addedClasses.push(c);
-        this.element.classList.add(c);
+      let classListHasColor = this._colorClasses.filter(cc => this.element.classList.contains(cc)).length > 0;
+      if (this._colorClasses.indexOf(c) > -1 && classListHasColor) {
+        //
+      } else {
+        if (!this.element.classList.contains(c)) {
+          this.addedClasses.push(c);
+          this.element.classList.add(c);
+        }
       }
     });
   }
@@ -807,6 +818,7 @@ export class MdDatePicker {
       'close': this.onClose.bind(this),
       'set': this.onSet.bind(this)
     });
+    $(this.element).on('focusin', () => { $(this.element).pickadate('open'); });
   }
 
   detached() {
@@ -1749,7 +1761,7 @@ export class MdTabs {
 }
 
 export class MdToastService {
-  show(message, displayLength, className) {
+  show(message: string, displayLength: int, className?: string) {
     return new Promise((resolve, reject) => {
       Materialize.toast(message, displayLength, className, () => {
         resolve();
