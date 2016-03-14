@@ -5,7 +5,7 @@ import { getBooleanFromAttributeValue } from '../common/attributes';
 
 @customAttribute('md-badge')
 @inject(Element)
-export class mMBadge {
+export class MdBadge {
   @bindable() isNew = false;
 
   constructor(element) {

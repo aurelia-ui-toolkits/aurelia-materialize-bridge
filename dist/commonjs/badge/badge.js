@@ -16,10 +16,10 @@ var _commonAttributeManager = require('../common/attributeManager');
 
 var _commonAttributes = require('../common/attributes');
 
-var mMBadge = (function () {
+var MdBadge = (function () {
   var _instanceInitializers = {};
 
-  _createDecoratedClass(mMBadge, [{
+  _createDecoratedClass(MdBadge, [{
     key: 'isNew',
     decorators: [_aureliaTemplating.bindable()],
     initializer: function initializer() {
@@ -28,8 +28,8 @@ var mMBadge = (function () {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function mMBadge(element) {
-    _classCallCheck(this, _mMBadge);
+  function MdBadge(element) {
+    _classCallCheck(this, _MdBadge);
 
     _defineDecoratedPropertyDescriptor(this, 'isNew', _instanceInitializers);
 
@@ -37,7 +37,7 @@ var mMBadge = (function () {
     this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
   }
 
-  mMBadge.prototype.attached = function attached() {
+  MdBadge.prototype.attached = function attached() {
     var classes = ['badge'];
     if (_commonAttributes.getBooleanFromAttributeValue(this.isNew)) {
       classes.push('new');
@@ -45,14 +45,14 @@ var mMBadge = (function () {
     this.attributeManager.addClasses(classes);
   };
 
-  mMBadge.prototype.detached = function detached() {
+  MdBadge.prototype.detached = function detached() {
     this.attributeManager.removeClasses(['badge', 'new']);
   };
 
-  var _mMBadge = mMBadge;
-  mMBadge = _aureliaDependencyInjection.inject(Element)(mMBadge) || mMBadge;
-  mMBadge = _aureliaTemplating.customAttribute('md-badge')(mMBadge) || mMBadge;
-  return mMBadge;
+  var _MdBadge = MdBadge;
+  MdBadge = _aureliaDependencyInjection.inject(Element)(MdBadge) || MdBadge;
+  MdBadge = _aureliaTemplating.customAttribute('md-badge')(MdBadge) || MdBadge;
+  return MdBadge;
 })();
 
-exports.mMBadge = mMBadge;
+exports.MdBadge = MdBadge;

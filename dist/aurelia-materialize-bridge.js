@@ -283,7 +283,7 @@ export * from 'aurelia-materialize-bridge/toast/toastService';
 
 @customAttribute('md-badge')
 @inject(Element)
-export class mMBadge {
+export class MdBadge {
   @bindable() isNew = false;
 
   constructor(element) {
@@ -491,35 +491,6 @@ export class MdCarousel {
   }
 }
 
-@customAttribute('md-char-counter')
-@inject(Element)
-export class MdCharCounter {
-  @bindable() length = 120;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.length = parseInt(this.length, 10);
-
-    // attach to input element explicitly, so this counter can be used on
-    // containers (or custom elements like md-input)
-    if (this.element.tagName.toUpperCase() === 'INPUT') {
-      this.attributeManager.addAttributes({ 'length': this.length });
-      $(this.element).characterCounter();
-    } else {
-      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
-      $(this.element).find('input').characterCounter();
-    }
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes(['length']);
-  }
-}
-
 @customElement('md-checkbox')
 @inject(Element)
 export class MdCheckbox {
@@ -572,6 +543,35 @@ export class MdCheckbox {
     if (this.checkbox) {
       this.checkbox.disabled = !!newValue;
     }
+  }
+}
+
+@customAttribute('md-char-counter')
+@inject(Element)
+export class MdCharCounter {
+  @bindable() length = 120;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.length = parseInt(this.length, 10);
+
+    // attach to input element explicitly, so this counter can be used on
+    // containers (or custom elements like md-input)
+    if (this.element.tagName.toUpperCase() === 'INPUT') {
+      this.attributeManager.addAttributes({ 'length': this.length });
+      $(this.element).characterCounter();
+    } else {
+      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
+      $(this.element).find('input').characterCounter();
+    }
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes(['length']);
   }
 }
 
@@ -963,60 +963,6 @@ export class MdFab {
   }
 }
 
-@customElement('md-file')
-@inject(Element)
-export class MdFileInput {
-  @bindable() mdCaption = 'File';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdMultiple = false;
-  @bindable({
-    defaultBindingMode: bindingMode.twoWay
-  }) mdValue;
-
-  _suspendUpdate = false;
-
-  constructor(element) {
-    this.element = element;
-    this.handleChangeFromNativeInput = this.handleChangeFromNativeInput.bind(this);
-  }
-
-  attached() {
-    this.mdMultiple = getBooleanFromAttributeValue(this.mdMultiple);
-    $(this.filePath).on('change', this.handleChangeFromNativeInput);
-  }
-
-  detached() {
-    $(this.element).off('change', this.handleChangeFromNativeInput);
-  }
-
-  handleChangeFromNativeInput() {
-    if (!this._suspendUpdate) {
-      this._suspendUpdate = true;
-      fireEvent(this.filePath, 'change');
-      this._suspendUpdate = false;
-    }
-  }
-}
-
-@customAttribute('md-modal-trigger')
-@inject(Element)
-export class MdModalTrigger {
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('modal-trigger');
-    $(this.element).leanModal();
-  }
-
-  detached() {
-    this.attributeManager.removeClasses('modal-trigger');
-  }
-}
-
 @inject(TaskQueue)
 export class MdInputUpdateService {
   _updateCalled = false;
@@ -1085,6 +1031,60 @@ export class MdInput {
     if (this.mdTextArea) {
       $(this.input).trigger('autoresize');
     }
+  }
+}
+
+@customElement('md-file')
+@inject(Element)
+export class MdFileInput {
+  @bindable() mdCaption = 'File';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMultiple = false;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue;
+
+  _suspendUpdate = false;
+
+  constructor(element) {
+    this.element = element;
+    this.handleChangeFromNativeInput = this.handleChangeFromNativeInput.bind(this);
+  }
+
+  attached() {
+    this.mdMultiple = getBooleanFromAttributeValue(this.mdMultiple);
+    $(this.filePath).on('change', this.handleChangeFromNativeInput);
+  }
+
+  detached() {
+    $(this.element).off('change', this.handleChangeFromNativeInput);
+  }
+
+  handleChangeFromNativeInput() {
+    if (!this._suspendUpdate) {
+      this._suspendUpdate = true;
+      fireEvent(this.filePath, 'change');
+      this._suspendUpdate = false;
+    }
+  }
+}
+
+@customAttribute('md-modal-trigger')
+@inject(Element)
+export class MdModalTrigger {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('modal-trigger');
+    $(this.element).leanModal();
+  }
+
+  detached() {
+    this.attributeManager.removeClasses('modal-trigger');
   }
 }
 
@@ -1301,6 +1301,23 @@ export class MdRange {
   }
 }
 
+@customAttribute('md-scrollspy')
+@inject(Element)
+export class MdScrollSpy {
+  @bindable() target;
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.target, this.element).scrollSpy();
+  }
+
+  detached() {
+    // destroy handler not available
+  }
+}
+
 /* eslint no-new-func:0 */
 export class ScrollfirePatch {
   patched = false;
@@ -1394,23 +1411,6 @@ export class MdScrollfire {
         Materialize.scrollFire(options);
       }
     }
-  }
-}
-
-@customAttribute('md-scrollspy')
-@inject(Element)
-export class MdScrollSpy {
-  @bindable() target;
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.target, this.element).scrollSpy();
-  }
-
-  detached() {
-    // destroy handler not available
   }
 }
 
@@ -1760,16 +1760,6 @@ export class MdTabs {
   }
 }
 
-export class MdToastService {
-  show(message, displayLength, className?) {
-    return new Promise((resolve, reject) => {
-      Materialize.toast(message, displayLength, className, () => {
-        resolve();
-      });
-    });
-  }
-}
-
 // @customAttribute('md-tooltip')
 @inject(Element)
 export class MdTooltip {
@@ -1792,6 +1782,16 @@ export class MdTooltip {
     $(this.element).tooltip('remove');
     this.attributeManager.removeClasses('tooltipped');
     this.attributeManager.removeAttributes(['data-position', 'data-tooltip']);
+  }
+}
+
+export class MdToastService {
+  show(message, displayLength, className?) {
+    return new Promise((resolve, reject) => {
+      Materialize.toast(message, displayLength, className, () => {
+        resolve();
+      });
+    });
   }
 }
 

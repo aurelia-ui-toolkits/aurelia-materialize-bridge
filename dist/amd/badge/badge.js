@@ -9,10 +9,10 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
 
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-  var mMBadge = (function () {
+  var MdBadge = (function () {
     var _instanceInitializers = {};
 
-    _createDecoratedClass(mMBadge, [{
+    _createDecoratedClass(MdBadge, [{
       key: 'isNew',
       decorators: [_aureliaTemplating.bindable()],
       initializer: function initializer() {
@@ -21,8 +21,8 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       enumerable: true
     }], null, _instanceInitializers);
 
-    function mMBadge(element) {
-      _classCallCheck(this, _mMBadge);
+    function MdBadge(element) {
+      _classCallCheck(this, _MdBadge);
 
       _defineDecoratedPropertyDescriptor(this, 'isNew', _instanceInitializers);
 
@@ -30,7 +30,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
     }
 
-    mMBadge.prototype.attached = function attached() {
+    MdBadge.prototype.attached = function attached() {
       var classes = ['badge'];
       if (_commonAttributes.getBooleanFromAttributeValue(this.isNew)) {
         classes.push('new');
@@ -38,15 +38,15 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       this.attributeManager.addClasses(classes);
     };
 
-    mMBadge.prototype.detached = function detached() {
+    MdBadge.prototype.detached = function detached() {
       this.attributeManager.removeClasses(['badge', 'new']);
     };
 
-    var _mMBadge = mMBadge;
-    mMBadge = _aureliaDependencyInjection.inject(Element)(mMBadge) || mMBadge;
-    mMBadge = _aureliaTemplating.customAttribute('md-badge')(mMBadge) || mMBadge;
-    return mMBadge;
+    var _MdBadge = MdBadge;
+    MdBadge = _aureliaDependencyInjection.inject(Element)(MdBadge) || MdBadge;
+    MdBadge = _aureliaTemplating.customAttribute('md-badge')(MdBadge) || MdBadge;
+    return MdBadge;
   })();
 
-  exports.mMBadge = mMBadge;
+  exports.MdBadge = MdBadge;
 });
