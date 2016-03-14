@@ -1,5 +1,4 @@
 import { inject } from 'aurelia-framework';
-// import { MdToastService } from 'aurelia-materialize-bridge/toast/toastService';
 import { MdToastService } from 'aurelia-materialize-bridge';
 
 @inject(MdToastService)
