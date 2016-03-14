@@ -18,7 +18,7 @@ export class Registry {
         sample.files.forEach(extension => {
           sample[extension] = `${sample.path}.${extension}`;
         });
-        
+
         if (sample.default === true) {
           map.push({
             title: sample.title,
