@@ -362,7 +362,14 @@ declare module 'aurelia-materialize-bridge' {
     mdValue: any;
     constructor(element: any);
   }
+  export class MdScrollSpy {
+    target: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   
+  //  destroy handler not available
   /* eslint no-new-func:0 */
   export class ScrollfirePatch {
     patched: any;
@@ -378,14 +385,6 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any, scrollfirePatch: any);
     attached(): any;
   }
-  export class MdScrollSpy {
-    target: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-  }
-  
-  //  destroy handler not available
   export class MdSelect {
     constructor(element: any, logManager: any, observerLocator: any);
     attached(): any;

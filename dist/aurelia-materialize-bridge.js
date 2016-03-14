@@ -1301,6 +1301,23 @@ export class MdRange {
   }
 }
 
+@customAttribute('md-scrollspy')
+@inject(Element)
+export class MdScrollSpy {
+  @bindable() target;
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.target, this.element).scrollSpy();
+  }
+
+  detached() {
+    // destroy handler not available
+  }
+}
+
 /* eslint no-new-func:0 */
 export class ScrollfirePatch {
   patched = false;
@@ -1394,23 +1411,6 @@ export class MdScrollfire {
         Materialize.scrollFire(options);
       }
     }
-  }
-}
-
-@customAttribute('md-scrollspy')
-@inject(Element)
-export class MdScrollSpy {
-  @bindable() target;
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.target, this.element).scrollSpy();
-  }
-
-  detached() {
-    // destroy handler not available
   }
 }
 

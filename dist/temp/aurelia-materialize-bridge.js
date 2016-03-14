@@ -2077,6 +2077,38 @@ var MdRange = (function () {
 
 exports.MdRange = MdRange;
 
+var MdScrollSpy = (function () {
+  var _instanceInitializers22 = {};
+
+  _createDecoratedClass(MdScrollSpy, [{
+    key: 'target',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers22);
+
+  function MdScrollSpy(element) {
+    _classCallCheck(this, _MdScrollSpy);
+
+    _defineDecoratedPropertyDescriptor(this, 'target', _instanceInitializers22);
+
+    this.element = element;
+  }
+
+  MdScrollSpy.prototype.attached = function attached() {
+    $(this.target, this.element).scrollSpy();
+  };
+
+  MdScrollSpy.prototype.detached = function detached() {};
+
+  var _MdScrollSpy = MdScrollSpy;
+  MdScrollSpy = _aureliaDependencyInjection.inject(Element)(MdScrollSpy) || MdScrollSpy;
+  MdScrollSpy = _aureliaTemplating.customAttribute('md-scrollspy')(MdScrollSpy) || MdScrollSpy;
+  return MdScrollSpy;
+})();
+
+exports.MdScrollSpy = MdScrollSpy;
+
 var ScrollfirePatch = (function () {
   function ScrollfirePatch() {
     _classCallCheck(this, ScrollfirePatch);
@@ -2134,7 +2166,7 @@ var ScrollfirePatch = (function () {
 exports.ScrollfirePatch = ScrollfirePatch;
 
 var MdScrollfireTarget = (function () {
-  var _instanceInitializers22 = {};
+  var _instanceInitializers23 = {};
 
   _createDecoratedClass(MdScrollfireTarget, [{
     key: 'callback',
@@ -2150,14 +2182,14 @@ var MdScrollfireTarget = (function () {
       return 0;
     },
     enumerable: true
-  }], null, _instanceInitializers22);
+  }], null, _instanceInitializers23);
 
   function MdScrollfireTarget(element) {
     _classCallCheck(this, _MdScrollfireTarget);
 
-    _defineDecoratedPropertyDescriptor(this, 'callback', _instanceInitializers22);
+    _defineDecoratedPropertyDescriptor(this, 'callback', _instanceInitializers23);
 
-    _defineDecoratedPropertyDescriptor(this, 'offset', _instanceInitializers22);
+    _defineDecoratedPropertyDescriptor(this, 'offset', _instanceInitializers23);
 
     this.element = element;
   }
@@ -2216,38 +2248,6 @@ var MdScrollfire = (function () {
 })();
 
 exports.MdScrollfire = MdScrollfire;
-
-var MdScrollSpy = (function () {
-  var _instanceInitializers23 = {};
-
-  _createDecoratedClass(MdScrollSpy, [{
-    key: 'target',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers23);
-
-  function MdScrollSpy(element) {
-    _classCallCheck(this, _MdScrollSpy);
-
-    _defineDecoratedPropertyDescriptor(this, 'target', _instanceInitializers23);
-
-    this.element = element;
-  }
-
-  MdScrollSpy.prototype.attached = function attached() {
-    $(this.target, this.element).scrollSpy();
-  };
-
-  MdScrollSpy.prototype.detached = function detached() {};
-
-  var _MdScrollSpy = MdScrollSpy;
-  MdScrollSpy = _aureliaDependencyInjection.inject(Element)(MdScrollSpy) || MdScrollSpy;
-  MdScrollSpy = _aureliaTemplating.customAttribute('md-scrollspy')(MdScrollSpy) || MdScrollSpy;
-  return MdScrollSpy;
-})();
-
-exports.MdScrollSpy = MdScrollSpy;
 
 var MdSelect = (function () {
   function MdSelect(element, logManager, observerLocator) {
