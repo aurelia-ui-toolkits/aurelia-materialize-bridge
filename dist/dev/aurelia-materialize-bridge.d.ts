@@ -132,6 +132,12 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
   }
+  export class MdCharCounter {
+    length: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   export class MdCheckbox {
     static id: any;
     mdChecked: any;
@@ -144,12 +150,6 @@ declare module 'aurelia-materialize-bridge' {
     mdCheckedChanged(newValue: any): any;
     mdDisabledChanged(newValue: any): any;
   }
-  export class MdCharCounter {
-    length: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-  }
   export class MdChip {
     mdClose: any;
     attached(): any;
@@ -160,6 +160,14 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     refresh(): any;
     accordionChanged(): any;
+  }
+  
+  /* eslint-enable */
+  export class DarkenValueConverter {
+    toView(value: any, steps: any): any;
+  }
+  export class LightenValueConverter {
+    toView(value: any, steps: any): any;
   }
   
   /**
@@ -196,14 +204,6 @@ declare module 'aurelia-materialize-bridge' {
   * @param data Addition data to attach to an event
   */
   export function fireMaterializeEvent(element: Element, name: string, data?: any): any;
-  
-  /* eslint-enable */
-  export class DarkenValueConverter {
-    toView(value: any, steps: any): any;
-  }
-  export class LightenValueConverter {
-    toView(value: any, steps: any): any;
-  }
   export class MdDatePicker {
     container: any;
     translation: any;
@@ -250,6 +250,15 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
   }
+  export class MdFileInput {
+    mdCaption: any;
+    mdMultiple: any;
+    mdValue: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    handleChangeFromNativeInput(): any;
+  }
   export class MdInputUpdateService {
     constructor(taskQueue: any);
     materializeUpdate(): any;
@@ -266,15 +275,6 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any, taskQueue: any, updateService: any);
     attached(): any;
     mdValueChanged(): any;
-  }
-  export class MdFileInput {
-    mdCaption: any;
-    mdMultiple: any;
-    mdValue: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-    handleChangeFromNativeInput(): any;
   }
   export class MdModalTrigger {
     constructor(element: any);
@@ -362,14 +362,7 @@ declare module 'aurelia-materialize-bridge' {
     mdValue: any;
     constructor(element: any);
   }
-  export class MdScrollSpy {
-    target: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-  }
   
-  //  destroy handler not available
   /* eslint no-new-func:0 */
   export class ScrollfirePatch {
     patched: any;
@@ -385,6 +378,14 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any, scrollfirePatch: any);
     attached(): any;
   }
+  export class MdScrollSpy {
+    target: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  
+  //  destroy handler not available
   export class MdSelect {
     constructor(element: any, logManager: any, observerLocator: any);
     attached(): any;
@@ -475,6 +476,9 @@ declare module 'aurelia-materialize-bridge' {
     //  FIXME: probably bad
     selectedTab: any;
   }
+  export class MdToastService {
+    show(message: any, displayLength: any, className?: any): any;
+  }
   
   //  @customAttribute('md-tooltip')
   export class MdTooltip {
@@ -484,9 +488,6 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
     detached(): any;
-  }
-  export class MdToastService {
-    show(message: any, displayLength: any, className?: any): any;
   }
   export class MdFadeinImage {
     ref: any;
