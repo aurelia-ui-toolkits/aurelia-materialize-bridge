@@ -100,14 +100,6 @@ declare module 'aurelia-materialize-bridge' {
   export class InstructionFilterValueConverter {
     toView(navigationInstructions: any): any;
   }
-  export class MdCard {
-    mdImage: any;
-    mdReveal: any;
-    mdSize: any;
-    mdTitle: any;
-    constructor(element: any);
-    attached(): any;
-  }
   export class MdButton {
     disabled: any;
     flat: any;
@@ -118,6 +110,14 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     disabledChanged(newValue: any): any;
     flatChanged(newValue: any): any;
+  }
+  export class MdCard {
+    mdImage: any;
+    mdReveal: any;
+    mdSize: any;
+    mdTitle: any;
+    constructor(element: any);
+    attached(): any;
   }
   
   //  @customElement('md-carousel-item')
@@ -162,14 +162,6 @@ declare module 'aurelia-materialize-bridge' {
     accordionChanged(): any;
   }
   
-  /* eslint-enable */
-  export class DarkenValueConverter {
-    toView(value: any, steps: any): any;
-  }
-  export class LightenValueConverter {
-    toView(value: any, steps: any): any;
-  }
-  
   /**
    * Adds css classes to a given element only if these classes are not already
    * present. Keeps a record of css classes which actually have been added.
@@ -204,6 +196,14 @@ declare module 'aurelia-materialize-bridge' {
   * @param data Addition data to attach to an event
   */
   export function fireMaterializeEvent(element: Element, name: string, data?: any): any;
+  
+  /* eslint-enable */
+  export class DarkenValueConverter {
+    toView(value: any, steps: any): any;
+  }
+  export class LightenValueConverter {
+    toView(value: any, steps: any): any;
+  }
   export class MdDatePicker {
     container: any;
     translation: any;
@@ -259,6 +259,11 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     handleChangeFromNativeInput(): any;
   }
+  export class MdModalTrigger {
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   export class MdInputUpdateService {
     constructor(taskQueue: any);
     materializeUpdate(): any;
@@ -275,11 +280,6 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any, taskQueue: any, updateService: any);
     attached(): any;
     mdValueChanged(): any;
-  }
-  export class MdModalTrigger {
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
   }
   export class MdNavbar {
     mdFixed: any;
@@ -477,7 +477,7 @@ declare module 'aurelia-materialize-bridge' {
     selectedTab: any;
   }
   export class MdToastService {
-    show(message: string, displayLength: int, className?: string): any;
+    show(message: any, displayLength: any, className?: any): any;
   }
   
   //  @customAttribute('md-tooltip')

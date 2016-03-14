@@ -1,5 +1,5 @@
 export class MdToastService {
-  show(message: string, displayLength: int, className?: string) {
+  show(message, displayLength, className?) {
     return new Promise((resolve, reject) => {
       Materialize.toast(message, displayLength, className, () => {
         resolve();
