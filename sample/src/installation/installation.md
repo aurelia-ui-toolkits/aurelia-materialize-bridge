@@ -3,7 +3,7 @@
 In your project install the plugin via jspm with following command:
 
   ```
-    $ jspm install aurelia-materialize-bridge=github:aurelia-ui-toolkits/aurelia-materialize-bridge
+    $ jspm install aurelia-materialize-bridge
   ```
 
 #### Configure your app
