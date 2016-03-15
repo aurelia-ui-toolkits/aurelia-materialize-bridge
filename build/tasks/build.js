@@ -15,6 +15,11 @@ var vinylPaths = require('vinyl-paths');
 
 var jsName = paths.packageName + '.js';
 
+// RegExp remove tags during insert.transform in build-index gulp task
+var startTag = '//\\s*build-index-remove start';
+var endTag = '//\\s*build-index-remove end';
+var removeRegExp = new RegExp(startTag + '[^]+?' + endTag, 'g');
+
 gulp.task('build-index', function(){
   var importsToAdd = [];
 
@@ -26,7 +31,7 @@ gulp.task('build-index', function(){
     }))
     .pipe(concat(jsName))
     .pipe(insert.transform(function(contents) {
-      return tools.createImportBlock(importsToAdd) + contents;
+      return tools.createImportBlock(importsToAdd) + contents.replace(removeRegExp, '');
     }))
     .pipe(gulp.dest(paths.output));
 });

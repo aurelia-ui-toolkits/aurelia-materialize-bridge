@@ -13,4 +13,6 @@ export function configure(aurelia, configCallback) {
   }
 }
 
-export * from 'aurelia-materialize-bridge/toast/toastService';
+// build-index-remove start
+export * from './toast/toastService';
+// build-index-remove end
