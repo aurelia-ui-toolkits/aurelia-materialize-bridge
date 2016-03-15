@@ -11,10 +11,6 @@ exports.getBooleanFromAttributeValue = getBooleanFromAttributeValue;
 exports.fireEvent = fireEvent;
 exports.fireMaterializeEvent = fireMaterializeEvent;
 
-function _interopExportWildcard(obj, defaults) { var newObj = defaults({}, obj); delete newObj['default']; return newObj; }
-
-function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
@@ -26,8 +22,6 @@ require('materialize');
 var _aureliaLogging = require('aurelia-logging');
 
 var LogManager = _interopRequireWildcard(_aureliaLogging);
-
-var _aureliaFramework = require('aurelia-framework');
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -274,10 +268,6 @@ function configure(aurelia, configCallback) {
   }
 }
 
-var _aureliaMaterializeBridgeToastToastService = require('aurelia-materialize-bridge/toast/toastService');
-
-_defaults(exports, _interopExportWildcard(_aureliaMaterializeBridgeToastToastService, _defaults));
-
 var MdBadge = (function () {
   var _instanceInitializers = {};
 
@@ -361,47 +351,6 @@ var MdBox = (function () {
 })();
 
 exports.MdBox = MdBox;
-
-var MdBreadcrumbs = (function () {
-  function MdBreadcrumbs(element, router) {
-    _classCallCheck(this, _MdBreadcrumbs);
-
-    this.element = element;
-    while (router.parent) {
-      router = router.parent;
-    }
-    this.router = router;
-  }
-
-  MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {};
-
-  var _MdBreadcrumbs = MdBreadcrumbs;
-  MdBreadcrumbs = _aureliaDependencyInjection.inject(Element, _aureliaRouter.Router)(MdBreadcrumbs) || MdBreadcrumbs;
-  MdBreadcrumbs = _aureliaTemplating.customElement('md-breadcrumbs')(MdBreadcrumbs) || MdBreadcrumbs;
-  return MdBreadcrumbs;
-})();
-
-exports.MdBreadcrumbs = MdBreadcrumbs;
-
-var InstructionFilterValueConverter = (function () {
-  function InstructionFilterValueConverter() {
-    _classCallCheck(this, InstructionFilterValueConverter);
-  }
-
-  InstructionFilterValueConverter.prototype.toView = function toView(navigationInstructions) {
-    return navigationInstructions.filter(function (i) {
-      var result = false;
-      if (i.config.title) {
-        result = true;
-      }
-      return result;
-    });
-  };
-
-  return InstructionFilterValueConverter;
-})();
-
-exports.InstructionFilterValueConverter = InstructionFilterValueConverter;
 
 var MdButton = (function () {
   var _instanceInitializers3 = {};
@@ -506,6 +455,47 @@ var MdButton = (function () {
 })();
 
 exports.MdButton = MdButton;
+
+var MdBreadcrumbs = (function () {
+  function MdBreadcrumbs(element, router) {
+    _classCallCheck(this, _MdBreadcrumbs);
+
+    this.element = element;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {};
+
+  var _MdBreadcrumbs = MdBreadcrumbs;
+  MdBreadcrumbs = _aureliaDependencyInjection.inject(Element, _aureliaRouter.Router)(MdBreadcrumbs) || MdBreadcrumbs;
+  MdBreadcrumbs = _aureliaTemplating.customElement('md-breadcrumbs')(MdBreadcrumbs) || MdBreadcrumbs;
+  return MdBreadcrumbs;
+})();
+
+exports.MdBreadcrumbs = MdBreadcrumbs;
+
+var InstructionFilterValueConverter = (function () {
+  function InstructionFilterValueConverter() {
+    _classCallCheck(this, InstructionFilterValueConverter);
+  }
+
+  InstructionFilterValueConverter.prototype.toView = function toView(navigationInstructions) {
+    return navigationInstructions.filter(function (i) {
+      var result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
+  };
+
+  return InstructionFilterValueConverter;
+})();
+
+exports.InstructionFilterValueConverter = InstructionFilterValueConverter;
 
 var MdCard = (function () {
   var _instanceInitializers4 = {};
@@ -2077,38 +2067,6 @@ var MdRange = (function () {
 
 exports.MdRange = MdRange;
 
-var MdScrollSpy = (function () {
-  var _instanceInitializers22 = {};
-
-  _createDecoratedClass(MdScrollSpy, [{
-    key: 'target',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers22);
-
-  function MdScrollSpy(element) {
-    _classCallCheck(this, _MdScrollSpy);
-
-    _defineDecoratedPropertyDescriptor(this, 'target', _instanceInitializers22);
-
-    this.element = element;
-  }
-
-  MdScrollSpy.prototype.attached = function attached() {
-    $(this.target, this.element).scrollSpy();
-  };
-
-  MdScrollSpy.prototype.detached = function detached() {};
-
-  var _MdScrollSpy = MdScrollSpy;
-  MdScrollSpy = _aureliaDependencyInjection.inject(Element)(MdScrollSpy) || MdScrollSpy;
-  MdScrollSpy = _aureliaTemplating.customAttribute('md-scrollspy')(MdScrollSpy) || MdScrollSpy;
-  return MdScrollSpy;
-})();
-
-exports.MdScrollSpy = MdScrollSpy;
-
 var ScrollfirePatch = (function () {
   function ScrollfirePatch() {
     _classCallCheck(this, ScrollfirePatch);
@@ -2166,7 +2124,7 @@ var ScrollfirePatch = (function () {
 exports.ScrollfirePatch = ScrollfirePatch;
 
 var MdScrollfireTarget = (function () {
-  var _instanceInitializers23 = {};
+  var _instanceInitializers22 = {};
 
   _createDecoratedClass(MdScrollfireTarget, [{
     key: 'callback',
@@ -2182,14 +2140,14 @@ var MdScrollfireTarget = (function () {
       return 0;
     },
     enumerable: true
-  }], null, _instanceInitializers23);
+  }], null, _instanceInitializers22);
 
   function MdScrollfireTarget(element) {
     _classCallCheck(this, _MdScrollfireTarget);
 
-    _defineDecoratedPropertyDescriptor(this, 'callback', _instanceInitializers23);
+    _defineDecoratedPropertyDescriptor(this, 'callback', _instanceInitializers22);
 
-    _defineDecoratedPropertyDescriptor(this, 'offset', _instanceInitializers23);
+    _defineDecoratedPropertyDescriptor(this, 'offset', _instanceInitializers22);
 
     this.element = element;
   }
@@ -2248,6 +2206,38 @@ var MdScrollfire = (function () {
 })();
 
 exports.MdScrollfire = MdScrollfire;
+
+var MdScrollSpy = (function () {
+  var _instanceInitializers23 = {};
+
+  _createDecoratedClass(MdScrollSpy, [{
+    key: 'target',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers23);
+
+  function MdScrollSpy(element) {
+    _classCallCheck(this, _MdScrollSpy);
+
+    _defineDecoratedPropertyDescriptor(this, 'target', _instanceInitializers23);
+
+    this.element = element;
+  }
+
+  MdScrollSpy.prototype.attached = function attached() {
+    $(this.target, this.element).scrollSpy();
+  };
+
+  MdScrollSpy.prototype.detached = function detached() {};
+
+  var _MdScrollSpy = MdScrollSpy;
+  MdScrollSpy = _aureliaDependencyInjection.inject(Element)(MdScrollSpy) || MdScrollSpy;
+  MdScrollSpy = _aureliaTemplating.customAttribute('md-scrollspy')(MdScrollSpy) || MdScrollSpy;
+  return MdScrollSpy;
+})();
+
+exports.MdScrollSpy = MdScrollSpy;
 
 var MdSelect = (function () {
   function MdSelect(element, logManager, observerLocator) {

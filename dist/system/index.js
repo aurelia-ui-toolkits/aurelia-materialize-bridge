@@ -1,7 +1,7 @@
-System.register(['materialize', 'aurelia-framework', './config-builder', 'aurelia-materialize-bridge/toast/toastService'], function (_export) {
+System.register(['materialize', './config-builder', './toast/toastService'], function (_export) {
   'use strict';
 
-  var Aurelia, ConfigBuilder;
+  var ConfigBuilder;
 
   _export('configure', configure);
 
@@ -18,13 +18,11 @@ System.register(['materialize', 'aurelia-framework', './config-builder', 'aureli
   }
 
   return {
-    setters: [function (_materialize) {}, function (_aureliaFramework) {
-      Aurelia = _aureliaFramework.Aurelia;
-    }, function (_configBuilder) {
+    setters: [function (_materialize) {}, function (_configBuilder) {
       ConfigBuilder = _configBuilder.ConfigBuilder;
-    }, function (_aureliaMaterializeBridgeToastToastService) {
-      for (var _key in _aureliaMaterializeBridgeToastToastService) {
-        if (_key !== 'default') _export(_key, _aureliaMaterializeBridgeToastToastService[_key]);
+    }, function (_toastToastService) {
+      for (var _key in _toastToastService) {
+        if (_key !== 'default') _export(_key, _toastToastService[_key]);
       }
     }],
     execute: function () {}

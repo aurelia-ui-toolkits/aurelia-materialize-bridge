@@ -1,6 +1,5 @@
 import 'materialize';
 import * as LogManager from 'aurelia-logging';
-import {Aurelia} from 'aurelia-framework';
 import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
 import {bindingMode,ObserverLocator} from 'aurelia-binding';
@@ -267,7 +266,7 @@ export class ConfigBuilder {
   }
 }
 
-export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBuilder) => void) {
+export function configure(aurelia, configCallback) {
   let builder = new ConfigBuilder();
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
@@ -279,7 +278,7 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBui
   }
 }
 
-export * from 'aurelia-materialize-bridge/toast/toastService';
+
 
 @customAttribute('md-badge')
 @inject(Element)
@@ -329,36 +328,6 @@ export class MdBox {
   detached() {
     this.attributeManager.removeAttributes('data-caption');
     this.attributeManager.removeClasses('materialboxed');
-  }
-}
-
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-
-@customElement('md-breadcrumbs')
-@inject(Element, Router)
-export class MdBreadcrumbs {
-  constructor(element, router) {
-    this.element = element;
-    while (router.parent) {
-      router = router.parent;
-    }
-    this.router = router;
-  }
-
-  navigate(navigationInstruction) {
-    // this.router.navigateToRoute(navigationInstruction.config.name);
-  }
-}
-
-export class InstructionFilterValueConverter {
-  toView(navigationInstructions) {
-    return navigationInstructions.filter(i => {
-      let result = false;
-      if (i.config.title) {
-        result = true;
-      }
-      return result;
-    });
   }
 }
 
@@ -421,6 +390,36 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
+  }
+}
+
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+
+@customElement('md-breadcrumbs')
+@inject(Element, Router)
+export class MdBreadcrumbs {
+  constructor(element, router) {
+    this.element = element;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  navigate(navigationInstruction) {
+    // this.router.navigateToRoute(navigationInstruction.config.name);
+  }
+}
+
+export class InstructionFilterValueConverter {
+  toView(navigationInstructions) {
+    return navigationInstructions.filter(i => {
+      let result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
   }
 }
 
@@ -1301,23 +1300,6 @@ export class MdRange {
   }
 }
 
-@customAttribute('md-scrollspy')
-@inject(Element)
-export class MdScrollSpy {
-  @bindable() target;
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.target, this.element).scrollSpy();
-  }
-
-  detached() {
-    // destroy handler not available
-  }
-}
-
 /* eslint no-new-func:0 */
 export class ScrollfirePatch {
   patched = false;
@@ -1411,6 +1393,23 @@ export class MdScrollfire {
         Materialize.scrollFire(options);
       }
     }
+  }
+}
+
+@customAttribute('md-scrollspy')
+@inject(Element)
+export class MdScrollSpy {
+  @bindable() target;
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.target, this.element).scrollSpy();
+  }
+
+  detached() {
+    // destroy handler not available
   }
 }
 

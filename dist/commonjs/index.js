@@ -9,8 +9,6 @@ function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaul
 
 require('materialize');
 
-var _aureliaFramework = require('aurelia-framework');
-
 var _configBuilder = require('./config-builder');
 
 function configure(aurelia, configCallback) {
@@ -25,6 +23,6 @@ function configure(aurelia, configCallback) {
   }
 }
 
-var _aureliaMaterializeBridgeToastToastService = require('aurelia-materialize-bridge/toast/toastService');
+var _toastToastService = require('./toast/toastService');
 
-_defaults(exports, _interopExportWildcard(_aureliaMaterializeBridgeToastToastService, _defaults));
+_defaults(exports, _interopExportWildcard(_toastToastService, _defaults));

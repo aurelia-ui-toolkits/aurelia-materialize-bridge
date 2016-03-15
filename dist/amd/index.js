@@ -1,4 +1,4 @@
-define(['exports', 'materialize', 'aurelia-framework', './config-builder', 'aurelia-materialize-bridge/toast/toastService'], function (exports, _materialize, _aureliaFramework, _configBuilder, _aureliaMaterializeBridgeToastToastService) {
+define(['exports', 'materialize', './config-builder', './toast/toastService'], function (exports, _materialize, _configBuilder, _toastToastService) {
   'use strict';
 
   exports.__esModule = true;
@@ -20,5 +20,5 @@ define(['exports', 'materialize', 'aurelia-framework', './config-builder', 'aure
     }
   }
 
-  _defaults(exports, _interopExportWildcard(_aureliaMaterializeBridgeToastToastService, _defaults));
+  _defaults(exports, _interopExportWildcard(_toastToastService, _defaults));
 });

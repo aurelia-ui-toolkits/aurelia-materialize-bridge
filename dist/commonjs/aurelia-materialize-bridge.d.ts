@@ -1,7 +1,6 @@
 declare module 'aurelia-materialize-bridge' {
   import 'materialize';
   import * as LogManager from 'aurelia-logging';
-  import { Aurelia }  from 'aurelia-framework';
   import { bindable, customAttribute, customElement, inlineView }  from 'aurelia-templating';
   import { inject }  from 'aurelia-dependency-injection';
   import { bindingMode, ObserverLocator }  from 'aurelia-binding';
@@ -75,8 +74,7 @@ declare module 'aurelia-materialize-bridge' {
       */
     withoutGlobalResources(): ConfigBuilder;
   }
-  export function configure(aurelia: Aurelia, configCallback?: ((builder: ConfigBuilder) => void)): any;
-  export * from 'aurelia-materialize-bridge/toast/toastService';
+  export function configure(aurelia: any, configCallback: any): any;
   export class MdBadge {
     isNew: any;
     constructor(element: any);
@@ -89,17 +87,6 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
-  
-  //  taken from: https://github.com/heruan/aurelia-breadcrumbs
-  export class MdBreadcrumbs {
-    constructor(element: any, router: any);
-    navigate(navigationInstruction: any): any;
-  }
-  
-  //  this.router.navigateToRoute(navigationInstruction.config.name);
-  export class InstructionFilterValueConverter {
-    toView(navigationInstructions: any): any;
-  }
   export class MdButton {
     disabled: any;
     flat: any;
@@ -110,6 +97,17 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     disabledChanged(newValue: any): any;
     flatChanged(newValue: any): any;
+  }
+  
+  //  taken from: https://github.com/heruan/aurelia-breadcrumbs
+  export class MdBreadcrumbs {
+    constructor(element: any, router: any);
+    navigate(navigationInstruction: any): any;
+  }
+  
+  //  this.router.navigateToRoute(navigationInstruction.config.name);
+  export class InstructionFilterValueConverter {
+    toView(navigationInstructions: any): any;
   }
   export class MdCard {
     mdImage: any;
@@ -362,14 +360,7 @@ declare module 'aurelia-materialize-bridge' {
     mdValue: any;
     constructor(element: any);
   }
-  export class MdScrollSpy {
-    target: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-  }
   
-  //  destroy handler not available
   /* eslint no-new-func:0 */
   export class ScrollfirePatch {
     patched: any;
@@ -385,6 +376,14 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any, scrollfirePatch: any);
     attached(): any;
   }
+  export class MdScrollSpy {
+    target: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  
+  //  destroy handler not available
   export class MdSelect {
     constructor(element: any, logManager: any, observerLocator: any);
     attached(): any;
