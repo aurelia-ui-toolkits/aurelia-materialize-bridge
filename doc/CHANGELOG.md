@@ -1,3 +1,9 @@
+### 0.1.2 (2016-03-16)
+
+#### Features
+
+* **md-input:** added html5 validation messages as an input property
+
 ### 0.1.1 (2016-03-15)
 
 
