@@ -87,17 +87,6 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
-  export class MdButton {
-    disabled: any;
-    flat: any;
-    floating: any;
-    large: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-    disabledChanged(newValue: any): any;
-    flatChanged(newValue: any): any;
-  }
   
   //  taken from: https://github.com/heruan/aurelia-breadcrumbs
   export class MdBreadcrumbs {
@@ -108,6 +97,17 @@ declare module 'aurelia-materialize-bridge' {
   //  this.router.navigateToRoute(navigationInstruction.config.name);
   export class InstructionFilterValueConverter {
     toView(navigationInstructions: any): any;
+  }
+  export class MdButton {
+    disabled: any;
+    flat: any;
+    floating: any;
+    large: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    disabledChanged(newValue: any): any;
+    flatChanged(newValue: any): any;
   }
   export class MdCard {
     mdImage: any;

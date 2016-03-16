@@ -352,6 +352,47 @@ var MdBox = (function () {
 
 exports.MdBox = MdBox;
 
+var MdBreadcrumbs = (function () {
+  function MdBreadcrumbs(element, router) {
+    _classCallCheck(this, _MdBreadcrumbs);
+
+    this.element = element;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {};
+
+  var _MdBreadcrumbs = MdBreadcrumbs;
+  MdBreadcrumbs = _aureliaDependencyInjection.inject(Element, _aureliaRouter.Router)(MdBreadcrumbs) || MdBreadcrumbs;
+  MdBreadcrumbs = _aureliaTemplating.customElement('md-breadcrumbs')(MdBreadcrumbs) || MdBreadcrumbs;
+  return MdBreadcrumbs;
+})();
+
+exports.MdBreadcrumbs = MdBreadcrumbs;
+
+var InstructionFilterValueConverter = (function () {
+  function InstructionFilterValueConverter() {
+    _classCallCheck(this, InstructionFilterValueConverter);
+  }
+
+  InstructionFilterValueConverter.prototype.toView = function toView(navigationInstructions) {
+    return navigationInstructions.filter(function (i) {
+      var result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
+  };
+
+  return InstructionFilterValueConverter;
+})();
+
+exports.InstructionFilterValueConverter = InstructionFilterValueConverter;
+
 var MdButton = (function () {
   var _instanceInitializers3 = {};
 
@@ -455,47 +496,6 @@ var MdButton = (function () {
 })();
 
 exports.MdButton = MdButton;
-
-var MdBreadcrumbs = (function () {
-  function MdBreadcrumbs(element, router) {
-    _classCallCheck(this, _MdBreadcrumbs);
-
-    this.element = element;
-    while (router.parent) {
-      router = router.parent;
-    }
-    this.router = router;
-  }
-
-  MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {};
-
-  var _MdBreadcrumbs = MdBreadcrumbs;
-  MdBreadcrumbs = _aureliaDependencyInjection.inject(Element, _aureliaRouter.Router)(MdBreadcrumbs) || MdBreadcrumbs;
-  MdBreadcrumbs = _aureliaTemplating.customElement('md-breadcrumbs')(MdBreadcrumbs) || MdBreadcrumbs;
-  return MdBreadcrumbs;
-})();
-
-exports.MdBreadcrumbs = MdBreadcrumbs;
-
-var InstructionFilterValueConverter = (function () {
-  function InstructionFilterValueConverter() {
-    _classCallCheck(this, InstructionFilterValueConverter);
-  }
-
-  InstructionFilterValueConverter.prototype.toView = function toView(navigationInstructions) {
-    return navigationInstructions.filter(function (i) {
-      var result = false;
-      if (i.config.title) {
-        result = true;
-      }
-      return result;
-    });
-  };
-
-  return InstructionFilterValueConverter;
-})();
-
-exports.InstructionFilterValueConverter = InstructionFilterValueConverter;
 
 var MdCard = (function () {
   var _instanceInitializers4 = {};
