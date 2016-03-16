@@ -23,6 +23,7 @@ export class MdInput {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdValidate = false;
+  @bindable() mdValidateError;
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) mdValue = '';
@@ -38,6 +39,9 @@ export class MdInput {
     this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
     if (getBooleanFromAttributeValue(this.mdValidate)) {
       this.input.classList.add('validate');
+    }
+    if (this.mdValidateError)  {
+      this.label.setAttribute('data-error', this.mdValidateError);
     }
     if (this.mdPlaceholder) {
       this.input.setAttribute('placeholder', this.mdPlaceholder);
