@@ -1024,93 +1024,8 @@ function fireMaterializeEvent(element, name) {
   return fireEvent(element, '' + constants.eventPrefix + name, data);
 }
 
-var MdDatePicker = (function () {
-  var _instanceInitializers10 = {};
-
-  _createDecoratedClass(MdDatePicker, [{
-    key: 'container',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'translation',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'value',
-    decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay })],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers10);
-
-  function MdDatePicker(element) {
-    _classCallCheck(this, _MdDatePicker);
-
-    _defineDecoratedPropertyDescriptor(this, 'container', _instanceInitializers10);
-
-    _defineDecoratedPropertyDescriptor(this, 'translation', _instanceInitializers10);
-
-    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers10);
-
-    this.element = element;
-    this.log = _aureliaLogging.getLogger('md-datepicker');
-  }
-
-  MdDatePicker.prototype.attached = function attached() {
-    var _this6 = this;
-
-    this.element.classList.add('date-picker');
-    var options = {
-      selectMonths: true,
-      selectYears: 15,
-      onClose: function onClose() {
-        $(document.activeElement).blur();
-      }
-    };
-    var i18n = {};
-
-    Object.assign(options, i18n);
-    if (this.container) {
-      options.container = this.container;
-    }
-    this.picker = $(this.element).pickadate(options).pickadate('picker');
-    this.picker.on({
-      'close': this.onClose.bind(this),
-      'set': this.onSet.bind(this)
-    });
-    $(this.element).on('focusin', function () {
-      $(_this6.element).pickadate('open');
-    });
-  };
-
-  MdDatePicker.prototype.detached = function detached() {
-    if (this.picker) {
-      this.picker.stop();
-    }
-  };
-
-  MdDatePicker.prototype.onClose = function onClose() {
-    var selected = this.picker.get('select');
-    this.value = selected ? selected.obj : null;
-  };
-
-  MdDatePicker.prototype.onSet = function onSet(value) {};
-
-  MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
-    this.log.debug('selectedChanged', this.selected);
-  };
-
-  var _MdDatePicker = MdDatePicker;
-  MdDatePicker = _aureliaTemplating.customAttribute('md-datepicker')(MdDatePicker) || MdDatePicker;
-  MdDatePicker = _aureliaDependencyInjection.inject(Element)(MdDatePicker) || MdDatePicker;
-  return MdDatePicker;
-})();
-
-exports.MdDatePicker = MdDatePicker;
-
 var MdDropdownElement = (function () {
-  var _instanceInitializers11 = {};
+  var _instanceInitializers10 = {};
 
   _createDecoratedClass(MdDropdownElement, [{
     key: 'alignment',
@@ -1186,26 +1101,26 @@ var MdDropdownElement = (function () {
     key: 'id',
     value: 0,
     enumerable: true
-  }], _instanceInitializers11);
+  }], _instanceInitializers10);
 
   function MdDropdownElement(element) {
     _classCallCheck(this, _MdDropdownElement);
 
-    _defineDecoratedPropertyDescriptor(this, 'alignment', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'alignment', _instanceInitializers10);
 
-    _defineDecoratedPropertyDescriptor(this, 'belowOrigin', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'belowOrigin', _instanceInitializers10);
 
-    _defineDecoratedPropertyDescriptor(this, 'constrainWidth', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'constrainWidth', _instanceInitializers10);
 
-    _defineDecoratedPropertyDescriptor(this, 'gutter', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'gutter', _instanceInitializers10);
 
-    _defineDecoratedPropertyDescriptor(this, 'hover', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'hover', _instanceInitializers10);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers10);
 
-    _defineDecoratedPropertyDescriptor(this, 'inDuration', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'inDuration', _instanceInitializers10);
 
-    _defineDecoratedPropertyDescriptor(this, 'outDuration', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'outDuration', _instanceInitializers10);
 
     this.element = element;
     this.controlId = 'md-dropdown-' + MdDropdown.id++;
@@ -1232,7 +1147,7 @@ var MdDropdownElement = (function () {
 exports.MdDropdownElement = MdDropdownElement;
 
 var MdDropdown = (function () {
-  var _instanceInitializers12 = {};
+  var _instanceInitializers11 = {};
 
   _createDecoratedClass(MdDropdown, [{
     key: 'activates',
@@ -1313,28 +1228,28 @@ var MdDropdown = (function () {
       return 225;
     },
     enumerable: true
-  }], null, _instanceInitializers12);
+  }], null, _instanceInitializers11);
 
   function MdDropdown(element) {
     _classCallCheck(this, _MdDropdown);
 
-    _defineDecoratedPropertyDescriptor(this, 'activates', _instanceInitializers12);
+    _defineDecoratedPropertyDescriptor(this, 'activates', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'alignment', _instanceInitializers12);
+    _defineDecoratedPropertyDescriptor(this, 'alignment', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'belowOrigin', _instanceInitializers12);
+    _defineDecoratedPropertyDescriptor(this, 'belowOrigin', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'constrainWidth', _instanceInitializers12);
+    _defineDecoratedPropertyDescriptor(this, 'constrainWidth', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'gutter', _instanceInitializers12);
+    _defineDecoratedPropertyDescriptor(this, 'gutter', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'hover', _instanceInitializers12);
+    _defineDecoratedPropertyDescriptor(this, 'hover', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers12);
+    _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'inDuration', _instanceInitializers12);
+    _defineDecoratedPropertyDescriptor(this, 'inDuration', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'outDuration', _instanceInitializers12);
+    _defineDecoratedPropertyDescriptor(this, 'outDuration', _instanceInitializers11);
 
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
@@ -1370,6 +1285,91 @@ var MdDropdown = (function () {
 })();
 
 exports.MdDropdown = MdDropdown;
+
+var MdDatePicker = (function () {
+  var _instanceInitializers12 = {};
+
+  _createDecoratedClass(MdDatePicker, [{
+    key: 'container',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'translation',
+    decorators: [_aureliaTemplating.bindable()],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'value',
+    decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay })],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers12);
+
+  function MdDatePicker(element) {
+    _classCallCheck(this, _MdDatePicker);
+
+    _defineDecoratedPropertyDescriptor(this, 'container', _instanceInitializers12);
+
+    _defineDecoratedPropertyDescriptor(this, 'translation', _instanceInitializers12);
+
+    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers12);
+
+    this.element = element;
+    this.log = _aureliaLogging.getLogger('md-datepicker');
+  }
+
+  MdDatePicker.prototype.attached = function attached() {
+    var _this6 = this;
+
+    this.element.classList.add('date-picker');
+    var options = {
+      selectMonths: true,
+      selectYears: 15,
+      onClose: function onClose() {
+        $(document.activeElement).blur();
+      }
+    };
+    var i18n = {};
+
+    Object.assign(options, i18n);
+    if (this.container) {
+      options.container = this.container;
+    }
+    this.picker = $(this.element).pickadate(options).pickadate('picker');
+    this.picker.on({
+      'close': this.onClose.bind(this),
+      'set': this.onSet.bind(this)
+    });
+    $(this.element).on('focusin', function () {
+      $(_this6.element).pickadate('open');
+    });
+  };
+
+  MdDatePicker.prototype.detached = function detached() {
+    if (this.picker) {
+      this.picker.stop();
+    }
+  };
+
+  MdDatePicker.prototype.onClose = function onClose() {
+    var selected = this.picker.get('select');
+    this.value = selected ? selected.obj : null;
+  };
+
+  MdDatePicker.prototype.onSet = function onSet(value) {};
+
+  MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
+    this.log.debug('selectedChanged', this.selected);
+  };
+
+  var _MdDatePicker = MdDatePicker;
+  MdDatePicker = _aureliaTemplating.customAttribute('md-datepicker')(MdDatePicker) || MdDatePicker;
+  MdDatePicker = _aureliaDependencyInjection.inject(Element)(MdDatePicker) || MdDatePicker;
+  return MdDatePicker;
+})();
+
+exports.MdDatePicker = MdDatePicker;
 
 var MdFab = (function () {
   var _instanceInitializers13 = {};

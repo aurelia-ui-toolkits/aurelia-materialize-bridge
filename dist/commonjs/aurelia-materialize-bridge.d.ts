@@ -202,19 +202,6 @@ declare module 'aurelia-materialize-bridge' {
   * @param data Addition data to attach to an event
   */
   export function fireMaterializeEvent(element: Element, name: string, data?: any): any;
-  export class MdDatePicker {
-    container: any;
-    translation: any;
-    value: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-    onClose(): any;
-    onSet(value: any): any;
-    
-    //  this.value = new Date(value.select);
-    valueChanged(newValue: any): any;
-  }
   export class MdDropdownElement {
     static id: any;
     alignment: any;
@@ -241,6 +228,19 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
     detached(): any;
+  }
+  export class MdDatePicker {
+    container: any;
+    translation: any;
+    value: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    onClose(): any;
+    onSet(value: any): any;
+    
+    //  this.value = new Date(value.select);
+    valueChanged(newValue: any): any;
   }
   export class MdFab {
     mdFixed: any;
