@@ -56,6 +56,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       },
       enumerable: true
     }, {
+      key: 'mdValidateError',
+      decorators: [_aureliaTemplating.bindable()],
+      initializer: null,
+      enumerable: true
+    }, {
       key: 'mdValue',
       decorators: [_aureliaTemplating.bindable({
         defaultBindingMode: _aureliaBinding.bindingMode.twoWay
@@ -83,6 +88,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
       _defineDecoratedPropertyDescriptor(this, 'mdValidate', _instanceInitializers);
 
+      _defineDecoratedPropertyDescriptor(this, 'mdValidateError', _instanceInitializers);
+
       _defineDecoratedPropertyDescriptor(this, 'mdValue', _instanceInitializers);
 
       this.element = element;
@@ -95,6 +102,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this.mdTextArea = _commonAttributes.getBooleanFromAttributeValue(this.mdTextArea);
       if (_commonAttributes.getBooleanFromAttributeValue(this.mdValidate)) {
         this.input.classList.add('validate');
+      }
+      if (this.mdValidateError) {
+        this.label.setAttribute('data-error', this.mdValidateError);
       }
       if (this.mdPlaceholder) {
         this.input.setAttribute('placeholder', this.mdPlaceholder);

@@ -269,6 +269,7 @@ declare module 'aurelia-materialize-bridge' {
     mdTextArea: any;
     mdType: any;
     mdValidate: any;
+    mdValidateError: any;
     mdValue: any;
     constructor(element: any, taskQueue: any, updateService: any);
     attached(): any;
