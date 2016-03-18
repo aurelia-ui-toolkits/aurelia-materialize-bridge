@@ -2,8 +2,8 @@ declare module 'aurelia-materialize-bridge' {
   import 'materialize';
   import * as LogManager from 'aurelia-logging';
   import { bindable, customAttribute, customElement, inlineView }  from 'aurelia-templating';
-  import { inject }  from 'aurelia-dependency-injection';
   import { bindingMode, ObserverLocator }  from 'aurelia-binding';
+  import { inject }  from 'aurelia-dependency-injection';
   import { Router }  from 'aurelia-router';
   import { getLogger }  from 'aurelia-logging';
   import { TaskQueue }  from 'aurelia-task-queue';
@@ -75,14 +75,14 @@ declare module 'aurelia-materialize-bridge' {
     withoutGlobalResources(): ConfigBuilder;
   }
   export function configure(aurelia: any, configCallback: any): any;
-  export class MdBadge {
-    isNew: any;
+  export class MdBox {
+    caption: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
   }
-  export class MdBox {
-    caption: any;
+  export class MdBadge {
+    isNew: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
@@ -202,6 +202,19 @@ declare module 'aurelia-materialize-bridge' {
   * @param data Addition data to attach to an event
   */
   export function fireMaterializeEvent(element: Element, name: string, data?: any): any;
+  export class MdDatePicker {
+    container: any;
+    translation: any;
+    value: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    onClose(): any;
+    onSet(value: any): any;
+    
+    //  this.value = new Date(value.select);
+    valueChanged(newValue: any): any;
+  }
   export class MdDropdownElement {
     static id: any;
     alignment: any;
@@ -228,19 +241,6 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
     detached(): any;
-  }
-  export class MdDatePicker {
-    container: any;
-    translation: any;
-    value: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-    onClose(): any;
-    onSet(value: any): any;
-    
-    //  this.value = new Date(value.select);
-    valueChanged(newValue: any): any;
   }
   export class MdFab {
     mdFixed: any;
@@ -354,13 +354,6 @@ declare module 'aurelia-materialize-bridge' {
     //  }
     mdDisabledChanged(newValue: any): any;
   }
-  export class MdRange {
-    mdMin: any;
-    mdMax: any;
-    mdStep: any;
-    mdValue: any;
-    constructor(element: any);
-  }
   
   /* eslint no-new-func:0 */
   export class ScrollfirePatch {
@@ -376,6 +369,13 @@ declare module 'aurelia-materialize-bridge' {
     targetId: any;
     constructor(element: any, scrollfirePatch: any);
     attached(): any;
+  }
+  export class MdRange {
+    mdMin: any;
+    mdMax: any;
+    mdStep: any;
+    mdValue: any;
+    constructor(element: any);
   }
   export class MdScrollSpy {
     target: any;

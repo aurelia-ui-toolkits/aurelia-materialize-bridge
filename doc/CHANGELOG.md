@@ -1,3 +1,10 @@
+### 0.1.3 (2016-03-18)
+
+#### Features
+
+* **md-colors:**
+  * added page-footer to colors ([70663436](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/706634364ee5b5388e8335b4cf9d7795e2e04c85))
+
 ### 0.1.2 (2016-03-16)
 
 #### Features
