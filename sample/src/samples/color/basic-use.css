@@ -1,0 +1,17 @@
+.color-box div {
+  display: inline-block;
+  margin: 10px;
+  width: 120px;
+  height: 100px;
+  border: dashed 1px black;
+  text-align: center;
+  line-height: 100px;
+}
+
+ul.native-list {
+  padding: 0 30px;
+}
+
+ul.native-list li {
+  list-style-type: initial;
+}
