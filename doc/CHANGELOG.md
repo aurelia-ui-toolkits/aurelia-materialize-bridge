@@ -1,3 +1,18 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.1.3...v0.2.0) (2016-03-21)
+
+
+### Bug Fixes
+
+* **md-breadcrumbs:** fixed navigation, closes #93 ([0de1115](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0de1115)), closes [#93](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/93)
+
+### Features
+
+* **md-collection:** added basic collections ([197e6fc](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/197e6fc))
+* **md-footer:** added footer, closes #113 ([499b91c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/499b91c)), closes [#113](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/113)
+
+
+
 ### 0.1.3 (2016-03-18)
 
 #### Features
