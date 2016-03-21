@@ -12,7 +12,7 @@
   "Components": {
     "Badges": { "moduleId": "badge", "status": "wip" },
     "Button": { "status": "wip" },
-    "Breadcrumbs": { "status": "wip" },
+    "Breadcrumbs": { "status": "done" },
     "Cards": { "moduleId": "card", "status": "done" },
     "Chips": { "moduleId": "chip", "status": "done" },
     "Collections": { },
