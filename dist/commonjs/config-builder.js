@@ -13,7 +13,7 @@ var ConfigBuilder = (function () {
   }
 
   ConfigBuilder.prototype.useAll = function useAll() {
-    return this.useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useFile().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+    return this.useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
   };
 
   ConfigBuilder.prototype.useBadge = function useBadge() {
@@ -72,6 +72,12 @@ var ConfigBuilder = (function () {
     return this;
   };
 
+  ConfigBuilder.prototype.useCollection = function useCollection() {
+    this.globalResources.push('./collection/collection');
+    this.globalResources.push('./collection/collection-item');
+    return this;
+  };
+
   ConfigBuilder.prototype.useColors = function useColors() {
     this.globalResources.push('./colors/md-colors.html');
     return this;
@@ -94,6 +100,11 @@ var ConfigBuilder = (function () {
 
   ConfigBuilder.prototype.useFile = function useFile() {
     this.globalResources.push('./file/file');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useFooter = function useFooter() {
+    this.globalResources.push('./footer/footer');
     return this;
   };
 

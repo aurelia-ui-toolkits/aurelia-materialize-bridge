@@ -1,8 +1,8 @@
 import 'materialize';
 import * as LogManager from 'aurelia-logging';
 import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
-import {bindingMode,ObserverLocator} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
+import {bindingMode,ObserverLocator} from 'aurelia-binding';
 import {Router} from 'aurelia-router';
 import {getLogger} from 'aurelia-logging';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -35,11 +35,13 @@ export class ConfigBuilder {
       .useCheckbox()
       .useChip()
       .useCollapsible()
+      .useCollection()
       .useColors()
       .useDatePicker()
       .useDropdown()
       .useFab()
       .useFile()
+      .useFooter()
       .useInput()
       .useModal()
       .useNavbar()
@@ -120,6 +122,12 @@ export class ConfigBuilder {
     return this;
   }
 
+  useCollection() : ConfigBuilder {
+    this.globalResources.push('./collection/collection');
+    this.globalResources.push('./collection/collection-item');
+    return this;
+  }
+
   useColors() : ConfigBuilder {
     this.globalResources.push('./colors/md-colors.html');
     return this;
@@ -143,6 +151,11 @@ export class ConfigBuilder {
 
   useFile() : ConfigBuilder {
     this.globalResources.push('./file/file');
+    return this;
+  }
+
+  useFooter() : ConfigBuilder {
+    this.globalResources.push('./footer/footer');
     return this;
   }
 
@@ -280,6 +293,31 @@ export function configure(aurelia, configCallback) {
 
 
 
+@customAttribute('md-badge')
+@inject(Element)
+export class MdBadge {
+  @bindable() isNew = false;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    let classes = [
+      'badge'
+    ];
+    if (getBooleanFromAttributeValue(this.isNew)) {
+      classes.push('new');
+    }
+    this.attributeManager.addClasses(classes);
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['badge', 'new']);
+  }
+}
+
 @customAttribute('md-box')
 @inject(Element)
 export class MdBox {
@@ -306,31 +344,6 @@ export class MdBox {
   }
 }
 
-@customAttribute('md-badge')
-@inject(Element)
-export class MdBadge {
-  @bindable() isNew = false;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    let classes = [
-      'badge'
-    ];
-    if (getBooleanFromAttributeValue(this.isNew)) {
-      classes.push('new');
-    }
-    this.attributeManager.addClasses(classes);
-  }
-
-  detached() {
-    this.attributeManager.removeClasses(['badge', 'new']);
-  }
-}
-
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 
 @customElement('md-breadcrumbs')
@@ -338,6 +351,7 @@ export class MdBadge {
 export class MdBreadcrumbs {
   constructor(element, router) {
     this.element = element;
+    this._childRouter = router;
     while (router.parent) {
       router = router.parent;
     }
@@ -345,7 +359,8 @@ export class MdBreadcrumbs {
   }
 
   navigate(navigationInstruction) {
-    // this.router.navigateToRoute(navigationInstruction.config.name);
+    this._childRouter.navigateToRoute(navigationInstruction.config.name);
+    // this.router.navigate(navigationInstruction.config.name);
   }
 }
 
@@ -358,6 +373,31 @@ export class InstructionFilterValueConverter {
       }
       return result;
     });
+  }
+}
+
+@customElement('md-card')
+@inject(Element)
+export class MdCard {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdReveal = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdSize = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
 
@@ -420,31 +460,6 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
-  }
-}
-
-@customElement('md-card')
-@inject(Element)
-export class MdCard {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdImage = null;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdReveal = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneWay
-  }) mdSize = '';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdTitle;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
 
@@ -625,6 +640,12 @@ export class MdCollapsible {
     this.refresh();
   }
 }
+
+@customElement('md-collection-item')
+export class MdCollectionItem { }
+
+@customElement('md-collection')
+export class MdCollection {}
 
 /* eslint-disable */
 // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
@@ -998,6 +1019,23 @@ export class MdFileInput {
   }
 }
 
+@customAttribute('md-footer')
+@inject(Element)
+export class MdFooter {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  bind() {
+    this.attributeManager.addClasses('page-footer');
+  }
+
+  unbind() {
+    this.attributeManager.removeClasses('page-footer');
+  }
+}
+
 @inject(TaskQueue)
 export class MdInputUpdateService {
   _updateCalled = false;
@@ -1282,6 +1320,28 @@ export class MdRadio {
   }
 }
 
+@customElement('md-range')
+@inject(Element)
+export class MdRange {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMin = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMax = 100;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdStep = 1;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue = 0;
+
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-range');
+  }
+}
+
 /* eslint no-new-func:0 */
 export class ScrollfirePatch {
   patched = false;
@@ -1375,28 +1435,6 @@ export class MdScrollfire {
         Materialize.scrollFire(options);
       }
     }
-  }
-}
-
-@customElement('md-range')
-@inject(Element)
-export class MdRange {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdMin = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdMax = 100;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdStep = 1;
-  @bindable({
-    defaultBindingMode: bindingMode.twoWay
-  }) mdValue = 0;
-
-  constructor(element) {
-    this.element = element;
-    this.log = getLogger('md-range');
   }
 }
 

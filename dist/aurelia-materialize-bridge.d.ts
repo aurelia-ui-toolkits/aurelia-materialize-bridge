@@ -2,8 +2,8 @@ declare module 'aurelia-materialize-bridge' {
   import 'materialize';
   import * as LogManager from 'aurelia-logging';
   import { bindable, customAttribute, customElement, inlineView }  from 'aurelia-templating';
-  import { bindingMode, ObserverLocator }  from 'aurelia-binding';
   import { inject }  from 'aurelia-dependency-injection';
+  import { bindingMode, ObserverLocator }  from 'aurelia-binding';
   import { Router }  from 'aurelia-router';
   import { getLogger }  from 'aurelia-logging';
   import { TaskQueue }  from 'aurelia-task-queue';
@@ -34,11 +34,13 @@ declare module 'aurelia-materialize-bridge' {
       */
     useClickCounter(): ConfigBuilder;
     useCollapsible(): ConfigBuilder;
+    useCollection(): ConfigBuilder;
     useColors(): ConfigBuilder;
     useDatePicker(): ConfigBuilder;
     useDropdown(): ConfigBuilder;
     useFab(): ConfigBuilder;
     useFile(): ConfigBuilder;
+    useFooter(): ConfigBuilder;
     useInput(): ConfigBuilder;
     useModal(): ConfigBuilder;
     useNavbar(): ConfigBuilder;
@@ -75,14 +77,14 @@ declare module 'aurelia-materialize-bridge' {
     withoutGlobalResources(): ConfigBuilder;
   }
   export function configure(aurelia: any, configCallback: any): any;
-  export class MdBox {
-    caption: any;
+  export class MdBadge {
+    isNew: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
   }
-  export class MdBadge {
-    isNew: any;
+  export class MdBox {
+    caption: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
@@ -94,9 +96,17 @@ declare module 'aurelia-materialize-bridge' {
     navigate(navigationInstruction: any): any;
   }
   
-  //  this.router.navigateToRoute(navigationInstruction.config.name);
+  //  this.router.navigate(navigationInstruction.config.name);
   export class InstructionFilterValueConverter {
     toView(navigationInstructions: any): any;
+  }
+  export class MdCard {
+    mdImage: any;
+    mdReveal: any;
+    mdSize: any;
+    mdTitle: any;
+    constructor(element: any);
+    attached(): any;
   }
   export class MdButton {
     disabled: any;
@@ -108,14 +118,6 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     disabledChanged(newValue: any): any;
     flatChanged(newValue: any): any;
-  }
-  export class MdCard {
-    mdImage: any;
-    mdReveal: any;
-    mdSize: any;
-    mdTitle: any;
-    constructor(element: any);
-    attached(): any;
   }
   
   //  @customElement('md-carousel-item')
@@ -158,6 +160,10 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     refresh(): any;
     accordionChanged(): any;
+  }
+  export class MdCollectionItem {
+  }
+  export class MdCollection {
   }
   
   /* eslint-enable */
@@ -257,6 +263,11 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     handleChangeFromNativeInput(): any;
   }
+  export class MdFooter {
+    constructor(element: any);
+    bind(): any;
+    unbind(): any;
+  }
   export class MdInputUpdateService {
     constructor(taskQueue: any);
     materializeUpdate(): any;
@@ -354,6 +365,13 @@ declare module 'aurelia-materialize-bridge' {
     //  }
     mdDisabledChanged(newValue: any): any;
   }
+  export class MdRange {
+    mdMin: any;
+    mdMax: any;
+    mdStep: any;
+    mdValue: any;
+    constructor(element: any);
+  }
   
   /* eslint no-new-func:0 */
   export class ScrollfirePatch {
@@ -369,13 +387,6 @@ declare module 'aurelia-materialize-bridge' {
     targetId: any;
     constructor(element: any, scrollfirePatch: any);
     attached(): any;
-  }
-  export class MdRange {
-    mdMin: any;
-    mdMax: any;
-    mdStep: any;
-    mdValue: any;
-    constructor(element: any);
   }
   export class MdScrollSpy {
     target: any;

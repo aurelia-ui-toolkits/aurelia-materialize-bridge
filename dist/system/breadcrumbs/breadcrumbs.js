@@ -19,13 +19,16 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
           _classCallCheck(this, _MdBreadcrumbs);
 
           this.element = element;
+          this._childRouter = router;
           while (router.parent) {
             router = router.parent;
           }
           this.router = router;
         }
 
-        MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {};
+        MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {
+          this._childRouter.navigateToRoute(navigationInstruction.config.name);
+        };
 
         var _MdBreadcrumbs = MdBreadcrumbs;
         MdBreadcrumbs = inject(Element, Router)(MdBreadcrumbs) || MdBreadcrumbs;

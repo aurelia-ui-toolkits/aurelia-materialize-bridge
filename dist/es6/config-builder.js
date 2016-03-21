@@ -18,11 +18,13 @@ export class ConfigBuilder {
       .useCheckbox()
       .useChip()
       .useCollapsible()
+      .useCollection()
       .useColors()
       .useDatePicker()
       .useDropdown()
       .useFab()
       .useFile()
+      .useFooter()
       .useInput()
       .useModal()
       .useNavbar()
@@ -103,6 +105,12 @@ export class ConfigBuilder {
     return this;
   }
 
+  useCollection() : ConfigBuilder {
+    this.globalResources.push('./collection/collection');
+    this.globalResources.push('./collection/collection-item');
+    return this;
+  }
+
   useColors() : ConfigBuilder {
     this.globalResources.push('./colors/md-colors.html');
     return this;
@@ -126,6 +134,11 @@ export class ConfigBuilder {
 
   useFile() : ConfigBuilder {
     this.globalResources.push('./file/file');
+    return this;
+  }
+
+  useFooter() : ConfigBuilder {
+    this.globalResources.push('./footer/footer');
     return this;
   }
 
