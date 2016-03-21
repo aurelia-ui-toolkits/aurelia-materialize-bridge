@@ -23,6 +23,7 @@ export class ConfigBuilder {
       .useDropdown()
       .useFab()
       .useFile()
+      .useFooter()
       .useInput()
       .useModal()
       .useNavbar()
@@ -126,6 +127,11 @@ export class ConfigBuilder {
 
   useFile() : ConfigBuilder {
     this.globalResources.push('./file/file');
+    return this;
+  }
+
+  useFooter() : ConfigBuilder {
+    this.globalResources.push('./footer/footer');
     return this;
   }
 
