@@ -16,7 +16,7 @@
     "Cards": { "moduleId": "card", "status": "done" },
     "Chips": { "moduleId": "chip", "status": "done" },
     "Collections": { },
-    "Footer": { },
+    "Footer": { "status": "wip" },
     "Navbar": { "status": "wip" },
     "Pagination": { "status": "done" },
     "Preloader": { "moduleId": "progress", "status": "done" },

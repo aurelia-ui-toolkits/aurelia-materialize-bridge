@@ -1,0 +1,9 @@
+{
+  "title": "Footer",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html"]
+    }
+  }
+}
