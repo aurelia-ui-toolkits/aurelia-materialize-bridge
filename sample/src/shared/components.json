@@ -8,7 +8,7 @@
     "Breadcrumbs": { "status": "done" },
     "Cards": { "moduleId": "card", "status": "done" },
     "Chips": { "moduleId": "chip", "status": "done" },
-    "Collections": { },
+    "Collections": { "status": "wip" },
     "Footer": { "status": "done" },
     "Navbar": { "status": "wip" },
     "Pagination": { "status": "done" },

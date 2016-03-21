@@ -14,6 +14,7 @@ export function configure(aurelia) {
         .useCheckbox()
         .useChip()
         .useCollapsible()
+        .useCollection()
         .useColors()
         .useDatePicker()
         .useDropdown()
