@@ -18,6 +18,7 @@ export class ConfigBuilder {
       .useCheckbox()
       .useChip()
       .useCollapsible()
+      .useCollection()
       .useColors()
       .useDatePicker()
       .useDropdown()
@@ -101,6 +102,12 @@ export class ConfigBuilder {
 
   useCollapsible(): ConfigBuilder {
     this.globalResources.push('./collapsible/collapsible');
+    return this;
+  }
+
+  useCollection() : ConfigBuilder {
+    this.globalResources.push('./collection/collection');
+    this.globalResources.push('./collection/collection-item');
     return this;
   }
 

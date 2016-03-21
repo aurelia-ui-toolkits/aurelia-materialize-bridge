@@ -1,0 +1,7 @@
+md-collection-item {
+  display: block;
+}
+
+md-collection-item.collection-item:not(.active):hover {
+  background-color: #ddd;
+}
