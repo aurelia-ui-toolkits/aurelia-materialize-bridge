@@ -9,6 +9,7 @@ import {Router} from 'aurelia-router';
 export class MdBreadcrumbs {
   constructor(element, router) {
     this.element = element;
+    this._childRouter = router;
     while (router.parent) {
       router = router.parent;
     }
@@ -16,6 +17,7 @@ export class MdBreadcrumbs {
   }
 
   navigate(navigationInstruction) {
-    // this.router.navigateToRoute(navigationInstruction.config.name);
+    this._childRouter.navigateToRoute(navigationInstruction.config.name);
+    // this.router.navigate(navigationInstruction.config.name);
   }
 }
