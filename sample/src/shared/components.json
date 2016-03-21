@@ -1,6 +1,6 @@
 {
   "Css": {
-    "Color": { "status": "wip" }
+    "Color": { "status": "done" }
   },
   "Components": {
     "Badges": { "moduleId": "badge", "status": "wip" },
