@@ -112,7 +112,7 @@ export class ConfigBuilder {
   }
 
   useColors() : ConfigBuilder {
-    this.globalResources.push('./colors/md-colors.html');
+    this.globalResources.push('./colors/md-colors.html!text');
     return this;
   }
 
@@ -248,7 +248,7 @@ export class ConfigBuilder {
   }
 
   useWell(): ConfigBuilder {
-    this.globalResources.push('./well/md-well.html');
+    this.globalResources.push('./well/md-well.html!text');
     return this;
   }
 
