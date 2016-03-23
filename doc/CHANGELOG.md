@@ -1,3 +1,9 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.2.0...v0.2.1) (2016-03-23)
+
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.1.3...v0.2.0) (2016-03-21)
 
