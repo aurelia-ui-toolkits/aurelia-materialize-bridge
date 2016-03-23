@@ -25,6 +25,7 @@
     "type": "git",
     "url": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge"
   },
+  "main": "dist/commonjs/index.js",
   "jspm": {
     "main": "index",
     "format": "amd",
