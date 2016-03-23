@@ -1,10 +1,12 @@
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ClickCounter = (function () {
+var ClickCounter = exports.ClickCounter = function () {
   function ClickCounter() {
     _classCallCheck(this, ClickCounter);
 
@@ -16,6 +18,4 @@ var ClickCounter = (function () {
   };
 
   return ClickCounter;
-})();
-
-exports.ClickCounter = ClickCounter;
+}();

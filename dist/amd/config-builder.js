@@ -1,11 +1,17 @@
 define(['exports'], function (exports) {
   'use strict';
 
-  exports.__esModule = true;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  var ConfigBuilder = (function () {
+  var ConfigBuilder = exports.ConfigBuilder = function () {
     function ConfigBuilder() {
       _classCallCheck(this, ConfigBuilder);
 
@@ -80,7 +86,7 @@ define(['exports'], function (exports) {
     };
 
     ConfigBuilder.prototype.useColors = function useColors() {
-      this.globalResources.push('./colors/md-colors.html');
+      this.globalResources.push('./colors/md-colors.html!text');
       return this;
     };
 
@@ -209,7 +215,7 @@ define(['exports'], function (exports) {
     };
 
     ConfigBuilder.prototype.useWell = function useWell() {
-      this.globalResources.push('./well/md-well.html');
+      this.globalResources.push('./well/md-well.html!text');
       return this;
     };
 
@@ -219,7 +225,5 @@ define(['exports'], function (exports) {
     };
 
     return ConfigBuilder;
-  })();
-
-  exports.ConfigBuilder = ConfigBuilder;
+  }();
 });

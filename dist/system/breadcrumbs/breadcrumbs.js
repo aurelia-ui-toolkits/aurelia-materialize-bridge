@@ -1,9 +1,13 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-router'], function (_export) {
-  'use strict';
+'use strict';
 
-  var customElement, inject, Router, MdBreadcrumbs;
+System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-router'], function (_export, _context) {
+  var customElement, inject, Router, _dec, _dec2, _class, MdBreadcrumbs;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -14,9 +18,9 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
       Router = _aureliaRouter.Router;
     }],
     execute: function () {
-      MdBreadcrumbs = (function () {
+      _export('MdBreadcrumbs', MdBreadcrumbs = (_dec = customElement('md-breadcrumbs'), _dec2 = inject(Element, Router), _dec(_class = _dec2(_class = function () {
         function MdBreadcrumbs(element, router) {
-          _classCallCheck(this, _MdBreadcrumbs);
+          _classCallCheck(this, MdBreadcrumbs);
 
           this.element = element;
           this._childRouter = router;
@@ -30,11 +34,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
           this._childRouter.navigateToRoute(navigationInstruction.config.name);
         };
 
-        var _MdBreadcrumbs = MdBreadcrumbs;
-        MdBreadcrumbs = inject(Element, Router)(MdBreadcrumbs) || MdBreadcrumbs;
-        MdBreadcrumbs = customElement('md-breadcrumbs')(MdBreadcrumbs) || MdBreadcrumbs;
         return MdBreadcrumbs;
-      })();
+      }()) || _class) || _class));
 
       _export('MdBreadcrumbs', MdBreadcrumbs);
     }

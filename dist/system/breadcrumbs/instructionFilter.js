@@ -1,14 +1,18 @@
-System.register([], function (_export) {
-  "use strict";
+"use strict";
 
+System.register([], function (_export, _context) {
   var InstructionFilterValueConverter;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [],
     execute: function () {
-      InstructionFilterValueConverter = (function () {
+      _export("InstructionFilterValueConverter", InstructionFilterValueConverter = function () {
         function InstructionFilterValueConverter() {
           _classCallCheck(this, InstructionFilterValueConverter);
         }
@@ -24,7 +28,7 @@ System.register([], function (_export) {
         };
 
         return InstructionFilterValueConverter;
-      })();
+      }());
 
       _export("InstructionFilterValueConverter", InstructionFilterValueConverter);
     }

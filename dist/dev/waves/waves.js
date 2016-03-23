@@ -1,13 +1,56 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export) {
-  'use strict';
+'use strict';
 
-  var bindable, customAttribute, bindingMode, inject, AttributeManager, getBooleanFromAttributeValue, MdWaves;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export, _context) {
+  var bindable, customAttribute, bindingMode, inject, AttributeManager, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, MdWaves;
 
-  var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -23,44 +66,21 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
-      MdWaves = (function () {
-        var _instanceInitializers = {};
-
-        _createDecoratedClass(MdWaves, [{
-          key: 'block',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: function initializer() {
-            return false;
-          },
-          enumerable: true
-        }, {
-          key: 'circle',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: function initializer() {
-            return false;
-          },
-          enumerable: true
-        }, {
-          key: 'color',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: null,
-          enumerable: true
-        }], null, _instanceInitializers);
-
+      _export('MdWaves', MdWaves = (_dec = customAttribute('md-waves'), _dec2 = inject(Element), _dec3 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec4 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec5 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdWaves(element) {
-          _classCallCheck(this, _MdWaves);
+          _classCallCheck(this, MdWaves);
 
-          _defineDecoratedPropertyDescriptor(this, 'block', _instanceInitializers);
+          _initDefineProp(this, 'block', _descriptor, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'circle', _instanceInitializers);
+          _initDefineProp(this, 'circle', _descriptor2, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'color', _instanceInitializers);
+          _initDefineProp(this, 'color', _descriptor3, this);
 
           this.element = element;
           this.attributeManager = new AttributeManager(this.element);
@@ -91,11 +111,21 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           this.attributeManager.removeClasses(classes);
         };
 
-        var _MdWaves = MdWaves;
-        MdWaves = inject(Element)(MdWaves) || MdWaves;
-        MdWaves = customAttribute('md-waves')(MdWaves) || MdWaves;
         return MdWaves;
-      })();
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'block', [_dec3], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'circle', [_dec4], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'color', [_dec5], {
+        enumerable: true,
+        initializer: null
+      })), _class2)) || _class) || _class));
 
       _export('MdWaves', MdWaves);
     }

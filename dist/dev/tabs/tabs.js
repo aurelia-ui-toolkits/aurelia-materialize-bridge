@@ -1,11 +1,13 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/events', '../common/attributeManager'], function (_export) {
-  'use strict';
+'use strict';
 
-  var customAttribute, inject, fireMaterializeEvent, AttributeManager, MdTabs;
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/events', '../common/attributeManager'], function (_export, _context) {
+  var customAttribute, inject, fireMaterializeEvent, AttributeManager, _createClass, _dec, _dec2, _class, MdTabs;
 
-  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -18,9 +20,27 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       AttributeManager = _commonAttributeManager.AttributeManager;
     }],
     execute: function () {
-      MdTabs = (function () {
+      _createClass = function () {
+        function defineProperties(target, props) {
+          for (var i = 0; i < props.length; i++) {
+            var descriptor = props[i];
+            descriptor.enumerable = descriptor.enumerable || false;
+            descriptor.configurable = true;
+            if ("value" in descriptor) descriptor.writable = true;
+            Object.defineProperty(target, descriptor.key, descriptor);
+          }
+        }
+
+        return function (Constructor, protoProps, staticProps) {
+          if (protoProps) defineProperties(Constructor.prototype, protoProps);
+          if (staticProps) defineProperties(Constructor, staticProps);
+          return Constructor;
+        };
+      }();
+
+      _export('MdTabs', MdTabs = (_dec = customAttribute('md-tabs'), _dec2 = inject(Element), _dec(_class = _dec2(_class = function () {
         function MdTabs(element) {
-          _classCallCheck(this, _MdTabs);
+          _classCallCheck(this, MdTabs);
 
           this.element = element;
           this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
@@ -102,11 +122,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           }
         }]);
 
-        var _MdTabs = MdTabs;
-        MdTabs = inject(Element)(MdTabs) || MdTabs;
-        MdTabs = customAttribute('md-tabs')(MdTabs) || MdTabs;
         return MdTabs;
-      })();
+      }()) || _class) || _class));
 
       _export('MdTabs', MdTabs);
     }

@@ -1,9 +1,13 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging', '../common/events'], function (_export) {
-  'use strict';
+'use strict';
 
-  var customAttribute, ObserverLocator, inject, LogManager, fireEvent, MdSelect;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging', '../common/events'], function (_export, _context) {
+  var customAttribute, ObserverLocator, inject, LogManager, fireEvent, _dec, _dec2, _class, MdSelect;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -18,9 +22,9 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
-      MdSelect = (function () {
+      _export('MdSelect', MdSelect = (_dec = inject(Element, LogManager, ObserverLocator), _dec2 = customAttribute('md-select'), _dec(_class = _dec2(_class = function () {
         function MdSelect(element, logManager, observerLocator) {
-          _classCallCheck(this, _MdSelect);
+          _classCallCheck(this, MdSelect);
 
           this._suspendUpdate = false;
 
@@ -53,6 +57,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             fireEvent(this.element, 'change');
             this.log.debug('this.valueObserver.value', this.valueObserver.value);
 
+
             this._suspendUpdate = false;
           }
         };
@@ -64,11 +69,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           }
         };
 
-        var _MdSelect = MdSelect;
-        MdSelect = customAttribute('md-select')(MdSelect) || MdSelect;
-        MdSelect = inject(Element, LogManager, ObserverLocator)(MdSelect) || MdSelect;
         return MdSelect;
-      })();
+      }()) || _class) || _class));
 
       _export('MdSelect', MdSelect);
     }

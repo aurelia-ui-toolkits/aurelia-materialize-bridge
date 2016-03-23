@@ -129,7 +129,7 @@ export class ConfigBuilder {
   }
 
   useColors() : ConfigBuilder {
-    this.globalResources.push('./colors/md-colors.html');
+    this.globalResources.push('./colors/md-colors.html!text');
     return this;
   }
 
@@ -265,7 +265,7 @@ export class ConfigBuilder {
   }
 
   useWell(): ConfigBuilder {
-    this.globalResources.push('./well/md-well.html');
+    this.globalResources.push('./well/md-well.html!text');
     return this;
   }
 
@@ -376,31 +376,6 @@ export class InstructionFilterValueConverter {
   }
 }
 
-@customElement('md-card')
-@inject(Element)
-export class MdCard {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdImage = null;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdReveal = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneWay
-  }) mdSize = '';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdTitle;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
-  }
-}
-
 @customAttribute('md-button')
 @inject(Element)
 export class MdButton {
@@ -460,6 +435,31 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
+  }
+}
+
+@customElement('md-card')
+@inject(Element)
+export class MdCard {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdReveal = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdSize = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
 
@@ -1207,22 +1207,6 @@ export class MdPagination {
   }
 }
 
-@customAttribute('md-parallax')
-@inject(Element)
-export class MdParallax {
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.element).parallax();
-  }
-
-  detached() {
-    // destroy handler not available
-  }
-}
-
 @customElement('md-progress')
 @inject(Element)
 export class MdProgress {
@@ -1260,6 +1244,22 @@ export class MdPushpin {
       offset: parseInt(this.offset, 10),
       top: parseInt(this.top, 10)
     });
+  }
+
+  detached() {
+    // destroy handler not available
+  }
+}
+
+@customAttribute('md-parallax')
+@inject(Element)
+export class MdParallax {
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.element).parallax();
   }
 
   detached() {
@@ -1438,23 +1438,6 @@ export class MdScrollfire {
   }
 }
 
-@customAttribute('md-scrollspy')
-@inject(Element)
-export class MdScrollSpy {
-  @bindable() target;
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.target, this.element).scrollSpy();
-  }
-
-  detached() {
-    // destroy handler not available
-  }
-}
-
 @inject(Element, LogManager, ObserverLocator)
 @customAttribute('md-select')
 export class MdSelect {
@@ -1512,6 +1495,23 @@ export class MdSelect {
     if (!this._suspendUpdate) {
       $(this.element).material_select();
     }
+  }
+}
+
+@customAttribute('md-scrollspy')
+@inject(Element)
+export class MdScrollSpy {
+  @bindable() target;
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.target, this.element).scrollSpy();
+  }
+
+  detached() {
+    // destroy handler not available
   }
 }
 

@@ -1,9 +1,13 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (_export) {
-  'use strict';
+'use strict';
 
-  var customAttribute, inject, AttributeManager, MdFooter;
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (_export, _context) {
+  var customAttribute, inject, AttributeManager, _dec, _dec2, _class, MdFooter;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -14,9 +18,9 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       AttributeManager = _commonAttributeManager.AttributeManager;
     }],
     execute: function () {
-      MdFooter = (function () {
+      _export('MdFooter', MdFooter = (_dec = customAttribute('md-footer'), _dec2 = inject(Element), _dec(_class = _dec2(_class = function () {
         function MdFooter(element) {
-          _classCallCheck(this, _MdFooter);
+          _classCallCheck(this, MdFooter);
 
           this.element = element;
           this.attributeManager = new AttributeManager(this.element);
@@ -30,11 +34,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           this.attributeManager.removeClasses('page-footer');
         };
 
-        var _MdFooter = MdFooter;
-        MdFooter = inject(Element)(MdFooter) || MdFooter;
-        MdFooter = customAttribute('md-footer')(MdFooter) || MdFooter;
         return MdFooter;
-      })();
+      }()) || _class) || _class));
 
       _export('MdFooter', MdFooter);
     }

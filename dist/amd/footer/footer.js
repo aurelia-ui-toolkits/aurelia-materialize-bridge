@@ -1,16 +1,25 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _commonAttributeManager) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager) {
   'use strict';
 
-  exports.__esModule = true;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdFooter = undefined;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  var MdFooter = (function () {
+  var _dec, _dec2, _class;
+
+  var MdFooter = exports.MdFooter = (_dec = (0, _aureliaTemplating.customAttribute)('md-footer'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
     function MdFooter(element) {
-      _classCallCheck(this, _MdFooter);
+      _classCallCheck(this, MdFooter);
 
       this.element = element;
-      this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
     }
 
     MdFooter.prototype.bind = function bind() {
@@ -21,11 +30,6 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       this.attributeManager.removeClasses('page-footer');
     };
 
-    var _MdFooter = MdFooter;
-    MdFooter = _aureliaDependencyInjection.inject(Element)(MdFooter) || MdFooter;
-    MdFooter = _aureliaTemplating.customAttribute('md-footer')(MdFooter) || MdFooter;
     return MdFooter;
-  })();
-
-  exports.MdFooter = MdFooter;
+  }()) || _class) || _class);
 });

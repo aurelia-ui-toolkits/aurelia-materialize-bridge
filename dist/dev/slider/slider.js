@@ -1,13 +1,56 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (_export) {
-  'use strict';
+'use strict';
 
-  var bindable, customElement, inlineView, bindingMode, inject, getBooleanFromAttributeValue, getLogger, MdSlider;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (_export, _context) {
+  var bindable, customElement, inlineView, bindingMode, inject, getBooleanFromAttributeValue, getLogger, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, MdSlider;
 
-  var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -24,58 +67,19 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       getLogger = _aureliaLogging.getLogger;
     }],
     execute: function () {
-      MdSlider = (function () {
-        var _instanceInitializers = {};
-
-        _createDecoratedClass(MdSlider, [{
-          key: 'mdFillContainer',
-          decorators: [bindable({ defaultBindingMode: bindingMode.oneTime })],
-          initializer: function initializer() {
-            return false;
-          },
-          enumerable: true
-        }, {
-          key: 'mdHeight',
-          decorators: [bindable({ defaultBindingMode: bindingMode.oneTime })],
-          initializer: function initializer() {
-            return 400;
-          },
-          enumerable: true
-        }, {
-          key: 'mdIndicators',
-          decorators: [bindable()],
-          initializer: function initializer() {
-            return true;
-          },
-          enumerable: true
-        }, {
-          key: 'mdInterval',
-          decorators: [bindable({ defaultBindingMode: bindingMode.oneTime })],
-          initializer: function initializer() {
-            return 6000;
-          },
-          enumerable: true
-        }, {
-          key: 'mdTransition',
-          decorators: [bindable({ defaultBindingMode: bindingMode.oneTime })],
-          initializer: function initializer() {
-            return 500;
-          },
-          enumerable: true
-        }], null, _instanceInitializers);
-
+      _export('MdSlider', MdSlider = (_dec = customElement('md-slider'), _dec2 = inject(Element), _dec3 = inlineView('\n  <template class="slider">\n  <require from="./slider.css"></require>\n  <ul class="slides">\n    <content select="li"></content>\n  </ul>\n  </template>\n'), _dec4 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec5 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec6 = bindable(), _dec7 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec8 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
         function MdSlider(element) {
-          _classCallCheck(this, _MdSlider);
+          _classCallCheck(this, MdSlider);
 
-          _defineDecoratedPropertyDescriptor(this, 'mdFillContainer', _instanceInitializers);
+          _initDefineProp(this, 'mdFillContainer', _descriptor, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'mdHeight', _instanceInitializers);
+          _initDefineProp(this, 'mdHeight', _descriptor2, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'mdIndicators', _instanceInitializers);
+          _initDefineProp(this, 'mdIndicators', _descriptor3, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'mdInterval', _instanceInitializers);
+          _initDefineProp(this, 'mdInterval', _descriptor4, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'mdTransition', _instanceInitializers);
+          _initDefineProp(this, 'mdTransition', _descriptor5, this);
 
           this.element = element;
           this.log = getLogger('md-slider');
@@ -119,12 +123,33 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           this.refresh();
         };
 
-        var _MdSlider = MdSlider;
-        MdSlider = inlineView('\n  <template class="slider">\n  <require from="./slider.css"></require>\n  <ul class="slides">\n    <content select="li"></content>\n  </ul>\n  </template>\n')(MdSlider) || MdSlider;
-        MdSlider = inject(Element)(MdSlider) || MdSlider;
-        MdSlider = customElement('md-slider')(MdSlider) || MdSlider;
         return MdSlider;
-      })();
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFillContainer', [_dec4], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdHeight', [_dec5], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 400;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdIndicators', [_dec6], {
+        enumerable: true,
+        initializer: function initializer() {
+          return true;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdInterval', [_dec7], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 6000;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdTransition', [_dec8], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 500;
+        }
+      })), _class2)) || _class) || _class) || _class));
 
       _export('MdSlider', MdSlider);
     }

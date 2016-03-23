@@ -1,12 +1,11 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MdRadio = undefined;
 
-var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _class3, _temp;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -14,87 +13,86 @@ var _aureliaBinding = require('aurelia-binding');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
-var _commonAttributeManager = require('../common/attributeManager');
+var _attributeManager = require('../common/attributeManager');
 
-var _commonAttributes = require('../common/attributes');
+var _attributes = require('../common/attributes');
 
-var MdRadio = (function () {
-  var _instanceInitializers = {};
+function _initDefineProp(target, property, descriptor, context) {
+  if (!descriptor) return;
+  Object.defineProperty(target, property, {
+    enumerable: descriptor.enumerable,
+    configurable: descriptor.configurable,
+    writable: descriptor.writable,
+    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+  });
+}
 
-  _createDecoratedClass(MdRadio, [{
-    key: 'mdChecked',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-    })],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'mdDisabled',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: function initializer() {
-      return false;
-    },
-    enumerable: true
-  }, {
-    key: 'mdGap',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: function initializer() {
-      return false;
-    },
-    enumerable: true
-  }, {
-    key: 'mdModel',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'mdName',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: function initializer() {
-      return '';
-    },
-    enumerable: true
-  }, {
-    key: 'mdValue',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: function initializer() {
-      return '';
-    },
-    enumerable: true
-  }], [{
-    key: 'id',
-    value: 0,
-    enumerable: true
-  }], _instanceInitializers);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+  var desc = {};
+  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+    desc[key] = descriptor[key];
+  });
+  desc.enumerable = !!desc.enumerable;
+  desc.configurable = !!desc.configurable;
+
+  if ('value' in desc || desc.initializer) {
+    desc.writable = true;
+  }
+
+  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+    return decorator(target, property, desc) || desc;
+  }, desc);
+
+  if (context && desc.initializer !== void 0) {
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+    desc.initializer = undefined;
+  }
+
+  if (desc.initializer === void 0) {
+    Object['define' + 'Property'](target, property, desc);
+    desc = null;
+  }
+
+  return desc;
+}
+
+function _initializerWarningHelper(descriptor, context) {
+  throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+}
+
+var MdRadio = exports.MdRadio = (_dec = (0, _aureliaTemplating.customElement)('md-radio'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+}), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec8 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
   function MdRadio(element) {
-    _classCallCheck(this, _MdRadio);
+    _classCallCheck(this, MdRadio);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdChecked', _instanceInitializers);
+    _initDefineProp(this, 'mdChecked', _descriptor, this);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdDisabled', _instanceInitializers);
+    _initDefineProp(this, 'mdDisabled', _descriptor2, this);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdGap', _instanceInitializers);
+    _initDefineProp(this, 'mdGap', _descriptor3, this);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdModel', _instanceInitializers);
+    _initDefineProp(this, 'mdModel', _descriptor4, this);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdName', _instanceInitializers);
+    _initDefineProp(this, 'mdName', _descriptor5, this);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdValue', _instanceInitializers);
+    _initDefineProp(this, 'mdValue', _descriptor6, this);
 
     this.element = element;
     this.controlId = 'md-radio-' + MdRadio.id++;
   }
 
   MdRadio.prototype.attached = function attached() {
-    this.attributeManager = new _commonAttributeManager.AttributeManager(this.radio);
-    if (_commonAttributes.getBooleanFromAttributeValue(this.mdGap)) {
+    this.attributeManager = new _attributeManager.AttributeManager(this.radio);
+    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdGap)) {
       this.attributeManager.addClasses('with-gap');
     }
-    if (_commonAttributes.getBooleanFromAttributeValue(this.mdDisabled)) {
+    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
       this.radio.disabled = true;
     }
-    this.radio.checked = _commonAttributes.getBooleanFromAttributeValue(this.mdChecked);
+    this.radio.checked = (0, _attributes.getBooleanFromAttributeValue)(this.mdChecked);
   };
 
   MdRadio.prototype.detached = function detached() {
@@ -107,10 +105,31 @@ var MdRadio = (function () {
     }
   };
 
-  var _MdRadio = MdRadio;
-  MdRadio = _aureliaDependencyInjection.inject(Element)(MdRadio) || MdRadio;
-  MdRadio = _aureliaTemplating.customElement('md-radio')(MdRadio) || MdRadio;
   return MdRadio;
-})();
-
-exports.MdRadio = MdRadio;
+}(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdChecked', [_dec3], {
+  enumerable: true,
+  initializer: null
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec4], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
+  }
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdGap', [_dec5], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
+  }
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdModel', [_dec6], {
+  enumerable: true,
+  initializer: null
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdName', [_dec7], {
+  enumerable: true,
+  initializer: function initializer() {
+    return '';
+  }
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec8], {
+  enumerable: true,
+  initializer: function initializer() {
+    return '';
+  }
+})), _class2)) || _class) || _class);

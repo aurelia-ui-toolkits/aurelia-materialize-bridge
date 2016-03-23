@@ -1,13 +1,22 @@
 define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-router'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaRouter) {
   'use strict';
 
-  exports.__esModule = true;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdBreadcrumbs = undefined;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  var MdBreadcrumbs = (function () {
+  var _dec, _dec2, _class;
+
+  var MdBreadcrumbs = exports.MdBreadcrumbs = (_dec = (0, _aureliaTemplating.customElement)('md-breadcrumbs'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaRouter.Router), _dec(_class = _dec2(_class = function () {
     function MdBreadcrumbs(element, router) {
-      _classCallCheck(this, _MdBreadcrumbs);
+      _classCallCheck(this, MdBreadcrumbs);
 
       this.element = element;
       this._childRouter = router;
@@ -21,11 +30,6 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
       this._childRouter.navigateToRoute(navigationInstruction.config.name);
     };
 
-    var _MdBreadcrumbs = MdBreadcrumbs;
-    MdBreadcrumbs = _aureliaDependencyInjection.inject(Element, _aureliaRouter.Router)(MdBreadcrumbs) || MdBreadcrumbs;
-    MdBreadcrumbs = _aureliaTemplating.customElement('md-breadcrumbs')(MdBreadcrumbs) || MdBreadcrumbs;
     return MdBreadcrumbs;
-  })();
-
-  exports.MdBreadcrumbs = MdBreadcrumbs;
+  }()) || _class) || _class);
 });

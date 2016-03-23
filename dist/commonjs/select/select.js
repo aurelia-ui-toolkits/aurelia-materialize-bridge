@@ -1,10 +1,11 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MdSelect = undefined;
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+var _dec, _dec2, _class;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -16,11 +17,15 @@ var _aureliaLogging = require('aurelia-logging');
 
 var LogManager = _interopRequireWildcard(_aureliaLogging);
 
-var _commonEvents = require('../common/events');
+var _events = require('../common/events');
 
-var MdSelect = (function () {
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.ObserverLocator), _dec2 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec(_class = _dec2(_class = function () {
   function MdSelect(element, logManager, observerLocator) {
-    _classCallCheck(this, _MdSelect);
+    _classCallCheck(this, MdSelect);
 
     this._suspendUpdate = false;
 
@@ -50,8 +55,9 @@ var MdSelect = (function () {
     if (!this._suspendUpdate) {
       this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
       this._suspendUpdate = true;
-      _commonEvents.fireEvent(this.element, 'change');
+      (0, _events.fireEvent)(this.element, 'change');
       this.log.debug('this.valueObserver.value', this.valueObserver.value);
+
 
       this._suspendUpdate = false;
     }
@@ -64,10 +70,5 @@ var MdSelect = (function () {
     }
   };
 
-  var _MdSelect = MdSelect;
-  MdSelect = _aureliaTemplating.customAttribute('md-select')(MdSelect) || MdSelect;
-  MdSelect = _aureliaDependencyInjection.inject(Element, LogManager, _aureliaBinding.ObserverLocator)(MdSelect) || MdSelect;
   return MdSelect;
-})();
-
-exports.MdSelect = MdSelect;
+}()) || _class) || _class);

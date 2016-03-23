@@ -1,13 +1,22 @@
 define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
   'use strict';
 
-  exports.__esModule = true;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdParallax = undefined;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  var MdParallax = (function () {
+  var _dec, _dec2, _class;
+
+  var MdParallax = exports.MdParallax = (_dec = (0, _aureliaTemplating.customAttribute)('md-parallax'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
     function MdParallax(element) {
-      _classCallCheck(this, _MdParallax);
+      _classCallCheck(this, MdParallax);
 
       this.element = element;
     }
@@ -18,11 +27,6 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], functi
 
     MdParallax.prototype.detached = function detached() {};
 
-    var _MdParallax = MdParallax;
-    MdParallax = _aureliaDependencyInjection.inject(Element)(MdParallax) || MdParallax;
-    MdParallax = _aureliaTemplating.customAttribute('md-parallax')(MdParallax) || MdParallax;
     return MdParallax;
-  })();
-
-  exports.MdParallax = MdParallax;
+  }()) || _class) || _class);
 });

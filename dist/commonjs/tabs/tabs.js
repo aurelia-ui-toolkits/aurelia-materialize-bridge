@@ -1,26 +1,31 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MdTabs = undefined;
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+var _dec, _dec2, _class;
 
 var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
-var _commonEvents = require('../common/events');
+var _events = require('../common/events');
 
-var _commonAttributeManager = require('../common/attributeManager');
+var _attributeManager = require('../common/attributeManager');
 
-var MdTabs = (function () {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('md-tabs'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
   function MdTabs(element) {
-    _classCallCheck(this, _MdTabs);
+    _classCallCheck(this, MdTabs);
 
     this.element = element;
     this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
-    this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
+    this.attributeManager = new _attributeManager.AttributeManager(this.element);
     this.tabAttributeManagers = [];
   }
 
@@ -31,7 +36,7 @@ var MdTabs = (function () {
 
     var children = this.element.querySelectorAll('li');
     [].forEach.call(children, function (child) {
-      var setter = new _commonAttributeManager.AttributeManager(child);
+      var setter = new _attributeManager.AttributeManager(child);
       setter.addClasses(['tab', 'primary-text']);
       _this.tabAttributeManagers.push(setter);
     });
@@ -69,7 +74,7 @@ var MdTabs = (function () {
       }
     }, 310);
     var href = e.target.getAttribute('href');
-    _commonEvents.fireMaterializeEvent(this.element, 'selected', href);
+    (0, _events.fireMaterializeEvent)(this.element, 'selected', href);
   };
 
   MdTabs.prototype.selectTab = function selectTab(id) {
@@ -98,10 +103,5 @@ var MdTabs = (function () {
     }
   }]);
 
-  var _MdTabs = MdTabs;
-  MdTabs = _aureliaDependencyInjection.inject(Element)(MdTabs) || MdTabs;
-  MdTabs = _aureliaTemplating.customAttribute('md-tabs')(MdTabs) || MdTabs;
   return MdTabs;
-})();
-
-exports.MdTabs = MdTabs;
+}()) || _class) || _class);

@@ -1,73 +1,89 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/events', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _commonEvents, _commonAttributes) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/events', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _events, _attributes) {
   'use strict';
 
-  exports.__esModule = true;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdPagination = undefined;
 
-  var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
 
-  var MdPagination = (function () {
-    var _instanceInitializers = {};
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
 
-    _createDecoratedClass(MdPagination, [{
-      key: 'mdActivePage',
-      decorators: [_aureliaTemplating.bindable({
-        defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-      })],
-      initializer: function initializer() {
-        return 1;
-      },
-      enumerable: true
-    }, {
-      key: 'mdPages',
-      decorators: [_aureliaTemplating.bindable({
-        defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-      })],
-      initializer: function initializer() {
-        return 5;
-      },
-      enumerable: true
-    }, {
-      key: 'mdShowFirstLast',
-      decorators: [_aureliaTemplating.bindable()],
-      initializer: function initializer() {
-        return true;
-      },
-      enumerable: true
-    }, {
-      key: 'mdShowPrevNext',
-      decorators: [_aureliaTemplating.bindable()],
-      initializer: function initializer() {
-        return true;
-      },
-      enumerable: true
-    }], null, _instanceInitializers);
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
 
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+  var MdPagination = exports.MdPagination = (_dec = (0, _aureliaTemplating.customElement)('md-pagination'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+  }), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
     function MdPagination(element) {
-      _classCallCheck(this, _MdPagination);
+      _classCallCheck(this, MdPagination);
 
-      _defineDecoratedPropertyDescriptor(this, 'mdActivePage', _instanceInitializers);
+      _initDefineProp(this, 'mdActivePage', _descriptor, this);
 
-      _defineDecoratedPropertyDescriptor(this, 'mdPages', _instanceInitializers);
+      _initDefineProp(this, 'mdPages', _descriptor2, this);
 
-      _defineDecoratedPropertyDescriptor(this, 'mdShowFirstLast', _instanceInitializers);
+      _initDefineProp(this, 'mdShowFirstLast', _descriptor3, this);
 
-      _defineDecoratedPropertyDescriptor(this, 'mdShowPrevNext', _instanceInitializers);
+      _initDefineProp(this, 'mdShowPrevNext', _descriptor4, this);
 
       this.element = element;
     }
 
     MdPagination.prototype.bind = function bind() {
       this.mdPages = parseInt(this.mdPages, 10);
-      this.mdShowPrevNext = _commonAttributes.getBooleanFromAttributeValue(this.mdShowPrevNext);
+      this.mdShowPrevNext = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowPrevNext);
     };
 
     MdPagination.prototype.setActivePage = function setActivePage(page) {
       this.mdActivePage = page;
-      _commonEvents.fireMaterializeEvent(this.element, 'page-changed', this.mdActivePage);
+      (0, _events.fireMaterializeEvent)(this.element, 'page-changed', this.mdActivePage);
     };
 
     MdPagination.prototype.setFirstPage = function setFirstPage() {
@@ -94,11 +110,26 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       }
     };
 
-    var _MdPagination = MdPagination;
-    MdPagination = _aureliaDependencyInjection.inject(Element)(MdPagination) || MdPagination;
-    MdPagination = _aureliaTemplating.customElement('md-pagination')(MdPagination) || MdPagination;
     return MdPagination;
-  })();
-
-  exports.MdPagination = MdPagination;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdActivePage', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 1;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdPages', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 5;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowFirstLast', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowPrevNext', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  })), _class2)) || _class) || _class);
 });

@@ -1,9 +1,13 @@
-System.register(['aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export) {
-  'use strict';
+'use strict';
 
-  var TaskQueue, inject, getLogger, MdInputUpdateService;
+System.register(['aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export, _context) {
+  var TaskQueue, inject, getLogger, _dec, _class, MdInputUpdateService;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [function (_aureliaTaskQueue) {
@@ -14,9 +18,9 @@ System.register(['aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-
       getLogger = _aureliaLogging.getLogger;
     }],
     execute: function () {
-      MdInputUpdateService = (function () {
+      _export('MdInputUpdateService', MdInputUpdateService = (_dec = inject(TaskQueue), _dec(_class = function () {
         function MdInputUpdateService(taskQueue) {
-          _classCallCheck(this, _MdInputUpdateService);
+          _classCallCheck(this, MdInputUpdateService);
 
           this._updateCalled = false;
 
@@ -38,10 +42,8 @@ System.register(['aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-
           }
         };
 
-        var _MdInputUpdateService = MdInputUpdateService;
-        MdInputUpdateService = inject(TaskQueue)(MdInputUpdateService) || MdInputUpdateService;
         return MdInputUpdateService;
-      })();
+      }()) || _class));
 
       _export('MdInputUpdateService', MdInputUpdateService);
     }

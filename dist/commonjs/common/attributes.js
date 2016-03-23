@@ -1,8 +1,9 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.getBooleanFromAttributeValue = getBooleanFromAttributeValue;
-
 function getBooleanFromAttributeValue(value) {
   return value === true || value === 'true';
 }

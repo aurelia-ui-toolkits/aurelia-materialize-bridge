@@ -1,10 +1,12 @@
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var InstructionFilterValueConverter = (function () {
+var InstructionFilterValueConverter = exports.InstructionFilterValueConverter = function () {
   function InstructionFilterValueConverter() {
     _classCallCheck(this, InstructionFilterValueConverter);
   }
@@ -20,6 +22,4 @@ var InstructionFilterValueConverter = (function () {
   };
 
   return InstructionFilterValueConverter;
-})();
-
-exports.InstructionFilterValueConverter = InstructionFilterValueConverter;
+}();

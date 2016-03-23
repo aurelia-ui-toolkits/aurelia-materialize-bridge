@@ -1,9 +1,13 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection'], function (_export) {
-  'use strict';
+'use strict';
 
-  var customAttribute, inject, MdParallax;
+System.register(['aurelia-templating', 'aurelia-dependency-injection'], function (_export, _context) {
+  var customAttribute, inject, _dec, _dec2, _class, MdParallax;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -12,9 +16,9 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection'], function
       inject = _aureliaDependencyInjection.inject;
     }],
     execute: function () {
-      MdParallax = (function () {
+      _export('MdParallax', MdParallax = (_dec = customAttribute('md-parallax'), _dec2 = inject(Element), _dec(_class = _dec2(_class = function () {
         function MdParallax(element) {
-          _classCallCheck(this, _MdParallax);
+          _classCallCheck(this, MdParallax);
 
           this.element = element;
         }
@@ -25,11 +29,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection'], function
 
         MdParallax.prototype.detached = function detached() {};
 
-        var _MdParallax = MdParallax;
-        MdParallax = inject(Element)(MdParallax) || MdParallax;
-        MdParallax = customAttribute('md-parallax')(MdParallax) || MdParallax;
         return MdParallax;
-      })();
+      }()) || _class) || _class));
 
       _export('MdParallax', MdParallax);
     }

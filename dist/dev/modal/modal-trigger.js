@@ -1,9 +1,13 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (_export) {
-  'use strict';
+'use strict';
 
-  var customAttribute, inject, AttributeManager, MdModalTrigger;
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (_export, _context) {
+  var customAttribute, inject, AttributeManager, _dec, _dec2, _class, MdModalTrigger;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -14,9 +18,9 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       AttributeManager = _commonAttributeManager.AttributeManager;
     }],
     execute: function () {
-      MdModalTrigger = (function () {
+      _export('MdModalTrigger', MdModalTrigger = (_dec = customAttribute('md-modal-trigger'), _dec2 = inject(Element), _dec(_class = _dec2(_class = function () {
         function MdModalTrigger(element) {
-          _classCallCheck(this, _MdModalTrigger);
+          _classCallCheck(this, MdModalTrigger);
 
           this.element = element;
           this.attributeManager = new AttributeManager(this.element);
@@ -31,11 +35,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           this.attributeManager.removeClasses('modal-trigger');
         };
 
-        var _MdModalTrigger = MdModalTrigger;
-        MdModalTrigger = inject(Element)(MdModalTrigger) || MdModalTrigger;
-        MdModalTrigger = customAttribute('md-modal-trigger')(MdModalTrigger) || MdModalTrigger;
         return MdModalTrigger;
-      })();
+      }()) || _class) || _class));
 
       _export('MdModalTrigger', MdModalTrigger);
     }

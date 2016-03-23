@@ -1,10 +1,12 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var AttributeManager = (function () {
+var AttributeManager = exports.AttributeManager = function () {
   function AttributeManager(element) {
     _classCallCheck(this, AttributeManager);
 
@@ -78,6 +80,4 @@ var AttributeManager = (function () {
   };
 
   return AttributeManager;
-})();
-
-exports.AttributeManager = AttributeManager;
+}();

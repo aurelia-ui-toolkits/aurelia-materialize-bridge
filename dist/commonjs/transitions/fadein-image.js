@@ -1,12 +1,11 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MdFadeinImage = undefined;
 
-var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -16,24 +15,60 @@ var _aureliaLogging = require('aurelia-logging');
 
 require('materialize');
 
-var MdFadeinImage = (function () {
-  var _instanceInitializers = {};
+function _initDefineProp(target, property, descriptor, context) {
+  if (!descriptor) return;
+  Object.defineProperty(target, property, {
+    enumerable: descriptor.enumerable,
+    configurable: descriptor.configurable,
+    writable: descriptor.writable,
+    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+  });
+}
 
-  _createDecoratedClass(MdFadeinImage, [{
-    key: 'ref',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+  var desc = {};
+  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+    desc[key] = descriptor[key];
+  });
+  desc.enumerable = !!desc.enumerable;
+  desc.configurable = !!desc.configurable;
+
+  if ('value' in desc || desc.initializer) {
+    desc.writable = true;
+  }
+
+  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+    return decorator(target, property, desc) || desc;
+  }, desc);
+
+  if (context && desc.initializer !== void 0) {
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+    desc.initializer = undefined;
+  }
+
+  if (desc.initializer === void 0) {
+    Object['define' + 'Property'](target, property, desc);
+    desc = null;
+  }
+
+  return desc;
+}
+
+function _initializerWarningHelper(descriptor, context) {
+  throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+}
+
+var MdFadeinImage = exports.MdFadeinImage = (_dec = (0, _aureliaTemplating.customAttribute)('md-fadein-image'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
   function MdFadeinImage(element) {
-    _classCallCheck(this, _MdFadeinImage);
+    _classCallCheck(this, MdFadeinImage);
 
-    _defineDecoratedPropertyDescriptor(this, 'ref', _instanceInitializers);
+    _initDefineProp(this, 'ref', _descriptor, this);
 
     this.element = element;
     this.fadeInImage = this.fadeInImage.bind(this);
-    this.log = _aureliaLogging.getLogger('md-fadein-image');
+    this.log = (0, _aureliaLogging.getLogger)('md-fadein-image');
   }
 
   MdFadeinImage.prototype.attached = function attached() {
@@ -56,10 +91,8 @@ var MdFadeinImage = (function () {
     }
   };
 
-  var _MdFadeinImage = MdFadeinImage;
-  MdFadeinImage = _aureliaDependencyInjection.inject(Element)(MdFadeinImage) || MdFadeinImage;
-  MdFadeinImage = _aureliaTemplating.customAttribute('md-fadein-image')(MdFadeinImage) || MdFadeinImage;
   return MdFadeinImage;
-})();
-
-exports.MdFadeinImage = MdFadeinImage;
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec3], {
+  enumerable: true,
+  initializer: null
+})), _class2)) || _class) || _class);

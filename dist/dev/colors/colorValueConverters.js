@@ -1,9 +1,13 @@
-System.register([], function (_export) {
-    "use strict";
+"use strict";
 
+System.register([], function (_export, _context) {
     var DarkenValueConverter, LightenValueConverter;
 
-    function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
 
     function shadeBlendConvert(p, from, to) {
         if (typeof p != "number" || p < -1 || p > 1 || typeof from != "string" || from[0] != 'r' && from[0] != '#' || typeof to != "string" && typeof to != "undefined") return null;
@@ -37,7 +41,7 @@ System.register([], function (_export) {
     return {
         setters: [],
         execute: function () {
-            DarkenValueConverter = (function () {
+            _export("DarkenValueConverter", DarkenValueConverter = function () {
                 function DarkenValueConverter() {
                     _classCallCheck(this, DarkenValueConverter);
                 }
@@ -47,11 +51,11 @@ System.register([], function (_export) {
                 };
 
                 return DarkenValueConverter;
-            })();
+            }());
 
             _export("DarkenValueConverter", DarkenValueConverter);
 
-            LightenValueConverter = (function () {
+            _export("LightenValueConverter", LightenValueConverter = function () {
                 function LightenValueConverter() {
                     _classCallCheck(this, LightenValueConverter);
                 }
@@ -61,7 +65,7 @@ System.register([], function (_export) {
                 };
 
                 return LightenValueConverter;
-            })();
+            }());
 
             _export("LightenValueConverter", LightenValueConverter);
         }

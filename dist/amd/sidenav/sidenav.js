@@ -1,75 +1,87 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _commonAttributes, _commonAttributeManager, _aureliaLogging) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _attributeManager, _aureliaLogging) {
   'use strict';
 
-  exports.__esModule = true;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdSidenav = undefined;
 
-  var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
 
-  var MdSidenav = (function () {
-    var _instanceInitializers = {};
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
 
-    _createDecoratedClass(MdSidenav, [{
-      key: 'mdCloseOnClick',
-      decorators: [_aureliaTemplating.bindable()],
-      initializer: function initializer() {
-        return false;
-      },
-      enumerable: true
-    }, {
-      key: 'mdEdge',
-      decorators: [_aureliaTemplating.bindable()],
-      initializer: function initializer() {
-        return 'left';
-      },
-      enumerable: true
-    }, {
-      key: 'mdFixed',
-      decorators: [_aureliaTemplating.bindable()],
-      initializer: function initializer() {
-        return false;
-      },
-      enumerable: true
-    }, {
-      key: 'mdWidth',
-      decorators: [_aureliaTemplating.bindable()],
-      initializer: function initializer() {
-        return 250;
-      },
-      enumerable: true
-    }], [{
-      key: 'id',
-      value: 0,
-      enumerable: true
-    }], _instanceInitializers);
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
 
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _class3, _temp;
+
+  var MdSidenav = exports.MdSidenav = (_dec = (0, _aureliaTemplating.customElement)('md-sidenav'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
     function MdSidenav(element) {
       var _this = this;
 
-      _classCallCheck(this, _MdSidenav);
+      _classCallCheck(this, MdSidenav);
 
-      _defineDecoratedPropertyDescriptor(this, 'mdCloseOnClick', _instanceInitializers);
+      _initDefineProp(this, 'mdCloseOnClick', _descriptor, this);
 
-      _defineDecoratedPropertyDescriptor(this, 'mdEdge', _instanceInitializers);
+      _initDefineProp(this, 'mdEdge', _descriptor2, this);
 
-      _defineDecoratedPropertyDescriptor(this, 'mdFixed', _instanceInitializers);
+      _initDefineProp(this, 'mdFixed', _descriptor3, this);
 
-      _defineDecoratedPropertyDescriptor(this, 'mdWidth', _instanceInitializers);
+      _initDefineProp(this, 'mdWidth', _descriptor4, this);
 
       this.element = element;
       this.controlId = 'md-sidenav-' + MdSidenav.id++;
-      this.log = _aureliaLogging.getLogger('md-sidenav');
+      this.log = (0, _aureliaLogging.getLogger)('md-sidenav');
       this.whenAttached = new Promise(function (resolve, reject) {
         _this.attachedResolver = resolve;
       });
     }
 
     MdSidenav.prototype.attached = function attached() {
-      this.attributeManager = new _commonAttributeManager.AttributeManager(this.sidenav);
-      if (_commonAttributes.getBooleanFromAttributeValue(this.mdFixed)) {
+      this.attributeManager = new _attributeManager.AttributeManager(this.sidenav);
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFixed)) {
         this.attributeManager.addClasses('fixed');
         if (this.mdEdge === 'right') {
           this.attributeManager.addClasses('right-aligned');
@@ -93,11 +105,26 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       }
     };
 
-    var _MdSidenav = MdSidenav;
-    MdSidenav = _aureliaDependencyInjection.inject(Element)(MdSidenav) || MdSidenav;
-    MdSidenav = _aureliaTemplating.customElement('md-sidenav')(MdSidenav) || MdSidenav;
     return MdSidenav;
-  })();
-
-  exports.MdSidenav = MdSidenav;
+  }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdCloseOnClick', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdEdge', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'left';
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdWidth', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 250;
+    }
+  })), _class2)) || _class) || _class);
 });

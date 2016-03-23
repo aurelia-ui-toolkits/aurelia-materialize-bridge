@@ -1,19 +1,20 @@
 define(['exports', 'aurelia-templating'], function (exports, _aureliaTemplating) {
   'use strict';
 
-  exports.__esModule = true;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdCollection = undefined;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-  var MdCollection = (function () {
-    function MdCollection() {
-      _classCallCheck(this, _MdCollection);
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
     }
+  }
 
-    var _MdCollection = MdCollection;
-    MdCollection = _aureliaTemplating.customElement('md-collection')(MdCollection) || MdCollection;
-    return MdCollection;
-  })();
+  var _dec, _class;
 
-  exports.MdCollection = MdCollection;
+  var MdCollection = exports.MdCollection = (_dec = (0, _aureliaTemplating.customElement)('md-collection'), _dec(_class = function MdCollection() {
+    _classCallCheck(this, MdCollection);
+  }) || _class);
 });

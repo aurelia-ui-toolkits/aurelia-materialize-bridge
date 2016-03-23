@@ -1,12 +1,11 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MdInput = undefined;
 
-var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _class3, _temp;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -16,92 +15,82 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaTaskQueue = require('aurelia-task-queue');
 
-var _commonAttributes = require('../common/attributes');
+var _attributes = require('../common/attributes');
 
 var _inputUpdateService = require('./input-update-service');
 
-var MdInput = (function () {
-  var _instanceInitializers = {};
+function _initDefineProp(target, property, descriptor, context) {
+  if (!descriptor) return;
+  Object.defineProperty(target, property, {
+    enumerable: descriptor.enumerable,
+    configurable: descriptor.configurable,
+    writable: descriptor.writable,
+    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+  });
+}
 
-  _createDecoratedClass(MdInput, [{
-    key: 'mdLabel',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: function initializer() {
-      return '';
-    },
-    enumerable: true
-  }, {
-    key: 'mdPlaceholder',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-    })],
-    initializer: function initializer() {
-      return '';
-    },
-    enumerable: true
-  }, {
-    key: 'mdTextArea',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-    })],
-    initializer: function initializer() {
-      return false;
-    },
-    enumerable: true
-  }, {
-    key: 'mdType',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-    })],
-    initializer: function initializer() {
-      return 'text';
-    },
-    enumerable: true
-  }, {
-    key: 'mdValidate',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-    })],
-    initializer: function initializer() {
-      return false;
-    },
-    enumerable: true
-  }, {
-    key: 'mdValidateError',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'mdValue',
-    decorators: [_aureliaTemplating.bindable({
-      defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-    })],
-    initializer: function initializer() {
-      return '';
-    },
-    enumerable: true
-  }], [{
-    key: 'id',
-    value: 0,
-    enumerable: true
-  }], _instanceInitializers);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+  var desc = {};
+  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+    desc[key] = descriptor[key];
+  });
+  desc.enumerable = !!desc.enumerable;
+  desc.configurable = !!desc.configurable;
+
+  if ('value' in desc || desc.initializer) {
+    desc.writable = true;
+  }
+
+  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+    return decorator(target, property, desc) || desc;
+  }, desc);
+
+  if (context && desc.initializer !== void 0) {
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+    desc.initializer = undefined;
+  }
+
+  if (desc.initializer === void 0) {
+    Object['define' + 'Property'](target, property, desc);
+    desc = null;
+  }
+
+  return desc;
+}
+
+function _initializerWarningHelper(descriptor, context) {
+  throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+}
+
+var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('md-input'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, _inputUpdateService.MdInputUpdateService), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec5 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec6 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec7 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec8 = (0, _aureliaTemplating.bindable)(), _dec9 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+}), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
   function MdInput(element, taskQueue, updateService) {
-    _classCallCheck(this, _MdInput);
+    _classCallCheck(this, MdInput);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdLabel', _instanceInitializers);
+    _initDefineProp(this, 'mdLabel', _descriptor, this);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdPlaceholder', _instanceInitializers);
+    _initDefineProp(this, 'mdPlaceholder', _descriptor2, this);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdTextArea', _instanceInitializers);
+    _initDefineProp(this, 'mdTextArea', _descriptor3, this);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdType', _instanceInitializers);
+    _initDefineProp(this, 'mdType', _descriptor4, this);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdValidate', _instanceInitializers);
+    _initDefineProp(this, 'mdValidate', _descriptor5, this);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdValidateError', _instanceInitializers);
+    _initDefineProp(this, 'mdValidateError', _descriptor6, this);
 
-    _defineDecoratedPropertyDescriptor(this, 'mdValue', _instanceInitializers);
+    _initDefineProp(this, 'mdValue', _descriptor7, this);
 
     this.element = element;
     this.taskQueue = taskQueue;
@@ -110,8 +99,8 @@ var MdInput = (function () {
   }
 
   MdInput.prototype.attached = function attached() {
-    this.mdTextArea = _commonAttributes.getBooleanFromAttributeValue(this.mdTextArea);
-    if (_commonAttributes.getBooleanFromAttributeValue(this.mdValidate)) {
+    this.mdTextArea = (0, _attributes.getBooleanFromAttributeValue)(this.mdTextArea);
+    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdValidate)) {
       this.input.classList.add('validate');
     }
     if (this.mdValidateError) {
@@ -130,10 +119,38 @@ var MdInput = (function () {
     }
   };
 
-  var _MdInput = MdInput;
-  MdInput = _aureliaDependencyInjection.inject(Element, _aureliaTaskQueue.TaskQueue, _inputUpdateService.MdInputUpdateService)(MdInput) || MdInput;
-  MdInput = _aureliaTemplating.customElement('md-input')(MdInput) || MdInput;
   return MdInput;
-})();
-
-exports.MdInput = MdInput;
+}(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdLabel', [_dec3], {
+  enumerable: true,
+  initializer: function initializer() {
+    return '';
+  }
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdPlaceholder', [_dec4], {
+  enumerable: true,
+  initializer: function initializer() {
+    return '';
+  }
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdTextArea', [_dec5], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
+  }
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdType', [_dec6], {
+  enumerable: true,
+  initializer: function initializer() {
+    return 'text';
+  }
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidate', [_dec7], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
+  }
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateError', [_dec8], {
+  enumerable: true,
+  initializer: null
+}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec9], {
+  enumerable: true,
+  initializer: function initializer() {
+    return '';
+  }
+})), _class2)) || _class) || _class);
