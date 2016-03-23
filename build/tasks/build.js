@@ -39,7 +39,8 @@ gulp.task('build-index', function(){
 
 gulp.task('build-es6-temp', function () {
     return gulp.src(paths.output + jsName)
-      .pipe(to5(assign({}, compilerOptions, {modules:'common'})))
+      // .pipe(to5(assign({}, compilerOptions, {modules:'common'})))
+      .pipe(to5(assign({}, compilerOptions.commonjs())))
       .pipe(gulp.dest(paths.output + 'temp'));
 });
 
@@ -50,26 +51,30 @@ gulp.task('build-es6', function () {
 
 gulp.task('build-commonjs', function () {
   return gulp.src(paths.source)
-    .pipe(to5(assign({}, compilerOptions, {modules:'common', plugins: []})))
+    // .pipe(to5(assign({}, compilerOptions, {modules:'common', plugins: []})))
+    .pipe(to5(assign({}, compilerOptions.commonjs())))
     .pipe(gulp.dest(paths.output + 'commonjs'));
 });
 
 gulp.task('build-amd', function () {
   return gulp.src(paths.source)
-    .pipe(to5(assign({}, compilerOptions, {modules:'amd', plugins: []})))
+    // .pipe(to5(assign({}, compilerOptions, {modules:'amd', plugins: []})))
+    .pipe(to5(assign({}, compilerOptions.amd())))
     .pipe(gulp.dest(paths.output + 'amd'));
 });
 
 gulp.task('build-system', function () {
   return gulp.src(paths.source)
-    .pipe(to5(assign({}, compilerOptions, {modules:'system', plugins: []})))
+    // .pipe(to5(assign({}, compilerOptions, {modules:'system', plugins: []})))
+    .pipe(to5(assign({}, compilerOptions.system())))
     .pipe(gulp.dest(paths.output + 'system'));
 });
 
 gulp.task('build-dev', function () {
   return gulp.src(paths.source)
     .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(to5(assign({}, compilerOptions, {modules:'system', plugins: []})))
+    // .pipe(to5(assign({}, compilerOptions, {modules:'system', plugins: []})))
+    .pipe(to5(assign({}, compilerOptions.system())))
     .pipe(sourcemaps.write(paths.output + 'dev'))
     .pipe(gulp.dest(paths.output + 'dev'));
 });
