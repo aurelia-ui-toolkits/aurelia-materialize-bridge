@@ -1,6 +1,6 @@
 {
   "name": "aurelia-materialize-bridge",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "registry": "github",
   "description": "Aurelia interface to http://materializecss.com/",
   "keywords": [
@@ -21,6 +21,7 @@
     "test": "gulp test",
     "ci": "gulp ci"
   },
+  "main": "dist/commonjs/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge"
