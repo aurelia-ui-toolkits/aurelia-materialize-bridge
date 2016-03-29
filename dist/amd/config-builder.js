@@ -86,7 +86,7 @@ define(['exports'], function (exports) {
     };
 
     ConfigBuilder.prototype.useColors = function useColors() {
-      this.globalResources.push('./colors/md-colors.html!text');
+      this.globalResources.push('./colors/md-colors.html');
       return this;
     };
 
@@ -215,7 +215,7 @@ define(['exports'], function (exports) {
     };
 
     ConfigBuilder.prototype.useWell = function useWell() {
-      this.globalResources.push('./well/md-well.html!text');
+      this.globalResources.push('./well/md-well.html');
       return this;
     };
 

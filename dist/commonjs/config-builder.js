@@ -81,7 +81,7 @@ var ConfigBuilder = exports.ConfigBuilder = function () {
   };
 
   ConfigBuilder.prototype.useColors = function useColors() {
-    this.globalResources.push('./colors/md-colors.html!text');
+    this.globalResources.push('./colors/md-colors.html');
     return this;
   };
 
@@ -210,7 +210,7 @@ var ConfigBuilder = exports.ConfigBuilder = function () {
   };
 
   ConfigBuilder.prototype.useWell = function useWell() {
-    this.globalResources.push('./well/md-well.html!text');
+    this.globalResources.push('./well/md-well.html');
     return this;
   };
 

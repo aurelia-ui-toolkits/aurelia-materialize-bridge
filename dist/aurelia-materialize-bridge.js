@@ -4,8 +4,8 @@ import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templat
 import {inject} from 'aurelia-dependency-injection';
 import {bindingMode,ObserverLocator} from 'aurelia-binding';
 import {Router} from 'aurelia-router';
-import {getLogger} from 'aurelia-logging';
 import {TaskQueue} from 'aurelia-task-queue';
+import {getLogger} from 'aurelia-logging';
 
 export class ClickCounter {
   count = 0;
@@ -129,7 +129,7 @@ export class ConfigBuilder {
   }
 
   useColors() : ConfigBuilder {
-    this.globalResources.push('./colors/md-colors.html!text');
+    this.globalResources.push('./colors/md-colors.html');
     return this;
   }
 
@@ -265,7 +265,7 @@ export class ConfigBuilder {
   }
 
   useWell(): ConfigBuilder {
-    this.globalResources.push('./well/md-well.html!text');
+    this.globalResources.push('./well/md-well.html');
     return this;
   }
 
@@ -463,48 +463,6 @@ export class MdCard {
   }
 }
 
-// @customElement('md-carousel-item')
-@inject(Element)
-export class MdCarouselItem {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdHref = '';
-  @bindable({
-    defaultBindingMode: bindingMode.oneWay
-  }) mdImage = '';
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() { }
-}
-
-@customElement('md-carousel')
-@inject(Element)
-export class MdCarousel {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdSlider = false;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    if (getBooleanFromAttributeValue(this.mdSlider)) {
-      this.element.classList.add('carousel-slider');
-    }
-
-    // workaround for: https://github.com/Dogfalo/materialize/issues/2741
-    if (getBooleanFromAttributeValue(this.mdSlider)) {
-      $(this.element).carousel({full_width: true});
-    } else {
-      $(this.element).carousel();
-    }
-  }
-}
-
 @customAttribute('md-char-counter')
 @inject(Element)
 export class MdCharCounter {
@@ -585,6 +543,48 @@ export class MdCheckbox {
   mdDisabledChanged(newValue) {
     if (this.checkbox) {
       this.checkbox.disabled = !!newValue;
+    }
+  }
+}
+
+// @customElement('md-carousel-item')
+@inject(Element)
+export class MdCarouselItem {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdHref = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdImage = '';
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() { }
+}
+
+@customElement('md-carousel')
+@inject(Element)
+export class MdCarousel {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdSlider = false;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    if (getBooleanFromAttributeValue(this.mdSlider)) {
+      this.element.classList.add('carousel-slider');
+    }
+
+    // workaround for: https://github.com/Dogfalo/materialize/issues/2741
+    if (getBooleanFromAttributeValue(this.mdSlider)) {
+      $(this.element).carousel({full_width: true});
+    } else {
+      $(this.element).carousel();
     }
   }
 }
@@ -792,17 +792,18 @@ export function fireMaterializeEvent(element: Element, name: string, data? = {})
   return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
 
-@inject(Element)
+@inject(Element, TaskQueue)
 @customAttribute('md-datepicker')
 export class MdDatePicker {
   @bindable() container;
   @bindable() translation;
   @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
-  constructor(element) {
+  constructor(element, taskQueue) {
     this.element = element;
     this.log = getLogger('md-datepicker');
+    this.taskQueue = taskQueue;
   }
-  attached() {
+  bind() {
     this.element.classList.add('date-picker');
     let options = {
       selectMonths: true,
@@ -839,6 +840,9 @@ export class MdDatePicker {
       'set': this.onSet.bind(this)
     });
     $(this.element).on('focusin', () => { $(this.element).pickadate('open'); });
+    if (this.value) {
+      this.picker.set('select', this.value);
+    }
   }
 
   detached() {
@@ -857,7 +861,10 @@ export class MdDatePicker {
   }
 
   valueChanged(newValue) {
-    this.log.debug('selectedChanged', this.selected);
+    this.log.debug('selectedChanged', this.value);
+    // this.taskQueue.queueTask(() => {
+    this.picker.set('select', this.value);
+    // });
   }
 }
 
@@ -983,6 +990,23 @@ export class MdFab {
   }
 }
 
+@customAttribute('md-footer')
+@inject(Element)
+export class MdFooter {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  bind() {
+    this.attributeManager.addClasses('page-footer');
+  }
+
+  unbind() {
+    this.attributeManager.removeClasses('page-footer');
+  }
+}
+
 @customElement('md-file')
 @inject(Element)
 export class MdFileInput {
@@ -1019,20 +1043,21 @@ export class MdFileInput {
   }
 }
 
-@customAttribute('md-footer')
+@customAttribute('md-modal-trigger')
 @inject(Element)
-export class MdFooter {
+export class MdModalTrigger {
   constructor(element) {
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
   }
 
-  bind() {
-    this.attributeManager.addClasses('page-footer');
+  attached() {
+    this.attributeManager.addClasses('modal-trigger');
+    $(this.element).leanModal();
   }
 
-  unbind() {
-    this.attributeManager.removeClasses('page-footer');
+  detached() {
+    this.attributeManager.removeClasses('modal-trigger');
   }
 }
 
@@ -1108,24 +1133,6 @@ export class MdInput {
     if (this.mdTextArea) {
       $(this.input).trigger('autoresize');
     }
-  }
-}
-
-@customAttribute('md-modal-trigger')
-@inject(Element)
-export class MdModalTrigger {
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('modal-trigger');
-    $(this.element).leanModal();
-  }
-
-  detached() {
-    this.attributeManager.removeClasses('modal-trigger');
   }
 }
 
@@ -1207,6 +1214,22 @@ export class MdPagination {
   }
 }
 
+@customAttribute('md-parallax')
+@inject(Element)
+export class MdParallax {
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.element).parallax();
+  }
+
+  detached() {
+    // destroy handler not available
+  }
+}
+
 @customElement('md-progress')
 @inject(Element)
 export class MdProgress {
@@ -1244,22 +1267,6 @@ export class MdPushpin {
       offset: parseInt(this.offset, 10),
       top: parseInt(this.top, 10)
     });
-  }
-
-  detached() {
-    // destroy handler not available
-  }
-}
-
-@customAttribute('md-parallax')
-@inject(Element)
-export class MdParallax {
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.element).parallax();
   }
 
   detached() {
@@ -1438,6 +1445,23 @@ export class MdScrollfire {
   }
 }
 
+@customAttribute('md-scrollspy')
+@inject(Element)
+export class MdScrollSpy {
+  @bindable() target;
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.target, this.element).scrollSpy();
+  }
+
+  detached() {
+    // destroy handler not available
+  }
+}
+
 @inject(Element, LogManager, ObserverLocator)
 @customAttribute('md-select')
 export class MdSelect {
@@ -1498,21 +1522,74 @@ export class MdSelect {
   }
 }
 
-@customAttribute('md-scrollspy')
+@customElement('md-slider')
 @inject(Element)
-export class MdScrollSpy {
-  @bindable() target;
+@inlineView(`
+  <template class="slider">
+  <require from="./slider.css"></require>
+  <ul class="slides">
+    <content select="li"></content>
+  </ul>
+  </template>
+`)
+export class MdSlider {
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdFillContainer = false;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdHeight = 400;
+  @bindable() mdIndicators = true;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdInterval = 6000;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdTransition = 500;
+
   constructor(element) {
     this.element = element;
+    this.log = getLogger('md-slider');
   }
 
   attached() {
-    $(this.target, this.element).scrollSpy();
+    if (getBooleanFromAttributeValue(this.mdFillContainer)) {
+      this.element.classList.add('fullscreen');
+    }
+    this.refresh();
   }
 
-  detached() {
-    // destroy handler not available
+  pause() {
+    $(this.element).slider('pause');
   }
+
+  start() {
+    $(this.element).slider('start');
+  }
+
+  next() {
+    $(this.element).slider('next');
+  }
+
+  prev() {
+    $(this.element).slider('prev');
+  }
+
+  refresh() {
+    let options = {
+      height: parseInt(this.mdHeight, 10),
+      indicators: getBooleanFromAttributeValue(this.mdIndicators),
+      interval: parseInt(this.mdInterval, 10),
+      transition: parseInt(this.mdTransition, 10)
+    };
+    this.log.debug('refreshing slider, params:', options);
+    $(this.element).slider(options);
+  }
+
+  mdIndicatorsChanged() {
+    this.refresh();
+  }
+
+  // commented since that leads to strange effects
+  // mdIntervalChanged() {
+  //   this.refresh();
+  // }
+  //
+  // mdTransitionChanged() {
+  //   this.refresh();
+  // }
 }
 
 @customAttribute('md-sidenav-collapse')
@@ -1611,76 +1688,6 @@ export class MdSidenav {
       }
     }
   }
-}
-
-@customElement('md-slider')
-@inject(Element)
-@inlineView(`
-  <template class="slider">
-  <require from="./slider.css"></require>
-  <ul class="slides">
-    <content select="li"></content>
-  </ul>
-  </template>
-`)
-export class MdSlider {
-  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdFillContainer = false;
-  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdHeight = 400;
-  @bindable() mdIndicators = true;
-  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdInterval = 6000;
-  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdTransition = 500;
-
-  constructor(element) {
-    this.element = element;
-    this.log = getLogger('md-slider');
-  }
-
-  attached() {
-    if (getBooleanFromAttributeValue(this.mdFillContainer)) {
-      this.element.classList.add('fullscreen');
-    }
-    this.refresh();
-  }
-
-  pause() {
-    $(this.element).slider('pause');
-  }
-
-  start() {
-    $(this.element).slider('start');
-  }
-
-  next() {
-    $(this.element).slider('next');
-  }
-
-  prev() {
-    $(this.element).slider('prev');
-  }
-
-  refresh() {
-    let options = {
-      height: parseInt(this.mdHeight, 10),
-      indicators: getBooleanFromAttributeValue(this.mdIndicators),
-      interval: parseInt(this.mdInterval, 10),
-      transition: parseInt(this.mdTransition, 10)
-    };
-    this.log.debug('refreshing slider, params:', options);
-    $(this.element).slider(options);
-  }
-
-  mdIndicatorsChanged() {
-    this.refresh();
-  }
-
-  // commented since that leads to strange effects
-  // mdIntervalChanged() {
-  //   this.refresh();
-  // }
-  //
-  // mdTransitionChanged() {
-  //   this.refresh();
-  // }
 }
 
 @customElement('md-switch')

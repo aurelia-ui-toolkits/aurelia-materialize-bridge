@@ -11,6 +11,8 @@ var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaBinding = require('aurelia-binding');
 
+var _aureliaTaskQueue = require('aurelia-task-queue');
+
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaLogging = require('aurelia-logging');
@@ -60,8 +62,8 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjection.inject)(Element), _dec2 = (0, _aureliaTemplating.customAttribute)('md-datepicker'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
-  function MdDatePicker(element) {
+var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue), _dec2 = (0, _aureliaTemplating.customAttribute)('md-datepicker'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec(_class = _dec2(_class = (_class2 = function () {
+  function MdDatePicker(element, taskQueue) {
     _classCallCheck(this, MdDatePicker);
 
     _initDefineProp(this, 'container', _descriptor, this);
@@ -72,9 +74,10 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
 
     this.element = element;
     this.log = (0, _aureliaLogging.getLogger)('md-datepicker');
+    this.taskQueue = taskQueue;
   }
 
-  MdDatePicker.prototype.attached = function attached() {
+  MdDatePicker.prototype.bind = function bind() {
     var _this = this;
 
     this.element.classList.add('date-picker');
@@ -99,6 +102,9 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
     $(this.element).on('focusin', function () {
       $(_this.element).pickadate('open');
     });
+    if (this.value) {
+      this.picker.set('select', this.value);
+    }
   };
 
   MdDatePicker.prototype.detached = function detached() {
@@ -115,7 +121,9 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
   MdDatePicker.prototype.onSet = function onSet(value) {};
 
   MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
-    this.log.debug('selectedChanged', this.selected);
+    this.log.debug('selectedChanged', this.value);
+
+    this.picker.set('select', this.value);
   };
 
   return MdDatePicker;
