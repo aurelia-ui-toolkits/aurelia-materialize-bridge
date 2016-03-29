@@ -23,7 +23,13 @@ exports.base = function() {
     //   "es7.classProperties"
     // ],
     plugins: [
-      // "babel-dts-generator",
+      ['babel-dts-generator', {
+        packageName: paths.packageName,
+        typings: '',
+        suppressModulePath: true,
+        suppressComments: false,
+        memberOutputFilter: /^_.*/
+      }],
       "syntax-flow",
       "transform-decorators-legacy",
       "transform-flow-strip-types"
