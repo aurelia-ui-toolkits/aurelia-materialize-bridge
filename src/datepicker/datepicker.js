@@ -68,6 +68,7 @@ export class MdDatePicker {
   }
 
   valueChanged(newValue) {
-    this.log.debug('selectedChanged', this.selected);
+    this.log.debug('selectedChanged', this.value);
+    this.picker.set('select', this.value);
   }
 }
