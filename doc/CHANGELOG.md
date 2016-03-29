@@ -1,3 +1,15 @@
+<a name="0.2.3"></a>
+## [0.2.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.2.2...v0.2.3) (2016-03-29)
+
+
+### Bug Fixes
+
+* **config-builder:** remove explicit text plugin with html-only components, fixes #145 ([604e907](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/604e907)), closes [#145](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/145)
+* **md-datepicker:** fixed valueChanged log output, set pickadate to the input value if value changed ([fee6170](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/fee6170)), closes [#148](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/148)
+* **md-datepicker:** set datepicker value if bound variable is set before binding occured, fixes #148 ([9d65023](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/9d65023)), closes [#148](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/148)
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.2.1...v0.2.2) (2016-03-23)
 
