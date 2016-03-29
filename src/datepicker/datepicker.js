@@ -1,19 +1,21 @@
 import { bindable, customAttribute } from 'aurelia-templating';
 import { bindingMode } from 'aurelia-binding';
+import { TaskQueue } from 'aurelia-task-queue';
 import { inject } from 'aurelia-dependency-injection';
 import { getLogger } from 'aurelia-logging';
 
-@inject(Element)
+@inject(Element, TaskQueue)
 @customAttribute('md-datepicker')
 export class MdDatePicker {
   @bindable() container;
   @bindable() translation;
   @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
-  constructor(element) {
+  constructor(element, taskQueue) {
     this.element = element;
     this.log = getLogger('md-datepicker');
+    this.taskQueue = taskQueue;
   }
-  attached() {
+  bind() {
     this.element.classList.add('date-picker');
     let options = {
       selectMonths: true,
@@ -50,6 +52,9 @@ export class MdDatePicker {
       'set': this.onSet.bind(this)
     });
     $(this.element).on('focusin', () => { $(this.element).pickadate('open'); });
+    if (this.value) {
+      this.picker.set('select', this.value);
+    }
   }
 
   detached() {
@@ -69,6 +74,8 @@ export class MdDatePicker {
 
   valueChanged(newValue) {
     this.log.debug('selectedChanged', this.value);
+    // this.taskQueue.queueTask(() => {
     this.picker.set('select', this.value);
+    // });
   }
 }
