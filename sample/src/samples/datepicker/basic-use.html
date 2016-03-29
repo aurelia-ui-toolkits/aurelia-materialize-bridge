@@ -9,7 +9,10 @@
       <div class="col s12 m8">
         <md-card md-title="Basic use">
           <div>
-            <input md-datepicker="container: body; value.bind: selectedDate;" type="date" placeholder="pick a date" />
+            <input ref="datepickerInput" md-datepicker.ref="datepicker" md-datepicker="container: body; value.two-way: selectedDate;" type="date" placeholder="pick a date" />
+          </div>
+          <div>
+            <button md-button click.delegate="setDate()">set date</button>
           </div>
           <div>
             <span if.bind="selectedDate">You selected (UTC time): ${selectedDate | stringify}</span>
