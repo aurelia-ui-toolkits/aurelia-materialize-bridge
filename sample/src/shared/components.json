@@ -18,7 +18,7 @@
     "Collapsible": { "status": "wip" },
     "Dialogs (toast/tooltip)": { "moduleId": "dialogs", "status": "done" },
     "Dropdown": { "status": "done" },
-    "Media (Box/Slider/Carousel)": { "moduleId": "media", "status": "wip" },
+    "Media (Box/Slider/Carousel)": { "moduleId": "media", "status": "done" },
     "Modals": { "status": "wip" },
     "Parallax": { "status": "done" },
     "Pushpin": { "status": "done" },
