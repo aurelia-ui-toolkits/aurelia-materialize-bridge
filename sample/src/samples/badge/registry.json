@@ -4,6 +4,10 @@
     "basic-use": {
       "route": ["", "basic-use"],
       "files": ["html"]
+    },
+    "badges-in-dropdown": {
+      "route": "badges-in-dropdown",
+      "files": ["html"]
     }
   }
 }
