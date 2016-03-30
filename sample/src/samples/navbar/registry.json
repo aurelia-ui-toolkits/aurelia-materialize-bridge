@@ -20,6 +20,10 @@
     "dropdown-menu": {
       "route": "dropdown-menu",
       "files": ["html"]
+    },
+    "search-bar": {
+      "route": "search-bar",
+      "files": ["html"]
     }
   }
 }
