@@ -5,9 +5,7 @@ exports.base = function() {
   return {
     filename: '',
     filenameRelative: '',
-    // modules: '',
     sourceMap: true,
-    // sourceMapName: '',
     sourceRoot: '',
     moduleRoot: path.resolve('src').replace(/\\/g, '/'),
     moduleIds: false,
@@ -15,13 +13,7 @@ exports.base = function() {
     comments: false,
     compact: false,
     code:true,
-    // stage:2,
     presets: [ 'es2015-loose', 'stage-1' ],
-    // loose: "all",
-    // optional: [
-    //   "es7.decorators",
-    //   "es7.classProperties"
-    // ],
     plugins: [
       "syntax-flow",
       "transform-decorators-legacy",
