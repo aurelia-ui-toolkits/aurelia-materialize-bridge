@@ -40,7 +40,7 @@ gulp.task('build-index', function(){
 gulp.task('build-es6-temp', function () {
     return gulp.src(paths.output + jsName)
       // .pipe(to5(assign({}, compilerOptions, {modules:'common'})))
-      .pipe(to5(assign({}, compilerOptions.commonjs())))
+      .pipe(to5(assign({}, compilerOptions.babelDtsGenerator())))
       .pipe(gulp.dest(paths.output + 'temp'));
 });
 

@@ -23,13 +23,6 @@ exports.base = function() {
     //   "es7.classProperties"
     // ],
     plugins: [
-      ['babel-dts-generator', {
-        packageName: paths.packageName,
-        typings: '',
-        suppressModulePath: true,
-        suppressComments: false,
-        memberOutputFilter: /^_.*/
-      }],
       "syntax-flow",
       "transform-decorators-legacy",
       "transform-flow-strip-types"
@@ -58,5 +51,19 @@ exports.system = function() {
 exports.es2015 = function() {
   var options = exports.base();
   options.presets = ['tage-1'];
+  return options;
+};
+
+exports.babelDtsGenerator = function() {
+  var options = exports.base();
+  options.plugins.push([
+    'babel-dts-generator', {
+      packageName: paths.packageName,
+      typings: '',
+      suppressModulePath: true,
+      suppressComments: false,
+      memberOutputFilter: /^_.*/
+    }
+  ]);
   return options;
 };
