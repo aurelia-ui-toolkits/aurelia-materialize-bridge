@@ -1,33 +1,10 @@
 <template>
-  <div>
-    <div class="row">
-      <div class="col s12 m8">
-        <md-card md-title="Basic NavBar (centered logo)">
-          <md-navbar>
-            <a href="#/samples/navbar" class="brand-logo center"><span>Logo</span></a>
-            <ul class="hide-on-med-and-down right">
-              <li md-waves><a>About</a></li>
-              <li md-waves><a>Installation</a></li>
-              <li md-waves><a>Project Status</a></li>
-            </ul>
-          </md-navbar>
-        </md-card>
-    </div>
-    </div>
-
-    <div class="row">
-        <div class="col s12 m8">
-          <md-card md-title="Code Preview">
-            <div class="row">
-              <ul md-tabs class="z-depth-1">
-                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
-              </ul>
-              <div id="html" class="z-depth-1">
-                <au-code language="markup" url="samples/navbar/centered-logo-sample.html"></au-code>
-              </div>
-            </div>
-          </md-card>
-        </div>
-    </div>
-  </div>
+  <md-navbar>
+    <a href="#/samples/navbar" class="brand-logo center"><span>Logo</span></a>
+    <ul class="hide-on-med-and-down right">
+      <li md-waves><a>About</a></li>
+      <li md-waves><a>Installation</a></li>
+      <li md-waves><a>Project Status</a></li>
+    </ul>
+  </md-navbar>
 </template>
