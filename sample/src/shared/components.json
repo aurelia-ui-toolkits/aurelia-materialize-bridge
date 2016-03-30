@@ -3,7 +3,7 @@
     "Color": { "status": "done" }
   },
   "Components": {
-    "Badges": { "moduleId": "badge", "status": "wip" },
+    "Badges": { "moduleId": "badge", "status": "done" },
     "Button": { "status": "wip" },
     "Breadcrumbs": { "status": "done" },
     "Cards": { "moduleId": "card", "status": "done" },
