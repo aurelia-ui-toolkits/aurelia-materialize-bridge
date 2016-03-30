@@ -30,7 +30,7 @@
           <ul>
             <template repeat.for="ctrl of cat.controls">
               <li md-waves="color: primary;" if.bind="!!ctrl.link" class="${ activeItem === ctrl.link ? 'active' : '' }">
-                <a href.bind="ctrl.link" click.delegate="setActive(ctrl)">${ ctrl.title }</a>
+                <a href.bind="ctrl.link" click.delegate="setActive(ctrl)">${ ctrl.title }<span show.bind="ctrl.status == 'wip'" md-badge>WIP</span></a>
               </li>
             </template>
           </ul>
