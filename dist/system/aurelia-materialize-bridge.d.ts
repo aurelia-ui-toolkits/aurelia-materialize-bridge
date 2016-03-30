@@ -141,18 +141,6 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
-  export class MdCheckbox {
-    static id: any;
-    mdChecked: any;
-    mdDisabled: any;
-    mdFilledIn: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-    handleChange(): any;
-    mdCheckedChanged(newValue: any): any;
-    mdDisabledChanged(newValue: any): any;
-  }
   
   // @customElement('md-carousel-item')
   export class MdCarouselItem {
@@ -165,6 +153,18 @@ declare module 'aurelia-materialize-bridge' {
     mdSlider: any;
     constructor(element: any);
     attached(): any;
+  }
+  export class MdCheckbox {
+    static id: any;
+    mdChecked: any;
+    mdDisabled: any;
+    mdFilledIn: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    handleChange(): any;
+    mdCheckedChanged(newValue: any): any;
+    mdDisabledChanged(newValue: any): any;
   }
   export class MdChip {
     mdClose: any;
@@ -275,11 +275,6 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
   }
-  export class MdFooter {
-    constructor(element: any);
-    bind(): any;
-    unbind(): any;
-  }
   export class MdFileInput {
     mdCaption: any;
     mdMultiple: any;
@@ -290,10 +285,10 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     handleChangeFromNativeInput(): any;
   }
-  export class MdModalTrigger {
+  export class MdFooter {
     constructor(element: any);
-    attached(): any;
-    detached(): any;
+    bind(): any;
+    unbind(): any;
   }
   export class MdInputUpdateService {
     _updateCalled: any;
@@ -313,6 +308,11 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any, taskQueue: any, updateService: any);
     attached(): any;
     mdValueChanged(): any;
+  }
+  export class MdModalTrigger {
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
   }
   export class MdNavbar {
     mdFixed: any;
@@ -427,30 +427,6 @@ declare module 'aurelia-materialize-bridge' {
     handleChangeFromNativeSelect(): any;
     handleChangeFromViewModel(newValue: any): any;
   }
-  export class MdSlider {
-    mdFillContainer: any;
-    mdHeight: any;
-    mdIndicators: any;
-    mdInterval: any;
-    mdTransition: any;
-    constructor(element: any);
-    attached(): any;
-    pause(): any;
-    start(): any;
-    next(): any;
-    prev(): any;
-    refresh(): any;
-    mdIndicatorsChanged(): any;
-  }
-  
-  // commented since that leads to strange effects
-  // mdIntervalChanged() {
-  //   this.refresh();
-  // }
-  //
-  // mdTransitionChanged() {
-  //   this.refresh();
-  // }
   export class MdSidenavCollapse {
     ref: any;
     constructor(element: any, observerLocator: any);
@@ -489,6 +465,30 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     fixedChanged(newValue: any): any;
   }
+  export class MdSlider {
+    mdFillContainer: any;
+    mdHeight: any;
+    mdIndicators: any;
+    mdInterval: any;
+    mdTransition: any;
+    constructor(element: any);
+    attached(): any;
+    pause(): any;
+    start(): any;
+    next(): any;
+    prev(): any;
+    refresh(): any;
+    mdIndicatorsChanged(): any;
+  }
+  
+  // commented since that leads to strange effects
+  // mdIntervalChanged() {
+  //   this.refresh();
+  // }
+  //
+  // mdTransitionChanged() {
+  //   this.refresh();
+  // }
   export class MdSwitch {
     mdChecked: any;
     mdDisabled: any;
