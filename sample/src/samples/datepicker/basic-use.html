@@ -1,43 +1,11 @@
 <template>
-  <style>
-    div.button-row {
-      padding: 5px 0;
-    }
-  </style>
   <div>
-    <div class="row">
-      <div class="col s12 m8">
-        <md-card md-title="Basic use">
-          <div>
-            <input ref="datepickerInput" md-datepicker.ref="datepicker" md-datepicker="container: body; value.two-way: selectedDate;" type="date" placeholder="pick a date" />
-          </div>
-          <div>
-            <button md-button click.delegate="setDate()">set date</button>
-          </div>
-          <div>
-            <span if.bind="selectedDate">You selected (UTC time): ${selectedDate | stringify}</span>
-          </div>
-        </md-card>
-    </div>
-    </div>
-
-    <div class="row">
-        <div class="col s12 m8">
-          <md-card md-title="Code Preview">
-            <div class="row">
-              <ul md-tabs class="z-depth-1">
-                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
-                <li md-waves="color: primary;" class="col"><a class="active" href="#md">Help</a></li>
-              </ul>
-              <div id="html" class="z-depth-1">
-                <au-code language="markup" url="samples/datepicker/basic-use-sample.html"></au-code>
-              </div>
-              <div id="md" class="z-depth-1">
-                <au-markdown url="samples/datepicker/datepicker.md"></au-markdown>
-              </div>
-            </div>
-          </md-card>
-        </div>
-    </div>
+    <input md-datepicker="container: body; value.two-way: selectedDate;" type="date" placeholder="pick a date" />
+  </div>
+  <div>
+    <button md-button click.delegate="setDate()">set date</button>
+  </div>
+  <div>
+    <span if.bind="selectedDate">You selected (UTC time): ${selectedDate | stringify}</span>
   </div>
 </template>
