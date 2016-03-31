@@ -6,11 +6,14 @@
           <div>
             It's on the right edge.
           </div>
+          <div>
+            <button md-button="flat: true;" md-waves="color: primary;" click.delegate="toggleSideNav()">toggle</button>
+          </div>
 
           <!-- <div>
             <a md-sidenav-collapse="ref.bind: sideNav;" md-button md-waves>Left SideNav</a>
           </div> -->
-          <md-sidenav view-model.ref="sideNav" md-fixed="true" md-edge="right"><!-- md-edge="right" -->
+          <md-sidenav view-model.ref="sideNav" md-fixed.bind="show" md-edge="right"><!-- md-edge="right" -->
             <ul>
               <li md-waves><a>About</a></li>
               <li md-waves><a>Installation</a></li>
