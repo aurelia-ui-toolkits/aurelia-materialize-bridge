@@ -34,7 +34,7 @@
     "Select": { "status": "wip" },
     "Radio buttons": { "moduleId": "radio", "status": "done" },
     "Checkbox/Switch": { "moduleId": "checkbox", "status": "done" },
-    "File input button": { "moduleId": "file", "status": "done" },
+    "File input button": { "moduleId": "file", "status": "wip" },
     "Range": { "status": "wip" },
     "DatePicker": { "status": "wip" }
   },
