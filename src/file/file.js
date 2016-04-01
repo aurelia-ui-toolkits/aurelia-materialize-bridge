@@ -1,7 +1,7 @@
 import { bindable, customElement } from 'aurelia-templating';
 import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
-import { fireEvent } from '../common/events';
+import { fireEvent, fireMaterializeEvent } from '../common/events';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 
 @customElement('md-file')
@@ -14,6 +14,9 @@ export class MdFileInput {
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) mdValue;
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) files = [];
 
   _suspendUpdate = false;
 
@@ -34,7 +37,8 @@ export class MdFileInput {
   handleChangeFromNativeInput() {
     if (!this._suspendUpdate) {
       this._suspendUpdate = true;
-      fireEvent(this.filePath, 'change');
+      fireEvent(this.filePath, 'change', { files: this.files });
+      fireMaterializeEvent(this.filePath, 'change', { files: this.files });
       this._suspendUpdate = false;
     }
   }
