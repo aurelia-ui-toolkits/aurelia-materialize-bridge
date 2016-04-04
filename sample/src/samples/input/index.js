@@ -1,17 +1,15 @@
-import { useView } from 'aurelia-framework';
+import { inject, useView } from 'aurelia-framework';
+import { Registry } from 'shared/registry';
 
+@inject(Registry)
 @useView('shared/showcase.html')
 export class Index {
-  configureRouter(config, router) {
-    config.title = 'Input';
-    config.map([
-      { route: ['', 'basic-use'], moduleId: './basic-use', nav: true, title: 'Basic use' },
-      { route: 'textarea', moduleId: './textarea', nav: true, title: 'Textarea' },
-      { route: 'input-types', moduleId: './input-types', nav: true, title: 'Input types' },
-      { route: 'html5-validation', moduleId: './html5-validation', nav: true, title: 'Html5 Validation' },
-      { route: 'char-counter', moduleId: './char-counter', nav: true, title: 'Character counter' }
-    ]);
+  constructor(registry) {
+    this.registry = registry;
+  }
 
+  configureRouter(config, router) {
     this.router = router;
+    return this.registry.load(config, 'input');
   }
 }

@@ -1,6 +1,5 @@
-export class BasicUse {
+export class IconPrefixes {
   textValue = '';
-
   setText() {
     this.textValue = 'something';
   }

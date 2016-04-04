@@ -1,0 +1,29 @@
+{
+  "title": "Input",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html"]
+    },
+    "textarea": {
+      "route": "textarea",
+      "files": ["html", "md"]
+    },
+    "input-types": {
+      "route": "input-types",
+      "files": ["html", "js"]
+    },
+    "html5-validation": {
+      "route": "html5-validation",
+      "files": ["html", "js"]
+    },
+    "character-counter": {
+      "route": "character-counter",
+      "files": ["html", "js"]
+    },
+    "icon-prefixes": {
+      "route": "icon-prefixes",
+      "files": ["html", "js"]
+    }
+  }
+}
