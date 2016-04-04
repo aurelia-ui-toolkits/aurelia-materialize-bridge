@@ -1,0 +1,11 @@
+<template>
+  <div>
+    <select md-select value.two-way="selectedMeal">
+      <option disabled>Select your meal</option>
+      <option repeat.for="meal of food" model.bind="meal">${meal.name}</option>
+    </select>
+
+    <a md-button="flat: true;" md-waves click.trigger="setSelectedMeal()" class="accent-text">select steak</a>
+    You selected: ${selectedMeal | stringify}
+  </div>
+</template>
