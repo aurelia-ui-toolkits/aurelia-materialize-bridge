@@ -1,0 +1,26 @@
+<template>
+  <div class="row">
+    <div class="col s12">
+      <div>
+        <p><a md-button md-modal-trigger md-on-modal-complete.delegate="onComplete($event)" href="#modal1">show modal</a></p>
+      </div>
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <a click.delegate="agree()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Agree</a>
+          <a click.delegate="disagree()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Disagree</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <md-card md-title="Console log">
+        <logger class="z-depth-1" view-model.ref="logger"></logger>
+      </md-card>
+    </div>
+  </div>
+</template>
