@@ -1,0 +1,15 @@
+<template>
+  <div>
+    <input md-datepicker="select-months: false; select-years: 5; container: body; value.two-way: selectedDate;" type="date" placeholder="pick a date" />
+  </div>
+  <div>
+    <button md-button click.delegate="setDate()">set date</button>
+  </div>
+  <div>
+    <span if.bind="selectedDate">You selected (UTC time): ${selectedDate | stringify}</span>
+  </div>
+  <div style="margin-top: 15px;">
+    The datepicker is initialized with selectMonths: false and selectYears: 5.
+    These properties are one-time bound.
+  </div>
+</template>
