@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div class="accent-text">
-      This sample is not working, yet! It only refreshes when clicked twice and throws exceptions.
-    </div>
     <select md-select md-select.ref="select" value.two-way="selectedMeal">
       <option disabled>Select your meal</option>
       <option repeat.for="meal of food" model.bind="meal">${meal.name}</option>
