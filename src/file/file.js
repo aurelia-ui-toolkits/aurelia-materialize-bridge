@@ -13,10 +13,8 @@ export class MdFileInput {
   }) mdMultiple = false;
   @bindable({
     defaultBindingMode: bindingMode.twoWay
-  }) mdValue;
-  @bindable({
-    defaultBindingMode: bindingMode.oneWay
-  }) files = [];
+  }) mdLabelValue;
+  files = [];
 
   _suspendUpdate = false;
 
