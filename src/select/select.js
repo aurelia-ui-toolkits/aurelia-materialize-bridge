@@ -33,6 +33,11 @@ export class MdSelect {
     this.valueObserver.unsubscribe();
   }
 
+  refresh() {
+    $(this.element).material_select('destroy');
+    $(this.element).material_select();
+  }
+
   handleChangeFromNativeSelect() {
     // Aurelia's select observer doesn't get noticed when something changes the
     // select value directly (this.element.value = "something"). So we trigger
