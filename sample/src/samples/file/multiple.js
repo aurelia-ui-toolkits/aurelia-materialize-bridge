@@ -1,5 +1,12 @@
+import { computedFrom } from 'aurelia-framework';
+
 export class Multiple {
-  selectedFiles;
+  labelValue;
+
+  @computedFrom('fileInput.files');
+  get selectedFiles() {
+    return [].slice.call(this.fileInput.files);
+  }
 
   filesChanged(e) {
     console.log('-- files changed', e.detail.files);
