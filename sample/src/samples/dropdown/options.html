@@ -5,50 +5,29 @@
     }
   </style>
   <div>
-    <div class="row">
-      <div class="col s12 m8">
-        <md-card md-title="Basic use">
-            <div class="actions">
-              <a md-button md-dropdown="activates: dropdown1; below-origin: true;">below origin</a>
-            </div>
-            <div class="actions">
-              <a md-button md-dropdown="activates: dropdown1; hover: true;">open on hover</a>
-            </div>
-            <div class="actions">
-              <a md-button md-dropdown="activates: dropdown1; constrain-width: false;">no constrainWidth</a>
-            </div>
-            <div class="actions">
-              <a md-button md-dropdown="activates: dropdown1; gutter: 20;">gutter 20</a>
-            </div>
-            <div class="actions">
-              <a md-button md-dropdown="activates: dropdown1; alignment: right; constrain-width: false;">alignment right</a>
-            </div>
-            <div class="actions">
-              <a md-button md-dropdown="activates: dropdown1; in-duration: 1000; out-duration: 1000;">custom durations (both at 1000)</a>
-            </div>
-            <ul id="dropdown1">
-              <li><a click.trigger="showToast($event)">one</a></li>
-              <li><a click.trigger="showToast($event)">two</a></li>
-              <li class="divider"></li>
-              <li><a click.trigger="showToast($event)">three</a></li>
-            </ul>
-        </md-card>
+    <div class="actions">
+      <a md-button md-dropdown="activates: dropdown1; below-origin: true;">below origin</a>
     </div>
+    <div class="actions">
+      <a md-button md-dropdown="activates: dropdown1; hover: true;">open on hover</a>
     </div>
-
-    <div class="row">
-        <div class="col s12 m8">
-          <md-card md-title="Code Preview">
-            <div class="row">
-              <ul md-tabs class="z-depth-1">
-                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
-              </ul>
-              <div id="html" class="z-depth-1">
-                <au-code language="markup" url="samples/dropdown/options-sample.html"></au-code>
-              </div>
-            </div>
-          </md-card>
-        </div>
+    <div class="actions">
+      <a md-button md-dropdown="activates: dropdown1; constrain-width: false;">no constrainWidth</a>
     </div>
+    <div class="actions">
+      <a md-button md-dropdown="activates: dropdown1; gutter: 20;">gutter 20</a>
+    </div>
+    <div class="actions">
+      <a md-button md-dropdown="activates: dropdown1; alignment: right; constrain-width: false;">alignment right</a>
+    </div>
+    <div class="actions">
+      <a md-button md-dropdown="activates: dropdown1; in-duration: 1000; out-duration: 1000;">custom durations (both at 1000)</a>
+    </div>
+    <ul id="dropdown1">
+      <li><a click.trigger="showToast($event)">one</a></li>
+      <li><a click.trigger="showToast($event)">two</a></li>
+      <li class="divider"></li>
+      <li><a click.trigger="showToast($event)">three</a></li>
+    </ul>
   </div>
 </template>
