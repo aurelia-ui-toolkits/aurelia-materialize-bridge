@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging', '../common/events'], function (_export, _context) {
-  var customAttribute, ObserverLocator, inject, LogManager, fireEvent, _dec, _dec2, _class, MdSelect;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', 'aurelia-logging', '../common/events'], function (_export, _context) {
+  var customAttribute, ObserverLocator, inject, TaskQueue, LogManager, fireEvent, _dec, _dec2, _class, MdSelect;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -16,19 +16,22 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       ObserverLocator = _aureliaBinding.ObserverLocator;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+    }, function (_aureliaTaskQueue) {
+      TaskQueue = _aureliaTaskQueue.TaskQueue;
     }, function (_aureliaLogging) {
       LogManager = _aureliaLogging;
     }, function (_commonEvents) {
       fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
-      _export('MdSelect', MdSelect = (_dec = inject(Element, LogManager, ObserverLocator), _dec2 = customAttribute('md-select'), _dec(_class = _dec2(_class = function () {
-        function MdSelect(element, logManager, observerLocator) {
+      _export('MdSelect', MdSelect = (_dec = inject(Element, LogManager, ObserverLocator, TaskQueue), _dec2 = customAttribute('md-select'), _dec(_class = _dec2(_class = function () {
+        function MdSelect(element, logManager, observerLocator, taskQueue) {
           _classCallCheck(this, MdSelect);
 
           this._suspendUpdate = false;
 
           this.element = element;
+          this.taskQueue = taskQueue;
           this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
           this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
           this.log = LogManager.getLogger('md-select');
@@ -50,8 +53,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         };
 
         MdSelect.prototype.refresh = function refresh() {
-          $(this.element).material_select('destroy');
-          $(this.element).material_select();
+          var _this = this;
+
+          this.taskQueue.queueTask(function () {
+            $(_this.element).material_select('destroy');
+            $(_this.element).material_select();
+          });
         };
 
         MdSelect.prototype.handleChangeFromNativeSelect = function handleChangeFromNativeSelect() {

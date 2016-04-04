@@ -13,6 +13,8 @@ var _aureliaBinding = require('aurelia-binding');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
+var _aureliaTaskQueue = require('aurelia-task-queue');
+
 var _aureliaLogging = require('aurelia-logging');
 
 var LogManager = _interopRequireWildcard(_aureliaLogging);
@@ -23,13 +25,14 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.ObserverLocator), _dec2 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec(_class = _dec2(_class = function () {
-  function MdSelect(element, logManager, observerLocator) {
+var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.ObserverLocator, _aureliaTaskQueue.TaskQueue), _dec2 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec(_class = _dec2(_class = function () {
+  function MdSelect(element, logManager, observerLocator, taskQueue) {
     _classCallCheck(this, MdSelect);
 
     this._suspendUpdate = false;
 
     this.element = element;
+    this.taskQueue = taskQueue;
     this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
     this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
     this.log = LogManager.getLogger('md-select');
@@ -51,8 +54,12 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   };
 
   MdSelect.prototype.refresh = function refresh() {
-    $(this.element).material_select('destroy');
-    $(this.element).material_select();
+    var _this = this;
+
+    this.taskQueue.queueTask(function () {
+      $(_this.element).material_select('destroy');
+      $(_this.element).material_select();
+    });
   };
 
   MdSelect.prototype.handleChangeFromNativeSelect = function handleChangeFromNativeSelect() {

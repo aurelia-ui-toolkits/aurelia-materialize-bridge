@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaLogging, _events) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', 'aurelia-logging', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaTaskQueue, _aureliaLogging, _events) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -33,13 +33,14 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
   var _dec, _dec2, _class;
 
-  var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.ObserverLocator), _dec2 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec(_class = _dec2(_class = function () {
-    function MdSelect(element, logManager, observerLocator) {
+  var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.ObserverLocator, _aureliaTaskQueue.TaskQueue), _dec2 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec(_class = _dec2(_class = function () {
+    function MdSelect(element, logManager, observerLocator, taskQueue) {
       _classCallCheck(this, MdSelect);
 
       this._suspendUpdate = false;
 
       this.element = element;
+      this.taskQueue = taskQueue;
       this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
       this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
       this.log = LogManager.getLogger('md-select');
@@ -61,8 +62,12 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     };
 
     MdSelect.prototype.refresh = function refresh() {
-      $(this.element).material_select('destroy');
-      $(this.element).material_select();
+      var _this = this;
+
+      this.taskQueue.queueTask(function () {
+        $(_this.element).material_select('destroy');
+        $(_this.element).material_select();
+      });
     };
 
     MdSelect.prototype.handleChangeFromNativeSelect = function handleChangeFromNativeSelect() {

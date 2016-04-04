@@ -112,6 +112,7 @@ var ConfigBuilder = exports.ConfigBuilder = function () {
 
   ConfigBuilder.prototype.useInput = function useInput() {
     this.globalResources.push('./input/input');
+    this.globalResources.push('./input/input-prefix');
     return this;
   };
 

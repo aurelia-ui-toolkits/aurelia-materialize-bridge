@@ -231,6 +231,8 @@ declare module 'aurelia-materialize-bridge' {
     container: any;
     translation: any;
     value: any;
+    selectMonths: any;
+    selectYears: any;
     constructor(element: any, taskQueue: any);
     bind(): any;
     detached(): any;
@@ -291,10 +293,10 @@ declare module 'aurelia-materialize-bridge' {
     bind(): any;
     unbind(): any;
   }
-  export class MdModalTrigger {
+  export class MdPrefix {
     constructor(element: any);
-    attached(): any;
-    detached(): any;
+    bind(): any;
+    unbind(): any;
   }
   export class MdInputUpdateService {
     _updateCalled: any;
@@ -315,12 +317,11 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     mdValueChanged(): any;
   }
-  export class MdNavbar {
-    mdFixed: any;
-    fixedAttributeManager: any;
+  export class MdModalTrigger {
     constructor(element: any);
     attached(): any;
     detached(): any;
+    onComplete(): any;
   }
   export class MdPagination {
     mdActivePage: any;
@@ -334,6 +335,13 @@ declare module 'aurelia-materialize-bridge' {
     setLastPage(): any;
     setPreviousPage(): any;
     setNextPage(): any;
+  }
+  export class MdNavbar {
+    mdFixed: any;
+    fixedAttributeManager: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
   }
   export class MdParallax {
     constructor(element: any);
@@ -375,6 +383,7 @@ declare module 'aurelia-materialize-bridge' {
     // this.handleChange = this.handleChange.bind(this);
     attached(): any;
     
+    // this.radio.checked = getBooleanFromAttributeValue(this.mdChecked);
     // this.radio.addEventListener('change', this.handleChange);
     detached(): any;
     
@@ -422,7 +431,7 @@ declare module 'aurelia-materialize-bridge' {
   // destroy handler not available
   export class MdSelect {
     _suspendUpdate: any;
-    constructor(element: any, logManager: any, observerLocator: any);
+    constructor(element: any, logManager: any, observerLocator: any, taskQueue: any);
     attached(): any;
     detached(): any;
     refresh(): any;

@@ -118,6 +118,7 @@ System.register([], function (_export, _context) {
 
         ConfigBuilder.prototype.useInput = function useInput() {
           this.globalResources.push('./input/input');
+          this.globalResources.push('./input/input-prefix');
           return this;
         };
 

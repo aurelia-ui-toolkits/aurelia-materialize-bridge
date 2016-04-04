@@ -161,6 +161,7 @@ export class ConfigBuilder {
 
   useInput() : ConfigBuilder {
     this.globalResources.push('./input/input');
+    this.globalResources.push('./input/input-prefix');
     return this;
   }
 
@@ -798,16 +799,20 @@ export class MdDatePicker {
   @bindable() container;
   @bindable() translation;
   @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) selectMonths = true;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) selectYears = 15;
   constructor(element, taskQueue) {
     this.element = element;
     this.log = getLogger('md-datepicker');
     this.taskQueue = taskQueue;
   }
   bind() {
+    this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
+    this.selectYears = parseInt(this.selectYears, 10);
     this.element.classList.add('date-picker');
     let options = {
-      selectMonths: true,
-      selectYears: 15,
+      selectMonths: this.selectMonths,
+      selectYears: this.selectYears,
       onClose: function() {
         // see https://github.com/Dogfalo/materialize/issues/2067
         // and: https://github.com/amsul/pickadate.js/issues/160
@@ -1045,21 +1050,20 @@ export class MdFooter {
   }
 }
 
-@customAttribute('md-modal-trigger')
+@customAttribute('md-prefix')
 @inject(Element)
-export class MdModalTrigger {
+export class MdPrefix {
   constructor(element) {
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
   }
 
-  attached() {
-    this.attributeManager.addClasses('modal-trigger');
-    $(this.element).leanModal();
+  bind() {
+    this.attributeManager.addClasses('prefix');
   }
 
-  detached() {
-    this.attributeManager.removeClasses('modal-trigger');
+  unbind() {
+    this.attributeManager.removeClasses('prefix');
   }
 }
 
@@ -1138,29 +1142,28 @@ export class MdInput {
   }
 }
 
-@customElement('md-navbar')
+@customAttribute('md-modal-trigger')
 @inject(Element)
-export class MdNavbar {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdFixed;
-  fixedAttributeManager;
-
+export class MdModalTrigger {
   constructor(element) {
     this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+    this.onComplete = this.onComplete.bind(this);
   }
 
   attached() {
-    this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
-    if (getBooleanFromAttributeValue(this.mdFixed)) {
-      this.fixedAttributeManager.addClasses('navbar-fixed');
-    }
+    this.attributeManager.addClasses('modal-trigger');
+    $(this.element).leanModal({
+      complete: this.onComplete
+    });
   }
 
   detached() {
-    if (getBooleanFromAttributeValue(this.mdFixed)) {
-      this.fixedAttributeManager.removeClasses('navbar-fixed');
-    }
+    this.attributeManager.removeClasses('modal-trigger');
+  }
+
+  onComplete() {
+    fireMaterializeEvent(this.element, 'modal-complete');
   }
 }
 
@@ -1212,6 +1215,32 @@ export class MdPagination {
   setNextPage() {
     if (this.mdActivePage < this.mdPages) {
       this.setActivePage(this.mdActivePage + 1);
+    }
+  }
+}
+
+@customElement('md-navbar')
+@inject(Element)
+export class MdNavbar {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdFixed;
+  fixedAttributeManager;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
+      this.fixedAttributeManager.addClasses('navbar-fixed');
+    }
+  }
+
+  detached() {
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
+      this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
   }
 }
@@ -1303,7 +1332,7 @@ export class MdRadio {
     if (getBooleanFromAttributeValue(this.mdDisabled)) {
       this.radio.disabled = true;
     }
-    this.radio.checked = getBooleanFromAttributeValue(this.mdChecked);
+    // this.radio.checked = getBooleanFromAttributeValue(this.mdChecked);
     // this.radio.addEventListener('change', this.handleChange);
   }
 
@@ -1464,13 +1493,14 @@ export class MdScrollSpy {
   }
 }
 
-@inject(Element, LogManager, ObserverLocator)
+@inject(Element, LogManager, ObserverLocator, TaskQueue)
 @customAttribute('md-select')
 export class MdSelect {
   _suspendUpdate = false;
 
-  constructor(element, logManager, observerLocator) {
+  constructor(element, logManager, observerLocator, taskQueue) {
     this.element = element;
+    this.taskQueue = taskQueue;
     this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
     this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
     this.log = LogManager.getLogger('md-select');
@@ -1494,8 +1524,10 @@ export class MdSelect {
   }
 
   refresh() {
-    $(this.element).material_select('destroy');
-    $(this.element).material_select();
+    this.taskQueue.queueTask(() => {
+      $(this.element).material_select('destroy');
+      $(this.element).material_select();
+    });
   }
 
   handleChangeFromNativeSelect() {

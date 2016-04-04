@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/events'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager, _events) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -20,15 +20,22 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
 
       this.element = element;
       this.attributeManager = new _attributeManager.AttributeManager(this.element);
+      this.onComplete = this.onComplete.bind(this);
     }
 
     MdModalTrigger.prototype.attached = function attached() {
       this.attributeManager.addClasses('modal-trigger');
-      $(this.element).leanModal();
+      $(this.element).leanModal({
+        complete: this.onComplete
+      });
     };
 
     MdModalTrigger.prototype.detached = function detached() {
       this.attributeManager.removeClasses('modal-trigger');
+    };
+
+    MdModalTrigger.prototype.onComplete = function onComplete() {
+      (0, _events.fireMaterializeEvent)(this.element, 'modal-complete');
     };
 
     return MdModalTrigger;

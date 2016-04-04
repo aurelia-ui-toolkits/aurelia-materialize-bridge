@@ -87,7 +87,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
         this.radio.disabled = true;
       }
-      this.radio.checked = (0, _attributes.getBooleanFromAttributeValue)(this.mdChecked);
     };
 
     MdRadio.prototype.detached = function detached() {

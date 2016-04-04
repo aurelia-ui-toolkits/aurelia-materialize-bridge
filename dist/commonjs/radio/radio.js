@@ -92,7 +92,6 @@ var MdRadio = exports.MdRadio = (_dec = (0, _aureliaTemplating.customElement)('m
     if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
       this.radio.disabled = true;
     }
-    this.radio.checked = (0, _attributes.getBooleanFromAttributeValue)(this.mdChecked);
   };
 
   MdRadio.prototype.detached = function detached() {

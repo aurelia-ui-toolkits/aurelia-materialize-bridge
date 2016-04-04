@@ -144,6 +144,7 @@ export class ConfigBuilder {
 
   useInput() : ConfigBuilder {
     this.globalResources.push('./input/input');
+    this.globalResources.push('./input/input-prefix');
     return this;
   }
 

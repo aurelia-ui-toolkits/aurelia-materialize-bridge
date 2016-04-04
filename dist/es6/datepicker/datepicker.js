@@ -3,6 +3,7 @@ import { bindingMode } from 'aurelia-binding';
 import { TaskQueue } from 'aurelia-task-queue';
 import { inject } from 'aurelia-dependency-injection';
 import { getLogger } from 'aurelia-logging';
+import { getBooleanFromAttributeValue } from '../common/attributes';
 
 @inject(Element, TaskQueue)
 @customAttribute('md-datepicker')
@@ -10,16 +11,20 @@ export class MdDatePicker {
   @bindable() container;
   @bindable() translation;
   @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) selectMonths = true;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) selectYears = 15;
   constructor(element, taskQueue) {
     this.element = element;
     this.log = getLogger('md-datepicker');
     this.taskQueue = taskQueue;
   }
   bind() {
+    this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
+    this.selectYears = parseInt(this.selectYears, 10);
     this.element.classList.add('date-picker');
     let options = {
-      selectMonths: true,
-      selectYears: 15,
+      selectMonths: this.selectMonths,
+      selectYears: this.selectYears,
       onClose: function() {
         // see https://github.com/Dogfalo/materialize/issues/2067
         // and: https://github.com/amsul/pickadate.js/issues/160
