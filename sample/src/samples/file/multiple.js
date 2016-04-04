@@ -7,8 +7,4 @@ export class Multiple {
   get selectedFiles() {
     return [].slice.call(this.fileInput.files);
   }
-
-  filesChanged(e) {
-    console.log('-- files changed', e.detail.files);
-  }
 }

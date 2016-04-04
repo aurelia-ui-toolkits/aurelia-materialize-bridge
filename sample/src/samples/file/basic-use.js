@@ -7,8 +7,4 @@ export class BasicUse {
   get selectedFile() {
     return this.fileInput.files.length > 0 ? this.fileInput.files[0] : '';
   }
-
-  filesChanged(e) {
-    console.log('-- files changed', e.detail.files);
-  }
 }
