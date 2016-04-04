@@ -463,35 +463,6 @@ export class MdCard {
   }
 }
 
-@customAttribute('md-char-counter')
-@inject(Element)
-export class MdCharCounter {
-  @bindable() length = 120;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.length = parseInt(this.length, 10);
-
-    // attach to input element explicitly, so this counter can be used on
-    // containers (or custom elements like md-input)
-    if (this.element.tagName.toUpperCase() === 'INPUT') {
-      this.attributeManager.addAttributes({ 'length': this.length });
-      $(this.element).characterCounter();
-    } else {
-      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
-      $(this.element).find('input').characterCounter();
-    }
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes(['length']);
-  }
-}
-
 // @customElement('md-carousel-item')
 @inject(Element)
 export class MdCarouselItem {
@@ -531,6 +502,35 @@ export class MdCarousel {
     } else {
       $(this.element).carousel();
     }
+  }
+}
+
+@customAttribute('md-char-counter')
+@inject(Element)
+export class MdCharCounter {
+  @bindable() length = 120;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.length = parseInt(this.length, 10);
+
+    // attach to input element explicitly, so this counter can be used on
+    // containers (or custom elements like md-input)
+    if (this.element.tagName.toUpperCase() === 'INPUT') {
+      this.attributeManager.addAttributes({ 'length': this.length });
+      $(this.element).characterCounter();
+    } else {
+      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
+      $(this.element).find('input').characterCounter();
+    }
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes(['length']);
   }
 }
 
@@ -999,7 +999,8 @@ export class MdFileInput {
   }) mdMultiple = false;
   @bindable({
     defaultBindingMode: bindingMode.twoWay
-  }) mdValue;
+  }) mdLabelValue;
+  files = [];
 
   _suspendUpdate = false;
 
@@ -1020,7 +1021,8 @@ export class MdFileInput {
   handleChangeFromNativeInput() {
     if (!this._suspendUpdate) {
       this._suspendUpdate = true;
-      fireEvent(this.filePath, 'change');
+      fireEvent(this.filePath, 'change', { files: this.files });
+      fireMaterializeEvent(this.filePath, 'change', { files: this.files });
       this._suspendUpdate = false;
     }
   }
@@ -1040,6 +1042,24 @@ export class MdFooter {
 
   unbind() {
     this.attributeManager.removeClasses('page-footer');
+  }
+}
+
+@customAttribute('md-modal-trigger')
+@inject(Element)
+export class MdModalTrigger {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('modal-trigger');
+    $(this.element).leanModal();
+  }
+
+  detached() {
+    this.attributeManager.removeClasses('modal-trigger');
   }
 }
 
@@ -1115,24 +1135,6 @@ export class MdInput {
     if (this.mdTextArea) {
       $(this.input).trigger('autoresize');
     }
-  }
-}
-
-@customAttribute('md-modal-trigger')
-@inject(Element)
-export class MdModalTrigger {
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('modal-trigger');
-    $(this.element).leanModal();
-  }
-
-  detached() {
-    this.attributeManager.removeClasses('modal-trigger');
   }
 }
 
@@ -1491,6 +1493,11 @@ export class MdSelect {
     this.valueObserver.unsubscribe();
   }
 
+  refresh() {
+    $(this.element).material_select('destroy');
+    $(this.element).material_select();
+  }
+
   handleChangeFromNativeSelect() {
     // Aurelia's select observer doesn't get noticed when something changes the
     // select value directly (this.element.value = "something"). So we trigger
@@ -1609,9 +1616,9 @@ export class MdSidenav {
     this.attributeManager.removeClasses(['fixed', 'right-aligned']);
   }
 
-  fixedChanged(newValue) {
+  mdFixedChanged(newValue) {
     if (this.attributeManager) {
-      if (newValue) {
+      if (getBooleanFromAttributeValue(newValue)) {
         this.attributeManager.addClasses('fixed');
       } else {
         this.attributeManager.removeClasses('fixed');

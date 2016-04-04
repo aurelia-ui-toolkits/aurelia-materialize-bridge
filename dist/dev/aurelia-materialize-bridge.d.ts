@@ -135,12 +135,6 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
   }
-  export class MdCharCounter {
-    length: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-  }
   
   // @customElement('md-carousel-item')
   export class MdCarouselItem {
@@ -153,6 +147,12 @@ declare module 'aurelia-materialize-bridge' {
     mdSlider: any;
     constructor(element: any);
     attached(): any;
+  }
+  export class MdCharCounter {
+    length: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
   }
   export class MdCheckbox {
     static id: any;
@@ -278,7 +278,8 @@ declare module 'aurelia-materialize-bridge' {
   export class MdFileInput {
     mdCaption: any;
     mdMultiple: any;
-    mdValue: any;
+    mdLabelValue: any;
+    files: any;
     _suspendUpdate: any;
     constructor(element: any);
     attached(): any;
@@ -289,6 +290,11 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     bind(): any;
     unbind(): any;
+  }
+  export class MdModalTrigger {
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
   }
   export class MdInputUpdateService {
     _updateCalled: any;
@@ -308,11 +314,6 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any, taskQueue: any, updateService: any);
     attached(): any;
     mdValueChanged(): any;
-  }
-  export class MdModalTrigger {
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
   }
   export class MdNavbar {
     mdFixed: any;
@@ -424,6 +425,7 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any, logManager: any, observerLocator: any);
     attached(): any;
     detached(): any;
+    refresh(): any;
     handleChangeFromNativeSelect(): any;
     handleChangeFromViewModel(newValue: any): any;
   }
@@ -463,7 +465,7 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
     detached(): any;
-    fixedChanged(newValue: any): any;
+    mdFixedChanged(newValue: any): any;
   }
   export class MdSlider {
     mdFillContainer: any;

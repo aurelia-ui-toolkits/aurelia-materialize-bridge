@@ -50,6 +50,11 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     this.valueObserver.unsubscribe();
   };
 
+  MdSelect.prototype.refresh = function refresh() {
+    $(this.element).material_select('destroy');
+    $(this.element).material_select();
+  };
+
   MdSelect.prototype.handleChangeFromNativeSelect = function handleChangeFromNativeSelect() {
 
     if (!this._suspendUpdate) {

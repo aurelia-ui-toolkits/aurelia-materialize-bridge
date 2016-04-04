@@ -1,7 +1,7 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/events', '../common/attributes'], function (_export, _context) {
-  var bindable, customElement, bindingMode, inject, fireEvent, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, MdFileInput;
+  var bindable, customElement, bindingMode, inject, fireEvent, fireMaterializeEvent, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, MdFileInput;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -62,6 +62,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       inject = _aureliaDependencyInjection.inject;
     }, function (_commonEvents) {
       fireEvent = _commonEvents.fireEvent;
+      fireMaterializeEvent = _commonEvents.fireMaterializeEvent;
     }, function (_commonAttributes) {
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
@@ -78,8 +79,9 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
           _initDefineProp(this, 'mdMultiple', _descriptor2, this);
 
-          _initDefineProp(this, 'mdValue', _descriptor3, this);
+          _initDefineProp(this, 'mdLabelValue', _descriptor3, this);
 
+          this.files = [];
           this._suspendUpdate = false;
 
           this.element = element;
@@ -98,7 +100,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         MdFileInput.prototype.handleChangeFromNativeInput = function handleChangeFromNativeInput() {
           if (!this._suspendUpdate) {
             this._suspendUpdate = true;
-            fireEvent(this.filePath, 'change');
+            fireEvent(this.filePath, 'change', { files: this.files });
+            fireMaterializeEvent(this.filePath, 'change', { files: this.files });
             this._suspendUpdate = false;
           }
         };
@@ -114,7 +117,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         initializer: function initializer() {
           return false;
         }
-      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec5], {
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdLabelValue', [_dec5], {
         enumerable: true,
         initializer: null
       })), _class2)) || _class) || _class));

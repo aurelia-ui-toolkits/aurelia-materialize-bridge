@@ -49,6 +49,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           this.valueObserver.unsubscribe();
         };
 
+        MdSelect.prototype.refresh = function refresh() {
+          $(this.element).material_select('destroy');
+          $(this.element).material_select();
+        };
+
         MdSelect.prototype.handleChangeFromNativeSelect = function handleChangeFromNativeSelect() {
 
           if (!this._suspendUpdate) {

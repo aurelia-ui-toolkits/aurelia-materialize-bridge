@@ -69,8 +69,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
       _initDefineProp(this, 'mdMultiple', _descriptor2, this);
 
-      _initDefineProp(this, 'mdValue', _descriptor3, this);
+      _initDefineProp(this, 'mdLabelValue', _descriptor3, this);
 
+      this.files = [];
       this._suspendUpdate = false;
 
       this.element = element;
@@ -89,7 +90,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     MdFileInput.prototype.handleChangeFromNativeInput = function handleChangeFromNativeInput() {
       if (!this._suspendUpdate) {
         this._suspendUpdate = true;
-        (0, _events.fireEvent)(this.filePath, 'change');
+        (0, _events.fireEvent)(this.filePath, 'change', { files: this.files });
+        (0, _events.fireMaterializeEvent)(this.filePath, 'change', { files: this.files });
         this._suspendUpdate = false;
       }
     };
@@ -105,7 +107,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     initializer: function initializer() {
       return false;
     }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec5], {
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdLabelValue', [_dec5], {
     enumerable: true,
     initializer: null
   })), _class2)) || _class) || _class);

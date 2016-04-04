@@ -95,9 +95,9 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       this.attributeManager.removeClasses(['fixed', 'right-aligned']);
     };
 
-    MdSidenav.prototype.fixedChanged = function fixedChanged(newValue) {
+    MdSidenav.prototype.mdFixedChanged = function mdFixedChanged(newValue) {
       if (this.attributeManager) {
-        if (newValue) {
+        if ((0, _attributes.getBooleanFromAttributeValue)(newValue)) {
           this.attributeManager.addClasses('fixed');
         } else {
           this.attributeManager.removeClasses('fixed');
