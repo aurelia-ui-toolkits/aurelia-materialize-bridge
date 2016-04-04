@@ -1,3 +1,22 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.2.3...v0.3.0) (2016-04-04)
+
+
+### Bug Fixes
+
+* **md-radio:** avoid setting checked initially, fixes #152 ([2feebbe](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/2feebbe)), closes [#152](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/152)
+
+### Features
+
+* **md-datepicker:** expose selectMonths and selectYears options, closes #155 ([7471218](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/7471218)), closes [#155](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/155)
+* **md-file:** issue a CustomEvent on change, holding the selected files, manage an array holdi ([b78b47b](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b78b47b))
+* **md-input:** add icon prefix and colorizing, closes #150 ([a980cee](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a980cee)), closes [#150](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/150)
+* **md-modal-trigger:** implement modal callback, closes #158 ([78546c9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/78546c9)), closes [#158](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/158)
+* **md-select:** add a refresh function ([ed5b980](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/ed5b980))
+* **md-sidenav:** support toggle fixed state ([6ac2754](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6ac2754))
+
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.2.2...v0.2.3) (2016-03-29)
 
