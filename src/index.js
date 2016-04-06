@@ -1,5 +1,6 @@
 import 'materialize';
 import {ConfigBuilder} from './config-builder';
+import {ScrollfirePatch} from './scrollfire/scrollfire-patch';
 
 export function configure(aurelia, configCallback) {
   let builder = new ConfigBuilder();
@@ -10,6 +11,9 @@ export function configure(aurelia, configCallback) {
 
   if (builder.useGlobalResources) {
     aurelia.globalResources(builder.globalResources);
+  }
+  if (builder.useScrollfirePatch) {
+    new ScrollfirePatch().patch();
   }
 }
 

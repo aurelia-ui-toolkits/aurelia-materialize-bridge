@@ -1,10 +1,10 @@
 /* eslint no-new-func:0 */
 export class ScrollfirePatch {
-  patched = false;
+  static patched = false;
 
   patch() {
-    if (!this.patched) {
-      this.patched = true;
+    if (!ScrollfirePatch.patched) {
+      ScrollfirePatch.patched = true;
 
       window.Materialize.scrollFire = function(options) {
         let didScroll = false;

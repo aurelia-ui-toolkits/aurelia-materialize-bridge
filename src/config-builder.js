@@ -4,6 +4,7 @@
 export class ConfigBuilder {
 
   useGlobalResources: boolean = true;
+  useScrollfirePatch: boolean = false;
   globalResources = [];
 
   useAll(): ConfigBuilder {
@@ -259,6 +260,11 @@ export class ConfigBuilder {
   */
   withoutGlobalResources(): ConfigBuilder {
     this.useGlobalResources = false;
+    return this;
+  }
+
+  withScrollfirePatch(): ConfigBuilder {
+    this.useScrollfirePatch = true;
     return this;
   }
 }
