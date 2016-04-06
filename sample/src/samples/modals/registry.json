@@ -8,6 +8,10 @@
     "events": {
       "route": "events",
       "files": ["html", "js"]
+    },
+    "options": {
+      "route": "options",
+      "files": ["html", "js"]
     }
   }
 }
