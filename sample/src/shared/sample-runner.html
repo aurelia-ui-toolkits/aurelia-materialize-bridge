@@ -11,32 +11,34 @@
     </div>
     <div class="row">
       <div class="col s12 m10">
-        <collapse-panel>
+        <!-- <collapse-panel> -->
           <md-card md-title="Code Preview">
-            <ul md-tabs class="z-depth-1">
-              <li show.bind="sample.html" md-waves="color: primary;"><a class="active" href="#html">Html</a></li>
-              <li show.bind="sample.js" md-waves="color: primary;"><a href="#js">Javascript</a></li>
-              <li show.bind="sample.css" md-waves="color: primary;"><a href="#css">Css</a></li>
-              <li show.bind="sample.json" md-waves="color: primary;"><a href="#json">Json</a></li>
-              <li show.bind="sample.md" md-waves="color: primary;"><a href="#md">Docs</a></li>
-            </ul>
-            <div id="html" class="z-depth-1">
-              <au-code language="markup" url.bind="sample.html"></au-code>
-            </div>
-            <div id="js" class="z-depth-1">
-              <au-code language="javascript" url.bind="sample.js"></au-code>
-            </div>
-            <div id="css" class="z-depth-1">
-              <au-code language="css" url.bind="sample.css"></au-code>
-            </div>
-            <div id="json" class="z-depth-1">
-              <au-code language="javascript" url.bind="sample.json"></au-code>
-            </div>
-            <div id="md" class="z-depth-1">
-              <au-markdown url.bind="sample.md"></au-markdown>
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li show.bind="sample.html" md-waves="color: primary;"><a class="active" href="#html">Html</a></li>
+                <li show.bind="sample.js" md-waves="color: primary;"><a href="#js">Javascript</a></li>
+                <li show.bind="sample.css" md-waves="color: primary;"><a href="#css">Css</a></li>
+                <li show.bind="sample.json" md-waves="color: primary;"><a href="#json">Json</a></li>
+                <li show.bind="sample.md" md-waves="color: primary;"><a href="#md">Docs</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url.bind="sample.html"></au-code>
+              </div>
+              <div id="js" class="z-depth-1">
+                <au-code language="javascript" url.bind="sample.js"></au-code>
+              </div>
+              <div id="css" class="z-depth-1">
+                <au-code language="css" url.bind="sample.css"></au-code>
+              </div>
+              <div id="json" class="z-depth-1">
+                <au-code language="javascript" url.bind="sample.json"></au-code>
+              </div>
+              <div id="md" class="z-depth-1">
+                <au-markdown url.bind="sample.md"></au-markdown>
+              </div>
             </div>
           </md-card>
-        </collapse-panel>
+        <!-- </collapse-panel> -->
       </div>
     </div>
   </section>
