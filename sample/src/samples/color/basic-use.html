@@ -1,0 +1,55 @@
+<template>
+  <require from="./basic-use.css"></require>
+  <div>
+    <div class="row">
+      <div class="col s12 m8">
+        <md-card md-title="Basic use">
+          <div>
+            Set primary and accent colors by using the md-colors custom element.
+          </div>
+          <div style="margin-top: 10px;">
+            We've introduced four additional css classes for you to use directly:
+            <ul class="native-list">
+              <li>
+                accent
+              </li>
+              <li>
+                accent-text
+              </li>
+              <li>
+                primary
+              </li>
+              <li>
+                primary-text
+              </li>
+            </ul>
+            <p>
+              Set the accent/primary colors in the color switcher below the main nav-bar to see these change:
+            </p>
+            <div class="color-box">
+              <div class="primary">primary</div>
+              <div class="accent">accent</div>
+              <div class="primary-text">primary-text</div>
+              <div class="accent-text">accent-text</div>
+            </div>
+          </div>
+        </md-card>
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m8">
+          <md-card md-title="Code Preview">
+            <div class="row">
+              <ul md-tabs class="z-depth-1">
+                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
+              </ul>
+              <div id="html" class="z-depth-1">
+                <au-code language="markup" url="samples/color/basic-use-sample.html"></au-code>
+              </div>
+            </div>
+          </md-card>
+        </div>
+    </div>
+  </div>
+</template>

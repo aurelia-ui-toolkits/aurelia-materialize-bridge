@@ -1,0 +1,21 @@
+<template>
+  <div class="row">
+    <div class="col s12">
+      <md-file md-caption="upload file" view-model.ref="fileInput" md-multiple="true" md-label-value.bind="labelValue" md-on-change.delegate="filesChanged($event)"></md-file>
+      <div if.bind="selectedFiles.length > 0">
+        <md-collection>
+          <md-collection-item repeat.for="file of selectedFiles">
+            ${file.name} (${file.size} bytes)
+          </md-collection-item>
+        </md-collection>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <md-card md-title="Console log">
+        <logger class="z-depth-1" view-model.ref="logger"></logger>
+      </md-card>
+    </div>
+  </div>
+</template>

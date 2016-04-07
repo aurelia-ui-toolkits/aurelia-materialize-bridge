@@ -7,7 +7,7 @@ The order of Help Documents sections:
 <br><br>
 
 <p align=center>
-  <img src="http://i.imgur.com/481rnTM.png"></img>
+  <img src="http://i.imgur.com/481rnTM.png" class="responsive-img"></img>
 <br>
   Image 1
 </p>

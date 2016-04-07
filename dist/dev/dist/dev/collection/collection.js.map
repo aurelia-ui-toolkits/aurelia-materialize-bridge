@@ -1,0 +1,1 @@
+{"version":3,"sources":["collection/collection.js"],"names":[],"mappings":";;;;;;;;;;;;;AAAS;;;8BAGI,uBADZ,cAAc,eAAd,0BACY","file":"collection/collection.js","sourceRoot":"/source/","sourcesContent":["import { customElement } from 'aurelia-templating';\n\n@customElement('md-collection')\nexport class MdCollection {}\n"]}

@@ -6,7 +6,8 @@ export class Registry {
 
       let map = [];
 
-      for (let _sample of Object.keys(registry.samples)) {
+    //   for (let _sample of Object.keys(registry.samples)) {
+      Object.keys(registry.samples).forEach(_sample => {
         let sample = registry.samples[_sample];
 
         sample.path = `samples/${control}/${_sample}`;
@@ -18,7 +19,7 @@ export class Registry {
         sample.files.forEach(extension => {
           sample[extension] = `${sample.path}.${extension}`;
         });
-        
+
         if (sample.default === true) {
           map.push({
             title: sample.title,
@@ -35,7 +36,7 @@ export class Registry {
           route: sample.route,
           sample: sample
         });
-      }
+      });
 
       config.map(map);
     });

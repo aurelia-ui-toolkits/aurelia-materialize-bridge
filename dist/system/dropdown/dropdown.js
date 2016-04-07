@@ -1,13 +1,56 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export) {
-  'use strict';
+'use strict';
 
-  var bindable, customAttribute, bindingMode, inject, AttributeManager, getBooleanFromAttributeValue, MdDropdown;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export, _context) {
+  var bindable, customAttribute, bindingMode, inject, AttributeManager, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, MdDropdown;
 
-  var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -23,110 +66,45 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
-      MdDropdown = (function () {
-        var _instanceInitializers = {};
-
-        _createDecoratedClass(MdDropdown, [{
-          key: 'activates',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: function initializer() {
-            return '';
-          },
-          enumerable: true
-        }, {
-          key: 'alignment',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: function initializer() {
-            return 'left';
-          },
-          enumerable: true
-        }, {
-          key: 'belowOrigin',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: function initializer() {
-            return false;
-          },
-          enumerable: true
-        }, {
-          key: 'constrainWidth',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: function initializer() {
-            return true;
-          },
-          enumerable: true
-        }, {
-          key: 'gutter',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: function initializer() {
-            return 0;
-          },
-          enumerable: true
-        }, {
-          key: 'hover',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: function initializer() {
-            return false;
-          },
-          enumerable: true
-        }, {
-          key: 'mdTitle',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: null,
-          enumerable: true
-        }, {
-          key: 'inDuration',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: function initializer() {
-            return 300;
-          },
-          enumerable: true
-        }, {
-          key: 'outDuration',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.oneTime
-          })],
-          initializer: function initializer() {
-            return 225;
-          },
-          enumerable: true
-        }], null, _instanceInitializers);
-
+      _export('MdDropdown', MdDropdown = (_dec = customAttribute('md-dropdown'), _dec2 = inject(Element), _dec3 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec4 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec5 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec6 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec7 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec8 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec9 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec10 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec11 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdDropdown(element) {
-          _classCallCheck(this, _MdDropdown);
+          _classCallCheck(this, MdDropdown);
 
-          _defineDecoratedPropertyDescriptor(this, 'activates', _instanceInitializers);
+          _initDefineProp(this, 'activates', _descriptor, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'alignment', _instanceInitializers);
+          _initDefineProp(this, 'alignment', _descriptor2, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'belowOrigin', _instanceInitializers);
+          _initDefineProp(this, 'belowOrigin', _descriptor3, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'constrainWidth', _instanceInitializers);
+          _initDefineProp(this, 'constrainWidth', _descriptor4, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'gutter', _instanceInitializers);
+          _initDefineProp(this, 'gutter', _descriptor5, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'hover', _instanceInitializers);
+          _initDefineProp(this, 'hover', _descriptor6, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'mdTitle', _instanceInitializers);
+          _initDefineProp(this, 'mdTitle', _descriptor7, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'inDuration', _instanceInitializers);
+          _initDefineProp(this, 'inDuration', _descriptor8, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'outDuration', _instanceInitializers);
+          _initDefineProp(this, 'outDuration', _descriptor9, this);
 
           this.element = element;
           this.attributeManager = new AttributeManager(this.element);
@@ -155,11 +133,51 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           this.contentAttributeManager.removeClasses('dropdown-content');
         };
 
-        var _MdDropdown = MdDropdown;
-        MdDropdown = inject(Element)(MdDropdown) || MdDropdown;
-        MdDropdown = customAttribute('md-dropdown')(MdDropdown) || MdDropdown;
         return MdDropdown;
-      })();
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'activates', [_dec3], {
+        enumerable: true,
+        initializer: function initializer() {
+          return '';
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'alignment', [_dec4], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 'left';
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'belowOrigin', [_dec5], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'constrainWidth', [_dec6], {
+        enumerable: true,
+        initializer: function initializer() {
+          return true;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'gutter', [_dec7], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 0;
+        }
+      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'hover', [_dec8], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec9], {
+        enumerable: true,
+        initializer: null
+      }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'inDuration', [_dec10], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 300;
+        }
+      }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'outDuration', [_dec11], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 225;
+        }
+      })), _class2)) || _class) || _class));
 
       _export('MdDropdown', MdDropdown);
     }

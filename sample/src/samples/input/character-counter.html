@@ -1,0 +1,7 @@
+<template>
+  <div>
+    <md-input md-label="put some text here" md-value.bind="textValue" md-char-counter="length: 120;"></md-input><br />
+    You entered: ${textValue}<br />
+    <button md-button="flat: true;" md-waves class="accent-text" click.delegate="setText()">set text to something</button>
+  </div>
+</template>

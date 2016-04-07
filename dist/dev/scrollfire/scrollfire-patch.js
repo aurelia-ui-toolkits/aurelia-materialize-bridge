@@ -1,14 +1,18 @@
-System.register([], function (_export) {
-  'use strict';
+'use strict';
 
+System.register([], function (_export, _context) {
   var ScrollfirePatch;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [],
     execute: function () {
-      ScrollfirePatch = (function () {
+      _export('ScrollfirePatch', ScrollfirePatch = function () {
         function ScrollfirePatch() {
           _classCallCheck(this, ScrollfirePatch);
 
@@ -60,7 +64,7 @@ System.register([], function (_export) {
         };
 
         return ScrollfirePatch;
-      })();
+      }());
 
       _export('ScrollfirePatch', ScrollfirePatch);
     }

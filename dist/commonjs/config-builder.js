@@ -1,10 +1,12 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ConfigBuilder = (function () {
+var ConfigBuilder = exports.ConfigBuilder = function () {
   function ConfigBuilder() {
     _classCallCheck(this, ConfigBuilder);
 
@@ -13,11 +15,21 @@ var ConfigBuilder = (function () {
   }
 
   ConfigBuilder.prototype.useAll = function useAll() {
-    return this.useBox().useButton().useCard().useCarousel().useCheckbox().useCollapsible().useColors().useDatePicker().useDropdown().useFab().useModal().useNavbar().useParallax().usePushpin().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+    return this.useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+  };
+
+  ConfigBuilder.prototype.useBadge = function useBadge() {
+    this.globalResources.push('./badge/badge');
+    return this;
   };
 
   ConfigBuilder.prototype.useBox = function useBox() {
     this.globalResources.push('./box/box');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useBreadcrumbs = function useBreadcrumbs() {
+    this.globalResources.push('./breadcrumbs/breadcrumbs');
     return this;
   };
 
@@ -32,6 +44,11 @@ var ConfigBuilder = (function () {
     return this;
   };
 
+  ConfigBuilder.prototype.useCharacterCounter = function useCharacterCounter() {
+    this.globalResources.push('./char-counter/char-counter');
+    return this;
+  };
+
   ConfigBuilder.prototype.useCard = function useCard() {
     this.globalResources.push('./card/card');
     return this;
@@ -42,6 +59,11 @@ var ConfigBuilder = (function () {
     return this;
   };
 
+  ConfigBuilder.prototype.useChip = function useChip() {
+    this.globalResources.push('./chip/chip');
+    return this;
+  };
+
   ConfigBuilder.prototype.useClickCounter = function useClickCounter() {
     this.globalResources.push('./click-counter');
     return this;
@@ -49,6 +71,12 @@ var ConfigBuilder = (function () {
 
   ConfigBuilder.prototype.useCollapsible = function useCollapsible() {
     this.globalResources.push('./collapsible/collapsible');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useCollection = function useCollection() {
+    this.globalResources.push('./collection/collection');
+    this.globalResources.push('./collection/collection-item');
     return this;
   };
 
@@ -72,6 +100,22 @@ var ConfigBuilder = (function () {
     return this;
   };
 
+  ConfigBuilder.prototype.useFile = function useFile() {
+    this.globalResources.push('./file/file');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useFooter = function useFooter() {
+    this.globalResources.push('./footer/footer');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useInput = function useInput() {
+    this.globalResources.push('./input/input');
+    this.globalResources.push('./input/input-prefix');
+    return this;
+  };
+
   ConfigBuilder.prototype.useModal = function useModal() {
     this.globalResources.push('./modal/modal-trigger');
     return this;
@@ -82,13 +126,33 @@ var ConfigBuilder = (function () {
     return this;
   };
 
+  ConfigBuilder.prototype.usePagination = function usePagination() {
+    this.globalResources.push('./pagination/pagination');
+    return this;
+  };
+
   ConfigBuilder.prototype.useParallax = function useParallax() {
     this.globalResources.push('./parallax/parallax');
     return this;
   };
 
+  ConfigBuilder.prototype.useProgress = function useProgress() {
+    this.globalResources.push('./progress/progress');
+    return this;
+  };
+
   ConfigBuilder.prototype.usePushpin = function usePushpin() {
     this.globalResources.push('./pushpin/pushpin');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useRadio = function useRadio() {
+    this.globalResources.push('./radio/radio');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useRange = function useRange() {
+    this.globalResources.push('./range/range');
     return this;
   };
 
@@ -157,6 +221,4 @@ var ConfigBuilder = (function () {
   };
 
   return ConfigBuilder;
-})();
-
-exports.ConfigBuilder = ConfigBuilder;
+}();

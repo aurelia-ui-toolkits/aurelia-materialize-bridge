@@ -1,0 +1,13 @@
+{
+  "title": "Dropdown",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    },
+    "options": {
+      "route": "options",
+      "files": ["html", "js"]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "title": "Breadcrumbs",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "md"]
+    },
+    "second-target": {
+      "route": "second-target",
+      "files": ["html"]
+    }
+  }
+}

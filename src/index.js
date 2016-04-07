@@ -1,8 +1,8 @@
 import 'materialize';
-import {Aurelia} from 'aurelia-framework';
 import {ConfigBuilder} from './config-builder';
+import {ScrollfirePatch} from './scrollfire/scrollfire-patch';
 
-export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBuilder) => void) {
+export function configure(aurelia, configCallback) {
   let builder = new ConfigBuilder();
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
@@ -12,4 +12,11 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBui
   if (builder.useGlobalResources) {
     aurelia.globalResources(builder.globalResources);
   }
+  if (builder.useScrollfirePatch) {
+    new ScrollfirePatch().patch();
+  }
 }
+
+// build-index-remove start
+export * from './toast/toastService';
+// build-index-remove end

@@ -1,11 +1,22 @@
 <template>
   <require from="./menu.css"></require>
   <style>
-    header, main, footer {
-      padding-left: 240px;
+    @media all and (min-width: 992px) {
+      header, main, footer {
+        padding-left: 240px;
+      }
+      md-navbar[md-fixed="true"] nav {
+        padding-right: 240px;
+      }
     }
-    md-navbar[md-fixed="true"] nav {
-      padding-right: 240px;
+
+    @media all and (max-width: 992px) {
+        header, main, footer {
+            padding-left: 0;
+        }
+        md-navbar[md-fixed="true"] nav {
+          padding-right: 0;
+        }
     }
     img.brand-logo {
       width: 100%;
@@ -21,13 +32,13 @@
       <li repeat.for="cat of categories">
         <div md-waves class="collapsible-header">
           <span>${ cat.title }</span>
-          <i class="mdi-navigation-arrow-drop-down right"></i>
+          <i class="material-icons right">arrow_drop_down</i>
         </div>
         <div class="collapsible-body">
           <ul>
             <template repeat.for="ctrl of cat.controls">
               <li md-waves="color: primary;" if.bind="!!ctrl.link" class="${ activeItem === ctrl.link ? 'active' : '' }">
-                <a href.bind="ctrl.link" click.delegate="setActive(ctrl)">${ ctrl.title }</a>
+                <a href.bind="ctrl.link" click.delegate="setActive(ctrl)">${ ctrl.title }<span show.bind="ctrl.status == 'wip'" md-badge>WIP</span></a>
               </li>
             </template>
           </ul>

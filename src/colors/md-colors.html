@@ -98,6 +98,12 @@
     border-right-color: ${mdAccentColor};
   }
 
+  /* collection */
+  md-collection .collection md-collection-item.collection-item.active {
+    background-color: ${mdAccentColor};
+    color: white;
+  }
+
   /* datepicker */
   .picker__date-display {
     background-color: ${mdAccentColor};
@@ -139,6 +145,30 @@
   }
   md-input .input-field input[type=password]:focus + label {
     color: ${mdAccentColor};
+  }
+  md-input .input-field .prefix.active {
+    color: ${mdAccentColor};
+  }
+  md-input textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid ${mdAccentColor};
+    box-shadow: 0 1px 0 0 ${mdAccentColor};
+  }
+  md-input textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: ${mdAccentColor}
+  }
+
+  /* pagination */
+  md-pagination .pagination li.active {
+    background-color: ${mdPrimaryColor}
+  }
+
+  /* progress */
+  md-progress .progress {
+    background-color: ${mdAccentColor | lighten:2};
+  }
+
+  md-progress .progress .determinate, md-progress .progress .indeterminate {
+    background-color: ${mdAccentColor};
   }
 
   /* radio input */
@@ -190,10 +220,14 @@
   }
 
   /* well */
-
   md-well li.active {
     border-right: 2px solid ${mdPrimaryColor};
     background-color: ${mdPrimaryColor | lighten:3};
+  }
+
+  /* footer */
+  footer.page-footer {
+    background-color: ${mdPrimaryColor};
   }
   </style>
 </template>

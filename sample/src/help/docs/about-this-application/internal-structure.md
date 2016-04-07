@@ -8,7 +8,7 @@ The internal organization of this bridge is slightly different than Aurelia's **
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/nGEFWlE.png"></img>
+  <img src="http://i.imgur.com/nGEFWlE.png" class="responsive-img"></img>
  <br><br>
  Image 1
 </p>
@@ -21,7 +21,7 @@ The following three sections describe the details of the plugin structure and bu
 #### 3.1 Plugin code
 
 <p align=center>
-  <img src="http://i.imgur.com/13uYCPm.png"></img>
+  <img src="http://i.imgur.com/13uYCPm.png" class="responsive-img"></img>
 <br>
 Image 2
 </p>
@@ -247,7 +247,7 @@ export class MdSwitch {
 As [mentioned before](#anch1) Aurelia-Materialize-Bridge has a special structure, with the plugin consumer application being a part of the same project (see the content of the blue rectangle on the image 3 below)
 
 <p align=center>
-  <img src="http://i.imgur.com/zTDFKsM.png"></img>
+  <img src="http://i.imgur.com/zTDFKsM.png" class="responsive-img"></img>
   <br><br>
   Image 3
 </p>
@@ -265,7 +265,7 @@ As [mentioned before](#anch1) Aurelia-Materialize-Bridge has a special structure
 
 <br>
 <p align=center>
-  <img src="http://i.imgur.com/x2CG2CD.png"></img>
+  <img src="http://i.imgur.com/x2CG2CD.png" class="responsive-img"></img>
   <br>
   <br>
   Image 4

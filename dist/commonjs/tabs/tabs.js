@@ -1,23 +1,31 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MdTabs = undefined;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dec, _dec2, _class;
 
 var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
-var _commonEvents = require('../common/events');
+var _events = require('../common/events');
 
-var _commonAttributeManager = require('../common/attributeManager');
+var _attributeManager = require('../common/attributeManager');
 
-var MdTabs = (function () {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('md-tabs'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
   function MdTabs(element) {
-    _classCallCheck(this, _MdTabs);
+    _classCallCheck(this, MdTabs);
 
     this.element = element;
-    this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
+    this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
+    this.attributeManager = new _attributeManager.AttributeManager(this.element);
     this.tabAttributeManagers = [];
   }
 
@@ -28,7 +36,7 @@ var MdTabs = (function () {
 
     var children = this.element.querySelectorAll('li');
     [].forEach.call(children, function (child) {
-      var setter = new _commonAttributeManager.AttributeManager(child);
+      var setter = new _attributeManager.AttributeManager(child);
       setter.addClasses(['tab', 'primary-text']);
       _this.tabAttributeManagers.push(setter);
     });
@@ -37,7 +45,7 @@ var MdTabs = (function () {
 
     var childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, function (a) {
-      a.addEventListener('click', _this.fireTabSelectedEvent.bind(_this));
+      a.addEventListener('click', _this.fireTabSelectedEvent);
     });
   };
 
@@ -52,19 +60,48 @@ var MdTabs = (function () {
     this.tabAttributeManagers = [];
     var childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, function (a) {
-      a.removeEventListener('click', _this2.fireTabSelectedEvent.bind(_this2));
+      a.removeEventListener('click', _this2.fireTabSelectedEvent);
     });
   };
 
   MdTabs.prototype.fireTabSelectedEvent = function fireTabSelectedEvent(e) {
-    var href = $(e.target).attr('href');
-    _commonEvents.fireMaterializeEvent(this.element, 'selected', href);
+    var _this3 = this;
+
+    window.setTimeout(function () {
+      var indicatorRight = $('.indicator', _this3.element).css('right');
+      if (indicatorRight.indexOf('-') === 0) {
+        $('.indicator', _this3.element).css('right', 0);
+      }
+    }, 310);
+    var href = e.target.getAttribute('href');
+    (0, _events.fireMaterializeEvent)(this.element, 'selected', href);
   };
 
-  var _MdTabs = MdTabs;
-  MdTabs = _aureliaDependencyInjection.inject(Element)(MdTabs) || MdTabs;
-  MdTabs = _aureliaTemplating.customAttribute('md-tabs')(MdTabs) || MdTabs;
-  return MdTabs;
-})();
+  MdTabs.prototype.selectTab = function selectTab(id) {
+    $(this.element).tabs('select_tab', id);
+    this.fireTabSelectedEvent({
+      target: { getAttribute: function getAttribute() {
+          return '#' + id;
+        } }
+    });
+  };
 
-exports.MdTabs = MdTabs;
+  _createClass(MdTabs, [{
+    key: 'selectedTab',
+    get: function get() {
+      var children = this.element.querySelectorAll('li.tab a');
+      var index = -1;
+      var href = null;
+      [].forEach.call(children, function (a, i) {
+        if (a.classList.contains('active')) {
+          index = i;
+          href = a.href;
+          return;
+        }
+      });
+      return { href: href, index: index };
+    }
+  }]);
+
+  return MdTabs;
+}()) || _class) || _class);

@@ -1,0 +1,29 @@
+{
+  "title": "Navbar",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html"]
+    },
+    "left-aligned-links": {
+      "route": "left-aligned-links",
+      "files": ["html"]
+    },
+    "centered-logo": {
+      "route": "centered-logo",
+      "files": ["html"]
+    },
+    "active-items": {
+      "route": "active-items",
+      "files": ["html"]
+    },
+    "dropdown-menu": {
+      "route": "dropdown-menu",
+      "files": ["html"]
+    },
+    "search-bar": {
+      "route": "search-bar",
+      "files": ["html"]
+    }
+  }
+}

@@ -10,6 +10,7 @@ gulp.task('serve', ['build'], function(done) {
   var bs = browserSync.create('Sample server');
 
   var options = {
+    open: false,
     server: {
       baseDir: paths.sample,
       routes: {

@@ -5,7 +5,7 @@ This is the most likely fashion this application is being used. Invoked via URL:
 
 <br>
 <p align=center>
-<img src="http://i.imgur.com/3FPZJnV.png"></img>
+<img src="http://i.imgur.com/3FPZJnV.png" class="responsive-img"></img>
 <br>
   Image 1
 </p>
@@ -19,7 +19,7 @@ That **side-nav** mimics the side-nav of [Materialize website](http://materializ
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/wYoOLmm.png"></img>
+  <img src="http://i.imgur.com/wYoOLmm.png" class="responsive-img"></img>
 <br>
   Image 2
 </p>
@@ -41,7 +41,7 @@ Here are three consecutive screen-shots showing that information for the select 
 **Select view**
 
 <p align=center>
-  <img src="http://i.imgur.com/uhpshpy.png"></img>
+  <img src="http://i.imgur.com/uhpshpy.png" class="responsive-img"></img>
  <br><br>
 Image 5
 </p>
@@ -50,7 +50,7 @@ Image 5
 **Select view model**
 
 <p align=center>
-  <img src="http://i.imgur.com/VnYkfTv.png"></img>
+  <img src="http://i.imgur.com/VnYkfTv.png" class="responsive-img"></img>
  <br><br>
 Image 6
 </p>
@@ -59,7 +59,7 @@ Image 6
 **Waves CSS**
 
 <p align=center>
-  <img src="http://i.imgur.com/VmRmBVQ.png"></img>
+  <img src="http://i.imgur.com/VmRmBVQ.png" class="responsive-img"></img>
  <br><br>
 Image 7
 </p>

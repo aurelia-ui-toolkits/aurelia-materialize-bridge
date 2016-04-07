@@ -20,7 +20,7 @@ and subsequently browse to http://localhost:9000, resulting with the following:
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/kZ9dCzC.png"></img>
+  <img src="http://i.imgur.com/kZ9dCzC.png" class="responsive-img"></img>
  <br><br>
  Image 1
 </p>
@@ -29,7 +29,7 @@ Next, install aurelia-materialize-bridge as described in the [installation instr
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/znag6xt.png"></img>
+  <img src="http://i.imgur.com/znag6xt.png" class="responsive-img"></img>
  <br><br>
  Image 3
 </p>
@@ -37,7 +37,7 @@ Next, install aurelia-materialize-bridge as described in the [installation instr
 Now, we want to add several (four) additional pages to this application that would show Materialize **select**, **button**, **slider** and **collapsible** components (the last one shown below rendered in its popout variant):
 
 <p align=center>
-  <img src="http://i.imgur.com/Kmi4Y3r.png"></img>
+  <img src="http://i.imgur.com/Kmi4Y3r.png" class="responsive-img"></img>
  <br><br>
  Image 2
 </p>
@@ -76,7 +76,7 @@ The next screenshot depicts the final UI for the application we are about to cre
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/kcCLiy7.jpg"></img>
+  <img src="http://i.imgur.com/kcCLiy7.jpg" class="responsive-img"></img>
  <br><br>
  Image 4
 </p>
@@ -86,7 +86,7 @@ In order to clearly separate the added code from the original Aurelia Navigation
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/i4PJFWV.png"></img>
+  <img src="http://i.imgur.com/i4PJFWV.png" class="responsive-img"></img>
  <br><br>
  Image 5
 </p>

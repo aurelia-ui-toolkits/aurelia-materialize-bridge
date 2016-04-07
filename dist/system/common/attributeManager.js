@@ -1,17 +1,22 @@
-System.register([], function (_export) {
-  'use strict';
+'use strict';
 
+System.register([], function (_export, _context) {
   var AttributeManager;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [],
     execute: function () {
-      AttributeManager = (function () {
+      _export('AttributeManager', AttributeManager = function () {
         function AttributeManager(element) {
           _classCallCheck(this, AttributeManager);
 
+          this._colorClasses = ['accent', 'primary'];
           this.addedClasses = [];
           this.addedAttributes = {};
 
@@ -54,10 +59,15 @@ System.register([], function (_export) {
             classes = [classes];
           }
           classes.forEach(function (c) {
-            if (!_this3.element.classList.contains(c)) {
-              _this3.addedClasses.push(c);
-              _this3.element.classList.add(c);
-            }
+            var classListHasColor = _this3._colorClasses.filter(function (cc) {
+              return _this3.element.classList.contains(cc);
+            }).length > 0;
+            if (_this3._colorClasses.indexOf(c) > -1 && classListHasColor) {} else {
+                if (!_this3.element.classList.contains(c)) {
+                  _this3.addedClasses.push(c);
+                  _this3.element.classList.add(c);
+                }
+              }
           });
         };
 
@@ -76,7 +86,7 @@ System.register([], function (_export) {
         };
 
         return AttributeManager;
-      })();
+      }());
 
       _export('AttributeManager', AttributeManager);
     }

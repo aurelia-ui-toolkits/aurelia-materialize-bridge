@@ -1,11 +1,23 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 exports.configure = configure;
 
-require('materialize');
+var _toastService = require('./toast/toastService');
 
-var _aureliaFramework = require('aurelia-framework');
+Object.keys(_toastService).forEach(function (key) {
+  if (key === "default") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _toastService[key];
+    }
+  });
+});
+
+require('materialize');
 
 var _configBuilder = require('./config-builder');
 

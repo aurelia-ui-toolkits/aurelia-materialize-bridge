@@ -1,13 +1,56 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export) {
-  'use strict';
+'use strict';
 
-  var bindable, customElement, bindingMode, inject, AttributeManager, getBooleanFromAttributeValue, MdCheckbox;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export, _context) {
+  var bindable, customElement, bindingMode, inject, AttributeManager, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _class3, _temp, MdCheckbox;
 
-  var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -23,40 +66,17 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
-      MdCheckbox = (function () {
-        var _instanceInitializers = {};
-
-        _createDecoratedClass(MdCheckbox, [{
-          key: 'mdChecked',
-          decorators: [bindable({
-            defaultBindingMode: bindingMode.twoWay
-          })],
-          initializer: null,
-          enumerable: true
-        }, {
-          key: 'mdDisabled',
-          decorators: [bindable()],
-          initializer: null,
-          enumerable: true
-        }, {
-          key: 'mdFilledIn',
-          decorators: [bindable()],
-          initializer: null,
-          enumerable: true
-        }], [{
-          key: 'id',
-          value: 0,
-          enumerable: true
-        }], _instanceInitializers);
-
+      _export('MdCheckbox', MdCheckbox = (_dec = customElement('md-checkbox'), _dec2 = inject(Element), _dec3 = bindable({
+        defaultBindingMode: bindingMode.twoWay
+      }), _dec4 = bindable(), _dec5 = bindable(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
         function MdCheckbox(element) {
-          _classCallCheck(this, _MdCheckbox);
+          _classCallCheck(this, MdCheckbox);
 
-          _defineDecoratedPropertyDescriptor(this, 'mdChecked', _instanceInitializers);
+          _initDefineProp(this, 'mdChecked', _descriptor, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'mdDisabled', _instanceInitializers);
+          _initDefineProp(this, 'mdDisabled', _descriptor2, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'mdFilledIn', _instanceInitializers);
+          _initDefineProp(this, 'mdFilledIn', _descriptor3, this);
 
           this.element = element;
           this.controlId = 'md-checkbox-' + MdCheckbox.id++;
@@ -101,11 +121,17 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           }
         };
 
-        var _MdCheckbox = MdCheckbox;
-        MdCheckbox = inject(Element)(MdCheckbox) || MdCheckbox;
-        MdCheckbox = customElement('md-checkbox')(MdCheckbox) || MdCheckbox;
         return MdCheckbox;
-      })();
+      }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdChecked', [_dec3], {
+        enumerable: true,
+        initializer: null
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec4], {
+        enumerable: true,
+        initializer: null
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdFilledIn', [_dec5], {
+        enumerable: true,
+        initializer: null
+      })), _class2)) || _class) || _class));
 
       _export('MdCheckbox', MdCheckbox);
     }

@@ -9,13 +9,13 @@ export class Index {
   }
 
   configureRouter(config, router) {
-    // config.title = 'Waves';
-    // config.map([
-    //   { route: ['', 'basic-use'], moduleId: './basic-use', nav: true, title: 'Basic use' },
-    //   { route: 'colors', moduleId: './colors', nav: true, title: 'Colors' }
-    // ]);
+    config.title = 'Waves';
+    config.map([
+      { route: ['', 'basic-use'], moduleId: './basic-use', nav: true, title: 'Basic use' },
+      { route: 'colors', moduleId: './colors', nav: true, title: 'Colors' }
+    ]);
 
     this.router = router;
-    return this.registry.load(config, 'waves');
+    // return this.registry.load(config, 'waves');
   }
 }

@@ -1,3 +1,4 @@
+import './setup';
 import {initialize} from 'aurelia-pal-browser';
 import { MdToastService } from 'src/toast/toastService';
 import 'materialize';

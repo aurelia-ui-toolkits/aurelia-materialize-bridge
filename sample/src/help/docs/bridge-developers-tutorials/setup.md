@@ -15,7 +15,7 @@ Having the standard Aurelia Skeleton Plugin installed (unzipped) and built, we n
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/NiT7L16.png"></img>
+  <img src="http://i.imgur.com/NiT7L16.png" class="responsive-img"></img>
  <br><br>
  Image 1
 </p>
@@ -26,7 +26,7 @@ Replace the original content of the `src` folder with the folders and (empty) fi
 <br><br>
 
 <p align=center>
-  <img src="http://i.imgur.com/mk6QDQ7.png"></img>
+  <img src="http://i.imgur.com/mk6QDQ7.png" class="responsive-img"></img>
  <br><br>
  Image 2
 </p>

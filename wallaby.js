@@ -9,7 +9,9 @@ module.exports = function(wallaby) {
       {pattern: 'jspm_packages/system.js', instrument: false},
       {pattern: 'config.js', instrument: false},
       {pattern: 'node_modules/phantomjs-polyfill/bind-polyfill.js', load: true},
-      {pattern: 'src/**/*.js', load: false}
+      {pattern: 'src/**/*.js', load: false},
+      {pattern: 'test/**/*.spec.js', load: false, ignore: true},
+      {pattern: 'test/**/*.js', load: false},
     ],
 
     tests: [
@@ -20,6 +22,7 @@ module.exports = function(wallaby) {
       '**/*.js': wallaby.compilers.babel({
         babel: babel,
         optional: [
+          'runtime',
           'es7.decorators',
           'es7.classProperties'
         ]

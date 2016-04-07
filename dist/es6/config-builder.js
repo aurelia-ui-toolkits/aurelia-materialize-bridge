@@ -8,20 +8,32 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useBadge()
       .useBox()
+      .useBreadcrumbs()
       .useButton()
       .useCard()
       .useCarousel()
+      .useCharacterCounter()
       .useCheckbox()
+      .useChip()
       .useCollapsible()
+      .useCollection()
       .useColors()
       .useDatePicker()
       .useDropdown()
       .useFab()
+      .useFile()
+      .useFooter()
+      .useInput()
       .useModal()
       .useNavbar()
+      .usePagination()
       .useParallax()
+      .useProgress()
       .usePushpin()
+      .useRadio()
+      .useRange()
       .useScrollfire()
       .useSelect()
       .useSidenav()
@@ -34,8 +46,18 @@ export class ConfigBuilder {
       .useWell();
   }
 
+  useBadge(): ConfigBuilder {
+    this.globalResources.push('./badge/badge');
+    return this;
+  }
+
   useBox(): ConfigBuilder {
     this.globalResources.push('./box/box');
+    return this;
+  }
+
+  useBreadcrumbs(): ConfigBuilder {
+    this.globalResources.push('./breadcrumbs/breadcrumbs');
     return this;
   }
 
@@ -50,6 +72,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useCharacterCounter(): ConfigBuilder {
+    this.globalResources.push('./char-counter/char-counter');
+    return this;
+  }
+
   useCard(): ConfigBuilder {
     this.globalResources.push('./card/card');
     return this;
@@ -57,6 +84,11 @@ export class ConfigBuilder {
 
   useCheckbox(): ConfigBuilder {
     this.globalResources.push('./checkbox/checkbox');
+    return this;
+  }
+
+  useChip(): ConfigBuilder {
+    this.globalResources.push('./chip/chip');
     return this;
   }
 
@@ -70,6 +102,12 @@ export class ConfigBuilder {
 
   useCollapsible(): ConfigBuilder {
     this.globalResources.push('./collapsible/collapsible');
+    return this;
+  }
+
+  useCollection() : ConfigBuilder {
+    this.globalResources.push('./collection/collection');
+    this.globalResources.push('./collection/collection-item');
     return this;
   }
 
@@ -94,6 +132,22 @@ export class ConfigBuilder {
     return this;
   }
 
+  useFile() : ConfigBuilder {
+    this.globalResources.push('./file/file');
+    return this;
+  }
+
+  useFooter() : ConfigBuilder {
+    this.globalResources.push('./footer/footer');
+    return this;
+  }
+
+  useInput() : ConfigBuilder {
+    this.globalResources.push('./input/input');
+    this.globalResources.push('./input/input-prefix');
+    return this;
+  }
+
   useModal(): ConfigBuilder {
     this.globalResources.push('./modal/modal-trigger');
     return this;
@@ -104,13 +158,33 @@ export class ConfigBuilder {
     return this;
   }
 
+  usePagination(): ConfigBuilder {
+    this.globalResources.push('./pagination/pagination');
+    return this;
+  }
+
   useParallax(): ConfigBuilder {
     this.globalResources.push('./parallax/parallax');
     return this;
   }
 
+  useProgress(): ConfigBuilder {
+    this.globalResources.push('./progress/progress');
+    return this;
+  }
+
   usePushpin(): ConfigBuilder {
     this.globalResources.push('./pushpin/pushpin');
+    return this;
+  }
+
+  useRadio(): ConfigBuilder {
+    this.globalResources.push('./radio/radio');
+    return this;
+  }
+
+  useRange(): ConfigBuilder {
+    this.globalResources.push('./range/range');
     return this;
   }
 

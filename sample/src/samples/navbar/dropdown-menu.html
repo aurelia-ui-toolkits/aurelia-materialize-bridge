@@ -1,0 +1,17 @@
+<template>
+  <md-navbar>
+    <a href="#/samples/navbar" class="brand-logo"><span>Brand logo</span></a>
+    <ul class="hide-on-med-and-down right">
+      <li md-waves><a>About</a></li>
+      <li md-waves><a>Installation</a></li>
+      <!-- Dropdown Trigger -->
+      <li><a md-dropdown="activates: dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+  </md-navbar>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a click.trigger="showToast($event)">one</a></li>
+    <li><a click.trigger="showToast($event)">two</a></li>
+    <li class="divider"></li>
+    <li><a click.trigger="showToast($event)">three</a></li>
+  </ul>
+</template>

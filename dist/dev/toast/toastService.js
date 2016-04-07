@@ -1,14 +1,18 @@
-System.register([], function (_export) {
-  "use strict";
+"use strict";
 
+System.register([], function (_export, _context) {
   var MdToastService;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [],
     execute: function () {
-      MdToastService = (function () {
+      _export("MdToastService", MdToastService = function () {
         function MdToastService() {
           _classCallCheck(this, MdToastService);
         }
@@ -22,7 +26,7 @@ System.register([], function (_export) {
         };
 
         return MdToastService;
-      })();
+      }());
 
       _export("MdToastService", MdToastService);
     }

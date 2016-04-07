@@ -4,27 +4,34 @@
 export class ConfigBuilder {
 
   useGlobalResources: boolean = true;
+  useScrollfirePatch: boolean = false;
   globalResources = [];
 
   useAll(): ConfigBuilder {
     return this
       .useBadge()
       .useBox()
+      .useBreadcrumbs()
       .useButton()
       .useCard()
       .useCarousel()
       .useCharacterCounter()
       .useCheckbox()
+      .useChip()
       .useCollapsible()
+      .useCollection()
       .useColors()
       .useDatePicker()
       .useDropdown()
       .useFab()
       .useFile()
+      .useFooter()
       .useInput()
       .useModal()
       .useNavbar()
+      .usePagination()
       .useParallax()
+      .useProgress()
       .usePushpin()
       .useRadio()
       .useRange()
@@ -47,6 +54,11 @@ export class ConfigBuilder {
 
   useBox(): ConfigBuilder {
     this.globalResources.push('./box/box');
+    return this;
+  }
+
+  useBreadcrumbs(): ConfigBuilder {
+    this.globalResources.push('./breadcrumbs/breadcrumbs');
     return this;
   }
 
@@ -76,6 +88,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useChip(): ConfigBuilder {
+    this.globalResources.push('./chip/chip');
+    return this;
+  }
+
   /**
   * Use my control
   */
@@ -86,6 +103,12 @@ export class ConfigBuilder {
 
   useCollapsible(): ConfigBuilder {
     this.globalResources.push('./collapsible/collapsible');
+    return this;
+  }
+
+  useCollection() : ConfigBuilder {
+    this.globalResources.push('./collection/collection');
+    this.globalResources.push('./collection/collection-item');
     return this;
   }
 
@@ -115,8 +138,14 @@ export class ConfigBuilder {
     return this;
   }
 
+  useFooter() : ConfigBuilder {
+    this.globalResources.push('./footer/footer');
+    return this;
+  }
+
   useInput() : ConfigBuilder {
     this.globalResources.push('./input/input');
+    this.globalResources.push('./input/input-prefix');
     return this;
   }
 
@@ -130,8 +159,18 @@ export class ConfigBuilder {
     return this;
   }
 
+  usePagination(): ConfigBuilder {
+    this.globalResources.push('./pagination/pagination');
+    return this;
+  }
+
   useParallax(): ConfigBuilder {
     this.globalResources.push('./parallax/parallax');
+    return this;
+  }
+
+  useProgress(): ConfigBuilder {
+    this.globalResources.push('./progress/progress');
     return this;
   }
 
@@ -221,6 +260,11 @@ export class ConfigBuilder {
   */
   withoutGlobalResources(): ConfigBuilder {
     this.useGlobalResources = false;
+    return this;
+  }
+
+  withScrollfirePatch(): ConfigBuilder {
+    this.useScrollfirePatch = true;
     return this;
   }
 }

@@ -1,13 +1,56 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributes'], function (_export) {
-  'use strict';
+'use strict';
 
-  var bindable, customElement, inject, getBooleanFromAttributeValue, MdFab;
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributes'], function (_export, _context) {
+  var bindable, customElement, inject, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, MdFab;
 
-  var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -19,31 +62,13 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
-      MdFab = (function () {
-        var _instanceInitializers = {};
-
-        _createDecoratedClass(MdFab, [{
-          key: 'mdFixed',
-          decorators: [bindable()],
-          initializer: function initializer() {
-            return false;
-          },
-          enumerable: true
-        }, {
-          key: 'mdLarge',
-          decorators: [bindable()],
-          initializer: function initializer() {
-            return false;
-          },
-          enumerable: true
-        }], null, _instanceInitializers);
-
+      _export('MdFab', MdFab = (_dec = customElement('md-fab'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdFab(element) {
-          _classCallCheck(this, _MdFab);
+          _classCallCheck(this, MdFab);
 
-          _defineDecoratedPropertyDescriptor(this, 'mdFixed', _instanceInitializers);
+          _initDefineProp(this, 'mdFixed', _descriptor, this);
 
-          _defineDecoratedPropertyDescriptor(this, 'mdLarge', _instanceInitializers);
+          _initDefineProp(this, 'mdLarge', _descriptor2, this);
 
           this.element = element;
         }
@@ -53,11 +78,18 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           this.mdLarge = getBooleanFromAttributeValue(this.mdLarge);
         };
 
-        var _MdFab = MdFab;
-        MdFab = inject(Element)(MdFab) || MdFab;
-        MdFab = customElement('md-fab')(MdFab) || MdFab;
         return MdFab;
-      })();
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec3], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdLarge', [_dec4], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      })), _class2)) || _class) || _class));
 
       _export('MdFab', MdFab);
     }

@@ -1,21 +1,30 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _commonAttributes, _commonAttributeManager) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _attributeManager) {
   'use strict';
 
-  exports.__esModule = true;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdCollapsible = undefined;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
-  var MdCollapsible = (function () {
+  var _dec, _dec2, _dec3, _dec4, _class;
+
+  var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.customAttribute)('md-collapsible'), _dec2 = (0, _aureliaTemplating.bindable)({ name: 'accordion', defaultValue: false }), _dec3 = (0, _aureliaTemplating.bindable)({ name: 'popout', defaultValue: false }), _dec4 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = function () {
     function MdCollapsible(element) {
-      _classCallCheck(this, _MdCollapsible);
+      _classCallCheck(this, MdCollapsible);
 
       this.element = element;
-      this.attributeManager = new _commonAttributeManager.AttributeManager(this.element);
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
     }
 
     MdCollapsible.prototype.attached = function attached() {
       this.attributeManager.addClasses('collapsible');
-      if (_commonAttributes.getBooleanFromAttributeValue(this.popout)) {
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.popout)) {
         this.attributeManager.addClasses('popout');
       }
       this.refresh();
@@ -27,7 +36,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
     };
 
     MdCollapsible.prototype.refresh = function refresh() {
-      var accordion = _commonAttributes.getBooleanFromAttributeValue(this.accordion);
+      var accordion = (0, _attributes.getBooleanFromAttributeValue)(this.accordion);
       if (accordion) {
         this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
       } else {
@@ -43,13 +52,6 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       this.refresh();
     };
 
-    var _MdCollapsible = MdCollapsible;
-    MdCollapsible = _aureliaDependencyInjection.inject(Element)(MdCollapsible) || MdCollapsible;
-    MdCollapsible = _aureliaTemplating.bindable({ name: 'popout', defaultValue: false })(MdCollapsible) || MdCollapsible;
-    MdCollapsible = _aureliaTemplating.bindable({ name: 'accordion', defaultValue: false })(MdCollapsible) || MdCollapsible;
-    MdCollapsible = _aureliaTemplating.customAttribute('md-collapsible')(MdCollapsible) || MdCollapsible;
     return MdCollapsible;
-  })();
-
-  exports.MdCollapsible = MdCollapsible;
+  }()) || _class) || _class) || _class) || _class);
 });

@@ -1,3 +1,4 @@
+import './setup';
 import {ClickCounter} from 'src/click-counter';
 
 describe('Click counter', () => {

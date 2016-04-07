@@ -1,0 +1,21 @@
+{
+  "title": "Select",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html"]
+    },
+    "multiple": {
+      "route": "multiple",
+      "files": ["html", "md"]
+    },
+    "binding-to-objects": {
+      "route": "binding-to-objects",
+      "files": ["html", "js"]
+    },
+    "refresh": {
+      "route": "refresh",
+      "files": ["html", "js", "md"]
+    }
+  }
+}

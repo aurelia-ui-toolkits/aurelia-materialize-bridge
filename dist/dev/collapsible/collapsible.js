@@ -1,9 +1,13 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (_export) {
-  'use strict';
+'use strict';
 
-  var bindable, customAttribute, inject, getBooleanFromAttributeValue, AttributeManager, MdCollapsible;
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (_export, _context) {
+  var bindable, customAttribute, inject, getBooleanFromAttributeValue, AttributeManager, _dec, _dec2, _dec3, _dec4, _class, MdCollapsible;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -17,9 +21,9 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       AttributeManager = _commonAttributeManager.AttributeManager;
     }],
     execute: function () {
-      MdCollapsible = (function () {
+      _export('MdCollapsible', MdCollapsible = (_dec = customAttribute('md-collapsible'), _dec2 = bindable({ name: 'accordion', defaultValue: false }), _dec3 = bindable({ name: 'popout', defaultValue: false }), _dec4 = inject(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = function () {
         function MdCollapsible(element) {
-          _classCallCheck(this, _MdCollapsible);
+          _classCallCheck(this, MdCollapsible);
 
           this.element = element;
           this.attributeManager = new AttributeManager(this.element);
@@ -55,13 +59,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           this.refresh();
         };
 
-        var _MdCollapsible = MdCollapsible;
-        MdCollapsible = inject(Element)(MdCollapsible) || MdCollapsible;
-        MdCollapsible = bindable({ name: 'popout', defaultValue: false })(MdCollapsible) || MdCollapsible;
-        MdCollapsible = bindable({ name: 'accordion', defaultValue: false })(MdCollapsible) || MdCollapsible;
-        MdCollapsible = customAttribute('md-collapsible')(MdCollapsible) || MdCollapsible;
         return MdCollapsible;
-      })();
+      }()) || _class) || _class) || _class) || _class));
 
       _export('MdCollapsible', MdCollapsible);
     }

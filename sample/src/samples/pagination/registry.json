@@ -1,0 +1,17 @@
+{
+  "title": "Pagination",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html"]
+    },
+    "options": {
+      "route": "options",
+      "files": ["html", "js"]
+    },
+    "events": {
+      "route": "events",
+      "files": ["html", "js"]
+    }
+  }
+}

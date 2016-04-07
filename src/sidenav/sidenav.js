@@ -48,7 +48,7 @@ export class MdSidenav {
 
   mdFixedChanged(newValue) {
     if (this.attributeManager) {
-      if (newValue) {
+      if (getBooleanFromAttributeValue(newValue)) {
         this.attributeManager.addClasses('fixed');
         this.sidenavService.setFixed(this);
       } else {

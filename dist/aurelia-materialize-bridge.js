@@ -1,9 +1,10 @@
 import 'materialize';
 import * as LogManager from 'aurelia-logging';
-import {Aurelia} from 'aurelia-framework';
 import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
-import {bindingMode,ObserverLocator} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
+import {bindingMode,ObserverLocator} from 'aurelia-binding';
+import {Router} from 'aurelia-router';
+import {TaskQueue} from 'aurelia-task-queue';
 import {getLogger} from 'aurelia-logging';
 
 export class ClickCounter {
@@ -24,20 +25,32 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useBadge()
       .useBox()
+      .useBreadcrumbs()
       .useButton()
       .useCard()
       .useCarousel()
+      .useCharacterCounter()
       .useCheckbox()
+      .useChip()
       .useCollapsible()
+      .useCollection()
       .useColors()
       .useDatePicker()
       .useDropdown()
       .useFab()
+      .useFile()
+      .useFooter()
+      .useInput()
       .useModal()
       .useNavbar()
+      .usePagination()
       .useParallax()
+      .useProgress()
       .usePushpin()
+      .useRadio()
+      .useRange()
       .useScrollfire()
       .useSelect()
       .useSidenav()
@@ -50,8 +63,18 @@ export class ConfigBuilder {
       .useWell();
   }
 
+  useBadge(): ConfigBuilder {
+    this.globalResources.push('./badge/badge');
+    return this;
+  }
+
   useBox(): ConfigBuilder {
     this.globalResources.push('./box/box');
+    return this;
+  }
+
+  useBreadcrumbs(): ConfigBuilder {
+    this.globalResources.push('./breadcrumbs/breadcrumbs');
     return this;
   }
 
@@ -66,6 +89,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useCharacterCounter(): ConfigBuilder {
+    this.globalResources.push('./char-counter/char-counter');
+    return this;
+  }
+
   useCard(): ConfigBuilder {
     this.globalResources.push('./card/card');
     return this;
@@ -73,6 +101,11 @@ export class ConfigBuilder {
 
   useCheckbox(): ConfigBuilder {
     this.globalResources.push('./checkbox/checkbox');
+    return this;
+  }
+
+  useChip(): ConfigBuilder {
+    this.globalResources.push('./chip/chip');
     return this;
   }
 
@@ -86,6 +119,12 @@ export class ConfigBuilder {
 
   useCollapsible(): ConfigBuilder {
     this.globalResources.push('./collapsible/collapsible');
+    return this;
+  }
+
+  useCollection() : ConfigBuilder {
+    this.globalResources.push('./collection/collection');
+    this.globalResources.push('./collection/collection-item');
     return this;
   }
 
@@ -110,6 +149,22 @@ export class ConfigBuilder {
     return this;
   }
 
+  useFile() : ConfigBuilder {
+    this.globalResources.push('./file/file');
+    return this;
+  }
+
+  useFooter() : ConfigBuilder {
+    this.globalResources.push('./footer/footer');
+    return this;
+  }
+
+  useInput() : ConfigBuilder {
+    this.globalResources.push('./input/input');
+    this.globalResources.push('./input/input-prefix');
+    return this;
+  }
+
   useModal(): ConfigBuilder {
     this.globalResources.push('./modal/modal-trigger');
     return this;
@@ -120,13 +175,33 @@ export class ConfigBuilder {
     return this;
   }
 
+  usePagination(): ConfigBuilder {
+    this.globalResources.push('./pagination/pagination');
+    return this;
+  }
+
   useParallax(): ConfigBuilder {
     this.globalResources.push('./parallax/parallax');
     return this;
   }
 
+  useProgress(): ConfigBuilder {
+    this.globalResources.push('./progress/progress');
+    return this;
+  }
+
   usePushpin(): ConfigBuilder {
     this.globalResources.push('./pushpin/pushpin');
+    return this;
+  }
+
+  useRadio(): ConfigBuilder {
+    this.globalResources.push('./radio/radio');
+    return this;
+  }
+
+  useRange(): ConfigBuilder {
+    this.globalResources.push('./range/range');
     return this;
   }
 
@@ -205,7 +280,7 @@ export class ConfigBuilder {
   }
 }
 
-export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBuilder) => void) {
+export function configure(aurelia, configCallback) {
   let builder = new ConfigBuilder();
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
@@ -214,6 +289,33 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: ConfigBui
 
   if (builder.useGlobalResources) {
     aurelia.globalResources(builder.globalResources);
+  }
+}
+
+
+
+@customAttribute('md-badge')
+@inject(Element)
+export class MdBadge {
+  @bindable() isNew = false;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    let classes = [
+      'badge'
+    ];
+    if (getBooleanFromAttributeValue(this.isNew)) {
+      classes.push('new');
+    }
+    this.attributeManager.addClasses(classes);
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['badge', 'new']);
   }
 }
 
@@ -240,6 +342,38 @@ export class MdBox {
   detached() {
     this.attributeManager.removeAttributes('data-caption');
     this.attributeManager.removeClasses('materialboxed');
+  }
+}
+
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+
+@customElement('md-breadcrumbs')
+@inject(Element, Router)
+export class MdBreadcrumbs {
+  constructor(element, router) {
+    this.element = element;
+    this._childRouter = router;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  navigate(navigationInstruction) {
+    this._childRouter.navigateToRoute(navigationInstruction.config.name);
+    // this.router.navigate(navigationInstruction.config.name);
+  }
+}
+
+export class InstructionFilterValueConverter {
+  toView(navigationInstructions) {
+    return navigationInstructions.filter(i => {
+      let result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
   }
 }
 
@@ -308,7 +442,15 @@ export class MdButton {
 @customElement('md-card')
 @inject(Element)
 export class MdCard {
-  @bindable() mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdReveal = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdSize = '';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdTitle;
@@ -318,7 +460,7 @@ export class MdCard {
   }
 
   attached() {
-    //
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
 
@@ -361,6 +503,35 @@ export class MdCarousel {
     } else {
       $(this.element).carousel();
     }
+  }
+}
+
+@customAttribute('md-char-counter')
+@inject(Element)
+export class MdCharCounter {
+  @bindable() length = 120;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.length = parseInt(this.length, 10);
+
+    // attach to input element explicitly, so this counter can be used on
+    // containers (or custom elements like md-input)
+    if (this.element.tagName.toUpperCase() === 'INPUT') {
+      this.attributeManager.addAttributes({ 'length': this.length });
+      $(this.element).characterCounter();
+    } else {
+      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
+      $(this.element).find('input').characterCounter();
+    }
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes(['length']);
   }
 }
 
@@ -419,6 +590,16 @@ export class MdCheckbox {
   }
 }
 
+@customElement('md-chip')
+@inject(Element)
+export class MdChip {
+  @bindable() mdClose = false;
+
+  attached() {
+    this.mdClose = getBooleanFromAttributeValue(this.mdClose);
+  }
+}
+
 @customAttribute('md-collapsible')
 @bindable({ name: 'accordion', defaultValue: false })
 @bindable({ name: 'popout', defaultValue: false })
@@ -460,6 +641,12 @@ export class MdCollapsible {
     this.refresh();
   }
 }
+
+@customElement('md-collection-item')
+export class MdCollectionItem { }
+
+@customElement('md-collection')
+export class MdCollection {}
 
 /* eslint-disable */
 // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
@@ -505,6 +692,10 @@ export class LightenValueConverter {
  * Most useful in attached() and detached() handlers.
  */
 export class AttributeManager {
+  _colorClasses = [
+    'accent',
+    'primary'
+  ];
   addedClasses = [];
   addedAttributes = {};
 
@@ -542,9 +733,14 @@ export class AttributeManager {
       classes = [classes];
     }
     classes.forEach(c => {
-      if (!this.element.classList.contains(c)) {
-        this.addedClasses.push(c);
-        this.element.classList.add(c);
+      let classListHasColor = this._colorClasses.filter(cc => this.element.classList.contains(cc)).length > 0;
+      if (this._colorClasses.indexOf(c) > -1 && classListHasColor) {
+        //
+      } else {
+        if (!this.element.classList.contains(c)) {
+          this.addedClasses.push(c);
+          this.element.classList.add(c);
+        }
       }
     });
   }
@@ -597,19 +793,26 @@ export function fireMaterializeEvent(element: Element, name: string, data? = {})
   return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
 
-@inject(Element)
+@inject(Element, TaskQueue)
 @customAttribute('md-datepicker')
 export class MdDatePicker {
   @bindable() container;
   @bindable() translation;
   @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
-  constructor(element) {
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) selectMonths = true;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) selectYears = 15;
+  constructor(element, taskQueue) {
     this.element = element;
     this.log = getLogger('md-datepicker');
+    this.taskQueue = taskQueue;
   }
-  attached() {
+  bind() {
+    this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
+    this.selectYears = parseInt(this.selectYears, 10);
     this.element.classList.add('date-picker');
     let options = {
+      selectMonths: this.selectMonths,
+      selectYears: this.selectYears,
       onClose: function() {
         // see https://github.com/Dogfalo/materialize/issues/2067
         // and: https://github.com/amsul/pickadate.js/issues/160
@@ -641,6 +844,10 @@ export class MdDatePicker {
       'close': this.onClose.bind(this),
       'set': this.onSet.bind(this)
     });
+    $(this.element).on('focusin', () => { $(this.element).pickadate('open'); });
+    if (this.value) {
+      this.picker.set('select', this.value);
+    }
   }
 
   detached() {
@@ -650,7 +857,8 @@ export class MdDatePicker {
   }
 
   onClose() {
-    this.value = this.picker.get('select').obj;
+    let selected = this.picker.get('select');
+    this.value = selected ? selected.obj : null;
   }
 
   onSet(value) {
@@ -658,7 +866,10 @@ export class MdDatePicker {
   }
 
   valueChanged(newValue) {
-    this.log.debug('selectedChanged', this.selected);
+    this.log.debug('selectedChanged', this.value);
+    // this.taskQueue.queueTask(() => {
+    this.picker.set('select', this.value);
+    // });
   }
 }
 
@@ -784,21 +995,227 @@ export class MdFab {
   }
 }
 
+@customElement('md-file')
+@inject(Element)
+export class MdFileInput {
+  @bindable() mdCaption = 'File';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMultiple = false;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdLabelValue;
+  files = [];
+
+  _suspendUpdate = false;
+
+  constructor(element) {
+    this.element = element;
+    this.handleChangeFromNativeInput = this.handleChangeFromNativeInput.bind(this);
+  }
+
+  attached() {
+    this.mdMultiple = getBooleanFromAttributeValue(this.mdMultiple);
+    $(this.filePath).on('change', this.handleChangeFromNativeInput);
+  }
+
+  detached() {
+    $(this.element).off('change', this.handleChangeFromNativeInput);
+  }
+
+  handleChangeFromNativeInput() {
+    if (!this._suspendUpdate) {
+      this._suspendUpdate = true;
+      fireEvent(this.filePath, 'change', { files: this.files });
+      fireMaterializeEvent(this.filePath, 'change', { files: this.files });
+      this._suspendUpdate = false;
+    }
+  }
+}
+
+@customAttribute('md-footer')
+@inject(Element)
+export class MdFooter {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  bind() {
+    this.attributeManager.addClasses('page-footer');
+  }
+
+  unbind() {
+    this.attributeManager.removeClasses('page-footer');
+  }
+}
+
+@customAttribute('md-prefix')
+@inject(Element)
+export class MdPrefix {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  bind() {
+    this.attributeManager.addClasses('prefix');
+  }
+
+  unbind() {
+    this.attributeManager.removeClasses('prefix');
+  }
+}
+
+@inject(TaskQueue)
+export class MdInputUpdateService {
+  _updateCalled = false;
+  constructor(taskQueue) {
+    this.log = getLogger('MdInputUpdateService');
+    this.taskQueue = taskQueue;
+  }
+
+  materializeUpdate() {
+    this.log.debug('executing Materialize.updateTextFields');
+    Materialize.updateTextFields();
+    this._updateCalled = false;
+  }
+
+  update() {
+    this.log.debug('update called');
+    if (!this._updateCalled) {
+      this._updateCalled = true;
+      this.taskQueue.queueTask(this.materializeUpdate.bind(this));
+    }
+  }
+}
+
+@customElement('md-input')
+@inject(Element, TaskQueue, MdInputUpdateService)
+export class MdInput {
+  static id = 0;
+
+  @bindable() mdLabel = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdPlaceholder = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTextArea = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdType = 'text';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdValidate = false;
+  @bindable() mdValidateError;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue = '';
+
+  constructor(element, taskQueue, updateService) {
+    this.element = element;
+    this.taskQueue = taskQueue;
+    this.controlId = `md-input-${MdInput.id++}`;
+    this.updateService = updateService;
+  }
+
+  attached() {
+    this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
+    if (getBooleanFromAttributeValue(this.mdValidate)) {
+      this.input.classList.add('validate');
+    }
+    if (this.mdValidateError)  {
+      this.label.setAttribute('data-error', this.mdValidateError);
+    }
+    if (this.mdPlaceholder) {
+      this.input.setAttribute('placeholder', this.mdPlaceholder);
+      this.update();
+    }
+  }
+
+  mdValueChanged() {
+    this.updateService.update();
+    if (this.mdTextArea) {
+      $(this.input).trigger('autoresize');
+    }
+  }
+}
+
 @customAttribute('md-modal-trigger')
 @inject(Element)
 export class MdModalTrigger {
   constructor(element) {
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
+    this.onComplete = this.onComplete.bind(this);
   }
 
   attached() {
     this.attributeManager.addClasses('modal-trigger');
-    $(this.element).leanModal();
+    $(this.element).leanModal({
+      complete: this.onComplete
+    });
   }
 
   detached() {
     this.attributeManager.removeClasses('modal-trigger');
+  }
+
+  onComplete() {
+    fireMaterializeEvent(this.element, 'modal-complete');
+  }
+}
+
+@customElement('md-pagination')
+@inject(Element)
+export class MdPagination {
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdActivePage = 1;
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdPages = 5;
+  @bindable() mdShowFirstLast = true;
+  @bindable() mdShowPrevNext = true;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  bind() {
+    // attached() throws unhandled exceptions
+    this.mdPages = parseInt(this.mdPages, 10);
+    this.mdShowPrevNext = getBooleanFromAttributeValue(this.mdShowPrevNext);
+  }
+
+  setActivePage(page) {
+    this.mdActivePage = page;
+    fireMaterializeEvent(this.element, 'page-changed', this.mdActivePage);
+  }
+
+  setFirstPage() {
+    if (this.mdActivePage > 1) {
+      this.setActivePage(1);
+    }
+  }
+
+  setLastPage() {
+    if (this.mdActivePage < this.mdPages) {
+      this.setActivePage(this.mdPages);
+    }
+  }
+
+  setPreviousPage() {
+    if (this.mdActivePage > 1) {
+      this.setActivePage(this.mdActivePage - 1);
+    }
+  }
+
+  setNextPage() {
+    if (this.mdActivePage < this.mdPages) {
+      this.setActivePage(this.mdActivePage + 1);
+    }
   }
 }
 
@@ -844,6 +1261,26 @@ export class MdParallax {
   }
 }
 
+@customElement('md-progress')
+@inject(Element)
+export class MdProgress {
+  @bindable() mdColor = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdType = 'linear';
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue = null;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  // mdValueChanged(newValue, oldValue) {
+  //   console.log('mdValueChanged, newValue:', JSON.stringify(newValue), 'oldValue:', JSON.stringify(oldValue));
+  // }
+}
+
 @customAttribute('md-pushpin')
 @inject(Element)
 export class MdPushpin {
@@ -865,6 +1302,81 @@ export class MdPushpin {
 
   detached() {
     // destroy handler not available
+  }
+}
+
+@customElement('md-radio')
+@inject(Element)
+export class MdRadio {
+  static id = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdChecked;
+  @bindable() mdDisabled = false;
+  @bindable() mdGap = false;
+  @bindable() mdModel;
+  @bindable() mdName = '';
+  @bindable() mdValue = '';
+
+  constructor(element) {
+    this.element = element;
+    this.controlId = `md-radio-${MdRadio.id++}`;
+    // this.handleChange = this.handleChange.bind(this);
+  }
+
+  attached() {
+    this.attributeManager = new AttributeManager(this.radio);
+    if (getBooleanFromAttributeValue(this.mdGap)) {
+      this.attributeManager.addClasses('with-gap');
+    }
+    if (getBooleanFromAttributeValue(this.mdDisabled)) {
+      this.radio.disabled = true;
+    }
+    // this.radio.checked = getBooleanFromAttributeValue(this.mdChecked);
+    // this.radio.addEventListener('change', this.handleChange);
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['with-gap', 'disabled']);
+    // this.radio.removeEventListener('change', this.handleChange);
+  }
+
+  // handleChange() {
+  //   this.mdChecked = this.radio.checked;
+  // }
+
+  // mdCheckedChanged(newValue) {
+  //   if (this.radio) {
+  //     this.radio.checked = !!newValue;
+  //   }
+  // }
+
+  mdDisabledChanged(newValue) {
+    if (this.radio) {
+      this.radio.disabled = !!newValue;
+    }
+  }
+}
+
+@customElement('md-range')
+@inject(Element)
+export class MdRange {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMin = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMax = 100;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdStep = 1;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue = 0;
+
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-range');
   }
 }
 
@@ -981,13 +1493,14 @@ export class MdScrollSpy {
   }
 }
 
-@inject(Element, LogManager, ObserverLocator)
+@inject(Element, LogManager, ObserverLocator, TaskQueue)
 @customAttribute('md-select')
 export class MdSelect {
   _suspendUpdate = false;
 
-  constructor(element, logManager, observerLocator) {
+  constructor(element, logManager, observerLocator, taskQueue) {
     this.element = element;
+    this.taskQueue = taskQueue;
     this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
     this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
     this.log = LogManager.getLogger('md-select');
@@ -1008,6 +1521,13 @@ export class MdSelect {
     $(this.element).off('change', this.handleChangeFromNativeSelect);
     $(this.element).material_select('destroy');
     this.valueObserver.unsubscribe();
+  }
+
+  refresh() {
+    this.taskQueue.queueTask(() => {
+      $(this.element).material_select('destroy');
+      $(this.element).material_select();
+    });
   }
 
   handleChangeFromNativeSelect() {
@@ -1059,7 +1579,7 @@ export class MdSidenavCollapse {
       this.element.setAttribute('data-activates', this.ref.controlId);
       let sideNavConfig = {
         edge: this.ref.mdEdge || 'left',
-        closeOnClick: this.ref.mdCloseOnClick,
+        closeOnClick: (this.ref.mdFixed ? false : getBooleanFromAttributeValue(this.ref.mdCloseOnClick)),
         menuWidth: parseInt(this.ref.mdWidth, 10)
       };
       // this.log.debug('sideNavConfig:', sideNavConfig);
@@ -1128,9 +1648,9 @@ export class MdSidenav {
     this.attributeManager.removeClasses(['fixed', 'right-aligned']);
   }
 
-  fixedChanged(newValue) {
+  mdFixedChanged(newValue) {
     if (this.attributeManager) {
-      if (newValue) {
+      if (getBooleanFromAttributeValue(newValue)) {
         this.attributeManager.addClasses('fixed');
       } else {
         this.attributeManager.removeClasses('fixed');
@@ -1215,6 +1735,7 @@ export class MdSwitch {
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) mdChecked;
+  @bindable() mdDisabled;
   @bindable() mdLabelOff = 'Off';
   @bindable() mdLabelOn = 'On';
 
@@ -1225,6 +1746,9 @@ export class MdSwitch {
 
   attached() {
     this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
+    if (getBooleanFromAttributeValue(this.mdDisabled)) {
+      this.checkbox.disabled = true;
+    }
     this.checkbox.addEventListener('change', this.handleChange);
   }
 
@@ -1248,9 +1772,11 @@ export class MdSwitch {
 export class MdTabs {
   constructor(element) {
     this.element = element;
+    this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
     this.attributeManager = new AttributeManager(this.element);
     this.tabAttributeManagers = [];
   }
+
   attached() {
     this.attributeManager.addClasses('tabs');
 
@@ -1265,9 +1791,10 @@ export class MdTabs {
 
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
-      a.addEventListener('click', this.fireTabSelectedEvent.bind(this));
+      a.addEventListener('click', this.fireTabSelectedEvent);
     });
   }
+
   detached() {
     this.attributeManager.removeClasses('tabs');
 
@@ -1279,17 +1806,49 @@ export class MdTabs {
     this.tabAttributeManagers = [];
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
-      a.removeEventListener('click', this.fireTabSelectedEvent.bind(this));
+      a.removeEventListener('click', this.fireTabSelectedEvent);
     });
   }
+
   fireTabSelectedEvent(e) {
-    let href = $(e.target).attr('href');
+    // fix Materialize tab indicator (see: https://github.com/Dogfalo/materialize/pull/2809)
+    // happens only when the indicator animation is finished
+    // Waves animation duration: 300ms, delay: 90ms
+    window.setTimeout(() => {
+      let indicatorRight = $('.indicator', this.element).css('right');
+      if (indicatorRight.indexOf('-') === 0) {
+        $('.indicator', this.element).css('right', 0);
+      }
+    }, 310);
+    let href = e.target.getAttribute('href');
     fireMaterializeEvent(this.element, 'selected', href);
+  }
+
+  selectTab(id) {
+    $(this.element).tabs('select_tab', id);
+    this.fireTabSelectedEvent({
+      target: { getAttribute: () => `#${id}` }
+    });
+  }
+
+  // FIXME: probably bad
+  get selectedTab() {
+    let children = this.element.querySelectorAll('li.tab a');
+    let index = -1;
+    let href = null;
+    [].forEach.call(children, (a, i) => {
+      if (a.classList.contains('active')) {
+        index = i;
+        href = a.href;
+        return;
+      }
+    });
+    return { href, index };
   }
 }
 
 export class MdToastService {
-  show(message, displayLength, className) {
+  show(message, displayLength, className?) {
     return new Promise((resolve, reject) => {
       Materialize.toast(message, displayLength, className, () => {
         resolve();

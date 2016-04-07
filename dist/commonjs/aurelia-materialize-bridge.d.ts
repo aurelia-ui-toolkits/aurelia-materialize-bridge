@@ -1,11 +1,28 @@
 declare module 'aurelia-materialize-bridge' {
   import 'materialize';
   import * as LogManager from 'aurelia-logging';
-  import { Aurelia }  from 'aurelia-framework';
-  import { bindable, customAttribute, customElement, inlineView }  from 'aurelia-templating';
-  import { bindingMode, ObserverLocator }  from 'aurelia-binding';
-  import { inject }  from 'aurelia-dependency-injection';
-  import { getLogger }  from 'aurelia-logging';
+  import {
+    bindable,
+    customAttribute,
+    customElement,
+    inlineView
+  } from 'aurelia-templating';
+  import {
+    inject
+  } from 'aurelia-dependency-injection';
+  import {
+    bindingMode,
+    ObserverLocator
+  } from 'aurelia-binding';
+  import {
+    Router
+  } from 'aurelia-router';
+  import {
+    TaskQueue
+  } from 'aurelia-task-queue';
+  import {
+    getLogger
+  } from 'aurelia-logging';
   export class ClickCounter {
     count: any;
     increment(): any;
@@ -18,25 +35,37 @@ declare module 'aurelia-materialize-bridge' {
     useGlobalResources: boolean;
     globalResources: any;
     useAll(): ConfigBuilder;
+    useBadge(): ConfigBuilder;
     useBox(): ConfigBuilder;
+    useBreadcrumbs(): ConfigBuilder;
     useButton(): ConfigBuilder;
     useCarousel(): ConfigBuilder;
+    useCharacterCounter(): ConfigBuilder;
     useCard(): ConfigBuilder;
     useCheckbox(): ConfigBuilder;
+    useChip(): ConfigBuilder;
     
     /**
       * Use my control
       */
     useClickCounter(): ConfigBuilder;
     useCollapsible(): ConfigBuilder;
+    useCollection(): ConfigBuilder;
     useColors(): ConfigBuilder;
     useDatePicker(): ConfigBuilder;
     useDropdown(): ConfigBuilder;
     useFab(): ConfigBuilder;
+    useFile(): ConfigBuilder;
+    useFooter(): ConfigBuilder;
+    useInput(): ConfigBuilder;
     useModal(): ConfigBuilder;
     useNavbar(): ConfigBuilder;
+    usePagination(): ConfigBuilder;
     useParallax(): ConfigBuilder;
+    useProgress(): ConfigBuilder;
     usePushpin(): ConfigBuilder;
+    useRadio(): ConfigBuilder;
+    useRange(): ConfigBuilder;
     useScrollfire(): ConfigBuilder;
     useScrollSpy(): ConfigBuilder;
     useSelect(): ConfigBuilder;
@@ -63,12 +92,29 @@ declare module 'aurelia-materialize-bridge' {
       */
     withoutGlobalResources(): ConfigBuilder;
   }
-  export function configure(aurelia: Aurelia, configCallback?: ((builder: ConfigBuilder) => void)): any;
+  export function configure(aurelia: any, configCallback: any): any;
+  export class MdBadge {
+    isNew: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   export class MdBox {
     caption: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
+  }
+  
+  // taken from: https://github.com/heruan/aurelia-breadcrumbs
+  export class MdBreadcrumbs {
+    constructor(element: any, router: any);
+    navigate(navigationInstruction: any): any;
+  }
+  
+  // this.router.navigate(navigationInstruction.config.name);
+  export class InstructionFilterValueConverter {
+    toView(navigationInstructions: any): any;
   }
   export class MdButton {
     disabled: any;
@@ -83,13 +129,14 @@ declare module 'aurelia-materialize-bridge' {
   }
   export class MdCard {
     mdImage: any;
+    mdReveal: any;
+    mdSize: any;
     mdTitle: any;
     constructor(element: any);
     attached(): any;
   }
   
-  // 
-  //  @customElement('md-carousel-item')
+  // @customElement('md-carousel-item')
   export class MdCarouselItem {
     mdHref: any;
     mdImage: any;
@@ -100,6 +147,12 @@ declare module 'aurelia-materialize-bridge' {
     mdSlider: any;
     constructor(element: any);
     attached(): any;
+  }
+  export class MdCharCounter {
+    length: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
   }
   export class MdCheckbox {
     static id: any;
@@ -113,12 +166,22 @@ declare module 'aurelia-materialize-bridge' {
     mdCheckedChanged(newValue: any): any;
     mdDisabledChanged(newValue: any): any;
   }
+  export class MdChip {
+    mdClose: any;
+    attached(): any;
+  }
   export class MdCollapsible {
     constructor(element: any);
     attached(): any;
     detached(): any;
     refresh(): any;
     accordionChanged(): any;
+  }
+  export class MdCollectionItem {
+  
+  }
+  export class MdCollection {
+  
   }
   
   /* eslint-enable */
@@ -137,6 +200,7 @@ declare module 'aurelia-materialize-bridge' {
    * Most useful in attached() and detached() handlers.
    */
   export class AttributeManager {
+    _colorClasses: any;
     addedClasses: any;
     addedAttributes: any;
     constructor(element: any);
@@ -167,15 +231,19 @@ declare module 'aurelia-materialize-bridge' {
     container: any;
     translation: any;
     value: any;
-    constructor(element: any);
-    attached(): any;
+    selectMonths: any;
+    selectYears: any;
+    constructor(element: any, taskQueue: any);
+    bind(): any;
     detached(): any;
     onClose(): any;
     onSet(value: any): any;
     
-    //  this.value = new Date(value.select);
+    // this.value = new Date(value.select);
     valueChanged(newValue: any): any;
   }
+  
+  // });
   export class MdDropdownElement {
     static id: any;
     alignment: any;
@@ -209,10 +277,64 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
   }
+  export class MdFileInput {
+    mdCaption: any;
+    mdMultiple: any;
+    mdLabelValue: any;
+    files: any;
+    _suspendUpdate: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    handleChangeFromNativeInput(): any;
+  }
+  export class MdFooter {
+    constructor(element: any);
+    bind(): any;
+    unbind(): any;
+  }
+  export class MdPrefix {
+    constructor(element: any);
+    bind(): any;
+    unbind(): any;
+  }
+  export class MdInputUpdateService {
+    _updateCalled: any;
+    constructor(taskQueue: any);
+    materializeUpdate(): any;
+    update(): any;
+  }
+  export class MdInput {
+    static id: any;
+    mdLabel: any;
+    mdPlaceholder: any;
+    mdTextArea: any;
+    mdType: any;
+    mdValidate: any;
+    mdValidateError: any;
+    mdValue: any;
+    constructor(element: any, taskQueue: any, updateService: any);
+    attached(): any;
+    mdValueChanged(): any;
+  }
   export class MdModalTrigger {
     constructor(element: any);
     attached(): any;
     detached(): any;
+    onComplete(): any;
+  }
+  export class MdPagination {
+    mdActivePage: any;
+    mdPages: any;
+    mdShowFirstLast: any;
+    mdShowPrevNext: any;
+    constructor(element: any);
+    bind(): any;
+    setActivePage(page: any): any;
+    setFirstPage(): any;
+    setLastPage(): any;
+    setPreviousPage(): any;
+    setNextPage(): any;
   }
   export class MdNavbar {
     mdFixed: any;
@@ -227,7 +349,17 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
   }
   
-  //  destroy handler not available
+  // destroy handler not available
+  export class MdProgress {
+    mdColor: any;
+    mdType: any;
+    mdValue: any;
+    constructor(element: any);
+  }
+  
+  // mdValueChanged(newValue, oldValue) {
+  //   console.log('mdValueChanged, newValue:', JSON.stringify(newValue), 'oldValue:', JSON.stringify(oldValue));
+  // }
   export class MdPushpin {
     bottom: any;
     offset: any;
@@ -237,7 +369,43 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
   }
   
-  //  destroy handler not available
+  // destroy handler not available
+  export class MdRadio {
+    static id: any;
+    mdChecked: any;
+    mdDisabled: any;
+    mdGap: any;
+    mdModel: any;
+    mdName: any;
+    mdValue: any;
+    constructor(element: any);
+    
+    // this.handleChange = this.handleChange.bind(this);
+    attached(): any;
+    
+    // this.radio.checked = getBooleanFromAttributeValue(this.mdChecked);
+    // this.radio.addEventListener('change', this.handleChange);
+    detached(): any;
+    
+    // this.radio.removeEventListener('change', this.handleChange);
+    // handleChange() {
+    //   this.mdChecked = this.radio.checked;
+    // }
+    // mdCheckedChanged(newValue) {
+    //   if (this.radio) {
+    //     this.radio.checked = !!newValue;
+    //   }
+    // }
+    mdDisabledChanged(newValue: any): any;
+  }
+  export class MdRange {
+    mdMin: any;
+    mdMax: any;
+    mdStep: any;
+    mdValue: any;
+    constructor(element: any);
+  }
+  
   /* eslint no-new-func:0 */
   export class ScrollfirePatch {
     patched: any;
@@ -260,11 +428,13 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
   }
   
-  //  destroy handler not available
+  // destroy handler not available
   export class MdSelect {
-    constructor(element: any, logManager: any, observerLocator: any);
+    _suspendUpdate: any;
+    constructor(element: any, logManager: any, observerLocator: any, taskQueue: any);
     attached(): any;
     detached(): any;
+    refresh(): any;
     handleChangeFromNativeSelect(): any;
     handleChangeFromViewModel(newValue: any): any;
   }
@@ -275,24 +445,24 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
   }
   
-  //  this.widthSubscription.unsubscribe();
-  //  fixedChanged() {
-  //    this.log.debug('fixedChanged');
-  //    $(this.element).sideNav({
-  //      edge: this.ref.edge || 'left',
-  //      closeOnClick: this.ref.closeOnClick,
-  //      menuWidth: parseInt(this.ref.mdWidth, 10)
-  //    });
-  //  }
-  // 
-  //  widthChanged() {
-  //    this.log.debug('widthChanged');
-  //    $(this.element).sideNav({
-  //      edge: this.ref.edge || 'left',
-  //      closeOnClick: this.ref.closeOnClick,
-  //      menuWidth: parseInt(this.ref.mdWidth, 10)
-  //    });
-  //  }
+  // this.widthSubscription.unsubscribe();
+  // fixedChanged() {
+  //   this.log.debug('fixedChanged');
+  //   $(this.element).sideNav({
+  //     edge: this.ref.edge || 'left',
+  //     closeOnClick: this.ref.closeOnClick,
+  //     menuWidth: parseInt(this.ref.mdWidth, 10)
+  //   });
+  // }
+  //
+  // widthChanged() {
+  //   this.log.debug('widthChanged');
+  //   $(this.element).sideNav({
+  //     edge: this.ref.edge || 'left',
+  //     closeOnClick: this.ref.closeOnClick,
+  //     menuWidth: parseInt(this.ref.mdWidth, 10)
+  //   });
+  // }
   export class MdSidenav {
     static id: any;
     mdCloseOnClick: any;
@@ -304,7 +474,7 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
     detached(): any;
-    fixedChanged(newValue: any): any;
+    mdFixedChanged(newValue: any): any;
   }
   export class MdSlider {
     mdFillContainer: any;
@@ -322,16 +492,17 @@ declare module 'aurelia-materialize-bridge' {
     mdIndicatorsChanged(): any;
   }
   
-  //  commented since that leads to strange effects
-  //  mdIntervalChanged() {
-  //    this.refresh();
-  //  }
-  // 
-  //  mdTransitionChanged() {
-  //    this.refresh();
-  //  }
+  // commented since that leads to strange effects
+  // mdIntervalChanged() {
+  //   this.refresh();
+  // }
+  //
+  // mdTransitionChanged() {
+  //   this.refresh();
+  // }
   export class MdSwitch {
     mdChecked: any;
+    mdDisabled: any;
     mdLabelOff: any;
     mdLabelOn: any;
     constructor(element: any);
@@ -345,12 +516,16 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
     fireTabSelectedEvent(e: any): any;
+    selectTab(id: any): any;
+    
+    // FIXME: probably bad
+    selectedTab: any;
   }
   export class MdToastService {
-    show(message: any, displayLength: any, className: any): any;
+    show(message: any, displayLength: any, className?: any): any;
   }
   
-  //  @customAttribute('md-tooltip')
+  // @customAttribute('md-tooltip')
   export class MdTooltip {
     position: any;
     delay: any;

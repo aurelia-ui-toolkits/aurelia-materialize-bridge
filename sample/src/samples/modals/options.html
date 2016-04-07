@@ -1,0 +1,18 @@
+<template>
+  <div>
+      <div>
+        A modal which is not closable by clicking the overlay:
+        <p><a md-button md-modal-trigger="dismissible: false;" href="#modal1">show modal</a></p>
+      </div>
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+          <a click.delegate="agree()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Agree</a>
+          <a click.delegate="disagree()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Disagree</a>
+        </div>
+      </div>
+    </div>
+</template>

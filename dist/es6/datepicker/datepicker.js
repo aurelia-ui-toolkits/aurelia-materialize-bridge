@@ -1,21 +1,30 @@
 import { bindable, customAttribute } from 'aurelia-templating';
 import { bindingMode } from 'aurelia-binding';
+import { TaskQueue } from 'aurelia-task-queue';
 import { inject } from 'aurelia-dependency-injection';
 import { getLogger } from 'aurelia-logging';
+import { getBooleanFromAttributeValue } from '../common/attributes';
 
-@inject(Element)
+@inject(Element, TaskQueue)
 @customAttribute('md-datepicker')
 export class MdDatePicker {
   @bindable() container;
   @bindable() translation;
   @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
-  constructor(element) {
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) selectMonths = true;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) selectYears = 15;
+  constructor(element, taskQueue) {
     this.element = element;
     this.log = getLogger('md-datepicker');
+    this.taskQueue = taskQueue;
   }
-  attached() {
+  bind() {
+    this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
+    this.selectYears = parseInt(this.selectYears, 10);
     this.element.classList.add('date-picker');
     let options = {
+      selectMonths: this.selectMonths,
+      selectYears: this.selectYears,
       onClose: function() {
         // see https://github.com/Dogfalo/materialize/issues/2067
         // and: https://github.com/amsul/pickadate.js/issues/160
@@ -47,6 +56,10 @@ export class MdDatePicker {
       'close': this.onClose.bind(this),
       'set': this.onSet.bind(this)
     });
+    $(this.element).on('focusin', () => { $(this.element).pickadate('open'); });
+    if (this.value) {
+      this.picker.set('select', this.value);
+    }
   }
 
   detached() {
@@ -56,7 +69,8 @@ export class MdDatePicker {
   }
 
   onClose() {
-    this.value = this.picker.get('select').obj;
+    let selected = this.picker.get('select');
+    this.value = selected ? selected.obj : null;
   }
 
   onSet(value) {
@@ -64,6 +78,9 @@ export class MdDatePicker {
   }
 
   valueChanged(newValue) {
-    this.log.debug('selectedChanged', this.selected);
+    this.log.debug('selectedChanged', this.value);
+    // this.taskQueue.queueTask(() => {
+    this.picker.set('select', this.value);
+    // });
   }
 }

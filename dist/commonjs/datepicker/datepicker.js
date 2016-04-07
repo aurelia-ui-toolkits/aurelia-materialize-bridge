@@ -1,57 +1,97 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MdDatePicker = undefined;
 
-var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 
 var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaBinding = require('aurelia-binding');
 
+var _aureliaTaskQueue = require('aurelia-task-queue');
+
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaLogging = require('aurelia-logging');
 
-var MdDatePicker = (function () {
-  var _instanceInitializers = {};
+var _attributes = require('../common/attributes');
 
-  _createDecoratedClass(MdDatePicker, [{
-    key: 'container',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'translation',
-    decorators: [_aureliaTemplating.bindable()],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'value',
-    decorators: [_aureliaTemplating.bindable({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay })],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers);
+function _initDefineProp(target, property, descriptor, context) {
+  if (!descriptor) return;
+  Object.defineProperty(target, property, {
+    enumerable: descriptor.enumerable,
+    configurable: descriptor.configurable,
+    writable: descriptor.writable,
+    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+  });
+}
 
-  function MdDatePicker(element) {
-    _classCallCheck(this, _MdDatePicker);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-    _defineDecoratedPropertyDescriptor(this, 'container', _instanceInitializers);
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+  var desc = {};
+  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+    desc[key] = descriptor[key];
+  });
+  desc.enumerable = !!desc.enumerable;
+  desc.configurable = !!desc.configurable;
 
-    _defineDecoratedPropertyDescriptor(this, 'translation', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers);
-
-    this.element = element;
-    this.log = _aureliaLogging.getLogger('md-datepicker');
+  if ('value' in desc || desc.initializer) {
+    desc.writable = true;
   }
 
-  MdDatePicker.prototype.attached = function attached() {
+  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+    return decorator(target, property, desc) || desc;
+  }, desc);
+
+  if (context && desc.initializer !== void 0) {
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+    desc.initializer = undefined;
+  }
+
+  if (desc.initializer === void 0) {
+    Object['define' + 'Property'](target, property, desc);
+    desc = null;
+  }
+
+  return desc;
+}
+
+function _initializerWarningHelper(descriptor, context) {
+  throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+}
+
+var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue), _dec2 = (0, _aureliaTemplating.customAttribute)('md-datepicker'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec6 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec7 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec(_class = _dec2(_class = (_class2 = function () {
+  function MdDatePicker(element, taskQueue) {
+    _classCallCheck(this, MdDatePicker);
+
+    _initDefineProp(this, 'container', _descriptor, this);
+
+    _initDefineProp(this, 'translation', _descriptor2, this);
+
+    _initDefineProp(this, 'value', _descriptor3, this);
+
+    _initDefineProp(this, 'selectMonths', _descriptor4, this);
+
+    _initDefineProp(this, 'selectYears', _descriptor5, this);
+
+    this.element = element;
+    this.log = (0, _aureliaLogging.getLogger)('md-datepicker');
+    this.taskQueue = taskQueue;
+  }
+
+  MdDatePicker.prototype.bind = function bind() {
+    var _this = this;
+
+    this.selectMonths = (0, _attributes.getBooleanFromAttributeValue)(this.selectMonths);
+    this.selectYears = parseInt(this.selectYears, 10);
     this.element.classList.add('date-picker');
     var options = {
+      selectMonths: this.selectMonths,
+      selectYears: this.selectYears,
       onClose: function onClose() {
         $(document.activeElement).blur();
       }
@@ -67,6 +107,12 @@ var MdDatePicker = (function () {
       'close': this.onClose.bind(this),
       'set': this.onSet.bind(this)
     });
+    $(this.element).on('focusin', function () {
+      $(_this.element).pickadate('open');
+    });
+    if (this.value) {
+      this.picker.set('select', this.value);
+    }
   };
 
   MdDatePicker.prototype.detached = function detached() {
@@ -76,19 +122,36 @@ var MdDatePicker = (function () {
   };
 
   MdDatePicker.prototype.onClose = function onClose() {
-    this.value = this.picker.get('select').obj;
+    var selected = this.picker.get('select');
+    this.value = selected ? selected.obj : null;
   };
 
   MdDatePicker.prototype.onSet = function onSet(value) {};
 
   MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
-    this.log.debug('selectedChanged', this.selected);
+    this.log.debug('selectedChanged', this.value);
+
+    this.picker.set('select', this.value);
   };
 
-  var _MdDatePicker = MdDatePicker;
-  MdDatePicker = _aureliaTemplating.customAttribute('md-datepicker')(MdDatePicker) || MdDatePicker;
-  MdDatePicker = _aureliaDependencyInjection.inject(Element)(MdDatePicker) || MdDatePicker;
   return MdDatePicker;
-})();
-
-exports.MdDatePicker = MdDatePicker;
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'container', [_dec3], {
+  enumerable: true,
+  initializer: null
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'translation', [_dec4], {
+  enumerable: true,
+  initializer: null
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'value', [_dec5], {
+  enumerable: true,
+  initializer: null
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'selectMonths', [_dec6], {
+  enumerable: true,
+  initializer: function initializer() {
+    return true;
+  }
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'selectYears', [_dec7], {
+  enumerable: true,
+  initializer: function initializer() {
+    return 15;
+  }
+})), _class2)) || _class) || _class);

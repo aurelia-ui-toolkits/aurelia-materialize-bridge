@@ -1,0 +1,7 @@
+<template>
+  <input if.bind="!mdModel" type="radio" name="${mdName}" value.bind="mdValue" id="${controlId}" checked.bind="mdChecked" ref="radio" />
+  <input if.bind="!!mdModel" type="radio" name="${mdName}" model.bind="mdModel" id="${controlId}" checked.bind="mdChecked" ref="radio" />
+  <label for="${controlId}">
+    <content></content>
+  </label>
+</template>

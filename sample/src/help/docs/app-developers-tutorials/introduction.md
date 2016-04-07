@@ -26,7 +26,7 @@ shown below:
 <br>
 <br>
 <p align=center>
-  <img src="http://i.imgur.com/kcCLiy7.jpg"></img>
+  <img src="http://i.imgur.com/kcCLiy7.jpg" class="responsive-img"></img>
  <br><br>
 </p>
 

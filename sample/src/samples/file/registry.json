@@ -8,6 +8,10 @@
     "multiple": {
       "route": "multiple",
       "files": ["html", "js"]
+    },
+    "events": {
+      "route": "events",
+      "files": ["html", "js"]
     }
   }
 }

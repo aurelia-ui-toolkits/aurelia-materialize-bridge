@@ -1,6 +1,7 @@
 import { bindable, customAttribute } from 'aurelia-templating';
 import { ObserverLocator } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
+import { getBooleanFromAttributeValue } from '../common/attributes';
 import { getLogger } from 'aurelia-logging';
 
 @customAttribute('md-sidenav-collapse')
@@ -21,7 +22,7 @@ export class MdSidenavCollapse {
       this.element.setAttribute('data-activates', this.ref.controlId);
       let sideNavConfig = {
         edge: this.ref.mdEdge || 'left',
-        closeOnClick: (this.ref.mdFixed ? false : this.ref.mdCloseOnClick),
+        closeOnClick: (this.ref.mdFixed ? false : getBooleanFromAttributeValue(this.ref.mdCloseOnClick)),
         menuWidth: parseInt(this.ref.mdWidth, 10)
       };
       // this.log.debug('sideNavConfig:', sideNavConfig);

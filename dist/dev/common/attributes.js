@@ -1,15 +1,15 @@
-System.register([], function (_export) {
-  'use strict';
+'use strict';
 
-  _export('getBooleanFromAttributeValue', getBooleanFromAttributeValue);
-
-  function getBooleanFromAttributeValue(value) {
-    return value === true || value === 'true';
-  }
-
+System.register([], function (_export, _context) {
   return {
     setters: [],
-    execute: function () {}
+    execute: function () {
+      function getBooleanFromAttributeValue(value) {
+        return value === true || value === 'true';
+      }
+
+      _export('getBooleanFromAttributeValue', getBooleanFromAttributeValue);
+    }
   };
 });
 //# sourceMappingURL=../dist/dev/common/attributes.js.map

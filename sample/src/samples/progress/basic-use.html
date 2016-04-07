@@ -1,0 +1,11 @@
+<template>
+  <div>
+    <md-progress md-value.bind="value"></md-progress>
+  </div>
+  <div>
+    <md-input md-label="value" md-value.bind="value" view-model.ref="inputValue"></md-input>
+  </div>
+  <div>
+    <button md-button="flat: true;" md-waves class="accent-text" click.delegate="setNull()">set value = null (indeterminate)</button>
+  </div>
+</template>

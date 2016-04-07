@@ -1,9 +1,13 @@
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging', '../common/events'], function (_export) {
-  'use strict';
+'use strict';
 
-  var customAttribute, ObserverLocator, inject, LogManager, fireEvent, MdSelect;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', 'aurelia-logging', '../common/events'], function (_export, _context) {
+  var customAttribute, ObserverLocator, inject, TaskQueue, LogManager, fireEvent, _dec, _dec2, _class, MdSelect;
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
 
   return {
     setters: [function (_aureliaTemplating) {
@@ -12,19 +16,22 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       ObserverLocator = _aureliaBinding.ObserverLocator;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+    }, function (_aureliaTaskQueue) {
+      TaskQueue = _aureliaTaskQueue.TaskQueue;
     }, function (_aureliaLogging) {
       LogManager = _aureliaLogging;
     }, function (_commonEvents) {
       fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
-      MdSelect = (function () {
-        function MdSelect(element, logManager, observerLocator) {
-          _classCallCheck(this, _MdSelect);
+      _export('MdSelect', MdSelect = (_dec = inject(Element, LogManager, ObserverLocator, TaskQueue), _dec2 = customAttribute('md-select'), _dec(_class = _dec2(_class = function () {
+        function MdSelect(element, logManager, observerLocator, taskQueue) {
+          _classCallCheck(this, MdSelect);
 
           this._suspendUpdate = false;
 
           this.element = element;
+          this.taskQueue = taskQueue;
           this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
           this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
           this.log = LogManager.getLogger('md-select');
@@ -45,6 +52,15 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           this.valueObserver.unsubscribe();
         };
 
+        MdSelect.prototype.refresh = function refresh() {
+          var _this = this;
+
+          this.taskQueue.queueTask(function () {
+            $(_this.element).material_select('destroy');
+            $(_this.element).material_select();
+          });
+        };
+
         MdSelect.prototype.handleChangeFromNativeSelect = function handleChangeFromNativeSelect() {
 
           if (!this._suspendUpdate) {
@@ -52,6 +68,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this._suspendUpdate = true;
             fireEvent(this.element, 'change');
             this.log.debug('this.valueObserver.value', this.valueObserver.value);
+
 
             this._suspendUpdate = false;
           }
@@ -64,11 +81,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           }
         };
 
-        var _MdSelect = MdSelect;
-        MdSelect = customAttribute('md-select')(MdSelect) || MdSelect;
-        MdSelect = inject(Element, LogManager, ObserverLocator)(MdSelect) || MdSelect;
         return MdSelect;
-      })();
+      }()) || _class) || _class));
 
       _export('MdSelect', MdSelect);
     }

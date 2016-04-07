@@ -1,10 +1,11 @@
 define(['exports', './constants'], function (exports, _constants) {
   'use strict';
 
-  exports.__esModule = true;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
   exports.fireEvent = fireEvent;
   exports.fireMaterializeEvent = fireMaterializeEvent;
-
   function fireEvent(element, name) {
     var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 

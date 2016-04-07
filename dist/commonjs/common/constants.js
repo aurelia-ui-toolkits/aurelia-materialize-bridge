@@ -1,8 +1,9 @@
 'use strict';
 
-exports.__esModule = true;
-var constants = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var constants = exports.constants = {
   eventPrefix: 'md-on-',
   bindablePrefix: 'md-'
 };
-exports.constants = constants;

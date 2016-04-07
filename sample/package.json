@@ -19,17 +19,17 @@
       "jquery": "github:components/jquery@2.1.4",
       "json": "github:systemjs/plugin-json@^0.1.0",
       "materialize": "github:Dogfalo/materialize@^0.97.5",
+      "nprogress": "github:rstacruz/nprogress@^0.2.0",
       "prettify": "npm:prettify@^0.1.7",
       "prism": "github:PrismJS/prism@1.3.0",
       "showdown": "github:showdownjs/showdown@1.3.0",
       "showdown-prettify": "npm:showdown-prettify@^1.0.2",
-      "split.js": "npm:split.js@^1.0.6",
       "text": "github:systemjs/plugin-text@^0.0.4"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.22",
-      "babel-runtime": "npm:babel-runtime@^5.8.20",
-      "core-js": "npm:core-js@^2.0.3"
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
     },
     "overrides": {
       "github:google/code-prettify@master": {

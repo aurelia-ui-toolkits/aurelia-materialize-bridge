@@ -1,8 +1,11 @@
 'use strict';
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MdScrollfire = undefined;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+var _dec, _dec2, _class;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -12,15 +15,17 @@ var _aureliaLogging = require('aurelia-logging');
 
 var _scrollfirePatch = require('./scrollfire-patch');
 
-var MdScrollfire = (function () {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var MdScrollfire = exports.MdScrollfire = (_dec = (0, _aureliaTemplating.customAttribute)('md-scrollfire'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _scrollfirePatch.ScrollfirePatch), _dec(_class = _dec2(_class = function () {
   function MdScrollfire(element, scrollfirePatch) {
-    _classCallCheck(this, _MdScrollfire);
+    _classCallCheck(this, MdScrollfire);
 
     this.targetId = 0;
 
     scrollfirePatch.patch();
     this.element = element;
-    this.log = _aureliaLogging.getLogger('md-scrollfire');
+    this.log = (0, _aureliaLogging.getLogger)('md-scrollfire');
   }
 
   MdScrollfire.prototype.attached = function attached() {
@@ -51,10 +56,5 @@ var MdScrollfire = (function () {
     }
   };
 
-  var _MdScrollfire = MdScrollfire;
-  MdScrollfire = _aureliaDependencyInjection.inject(Element, _scrollfirePatch.ScrollfirePatch)(MdScrollfire) || MdScrollfire;
-  MdScrollfire = _aureliaTemplating.customAttribute('md-scrollfire')(MdScrollfire) || MdScrollfire;
   return MdScrollfire;
-})();
-
-exports.MdScrollfire = MdScrollfire;
+}()) || _class) || _class);
