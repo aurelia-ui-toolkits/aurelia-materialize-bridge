@@ -14,6 +14,7 @@ export class MdSidenav {
   @bindable() mdEdge = 'left';
   @bindable() mdFixed = false;
   @bindable() mdWidth = 250;
+  _collapse;
 
   attachedResolver;
   whenAttached;
@@ -39,7 +40,7 @@ export class MdSidenav {
       }
     }
 
-    this.attachedResolver();
+    this.attachedResolver(this);
   }
 
   detached() {
@@ -47,12 +48,15 @@ export class MdSidenav {
   }
 
   mdFixedChanged(newValue) {
+    this.log.debug('fixed changed');
     if (this.attributeManager) {
+      this.log.debug('has attributeManager');
       if (getBooleanFromAttributeValue(newValue)) {
         this.attributeManager.addClasses('fixed');
         this.sidenavService.setFixed(this);
       } else {
         this.attributeManager.removeClasses('fixed');
+        this.log.debug('calling service');
         this.sidenavService.setFloating(this);
         // $(this.element).sideNav('hide');
         // let factor = (this.edge === 'right' ? 1 : -1);

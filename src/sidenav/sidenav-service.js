@@ -16,6 +16,7 @@ export class MdSidenavService {
   getSidenavOptions(sidenav) {
     return {
       edge: sidenav.mdEdge,
+      sidenav,
       width: sidenav.mdWidth
     };
   }
