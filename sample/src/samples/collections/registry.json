@@ -4,6 +4,18 @@
     "basic-use": {
       "route": ["", "basic-use"],
       "files": ["html"]
+    },
+    "secondary-content": {
+      "route": "secondary-content",
+      "files": ["html"]
+    },
+    "avatar": {
+      "route": "avatar",
+      "files": ["html"]
+    },
+    "selection": {
+      "route": "selection",
+      "files": ["html", "js"]
     }
   }
 }
