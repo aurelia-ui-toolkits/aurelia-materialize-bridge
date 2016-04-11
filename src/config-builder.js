@@ -110,6 +110,7 @@ export class ConfigBuilder {
     this.globalResources.push('./collection/collection');
     this.globalResources.push('./collection/collection-item');
     this.globalResources.push('./collection/md-collection-item-secondary.html');
+    this.globalResources.push('./collection/md-collection-selector');
     return this;
   }
 
