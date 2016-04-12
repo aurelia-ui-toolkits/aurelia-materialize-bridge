@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/events', '../common/attributeManager'], function (_export, _context) {
-  var customAttribute, inject, fireMaterializeEvent, AttributeManager, _createClass, _dec, _dec2, _class, MdTabs;
+System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/events', '../common/attributeManager'], function (_export, _context) {
+  var customAttribute, inject, TaskQueue, fireMaterializeEvent, AttributeManager, _createClass, _dec, _dec2, _class, MdTabs;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -14,6 +14,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       customAttribute = _aureliaTemplating.customAttribute;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+    }, function (_aureliaTaskQueue) {
+      TaskQueue = _aureliaTaskQueue.TaskQueue;
     }, function (_commonEvents) {
       fireMaterializeEvent = _commonEvents.fireMaterializeEvent;
     }, function (_commonAttributeManager) {
@@ -38,11 +40,12 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
         };
       }();
 
-      _export('MdTabs', MdTabs = (_dec = customAttribute('md-tabs'), _dec2 = inject(Element), _dec(_class = _dec2(_class = function () {
-        function MdTabs(element) {
+      _export('MdTabs', MdTabs = (_dec = customAttribute('md-tabs'), _dec2 = inject(Element, TaskQueue), _dec(_class = _dec2(_class = function () {
+        function MdTabs(element, taskQueue) {
           _classCallCheck(this, MdTabs);
 
           this.element = element;
+          this.taskQueue = taskQueue;
           this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
           this.attributeManager = new AttributeManager(this.element);
           this.tabAttributeManagers = [];
@@ -61,7 +64,6 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           });
 
           $(this.element).tabs();
-
           var childAnchors = this.element.querySelectorAll('li a');
           [].forEach.call(childAnchors, function (a) {
             a.addEventListener('click', _this.fireTabSelectedEvent);
@@ -84,14 +86,6 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
         };
 
         MdTabs.prototype.fireTabSelectedEvent = function fireTabSelectedEvent(e) {
-          var _this3 = this;
-
-          window.setTimeout(function () {
-            var indicatorRight = $('.indicator', _this3.element).css('right');
-            if (indicatorRight.indexOf('-') === 0) {
-              $('.indicator', _this3.element).css('right', 0);
-            }
-          }, 310);
           var href = e.target.getAttribute('href');
           fireMaterializeEvent(this.element, 'selected', href);
         };

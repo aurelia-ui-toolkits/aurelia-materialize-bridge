@@ -4,18 +4,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _class, _temp;
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ScrollfirePatch = exports.ScrollfirePatch = function () {
+var ScrollfirePatch = exports.ScrollfirePatch = (_temp = _class = function () {
   function ScrollfirePatch() {
     _classCallCheck(this, ScrollfirePatch);
-
-    this.patched = false;
   }
 
   ScrollfirePatch.prototype.patch = function patch() {
-    if (!this.patched) {
-      this.patched = true;
+    if (!ScrollfirePatch.patched) {
+      ScrollfirePatch.patched = true;
 
       window.Materialize.scrollFire = function (options) {
         var didScroll = false;
@@ -58,4 +58,4 @@ var ScrollfirePatch = exports.ScrollfirePatch = function () {
   };
 
   return ScrollfirePatch;
-}();
+}(), _class.patched = false, _temp);

@@ -11,16 +11,16 @@ define(['exports'], function (exports) {
     }
   }
 
-  var ScrollfirePatch = exports.ScrollfirePatch = function () {
+  var _class, _temp;
+
+  var ScrollfirePatch = exports.ScrollfirePatch = (_temp = _class = function () {
     function ScrollfirePatch() {
       _classCallCheck(this, ScrollfirePatch);
-
-      this.patched = false;
     }
 
     ScrollfirePatch.prototype.patch = function patch() {
-      if (!this.patched) {
-        this.patched = true;
+      if (!ScrollfirePatch.patched) {
+        ScrollfirePatch.patched = true;
 
         window.Materialize.scrollFire = function (options) {
           var didScroll = false;
@@ -63,5 +63,5 @@ define(['exports'], function (exports) {
     };
 
     return ScrollfirePatch;
-  }();
+  }(), _class.patched = false, _temp);
 });

@@ -2,7 +2,7 @@ import 'materialize';
 import * as LogManager from 'aurelia-logging';
 import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
-import {bindingMode,ObserverLocator} from 'aurelia-binding';
+import {bindingMode,observable,ObserverLocator} from 'aurelia-binding';
 import {Router} from 'aurelia-router';
 import {TaskQueue} from 'aurelia-task-queue';
 import {getLogger} from 'aurelia-logging';
@@ -21,6 +21,7 @@ export class ClickCounter {
 export class ConfigBuilder {
 
   useGlobalResources: boolean = true;
+  useScrollfirePatch: boolean = false;
   globalResources = [];
 
   useAll(): ConfigBuilder {
@@ -125,6 +126,7 @@ export class ConfigBuilder {
   useCollection() : ConfigBuilder {
     this.globalResources.push('./collection/collection');
     this.globalResources.push('./collection/collection-item');
+    this.globalResources.push('./collection/md-collection-selector');
     return this;
   }
 
@@ -278,6 +280,11 @@ export class ConfigBuilder {
     this.useGlobalResources = false;
     return this;
   }
+
+  withScrollfirePatch(): ConfigBuilder {
+    this.useScrollfirePatch = true;
+    return this;
+  }
 }
 
 export function configure(aurelia, configCallback) {
@@ -289,6 +296,9 @@ export function configure(aurelia, configCallback) {
 
   if (builder.useGlobalResources) {
     aurelia.globalResources(builder.globalResources);
+  }
+  if (builder.useScrollfirePatch) {
+    new ScrollfirePatch().patch();
   }
 }
 
@@ -646,7 +656,33 @@ export class MdCollapsible {
 export class MdCollectionItem { }
 
 @customElement('md-collection')
-export class MdCollection {}
+@inject(Element)
+export class MdCollection {
+  constructor(element) {
+    this.element = element;
+  }
+
+  getSelected() {
+    let items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+    return items.filter(i => i.au['md-collection-selector'].viewModel.isSelected)
+      .map(i => i.au['md-collection-selector'].viewModel.item);
+  }
+}
+
+@customElement('md-collection-selector')
+@inject(Element)
+export class MdlListSelector {
+  @bindable() item;
+  @observable() isSelected = false;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  isSelectedChanged(newValue) {
+    fireMaterializeEvent(this.element, 'selection-changed', { item: this.item, isSelected: this.isSelected });
+  }
+}
 
 /* eslint-disable */
 // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
@@ -1145,6 +1181,8 @@ export class MdInput {
 @customAttribute('md-modal-trigger')
 @inject(Element)
 export class MdModalTrigger {
+  @bindable() dismissible = true;
+
   constructor(element) {
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
@@ -1154,7 +1192,8 @@ export class MdModalTrigger {
   attached() {
     this.attributeManager.addClasses('modal-trigger');
     $(this.element).leanModal({
-      complete: this.onComplete
+      complete: this.onComplete,
+      dismissible: getBooleanFromAttributeValue(this.dismissible)
     });
   }
 
@@ -1164,6 +1203,32 @@ export class MdModalTrigger {
 
   onComplete() {
     fireMaterializeEvent(this.element, 'modal-complete');
+  }
+}
+
+@customElement('md-navbar')
+@inject(Element)
+export class MdNavbar {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdFixed;
+  fixedAttributeManager;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
+      this.fixedAttributeManager.addClasses('navbar-fixed');
+    }
+  }
+
+  detached() {
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
+      this.fixedAttributeManager.removeClasses('navbar-fixed');
+    }
   }
 }
 
@@ -1215,32 +1280,6 @@ export class MdPagination {
   setNextPage() {
     if (this.mdActivePage < this.mdPages) {
       this.setActivePage(this.mdActivePage + 1);
-    }
-  }
-}
-
-@customElement('md-navbar')
-@inject(Element)
-export class MdNavbar {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdFixed;
-  fixedAttributeManager;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
-    if (getBooleanFromAttributeValue(this.mdFixed)) {
-      this.fixedAttributeManager.addClasses('navbar-fixed');
-    }
-  }
-
-  detached() {
-    if (getBooleanFromAttributeValue(this.mdFixed)) {
-      this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
   }
 }
@@ -1382,11 +1421,11 @@ export class MdRange {
 
 /* eslint no-new-func:0 */
 export class ScrollfirePatch {
-  patched = false;
+  static patched = false;
 
   patch() {
-    if (!this.patched) {
-      this.patched = true;
+    if (!ScrollfirePatch.patched) {
+      ScrollfirePatch.patched = true;
 
       window.Materialize.scrollFire = function(options) {
         let didScroll = false;
@@ -1442,11 +1481,10 @@ export class MdScrollfireTarget {
 }
 
 @customAttribute('md-scrollfire')
-@inject(Element, ScrollfirePatch)
+@inject(Element)
 export class MdScrollfire {
   targetId = 0;
-  constructor(element, scrollfirePatch) {
-    scrollfirePatch.patch();
+  constructor(element) {
     this.element = element;
     this.log = getLogger('md-scrollfire');
   }
@@ -1768,10 +1806,11 @@ export class MdSwitch {
 }
 
 @customAttribute('md-tabs')
-@inject(Element)
+@inject(Element, TaskQueue)
 export class MdTabs {
-  constructor(element) {
+  constructor(element, taskQueue) {
     this.element = element;
+    this.taskQueue = taskQueue;
     this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
     this.attributeManager = new AttributeManager(this.element);
     this.tabAttributeManagers = [];
@@ -1787,12 +1826,13 @@ export class MdTabs {
       this.tabAttributeManagers.push(setter);
     });
 
+    // this.taskQueue.queueTask(() => {
     $(this.element).tabs();
-
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
       a.addEventListener('click', this.fireTabSelectedEvent);
     });
+    // });
   }
 
   detached() {
@@ -1814,12 +1854,12 @@ export class MdTabs {
     // fix Materialize tab indicator (see: https://github.com/Dogfalo/materialize/pull/2809)
     // happens only when the indicator animation is finished
     // Waves animation duration: 300ms, delay: 90ms
-    window.setTimeout(() => {
-      let indicatorRight = $('.indicator', this.element).css('right');
-      if (indicatorRight.indexOf('-') === 0) {
-        $('.indicator', this.element).css('right', 0);
-      }
-    }, 310);
+    // window.setTimeout(() => {
+    //   let indicatorRight = $('.indicator', this.element).css('right');
+    //   if (indicatorRight.indexOf('-') === 0) {
+    //     $('.indicator', this.element).css('right', 0);
+    //   }
+    // }, 310);
     let href = e.target.getAttribute('href');
     fireMaterializeEvent(this.element, 'selected', href);
   }
@@ -1847,16 +1887,6 @@ export class MdTabs {
   }
 }
 
-export class MdToastService {
-  show(message, displayLength, className?) {
-    return new Promise((resolve, reject) => {
-      Materialize.toast(message, displayLength, className, () => {
-        resolve();
-      });
-    });
-  }
-}
-
 // @customAttribute('md-tooltip')
 @inject(Element)
 export class MdTooltip {
@@ -1879,6 +1909,16 @@ export class MdTooltip {
     $(this.element).tooltip('remove');
     this.attributeManager.removeClasses('tooltipped');
     this.attributeManager.removeAttributes(['data-position', 'data-tooltip']);
+  }
+}
+
+export class MdToastService {
+  show(message, displayLength, className?) {
+    return new Promise((resolve, reject) => {
+      Materialize.toast(message, displayLength, className, () => {
+        resolve();
+      });
+    });
   }
 }
 

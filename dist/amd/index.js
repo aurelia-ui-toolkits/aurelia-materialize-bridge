@@ -1,4 +1,4 @@
-define(['exports', './toast/toastService', './config-builder', 'materialize'], function (exports, _toastService, _configBuilder) {
+define(['exports', './toast/toastService', './config-builder', './scrollfire/scrollfire-patch', 'materialize'], function (exports, _toastService, _configBuilder, _scrollfirePatch) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -23,6 +23,9 @@ define(['exports', './toast/toastService', './config-builder', 'materialize'], f
 
     if (builder.useGlobalResources) {
       aurelia.globalResources(builder.globalResources);
+    }
+    if (builder.useScrollfirePatch) {
+      new _scrollfirePatch.ScrollfirePatch().patch();
     }
   }
 });

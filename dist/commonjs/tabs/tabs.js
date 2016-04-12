@@ -13,17 +13,20 @@ var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
+var _aureliaTaskQueue = require('aurelia-task-queue');
+
 var _events = require('../common/events');
 
 var _attributeManager = require('../common/attributeManager');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('md-tabs'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
-  function MdTabs(element) {
+var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('md-tabs'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue), _dec(_class = _dec2(_class = function () {
+  function MdTabs(element, taskQueue) {
     _classCallCheck(this, MdTabs);
 
     this.element = element;
+    this.taskQueue = taskQueue;
     this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
     this.attributeManager = new _attributeManager.AttributeManager(this.element);
     this.tabAttributeManagers = [];
@@ -42,7 +45,6 @@ var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('m
     });
 
     $(this.element).tabs();
-
     var childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, function (a) {
       a.addEventListener('click', _this.fireTabSelectedEvent);
@@ -65,14 +67,6 @@ var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('m
   };
 
   MdTabs.prototype.fireTabSelectedEvent = function fireTabSelectedEvent(e) {
-    var _this3 = this;
-
-    window.setTimeout(function () {
-      var indicatorRight = $('.indicator', _this3.element).css('right');
-      if (indicatorRight.indexOf('-') === 0) {
-        $('.indicator', _this3.element).css('right', 0);
-      }
-    }, 310);
     var href = e.target.getAttribute('href');
     (0, _events.fireMaterializeEvent)(this.element, 'selected', href);
   };

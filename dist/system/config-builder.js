@@ -17,6 +17,7 @@ System.register([], function (_export, _context) {
           _classCallCheck(this, ConfigBuilder);
 
           this.useGlobalResources = true;
+          this.useScrollfirePatch = false;
           this.globalResources = [];
         }
 
@@ -83,6 +84,7 @@ System.register([], function (_export, _context) {
         ConfigBuilder.prototype.useCollection = function useCollection() {
           this.globalResources.push('./collection/collection');
           this.globalResources.push('./collection/collection-item');
+          this.globalResources.push('./collection/md-collection-selector');
           return this;
         };
 
@@ -223,6 +225,11 @@ System.register([], function (_export, _context) {
 
         ConfigBuilder.prototype.withoutGlobalResources = function withoutGlobalResources() {
           this.useGlobalResources = false;
+          return this;
+        };
+
+        ConfigBuilder.prototype.withScrollfirePatch = function withScrollfirePatch() {
+          this.useScrollfirePatch = true;
           return this;
         };
 

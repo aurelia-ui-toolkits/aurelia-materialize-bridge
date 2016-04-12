@@ -4,6 +4,7 @@
 export class ConfigBuilder {
 
   useGlobalResources: boolean = true;
+  useScrollfirePatch: boolean = false;
   globalResources = [];
 
   useAll(): ConfigBuilder {
@@ -108,6 +109,7 @@ export class ConfigBuilder {
   useCollection() : ConfigBuilder {
     this.globalResources.push('./collection/collection');
     this.globalResources.push('./collection/collection-item');
+    this.globalResources.push('./collection/md-collection-selector');
     return this;
   }
 
@@ -259,6 +261,11 @@ export class ConfigBuilder {
   */
   withoutGlobalResources(): ConfigBuilder {
     this.useGlobalResources = false;
+    return this;
+  }
+
+  withScrollfirePatch(): ConfigBuilder {
+    this.useScrollfirePatch = true;
     return this;
   }
 }

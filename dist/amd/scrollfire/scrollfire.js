@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging', './scrollfire-patch'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging, _scrollfirePatch) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -14,13 +14,12 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
 
   var _dec, _dec2, _class;
 
-  var MdScrollfire = exports.MdScrollfire = (_dec = (0, _aureliaTemplating.customAttribute)('md-scrollfire'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _scrollfirePatch.ScrollfirePatch), _dec(_class = _dec2(_class = function () {
-    function MdScrollfire(element, scrollfirePatch) {
+  var MdScrollfire = exports.MdScrollfire = (_dec = (0, _aureliaTemplating.customAttribute)('md-scrollfire'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
+    function MdScrollfire(element) {
       _classCallCheck(this, MdScrollfire);
 
       this.targetId = 0;
 
-      scrollfirePatch.patch();
       this.element = element;
       this.log = (0, _aureliaLogging.getLogger)('md-scrollfire');
     }

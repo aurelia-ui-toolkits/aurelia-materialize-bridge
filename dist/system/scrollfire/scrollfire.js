@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging', './scrollfire-patch'], function (_export, _context) {
-  var customAttribute, inject, getLogger, ScrollfirePatch, _dec, _dec2, _class, MdScrollfire;
+System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export, _context) {
+  var customAttribute, inject, getLogger, _dec, _dec2, _class, MdScrollfire;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -16,17 +16,14 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaLogging) {
       getLogger = _aureliaLogging.getLogger;
-    }, function (_scrollfirePatch) {
-      ScrollfirePatch = _scrollfirePatch.ScrollfirePatch;
     }],
     execute: function () {
-      _export('MdScrollfire', MdScrollfire = (_dec = customAttribute('md-scrollfire'), _dec2 = inject(Element, ScrollfirePatch), _dec(_class = _dec2(_class = function () {
-        function MdScrollfire(element, scrollfirePatch) {
+      _export('MdScrollfire', MdScrollfire = (_dec = customAttribute('md-scrollfire'), _dec2 = inject(Element), _dec(_class = _dec2(_class = function () {
+        function MdScrollfire(element) {
           _classCallCheck(this, MdScrollfire);
 
           this.targetId = 0;
 
-          scrollfirePatch.patch();
           this.element = element;
           this.log = getLogger('md-scrollfire');
         }

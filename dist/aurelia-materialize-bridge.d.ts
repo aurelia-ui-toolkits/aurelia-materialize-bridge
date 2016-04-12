@@ -12,6 +12,7 @@ declare module 'aurelia-materialize-bridge' {
   } from 'aurelia-dependency-injection';
   import {
     bindingMode,
+    observable,
     ObserverLocator
   } from 'aurelia-binding';
   import {
@@ -33,6 +34,7 @@ declare module 'aurelia-materialize-bridge' {
   */
   export class ConfigBuilder {
     useGlobalResources: boolean;
+    useScrollfirePatch: boolean;
     globalResources: any;
     useAll(): ConfigBuilder;
     useBadge(): ConfigBuilder;
@@ -91,6 +93,7 @@ declare module 'aurelia-materialize-bridge' {
       * Allows you to import yourself via <require></require>
       */
     withoutGlobalResources(): ConfigBuilder;
+    withScrollfirePatch(): ConfigBuilder;
   }
   export function configure(aurelia: any, configCallback: any): any;
   export class MdBadge {
@@ -181,7 +184,14 @@ declare module 'aurelia-materialize-bridge' {
   
   }
   export class MdCollection {
-  
+    constructor(element: any);
+    getSelected(): any;
+  }
+  export class MdlListSelector {
+    item: any;
+    isSelected: any;
+    constructor(element: any);
+    isSelectedChanged(newValue: any): any;
   }
   
   /* eslint-enable */
@@ -318,10 +328,18 @@ declare module 'aurelia-materialize-bridge' {
     mdValueChanged(): any;
   }
   export class MdModalTrigger {
+    dismissible: any;
     constructor(element: any);
     attached(): any;
     detached(): any;
     onComplete(): any;
+  }
+  export class MdNavbar {
+    mdFixed: any;
+    fixedAttributeManager: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
   }
   export class MdPagination {
     mdActivePage: any;
@@ -335,13 +353,6 @@ declare module 'aurelia-materialize-bridge' {
     setLastPage(): any;
     setPreviousPage(): any;
     setNextPage(): any;
-  }
-  export class MdNavbar {
-    mdFixed: any;
-    fixedAttributeManager: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
   }
   export class MdParallax {
     constructor(element: any);
@@ -408,7 +419,7 @@ declare module 'aurelia-materialize-bridge' {
   
   /* eslint no-new-func:0 */
   export class ScrollfirePatch {
-    patched: any;
+    static patched: any;
     patch(): any;
   }
   export class MdScrollfireTarget {
@@ -418,7 +429,7 @@ declare module 'aurelia-materialize-bridge' {
   }
   export class MdScrollfire {
     targetId: any;
-    constructor(element: any, scrollfirePatch: any);
+    constructor(element: any);
     attached(): any;
   }
   export class MdScrollSpy {
@@ -512,17 +523,16 @@ declare module 'aurelia-materialize-bridge' {
     mdCheckedChanged(newValue: any): any;
   }
   export class MdTabs {
-    constructor(element: any);
+    constructor(element: any, taskQueue: any);
     attached(): any;
+    
+    // });
     detached(): any;
     fireTabSelectedEvent(e: any): any;
     selectTab(id: any): any;
     
     // FIXME: probably bad
     selectedTab: any;
-  }
-  export class MdToastService {
-    show(message: any, displayLength: any, className?: any): any;
   }
   
   // @customAttribute('md-tooltip')
@@ -533,6 +543,9 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
     detached(): any;
+  }
+  export class MdToastService {
+    show(message: any, displayLength: any, className?: any): any;
   }
   export class MdFadeinImage {
     ref: any;

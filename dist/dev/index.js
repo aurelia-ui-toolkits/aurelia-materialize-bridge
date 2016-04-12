@@ -1,10 +1,12 @@
 'use strict';
 
-System.register(['materialize', './config-builder', './toast/toastService'], function (_export, _context) {
-  var ConfigBuilder;
+System.register(['materialize', './config-builder', './scrollfire/scrollfire-patch', './toast/toastService'], function (_export, _context) {
+  var ConfigBuilder, ScrollfirePatch;
   return {
     setters: [function (_materialize) {}, function (_configBuilder) {
       ConfigBuilder = _configBuilder.ConfigBuilder;
+    }, function (_scrollfireScrollfirePatch) {
+      ScrollfirePatch = _scrollfireScrollfirePatch.ScrollfirePatch;
     }, function (_toastToastService) {
       var _exportObj = {};
 
@@ -24,6 +26,9 @@ System.register(['materialize', './config-builder', './toast/toastService'], fun
 
         if (builder.useGlobalResources) {
           aurelia.globalResources(builder.globalResources);
+        }
+        if (builder.useScrollfirePatch) {
+          new ScrollfirePatch().patch();
         }
       }
 

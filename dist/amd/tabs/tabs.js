@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/events', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _events, _attributeManager) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/events', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaTaskQueue, _events, _attributeManager) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -32,11 +32,12 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
 
   var _dec, _dec2, _class;
 
-  var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('md-tabs'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
-    function MdTabs(element) {
+  var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('md-tabs'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue), _dec(_class = _dec2(_class = function () {
+    function MdTabs(element, taskQueue) {
       _classCallCheck(this, MdTabs);
 
       this.element = element;
+      this.taskQueue = taskQueue;
       this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
       this.attributeManager = new _attributeManager.AttributeManager(this.element);
       this.tabAttributeManagers = [];
@@ -55,7 +56,6 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       });
 
       $(this.element).tabs();
-
       var childAnchors = this.element.querySelectorAll('li a');
       [].forEach.call(childAnchors, function (a) {
         a.addEventListener('click', _this.fireTabSelectedEvent);
@@ -78,14 +78,6 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
     };
 
     MdTabs.prototype.fireTabSelectedEvent = function fireTabSelectedEvent(e) {
-      var _this3 = this;
-
-      window.setTimeout(function () {
-        var indicatorRight = $('.indicator', _this3.element).css('right');
-        if (indicatorRight.indexOf('-') === 0) {
-          $('.indicator', _this3.element).css('right', 0);
-        }
-      }, 310);
       var href = e.target.getAttribute('href');
       (0, _events.fireMaterializeEvent)(this.element, 'selected', href);
     };

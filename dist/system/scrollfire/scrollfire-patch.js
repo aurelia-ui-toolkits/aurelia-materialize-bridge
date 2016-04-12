@@ -1,7 +1,7 @@
 'use strict';
 
 System.register([], function (_export, _context) {
-  var ScrollfirePatch;
+  var _class, _temp, ScrollfirePatch;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -12,16 +12,14 @@ System.register([], function (_export, _context) {
   return {
     setters: [],
     execute: function () {
-      _export('ScrollfirePatch', ScrollfirePatch = function () {
+      _export('ScrollfirePatch', ScrollfirePatch = (_temp = _class = function () {
         function ScrollfirePatch() {
           _classCallCheck(this, ScrollfirePatch);
-
-          this.patched = false;
         }
 
         ScrollfirePatch.prototype.patch = function patch() {
-          if (!this.patched) {
-            this.patched = true;
+          if (!ScrollfirePatch.patched) {
+            ScrollfirePatch.patched = true;
 
             window.Materialize.scrollFire = function (options) {
               var didScroll = false;
@@ -64,7 +62,7 @@ System.register([], function (_export, _context) {
         };
 
         return ScrollfirePatch;
-      }());
+      }(), _class.patched = false, _temp));
 
       _export('ScrollfirePatch', ScrollfirePatch);
     }

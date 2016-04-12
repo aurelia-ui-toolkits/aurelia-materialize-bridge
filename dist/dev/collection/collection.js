@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['aurelia-templating'], function (_export, _context) {
-  var customElement, _dec, _class, MdCollection;
+System.register(['aurelia-templating', 'aurelia-dependency-injection'], function (_export, _context) {
+  var customElement, inject, _dec, _dec2, _class, MdCollection;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -12,11 +12,28 @@ System.register(['aurelia-templating'], function (_export, _context) {
   return {
     setters: [function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
+    }, function (_aureliaDependencyInjection) {
+      inject = _aureliaDependencyInjection.inject;
     }],
     execute: function () {
-      _export('MdCollection', MdCollection = (_dec = customElement('md-collection'), _dec(_class = function MdCollection() {
-        _classCallCheck(this, MdCollection);
-      }) || _class));
+      _export('MdCollection', MdCollection = (_dec = customElement('md-collection'), _dec2 = inject(Element), _dec(_class = _dec2(_class = function () {
+        function MdCollection(element) {
+          _classCallCheck(this, MdCollection);
+
+          this.element = element;
+        }
+
+        MdCollection.prototype.getSelected = function getSelected() {
+          var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+          return items.filter(function (i) {
+            return i.au['md-collection-selector'].viewModel.isSelected;
+          }).map(function (i) {
+            return i.au['md-collection-selector'].viewModel.item;
+          });
+        };
+
+        return MdCollection;
+      }()) || _class) || _class));
 
       _export('MdCollection', MdCollection);
     }

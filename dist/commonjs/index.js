@@ -21,6 +21,8 @@ require('materialize');
 
 var _configBuilder = require('./config-builder');
 
+var _scrollfirePatch = require('./scrollfire/scrollfire-patch');
+
 function configure(aurelia, configCallback) {
   var builder = new _configBuilder.ConfigBuilder();
 
@@ -30,5 +32,8 @@ function configure(aurelia, configCallback) {
 
   if (builder.useGlobalResources) {
     aurelia.globalResources(builder.globalResources);
+  }
+  if (builder.useScrollfirePatch) {
+    new _scrollfirePatch.ScrollfirePatch().patch();
   }
 }
