@@ -126,6 +126,7 @@ export class ConfigBuilder {
   useCollection() : ConfigBuilder {
     this.globalResources.push('./collection/collection');
     this.globalResources.push('./collection/collection-item');
+    this.globalResources.push('./collection/collection-header');
     this.globalResources.push('./collection/md-collection-selector');
     return this;
   }
@@ -355,38 +356,6 @@ export class MdBox {
   }
 }
 
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-
-@customElement('md-breadcrumbs')
-@inject(Element, Router)
-export class MdBreadcrumbs {
-  constructor(element, router) {
-    this.element = element;
-    this._childRouter = router;
-    while (router.parent) {
-      router = router.parent;
-    }
-    this.router = router;
-  }
-
-  navigate(navigationInstruction) {
-    this._childRouter.navigateToRoute(navigationInstruction.config.name);
-    // this.router.navigate(navigationInstruction.config.name);
-  }
-}
-
-export class InstructionFilterValueConverter {
-  toView(navigationInstructions) {
-    return navigationInstructions.filter(i => {
-      let result = false;
-      if (i.config.title) {
-        result = true;
-      }
-      return result;
-    });
-  }
-}
-
 @customAttribute('md-button')
 @inject(Element)
 export class MdButton {
@@ -446,6 +415,38 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
+  }
+}
+
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+
+@customElement('md-breadcrumbs')
+@inject(Element, Router)
+export class MdBreadcrumbs {
+  constructor(element, router) {
+    this.element = element;
+    this._childRouter = router;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  navigate(navigationInstruction) {
+    this._childRouter.navigateToRoute(navigationInstruction.config.name);
+    // this.router.navigate(navigationInstruction.config.name);
+  }
+}
+
+export class InstructionFilterValueConverter {
+  toView(navigationInstructions) {
+    return navigationInstructions.filter(i => {
+      let result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
   }
 }
 
@@ -652,6 +653,14 @@ export class MdCollapsible {
   }
 }
 
+@customElement('md-collection-header')
+@inject(Element)
+export class MdCollectionHeader {
+  constructor(element) {
+    this.element = element;
+  }
+}
+
 @customElement('md-collection-item')
 export class MdCollectionItem { }
 
@@ -660,6 +669,13 @@ export class MdCollectionItem { }
 export class MdCollection {
   constructor(element) {
     this.element = element;
+  }
+
+  attached() {
+    let header = this.element.querySelector('md-collection-header');
+    if (header) {
+      this.anchor.classList.add('with-header');
+    }
   }
 
   getSelected() {
@@ -1887,6 +1903,16 @@ export class MdTabs {
   }
 }
 
+export class MdToastService {
+  show(message, displayLength, className?) {
+    return new Promise((resolve, reject) => {
+      Materialize.toast(message, displayLength, className, () => {
+        resolve();
+      });
+    });
+  }
+}
+
 // @customAttribute('md-tooltip')
 @inject(Element)
 export class MdTooltip {
@@ -1909,16 +1935,6 @@ export class MdTooltip {
     $(this.element).tooltip('remove');
     this.attributeManager.removeClasses('tooltipped');
     this.attributeManager.removeAttributes(['data-position', 'data-tooltip']);
-  }
-}
-
-export class MdToastService {
-  show(message, displayLength, className?) {
-    return new Promise((resolve, reject) => {
-      Materialize.toast(message, displayLength, className, () => {
-        resolve();
-      });
-    });
   }
 }
 

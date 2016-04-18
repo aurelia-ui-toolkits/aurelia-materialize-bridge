@@ -56,9 +56,10 @@
     background-color: ${mdPrimaryColor | lighten:0.5};
     transition: .2s ease-out;
   }
-  .btn-flat:hover {
+  .btn-flat:not(.disabled):hover {
     /*background-color: ${mdAccentColor | lighten:3};*/
-    background-color: transparent;
+    background-color: rgba(50, 50, 50, .15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     border: none;
     box-shadow: none;
     transition: .2s ease-out;
@@ -102,6 +103,10 @@
   md-collection .collection md-collection-item.collection-item.active {
     background-color: ${mdAccentColor};
     color: white;
+  }
+
+  md-collection .collection md-collection-item.collection-item .secondary-content {
+    color: ${mdAccentColor};
   }
 
   /* datepicker */

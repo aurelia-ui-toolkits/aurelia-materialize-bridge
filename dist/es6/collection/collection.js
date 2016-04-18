@@ -8,6 +8,13 @@ export class MdCollection {
     this.element = element;
   }
 
+  attached() {
+    let header = this.element.querySelector('md-collection-header');
+    if (header) {
+      this.anchor.classList.add('with-header');
+    }
+  }
+
   getSelected() {
     let items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
     return items.filter(i => i.au['md-collection-selector'].viewModel.isSelected)

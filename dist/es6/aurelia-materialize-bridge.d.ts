@@ -108,17 +108,6 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
-  
-  // taken from: https://github.com/heruan/aurelia-breadcrumbs
-  export class MdBreadcrumbs {
-    constructor(element: any, router: any);
-    navigate(navigationInstruction: any): any;
-  }
-  
-  // this.router.navigate(navigationInstruction.config.name);
-  export class InstructionFilterValueConverter {
-    toView(navigationInstructions: any): any;
-  }
   export class MdButton {
     disabled: any;
     flat: any;
@@ -129,6 +118,17 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     disabledChanged(newValue: any): any;
     flatChanged(newValue: any): any;
+  }
+  
+  // taken from: https://github.com/heruan/aurelia-breadcrumbs
+  export class MdBreadcrumbs {
+    constructor(element: any, router: any);
+    navigate(navigationInstruction: any): any;
+  }
+  
+  // this.router.navigate(navigationInstruction.config.name);
+  export class InstructionFilterValueConverter {
+    toView(navigationInstructions: any): any;
   }
   export class MdCard {
     mdImage: any;
@@ -180,11 +180,15 @@ declare module 'aurelia-materialize-bridge' {
     refresh(): any;
     accordionChanged(): any;
   }
+  export class MdCollectionHeader {
+    constructor(element: any);
+  }
   export class MdCollectionItem {
   
   }
   export class MdCollection {
     constructor(element: any);
+    attached(): any;
     getSelected(): any;
   }
   export class MdlListSelector {
@@ -534,6 +538,9 @@ declare module 'aurelia-materialize-bridge' {
     // FIXME: probably bad
     selectedTab: any;
   }
+  export class MdToastService {
+    show(message: any, displayLength: any, className?: any): any;
+  }
   
   // @customAttribute('md-tooltip')
   export class MdTooltip {
@@ -543,9 +550,6 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
     detached(): any;
-  }
-  export class MdToastService {
-    show(message: any, displayLength: any, className?: any): any;
   }
   export class MdFadeinImage {
     ref: any;

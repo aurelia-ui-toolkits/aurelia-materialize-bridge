@@ -78,6 +78,7 @@ var ConfigBuilder = exports.ConfigBuilder = function () {
   ConfigBuilder.prototype.useCollection = function useCollection() {
     this.globalResources.push('./collection/collection');
     this.globalResources.push('./collection/collection-item');
+    this.globalResources.push('./collection/collection-header');
     this.globalResources.push('./collection/md-collection-selector');
     return this;
   };

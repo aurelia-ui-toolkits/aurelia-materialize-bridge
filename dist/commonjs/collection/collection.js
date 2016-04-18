@@ -20,6 +20,13 @@ var MdCollection = exports.MdCollection = (_dec = (0, _aureliaTemplating.customE
     this.element = element;
   }
 
+  MdCollection.prototype.attached = function attached() {
+    var header = this.element.querySelector('md-collection-header');
+    if (header) {
+      this.anchor.classList.add('with-header');
+    }
+  };
+
   MdCollection.prototype.getSelected = function getSelected() {
     var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
     return items.filter(function (i) {
