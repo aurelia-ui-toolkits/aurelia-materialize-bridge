@@ -13,6 +13,10 @@
       "route": "avatar",
       "files": ["html"]
     },
+    "header": {
+      "route": "header",
+      "files": ["html"]
+    },
     "selection": {
       "route": "selection",
       "files": ["html", "js"]
