@@ -109,6 +109,7 @@ export class ConfigBuilder {
   useCollection() : ConfigBuilder {
     this.globalResources.push('./collection/collection');
     this.globalResources.push('./collection/collection-item');
+    this.globalResources.push('./collection/collection-header');
     this.globalResources.push('./collection/md-collection-selector');
     return this;
   }
