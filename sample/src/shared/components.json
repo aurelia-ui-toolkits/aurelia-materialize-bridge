@@ -25,18 +25,18 @@
     "Scrollfire": { "status": "done" },
     "Scrollspy": { "status": "done" },
     "SideNav": { "status": "wip" },
-    "Tabs": { "status": "wip" },
+    "Tabs": { "status": "done" },
     "Transitions": { "status": "done" },
     "Waves": { "status": "done" }
   },
   "Forms": {
-    "Input fields": { "moduleId": "input", "status": "wip" },
+    "Input fields": { "moduleId": "input", "status": "done" },
     "Select": { "status": "wip" },
     "Radio buttons": { "moduleId": "radio", "status": "done" },
     "Checkbox/Switch": { "moduleId": "checkbox", "status": "done" },
-    "File input button": { "moduleId": "file", "status": "wip" },
-    "Range": { "status": "wip" },
-    "DatePicker": { "status": "wip" }
+    "File input button": { "moduleId": "file", "status": "done" },
+    "Range": { "status": "done" },
+    "DatePicker": { "status": "done" }
   },
   "Internal": {
     "Click counter": { "moduleId": "click-counter", "status": "done" },
