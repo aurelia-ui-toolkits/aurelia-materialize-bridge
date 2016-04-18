@@ -4,7 +4,7 @@
   },
   "Components": {
     "Badges": { "moduleId": "badge", "status": "done" },
-    "Button": { "status": "wip" },
+    "Button": { "status": "done" },
     "Breadcrumbs": { "status": "done" },
     "Cards": { "moduleId": "card", "status": "done" },
     "Chips": { "moduleId": "chip", "status": "done" },
