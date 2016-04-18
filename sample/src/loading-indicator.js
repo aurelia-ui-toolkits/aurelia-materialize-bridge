@@ -13,6 +13,7 @@ export class LoadingIndicator {
 
   start() {
     nprogress.start();
+    nprogress.inc();
   }
 
   done() {
