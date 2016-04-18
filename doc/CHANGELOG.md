@@ -1,3 +1,14 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.4.0...v0.5.0) (2016-04-18)
+
+
+### Features
+
+* **md-collection:** add headers ([e180ce5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e180ce5))
+* **md-colors:** add collection secondary content coloring ([110c68b](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/110c68b))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.3.0...v0.4.0) (2016-04-12)
 

@@ -6,7 +6,7 @@
   "flags": {},
   "children": [
     {
-      "id": 237,
+      "id": 243,
       "name": "AttributeManager",
       "kind": 128,
       "kindString": "Class",
@@ -18,7 +18,7 @@
       },
       "children": [
         {
-          "id": 241,
+          "id": 247,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -27,14 +27,14 @@
           },
           "signatures": [
             {
-              "id": 242,
+              "id": 248,
               "name": "new AttributeManager",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 243,
+                  "id": 249,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -48,14 +48,14 @@
               "type": {
                 "type": "reference",
                 "name": "AttributeManager",
-                "id": 237,
+                "id": 243,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 238,
+          "id": 244,
           "name": "_colorClasses",
           "kind": 1024,
           "kindString": "Property",
@@ -68,7 +68,7 @@
           }
         },
         {
-          "id": 240,
+          "id": 246,
           "name": "addedAttributes",
           "kind": 1024,
           "kindString": "Property",
@@ -81,7 +81,7 @@
           }
         },
         {
-          "id": 239,
+          "id": 245,
           "name": "addedClasses",
           "kind": 1024,
           "kindString": "Property",
@@ -94,7 +94,7 @@
           }
         },
         {
-          "id": 244,
+          "id": 250,
           "name": "addAttributes",
           "kind": 2048,
           "kindString": "Method",
@@ -103,14 +103,14 @@
           },
           "signatures": [
             {
-              "id": 245,
+              "id": 251,
               "name": "addAttributes",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 246,
+                  "id": 252,
                   "name": "attrs",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -129,7 +129,7 @@
           ]
         },
         {
-          "id": 250,
+          "id": 256,
           "name": "addClasses",
           "kind": 2048,
           "kindString": "Method",
@@ -138,14 +138,14 @@
           },
           "signatures": [
             {
-              "id": 251,
+              "id": 257,
               "name": "addClasses",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 252,
+                  "id": 258,
                   "name": "classes",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -164,7 +164,7 @@
           ]
         },
         {
-          "id": 247,
+          "id": 253,
           "name": "removeAttributes",
           "kind": 2048,
           "kindString": "Method",
@@ -173,14 +173,14 @@
           },
           "signatures": [
             {
-              "id": 248,
+              "id": 254,
               "name": "removeAttributes",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 249,
+                  "id": 255,
                   "name": "attrs",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -199,7 +199,7 @@
           ]
         },
         {
-          "id": 253,
+          "id": 259,
           "name": "removeClasses",
           "kind": 2048,
           "kindString": "Method",
@@ -208,14 +208,14 @@
           },
           "signatures": [
             {
-              "id": 254,
+              "id": 260,
               "name": "removeClasses",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 255,
+                  "id": 261,
                   "name": "classes",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -239,26 +239,26 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            241
+            247
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            238,
-            240,
-            239
+            244,
+            246,
+            245
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            244,
             250,
-            247,
-            253
+            256,
+            253,
+            259
           ]
         }
       ]
@@ -1433,7 +1433,7 @@
       ]
     },
     {
-      "id": 227,
+      "id": 233,
       "name": "DarkenValueConverter",
       "kind": 128,
       "kindString": "Class",
@@ -1442,7 +1442,7 @@
       },
       "children": [
         {
-          "id": 228,
+          "id": 234,
           "name": "toView",
           "kind": 2048,
           "kindString": "Method",
@@ -1451,14 +1451,14 @@
           },
           "signatures": [
             {
-              "id": 229,
+              "id": 235,
               "name": "toView",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 230,
+                  "id": 236,
                   "name": "value",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1469,7 +1469,7 @@
                   }
                 },
                 {
-                  "id": 231,
+                  "id": 237,
                   "name": "steps",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1493,7 +1493,7 @@
           "title": "Methods",
           "kind": 2048,
           "children": [
-            228
+            234
           ]
         }
       ]
@@ -1554,7 +1554,7 @@
       ]
     },
     {
-      "id": 232,
+      "id": 238,
       "name": "LightenValueConverter",
       "kind": 128,
       "kindString": "Class",
@@ -1563,7 +1563,7 @@
       },
       "children": [
         {
-          "id": 233,
+          "id": 239,
           "name": "toView",
           "kind": 2048,
           "kindString": "Method",
@@ -1572,14 +1572,14 @@
           },
           "signatures": [
             {
-              "id": 234,
+              "id": 240,
               "name": "toView",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 235,
+                  "id": 241,
                   "name": "value",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1590,7 +1590,7 @@
                   }
                 },
                 {
-                  "id": 236,
+                  "id": 242,
                   "name": "steps",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1614,7 +1614,7 @@
           "title": "Methods",
           "kind": 2048,
           "children": [
-            233
+            239
           ]
         }
       ]
@@ -3218,7 +3218,7 @@
       ]
     },
     {
-      "id": 212,
+      "id": 216,
       "name": "MdCollection",
       "kind": 128,
       "kindString": "Class",
@@ -3227,7 +3227,7 @@
       },
       "children": [
         {
-          "id": 213,
+          "id": 217,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -3236,14 +3236,14 @@
           },
           "signatures": [
             {
-              "id": 214,
+              "id": 218,
               "name": "new MdCollection",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 215,
+                  "id": 219,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -3257,14 +3257,36 @@
               "type": {
                 "type": "reference",
                 "name": "MdCollection",
-                "id": 212,
+                "id": 216,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 216,
+          "id": 220,
+          "name": "attached",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 221,
+              "name": "attached",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
+          "id": 222,
           "name": "getSelected",
           "kind": 2048,
           "kindString": "Method",
@@ -3273,7 +3295,7 @@
           },
           "signatures": [
             {
-              "id": 217,
+              "id": 223,
               "name": "getSelected",
               "kind": 4096,
               "kindString": "Call signature",
@@ -3291,30 +3313,22 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            213
+            217
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            216
+            220,
+            222
           ]
         }
       ]
     },
     {
       "id": 211,
-      "name": "MdCollectionItem",
-      "kind": 128,
-      "kindString": "Class",
-      "flags": {
-        "isExported": true
-      }
-    },
-    {
-      "id": 256,
-      "name": "MdDatePicker",
+      "name": "MdCollectionHeader",
       "kind": 128,
       "kindString": "Class",
       "flags": {
@@ -3322,7 +3336,7 @@
       },
       "children": [
         {
-          "id": 262,
+          "id": 212,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -3331,14 +3345,80 @@
           },
           "signatures": [
             {
-              "id": 263,
+              "id": 213,
+              "name": "new MdCollectionHeader",
+              "kind": 16384,
+              "kindString": "Constructor signature",
+              "flags": {},
+              "parameters": [
+                {
+                  "id": 214,
+                  "name": "element",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "name": "MdCollectionHeader",
+                "id": 211,
+                "moduleName": "\"aurelia-materialize-bridge\""
+              }
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "title": "Constructors",
+          "kind": 512,
+          "children": [
+            212
+          ]
+        }
+      ]
+    },
+    {
+      "id": 215,
+      "name": "MdCollectionItem",
+      "kind": 128,
+      "kindString": "Class",
+      "flags": {
+        "isExported": true
+      }
+    },
+    {
+      "id": 262,
+      "name": "MdDatePicker",
+      "kind": 128,
+      "kindString": "Class",
+      "flags": {
+        "isExported": true
+      },
+      "children": [
+        {
+          "id": 268,
+          "name": "constructor",
+          "kind": 512,
+          "kindString": "Constructor",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 269,
               "name": "new MdDatePicker",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 264,
+                  "id": 270,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -3349,7 +3429,7 @@
                   }
                 },
                 {
-                  "id": 265,
+                  "id": 271,
                   "name": "taskQueue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -3363,14 +3443,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdDatePicker",
-                "id": 256,
+                "id": 262,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 257,
+          "id": 263,
           "name": "container",
           "kind": 1024,
           "kindString": "Property",
@@ -3383,7 +3463,7 @@
           }
         },
         {
-          "id": 260,
+          "id": 266,
           "name": "selectMonths",
           "kind": 1024,
           "kindString": "Property",
@@ -3396,7 +3476,7 @@
           }
         },
         {
-          "id": 261,
+          "id": 267,
           "name": "selectYears",
           "kind": 1024,
           "kindString": "Property",
@@ -3409,7 +3489,7 @@
           }
         },
         {
-          "id": 258,
+          "id": 264,
           "name": "translation",
           "kind": 1024,
           "kindString": "Property",
@@ -3422,7 +3502,7 @@
           }
         },
         {
-          "id": 259,
+          "id": 265,
           "name": "value",
           "kind": 1024,
           "kindString": "Property",
@@ -3435,7 +3515,7 @@
           }
         },
         {
-          "id": 266,
+          "id": 272,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -3444,7 +3524,7 @@
           },
           "signatures": [
             {
-              "id": 267,
+              "id": 273,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
@@ -3457,7 +3537,7 @@
           ]
         },
         {
-          "id": 268,
+          "id": 274,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -3466,7 +3546,7 @@
           },
           "signatures": [
             {
-              "id": 269,
+              "id": 275,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -3479,7 +3559,7 @@
           ]
         },
         {
-          "id": 270,
+          "id": 276,
           "name": "onClose",
           "kind": 2048,
           "kindString": "Method",
@@ -3488,7 +3568,7 @@
           },
           "signatures": [
             {
-              "id": 271,
+              "id": 277,
               "name": "onClose",
               "kind": 4096,
               "kindString": "Call signature",
@@ -3501,7 +3581,7 @@
           ]
         },
         {
-          "id": 272,
+          "id": 278,
           "name": "onSet",
           "kind": 2048,
           "kindString": "Method",
@@ -3510,14 +3590,14 @@
           },
           "signatures": [
             {
-              "id": 273,
+              "id": 279,
               "name": "onSet",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 274,
+                  "id": 280,
                   "name": "value",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -3536,7 +3616,7 @@
           ]
         },
         {
-          "id": 275,
+          "id": 281,
           "name": "valueChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -3545,14 +3625,14 @@
           },
           "signatures": [
             {
-              "id": 276,
+              "id": 282,
               "name": "valueChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 277,
+                  "id": 283,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -3576,35 +3656,35 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            262
+            268
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            257,
-            260,
-            261,
-            258,
-            259
+            263,
+            266,
+            267,
+            264,
+            265
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            266,
-            268,
-            270,
             272,
-            275
+            274,
+            276,
+            278,
+            281
           ]
         }
       ]
     },
     {
-      "id": 293,
+      "id": 299,
       "name": "MdDropdown",
       "kind": 128,
       "kindString": "Class",
@@ -3613,7 +3693,7 @@
       },
       "children": [
         {
-          "id": 303,
+          "id": 309,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -3622,14 +3702,14 @@
           },
           "signatures": [
             {
-              "id": 304,
+              "id": 310,
               "name": "new MdDropdown",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 305,
+                  "id": 311,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -3643,14 +3723,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdDropdown",
-                "id": 293,
+                "id": 299,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 294,
+          "id": 300,
           "name": "activates",
           "kind": 1024,
           "kindString": "Property",
@@ -3663,7 +3743,7 @@
           }
         },
         {
-          "id": 295,
+          "id": 301,
           "name": "alignment",
           "kind": 1024,
           "kindString": "Property",
@@ -3676,7 +3756,7 @@
           }
         },
         {
-          "id": 296,
+          "id": 302,
           "name": "belowOrigin",
           "kind": 1024,
           "kindString": "Property",
@@ -3689,7 +3769,7 @@
           }
         },
         {
-          "id": 297,
+          "id": 303,
           "name": "constrainWidth",
           "kind": 1024,
           "kindString": "Property",
@@ -3702,7 +3782,7 @@
           }
         },
         {
-          "id": 298,
+          "id": 304,
           "name": "gutter",
           "kind": 1024,
           "kindString": "Property",
@@ -3715,7 +3795,7 @@
           }
         },
         {
-          "id": 299,
+          "id": 305,
           "name": "hover",
           "kind": 1024,
           "kindString": "Property",
@@ -3728,7 +3808,7 @@
           }
         },
         {
-          "id": 301,
+          "id": 307,
           "name": "inDuration",
           "kind": 1024,
           "kindString": "Property",
@@ -3741,7 +3821,7 @@
           }
         },
         {
-          "id": 300,
+          "id": 306,
           "name": "mdTitle",
           "kind": 1024,
           "kindString": "Property",
@@ -3754,7 +3834,7 @@
           }
         },
         {
-          "id": 302,
+          "id": 308,
           "name": "outDuration",
           "kind": 1024,
           "kindString": "Property",
@@ -3767,7 +3847,7 @@
           }
         },
         {
-          "id": 306,
+          "id": 312,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -3776,7 +3856,7 @@
           },
           "signatures": [
             {
-              "id": 307,
+              "id": 313,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -3789,7 +3869,7 @@
           ]
         },
         {
-          "id": 308,
+          "id": 314,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -3798,7 +3878,7 @@
           },
           "signatures": [
             {
-              "id": 309,
+              "id": 315,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -3816,36 +3896,36 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            303
+            309
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            294,
-            295,
-            296,
-            297,
-            298,
-            299,
-            301,
             300,
-            302
+            301,
+            302,
+            303,
+            304,
+            305,
+            307,
+            306,
+            308
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            306,
-            308
+            312,
+            314
           ]
         }
       ]
     },
     {
-      "id": 278,
+      "id": 284,
       "name": "MdDropdownElement",
       "kind": 128,
       "kindString": "Class",
@@ -3854,7 +3934,7 @@
       },
       "children": [
         {
-          "id": 288,
+          "id": 294,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -3863,14 +3943,14 @@
           },
           "signatures": [
             {
-              "id": 289,
+              "id": 295,
               "name": "new MdDropdownElement",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 290,
+                  "id": 296,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -3884,14 +3964,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdDropdownElement",
-                "id": 278,
+                "id": 284,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 280,
+          "id": 286,
           "name": "alignment",
           "kind": 1024,
           "kindString": "Property",
@@ -3904,7 +3984,7 @@
           }
         },
         {
-          "id": 281,
+          "id": 287,
           "name": "belowOrigin",
           "kind": 1024,
           "kindString": "Property",
@@ -3917,7 +3997,7 @@
           }
         },
         {
-          "id": 282,
+          "id": 288,
           "name": "constrainWidth",
           "kind": 1024,
           "kindString": "Property",
@@ -3930,7 +4010,7 @@
           }
         },
         {
-          "id": 283,
+          "id": 289,
           "name": "gutter",
           "kind": 1024,
           "kindString": "Property",
@@ -3943,7 +4023,7 @@
           }
         },
         {
-          "id": 284,
+          "id": 290,
           "name": "hover",
           "kind": 1024,
           "kindString": "Property",
@@ -3956,7 +4036,7 @@
           }
         },
         {
-          "id": 286,
+          "id": 292,
           "name": "inDuration",
           "kind": 1024,
           "kindString": "Property",
@@ -3969,7 +4049,7 @@
           }
         },
         {
-          "id": 285,
+          "id": 291,
           "name": "mdTitle",
           "kind": 1024,
           "kindString": "Property",
@@ -3982,7 +4062,7 @@
           }
         },
         {
-          "id": 287,
+          "id": 293,
           "name": "outDuration",
           "kind": 1024,
           "kindString": "Property",
@@ -3995,7 +4075,7 @@
           }
         },
         {
-          "id": 279,
+          "id": 285,
           "name": "id",
           "kind": 1024,
           "kindString": "Property",
@@ -4009,7 +4089,7 @@
           }
         },
         {
-          "id": 291,
+          "id": 297,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -4018,7 +4098,7 @@
           },
           "signatures": [
             {
-              "id": 292,
+              "id": 298,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4036,35 +4116,35 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            288
+            294
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            280,
-            281,
-            282,
-            283,
-            284,
             286,
-            285,
             287,
-            279
+            288,
+            289,
+            290,
+            292,
+            291,
+            293,
+            285
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            291
+            297
           ]
         }
       ]
     },
     {
-      "id": 310,
+      "id": 316,
       "name": "MdFab",
       "kind": 128,
       "kindString": "Class",
@@ -4073,7 +4153,7 @@
       },
       "children": [
         {
-          "id": 313,
+          "id": 319,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -4082,14 +4162,14 @@
           },
           "signatures": [
             {
-              "id": 314,
+              "id": 320,
               "name": "new MdFab",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 315,
+                  "id": 321,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4103,14 +4183,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdFab",
-                "id": 310,
+                "id": 316,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 311,
+          "id": 317,
           "name": "mdFixed",
           "kind": 1024,
           "kindString": "Property",
@@ -4123,7 +4203,7 @@
           }
         },
         {
-          "id": 312,
+          "id": 318,
           "name": "mdLarge",
           "kind": 1024,
           "kindString": "Property",
@@ -4136,7 +4216,7 @@
           }
         },
         {
-          "id": 316,
+          "id": 322,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -4145,7 +4225,7 @@
           },
           "signatures": [
             {
-              "id": 317,
+              "id": 323,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4163,28 +4243,28 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            313
+            319
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            311,
-            312
+            317,
+            318
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            316
+            322
           ]
         }
       ]
     },
     {
-      "id": 616,
+      "id": 622,
       "name": "MdFadeinImage",
       "kind": 128,
       "kindString": "Class",
@@ -4193,7 +4273,7 @@
       },
       "children": [
         {
-          "id": 618,
+          "id": 624,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -4202,14 +4282,14 @@
           },
           "signatures": [
             {
-              "id": 619,
+              "id": 625,
               "name": "new MdFadeinImage",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 620,
+                  "id": 626,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4223,14 +4303,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdFadeinImage",
-                "id": 616,
+                "id": 622,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 617,
+          "id": 623,
           "name": "ref",
           "kind": 1024,
           "kindString": "Property",
@@ -4243,7 +4323,7 @@
           }
         },
         {
-          "id": 621,
+          "id": 627,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -4252,7 +4332,7 @@
           },
           "signatures": [
             {
-              "id": 622,
+              "id": 628,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4265,7 +4345,7 @@
           ]
         },
         {
-          "id": 623,
+          "id": 629,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -4274,7 +4354,7 @@
           },
           "signatures": [
             {
-              "id": 624,
+              "id": 630,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4287,7 +4367,7 @@
           ]
         },
         {
-          "id": 627,
+          "id": 633,
           "name": "ensureOpacity",
           "kind": 2048,
           "kindString": "Method",
@@ -4296,7 +4376,7 @@
           },
           "signatures": [
             {
-              "id": 628,
+              "id": 634,
               "name": "ensureOpacity",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4309,7 +4389,7 @@
           ]
         },
         {
-          "id": 625,
+          "id": 631,
           "name": "fadeInImage",
           "kind": 2048,
           "kindString": "Method",
@@ -4318,7 +4398,7 @@
           },
           "signatures": [
             {
-              "id": 626,
+              "id": 632,
               "name": "fadeInImage",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4336,30 +4416,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            618
+            624
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            617
+            623
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            621,
-            623,
             627,
-            625
+            629,
+            633,
+            631
           ]
         }
       ]
     },
     {
-      "id": 318,
+      "id": 324,
       "name": "MdFileInput",
       "kind": 128,
       "kindString": "Class",
@@ -4368,7 +4448,7 @@
       },
       "children": [
         {
-          "id": 324,
+          "id": 330,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -4377,14 +4457,14 @@
           },
           "signatures": [
             {
-              "id": 325,
+              "id": 331,
               "name": "new MdFileInput",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 326,
+                  "id": 332,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4398,14 +4478,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdFileInput",
-                "id": 318,
+                "id": 324,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 323,
+          "id": 329,
           "name": "_suspendUpdate",
           "kind": 1024,
           "kindString": "Property",
@@ -4418,7 +4498,7 @@
           }
         },
         {
-          "id": 322,
+          "id": 328,
           "name": "files",
           "kind": 1024,
           "kindString": "Property",
@@ -4431,7 +4511,7 @@
           }
         },
         {
-          "id": 319,
+          "id": 325,
           "name": "mdCaption",
           "kind": 1024,
           "kindString": "Property",
@@ -4444,7 +4524,7 @@
           }
         },
         {
-          "id": 321,
+          "id": 327,
           "name": "mdLabelValue",
           "kind": 1024,
           "kindString": "Property",
@@ -4457,7 +4537,7 @@
           }
         },
         {
-          "id": 320,
+          "id": 326,
           "name": "mdMultiple",
           "kind": 1024,
           "kindString": "Property",
@@ -4470,7 +4550,7 @@
           }
         },
         {
-          "id": 327,
+          "id": 333,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -4479,7 +4559,7 @@
           },
           "signatures": [
             {
-              "id": 328,
+              "id": 334,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4492,7 +4572,7 @@
           ]
         },
         {
-          "id": 329,
+          "id": 335,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -4501,7 +4581,7 @@
           },
           "signatures": [
             {
-              "id": 330,
+              "id": 336,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4514,7 +4594,7 @@
           ]
         },
         {
-          "id": 331,
+          "id": 337,
           "name": "handleChangeFromNativeInput",
           "kind": 2048,
           "kindString": "Method",
@@ -4523,7 +4603,7 @@
           },
           "signatures": [
             {
-              "id": 332,
+              "id": 338,
               "name": "handleChangeFromNativeInput",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4541,33 +4621,33 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            324
+            330
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            323,
-            322,
-            319,
-            321,
-            320
+            329,
+            328,
+            325,
+            327,
+            326
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            327,
-            329,
-            331
+            333,
+            335,
+            337
           ]
         }
       ]
     },
     {
-      "id": 333,
+      "id": 339,
       "name": "MdFooter",
       "kind": 128,
       "kindString": "Class",
@@ -4576,7 +4656,7 @@
       },
       "children": [
         {
-          "id": 334,
+          "id": 340,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -4585,14 +4665,14 @@
           },
           "signatures": [
             {
-              "id": 335,
+              "id": 341,
               "name": "new MdFooter",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 336,
+                  "id": 342,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4606,14 +4686,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdFooter",
-                "id": 333,
+                "id": 339,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 337,
+          "id": 343,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -4622,7 +4702,7 @@
           },
           "signatures": [
             {
-              "id": 338,
+              "id": 344,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4635,7 +4715,7 @@
           ]
         },
         {
-          "id": 339,
+          "id": 345,
           "name": "unbind",
           "kind": 2048,
           "kindString": "Method",
@@ -4644,7 +4724,7 @@
           },
           "signatures": [
             {
-              "id": 340,
+              "id": 346,
               "name": "unbind",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4662,21 +4742,21 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            334
+            340
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            337,
-            339
+            343,
+            345
           ]
         }
       ]
     },
     {
-      "id": 358,
+      "id": 364,
       "name": "MdInput",
       "kind": 128,
       "kindString": "Class",
@@ -4685,7 +4765,7 @@
       },
       "children": [
         {
-          "id": 367,
+          "id": 373,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -4694,14 +4774,14 @@
           },
           "signatures": [
             {
-              "id": 368,
+              "id": 374,
               "name": "new MdInput",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 369,
+                  "id": 375,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4712,7 +4792,7 @@
                   }
                 },
                 {
-                  "id": 370,
+                  "id": 376,
                   "name": "taskQueue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4723,7 +4803,7 @@
                   }
                 },
                 {
-                  "id": 371,
+                  "id": 377,
                   "name": "updateService",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4737,14 +4817,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdInput",
-                "id": 358,
+                "id": 364,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 360,
+          "id": 366,
           "name": "mdLabel",
           "kind": 1024,
           "kindString": "Property",
@@ -4757,7 +4837,7 @@
           }
         },
         {
-          "id": 361,
+          "id": 367,
           "name": "mdPlaceholder",
           "kind": 1024,
           "kindString": "Property",
@@ -4770,7 +4850,7 @@
           }
         },
         {
-          "id": 362,
+          "id": 368,
           "name": "mdTextArea",
           "kind": 1024,
           "kindString": "Property",
@@ -4783,7 +4863,7 @@
           }
         },
         {
-          "id": 363,
+          "id": 369,
           "name": "mdType",
           "kind": 1024,
           "kindString": "Property",
@@ -4796,7 +4876,7 @@
           }
         },
         {
-          "id": 364,
+          "id": 370,
           "name": "mdValidate",
           "kind": 1024,
           "kindString": "Property",
@@ -4809,7 +4889,7 @@
           }
         },
         {
-          "id": 365,
+          "id": 371,
           "name": "mdValidateError",
           "kind": 1024,
           "kindString": "Property",
@@ -4822,7 +4902,7 @@
           }
         },
         {
-          "id": 366,
+          "id": 372,
           "name": "mdValue",
           "kind": 1024,
           "kindString": "Property",
@@ -4835,7 +4915,7 @@
           }
         },
         {
-          "id": 359,
+          "id": 365,
           "name": "id",
           "kind": 1024,
           "kindString": "Property",
@@ -4849,7 +4929,7 @@
           }
         },
         {
-          "id": 372,
+          "id": 378,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -4858,7 +4938,7 @@
           },
           "signatures": [
             {
-              "id": 373,
+              "id": 379,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4871,7 +4951,7 @@
           ]
         },
         {
-          "id": 374,
+          "id": 380,
           "name": "mdValueChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -4880,7 +4960,7 @@
           },
           "signatures": [
             {
-              "id": 375,
+              "id": 381,
               "name": "mdValueChanged",
               "kind": 4096,
               "kindString": "Call signature",
@@ -4898,35 +4978,35 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            367
+            373
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            360,
-            361,
-            362,
-            363,
-            364,
-            365,
             366,
-            359
+            367,
+            368,
+            369,
+            370,
+            371,
+            372,
+            365
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            372,
-            374
+            378,
+            380
           ]
         }
       ]
     },
     {
-      "id": 349,
+      "id": 355,
       "name": "MdInputUpdateService",
       "kind": 128,
       "kindString": "Class",
@@ -4935,7 +5015,7 @@
       },
       "children": [
         {
-          "id": 351,
+          "id": 357,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -4944,14 +5024,14 @@
           },
           "signatures": [
             {
-              "id": 352,
+              "id": 358,
               "name": "new MdInputUpdateService",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 353,
+                  "id": 359,
                   "name": "taskQueue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -4965,14 +5045,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdInputUpdateService",
-                "id": 349,
+                "id": 355,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 350,
+          "id": 356,
           "name": "_updateCalled",
           "kind": 1024,
           "kindString": "Property",
@@ -4985,7 +5065,7 @@
           }
         },
         {
-          "id": 354,
+          "id": 360,
           "name": "materializeUpdate",
           "kind": 2048,
           "kindString": "Method",
@@ -4994,7 +5074,7 @@
           },
           "signatures": [
             {
-              "id": 355,
+              "id": 361,
               "name": "materializeUpdate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5007,7 +5087,7 @@
           ]
         },
         {
-          "id": 356,
+          "id": 362,
           "name": "update",
           "kind": 2048,
           "kindString": "Method",
@@ -5016,7 +5096,7 @@
           },
           "signatures": [
             {
-              "id": 357,
+              "id": 363,
               "name": "update",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5034,28 +5114,28 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            351
+            357
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            350
+            356
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            354,
-            356
+            360,
+            362
           ]
         }
       ]
     },
     {
-      "id": 376,
+      "id": 382,
       "name": "MdModalTrigger",
       "kind": 128,
       "kindString": "Class",
@@ -5064,7 +5144,7 @@
       },
       "children": [
         {
-          "id": 378,
+          "id": 384,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -5073,14 +5153,14 @@
           },
           "signatures": [
             {
-              "id": 379,
+              "id": 385,
               "name": "new MdModalTrigger",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 380,
+                  "id": 386,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5094,14 +5174,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdModalTrigger",
-                "id": 376,
+                "id": 382,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 377,
+          "id": 383,
           "name": "dismissible",
           "kind": 1024,
           "kindString": "Property",
@@ -5114,7 +5194,7 @@
           }
         },
         {
-          "id": 381,
+          "id": 387,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -5123,7 +5203,7 @@
           },
           "signatures": [
             {
-              "id": 382,
+              "id": 388,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5136,7 +5216,7 @@
           ]
         },
         {
-          "id": 383,
+          "id": 389,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -5145,7 +5225,7 @@
           },
           "signatures": [
             {
-              "id": 384,
+              "id": 390,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5158,7 +5238,7 @@
           ]
         },
         {
-          "id": 385,
+          "id": 391,
           "name": "onComplete",
           "kind": 2048,
           "kindString": "Method",
@@ -5167,7 +5247,7 @@
           },
           "signatures": [
             {
-              "id": 386,
+              "id": 392,
               "name": "onComplete",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5185,29 +5265,29 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            378
+            384
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            377
+            383
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            381,
-            383,
-            385
+            387,
+            389,
+            391
           ]
         }
       ]
     },
     {
-      "id": 387,
+      "id": 393,
       "name": "MdNavbar",
       "kind": 128,
       "kindString": "Class",
@@ -5216,7 +5296,7 @@
       },
       "children": [
         {
-          "id": 390,
+          "id": 396,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -5225,14 +5305,14 @@
           },
           "signatures": [
             {
-              "id": 391,
+              "id": 397,
               "name": "new MdNavbar",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 392,
+                  "id": 398,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5246,14 +5326,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdNavbar",
-                "id": 387,
+                "id": 393,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 389,
+          "id": 395,
           "name": "fixedAttributeManager",
           "kind": 1024,
           "kindString": "Property",
@@ -5266,7 +5346,7 @@
           }
         },
         {
-          "id": 388,
+          "id": 394,
           "name": "mdFixed",
           "kind": 1024,
           "kindString": "Property",
@@ -5279,7 +5359,7 @@
           }
         },
         {
-          "id": 393,
+          "id": 399,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -5288,7 +5368,7 @@
           },
           "signatures": [
             {
-              "id": 394,
+              "id": 400,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5301,7 +5381,7 @@
           ]
         },
         {
-          "id": 395,
+          "id": 401,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -5310,7 +5390,7 @@
           },
           "signatures": [
             {
-              "id": 396,
+              "id": 402,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5328,29 +5408,29 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            390
+            396
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            389,
-            388
+            395,
+            394
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            393,
-            395
+            399,
+            401
           ]
         }
       ]
     },
     {
-      "id": 397,
+      "id": 403,
       "name": "MdPagination",
       "kind": 128,
       "kindString": "Class",
@@ -5359,7 +5439,7 @@
       },
       "children": [
         {
-          "id": 402,
+          "id": 408,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -5368,14 +5448,14 @@
           },
           "signatures": [
             {
-              "id": 403,
+              "id": 409,
               "name": "new MdPagination",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 404,
+                  "id": 410,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5389,14 +5469,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdPagination",
-                "id": 397,
+                "id": 403,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 398,
+          "id": 404,
           "name": "mdActivePage",
           "kind": 1024,
           "kindString": "Property",
@@ -5409,7 +5489,7 @@
           }
         },
         {
-          "id": 399,
+          "id": 405,
           "name": "mdPages",
           "kind": 1024,
           "kindString": "Property",
@@ -5422,7 +5502,7 @@
           }
         },
         {
-          "id": 400,
+          "id": 406,
           "name": "mdShowFirstLast",
           "kind": 1024,
           "kindString": "Property",
@@ -5435,7 +5515,7 @@
           }
         },
         {
-          "id": 401,
+          "id": 407,
           "name": "mdShowPrevNext",
           "kind": 1024,
           "kindString": "Property",
@@ -5448,7 +5528,7 @@
           }
         },
         {
-          "id": 405,
+          "id": 411,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -5457,7 +5537,7 @@
           },
           "signatures": [
             {
-              "id": 406,
+              "id": 412,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5470,7 +5550,7 @@
           ]
         },
         {
-          "id": 407,
+          "id": 413,
           "name": "setActivePage",
           "kind": 2048,
           "kindString": "Method",
@@ -5479,14 +5559,14 @@
           },
           "signatures": [
             {
-              "id": 408,
+              "id": 414,
               "name": "setActivePage",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 409,
+                  "id": 415,
                   "name": "page",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5505,7 +5585,7 @@
           ]
         },
         {
-          "id": 410,
+          "id": 416,
           "name": "setFirstPage",
           "kind": 2048,
           "kindString": "Method",
@@ -5514,7 +5594,7 @@
           },
           "signatures": [
             {
-              "id": 411,
+              "id": 417,
               "name": "setFirstPage",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5527,7 +5607,7 @@
           ]
         },
         {
-          "id": 412,
+          "id": 418,
           "name": "setLastPage",
           "kind": 2048,
           "kindString": "Method",
@@ -5536,7 +5616,7 @@
           },
           "signatures": [
             {
-              "id": 413,
+              "id": 419,
               "name": "setLastPage",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5549,7 +5629,7 @@
           ]
         },
         {
-          "id": 416,
+          "id": 422,
           "name": "setNextPage",
           "kind": 2048,
           "kindString": "Method",
@@ -5558,7 +5638,7 @@
           },
           "signatures": [
             {
-              "id": 417,
+              "id": 423,
               "name": "setNextPage",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5571,7 +5651,7 @@
           ]
         },
         {
-          "id": 414,
+          "id": 420,
           "name": "setPreviousPage",
           "kind": 2048,
           "kindString": "Method",
@@ -5580,7 +5660,7 @@
           },
           "signatures": [
             {
-              "id": 415,
+              "id": 421,
               "name": "setPreviousPage",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5598,35 +5678,35 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            402
+            408
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            398,
-            399,
-            400,
-            401
+            404,
+            405,
+            406,
+            407
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            405,
-            407,
-            410,
-            412,
+            411,
+            413,
             416,
-            414
+            418,
+            422,
+            420
           ]
         }
       ]
     },
     {
-      "id": 418,
+      "id": 424,
       "name": "MdParallax",
       "kind": 128,
       "kindString": "Class",
@@ -5635,7 +5715,7 @@
       },
       "children": [
         {
-          "id": 419,
+          "id": 425,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -5644,14 +5724,14 @@
           },
           "signatures": [
             {
-              "id": 420,
+              "id": 426,
               "name": "new MdParallax",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 421,
+                  "id": 427,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5665,14 +5745,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdParallax",
-                "id": 418,
+                "id": 424,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 422,
+          "id": 428,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -5681,7 +5761,7 @@
           },
           "signatures": [
             {
-              "id": 423,
+              "id": 429,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5694,7 +5774,7 @@
           ]
         },
         {
-          "id": 424,
+          "id": 430,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -5703,7 +5783,7 @@
           },
           "signatures": [
             {
-              "id": 425,
+              "id": 431,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5721,21 +5801,21 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            419
+            425
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            422,
-            424
+            428,
+            430
           ]
         }
       ]
     },
     {
-      "id": 341,
+      "id": 347,
       "name": "MdPrefix",
       "kind": 128,
       "kindString": "Class",
@@ -5744,7 +5824,7 @@
       },
       "children": [
         {
-          "id": 342,
+          "id": 348,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -5753,14 +5833,14 @@
           },
           "signatures": [
             {
-              "id": 343,
+              "id": 349,
               "name": "new MdPrefix",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 344,
+                  "id": 350,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5774,14 +5854,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdPrefix",
-                "id": 341,
+                "id": 347,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 345,
+          "id": 351,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -5790,7 +5870,7 @@
           },
           "signatures": [
             {
-              "id": 346,
+              "id": 352,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5803,7 +5883,7 @@
           ]
         },
         {
-          "id": 347,
+          "id": 353,
           "name": "unbind",
           "kind": 2048,
           "kindString": "Method",
@@ -5812,7 +5892,7 @@
           },
           "signatures": [
             {
-              "id": 348,
+              "id": 354,
               "name": "unbind",
               "kind": 4096,
               "kindString": "Call signature",
@@ -5830,21 +5910,21 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            342
+            348
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            345,
-            347
+            351,
+            353
           ]
         }
       ]
     },
     {
-      "id": 426,
+      "id": 432,
       "name": "MdProgress",
       "kind": 128,
       "kindString": "Class",
@@ -5853,7 +5933,7 @@
       },
       "children": [
         {
-          "id": 430,
+          "id": 436,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -5862,14 +5942,14 @@
           },
           "signatures": [
             {
-              "id": 431,
+              "id": 437,
               "name": "new MdProgress",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 432,
+                  "id": 438,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5883,14 +5963,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdProgress",
-                "id": 426,
+                "id": 432,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 427,
+          "id": 433,
           "name": "mdColor",
           "kind": 1024,
           "kindString": "Property",
@@ -5903,7 +5983,7 @@
           }
         },
         {
-          "id": 428,
+          "id": 434,
           "name": "mdType",
           "kind": 1024,
           "kindString": "Property",
@@ -5916,7 +5996,7 @@
           }
         },
         {
-          "id": 429,
+          "id": 435,
           "name": "mdValue",
           "kind": 1024,
           "kindString": "Property",
@@ -5934,22 +6014,22 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            430
+            436
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            427,
-            428,
-            429
+            433,
+            434,
+            435
           ]
         }
       ]
     },
     {
-      "id": 433,
+      "id": 439,
       "name": "MdPushpin",
       "kind": 128,
       "kindString": "Class",
@@ -5958,7 +6038,7 @@
       },
       "children": [
         {
-          "id": 437,
+          "id": 443,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -5967,14 +6047,14 @@
           },
           "signatures": [
             {
-              "id": 438,
+              "id": 444,
               "name": "new MdPushpin",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 439,
+                  "id": 445,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5988,14 +6068,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdPushpin",
-                "id": 433,
+                "id": 439,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 434,
+          "id": 440,
           "name": "bottom",
           "kind": 1024,
           "kindString": "Property",
@@ -6008,7 +6088,7 @@
           }
         },
         {
-          "id": 435,
+          "id": 441,
           "name": "offset",
           "kind": 1024,
           "kindString": "Property",
@@ -6021,7 +6101,7 @@
           }
         },
         {
-          "id": 436,
+          "id": 442,
           "name": "top",
           "kind": 1024,
           "kindString": "Property",
@@ -6034,7 +6114,7 @@
           }
         },
         {
-          "id": 440,
+          "id": 446,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -6043,7 +6123,7 @@
           },
           "signatures": [
             {
-              "id": 441,
+              "id": 447,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6056,7 +6136,7 @@
           ]
         },
         {
-          "id": 442,
+          "id": 448,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -6065,7 +6145,7 @@
           },
           "signatures": [
             {
-              "id": 443,
+              "id": 449,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6083,30 +6163,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            437
+            443
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            434,
-            435,
-            436
+            440,
+            441,
+            442
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            440,
-            442
+            446,
+            448
           ]
         }
       ]
     },
     {
-      "id": 444,
+      "id": 450,
       "name": "MdRadio",
       "kind": 128,
       "kindString": "Class",
@@ -6115,7 +6195,7 @@
       },
       "children": [
         {
-          "id": 452,
+          "id": 458,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -6124,14 +6204,14 @@
           },
           "signatures": [
             {
-              "id": 453,
+              "id": 459,
               "name": "new MdRadio",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 454,
+                  "id": 460,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6145,14 +6225,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdRadio",
-                "id": 444,
+                "id": 450,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 446,
+          "id": 452,
           "name": "mdChecked",
           "kind": 1024,
           "kindString": "Property",
@@ -6165,7 +6245,7 @@
           }
         },
         {
-          "id": 447,
+          "id": 453,
           "name": "mdDisabled",
           "kind": 1024,
           "kindString": "Property",
@@ -6178,7 +6258,7 @@
           }
         },
         {
-          "id": 448,
+          "id": 454,
           "name": "mdGap",
           "kind": 1024,
           "kindString": "Property",
@@ -6191,7 +6271,7 @@
           }
         },
         {
-          "id": 449,
+          "id": 455,
           "name": "mdModel",
           "kind": 1024,
           "kindString": "Property",
@@ -6204,7 +6284,7 @@
           }
         },
         {
-          "id": 450,
+          "id": 456,
           "name": "mdName",
           "kind": 1024,
           "kindString": "Property",
@@ -6217,7 +6297,7 @@
           }
         },
         {
-          "id": 451,
+          "id": 457,
           "name": "mdValue",
           "kind": 1024,
           "kindString": "Property",
@@ -6230,7 +6310,7 @@
           }
         },
         {
-          "id": 445,
+          "id": 451,
           "name": "id",
           "kind": 1024,
           "kindString": "Property",
@@ -6244,7 +6324,7 @@
           }
         },
         {
-          "id": 455,
+          "id": 461,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -6253,7 +6333,7 @@
           },
           "signatures": [
             {
-              "id": 456,
+              "id": 462,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6266,7 +6346,7 @@
           ]
         },
         {
-          "id": 457,
+          "id": 463,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -6275,7 +6355,7 @@
           },
           "signatures": [
             {
-              "id": 458,
+              "id": 464,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6288,7 +6368,7 @@
           ]
         },
         {
-          "id": 459,
+          "id": 465,
           "name": "mdDisabledChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -6297,14 +6377,14 @@
           },
           "signatures": [
             {
-              "id": 460,
+              "id": 466,
               "name": "mdDisabledChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 461,
+                  "id": 467,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6328,35 +6408,35 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            452
+            458
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            446,
-            447,
-            448,
-            449,
-            450,
-            451,
-            445
+            452,
+            453,
+            454,
+            455,
+            456,
+            457,
+            451
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            455,
-            457,
-            459
+            461,
+            463,
+            465
           ]
         }
       ]
     },
     {
-      "id": 462,
+      "id": 468,
       "name": "MdRange",
       "kind": 128,
       "kindString": "Class",
@@ -6365,7 +6445,7 @@
       },
       "children": [
         {
-          "id": 467,
+          "id": 473,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -6374,14 +6454,14 @@
           },
           "signatures": [
             {
-              "id": 468,
+              "id": 474,
               "name": "new MdRange",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 469,
+                  "id": 475,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6395,14 +6475,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdRange",
-                "id": 462,
+                "id": 468,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 464,
+          "id": 470,
           "name": "mdMax",
           "kind": 1024,
           "kindString": "Property",
@@ -6415,7 +6495,7 @@
           }
         },
         {
-          "id": 463,
+          "id": 469,
           "name": "mdMin",
           "kind": 1024,
           "kindString": "Property",
@@ -6428,7 +6508,7 @@
           }
         },
         {
-          "id": 465,
+          "id": 471,
           "name": "mdStep",
           "kind": 1024,
           "kindString": "Property",
@@ -6441,7 +6521,7 @@
           }
         },
         {
-          "id": 466,
+          "id": 472,
           "name": "mdValue",
           "kind": 1024,
           "kindString": "Property",
@@ -6459,23 +6539,23 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            467
+            473
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            464,
-            463,
-            465,
-            466
+            470,
+            469,
+            471,
+            472
           ]
         }
       ]
     },
     {
-      "id": 487,
+      "id": 493,
       "name": "MdScrollSpy",
       "kind": 128,
       "kindString": "Class",
@@ -6484,7 +6564,7 @@
       },
       "children": [
         {
-          "id": 489,
+          "id": 495,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -6493,14 +6573,14 @@
           },
           "signatures": [
             {
-              "id": 490,
+              "id": 496,
               "name": "new MdScrollSpy",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 491,
+                  "id": 497,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6514,14 +6594,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdScrollSpy",
-                "id": 487,
+                "id": 493,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 488,
+          "id": 494,
           "name": "target",
           "kind": 1024,
           "kindString": "Property",
@@ -6534,7 +6614,7 @@
           }
         },
         {
-          "id": 492,
+          "id": 498,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -6543,7 +6623,7 @@
           },
           "signatures": [
             {
-              "id": 493,
+              "id": 499,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6556,7 +6636,7 @@
           ]
         },
         {
-          "id": 494,
+          "id": 500,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -6565,7 +6645,7 @@
           },
           "signatures": [
             {
-              "id": 495,
+              "id": 501,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6583,28 +6663,28 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            489
+            495
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            488
+            494
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            492,
-            494
+            498,
+            500
           ]
         }
       ]
     },
     {
-      "id": 480,
+      "id": 486,
       "name": "MdScrollfire",
       "kind": 128,
       "kindString": "Class",
@@ -6613,7 +6693,7 @@
       },
       "children": [
         {
-          "id": 482,
+          "id": 488,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -6622,14 +6702,14 @@
           },
           "signatures": [
             {
-              "id": 483,
+              "id": 489,
               "name": "new MdScrollfire",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 484,
+                  "id": 490,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6643,14 +6723,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdScrollfire",
-                "id": 480,
+                "id": 486,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 481,
+          "id": 487,
           "name": "targetId",
           "kind": 1024,
           "kindString": "Property",
@@ -6663,7 +6743,7 @@
           }
         },
         {
-          "id": 485,
+          "id": 491,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -6672,7 +6752,7 @@
           },
           "signatures": [
             {
-              "id": 486,
+              "id": 492,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6690,27 +6770,27 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            482
+            488
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            481
+            487
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            485
+            491
           ]
         }
       ]
     },
     {
-      "id": 474,
+      "id": 480,
       "name": "MdScrollfireTarget",
       "kind": 128,
       "kindString": "Class",
@@ -6719,7 +6799,7 @@
       },
       "children": [
         {
-          "id": 477,
+          "id": 483,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -6728,14 +6808,14 @@
           },
           "signatures": [
             {
-              "id": 478,
+              "id": 484,
               "name": "new MdScrollfireTarget",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 479,
+                  "id": 485,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6749,14 +6829,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdScrollfireTarget",
-                "id": 474,
+                "id": 480,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 475,
+          "id": 481,
           "name": "callback",
           "kind": 1024,
           "kindString": "Property",
@@ -6769,7 +6849,7 @@
           }
         },
         {
-          "id": 476,
+          "id": 482,
           "name": "offset",
           "kind": 1024,
           "kindString": "Property",
@@ -6787,21 +6867,21 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            477
+            483
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            475,
-            476
+            481,
+            482
           ]
         }
       ]
     },
     {
-      "id": 496,
+      "id": 502,
       "name": "MdSelect",
       "kind": 128,
       "kindString": "Class",
@@ -6810,7 +6890,7 @@
       },
       "children": [
         {
-          "id": 498,
+          "id": 504,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -6819,14 +6899,14 @@
           },
           "signatures": [
             {
-              "id": 499,
+              "id": 505,
               "name": "new MdSelect",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 500,
+                  "id": 506,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6837,7 +6917,7 @@
                   }
                 },
                 {
-                  "id": 501,
+                  "id": 507,
                   "name": "logManager",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6848,7 +6928,7 @@
                   }
                 },
                 {
-                  "id": 502,
+                  "id": 508,
                   "name": "observerLocator",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6859,7 +6939,7 @@
                   }
                 },
                 {
-                  "id": 503,
+                  "id": 509,
                   "name": "taskQueue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6873,14 +6953,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdSelect",
-                "id": 496,
+                "id": 502,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 497,
+          "id": 503,
           "name": "_suspendUpdate",
           "kind": 1024,
           "kindString": "Property",
@@ -6893,7 +6973,7 @@
           }
         },
         {
-          "id": 504,
+          "id": 510,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -6902,7 +6982,7 @@
           },
           "signatures": [
             {
-              "id": 505,
+              "id": 511,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6915,7 +6995,7 @@
           ]
         },
         {
-          "id": 506,
+          "id": 512,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -6924,7 +7004,7 @@
           },
           "signatures": [
             {
-              "id": 507,
+              "id": 513,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6937,7 +7017,7 @@
           ]
         },
         {
-          "id": 510,
+          "id": 516,
           "name": "handleChangeFromNativeSelect",
           "kind": 2048,
           "kindString": "Method",
@@ -6946,7 +7026,7 @@
           },
           "signatures": [
             {
-              "id": 511,
+              "id": 517,
               "name": "handleChangeFromNativeSelect",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6959,7 +7039,7 @@
           ]
         },
         {
-          "id": 512,
+          "id": 518,
           "name": "handleChangeFromViewModel",
           "kind": 2048,
           "kindString": "Method",
@@ -6968,14 +7048,14 @@
           },
           "signatures": [
             {
-              "id": 513,
+              "id": 519,
               "name": "handleChangeFromViewModel",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 514,
+                  "id": 520,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6994,7 +7074,7 @@
           ]
         },
         {
-          "id": 508,
+          "id": 514,
           "name": "refresh",
           "kind": 2048,
           "kindString": "Method",
@@ -7003,7 +7083,7 @@
           },
           "signatures": [
             {
-              "id": 509,
+              "id": 515,
               "name": "refresh",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7021,31 +7101,31 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            498
+            504
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            497
+            503
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            504,
-            506,
             510,
             512,
-            508
+            516,
+            518,
+            514
           ]
         }
       ]
     },
     {
-      "id": 525,
+      "id": 531,
       "name": "MdSidenav",
       "kind": 128,
       "kindString": "Class",
@@ -7054,7 +7134,7 @@
       },
       "children": [
         {
-          "id": 533,
+          "id": 539,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -7063,14 +7143,14 @@
           },
           "signatures": [
             {
-              "id": 534,
+              "id": 540,
               "name": "new MdSidenav",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 535,
+                  "id": 541,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -7084,14 +7164,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdSidenav",
-                "id": 525,
+                "id": 531,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 531,
+          "id": 537,
           "name": "attachedResolver",
           "kind": 1024,
           "kindString": "Property",
@@ -7104,7 +7184,7 @@
           }
         },
         {
-          "id": 527,
+          "id": 533,
           "name": "mdCloseOnClick",
           "kind": 1024,
           "kindString": "Property",
@@ -7117,7 +7197,7 @@
           }
         },
         {
-          "id": 528,
+          "id": 534,
           "name": "mdEdge",
           "kind": 1024,
           "kindString": "Property",
@@ -7130,7 +7210,7 @@
           }
         },
         {
-          "id": 529,
+          "id": 535,
           "name": "mdFixed",
           "kind": 1024,
           "kindString": "Property",
@@ -7143,7 +7223,7 @@
           }
         },
         {
-          "id": 530,
+          "id": 536,
           "name": "mdWidth",
           "kind": 1024,
           "kindString": "Property",
@@ -7156,7 +7236,7 @@
           }
         },
         {
-          "id": 532,
+          "id": 538,
           "name": "whenAttached",
           "kind": 1024,
           "kindString": "Property",
@@ -7169,7 +7249,7 @@
           }
         },
         {
-          "id": 526,
+          "id": 532,
           "name": "id",
           "kind": 1024,
           "kindString": "Property",
@@ -7183,7 +7263,7 @@
           }
         },
         {
-          "id": 536,
+          "id": 542,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -7192,7 +7272,7 @@
           },
           "signatures": [
             {
-              "id": 537,
+              "id": 543,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7205,7 +7285,7 @@
           ]
         },
         {
-          "id": 538,
+          "id": 544,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -7214,7 +7294,7 @@
           },
           "signatures": [
             {
-              "id": 539,
+              "id": 545,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7227,7 +7307,7 @@
           ]
         },
         {
-          "id": 540,
+          "id": 546,
           "name": "mdFixedChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -7236,14 +7316,14 @@
           },
           "signatures": [
             {
-              "id": 541,
+              "id": 547,
               "name": "mdFixedChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 542,
+                  "id": 548,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -7267,35 +7347,35 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            533
+            539
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            531,
-            527,
-            528,
-            529,
-            530,
-            532,
-            526
+            537,
+            533,
+            534,
+            535,
+            536,
+            538,
+            532
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            536,
-            538,
-            540
+            542,
+            544,
+            546
           ]
         }
       ]
     },
     {
-      "id": 515,
+      "id": 521,
       "name": "MdSidenavCollapse",
       "kind": 128,
       "kindString": "Class",
@@ -7304,7 +7384,7 @@
       },
       "children": [
         {
-          "id": 517,
+          "id": 523,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -7313,14 +7393,14 @@
           },
           "signatures": [
             {
-              "id": 518,
+              "id": 524,
               "name": "new MdSidenavCollapse",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 519,
+                  "id": 525,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -7331,7 +7411,7 @@
                   }
                 },
                 {
-                  "id": 520,
+                  "id": 526,
                   "name": "observerLocator",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -7345,14 +7425,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdSidenavCollapse",
-                "id": 515,
+                "id": 521,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 516,
+          "id": 522,
           "name": "ref",
           "kind": 1024,
           "kindString": "Property",
@@ -7365,7 +7445,7 @@
           }
         },
         {
-          "id": 521,
+          "id": 527,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -7374,7 +7454,7 @@
           },
           "signatures": [
             {
-              "id": 522,
+              "id": 528,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7387,7 +7467,7 @@
           ]
         },
         {
-          "id": 523,
+          "id": 529,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -7396,7 +7476,7 @@
           },
           "signatures": [
             {
-              "id": 524,
+              "id": 530,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7414,28 +7494,28 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            517
+            523
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            516
+            522
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            521,
-            523
+            527,
+            529
           ]
         }
       ]
     },
     {
-      "id": 543,
+      "id": 549,
       "name": "MdSlider",
       "kind": 128,
       "kindString": "Class",
@@ -7444,7 +7524,7 @@
       },
       "children": [
         {
-          "id": 549,
+          "id": 555,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -7453,14 +7533,14 @@
           },
           "signatures": [
             {
-              "id": 550,
+              "id": 556,
               "name": "new MdSlider",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 551,
+                  "id": 557,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -7474,14 +7554,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdSlider",
-                "id": 543,
+                "id": 549,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 544,
+          "id": 550,
           "name": "mdFillContainer",
           "kind": 1024,
           "kindString": "Property",
@@ -7494,7 +7574,7 @@
           }
         },
         {
-          "id": 545,
+          "id": 551,
           "name": "mdHeight",
           "kind": 1024,
           "kindString": "Property",
@@ -7507,7 +7587,7 @@
           }
         },
         {
-          "id": 546,
+          "id": 552,
           "name": "mdIndicators",
           "kind": 1024,
           "kindString": "Property",
@@ -7520,7 +7600,7 @@
           }
         },
         {
-          "id": 547,
+          "id": 553,
           "name": "mdInterval",
           "kind": 1024,
           "kindString": "Property",
@@ -7533,7 +7613,7 @@
           }
         },
         {
-          "id": 548,
+          "id": 554,
           "name": "mdTransition",
           "kind": 1024,
           "kindString": "Property",
@@ -7546,7 +7626,7 @@
           }
         },
         {
-          "id": 552,
+          "id": 558,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -7555,7 +7635,7 @@
           },
           "signatures": [
             {
-              "id": 553,
+              "id": 559,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7568,7 +7648,7 @@
           ]
         },
         {
-          "id": 564,
+          "id": 570,
           "name": "mdIndicatorsChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -7577,7 +7657,7 @@
           },
           "signatures": [
             {
-              "id": 565,
+              "id": 571,
               "name": "mdIndicatorsChanged",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7590,7 +7670,7 @@
           ]
         },
         {
-          "id": 558,
+          "id": 564,
           "name": "next",
           "kind": 2048,
           "kindString": "Method",
@@ -7599,7 +7679,7 @@
           },
           "signatures": [
             {
-              "id": 559,
+              "id": 565,
               "name": "next",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7612,7 +7692,7 @@
           ]
         },
         {
-          "id": 554,
+          "id": 560,
           "name": "pause",
           "kind": 2048,
           "kindString": "Method",
@@ -7621,7 +7701,7 @@
           },
           "signatures": [
             {
-              "id": 555,
+              "id": 561,
               "name": "pause",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7634,7 +7714,7 @@
           ]
         },
         {
-          "id": 560,
+          "id": 566,
           "name": "prev",
           "kind": 2048,
           "kindString": "Method",
@@ -7643,7 +7723,7 @@
           },
           "signatures": [
             {
-              "id": 561,
+              "id": 567,
               "name": "prev",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7656,7 +7736,7 @@
           ]
         },
         {
-          "id": 562,
+          "id": 568,
           "name": "refresh",
           "kind": 2048,
           "kindString": "Method",
@@ -7665,7 +7745,7 @@
           },
           "signatures": [
             {
-              "id": 563,
+              "id": 569,
               "name": "refresh",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7678,7 +7758,7 @@
           ]
         },
         {
-          "id": 556,
+          "id": 562,
           "name": "start",
           "kind": 2048,
           "kindString": "Method",
@@ -7687,7 +7767,7 @@
           },
           "signatures": [
             {
-              "id": 557,
+              "id": 563,
               "name": "start",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7705,37 +7785,37 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            549
+            555
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            544,
-            545,
-            546,
-            547,
-            548
+            550,
+            551,
+            552,
+            553,
+            554
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            552,
-            564,
             558,
-            554,
+            570,
+            564,
             560,
-            562,
-            556
+            566,
+            568,
+            562
           ]
         }
       ]
     },
     {
-      "id": 629,
+      "id": 635,
       "name": "MdStaggeredList",
       "kind": 128,
       "kindString": "Class",
@@ -7744,7 +7824,7 @@
       },
       "children": [
         {
-          "id": 631,
+          "id": 637,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -7753,14 +7833,14 @@
           },
           "signatures": [
             {
-              "id": 632,
+              "id": 638,
               "name": "new MdStaggeredList",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 633,
+                  "id": 639,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -7774,14 +7854,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdStaggeredList",
-                "id": 629,
+                "id": 635,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 630,
+          "id": 636,
           "name": "ref",
           "kind": 1024,
           "kindString": "Property",
@@ -7794,7 +7874,7 @@
           }
         },
         {
-          "id": 634,
+          "id": 640,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -7803,7 +7883,7 @@
           },
           "signatures": [
             {
-              "id": 635,
+              "id": 641,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7816,7 +7896,7 @@
           ]
         },
         {
-          "id": 636,
+          "id": 642,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -7825,7 +7905,7 @@
           },
           "signatures": [
             {
-              "id": 637,
+              "id": 643,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7838,7 +7918,7 @@
           ]
         },
         {
-          "id": 640,
+          "id": 646,
           "name": "ensureOpacity",
           "kind": 2048,
           "kindString": "Method",
@@ -7847,7 +7927,7 @@
           },
           "signatures": [
             {
-              "id": 641,
+              "id": 647,
               "name": "ensureOpacity",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7860,7 +7940,7 @@
           ]
         },
         {
-          "id": 638,
+          "id": 644,
           "name": "staggerList",
           "kind": 2048,
           "kindString": "Method",
@@ -7869,7 +7949,7 @@
           },
           "signatures": [
             {
-              "id": 639,
+              "id": 645,
               "name": "staggerList",
               "kind": 4096,
               "kindString": "Call signature",
@@ -7887,30 +7967,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            631
+            637
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            630
+            636
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            634,
-            636,
             640,
-            638
+            642,
+            646,
+            644
           ]
         }
       ]
     },
     {
-      "id": 566,
+      "id": 572,
       "name": "MdSwitch",
       "kind": 128,
       "kindString": "Class",
@@ -7919,7 +7999,7 @@
       },
       "children": [
         {
-          "id": 571,
+          "id": 577,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -7928,14 +8008,14 @@
           },
           "signatures": [
             {
-              "id": 572,
+              "id": 578,
               "name": "new MdSwitch",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 573,
+                  "id": 579,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -7949,14 +8029,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdSwitch",
-                "id": 566,
+                "id": 572,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 567,
+          "id": 573,
           "name": "mdChecked",
           "kind": 1024,
           "kindString": "Property",
@@ -7969,7 +8049,7 @@
           }
         },
         {
-          "id": 568,
+          "id": 574,
           "name": "mdDisabled",
           "kind": 1024,
           "kindString": "Property",
@@ -7982,7 +8062,7 @@
           }
         },
         {
-          "id": 569,
+          "id": 575,
           "name": "mdLabelOff",
           "kind": 1024,
           "kindString": "Property",
@@ -7995,7 +8075,7 @@
           }
         },
         {
-          "id": 570,
+          "id": 576,
           "name": "mdLabelOn",
           "kind": 1024,
           "kindString": "Property",
@@ -8008,7 +8088,7 @@
           }
         },
         {
-          "id": 574,
+          "id": 580,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -8017,7 +8097,7 @@
           },
           "signatures": [
             {
-              "id": 575,
+              "id": 581,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8030,7 +8110,7 @@
           ]
         },
         {
-          "id": 576,
+          "id": 582,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -8039,7 +8119,7 @@
           },
           "signatures": [
             {
-              "id": 577,
+              "id": 583,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8052,7 +8132,7 @@
           ]
         },
         {
-          "id": 578,
+          "id": 584,
           "name": "handleChange",
           "kind": 2048,
           "kindString": "Method",
@@ -8061,7 +8141,7 @@
           },
           "signatures": [
             {
-              "id": 579,
+              "id": 585,
               "name": "handleChange",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8074,7 +8154,7 @@
           ]
         },
         {
-          "id": 580,
+          "id": 586,
           "name": "mdCheckedChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -8083,14 +8163,14 @@
           },
           "signatures": [
             {
-              "id": 581,
+              "id": 587,
               "name": "mdCheckedChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 582,
+                  "id": 588,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8114,33 +8194,33 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            571
+            577
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            567,
-            568,
-            569,
-            570
+            573,
+            574,
+            575,
+            576
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            574,
-            576,
-            578,
-            580
+            580,
+            582,
+            584,
+            586
           ]
         }
       ]
     },
     {
-      "id": 583,
+      "id": 589,
       "name": "MdTabs",
       "kind": 128,
       "kindString": "Class",
@@ -8149,7 +8229,7 @@
       },
       "children": [
         {
-          "id": 584,
+          "id": 590,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -8158,14 +8238,14 @@
           },
           "signatures": [
             {
-              "id": 585,
+              "id": 591,
               "name": "new MdTabs",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 586,
+                  "id": 592,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8176,7 +8256,7 @@
                   }
                 },
                 {
-                  "id": 587,
+                  "id": 593,
                   "name": "taskQueue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8190,14 +8270,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdTabs",
-                "id": 583,
+                "id": 589,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 598,
+          "id": 604,
           "name": "selectedTab",
           "kind": 1024,
           "kindString": "Property",
@@ -8210,7 +8290,7 @@
           }
         },
         {
-          "id": 588,
+          "id": 594,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -8219,7 +8299,7 @@
           },
           "signatures": [
             {
-              "id": 589,
+              "id": 595,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8232,7 +8312,7 @@
           ]
         },
         {
-          "id": 590,
+          "id": 596,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -8241,7 +8321,7 @@
           },
           "signatures": [
             {
-              "id": 591,
+              "id": 597,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8254,7 +8334,7 @@
           ]
         },
         {
-          "id": 592,
+          "id": 598,
           "name": "fireTabSelectedEvent",
           "kind": 2048,
           "kindString": "Method",
@@ -8263,14 +8343,14 @@
           },
           "signatures": [
             {
-              "id": 593,
+              "id": 599,
               "name": "fireTabSelectedEvent",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 594,
+                  "id": 600,
                   "name": "e",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8289,7 +8369,7 @@
           ]
         },
         {
-          "id": 595,
+          "id": 601,
           "name": "selectTab",
           "kind": 2048,
           "kindString": "Method",
@@ -8298,14 +8378,14 @@
           },
           "signatures": [
             {
-              "id": 596,
+              "id": 602,
               "name": "selectTab",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 597,
+                  "id": 603,
                   "name": "id",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8329,30 +8409,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            584
+            590
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            598
+            604
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            588,
-            590,
-            592,
-            595
+            594,
+            596,
+            598,
+            601
           ]
         }
       ]
     },
     {
-      "id": 599,
+      "id": 605,
       "name": "MdToastService",
       "kind": 128,
       "kindString": "Class",
@@ -8361,7 +8441,7 @@
       },
       "children": [
         {
-          "id": 600,
+          "id": 606,
           "name": "show",
           "kind": 2048,
           "kindString": "Method",
@@ -8370,14 +8450,14 @@
           },
           "signatures": [
             {
-              "id": 601,
+              "id": 607,
               "name": "show",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 602,
+                  "id": 608,
                   "name": "message",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8388,7 +8468,7 @@
                   }
                 },
                 {
-                  "id": 603,
+                  "id": 609,
                   "name": "displayLength",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8399,7 +8479,7 @@
                   }
                 },
                 {
-                  "id": 604,
+                  "id": 610,
                   "name": "className",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8425,13 +8505,13 @@
           "title": "Methods",
           "kind": 2048,
           "children": [
-            600
+            606
           ]
         }
       ]
     },
     {
-      "id": 605,
+      "id": 611,
       "name": "MdTooltip",
       "kind": 128,
       "kindString": "Class",
@@ -8440,7 +8520,7 @@
       },
       "children": [
         {
-          "id": 609,
+          "id": 615,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -8449,14 +8529,14 @@
           },
           "signatures": [
             {
-              "id": 610,
+              "id": 616,
               "name": "new MdTooltip",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 611,
+                  "id": 617,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8470,14 +8550,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdTooltip",
-                "id": 605,
+                "id": 611,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 607,
+          "id": 613,
           "name": "delay",
           "kind": 1024,
           "kindString": "Property",
@@ -8490,7 +8570,7 @@
           }
         },
         {
-          "id": 606,
+          "id": 612,
           "name": "position",
           "kind": 1024,
           "kindString": "Property",
@@ -8503,7 +8583,7 @@
           }
         },
         {
-          "id": 608,
+          "id": 614,
           "name": "text",
           "kind": 1024,
           "kindString": "Property",
@@ -8516,7 +8596,7 @@
           }
         },
         {
-          "id": 612,
+          "id": 618,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -8525,7 +8605,7 @@
           },
           "signatures": [
             {
-              "id": 613,
+              "id": 619,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8538,7 +8618,7 @@
           ]
         },
         {
-          "id": 614,
+          "id": 620,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -8547,7 +8627,7 @@
           },
           "signatures": [
             {
-              "id": 615,
+              "id": 621,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8565,30 +8645,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            609
+            615
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            607,
-            606,
-            608
+            613,
+            612,
+            614
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            612,
-            614
+            618,
+            620
           ]
         }
       ]
     },
     {
-      "id": 642,
+      "id": 648,
       "name": "MdWaves",
       "kind": 128,
       "kindString": "Class",
@@ -8597,7 +8677,7 @@
       },
       "children": [
         {
-          "id": 646,
+          "id": 652,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -8606,14 +8686,14 @@
           },
           "signatures": [
             {
-              "id": 647,
+              "id": 653,
               "name": "new MdWaves",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 648,
+                  "id": 654,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8627,14 +8707,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdWaves",
-                "id": 642,
+                "id": 648,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 643,
+          "id": 649,
           "name": "block",
           "kind": 1024,
           "kindString": "Property",
@@ -8647,7 +8727,7 @@
           }
         },
         {
-          "id": 644,
+          "id": 650,
           "name": "circle",
           "kind": 1024,
           "kindString": "Property",
@@ -8660,7 +8740,7 @@
           }
         },
         {
-          "id": 645,
+          "id": 651,
           "name": "color",
           "kind": 1024,
           "kindString": "Property",
@@ -8673,7 +8753,7 @@
           }
         },
         {
-          "id": 649,
+          "id": 655,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -8682,7 +8762,7 @@
           },
           "signatures": [
             {
-              "id": 650,
+              "id": 656,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8695,7 +8775,7 @@
           ]
         },
         {
-          "id": 651,
+          "id": 657,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -8704,7 +8784,7 @@
           },
           "signatures": [
             {
-              "id": 652,
+              "id": 658,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8722,30 +8802,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            646
+            652
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            643,
-            644,
-            645
+            649,
+            650,
+            651
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            649,
-            651
+            655,
+            657
           ]
         }
       ]
     },
     {
-      "id": 218,
+      "id": 224,
       "name": "MdlListSelector",
       "kind": 128,
       "kindString": "Class",
@@ -8754,7 +8834,7 @@
       },
       "children": [
         {
-          "id": 221,
+          "id": 227,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -8763,14 +8843,14 @@
           },
           "signatures": [
             {
-              "id": 222,
+              "id": 228,
               "name": "new MdlListSelector",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 223,
+                  "id": 229,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8784,14 +8864,14 @@
               "type": {
                 "type": "reference",
                 "name": "MdlListSelector",
-                "id": 218,
+                "id": 224,
                 "moduleName": "\"aurelia-materialize-bridge\""
               }
             }
           ]
         },
         {
-          "id": 220,
+          "id": 226,
           "name": "isSelected",
           "kind": 1024,
           "kindString": "Property",
@@ -8804,7 +8884,7 @@
           }
         },
         {
-          "id": 219,
+          "id": 225,
           "name": "item",
           "kind": 1024,
           "kindString": "Property",
@@ -8817,7 +8897,7 @@
           }
         },
         {
-          "id": 224,
+          "id": 230,
           "name": "isSelectedChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -8826,14 +8906,14 @@
           },
           "signatures": [
             {
-              "id": 225,
+              "id": 231,
               "name": "isSelectedChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 226,
+                  "id": 232,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8857,28 +8937,28 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            221
+            227
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            220,
-            219
+            226,
+            225
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            224
+            230
           ]
         }
       ]
     },
     {
-      "id": 470,
+      "id": 476,
       "name": "ScrollfirePatch",
       "kind": 128,
       "kindString": "Class",
@@ -8887,7 +8967,7 @@
       },
       "children": [
         {
-          "id": 471,
+          "id": 477,
           "name": "patched",
           "kind": 1024,
           "kindString": "Property",
@@ -8901,7 +8981,7 @@
           }
         },
         {
-          "id": 472,
+          "id": 478,
           "name": "patch",
           "kind": 2048,
           "kindString": "Method",
@@ -8910,7 +8990,7 @@
           },
           "signatures": [
             {
-              "id": 473,
+              "id": 479,
               "name": "patch",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8928,20 +9008,20 @@
           "title": "Properties",
           "kind": 1024,
           "children": [
-            471
+            477
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            472
+            478
           ]
         }
       ]
     },
     {
-      "id": 660,
+      "id": 666,
       "name": "constants",
       "kind": 32,
       "kindString": "Variable",
@@ -8954,7 +9034,7 @@
       }
     },
     {
-      "id": 653,
+      "id": 659,
       "name": "configure",
       "kind": 64,
       "kindString": "Function",
@@ -8963,14 +9043,14 @@
       },
       "signatures": [
         {
-          "id": 654,
+          "id": 660,
           "name": "configure",
           "kind": 4096,
           "kindString": "Call signature",
           "flags": {},
           "parameters": [
             {
-              "id": 655,
+              "id": 661,
               "name": "aurelia",
               "kind": 32768,
               "kindString": "Parameter",
@@ -8981,7 +9061,7 @@
               }
             },
             {
-              "id": 656,
+              "id": 662,
               "name": "configCallback",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9000,7 +9080,7 @@
       ]
     },
     {
-      "id": 661,
+      "id": 667,
       "name": "fireEvent",
       "kind": 64,
       "kindString": "Function",
@@ -9009,7 +9089,7 @@
       },
       "signatures": [
         {
-          "id": 662,
+          "id": 668,
           "name": "fireEvent",
           "kind": 4096,
           "kindString": "Call signature",
@@ -9019,7 +9099,7 @@
           },
           "parameters": [
             {
-              "id": 663,
+              "id": 669,
               "name": "element",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9033,7 +9113,7 @@
               }
             },
             {
-              "id": 664,
+              "id": 670,
               "name": "name",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9047,7 +9127,7 @@
               }
             },
             {
-              "id": 665,
+              "id": 671,
               "name": "data",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9071,7 +9151,7 @@
       ]
     },
     {
-      "id": 666,
+      "id": 672,
       "name": "fireMaterializeEvent",
       "kind": 64,
       "kindString": "Function",
@@ -9080,7 +9160,7 @@
       },
       "signatures": [
         {
-          "id": 667,
+          "id": 673,
           "name": "fireMaterializeEvent",
           "kind": 4096,
           "kindString": "Call signature",
@@ -9090,7 +9170,7 @@
           },
           "parameters": [
             {
-              "id": 668,
+              "id": 674,
               "name": "element",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9104,7 +9184,7 @@
               }
             },
             {
-              "id": 669,
+              "id": 675,
               "name": "name",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9118,7 +9198,7 @@
               }
             },
             {
-              "id": 670,
+              "id": 676,
               "name": "data",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9142,7 +9222,7 @@
       ]
     },
     {
-      "id": 657,
+      "id": 663,
       "name": "getBooleanFromAttributeValue",
       "kind": 64,
       "kindString": "Function",
@@ -9151,14 +9231,14 @@
       },
       "signatures": [
         {
-          "id": 658,
+          "id": 664,
           "name": "getBooleanFromAttributeValue",
           "kind": 4096,
           "kindString": "Call signature",
           "flags": {},
           "parameters": [
             {
-              "id": 659,
+              "id": 665,
               "name": "value",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9182,12 +9262,12 @@
       "title": "Classes",
       "kind": 128,
       "children": [
-        237,
+        243,
         3,
         7,
-        227,
+        233,
         119,
-        232,
+        238,
         93,
         102,
         111,
@@ -9199,58 +9279,59 @@
         175,
         195,
         199,
-        212,
+        216,
         211,
-        256,
-        293,
-        278,
-        310,
-        616,
-        318,
-        333,
-        358,
-        349,
-        376,
-        387,
-        397,
-        418,
-        341,
-        426,
-        433,
-        444,
-        462,
-        487,
+        215,
+        262,
+        299,
+        284,
+        316,
+        622,
+        324,
+        339,
+        364,
+        355,
+        382,
+        393,
+        403,
+        424,
+        347,
+        432,
+        439,
+        450,
+        468,
+        493,
+        486,
         480,
-        474,
-        496,
-        525,
-        515,
-        543,
-        629,
-        566,
-        583,
-        599,
+        502,
+        531,
+        521,
+        549,
+        635,
+        572,
+        589,
         605,
-        642,
-        218,
-        470
+        611,
+        648,
+        224,
+        476
       ]
     },
     {
       "title": "Variables",
       "kind": 32,
       "children": [
-        660
+        666
       ]
     },
     {
       "title": "Functions",
       "kind": 64,
       "children": [
-        653,
-        661,
-        666,
-        657
+        659,
+        667,
+        672,
+        663
       ]
     }
   ]
