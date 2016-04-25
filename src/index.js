@@ -17,6 +17,8 @@ export function configure(aurelia, configCallback) {
   }
 }
 
+export const version = '0.5.0';
+
 // build-index-remove start
 export * from './toast/toastService';
 // build-index-remove end

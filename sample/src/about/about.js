@@ -18,6 +18,11 @@ export class About {
     }
   ];
 
+  attached() {
+    let bridge = System.get(System.normalizeSync('aurelia-materialize-bridge'));
+    this.version = bridge.version;
+  }
+
   onSelectionChanged(e) {
     let selected = this.list.getSelected();
     let names = selected.map(i => i.name);
