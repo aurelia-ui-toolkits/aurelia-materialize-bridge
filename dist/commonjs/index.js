@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.version = undefined;
 exports.configure = configure;
 
 var _toastService = require('./toast/toastService');
@@ -13,6 +14,42 @@ Object.keys(_toastService).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _toastService[key];
+    }
+  });
+});
+
+var _attributeManager = require('./common/attributeManager');
+
+Object.keys(_attributeManager).forEach(function (key) {
+  if (key === "default") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _attributeManager[key];
+    }
+  });
+});
+
+var _attributes = require('./common/attributes');
+
+Object.keys(_attributes).forEach(function (key) {
+  if (key === "default") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _attributes[key];
+    }
+  });
+});
+
+var _events = require('./common/events');
+
+Object.keys(_events).forEach(function (key) {
+  if (key === "default") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _events[key];
     }
   });
 });
@@ -37,3 +74,5 @@ function configure(aurelia, configCallback) {
     new _scrollfirePatch.ScrollfirePatch().patch();
   }
 }
+
+var version = exports.version = '0.5.1';
