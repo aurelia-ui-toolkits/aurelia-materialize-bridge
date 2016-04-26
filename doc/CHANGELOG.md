@@ -1,3 +1,13 @@
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.5.0...v0.5.1) (2016-04-26)
+
+
+### Features
+
+* **tools:** add AttributeManager, attributes and events to TypeScript definition ([cb141d1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/cb141d1))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.4.0...v0.5.0) (2016-04-18)
 

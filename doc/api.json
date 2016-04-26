@@ -9021,8 +9021,21 @@
       ]
     },
     {
-      "id": 666,
+      "id": 667,
       "name": "constants",
+      "kind": 32,
+      "kindString": "Variable",
+      "flags": {
+        "isExported": true
+      },
+      "type": {
+        "type": "instrinct",
+        "name": "any"
+      }
+    },
+    {
+      "id": 663,
+      "name": "version",
       "kind": 32,
       "kindString": "Variable",
       "flags": {
@@ -9080,7 +9093,7 @@
       ]
     },
     {
-      "id": 667,
+      "id": 668,
       "name": "fireEvent",
       "kind": 64,
       "kindString": "Function",
@@ -9089,7 +9102,7 @@
       },
       "signatures": [
         {
-          "id": 668,
+          "id": 669,
           "name": "fireEvent",
           "kind": 4096,
           "kindString": "Call signature",
@@ -9099,7 +9112,7 @@
           },
           "parameters": [
             {
-              "id": 669,
+              "id": 670,
               "name": "element",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9113,7 +9126,7 @@
               }
             },
             {
-              "id": 670,
+              "id": 671,
               "name": "name",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9127,7 +9140,7 @@
               }
             },
             {
-              "id": 671,
+              "id": 672,
               "name": "data",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9151,7 +9164,7 @@
       ]
     },
     {
-      "id": 672,
+      "id": 673,
       "name": "fireMaterializeEvent",
       "kind": 64,
       "kindString": "Function",
@@ -9160,7 +9173,7 @@
       },
       "signatures": [
         {
-          "id": 673,
+          "id": 674,
           "name": "fireMaterializeEvent",
           "kind": 4096,
           "kindString": "Call signature",
@@ -9170,7 +9183,7 @@
           },
           "parameters": [
             {
-              "id": 674,
+              "id": 675,
               "name": "element",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9184,7 +9197,7 @@
               }
             },
             {
-              "id": 675,
+              "id": 676,
               "name": "name",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9198,7 +9211,7 @@
               }
             },
             {
-              "id": 676,
+              "id": 677,
               "name": "data",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9222,7 +9235,7 @@
       ]
     },
     {
-      "id": 663,
+      "id": 664,
       "name": "getBooleanFromAttributeValue",
       "kind": 64,
       "kindString": "Function",
@@ -9231,14 +9244,14 @@
       },
       "signatures": [
         {
-          "id": 664,
+          "id": 665,
           "name": "getBooleanFromAttributeValue",
           "kind": 4096,
           "kindString": "Call signature",
           "flags": {},
           "parameters": [
             {
-              "id": 665,
+              "id": 666,
               "name": "value",
               "kind": 32768,
               "kindString": "Parameter",
@@ -9321,7 +9334,8 @@
       "title": "Variables",
       "kind": 32,
       "children": [
-        666
+        667,
+        663
       ]
     },
     {
@@ -9329,9 +9343,9 @@
       "kind": 64,
       "children": [
         659,
-        667,
-        672,
-        663
+        668,
+        673,
+        664
       ]
     }
   ]
