@@ -17,8 +17,11 @@ export function configure(aurelia, configCallback) {
   }
 }
 
-export const version = '0.5.0';
+export const version = '0.5.1';
 
 // build-index-remove start
 export * from './toast/toastService';
+export * from './common/attributeManager';
+export * from './common/attributes';
+export * from './common/events';
 // build-index-remove end
