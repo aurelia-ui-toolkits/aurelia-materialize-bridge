@@ -4,8 +4,7 @@
 <br>
 <br>
 The general process of bundling an Aurelia app is explained in [the Aurelia documentation](http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.2.2/doc/article/bundling-your-app-for-deploy).
-From that documentation one may come to the conclusion that for a complete bundle
-configuration it could be sufficient to just add the bridge to a bundle:
+It may seem like for a complete bundle configuration it would be sufficient to just add the bridge to a bundle:
 ```json
 "dist/aurelia-bundle": {
   "includes": [
