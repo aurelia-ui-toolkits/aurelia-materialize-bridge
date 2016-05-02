@@ -1,0 +1,15 @@
+<template>
+  <div class="row">
+    <div>
+      <md-range md-value.bind="rangeValue" change.delegate="onChange($event)"></md-range>
+    </div>
+    <div>
+      Value: ${rangeValue}
+    </div>
+  </div>
+  <div class="row">
+    <md-card md-title="Console log">
+      <logger class="z-depth-1" view-model.ref="logger"></logger>
+    </md-card>
+  </div>
+</template>

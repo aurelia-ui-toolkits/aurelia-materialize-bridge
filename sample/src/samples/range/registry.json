@@ -12,6 +12,10 @@
     "min-and-max": {
       "route": "minmax",
       "files": ["html"]
+    },
+    "events": {
+      "route": "events",
+      "files": ["html", "js"]
     }
   }
 }
