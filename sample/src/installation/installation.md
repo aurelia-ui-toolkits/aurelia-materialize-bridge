@@ -89,4 +89,4 @@ In your project install the plugin via jspm with following command:
 #### You are done!
 It is now possible to drop some custom-elements into your DOM. See the other pages on this website for detailed information on how to do this.
 
-**We recommend that you read [these instructions](#/help/docs/app_developers_tutorials/7._next_actions) in order to get started**
+**Now you might want to do our [app developers tutorial](http://localhost:3000/#/help/docs/app_developers_tutorials/1._introduction).**
