@@ -125,28 +125,8 @@
         "path": "help/docs/bridge-developers-notes/introduction.md"
       },
       {
-        "name": "2. Bridge utilities",
-        "path": "help/docs/bridge-developers-notes/bridge-utilities.md"
-      },
-      {
-        "name": "3. Generation of 'Bindables'",
-        "path": "help/docs/bridge-developers-notes/bindables.md"
-      },
-      {
-        "name": "4. Babel DTS generator",
-        "path": "help/docs/bridge-developers-notes/babel-dts-generator.md"
-      },
-      {
-        "name": "5. On bundling",
+        "name": "2. On bundling",
         "path": "help/docs/bridge-developers-notes/bundling.md"
-      },
-      {
-        "name": "6. Grid HTML API",
-        "path": "help/docs/bridge-developers-notes/html-api-of-kendo-grid.md"
-      },
-      {
-        "name": "7. Template compilation",
-        "path": "help/docs/bridge-developers-notes/template-compilation.md"
-      },
+      }
     ]
 }
