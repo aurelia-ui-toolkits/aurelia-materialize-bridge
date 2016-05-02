@@ -3,18 +3,13 @@
 ### 1. Introduction
 <br>
 
-The collection of articles contained in the **App developers tutorials** help category, _which begins with this article you are reading now_,  presents several short tutorials on using the **[Materialize components](http://aurelia-ui-toolkits.github.io/demo-materialize/#/help/docs/about_this_application/2._components_catalog)** from **[Aurelia-Materialize bridge](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge)** Aurelia plugin.
+The collection of articles contained in this **App developers tutorials** help category presents several short tutorials on using the **[Materialize components](http://aurelia-ui-toolkits.github.io/demo-materialize/#/help/docs/about_this_application/2._components_catalog)** from **[Aurelia-Materialize bridge](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge)** Aurelia plugin.
 <br>
 
 Specifically that means how you will develop the app which "hosts" the few selected controls (`select`, `button`, `slider` and `collapsible`).
 
 This same application that you will build from the scratch, also exists in its finished form **[here](https://github.com/aurelia-ui-toolkits/materialize-app-developers-tutorial)**, provided as a courtesy to allow you to "peek" into some details that might have escaped you.
 <br>
-
-#### Important note
-This section **App developers tutorials** is dedicated to all Aurelia application developers that want to use Materialize components provided by the Aurelia-Materialize bridge.
-
-The whole section named **Bridge developers tutorials** is intended solely to new bridge projects contributors - a lot narrower class than people interested in integrating Materialize components in their application.
 
 * * *
 
