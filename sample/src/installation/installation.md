@@ -1,5 +1,7 @@
 #### Getting the plugin
 
+**<span style="color: red;">Important</span>**: Make sure you run jspm version 0.16.15.
+
 In your project install the plugin via jspm with following command:
 
   ```
