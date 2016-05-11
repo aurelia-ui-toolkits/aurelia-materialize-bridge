@@ -29,7 +29,7 @@
       {
         "name": "7. Color switcher",
         "path": "help/docs/about-this-application/color-switcher.md"
-      },
+      }
     ],
 
     "About Aurelia":
@@ -37,8 +37,7 @@
       {
         "name": "1. Key features",
         "path": "help/docs/about-aurelia/features.md"
-      },
-
+      }
     ],
 
     "About Materialize":
@@ -82,7 +81,7 @@
       {
         "name": "7. What you need to know",
         "path": "help/docs/app-developers-tutorials/next-actions.md"
-      },
+      }
     ],
 
     "App developers notes":

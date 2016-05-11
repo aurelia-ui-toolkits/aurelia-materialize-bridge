@@ -23,7 +23,8 @@ export class Doc {
         files: this.registry[categoryKey]
       };
 
-      if (category.name.includes('_') || category.files.some(i => i.name.includes('_'))) {
+      // if (category.name.includes('_') || category.files.some(i => i.name.includes('_'))) {
+      if (category.name.indexOf('_') > -1 || category.files.some(i => i.name.indexOf('_') > -1)) {
         throw new Error('Documentation categories or file names can\t contain underscore (_)');
       }
 
