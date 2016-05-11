@@ -1,3 +1,13 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.5.1...v0.6.0) (2016-05-11)
+
+
+### Features
+
+* **md-color:** add range coloring ([402348f](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/402348f))
+* **md-input:** add md-disabled attribute
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.5.0...v0.5.1) (2016-04-26)
 
