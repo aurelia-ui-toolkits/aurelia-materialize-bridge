@@ -11,6 +11,7 @@ export class MdInput {
   static id = 0;
 
   @bindable() mdLabel = '';
+  @bindable() mdDisabled = false;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdPlaceholder = '';

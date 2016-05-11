@@ -292,11 +292,6 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
   }
-  export class MdFooter {
-    constructor(element: any);
-    bind(): any;
-    unbind(): any;
-  }
   export class MdFileInput {
     mdCaption: any;
     mdMultiple: any;
@@ -307,6 +302,11 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
     handleChangeFromNativeInput(): any;
+  }
+  export class MdFooter {
+    constructor(element: any);
+    bind(): any;
+    unbind(): any;
   }
   export class MdPrefix {
     constructor(element: any);
@@ -322,6 +322,7 @@ declare module 'aurelia-materialize-bridge' {
   export class MdInput {
     static id: any;
     mdLabel: any;
+    mdDisabled: any;
     mdPlaceholder: any;
     mdTextArea: any;
     mdType: any;
@@ -386,13 +387,6 @@ declare module 'aurelia-materialize-bridge' {
   }
   
   // destroy handler not available
-  export class MdRange {
-    mdMin: any;
-    mdMax: any;
-    mdStep: any;
-    mdValue: any;
-    constructor(element: any);
-  }
   export class MdRadio {
     static id: any;
     mdChecked: any;
@@ -421,6 +415,13 @@ declare module 'aurelia-materialize-bridge' {
     // }
     mdDisabledChanged(newValue: any): any;
   }
+  export class MdRange {
+    mdMin: any;
+    mdMax: any;
+    mdStep: any;
+    mdValue: any;
+    constructor(element: any);
+  }
   
   /* eslint no-new-func:0 */
   export class ScrollfirePatch {
@@ -437,6 +438,14 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
   }
+  export class MdScrollSpy {
+    target: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  
+  // destroy handler not available
   export class MdSelect {
     _suspendUpdate: any;
     constructor(element: any, logManager: any, observerLocator: any, taskQueue: any);
@@ -446,38 +455,6 @@ declare module 'aurelia-materialize-bridge' {
     handleChangeFromNativeSelect(): any;
     handleChangeFromViewModel(newValue: any): any;
   }
-  export class MdScrollSpy {
-    target: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-  }
-  
-  // destroy handler not available
-  export class MdSlider {
-    mdFillContainer: any;
-    mdHeight: any;
-    mdIndicators: any;
-    mdInterval: any;
-    mdTransition: any;
-    constructor(element: any);
-    attached(): any;
-    pause(): any;
-    start(): any;
-    next(): any;
-    prev(): any;
-    refresh(): any;
-    mdIndicatorsChanged(): any;
-  }
-  
-  // commented since that leads to strange effects
-  // mdIntervalChanged() {
-  //   this.refresh();
-  // }
-  //
-  // mdTransitionChanged() {
-  //   this.refresh();
-  // }
   export class MdSidenavCollapse {
     ref: any;
     constructor(element: any, observerLocator: any);
@@ -516,6 +493,30 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     mdFixedChanged(newValue: any): any;
   }
+  export class MdSlider {
+    mdFillContainer: any;
+    mdHeight: any;
+    mdIndicators: any;
+    mdInterval: any;
+    mdTransition: any;
+    constructor(element: any);
+    attached(): any;
+    pause(): any;
+    start(): any;
+    next(): any;
+    prev(): any;
+    refresh(): any;
+    mdIndicatorsChanged(): any;
+  }
+  
+  // commented since that leads to strange effects
+  // mdIntervalChanged() {
+  //   this.refresh();
+  // }
+  //
+  // mdTransitionChanged() {
+  //   this.refresh();
+  // }
   export class MdSwitch {
     mdChecked: any;
     mdDisabled: any;
@@ -542,6 +543,16 @@ declare module 'aurelia-materialize-bridge' {
   export class MdToastService {
     show(message: any, displayLength: any, className?: any): any;
   }
+  
+  // @customAttribute('md-tooltip')
+  export class MdTooltip {
+    position: any;
+    delay: any;
+    text: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   export class MdFadeinImage {
     ref: any;
     constructor(element: any);
@@ -557,16 +568,6 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     staggerList(): any;
     ensureOpacity(): any;
-  }
-  
-  // @customAttribute('md-tooltip')
-  export class MdTooltip {
-    position: any;
-    delay: any;
-    text: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
   }
   export class MdWaves {
     block: any;

@@ -189,6 +189,14 @@
     background-color: ${mdAccentColor};
   }
 
+  /* range */
+  md-range .range-field input[type="range"]::-webkit-slider-thumb, md-range .range-field input[type=range]::-moz-range-thumb, md-range .range-field input[type=range]::-ms-thumb {
+    background-color: ${mdAccentColor} !important;
+  }
+  md-range input[type="range"] + .thumb {
+    background-color: ${mdAccentColor};
+  }
+
   /* select */
   .dropdown-content li > a, .dropdown-content li > span {
     color: ${mdAccentColor};
