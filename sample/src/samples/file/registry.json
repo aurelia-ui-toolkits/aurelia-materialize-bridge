@@ -3,7 +3,7 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "files": ["html", "js"]
+      "files": ["html", "js", "md"]
     },
     "multiple": {
       "route": "multiple",
