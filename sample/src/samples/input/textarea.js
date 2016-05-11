@@ -5,6 +5,6 @@ export class TextArea {
     this.textValue = 'something';
   }
   setDisabled() {
-	  this.disabledValue = !this.disabledValue;
+    this.disabledValue = !this.disabledValue;
   }
 }
