@@ -1,3 +1,13 @@
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.6.0...v0.6.1) (2016-05-16)
+
+
+### Bug Fixes
+
+* **md-range:** set theme color on thumb ([2c15816](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/2c15816)), closes [#176](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/176)
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.5.1...v0.6.0) (2016-05-11)
 
