@@ -190,11 +190,17 @@
   }
 
   /* range */
-  md-range .range-field input[type="range"]::-webkit-slider-thumb, md-range .range-field input[type=range]::-moz-range-thumb, md-range .range-field input[type=range]::-ms-thumb {
-    background-color: ${mdAccentColor} !important;
+  md-range .range-field input[type="range"]::-webkit-slider-thumb {
+    background: ${mdAccentColor};
+  }
+  md-range .range-field input[type="range"]::-moz-range-thumb {
+    background: ${mdAccentColor};
+  }
+  md-range .range-field input[type="range"]::-ms-thumb {
+    background: ${mdAccentColor};
   }
   md-range input[type="range"] + .thumb {
-    background-color: ${mdAccentColor};
+    background-color: ${mdAccentColor}!important;
   }
 
   /* select */
