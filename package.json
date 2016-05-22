@@ -130,6 +130,18 @@
           "href": "doc/CHANGELOG.md"
         }
       ]
-    }
+    },
+    "resources": [
+      "src/breadcrumbs/breadcrumbs.css",
+      "src/collection/md-collection-selector.css",
+      "src/slider/slider.css",
+      "src/card/card.css",
+      "src/input/input.css",
+      "src/switch/switch.css",
+      "src/collection/collection-header.css",
+      "src/navbar/navbar.css",
+      "src/collection/collection-item.css",
+      "src/sidenav/sidenav.css"
+    ]
   }
 }
