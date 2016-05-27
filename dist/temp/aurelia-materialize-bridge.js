@@ -1482,7 +1482,7 @@ var MdInput = exports.MdInput = (_dec93 = (0, _aureliaTemplating.customElement)(
     }
     if (this.mdPlaceholder) {
       this.input.setAttribute('placeholder', this.mdPlaceholder);
-      this.update();
+      this.updateService.update();
     }
   };
 

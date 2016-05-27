@@ -110,7 +110,7 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
     }
     if (this.mdPlaceholder) {
       this.input.setAttribute('placeholder', this.mdPlaceholder);
-      this.update();
+      this.updateService.update();
     }
   };
 
