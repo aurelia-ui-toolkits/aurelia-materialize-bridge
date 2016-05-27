@@ -24,6 +24,10 @@
     "icon-prefixes": {
       "route": "icon-prefixes",
       "files": ["html", "js"]
+    },
+    "placeholder": {
+      "route": "placeholder",
+      "files": ["html", "js"]
     }
   }
 }
