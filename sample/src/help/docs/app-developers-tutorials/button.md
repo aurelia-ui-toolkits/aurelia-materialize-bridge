@@ -35,7 +35,7 @@ results with the instantiation of the button:
 
 <br>
 
-**Observe** that the button control, just like the select control are HTML native elements and that Materialize Aurelia bridge adds custom attributes (`md-enable`) that are bound to [Materialize button](http://materializecss.com/buttons.html))  "matching native properties" . Note also the definition of the event triggers that are activating the code in the view model:
+**Observe** that the button control, just like the select control are HTML native elements and that Materialize Aurelia bridge adds custom attributes (`md-button`) that are bound to [Materialize button](http://materializecss.com/buttons.html))  "matching native properties" . Note also the definition of the event triggers that are activating the code in the view model:
 
 
 <br>
