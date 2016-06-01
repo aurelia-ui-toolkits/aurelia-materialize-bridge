@@ -43,22 +43,10 @@ export class MdSelect {
   }
 
   handleChangeFromNativeSelect() {
-    // Aurelia's select observer doesn't get noticed when something changes the
-    // select value directly (this.element.value = "something"). So we trigger
-    // the change here.
-    // this.valueObserver.value = $(this.element).val();
-    // this.valueObserver.synchronizeValue();
-    // this.valueObserver.synchronizeOptions();
-    // this._suspendUpdate = true;
-    // this.valueObserver.notify();
-    // this._suspendUpdate = false;
-
     if (!this._suspendUpdate) {
       this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
       this._suspendUpdate = true;
       fireEvent(this.element, 'change');
-      // this.valueObserver.value = $(this.element).val();
-      // this.valueObserver.notify();
 
       this._suspendUpdate = false;
     }
