@@ -1,23 +1,23 @@
 import { customAttribute } from 'aurelia-templating';
-import { ObserverLocator } from 'aurelia-binding';
+import { BindingEngine } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { TaskQueue } from 'aurelia-task-queue';
 import * as LogManager from 'aurelia-logging';
 import { fireEvent } from '../common/events';
 
-@inject(Element, LogManager, ObserverLocator, TaskQueue)
+@inject(Element, LogManager, BindingEngine, TaskQueue)
 @customAttribute('md-select')
 export class MdSelect {
   _suspendUpdate = false;
 
-  constructor(element, logManager, observerLocator, taskQueue) {
+  constructor(element, logManager, bindingEngine, taskQueue) {
     this.element = element;
     this.taskQueue = taskQueue;
     this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
     this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
     this.log = LogManager.getLogger('md-select');
-    this.observerLocator = observerLocator;
-    this.valueObserver = this.observerLocator.getObserver(this.element, 'value');
+    this.bindingEngine = bindingEngine;
+    this.valueObserver = this.bindingEngine.propertyObserver(this.element, 'value');
   }
   attached() {
     this.valueObserver.subscribe(this.handleChangeFromViewModel);
