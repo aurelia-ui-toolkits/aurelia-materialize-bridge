@@ -132,16 +132,16 @@
       ]
     },
     "resources": [
-      "src/breadcrumbs/breadcrumbs.css",
-      "src/collection/md-collection-selector.css",
-      "src/slider/slider.css",
-      "src/card/card.css",
-      "src/input/input.css",
-      "src/switch/switch.css",
-      "src/collection/collection-header.css",
-      "src/navbar/navbar.css",
-      "src/collection/collection-item.css",
-      "src/sidenav/sidenav.css"
+      "dist/breadcrumbs/breadcrumbs.css",
+      "dist/collection/md-collection-selector.css",
+      "dist/slider/slider.css",
+      "dist/card/card.css",
+      "dist/input/input.css",
+      "dist/switch/switch.css",
+      "dist/collection/collection-header.css",
+      "dist/navbar/navbar.css",
+      "dist/collection/collection-item.css",
+      "dist/sidenav/sidenav.css"
     ]
   }
 }
