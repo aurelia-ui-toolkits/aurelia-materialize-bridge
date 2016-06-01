@@ -9,6 +9,7 @@ import { fireEvent } from '../common/events';
 @customAttribute('md-select')
 export class MdSelect {
   _suspendUpdate = false;
+  subscriptions = [];
 
   constructor(element, logManager, bindingEngine, taskQueue) {
     this.element = element;
@@ -17,10 +18,9 @@ export class MdSelect {
     this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
     this.log = LogManager.getLogger('md-select');
     this.bindingEngine = bindingEngine;
-    this.valueObserver = this.bindingEngine.propertyObserver(this.element, 'value');
   }
   attached() {
-    this.valueObserver.subscribe(this.handleChangeFromViewModel);
+    this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
     // $(this.element).material_select(() => {
     //   this.log.warn('materialize callback', $(this.element).val());
     //   this.handleChangeFromNativeSelect();
@@ -32,7 +32,7 @@ export class MdSelect {
   detached() {
     $(this.element).off('change', this.handleChangeFromNativeSelect);
     $(this.element).material_select('destroy');
-    this.valueObserver.unsubscribe();
+    this.subscriptions.forEach(sub => sub.dispose());
   }
 
   refresh() {
@@ -57,7 +57,6 @@ export class MdSelect {
       this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
       this._suspendUpdate = true;
       fireEvent(this.element, 'change');
-      this.log.debug('this.valueObserver.value', this.valueObserver.value);
       // this.valueObserver.value = $(this.element).val();
       // this.valueObserver.notify();
 
