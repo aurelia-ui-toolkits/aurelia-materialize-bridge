@@ -21,6 +21,7 @@ export class MdSelect {
   }
   attached() {
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
+    // this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'selectedOptions').subscribe(this.notifyBindingEngine.bind(this)));
     // $(this.element).material_select(() => {
     //   this.log.warn('materialize callback', $(this.element).val());
     //   this.handleChangeFromNativeSelect();
@@ -40,6 +41,10 @@ export class MdSelect {
       $(this.element).material_select('destroy');
       $(this.element).material_select();
     });
+  }
+
+  notifyBindingEngine() {
+    this.log.debug('selectedOptions changed', arguments);
   }
 
   handleChangeFromNativeSelect() {
