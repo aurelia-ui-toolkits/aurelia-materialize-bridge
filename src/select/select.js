@@ -1,4 +1,4 @@
-import { customAttribute } from 'aurelia-templating';
+import { bindable, customAttribute } from 'aurelia-templating';
 import { BindingEngine } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { TaskQueue } from 'aurelia-task-queue';
@@ -8,6 +8,7 @@ import { fireEvent } from '../common/events';
 @inject(Element, LogManager, BindingEngine, TaskQueue)
 @customAttribute('md-select')
 export class MdSelect {
+  @bindable() disabled = false;
   _suspendUpdate = false;
   subscriptions = [];
 
@@ -41,6 +42,22 @@ export class MdSelect {
       $(this.element).material_select('destroy');
       $(this.element).material_select();
     });
+  }
+
+  disabledChanged(newValue) {
+    let $wrapper = $(this.element).parent('.select-wrapper');
+    if ($wrapper.length > 0) {
+      if (newValue) {
+        $('.caret', $wrapper).addClass('disabled');
+        $('input.select-dropdown', $wrapper).attr('disabled', 'disabled');
+        $wrapper.attr('disabled', 'disabled');
+      } else {
+        $('.caret', $wrapper).removeClass('disabled');
+        $('input.select-dropdown', $wrapper).attr('disabled', null);
+        $wrapper.attr('disabled', null);
+        $('.select-dropdown', $wrapper).dropdown({'hover': false, 'closeOnClick': false});
+      }
+    }
   }
 
   notifyBindingEngine() {
