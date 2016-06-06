@@ -1,3 +1,13 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.6.2...v0.7.0) (2016-06-06)
+
+
+### Features
+
+* **md-select:** add disabled property and functionality, closes #190 ([3bfc9c8](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/3bfc9c8)), closes [#190](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/190)
+
+
+
 <a name="0.6.2"></a>
 ## [0.6.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.6.1...v0.6.2) (2016-05-27)
 
