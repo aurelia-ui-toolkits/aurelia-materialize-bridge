@@ -13,6 +13,7 @@ declare module 'aurelia-materialize-bridge' {
   import {
     bindingMode,
     observable,
+    BindingEngine,
     ObserverLocator
   } from 'aurelia-binding';
   import {
@@ -447,11 +448,15 @@ declare module 'aurelia-materialize-bridge' {
   
   // destroy handler not available
   export class MdSelect {
+    disabled: any;
     _suspendUpdate: any;
-    constructor(element: any, logManager: any, observerLocator: any, taskQueue: any);
+    subscriptions: any;
+    constructor(element: any, logManager: any, bindingEngine: any, taskQueue: any);
     attached(): any;
     detached(): any;
     refresh(): any;
+    disabledChanged(newValue: any): any;
+    notifyBindingEngine(): any;
     handleChangeFromNativeSelect(): any;
     handleChangeFromViewModel(newValue: any): any;
   }

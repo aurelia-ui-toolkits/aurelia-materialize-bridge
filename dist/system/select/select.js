@@ -1,7 +1,17 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', 'aurelia-logging', '../common/events'], function (_export, _context) {
-  var customAttribute, ObserverLocator, inject, TaskQueue, LogManager, fireEvent, _dec, _dec2, _class, MdSelect;
+  var bindable, customAttribute, BindingEngine, inject, TaskQueue, LogManager, fireEvent, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdSelect;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -9,11 +19,45 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   }
 
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
   return {
     setters: [function (_aureliaTemplating) {
+      bindable = _aureliaTemplating.bindable;
       customAttribute = _aureliaTemplating.customAttribute;
     }, function (_aureliaBinding) {
-      ObserverLocator = _aureliaBinding.ObserverLocator;
+      BindingEngine = _aureliaBinding.BindingEngine;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTaskQueue) {
@@ -24,23 +68,25 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
-      _export('MdSelect', MdSelect = (_dec = inject(Element, LogManager, ObserverLocator, TaskQueue), _dec2 = customAttribute('md-select'), _dec(_class = _dec2(_class = function () {
-        function MdSelect(element, logManager, observerLocator, taskQueue) {
+      _export('MdSelect', MdSelect = (_dec = inject(Element, LogManager, BindingEngine, TaskQueue), _dec2 = customAttribute('md-select'), _dec3 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
+        function MdSelect(element, logManager, bindingEngine, taskQueue) {
           _classCallCheck(this, MdSelect);
 
+          _initDefineProp(this, 'disabled', _descriptor, this);
+
           this._suspendUpdate = false;
+          this.subscriptions = [];
 
           this.element = element;
           this.taskQueue = taskQueue;
           this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
           this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
           this.log = LogManager.getLogger('md-select');
-          this.observerLocator = observerLocator;
-          this.valueObserver = this.observerLocator.getObserver(this.element, 'value');
+          this.bindingEngine = bindingEngine;
         }
 
         MdSelect.prototype.attached = function attached() {
-          this.valueObserver.subscribe(this.handleChangeFromViewModel);
+          this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
 
           $(this.element).material_select();
           $(this.element).on('change', this.handleChangeFromNativeSelect);
@@ -49,7 +95,9 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         MdSelect.prototype.detached = function detached() {
           $(this.element).off('change', this.handleChangeFromNativeSelect);
           $(this.element).material_select('destroy');
-          this.valueObserver.unsubscribe();
+          this.subscriptions.forEach(function (sub) {
+            return sub.dispose();
+          });
         };
 
         MdSelect.prototype.refresh = function refresh() {
@@ -61,14 +109,31 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           });
         };
 
-        MdSelect.prototype.handleChangeFromNativeSelect = function handleChangeFromNativeSelect() {
+        MdSelect.prototype.disabledChanged = function disabledChanged(newValue) {
+          var $wrapper = $(this.element).parent('.select-wrapper');
+          if ($wrapper.length > 0) {
+            if (newValue) {
+              $('.caret', $wrapper).addClass('disabled');
+              $('input.select-dropdown', $wrapper).attr('disabled', 'disabled');
+              $wrapper.attr('disabled', 'disabled');
+            } else {
+              $('.caret', $wrapper).removeClass('disabled');
+              $('input.select-dropdown', $wrapper).attr('disabled', null);
+              $wrapper.attr('disabled', null);
+              $('.select-dropdown', $wrapper).dropdown({ 'hover': false, 'closeOnClick': false });
+            }
+          }
+        };
 
+        MdSelect.prototype.notifyBindingEngine = function notifyBindingEngine() {
+          this.log.debug('selectedOptions changed', arguments);
+        };
+
+        MdSelect.prototype.handleChangeFromNativeSelect = function handleChangeFromNativeSelect() {
           if (!this._suspendUpdate) {
             this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
             this._suspendUpdate = true;
             fireEvent(this.element, 'change');
-            this.log.debug('this.valueObserver.value', this.valueObserver.value);
-
 
             this._suspendUpdate = false;
           }
@@ -82,7 +147,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         };
 
         return MdSelect;
-      }()) || _class) || _class));
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'disabled', [_dec3], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      })), _class2)) || _class) || _class));
 
       _export('MdSelect', MdSelect);
     }

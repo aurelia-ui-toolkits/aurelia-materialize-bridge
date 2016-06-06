@@ -2,7 +2,7 @@ import 'materialize';
 import * as LogManager from 'aurelia-logging';
 import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
-import {bindingMode,observable,ObserverLocator} from 'aurelia-binding';
+import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-binding';
 import {Router} from 'aurelia-router';
 import {TaskQueue} from 'aurelia-task-queue';
 import {getLogger} from 'aurelia-logging';
@@ -1550,22 +1550,24 @@ export class MdScrollSpy {
   }
 }
 
-@inject(Element, LogManager, ObserverLocator, TaskQueue)
+@inject(Element, LogManager, BindingEngine, TaskQueue)
 @customAttribute('md-select')
 export class MdSelect {
+  @bindable() disabled = false;
   _suspendUpdate = false;
+  subscriptions = [];
 
-  constructor(element, logManager, observerLocator, taskQueue) {
+  constructor(element, logManager, bindingEngine, taskQueue) {
     this.element = element;
     this.taskQueue = taskQueue;
     this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
     this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
     this.log = LogManager.getLogger('md-select');
-    this.observerLocator = observerLocator;
-    this.valueObserver = this.observerLocator.getObserver(this.element, 'value');
+    this.bindingEngine = bindingEngine;
   }
   attached() {
-    this.valueObserver.subscribe(this.handleChangeFromViewModel);
+    this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
+    // this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'selectedOptions').subscribe(this.notifyBindingEngine.bind(this)));
     // $(this.element).material_select(() => {
     //   this.log.warn('materialize callback', $(this.element).val());
     //   this.handleChangeFromNativeSelect();
@@ -1577,7 +1579,7 @@ export class MdSelect {
   detached() {
     $(this.element).off('change', this.handleChangeFromNativeSelect);
     $(this.element).material_select('destroy');
-    this.valueObserver.unsubscribe();
+    this.subscriptions.forEach(sub => sub.dispose());
   }
 
   refresh() {
@@ -1587,24 +1589,31 @@ export class MdSelect {
     });
   }
 
-  handleChangeFromNativeSelect() {
-    // Aurelia's select observer doesn't get noticed when something changes the
-    // select value directly (this.element.value = "something"). So we trigger
-    // the change here.
-    // this.valueObserver.value = $(this.element).val();
-    // this.valueObserver.synchronizeValue();
-    // this.valueObserver.synchronizeOptions();
-    // this._suspendUpdate = true;
-    // this.valueObserver.notify();
-    // this._suspendUpdate = false;
+  disabledChanged(newValue) {
+    let $wrapper = $(this.element).parent('.select-wrapper');
+    if ($wrapper.length > 0) {
+      if (newValue) {
+        $('.caret', $wrapper).addClass('disabled');
+        $('input.select-dropdown', $wrapper).attr('disabled', 'disabled');
+        $wrapper.attr('disabled', 'disabled');
+      } else {
+        $('.caret', $wrapper).removeClass('disabled');
+        $('input.select-dropdown', $wrapper).attr('disabled', null);
+        $wrapper.attr('disabled', null);
+        $('.select-dropdown', $wrapper).dropdown({'hover': false, 'closeOnClick': false});
+      }
+    }
+  }
 
+  notifyBindingEngine() {
+    this.log.debug('selectedOptions changed', arguments);
+  }
+
+  handleChangeFromNativeSelect() {
     if (!this._suspendUpdate) {
       this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
       this._suspendUpdate = true;
       fireEvent(this.element, 'change');
-      this.log.debug('this.valueObserver.value', this.valueObserver.value);
-      // this.valueObserver.value = $(this.element).val();
-      // this.valueObserver.notify();
 
       this._suspendUpdate = false;
     }
