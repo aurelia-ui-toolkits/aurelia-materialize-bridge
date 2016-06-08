@@ -104,8 +104,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           this.updateService = updateService;
         }
 
-        MdInput.prototype.attached = function attached() {
+        MdInput.prototype.bind = function bind() {
           this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
+        };
+
+        MdInput.prototype.attached = function attached() {
           if (getBooleanFromAttributeValue(this.mdValidate)) {
             this.input.classList.add('validate');
           }

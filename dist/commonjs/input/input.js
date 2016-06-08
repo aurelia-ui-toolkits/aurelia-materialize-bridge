@@ -100,8 +100,11 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
     this.updateService = updateService;
   }
 
-  MdInput.prototype.attached = function attached() {
+  MdInput.prototype.bind = function bind() {
     this.mdTextArea = (0, _attributes.getBooleanFromAttributeValue)(this.mdTextArea);
+  };
+
+  MdInput.prototype.attached = function attached() {
     if ((0, _attributes.getBooleanFromAttributeValue)(this.mdValidate)) {
       this.input.classList.add('validate');
     }

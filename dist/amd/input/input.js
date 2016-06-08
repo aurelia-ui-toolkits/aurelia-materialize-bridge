@@ -93,8 +93,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this.updateService = updateService;
     }
 
-    MdInput.prototype.attached = function attached() {
+    MdInput.prototype.bind = function bind() {
       this.mdTextArea = (0, _attributes.getBooleanFromAttributeValue)(this.mdTextArea);
+    };
+
+    MdInput.prototype.attached = function attached() {
       if ((0, _attributes.getBooleanFromAttributeValue)(this.mdValidate)) {
         this.input.classList.add('validate');
       }

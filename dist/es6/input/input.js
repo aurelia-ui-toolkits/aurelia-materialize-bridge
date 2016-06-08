@@ -36,8 +36,11 @@ export class MdInput {
     this.updateService = updateService;
   }
 
-  attached() {
+  bind() {
     this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
+  }
+
+  attached() {
     if (getBooleanFromAttributeValue(this.mdValidate)) {
       this.input.classList.add('validate');
     }

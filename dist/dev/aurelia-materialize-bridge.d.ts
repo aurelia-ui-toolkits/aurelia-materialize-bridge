@@ -140,6 +140,12 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
   }
+  export class MdCharCounter {
+    length: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   
   // @customElement('md-carousel-item')
   export class MdCarouselItem {
@@ -152,12 +158,6 @@ declare module 'aurelia-materialize-bridge' {
     mdSlider: any;
     constructor(element: any);
     attached(): any;
-  }
-  export class MdCharCounter {
-    length: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
   }
   export class MdCheckbox {
     static id: any;
@@ -200,14 +200,6 @@ declare module 'aurelia-materialize-bridge' {
     isSelectedChanged(newValue: any): any;
   }
   
-  /* eslint-enable */
-  export class DarkenValueConverter {
-    toView(value: any, steps: any): any;
-  }
-  export class LightenValueConverter {
-    toView(value: any, steps: any): any;
-  }
-  
   /**
    * Adds css classes to a given element only if these classes are not already
    * present. Keeps a record of css classes which actually have been added.
@@ -243,6 +235,14 @@ declare module 'aurelia-materialize-bridge' {
   * @param data Addition data to attach to an event
   */
   export function fireMaterializeEvent(element: Element, name: string, data?: any): any;
+  
+  /* eslint-enable */
+  export class DarkenValueConverter {
+    toView(value: any, steps: any): any;
+  }
+  export class LightenValueConverter {
+    toView(value: any, steps: any): any;
+  }
   export class MdDatePicker {
     container: any;
     translation: any;
@@ -331,6 +331,7 @@ declare module 'aurelia-materialize-bridge' {
     mdValidateError: any;
     mdValue: any;
     constructor(element: any, taskQueue: any, updateService: any);
+    bind(): any;
     attached(): any;
     mdValueChanged(): any;
   }
