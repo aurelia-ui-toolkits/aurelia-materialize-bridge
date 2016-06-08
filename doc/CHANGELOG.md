@@ -1,3 +1,13 @@
+<a name="0.7.1"></a>
+## [0.7.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.7.0...v0.7.1) (2016-06-08)
+
+
+### Bug Fixes
+
+* **md-input:** fix placeholder in textareas, fixes #192 ([d63aff6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d63aff6)), closes [#192](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/192)
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.6.2...v0.7.0) (2016-06-06)
 
