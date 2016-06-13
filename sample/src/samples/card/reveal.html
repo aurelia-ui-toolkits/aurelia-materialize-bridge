@@ -9,9 +9,12 @@
               information. I am convenient because I require little markup to
               use effectively.
             </div>
-            <div slot="reveal-text">
+            <!-- <div slot="reveal-text">
               Here is some more information about this product that is only revealed once clicked on.
-            </div>
+            </div> -->
+            <template replace-part="reveal-text">
+              Here is some more information about this product that is only revealed once clicked on.
+            </template>
           </md-card>
         </md-card>
       </div>
