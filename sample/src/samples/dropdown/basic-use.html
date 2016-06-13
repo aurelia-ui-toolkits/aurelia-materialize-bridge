@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <require from="./dropdown.css"></require>
+  <div class="dropdown-sample">
     <a md-button md-dropdown="activates: dropdown1;">drop me!</a>
     <ul id="dropdown1">
       <li><a click.trigger="showToast($event)">one</a></li>
