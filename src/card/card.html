@@ -13,12 +13,11 @@
       <span if.bind="mdImage === null" class="card-title">${mdTitle}</span>
       <slot></slot>
     </div>
-    <div if.bind="mdReveal" class="card-reveal">
+    <div show.bind="mdReveal" class="card-reveal">
       <span class="card-title activator">
         ${mdTitle}
         <i class="material-icons right">close</i>
       </span>
-      <!-- <template replaceable part="reveal-text"></template> -->
       <slot name="reveal-text"></slot>
     </div>
   </div>
