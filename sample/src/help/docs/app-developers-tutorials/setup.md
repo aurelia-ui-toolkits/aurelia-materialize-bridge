@@ -43,6 +43,93 @@ Now, we want to add several (four) additional pages to this application that wou
 </p>
 
 * * *
+Before we continue to the next step, we should remove Bootstrap from the app skeleton because we are going to use Materialize css. 
+First we need to remove it from the packages with command:
+```
+jspm uninstall bootstrap
+```
+And then we remove bootstrap require on some files:
+
+##### File `src/app.html` 
+```html
+<template>
+  <require from="nav-bar.html"></require>
+  <require from="bootstrap/css/bootstrap.css"></require> <!-- REMOVE THIS LINE -->
+
+  <nav-bar router.bind="router"></nav-bar>
+
+  <div class="page-host">
+    <router-view></router-view>
+  </div>
+</template>
+```
+##### File `src/main.js`
+
+```javascript
+import 'bootstrap'; //REMOVE THIS LINE
+
+export function configure(aurelia) {
+  aurelia.use
+    .standardConfiguration()
+    .developmentLogging();
+
+  //Uncomment the line below to enable animation.
+  //aurelia.use.plugin('aurelia-animator-css');
+  //if the css animator is enabled, add swap-order="after" to all router-view elements
+
+  //Anyone wanting to use HTMLImports to load views, will need to install the following plugin.
+  //aurelia.use.plugin('aurelia-html-import-template-loader')
+
+  aurelia.start().then(() => aurelia.setRoot());
+}
+```
+##### File `build/bundles.js`
+
+```javascript
+...
+"dist/aurelia": {
+  "includes": [
+    "aurelia-framework",
+    "aurelia-bootstrapper",
+    "aurelia-fetch-client",
+    "aurelia-router",
+    "aurelia-animator-css",
+    "aurelia-templating-binding",
+    "aurelia-polyfills",
+    "aurelia-templating-resources",
+    "aurelia-templating-router",
+    "aurelia-loader-default",
+    "aurelia-history-browser",
+    "aurelia-logging-console",
+    "bootstrap", //REMOVE THIS LINE
+    "bootstrap/css/bootstrap.css!text", //REMOVE THIS LINE
+    "fetch",
+    "jquery"
+  ],
+...
+```
+
+##### File `build/export.js`
+```javascript
+...
+'normalize': [
+    [
+      // include font-awesome.css and its fonts files
+      'font-awesome', [
+        '/css/font-awesome.min.css',
+        '/fonts/*'
+      ]
+    ], [ // REMOVE THIS ARRAY
+      // include bootstrap's font files
+      'bootstrap', [
+        '/fonts/*'
+      ]
+    ]
+  ]
+...
+```
+After removing Bootstrap, we are ready for the next step.
+
 At this point verify that your  `main.js` class looks like this:
 <br>
 ```javascript
