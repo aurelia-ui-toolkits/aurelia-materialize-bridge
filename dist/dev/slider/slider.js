@@ -67,7 +67,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       getLogger = _aureliaLogging.getLogger;
     }],
     execute: function () {
-      _export('MdSlider', MdSlider = (_dec = customElement('md-slider'), _dec2 = inject(Element), _dec3 = inlineView('\n  <template class="slider">\n  <require from="./slider.css!"></require>\n  <ul class="slides">\n    <slot></slot>\n  </ul>\n  </template>\n'), _dec4 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec5 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec6 = bindable(), _dec7 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec8 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+      _export('MdSlider', MdSlider = (_dec = customElement('md-slider'), _dec2 = inject(Element), _dec3 = inlineView('\n  <template class="slider">\n  <require from="./slider.css!text"></require>\n  <ul class="slides">\n    <slot></slot>\n  </ul>\n  </template>\n'), _dec4 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec5 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec6 = bindable(), _dec7 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec8 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
         function MdSlider(element) {
           _classCallCheck(this, MdSlider);
 

@@ -1,5 +1,5 @@
 <template>
-  <require from="./card.css!"></require>
+  <require from="./card.css!text"></require>
   <div class="card ${ mdSize || '' }">
     <div if.bind="mdImage !== null" md-waves="color: light; block: true;" class="card-image">
       <img class="${ mdReveal === true ? 'activator' : '' }" src.bind="mdImage" />

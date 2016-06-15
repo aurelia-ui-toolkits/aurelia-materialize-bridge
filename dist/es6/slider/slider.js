@@ -8,7 +8,7 @@ import { getLogger } from 'aurelia-logging';
 @inject(Element)
 @inlineView(`
   <template class="slider">
-  <require from="./slider.css!"></require>
+  <require from="./slider.css!text"></require>
   <ul class="slides">
     <slot></slot>
   </ul>
