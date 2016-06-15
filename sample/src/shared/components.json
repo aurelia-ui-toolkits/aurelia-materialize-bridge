@@ -6,7 +6,7 @@
     "Badges": { "moduleId": "badge", "status": "done" },
     "Button": { "status": "done" },
     "Breadcrumbs": { "status": "done" },
-    "Cards": { "moduleId": "card", "status": "done" },
+    "Cards": { "moduleId": "card", "status": "wip" },
     "Chips": { "moduleId": "chip", "status": "done" },
     "Collections": { "status": "done" },
     "Footer": { "status": "done" },
@@ -15,11 +15,11 @@
     "Preloader": { "moduleId": "progress", "status": "done" }
   },
   "Javascript": {
-    "Collapsible": { "status": "wip" },
+    "Collapsible": { "status": "done" },
     "Dialogs (toast/tooltip)": { "moduleId": "dialogs", "status": "done" },
     "Dropdown": { "status": "done" },
     "Media (Box/Slider/Carousel)": { "moduleId": "media", "status": "done" },
-    "Modals": { "status": "wip" },
+    "Modals": { "status": "done" },
     "Parallax": { "status": "done" },
     "Pushpin": { "status": "done" },
     "Scrollfire": { "status": "done" },
