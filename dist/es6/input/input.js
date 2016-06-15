@@ -49,8 +49,8 @@ export class MdInput {
     }
     if (this.mdPlaceholder) {
       this.input.setAttribute('placeholder', this.mdPlaceholder);
-      this.updateService.update();
     }
+    this.updateService.update();
   }
 
   mdValueChanged() {

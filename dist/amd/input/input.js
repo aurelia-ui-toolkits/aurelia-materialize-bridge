@@ -106,8 +106,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       }
       if (this.mdPlaceholder) {
         this.input.setAttribute('placeholder', this.mdPlaceholder);
-        this.updateService.update();
       }
+      this.updateService.update();
     };
 
     MdInput.prototype.mdValueChanged = function mdValueChanged() {

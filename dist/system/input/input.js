@@ -117,8 +117,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           }
           if (this.mdPlaceholder) {
             this.input.setAttribute('placeholder', this.mdPlaceholder);
-            this.updateService.update();
           }
+          this.updateService.update();
         };
 
         MdInput.prototype.mdValueChanged = function mdValueChanged() {

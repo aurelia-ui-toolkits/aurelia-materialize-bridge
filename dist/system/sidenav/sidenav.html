@@ -1,6 +1,6 @@
 <template>
-  <require from="./sidenav.css"></require>
+  <require from="./sidenav.css!"></require>
   <div id="${ controlId }" class="side-nav" ref="sidenav">
-    <content></content>
+    <slot></slot>
   </div>
 </template>
