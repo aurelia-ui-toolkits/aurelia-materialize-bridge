@@ -1,3 +1,16 @@
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.7.1...v0.8.0) (2016-06-15)
+
+### Features
+* **all:** implement ShadowDOM v1 changes
+
+### Bug Fixes
+
+* **md-card:** fix an error with reveal cards caused by ShadowDOM changes ([1bc8ac4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/1bc8ac4))
+* **md-input:** always run update on attached, solves a problem with values initialized before t ([fef2962](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/fef2962))
+
+
+
 <a name="0.7.1"></a>
 ## [0.7.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.7.0...v0.7.1) (2016-06-08)
 
