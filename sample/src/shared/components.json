@@ -6,7 +6,7 @@
     "Badges": { "moduleId": "badge", "status": "done" },
     "Button": { "status": "done" },
     "Breadcrumbs": { "status": "done" },
-    "Cards": { "moduleId": "card", "status": "wip" },
+    "Cards": { "moduleId": "card", "status": "done" },
     "Chips": { "moduleId": "chip", "status": "done" },
     "Collections": { "status": "done" },
     "Footer": { "status": "done" },
