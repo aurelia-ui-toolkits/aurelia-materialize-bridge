@@ -1,5 +1,5 @@
 <template>
-  <require from="./card.css"></require>
+  <require from="./card.css!"></require>
   <div class="card ${ mdSize || '' }">
     <div if.bind="mdImage !== null" md-waves="color: light; block: true;" class="card-image">
       <img class="${ mdReveal === true ? 'activator' : '' }" src.bind="mdImage" />
@@ -18,8 +18,8 @@
         ${mdTitle}
         <i class="material-icons right">close</i>
       </span>
-      <!-- <slot name="reveal-text"></slot> -->
-      <template part="reveal-text"></template>
+      <slot name="reveal-text"></slot>
+      <!-- <template part="reveal-text"></template> -->
     </div>
   </div>
 </template>
