@@ -15,10 +15,13 @@ Unlike the previous two controls, Slider is represented (by Aurelia Materialize 
     <div class="row">
       <div class="col s8">
         <md-slider>
-          <md-slide repeat.for="slide of slides" img.bind="slide.img" caption-align.bind="img.align">
-            <h3>${slide.heading}</h3>
-            <h5>${slide.subheading}</h5>
-          </md-slide>
+          <li repeat.for="slide of slides">
+            <img src.bind="slide.img" />
+            <div class="caption ${slide.align + '-align'}">
+              <h3>${slide.heading}</h3>
+              <h5 class="light grey-text text-lighten-3">${slide.subheading}</h5>
+            </div>
+          </li>
         </md-slider>
       </div>
     </div>
