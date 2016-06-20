@@ -54,7 +54,8 @@ exports.babelDtsGenerator = function() {
       typings: '',
       suppressModulePath: true,
       suppressComments: false,
-      memberOutputFilter: /^_.*/
+      memberOutputFilter: /^_.*/,
+      suppressAmbientDeclaration: true
     }
   ]);
   return options;
