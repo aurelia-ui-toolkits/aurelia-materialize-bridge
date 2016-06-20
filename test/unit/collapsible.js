@@ -1,4 +1,5 @@
-import './setup';
+// import './setup';
+import 'aurelia-polyfills';
 // import {TaskQueue} from 'aurelia-task-queue';
 import {initialize} from 'aurelia-pal-browser';
 import {MdCollapsible} from 'src/collapsible/collapsible';

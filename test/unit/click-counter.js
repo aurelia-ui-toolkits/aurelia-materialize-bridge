@@ -1,4 +1,4 @@
-import './setup';
+import 'aurelia-polyfills';
 import {ClickCounter} from 'src/click-counter';
 
 describe('Click counter', () => {

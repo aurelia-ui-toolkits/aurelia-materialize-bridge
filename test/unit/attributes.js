@@ -1,4 +1,5 @@
-import './setup';
+// import './setup';
+import 'aurelia-polyfills';
 import {getBooleanFromAttributeValue} from 'src/common/attributes';
 
 describe('Attributes', () => {

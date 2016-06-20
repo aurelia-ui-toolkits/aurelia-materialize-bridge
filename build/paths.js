@@ -17,7 +17,9 @@ module.exports = {
   sampleHtml: './sample/src/**/*.html',
   doc:'./doc',
   tests: 'test/unit/**/*.js',
+  // tests: 'test/unit/true.js',
+  // tests: 'test/unit/toastService.js',
   e2eSpecsSrc: 'test/e2e/src/*.js',
   e2eSpecsDist: 'test/e2e/dist/',
-  packageName: pkg.name,
+  packageName: pkg.name
 };

@@ -1,4 +1,5 @@
-import './setup';
+// import './setup';
+import 'aurelia-polyfills';
 import {initialize} from 'aurelia-pal-browser';
 import {AttributeManager} from 'src/common/attributeManager';
 import 'materialize';
