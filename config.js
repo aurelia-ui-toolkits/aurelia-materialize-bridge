@@ -29,7 +29,6 @@ System.config({
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.3.0.2",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
-    "core-js": "npm:core-js@1.2.6",
     "jquery": "github:components/jquery@2.2.4",
     "materialize": "github:Dogfalo/materialize@0.97.6",
     "polymer/mutationobservers": "github:polymer/mutationobservers@0.4.2",
@@ -43,9 +42,6 @@ System.config({
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
       "buffer": "npm:buffer@3.6.0"
-    },
-    "github:jspm/nodelibs-path@0.1.0": {
-      "path-browserify": "npm:path-browserify@0.0.0"
     },
     "github:jspm/nodelibs-process@0.1.2": {
       "process": "npm:process@0.11.5"
@@ -123,19 +119,10 @@ System.config({
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:core-js@1.2.6": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
-    },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:jquery@3.0.0": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
-    },
-    "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:process@0.11.5": {

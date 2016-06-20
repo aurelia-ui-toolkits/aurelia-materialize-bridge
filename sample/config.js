@@ -36,7 +36,6 @@ System.config({
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.3.0.2",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
-    "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.6.3",
     "google/code-prettify": "github:google/code-prettify@master",
@@ -251,12 +250,6 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "proto-list": "npm:proto-list@1.2.4",
       "url": "github:jspm/nodelibs-url@0.1.0"
-    },
-    "npm:core-js@1.2.6": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:core-util-is@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"

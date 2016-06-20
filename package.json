@@ -50,7 +50,6 @@
       "aurelia-polyfills": "npm:aurelia-polyfills@^1.0.0-beta.1.0.1",
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4",
       "jquery": "components/jquery@^2.1.4",
       "polymer/mutationobservers": "^0.4.2",
       "text": "systemjs/plugin-text@^0.0.4"
