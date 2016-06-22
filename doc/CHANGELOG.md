@@ -1,3 +1,14 @@
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.8.0...v0.8.1) (2016-06-22)
+
+
+### Bug Fixes
+
+* **all:** load css resources explicitly with !text ([4f4e7a3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/4f4e7a3))
+* **all:** revert loading css resources explicitly with !text ([89d949b](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/89d949b))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.7.1...v0.8.0) (2016-06-15)
 
