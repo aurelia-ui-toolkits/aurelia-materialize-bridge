@@ -200,14 +200,6 @@ declare module 'aurelia-materialize-bridge' {
     isSelectedChanged(newValue: any): any;
   }
   
-  /* eslint-enable */
-  export class DarkenValueConverter {
-    toView(value: any, steps: any): any;
-  }
-  export class LightenValueConverter {
-    toView(value: any, steps: any): any;
-  }
-  
   /**
    * Adds css classes to a given element only if these classes are not already
    * present. Keeps a record of css classes which actually have been added.
@@ -249,17 +241,25 @@ declare module 'aurelia-materialize-bridge' {
     value: any;
     selectMonths: any;
     selectYears: any;
+    options: any;
     constructor(element: any, taskQueue: any);
     bind(): any;
     detached(): any;
     onClose(): any;
+    onCalendarIconClick(event: any): any;
     onSet(value: any): any;
     
     // this.value = new Date(value.select);
     valueChanged(newValue: any): any;
   }
   
-  // });
+  /* eslint-enable */
+  export class DarkenValueConverter {
+    toView(value: any, steps: any): any;
+  }
+  export class LightenValueConverter {
+    toView(value: any, steps: any): any;
+  }
   export class MdDropdownElement {
     static id: any;
     alignment: any;

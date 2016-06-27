@@ -1,27 +1,31 @@
-import { bindable, customAttribute } from 'aurelia-templating';
-import { bindingMode } from 'aurelia-binding';
-import { TaskQueue } from 'aurelia-task-queue';
-import { inject } from 'aurelia-dependency-injection';
-import { getLogger } from 'aurelia-logging';
-import { getBooleanFromAttributeValue } from '../common/attributes';
+import {bindable, customAttribute} from 'aurelia-templating';
+import {bindingMode} from 'aurelia-binding';
+import {TaskQueue} from 'aurelia-task-queue';
+import {inject} from 'aurelia-dependency-injection';
+import {getLogger} from 'aurelia-logging';
+import {getBooleanFromAttributeValue} from '../common/attributes';
 
 @inject(Element, TaskQueue)
 @customAttribute('md-datepicker')
 export class MdDatePicker {
   @bindable() container;
   @bindable() translation;
-  @bindable({ defaultBindingMode: bindingMode.twoWay }) value;
-  @bindable({ defaultBindingMode: bindingMode.oneTime }) selectMonths = true;
-  @bindable({ defaultBindingMode: bindingMode.oneTime }) selectYears = 15;
+  @bindable({defaultBindingMode: bindingMode.twoWay}) value;
+  @bindable({defaultBindingMode: bindingMode.oneTime}) selectMonths = true;
+  @bindable({defaultBindingMode: bindingMode.oneTime}) selectYears = 15;
+  @bindable({defaultBindingMode: bindingMode.oneTime}) options = {};
+
   constructor(element, taskQueue) {
     this.element = element;
     this.log = getLogger('md-datepicker');
     this.taskQueue = taskQueue;
   }
+
   bind() {
     this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
     this.selectYears = parseInt(this.selectYears, 10);
     this.element.classList.add('date-picker');
+
     let options = {
       selectMonths: this.selectMonths,
       selectYears: this.selectYears,
@@ -48,6 +52,17 @@ export class MdDatePicker {
     //   formatSubmit: 'yyyy/mm/dd'
     // };
     Object.assign(options, i18n);
+
+    if (this.options) {
+      Object.assign(options, this.options);
+      //merge callback methods if there is a hook in the advanced options
+      if (this.options.onClose) {
+        options.onClose = function() {
+          this.options.onClose();
+          $(document.activeElement).blur();
+        };
+      }
+    }
     if (this.container) {
       options.container = this.container;
     }
@@ -56,9 +71,35 @@ export class MdDatePicker {
       'close': this.onClose.bind(this),
       'set': this.onSet.bind(this)
     });
-    $(this.element).on('focusin', () => { $(this.element).pickadate('open'); });
+
     if (this.value) {
       this.picker.set('select', this.value);
+    }
+    if (this.options && this.options.editable) {
+      $(this.element).on('keypress', (e)=> {
+        if (e.keyCode === 13) {
+          let rawDate = $(this.element).val();
+          if (rawDate) {
+            rawDate = rawDate.split('/').join('-');
+            let parsedDate = new Date(rawDate);
+            this.picker.set('select', parsedDate);
+          }else {
+            this.onCalendarIconClick();
+          }
+        }
+      });
+
+      this.element.classList.add('left');
+      let calendarIcon = document.createElement('i');
+      calendarIcon.classList.add('right');
+      calendarIcon.classList.add('material-icons');
+      calendarIcon.textContent = 'today';
+      this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
+      $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+    } else {
+      $(this.element).on('focusin', () => {
+        $(this.element).pickadate('open');
+      });
     }
   }
 
@@ -73,7 +114,16 @@ export class MdDatePicker {
     this.value = selected ? selected.obj : null;
   }
 
+  onCalendarIconClick(event) {
+    event.stopPropagation();
+    $(this.element).pickadate('open');
+  }
+
   onSet(value) {
+    //handle this ourselves since Dogfalo removed this functionality from the original plugin
+    if (this.options && this.options.closeOnSelect) {
+      this.picker.close();
+    }
     // this.value = new Date(value.select);
   }
 
@@ -83,4 +133,6 @@ export class MdDatePicker {
     this.picker.set('select', this.value);
     // });
   }
+
+
 }
