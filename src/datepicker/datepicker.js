@@ -83,12 +83,18 @@ export class MdDatePicker {
             rawDate = rawDate.split('/').join('-');
             let parsedDate = new Date(rawDate);
             this.picker.set('select', parsedDate);
-          }else {
-            this.onCalendarIconClick();
+          } else {
+            this.openDatePicker();
           }
         }
       });
+    } else {
+      $(this.element).on('focusin', () => {
+        this.openDatePicker();
+      });
+    }
 
+    if (this.options.showIcon) {
       this.element.classList.add('left');
       let calendarIcon = document.createElement('i');
       calendarIcon.classList.add('right');
@@ -96,10 +102,6 @@ export class MdDatePicker {
       calendarIcon.textContent = 'today';
       this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
       $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
-    } else {
-      $(this.element).on('focusin', () => {
-        $(this.element).pickadate('open');
-      });
     }
   }
 
@@ -109,6 +111,14 @@ export class MdDatePicker {
     }
   }
 
+  openDatePicker() {
+    $(this.element).pickadate('open');
+  }
+
+  closeDatePicker() {
+    $(this.element).pickadate('close');
+  }
+
   onClose() {
     let selected = this.picker.get('select');
     this.value = selected ? selected.obj : null;
@@ -116,7 +126,7 @@ export class MdDatePicker {
 
   onCalendarIconClick(event) {
     event.stopPropagation();
-    $(this.element).pickadate('open');
+    this.openDatePicker();
   }
 
   onSet(value) {

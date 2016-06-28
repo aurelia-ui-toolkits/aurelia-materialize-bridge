@@ -121,6 +121,14 @@ declare module 'aurelia-materialize-bridge' {
   export class InstructionFilterValueConverter {
     toView(navigationInstructions: any): any;
   }
+  export class MdCard {
+    mdImage: any;
+    mdReveal: any;
+    mdSize: any;
+    mdTitle: any;
+    constructor(element: any);
+    attached(): any;
+  }
   export class MdButton {
     disabled: any;
     flat: any;
@@ -131,14 +139,6 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     disabledChanged(newValue: any): any;
     flatChanged(newValue: any): any;
-  }
-  export class MdCard {
-    mdImage: any;
-    mdReveal: any;
-    mdSize: any;
-    mdTitle: any;
-    constructor(element: any);
-    attached(): any;
   }
   
   // @customElement('md-carousel-item')
@@ -200,6 +200,14 @@ declare module 'aurelia-materialize-bridge' {
     isSelectedChanged(newValue: any): any;
   }
   
+  /* eslint-enable */
+  export class DarkenValueConverter {
+    toView(value: any, steps: any): any;
+  }
+  export class LightenValueConverter {
+    toView(value: any, steps: any): any;
+  }
+  
   /**
    * Adds css classes to a given element only if these classes are not already
    * present. Keeps a record of css classes which actually have been added.
@@ -245,6 +253,8 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any, taskQueue: any);
     bind(): any;
     detached(): any;
+    openDatePicker(): any;
+    closeDatePicker(): any;
     onClose(): any;
     onCalendarIconClick(event: any): any;
     onSet(value: any): any;
@@ -253,13 +263,7 @@ declare module 'aurelia-materialize-bridge' {
     valueChanged(newValue: any): any;
   }
   
-  /* eslint-enable */
-  export class DarkenValueConverter {
-    toView(value: any, steps: any): any;
-  }
-  export class LightenValueConverter {
-    toView(value: any, steps: any): any;
-  }
+  // });
   export class MdDropdownElement {
     static id: any;
     alignment: any;

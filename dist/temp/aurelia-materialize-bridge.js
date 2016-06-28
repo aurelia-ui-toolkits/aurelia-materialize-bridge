@@ -1,7 +1,7 @@
 'use strict';
 
 exports.__esModule = true;
-exports.MdWaves = exports.MdStaggeredList = exports.MdFadeinImage = exports.MdTooltip = exports.MdToastService = exports.MdTabs = exports.MdSwitch = exports.MdSlider = exports.MdSidenav = exports.MdSidenavCollapse = exports.MdSelect = exports.MdScrollSpy = exports.MdScrollfire = exports.MdScrollfireTarget = exports.ScrollfirePatch = exports.MdRange = exports.MdRadio = exports.MdPushpin = exports.MdProgress = exports.MdParallax = exports.MdPagination = exports.MdNavbar = exports.MdModalTrigger = exports.MdInput = exports.MdInputUpdateService = exports.MdPrefix = exports.MdFooter = exports.MdFileInput = exports.MdFab = exports.MdDropdown = exports.MdDropdownElement = exports.LightenValueConverter = exports.DarkenValueConverter = exports.MdDatePicker = exports.constants = exports.AttributeManager = exports.MdlListSelector = exports.MdCollection = exports.MdCollectionItem = exports.MdCollectionHeader = exports.MdCollapsible = exports.MdChip = exports.MdCheckbox = exports.MdCharCounter = exports.MdCarousel = exports.MdCarouselItem = exports.MdCard = exports.MdButton = exports.InstructionFilterValueConverter = exports.MdBreadcrumbs = exports.MdBox = exports.MdBadge = exports.version = exports.ConfigBuilder = exports.ClickCounter = undefined;
+exports.MdWaves = exports.MdStaggeredList = exports.MdFadeinImage = exports.MdTooltip = exports.MdToastService = exports.MdTabs = exports.MdSwitch = exports.MdSlider = exports.MdSidenav = exports.MdSidenavCollapse = exports.MdSelect = exports.MdScrollSpy = exports.MdScrollfire = exports.MdScrollfireTarget = exports.ScrollfirePatch = exports.MdRange = exports.MdRadio = exports.MdPushpin = exports.MdProgress = exports.MdParallax = exports.MdPagination = exports.MdNavbar = exports.MdModalTrigger = exports.MdInput = exports.MdInputUpdateService = exports.MdPrefix = exports.MdFooter = exports.MdFileInput = exports.MdFab = exports.MdDropdown = exports.MdDropdownElement = exports.MdDatePicker = exports.constants = exports.AttributeManager = exports.LightenValueConverter = exports.DarkenValueConverter = exports.MdlListSelector = exports.MdCollection = exports.MdCollectionItem = exports.MdCollectionHeader = exports.MdCollapsible = exports.MdChip = exports.MdCheckbox = exports.MdCharCounter = exports.MdCarousel = exports.MdCarouselItem = exports.MdButton = exports.MdCard = exports.InstructionFilterValueConverter = exports.MdBreadcrumbs = exports.MdBox = exports.MdBadge = exports.version = exports.ConfigBuilder = exports.ClickCounter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -428,17 +428,64 @@ var InstructionFilterValueConverter = exports.InstructionFilterValueConverter = 
   return InstructionFilterValueConverter;
 }();
 
-var MdButton = exports.MdButton = (_dec9 = (0, _aureliaTemplating.customAttribute)('md-button'), _dec10 = (0, _aureliaDependencyInjection.inject)(Element), _dec11 = (0, _aureliaTemplating.bindable)(), _dec12 = (0, _aureliaTemplating.bindable)(), _dec13 = (0, _aureliaTemplating.bindable)(), _dec14 = (0, _aureliaTemplating.bindable)(), _dec9(_class10 = _dec10(_class10 = (_class11 = function () {
+var MdCard = exports.MdCard = (_dec9 = (0, _aureliaTemplating.customElement)('md-card'), _dec10 = (0, _aureliaDependencyInjection.inject)(Element), _dec11 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec12 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec13 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+}), _dec14 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec9(_class10 = _dec10(_class10 = (_class11 = function () {
+  function MdCard(element) {
+    _classCallCheck(this, MdCard);
+
+    _initDefineProp(this, 'mdImage', _descriptor3, this);
+
+    _initDefineProp(this, 'mdReveal', _descriptor4, this);
+
+    _initDefineProp(this, 'mdSize', _descriptor5, this);
+
+    _initDefineProp(this, 'mdTitle', _descriptor6, this);
+
+    this.element = element;
+  }
+
+  MdCard.prototype.attached = function attached() {
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
+  };
+
+  return MdCard;
+}(), (_descriptor3 = _applyDecoratedDescriptor(_class11.prototype, 'mdImage', [_dec11], {
+  enumerable: true,
+  initializer: function initializer() {
+    return null;
+  }
+}), _descriptor4 = _applyDecoratedDescriptor(_class11.prototype, 'mdReveal', [_dec12], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
+  }
+}), _descriptor5 = _applyDecoratedDescriptor(_class11.prototype, 'mdSize', [_dec13], {
+  enumerable: true,
+  initializer: function initializer() {
+    return '';
+  }
+}), _descriptor6 = _applyDecoratedDescriptor(_class11.prototype, 'mdTitle', [_dec14], {
+  enumerable: true,
+  initializer: null
+})), _class11)) || _class10) || _class10);
+var MdButton = exports.MdButton = (_dec15 = (0, _aureliaTemplating.customAttribute)('md-button'), _dec16 = (0, _aureliaDependencyInjection.inject)(Element), _dec17 = (0, _aureliaTemplating.bindable)(), _dec18 = (0, _aureliaTemplating.bindable)(), _dec19 = (0, _aureliaTemplating.bindable)(), _dec20 = (0, _aureliaTemplating.bindable)(), _dec15(_class13 = _dec16(_class13 = (_class14 = function () {
   function MdButton(element) {
     _classCallCheck(this, MdButton);
 
-    _initDefineProp(this, 'disabled', _descriptor3, this);
+    _initDefineProp(this, 'disabled', _descriptor7, this);
 
-    _initDefineProp(this, 'flat', _descriptor4, this);
+    _initDefineProp(this, 'flat', _descriptor8, this);
 
-    _initDefineProp(this, 'floating', _descriptor5, this);
+    _initDefineProp(this, 'floating', _descriptor9, this);
 
-    _initDefineProp(this, 'large', _descriptor6, this);
+    _initDefineProp(this, 'large', _descriptor10, this);
 
     this.attributeManager = new AttributeManager(element);
   }
@@ -493,73 +540,26 @@ var MdButton = exports.MdButton = (_dec9 = (0, _aureliaTemplating.customAttribut
   };
 
   return MdButton;
-}(), (_descriptor3 = _applyDecoratedDescriptor(_class11.prototype, 'disabled', [_dec11], {
+}(), (_descriptor7 = _applyDecoratedDescriptor(_class14.prototype, 'disabled', [_dec17], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor4 = _applyDecoratedDescriptor(_class11.prototype, 'flat', [_dec12], {
+}), _descriptor8 = _applyDecoratedDescriptor(_class14.prototype, 'flat', [_dec18], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor5 = _applyDecoratedDescriptor(_class11.prototype, 'floating', [_dec13], {
+}), _descriptor9 = _applyDecoratedDescriptor(_class14.prototype, 'floating', [_dec19], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor6 = _applyDecoratedDescriptor(_class11.prototype, 'large', [_dec14], {
+}), _descriptor10 = _applyDecoratedDescriptor(_class14.prototype, 'large', [_dec20], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-})), _class11)) || _class10) || _class10);
-var MdCard = exports.MdCard = (_dec15 = (0, _aureliaTemplating.customElement)('md-card'), _dec16 = (0, _aureliaDependencyInjection.inject)(Element), _dec17 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec18 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec19 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-}), _dec20 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec15(_class13 = _dec16(_class13 = (_class14 = function () {
-  function MdCard(element) {
-    _classCallCheck(this, MdCard);
-
-    _initDefineProp(this, 'mdImage', _descriptor7, this);
-
-    _initDefineProp(this, 'mdReveal', _descriptor8, this);
-
-    _initDefineProp(this, 'mdSize', _descriptor9, this);
-
-    _initDefineProp(this, 'mdTitle', _descriptor10, this);
-
-    this.element = element;
-  }
-
-  MdCard.prototype.attached = function attached() {
-    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
-  };
-
-  return MdCard;
-}(), (_descriptor7 = _applyDecoratedDescriptor(_class14.prototype, 'mdImage', [_dec17], {
-  enumerable: true,
-  initializer: function initializer() {
-    return null;
-  }
-}), _descriptor8 = _applyDecoratedDescriptor(_class14.prototype, 'mdReveal', [_dec18], {
-  enumerable: true,
-  initializer: function initializer() {
-    return false;
-  }
-}), _descriptor9 = _applyDecoratedDescriptor(_class14.prototype, 'mdSize', [_dec19], {
-  enumerable: true,
-  initializer: function initializer() {
-    return '';
-  }
-}), _descriptor10 = _applyDecoratedDescriptor(_class14.prototype, 'mdTitle', [_dec20], {
-  enumerable: true,
-  initializer: null
 })), _class14)) || _class13) || _class13);
 var MdCarouselItem = exports.MdCarouselItem = (_dec21 = (0, _aureliaDependencyInjection.inject)(Element), _dec22 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
@@ -840,6 +840,60 @@ var MdlListSelector = exports.MdlListSelector = (_dec47 = (0, _aureliaTemplating
   }
 })), _class36)) || _class35) || _class35);
 
+function shadeBlendConvert(p, from, to) {
+  if (typeof p != "number" || p < -1 || p > 1 || typeof from != "string" || from[0] != 'r' && from[0] != '#' || typeof to != "string" && typeof to != "undefined") return null;
+  var sbcRip = function sbcRip(d) {
+    var l = d.length,
+        RGB = new Object();
+    if (l > 9) {
+      d = d.split(",");
+      if (d.length < 3 || d.length > 4) return null;
+      RGB[0] = i(d[0].slice(4)), RGB[1] = i(d[1]), RGB[2] = i(d[2]), RGB[3] = d[3] ? parseFloat(d[3]) : -1;
+    } else {
+      switch (l) {case 8:case 6:case 3:case 2:case 1:
+          return null;}
+      if (l < 6) d = "#" + d[1] + d[1] + d[2] + d[2] + d[3] + d[3] + (l > 4 ? d[4] + "" + d[4] : "");
+      d = i(d.slice(1), 16), RGB[0] = d >> 16 & 255, RGB[1] = d >> 8 & 255, RGB[2] = d & 255, RGB[3] = l == 9 || l == 5 ? r((d >> 24 & 255) / 255 * 10000) / 10000 : -1;
+    }
+    return RGB;
+  };
+  var i = parseInt,
+      r = Math.round,
+      h = from.length > 9,
+      h = typeof to == "string" ? to.length > 9 ? true : to == "c" ? !h : false : h,
+      b = p < 0,
+      p = b ? p * -1 : p,
+      to = to && to != "c" ? to : b ? "#000000" : "#FFFFFF",
+      f = sbcRip(from),
+      t = sbcRip(to);
+  if (!f || !t) return null;
+  if (h) return "rgb(" + r((t[0] - f[0]) * p + f[0]) + "," + r((t[1] - f[1]) * p + f[1]) + "," + r((t[2] - f[2]) * p + f[2]) + (f[3] < 0 && t[3] < 0 ? ")" : "," + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 10000) / 10000 : t[3] < 0 ? f[3] : t[3]) + ")");else return "#" + (0x100000000 + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 255) : t[3] > -1 ? r(t[3] * 255) : f[3] > -1 ? r(f[3] * 255) : 255) * 0x1000000 + r((t[0] - f[0]) * p + f[0]) * 0x10000 + r((t[1] - f[1]) * p + f[1]) * 0x100 + r((t[2] - f[2]) * p + f[2])).toString(16).slice(f[3] > -1 || t[3] > -1 ? 1 : 3);
+}
+
+var DarkenValueConverter = exports.DarkenValueConverter = function () {
+  function DarkenValueConverter() {
+    _classCallCheck(this, DarkenValueConverter);
+  }
+
+  DarkenValueConverter.prototype.toView = function toView(value, steps) {
+    return shadeBlendConvert(-0.3 * parseFloat(steps, 10), value);
+  };
+
+  return DarkenValueConverter;
+}();
+
+var LightenValueConverter = exports.LightenValueConverter = function () {
+  function LightenValueConverter() {
+    _classCallCheck(this, LightenValueConverter);
+  }
+
+  LightenValueConverter.prototype.toView = function toView(value, steps) {
+    return shadeBlendConvert(0.3 * parseFloat(steps, 10), value);
+  };
+
+  return LightenValueConverter;
+}();
+
 var AttributeManager = exports.AttributeManager = function () {
   function AttributeManager(element) {
     _classCallCheck(this, AttributeManager);
@@ -1013,11 +1067,17 @@ var MdDatePicker = exports.MdDatePicker = (_dec51 = (0, _aureliaDependencyInject
             var parsedDate = new Date(rawDate);
             _this6.picker.set('select', parsedDate);
           } else {
-            _this6.onCalendarIconClick();
+            _this6.openDatePicker();
           }
         }
       });
+    } else {
+      $(this.element).on('focusin', function () {
+        _this6.openDatePicker();
+      });
+    }
 
+    if (this.options.showIcon) {
       this.element.classList.add('left');
       var calendarIcon = document.createElement('i');
       calendarIcon.classList.add('right');
@@ -1025,10 +1085,6 @@ var MdDatePicker = exports.MdDatePicker = (_dec51 = (0, _aureliaDependencyInject
       calendarIcon.textContent = 'today';
       this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
       $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
-    } else {
-      $(this.element).on('focusin', function () {
-        $(_this6.element).pickadate('open');
-      });
     }
   };
 
@@ -1038,6 +1094,14 @@ var MdDatePicker = exports.MdDatePicker = (_dec51 = (0, _aureliaDependencyInject
     }
   };
 
+  MdDatePicker.prototype.openDatePicker = function openDatePicker() {
+    $(this.element).pickadate('open');
+  };
+
+  MdDatePicker.prototype.closeDatePicker = function closeDatePicker() {
+    $(this.element).pickadate('close');
+  };
+
   MdDatePicker.prototype.onClose = function onClose() {
     var selected = this.picker.get('select');
     this.value = selected ? selected.obj : null;
@@ -1045,7 +1109,7 @@ var MdDatePicker = exports.MdDatePicker = (_dec51 = (0, _aureliaDependencyInject
 
   MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
     event.stopPropagation();
-    $(this.element).pickadate('open');
+    this.openDatePicker();
   };
 
   MdDatePicker.prototype.onSet = function onSet(value) {
@@ -1086,61 +1150,6 @@ var MdDatePicker = exports.MdDatePicker = (_dec51 = (0, _aureliaDependencyInject
     return {};
   }
 })), _class40)) || _class39) || _class39);
-
-function shadeBlendConvert(p, from, to) {
-  if (typeof p != "number" || p < -1 || p > 1 || typeof from != "string" || from[0] != 'r' && from[0] != '#' || typeof to != "string" && typeof to != "undefined") return null;
-  var sbcRip = function sbcRip(d) {
-    var l = d.length,
-        RGB = new Object();
-    if (l > 9) {
-      d = d.split(",");
-      if (d.length < 3 || d.length > 4) return null;
-      RGB[0] = i(d[0].slice(4)), RGB[1] = i(d[1]), RGB[2] = i(d[2]), RGB[3] = d[3] ? parseFloat(d[3]) : -1;
-    } else {
-      switch (l) {case 8:case 6:case 3:case 2:case 1:
-          return null;}
-      if (l < 6) d = "#" + d[1] + d[1] + d[2] + d[2] + d[3] + d[3] + (l > 4 ? d[4] + "" + d[4] : "");
-      d = i(d.slice(1), 16), RGB[0] = d >> 16 & 255, RGB[1] = d >> 8 & 255, RGB[2] = d & 255, RGB[3] = l == 9 || l == 5 ? r((d >> 24 & 255) / 255 * 10000) / 10000 : -1;
-    }
-    return RGB;
-  };
-  var i = parseInt,
-      r = Math.round,
-      h = from.length > 9,
-      h = typeof to == "string" ? to.length > 9 ? true : to == "c" ? !h : false : h,
-      b = p < 0,
-      p = b ? p * -1 : p,
-      to = to && to != "c" ? to : b ? "#000000" : "#FFFFFF",
-      f = sbcRip(from),
-      t = sbcRip(to);
-  if (!f || !t) return null;
-  if (h) return "rgb(" + r((t[0] - f[0]) * p + f[0]) + "," + r((t[1] - f[1]) * p + f[1]) + "," + r((t[2] - f[2]) * p + f[2]) + (f[3] < 0 && t[3] < 0 ? ")" : "," + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 10000) / 10000 : t[3] < 0 ? f[3] : t[3]) + ")");else return "#" + (0x100000000 + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 255) : t[3] > -1 ? r(t[3] * 255) : f[3] > -1 ? r(f[3] * 255) : 255) * 0x1000000 + r((t[0] - f[0]) * p + f[0]) * 0x10000 + r((t[1] - f[1]) * p + f[1]) * 0x100 + r((t[2] - f[2]) * p + f[2])).toString(16).slice(f[3] > -1 || t[3] > -1 ? 1 : 3);
-}
-
-var DarkenValueConverter = exports.DarkenValueConverter = function () {
-  function DarkenValueConverter() {
-    _classCallCheck(this, DarkenValueConverter);
-  }
-
-  DarkenValueConverter.prototype.toView = function toView(value, steps) {
-    return shadeBlendConvert(-0.3 * parseFloat(steps, 10), value);
-  };
-
-  return DarkenValueConverter;
-}();
-
-var LightenValueConverter = exports.LightenValueConverter = function () {
-  function LightenValueConverter() {
-    _classCallCheck(this, LightenValueConverter);
-  }
-
-  LightenValueConverter.prototype.toView = function toView(value, steps) {
-    return shadeBlendConvert(0.3 * parseFloat(steps, 10), value);
-  };
-
-  return LightenValueConverter;
-}();
-
 var MdDropdownElement = exports.MdDropdownElement = (_dec59 = (0, _aureliaTemplating.customElement)('md-dropdown'), _dec60 = (0, _aureliaDependencyInjection.inject)(Element), _dec61 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec62 = (0, _aureliaTemplating.bindable)({

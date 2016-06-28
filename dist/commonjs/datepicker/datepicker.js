@@ -134,11 +134,17 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
             var parsedDate = new Date(rawDate);
             _this.picker.set('select', parsedDate);
           } else {
-            _this.onCalendarIconClick();
+            _this.openDatePicker();
           }
         }
       });
+    } else {
+      $(this.element).on('focusin', function () {
+        _this.openDatePicker();
+      });
+    }
 
+    if (this.options.showIcon) {
       this.element.classList.add('left');
       var calendarIcon = document.createElement('i');
       calendarIcon.classList.add('right');
@@ -146,10 +152,6 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
       calendarIcon.textContent = 'today';
       this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
       $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
-    } else {
-      $(this.element).on('focusin', function () {
-        $(_this.element).pickadate('open');
-      });
     }
   };
 
@@ -159,6 +161,14 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
     }
   };
 
+  MdDatePicker.prototype.openDatePicker = function openDatePicker() {
+    $(this.element).pickadate('open');
+  };
+
+  MdDatePicker.prototype.closeDatePicker = function closeDatePicker() {
+    $(this.element).pickadate('close');
+  };
+
   MdDatePicker.prototype.onClose = function onClose() {
     var selected = this.picker.get('select');
     this.value = selected ? selected.obj : null;
@@ -166,7 +176,7 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
 
   MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
     event.stopPropagation();
-    $(this.element).pickadate('open');
+    this.openDatePicker();
   };
 
   MdDatePicker.prototype.onSet = function onSet(value) {

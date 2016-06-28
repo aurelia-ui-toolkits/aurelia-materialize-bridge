@@ -138,11 +138,17 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
                   var parsedDate = new Date(rawDate);
                   _this.picker.set('select', parsedDate);
                 } else {
-                  _this.onCalendarIconClick();
+                  _this.openDatePicker();
                 }
               }
             });
+          } else {
+            $(this.element).on('focusin', function () {
+              _this.openDatePicker();
+            });
+          }
 
+          if (this.options.showIcon) {
             this.element.classList.add('left');
             var calendarIcon = document.createElement('i');
             calendarIcon.classList.add('right');
@@ -150,10 +156,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
             calendarIcon.textContent = 'today';
             this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
             $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
-          } else {
-            $(this.element).on('focusin', function () {
-              $(_this.element).pickadate('open');
-            });
           }
         };
 
@@ -163,6 +165,14 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
           }
         };
 
+        MdDatePicker.prototype.openDatePicker = function openDatePicker() {
+          $(this.element).pickadate('open');
+        };
+
+        MdDatePicker.prototype.closeDatePicker = function closeDatePicker() {
+          $(this.element).pickadate('close');
+        };
+
         MdDatePicker.prototype.onClose = function onClose() {
           var selected = this.picker.get('select');
           this.value = selected ? selected.obj : null;
@@ -170,7 +180,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
 
         MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
           event.stopPropagation();
-          $(this.element).pickadate('open');
+          this.openDatePicker();
         };
 
         MdDatePicker.prototype.onSet = function onSet(value) {

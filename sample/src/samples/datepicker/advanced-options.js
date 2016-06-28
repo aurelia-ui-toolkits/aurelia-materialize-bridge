@@ -5,7 +5,8 @@ export class AdvancedOptions {
     closeOnClear: true,
     max: new Date(),
     selectYears: 50,
-    editable: true
+    editable: true,
+    showIcon: true
   };
   setDate() {
     let date = new Date();
