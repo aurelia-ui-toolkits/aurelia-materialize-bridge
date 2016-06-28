@@ -131,7 +131,7 @@ export class MdDatePicker {
 
   onSet(value) {
     //handle this ourselves since Dogfalo removed this functionality from the original plugin
-    if (this.options && this.options.closeOnSelect) {
+    if (this.options && this.options.closeOnSelect && value.select) {
       this.picker.close();
     }
     // this.value = new Date(value.select);

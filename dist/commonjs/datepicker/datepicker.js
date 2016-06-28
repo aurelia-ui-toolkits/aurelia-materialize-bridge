@@ -180,7 +180,7 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
   };
 
   MdDatePicker.prototype.onSet = function onSet(value) {
-    if (this.options && this.options.closeOnSelect) {
+    if (this.options && this.options.closeOnSelect && value.select) {
       this.picker.close();
     }
   };

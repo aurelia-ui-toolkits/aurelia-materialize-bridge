@@ -121,14 +121,6 @@ declare module 'aurelia-materialize-bridge' {
   export class InstructionFilterValueConverter {
     toView(navigationInstructions: any): any;
   }
-  export class MdCard {
-    mdImage: any;
-    mdReveal: any;
-    mdSize: any;
-    mdTitle: any;
-    constructor(element: any);
-    attached(): any;
-  }
   export class MdButton {
     disabled: any;
     flat: any;
@@ -139,6 +131,14 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     disabledChanged(newValue: any): any;
     flatChanged(newValue: any): any;
+  }
+  export class MdCard {
+    mdImage: any;
+    mdReveal: any;
+    mdSize: any;
+    mdTitle: any;
+    constructor(element: any);
+    attached(): any;
   }
   
   // @customElement('md-carousel-item')
@@ -159,6 +159,10 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
+  export class MdChip {
+    mdClose: any;
+    attached(): any;
+  }
   export class MdCheckbox {
     static id: any;
     mdChecked: any;
@@ -170,10 +174,6 @@ declare module 'aurelia-materialize-bridge' {
     handleChange(): any;
     mdCheckedChanged(newValue: any): any;
     mdDisabledChanged(newValue: any): any;
-  }
-  export class MdChip {
-    mdClose: any;
-    attached(): any;
   }
   export class MdCollapsible {
     constructor(element: any);
@@ -198,14 +198,6 @@ declare module 'aurelia-materialize-bridge' {
     isSelected: any;
     constructor(element: any);
     isSelectedChanged(newValue: any): any;
-  }
-  
-  /* eslint-enable */
-  export class DarkenValueConverter {
-    toView(value: any, steps: any): any;
-  }
-  export class LightenValueConverter {
-    toView(value: any, steps: any): any;
   }
   
   /**
@@ -243,6 +235,14 @@ declare module 'aurelia-materialize-bridge' {
   * @param data Addition data to attach to an event
   */
   export function fireMaterializeEvent(element: Element, name: string, data?: any): any;
+  
+  /* eslint-enable */
+  export class DarkenValueConverter {
+    toView(value: any, steps: any): any;
+  }
+  export class LightenValueConverter {
+    toView(value: any, steps: any): any;
+  }
   export class MdDatePicker {
     container: any;
     translation: any;
