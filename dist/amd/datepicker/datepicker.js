@@ -136,7 +136,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
           _this.openDatePicker();
         });
       }
-
       if (this.options.showIcon) {
         this.element.classList.add('left');
         var calendarIcon = document.createElement('i');
@@ -146,6 +145,12 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
         this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
         $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
       }
+
+      this.movePickerCloserToSrc();
+    };
+
+    MdDatePicker.prototype.movePickerCloserToSrc = function movePickerCloserToSrc() {
+      $(this.picker.$root).appendTo($(this.element).parent());
     };
 
     MdDatePicker.prototype.detached = function detached() {

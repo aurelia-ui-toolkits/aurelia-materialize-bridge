@@ -2,8 +2,8 @@ import 'materialize';
 import * as LogManager from 'aurelia-logging';
 import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
-import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-binding';
 import {Router} from 'aurelia-router';
+import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
 import {getLogger} from 'aurelia-logging';
 
@@ -332,32 +332,6 @@ export class MdBadge {
   }
 }
 
-@customAttribute('md-box')
-@inject(Element)
-export class MdBox {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) caption;
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('materialboxed');
-    if (this.caption) {
-      this.attributeManager.addAttributes({ 'data-caption': this.caption });
-    }
-    // FIXME:0 throws "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
-    $(this.element).materialbox();
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes('data-caption');
-    this.attributeManager.removeClasses('materialboxed');
-  }
-}
-
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 
 @customElement('md-breadcrumbs')
@@ -387,6 +361,57 @@ export class InstructionFilterValueConverter {
       }
       return result;
     });
+  }
+}
+
+@customAttribute('md-box')
+@inject(Element)
+export class MdBox {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) caption;
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('materialboxed');
+    if (this.caption) {
+      this.attributeManager.addAttributes({ 'data-caption': this.caption });
+    }
+    // FIXME:0 throws "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
+    $(this.element).materialbox();
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes('data-caption');
+    this.attributeManager.removeClasses('materialboxed');
+  }
+}
+
+@customElement('md-card')
+@inject(Element)
+export class MdCard {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdReveal = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdSize = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
 
@@ -449,31 +474,6 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
-  }
-}
-
-@customElement('md-card')
-@inject(Element)
-export class MdCard {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdImage = null;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdReveal = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneWay
-  }) mdSize = '';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdTitle;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
 
@@ -548,16 +548,6 @@ export class MdCharCounter {
   }
 }
 
-@customElement('md-chip')
-@inject(Element)
-export class MdChip {
-  @bindable() mdClose = false;
-
-  attached() {
-    this.mdClose = getBooleanFromAttributeValue(this.mdClose);
-  }
-}
-
 @customElement('md-checkbox')
 @inject(Element)
 export class MdCheckbox {
@@ -613,6 +603,16 @@ export class MdCheckbox {
   }
 }
 
+@customElement('md-chip')
+@inject(Element)
+export class MdChip {
+  @bindable() mdClose = false;
+
+  attached() {
+    this.mdClose = getBooleanFromAttributeValue(this.mdClose);
+  }
+}
+
 @customAttribute('md-collapsible')
 @bindable({ name: 'accordion', defaultValue: false })
 @bindable({ name: 'popout', defaultValue: false })
@@ -652,6 +652,42 @@ export class MdCollapsible {
 
   accordionChanged() {
     this.refresh();
+  }
+}
+
+/* eslint-disable */
+// http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
+function shadeBlendConvert(p, from, to) {
+    if(typeof(p)!="number"||p<-1||p>1||typeof(from)!="string"||(from[0]!='r'&&from[0]!='#')||(typeof(to)!="string"&&typeof(to)!="undefined"))return null; //ErrorCheck
+    // if(!this.sbcRip)this.sbcRip=function(d){
+    let sbcRip=function(d){
+        var l=d.length,RGB=new Object();
+        if(l>9){
+            d=d.split(",");
+            if(d.length<3||d.length>4)return null;//ErrorCheck
+            RGB[0]=i(d[0].slice(4)),RGB[1]=i(d[1]),RGB[2]=i(d[2]),RGB[3]=d[3]?parseFloat(d[3]):-1;
+        }else{
+            switch(l){case 8:case 6:case 3:case 2:case 1:return null;} //ErrorCheck
+            if(l<6)d="#"+d[1]+d[1]+d[2]+d[2]+d[3]+d[3]+(l>4?d[4]+""+d[4]:""); //3 digit
+            d=i(d.slice(1),16),RGB[0]=d>>16&255,RGB[1]=d>>8&255,RGB[2]=d&255,RGB[3]=l==9||l==5?r(((d>>24&255)/255)*10000)/10000:-1;
+        }
+        return RGB;}
+    var i=parseInt,r=Math.round,h=from.length>9,h=typeof(to)=="string"?to.length>9?true:to=="c"?!h:false:h,b=p<0,p=b?p*-1:p,to=to&&to!="c"?to:b?"#000000":"#FFFFFF",f=sbcRip(from),t=sbcRip(to);
+    if(!f||!t)return null; //ErrorCheck
+    if(h)return "rgb("+r((t[0]-f[0])*p+f[0])+","+r((t[1]-f[1])*p+f[1])+","+r((t[2]-f[2])*p+f[2])+(f[3]<0&&t[3]<0?")":","+(f[3]>-1&&t[3]>-1?r(((t[3]-f[3])*p+f[3])*10000)/10000:t[3]<0?f[3]:t[3])+")");
+    else return "#"+(0x100000000+(f[3]>-1&&t[3]>-1?r(((t[3]-f[3])*p+f[3])*255):t[3]>-1?r(t[3]*255):f[3]>-1?r(f[3]*255):255)*0x1000000+r((t[0]-f[0])*p+f[0])*0x10000+r((t[1]-f[1])*p+f[1])*0x100+r((t[2]-f[2])*p+f[2])).toString(16).slice(f[3]>-1||t[3]>-1?1:3);
+}
+/* eslint-enable */
+
+export class DarkenValueConverter {
+  toView(value, steps) {
+    return shadeBlendConvert(-0.3 * parseFloat(steps, 10), value);
+  }
+}
+
+export class LightenValueConverter {
+  toView(value, steps) {
+    return shadeBlendConvert(0.3 * parseFloat(steps, 10), value);
   }
 }
 
@@ -811,42 +847,6 @@ export function fireMaterializeEvent(element: Element, name: string, data? = {})
   return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
 
-/* eslint-disable */
-// http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
-function shadeBlendConvert(p, from, to) {
-    if(typeof(p)!="number"||p<-1||p>1||typeof(from)!="string"||(from[0]!='r'&&from[0]!='#')||(typeof(to)!="string"&&typeof(to)!="undefined"))return null; //ErrorCheck
-    // if(!this.sbcRip)this.sbcRip=function(d){
-    let sbcRip=function(d){
-        var l=d.length,RGB=new Object();
-        if(l>9){
-            d=d.split(",");
-            if(d.length<3||d.length>4)return null;//ErrorCheck
-            RGB[0]=i(d[0].slice(4)),RGB[1]=i(d[1]),RGB[2]=i(d[2]),RGB[3]=d[3]?parseFloat(d[3]):-1;
-        }else{
-            switch(l){case 8:case 6:case 3:case 2:case 1:return null;} //ErrorCheck
-            if(l<6)d="#"+d[1]+d[1]+d[2]+d[2]+d[3]+d[3]+(l>4?d[4]+""+d[4]:""); //3 digit
-            d=i(d.slice(1),16),RGB[0]=d>>16&255,RGB[1]=d>>8&255,RGB[2]=d&255,RGB[3]=l==9||l==5?r(((d>>24&255)/255)*10000)/10000:-1;
-        }
-        return RGB;}
-    var i=parseInt,r=Math.round,h=from.length>9,h=typeof(to)=="string"?to.length>9?true:to=="c"?!h:false:h,b=p<0,p=b?p*-1:p,to=to&&to!="c"?to:b?"#000000":"#FFFFFF",f=sbcRip(from),t=sbcRip(to);
-    if(!f||!t)return null; //ErrorCheck
-    if(h)return "rgb("+r((t[0]-f[0])*p+f[0])+","+r((t[1]-f[1])*p+f[1])+","+r((t[2]-f[2])*p+f[2])+(f[3]<0&&t[3]<0?")":","+(f[3]>-1&&t[3]>-1?r(((t[3]-f[3])*p+f[3])*10000)/10000:t[3]<0?f[3]:t[3])+")");
-    else return "#"+(0x100000000+(f[3]>-1&&t[3]>-1?r(((t[3]-f[3])*p+f[3])*255):t[3]>-1?r(t[3]*255):f[3]>-1?r(f[3]*255):255)*0x1000000+r((t[0]-f[0])*p+f[0])*0x10000+r((t[1]-f[1])*p+f[1])*0x100+r((t[2]-f[2])*p+f[2])).toString(16).slice(f[3]>-1||t[3]>-1?1:3);
-}
-/* eslint-enable */
-
-export class DarkenValueConverter {
-  toView(value, steps) {
-    return shadeBlendConvert(-0.3 * parseFloat(steps, 10), value);
-  }
-}
-
-export class LightenValueConverter {
-  toView(value, steps) {
-    return shadeBlendConvert(0.3 * parseFloat(steps, 10), value);
-  }
-}
-
 @inject(Element, TaskQueue)
 @customAttribute('md-datepicker')
 export class MdDatePicker {
@@ -935,7 +935,6 @@ export class MdDatePicker {
         this.openDatePicker();
       });
     }
-
     if (this.options.showIcon) {
       this.element.classList.add('left');
       let calendarIcon = document.createElement('i');
@@ -945,6 +944,12 @@ export class MdDatePicker {
       this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
       $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
     }
+
+    this.movePickerCloserToSrc();
+  }
+
+  movePickerCloserToSrc(){
+    $(this.picker.$root).appendTo( $(this.element).parent());
   }
 
   detached() {
@@ -1428,6 +1433,28 @@ export class MdPushpin {
   }
 }
 
+@customElement('md-range')
+@inject(Element)
+export class MdRange {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMin = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMax = 100;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdStep = 1;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue = 0;
+
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-range');
+  }
+}
+
 @customElement('md-radio')
 @inject(Element)
 export class MdRadio {
@@ -1478,28 +1505,6 @@ export class MdRadio {
     if (this.radio) {
       this.radio.disabled = !!newValue;
     }
-  }
-}
-
-@customElement('md-range')
-@inject(Element)
-export class MdRange {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdMin = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdMax = 100;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdStep = 1;
-  @bindable({
-    defaultBindingMode: bindingMode.twoWay
-  }) mdValue = 0;
-
-  constructor(element) {
-    this.element = element;
-    this.log = getLogger('md-range');
   }
 }
 

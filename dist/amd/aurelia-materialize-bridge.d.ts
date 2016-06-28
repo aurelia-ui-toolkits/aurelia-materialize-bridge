@@ -11,14 +11,14 @@ declare module 'aurelia-materialize-bridge' {
     inject
   } from 'aurelia-dependency-injection';
   import {
+    Router
+  } from 'aurelia-router';
+  import {
     bindingMode,
     observable,
     BindingEngine,
     ObserverLocator
   } from 'aurelia-binding';
-  import {
-    Router
-  } from 'aurelia-router';
   import {
     TaskQueue
   } from 'aurelia-task-queue';
@@ -104,12 +104,6 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
-  export class MdBox {
-    caption: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-  }
   
   // taken from: https://github.com/heruan/aurelia-breadcrumbs
   export class MdBreadcrumbs {
@@ -121,6 +115,20 @@ declare module 'aurelia-materialize-bridge' {
   export class InstructionFilterValueConverter {
     toView(navigationInstructions: any): any;
   }
+  export class MdBox {
+    caption: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
+  export class MdCard {
+    mdImage: any;
+    mdReveal: any;
+    mdSize: any;
+    mdTitle: any;
+    constructor(element: any);
+    attached(): any;
+  }
   export class MdButton {
     disabled: any;
     flat: any;
@@ -131,14 +139,6 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     disabledChanged(newValue: any): any;
     flatChanged(newValue: any): any;
-  }
-  export class MdCard {
-    mdImage: any;
-    mdReveal: any;
-    mdSize: any;
-    mdTitle: any;
-    constructor(element: any);
-    attached(): any;
   }
   
   // @customElement('md-carousel-item')
@@ -159,10 +159,6 @@ declare module 'aurelia-materialize-bridge' {
     attached(): any;
     detached(): any;
   }
-  export class MdChip {
-    mdClose: any;
-    attached(): any;
-  }
   export class MdCheckbox {
     static id: any;
     mdChecked: any;
@@ -175,12 +171,24 @@ declare module 'aurelia-materialize-bridge' {
     mdCheckedChanged(newValue: any): any;
     mdDisabledChanged(newValue: any): any;
   }
+  export class MdChip {
+    mdClose: any;
+    attached(): any;
+  }
   export class MdCollapsible {
     constructor(element: any);
     attached(): any;
     detached(): any;
     refresh(): any;
     accordionChanged(): any;
+  }
+  
+  /* eslint-enable */
+  export class DarkenValueConverter {
+    toView(value: any, steps: any): any;
+  }
+  export class LightenValueConverter {
+    toView(value: any, steps: any): any;
   }
   export class MdCollectionHeader {
     constructor(element: any);
@@ -235,14 +243,6 @@ declare module 'aurelia-materialize-bridge' {
   * @param data Addition data to attach to an event
   */
   export function fireMaterializeEvent(element: Element, name: string, data?: any): any;
-  
-  /* eslint-enable */
-  export class DarkenValueConverter {
-    toView(value: any, steps: any): any;
-  }
-  export class LightenValueConverter {
-    toView(value: any, steps: any): any;
-  }
   export class MdDatePicker {
     container: any;
     translation: any;
@@ -252,6 +252,7 @@ declare module 'aurelia-materialize-bridge' {
     options: any;
     constructor(element: any, taskQueue: any);
     bind(): any;
+    movePickerCloserToSrc(): any;
     detached(): any;
     openDatePicker(): any;
     closeDatePicker(): any;
@@ -393,6 +394,13 @@ declare module 'aurelia-materialize-bridge' {
   }
   
   // destroy handler not available
+  export class MdRange {
+    mdMin: any;
+    mdMax: any;
+    mdStep: any;
+    mdValue: any;
+    constructor(element: any);
+  }
   export class MdRadio {
     static id: any;
     mdChecked: any;
@@ -420,13 +428,6 @@ declare module 'aurelia-materialize-bridge' {
     //   }
     // }
     mdDisabledChanged(newValue: any): any;
-  }
-  export class MdRange {
-    mdMin: any;
-    mdMax: any;
-    mdStep: any;
-    mdValue: any;
-    constructor(element: any);
   }
   
   /* eslint no-new-func:0 */

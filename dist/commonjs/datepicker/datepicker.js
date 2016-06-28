@@ -143,7 +143,6 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
         _this.openDatePicker();
       });
     }
-
     if (this.options.showIcon) {
       this.element.classList.add('left');
       var calendarIcon = document.createElement('i');
@@ -153,6 +152,12 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
       this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
       $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
     }
+
+    this.movePickerCloserToSrc();
+  };
+
+  MdDatePicker.prototype.movePickerCloserToSrc = function movePickerCloserToSrc() {
+    $(this.picker.$root).appendTo($(this.element).parent());
   };
 
   MdDatePicker.prototype.detached = function detached() {

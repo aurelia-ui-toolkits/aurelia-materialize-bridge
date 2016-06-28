@@ -93,7 +93,6 @@ export class MdDatePicker {
         this.openDatePicker();
       });
     }
-
     if (this.options.showIcon) {
       this.element.classList.add('left');
       let calendarIcon = document.createElement('i');
@@ -103,6 +102,12 @@ export class MdDatePicker {
       this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
       $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
     }
+
+    this.movePickerCloserToSrc();
+  }
+
+  movePickerCloserToSrc(){
+    $(this.picker.$root).appendTo( $(this.element).parent());
   }
 
   detached() {
