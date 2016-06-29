@@ -8,6 +8,10 @@
     "options": {
       "route": "options",
       "files": ["html", "js"]
+    },
+    "advanced-options": {
+      "route": "advanced-options",
+      "files": ["html", "js"]
     }
   }
 }

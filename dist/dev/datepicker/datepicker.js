@@ -1,7 +1,7 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging', '../common/attributes'], function (_export, _context) {
-  var bindable, customAttribute, bindingMode, TaskQueue, inject, getLogger, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, MdDatePicker;
+  var bindable, customAttribute, bindingMode, TaskQueue, inject, getLogger, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, MdDatePicker;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -68,7 +68,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
-      _export('MdDatePicker', MdDatePicker = (_dec = inject(Element, TaskQueue), _dec2 = customAttribute('md-datepicker'), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec6 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec7 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec(_class = _dec2(_class = (_class2 = function () {
+      _export('MdDatePicker', MdDatePicker = (_dec = inject(Element, TaskQueue), _dec2 = customAttribute('md-datepicker'), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec6 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec7 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec8 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdDatePicker(element, taskQueue) {
           _classCallCheck(this, MdDatePicker);
 
@@ -82,6 +82,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
 
           _initDefineProp(this, 'selectYears', _descriptor5, this);
 
+          _initDefineProp(this, 'options', _descriptor6, this);
+
           this.element = element;
           this.log = getLogger('md-datepicker');
           this.taskQueue = taskQueue;
@@ -93,6 +95,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
           this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
           this.selectYears = parseInt(this.selectYears, 10);
           this.element.classList.add('date-picker');
+
           var options = {
             selectMonths: this.selectMonths,
             selectYears: this.selectYears,
@@ -103,6 +106,17 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
           var i18n = {};
 
           Object.assign(options, i18n);
+
+          if (this.options) {
+            Object.assign(options, this.options);
+
+            if (this.options.onClose) {
+              options.onClose = function () {
+                this.options.onClose();
+                $(document.activeElement).blur();
+              };
+            }
+          }
           if (this.container) {
             options.container = this.container;
           }
@@ -111,12 +125,43 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
             'close': this.onClose.bind(this),
             'set': this.onSet.bind(this)
           });
-          $(this.element).on('focusin', function () {
-            $(_this.element).pickadate('open');
-          });
+
           if (this.value) {
             this.picker.set('select', this.value);
           }
+          if (this.options && this.options.editable) {
+            $(this.element).on('keypress', function (e) {
+              if (e.keyCode === 13) {
+                var rawDate = $(_this.element).val();
+                if (rawDate) {
+                  rawDate = rawDate.split('/').join('-');
+                  var parsedDate = new Date(rawDate);
+                  _this.picker.set('select', parsedDate);
+                } else {
+                  _this.openDatePicker();
+                }
+              }
+            });
+          } else {
+            $(this.element).on('focusin', function () {
+              _this.openDatePicker();
+            });
+          }
+          if (this.options.showIcon) {
+            this.element.classList.add('left');
+            var calendarIcon = document.createElement('i');
+            calendarIcon.classList.add('right');
+            calendarIcon.classList.add('material-icons');
+            calendarIcon.textContent = 'today';
+            this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
+            $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+          }
+
+          this.movePickerCloserToSrc();
+        };
+
+        MdDatePicker.prototype.movePickerCloserToSrc = function movePickerCloserToSrc() {
+          $(this.picker.$root).appendTo($(this.element).parent());
         };
 
         MdDatePicker.prototype.detached = function detached() {
@@ -125,12 +170,29 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
           }
         };
 
+        MdDatePicker.prototype.openDatePicker = function openDatePicker() {
+          $(this.element).pickadate('open');
+        };
+
+        MdDatePicker.prototype.closeDatePicker = function closeDatePicker() {
+          $(this.element).pickadate('close');
+        };
+
         MdDatePicker.prototype.onClose = function onClose() {
           var selected = this.picker.get('select');
           this.value = selected ? selected.obj : null;
         };
 
-        MdDatePicker.prototype.onSet = function onSet(value) {};
+        MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
+          event.stopPropagation();
+          this.openDatePicker();
+        };
+
+        MdDatePicker.prototype.onSet = function onSet(value) {
+          if (this.options && this.options.closeOnSelect && value.select) {
+            this.picker.close();
+          }
+        };
 
         MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
           this.log.debug('selectedChanged', this.value);
@@ -157,6 +219,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
         enumerable: true,
         initializer: function initializer() {
           return 15;
+        }
+      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'options', [_dec8], {
+        enumerable: true,
+        initializer: function initializer() {
+          return {};
         }
       })), _class2)) || _class) || _class));
 
