@@ -23,6 +23,8 @@ In your project install the plugin via jspm with following command:
 2. Update  `main.js` in your `src` folder with following content:
 
   ```javascript
+  import 'materialize';
+
   export function configure(aurelia) {
     aurelia.use
       .standardConfiguration()
@@ -32,6 +34,14 @@ In your project install the plugin via jspm with following command:
 
   aurelia.start().then(a => a.setRoot());
   }
+  ```
+
+  If you fetched Materialize from another source then GitHub via JSPM you need
+  to import that in `main.js`. For example if you fetched it from npm the first
+  line in the file would be:
+
+  ```javascript
+  import 'materialize-css';
   ```
 
   **Note:** The above shows how to use all available controls at once. If you choose to pick which you'd like to use, you can ```use``` single components like this:
