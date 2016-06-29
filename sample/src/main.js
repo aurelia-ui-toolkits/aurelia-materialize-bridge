@@ -1,3 +1,5 @@
+import 'materialize';
+
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
