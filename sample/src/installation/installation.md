@@ -1,5 +1,8 @@
 #### Getting the plugin
 
+**Note:** This instruction is for **JSPM/esnext** users. Webpack and TypeScript
+instructions *coming soon*.
+
 **<span style="color: red;">Important</span>**: Make sure you run jspm version 0.16.15.
 
 In your project install the plugin via jspm with following command:
