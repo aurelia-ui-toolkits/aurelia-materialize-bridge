@@ -37,10 +37,5 @@
     "File input button": { "moduleId": "file", "status": "done" },
     "Range": { "status": "done" },
     "DatePicker": { "status": "done" }
-  },
-  "Internal": {
-    "Click counter": { "moduleId": "click-counter", "status": "done" },
-    "Well": { "status": "wip", "nav": false },
-    "PanelBar": { }
   }
 }
