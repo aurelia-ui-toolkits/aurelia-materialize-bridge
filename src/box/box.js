@@ -2,7 +2,6 @@ import { bindable, customAttribute } from 'aurelia-templating';
 import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { AttributeManager } from '../common/attributeManager';
-import 'materialize';
 
 @customAttribute('md-box')
 @inject(Element)

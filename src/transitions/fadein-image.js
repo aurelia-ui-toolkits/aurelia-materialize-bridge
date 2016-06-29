@@ -1,7 +1,6 @@
 import { bindable, customAttribute } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 import { getLogger } from 'aurelia-logging';
-import 'materialize';
 
 @customAttribute('md-fadein-image')
 @inject(Element)
