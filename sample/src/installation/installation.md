@@ -13,7 +13,7 @@ In your project install the plugin via jspm with following command:
 
 #### Configure your app
 
-1. Make sure you use [manual bootstrapping](http://aurelia.io/docs#/aurelia/framework/1.0.0-beta.1.0.8/doc/article/app-configuration-and-startup). In order to do so open your `index.html` and locate the element with the attribute aurelia-app:
+1. Make sure you use [manual bootstrapping](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/app-configuration-and-startup). In order to do so open your `index.html` and locate the element with the attribute aurelia-app:
 
   ```html
   <body aurelia-app="main">
