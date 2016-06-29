@@ -1,3 +1,19 @@
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.8.1...v0.9.0) (2016-06-29)
+
+
+### Bug Fixes
+
+* **md-datepicker:** fix closeOnSelect closing on month/year switching ([ed2664d](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/ed2664d))
+* **md-datepicker:** fix tab index of datepicker ([36b4ee4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/36b4ee4))
+
+### Features
+
+* **md-datepicker:** add advanced options and editable ([9bc8e9b](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/9bc8e9b))
+* **md-datepicker:** add showIcon option and expose simple open/close functions ([9608fab](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/9608fab))
+
+
+
 <a name="0.8.1"></a>
 ## [0.8.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.8.0...v0.8.1) (2016-06-22)
 
