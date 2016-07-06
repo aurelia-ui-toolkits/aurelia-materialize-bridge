@@ -1,1 +1,1 @@
-{"version":3,"sources":["common/constants.js"],"names":[],"mappings":";;;;;;;2BAAa,S,GAAY;AACvB,qBAAa,QADU;AAEvB,wBAAgB;AAFO,O","file":"common/constants.js","sourceRoot":"/source/","sourcesContent":["export const constants = {\r\n  eventPrefix: 'md-on-',\r\n  bindablePrefix: 'md-'\r\n};\r\n"]}
+{"version":3,"sources":["common/constants.js"],"names":[],"mappings":";;;;;;;2BAAa,YAAY;AACvB,qBAAa,QAAb;AACA,wBAAgB,KAAhB","file":"common/constants.js","sourceRoot":"/source/","sourcesContent":["export const constants = {\n  eventPrefix: 'md-on-',\n  bindablePrefix: 'md-'\n};\n"]}
