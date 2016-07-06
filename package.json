@@ -134,6 +134,56 @@
           "href": "doc/CHANGELOG.md"
         }
       ]
+    },
+    "build": {
+      "resources": [
+        "aurelia-materialize-bridge/badge/badge",
+        "aurelia-materialize-bridge/box/box",
+        "aurelia-materialize-bridge/breadcrumbs/breadcrumbs",
+        "aurelia-materialize-bridge/breadcrumbs/instructionFilter",
+        "aurelia-materialize-bridge/button/button",
+        "aurelia-materialize-bridge/card/card",
+        "aurelia-materialize-bridge/carousel/carousel",
+        "aurelia-materialize-bridge/carousel/carousel-item",
+        "aurelia-materialize-bridge/char-counter/char-counter",
+        "aurelia-materialize-bridge/checkbox/checkbox",
+        "aurelia-materialize-bridge/chip/chip",
+        "aurelia-materialize-bridge/collapsible/collapsible",
+        "aurelia-materialize-bridge/collection/collection",
+        "aurelia-materialize-bridge/collection/collection-item",
+        "aurelia-materialize-bridge/collection/collection-header",
+        "aurelia-materialize-bridge/collection/md-collection-selector",
+        "aurelia-materialize-bridge/colors/md-colors.html",
+        "aurelia-materialize-bridge/colors/colorValueConverters",
+        "aurelia-materialize-bridge/datepicker/datepicker",
+        "aurelia-materialize-bridge/dropdown/dropdown",
+        "aurelia-materialize-bridge/fab/fab",
+        "aurelia-materialize-bridge/file/file",
+        "aurelia-materialize-bridge/footer/footer",
+        "aurelia-materialize-bridge/input/input",
+        "aurelia-materialize-bridge/input/input-prefix",
+        "aurelia-materialize-bridge/modal/modal-trigger",
+        "aurelia-materialize-bridge/navbar/navbar",
+        "aurelia-materialize-bridge/pagination/pagination",
+        "aurelia-materialize-bridge/parallax/parallax",
+        "aurelia-materialize-bridge/progress/progress",
+        "aurelia-materialize-bridge/pushpin/pushpin",
+        "aurelia-materialize-bridge/radio/radio",
+        "aurelia-materialize-bridge/range/range",
+        "aurelia-materialize-bridge/scrollfire/scrollfire",
+        "aurelia-materialize-bridge/scrollfire/scrollfire-target",
+        "aurelia-materialize-bridge/select/select",
+        "aurelia-materialize-bridge/sidenav/sidenav",
+        "aurelia-materialize-bridge/sidenav/sidenav-collapse",
+        "aurelia-materialize-bridge/slider/slider",
+        "aurelia-materialize-bridge/switch/switch",
+        "aurelia-materialize-bridge/tabs/tabs",
+        "aurelia-materialize-bridge/tooltip/tooltip",
+        "aurelia-materialize-bridge/transitions/fadein-image",
+        "aurelia-materialize-bridge/transitions/staggered-list",
+        "aurelia-materialize-bridge/waves/waves",
+        "aurelia-materialize-bridge/well/md-well.html"
+      ]
     }
   }
 }
