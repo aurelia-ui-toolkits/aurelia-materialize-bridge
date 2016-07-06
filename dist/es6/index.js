@@ -1,4 +1,3 @@
-import 'materialize';
 import {ConfigBuilder} from './config-builder';
 import {ScrollfirePatch} from './scrollfire/scrollfire-patch';
 

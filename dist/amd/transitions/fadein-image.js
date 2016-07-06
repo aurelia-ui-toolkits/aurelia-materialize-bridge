@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging', 'materialize'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {

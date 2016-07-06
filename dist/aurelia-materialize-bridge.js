@@ -1,4 +1,3 @@
-import 'materialize';
 import * as LogManager from 'aurelia-logging';
 import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
@@ -979,6 +978,7 @@ export class MdDatePicker {
   onSet(value) {
     //handle this ourselves since Dogfalo removed this functionality from the original plugin
     if (this.options && this.options.closeOnSelect && value.select) {
+      this.value = value.select;
       this.picker.close();
     }
     // this.value = new Date(value.select);

@@ -54,8 +54,6 @@ Object.keys(_events).forEach(function (key) {
   });
 });
 
-require('materialize');
-
 var _configBuilder = require('./config-builder');
 
 var _scrollfirePatch = require('./scrollfire/scrollfire-patch');

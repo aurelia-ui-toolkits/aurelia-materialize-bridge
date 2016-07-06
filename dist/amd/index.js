@@ -1,4 +1,4 @@
-define(['exports', './toast/toastService', './common/attributeManager', './common/attributes', './common/events', './config-builder', './scrollfire/scrollfire-patch', 'materialize'], function (exports, _toastService, _attributeManager, _attributes, _events, _configBuilder, _scrollfirePatch) {
+define(['exports', './toast/toastService', './common/attributeManager', './common/attributes', './common/events', './config-builder', './scrollfire/scrollfire-patch'], function (exports, _toastService, _attributeManager, _attributes, _events, _configBuilder, _scrollfirePatch) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {

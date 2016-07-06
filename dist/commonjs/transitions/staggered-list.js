@@ -13,8 +13,6 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaLogging = require('aurelia-logging');
 
-require('materialize');
-
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
   Object.defineProperty(target, property, {
