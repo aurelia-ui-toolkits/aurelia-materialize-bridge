@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['materialize', './config-builder', './scrollfire/scrollfire-patch', './toast/toastService', './common/attributeManager', './common/attributes', './common/events'], function (_export, _context) {
+System.register(['./config-builder', './scrollfire/scrollfire-patch', './toast/toastService', './common/attributeManager', './common/attributes', './common/events'], function (_export, _context) {
   var ConfigBuilder, ScrollfirePatch, version;
   return {
-    setters: [function (_materialize) {}, function (_configBuilder) {
+    setters: [function (_configBuilder) {
       ConfigBuilder = _configBuilder.ConfigBuilder;
     }, function (_scrollfireScrollfirePatch) {
       ScrollfirePatch = _scrollfireScrollfirePatch.ScrollfirePatch;

@@ -12,8 +12,6 @@ exports.getBooleanFromAttributeValue = getBooleanFromAttributeValue;
 exports.fireEvent = fireEvent;
 exports.fireMaterializeEvent = fireMaterializeEvent;
 
-require('materialize');
-
 var _aureliaLogging = require('aurelia-logging');
 
 var LogManager = _interopRequireWildcard(_aureliaLogging);
@@ -1119,6 +1117,7 @@ var MdDatePicker = exports.MdDatePicker = (_dec51 = (0, _aureliaDependencyInject
 
   MdDatePicker.prototype.onSet = function onSet(value) {
     if (this.options && this.options.closeOnSelect && value.select) {
+      this.value = value.select;
       this.picker.close();
     }
   };

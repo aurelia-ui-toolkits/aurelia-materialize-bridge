@@ -190,6 +190,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
 
         MdDatePicker.prototype.onSet = function onSet(value) {
           if (this.options && this.options.closeOnSelect && value.select) {
+            this.value = value.select;
             this.picker.close();
           }
         };

@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', 'materialize'], function (_export, _context) {
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager'], function (_export, _context) {
   var bindable, customAttribute, bindingMode, inject, AttributeManager, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdBox;
 
   function _initDefineProp(target, property, descriptor, context) {
@@ -62,7 +62,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       inject = _aureliaDependencyInjection.inject;
     }, function (_commonAttributeManager) {
       AttributeManager = _commonAttributeManager.AttributeManager;
-    }, function (_materialize) {}],
+    }],
     execute: function () {
       _export('MdBox', MdBox = (_dec = customAttribute('md-box'), _dec2 = inject(Element), _dec3 = bindable({
         defaultBindingMode: bindingMode.oneTime

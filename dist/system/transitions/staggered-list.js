@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging', 'materialize'], function (_export, _context) {
+System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export, _context) {
   var bindable, customAttribute, inject, getLogger, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdStaggeredList;
 
   function _initDefineProp(target, property, descriptor, context) {
@@ -60,7 +60,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaLogging) {
       getLogger = _aureliaLogging.getLogger;
-    }, function (_materialize) {}],
+    }],
     execute: function () {
       _export('MdStaggeredList', MdStaggeredList = (_dec = customAttribute('md-staggered-list'), _dec2 = inject(Element), _dec3 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdStaggeredList(element) {

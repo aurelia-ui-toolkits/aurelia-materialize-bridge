@@ -1,5 +1,4 @@
 declare module 'aurelia-materialize-bridge' {
-  import 'materialize';
   import * as LogManager from 'aurelia-logging';
   import {
     bindable,
