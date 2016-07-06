@@ -1,3 +1,15 @@
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.9.0...v0.10.0) (2016-07-06)
+
+
+### Bug Fixes
+
+* **md-datepicker:** fix value property not being set after pickadate parses it internally ([b21ef11](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b21ef11))
+* **package.json:** remove trailing comma ([fcffd23](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/fcffd23))
+* **webpack:** add components to import via webpack ([b153ea9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b153ea9))
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.8.1...v0.9.0) (2016-06-29)
 
