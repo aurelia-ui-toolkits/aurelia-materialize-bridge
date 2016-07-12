@@ -76,7 +76,7 @@ export class MdDatePicker {
       this.picker.set('select', this.value);
     }
     if (this.options && this.options.editable) {
-      $(this.element).on('keypress', (e)=> {
+      $(this.element).on('keydown', (e)=> {
         if (e.keyCode === 13) {
           let rawDate = $(this.element).val();
           if (rawDate) {
@@ -86,6 +86,8 @@ export class MdDatePicker {
           } else {
             this.openDatePicker();
           }
+        }else{
+          this.value = null;
         }
       });
     } else {
