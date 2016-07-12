@@ -86,7 +86,7 @@ export class MdDatePicker {
           } else {
             this.openDatePicker();
           }
-        }else{
+        }else {
           this.value = null;
         }
       });
