@@ -1,14 +1,24 @@
 <template>
-<section>
+  <require from="./installation.css"></require>
+<section class="installation">
      <h4>Aurelia-Materialize bridge installation</h4>
 
-       <!-- <div class="container"> -->
+        <!--<div class="container"> -->
            <div class="row">
              <div class="col s12 m8">
-                <au-markdown url="installation/installation.md"></au-markdown>
+               <ul md-tabs class="z-depth-1">
+                 <li md-waves="color: primary;"><a class="active" href="#jspm">JSPM</a></li>
+                 <li md-waves="color: primary;"><a href="#webpack">Webpack</a></li>
+               </ul>
+               <div id="jspm" class="z-depth-1">
+                 <au-markdown url="installation/installation-jspm.md"></au-markdown>
+               </div>
+               <div id="webpack" class="z-depth-1">
+                 <au-markdown url="installation/installation-webpack.md"></au-markdown>
+               </div>
              </div>
            </div>
-       <!-- </div> -->
+        <!--</div> -->
 
     </section>
 </template>

@@ -1,29 +1,31 @@
 #### Getting the plugin
 
-**Note:** This instruction is for **JSPM/esnext** users. Webpack and TypeScript
-instructions *coming soon*.
-
 **<span style="color: red;">Important</span>**: Make sure you run jspm version 0.16.15.
 
-In your project install the plugin via jspm with following command:
+In your project install the plugin via jspm with the following command:
 
-  ```
-    $ jspm install aurelia-materialize-bridge
-  ```
+```
+  $ jspm install aurelia-materialize-bridge materialize
+```
+
+Make sure you also install Materialize. There are several options available. Not concerning forks, these are available:
+- `$ jspm install materialize=github:Dogfalo/materialize` (<span style="color: red;">github</span>)
+- `$ jspm install materialize-css` (<span style="color: red;">npm</span>)
 
 #### Configure your app
 
-1. Make sure you use [manual bootstrapping](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/app-configuration-and-startup). In order to do so open your `index.html` and locate the element with the attribute aurelia-app:
+1. Make sure you use [manual bootstrapping](http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/app-configuration-and-startup/4). In order to do so open your `index.html` and locate the element with the attribute aurelia-app:
 
   ```html
-  <body aurelia-app="main">
-  ...
-```
+    <body aurelia-app="main">
+    ...
+  ```
 
 2. Update  `main.js` in your `src` folder with following content:
 
   ```javascript
-  import 'materialize';
+  import 'materialize'; // ONLY when using the "github" option above
+  import 'materialize-css'; // ONLY when using the "npm" option above
 
   export function configure(aurelia) {
     aurelia.use
@@ -36,13 +38,7 @@ In your project install the plugin via jspm with following command:
   }
   ```
 
-  If you fetched Materialize from another source then GitHub via JSPM you need
-  to import that in `main.js`. For example if you fetched it from npm the first
-  line in the file would be:
-
-  ```javascript
-  import 'materialize-css';
-  ```
+  Please make sure that you use **only one** of the imports shown above.
 
   **Note:** The above shows how to use all available controls at once. If you choose to pick which you'd like to use, you can ```use``` single components like this:
 
