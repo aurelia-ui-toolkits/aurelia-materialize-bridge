@@ -1,3 +1,13 @@
+<a name="0.10.1"></a>
+## [0.10.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.10.0...v0.10.1) (2016-07-13)
+
+
+### Bug Fixes
+
+* **md-datepicker:** Erase via backspace would not update value or clear it ([8e748ce](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/8e748ce))
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.9.0...v0.10.0) (2016-07-06)
 
