@@ -126,7 +126,7 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
       this.picker.set('select', this.value);
     }
     if (this.options && this.options.editable) {
-      $(this.element).on('keypress', function (e) {
+      $(this.element).on('keydown', function (e) {
         if (e.keyCode === 13) {
           var rawDate = $(_this.element).val();
           if (rawDate) {
@@ -136,6 +136,8 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
           } else {
             _this.openDatePicker();
           }
+        } else {
+          _this.value = null;
         }
       });
     } else {

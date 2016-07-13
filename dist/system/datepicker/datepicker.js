@@ -130,7 +130,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
             this.picker.set('select', this.value);
           }
           if (this.options && this.options.editable) {
-            $(this.element).on('keypress', function (e) {
+            $(this.element).on('keydown', function (e) {
               if (e.keyCode === 13) {
                 var rawDate = $(_this.element).val();
                 if (rawDate) {
@@ -140,6 +140,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
                 } else {
                   _this.openDatePicker();
                 }
+              } else {
+                _this.value = null;
               }
             });
           } else {

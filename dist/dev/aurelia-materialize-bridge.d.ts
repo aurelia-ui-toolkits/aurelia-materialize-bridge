@@ -139,6 +139,12 @@ declare module 'aurelia-materialize-bridge' {
     constructor(element: any);
     attached(): any;
   }
+  export class MdCharCounter {
+    length: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+  }
   
   // @customElement('md-carousel-item')
   export class MdCarouselItem {
@@ -151,12 +157,6 @@ declare module 'aurelia-materialize-bridge' {
     mdSlider: any;
     constructor(element: any);
     attached(): any;
-  }
-  export class MdCharCounter {
-    length: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
   }
   export class MdCheckbox {
     static id: any;
@@ -503,6 +503,17 @@ declare module 'aurelia-materialize-bridge' {
     detached(): any;
     mdFixedChanged(newValue: any): any;
   }
+  export class MdSwitch {
+    mdChecked: any;
+    mdDisabled: any;
+    mdLabelOff: any;
+    mdLabelOn: any;
+    constructor(element: any);
+    attached(): any;
+    detached(): any;
+    handleChange(): any;
+    mdCheckedChanged(newValue: any): any;
+  }
   export class MdSlider {
     mdFillContainer: any;
     mdHeight: any;
@@ -527,16 +538,8 @@ declare module 'aurelia-materialize-bridge' {
   // mdTransitionChanged() {
   //   this.refresh();
   // }
-  export class MdSwitch {
-    mdChecked: any;
-    mdDisabled: any;
-    mdLabelOff: any;
-    mdLabelOn: any;
-    constructor(element: any);
-    attached(): any;
-    detached(): any;
-    handleChange(): any;
-    mdCheckedChanged(newValue: any): any;
+  export class MdToastService {
+    show(message: any, displayLength: any, className?: any): any;
   }
   export class MdTabs {
     constructor(element: any, taskQueue: any);
@@ -549,9 +552,6 @@ declare module 'aurelia-materialize-bridge' {
     
     // FIXME: probably bad
     selectedTab: any;
-  }
-  export class MdToastService {
-    show(message: any, displayLength: any, className?: any): any;
   }
   
   // @customAttribute('md-tooltip')
