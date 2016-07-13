@@ -94,6 +94,12 @@ In your project install the plugin via npm with the following command:
   <require from="materialize-css/bin/materialize.css"></require>
   ```
 
+**<span style="color: red;">Important</span> (uglify-js users)**:
+
+When using aurelia-materialize-bridge (and thus materialize) via webpack with the UglifyJS-plugin (standard in aurelia webpack skeleton production build) you have to make sure to except the materialize module (via exclude: ['materialize'] if your module is named materialize) from the UglifyJS plugin. Otherwise the names will be mangled and the materialize module won't load correctly (missing dropdown). Another option would be to disable mangle as a global setting on the UglifyJS settings object.
+
+- Thanks to @JoschaMetze for mentioning this  
+
 #### You are done!
 It is now possible to drop some custom-elements into your DOM. See the other pages on this website for detailed information on how to do this.
 
