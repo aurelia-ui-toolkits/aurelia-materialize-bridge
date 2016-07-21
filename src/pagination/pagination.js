@@ -78,9 +78,9 @@ export class MdPagination {
     let start = Math.max(this.mdActivePage - midPoint, 0);
     let end = Math.min(start + numberOfLinks, this.mdPages);
 
-    var list = [];
+    let list = [];
     for (let i = start; i < end; i++) {
-        list.push(i);
+      list.push(i);
     }
 
     return list;
