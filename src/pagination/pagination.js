@@ -3,7 +3,7 @@ import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { fireMaterializeEvent } from '../common/events';
 import { getBooleanFromAttributeValue } from '../common/attributes';
-import {computedFrom} from 'aurelia-framework';
+
 
 @customElement('md-pagination')
 @inject(Element)
@@ -32,8 +32,7 @@ export class MdPagination {
     // attached() throws unhandled exceptions
     this.mdPages = parseInt(this.mdPages, 10);
     // We don't want mdVisiblePageLinks to be greater than mdPages
-    // -1 because we start from 0
-    this.mdVisiblePageLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.mdPages) - 1;
+    this.mdVisiblePageLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.mdPages);
     this.mdShowPrevNext = getBooleanFromAttributeValue(this.mdShowPrevNext);
     this.mdPageLinks = this.generatePageLinks();
   }
@@ -68,10 +67,16 @@ export class MdPagination {
     }
   }
 
+  mdVisiblePageLinksChanged() {
+    //alert('dd');
+    this.mdPageLinks = this.generatePageLinks();
+  }
+
   generatePageLinks() {
-    let midPoint = parseInt((this.mdVisiblePageLinks / 2), 10) + 1;
+    let numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
+    let midPoint = (numberOfLinks / 2) + 1;
     let start = Math.max(this.mdActivePage - midPoint, 0);
-    let end = Math.min(start + this.mdVisiblePageLinks, this.mdPages);
+    let end = Math.min(start + numberOfLinks, this.mdPages);
 
     var list = [];
     for (let i = start; i < end; i++) {
