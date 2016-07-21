@@ -15,6 +15,7 @@ export class MdPagination {
   }) mdPages = 5;
   @bindable() mdShowFirstLast = true;
   @bindable() mdShowPrevNext = true;
+  @bindable() mdShowPageLinks = true;
 
   constructor(element) {
     this.element = element;
