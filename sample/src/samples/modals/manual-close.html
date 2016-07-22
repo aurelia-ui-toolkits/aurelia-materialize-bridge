@@ -1,0 +1,19 @@
+<template>
+  <div>
+      <div>
+        <p><a md-button md-modal-trigger="disposable: false;" href="#modal1">show modal</a></p>
+      </div>
+      <div id="modal1" class="modal" ref="myDialog">
+        <div class="modal-content">
+          <h4>Modal Header</h4>
+          <p>A bunch of text</p>
+          <div>
+            <md-checkbox md-checked.bind="closeDialog">close dialog on "agree"</md-checkbox>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a click.delegate="agree()" md-button="flat: true;" md-waves="color: accent;" class="modal-action">Agree</a>
+        </div>
+      </div>
+    </div>
+</template>

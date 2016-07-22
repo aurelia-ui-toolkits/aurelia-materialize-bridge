@@ -12,6 +12,10 @@
     "options": {
       "route": "options",
       "files": ["html", "js"]
+    },
+    "manual-close": {
+      "route": "manual-close",
+      "files": ["html", "js"]
     }
   }
 }
