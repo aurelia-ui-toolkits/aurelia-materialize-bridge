@@ -1,4 +1,12 @@
+import 'jquery';
 import 'materialize';
+
+//Configure Bluebird Promises.
+Promise.config({
+  warnings: {
+    wForgottenReturn: false
+  }
+});
 
 export function configure(aurelia) {
   aurelia.use
