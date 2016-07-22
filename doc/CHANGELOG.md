@@ -1,7 +1,6 @@
 <a name="0.10.2"></a>
 ## [0.10.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.10.1...v0.10.2) (2016-07-22)
 
-
 ### Features
 
 * **md-pagination:** add ... indicator to page links when start/end are not visible (also hijacked @g ([b142fe8](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b142fe8))
