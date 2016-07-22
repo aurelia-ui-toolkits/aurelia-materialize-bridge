@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-router'], function (_export, _context) {
+  "use strict";
+
   var customElement, inject, Router, _dec, _dec2, _class, MdBreadcrumbs;
 
   function _classCallCheck(instance, Constructor) {

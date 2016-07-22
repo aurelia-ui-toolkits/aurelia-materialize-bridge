@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdPagination = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -66,7 +66,11 @@ var MdPagination = exports.MdPagination = (_dec = (0, _aureliaTemplating.customE
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
 }), _dec4 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-}), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+}), _dec5 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+}), _dec6 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+}), _dec7 = (0, _aureliaTemplating.bindable)(), _dec8 = (0, _aureliaTemplating.bindable)(), _dec9 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
   function MdPagination(element) {
     _classCallCheck(this, MdPagination);
 
@@ -74,20 +78,30 @@ var MdPagination = exports.MdPagination = (_dec = (0, _aureliaTemplating.customE
 
     _initDefineProp(this, 'mdPages', _descriptor2, this);
 
-    _initDefineProp(this, 'mdShowFirstLast', _descriptor3, this);
+    _initDefineProp(this, 'mdVisiblePageLinks', _descriptor3, this);
 
-    _initDefineProp(this, 'mdShowPrevNext', _descriptor4, this);
+    _initDefineProp(this, 'mdPageLinks', _descriptor4, this);
+
+    _initDefineProp(this, 'mdShowFirstLast', _descriptor5, this);
+
+    _initDefineProp(this, 'mdShowPrevNext', _descriptor6, this);
+
+    _initDefineProp(this, 'mdShowPageLinks', _descriptor7, this);
 
     this.element = element;
   }
 
   MdPagination.prototype.bind = function bind() {
     this.mdPages = parseInt(this.mdPages, 10);
+
+    this.mdVisiblePageLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.mdPages);
     this.mdShowPrevNext = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowPrevNext);
+    this.mdPageLinks = this.generatePageLinks();
   };
 
   MdPagination.prototype.setActivePage = function setActivePage(page) {
     this.mdActivePage = page;
+    this.mdPageLinks = this.generatePageLinks();
     (0, _events.fireMaterializeEvent)(this.element, 'page-changed', this.mdActivePage);
   };
 
@@ -115,6 +129,24 @@ var MdPagination = exports.MdPagination = (_dec = (0, _aureliaTemplating.customE
     }
   };
 
+  MdPagination.prototype.mdVisiblePageLinksChanged = function mdVisiblePageLinksChanged() {
+    this.mdPageLinks = this.generatePageLinks();
+  };
+
+  MdPagination.prototype.generatePageLinks = function generatePageLinks() {
+    var numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
+    var midPoint = numberOfLinks / 2 + 1;
+    var start = Math.max(this.mdActivePage - midPoint, 0);
+    var end = Math.min(start + numberOfLinks, this.mdPages);
+
+    var list = [];
+    for (var i = start; i < end; i++) {
+      list.push(i);
+    }
+
+    return list;
+  };
+
   return MdPagination;
 }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdActivePage', [_dec3], {
   enumerable: true,
@@ -126,12 +158,27 @@ var MdPagination = exports.MdPagination = (_dec = (0, _aureliaTemplating.customE
   initializer: function initializer() {
     return 5;
   }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowFirstLast', [_dec5], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdVisiblePageLinks', [_dec5], {
+  enumerable: true,
+  initializer: function initializer() {
+    return 15;
+  }
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdPageLinks', [_dec6], {
+  enumerable: true,
+  initializer: function initializer() {
+    return [];
+  }
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowFirstLast', [_dec7], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowPrevNext', [_dec6], {
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowPrevNext', [_dec8], {
+  enumerable: true,
+  initializer: function initializer() {
+    return true;
+  }
+}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowPageLinks', [_dec9], {
   enumerable: true,
   initializer: function initializer() {
     return true;
