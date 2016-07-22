@@ -357,6 +357,38 @@ export class MdBox {
   }
 }
 
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+
+@customElement('md-breadcrumbs')
+@inject(Element, Router)
+export class MdBreadcrumbs {
+  constructor(element, router) {
+    this.element = element;
+    this._childRouter = router;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  navigate(navigationInstruction) {
+    this._childRouter.navigateToRoute(navigationInstruction.config.name);
+    // this.router.navigate(navigationInstruction.config.name);
+  }
+}
+
+export class InstructionFilterValueConverter {
+  toView(navigationInstructions) {
+    return navigationInstructions.filter(i => {
+      let result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
+  }
+}
+
 @customAttribute('md-button')
 @inject(Element)
 export class MdButton {
@@ -416,38 +448,6 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
-  }
-}
-
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-
-@customElement('md-breadcrumbs')
-@inject(Element, Router)
-export class MdBreadcrumbs {
-  constructor(element, router) {
-    this.element = element;
-    this._childRouter = router;
-    while (router.parent) {
-      router = router.parent;
-    }
-    this.router = router;
-  }
-
-  navigate(navigationInstruction) {
-    this._childRouter.navigateToRoute(navigationInstruction.config.name);
-    // this.router.navigate(navigationInstruction.config.name);
-  }
-}
-
-export class InstructionFilterValueConverter {
-  toView(navigationInstructions) {
-    return navigationInstructions.filter(i => {
-      let result = false;
-      if (i.config.title) {
-        result = true;
-      }
-      return result;
-    });
   }
 }
 
@@ -518,35 +518,6 @@ export class MdCarousel {
   }
 }
 
-@customAttribute('md-char-counter')
-@inject(Element)
-export class MdCharCounter {
-  @bindable() length = 120;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.length = parseInt(this.length, 10);
-
-    // attach to input element explicitly, so this counter can be used on
-    // containers (or custom elements like md-input)
-    if (this.element.tagName.toUpperCase() === 'INPUT') {
-      this.attributeManager.addAttributes({ 'length': this.length });
-      $(this.element).characterCounter();
-    } else {
-      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
-      $(this.element).find('input').characterCounter();
-    }
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes(['length']);
-  }
-}
-
 @customElement('md-checkbox')
 @inject(Element)
 export class MdCheckbox {
@@ -599,6 +570,35 @@ export class MdCheckbox {
     if (this.checkbox) {
       this.checkbox.disabled = !!newValue;
     }
+  }
+}
+
+@customAttribute('md-char-counter')
+@inject(Element)
+export class MdCharCounter {
+  @bindable() length = 120;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.length = parseInt(this.length, 10);
+
+    // attach to input element explicitly, so this counter can be used on
+    // containers (or custom elements like md-input)
+    if (this.element.tagName.toUpperCase() === 'INPUT') {
+      this.attributeManager.addAttributes({ 'length': this.length });
+      $(this.element).characterCounter();
+    } else {
+      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
+      $(this.element).find('input').characterCounter();
+    }
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes(['length']);
   }
 }
 
@@ -1729,76 +1729,6 @@ export class MdSelect {
   }
 }
 
-@customElement('md-slider')
-@inject(Element)
-@inlineView(`
-  <template class="slider">
-  <require from="./slider.css"></require>
-  <ul class="slides">
-    <slot></slot>
-  </ul>
-  </template>
-`)
-export class MdSlider {
-  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdFillContainer = false;
-  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdHeight = 400;
-  @bindable() mdIndicators = true;
-  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdInterval = 6000;
-  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdTransition = 500;
-
-  constructor(element) {
-    this.element = element;
-    this.log = getLogger('md-slider');
-  }
-
-  attached() {
-    if (getBooleanFromAttributeValue(this.mdFillContainer)) {
-      this.element.classList.add('fullscreen');
-    }
-    this.refresh();
-  }
-
-  pause() {
-    $(this.element).slider('pause');
-  }
-
-  start() {
-    $(this.element).slider('start');
-  }
-
-  next() {
-    $(this.element).slider('next');
-  }
-
-  prev() {
-    $(this.element).slider('prev');
-  }
-
-  refresh() {
-    let options = {
-      height: parseInt(this.mdHeight, 10),
-      indicators: getBooleanFromAttributeValue(this.mdIndicators),
-      interval: parseInt(this.mdInterval, 10),
-      transition: parseInt(this.mdTransition, 10)
-    };
-    this.log.debug('refreshing slider, params:', options);
-    $(this.element).slider(options);
-  }
-
-  mdIndicatorsChanged() {
-    this.refresh();
-  }
-
-  // commented since that leads to strange effects
-  // mdIntervalChanged() {
-  //   this.refresh();
-  // }
-  //
-  // mdTransitionChanged() {
-  //   this.refresh();
-  // }
-}
-
 @customAttribute('md-sidenav-collapse')
 @inject(Element, ObserverLocator)
 export class MdSidenavCollapse {
@@ -1895,6 +1825,76 @@ export class MdSidenav {
       }
     }
   }
+}
+
+@customElement('md-slider')
+@inject(Element)
+@inlineView(`
+  <template class="slider">
+  <require from="./slider.css"></require>
+  <ul class="slides">
+    <slot></slot>
+  </ul>
+  </template>
+`)
+export class MdSlider {
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdFillContainer = false;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdHeight = 400;
+  @bindable() mdIndicators = true;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdInterval = 6000;
+  @bindable({ defaultBindingMode: bindingMode.oneTime }) mdTransition = 500;
+
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-slider');
+  }
+
+  attached() {
+    if (getBooleanFromAttributeValue(this.mdFillContainer)) {
+      this.element.classList.add('fullscreen');
+    }
+    this.refresh();
+  }
+
+  pause() {
+    $(this.element).slider('pause');
+  }
+
+  start() {
+    $(this.element).slider('start');
+  }
+
+  next() {
+    $(this.element).slider('next');
+  }
+
+  prev() {
+    $(this.element).slider('prev');
+  }
+
+  refresh() {
+    let options = {
+      height: parseInt(this.mdHeight, 10),
+      indicators: getBooleanFromAttributeValue(this.mdIndicators),
+      interval: parseInt(this.mdInterval, 10),
+      transition: parseInt(this.mdTransition, 10)
+    };
+    this.log.debug('refreshing slider, params:', options);
+    $(this.element).slider(options);
+  }
+
+  mdIndicatorsChanged() {
+    this.refresh();
+  }
+
+  // commented since that leads to strange effects
+  // mdIntervalChanged() {
+  //   this.refresh();
+  // }
+  //
+  // mdTransitionChanged() {
+  //   this.refresh();
+  // }
 }
 
 @customElement('md-switch')
@@ -2017,6 +2017,16 @@ export class MdTabs {
   }
 }
 
+export class MdToastService {
+  show(message, displayLength, className?) {
+    return new Promise((resolve, reject) => {
+      Materialize.toast(message, displayLength, className, () => {
+        resolve();
+      });
+    });
+  }
+}
+
 // @customAttribute('md-tooltip')
 @inject(Element)
 export class MdTooltip {
@@ -2039,16 +2049,6 @@ export class MdTooltip {
     $(this.element).tooltip('remove');
     this.attributeManager.removeClasses('tooltipped');
     this.attributeManager.removeAttributes(['data-position', 'data-tooltip']);
-  }
-}
-
-export class MdToastService {
-  show(message, displayLength, className?) {
-    return new Promise((resolve, reject) => {
-      Materialize.toast(message, displayLength, className, () => {
-        resolve();
-      });
-    });
   }
 }
 

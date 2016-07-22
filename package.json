@@ -1,6 +1,6 @@
 {
   "name": "aurelia-materialize-bridge",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "registry": "github",
   "description": "Aurelia interface to http://materializecss.com/",
   "keywords": [
@@ -58,7 +58,7 @@
     }
   },
   "devDependencies": {
-    "aurelia-tools": "^0.1.18",
+    "aurelia-tools": "^0.2.3",
     "babel": "^6.5.2",
     "babel-dts-generator": "^0.6.1",
     "babel-eslint": "^4.1.1",

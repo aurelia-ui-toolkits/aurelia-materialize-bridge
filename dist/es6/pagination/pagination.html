@@ -10,7 +10,7 @@
       <li md-waves click.delegate="setActivePage(p+1)" repeat.for="p of mdPageLinks" class="${ p+1 === mdActivePage ? 'active' : ''}">
         <span if.bind="$first && p > 0">...</span>
         <a>${p+1}</a>
-        <span if.bind="$last && p <= mdPages">...</span>
+        <span if.bind="$last && p < mdPages - 1">...</span>
       </li>
     </template>
     <template if.bind="mdShowPrevNext">

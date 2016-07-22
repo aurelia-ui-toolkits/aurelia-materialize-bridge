@@ -108,17 +108,6 @@ export declare class MdBox {
   attached(): any;
   detached(): any;
 }
-export declare class MdButton {
-  disabled: any;
-  flat: any;
-  floating: any;
-  large: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  disabledChanged(newValue?: any): any;
-  flatChanged(newValue?: any): any;
-}
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 export declare class MdBreadcrumbs {
@@ -129,6 +118,17 @@ export declare class MdBreadcrumbs {
 // this.router.navigate(navigationInstruction.config.name);
 export declare class InstructionFilterValueConverter {
   toView(navigationInstructions?: any): any;
+}
+export declare class MdButton {
+  disabled: any;
+  flat: any;
+  floating: any;
+  large: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  disabledChanged(newValue?: any): any;
+  flatChanged(newValue?: any): any;
 }
 export declare class MdCard {
   mdImage: any;
@@ -151,12 +151,6 @@ export declare class MdCarousel {
   constructor(element?: any);
   attached(): any;
 }
-export declare class MdCharCounter {
-  length: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
 export declare class MdCheckbox {
   static id: any;
   mdChecked: any;
@@ -168,6 +162,12 @@ export declare class MdCheckbox {
   handleChange(): any;
   mdCheckedChanged(newValue?: any): any;
   mdDisabledChanged(newValue?: any): any;
+}
+export declare class MdCharCounter {
+  length: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
 }
 export declare class MdChip {
   mdClose: any;
@@ -465,30 +465,6 @@ export declare class MdSelect {
   handleChangeFromNativeSelect(): any;
   handleChangeFromViewModel(newValue?: any): any;
 }
-export declare class MdSlider {
-  mdFillContainer: any;
-  mdHeight: any;
-  mdIndicators: any;
-  mdInterval: any;
-  mdTransition: any;
-  constructor(element?: any);
-  attached(): any;
-  pause(): any;
-  start(): any;
-  next(): any;
-  prev(): any;
-  refresh(): any;
-  mdIndicatorsChanged(): any;
-}
-
-// commented since that leads to strange effects
-// mdIntervalChanged() {
-//   this.refresh();
-// }
-//
-// mdTransitionChanged() {
-//   this.refresh();
-// }
 export declare class MdSidenavCollapse {
   ref: any;
   constructor(element?: any, observerLocator?: any);
@@ -527,6 +503,30 @@ export declare class MdSidenav {
   detached(): any;
   mdFixedChanged(newValue?: any): any;
 }
+export declare class MdSlider {
+  mdFillContainer: any;
+  mdHeight: any;
+  mdIndicators: any;
+  mdInterval: any;
+  mdTransition: any;
+  constructor(element?: any);
+  attached(): any;
+  pause(): any;
+  start(): any;
+  next(): any;
+  prev(): any;
+  refresh(): any;
+  mdIndicatorsChanged(): any;
+}
+
+// commented since that leads to strange effects
+// mdIntervalChanged() {
+//   this.refresh();
+// }
+//
+// mdTransitionChanged() {
+//   this.refresh();
+// }
 export declare class MdSwitch {
   mdChecked: any;
   mdDisabled: any;
@@ -550,6 +550,9 @@ export declare class MdTabs {
   // FIXME: probably bad
   selectedTab: any;
 }
+export declare class MdToastService {
+  show(message?: any, displayLength?: any, className?: any): any;
+}
 
 // @customAttribute('md-tooltip')
 export declare class MdTooltip {
@@ -559,9 +562,6 @@ export declare class MdTooltip {
   constructor(element?: any);
   attached(): any;
   detached(): any;
-}
-export declare class MdToastService {
-  show(message?: any, displayLength?: any, className?: any): any;
 }
 export declare class MdFadeinImage {
   ref: any;

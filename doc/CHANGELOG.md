@@ -1,3 +1,13 @@
+<a name="0.10.3"></a>
+## [0.10.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.10.2...v0.10.3) (2016-07-22)
+
+
+### Bug Fixes
+
+* **md-pagination:** fix last ... indicator ([0bfd109](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0bfd109))
+
+
+
 <a name="0.10.2"></a>
 ## [0.10.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.10.1...v0.10.2) (2016-07-22)
 
