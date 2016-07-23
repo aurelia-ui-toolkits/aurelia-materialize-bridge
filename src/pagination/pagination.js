@@ -67,8 +67,11 @@ export class MdPagination {
     }
   }
 
+  mdPagesChanged() {
+    this.setActivePage(1);
+  }
+
   mdVisiblePageLinksChanged() {
-    //alert('dd');
     this.mdPageLinks = this.generatePageLinks();
   }
 
