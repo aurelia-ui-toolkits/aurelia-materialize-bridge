@@ -3,5 +3,5 @@ export class Options {
   showFirstLast = true;
   showPrevNext = true;
   showPageLinks = true;
-  visiblePageLinks = '20';
+  visiblePageLinks = '16';
 }
