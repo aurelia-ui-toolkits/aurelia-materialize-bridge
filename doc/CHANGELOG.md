@@ -1,3 +1,13 @@
+<a name="0.10.4"></a>
+## [0.10.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.10.3...v0.10.4) (2016-07-25)
+
+
+### Bug Fixes
+
+* **md-pagination:** fix page links display with an odd amount of visible links, number of pages opti ([b79f92a](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b79f92a))
+
+
+
 <a name="0.10.3"></a>
 ## [0.10.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.10.2...v0.10.3) (2016-07-22)
 
