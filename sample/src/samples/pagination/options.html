@@ -1,6 +1,6 @@
 <template>
   <div>
-    <md-pagination md-show-first-last.two-way="showFirstLast" md-show-prev-next.two-way="showPrevNext" md-show-page-links.two-way="showPageLinks" md-pages="200" md-visible-page-links.two-way="visiblePageLinks" md-active-page.bind="activePage"></md-pagination>
+    <md-pagination md-show-first-last.two-way="showFirstLast" md-show-prev-next.two-way="showPrevNext" md-show-page-links.two-way="showPageLinks" md-pages.bind="overallPageLinks" md-visible-page-links.two-way="visiblePageLinks" md-active-page.bind="activePage"></md-pagination>
   </div>
   <div>
     active page: ${activePage}
@@ -16,6 +16,10 @@
   <div style="margin-top: 15px;">
     Show page links:
     <md-switch md-checked.bind="showPageLinks"></md-switch>
+  </div>
+  <div style="margin-top: 15px;">
+    Number of pages:
+    <md-input md-value.bind="overallPageLinks"></md-input>
   </div>
   <div style="margin-top: 15px;">
     Number of visible links:
