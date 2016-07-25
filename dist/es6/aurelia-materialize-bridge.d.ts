@@ -240,28 +240,6 @@ export declare function fireEvent(element: Element, name: string, data?: any): a
 * @param data Addition data to attach to an event
 */
 export declare function fireMaterializeEvent(element: Element, name: string, data?: any): any;
-export declare class MdDatePicker {
-  container: any;
-  translation: any;
-  value: any;
-  selectMonths: any;
-  selectYears: any;
-  options: any;
-  constructor(element?: any, taskQueue?: any);
-  bind(): any;
-  movePickerCloserToSrc(): any;
-  detached(): any;
-  openDatePicker(): any;
-  closeDatePicker(): any;
-  onClose(): any;
-  onCalendarIconClick(event?: any): any;
-  onSet(value?: any): any;
-  
-  // this.value = new Date(value.select);
-  valueChanged(newValue?: any): any;
-}
-
-// });
 export declare class MdDropdownElement {
   static id: any;
   alignment: any;
@@ -289,6 +267,34 @@ export declare class MdDropdown {
   attached(): any;
   detached(): any;
 }
+export declare class DatePickerDefaultParser {
+  canParse(value?: any): any;
+  parse(value?: any): any;
+}
+export declare class MdDatePicker {
+  container: any;
+  translation: any;
+  value: any;
+  parsers: any;
+  selectMonths: any;
+  selectYears: any;
+  options: any;
+  constructor(element?: any, taskQueue?: any, defaultParser?: any);
+  bind(): any;
+  parseDate(value?: any): any;
+  movePickerCloserToSrc(): any;
+  detached(): any;
+  openDatePicker(): any;
+  closeDatePicker(): any;
+  onClose(): any;
+  onCalendarIconClick(event?: any): any;
+  onSet(value?: any): any;
+  
+  // this.value = new Date(value.select);
+  valueChanged(newValue?: any): any;
+}
+
+// });
 export declare class MdFab {
   mdFixed: any;
   mdLarge: any;
@@ -395,6 +401,13 @@ export declare class MdPushpin {
 }
 
 // destroy handler not available
+export declare class MdRange {
+  mdMin: any;
+  mdMax: any;
+  mdStep: any;
+  mdValue: any;
+  constructor(element?: any);
+}
 export declare class MdRadio {
   static id: any;
   mdChecked: any;
@@ -423,13 +436,6 @@ export declare class MdRadio {
   // }
   mdDisabledChanged(newValue?: any): any;
 }
-export declare class MdRange {
-  mdMin: any;
-  mdMax: any;
-  mdStep: any;
-  mdValue: any;
-  constructor(element?: any);
-}
 
 /* eslint no-new-func:0 */
 export declare class ScrollfirePatch {
@@ -446,14 +452,6 @@ export declare class MdScrollfire {
   constructor(element?: any);
   attached(): any;
 }
-export declare class MdScrollSpy {
-  target: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
-
-// destroy handler not available
 export declare class MdSelect {
   disabled: any;
   subscriptions: any;
@@ -466,6 +464,14 @@ export declare class MdSelect {
   handleChangeFromNativeSelect(): any;
   handleChangeFromViewModel(newValue?: any): any;
 }
+export declare class MdScrollSpy {
+  target: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
+
+// destroy handler not available
 export declare class MdSidenavCollapse {
   ref: any;
   constructor(element?: any, observerLocator?: any);

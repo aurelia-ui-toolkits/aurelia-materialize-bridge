@@ -846,156 +846,6 @@ export function fireMaterializeEvent(element: Element, name: string, data? = {})
   return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
 
-@inject(Element, TaskQueue)
-@customAttribute('md-datepicker')
-export class MdDatePicker {
-  @bindable() container;
-  @bindable() translation;
-  @bindable({defaultBindingMode: bindingMode.twoWay}) value;
-  @bindable({defaultBindingMode: bindingMode.oneTime}) selectMonths = true;
-  @bindable({defaultBindingMode: bindingMode.oneTime}) selectYears = 15;
-  @bindable({defaultBindingMode: bindingMode.oneTime}) options = {};
-
-  constructor(element, taskQueue) {
-    this.element = element;
-    this.log = getLogger('md-datepicker');
-    this.taskQueue = taskQueue;
-  }
-
-  bind() {
-    this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
-    this.selectYears = parseInt(this.selectYears, 10);
-    this.element.classList.add('date-picker');
-
-    let options = {
-      selectMonths: this.selectMonths,
-      selectYears: this.selectYears,
-      onClose: function() {
-        // see https://github.com/Dogfalo/materialize/issues/2067
-        // and: https://github.com/amsul/pickadate.js/issues/160
-        $(document.activeElement).blur();
-        // $(this.element).blur();
-      }
-    };
-    let i18n = {};
-    // let i18n = {
-    //   selectMonths: true, // Creates a dropdown to control month
-    //   selectYears: 15, // Creates a dropdown of 15 years to control year
-    //   monthsFull: [ 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ],
-    //   monthsShort: [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
-    //   weekdaysFull: [ 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag' ],
-    //   weekdaysShort: [ 'So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa' ],
-    //   today: 'Heute',
-    //   clear: 'Löschen',
-    //   close: 'Schließen',
-    //   firstDay: 1,
-    //   format: 'dddd, dd. mmmm yyyy',
-    //   formatSubmit: 'yyyy/mm/dd'
-    // };
-    Object.assign(options, i18n);
-
-    if (this.options) {
-      Object.assign(options, this.options);
-      //merge callback methods if there is a hook in the advanced options
-      if (this.options.onClose) {
-        options.onClose = function() {
-          this.options.onClose();
-          $(document.activeElement).blur();
-        };
-      }
-    }
-    if (this.container) {
-      options.container = this.container;
-    }
-    this.picker = $(this.element).pickadate(options).pickadate('picker');
-    this.picker.on({
-      'close': this.onClose.bind(this),
-      'set': this.onSet.bind(this)
-    });
-
-    if (this.value) {
-      this.picker.set('select', this.value);
-    }
-    if (this.options && this.options.editable) {
-      $(this.element).on('keydown', (e)=> {
-        if (e.keyCode === 13) {
-          let rawDate = $(this.element).val();
-          if (rawDate) {
-            rawDate = rawDate.split('/').join('-');
-            let parsedDate = new Date(rawDate);
-            this.picker.set('select', parsedDate);
-          } else {
-            this.openDatePicker();
-          }
-        }else {
-          this.value = null;
-        }
-      });
-    } else {
-      $(this.element).on('focusin', () => {
-        this.openDatePicker();
-      });
-    }
-    if (this.options.showIcon) {
-      this.element.classList.add('left');
-      let calendarIcon = document.createElement('i');
-      calendarIcon.classList.add('right');
-      calendarIcon.classList.add('material-icons');
-      calendarIcon.textContent = 'today';
-      this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
-      $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
-    }
-
-    this.movePickerCloserToSrc();
-  }
-
-  movePickerCloserToSrc() {
-    $(this.picker.$root).appendTo( $(this.element).parent());
-  }
-
-  detached() {
-    if (this.picker) {
-      this.picker.stop();
-    }
-  }
-
-  openDatePicker() {
-    $(this.element).pickadate('open');
-  }
-
-  closeDatePicker() {
-    $(this.element).pickadate('close');
-  }
-
-  onClose() {
-    let selected = this.picker.get('select');
-    this.value = selected ? selected.obj : null;
-  }
-
-  onCalendarIconClick(event) {
-    event.stopPropagation();
-    this.openDatePicker();
-  }
-
-  onSet(value) {
-    //handle this ourselves since Dogfalo removed this functionality from the original plugin
-    if (this.options && this.options.closeOnSelect && value.select) {
-      this.value = value.select;
-      this.picker.close();
-    }
-    // this.value = new Date(value.select);
-  }
-
-  valueChanged(newValue) {
-    this.log.debug('selectedChanged', this.value);
-    // this.taskQueue.queueTask(() => {
-    this.picker.set('select', this.value);
-    // });
-  }
-
-
-}
-
 @customElement('md-dropdown')
 @inject(Element)
 export class MdDropdownElement {
@@ -1100,6 +950,188 @@ export class MdDropdown {
     this.attributeManager.removeClasses('dropdown-button');
     this.contentAttributeManager.removeClasses('dropdown-content');
   }
+}
+
+export class DatePickerDefaultParser {
+  canParse(value) {
+    if (value) {
+      return true;
+    }
+    return false;
+  }
+
+  parse(value) {
+    if (value) {
+      let result = value.split('/').join('-');
+      result = new Date(result);
+      return isNaN(result) ? null : result;
+    }
+    return null;
+  }
+}
+
+@inject(Element, TaskQueue, DatePickerDefaultParser)
+@customAttribute('md-datepicker')
+export class MdDatePicker {
+  @bindable() container;
+  @bindable() translation;
+  @bindable({defaultBindingMode: bindingMode.twoWay}) value;
+  @bindable({defaultBindingMode: bindingMode.twoWay}) parsers = [];
+  @bindable({defaultBindingMode: bindingMode.oneTime}) selectMonths = true;
+  @bindable({defaultBindingMode: bindingMode.oneTime}) selectYears = 15;
+  @bindable({defaultBindingMode: bindingMode.oneTime}) options = {};
+
+  constructor(element, taskQueue, defaultParser) {
+    this.element = element;
+    this.log = getLogger('md-datepicker');
+    this.taskQueue = taskQueue;
+    this.parsers.push(defaultParser);
+  }
+
+  bind() {
+    this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
+    this.selectYears = parseInt(this.selectYears, 10);
+    this.element.classList.add('date-picker');
+
+    let options = {
+      selectMonths: this.selectMonths,
+      selectYears: this.selectYears,
+      onClose: function() {
+        // see https://github.com/Dogfalo/materialize/issues/2067
+        // and: https://github.com/amsul/pickadate.js/issues/160
+        $(document.activeElement).blur();
+        // $(this.element).blur();
+      }
+    };
+    let i18n = {};
+    // let i18n = {
+    //   selectMonths: true, // Creates a dropdown to control month
+    //   selectYears: 15, // Creates a dropdown of 15 years to control year
+    //   monthsFull: [ 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ],
+    //   monthsShort: [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
+    //   weekdaysFull: [ 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag' ],
+    //   weekdaysShort: [ 'So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa' ],
+    //   today: 'Heute',
+    //   clear: 'Löschen',
+    //   close: 'Schließen',
+    //   firstDay: 1,
+    //   format: 'dddd, dd. mmmm yyyy',
+    //   formatSubmit: 'yyyy/mm/dd'
+    // };
+    Object.assign(options, i18n);
+
+    if (this.options) {
+      Object.assign(options, this.options);
+      //merge callback methods if there is a hook in the advanced options
+      if (this.options.onClose) {
+        options.onClose = function() {
+          this.options.onClose();
+          $(document.activeElement).blur();
+        };
+      }
+    }
+    if (this.container) {
+      options.container = this.container;
+    }
+    this.picker = $(this.element).pickadate(options).pickadate('picker');
+    this.picker.on({
+      'close': this.onClose.bind(this),
+      'set': this.onSet.bind(this)
+    });
+
+    if (this.value) {
+      this.picker.set('select', this.value);
+    }
+    if (this.options && this.options.editable) {
+      $(this.element).on('keydown', (e)=> {
+        if (e.keyCode === 13 || e.keyCode === 9) {
+          if (this.parseDate($(this.element).val())) {
+            this.closeDatePicker();
+          } else {
+            this.openDatePicker();
+          }
+        } else {
+          this.value = null;
+        }
+      });
+    } else {
+      $(this.element).on('focusin', () => {
+        this.openDatePicker();
+      });
+    }
+    if (this.options.showIcon) {
+      this.element.classList.add('left');
+      let calendarIcon = document.createElement('i');
+      calendarIcon.classList.add('right');
+      calendarIcon.classList.add('material-icons');
+      calendarIcon.textContent = 'today';
+      this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
+      $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+    }
+
+    this.movePickerCloserToSrc();
+  }
+
+  parseDate(value) {
+    if (this.parsers && this.parsers.length && this.parsers.length > 0) {
+      for (const parser of this.parsers) {
+        if (parser.canParse(value)) {
+          const parsedDate = parser.parse(value);
+          if (parsedDate !== null) {
+            this.picker.set('select', parsedDate);
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  movePickerCloserToSrc() {
+    $(this.picker.$root).appendTo($(this.element).parent());
+  }
+
+  detached() {
+    if (this.picker) {
+      this.picker.stop();
+    }
+  }
+
+  openDatePicker() {
+    $(this.element).pickadate('open');
+  }
+
+  closeDatePicker() {
+    $(this.element).pickadate('close');
+  }
+
+  onClose() {
+    let selected = this.picker.get('select');
+    this.value = selected ? selected.obj : null;
+  }
+
+  onCalendarIconClick(event) {
+    event.stopPropagation();
+    this.openDatePicker();
+  }
+
+  onSet(value) {
+    //handle this ourselves since Dogfalo removed this functionality from the original plugin
+    if (this.options && this.options.closeOnSelect && value.select) {
+      this.value = value.select;
+      this.picker.close();
+    }
+    // this.value = new Date(value.select);
+  }
+
+  valueChanged(newValue) {
+    this.log.debug('selectedChanged', this.value);
+    // this.taskQueue.queueTask(() => {
+    this.picker.set('select', this.value);
+    // });
+  }
+
+
 }
 
 @customElement('md-fab')
@@ -1468,6 +1500,28 @@ export class MdPushpin {
   }
 }
 
+@customElement('md-range')
+@inject(Element)
+export class MdRange {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMin = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMax = 100;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdStep = 1;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue = 0;
+
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-range');
+  }
+}
+
 @customElement('md-radio')
 @inject(Element)
 export class MdRadio {
@@ -1518,28 +1572,6 @@ export class MdRadio {
     if (this.radio) {
       this.radio.disabled = !!newValue;
     }
-  }
-}
-
-@customElement('md-range')
-@inject(Element)
-export class MdRange {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdMin = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdMax = 100;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdStep = 1;
-  @bindable({
-    defaultBindingMode: bindingMode.twoWay
-  }) mdValue = 0;
-
-  constructor(element) {
-    this.element = element;
-    this.log = getLogger('md-range');
   }
 }
 
@@ -1638,23 +1670,6 @@ export class MdScrollfire {
   }
 }
 
-@customAttribute('md-scrollspy')
-@inject(Element)
-export class MdScrollSpy {
-  @bindable() target;
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.target, this.element).scrollSpy();
-  }
-
-  detached() {
-    // destroy handler not available
-  }
-}
-
 @inject(Element, LogManager, BindingEngine, TaskQueue)
 @customAttribute('md-select')
 export class MdSelect {
@@ -1729,6 +1744,23 @@ export class MdSelect {
     if (!this._suspendUpdate) {
       $(this.element).material_select();
     }
+  }
+}
+
+@customAttribute('md-scrollspy')
+@inject(Element)
+export class MdScrollSpy {
+  @bindable() target;
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.target, this.element).scrollSpy();
+  }
+
+  detached() {
+    // destroy handler not available
   }
 }
 

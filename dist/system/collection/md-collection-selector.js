@@ -1,8 +1,6 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-binding', '../common/events'], function (_export, _context) {
-  "use strict";
-
   var bindable, customElement, inject, observable, fireMaterializeEvent, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, MdlListSelector;
 
   function _initDefineProp(target, property, descriptor, context) {

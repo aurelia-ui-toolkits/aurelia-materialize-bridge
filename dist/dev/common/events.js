@@ -1,8 +1,6 @@
 'use strict';
 
 System.register(['./constants'], function (_export, _context) {
-  "use strict";
-
   var constants;
   return {
     setters: [function (_constants) {
