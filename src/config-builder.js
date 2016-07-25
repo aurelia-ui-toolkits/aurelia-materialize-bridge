@@ -90,6 +90,7 @@ export class ConfigBuilder {
 
   useChip(): ConfigBuilder {
     this.globalResources.push('./chip/chip');
+    this.globalResources.push('./chip/chips');
     return this;
   }
 
