@@ -224,6 +224,9 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
   };
 
   MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
+    if (this.options.max && newValue > this.options.max) {
+      this.value = this.options.max;
+    }
     this.log.debug('selectedChanged', this.value);
 
     this.picker.set('select', this.value);

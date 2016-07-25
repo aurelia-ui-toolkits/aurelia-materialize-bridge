@@ -161,6 +161,9 @@ export class MdDatePicker {
   }
 
   valueChanged(newValue) {
+    if (this.options.max && newValue > this.options.max) {
+      this.value = this.options.max;
+    }
     this.log.debug('selectedChanged', this.value);
     // this.taskQueue.queueTask(() => {
     this.picker.set('select', this.value);

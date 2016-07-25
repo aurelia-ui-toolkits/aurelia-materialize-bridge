@@ -846,112 +846,6 @@ export function fireMaterializeEvent(element: Element, name: string, data? = {})
   return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
 
-@customElement('md-dropdown')
-@inject(Element)
-export class MdDropdownElement {
-  static id = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) alignment = 'left';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) belowOrigin = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) constrainWidth = true;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) gutter = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) hover = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdTitle;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) inDuration = 300;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) outDuration = 225;
-
-  constructor(element) {
-    this.element = element;
-    this.controlId = `md-dropdown-${MdDropdown.id++}`;
-  }
-  attached() {
-    $(this.element).dropdown({
-      alignment: this.alignment,
-      belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
-      constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
-      gutter: parseInt(this.gutter, 10),
-      hover: getBooleanFromAttributeValue(this.hover),
-      inDuration: parseInt(this.inDuration, 10),
-      outDuration: parseInt(this.outDuration, 10)
-    });
-  }
-}
-
-@customAttribute('md-dropdown')
-@inject(Element)
-export class MdDropdown {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) activates = '';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) alignment = 'left';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) belowOrigin = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) constrainWidth = true;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) gutter = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) hover = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdTitle;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) inDuration = 300;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) outDuration = 225;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.contentAttributeManager = new AttributeManager(document.getElementById(this.activates));
-
-    this.attributeManager.addClasses('dropdown-button');
-    this.contentAttributeManager.addClasses('dropdown-content');
-    this.attributeManager.addAttributes({ 'data-activates': this.activates });
-    $(this.element).dropdown({
-      alignment: this.alignment,
-      belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
-      constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
-      gutter: parseInt(this.gutter, 10),
-      hover: getBooleanFromAttributeValue(this.hover),
-      inDuration: parseInt(this.inDuration, 10),
-      outDuration: parseInt(this.outDuration, 10)
-    });
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes('data-activates');
-    this.attributeManager.removeClasses('dropdown-button');
-    this.contentAttributeManager.removeClasses('dropdown-content');
-  }
-}
-
 export class DatePickerDefaultParser {
   canParse(value) {
     if (value) {
@@ -1125,6 +1019,9 @@ export class MdDatePicker {
   }
 
   valueChanged(newValue) {
+    if (this.options.max && newValue > this.options.max) {
+      this.value = this.options.max;
+    }
     this.log.debug('selectedChanged', this.value);
     // this.taskQueue.queueTask(() => {
     this.picker.set('select', this.value);
@@ -1132,6 +1029,112 @@ export class MdDatePicker {
   }
 
 
+}
+
+@customElement('md-dropdown')
+@inject(Element)
+export class MdDropdownElement {
+  static id = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) alignment = 'left';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) belowOrigin = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) constrainWidth = true;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) gutter = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) hover = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) inDuration = 300;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) outDuration = 225;
+
+  constructor(element) {
+    this.element = element;
+    this.controlId = `md-dropdown-${MdDropdown.id++}`;
+  }
+  attached() {
+    $(this.element).dropdown({
+      alignment: this.alignment,
+      belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
+      constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
+      gutter: parseInt(this.gutter, 10),
+      hover: getBooleanFromAttributeValue(this.hover),
+      inDuration: parseInt(this.inDuration, 10),
+      outDuration: parseInt(this.outDuration, 10)
+    });
+  }
+}
+
+@customAttribute('md-dropdown')
+@inject(Element)
+export class MdDropdown {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) activates = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) alignment = 'left';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) belowOrigin = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) constrainWidth = true;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) gutter = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) hover = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) inDuration = 300;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) outDuration = 225;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.contentAttributeManager = new AttributeManager(document.getElementById(this.activates));
+
+    this.attributeManager.addClasses('dropdown-button');
+    this.contentAttributeManager.addClasses('dropdown-content');
+    this.attributeManager.addAttributes({ 'data-activates': this.activates });
+    $(this.element).dropdown({
+      alignment: this.alignment,
+      belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
+      constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
+      gutter: parseInt(this.gutter, 10),
+      hover: getBooleanFromAttributeValue(this.hover),
+      inDuration: parseInt(this.inDuration, 10),
+      outDuration: parseInt(this.outDuration, 10)
+    });
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes('data-activates');
+    this.attributeManager.removeClasses('dropdown-button');
+    this.contentAttributeManager.removeClasses('dropdown-content');
+  }
 }
 
 @customElement('md-fab')
@@ -1500,28 +1503,6 @@ export class MdPushpin {
   }
 }
 
-@customElement('md-range')
-@inject(Element)
-export class MdRange {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdMin = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdMax = 100;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdStep = 1;
-  @bindable({
-    defaultBindingMode: bindingMode.twoWay
-  }) mdValue = 0;
-
-  constructor(element) {
-    this.element = element;
-    this.log = getLogger('md-range');
-  }
-}
-
 @customElement('md-radio')
 @inject(Element)
 export class MdRadio {
@@ -1572,6 +1553,28 @@ export class MdRadio {
     if (this.radio) {
       this.radio.disabled = !!newValue;
     }
+  }
+}
+
+@customElement('md-range')
+@inject(Element)
+export class MdRange {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMin = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMax = 100;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdStep = 1;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdValue = 0;
+
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-range');
   }
 }
 
@@ -1670,6 +1673,23 @@ export class MdScrollfire {
   }
 }
 
+@customAttribute('md-scrollspy')
+@inject(Element)
+export class MdScrollSpy {
+  @bindable() target;
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.target, this.element).scrollSpy();
+  }
+
+  detached() {
+    // destroy handler not available
+  }
+}
+
 @inject(Element, LogManager, BindingEngine, TaskQueue)
 @customAttribute('md-select')
 export class MdSelect {
@@ -1744,23 +1764,6 @@ export class MdSelect {
     if (!this._suspendUpdate) {
       $(this.element).material_select();
     }
-  }
-}
-
-@customAttribute('md-scrollspy')
-@inject(Element)
-export class MdScrollSpy {
-  @bindable() target;
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.target, this.element).scrollSpy();
-  }
-
-  detached() {
-    // destroy handler not available
   }
 }
 

@@ -215,6 +215,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
     };
 
     MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
+      if (this.options.max && newValue > this.options.max) {
+        this.value = this.options.max;
+      }
       this.log.debug('selectedChanged', this.value);
 
       this.picker.set('select', this.value);
