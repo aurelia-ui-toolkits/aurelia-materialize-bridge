@@ -4,6 +4,10 @@
     "basic-use": {
       "route": ["", "basic-use"],
       "files": ["html"]
+    },
+    "editor": {
+      "route": "editor",
+      "files": ["html", "js"]
     }
   }
 }

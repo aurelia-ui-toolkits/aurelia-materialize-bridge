@@ -7,7 +7,7 @@
     "Button": { "status": "done" },
     "Breadcrumbs": { "status": "done" },
     "Cards": { "moduleId": "card", "status": "done" },
-    "Chips": { "moduleId": "chip", "status": "done" },
+    "Chips": { "moduleId": "chip", "status": "wip" },
     "Collections": { "status": "done" },
     "Footer": { "status": "done" },
     "Navbar": { "status": "done" },
