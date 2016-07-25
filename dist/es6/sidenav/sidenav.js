@@ -11,7 +11,7 @@ export class MdSidenav {
   @bindable() mdCloseOnClick = false;
   @bindable() mdEdge = 'left';
   @bindable() mdFixed = false;
-  @bindable() mdWidth = 250;
+  @bindable() mdWidth = 300;
 
   attachedResolver;
   whenAttached;

@@ -124,7 +124,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
   }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdWidth', [_dec6], {
     enumerable: true,
     initializer: function initializer() {
-      return 250;
+      return 300;
     }
   })), _class2)) || _class) || _class);
 });

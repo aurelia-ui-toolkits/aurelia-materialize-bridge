@@ -151,6 +151,12 @@ export declare class MdCarousel {
   constructor(element?: any);
   attached(): any;
 }
+export declare class MdCharCounter {
+  length: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
 export declare class MdCheckbox {
   static id: any;
   mdChecked: any;
@@ -162,12 +168,6 @@ export declare class MdCheckbox {
   handleChange(): any;
   mdCheckedChanged(newValue?: any): any;
   mdDisabledChanged(newValue?: any): any;
-}
-export declare class MdCharCounter {
-  length: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
 }
 export declare class MdChip {
   mdClose: any;
@@ -364,6 +364,7 @@ export declare class MdPagination {
   setLastPage(): any;
   setPreviousPage(): any;
   setNextPage(): any;
+  mdPagesChanged(): any;
   mdVisiblePageLinksChanged(): any;
   generatePageLinks(): any;
 }

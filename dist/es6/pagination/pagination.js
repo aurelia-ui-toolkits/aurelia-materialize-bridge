@@ -67,14 +67,17 @@ export class MdPagination {
     }
   }
 
+  mdPagesChanged() {
+    this.setActivePage(1);
+  }
+
   mdVisiblePageLinksChanged() {
-    //alert('dd');
     this.mdPageLinks = this.generatePageLinks();
   }
 
   generatePageLinks() {
     let numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
-    let midPoint = (numberOfLinks / 2) + 1;
+    let midPoint = parseInt((numberOfLinks / 2));
     let start = Math.max(this.mdActivePage - midPoint, 0);
     let end = Math.min(start + numberOfLinks, this.mdPages);
 

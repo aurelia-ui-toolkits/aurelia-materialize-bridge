@@ -518,6 +518,35 @@ export class MdCarousel {
   }
 }
 
+@customAttribute('md-char-counter')
+@inject(Element)
+export class MdCharCounter {
+  @bindable() length = 120;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.length = parseInt(this.length, 10);
+
+    // attach to input element explicitly, so this counter can be used on
+    // containers (or custom elements like md-input)
+    if (this.element.tagName.toUpperCase() === 'INPUT') {
+      this.attributeManager.addAttributes({ 'length': this.length });
+      $(this.element).characterCounter();
+    } else {
+      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
+      $(this.element).find('input').characterCounter();
+    }
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes(['length']);
+  }
+}
+
 @customElement('md-checkbox')
 @inject(Element)
 export class MdCheckbox {
@@ -570,35 +599,6 @@ export class MdCheckbox {
     if (this.checkbox) {
       this.checkbox.disabled = !!newValue;
     }
-  }
-}
-
-@customAttribute('md-char-counter')
-@inject(Element)
-export class MdCharCounter {
-  @bindable() length = 120;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.length = parseInt(this.length, 10);
-
-    // attach to input element explicitly, so this counter can be used on
-    // containers (or custom elements like md-input)
-    if (this.element.tagName.toUpperCase() === 'INPUT') {
-      this.attributeManager.addAttributes({ 'length': this.length });
-      $(this.element).characterCounter();
-    } else {
-      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
-      $(this.element).find('input').characterCounter();
-    }
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes(['length']);
   }
 }
 
@@ -1385,14 +1385,17 @@ export class MdPagination {
     }
   }
 
+  mdPagesChanged() {
+    this.setActivePage(1);
+  }
+
   mdVisiblePageLinksChanged() {
-    //alert('dd');
     this.mdPageLinks = this.generatePageLinks();
   }
 
   generatePageLinks() {
     let numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
-    let midPoint = (numberOfLinks / 2) + 1;
+    let midPoint = parseInt((numberOfLinks / 2));
     let start = Math.max(this.mdActivePage - midPoint, 0);
     let end = Math.min(start + numberOfLinks, this.mdPages);
 
@@ -1785,7 +1788,7 @@ export class MdSidenav {
   @bindable() mdCloseOnClick = false;
   @bindable() mdEdge = 'left';
   @bindable() mdFixed = false;
-  @bindable() mdWidth = 250;
+  @bindable() mdWidth = 300;
 
   attachedResolver;
   whenAttached;

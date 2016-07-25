@@ -124,13 +124,17 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       }
     };
 
+    MdPagination.prototype.mdPagesChanged = function mdPagesChanged() {
+      this.setActivePage(1);
+    };
+
     MdPagination.prototype.mdVisiblePageLinksChanged = function mdVisiblePageLinksChanged() {
       this.mdPageLinks = this.generatePageLinks();
     };
 
     MdPagination.prototype.generatePageLinks = function generatePageLinks() {
       var numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
-      var midPoint = numberOfLinks / 2 + 1;
+      var midPoint = parseInt(numberOfLinks / 2);
       var start = Math.max(this.mdActivePage - midPoint, 0);
       var end = Math.min(start + numberOfLinks, this.mdPages);
 
