@@ -1,4 +1,3 @@
-import 'jquery';
 import 'materialize';
 
 //Configure Bluebird Promises.
