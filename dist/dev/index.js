@@ -1,8 +1,6 @@
 'use strict';
 
 System.register(['./config-builder', './scrollfire/scrollfire-patch', './toast/toastService', './common/attributeManager', './common/attributes', './common/events'], function (_export, _context) {
-  "use strict";
-
   var ConfigBuilder, ScrollfirePatch, version;
   return {
     setters: [function (_configBuilder) {

@@ -1,8 +1,6 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export, _context) {
-  "use strict";
-
   var customAttribute, inject, getLogger, _dec, _dec2, _class, MdScrollfire;
 
   function _classCallCheck(instance, Constructor) {

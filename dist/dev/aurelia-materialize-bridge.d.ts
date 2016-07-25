@@ -151,6 +151,12 @@ export declare class MdCarousel {
   constructor(element?: any);
   attached(): any;
 }
+export declare class MdCharCounter {
+  length: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
 export declare class MdCheckbox {
   static id: any;
   mdChecked: any;
@@ -162,12 +168,6 @@ export declare class MdCheckbox {
   handleChange(): any;
   mdCheckedChanged(newValue?: any): any;
   mdDisabledChanged(newValue?: any): any;
-}
-export declare class MdCharCounter {
-  length: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
 }
 export declare class MdChip {
   mdClose: any;
@@ -240,15 +240,21 @@ export declare function fireEvent(element: Element, name: string, data?: any): a
 * @param data Addition data to attach to an event
 */
 export declare function fireMaterializeEvent(element: Element, name: string, data?: any): any;
+export declare class DatePickerDefaultParser {
+  canParse(value?: any): any;
+  parse(value?: any): any;
+}
 export declare class MdDatePicker {
   container: any;
   translation: any;
   value: any;
+  parsers: any;
   selectMonths: any;
   selectYears: any;
   options: any;
-  constructor(element?: any, taskQueue?: any);
+  constructor(element?: any, taskQueue?: any, defaultParser?: any);
   bind(): any;
+  parseDate(value?: any): any;
   movePickerCloserToSrc(): any;
   detached(): any;
   openDatePicker(): any;

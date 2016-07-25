@@ -518,6 +518,35 @@ export class MdCarousel {
   }
 }
 
+@customAttribute('md-char-counter')
+@inject(Element)
+export class MdCharCounter {
+  @bindable() length = 120;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.length = parseInt(this.length, 10);
+
+    // attach to input element explicitly, so this counter can be used on
+    // containers (or custom elements like md-input)
+    if (this.element.tagName.toUpperCase() === 'INPUT') {
+      this.attributeManager.addAttributes({ 'length': this.length });
+      $(this.element).characterCounter();
+    } else {
+      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
+      $(this.element).find('input').characterCounter();
+    }
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes(['length']);
+  }
+}
+
 @customElement('md-checkbox')
 @inject(Element)
 export class MdCheckbox {
@@ -570,35 +599,6 @@ export class MdCheckbox {
     if (this.checkbox) {
       this.checkbox.disabled = !!newValue;
     }
-  }
-}
-
-@customAttribute('md-char-counter')
-@inject(Element)
-export class MdCharCounter {
-  @bindable() length = 120;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.length = parseInt(this.length, 10);
-
-    // attach to input element explicitly, so this counter can be used on
-    // containers (or custom elements like md-input)
-    if (this.element.tagName.toUpperCase() === 'INPUT') {
-      this.attributeManager.addAttributes({ 'length': this.length });
-      $(this.element).characterCounter();
-    } else {
-      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
-      $(this.element).find('input').characterCounter();
-    }
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes(['length']);
   }
 }
 
@@ -846,20 +846,40 @@ export function fireMaterializeEvent(element: Element, name: string, data? = {})
   return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
 
-@inject(Element, TaskQueue)
+export class DatePickerDefaultParser {
+  canParse(value) {
+    if (value) {
+      return true;
+    }
+    return false;
+  }
+
+  parse(value) {
+    if (value) {
+      let result = value.split('/').join('-');
+      result = new Date(result);
+      return isNaN(result) ? null : result;
+    }
+    return null;
+  }
+}
+
+@inject(Element, TaskQueue, DatePickerDefaultParser)
 @customAttribute('md-datepicker')
 export class MdDatePicker {
   @bindable() container;
   @bindable() translation;
   @bindable({defaultBindingMode: bindingMode.twoWay}) value;
+  @bindable({defaultBindingMode: bindingMode.twoWay}) parsers = [];
   @bindable({defaultBindingMode: bindingMode.oneTime}) selectMonths = true;
   @bindable({defaultBindingMode: bindingMode.oneTime}) selectYears = 15;
   @bindable({defaultBindingMode: bindingMode.oneTime}) options = {};
 
-  constructor(element, taskQueue) {
+  constructor(element, taskQueue, defaultParser) {
     this.element = element;
     this.log = getLogger('md-datepicker');
     this.taskQueue = taskQueue;
+    this.parsers.push(defaultParser);
   }
 
   bind() {
@@ -918,16 +938,13 @@ export class MdDatePicker {
     }
     if (this.options && this.options.editable) {
       $(this.element).on('keydown', (e)=> {
-        if (e.keyCode === 13) {
-          let rawDate = $(this.element).val();
-          if (rawDate) {
-            rawDate = rawDate.split('/').join('-');
-            let parsedDate = new Date(rawDate);
-            this.picker.set('select', parsedDate);
+        if (e.keyCode === 13 || e.keyCode === 9) {
+          if (this.parseDate($(this.element).val())) {
+            this.closeDatePicker();
           } else {
             this.openDatePicker();
           }
-        }else {
+        } else {
           this.value = null;
         }
       });
@@ -949,8 +966,23 @@ export class MdDatePicker {
     this.movePickerCloserToSrc();
   }
 
+  parseDate(value) {
+    if (this.parsers && this.parsers.length && this.parsers.length > 0) {
+      for (const parser of this.parsers) {
+        if (parser.canParse(value)) {
+          const parsedDate = parser.parse(value);
+          if (parsedDate !== null) {
+            this.picker.set('select', parsedDate);
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
   movePickerCloserToSrc() {
-    $(this.picker.$root).appendTo( $(this.element).parent());
+    $(this.picker.$root).appendTo($(this.element).parent());
   }
 
   detached() {

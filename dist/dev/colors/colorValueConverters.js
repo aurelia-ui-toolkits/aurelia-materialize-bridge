@@ -1,8 +1,6 @@
 "use strict";
 
 System.register([], function (_export, _context) {
-    "use strict";
-
     var DarkenValueConverter, LightenValueConverter;
 
     function _classCallCheck(instance, Constructor) {

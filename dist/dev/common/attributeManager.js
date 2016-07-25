@@ -1,8 +1,6 @@
 'use strict';
 
 System.register([], function (_export, _context) {
-  "use strict";
-
   var AttributeManager;
 
   function _classCallCheck(instance, Constructor) {

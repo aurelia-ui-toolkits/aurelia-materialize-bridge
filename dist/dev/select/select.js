@@ -1,8 +1,6 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', 'aurelia-logging', '../common/events'], function (_export, _context) {
-  "use strict";
-
   var bindable, customAttribute, BindingEngine, inject, TaskQueue, LogManager, fireEvent, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdSelect;
 
   function _initDefineProp(target, property, descriptor, context) {

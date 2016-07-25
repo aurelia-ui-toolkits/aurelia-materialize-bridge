@@ -4,21 +4,24 @@ import {TaskQueue} from 'aurelia-task-queue';
 import {inject} from 'aurelia-dependency-injection';
 import {getLogger} from 'aurelia-logging';
 import {getBooleanFromAttributeValue} from '../common/attributes';
+import {DatePickerDefaultParser} from './datepicker.default-parser';
 
-@inject(Element, TaskQueue)
+@inject(Element, TaskQueue, DatePickerDefaultParser)
 @customAttribute('md-datepicker')
 export class MdDatePicker {
   @bindable() container;
   @bindable() translation;
   @bindable({defaultBindingMode: bindingMode.twoWay}) value;
+  @bindable({defaultBindingMode: bindingMode.twoWay}) parsers = [];
   @bindable({defaultBindingMode: bindingMode.oneTime}) selectMonths = true;
   @bindable({defaultBindingMode: bindingMode.oneTime}) selectYears = 15;
   @bindable({defaultBindingMode: bindingMode.oneTime}) options = {};
 
-  constructor(element, taskQueue) {
+  constructor(element, taskQueue, defaultParser) {
     this.element = element;
     this.log = getLogger('md-datepicker');
     this.taskQueue = taskQueue;
+    this.parsers.push(defaultParser);
   }
 
   bind() {
@@ -77,16 +80,13 @@ export class MdDatePicker {
     }
     if (this.options && this.options.editable) {
       $(this.element).on('keydown', (e)=> {
-        if (e.keyCode === 13) {
-          let rawDate = $(this.element).val();
-          if (rawDate) {
-            rawDate = rawDate.split('/').join('-');
-            let parsedDate = new Date(rawDate);
-            this.picker.set('select', parsedDate);
+        if (e.keyCode === 13 || e.keyCode === 9) {
+          if (this.parseDate($(this.element).val())) {
+            this.closeDatePicker();
           } else {
             this.openDatePicker();
           }
-        }else {
+        } else {
           this.value = null;
         }
       });
@@ -108,8 +108,23 @@ export class MdDatePicker {
     this.movePickerCloserToSrc();
   }
 
+  parseDate(value) {
+    if (this.parsers && this.parsers.length && this.parsers.length > 0) {
+      for (const parser of this.parsers) {
+        if (parser.canParse(value)) {
+          const parsedDate = parser.parse(value);
+          if (parsedDate !== null) {
+            this.picker.set('select', parsedDate);
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
   movePickerCloserToSrc() {
-    $(this.picker.$root).appendTo( $(this.element).parent());
+    $(this.picker.$root).appendTo($(this.element).parent());
   }
 
   detached() {
