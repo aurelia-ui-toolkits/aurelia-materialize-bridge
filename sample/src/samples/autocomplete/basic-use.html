@@ -1,0 +1,9 @@
+<template>
+  <div>
+    <md-input md-autocomplete="values.bind: values;" md-label="put some text here" md-value.bind="textValue" md-disabled.bind="disabledValue"></md-input><br />
+    You entered: ${textValue}<br />
+  </div>
+  <div>
+    <button md-button click.delegate="setOtherValues()">set other values</button>
+  </div>
+</template>

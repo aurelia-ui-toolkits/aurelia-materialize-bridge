@@ -13,6 +13,7 @@ export function configure(aurelia) {
     .developmentLogging()
     .plugin('aurelia-materialize-bridge', plugin => {
       plugin.useClickCounter()
+        .useAutoComplete()
         .useBadge()
         .useBreadcrumbs()
         .useBox()

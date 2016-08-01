@@ -7,7 +7,7 @@
     "Button": { "status": "done" },
     "Breadcrumbs": { "status": "done" },
     "Cards": { "moduleId": "card", "status": "done" },
-    "Chips": { "moduleId": "chip", "status": "wip" },
+    "Chips": { "moduleId": "chip", "status": "done" },
     "Collections": { "status": "done" },
     "Footer": { "status": "done" },
     "Navbar": { "status": "done" },
@@ -36,6 +36,7 @@
     "Checkbox/Switch": { "moduleId": "checkbox", "status": "done" },
     "File input button": { "moduleId": "file", "status": "done" },
     "Range": { "status": "done" },
-    "DatePicker": { "status": "done" }
+    "DatePicker": { "status": "done" },
+    "AutoComplete": { "status": "wip" }
   }
 }
