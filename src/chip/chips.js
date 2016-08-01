@@ -2,6 +2,8 @@ import {bindable, customAttribute} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
 import {getLogger} from 'aurelia-logging';
 
+// import {fireEvent} from '../common/events';
+
 @customAttribute('md-chips')
 @inject(Element)
 export class MdChips {
@@ -34,7 +36,13 @@ export class MdChips {
     //
   }
 
-  onChipAdd(e, chip) { }
-  onChipDelete(e, chip) { }
-  onChipSelect(e, chip) {}
+  onChipAdd(e, chip) {
+    // fireEvent(this.element, 'change');
+  }
+  onChipDelete(e, chip) {
+    // fireEvent(this.element, 'change');
+  }
+  onChipSelect(e, chip) {
+    // fireEvent(this.element, 'change');
+  }
 }
