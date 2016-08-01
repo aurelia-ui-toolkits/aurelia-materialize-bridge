@@ -29,6 +29,8 @@ export class MdInput {
     defaultBindingMode: bindingMode.twoWay
   }) mdValue = '';
 
+  _suspendUpdate = false;
+
   constructor(element, taskQueue, updateService) {
     this.element = element;
     this.taskQueue = taskQueue;
