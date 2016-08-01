@@ -1,4 +1,5 @@
 {
+  "name": "aurelia-materialize-bridge-sample",
   "jspm": {
     "dependencies": {
       "aurelia-binding": "npm:aurelia-binding@^1.0.0-beta.1.0.3",
