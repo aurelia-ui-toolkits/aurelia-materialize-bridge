@@ -9,6 +9,12 @@
     </select>
 
     <a md-button="flat: true;" md-waves click.trigger="setSelectedValues()" class="accent-text">set to item 3, item 4</a>
-    You selected: ${selectedValues | stringify}
+    <!-- You selected: ${selectedValues | stringify} -->
+    You selected:
+    <ul>
+      <li repeat.for="val of selectedValues">
+        ${val}
+      </li>
+    </ul>
   </div>
 </template>
