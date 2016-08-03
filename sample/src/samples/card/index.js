@@ -8,7 +8,8 @@ export class Index {
       { route: ['', 'basic-use'], moduleId: './basic-use', nav: true,  title: 'Basic use' },
       { route: 'image', moduleId: './image', nav: true,  title: 'Image card' },
       { route: 'reveal', moduleId: './reveal', nav: true,  title: 'Reveal card' },
-      { route: 'sizes', moduleId: './sizes', nav: true,  title: 'Card sizes' }
+      { route: 'sizes', moduleId: './sizes', nav: true,  title: 'Card sizes' },
+      { route: 'horizontal', moduleId: './horizontal', nav: true,  title: 'Horizontal card' }
     ]);
 
     this.router = router;
