@@ -11,9 +11,9 @@ export class Index {
       { route: 'slider-fullscreen', moduleId: './slider-fullscreen', nav: true, title: 'Slider (fullscreen)' },
       { route: 'slider-api', moduleId: './slider-api', nav: true, title: 'Slider (API)' },
       { route: 'slider-options', moduleId: './slider-options', nav: true, title: 'Slider (Options)' },
-      // { route: 'slider-special', moduleId: './slider-special', nav: true, title: 'Slider (Special)' },
       { route: 'carousel', moduleId: './carousel', nav: true, title: 'Carousel (basic)' },
-      { route: 'carousel-slider', moduleId: './carousel-slider', nav: true, title: 'Carousel (slider)' }
+      { route: 'carousel-slider', moduleId: './carousel-slider', nav: true, title: 'Carousel (slider)' },
+      { route: 'carousel-special', moduleId: './carousel-special', nav: true, title: 'Carousel (Special)' }
     ]);
 
     this.router = router;
