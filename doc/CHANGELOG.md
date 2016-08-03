@@ -1,3 +1,21 @@
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.10.4...v0.11.0) (2016-08-03)
+
+
+### Bug Fixes
+
+* **md-datepicker:** Date not being parsed when using tab on control ([8c869b5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/8c869b5))
+* **md-datepicker:** respect max date ([e54d610](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e54d610))
+* **md-input:** fix floating label styles (revert older fix) ([8039847](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/8039847))
+
+### Features
+
+* **md-autocomplete:** add autocomplete, closes #209 ([05e4260](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/05e4260)), closes [#209](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/209)
+* **md-carousel:** new "special" carousell from Materialize 0.97.7 ([0bd99cd](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0bd99cd))
+* **md-chips:** add first attempt on chip editor ([5af48a5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/5af48a5))
+
+
+
 <a name="0.10.4"></a>
 ## [0.10.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.10.3...v0.10.4) (2016-07-25)
 
