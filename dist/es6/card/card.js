@@ -8,6 +8,9 @@ import { getBooleanFromAttributeValue } from '../common/attributes';
 export class MdCard {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
+  }) mdHorizontal;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
   }) mdImage = null;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
@@ -24,6 +27,7 @@ export class MdCard {
   }
 
   attached() {
+    this.mdHorizontal = getBooleanFromAttributeValue(this.mdHorizontal);
     this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }

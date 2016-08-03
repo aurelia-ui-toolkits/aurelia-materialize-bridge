@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdCard = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -65,45 +65,53 @@ var MdCard = exports.MdCard = (_dec = (0, _aureliaTemplating.customElement)('md-
 }), _dec4 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec5 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec6 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+}), _dec7 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec(_class = _dec2(_class = (_class2 = function () {
   function MdCard(element) {
     _classCallCheck(this, MdCard);
 
-    _initDefineProp(this, 'mdImage', _descriptor, this);
+    _initDefineProp(this, 'mdHorizontal', _descriptor, this);
 
-    _initDefineProp(this, 'mdReveal', _descriptor2, this);
+    _initDefineProp(this, 'mdImage', _descriptor2, this);
 
-    _initDefineProp(this, 'mdSize', _descriptor3, this);
+    _initDefineProp(this, 'mdReveal', _descriptor3, this);
 
-    _initDefineProp(this, 'mdTitle', _descriptor4, this);
+    _initDefineProp(this, 'mdSize', _descriptor4, this);
+
+    _initDefineProp(this, 'mdTitle', _descriptor5, this);
 
     this.element = element;
   }
 
   MdCard.prototype.attached = function attached() {
+    this.mdHorizontal = (0, _attributes.getBooleanFromAttributeValue)(this.mdHorizontal);
     this.mdReveal = (0, _attributes.getBooleanFromAttributeValue)(this.mdReveal);
   };
 
   return MdCard;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdImage', [_dec3], {
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdHorizontal', [_dec3], {
+  enumerable: true,
+  initializer: null
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdImage', [_dec4], {
   enumerable: true,
   initializer: function initializer() {
     return null;
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdReveal', [_dec4], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdReveal', [_dec5], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdSize', [_dec5], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdSize', [_dec6], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec6], {
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec7], {
   enumerable: true,
   initializer: null
 })), _class2)) || _class) || _class);

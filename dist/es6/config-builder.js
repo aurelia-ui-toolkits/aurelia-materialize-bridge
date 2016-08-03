@@ -9,6 +9,7 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useAutoComplete()
       .useBadge()
       .useBox()
       .useBreadcrumbs()
@@ -45,6 +46,11 @@ export class ConfigBuilder {
       .useTransitions()
       .useWaves()
       .useWell();
+  }
+
+  useAutoComplete(): ConfigBuilder {
+    this.globalResources.push('./autocomplete/autocomplete');
+    return this;
   }
 
   useBadge(): ConfigBuilder {
@@ -90,6 +96,7 @@ export class ConfigBuilder {
 
   useChip(): ConfigBuilder {
     this.globalResources.push('./chip/chip');
+    this.globalResources.push('./chip/chips');
     return this;
   }
 

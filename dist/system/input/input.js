@@ -98,6 +98,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
           _initDefineProp(this, 'mdValue', _descriptor8, this);
 
+          this._suspendUpdate = false;
+
           this.element = element;
           this.taskQueue = taskQueue;
           this.controlId = 'md-input-' + MdInput.id++;

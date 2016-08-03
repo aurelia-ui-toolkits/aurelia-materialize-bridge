@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdCarousel = undefined;
 
-var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -60,13 +60,15 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customElement)('md-carousel'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customElement)('md-carousel'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec(_class = _dec2(_class = (_class2 = function () {
   function MdCarousel(element) {
     _classCallCheck(this, MdCarousel);
 
-    _initDefineProp(this, 'mdSlider', _descriptor, this);
+    _initDefineProp(this, 'mdIndicators', _descriptor, this);
+
+    _initDefineProp(this, 'mdSlider', _descriptor2, this);
 
     this.element = element;
   }
@@ -76,15 +78,21 @@ var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customEleme
       this.element.classList.add('carousel-slider');
     }
 
-    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdSlider)) {
-      $(this.element).carousel({ full_width: true });
-    } else {
-      $(this.element).carousel();
-    }
+    var options = {
+      full_width: (0, _attributes.getBooleanFromAttributeValue)(this.mdSlider),
+      indicators: this.mdIndicators
+    };
+
+    $(this.element).carousel(options);
   };
 
   return MdCarousel;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdSlider', [_dec3], {
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdIndicators', [_dec3], {
+  enumerable: true,
+  initializer: function initializer() {
+    return true;
+  }
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdSlider', [_dec4], {
   enumerable: true,
   initializer: function initializer() {
     return false;

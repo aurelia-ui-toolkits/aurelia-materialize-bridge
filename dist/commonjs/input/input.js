@@ -94,6 +94,8 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
 
     _initDefineProp(this, 'mdValue', _descriptor8, this);
 
+    this._suspendUpdate = false;
+
     this.element = element;
     this.taskQueue = taskQueue;
     this.controlId = 'md-input-' + MdInput.id++;

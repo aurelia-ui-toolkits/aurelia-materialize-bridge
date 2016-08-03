@@ -1,7 +1,7 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes'], function (_export, _context) {
-  var bindable, customElement, bindingMode, inject, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdCarousel;
+  var bindable, customElement, bindingMode, inject, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, MdCarousel;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -64,13 +64,15 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
-      _export('MdCarousel', MdCarousel = (_dec = customElement('md-carousel'), _dec2 = inject(Element), _dec3 = bindable({
+      _export('MdCarousel', MdCarousel = (_dec = customElement('md-carousel'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable({
         defaultBindingMode: bindingMode.oneTime
       }), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdCarousel(element) {
           _classCallCheck(this, MdCarousel);
 
-          _initDefineProp(this, 'mdSlider', _descriptor, this);
+          _initDefineProp(this, 'mdIndicators', _descriptor, this);
+
+          _initDefineProp(this, 'mdSlider', _descriptor2, this);
 
           this.element = element;
         }
@@ -80,15 +82,21 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this.element.classList.add('carousel-slider');
           }
 
-          if (getBooleanFromAttributeValue(this.mdSlider)) {
-            $(this.element).carousel({ full_width: true });
-          } else {
-            $(this.element).carousel();
-          }
+          var options = {
+            full_width: getBooleanFromAttributeValue(this.mdSlider),
+            indicators: this.mdIndicators
+          };
+
+          $(this.element).carousel(options);
         };
 
         return MdCarousel;
-      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdSlider', [_dec3], {
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdIndicators', [_dec3], {
+        enumerable: true,
+        initializer: function initializer() {
+          return true;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdSlider', [_dec4], {
         enumerable: true,
         initializer: function initializer() {
           return false;

@@ -87,6 +87,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
       _initDefineProp(this, 'mdValue', _descriptor8, this);
 
+      this._suspendUpdate = false;
+
       this.element = element;
       this.taskQueue = taskQueue;
       this.controlId = 'md-input-' + MdInput.id++;

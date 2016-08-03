@@ -18,11 +18,11 @@ import {
   Router
 } from 'aurelia-router';
 import {
-  TaskQueue
-} from 'aurelia-task-queue';
-import {
   getLogger
 } from 'aurelia-logging';
+import {
+  TaskQueue
+} from 'aurelia-task-queue';
 export declare class ClickCounter {
   count: any;
   increment(): any;
@@ -36,6 +36,7 @@ export declare class ConfigBuilder {
   useScrollfirePatch: boolean;
   globalResources: any;
   useAll(): ConfigBuilder;
+  useAutoComplete(): ConfigBuilder;
   useBadge(): ConfigBuilder;
   useBox(): ConfigBuilder;
   useBreadcrumbs(): ConfigBuilder;
@@ -96,6 +97,15 @@ export declare class ConfigBuilder {
 }
 export declare function configure(aurelia?: any, configCallback?: any): any;
 export declare const version: any;
+export declare class MdAutoComplete {
+  input: any;
+  values: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  refresh(): any;
+  valuesChanged(newValue?: any): any;
+}
 export declare class MdBadge {
   isNew: any;
   constructor(element?: any);
@@ -131,6 +141,7 @@ export declare class MdButton {
   flatChanged(newValue?: any): any;
 }
 export declare class MdCard {
+  mdHorizontal: any;
   mdImage: any;
   mdReveal: any;
   mdSize: any;
@@ -147,6 +158,7 @@ export declare class MdCarouselItem {
   attached(): any;
 }
 export declare class MdCarousel {
+  mdIndicators: any;
   mdSlider: any;
   constructor(element?: any);
   attached(): any;
@@ -173,13 +185,27 @@ export declare class MdChip {
   mdClose: any;
   attached(): any;
 }
-export declare class MdCollapsible {
+
+// @customAttribute('md-chips')
+export declare class MdChips {
+  data: any;
+  placeholder: any;
+  secondaryPlaceholder: any;
   constructor(element?: any);
   attached(): any;
   detached(): any;
-  refresh(): any;
-  accordionChanged(): any;
+  
+  //
+  onChipAdd(e?: any, chip?: any): any;
+  
+  // fireEvent(this.element, 'change');
+  onChipDelete(e?: any, chip?: any): any;
+  
+  // fireEvent(this.element, 'change');
+  onChipSelect(e?: any, chip?: any): any;
 }
+
+// fireEvent(this.element, 'change');
 export declare class MdCollectionHeader {
   constructor(element?: any);
 }
@@ -196,6 +222,13 @@ export declare class MdlListSelector {
   isSelected: any;
   constructor(element?: any);
   isSelectedChanged(newValue?: any): any;
+}
+export declare class MdCollapsible {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  refresh(): any;
+  accordionChanged(): any;
 }
 
 /* eslint-enable */

@@ -22,7 +22,12 @@ System.register([], function (_export, _context) {
         }
 
         ConfigBuilder.prototype.useAll = function useAll() {
-          return this.useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+          return this.useAutoComplete().useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+        };
+
+        ConfigBuilder.prototype.useAutoComplete = function useAutoComplete() {
+          this.globalResources.push('./autocomplete/autocomplete');
+          return this;
         };
 
         ConfigBuilder.prototype.useBadge = function useBadge() {
@@ -68,6 +73,7 @@ System.register([], function (_export, _context) {
 
         ConfigBuilder.prototype.useChip = function useChip() {
           this.globalResources.push('./chip/chip');
+          this.globalResources.push('./chip/chips');
           return this;
         };
 

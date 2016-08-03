@@ -3,8 +3,8 @@ import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templat
 import {inject} from 'aurelia-dependency-injection';
 import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-binding';
 import {Router} from 'aurelia-router';
-import {TaskQueue} from 'aurelia-task-queue';
 import {getLogger} from 'aurelia-logging';
+import {TaskQueue} from 'aurelia-task-queue';
 
 export class ClickCounter {
   count = 0;
@@ -25,6 +25,7 @@ export class ConfigBuilder {
 
   useAll(): ConfigBuilder {
     return this
+      .useAutoComplete()
       .useBadge()
       .useBox()
       .useBreadcrumbs()
@@ -61,6 +62,11 @@ export class ConfigBuilder {
       .useTransitions()
       .useWaves()
       .useWell();
+  }
+
+  useAutoComplete(): ConfigBuilder {
+    this.globalResources.push('./autocomplete/autocomplete');
+    return this;
   }
 
   useBadge(): ConfigBuilder {
@@ -106,6 +112,7 @@ export class ConfigBuilder {
 
   useChip(): ConfigBuilder {
     this.globalResources.push('./chip/chip');
+    this.globalResources.push('./chip/chips');
     return this;
   }
 
@@ -306,6 +313,48 @@ export const version = '0.5.1';
 
 
 
+@customAttribute('md-autocomplete')
+@inject(Element)
+export class MdAutoComplete {
+  input = null;
+  @bindable() values = {};
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    if (this.element.tagName.toLowerCase() === 'input') {
+      this.input = this.element;
+    } else if (this.element.tagName.toLowerCase() === 'md-input') {
+      this.input = this.element.au.controller.viewModel.input;
+    } else {
+      throw new Error('md-autocomplete must be attached to either an input or md-input element');
+    }
+    this.refresh();
+  }
+
+  detached() {
+    // remove .autocomplete-content children
+    $('.autocomplete-content', this.element).off('click');
+    $('.autocomplete-content', this.element).remove();
+  }
+
+  refresh() {
+    this.detached();
+    $(this.input).autocomplete({
+      data: this.values
+    });
+    $('.autocomplete-content', this.element).on('click', () => {
+      fireEvent(this.input, 'change');
+    });
+  }
+
+  valuesChanged(newValue) {
+    this.refresh();
+  }
+}
+
 @customAttribute('md-badge')
 @inject(Element)
 export class MdBadge {
@@ -456,6 +505,9 @@ export class MdButton {
 export class MdCard {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
+  }) mdHorizontal;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
   }) mdImage = null;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
@@ -472,6 +524,7 @@ export class MdCard {
   }
 
   attached() {
+    this.mdHorizontal = getBooleanFromAttributeValue(this.mdHorizontal);
     this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
@@ -496,6 +549,7 @@ export class MdCarouselItem {
 @customElement('md-carousel')
 @inject(Element)
 export class MdCarousel {
+  @bindable() mdIndicators = true;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdSlider = false;
@@ -509,12 +563,18 @@ export class MdCarousel {
       this.element.classList.add('carousel-slider');
     }
 
+    let options = {
+      full_width: getBooleanFromAttributeValue(this.mdSlider),
+      indicators: this.mdIndicators
+    };
+
     // workaround for: https://github.com/Dogfalo/materialize/issues/2741
-    if (getBooleanFromAttributeValue(this.mdSlider)) {
-      $(this.element).carousel({full_width: true});
-    } else {
-      $(this.element).carousel();
-    }
+    // if (getBooleanFromAttributeValue(this.mdSlider)) {
+    //   $(this.element).carousel({full_width: true});
+    // } else {
+    //   $(this.element).carousel();
+    // }
+    $(this.element).carousel(options);
   }
 }
 
@@ -612,45 +672,46 @@ export class MdChip {
   }
 }
 
-@customAttribute('md-collapsible')
-@bindable({ name: 'accordion', defaultValue: false })
-@bindable({ name: 'popout', defaultValue: false })
+// @customAttribute('md-chips')
 @inject(Element)
+export class MdChips {
+  @bindable() data = [];
+  @bindable() placeholder = '';
+  @bindable() secondaryPlaceholder = '';
 
-export class MdCollapsible {
   constructor(element) {
     this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
+    this.log = getLogger('md-chips');
+
+    this.onChipAdd = this.onChipAdd.bind(this);
+    this.onChipDelete = this.onChipDelete.bind(this);
+    this.onChipSelect = this.onChipSelect.bind(this);
   }
 
   attached() {
-    this.attributeManager.addClasses('collapsible');
-    if (getBooleanFromAttributeValue(this.popout)) {
-      this.attributeManager.addClasses('popout');
-    }
-    this.refresh();
+    let options = {
+      data: this.data,
+      placeholder: this.placeholder,
+      secondaryPlaceholder: this.secondaryPlaceholder
+    };
+    $(this.element).material_chip(options);
+    $(this.element).on('chip.add', this.onChipAdd);
+    $(this.element).on('chip.delete', this.onChipDelete);
+    $(this.element).on('chip.select', this.onChipSelect);
   }
 
   detached() {
-    this.attributeManager.removeClasses(['collapsible', 'popout']);
-    this.attributeManager.removeAttributes(['data-collapsible']);
+    //
   }
 
-  refresh() {
-    let accordion = getBooleanFromAttributeValue(this.accordion);
-    if (accordion) {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
-    } else {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
-    }
-
-    $(this.element).collapsible({
-      accordion
-    });
+  onChipAdd(e, chip) {
+    // fireEvent(this.element, 'change');
   }
-
-  accordionChanged() {
-    this.refresh();
+  onChipDelete(e, chip) {
+    // fireEvent(this.element, 'change');
+  }
+  onChipSelect(e, chip) {
+    // fireEvent(this.element, 'change');
   }
 }
 
@@ -698,6 +759,48 @@ export class MdlListSelector {
 
   isSelectedChanged(newValue) {
     fireMaterializeEvent(this.element, 'selection-changed', { item: this.item, isSelected: this.isSelected });
+  }
+}
+
+@customAttribute('md-collapsible')
+@bindable({ name: 'accordion', defaultValue: false })
+@bindable({ name: 'popout', defaultValue: false })
+@inject(Element)
+
+export class MdCollapsible {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('collapsible');
+    if (getBooleanFromAttributeValue(this.popout)) {
+      this.attributeManager.addClasses('popout');
+    }
+    this.refresh();
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
+  }
+
+  refresh() {
+    let accordion = getBooleanFromAttributeValue(this.accordion);
+    if (accordion) {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
+    } else {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
+    }
+
+    $(this.element).collapsible({
+      accordion
+    });
+  }
+
+  accordionChanged() {
+    this.refresh();
   }
 }
 
@@ -1271,6 +1374,8 @@ export class MdInput {
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) mdValue = '';
+
+  _suspendUpdate = false;
 
   constructor(element, taskQueue, updateService) {
     this.element = element;
