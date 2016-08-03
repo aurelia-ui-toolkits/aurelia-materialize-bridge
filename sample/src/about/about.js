@@ -21,7 +21,7 @@ export class About {
   attached() {
     // let bridge = System.get(System.normalizeSync('aurelia-materialize-bridge'));
     // this.version = bridge.version;
-    this.version = '0.10.4';
+    this.version = '0.11.0';
   }
 
   onSelectionChanged(e) {
