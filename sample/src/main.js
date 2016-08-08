@@ -1,7 +1,7 @@
 import 'materialize';
 
 //Configure Bluebird Promises.
-Promise.config({
+(Promise.config || P.config)({
   warnings: {
     wForgottenReturn: false
   }
