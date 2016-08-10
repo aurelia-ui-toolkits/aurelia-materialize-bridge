@@ -137,6 +137,7 @@
     },
     "build": {
       "resources": [
+        "aurelia-materialize-bridge/autocomplete/autocomplete",
         "aurelia-materialize-bridge/badge/badge",
         "aurelia-materialize-bridge/box/box",
         "aurelia-materialize-bridge/breadcrumbs/breadcrumbs",
@@ -148,6 +149,7 @@
         "aurelia-materialize-bridge/char-counter/char-counter",
         "aurelia-materialize-bridge/checkbox/checkbox",
         "aurelia-materialize-bridge/chip/chip",
+        "aurelia-materialize-bridge/chip/chips",
         "aurelia-materialize-bridge/collapsible/collapsible",
         "aurelia-materialize-bridge/collection/collection",
         "aurelia-materialize-bridge/collection/collection-item",
