@@ -1,14 +1,15 @@
-import { useView } from 'aurelia-framework';
+import { inject, useView } from 'aurelia-framework';
+import { Registry } from 'shared/registry';
 
+@inject(Registry)
 @useView('shared/showcase.html')
 export class Index {
-  configureRouter(config, router) {
-    config.title = 'Dialogs';
-    config.map([
-      { route: ['', 'toast'], moduleId: './toast', nav: true, title: 'Toasts' },
-      { route: 'tooltip', moduleId: './tooltip', nav: true, title: 'Tooltips' }
-    ]);
+  constructor(registry) {
+    this.registry = registry;
+  }
 
+  configureRouter(config, router) {
     this.router = router;
+    return this.registry.load(config, 'dialogs');
   }
 }
