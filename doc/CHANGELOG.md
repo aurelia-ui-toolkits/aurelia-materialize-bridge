@@ -1,3 +1,13 @@
+<a name="0.12.0"></a>
+# [0.12.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.11.0...v0.12.0) (2016-08-10)
+
+
+### Features
+
+* **md-tooltip:** add html option, closes #228 ([ca965f3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/ca965f3)), closes [#228](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/228)
+
+
+
 <a name="0.11.0"></a>
 # [0.11.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.10.4...v0.11.0) (2016-08-03)
 
