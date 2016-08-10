@@ -406,38 +406,6 @@ export class MdBox {
   }
 }
 
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-
-@customElement('md-breadcrumbs')
-@inject(Element, Router)
-export class MdBreadcrumbs {
-  constructor(element, router) {
-    this.element = element;
-    this._childRouter = router;
-    while (router.parent) {
-      router = router.parent;
-    }
-    this.router = router;
-  }
-
-  navigate(navigationInstruction) {
-    this._childRouter.navigateToRoute(navigationInstruction.config.name);
-    // this.router.navigate(navigationInstruction.config.name);
-  }
-}
-
-export class InstructionFilterValueConverter {
-  toView(navigationInstructions) {
-    return navigationInstructions.filter(i => {
-      let result = false;
-      if (i.config.title) {
-        result = true;
-      }
-      return result;
-    });
-  }
-}
-
 @customAttribute('md-button')
 @inject(Element)
 export class MdButton {
@@ -497,6 +465,38 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
+  }
+}
+
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+
+@customElement('md-breadcrumbs')
+@inject(Element, Router)
+export class MdBreadcrumbs {
+  constructor(element, router) {
+    this.element = element;
+    this._childRouter = router;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  navigate(navigationInstruction) {
+    this._childRouter.navigateToRoute(navigationInstruction.config.name);
+    // this.router.navigate(navigationInstruction.config.name);
+  }
+}
+
+export class InstructionFilterValueConverter {
+  toView(navigationInstructions) {
+    return navigationInstructions.filter(i => {
+      let result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
   }
 }
 
@@ -715,6 +715,48 @@ export class MdChips {
   }
 }
 
+@customAttribute('md-collapsible')
+@bindable({ name: 'accordion', defaultValue: false })
+@bindable({ name: 'popout', defaultValue: false })
+@inject(Element)
+
+export class MdCollapsible {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('collapsible');
+    if (getBooleanFromAttributeValue(this.popout)) {
+      this.attributeManager.addClasses('popout');
+    }
+    this.refresh();
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
+  }
+
+  refresh() {
+    let accordion = getBooleanFromAttributeValue(this.accordion);
+    if (accordion) {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
+    } else {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
+    }
+
+    $(this.element).collapsible({
+      accordion
+    });
+  }
+
+  accordionChanged() {
+    this.refresh();
+  }
+}
+
 @customElement('md-collection-header')
 @inject(Element)
 export class MdCollectionHeader {
@@ -759,48 +801,6 @@ export class MdlListSelector {
 
   isSelectedChanged(newValue) {
     fireMaterializeEvent(this.element, 'selection-changed', { item: this.item, isSelected: this.isSelected });
-  }
-}
-
-@customAttribute('md-collapsible')
-@bindable({ name: 'accordion', defaultValue: false })
-@bindable({ name: 'popout', defaultValue: false })
-@inject(Element)
-
-export class MdCollapsible {
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('collapsible');
-    if (getBooleanFromAttributeValue(this.popout)) {
-      this.attributeManager.addClasses('popout');
-    }
-    this.refresh();
-  }
-
-  detached() {
-    this.attributeManager.removeClasses(['collapsible', 'popout']);
-    this.attributeManager.removeAttributes(['data-collapsible']);
-  }
-
-  refresh() {
-    let accordion = getBooleanFromAttributeValue(this.accordion);
-    if (accordion) {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
-    } else {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
-    }
-
-    $(this.element).collapsible({
-      accordion
-    });
-  }
-
-  accordionChanged() {
-    this.refresh();
   }
 }
 
@@ -2170,11 +2170,12 @@ export class MdToastService {
   }
 }
 
-// @customAttribute('md-tooltip')
+@customAttribute('md-tooltip')
 @inject(Element)
 export class MdTooltip {
   @bindable() position = 'bottom';
   @bindable() delay = 50;
+  @bindable() html = false;
   @bindable() text = '';
 
   constructor(element) {
@@ -2182,10 +2183,17 @@ export class MdTooltip {
     this.attributeManager = new AttributeManager(this.element);
   }
 
+  bind() {
+    this.html = getBooleanFromAttributeValue(this.html);
+  }
+
   attached() {
     this.attributeManager.addClasses('tooltipped');
     this.attributeManager.addAttributes({ 'data-position': this.position, 'data-tooltip': this.text });
-    $(this.element).tooltip({ delay: parseInt(this.delay, 10) });
+    $(this.element).tooltip({
+      delay: parseInt(this.delay, 10),
+      html: this.html
+    });
   }
 
   detached() {

@@ -118,17 +118,6 @@ export declare class MdBox {
   attached(): any;
   detached(): any;
 }
-
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-export declare class MdBreadcrumbs {
-  constructor(element?: any, router?: any);
-  navigate(navigationInstruction?: any): any;
-}
-
-// this.router.navigate(navigationInstruction.config.name);
-export declare class InstructionFilterValueConverter {
-  toView(navigationInstructions?: any): any;
-}
 export declare class MdButton {
   disabled: any;
   flat: any;
@@ -139,6 +128,17 @@ export declare class MdButton {
   detached(): any;
   disabledChanged(newValue?: any): any;
   flatChanged(newValue?: any): any;
+}
+
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+export declare class MdBreadcrumbs {
+  constructor(element?: any, router?: any);
+  navigate(navigationInstruction?: any): any;
+}
+
+// this.router.navigate(navigationInstruction.config.name);
+export declare class InstructionFilterValueConverter {
+  toView(navigationInstructions?: any): any;
 }
 export declare class MdCard {
   mdHorizontal: any;
@@ -206,6 +206,13 @@ export declare class MdChips {
 }
 
 // fireEvent(this.element, 'change');
+export declare class MdCollapsible {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  refresh(): any;
+  accordionChanged(): any;
+}
 export declare class MdCollectionHeader {
   constructor(element?: any);
 }
@@ -222,13 +229,6 @@ export declare class MdlListSelector {
   isSelected: any;
   constructor(element?: any);
   isSelectedChanged(newValue?: any): any;
-}
-export declare class MdCollapsible {
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  refresh(): any;
-  accordionChanged(): any;
 }
 
 /* eslint-enable */
@@ -593,13 +593,13 @@ export declare class MdTabs {
 export declare class MdToastService {
   show(message?: any, displayLength?: any, className?: any): any;
 }
-
-// @customAttribute('md-tooltip')
 export declare class MdTooltip {
   position: any;
   delay: any;
+  html: any;
   text: any;
   constructor(element?: any);
+  bind(): any;
   attached(): any;
   detached(): any;
 }
