@@ -10,7 +10,7 @@ In your project install the plugin via jspm with the following command:
 
 Make sure you also install Materialize. There are several options available. Not concerning forks, these are available:
 
-<span style="color: red;">github</span> 
+<span style="color: red;">github</span>
 
 ```
 $ jspm install materialize=github:Dogfalo/materialize
@@ -62,11 +62,19 @@ $ jspm install materialize-css
   });
   ```
 
-  Here is a full list of currently available options:
+  At the end of this page is a full list of currently available options.
 
-  ```javascript
-  .plugin('aurelia-materialize-bridge', bridge => {
-    bridge
+#### You are done!
+It is now possible to drop some custom-elements into your DOM. See the other pages on this website for detailed information on how to do this.
+
+**Now you might want to do our <a href="https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/app_developers_tutorial/introduction.html" target="_blank">app developers tutorial</a>.**
+
+As described above, here is a full list of currently available options:
+
+```javascript
+aurelia.use.plugin('aurelia-materialize-bridge', bridge => {
+  bridge
+    .useAutoComplete()
     .useBadge()
     .useBreadcrumbs()
     .useBox()
@@ -104,10 +112,5 @@ $ jspm install materialize-css
     .useTransitions()
     .useWaves()
     .useWell();
-  });
-  ```
-
-#### You are done!
-It is now possible to drop some custom-elements into your DOM. See the other pages on this website for detailed information on how to do this.
-
-**Now you might want to do our <a href="https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/app_developers_tutorial/introduction.html" target="_blank">app developers tutorial</a>.**
+});
+```

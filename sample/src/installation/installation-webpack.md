@@ -13,7 +13,7 @@ In your project install the plugin via npm with the following command:
   ```html
   <body aurelia-app="main">
   ...
-```
+  ```
 
 2. Update  `main.js` in your `src` folder with following content:
 
@@ -63,11 +63,11 @@ It is now possible to drop some custom-elements into your DOM. See the other pag
 **Now you might want to do our <a href="https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/app_developers_tutorial/introduction.html" target="_blank">app developers tutorial</a>.**
 
 
-As described above, here is a full list of currently available options:
+  As described above, here is a full list of currently available options:
 
-  ```javascript
-  .plugin('aurelia-materialize-bridge', bridge => {
-    bridge
+```javascript
+aurelia.use.plugin('aurelia-materialize-bridge', bridge => {
+  bridge
     .useAutoComplete()
     .useBadge()
     .useBreadcrumbs()
@@ -106,5 +106,5 @@ As described above, here is a full list of currently available options:
     .useTransitions()
     .useWaves()
     .useWell();
-  });
-  ```
+});
+```
