@@ -16,8 +16,6 @@ export function configure(aurelia, configCallback) {
   }
 }
 
-export const version = '0.5.1';
-
 // build-index-remove start
 export * from './badge/badge';
 export * from './box/box';
