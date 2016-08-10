@@ -11,7 +11,7 @@
     },
     "tooltip-html": {
       "route": "tooltip-html",
-      "files": ["html"]
+      "files": ["html", "js"]
     }
   }
 }
