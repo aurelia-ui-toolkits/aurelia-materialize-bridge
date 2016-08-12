@@ -23,6 +23,9 @@ export class MdInput {
   }) mdType = 'text';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
+  }) mdStep = 'any';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
   }) mdValidate = false;
   @bindable() mdValidateError;
   @bindable({
