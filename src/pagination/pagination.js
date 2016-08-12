@@ -77,7 +77,7 @@ export class MdPagination {
 
   generatePageLinks() {
     let numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
-    let midPoint = parseInt((numberOfLinks / 2));
+    let midPoint = parseInt((numberOfLinks / 2), 10);
     let start = Math.max(this.mdActivePage - midPoint, 0);
     let end = Math.min(start + numberOfLinks, this.mdPages);
 
