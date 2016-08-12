@@ -96,7 +96,6 @@ export declare class ConfigBuilder {
   withScrollfirePatch(): ConfigBuilder;
 }
 export declare function configure(aurelia?: any, configCallback?: any): any;
-export declare const version: any;
 export declare class MdAutoComplete {
   input: any;
   values: any;
@@ -118,17 +117,6 @@ export declare class MdBox {
   attached(): any;
   detached(): any;
 }
-export declare class MdButton {
-  disabled: any;
-  flat: any;
-  floating: any;
-  large: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  disabledChanged(newValue?: any): any;
-  flatChanged(newValue?: any): any;
-}
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 export declare class MdBreadcrumbs {
@@ -139,6 +127,17 @@ export declare class MdBreadcrumbs {
 // this.router.navigate(navigationInstruction.config.name);
 export declare class InstructionFilterValueConverter {
   toView(navigationInstructions?: any): any;
+}
+export declare class MdButton {
+  disabled: any;
+  flat: any;
+  floating: any;
+  large: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  disabledChanged(newValue?: any): any;
+  flatChanged(newValue?: any): any;
 }
 export declare class MdCard {
   mdHorizontal: any;
@@ -349,6 +348,13 @@ export declare class MdFooter {
   bind(): any;
   unbind(): any;
 }
+export declare class MdModalTrigger {
+  dismissible: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  onComplete(): any;
+}
 export declare class MdPrefix {
   constructor(element?: any);
   bind(): any;
@@ -366,6 +372,7 @@ export declare class MdInput {
   mdPlaceholder: any;
   mdTextArea: any;
   mdType: any;
+  mdStep: any;
   mdValidate: any;
   mdValidateError: any;
   mdValue: any;
@@ -374,13 +381,6 @@ export declare class MdInput {
   attached(): any;
   mdValueChanged(): any;
 }
-export declare class MdModalTrigger {
-  dismissible: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  onComplete(): any;
-}
 export declare class MdNavbar {
   mdFixed: any;
   fixedAttributeManager: any;
@@ -388,6 +388,13 @@ export declare class MdNavbar {
   attached(): any;
   detached(): any;
 }
+export declare class MdParallax {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
+
+// destroy handler not available
 export declare class MdPagination {
   mdActivePage: any;
   mdPages: any;
@@ -407,13 +414,6 @@ export declare class MdPagination {
   mdVisiblePageLinksChanged(): any;
   generatePageLinks(): any;
 }
-export declare class MdParallax {
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
-
-// destroy handler not available
 export declare class MdProgress {
   mdColor: any;
   mdType: any;

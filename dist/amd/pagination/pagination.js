@@ -134,7 +134,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
     MdPagination.prototype.generatePageLinks = function generatePageLinks() {
       var numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
-      var midPoint = parseInt(numberOfLinks / 2);
+      var midPoint = parseInt(numberOfLinks / 2, 10);
       var start = Math.max(this.mdActivePage - midPoint, 0);
       var end = Math.min(start + numberOfLinks, this.mdPages);
 

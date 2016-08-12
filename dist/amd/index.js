@@ -4,7 +4,6 @@ define(['exports', './badge/badge', './box/box', './breadcrumbs/breadcrumbs', '.
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.version = undefined;
   exports.configure = configure;
   Object.keys(_badge).forEach(function (key) {
     if (key === "default") return;
@@ -515,6 +514,4 @@ define(['exports', './badge/badge', './box/box', './breadcrumbs/breadcrumbs', '.
       new _scrollfirePatch.ScrollfirePatch().patch();
     }
   }
-
-  var version = exports.version = '0.5.1';
 });

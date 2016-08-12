@@ -309,8 +309,6 @@ export function configure(aurelia, configCallback) {
   }
 }
 
-export const version = '0.5.1';
-
 
 
 @customAttribute('md-autocomplete')
@@ -406,6 +404,38 @@ export class MdBox {
   }
 }
 
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+
+@customElement('md-breadcrumbs')
+@inject(Element, Router)
+export class MdBreadcrumbs {
+  constructor(element, router) {
+    this.element = element;
+    this._childRouter = router;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  navigate(navigationInstruction) {
+    this._childRouter.navigateToRoute(navigationInstruction.config.name);
+    // this.router.navigate(navigationInstruction.config.name);
+  }
+}
+
+export class InstructionFilterValueConverter {
+  toView(navigationInstructions) {
+    return navigationInstructions.filter(i => {
+      let result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
+  }
+}
+
 @customAttribute('md-button')
 @inject(Element)
 export class MdButton {
@@ -465,38 +495,6 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
-  }
-}
-
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-
-@customElement('md-breadcrumbs')
-@inject(Element, Router)
-export class MdBreadcrumbs {
-  constructor(element, router) {
-    this.element = element;
-    this._childRouter = router;
-    while (router.parent) {
-      router = router.parent;
-    }
-    this.router = router;
-  }
-
-  navigate(navigationInstruction) {
-    this._childRouter.navigateToRoute(navigationInstruction.config.name);
-    // this.router.navigate(navigationInstruction.config.name);
-  }
-}
-
-export class InstructionFilterValueConverter {
-  toView(navigationInstructions) {
-    return navigationInstructions.filter(i => {
-      let result = false;
-      if (i.config.title) {
-        result = true;
-      }
-      return result;
-    });
   }
 }
 
@@ -1311,6 +1309,34 @@ export class MdFooter {
   }
 }
 
+@customAttribute('md-modal-trigger')
+@inject(Element)
+export class MdModalTrigger {
+  @bindable() dismissible = true;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+    this.onComplete = this.onComplete.bind(this);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('modal-trigger');
+    $(this.element).leanModal({
+      complete: this.onComplete,
+      dismissible: getBooleanFromAttributeValue(this.dismissible)
+    });
+  }
+
+  detached() {
+    this.attributeManager.removeClasses('modal-trigger');
+  }
+
+  onComplete() {
+    fireMaterializeEvent(this.element, 'modal-complete');
+  }
+}
+
 @customAttribute('md-prefix')
 @inject(Element)
 export class MdPrefix {
@@ -1369,6 +1395,9 @@ export class MdInput {
   }) mdType = 'text';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
+  }) mdStep = 'any';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
   }) mdValidate = false;
   @bindable() mdValidateError;
   @bindable({
@@ -1409,34 +1438,6 @@ export class MdInput {
   }
 }
 
-@customAttribute('md-modal-trigger')
-@inject(Element)
-export class MdModalTrigger {
-  @bindable() dismissible = true;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-    this.onComplete = this.onComplete.bind(this);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('modal-trigger');
-    $(this.element).leanModal({
-      complete: this.onComplete,
-      dismissible: getBooleanFromAttributeValue(this.dismissible)
-    });
-  }
-
-  detached() {
-    this.attributeManager.removeClasses('modal-trigger');
-  }
-
-  onComplete() {
-    fireMaterializeEvent(this.element, 'modal-complete');
-  }
-}
-
 @customElement('md-navbar')
 @inject(Element)
 export class MdNavbar {
@@ -1460,6 +1461,22 @@ export class MdNavbar {
     if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
+  }
+}
+
+@customAttribute('md-parallax')
+@inject(Element)
+export class MdParallax {
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.element).parallax();
+  }
+
+  detached() {
+    // destroy handler not available
   }
 }
 
@@ -1535,7 +1552,7 @@ export class MdPagination {
 
   generatePageLinks() {
     let numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
-    let midPoint = parseInt((numberOfLinks / 2));
+    let midPoint = parseInt((numberOfLinks / 2), 10);
     let start = Math.max(this.mdActivePage - midPoint, 0);
     let end = Math.min(start + numberOfLinks, this.mdPages);
 
@@ -1545,22 +1562,6 @@ export class MdPagination {
     }
 
     return list;
-  }
-}
-
-@customAttribute('md-parallax')
-@inject(Element)
-export class MdParallax {
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.element).parallax();
-  }
-
-  detached() {
-    // destroy handler not available
   }
 }
 
