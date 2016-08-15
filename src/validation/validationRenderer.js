@@ -5,7 +5,9 @@ import { validationRenderer } from 'aurelia-validation';
 @inject(Element)
 export class MaterializeFormValidationRenderer {
 
-  constructor(boundaryElement) {}
+  constructor(boundaryElement) {
+    this.boundaryElement = boundaryElement;
+  }
 
   render(error, target) {
     if (!target || !(this.boundaryElement === target || this.boundaryElement.contains(target))) {
@@ -27,6 +29,7 @@ export class MaterializeFormValidationRenderer {
           let label:any = target.querySelector('label');
           if (label) {
             label.classList.remove('valid');
+            label.classList.add('active');
             label.classList.add('invalid');
 
             // get error message from label
