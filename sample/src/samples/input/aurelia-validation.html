@@ -1,0 +1,19 @@
+<template>
+  <div validation-renderer="materialize-form">
+    <md-input
+      md-label="First Name"
+      md-value.bind="firstName & validate:rules"
+      md-validate="true"
+      md-validate-error="very very very very wrong">
+    </md-input>
+
+    <md-input
+      md-label="Last Name"
+      md-placeholder="Last Name"
+      md-value.bind="lastName & validate:rules">
+    </md-input>
+  </div>
+  <div style="margin-top: 15px;">
+    <button md-button click.delegate="validateModel()">validate</button>
+  </div>
+</template>

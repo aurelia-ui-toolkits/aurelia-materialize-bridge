@@ -7,6 +7,8 @@ import 'materialize';
   }
 });
 
+import { MaterializeFormValidationRenderer } from 'aurelia-materialize-bridge/validation/validationRenderer';
+
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
@@ -51,7 +53,11 @@ export function configure(aurelia) {
         .useTransitions()
         .useWaves()
         .useWell();
-    });
+    })
+    .plugin('aurelia-validatejs')
+    .plugin('aurelia-validation');
+
+  aurelia.container.registerHandler('materialize-form', container => container.get(MaterializeFormValidationRenderer));
 
   aurelia.use.globalResources('shared/collapse-panel');
   aurelia.use.globalResources('shared/markdown');
