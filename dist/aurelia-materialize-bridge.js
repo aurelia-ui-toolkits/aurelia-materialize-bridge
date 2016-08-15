@@ -5,6 +5,7 @@ import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-bind
 import {Router} from 'aurelia-router';
 import {getLogger} from 'aurelia-logging';
 import {TaskQueue} from 'aurelia-task-queue';
+import {validationRenderer} from 'aurelia-validation';
 
 export class ClickCounter {
   count = 0;
@@ -309,8 +310,6 @@ export function configure(aurelia, configCallback) {
   }
 }
 
-export const version = '0.5.1';
-
 
 
 @customAttribute('md-autocomplete')
@@ -406,6 +405,38 @@ export class MdBox {
   }
 }
 
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+
+@customElement('md-breadcrumbs')
+@inject(Element, Router)
+export class MdBreadcrumbs {
+  constructor(element, router) {
+    this.element = element;
+    this._childRouter = router;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  navigate(navigationInstruction) {
+    this._childRouter.navigateToRoute(navigationInstruction.config.name);
+    // this.router.navigate(navigationInstruction.config.name);
+  }
+}
+
+export class InstructionFilterValueConverter {
+  toView(navigationInstructions) {
+    return navigationInstructions.filter(i => {
+      let result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
+  }
+}
+
 @customAttribute('md-button')
 @inject(Element)
 export class MdButton {
@@ -465,38 +496,6 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
-  }
-}
-
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-
-@customElement('md-breadcrumbs')
-@inject(Element, Router)
-export class MdBreadcrumbs {
-  constructor(element, router) {
-    this.element = element;
-    this._childRouter = router;
-    while (router.parent) {
-      router = router.parent;
-    }
-    this.router = router;
-  }
-
-  navigate(navigationInstruction) {
-    this._childRouter.navigateToRoute(navigationInstruction.config.name);
-    // this.router.navigate(navigationInstruction.config.name);
-  }
-}
-
-export class InstructionFilterValueConverter {
-  toView(navigationInstructions) {
-    return navigationInstructions.filter(i => {
-      let result = false;
-      if (i.config.title) {
-        result = true;
-      }
-      return result;
-    });
   }
 }
 
@@ -715,48 +714,6 @@ export class MdChips {
   }
 }
 
-@customAttribute('md-collapsible')
-@bindable({ name: 'accordion', defaultValue: false })
-@bindable({ name: 'popout', defaultValue: false })
-@inject(Element)
-
-export class MdCollapsible {
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('collapsible');
-    if (getBooleanFromAttributeValue(this.popout)) {
-      this.attributeManager.addClasses('popout');
-    }
-    this.refresh();
-  }
-
-  detached() {
-    this.attributeManager.removeClasses(['collapsible', 'popout']);
-    this.attributeManager.removeAttributes(['data-collapsible']);
-  }
-
-  refresh() {
-    let accordion = getBooleanFromAttributeValue(this.accordion);
-    if (accordion) {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
-    } else {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
-    }
-
-    $(this.element).collapsible({
-      accordion
-    });
-  }
-
-  accordionChanged() {
-    this.refresh();
-  }
-}
-
 @customElement('md-collection-header')
 @inject(Element)
 export class MdCollectionHeader {
@@ -801,6 +758,48 @@ export class MdlListSelector {
 
   isSelectedChanged(newValue) {
     fireMaterializeEvent(this.element, 'selection-changed', { item: this.item, isSelected: this.isSelected });
+  }
+}
+
+@customAttribute('md-collapsible')
+@bindable({ name: 'accordion', defaultValue: false })
+@bindable({ name: 'popout', defaultValue: false })
+@inject(Element)
+
+export class MdCollapsible {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('collapsible');
+    if (getBooleanFromAttributeValue(this.popout)) {
+      this.attributeManager.addClasses('popout');
+    }
+    this.refresh();
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
+  }
+
+  refresh() {
+    let accordion = getBooleanFromAttributeValue(this.accordion);
+    if (accordion) {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
+    } else {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
+    }
+
+    $(this.element).collapsible({
+      accordion
+    });
+  }
+
+  accordionChanged() {
+    this.refresh();
   }
 }
 
@@ -1369,6 +1368,9 @@ export class MdInput {
   }) mdType = 'text';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
+  }) mdStep = 'any';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
   }) mdValidate = false;
   @bindable() mdValidateError;
   @bindable({
@@ -1535,7 +1537,7 @@ export class MdPagination {
 
   generatePageLinks() {
     let numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
-    let midPoint = parseInt((numberOfLinks / 2));
+    let midPoint = parseInt((numberOfLinks / 2), 10);
     let start = Math.max(this.mdActivePage - midPoint, 0);
     let end = Math.min(start + numberOfLinks, this.mdPages);
 
@@ -2268,6 +2270,85 @@ export class MdStaggeredList {
       }
     });
   }
+}
+
+@validationRenderer
+@inject(Element)
+export class MaterializeFormValidationRenderer {
+
+  constructor(boundaryElement) {
+    this.boundaryElement = boundaryElement;
+  }
+
+  render(error, target) {
+    if (!target || !(this.boundaryElement === target || this.boundaryElement.contains(target))) {
+      return;
+    }
+
+    let errorMessage = error.message || 'error';
+
+    switch (target.tagName) {
+      case 'MD-INPUT': {
+        let input = target.querySelector('input');
+        if (input) {
+          input.classList.remove('valid');
+          input.classList.add('invalid');
+
+          // focus target
+          error.target = input;
+
+          let label:any = target.querySelector('label');
+          if (label) {
+            label.classList.remove('valid');
+            label.classList.add('active');
+            label.classList.add('invalid');
+
+            // get error message from label
+            let msg = label.getAttribute('data-error');
+            if(!msg) {
+              // error message not set? add
+              label.setAttribute('data-error', errorMessage);
+            } else {
+              // set label message into error object
+              error.message = msg;
+            }
+          }
+        }
+        break;
+      }
+    }
+
+    // tag the element so we know we rendered into it.
+    target.errors = (target.errors || new Map());
+    target.errors.set(error);
+  }
+
+  unrender(error, target) {
+    if (!target || !target.errors || !target.errors.has(error)) {
+      return;
+    }
+
+    target.errors.delete(error);
+
+    switch (target.tagName) {
+      case 'MD-INPUT': {
+        let input = target.querySelector('input');
+        if (input) {
+
+          input.classList.remove('invalid');
+          input.classList.add('valid');
+
+          let label:any = target.querySelector('label');
+          if (label) {
+            label.classList.remove('invalid');
+            label.classList.add('valid');
+          }
+        }
+        break;
+      }
+    }
+  }
+
 }
 
 @customAttribute('md-waves')

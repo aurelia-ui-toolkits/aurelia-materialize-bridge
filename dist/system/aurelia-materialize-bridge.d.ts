@@ -23,6 +23,9 @@ import {
 import {
   TaskQueue
 } from 'aurelia-task-queue';
+import {
+  validationRenderer
+} from 'aurelia-validation';
 export declare class ClickCounter {
   count: any;
   increment(): any;
@@ -96,7 +99,6 @@ export declare class ConfigBuilder {
   withScrollfirePatch(): ConfigBuilder;
 }
 export declare function configure(aurelia?: any, configCallback?: any): any;
-export declare const version: any;
 export declare class MdAutoComplete {
   input: any;
   values: any;
@@ -118,17 +120,6 @@ export declare class MdBox {
   attached(): any;
   detached(): any;
 }
-export declare class MdButton {
-  disabled: any;
-  flat: any;
-  floating: any;
-  large: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  disabledChanged(newValue?: any): any;
-  flatChanged(newValue?: any): any;
-}
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 export declare class MdBreadcrumbs {
@@ -139,6 +130,17 @@ export declare class MdBreadcrumbs {
 // this.router.navigate(navigationInstruction.config.name);
 export declare class InstructionFilterValueConverter {
   toView(navigationInstructions?: any): any;
+}
+export declare class MdButton {
+  disabled: any;
+  flat: any;
+  floating: any;
+  large: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  disabledChanged(newValue?: any): any;
+  flatChanged(newValue?: any): any;
 }
 export declare class MdCard {
   mdHorizontal: any;
@@ -206,13 +208,6 @@ export declare class MdChips {
 }
 
 // fireEvent(this.element, 'change');
-export declare class MdCollapsible {
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  refresh(): any;
-  accordionChanged(): any;
-}
 export declare class MdCollectionHeader {
   constructor(element?: any);
 }
@@ -229,6 +224,13 @@ export declare class MdlListSelector {
   isSelected: any;
   constructor(element?: any);
   isSelectedChanged(newValue?: any): any;
+}
+export declare class MdCollapsible {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  refresh(): any;
+  accordionChanged(): any;
 }
 
 /* eslint-enable */
@@ -366,6 +368,7 @@ export declare class MdInput {
   mdPlaceholder: any;
   mdTextArea: any;
   mdType: any;
+  mdStep: any;
   mdValidate: any;
   mdValidateError: any;
   mdValue: any;
@@ -618,6 +621,11 @@ export declare class MdStaggeredList {
   detached(): any;
   staggerList(): any;
   ensureOpacity(): any;
+}
+export declare class MaterializeFormValidationRenderer {
+  constructor(boundaryElement?: any);
+  render(error?: any, target?: any): any;
+  unrender(error?: any, target?: any): any;
 }
 export declare class MdWaves {
   block: any;

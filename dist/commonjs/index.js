@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.version = undefined;
 exports.configure = configure;
 
 var _badge = require('./badge/badge');
@@ -682,5 +681,3 @@ function configure(aurelia, configCallback) {
     new _scrollfirePatch.ScrollfirePatch().patch();
   }
 }
-
-var version = exports.version = '0.5.1';

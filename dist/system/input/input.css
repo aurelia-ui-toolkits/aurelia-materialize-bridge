@@ -4,3 +4,7 @@
 md-input .input-field label.active {
   transform: translateX(-11px) translateY(-140%);
 }*/
+
+md-input .input-field label.active {
+  width: 100%;
+}
