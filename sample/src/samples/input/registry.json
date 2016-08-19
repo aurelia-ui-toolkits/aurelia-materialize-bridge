@@ -17,6 +17,10 @@
       "route": "html5-validation",
       "files": ["html", "js"]
     },
+    "aurelia-validation": {
+      "route": "aurelia-validation",
+      "files": ["html", "js", "md"]
+    },
     "character-counter": {
       "route": "character-counter",
       "files": ["html", "js"]

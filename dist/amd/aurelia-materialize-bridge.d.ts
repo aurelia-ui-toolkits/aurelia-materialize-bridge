@@ -23,6 +23,9 @@ import {
 import {
   TaskQueue
 } from 'aurelia-task-queue';
+import {
+  validationRenderer
+} from 'aurelia-validation';
 export declare class ClickCounter {
   count: any;
   increment(): any;
@@ -205,13 +208,6 @@ export declare class MdChips {
 }
 
 // fireEvent(this.element, 'change');
-export declare class MdCollapsible {
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  refresh(): any;
-  accordionChanged(): any;
-}
 export declare class MdCollectionHeader {
   constructor(element?: any);
 }
@@ -228,6 +224,13 @@ export declare class MdlListSelector {
   isSelected: any;
   constructor(element?: any);
   isSelectedChanged(newValue?: any): any;
+}
+export declare class MdCollapsible {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  refresh(): any;
+  accordionChanged(): any;
 }
 
 /* eslint-enable */
@@ -618,6 +621,11 @@ export declare class MdStaggeredList {
   detached(): any;
   staggerList(): any;
   ensureOpacity(): any;
+}
+export declare class MaterializeFormValidationRenderer {
+  constructor(boundaryElement?: any);
+  render(error?: any, target?: any): any;
+  unrender(error?: any, target?: any): any;
 }
 export declare class MdWaves {
   block: any;

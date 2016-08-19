@@ -5,6 +5,7 @@ import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-bind
 import {Router} from 'aurelia-router';
 import {getLogger} from 'aurelia-logging';
 import {TaskQueue} from 'aurelia-task-queue';
+import {validationRenderer} from 'aurelia-validation';
 
 export class ClickCounter {
   count = 0;
@@ -713,48 +714,6 @@ export class MdChips {
   }
 }
 
-@customAttribute('md-collapsible')
-@bindable({ name: 'accordion', defaultValue: false })
-@bindable({ name: 'popout', defaultValue: false })
-@inject(Element)
-
-export class MdCollapsible {
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('collapsible');
-    if (getBooleanFromAttributeValue(this.popout)) {
-      this.attributeManager.addClasses('popout');
-    }
-    this.refresh();
-  }
-
-  detached() {
-    this.attributeManager.removeClasses(['collapsible', 'popout']);
-    this.attributeManager.removeAttributes(['data-collapsible']);
-  }
-
-  refresh() {
-    let accordion = getBooleanFromAttributeValue(this.accordion);
-    if (accordion) {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
-    } else {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
-    }
-
-    $(this.element).collapsible({
-      accordion
-    });
-  }
-
-  accordionChanged() {
-    this.refresh();
-  }
-}
-
 @customElement('md-collection-header')
 @inject(Element)
 export class MdCollectionHeader {
@@ -799,6 +758,48 @@ export class MdlListSelector {
 
   isSelectedChanged(newValue) {
     fireMaterializeEvent(this.element, 'selection-changed', { item: this.item, isSelected: this.isSelected });
+  }
+}
+
+@customAttribute('md-collapsible')
+@bindable({ name: 'accordion', defaultValue: false })
+@bindable({ name: 'popout', defaultValue: false })
+@inject(Element)
+
+export class MdCollapsible {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('collapsible');
+    if (getBooleanFromAttributeValue(this.popout)) {
+      this.attributeManager.addClasses('popout');
+    }
+    this.refresh();
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
+  }
+
+  refresh() {
+    let accordion = getBooleanFromAttributeValue(this.accordion);
+    if (accordion) {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
+    } else {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
+    }
+
+    $(this.element).collapsible({
+      accordion
+    });
+  }
+
+  accordionChanged() {
+    this.refresh();
   }
 }
 
@@ -1309,34 +1310,6 @@ export class MdFooter {
   }
 }
 
-@customAttribute('md-modal-trigger')
-@inject(Element)
-export class MdModalTrigger {
-  @bindable() dismissible = true;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-    this.onComplete = this.onComplete.bind(this);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('modal-trigger');
-    $(this.element).leanModal({
-      complete: this.onComplete,
-      dismissible: getBooleanFromAttributeValue(this.dismissible)
-    });
-  }
-
-  detached() {
-    this.attributeManager.removeClasses('modal-trigger');
-  }
-
-  onComplete() {
-    fireMaterializeEvent(this.element, 'modal-complete');
-  }
-}
-
 @customAttribute('md-prefix')
 @inject(Element)
 export class MdPrefix {
@@ -1438,6 +1411,34 @@ export class MdInput {
   }
 }
 
+@customAttribute('md-modal-trigger')
+@inject(Element)
+export class MdModalTrigger {
+  @bindable() dismissible = true;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+    this.onComplete = this.onComplete.bind(this);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('modal-trigger');
+    $(this.element).leanModal({
+      complete: this.onComplete,
+      dismissible: getBooleanFromAttributeValue(this.dismissible)
+    });
+  }
+
+  detached() {
+    this.attributeManager.removeClasses('modal-trigger');
+  }
+
+  onComplete() {
+    fireMaterializeEvent(this.element, 'modal-complete');
+  }
+}
+
 @customElement('md-navbar')
 @inject(Element)
 export class MdNavbar {
@@ -1461,22 +1462,6 @@ export class MdNavbar {
     if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
-  }
-}
-
-@customAttribute('md-parallax')
-@inject(Element)
-export class MdParallax {
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.element).parallax();
-  }
-
-  detached() {
-    // destroy handler not available
   }
 }
 
@@ -1562,6 +1547,22 @@ export class MdPagination {
     }
 
     return list;
+  }
+}
+
+@customAttribute('md-parallax')
+@inject(Element)
+export class MdParallax {
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.element).parallax();
+  }
+
+  detached() {
+    // destroy handler not available
   }
 }
 
@@ -2269,6 +2270,85 @@ export class MdStaggeredList {
       }
     });
   }
+}
+
+@validationRenderer
+@inject(Element)
+export class MaterializeFormValidationRenderer {
+
+  constructor(boundaryElement) {
+    this.boundaryElement = boundaryElement;
+  }
+
+  render(error, target) {
+    if (!target || !(this.boundaryElement === target || this.boundaryElement.contains(target))) {
+      return;
+    }
+
+    let errorMessage = error.message || 'error';
+
+    switch (target.tagName) {
+      case 'MD-INPUT': {
+        let input = target.querySelector('input');
+        if (input) {
+          input.classList.remove('valid');
+          input.classList.add('invalid');
+
+          // focus target
+          error.target = input;
+
+          let label:any = target.querySelector('label');
+          if (label) {
+            label.classList.remove('valid');
+            label.classList.add('active');
+            label.classList.add('invalid');
+
+            // get error message from label
+            let msg = label.getAttribute('data-error');
+            if(!msg) {
+              // error message not set? add
+              label.setAttribute('data-error', errorMessage);
+            } else {
+              // set label message into error object
+              error.message = msg;
+            }
+          }
+        }
+        break;
+      }
+    }
+
+    // tag the element so we know we rendered into it.
+    target.errors = (target.errors || new Map());
+    target.errors.set(error);
+  }
+
+  unrender(error, target) {
+    if (!target || !target.errors || !target.errors.has(error)) {
+      return;
+    }
+
+    target.errors.delete(error);
+
+    switch (target.tagName) {
+      case 'MD-INPUT': {
+        let input = target.querySelector('input');
+        if (input) {
+
+          input.classList.remove('invalid');
+          input.classList.add('valid');
+
+          let label:any = target.querySelector('label');
+          if (label) {
+            label.classList.remove('invalid');
+            label.classList.add('valid');
+          }
+        }
+        break;
+      }
+    }
+  }
+
 }
 
 @customAttribute('md-waves')

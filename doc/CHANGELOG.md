@@ -1,3 +1,18 @@
+<a name="0.13.0"></a>
+# [0.13.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.12.0...v0.13.0) (2016-08-15)
+
+
+### Bug Fixes
+
+* **validationRenderer:** correctly assign boundaryElement, set label active to avoid strange layout error ([b9f768d](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b9f768d))
+
+### Features
+
+* **md-input:** add md-step option for number input types( allows decimals and preset increments ([19a6892](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/19a6892))
+* **validation:** add validationRenderer from @ullfis ([5a73161](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/5a73161))
+
+
+
 <a name="0.12.0"></a>
 # [0.12.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.11.0...v0.12.0) (2016-08-10)
 
