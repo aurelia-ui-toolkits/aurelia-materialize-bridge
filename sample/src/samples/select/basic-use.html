@@ -1,5 +1,24 @@
 <template>
-  <div>
+  <md-card md-title="Basic use">
+    <select value.two-way="selectedValue">
+      <option value="" disabled selected>select an item</option>
+      <option value="item1">item 1</option>
+      <option value="item2">item 2</option>
+      <option value="item3">item 3</option>
+      <option value="item4">item 4</option>
+    </select>
+
+    <div>
+      <a md-button="flat: true;" md-waves click.trigger="setSelectedValue()" class="accent-text">set to item 3</a>
+      You selected: ${selectedValue}
+    </div>
+    <div>
+      <a md-button="flat: true;" md-waves click.trigger="toggle()" class="accent-text">${ disabled ? 'enable' :
+        'disable' }</a>
+    </div>
+  </md-card>
+
+  <md-card md-title="Disabled Functionality">
     <select md-select="disabled.bind: disabled" value.two-way="selectedValue">
       <option value="" disabled selected>select an item</option>
       <option value="item1">item 1</option>
@@ -13,7 +32,8 @@
       You selected: ${selectedValue}
     </div>
     <div>
-      <a md-button="flat: true;" md-waves click.trigger="toggle()" class="accent-text">${ disabled ? 'enable' : 'disable' }</a>
+      <a md-button="flat: true;" md-waves click.trigger="toggle()" class="accent-text">${ disabled ? 'enable' :
+        'disable' }</a>
     </div>
-  </div>
+  </md-card>
 </template>

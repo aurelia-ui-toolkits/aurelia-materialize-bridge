@@ -1,5 +1,5 @@
 export class BasicUse {
-  disabled = false;
+  disabled = true;
   selectedValue = '';
 
   setSelectedValue() {
