@@ -1,5 +1,5 @@
 <template>
-  <div validation-renderer="materialize-form">
+  <div>
     <md-input
       md-label="First Name"
       md-value.bind="firstName & validate:rules"
@@ -10,6 +10,7 @@
     <md-input
       md-label="Last Name"
       md-placeholder="Last Name"
+      md-validate-success="good"
       md-value.bind="lastName & validate:rules">
     </md-input>
   </div>

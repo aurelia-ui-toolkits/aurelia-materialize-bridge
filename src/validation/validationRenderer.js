@@ -1,24 +1,28 @@
-import { inject } from 'aurelia-dependency-injection';
-import { validationRenderer } from 'aurelia-validation';
+import { RenderInstruction, ValidationError } from 'aurelia-validation';
 
-@validationRenderer
-@inject(Element)
 export class MaterializeFormValidationRenderer {
 
-  constructor(boundaryElement) {
-    this.boundaryElement = boundaryElement;
-  }
-
-  render(error, target) {
-    if (!target || !(this.boundaryElement === target || this.boundaryElement.contains(target))) {
-      return;
+  render(instruction) {
+    for (let { error, elements } of instruction.unrender) {
+      for (let element of elements) {
+        this.remove(element, error);
+      }
     }
 
-    let errorMessage = error.message || 'error';
+    for (let { error, elements } of instruction.render) {
+      for (let element of elements) {
+        this.add(element, error);
+      }
+    }
+  }
 
-    switch (target.tagName) {
+  add(element, error) {
+    switch (element.tagName) {
     case 'MD-INPUT': {
-      let input = target.querySelector('input');
+
+      let errorMessage = error.message || 'error';
+
+      let input = element.querySelector('input');
       if (input) {
         input.classList.remove('valid');
         input.classList.add('invalid');
@@ -26,7 +30,7 @@ export class MaterializeFormValidationRenderer {
         // focus target
         error.target = input;
 
-        let label:any = target.querySelector('label');
+        let label = element.querySelector('label');
         if (label) {
           label.classList.add('active');
 
@@ -45,21 +49,12 @@ export class MaterializeFormValidationRenderer {
     }
     default: break;
     }
-
-    // tag the element so we know we rendered into it.
-    target.errors = (target.errors || new Map());
-    target.errors.set(error);
   }
 
-  unrender(error, target) {
-    if (!target || !target.errors || !target.errors.has(error)) {
-      return;
-    }
-    target.errors.delete(error);
-
-    switch (target.tagName) {
+  remove(element, error) {
+    switch (element.tagName) {
     case 'MD-INPUT': {
-      let input = target.querySelector('input');
+      let input = element.querySelector('input');
       if (input) {
         input.classList.remove('invalid');
         input.classList.add('valid');
