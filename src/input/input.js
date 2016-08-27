@@ -70,7 +70,9 @@ export class MdInput {
   }
 
   mdValueChanged() {
-    this.updateService.update();
+    if (!$(this.input).is(':focus')) {
+      this.updateService.update();
+    }
     if (this.mdTextArea) {
       $(this.input).trigger('autoresize');
     }
