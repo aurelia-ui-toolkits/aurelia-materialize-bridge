@@ -24,7 +24,9 @@ export class MdPagination {
   @bindable() mdShowPrevNext = true;
   @bindable() mdShowPageLinks = true;
 
+  // local variables to stop Changed events when parsing to int
   numberOfLinks = 15;
+  pages = 5;
 
   constructor(element) {
     this.element = element;
@@ -32,15 +34,16 @@ export class MdPagination {
 
   bind() {
     // attached() throws unhandled exceptions
-    this.mdPages = parseInt(this.mdPages, 10);
+    this.pages = parseInt(this.mdPages, 10);
     // We don't want mdVisiblePageLinks to be greater than mdPages
-    this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.mdPages);
+    this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
+    this.mdShowFirstLast = getBooleanFromAttributeValue(this.mdShowFirstLast);
     this.mdShowPrevNext = getBooleanFromAttributeValue(this.mdShowPrevNext);
     this.mdPageLinks = this.generatePageLinks();
   }
 
   setActivePage(page) {
-    this.mdActivePage = page;
+    this.mdActivePage = parseInt(page, 10);
     this.mdPageLinks = this.generatePageLinks();
     fireMaterializeEvent(this.element, 'page-changed', this.mdActivePage);
   }
@@ -52,8 +55,8 @@ export class MdPagination {
   }
 
   setLastPage() {
-    if (this.mdActivePage < this.mdPages) {
-      this.setActivePage(this.mdPages);
+    if (this.mdActivePage < this.pages) {
+      this.setActivePage(this.pages);
     }
   }
 
@@ -64,25 +67,28 @@ export class MdPagination {
   }
 
   setNextPage() {
-    if (this.mdActivePage < this.mdPages) {
+    if (this.mdActivePage < this.pages) {
       this.setActivePage(this.mdActivePage + 1);
     }
   }
 
   mdPagesChanged() {
-    this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.mdPages);
+    this.pages = parseInt(this.mdPages, 10);
+    this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
     this.setActivePage(1);
   }
 
   mdVisiblePageLinksChanged() {
-    this.numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
+    this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
     this.mdPageLinks = this.generatePageLinks();
   }
 
   generatePageLinks() {
     let midPoint = parseInt((this.numberOfLinks / 2), 10);
     let start = Math.max(this.mdActivePage - midPoint, 0);
-    let end = Math.min(start + this.numberOfLinks, this.mdPages);
+    // respect visible links
+    if (start + midPoint * 2 > this.pages) start = this.pages - midPoint * 2;
+    let end = Math.min(start + this.numberOfLinks, this.pages);
 
     let list = [];
     for (let i = start; i < end; i++) {
