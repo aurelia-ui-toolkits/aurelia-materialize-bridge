@@ -24,6 +24,8 @@ export class MdPagination {
   @bindable() mdShowPrevNext = true;
   @bindable() mdShowPageLinks = true;
 
+  numberOfLinks = 15;
+
   constructor(element) {
     this.element = element;
   }
@@ -32,7 +34,7 @@ export class MdPagination {
     // attached() throws unhandled exceptions
     this.mdPages = parseInt(this.mdPages, 10);
     // We don't want mdVisiblePageLinks to be greater than mdPages
-    this.mdVisiblePageLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.mdPages);
+    this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.mdPages);
     this.mdShowPrevNext = getBooleanFromAttributeValue(this.mdShowPrevNext);
     this.mdPageLinks = this.generatePageLinks();
   }
@@ -68,18 +70,19 @@ export class MdPagination {
   }
 
   mdPagesChanged() {
+    this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.mdPages);
     this.setActivePage(1);
   }
 
   mdVisiblePageLinksChanged() {
+    this.numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
     this.mdPageLinks = this.generatePageLinks();
   }
 
   generatePageLinks() {
-    let numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
-    let midPoint = parseInt((numberOfLinks / 2), 10);
+    let midPoint = parseInt((this.numberOfLinks / 2), 10);
     let start = Math.max(this.mdActivePage - midPoint, 0);
-    let end = Math.min(start + numberOfLinks, this.mdPages);
+    let end = Math.min(start + this.numberOfLinks, this.mdPages);
 
     let list = [];
     for (let i = start; i < end; i++) {
