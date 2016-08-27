@@ -28,6 +28,7 @@ export class MdInput {
     defaultBindingMode: bindingMode.oneTime
   }) mdValidate = false;
   @bindable() mdValidateError;
+  @bindable() mdValidateSuccess;
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) mdValue = '';
@@ -51,6 +52,9 @@ export class MdInput {
     }
     if (this.mdValidateError)  {
       this.label.setAttribute('data-error', this.mdValidateError);
+    }
+    if (this.mdValidateSuccess)  {
+      this.label.setAttribute('data-success', this.mdValidateSuccess);
     }
     if (this.mdPlaceholder) {
       this.input.setAttribute('placeholder', this.mdPlaceholder);
