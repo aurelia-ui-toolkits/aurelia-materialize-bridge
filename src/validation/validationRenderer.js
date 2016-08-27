@@ -1,5 +1,3 @@
-import { RenderInstruction, ValidationError } from 'aurelia-validation';
-
 export class MaterializeFormValidationRenderer {
 
   render(instruction) {
@@ -19,9 +17,7 @@ export class MaterializeFormValidationRenderer {
   add(element, error) {
     switch (element.tagName) {
     case 'MD-INPUT': {
-
       let errorMessage = error.message || 'error';
-
       let input = element.querySelector('input');
       if (input) {
         input.classList.remove('valid');
