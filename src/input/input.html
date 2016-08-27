@@ -3,8 +3,8 @@
   <div class="input-field">
     <!-- <content select="[md-prefix]"></content> -->
     <slot></slot>
-    <input if.bind="mdTextArea === false" id="${controlId}" type.bind="mdType" step.bind="mdStep" ref="input" value.bind="mdValue" disabled.bind="mdDisabled" />
-    <textarea if.bind="mdTextArea === true" id="${controlId}" ref="input" value.bind="mdValue" class="materialize-textarea" disabled.bind="mdDisabled"></textarea>
+    <input if.bind="mdTextArea === false" id="${controlId}" type.bind="mdType" step.bind="mdStep" ref="input" value.bind="mdValue" disabled.bind="mdDisabled" blur.trigger="blur()" />
+    <textarea if.bind="mdTextArea === true" id="${controlId}" ref="input" value.bind="mdValue" class="materialize-textarea" disabled.bind="mdDisabled" blur.trigger="blur()"></textarea>
     <label for="${controlId}" ref="label">${mdLabel}</label>
   </div>
 </template>

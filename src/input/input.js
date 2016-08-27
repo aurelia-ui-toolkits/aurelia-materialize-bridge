@@ -1,4 +1,5 @@
 import { bindable, customElement } from 'aurelia-templating';
+import { DOM } from 'aurelia-pal';
 import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { TaskQueue } from 'aurelia-task-queue';
@@ -60,6 +61,12 @@ export class MdInput {
       this.input.setAttribute('placeholder', this.mdPlaceholder);
     }
     this.updateService.update();
+  }
+
+  blur() {
+    // forward "blur" events to the custom element
+    const event = DOM.createCustomEvent('blur');
+    this.element.dispatchEvent(event);
   }
 
   mdValueChanged() {
