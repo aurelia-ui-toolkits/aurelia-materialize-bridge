@@ -1,9 +1,9 @@
-import { bindable, customAttribute } from 'aurelia-templating';
-import { BindingEngine } from 'aurelia-binding';
-import { inject } from 'aurelia-dependency-injection';
-import { TaskQueue } from 'aurelia-task-queue';
+import {bindable, customAttribute} from 'aurelia-templating';
+import {BindingEngine} from 'aurelia-binding';
+import {inject} from 'aurelia-dependency-injection';
+import {TaskQueue} from 'aurelia-task-queue';
 import * as LogManager from 'aurelia-logging';
-import { fireEvent } from '../common/events';
+import {fireEvent} from '../common/events';
 
 @inject(Element, LogManager, BindingEngine, TaskQueue)
 @customAttribute('md-select')
@@ -20,6 +20,7 @@ export class MdSelect {
     this.log = LogManager.getLogger('md-select');
     this.bindingEngine = bindingEngine;
   }
+
   attached() {
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
     // this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'selectedOptions').subscribe(this.notifyBindingEngine.bind(this)));
@@ -27,7 +28,7 @@ export class MdSelect {
     //   this.log.warn('materialize callback', $(this.element).val());
     //   this.handleChangeFromNativeSelect();
     // });
-    $(this.element).material_select();
+    this.createMaterialSelect(false);
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   }
 
@@ -39,25 +40,12 @@ export class MdSelect {
 
   refresh() {
     this.taskQueue.queueTask(() => {
-      $(this.element).material_select('destroy');
-      $(this.element).material_select();
+      this.createMaterialSelect(true);
     });
   }
 
   disabledChanged(newValue) {
-    let $wrapper = $(this.element).parent('.select-wrapper');
-    if ($wrapper.length > 0) {
-      if (newValue) {
-        $('.caret', $wrapper).addClass('disabled');
-        $('input.select-dropdown', $wrapper).attr('disabled', 'disabled');
-        $wrapper.attr('disabled', 'disabled');
-      } else {
-        $('.caret', $wrapper).removeClass('disabled');
-        $('input.select-dropdown', $wrapper).attr('disabled', null);
-        $wrapper.attr('disabled', null);
-        $('.select-dropdown', $wrapper).dropdown({'hover': false, 'closeOnClick': false});
-      }
-    }
+    this.toggleControl(newValue);
   }
 
   notifyBindingEngine() {
@@ -77,7 +65,31 @@ export class MdSelect {
   handleChangeFromViewModel(newValue) {
     this.log.debug('handleChangeFromViewModel', newValue, $(this.element).val());
     if (!this._suspendUpdate) {
-      $(this.element).material_select();
+      this.createMaterialSelect(false);
     }
+  }
+
+  toggleControl(disable) {
+    let $wrapper = $(this.element).parent('.select-wrapper');
+    if ($wrapper.length > 0) {
+      if (disable) {
+        $('.caret', $wrapper).addClass('disabled');
+        $('input.select-dropdown', $wrapper).attr('disabled', 'disabled');
+        $wrapper.attr('disabled', 'disabled');
+      } else {
+        $('.caret', $wrapper).removeClass('disabled');
+        $('input.select-dropdown', $wrapper).attr('disabled', null);
+        $wrapper.attr('disabled', null);
+        $('.select-dropdown', $wrapper).dropdown({'hover': false, 'closeOnClick': false});
+      }
+    }
+  }
+
+  createMaterialSelect(destroy) {
+    if (destroy) {
+      $(this.element).material_select('destroy');
+    }
+    $(this.element).material_select();
+    this.toggleControl(this.disabled);
   }
 }

@@ -351,6 +351,13 @@ export declare class MdFooter {
   bind(): any;
   unbind(): any;
 }
+export declare class MdModalTrigger {
+  dismissible: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  onComplete(): any;
+}
 export declare class MdPrefix {
   constructor(element?: any);
   bind(): any;
@@ -377,13 +384,6 @@ export declare class MdInput {
   attached(): any;
   mdValueChanged(): any;
 }
-export declare class MdModalTrigger {
-  dismissible: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  onComplete(): any;
-}
 export declare class MdNavbar {
   mdFixed: any;
   fixedAttributeManager: any;
@@ -391,6 +391,13 @@ export declare class MdNavbar {
   attached(): any;
   detached(): any;
 }
+export declare class MdParallax {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
+
+// destroy handler not available
 export declare class MdPagination {
   mdActivePage: any;
   mdPages: any;
@@ -410,13 +417,6 @@ export declare class MdPagination {
   mdVisiblePageLinksChanged(): any;
   generatePageLinks(): any;
 }
-export declare class MdParallax {
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
-
-// destroy handler not available
 export declare class MdProgress {
   mdColor: any;
   mdType: any;
