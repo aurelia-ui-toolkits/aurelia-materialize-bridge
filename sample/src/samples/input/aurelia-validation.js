@@ -1,8 +1,8 @@
-import { inject } from 'aurelia-framework';
+import { inject, NewInstance } from 'aurelia-framework';
 import { ValidationController, validateTrigger } from 'aurelia-validation';
 import { ValidationRules } from 'aurelia-validatejs';
 
-@inject(ValidationController)
+@inject(NewInstance.of(ValidationController))
 export class AureliaValidation {
   firstName = '';
   lastName = 'Doe';
@@ -10,11 +10,11 @@ export class AureliaValidation {
 
   rules = ValidationRules
     .ensure('firstName').required()
-    .ensure('lastName').required();
+    .ensure('lastName').length({ minimum: 4 }).required();
 
   constructor(controller: ValidationController) {
     this.controller = controller;
-    this.controller.validateTrigger = validateTrigger.manual;
+    this.controller.validateTrigger = validateTrigger.change;
   }
 
   validateModel() {
