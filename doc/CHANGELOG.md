@@ -1,3 +1,24 @@
+<a name="0.14.0"></a>
+# [0.14.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.13.0...v0.14.0) (2016-08-29)
+
+
+### Bug Fixes
+
+* **autocomplete:** add export, ref #234 ([cb284ce](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/cb284ce))
+* **md-input:** run updateService only.. ([e2d7b18](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e2d7b18))
+* **md-pagination:** respect visible links ([e218e79](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e218e79))
+* **md-pagination:** visible links update ([1e06d0f](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/1e06d0f))
+* **scrollspy:** add useScrollspy ([0b402ec](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0b402ec))
+* **validationRenderer:** remove unused classes ([b597856](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b597856))
+
+### Features
+
+* **md-input:** add md-validate-success attribute ([1bb0a8e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/1bb0a8e))
+* **md-input:** publish DOM blur event ([547ddb3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/547ddb3))
+* **validationRenderer:** export renderer ([5643a4e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/5643a4e))
+
+
+
 <a name="0.13.0"></a>
 # [0.13.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.12.0...v0.13.0) (2016-08-15)
 
