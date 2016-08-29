@@ -17,6 +17,7 @@ export function configure(aurelia, configCallback) {
 }
 
 // build-index-remove start
+export * from './autocomplete/autocomplete';
 export * from './badge/badge';
 export * from './box/box';
 export * from './breadcrumbs/breadcrumbs';
@@ -71,5 +72,6 @@ export * from './toast/toastService';
 export * from './tooltip/tooltip';
 export * from './transitions/fadein-image';
 export * from './transitions/staggered-list';
+export * from './validation/validationRenderer';
 export * from './waves/waves';
 // build-index-remove end

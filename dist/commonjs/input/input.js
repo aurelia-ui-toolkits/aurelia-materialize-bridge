@@ -5,9 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdInput = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _class3, _temp;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class3, _temp;
 
 var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaPal = require('aurelia-pal');
 
 var _aureliaBinding = require('aurelia-binding');
 
@@ -74,7 +76,7 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec9 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec10 = (0, _aureliaTemplating.bindable)(), _dec11 = (0, _aureliaTemplating.bindable)({
+}), _dec10 = (0, _aureliaTemplating.bindable)(), _dec11 = (0, _aureliaTemplating.bindable)(), _dec12 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
 }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
   function MdInput(element, taskQueue, updateService) {
@@ -96,7 +98,9 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
 
     _initDefineProp(this, 'mdValidateError', _descriptor8, this);
 
-    _initDefineProp(this, 'mdValue', _descriptor9, this);
+    _initDefineProp(this, 'mdValidateSuccess', _descriptor9, this);
+
+    _initDefineProp(this, 'mdValue', _descriptor10, this);
 
     this._suspendUpdate = false;
 
@@ -117,14 +121,24 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
     if (this.mdValidateError) {
       this.label.setAttribute('data-error', this.mdValidateError);
     }
+    if (this.mdValidateSuccess) {
+      this.label.setAttribute('data-success', this.mdValidateSuccess);
+    }
     if (this.mdPlaceholder) {
       this.input.setAttribute('placeholder', this.mdPlaceholder);
     }
     this.updateService.update();
   };
 
+  MdInput.prototype.blur = function blur() {
+    var event = _aureliaPal.DOM.createCustomEvent('blur');
+    this.element.dispatchEvent(event);
+  };
+
   MdInput.prototype.mdValueChanged = function mdValueChanged() {
-    this.updateService.update();
+    if (!$(this.input).is(':focus')) {
+      this.updateService.update();
+    }
     if (this.mdTextArea) {
       $(this.input).trigger('autoresize');
     }
@@ -169,7 +183,10 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
 }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateError', [_dec10], {
   enumerable: true,
   initializer: null
-}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec11], {
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateSuccess', [_dec11], {
+  enumerable: true,
+  initializer: null
+}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec12], {
   enumerable: true,
   initializer: function initializer() {
     return '';

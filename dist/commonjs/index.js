@@ -5,6 +5,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.configure = configure;
 
+var _autocomplete = require('./autocomplete/autocomplete');
+
+Object.keys(_autocomplete).forEach(function (key) {
+  if (key === "default") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _autocomplete[key];
+    }
+  });
+});
+
 var _badge = require('./badge/badge');
 
 Object.keys(_badge).forEach(function (key) {
@@ -649,6 +661,18 @@ Object.keys(_staggeredList).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _staggeredList[key];
+    }
+  });
+});
+
+var _validationRenderer = require('./validation/validationRenderer');
+
+Object.keys(_validationRenderer).forEach(function (key) {
+  if (key === "default") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _validationRenderer[key];
     }
   });
 });

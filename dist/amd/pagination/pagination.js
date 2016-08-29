@@ -83,19 +83,23 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
       _initDefineProp(this, 'mdShowPageLinks', _descriptor7, this);
 
+      this.numberOfLinks = 15;
+      this.pages = 5;
+
       this.element = element;
     }
 
     MdPagination.prototype.bind = function bind() {
-      this.mdPages = parseInt(this.mdPages, 10);
+      this.pages = parseInt(this.mdPages, 10);
 
-      this.mdVisiblePageLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.mdPages);
+      this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
+      this.mdShowFirstLast = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowFirstLast);
       this.mdShowPrevNext = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowPrevNext);
       this.mdPageLinks = this.generatePageLinks();
     };
 
     MdPagination.prototype.setActivePage = function setActivePage(page) {
-      this.mdActivePage = page;
+      this.mdActivePage = parseInt(page, 10);
       this.mdPageLinks = this.generatePageLinks();
       (0, _events.fireMaterializeEvent)(this.element, 'page-changed', this.mdActivePage);
     };
@@ -107,8 +111,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     };
 
     MdPagination.prototype.setLastPage = function setLastPage() {
-      if (this.mdActivePage < this.mdPages) {
-        this.setActivePage(this.mdPages);
+      if (this.mdActivePage < this.pages) {
+        this.setActivePage(this.pages);
       }
     };
 
@@ -119,24 +123,28 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     };
 
     MdPagination.prototype.setNextPage = function setNextPage() {
-      if (this.mdActivePage < this.mdPages) {
+      if (this.mdActivePage < this.pages) {
         this.setActivePage(this.mdActivePage + 1);
       }
     };
 
     MdPagination.prototype.mdPagesChanged = function mdPagesChanged() {
+      this.pages = parseInt(this.mdPages, 10);
+      this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
       this.setActivePage(1);
     };
 
     MdPagination.prototype.mdVisiblePageLinksChanged = function mdVisiblePageLinksChanged() {
+      this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
       this.mdPageLinks = this.generatePageLinks();
     };
 
     MdPagination.prototype.generatePageLinks = function generatePageLinks() {
-      var numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
-      var midPoint = parseInt(numberOfLinks / 2, 10);
+      var midPoint = parseInt(this.numberOfLinks / 2, 10);
       var start = Math.max(this.mdActivePage - midPoint, 0);
-      var end = Math.min(start + numberOfLinks, this.mdPages);
+
+      if (start + midPoint * 2 > this.pages) start = this.pages - midPoint * 2;
+      var end = Math.min(start + this.numberOfLinks, this.pages);
 
       var list = [];
       for (var i = start; i < end; i++) {

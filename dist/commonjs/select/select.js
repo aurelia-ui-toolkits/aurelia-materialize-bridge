@@ -88,7 +88,7 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   MdSelect.prototype.attached = function attached() {
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
 
-    $(this.element).material_select();
+    this.createMaterialSelect(false);
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   };
 
@@ -104,25 +104,12 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     var _this = this;
 
     this.taskQueue.queueTask(function () {
-      $(_this.element).material_select('destroy');
-      $(_this.element).material_select();
+      _this.createMaterialSelect(true);
     });
   };
 
   MdSelect.prototype.disabledChanged = function disabledChanged(newValue) {
-    var $wrapper = $(this.element).parent('.select-wrapper');
-    if ($wrapper.length > 0) {
-      if (newValue) {
-        $('.caret', $wrapper).addClass('disabled');
-        $('input.select-dropdown', $wrapper).attr('disabled', 'disabled');
-        $wrapper.attr('disabled', 'disabled');
-      } else {
-        $('.caret', $wrapper).removeClass('disabled');
-        $('input.select-dropdown', $wrapper).attr('disabled', null);
-        $wrapper.attr('disabled', null);
-        $('.select-dropdown', $wrapper).dropdown({ 'hover': false, 'closeOnClick': false });
-      }
-    }
+    this.toggleControl(newValue);
   };
 
   MdSelect.prototype.notifyBindingEngine = function notifyBindingEngine() {
@@ -142,8 +129,32 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   MdSelect.prototype.handleChangeFromViewModel = function handleChangeFromViewModel(newValue) {
     this.log.debug('handleChangeFromViewModel', newValue, $(this.element).val());
     if (!this._suspendUpdate) {
-      $(this.element).material_select();
+      this.createMaterialSelect(false);
     }
+  };
+
+  MdSelect.prototype.toggleControl = function toggleControl(disable) {
+    var $wrapper = $(this.element).parent('.select-wrapper');
+    if ($wrapper.length > 0) {
+      if (disable) {
+        $('.caret', $wrapper).addClass('disabled');
+        $('input.select-dropdown', $wrapper).attr('disabled', 'disabled');
+        $wrapper.attr('disabled', 'disabled');
+      } else {
+        $('.caret', $wrapper).removeClass('disabled');
+        $('input.select-dropdown', $wrapper).attr('disabled', null);
+        $wrapper.attr('disabled', null);
+        $('.select-dropdown', $wrapper).dropdown({ 'hover': false, 'closeOnClick': false });
+      }
+    }
+  };
+
+  MdSelect.prototype.createMaterialSelect = function createMaterialSelect(destroy) {
+    if (destroy) {
+      $(this.element).material_select('destroy');
+    }
+    $(this.element).material_select();
+    this.toggleControl(this.disabled);
   };
 
   return MdSelect;

@@ -37,6 +37,7 @@ export class ConfigBuilder {
       .useRadio()
       .useRange()
       .useScrollfire()
+      .useScrollSpy()
       .useSelect()
       .useSidenav()
       .useSlider()

@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes', './input-update-service'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaTaskQueue, _attributes, _inputUpdateService) {
+define(['exports', 'aurelia-templating', 'aurelia-pal', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes', './input-update-service'], function (exports, _aureliaTemplating, _aureliaPal, _aureliaBinding, _aureliaDependencyInjection, _aureliaTaskQueue, _attributes, _inputUpdateService) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -55,7 +55,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _class3, _temp;
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class3, _temp;
 
   var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('md-input'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, _inputUpdateService.MdInputUpdateService), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)({
     defaultBindingMode: _aureliaBinding.bindingMode.oneTime
@@ -67,7 +67,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     defaultBindingMode: _aureliaBinding.bindingMode.oneTime
   }), _dec9 = (0, _aureliaTemplating.bindable)({
     defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec10 = (0, _aureliaTemplating.bindable)(), _dec11 = (0, _aureliaTemplating.bindable)({
+  }), _dec10 = (0, _aureliaTemplating.bindable)(), _dec11 = (0, _aureliaTemplating.bindable)(), _dec12 = (0, _aureliaTemplating.bindable)({
     defaultBindingMode: _aureliaBinding.bindingMode.twoWay
   }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
     function MdInput(element, taskQueue, updateService) {
@@ -89,7 +89,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
       _initDefineProp(this, 'mdValidateError', _descriptor8, this);
 
-      _initDefineProp(this, 'mdValue', _descriptor9, this);
+      _initDefineProp(this, 'mdValidateSuccess', _descriptor9, this);
+
+      _initDefineProp(this, 'mdValue', _descriptor10, this);
 
       this._suspendUpdate = false;
 
@@ -110,14 +112,24 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       if (this.mdValidateError) {
         this.label.setAttribute('data-error', this.mdValidateError);
       }
+      if (this.mdValidateSuccess) {
+        this.label.setAttribute('data-success', this.mdValidateSuccess);
+      }
       if (this.mdPlaceholder) {
         this.input.setAttribute('placeholder', this.mdPlaceholder);
       }
       this.updateService.update();
     };
 
+    MdInput.prototype.blur = function blur() {
+      var event = _aureliaPal.DOM.createCustomEvent('blur');
+      this.element.dispatchEvent(event);
+    };
+
     MdInput.prototype.mdValueChanged = function mdValueChanged() {
-      this.updateService.update();
+      if (!$(this.input).is(':focus')) {
+        this.updateService.update();
+      }
       if (this.mdTextArea) {
         $(this.input).trigger('autoresize');
       }
@@ -162,7 +174,10 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
   }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateError', [_dec10], {
     enumerable: true,
     initializer: null
-  }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec11], {
+  }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateSuccess', [_dec11], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec12], {
     enumerable: true,
     initializer: function initializer() {
       return '';

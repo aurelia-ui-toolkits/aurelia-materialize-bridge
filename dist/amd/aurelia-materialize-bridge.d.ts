@@ -24,8 +24,8 @@ import {
   TaskQueue
 } from 'aurelia-task-queue';
 import {
-  validationRenderer
-} from 'aurelia-validation';
+  DOM
+} from 'aurelia-pal';
 export declare class ClickCounter {
   count: any;
   increment(): any;
@@ -208,6 +208,13 @@ export declare class MdChips {
 }
 
 // fireEvent(this.element, 'change');
+export declare class MdCollapsible {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  refresh(): any;
+  accordionChanged(): any;
+}
 export declare class MdCollectionHeader {
   constructor(element?: any);
 }
@@ -224,13 +231,6 @@ export declare class MdlListSelector {
   isSelected: any;
   constructor(element?: any);
   isSelectedChanged(newValue?: any): any;
-}
-export declare class MdCollapsible {
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  refresh(): any;
-  accordionChanged(): any;
 }
 
 /* eslint-enable */
@@ -351,13 +351,6 @@ export declare class MdFooter {
   bind(): any;
   unbind(): any;
 }
-export declare class MdModalTrigger {
-  dismissible: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  onComplete(): any;
-}
 export declare class MdPrefix {
   constructor(element?: any);
   bind(): any;
@@ -378,11 +371,20 @@ export declare class MdInput {
   mdStep: any;
   mdValidate: any;
   mdValidateError: any;
+  mdValidateSuccess: any;
   mdValue: any;
   constructor(element?: any, taskQueue?: any, updateService?: any);
   bind(): any;
   attached(): any;
+  blur(): any;
   mdValueChanged(): any;
+}
+export declare class MdModalTrigger {
+  dismissible: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  onComplete(): any;
 }
 export declare class MdNavbar {
   mdFixed: any;
@@ -391,13 +393,6 @@ export declare class MdNavbar {
   attached(): any;
   detached(): any;
 }
-export declare class MdParallax {
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
-
-// destroy handler not available
 export declare class MdPagination {
   mdActivePage: any;
   mdPages: any;
@@ -406,6 +401,10 @@ export declare class MdPagination {
   mdShowFirstLast: any;
   mdShowPrevNext: any;
   mdShowPageLinks: any;
+  
+  // local variables to stop Changed events when parsing to int
+  numberOfLinks: any;
+  pages: any;
   constructor(element?: any);
   bind(): any;
   setActivePage(page?: any): any;
@@ -417,6 +416,13 @@ export declare class MdPagination {
   mdVisiblePageLinksChanged(): any;
   generatePageLinks(): any;
 }
+export declare class MdParallax {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
+
+// destroy handler not available
 export declare class MdProgress {
   mdColor: any;
   mdType: any;
@@ -507,6 +513,8 @@ export declare class MdSelect {
   notifyBindingEngine(): any;
   handleChangeFromNativeSelect(): any;
   handleChangeFromViewModel(newValue?: any): any;
+  toggleControl(disable?: any): any;
+  createMaterialSelect(destroy?: any): any;
 }
 export declare class MdSidenavCollapse {
   ref: any;
@@ -623,9 +631,9 @@ export declare class MdStaggeredList {
   ensureOpacity(): any;
 }
 export declare class MaterializeFormValidationRenderer {
-  constructor(boundaryElement?: any);
-  render(error?: any, target?: any): any;
-  unrender(error?: any, target?: any): any;
+  render(instruction?: any): any;
+  add(element?: any, error?: any): any;
+  remove(element?: any, error?: any): any;
 }
 export declare class MdWaves {
   block: any;

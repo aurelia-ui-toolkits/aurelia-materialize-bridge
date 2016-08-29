@@ -5,7 +5,7 @@ import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-bind
 import {Router} from 'aurelia-router';
 import {getLogger} from 'aurelia-logging';
 import {TaskQueue} from 'aurelia-task-queue';
-import {validationRenderer} from 'aurelia-validation';
+import {DOM} from 'aurelia-pal';
 
 export class ClickCounter {
   count = 0;
@@ -54,6 +54,7 @@ export class ConfigBuilder {
       .useRadio()
       .useRange()
       .useScrollfire()
+      .useScrollSpy()
       .useSelect()
       .useSidenav()
       .useSlider()
@@ -714,6 +715,48 @@ export class MdChips {
   }
 }
 
+@customAttribute('md-collapsible')
+@bindable({ name: 'accordion', defaultValue: false })
+@bindable({ name: 'popout', defaultValue: false })
+@inject(Element)
+
+export class MdCollapsible {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('collapsible');
+    if (getBooleanFromAttributeValue(this.popout)) {
+      this.attributeManager.addClasses('popout');
+    }
+    this.refresh();
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
+  }
+
+  refresh() {
+    let accordion = getBooleanFromAttributeValue(this.accordion);
+    if (accordion) {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
+    } else {
+      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
+    }
+
+    $(this.element).collapsible({
+      accordion
+    });
+  }
+
+  accordionChanged() {
+    this.refresh();
+  }
+}
+
 @customElement('md-collection-header')
 @inject(Element)
 export class MdCollectionHeader {
@@ -758,48 +801,6 @@ export class MdlListSelector {
 
   isSelectedChanged(newValue) {
     fireMaterializeEvent(this.element, 'selection-changed', { item: this.item, isSelected: this.isSelected });
-  }
-}
-
-@customAttribute('md-collapsible')
-@bindable({ name: 'accordion', defaultValue: false })
-@bindable({ name: 'popout', defaultValue: false })
-@inject(Element)
-
-export class MdCollapsible {
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('collapsible');
-    if (getBooleanFromAttributeValue(this.popout)) {
-      this.attributeManager.addClasses('popout');
-    }
-    this.refresh();
-  }
-
-  detached() {
-    this.attributeManager.removeClasses(['collapsible', 'popout']);
-    this.attributeManager.removeAttributes(['data-collapsible']);
-  }
-
-  refresh() {
-    let accordion = getBooleanFromAttributeValue(this.accordion);
-    if (accordion) {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
-    } else {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
-    }
-
-    $(this.element).collapsible({
-      accordion
-    });
-  }
-
-  accordionChanged() {
-    this.refresh();
   }
 }
 
@@ -1373,6 +1374,7 @@ export class MdInput {
     defaultBindingMode: bindingMode.oneTime
   }) mdValidate = false;
   @bindable() mdValidateError;
+  @bindable() mdValidateSuccess;
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) mdValue = '';
@@ -1397,14 +1399,25 @@ export class MdInput {
     if (this.mdValidateError)  {
       this.label.setAttribute('data-error', this.mdValidateError);
     }
+    if (this.mdValidateSuccess)  {
+      this.label.setAttribute('data-success', this.mdValidateSuccess);
+    }
     if (this.mdPlaceholder) {
       this.input.setAttribute('placeholder', this.mdPlaceholder);
     }
     this.updateService.update();
   }
 
+  blur() {
+    // forward "blur" events to the custom element
+    const event = DOM.createCustomEvent('blur');
+    this.element.dispatchEvent(event);
+  }
+
   mdValueChanged() {
-    this.updateService.update();
+    if (!$(this.input).is(':focus')) {
+      this.updateService.update();
+    }
     if (this.mdTextArea) {
       $(this.input).trigger('autoresize');
     }
@@ -1484,21 +1497,26 @@ export class MdPagination {
   @bindable() mdShowPrevNext = true;
   @bindable() mdShowPageLinks = true;
 
+  // local variables to stop Changed events when parsing to int
+  numberOfLinks = 15;
+  pages = 5;
+
   constructor(element) {
     this.element = element;
   }
 
   bind() {
     // attached() throws unhandled exceptions
-    this.mdPages = parseInt(this.mdPages, 10);
+    this.pages = parseInt(this.mdPages, 10);
     // We don't want mdVisiblePageLinks to be greater than mdPages
-    this.mdVisiblePageLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.mdPages);
+    this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
+    this.mdShowFirstLast = getBooleanFromAttributeValue(this.mdShowFirstLast);
     this.mdShowPrevNext = getBooleanFromAttributeValue(this.mdShowPrevNext);
     this.mdPageLinks = this.generatePageLinks();
   }
 
   setActivePage(page) {
-    this.mdActivePage = page;
+    this.mdActivePage = parseInt(page, 10);
     this.mdPageLinks = this.generatePageLinks();
     fireMaterializeEvent(this.element, 'page-changed', this.mdActivePage);
   }
@@ -1510,8 +1528,8 @@ export class MdPagination {
   }
 
   setLastPage() {
-    if (this.mdActivePage < this.mdPages) {
-      this.setActivePage(this.mdPages);
+    if (this.mdActivePage < this.pages) {
+      this.setActivePage(this.pages);
     }
   }
 
@@ -1522,24 +1540,28 @@ export class MdPagination {
   }
 
   setNextPage() {
-    if (this.mdActivePage < this.mdPages) {
+    if (this.mdActivePage < this.pages) {
       this.setActivePage(this.mdActivePage + 1);
     }
   }
 
   mdPagesChanged() {
+    this.pages = parseInt(this.mdPages, 10);
+    this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
     this.setActivePage(1);
   }
 
   mdVisiblePageLinksChanged() {
+    this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
     this.mdPageLinks = this.generatePageLinks();
   }
 
   generatePageLinks() {
-    let numberOfLinks = parseInt(this.mdVisiblePageLinks, 10);
-    let midPoint = parseInt((numberOfLinks / 2), 10);
+    let midPoint = parseInt((this.numberOfLinks / 2), 10);
     let start = Math.max(this.mdActivePage - midPoint, 0);
-    let end = Math.min(start + numberOfLinks, this.mdPages);
+    // respect visible links
+    if (start + midPoint * 2 > this.pages) start = this.pages - midPoint * 2;
+    let end = Math.min(start + this.numberOfLinks, this.pages);
 
     let list = [];
     for (let i = start; i < end; i++) {
@@ -1812,6 +1834,7 @@ export class MdSelect {
     this.log = LogManager.getLogger('md-select');
     this.bindingEngine = bindingEngine;
   }
+
   attached() {
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
     // this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'selectedOptions').subscribe(this.notifyBindingEngine.bind(this)));
@@ -1819,7 +1842,7 @@ export class MdSelect {
     //   this.log.warn('materialize callback', $(this.element).val());
     //   this.handleChangeFromNativeSelect();
     // });
-    $(this.element).material_select();
+    this.createMaterialSelect(false);
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   }
 
@@ -1831,25 +1854,12 @@ export class MdSelect {
 
   refresh() {
     this.taskQueue.queueTask(() => {
-      $(this.element).material_select('destroy');
-      $(this.element).material_select();
+      this.createMaterialSelect(true);
     });
   }
 
   disabledChanged(newValue) {
-    let $wrapper = $(this.element).parent('.select-wrapper');
-    if ($wrapper.length > 0) {
-      if (newValue) {
-        $('.caret', $wrapper).addClass('disabled');
-        $('input.select-dropdown', $wrapper).attr('disabled', 'disabled');
-        $wrapper.attr('disabled', 'disabled');
-      } else {
-        $('.caret', $wrapper).removeClass('disabled');
-        $('input.select-dropdown', $wrapper).attr('disabled', null);
-        $wrapper.attr('disabled', null);
-        $('.select-dropdown', $wrapper).dropdown({'hover': false, 'closeOnClick': false});
-      }
-    }
+    this.toggleControl(newValue);
   }
 
   notifyBindingEngine() {
@@ -1869,8 +1879,32 @@ export class MdSelect {
   handleChangeFromViewModel(newValue) {
     this.log.debug('handleChangeFromViewModel', newValue, $(this.element).val());
     if (!this._suspendUpdate) {
-      $(this.element).material_select();
+      this.createMaterialSelect(false);
     }
+  }
+
+  toggleControl(disable) {
+    let $wrapper = $(this.element).parent('.select-wrapper');
+    if ($wrapper.length > 0) {
+      if (disable) {
+        $('.caret', $wrapper).addClass('disabled');
+        $('input.select-dropdown', $wrapper).attr('disabled', 'disabled');
+        $wrapper.attr('disabled', 'disabled');
+      } else {
+        $('.caret', $wrapper).removeClass('disabled');
+        $('input.select-dropdown', $wrapper).attr('disabled', null);
+        $wrapper.attr('disabled', null);
+        $('.select-dropdown', $wrapper).dropdown({'hover': false, 'closeOnClick': false});
+      }
+    }
+  }
+
+  createMaterialSelect(destroy) {
+    if (destroy) {
+      $(this.element).material_select('destroy');
+    }
+    $(this.element).material_select();
+    this.toggleControl(this.disabled);
   }
 }
 
@@ -2272,80 +2306,66 @@ export class MdStaggeredList {
   }
 }
 
-@validationRenderer
-@inject(Element)
 export class MaterializeFormValidationRenderer {
 
-  constructor(boundaryElement) {
-    this.boundaryElement = boundaryElement;
-  }
-
-  render(error, target) {
-    if (!target || !(this.boundaryElement === target || this.boundaryElement.contains(target))) {
-      return;
-    }
-
-    let errorMessage = error.message || 'error';
-
-    switch (target.tagName) {
-      case 'MD-INPUT': {
-        let input = target.querySelector('input');
-        if (input) {
-          input.classList.remove('valid');
-          input.classList.add('invalid');
-
-          // focus target
-          error.target = input;
-
-          let label:any = target.querySelector('label');
-          if (label) {
-            label.classList.remove('valid');
-            label.classList.add('active');
-            label.classList.add('invalid');
-
-            // get error message from label
-            let msg = label.getAttribute('data-error');
-            if(!msg) {
-              // error message not set? add
-              label.setAttribute('data-error', errorMessage);
-            } else {
-              // set label message into error object
-              error.message = msg;
-            }
-          }
-        }
-        break;
+  render(instruction) {
+    for (let { error, elements } of instruction.unrender) {
+      for (let element of elements) {
+        this.remove(element, error);
       }
     }
 
-    // tag the element so we know we rendered into it.
-    target.errors = (target.errors || new Map());
-    target.errors.set(error);
+    for (let { error, elements } of instruction.render) {
+      for (let element of elements) {
+        this.add(element, error);
+      }
+    }
   }
 
-  unrender(error, target) {
-    if (!target || !target.errors || !target.errors.has(error)) {
-      return;
-    }
+  add(element, error) {
+    switch (element.tagName) {
+    case 'MD-INPUT': {
+      let errorMessage = error.message || 'error';
+      let input = element.querySelector('input');
+      if (input) {
+        input.classList.remove('valid');
+        input.classList.add('invalid');
 
-    target.errors.delete(error);
+        // focus target
+        error.target = input;
 
-    switch (target.tagName) {
-      case 'MD-INPUT': {
-        let input = target.querySelector('input');
-        if (input) {
+        let label = element.querySelector('label');
+        if (label) {
+          label.classList.add('active');
 
-          input.classList.remove('invalid');
-          input.classList.add('valid');
-
-          let label:any = target.querySelector('label');
-          if (label) {
-            label.classList.remove('invalid');
-            label.classList.add('valid');
+          // get error message from label
+          let msg = label.getAttribute('data-error');
+          if(!msg) {
+            // error message not set? add
+            label.setAttribute('data-error', errorMessage);
+          } else {
+            // set label message into error object
+            error.message = msg;
           }
         }
-        break;
       }
+      break;
+    }
+    default: break;
+    }
+  }
+
+  remove(element, error) {
+    switch (element.tagName) {
+    case 'MD-INPUT': {
+      let input = element.querySelector('input');
+      if (input) {
+        input.classList.remove('invalid');
+        input.classList.add('valid');
+      }
+      break;
+    }
+    default: break;
     }
   }
 

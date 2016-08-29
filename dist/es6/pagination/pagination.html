@@ -10,14 +10,14 @@
       <li md-waves click.delegate="setActivePage(p+1)" repeat.for="p of mdPageLinks" class="${ p+1 === mdActivePage ? 'active' : ''}">
         <span if.bind="$first && p > 0">...</span>
         <a>${p+1}</a>
-        <span if.bind="$last && p < mdPages - 1">...</span>
+        <span if.bind="$last && p < pages - 1">...</span>
       </li>
     </template>
     <template if.bind="mdShowPrevNext">
-      <li md-waves click.delegate="setNextPage()" class="${ mdActivePage === mdPages ? 'disabled' : '' }"><a><i class="material-icons">chevron_right</i></a></li>
+      <li md-waves click.delegate="setNextPage()" class="${ mdActivePage == pages ? 'disabled' : '' }"><a><i class="material-icons">chevron_right</i></a></li>
     </template>
     <template if.bind="mdShowFirstLast">
-      <li md-waves click.delegate="setLastPage()" class="${ mdActivePage === mdPages ? 'disabled' : '' }"><a><i class="material-icons">last_page</i></a></li>
+      <li md-waves click.delegate="setLastPage()" class="${ mdActivePage == pages ? 'disabled' : '' }"><a><i class="material-icons">last_page</i></a></li>
     </template>
   </ul>
 </template>
