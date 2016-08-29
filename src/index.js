@@ -17,6 +17,7 @@ export function configure(aurelia, configCallback) {
 }
 
 // build-index-remove start
+export * from './autocomplete/autocomplete';
 export * from './badge/badge';
 export * from './box/box';
 export * from './breadcrumbs/breadcrumbs';
