@@ -4,15 +4,15 @@ import { MaterializeFormValidationRenderer } from 'aurelia-materialize-bridge/va
 
 @inject(NewInstance.of(ValidationController))
 export class AureliaValidation {
+  message = '';
   firstName = '';
   lastName = 'Doe';
-  myErrors = [];
 
   controller = null;
 
   rules = ValidationRules
     .ensure('firstName').required()
-    .ensure('lastName').length({ minimum: 4 }).required()
+    .ensure('lastName').minLength(4)
     .rules;
 
   constructor(controller: ValidationController) {
@@ -22,6 +22,12 @@ export class AureliaValidation {
   }
 
   validateModel() {
-    this.myErrors = this.controller.validate();
+    this.controller.validate().then(v => {
+      if (v.length === 0) {
+        this.message = 'All is good!';
+      } else {
+        this.message = 'You have errors!';
+      }
+    });
   }
 }

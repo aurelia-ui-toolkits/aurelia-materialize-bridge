@@ -4,7 +4,7 @@
       md-label="First Name"
       md-value.bind="firstName & validate:rules"
       md-validate="true"
-      md-validate-error="very very very very wrong">
+      md-validate-error="First Name custom error message">
     </md-input>
 
     <md-input
@@ -14,7 +14,18 @@
       md-value.bind="lastName & validate:rules">
     </md-input>
   </div>
+
   <div style="margin-top: 15px;">
     <button md-button click.delegate="validateModel()">validate</button>
   </div>
+
+  <h5>${message}</h5>
+
+  <ul style="margin-top: 15px;" show.bind="controller.errors.length">
+    <li repeat.for="error of controller.errors">
+      <a href="#" click.delegate="error.target.focus()">
+        ${error.message}
+      </a>
+    </li>
+  </ul>
 </template>
