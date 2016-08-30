@@ -54,10 +54,10 @@ export class MaterializeFormValidationRenderer {
       if (input) {
         input.classList.remove('invalid');
         input.classList.add('valid');
-        
-        var label = element.querySelector('label');
+
+        let label = element.querySelector('label');
         if (label) {
-        	label.removeAttribute('data-error');
+          label.removeAttribute('data-error');
         }
       }
       break;
