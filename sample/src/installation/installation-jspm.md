@@ -67,7 +67,9 @@ $ jspm install materialize-css
 #### You are done!
 It is now possible to drop some custom-elements into your DOM. See the other pages on this website for detailed information on how to do this.
 
-**Now you might want to do our <a href="https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/app_developers_tutorial/introduction.html" target="_blank">app developers tutorial</a>.**
+**Now you might want to do our <a href="https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/app_developers_tutorial/introduction.html" target="_blank">app developers tutorial</a>, based on Aurelia Skeleton navigation.**
+<br>
+Before doing this, make sure you <a href="http://aurelia.io/hub.html#/doc/article/aurelia/framework/latest/setup-jspm" target="_blank">set up your environment appropriately</a>.
 
 As described above, here is a full list of currently available options:
 
