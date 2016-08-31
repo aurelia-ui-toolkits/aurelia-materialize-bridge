@@ -57,8 +57,16 @@ gulp.task('build-commonjs', function () {
 });
 
 gulp.task('build-amd', function () {
+  // RegExp remove tags during insert.transform in build-amd gulp task
+  var startTag = '//\\s*build-amd-remove start';
+  var endTag = '//\\s*build-amd-remove end';
+  var removeAmdRegExp = new RegExp(startTag + '[^]+?' + endTag, 'g');
+
   return gulp.src(paths.source)
     // .pipe(to5(assign({}, compilerOptions, {modules:'amd', plugins: []})))
+    .pipe(insert.transform(function(contents) {
+      return contents.replace(removeAmdRegExp, '');
+    }))
     .pipe(to5(assign({}, compilerOptions.amd())))
     .pipe(gulp.dest(paths.output + 'amd'));
 });
