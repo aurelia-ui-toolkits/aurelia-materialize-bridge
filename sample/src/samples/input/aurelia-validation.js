@@ -1,24 +1,30 @@
 import { inject, NewInstance } from 'aurelia-framework';
-import { ValidationController, validateTrigger, ValidationRules } from 'aurelia-validation';
-import { MaterializeFormValidationRenderer } from 'aurelia-materialize-bridge/validation/validationRenderer';
+import { ValidationController, ValidationRules } from 'aurelia-validation';
+import { MaterializeFormValidationRenderer } from 'aurelia-materialize-bridge';
 
 @inject(NewInstance.of(ValidationController))
 export class AureliaValidation {
   message = '';
   firstName = '';
   lastName = 'Doe';
+  email = '';
 
   controller = null;
 
   rules = ValidationRules
-    .ensure('firstName').required()
-    .ensure('lastName').minLength(4)
+    .ensure('firstName')
+      .required()
+    .ensure('lastName')
+      .minLength(4)
+    .ensure('email')
+      .required()
+        .withMessage('We need your email')
+      .email()
     .rules;
 
   constructor(controller: ValidationController) {
     this.controller = controller;
     this.controller.addRenderer(new MaterializeFormValidationRenderer());
-    this.controller.validateTrigger = validateTrigger.change;
   }
 
   validateModel() {

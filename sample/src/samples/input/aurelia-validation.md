@@ -11,3 +11,7 @@ export function configure(aurelia) {
     .plugin('aurelia-validation');
 }
 ```
+
+##### md dependencies
+
+* md-colors
