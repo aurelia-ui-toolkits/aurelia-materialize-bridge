@@ -281,35 +281,35 @@
 
   /* md-select label */
   .select-wrapper input {
-      // make input fit in div
-      display: inline-block !important;
-      // fix validation border thickness
-      border-bottom: 1px solid #4CAF50;
+    // make input fit in div
+    display: inline-block !important;
+    // fix validation border thickness
+    border-bottom: 1px solid #4CAF50;
   }
 
   .select-wrapper input.invalid {
-      border-bottom: 1px solid #F44336;
+    border-bottom: 1px solid #F44336;
   }
 
   .select-wrapper + label {
     color: ${mdAccentColor};
-      width: 100%;
+    width: 100%;
   }
   /* position validation label */
   .select-wrapper + label:after {
-      display: block;
-      content: "";
-      position: absolute;
-      top: 60px;
-      opacity: 0;
-      transition: .2s opacity ease-out, .2s color ease-out;
-      transform: translateY(0) !important;
+    display: block;
+    content: "";
+    position: absolute;
+    top: 60px;
+    opacity: 0;
+    transition: .2s opacity ease-out, .2s color ease-out;
+    transform: translateY(0) !important;
   }
   /* set validation text */
   .select-wrapper.invalid + label:after {
-      content: attr(data-error);
-      color: #F44336;
-      opacity: 1;
+    content: attr(data-error);
+    color: #F44336;
+    opacity: 1;
   }
 
   </style>
