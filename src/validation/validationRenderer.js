@@ -1,12 +1,14 @@
 export class MaterializeFormValidationRenderer {
 
+  className = 'md-input-validation';
+  classNameFirst = 'md-input-validation-first';
+
   render(instruction) {
     for (let { error, elements } of instruction.unrender) {
       for (let element of elements) {
         this.remove(element, error);
       }
     }
-
     for (let { error, elements } of instruction.render) {
       for (let element of elements) {
         this.add(element, error);
@@ -17,30 +19,28 @@ export class MaterializeFormValidationRenderer {
   add(element, error) {
     switch (element.tagName) {
     case 'MD-INPUT': {
-      let errorMessage = error.message || 'error';
       let input = element.querySelector('input');
+      let label = element.querySelector('label');
       if (input) {
         input.classList.remove('valid');
         input.classList.add('invalid');
-
-        // focus target
         error.target = input;
-
-        let label = element.querySelector('label');
-        if (label) {
-          label.classList.add('active');
-
-          // get error message from label
-          let msg = label.getAttribute('data-error');
-          if(!msg) {
-            // error message not set? add
-            label.setAttribute('data-error', errorMessage);
-          } else {
-            // set label message into error object
-            error.message = msg;
-          }
-        }
       }
+      if (label) {
+        label.removeAttribute('data-error');
+      }
+
+      let message = document.createElement('div');
+      message.id = `md-input-validation-${error.id}`;
+      message.textContent = error.message;
+      message.className = this.className;
+      if (!element.querySelector('.' + this.className)) {
+        message.className += ' ' + this.classNameFirst;
+      }
+      message.style.opacity = 0;
+      element.appendChild(message, element.nextSibling);
+      window.getComputedStyle(message).opacity;
+      message.style.opacity = 1;
       break;
     }
     default: break;
@@ -50,6 +50,11 @@ export class MaterializeFormValidationRenderer {
   remove(element, error) {
     switch (element.tagName) {
     case 'MD-INPUT': {
+      let message = element.querySelector(`#md-input-validation-${error.id}`);
+      if (message) {
+        element.removeChild(message);
+      }
+
       let input = element.querySelector('input');
       if (input) {
         input.classList.remove('invalid');

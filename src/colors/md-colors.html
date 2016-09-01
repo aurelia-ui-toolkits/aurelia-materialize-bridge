@@ -165,6 +165,33 @@
     color: ${mdAccentColor}
   }
 
+  /* text input aurelia-validation messages */
+  .md-input-validation {
+    left: 0;
+    color:#f44336;
+    font-size:0.8rem;
+    transition: opacity .2s ease-out;
+    margin-top: -4px;
+    margin-bottom: 0;
+  }
+  @media only screen and (min-width: 0) {
+    .md-input-validation-first {
+      margin-top: -14px;
+      margin-bottom: -2px;
+    }
+  }
+  @media only screen and (min-width: 992px) {
+    .md-input-validation-first {
+      margin-top: -18px;
+      padding-bottom: 3px;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .md-input-validation-first {
+      margin-top: -19px;
+    }
+  }
+
   /* pagination */
   md-pagination .pagination li.active {
     background-color: ${mdPrimaryColor}
