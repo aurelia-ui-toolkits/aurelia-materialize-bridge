@@ -9,6 +9,7 @@ import {fireEvent} from '../common/events';
 @customAttribute('md-select')
 export class MdSelect {
   @bindable() disabled = false;
+  @bindable() label = '';
   _suspendUpdate = false;
   subscriptions = [];
 
@@ -29,6 +30,17 @@ export class MdSelect {
     //   this.handleChangeFromNativeSelect();
     // });
     this.createMaterialSelect(false);
+
+    if (this.label) {
+      let wrapper = $(this.element).parent('.select-wrapper');
+      let div = $('<div class="input-field"></div>');
+      let va = this.element.attributes.getNamedItem('validate');
+      if (va) {
+        div.attr(va.name, va.label);
+      }
+      wrapper.wrap(div);
+      $(`<label>${this.label}</label>`).insertAfter(wrapper);
+    }
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   }
 
