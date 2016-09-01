@@ -2,16 +2,22 @@
   <div>
     <md-input
       md-label="First Name"
-      md-value.bind="firstName & validate:rules"
-      md-validate="true"
-      md-validate-error="First Name custom error message">
+      md-value.bind="firstName & validate:rules">
     </md-input>
 
     <md-input
       md-label="Last Name"
       md-placeholder="Last Name"
+      md-validate="true"
       md-validate-success="good"
       md-value.bind="lastName & validate:rules">
+    </md-input>
+
+    <md-input
+      md-label="Email"
+      md-validate="true"
+      md-validate-success="yes!!"
+      md-value.bind="email & validate:rules">
     </md-input>
   </div>
 
