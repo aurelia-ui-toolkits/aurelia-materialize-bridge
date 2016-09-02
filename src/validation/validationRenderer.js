@@ -29,18 +29,21 @@ export class MaterializeFormValidationRenderer {
       if (label) {
         label.removeAttribute('data-error');
       }
-
-      let message = document.createElement('div');
-      message.id = `md-input-validation-${error.id}`;
-      message.textContent = error.message;
-      message.className = this.className;
-      if (!element.querySelector('.' + this.className)) {
-        message.className += ' ' + this.classNameFirst;
+      this.addMessage(element, error);
+      break;
+    }
+    case 'SELECT': {
+      const selectWrapper = element.closest('.select-wrapper');
+      if (!selectWrapper) {
+        return;
       }
-      message.style.opacity = 0;
-      element.appendChild(message, element.nextSibling);
-      window.getComputedStyle(message).opacity;
-      message.style.opacity = 1;
+      let input = selectWrapper.querySelector('input');
+      if (input) {
+        input.classList.remove('valid');
+        input.classList.add('invalid');
+        error.target = input;
+      }
+      this.addMessage(selectWrapper, error);
       break;
     }
     default: break;
@@ -50,19 +53,51 @@ export class MaterializeFormValidationRenderer {
   remove(element, error) {
     switch (element.tagName) {
     case 'MD-INPUT': {
-      let message = element.querySelector(`#md-input-validation-${error.id}`);
-      if (message) {
-        element.removeChild(message);
-      }
+      this.removeMessage(element, error);
 
       let input = element.querySelector('input');
-      if (input) {
+      if (input && element.querySelectorAll('.' + this.className).length === 0) {
+        input.classList.remove('invalid');
+        input.classList.add('valid');
+      }
+      break;
+    }
+    case 'SELECT': {
+      const selectWrapper = element.closest('.select-wrapper');
+      if (!selectWrapper) {
+        return;
+      }
+      this.removeMessage(selectWrapper, error);
+
+      let input = selectWrapper.querySelector('input');
+      if (input && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
         input.classList.remove('invalid');
         input.classList.add('valid');
       }
       break;
     }
     default: break;
+    }
+  }
+
+  addMessage(element, error) {
+    let message = document.createElement('div');
+    message.id = `md-input-validation-${error.id}`;
+    message.textContent = error.message;
+    message.className = this.className;
+    if (element.querySelectorAll('.' + this.className).length === 0) {
+      message.className += ' ' + this.classNameFirst;
+    }
+    message.style.opacity = 0;
+    element.appendChild(message, element.nextSibling);
+    window.getComputedStyle(message).opacity;
+    message.style.opacity = 1;
+  }
+
+  removeMessage(element, error) {
+    let message = element.querySelector(`#md-input-validation-${error.id}`);
+    if (message) {
+      element.removeChild(message);
     }
   }
 
