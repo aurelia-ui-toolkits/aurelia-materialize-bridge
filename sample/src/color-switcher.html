@@ -1,4 +1,4 @@
-<template bindable="primaryColor, accentColor">
+<template bindable="primaryColor, accentColor, errorColor">
   <ul md-collapsible>
     <li>
       <div class="collapsible-header">
@@ -22,6 +22,14 @@
           <option value="#ff4081">[Material-UI] pink</option>
           <option value="#FF80AB">[MuiCss] another pink</option>
           <option value="#4caf50">green</option>
+          <option value="#ff9800">orange</option>
+        </select>
+
+        error color:
+        <select md-select value.two-way="errorColor">
+          <option value="#f44336">[default] red</option>
+          <option value="#D50000">[Paper] red</option>
+          <option value="#4caf50">[confusing] green</option>
           <option value="#ff9800">orange</option>
         </select>
       </div>

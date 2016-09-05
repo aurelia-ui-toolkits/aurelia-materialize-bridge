@@ -155,7 +155,7 @@
         "aurelia-materialize-bridge/collection/collection-item",
         "aurelia-materialize-bridge/collection/collection-header",
         "aurelia-materialize-bridge/collection/md-collection-selector",
-        "aurelia-materialize-bridge/colors/md-colors.html",
+        "aurelia-materialize-bridge/colors/md-colors",
         "aurelia-materialize-bridge/colors/colorValueConverters",
         "aurelia-materialize-bridge/datepicker/datepicker",
         "aurelia-materialize-bridge/dropdown/dropdown",

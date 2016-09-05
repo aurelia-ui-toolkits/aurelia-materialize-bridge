@@ -1,4 +1,4 @@
-<template bindable="mdPrimaryColor, mdAccentColor">
+<template>
   <require from="./colorValueConverters"></require>
 
   <!--
@@ -41,6 +41,23 @@
 
   .accent-text {
     /*background-color: white;*/
+    color: ${mdAccentColor};
+  }
+
+  .error {
+    background-color: ${mdErrorColor};
+  }
+
+  .error-text {
+    color: ${mdErrorColor}
+  }
+
+  .success {
+    background-color: ${mdAccentColor};
+    color: white;
+  }
+
+  .success-text {
     color: ${mdAccentColor};
   }
 
@@ -168,7 +185,8 @@
   /* text input aurelia-validation messages */
   .md-input-validation {
     left: 0;
-    color: #f44336;
+    /*color: #f44336;*/
+    color: ${mdErrorColor};
     font-size: 0.8rem;
     transition: opacity .2s ease-out;
     margin-top: -4px;
@@ -288,7 +306,7 @@
   }
 
   .select-wrapper input.invalid {
-    border-bottom: 1px solid #F44336;
+    border-bottom: 1px solid ${mdErrorColor};
   }
 
   .select-wrapper + label {
@@ -308,7 +326,7 @@
   /* set validation text */
   .select-wrapper.invalid + label:after {
     content: attr(data-error);
-    color: #F44336;
+    color: ${mdErrorColor};
     opacity: 1;
   }
 

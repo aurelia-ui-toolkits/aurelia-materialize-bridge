@@ -3,7 +3,7 @@
   <require from='./nav-bar'></require>
   <require from="./color-switcher.html"></require>
   <require from="./app-colors.html"></require>
-  <md-colors md-primary-color.bind="primaryColor" md-accent-color.bind="accentColor"></md-colors>
+  <md-colors md-primary-color.bind="primaryColor" md-accent-color.bind="accentColor" md-error-color.bind="errorColor"></md-colors>
   <app-colors primary-color.bind="primaryColor" accent-color.bind="accentColor"></app-colors>
   <loading-indicator></loading-indicator>
   <header>
@@ -13,7 +13,7 @@
 
       <div class="row">
         <div class="col s12 m3">
-          <color-switcher primary-color.two-way="primaryColor" accent-color.two-way="accentColor"></color-switcher>
+          <color-switcher primary-color.two-way="primaryColor" accent-color.two-way="accentColor" error-color.two-way="errorColor"></color-switcher>
         </div>
       </div>
 
