@@ -31,6 +31,11 @@ $ jspm install materialize-css
     ...
   ```
 
+  For Material Design icons include this in your `index.html` head section:
+  ```html
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  ```
+
 2. Update  `main.js` in your `src` folder with following content:
 
   ```javascript

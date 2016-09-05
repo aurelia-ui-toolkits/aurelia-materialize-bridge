@@ -15,6 +15,11 @@ In your project install the plugin via npm with the following command:
   ...
   ```
 
+  For Material Design icons include this in your `index.html` head section:
+  ```html
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  ```
+
 2. Update  `main.js` in your `src` folder with following content:
 
   ```javascript
