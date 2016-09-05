@@ -1,4 +1,5 @@
 import { bindable, customElement } from 'aurelia-templating';
+import { DOM } from 'aurelia-pal';
 import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { AttributeManager } from '../common/attributeManager';
@@ -35,6 +36,11 @@ export class MdCheckbox {
     }
     this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
     this.checkbox.addEventListener('change', this.handleChange);
+  }
+
+  blur() {
+    const event = DOM.createCustomEvent('blur');
+    this.element.dispatchEvent(event);
   }
 
   detached() {
