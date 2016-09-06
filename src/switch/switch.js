@@ -33,6 +33,7 @@ export class MdSwitch {
 
   handleChange() {
     this.mdChecked = this.checkbox.checked;
+    fireEvent(this.element, 'blur');
   }
 
   blur() {
