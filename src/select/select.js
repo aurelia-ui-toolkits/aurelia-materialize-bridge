@@ -60,7 +60,9 @@ export class MdSelect {
   }
 
   handleBlur() {
-    fireEvent(this.element, 'blur');
+    setTimeout(() => {
+      fireEvent(this.element, 'blur');
+    }, 200);
   }
 
   disabledChanged(newValue) {
