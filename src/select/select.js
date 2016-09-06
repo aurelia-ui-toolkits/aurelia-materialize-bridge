@@ -12,12 +12,14 @@ export class MdSelect {
   @bindable() label = '';
   _suspendUpdate = false;
   subscriptions = [];
+  input = null;
 
   constructor(element, logManager, bindingEngine, taskQueue) {
     this.element = element;
     this.taskQueue = taskQueue;
     this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
     this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
     this.log = LogManager.getLogger('md-select');
     this.bindingEngine = bindingEngine;
   }
@@ -46,6 +48,7 @@ export class MdSelect {
 
   detached() {
     $(this.element).off('change', this.handleChangeFromNativeSelect);
+    this.attachBlur(false);
     $(this.element).material_select('destroy');
     this.subscriptions.forEach(sub => sub.dispose());
   }
@@ -54,6 +57,10 @@ export class MdSelect {
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(true);
     });
+  }
+
+  handleBlur() {
+    fireEvent(this.element, 'blur');
   }
 
   disabledChanged(newValue) {
@@ -97,11 +104,30 @@ export class MdSelect {
     }
   }
 
+  attachBlur(attach) {
+    if (attach) {
+      let $wrapper = $(this.element).parent('.select-wrapper');
+      if ($wrapper.length > 0) {
+        this.input = $('input.select-dropdown:first', $wrapper);
+        if (this.input) {
+          this.input.on('blur', this.handleBlur);
+        }
+      }
+    } else {
+      if (this.input) {
+        this.input.off('blur', this.handleBlur);
+        this.input = null;
+      }
+    }
+  }
+
   createMaterialSelect(destroy) {
+    this.attachBlur(false);
     if (destroy) {
       $(this.element).material_select('destroy');
     }
     $(this.element).material_select();
     this.toggleControl(this.disabled);
+    this.attachBlur(true);
   }
 }
