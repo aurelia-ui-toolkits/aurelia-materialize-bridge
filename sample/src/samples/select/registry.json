@@ -16,6 +16,10 @@
     "refresh": {
       "route": "refresh",
       "files": ["html", "js", "md"]
+    },
+    "validation": {
+      "route": "validation",
+      "files": ["html", "js"]
     }
   }
 }

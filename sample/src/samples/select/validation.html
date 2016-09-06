@@ -1,0 +1,12 @@
+<template>
+  <select md-select="label: Don't select anything and click validate;" value.two-way="selectedValue & validate:rules">
+    <option value="" disabled selected>select an item</option>
+    <option value="item1">item 1</option>
+    <option value="item2">item 2</option>
+    <option value="item3">item 3</option>
+    <option value="item4">item 4</option>
+  </select>
+  <div style="margin-top: 15px;">
+    <button md-waves md-button click.delegate="validateModel()">validate</button>
+  </div>
+</template>
