@@ -11,12 +11,17 @@ export class Validation {
   rules = ValidationRules
     .ensure('selectedValue')
       .required()
+      .on(this)
       .rules;
 
 
   constructor(controller: ValidationController) {
     this.controller = controller;
     this.controller.addRenderer(new MaterializeFormValidationRenderer());
+  }
+
+  reset() {
+    this.selectedValue = '';
   }
 
   validateModel() {
