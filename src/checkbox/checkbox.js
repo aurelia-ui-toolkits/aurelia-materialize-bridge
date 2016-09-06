@@ -1,9 +1,9 @@
 import { bindable, customElement } from 'aurelia-templating';
-import { DOM } from 'aurelia-pal';
 import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { AttributeManager } from '../common/attributeManager';
 import { getBooleanFromAttributeValue } from '../common/attributes';
+import {fireEvent} from '../common/events';
 
 @customElement('md-checkbox')
 @inject(Element)
@@ -39,8 +39,7 @@ export class MdCheckbox {
   }
 
   blur() {
-    const event = DOM.createCustomEvent('blur');
-    this.element.dispatchEvent(event);
+    fireEvent(this.element, 'blur');
   }
 
   detached() {
