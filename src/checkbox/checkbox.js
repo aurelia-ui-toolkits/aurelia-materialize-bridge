@@ -49,6 +49,7 @@ export class MdCheckbox {
 
   handleChange() {
     this.mdChecked = this.checkbox.checked;
+    fireEvent(this.element, 'blur');
   }
 
   mdCheckedChanged(newValue) {
