@@ -28,6 +28,9 @@ export class MdInput {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdValidate = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdShowErrortext = true;
   @bindable() mdValidateError;
   @bindable() mdValidateSuccess;
   @bindable({
@@ -45,6 +48,7 @@ export class MdInput {
 
   bind() {
     this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
+    this.mdShowErrortext = getBooleanFromAttributeValue(this.mdShowErrortext);
   }
 
   attached() {
@@ -59,6 +63,9 @@ export class MdInput {
     }
     if (this.mdPlaceholder) {
       this.input.setAttribute('placeholder', this.mdPlaceholder);
+    }
+    if (this.mdShowErrortext) {
+      this.input.setAttribute('data-show-errortext', this.mdShowErrortext);
     }
     this.updateService.update();
   }
