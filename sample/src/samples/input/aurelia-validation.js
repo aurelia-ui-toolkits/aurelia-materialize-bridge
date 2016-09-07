@@ -8,6 +8,7 @@ export class AureliaValidation {
   firstName = '';
   lastName = 'Doe';
   email = '';
+  noErrorText = '';
 
   controller = null;
 
@@ -20,6 +21,8 @@ export class AureliaValidation {
       .required()
         .withMessage('We need your email')
       .email()
+    .ensure('noErrorText')
+      .required()
     .rules;
 
   constructor(controller: ValidationController) {
