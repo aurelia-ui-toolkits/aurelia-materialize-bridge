@@ -92,17 +92,19 @@ define(['exports'], function (exports) {
       switch (element.tagName) {
         case 'MD-INPUT':
           {
-            var input = element.querySelector('input');
             var label = element.querySelector('label');
+            var input = element.querySelector('input');
+            if (label) {
+              label.removeAttribute('data-error');
+            }
             if (input) {
               input.classList.remove('valid');
               input.classList.add('invalid');
               error.target = input;
+              if (input.hasAttribute('data-show-errortext')) {
+                this.addMessage(element, error);
+              }
             }
-            if (label) {
-              label.removeAttribute('data-error');
-            }
-            this.addMessage(element, error);
             break;
           }
         case 'SELECT':

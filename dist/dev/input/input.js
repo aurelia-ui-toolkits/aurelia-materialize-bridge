@@ -1,7 +1,7 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes', './input-update-service', '../common/events'], function (_export, _context) {
-  var bindable, customElement, bindingMode, inject, TaskQueue, getBooleanFromAttributeValue, MdInputUpdateService, fireEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class3, _temp, MdInput;
+  var bindable, customElement, bindingMode, inject, TaskQueue, getBooleanFromAttributeValue, MdInputUpdateService, fireEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _class3, _temp, MdInput;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -80,7 +80,9 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         defaultBindingMode: bindingMode.oneTime
       }), _dec9 = bindable({
         defaultBindingMode: bindingMode.oneTime
-      }), _dec10 = bindable(), _dec11 = bindable(), _dec12 = bindable({
+      }), _dec10 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec11 = bindable(), _dec12 = bindable(), _dec13 = bindable({
         defaultBindingMode: bindingMode.twoWay
       }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
         function MdInput(element, taskQueue, updateService) {
@@ -100,11 +102,13 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
           _initDefineProp(this, 'mdValidate', _descriptor7, this);
 
-          _initDefineProp(this, 'mdValidateError', _descriptor8, this);
+          _initDefineProp(this, 'mdShowErrortext', _descriptor8, this);
 
-          _initDefineProp(this, 'mdValidateSuccess', _descriptor9, this);
+          _initDefineProp(this, 'mdValidateError', _descriptor9, this);
 
-          _initDefineProp(this, 'mdValue', _descriptor10, this);
+          _initDefineProp(this, 'mdValidateSuccess', _descriptor10, this);
+
+          _initDefineProp(this, 'mdValue', _descriptor11, this);
 
           this._suspendUpdate = false;
 
@@ -116,6 +120,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
         MdInput.prototype.bind = function bind() {
           this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
+          this.mdShowErrortext = getBooleanFromAttributeValue(this.mdShowErrortext);
         };
 
         MdInput.prototype.attached = function attached() {
@@ -130,6 +135,9 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           }
           if (this.mdPlaceholder) {
             this.input.setAttribute('placeholder', this.mdPlaceholder);
+          }
+          if (this.mdShowErrortext) {
+            this.input.setAttribute('data-show-errortext', this.mdShowErrortext);
           }
           this.updateService.update();
         };
@@ -183,13 +191,18 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         initializer: function initializer() {
           return false;
         }
-      }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateError', [_dec10], {
+      }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowErrortext', [_dec10], {
+        enumerable: true,
+        initializer: function initializer() {
+          return true;
+        }
+      }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateError', [_dec11], {
         enumerable: true,
         initializer: null
-      }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateSuccess', [_dec11], {
+      }), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateSuccess', [_dec12], {
         enumerable: true,
         initializer: null
-      }), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec12], {
+      }), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec13], {
         enumerable: true,
         initializer: function initializer() {
           return '';

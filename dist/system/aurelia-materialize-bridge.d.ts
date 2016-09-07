@@ -377,6 +377,7 @@ export declare class MdInput {
   mdType: any;
   mdStep: any;
   mdValidate: any;
+  mdShowErrortext: any;
   mdValidateError: any;
   mdValidateSuccess: any;
   mdValue: any;

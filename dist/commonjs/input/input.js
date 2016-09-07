@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdInput = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class3, _temp;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _class3, _temp;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -76,7 +76,9 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec9 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec10 = (0, _aureliaTemplating.bindable)(), _dec11 = (0, _aureliaTemplating.bindable)(), _dec12 = (0, _aureliaTemplating.bindable)({
+}), _dec10 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec11 = (0, _aureliaTemplating.bindable)(), _dec12 = (0, _aureliaTemplating.bindable)(), _dec13 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
 }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
   function MdInput(element, taskQueue, updateService) {
@@ -96,11 +98,13 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
 
     _initDefineProp(this, 'mdValidate', _descriptor7, this);
 
-    _initDefineProp(this, 'mdValidateError', _descriptor8, this);
+    _initDefineProp(this, 'mdShowErrortext', _descriptor8, this);
 
-    _initDefineProp(this, 'mdValidateSuccess', _descriptor9, this);
+    _initDefineProp(this, 'mdValidateError', _descriptor9, this);
 
-    _initDefineProp(this, 'mdValue', _descriptor10, this);
+    _initDefineProp(this, 'mdValidateSuccess', _descriptor10, this);
+
+    _initDefineProp(this, 'mdValue', _descriptor11, this);
 
     this._suspendUpdate = false;
 
@@ -112,6 +116,7 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
 
   MdInput.prototype.bind = function bind() {
     this.mdTextArea = (0, _attributes.getBooleanFromAttributeValue)(this.mdTextArea);
+    this.mdShowErrortext = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowErrortext);
   };
 
   MdInput.prototype.attached = function attached() {
@@ -126,6 +131,9 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
     }
     if (this.mdPlaceholder) {
       this.input.setAttribute('placeholder', this.mdPlaceholder);
+    }
+    if (this.mdShowErrortext) {
+      this.input.setAttribute('data-show-errortext', this.mdShowErrortext);
     }
     this.updateService.update();
   };
@@ -179,13 +187,18 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
   initializer: function initializer() {
     return false;
   }
-}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateError', [_dec10], {
+}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowErrortext', [_dec10], {
+  enumerable: true,
+  initializer: function initializer() {
+    return true;
+  }
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateError', [_dec11], {
   enumerable: true,
   initializer: null
-}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateSuccess', [_dec11], {
+}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateSuccess', [_dec12], {
   enumerable: true,
   initializer: null
-}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec12], {
+}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec13], {
   enumerable: true,
   initializer: function initializer() {
     return '';
