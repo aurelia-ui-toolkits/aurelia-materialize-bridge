@@ -60,9 +60,31 @@ export class MdSelect {
   }
 
   handleBlur() {
-    setTimeout(() => {
-      fireEvent(this.element, 'blur');
-    }, 200);
+    this.log.debug('handleBlur called');
+
+    // problem: if this comes from an actual "blur" event, the event is fired too early
+    //          if this comes from a "change" event, the timing is correct
+
+    // take 1
+    // setTimeout(() => {
+    //   fireEvent(this.element, 'blur');
+    // }, 200);
+
+    // TaskQueue doesn't change anything because the "change" event is fired after
+    // the queue has been processed
+
+    // take 2
+    // if (!this._blurHandled) {
+    //   this.taskQueue.queueTask(() => {
+    //     fireEvent(this.element, 'blur');
+    //     this.log.debug('blur event fired');
+    //     this._blurHandled = false;
+    //   });
+    //   this._blurHandled = true;
+    // }
+
+    // take 3
+    fireEvent(this.element, 'blur');
   }
 
   disabledChanged(newValue) {
@@ -78,7 +100,6 @@ export class MdSelect {
       this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
       this._suspendUpdate = true;
       fireEvent(this.element, 'change');
-
       this._suspendUpdate = false;
     }
   }
@@ -115,11 +136,13 @@ export class MdSelect {
           this.input.on('blur', this.handleBlur);
         }
       }
+      // this.element.addEventListener('change', this.handleBlur);
     } else {
       if (this.input) {
         this.input.off('blur', this.handleBlur);
         this.input = null;
       }
+      // this.element.removeEventListener('change', this.handleBlur);
     }
   }
 
