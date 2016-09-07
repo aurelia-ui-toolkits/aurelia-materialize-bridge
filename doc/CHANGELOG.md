@@ -1,3 +1,25 @@
+<a name="0.15.0"></a>
+# [0.15.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.14.0...v0.15.0) (2016-09-07)
+
+
+### Bug Fixes
+
+* **md-input:** set left: 0 for MS Edge (only has an effect when using md-colors), fix #244 ([02122e2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/02122e2)), closes [#244](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/244)
+* **md-waves:** don't attach when building for amd, ref #238 ([5e084ec](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/5e084ec))
+* **validation:** allow input to show many errors ([6af81db](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6af81db))
+
+### Features
+
+* **md-checkbox:** forward blur event ([c5c451e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/c5c451e))
+* **md-colors:** add error and (placeholder) success colors, close #247 ([cbc82cc](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/cbc82cc)), closes [#247](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/247)
+* **md-input:** add md-show-errortext attribute ([a5da686](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a5da686))
+* **md-select:** add floating label, ref #243 ([6aaa610](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6aaa610))
+* **md-select:** forward blur events ([f219752](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/f219752))
+* **md-switch:** forward blur event ([0eb63b5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0eb63b5))
+* **validation:** add error list to md-select ([4ccb4a9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/4ccb4a9))
+
+
+
 <a name="0.14.0"></a>
 # [0.14.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.13.0...v0.14.0) (2016-08-29)
 
