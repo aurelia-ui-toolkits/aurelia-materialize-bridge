@@ -1,10 +1,10 @@
 import { bindable, customElement } from 'aurelia-templating';
-import { DOM } from 'aurelia-pal';
 import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { TaskQueue } from 'aurelia-task-queue';
 import { getBooleanFromAttributeValue } from '../common/attributes';
 import { MdInputUpdateService } from './input-update-service';
+import { fireEvent } from '../common/events';
 
 @customElement('md-input')
 @inject(Element, TaskQueue, MdInputUpdateService)
@@ -64,9 +64,7 @@ export class MdInput {
   }
 
   blur() {
-    // forward "blur" events to the custom element
-    const event = DOM.createCustomEvent('blur');
-    this.element.dispatchEvent(event);
+    fireEvent(this.element, 'blur');
   }
 
   mdValueChanged() {
