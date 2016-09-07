@@ -3,6 +3,7 @@ import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { AttributeManager } from '../common/attributeManager';
 import { getBooleanFromAttributeValue } from '../common/attributes';
+import {fireEvent} from '../common/events';
 
 @customElement('md-checkbox')
 @inject(Element)
@@ -37,6 +38,10 @@ export class MdCheckbox {
     this.checkbox.addEventListener('change', this.handleChange);
   }
 
+  blur() {
+    fireEvent(this.element, 'blur');
+  }
+
   detached() {
     this.attributeManager.removeClasses(['filled-in', 'disabled']);
     this.checkbox.removeEventListener('change', this.handleChange);
@@ -44,6 +49,7 @@ export class MdCheckbox {
 
   handleChange() {
     this.mdChecked = this.checkbox.checked;
+    fireEvent(this.element, 'blur');
   }
 
   mdCheckedChanged(newValue) {
