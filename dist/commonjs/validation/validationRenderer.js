@@ -9,6 +9,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRenderer = function () {
   function MaterializeFormValidationRenderer() {
     _classCallCheck(this, MaterializeFormValidationRenderer);
+
+    this.className = 'md-input-validation';
+    this.classNameFirst = 'md-input-validation-first';
   }
 
   MaterializeFormValidationRenderer.prototype.render = function render(instruction) {
@@ -45,7 +48,6 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
         this.remove(element, error);
       }
     }
-
     for (var _iterator2 = instruction.render, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
       var _ref2;
 
@@ -85,26 +87,32 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
     switch (element.tagName) {
       case 'MD-INPUT':
         {
-          var errorMessage = error.message || 'error';
           var input = element.querySelector('input');
+          var label = element.querySelector('label');
           if (input) {
             input.classList.remove('valid');
             input.classList.add('invalid');
-
             error.target = input;
-
-            var label = element.querySelector('label');
-            if (label) {
-              label.classList.add('active');
-
-              var msg = label.getAttribute('data-error');
-              if (!msg) {
-                label.setAttribute('data-error', errorMessage);
-              } else {
-                error.message = msg;
-              }
-            }
           }
+          if (label) {
+            label.removeAttribute('data-error');
+          }
+          this.addMessage(element, error);
+          break;
+        }
+      case 'SELECT':
+        {
+          var selectWrapper = element.closest('.select-wrapper');
+          if (!selectWrapper) {
+            return;
+          }
+          var _input = selectWrapper.querySelector('input');
+          if (_input) {
+            _input.classList.remove('valid');
+            _input.classList.add('invalid');
+            error.target = _input;
+          }
+          this.addMessage(selectWrapper, error);
           break;
         }
       default:
@@ -116,15 +124,53 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
     switch (element.tagName) {
       case 'MD-INPUT':
         {
+          this.removeMessage(element, error);
+
           var input = element.querySelector('input');
-          if (input) {
+          if (input && element.querySelectorAll('.' + this.className).length === 0) {
             input.classList.remove('invalid');
             input.classList.add('valid');
           }
           break;
         }
+      case 'SELECT':
+        {
+          var selectWrapper = element.closest('.select-wrapper');
+          if (!selectWrapper) {
+            return;
+          }
+          this.removeMessage(selectWrapper, error);
+
+          var _input2 = selectWrapper.querySelector('input');
+          if (_input2 && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
+            _input2.classList.remove('invalid');
+            _input2.classList.add('valid');
+          }
+          break;
+        }
       default:
         break;
+    }
+  };
+
+  MaterializeFormValidationRenderer.prototype.addMessage = function addMessage(element, error) {
+    var message = document.createElement('div');
+    message.id = 'md-input-validation-' + error.id;
+    message.textContent = error.message;
+    message.className = this.className;
+    if (element.querySelectorAll('.' + this.className).length === 0) {
+      message.className += ' ' + this.classNameFirst;
+    }
+    message.style.opacity = 0;
+    element.appendChild(message, element.nextSibling);
+    window.getComputedStyle(message).opacity;
+    message.style.opacity = 1;
+  };
+
+  MaterializeFormValidationRenderer.prototype.removeMessage = function removeMessage(element, error) {
+    var message = element.querySelector('#md-input-validation-' + error.id);
+    if (message) {
+      element.removeChild(message);
     }
   };
 

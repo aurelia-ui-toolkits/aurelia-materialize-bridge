@@ -9,8 +9,6 @@ var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11
 
 var _aureliaTemplating = require('aurelia-templating');
 
-var _aureliaPal = require('aurelia-pal');
-
 var _aureliaBinding = require('aurelia-binding');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
@@ -20,6 +18,8 @@ var _aureliaTaskQueue = require('aurelia-task-queue');
 var _attributes = require('../common/attributes');
 
 var _inputUpdateService = require('./input-update-service');
+
+var _events = require('../common/events');
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -131,8 +131,7 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
   };
 
   MdInput.prototype.blur = function blur() {
-    var event = _aureliaPal.DOM.createCustomEvent('blur');
-    this.element.dispatchEvent(event);
+    (0, _events.fireEvent)(this.element, 'blur');
   };
 
   MdInput.prototype.mdValueChanged = function mdValueChanged() {

@@ -34,7 +34,9 @@ export class MdWaves {
     }
 
     this.attributeManager.addClasses(classes);
+    // build-amd-remove start
     Waves.attach(this.element);
+    // build-amd-remove end
   }
 
   detached() {

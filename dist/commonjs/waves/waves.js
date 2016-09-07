@@ -95,6 +95,7 @@ var MdWaves = exports.MdWaves = (_dec = (0, _aureliaTemplating.customAttribute)(
     }
 
     this.attributeManager.addClasses(classes);
+
     Waves.attach(this.element);
   };
 

@@ -99,6 +99,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           }
 
           this.attributeManager.addClasses(classes);
+
           Waves.attach(this.element);
         };
 

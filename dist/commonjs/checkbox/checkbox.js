@@ -17,6 +17,8 @@ var _attributeManager = require('../common/attributeManager');
 
 var _attributes = require('../common/attributes');
 
+var _events = require('../common/events');
+
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
   Object.defineProperty(target, property, {
@@ -96,6 +98,10 @@ var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customEleme
     this.checkbox.addEventListener('change', this.handleChange);
   };
 
+  MdCheckbox.prototype.blur = function blur() {
+    (0, _events.fireEvent)(this.element, 'blur');
+  };
+
   MdCheckbox.prototype.detached = function detached() {
     this.attributeManager.removeClasses(['filled-in', 'disabled']);
     this.checkbox.removeEventListener('change', this.handleChange);
@@ -103,6 +109,7 @@ var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customEleme
 
   MdCheckbox.prototype.handleChange = function handleChange() {
     this.mdChecked = this.checkbox.checked;
+    (0, _events.fireEvent)(this.element, 'blur');
   };
 
   MdCheckbox.prototype.mdCheckedChanged = function mdCheckedChanged(newValue) {

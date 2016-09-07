@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-pal', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes', './input-update-service'], function (_export, _context) {
-  var bindable, customElement, DOM, bindingMode, inject, TaskQueue, getBooleanFromAttributeValue, MdInputUpdateService, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class3, _temp, MdInput;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes', './input-update-service', '../common/events'], function (_export, _context) {
+  var bindable, customElement, bindingMode, inject, TaskQueue, getBooleanFromAttributeValue, MdInputUpdateService, fireEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class3, _temp, MdInput;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -56,8 +56,6 @@ System.register(['aurelia-templating', 'aurelia-pal', 'aurelia-binding', 'aureli
     setters: [function (_aureliaTemplating) {
       bindable = _aureliaTemplating.bindable;
       customElement = _aureliaTemplating.customElement;
-    }, function (_aureliaPal) {
-      DOM = _aureliaPal.DOM;
     }, function (_aureliaBinding) {
       bindingMode = _aureliaBinding.bindingMode;
     }, function (_aureliaDependencyInjection) {
@@ -68,6 +66,8 @@ System.register(['aurelia-templating', 'aurelia-pal', 'aurelia-binding', 'aureli
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }, function (_inputUpdateService) {
       MdInputUpdateService = _inputUpdateService.MdInputUpdateService;
+    }, function (_commonEvents) {
+      fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
       _export('MdInput', MdInput = (_dec = customElement('md-input'), _dec2 = inject(Element, TaskQueue, MdInputUpdateService), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable({
@@ -135,8 +135,7 @@ System.register(['aurelia-templating', 'aurelia-pal', 'aurelia-binding', 'aureli
         };
 
         MdInput.prototype.blur = function blur() {
-          var event = DOM.createCustomEvent('blur');
-          this.element.dispatchEvent(event);
+          fireEvent(this.element, 'blur');
         };
 
         MdInput.prototype.mdValueChanged = function mdValueChanged() {

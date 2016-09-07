@@ -95,7 +95,7 @@ define(['exports'], function (exports) {
     };
 
     ConfigBuilder.prototype.useColors = function useColors() {
-      this.globalResources.push('./colors/md-colors.html');
+      this.globalResources.push('./colors/md-colors');
       return this;
     };
 

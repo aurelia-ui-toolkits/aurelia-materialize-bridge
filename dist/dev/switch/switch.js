@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes'], function (_export, _context) {
-  var bindable, customElement, bindingMode, inject, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, MdSwitch;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', '../common/events'], function (_export, _context) {
+  var bindable, customElement, bindingMode, inject, getBooleanFromAttributeValue, fireEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, MdSwitch;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -62,6 +62,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       inject = _aureliaDependencyInjection.inject;
     }, function (_commonAttributes) {
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
+    }, function (_commonEvents) {
+      fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
       _export('MdSwitch', MdSwitch = (_dec = customElement('md-switch'), _dec2 = inject(Element), _dec3 = bindable({
@@ -96,6 +98,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
         MdSwitch.prototype.handleChange = function handleChange() {
           this.mdChecked = this.checkbox.checked;
+          fireEvent(this.element, 'blur');
+        };
+
+        MdSwitch.prototype.blur = function blur() {
+          fireEvent(this.element, 'blur');
         };
 
         MdSwitch.prototype.mdCheckedChanged = function mdCheckedChanged(newValue) {

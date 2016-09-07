@@ -1,4 +1,4 @@
-<template bindable="mdPrimaryColor, mdAccentColor">
+<template>
   <require from="./colorValueConverters"></require>
 
   <!--
@@ -41,6 +41,23 @@
 
   .accent-text {
     /*background-color: white;*/
+    color: ${mdAccentColor};
+  }
+
+  .error {
+    background-color: ${mdErrorColor};
+  }
+
+  .error-text {
+    color: ${mdErrorColor}
+  }
+
+  .success {
+    background-color: ${mdAccentColor};
+    color: white;
+  }
+
+  .success-text {
     color: ${mdAccentColor};
   }
 
@@ -130,6 +147,9 @@
   }
 
   /* text input */
+  md-input .input-field label {
+    left: 0;
+  }
   md-input .input-field input[type=text]:focus {
     border-bottom: 1px solid ${mdAccentColor};
     box-shadow: 0 1px 0 0 ${mdAccentColor};
@@ -160,6 +180,34 @@
   }
   md-input textarea.materialize-textarea:focus:not([readonly]) + label {
     color: ${mdAccentColor}
+  }
+
+  /* text input aurelia-validation messages */
+  .md-input-validation {
+    left: 0;
+    /*color: #f44336;*/
+    color: ${mdErrorColor};
+    font-size: 0.8rem;
+    transition: opacity .2s ease-out;
+    margin-top: -4px;
+    margin-bottom: 0;
+  }
+  @media only screen and (min-width: 0) {
+    .md-input-validation-first {
+      margin-top: -14px;
+      margin-bottom: -2px;
+    }
+  }
+  @media only screen and (min-width: 992px) {
+    .md-input-validation-first {
+      margin-top: -18px;
+      padding-bottom: 3px;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .md-input-validation-first {
+      margin-top: -19px;
+    }
   }
 
   /* pagination */
@@ -200,7 +248,7 @@
     background: ${mdAccentColor};
   }
   md-range input[type="range"] + .thumb {
-    background-color: ${mdAccentColor}!important;
+    background-color: ${mdAccentColor} !important;
   }
 
   /* select */
@@ -248,5 +296,39 @@
   footer.page-footer {
     background-color: ${mdPrimaryColor};
   }
+
+  /* md-select label */
+  .select-wrapper input {
+    // make input fit in div
+    display: inline-block !important;
+    // fix validation border thickness
+    border-bottom: 1px solid #4CAF50;
+  }
+
+  .select-wrapper input.invalid {
+    border-bottom: 1px solid ${mdErrorColor};
+  }
+
+  .select-wrapper + label {
+    color: ${mdAccentColor};
+    width: 100%;
+  }
+  /* position validation label */
+  .select-wrapper + label:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 60px;
+    opacity: 0;
+    transition: .2s opacity ease-out, .2s color ease-out;
+    transform: translateY(0) !important;
+  }
+  /* set validation text */
+  .select-wrapper.invalid + label:after {
+    content: attr(data-error);
+    color: ${mdErrorColor};
+    opacity: 1;
+  }
+
   </style>
 </template>

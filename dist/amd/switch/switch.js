@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes, _events) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -89,6 +89,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
     MdSwitch.prototype.handleChange = function handleChange() {
       this.mdChecked = this.checkbox.checked;
+      (0, _events.fireEvent)(this.element, 'blur');
+    };
+
+    MdSwitch.prototype.blur = function blur() {
+      (0, _events.fireEvent)(this.element, 'blur');
     };
 
     MdSwitch.prototype.mdCheckedChanged = function mdCheckedChanged(newValue) {

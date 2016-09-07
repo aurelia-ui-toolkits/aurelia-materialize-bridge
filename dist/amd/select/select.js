@@ -74,21 +74,25 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
 
-  var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.BindingEngine, _aureliaTaskQueue.TaskQueue), _dec2 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+  var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.BindingEngine, _aureliaTaskQueue.TaskQueue), _dec2 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
     function MdSelect(element, logManager, bindingEngine, taskQueue) {
       _classCallCheck(this, MdSelect);
 
       _initDefineProp(this, 'disabled', _descriptor, this);
 
+      _initDefineProp(this, 'label', _descriptor2, this);
+
       this._suspendUpdate = false;
       this.subscriptions = [];
+      this.input = null;
 
       this.element = element;
       this.taskQueue = taskQueue;
       this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
       this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
+      this.handleBlur = this.handleBlur.bind(this);
       this.log = LogManager.getLogger('md-select');
       this.bindingEngine = bindingEngine;
     }
@@ -97,11 +101,23 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
 
       this.createMaterialSelect(false);
+
+      if (this.label) {
+        var wrapper = $(this.element).parent('.select-wrapper');
+        var div = $('<div class="input-field"></div>');
+        var va = this.element.attributes.getNamedItem('validate');
+        if (va) {
+          div.attr(va.name, va.label);
+        }
+        wrapper.wrap(div);
+        $('<label>' + this.label + '</label>').insertAfter(wrapper);
+      }
       $(this.element).on('change', this.handleChangeFromNativeSelect);
     };
 
     MdSelect.prototype.detached = function detached() {
       $(this.element).off('change', this.handleChangeFromNativeSelect);
+      this.attachBlur(false);
       $(this.element).material_select('destroy');
       this.subscriptions.forEach(function (sub) {
         return sub.dispose();
@@ -114,6 +130,12 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this.taskQueue.queueTask(function () {
         _this.createMaterialSelect(true);
       });
+    };
+
+    MdSelect.prototype.handleBlur = function handleBlur() {
+      this.log.debug('handleBlur called');
+
+      (0, _events.fireEvent)(this.element, 'blur');
     };
 
     MdSelect.prototype.disabledChanged = function disabledChanged(newValue) {
@@ -129,7 +151,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
         this._suspendUpdate = true;
         (0, _events.fireEvent)(this.element, 'change');
-
         this._suspendUpdate = false;
       }
     };
@@ -157,12 +178,31 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       }
     };
 
+    MdSelect.prototype.attachBlur = function attachBlur(attach) {
+      if (attach) {
+        var $wrapper = $(this.element).parent('.select-wrapper');
+        if ($wrapper.length > 0) {
+          this.input = $('input.select-dropdown:first', $wrapper);
+          if (this.input) {
+            this.input.on('blur', this.handleBlur);
+          }
+        }
+      } else {
+          if (this.input) {
+            this.input.off('blur', this.handleBlur);
+            this.input = null;
+          }
+        }
+    };
+
     MdSelect.prototype.createMaterialSelect = function createMaterialSelect(destroy) {
+      this.attachBlur(false);
       if (destroy) {
         $(this.element).material_select('destroy');
       }
       $(this.element).material_select();
       this.toggleControl(this.disabled);
+      this.attachBlur(true);
     };
 
     return MdSelect;
@@ -170,6 +210,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     enumerable: true,
     initializer: function initializer() {
       return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'label', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
     }
   })), _class2)) || _class) || _class);
 });

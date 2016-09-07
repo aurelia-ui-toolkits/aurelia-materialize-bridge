@@ -9,14 +9,17 @@ import {fireEvent} from '../common/events';
 @customAttribute('md-select')
 export class MdSelect {
   @bindable() disabled = false;
+  @bindable() label = '';
   _suspendUpdate = false;
   subscriptions = [];
+  input = null;
 
   constructor(element, logManager, bindingEngine, taskQueue) {
     this.element = element;
     this.taskQueue = taskQueue;
     this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
     this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
     this.log = LogManager.getLogger('md-select');
     this.bindingEngine = bindingEngine;
   }
@@ -29,11 +32,23 @@ export class MdSelect {
     //   this.handleChangeFromNativeSelect();
     // });
     this.createMaterialSelect(false);
+
+    if (this.label) {
+      let wrapper = $(this.element).parent('.select-wrapper');
+      let div = $('<div class="input-field"></div>');
+      let va = this.element.attributes.getNamedItem('validate');
+      if (va) {
+        div.attr(va.name, va.label);
+      }
+      wrapper.wrap(div);
+      $(`<label>${this.label}</label>`).insertAfter(wrapper);
+    }
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   }
 
   detached() {
     $(this.element).off('change', this.handleChangeFromNativeSelect);
+    this.attachBlur(false);
     $(this.element).material_select('destroy');
     this.subscriptions.forEach(sub => sub.dispose());
   }
@@ -42,6 +57,34 @@ export class MdSelect {
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(true);
     });
+  }
+
+  handleBlur() {
+    this.log.debug('handleBlur called');
+
+    // problem: if this comes from an actual "blur" event, the event is fired too early
+    //          if this comes from a "change" event, the timing is correct
+
+    // take 1
+    // setTimeout(() => {
+    //   fireEvent(this.element, 'blur');
+    // }, 200);
+
+    // TaskQueue doesn't change anything because the "change" event is fired after
+    // the queue has been processed
+
+    // take 2
+    // if (!this._blurHandled) {
+    //   this.taskQueue.queueTask(() => {
+    //     fireEvent(this.element, 'blur');
+    //     this.log.debug('blur event fired');
+    //     this._blurHandled = false;
+    //   });
+    //   this._blurHandled = true;
+    // }
+
+    // take 3
+    fireEvent(this.element, 'blur');
   }
 
   disabledChanged(newValue) {
@@ -57,7 +100,6 @@ export class MdSelect {
       this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
       this._suspendUpdate = true;
       fireEvent(this.element, 'change');
-
       this._suspendUpdate = false;
     }
   }
@@ -85,11 +127,32 @@ export class MdSelect {
     }
   }
 
+  attachBlur(attach) {
+    if (attach) {
+      let $wrapper = $(this.element).parent('.select-wrapper');
+      if ($wrapper.length > 0) {
+        this.input = $('input.select-dropdown:first', $wrapper);
+        if (this.input) {
+          this.input.on('blur', this.handleBlur);
+        }
+      }
+      // this.element.addEventListener('change', this.handleBlur);
+    } else {
+      if (this.input) {
+        this.input.off('blur', this.handleBlur);
+        this.input = null;
+      }
+      // this.element.removeEventListener('change', this.handleBlur);
+    }
+  }
+
   createMaterialSelect(destroy) {
+    this.attachBlur(false);
     if (destroy) {
       $(this.element).material_select('destroy');
     }
     $(this.element).material_select();
     this.toggleControl(this.disabled);
+    this.attachBlur(true);
   }
 }

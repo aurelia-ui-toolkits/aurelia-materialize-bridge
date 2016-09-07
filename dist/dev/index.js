@@ -1,7 +1,13 @@
 'use strict';
 
-System.register(['./config-builder', './scrollfire/scrollfire-patch', './autocomplete/autocomplete', './badge/badge', './box/box', './breadcrumbs/breadcrumbs', './breadcrumbs/instructionFilter', './button/button', './card/card', './carousel/carousel-item', './carousel/carousel', './char-counter/char-counter', './checkbox/checkbox', './chip/chip', './chip/chips', './collapsible/collapsible', './collection/collection-header', './collection/collection-item', './collection/collection', './collection/md-collection-selector', './colors/colorValueConverters', './common/attributeManager', './common/attributes', './common/constants', './common/events', './datepicker/datepicker.default-parser', './datepicker/datepicker', './dropdown/dropdown-element', './dropdown/dropdown', './fab/fab', './file/file', './footer/footer', './input/input-prefix', './input/input-update-service', './input/input', './modal/modal-trigger', './navbar/navbar', './pagination/pagination', './parallax/parallax', './progress/progress', './pushpin/pushpin', './radio/radio', './range/range', './scrollfire/scrollfire-target', './scrollfire/scrollfire', './scrollspy/scrollspy', './select/select', './sidenav/sidenav-collapse', './sidenav/sidenav', './slider/slider', './switch/switch', './tabs/tabs', './toast/toastService', './tooltip/tooltip', './transitions/fadein-image', './transitions/staggered-list', './validation/validationRenderer', './waves/waves'], function (_export, _context) {
-  var ConfigBuilder, ScrollfirePatch;
+System.register(['./config-builder', './scrollfire/scrollfire-patch', './common/polyfills', './autocomplete/autocomplete', './badge/badge', './box/box', './breadcrumbs/breadcrumbs', './breadcrumbs/instructionFilter', './button/button', './card/card', './carousel/carousel-item', './carousel/carousel', './char-counter/char-counter', './checkbox/checkbox', './chip/chip', './chip/chips', './collapsible/collapsible', './collection/collection-header', './collection/collection-item', './collection/collection', './collection/md-collection-selector', './colors/colorValueConverters', './common/attributeManager', './common/attributes', './common/constants', './common/events', './datepicker/datepicker.default-parser', './datepicker/datepicker', './dropdown/dropdown-element', './dropdown/dropdown', './fab/fab', './file/file', './footer/footer', './input/input-prefix', './input/input-update-service', './input/input', './modal/modal-trigger', './navbar/navbar', './pagination/pagination', './parallax/parallax', './progress/progress', './pushpin/pushpin', './radio/radio', './range/range', './scrollfire/scrollfire-target', './scrollfire/scrollfire', './scrollspy/scrollspy', './select/select', './sidenav/sidenav-collapse', './sidenav/sidenav', './slider/slider', './switch/switch', './tabs/tabs', './toast/toastService', './tooltip/tooltip', './transitions/fadein-image', './transitions/staggered-list', './validation/validationRenderer', './waves/waves'], function (_export, _context) {
+  var ConfigBuilder, ScrollfirePatch, polyfillElementClosest;
+
+
+  function applyPolyfills() {
+    polyfillElementClosest();
+  }
+
   return {
     setters: [function (_configBuilder) {
       ConfigBuilder = _configBuilder.ConfigBuilder;
@@ -14,6 +20,8 @@ System.register(['./config-builder', './scrollfire/scrollfire-patch', './autocom
       }
 
       _export(_exportObj);
+    }, function (_commonPolyfills) {
+      polyfillElementClosest = _commonPolyfills.polyfillElementClosest;
     }, function (_autocompleteAutocomplete) {
       var _exportObj2 = {};
 
@@ -465,6 +473,7 @@ System.register(['./config-builder', './scrollfire/scrollfire-patch', './autocom
     }],
     execute: function () {
       function configure(aurelia, configCallback) {
+        applyPolyfills();
         var builder = new ConfigBuilder();
 
         if (configCallback !== undefined && typeof configCallback === 'function') {

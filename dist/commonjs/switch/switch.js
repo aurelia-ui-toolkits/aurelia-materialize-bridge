@@ -15,6 +15,8 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _attributes = require('../common/attributes');
 
+var _events = require('../common/events');
+
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
   Object.defineProperty(target, property, {
@@ -92,6 +94,11 @@ var MdSwitch = exports.MdSwitch = (_dec = (0, _aureliaTemplating.customElement)(
 
   MdSwitch.prototype.handleChange = function handleChange() {
     this.mdChecked = this.checkbox.checked;
+    (0, _events.fireEvent)(this.element, 'blur');
+  };
+
+  MdSwitch.prototype.blur = function blur() {
+    (0, _events.fireEvent)(this.element, 'blur');
   };
 
   MdSwitch.prototype.mdCheckedChanged = function mdCheckedChanged(newValue) {

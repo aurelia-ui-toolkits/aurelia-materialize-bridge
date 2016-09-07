@@ -5,7 +5,6 @@ import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-bind
 import {Router} from 'aurelia-router';
 import {getLogger} from 'aurelia-logging';
 import {TaskQueue} from 'aurelia-task-queue';
-import {DOM} from 'aurelia-pal';
 
 export class ClickCounter {
   count = 0;
@@ -140,7 +139,7 @@ export class ConfigBuilder {
   }
 
   useColors() : ConfigBuilder {
-    this.globalResources.push('./colors/md-colors.html');
+    this.globalResources.push('./colors/md-colors');
     return this;
   }
 
@@ -296,7 +295,12 @@ export class ConfigBuilder {
   }
 }
 
+function applyPolyfills() {
+  polyfillElementClosest();
+}
+
 export function configure(aurelia, configCallback) {
+  applyPolyfills();
   let builder = new ConfigBuilder();
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
@@ -640,6 +644,10 @@ export class MdCheckbox {
     this.checkbox.addEventListener('change', this.handleChange);
   }
 
+  blur() {
+    fireEvent(this.element, 'blur');
+  }
+
   detached() {
     this.attributeManager.removeClasses(['filled-in', 'disabled']);
     this.checkbox.removeEventListener('change', this.handleChange);
@@ -647,6 +655,7 @@ export class MdCheckbox {
 
   handleChange() {
     this.mdChecked = this.checkbox.checked;
+    fireEvent(this.element, 'blur');
   }
 
   mdCheckedChanged(newValue) {
@@ -840,6 +849,13 @@ export class LightenValueConverter {
   }
 }
 
+export class MdColors {
+  @bindable() mdPrimaryColor;
+  @bindable() mdAccentColor;
+  @bindable() mdErrorColor = '#F44336';
+  @bindable() mdSuccessColor;
+}
+
 /**
  * Adds css classes to a given element only if these classes are not already
  * present. Keeps a record of css classes which actually have been added.
@@ -947,6 +963,39 @@ export function fireEvent(element: Element, name: string, data? = {}) {
 */
 export function fireMaterializeEvent(element: Element, name: string, data? = {}) {
   return fireEvent(element, `${constants.eventPrefix}${name}`, data);
+}
+
+// https://github.com/jonathantneal/closest/blob/master/closest.js
+export function polyfillElementClosest() {
+  if (typeof Element.prototype.matches !== 'function') {
+  	Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || function matches(selector) {
+  		var element = this;
+  		var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
+  		var index = 0;
+
+  		while (elements[index] && elements[index] !== element) {
+  			++index;
+  		}
+
+  		return Boolean(elements[index]);
+  	};
+  }
+
+  if (typeof Element.prototype.closest !== 'function') {
+  	Element.prototype.closest = function closest(selector) {
+  		var element = this;
+
+  		while (element && element.nodeType === 1) {
+  			if (element.matches(selector)) {
+  				return element;
+  			}
+
+  			element = element.parentNode;
+  		}
+
+  		return null;
+  	};
+  }
 }
 
 export class DatePickerDefaultParser {
@@ -1409,9 +1458,7 @@ export class MdInput {
   }
 
   blur() {
-    // forward "blur" events to the custom element
-    const event = DOM.createCustomEvent('blur');
-    this.element.dispatchEvent(event);
+    fireEvent(this.element, 'blur');
   }
 
   mdValueChanged() {
@@ -1823,14 +1870,17 @@ export class MdScrollSpy {
 @customAttribute('md-select')
 export class MdSelect {
   @bindable() disabled = false;
+  @bindable() label = '';
   _suspendUpdate = false;
   subscriptions = [];
+  input = null;
 
   constructor(element, logManager, bindingEngine, taskQueue) {
     this.element = element;
     this.taskQueue = taskQueue;
     this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
     this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
     this.log = LogManager.getLogger('md-select');
     this.bindingEngine = bindingEngine;
   }
@@ -1843,11 +1893,23 @@ export class MdSelect {
     //   this.handleChangeFromNativeSelect();
     // });
     this.createMaterialSelect(false);
+
+    if (this.label) {
+      let wrapper = $(this.element).parent('.select-wrapper');
+      let div = $('<div class="input-field"></div>');
+      let va = this.element.attributes.getNamedItem('validate');
+      if (va) {
+        div.attr(va.name, va.label);
+      }
+      wrapper.wrap(div);
+      $(`<label>${this.label}</label>`).insertAfter(wrapper);
+    }
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   }
 
   detached() {
     $(this.element).off('change', this.handleChangeFromNativeSelect);
+    this.attachBlur(false);
     $(this.element).material_select('destroy');
     this.subscriptions.forEach(sub => sub.dispose());
   }
@@ -1856,6 +1918,34 @@ export class MdSelect {
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(true);
     });
+  }
+
+  handleBlur() {
+    this.log.debug('handleBlur called');
+
+    // problem: if this comes from an actual "blur" event, the event is fired too early
+    //          if this comes from a "change" event, the timing is correct
+
+    // take 1
+    // setTimeout(() => {
+    //   fireEvent(this.element, 'blur');
+    // }, 200);
+
+    // TaskQueue doesn't change anything because the "change" event is fired after
+    // the queue has been processed
+
+    // take 2
+    // if (!this._blurHandled) {
+    //   this.taskQueue.queueTask(() => {
+    //     fireEvent(this.element, 'blur');
+    //     this.log.debug('blur event fired');
+    //     this._blurHandled = false;
+    //   });
+    //   this._blurHandled = true;
+    // }
+
+    // take 3
+    fireEvent(this.element, 'blur');
   }
 
   disabledChanged(newValue) {
@@ -1871,7 +1961,6 @@ export class MdSelect {
       this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
       this._suspendUpdate = true;
       fireEvent(this.element, 'change');
-
       this._suspendUpdate = false;
     }
   }
@@ -1899,12 +1988,33 @@ export class MdSelect {
     }
   }
 
+  attachBlur(attach) {
+    if (attach) {
+      let $wrapper = $(this.element).parent('.select-wrapper');
+      if ($wrapper.length > 0) {
+        this.input = $('input.select-dropdown:first', $wrapper);
+        if (this.input) {
+          this.input.on('blur', this.handleBlur);
+        }
+      }
+      // this.element.addEventListener('change', this.handleBlur);
+    } else {
+      if (this.input) {
+        this.input.off('blur', this.handleBlur);
+        this.input = null;
+      }
+      // this.element.removeEventListener('change', this.handleBlur);
+    }
+  }
+
   createMaterialSelect(destroy) {
+    this.attachBlur(false);
     if (destroy) {
       $(this.element).material_select('destroy');
     }
     $(this.element).material_select();
     this.toggleControl(this.disabled);
+    this.attachBlur(true);
   }
 }
 
@@ -2105,6 +2215,11 @@ export class MdSwitch {
 
   handleChange() {
     this.mdChecked = this.checkbox.checked;
+    fireEvent(this.element, 'blur');
+  }
+
+  blur() {
+    fireEvent(this.element, 'blur');
   }
 
   mdCheckedChanged(newValue) {
@@ -2308,13 +2423,15 @@ export class MdStaggeredList {
 
 export class MaterializeFormValidationRenderer {
 
+  className = 'md-input-validation';
+  classNameFirst = 'md-input-validation-first';
+
   render(instruction) {
     for (let { error, elements } of instruction.unrender) {
       for (let element of elements) {
         this.remove(element, error);
       }
     }
-
     for (let { error, elements } of instruction.render) {
       for (let element of elements) {
         this.add(element, error);
@@ -2325,30 +2442,31 @@ export class MaterializeFormValidationRenderer {
   add(element, error) {
     switch (element.tagName) {
     case 'MD-INPUT': {
-      let errorMessage = error.message || 'error';
       let input = element.querySelector('input');
+      let label = element.querySelector('label');
       if (input) {
         input.classList.remove('valid');
         input.classList.add('invalid');
-
-        // focus target
         error.target = input;
-
-        let label = element.querySelector('label');
-        if (label) {
-          label.classList.add('active');
-
-          // get error message from label
-          let msg = label.getAttribute('data-error');
-          if(!msg) {
-            // error message not set? add
-            label.setAttribute('data-error', errorMessage);
-          } else {
-            // set label message into error object
-            error.message = msg;
-          }
-        }
       }
+      if (label) {
+        label.removeAttribute('data-error');
+      }
+      this.addMessage(element, error);
+      break;
+    }
+    case 'SELECT': {
+      const selectWrapper = element.closest('.select-wrapper');
+      if (!selectWrapper) {
+        return;
+      }
+      let input = selectWrapper.querySelector('input');
+      if (input) {
+        input.classList.remove('valid');
+        input.classList.add('invalid');
+        error.target = input;
+      }
+      this.addMessage(selectWrapper, error);
       break;
     }
     default: break;
@@ -2358,14 +2476,51 @@ export class MaterializeFormValidationRenderer {
   remove(element, error) {
     switch (element.tagName) {
     case 'MD-INPUT': {
+      this.removeMessage(element, error);
+
       let input = element.querySelector('input');
-      if (input) {
+      if (input && element.querySelectorAll('.' + this.className).length === 0) {
+        input.classList.remove('invalid');
+        input.classList.add('valid');
+      }
+      break;
+    }
+    case 'SELECT': {
+      const selectWrapper = element.closest('.select-wrapper');
+      if (!selectWrapper) {
+        return;
+      }
+      this.removeMessage(selectWrapper, error);
+
+      let input = selectWrapper.querySelector('input');
+      if (input && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
         input.classList.remove('invalid');
         input.classList.add('valid');
       }
       break;
     }
     default: break;
+    }
+  }
+
+  addMessage(element, error) {
+    let message = document.createElement('div');
+    message.id = `md-input-validation-${error.id}`;
+    message.textContent = error.message;
+    message.className = this.className;
+    if (element.querySelectorAll('.' + this.className).length === 0) {
+      message.className += ' ' + this.classNameFirst;
+    }
+    message.style.opacity = 0;
+    element.appendChild(message, element.nextSibling);
+    window.getComputedStyle(message).opacity;
+    message.style.opacity = 1;
+  }
+
+  removeMessage(element, error) {
+    let message = element.querySelector(`#md-input-validation-${error.id}`);
+    if (message) {
+      element.removeChild(message);
     }
   }
 
@@ -2401,7 +2556,9 @@ export class MdWaves {
     }
 
     this.attributeManager.addClasses(classes);
+    // build-amd-remove start
     Waves.attach(this.element);
+    // build-amd-remove end
   }
 
   detached() {

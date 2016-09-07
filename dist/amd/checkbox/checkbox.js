@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes, _events) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -91,6 +91,10 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this.checkbox.addEventListener('change', this.handleChange);
     };
 
+    MdCheckbox.prototype.blur = function blur() {
+      (0, _events.fireEvent)(this.element, 'blur');
+    };
+
     MdCheckbox.prototype.detached = function detached() {
       this.attributeManager.removeClasses(['filled-in', 'disabled']);
       this.checkbox.removeEventListener('change', this.handleChange);
@@ -98,6 +102,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
     MdCheckbox.prototype.handleChange = function handleChange() {
       this.mdChecked = this.checkbox.checked;
+      (0, _events.fireEvent)(this.element, 'blur');
     };
 
     MdCheckbox.prototype.mdCheckedChanged = function mdCheckedChanged(newValue) {

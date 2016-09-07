@@ -691,7 +691,14 @@ Object.keys(_waves).forEach(function (key) {
 
 var _configBuilder = require('./config-builder');
 
+var _polyfills = require('./common/polyfills');
+
+function applyPolyfills() {
+  (0, _polyfills.polyfillElementClosest)();
+}
+
 function configure(aurelia, configCallback) {
+  applyPolyfills();
   var builder = new _configBuilder.ConfigBuilder();
 
   if (configCallback !== undefined && typeof configCallback === 'function') {

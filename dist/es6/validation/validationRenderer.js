@@ -1,12 +1,14 @@
 export class MaterializeFormValidationRenderer {
 
+  className = 'md-input-validation';
+  classNameFirst = 'md-input-validation-first';
+
   render(instruction) {
     for (let { error, elements } of instruction.unrender) {
       for (let element of elements) {
         this.remove(element, error);
       }
     }
-
     for (let { error, elements } of instruction.render) {
       for (let element of elements) {
         this.add(element, error);
@@ -17,30 +19,31 @@ export class MaterializeFormValidationRenderer {
   add(element, error) {
     switch (element.tagName) {
     case 'MD-INPUT': {
-      let errorMessage = error.message || 'error';
       let input = element.querySelector('input');
+      let label = element.querySelector('label');
       if (input) {
         input.classList.remove('valid');
         input.classList.add('invalid');
-
-        // focus target
         error.target = input;
-
-        let label = element.querySelector('label');
-        if (label) {
-          label.classList.add('active');
-
-          // get error message from label
-          let msg = label.getAttribute('data-error');
-          if(!msg) {
-            // error message not set? add
-            label.setAttribute('data-error', errorMessage);
-          } else {
-            // set label message into error object
-            error.message = msg;
-          }
-        }
       }
+      if (label) {
+        label.removeAttribute('data-error');
+      }
+      this.addMessage(element, error);
+      break;
+    }
+    case 'SELECT': {
+      const selectWrapper = element.closest('.select-wrapper');
+      if (!selectWrapper) {
+        return;
+      }
+      let input = selectWrapper.querySelector('input');
+      if (input) {
+        input.classList.remove('valid');
+        input.classList.add('invalid');
+        error.target = input;
+      }
+      this.addMessage(selectWrapper, error);
       break;
     }
     default: break;
@@ -50,14 +53,51 @@ export class MaterializeFormValidationRenderer {
   remove(element, error) {
     switch (element.tagName) {
     case 'MD-INPUT': {
+      this.removeMessage(element, error);
+
       let input = element.querySelector('input');
-      if (input) {
+      if (input && element.querySelectorAll('.' + this.className).length === 0) {
+        input.classList.remove('invalid');
+        input.classList.add('valid');
+      }
+      break;
+    }
+    case 'SELECT': {
+      const selectWrapper = element.closest('.select-wrapper');
+      if (!selectWrapper) {
+        return;
+      }
+      this.removeMessage(selectWrapper, error);
+
+      let input = selectWrapper.querySelector('input');
+      if (input && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
         input.classList.remove('invalid');
         input.classList.add('valid');
       }
       break;
     }
     default: break;
+    }
+  }
+
+  addMessage(element, error) {
+    let message = document.createElement('div');
+    message.id = `md-input-validation-${error.id}`;
+    message.textContent = error.message;
+    message.className = this.className;
+    if (element.querySelectorAll('.' + this.className).length === 0) {
+      message.className += ' ' + this.classNameFirst;
+    }
+    message.style.opacity = 0;
+    element.appendChild(message, element.nextSibling);
+    window.getComputedStyle(message).opacity;
+    message.style.opacity = 1;
+  }
+
+  removeMessage(element, error) {
+    let message = element.querySelector(`#md-input-validation-${error.id}`);
+    if (message) {
+      element.removeChild(message);
     }
   }
 

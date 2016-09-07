@@ -90,7 +90,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       }
 
       this.attributeManager.addClasses(classes);
-      Waves.attach(this.element);
     };
 
     MdWaves.prototype.detached = function detached() {

@@ -23,9 +23,6 @@ import {
 import {
   TaskQueue
 } from 'aurelia-task-queue';
-import {
-  DOM
-} from 'aurelia-pal';
 export declare class ClickCounter {
   count: any;
   increment(): any;
@@ -178,6 +175,7 @@ export declare class MdCheckbox {
   mdFilledIn: any;
   constructor(element?: any);
   attached(): any;
+  blur(): any;
   detached(): any;
   handleChange(): any;
   mdCheckedChanged(newValue?: any): any;
@@ -240,6 +238,12 @@ export declare class DarkenValueConverter {
 export declare class LightenValueConverter {
   toView(value?: any, steps?: any): any;
 }
+export declare class MdColors {
+  mdPrimaryColor: any;
+  mdAccentColor: any;
+  mdErrorColor: any;
+  mdSuccessColor: any;
+}
 
 /**
  * Adds css classes to a given element only if these classes are not already
@@ -275,6 +279,9 @@ export declare function fireEvent(element: Element, name: string, data?: any): a
 * @param data Addition data to attach to an event
 */
 export declare function fireMaterializeEvent(element: Element, name: string, data?: any): any;
+
+// https://github.com/jonathantneal/closest/blob/master/closest.js
+export declare function polyfillElementClosest(): any;
 export declare class DatePickerDefaultParser {
   canParse(value?: any): any;
   parse(value?: any): any;
@@ -504,16 +511,22 @@ export declare class MdScrollSpy {
 // destroy handler not available
 export declare class MdSelect {
   disabled: any;
+  label: any;
   subscriptions: any;
+  input: any;
   constructor(element?: any, logManager?: any, bindingEngine?: any, taskQueue?: any);
   attached(): any;
   detached(): any;
   refresh(): any;
+  handleBlur(): any;
   disabledChanged(newValue?: any): any;
   notifyBindingEngine(): any;
   handleChangeFromNativeSelect(): any;
   handleChangeFromViewModel(newValue?: any): any;
   toggleControl(disable?: any): any;
+  attachBlur(attach?: any): any;
+  
+  // this.element.removeEventListener('change', this.handleBlur);
   createMaterialSelect(destroy?: any): any;
 }
 export declare class MdSidenavCollapse {
@@ -587,6 +600,7 @@ export declare class MdSwitch {
   attached(): any;
   detached(): any;
   handleChange(): any;
+  blur(): any;
   mdCheckedChanged(newValue?: any): any;
 }
 export declare class MdTabs {
@@ -631,9 +645,13 @@ export declare class MdStaggeredList {
   ensureOpacity(): any;
 }
 export declare class MaterializeFormValidationRenderer {
+  className: any;
+  classNameFirst: any;
   render(instruction?: any): any;
   add(element?: any, error?: any): any;
   remove(element?: any, error?: any): any;
+  addMessage(element?: any, error?: any): any;
+  removeMessage(element?: any, error?: any): any;
 }
 export declare class MdWaves {
   block: any;
@@ -641,5 +659,7 @@ export declare class MdWaves {
   color: any;
   constructor(element?: any);
   attached(): any;
+  
+  // build-amd-remove end
   detached(): any;
 }

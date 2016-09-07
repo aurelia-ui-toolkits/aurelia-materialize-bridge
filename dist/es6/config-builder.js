@@ -123,7 +123,7 @@ export class ConfigBuilder {
   }
 
   useColors() : ConfigBuilder {
-    this.globalResources.push('./colors/md-colors.html');
+    this.globalResources.push('./colors/md-colors');
     return this;
   }
 

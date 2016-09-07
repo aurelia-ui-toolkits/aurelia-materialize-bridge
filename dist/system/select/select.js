@@ -1,7 +1,7 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', 'aurelia-logging', '../common/events'], function (_export, _context) {
-  var bindable, customAttribute, BindingEngine, inject, TaskQueue, LogManager, fireEvent, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdSelect;
+  var bindable, customAttribute, BindingEngine, inject, TaskQueue, LogManager, fireEvent, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, MdSelect;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -68,19 +68,23 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
-      _export('MdSelect', MdSelect = (_dec = inject(Element, LogManager, BindingEngine, TaskQueue), _dec2 = customAttribute('md-select'), _dec3 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
+      _export('MdSelect', MdSelect = (_dec = inject(Element, LogManager, BindingEngine, TaskQueue), _dec2 = customAttribute('md-select'), _dec3 = bindable(), _dec4 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdSelect(element, logManager, bindingEngine, taskQueue) {
           _classCallCheck(this, MdSelect);
 
           _initDefineProp(this, 'disabled', _descriptor, this);
 
+          _initDefineProp(this, 'label', _descriptor2, this);
+
           this._suspendUpdate = false;
           this.subscriptions = [];
+          this.input = null;
 
           this.element = element;
           this.taskQueue = taskQueue;
           this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
           this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
+          this.handleBlur = this.handleBlur.bind(this);
           this.log = LogManager.getLogger('md-select');
           this.bindingEngine = bindingEngine;
         }
@@ -89,11 +93,23 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
 
           this.createMaterialSelect(false);
+
+          if (this.label) {
+            var wrapper = $(this.element).parent('.select-wrapper');
+            var div = $('<div class="input-field"></div>');
+            var va = this.element.attributes.getNamedItem('validate');
+            if (va) {
+              div.attr(va.name, va.label);
+            }
+            wrapper.wrap(div);
+            $('<label>' + this.label + '</label>').insertAfter(wrapper);
+          }
           $(this.element).on('change', this.handleChangeFromNativeSelect);
         };
 
         MdSelect.prototype.detached = function detached() {
           $(this.element).off('change', this.handleChangeFromNativeSelect);
+          this.attachBlur(false);
           $(this.element).material_select('destroy');
           this.subscriptions.forEach(function (sub) {
             return sub.dispose();
@@ -106,6 +122,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           this.taskQueue.queueTask(function () {
             _this.createMaterialSelect(true);
           });
+        };
+
+        MdSelect.prototype.handleBlur = function handleBlur() {
+          this.log.debug('handleBlur called');
+
+          fireEvent(this.element, 'blur');
         };
 
         MdSelect.prototype.disabledChanged = function disabledChanged(newValue) {
@@ -121,7 +143,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
             this._suspendUpdate = true;
             fireEvent(this.element, 'change');
-
             this._suspendUpdate = false;
           }
         };
@@ -149,12 +170,31 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           }
         };
 
+        MdSelect.prototype.attachBlur = function attachBlur(attach) {
+          if (attach) {
+            var $wrapper = $(this.element).parent('.select-wrapper');
+            if ($wrapper.length > 0) {
+              this.input = $('input.select-dropdown:first', $wrapper);
+              if (this.input) {
+                this.input.on('blur', this.handleBlur);
+              }
+            }
+          } else {
+              if (this.input) {
+                this.input.off('blur', this.handleBlur);
+                this.input = null;
+              }
+            }
+        };
+
         MdSelect.prototype.createMaterialSelect = function createMaterialSelect(destroy) {
+          this.attachBlur(false);
           if (destroy) {
             $(this.element).material_select('destroy');
           }
           $(this.element).material_select();
           this.toggleControl(this.disabled);
+          this.attachBlur(true);
         };
 
         return MdSelect;
@@ -162,6 +202,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         enumerable: true,
         initializer: function initializer() {
           return false;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'label', [_dec4], {
+        enumerable: true,
+        initializer: function initializer() {
+          return '';
         }
       })), _class2)) || _class) || _class));
 

@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-pal', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes', './input-update-service'], function (exports, _aureliaTemplating, _aureliaPal, _aureliaBinding, _aureliaDependencyInjection, _aureliaTaskQueue, _attributes, _inputUpdateService) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes', './input-update-service', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaTaskQueue, _attributes, _inputUpdateService, _events) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -122,8 +122,7 @@ define(['exports', 'aurelia-templating', 'aurelia-pal', 'aurelia-binding', 'aure
     };
 
     MdInput.prototype.blur = function blur() {
-      var event = _aureliaPal.DOM.createCustomEvent('blur');
-      this.element.dispatchEvent(event);
+      (0, _events.fireEvent)(this.element, 'blur');
     };
 
     MdInput.prototype.mdValueChanged = function mdValueChanged() {

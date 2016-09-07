@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export, _context) {
-  var bindable, customElement, bindingMode, inject, AttributeManager, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _class3, _temp, MdCheckbox;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes', '../common/events'], function (_export, _context) {
+  var bindable, customElement, bindingMode, inject, AttributeManager, getBooleanFromAttributeValue, fireEvent, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _class3, _temp, MdCheckbox;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -64,6 +64,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       AttributeManager = _commonAttributeManager.AttributeManager;
     }, function (_commonAttributes) {
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
+    }, function (_commonEvents) {
+      fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
       _export('MdCheckbox', MdCheckbox = (_dec = customElement('md-checkbox'), _dec2 = inject(Element), _dec3 = bindable({
@@ -100,6 +102,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           this.checkbox.addEventListener('change', this.handleChange);
         };
 
+        MdCheckbox.prototype.blur = function blur() {
+          fireEvent(this.element, 'blur');
+        };
+
         MdCheckbox.prototype.detached = function detached() {
           this.attributeManager.removeClasses(['filled-in', 'disabled']);
           this.checkbox.removeEventListener('change', this.handleChange);
@@ -107,6 +113,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
         MdCheckbox.prototype.handleChange = function handleChange() {
           this.mdChecked = this.checkbox.checked;
+          fireEvent(this.element, 'blur');
         };
 
         MdCheckbox.prototype.mdCheckedChanged = function mdCheckedChanged(newValue) {
