@@ -15,7 +15,9 @@ In your project install the following via npm:
   $ npm install requirejs materialize-css --save-dev
 ```
 
-Add [rbuild.js](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/blob/master/build/tools/rbuild.js) and [materialize-css.js](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/blob/master/build/tools/materialize-css.js)
+Add the following files to your project root directory:
+<a target="_blank" href="https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/blob/master/build/tools/rbuild.js">rbuild.js</a>
+and <a target="_blank" href="https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/blob/master/build/tools/materialize-css.js">materialize-css.js</a>
 
 Run this command to create an amd compatible version of Materialize:
 
