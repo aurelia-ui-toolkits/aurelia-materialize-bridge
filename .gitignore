@@ -6,3 +6,4 @@ bower_components
 build/reports
 devbuild
 .imdone/config.json
+npm-debug.log*
