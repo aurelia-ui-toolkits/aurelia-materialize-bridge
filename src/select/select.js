@@ -4,6 +4,7 @@ import {inject} from 'aurelia-dependency-injection';
 import {TaskQueue} from 'aurelia-task-queue';
 import * as LogManager from 'aurelia-logging';
 import {fireEvent} from '../common/events';
+import {getBooleanFromAttributeValue} from '../common/attributes';
 import {DOM} from 'aurelia-pal';
 
 @inject(Element, LogManager, BindingEngine, TaskQueue)
@@ -11,6 +12,7 @@ import {DOM} from 'aurelia-pal';
 export class MdSelect {
   @bindable() disabled = false;
   @bindable() label = '';
+  @bindable() showErrortext = true;
   _suspendUpdate = false;
   subscriptions = [];
   input = null;
@@ -66,6 +68,17 @@ export class MdSelect {
     this.toggleControl(newValue);
   }
 
+  showErrortextChanged() {
+    this.setErrorTextAttribute();
+  }
+
+  setErrorTextAttribute() {
+    let input = this.element.parentElement.querySelector('input.select-dropdown');
+    if (!input) return;
+    this.log.debug('showErrortextChanged: ' + this.showErrortext);
+    input.setAttribute('data-show-errortext', getBooleanFromAttributeValue(this.showErrortext));
+  }
+
   notifyBindingEngine() {
     this.log.debug('selectedOptions changed', arguments);
   }
@@ -110,6 +123,7 @@ export class MdSelect {
     $(this.element).material_select();
     this.toggleControl(this.disabled);
     this.observeVisibleDropdownContent(true);
+    this.setErrorTextAttribute();
   }
 
   observeVisibleDropdownContent(attach) {

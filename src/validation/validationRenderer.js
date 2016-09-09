@@ -44,8 +44,11 @@ export class MaterializeFormValidationRenderer {
         input.classList.remove('valid');
         input.classList.add('invalid');
         error.target = input;
+        if (!(input.hasAttribute('data-show-errortext') &&
+            input.getAttribute('data-show-errortext') === 'false')) {
+          this.addMessage(selectWrapper, error);
+        }
       }
-      this.addMessage(selectWrapper, error);
       break;
     }
     default: break;
