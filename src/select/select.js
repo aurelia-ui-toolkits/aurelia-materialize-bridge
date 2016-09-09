@@ -146,7 +146,8 @@ export class MdSelect {
   // when enable 'Disable Functionality', open that list and
   // then open 'Basic use' list.
   // Chrome - ok
-  // IE ?
+  // IE 11 - ok
+  // Edge ?
   //
   _taskqueueRunning = false;
 
