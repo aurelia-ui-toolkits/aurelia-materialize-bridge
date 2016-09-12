@@ -63,6 +63,14 @@ System.config({
     "github:jspm/nodelibs-events@0.1.1": {
       "events": "npm:events@1.0.2"
     },
+    "github:jspm/nodelibs-http@1.7.1": {
+      "Base64": "npm:Base64@0.2.1",
+      "events": "github:jspm/nodelibs-events@0.1.1",
+      "inherits": "npm:inherits@2.0.1",
+      "stream": "github:jspm/nodelibs-stream@0.1.0",
+      "url": "github:jspm/nodelibs-url@0.1.0",
+      "util": "github:jspm/nodelibs-util@0.1.0"
+    },
     "github:jspm/nodelibs-path@0.1.0": {
       "path-browserify": "npm:path-browserify@0.0.0"
     },
@@ -239,8 +247,15 @@ System.config({
       "number-is-nan": "npm:number-is-nan@1.0.0"
     },
     "npm:config-chain@1.1.10": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "events": "github:jspm/nodelibs-events@0.1.1",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "http": "github:jspm/nodelibs-http@1.7.1",
       "ini": "npm:ini@1.3.4",
-      "proto-list": "npm:proto-list@1.2.4"
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "proto-list": "npm:proto-list@1.2.4",
+      "url": "github:jspm/nodelibs-url@0.1.0"
     },
     "npm:core-js@1.2.7": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -374,10 +389,14 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:yargs@3.32.0": {
+      "assert": "github:jspm/nodelibs-assert@0.1.0",
       "camelcase": "npm:camelcase@2.1.1",
       "cliui": "npm:cliui@3.2.0",
       "decamelize": "npm:decamelize@1.2.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
       "os-locale": "npm:os-locale@1.4.0",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
       "string-width": "npm:string-width@1.0.2",
       "window-size": "npm:window-size@0.1.4",
       "y18n": "npm:y18n@3.2.1"
