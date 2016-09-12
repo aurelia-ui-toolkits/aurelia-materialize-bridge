@@ -5,15 +5,20 @@ import { MaterializeFormValidationRenderer } from 'aurelia-materialize-bridge';
 @inject(NewInstance.of(ValidationController))
 export class Validation {
   selectedValue = '';
+  selectedValue2 = '';
+  showErrortext = false;
 
   controller = null;
 
   rules = ValidationRules
     .ensure('selectedValue')
+      .displayName('Basic')
       .required()
-      .on(this)
-      .rules;
-
+    .ensure('selectedValue2')
+      .displayName('Show or hide error text')
+      .required()
+    .on(this)
+    .rules;
 
   constructor(controller: ValidationController) {
     this.controller = controller;
@@ -22,15 +27,19 @@ export class Validation {
 
   reset() {
     this.selectedValue = '';
+    this.controller.reset({ object: this, propertyName: 'selectedValue' });
+  }
+
+  reset2() {
+    this.selectedValue2 = '';
+    this.controller.reset({ object: this, propertyName: 'selectedValue2' });
   }
 
   validateModel() {
-    this.controller.validate().then(v => {
-      if (v.length === 0) {
-        this.message = 'All is good!';
-      } else {
-        this.message = 'You have errors!';
-      }
-    });
+    return this.controller.validate({ object: this, propertyName: 'selectedValue' });
+  }
+
+  validateModel2() {
+    return this.controller.validate({ object: this, propertyName: 'selectedValue2' });
   }
 }
