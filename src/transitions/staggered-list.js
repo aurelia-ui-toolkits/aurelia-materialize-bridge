@@ -23,7 +23,7 @@ export class MdStaggeredList {
   }
 
   staggerList() {
-    Materialize.showStaggeredList(this.ref);
+    Materialize.showStaggeredList($(this.ref));
   }
 
   ensureOpacity() {
