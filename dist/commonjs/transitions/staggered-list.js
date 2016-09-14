@@ -79,7 +79,7 @@ var MdStaggeredList = exports.MdStaggeredList = (_dec = (0, _aureliaTemplating.c
   };
 
   MdStaggeredList.prototype.staggerList = function staggerList() {
-    Materialize.showStaggeredList(this.ref);
+    Materialize.showStaggeredList($(this.ref));
   };
 
   MdStaggeredList.prototype.ensureOpacity = function ensureOpacity() {

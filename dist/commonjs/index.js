@@ -233,6 +233,18 @@ Object.keys(_colorValueConverters).forEach(function (key) {
   });
 });
 
+var _mdColors = require('./colors/md-colors');
+
+Object.keys(_mdColors).forEach(function (key) {
+  if (key === "default") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _mdColors[key];
+    }
+  });
+});
+
 var _attributeManager = require('./common/attributeManager');
 
 Object.keys(_attributeManager).forEach(function (key) {

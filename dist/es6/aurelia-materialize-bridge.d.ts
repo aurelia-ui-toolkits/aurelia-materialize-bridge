@@ -23,6 +23,9 @@ import {
 import {
   TaskQueue
 } from 'aurelia-task-queue';
+import {
+  DOM
+} from 'aurelia-pal';
 export declare class ClickCounter {
   count: any;
   increment(): any;
@@ -513,22 +516,24 @@ export declare class MdScrollSpy {
 export declare class MdSelect {
   disabled: any;
   label: any;
+  showErrortext: any;
   subscriptions: any;
   input: any;
+  dropdownMutationObserver: any;
   constructor(element?: any, logManager?: any, bindingEngine?: any, taskQueue?: any);
   attached(): any;
   detached(): any;
   refresh(): any;
-  handleBlur(): any;
   disabledChanged(newValue?: any): any;
+  showErrortextChanged(): any;
+  setErrorTextAttribute(): any;
   notifyBindingEngine(): any;
   handleChangeFromNativeSelect(): any;
   handleChangeFromViewModel(newValue?: any): any;
   toggleControl(disable?: any): any;
-  attachBlur(attach?: any): any;
-  
-  // this.element.removeEventListener('change', this.handleBlur);
   createMaterialSelect(destroy?: any): any;
+  observeVisibleDropdownContent(attach?: any): any;
+  handleBlur(): any;
 }
 export declare class MdSidenavCollapse {
   ref: any;
@@ -660,7 +665,5 @@ export declare class MdWaves {
   color: any;
   constructor(element?: any);
   attached(): any;
-  
-  // build-amd-remove end
   detached(): any;
 }
