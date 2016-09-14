@@ -16,6 +16,10 @@
     "events": {
       "route": "events",
       "files": ["html", "js"]
+    },
+    "range-with-input": {
+      "route": "range-with-input",
+      "files": ["html", "js"]
     }
   }
 }
