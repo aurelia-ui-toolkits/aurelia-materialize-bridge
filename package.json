@@ -29,9 +29,8 @@
   },
   "jspm": {
     "main": "index",
-    "format": "amd",
     "directories": {
-      "lib": "dist/amd"
+      "lib": "dist/system"
     },
     "dependencies": {
       "aurelia-binding": "npm:aurelia-binding@^1.0.0-beta.1.1.1",
