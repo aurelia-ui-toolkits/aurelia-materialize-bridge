@@ -76,6 +76,7 @@ Apply the following changes to `aurelia_project/aurelia.json`:
     "deps": [
       "jquery"
     ],
+    "exports": "Materialize",
     "resources": [
       "css/materialize.css"
     ]
