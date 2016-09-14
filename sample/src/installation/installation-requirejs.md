@@ -163,6 +163,12 @@ Apply the following changes to `aurelia_project/aurelia.json`:
 
   At the end of this page is a full list of currently available options.
 
+3. Add this to `app.html` in your `src` folder:
+
+  ```html
+  <require from="materialize-css/css/materialize.css"></require>
+  ```
+
 #### You are done!
 It is now possible to drop some custom-elements into your DOM. See the other pages on this website for detailed information on how to do this.
 
