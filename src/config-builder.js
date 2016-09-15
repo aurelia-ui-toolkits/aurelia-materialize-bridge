@@ -1,3 +1,5 @@
+import {applyMaterializeDropdownFix} from './dropdown/dropdown-fix';
+
 /**
 * Plugin configuration builder
 */
@@ -135,6 +137,11 @@ export class ConfigBuilder {
   useDropdown() : ConfigBuilder {
     // this.globalResources.push('./dropdown/dropdown-element');
     this.globalResources.push('./dropdown/dropdown');
+    return this;
+  }
+
+  useDropdownFix() : ConfigBuilder {
+    applyMaterializeDropdownFix();
     return this;
   }
 
