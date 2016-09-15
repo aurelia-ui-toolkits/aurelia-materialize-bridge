@@ -341,6 +341,18 @@ Object.keys(_dropdown).forEach(function (key) {
   });
 });
 
+var _dropdownFix = require('./dropdown/dropdown-fix');
+
+Object.keys(_dropdownFix).forEach(function (key) {
+  if (key === "default") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _dropdownFix[key];
+    }
+  });
+});
+
 var _fab = require('./fab/fab');
 
 Object.keys(_fab).forEach(function (key) {

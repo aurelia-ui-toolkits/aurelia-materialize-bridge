@@ -59,6 +59,7 @@ export declare class ConfigBuilder {
   useColors(): ConfigBuilder;
   useDatePicker(): ConfigBuilder;
   useDropdown(): ConfigBuilder;
+  useDropdownFix(): ConfigBuilder;
   useFab(): ConfigBuilder;
   useFile(): ConfigBuilder;
   useFooter(): ConfigBuilder;
@@ -326,6 +327,7 @@ export declare class MdDropdownElement {
   constructor(element?: any);
   attached(): any;
 }
+export declare function applyMaterializeDropdownFix(): any;
 export declare class MdDropdown {
   activates: any;
   alignment: any;

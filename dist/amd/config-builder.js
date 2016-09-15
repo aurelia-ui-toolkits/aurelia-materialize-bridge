@@ -1,9 +1,10 @@
-define(['exports'], function (exports) {
+define(['exports', './dropdown/dropdown-fix'], function (exports, _dropdownFix) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
+  exports.ConfigBuilder = undefined;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -106,6 +107,11 @@ define(['exports'], function (exports) {
 
     ConfigBuilder.prototype.useDropdown = function useDropdown() {
       this.globalResources.push('./dropdown/dropdown');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useDropdownFix = function useDropdownFix() {
+      (0, _dropdownFix.applyMaterializeDropdownFix)();
       return this;
     };
 

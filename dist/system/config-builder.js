@@ -1,7 +1,9 @@
 'use strict';
 
-System.register([], function (_export, _context) {
-  var ConfigBuilder;
+System.register(['./dropdown/dropdown-fix'], function (_export, _context) {
+  "use strict";
+
+  var applyMaterializeDropdownFix, ConfigBuilder;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -10,7 +12,9 @@ System.register([], function (_export, _context) {
   }
 
   return {
-    setters: [],
+    setters: [function (_dropdownDropdownFix) {
+      applyMaterializeDropdownFix = _dropdownDropdownFix.applyMaterializeDropdownFix;
+    }],
     execute: function () {
       _export('ConfigBuilder', ConfigBuilder = function () {
         function ConfigBuilder() {
@@ -107,6 +111,11 @@ System.register([], function (_export, _context) {
 
         ConfigBuilder.prototype.useDropdown = function useDropdown() {
           this.globalResources.push('./dropdown/dropdown');
+          return this;
+        };
+
+        ConfigBuilder.prototype.useDropdownFix = function useDropdownFix() {
+          applyMaterializeDropdownFix();
           return this;
         };
 

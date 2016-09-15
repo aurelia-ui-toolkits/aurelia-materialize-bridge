@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/events', '../common/attributeManager'], function (_export, _context) {
+  "use strict";
+
   var customAttribute, inject, TaskQueue, fireMaterializeEvent, AttributeManager, _createClass, _dec, _dec2, _class, MdTabs;
 
   function _classCallCheck(instance, Constructor) {

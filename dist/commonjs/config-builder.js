@@ -3,6 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.ConfigBuilder = undefined;
+
+var _dropdownFix = require('./dropdown/dropdown-fix');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -101,6 +104,11 @@ var ConfigBuilder = exports.ConfigBuilder = function () {
 
   ConfigBuilder.prototype.useDropdown = function useDropdown() {
     this.globalResources.push('./dropdown/dropdown');
+    return this;
+  };
+
+  ConfigBuilder.prototype.useDropdownFix = function useDropdownFix() {
+    (0, _dropdownFix.applyMaterializeDropdownFix)();
     return this;
   };
 

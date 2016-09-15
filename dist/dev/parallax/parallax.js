@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-dependency-injection'], function (_export, _context) {
+  "use strict";
+
   var customAttribute, inject, _dec, _dec2, _class, MdParallax;
 
   function _classCallCheck(instance, Constructor) {

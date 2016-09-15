@@ -52,6 +52,7 @@ export * from './datepicker/datepicker.default-parser';
 export * from './datepicker/datepicker';
 export * from './dropdown/dropdown-element';
 export * from './dropdown/dropdown';
+export * from './dropdown/dropdown-fix';
 export * from './fab/fab';
 export * from './file/file';
 export * from './footer/footer';
