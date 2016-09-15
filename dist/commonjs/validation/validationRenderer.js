@@ -113,8 +113,10 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
             _input.classList.remove('valid');
             _input.classList.add('invalid');
             error.target = _input;
+            if (!(_input.hasAttribute('data-show-errortext') && _input.getAttribute('data-show-errortext') === 'false')) {
+              this.addMessage(selectWrapper, error);
+            }
           }
-          this.addMessage(selectWrapper, error);
           break;
         }
       default:

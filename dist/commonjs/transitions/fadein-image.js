@@ -79,7 +79,7 @@ var MdFadeinImage = exports.MdFadeinImage = (_dec = (0, _aureliaTemplating.custo
   };
 
   MdFadeinImage.prototype.fadeInImage = function fadeInImage() {
-    Materialize.fadeInImage(this.ref);
+    Materialize.fadeInImage($(this.ref));
   };
 
   MdFadeinImage.prototype.ensureOpacity = function ensureOpacity() {

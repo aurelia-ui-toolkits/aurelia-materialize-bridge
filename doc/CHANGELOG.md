@@ -1,3 +1,22 @@
+<a name="0.16.0"></a>
+# [0.16.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.15.0...v0.16.0) (2016-09-14)
+
+
+### Bug Fixes
+
+* **exports:** export md-colors, fix #272 ([a21345a](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a21345a)), closes [#272](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/272)
+* **exports:** fix md-colors export ([b281aa0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b281aa0))
+* **md-select:** fire blur after dropdown hides ([6fae969](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6fae969))
+* **transitions:** send jquery object ([ad09a7a](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/ad09a7a))
+* **transitions:** send jquery object, fix #269 ([c94632f](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/c94632f)), closes [#269](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/269)
+* **waves:** revert amd workaround, call Waves.attact again ([8dbf883](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/8dbf883))
+
+### Features
+
+* **md-select:** show-errortext option ([69069be](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/69069be))
+
+
+
 <a name="0.15.0"></a>
 # [0.15.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.14.0...v0.15.0) (2016-09-07)
 

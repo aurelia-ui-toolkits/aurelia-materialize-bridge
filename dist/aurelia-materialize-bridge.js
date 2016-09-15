@@ -5,6 +5,7 @@ import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-bind
 import {Router} from 'aurelia-router';
 import {getLogger} from 'aurelia-logging';
 import {TaskQueue} from 'aurelia-task-queue';
+import {DOM} from 'aurelia-pal';
 
 export class ClickCounter {
   count = 0;
@@ -1878,9 +1879,11 @@ export class MdScrollSpy {
 export class MdSelect {
   @bindable() disabled = false;
   @bindable() label = '';
+  @bindable() showErrortext = true;
   _suspendUpdate = false;
   subscriptions = [];
   input = null;
+  dropdownMutationObserver = null;
 
   constructor(element, logManager, bindingEngine, taskQueue) {
     this.element = element;
@@ -1916,7 +1919,8 @@ export class MdSelect {
 
   detached() {
     $(this.element).off('change', this.handleChangeFromNativeSelect);
-    this.attachBlur(false);
+    this.observeVisibleDropdownContent(false);
+    this.dropdownMutationObserver = null;
     $(this.element).material_select('destroy');
     this.subscriptions.forEach(sub => sub.dispose());
   }
@@ -1927,36 +1931,19 @@ export class MdSelect {
     });
   }
 
-  handleBlur() {
-    this.log.debug('handleBlur called');
-
-    // problem: if this comes from an actual "blur" event, the event is fired too early
-    //          if this comes from a "change" event, the timing is correct
-
-    // take 1
-    // setTimeout(() => {
-    //   fireEvent(this.element, 'blur');
-    // }, 200);
-
-    // TaskQueue doesn't change anything because the "change" event is fired after
-    // the queue has been processed
-
-    // take 2
-    // if (!this._blurHandled) {
-    //   this.taskQueue.queueTask(() => {
-    //     fireEvent(this.element, 'blur');
-    //     this.log.debug('blur event fired');
-    //     this._blurHandled = false;
-    //   });
-    //   this._blurHandled = true;
-    // }
-
-    // take 3
-    fireEvent(this.element, 'blur');
-  }
-
   disabledChanged(newValue) {
     this.toggleControl(newValue);
+  }
+
+  showErrortextChanged() {
+    this.setErrorTextAttribute();
+  }
+
+  setErrorTextAttribute() {
+    let input = this.element.parentElement.querySelector('input.select-dropdown');
+    if (!input) return;
+    this.log.debug('showErrortextChanged: ' + this.showErrortext);
+    input.setAttribute('data-show-errortext', getBooleanFromAttributeValue(this.showErrortext));
   }
 
   notifyBindingEngine() {
@@ -1995,33 +1982,64 @@ export class MdSelect {
     }
   }
 
-  attachBlur(attach) {
-    if (attach) {
-      let $wrapper = $(this.element).parent('.select-wrapper');
-      if ($wrapper.length > 0) {
-        this.input = $('input.select-dropdown:first', $wrapper);
-        if (this.input) {
-          this.input.on('blur', this.handleBlur);
-        }
-      }
-      // this.element.addEventListener('change', this.handleBlur);
-    } else {
-      if (this.input) {
-        this.input.off('blur', this.handleBlur);
-        this.input = null;
-      }
-      // this.element.removeEventListener('change', this.handleBlur);
-    }
-  }
-
   createMaterialSelect(destroy) {
-    this.attachBlur(false);
+    this.observeVisibleDropdownContent(false);
     if (destroy) {
       $(this.element).material_select('destroy');
     }
     $(this.element).material_select();
     this.toggleControl(this.disabled);
-    this.attachBlur(true);
+    this.observeVisibleDropdownContent(true);
+    this.setErrorTextAttribute();
+  }
+
+  observeVisibleDropdownContent(attach) {
+    if (attach) {
+      if (!this.dropdownMutationObserver) {
+        this.dropdownMutationObserver = DOM.createMutationObserver(mutations => {
+          let isHidden = false;
+          for (let mutation of mutations) {
+            if (window.getComputedStyle(mutation.target).getPropertyValue('display') === 'none') {
+              isHidden = true;
+            }
+          }
+          if (isHidden) {
+            this.dropdownMutationObserver.takeRecords();
+            this.handleBlur();
+          }
+        });
+      }
+      this.dropdownMutationObserver.observe(this.element.parentElement.querySelector('.dropdown-content'), {
+        attributes: true,
+        attributeFilter: ['style']
+      });
+    } else {
+      if (this.dropdownMutationObserver) {
+        this.dropdownMutationObserver.disconnect();
+        this.dropdownMutationObserver.takeRecords();
+      }
+    }
+  }
+
+  //
+  // Firefox sometimes fire blur several times in a row
+  // observable at http://localhost:3000/#/samples/select/
+  // when enable 'Disable Functionality', open that list and
+  // then open 'Basic use' list.
+  // Chrome - ok
+  // IE 11 - ok
+  // Edge ?
+  //
+  _taskqueueRunning = false;
+
+  handleBlur() {
+    if (this._taskqueueRunning) return;
+    this._taskqueueRunning = true;
+    this.taskQueue.queueTask(() => {
+      this.log.debug('fire blur event');
+      fireEvent(this.element, 'blur');
+      this._taskqueueRunning = false;
+    });
   }
 }
 
@@ -2382,7 +2400,7 @@ export class MdFadeinImage {
   }
 
   fadeInImage() {
-    Materialize.fadeInImage(this.ref);
+    Materialize.fadeInImage($(this.ref));
   }
 
   ensureOpacity() {
@@ -2414,7 +2432,7 @@ export class MdStaggeredList {
   }
 
   staggerList() {
-    Materialize.showStaggeredList(this.ref);
+    Materialize.showStaggeredList($(this.ref));
   }
 
   ensureOpacity() {
@@ -2474,8 +2492,11 @@ export class MaterializeFormValidationRenderer {
         input.classList.remove('valid');
         input.classList.add('invalid');
         error.target = input;
+        if (!(input.hasAttribute('data-show-errortext') &&
+            input.getAttribute('data-show-errortext') === 'false')) {
+          this.addMessage(selectWrapper, error);
+        }
       }
-      this.addMessage(selectWrapper, error);
       break;
     }
     default: break;
@@ -2565,9 +2586,7 @@ export class MdWaves {
     }
 
     this.attributeManager.addClasses(classes);
-    // build-amd-remove start
     Waves.attach(this.element);
-    // build-amd-remove end
   }
 
   detached() {

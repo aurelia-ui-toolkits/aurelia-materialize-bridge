@@ -1,6 +1,6 @@
 {
   "name": "aurelia-materialize-bridge",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "registry": "github",
   "description": "Aurelia interface to http://materializecss.com/",
   "keywords": [
@@ -29,9 +29,8 @@
   },
   "jspm": {
     "main": "index",
-    "format": "amd",
     "directories": {
-      "lib": "dist/amd"
+      "lib": "dist/system"
     },
     "dependencies": {
       "aurelia-binding": "npm:aurelia-binding@^1.0.0-beta.1.1.1",

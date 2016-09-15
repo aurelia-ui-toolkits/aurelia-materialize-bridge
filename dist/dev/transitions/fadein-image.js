@@ -83,7 +83,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
         };
 
         MdFadeinImage.prototype.fadeInImage = function fadeInImage() {
-          Materialize.fadeInImage(this.ref);
+          Materialize.fadeInImage($(this.ref));
         };
 
         MdFadeinImage.prototype.ensureOpacity = function ensureOpacity() {

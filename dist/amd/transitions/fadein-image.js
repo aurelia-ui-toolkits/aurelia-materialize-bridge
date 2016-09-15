@@ -78,7 +78,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
     };
 
     MdFadeinImage.prototype.fadeInImage = function fadeInImage() {
-      Materialize.fadeInImage(this.ref);
+      Materialize.fadeInImage($(this.ref));
     };
 
     MdFadeinImage.prototype.ensureOpacity = function ensureOpacity() {

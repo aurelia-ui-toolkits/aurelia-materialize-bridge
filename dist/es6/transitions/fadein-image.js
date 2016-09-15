@@ -23,7 +23,7 @@ export class MdFadeinImage {
   }
 
   fadeInImage() {
-    Materialize.fadeInImage(this.ref);
+    Materialize.fadeInImage($(this.ref));
   }
 
   ensureOpacity() {
