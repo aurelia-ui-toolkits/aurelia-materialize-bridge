@@ -4,9 +4,14 @@
     <div class="col s12">
       <div>
         <md-collection view-model.ref="list">
-          <md-collection-item repeat.for="actor of actors" class="avatar ${ selector.isSelected ? 'selected' : '' }">
-            <md-collection-selector view-model.ref="selector" item.bind="actor" md-on-selection-changed.delegate="onSelectionChanged($event)">
-              <img src="images/collections-sample-1.jpg" alt="" class="circle md-collection-selector__hover">
+          <md-collection-item repeat.for="actor of actors" class="avatar ${ selector.isSelected ? 'selected' : '' } ${ selector.mdDisabled ? 'disabled' : '' }">
+            <md-collection-selector
+              view-model.ref="selector"
+              item.bind="actor"
+              md-on-selection-changed.delegate="onSelectionChanged($event)"
+              md-disabled="${$index === 2}"
+            >
+              <img if.bind="$index !== 2" src="images/collections-sample-1.jpg" alt="" class="circle md-collection-selector__hover">
             </md-collection-selector>
             <span class="accent-text title">${actor.name}</span>
             <p>${actor.description}</p>
@@ -15,6 +20,14 @@
             </div>
           </md-collection-item>
         </md-collection>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <div>
+        <button md-button click.delegate="list.selectAll()">select all</button>
+        <button md-button click.delegate="list.clearSelection()">clear</button>
       </div>
     </div>
   </div>

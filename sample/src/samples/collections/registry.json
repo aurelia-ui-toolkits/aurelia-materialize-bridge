@@ -19,7 +19,7 @@
     },
     "selection": {
       "route": "selection",
-      "files": ["html", "js"]
+      "files": ["html", "js", "css"]
     }
   }
 }
