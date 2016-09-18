@@ -61,7 +61,7 @@ Apply the following changes to `aurelia_project/aurelia.json`:
   },
   ```
 
-* add this to bundles.dependencies:
+* add this to bundles.dependencies in your `aurelia_project/aurelia.json`:
 
   ```json
   {
