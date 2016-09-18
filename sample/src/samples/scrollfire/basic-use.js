@@ -1,8 +1,8 @@
 export class BasicUse {
   firstTarget() {
-    Materialize.showStaggeredList(this.list);
+    Materialize.showStaggeredList($(this.list));
   }
   secondTarget() {
-    Materialize.fadeInImage(this.image);
+    Materialize.fadeInImage($(this.image));
   }
 }
