@@ -19,11 +19,19 @@ Add the following files to your project root directory:
 <a target="_blank" href="https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/blob/master/build/tools/rbuild.js">rbuild.js</a>
 and <a target="_blank" href="https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/blob/master/build/tools/materialize-css.js">materialize-css.js</a>
 
-Run this command to create an amd compatible version of Materialize:
+Run the following command to create an amd compatible version of Materialize.
+**Note**: run this in a bash-compatible shell like "gitbash" which comes with Git for Windows.
 
 ```
   $ ./node_modules/.bin/r.js -o rbuild.js
 ```
+
+If this fails on Windows or if you don't want to use a bash-compatible shell, try this:
+
+```
+  $ ./node_modules/.bin/r.js -o rbuild.js
+```
+
 
 Install the bridge:
 
