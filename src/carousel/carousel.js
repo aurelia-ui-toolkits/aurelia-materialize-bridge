@@ -1,18 +1,21 @@
-import { bindable, customElement } from 'aurelia-templating';
-import { bindingMode } from 'aurelia-binding';
-import { inject } from 'aurelia-dependency-injection';
-import { getBooleanFromAttributeValue } from '../common/attributes';
+import {bindable, children, customElement} from 'aurelia-templating';
+import {bindingMode} from 'aurelia-binding';
+import {inject} from 'aurelia-dependency-injection';
+import {TaskQueue} from 'aurelia-task-queue';
+import {getBooleanFromAttributeValue} from '../common/attributes';
 
 @customElement('md-carousel')
-@inject(Element)
+@inject(Element, TaskQueue)
 export class MdCarousel {
   @bindable() mdIndicators = true;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdSlider = false;
+  @children('md-carousel-item') items = [];
 
-  constructor(element) {
+  constructor(element, taskQueue) {
     this.element = element;
+    this.taskQueue = taskQueue;
   }
 
   attached() {
@@ -20,17 +23,29 @@ export class MdCarousel {
       this.element.classList.add('carousel-slider');
     }
 
-    let options = {
-      full_width: getBooleanFromAttributeValue(this.mdSlider),
-      indicators: this.mdIndicators
-    };
-
     // workaround for: https://github.com/Dogfalo/materialize/issues/2741
     // if (getBooleanFromAttributeValue(this.mdSlider)) {
     //   $(this.element).carousel({full_width: true});
     // } else {
     //   $(this.element).carousel();
     // }
-    $(this.element).carousel(options);
+    this.refresh();
+  }
+
+  itemsChanged(newValue) {
+    this.refresh();
+  }
+
+  refresh() {
+    if (this.items.length > 0) {
+      let options = {
+        full_width: getBooleanFromAttributeValue(this.mdSlider),
+        indicators: this.mdIndicators
+      };
+
+      this.taskQueue.queueTask(() => {
+        $(this.element).carousel(options);
+      });
+    }
   }
 }
