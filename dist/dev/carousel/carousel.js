@@ -1,9 +1,7 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes'], function (_export, _context) {
-  "use strict";
-
-  var bindable, customElement, bindingMode, inject, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, MdCarousel;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes'], function (_export, _context) {
+  var bindable, children, customElement, bindingMode, inject, TaskQueue, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, MdCarousel;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -57,26 +55,32 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
   return {
     setters: [function (_aureliaTemplating) {
       bindable = _aureliaTemplating.bindable;
+      children = _aureliaTemplating.children;
       customElement = _aureliaTemplating.customElement;
     }, function (_aureliaBinding) {
       bindingMode = _aureliaBinding.bindingMode;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+    }, function (_aureliaTaskQueue) {
+      TaskQueue = _aureliaTaskQueue.TaskQueue;
     }, function (_commonAttributes) {
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
-      _export('MdCarousel', MdCarousel = (_dec = customElement('md-carousel'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable({
+      _export('MdCarousel', MdCarousel = (_dec = customElement('md-carousel'), _dec2 = inject(Element, TaskQueue), _dec3 = bindable(), _dec4 = bindable({
         defaultBindingMode: bindingMode.oneTime
-      }), _dec(_class = _dec2(_class = (_class2 = function () {
-        function MdCarousel(element) {
+      }), _dec5 = children('md-carousel-item'), _dec(_class = _dec2(_class = (_class2 = function () {
+        function MdCarousel(element, taskQueue) {
           _classCallCheck(this, MdCarousel);
 
           _initDefineProp(this, 'mdIndicators', _descriptor, this);
 
           _initDefineProp(this, 'mdSlider', _descriptor2, this);
 
+          _initDefineProp(this, 'items', _descriptor3, this);
+
           this.element = element;
+          this.taskQueue = taskQueue;
         }
 
         MdCarousel.prototype.attached = function attached() {
@@ -84,12 +88,28 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this.element.classList.add('carousel-slider');
           }
 
-          var options = {
-            full_width: getBooleanFromAttributeValue(this.mdSlider),
-            indicators: this.mdIndicators
-          };
+          this.refresh();
+        };
 
-          $(this.element).carousel(options);
+        MdCarousel.prototype.itemsChanged = function itemsChanged(newValue) {
+          this.refresh();
+        };
+
+        MdCarousel.prototype.refresh = function refresh() {
+          var _this = this;
+
+          if (this.items.length > 0) {
+            (function () {
+              var options = {
+                full_width: getBooleanFromAttributeValue(_this.mdSlider),
+                indicators: _this.mdIndicators
+              };
+
+              _this.taskQueue.queueTask(function () {
+                $(_this.element).carousel(options);
+              });
+            })();
+          }
         };
 
         return MdCarousel;
@@ -102,6 +122,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         enumerable: true,
         initializer: function initializer() {
           return false;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'items', [_dec5], {
+        enumerable: true,
+        initializer: function initializer() {
+          return [];
         }
       })), _class2)) || _class) || _class));
 

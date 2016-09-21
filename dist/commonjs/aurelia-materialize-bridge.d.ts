@@ -3,6 +3,7 @@ import {
   bindable,
   customAttribute,
   customElement,
+  children,
   inlineView
 } from 'aurelia-templating';
 import {
@@ -18,11 +19,11 @@ import {
   Router
 } from 'aurelia-router';
 import {
-  getLogger
-} from 'aurelia-logging';
-import {
   TaskQueue
 } from 'aurelia-task-queue';
+import {
+  getLogger
+} from 'aurelia-logging';
 import {
   DOM
 } from 'aurelia-pal';
@@ -163,8 +164,11 @@ export declare class MdCarouselItem {
 export declare class MdCarousel {
   mdIndicators: any;
   mdSlider: any;
-  constructor(element?: any);
+  items: any;
+  constructor(element?: any, taskQueue?: any);
   attached(): any;
+  itemsChanged(newValue?: any): any;
+  refresh(): any;
 }
 export declare class MdCharCounter {
   length: any;
@@ -227,12 +231,16 @@ export declare class MdCollection {
   constructor(element?: any);
   attached(): any;
   getSelected(): any;
+  clearSelection(): any;
+  selectAll(): any;
 }
 export declare class MdlListSelector {
   item: any;
+  mdDisabled: any;
   isSelected: any;
   constructor(element?: any);
   isSelectedChanged(newValue?: any): any;
+  mdDisabledChanged(newValue?: any): any;
 }
 
 /* eslint-enable */
@@ -438,14 +446,18 @@ export declare class MdParallax {
 // destroy handler not available
 export declare class MdProgress {
   mdColor: any;
+  mdPixelSize: any;
+  mdSize: any;
   mdType: any;
   mdValue: any;
   constructor(element?: any);
+  
+  // mdValueChanged(newValue, oldValue) {
+  //   console.log('mdValueChanged, newValue:', JSON.stringify(newValue), 'oldValue:', JSON.stringify(oldValue));
+  // }
+  mdSizeChanged(newValue?: any): any;
+  mdPixelSizeChanged(newValue?: any): any;
 }
-
-// mdValueChanged(newValue, oldValue) {
-//   console.log('mdValueChanged, newValue:', JSON.stringify(newValue), 'oldValue:', JSON.stringify(oldValue));
-// }
 export declare class MdPushpin {
   bottom: any;
   offset: any;
@@ -635,6 +647,8 @@ export declare class MdTooltip {
   bind(): any;
   attached(): any;
   detached(): any;
+  textChanged(): any;
+  initTooltip(): any;
 }
 export declare class MdFadeinImage {
   ref: any;

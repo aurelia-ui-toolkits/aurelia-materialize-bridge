@@ -1,10 +1,10 @@
 import * as LogManager from 'aurelia-logging';
-import {bindable,customAttribute,customElement,inlineView} from 'aurelia-templating';
+import {bindable,customAttribute,customElement,children,inlineView} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
 import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-binding';
 import {Router} from 'aurelia-router';
-import {getLogger} from 'aurelia-logging';
 import {TaskQueue} from 'aurelia-task-queue';
+import {getLogger} from 'aurelia-logging';
 import {DOM} from 'aurelia-pal';
 
 export class ClickCounter {
@@ -346,8 +346,8 @@ export class MdAutoComplete {
 
   detached() {
     // remove .autocomplete-content children
-    $('.autocomplete-content', this.element).off('click');
-    $('.autocomplete-content', this.element).remove();
+    $(this.input).siblings('.autocomplete-content').off('click');
+    $(this.input).siblings('.autocomplete-content').remove();
   }
 
   refresh() {
@@ -355,7 +355,10 @@ export class MdAutoComplete {
     $(this.input).autocomplete({
       data: this.values
     });
-    $('.autocomplete-content', this.element).on('click', () => {
+    // $('.autocomplete-content', this.element).on('click', () => {
+    //   fireEvent(this.input, 'change');
+    // });
+    $(this.input).siblings('.autocomplete-content').on('click', () => {
       fireEvent(this.input, 'change');
     });
   }
@@ -557,15 +560,17 @@ export class MdCarouselItem {
 }
 
 @customElement('md-carousel')
-@inject(Element)
+@inject(Element, TaskQueue)
 export class MdCarousel {
   @bindable() mdIndicators = true;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdSlider = false;
+  @children('md-carousel-item') items = [];
 
-  constructor(element) {
+  constructor(element, taskQueue) {
     this.element = element;
+    this.taskQueue = taskQueue;
   }
 
   attached() {
@@ -573,18 +578,30 @@ export class MdCarousel {
       this.element.classList.add('carousel-slider');
     }
 
-    let options = {
-      full_width: getBooleanFromAttributeValue(this.mdSlider),
-      indicators: this.mdIndicators
-    };
-
     // workaround for: https://github.com/Dogfalo/materialize/issues/2741
     // if (getBooleanFromAttributeValue(this.mdSlider)) {
     //   $(this.element).carousel({full_width: true});
     // } else {
     //   $(this.element).carousel();
     // }
-    $(this.element).carousel(options);
+    this.refresh();
+  }
+
+  itemsChanged(newValue) {
+    this.refresh();
+  }
+
+  refresh() {
+    if (this.items.length > 0) {
+      let options = {
+        full_width: getBooleanFromAttributeValue(this.mdSlider),
+        indicators: this.mdIndicators
+      };
+
+      this.taskQueue.queueTask(() => {
+        $(this.element).carousel(options);
+      });
+    }
   }
 }
 
@@ -802,12 +819,26 @@ export class MdCollection {
     return items.filter(i => i.au['md-collection-selector'].viewModel.isSelected)
       .map(i => i.au['md-collection-selector'].viewModel.item);
   }
+
+  clearSelection() {
+    let items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+    items.forEach(i => i.au['md-collection-selector'].viewModel.isSelected = false);
+  }
+
+  selectAll() {
+    let items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+    items.forEach(i => {
+      let vm = i.au['md-collection-selector'].viewModel;
+      vm.isSelected = !vm.mdDisabled;
+    });
+  }
 }
 
 @customElement('md-collection-selector')
 @inject(Element)
 export class MdlListSelector {
   @bindable() item;
+  @bindable() mdDisabled = false;
   @observable() isSelected = false;
 
   constructor(element) {
@@ -816,6 +847,10 @@ export class MdlListSelector {
 
   isSelectedChanged(newValue) {
     fireMaterializeEvent(this.element, 'selection-changed', { item: this.item, isSelected: this.isSelected });
+  }
+
+  mdDisabledChanged(newValue) {
+    this.mdDisabled = getBooleanFromAttributeValue(newValue);
   }
 }
 
@@ -1911,6 +1946,10 @@ export class MdParallax {
 export class MdProgress {
   @bindable() mdColor = null;
   @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdPixelSize = null;
+  @bindable() mdSize = 'big';
+  @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdType = 'linear';
   @bindable({
@@ -1924,6 +1963,26 @@ export class MdProgress {
   // mdValueChanged(newValue, oldValue) {
   //   console.log('mdValueChanged, newValue:', JSON.stringify(newValue), 'oldValue:', JSON.stringify(oldValue));
   // }
+
+  mdSizeChanged(newValue) {
+    this.mdPixelSize = null;
+    if (this.wrapper) {
+      this.wrapper.style.height = '';
+      this.wrapper.style.width = '';
+    }
+  }
+
+  mdPixelSizeChanged(newValue) {
+    if (isNaN(newValue)) {
+      this.mdPixelSize = null;
+    } else {
+      this.mdSize = '';
+      if (this.wrapper) {
+        this.wrapper.style.height = `${newValue}px`;
+        this.wrapper.style.width = `${newValue}px`;
+      }
+    }
+  }
 }
 
 @customAttribute('md-pushpin')
@@ -2629,16 +2688,26 @@ export class MdTooltip {
   attached() {
     this.attributeManager.addClasses('tooltipped');
     this.attributeManager.addAttributes({ 'data-position': this.position, 'data-tooltip': this.text });
-    $(this.element).tooltip({
-      delay: parseInt(this.delay, 10),
-      html: this.html
-    });
+    this.initTooltip();
   }
 
   detached() {
     $(this.element).tooltip('remove');
     this.attributeManager.removeClasses('tooltipped');
     this.attributeManager.removeAttributes(['data-position', 'data-tooltip']);
+  }
+
+  textChanged() {
+    this.attributeManager.addAttributes({ 'data-tooltip': this.text });
+    this.initTooltip();
+  }
+
+  initTooltip() {
+    $(this.element).tooltip('remove');
+    $(this.element).tooltip({
+      delay: parseInt(this.delay, 10),
+      html: this.html
+    });
   }
 }
 

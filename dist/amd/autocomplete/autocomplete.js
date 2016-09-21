@@ -80,8 +80,8 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
     };
 
     MdAutoComplete.prototype.detached = function detached() {
-      $('.autocomplete-content', this.element).off('click');
-      $('.autocomplete-content', this.element).remove();
+      $(this.input).siblings('.autocomplete-content').off('click');
+      $(this.input).siblings('.autocomplete-content').remove();
     };
 
     MdAutoComplete.prototype.refresh = function refresh() {
@@ -91,7 +91,8 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       $(this.input).autocomplete({
         data: this.values
       });
-      $('.autocomplete-content', this.element).on('click', function () {
+
+      $(this.input).siblings('.autocomplete-content').on('click', function () {
         (0, _events.fireEvent)(_this.input, 'change');
       });
     };

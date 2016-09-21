@@ -5,7 +5,7 @@
   </div>
   </template>
   <template if.bind="mdType === 'circular' && mdColor !== 'flashing'">
-    <div class="preloader-wrapper big active">
+    <div class="preloader-wrapper ${mdSize} active" ref="wrapper">
       <div class="spinner-layer spinner-${mdColor}-only">
         <div class="circle-clipper left">
           <div class="circle"></div>
@@ -18,7 +18,7 @@
     </div>
   </template>
   <template if.bind="mdType === 'circular' && mdColor === 'flashing'">
-    <div class="preloader-wrapper big active">
+    <div class="preloader-wrapper ${mdSize} active" ref="wrapper">
       <div class="spinner-layer spinner-blue">
         <div class="circle-clipper left">
           <div class="circle"></div>

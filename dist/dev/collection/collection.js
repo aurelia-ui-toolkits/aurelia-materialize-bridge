@@ -1,8 +1,6 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-dependency-injection'], function (_export, _context) {
-  "use strict";
-
   var customElement, inject, _dec, _dec2, _class, MdCollection;
 
   function _classCallCheck(instance, Constructor) {
@@ -38,6 +36,21 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection'], function
             return i.au['md-collection-selector'].viewModel.isSelected;
           }).map(function (i) {
             return i.au['md-collection-selector'].viewModel.item;
+          });
+        };
+
+        MdCollection.prototype.clearSelection = function clearSelection() {
+          var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+          items.forEach(function (i) {
+            return i.au['md-collection-selector'].viewModel.isSelected = false;
+          });
+        };
+
+        MdCollection.prototype.selectAll = function selectAll() {
+          var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+          items.forEach(function (i) {
+            var vm = i.au['md-collection-selector'].viewModel;
+            vm.isSelected = !vm.mdDisabled;
           });
         };
 

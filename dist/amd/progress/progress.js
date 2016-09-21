@@ -55,33 +55,73 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
 
   var MdProgress = exports.MdProgress = (_dec = (0, _aureliaTemplating.customElement)('md-progress'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec5 = (0, _aureliaTemplating.bindable)({
     defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-  }), _dec(_class = _dec2(_class = (_class2 = function MdProgress(element) {
-    _classCallCheck(this, MdProgress);
+  }), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec7 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdProgress(element) {
+      _classCallCheck(this, MdProgress);
 
-    _initDefineProp(this, 'mdColor', _descriptor, this);
+      _initDefineProp(this, 'mdColor', _descriptor, this);
 
-    _initDefineProp(this, 'mdType', _descriptor2, this);
+      _initDefineProp(this, 'mdPixelSize', _descriptor2, this);
 
-    _initDefineProp(this, 'mdValue', _descriptor3, this);
+      _initDefineProp(this, 'mdSize', _descriptor3, this);
 
-    this.element = element;
-  }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdColor', [_dec3], {
+      _initDefineProp(this, 'mdType', _descriptor4, this);
+
+      _initDefineProp(this, 'mdValue', _descriptor5, this);
+
+      this.element = element;
+    }
+
+    MdProgress.prototype.mdSizeChanged = function mdSizeChanged(newValue) {
+      this.mdPixelSize = null;
+      if (this.wrapper) {
+        this.wrapper.style.height = '';
+        this.wrapper.style.width = '';
+      }
+    };
+
+    MdProgress.prototype.mdPixelSizeChanged = function mdPixelSizeChanged(newValue) {
+      if (isNaN(newValue)) {
+        this.mdPixelSize = null;
+      } else {
+        this.mdSize = '';
+        if (this.wrapper) {
+          this.wrapper.style.height = newValue + 'px';
+          this.wrapper.style.width = newValue + 'px';
+        }
+      }
+    };
+
+    return MdProgress;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdColor', [_dec3], {
     enumerable: true,
     initializer: function initializer() {
       return null;
     }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdType', [_dec4], {
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdPixelSize', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdSize', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'big';
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdType', [_dec6], {
     enumerable: true,
     initializer: function initializer() {
       return 'linear';
     }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec5], {
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec7], {
     enumerable: true,
     initializer: function initializer() {
       return null;

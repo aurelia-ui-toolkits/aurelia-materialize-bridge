@@ -126,6 +126,36 @@
     color: ${mdAccentColor};
   }
 
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.primary {
+    background-color: ${mdPrimaryColor};
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.accent {
+    background-color: ${mdAccentColor};
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.error {
+    background-color: ${mdErrorColor};
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.success {
+    background-color: ${mdAccentColor};
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.primary-text {
+    color: ${mdPrimaryColor};
+    background-color: transparent;
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.accent-text {
+    color: ${mdAccentColor};
+    background-color: transparent;
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.error-text {
+    color: ${mdErrorColor};
+    background-color: transparent;
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.success-text {
+    color: ${mdAccentColor};
+    background-color: transparent;
+  }   
+
+
   /* datepicker */
   .picker__date-display {
     background-color: ${mdAccentColor};
@@ -180,6 +210,36 @@
   }
   md-input textarea.materialize-textarea:focus:not([readonly]) + label {
     color: ${mdAccentColor}
+  }
+
+  md-input input:not([type]).invalid + label:after,
+  md-input input:not([type]):focus.invalid + label:after,
+  md-input input[type=text].invalid + label:after,
+  md-input input[type=text]:focus.invalid + label:after,
+  md-input input[type=password].invalid + label:after,
+  md-input input[type=password]:focus.invalid + label:after,
+  md-input input[type=email].invalid + label:after,
+  md-input input[type=email]:focus.invalid + label:after,
+  md-input input[type=url].invalid + label:after,
+  md-input input[type=url]:focus.invalid + label:after,
+  md-input input[type=time].invalid + label:after,
+  md-input input[type=time]:focus.invalid + label:after,
+  md-input input[type=date].invalid + label:after,
+  md-input input[type=date]:focus.invalid + label:after,
+  md-input input[type=datetime].invalid + label:after,
+  md-input input[type=datetime]:focus.invalid + label:after,
+  md-input input[type=datetime-local].invalid + label:after,
+  md-input input[type=datetime-local]:focus.invalid + label:after,
+  md-input input[type=tel].invalid + label:after,
+  md-input input[type=tel]:focus.invalid + label:after,
+  md-input input[type=number].invalid + label:after,
+  md-input input[type=number]:focus.invalid + label:after,
+  md-input input[type=search].invalid + label:after,
+  md-input input[type=search]:focus.invalid + label:after,
+  md-input textarea.materialize-textarea.invalid + label:after,
+  md-input textarea.materialize-textarea:focus.invalid + label:after
+  {
+    color: ${mdErrorColor}
   }
 
   /* text input aurelia-validation messages */

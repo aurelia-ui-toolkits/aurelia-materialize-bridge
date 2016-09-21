@@ -20,4 +20,17 @@ export class MdCollection {
     return items.filter(i => i.au['md-collection-selector'].viewModel.isSelected)
       .map(i => i.au['md-collection-selector'].viewModel.item);
   }
+
+  clearSelection() {
+    let items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+    items.forEach(i => i.au['md-collection-selector'].viewModel.isSelected = false);
+  }
+
+  selectAll() {
+    let items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+    items.forEach(i => {
+      let vm = i.au['md-collection-selector'].viewModel;
+      vm.isSelected = !vm.mdDisabled;
+    });
+  }
 }

@@ -1,8 +1,6 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/events'], function (_export, _context) {
-  "use strict";
-
   var bindable, customAttribute, inject, fireEvent, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdAutoComplete;
 
   function _initDefineProp(target, property, descriptor, context) {
@@ -87,8 +85,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
         };
 
         MdAutoComplete.prototype.detached = function detached() {
-          $('.autocomplete-content', this.element).off('click');
-          $('.autocomplete-content', this.element).remove();
+          $(this.input).siblings('.autocomplete-content').off('click');
+          $(this.input).siblings('.autocomplete-content').remove();
         };
 
         MdAutoComplete.prototype.refresh = function refresh() {
@@ -98,7 +96,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           $(this.input).autocomplete({
             data: this.values
           });
-          $('.autocomplete-content', this.element).on('click', function () {
+
+          $(this.input).siblings('.autocomplete-content').on('click', function () {
             fireEvent(_this.input, 'change');
           });
         };

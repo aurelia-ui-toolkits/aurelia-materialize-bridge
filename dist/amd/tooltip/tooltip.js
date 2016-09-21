@@ -80,16 +80,26 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
     MdTooltip.prototype.attached = function attached() {
       this.attributeManager.addClasses('tooltipped');
       this.attributeManager.addAttributes({ 'data-position': this.position, 'data-tooltip': this.text });
-      $(this.element).tooltip({
-        delay: parseInt(this.delay, 10),
-        html: this.html
-      });
+      this.initTooltip();
     };
 
     MdTooltip.prototype.detached = function detached() {
       $(this.element).tooltip('remove');
       this.attributeManager.removeClasses('tooltipped');
       this.attributeManager.removeAttributes(['data-position', 'data-tooltip']);
+    };
+
+    MdTooltip.prototype.textChanged = function textChanged() {
+      this.attributeManager.addAttributes({ 'data-tooltip': this.text });
+      this.initTooltip();
+    };
+
+    MdTooltip.prototype.initTooltip = function initTooltip() {
+      $(this.element).tooltip('remove');
+      $(this.element).tooltip({
+        delay: parseInt(this.delay, 10),
+        html: this.html
+      });
     };
 
     return MdTooltip;

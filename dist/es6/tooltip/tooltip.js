@@ -23,15 +23,25 @@ export class MdTooltip {
   attached() {
     this.attributeManager.addClasses('tooltipped');
     this.attributeManager.addAttributes({ 'data-position': this.position, 'data-tooltip': this.text });
-    $(this.element).tooltip({
-      delay: parseInt(this.delay, 10),
-      html: this.html
-    });
+    this.initTooltip();
   }
 
   detached() {
     $(this.element).tooltip('remove');
     this.attributeManager.removeClasses('tooltipped');
     this.attributeManager.removeAttributes(['data-position', 'data-tooltip']);
+  }
+
+  textChanged() {
+    this.attributeManager.addAttributes({ 'data-tooltip': this.text });
+    this.initTooltip();
+  }
+
+  initTooltip() {
+    $(this.element).tooltip('remove');
+    $(this.element).tooltip({
+      delay: parseInt(this.delay, 10),
+      html: this.html
+    });
   }
 }

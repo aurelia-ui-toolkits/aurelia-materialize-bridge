@@ -25,8 +25,8 @@ export class MdAutoComplete {
 
   detached() {
     // remove .autocomplete-content children
-    $('.autocomplete-content', this.element).off('click');
-    $('.autocomplete-content', this.element).remove();
+    $(this.input).siblings('.autocomplete-content').off('click');
+    $(this.input).siblings('.autocomplete-content').remove();
   }
 
   refresh() {
@@ -34,7 +34,10 @@ export class MdAutoComplete {
     $(this.input).autocomplete({
       data: this.values
     });
-    $('.autocomplete-content', this.element).on('click', () => {
+    // $('.autocomplete-content', this.element).on('click', () => {
+    //   fireEvent(this.input, 'change');
+    // });
+    $(this.input).siblings('.autocomplete-content').on('click', () => {
       fireEvent(this.input, 'change');
     });
   }

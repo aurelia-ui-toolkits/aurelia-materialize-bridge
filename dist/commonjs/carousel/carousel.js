@@ -5,13 +5,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdCarousel = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
 
 var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaBinding = require('aurelia-binding');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaTaskQueue = require('aurelia-task-queue');
 
 var _attributes = require('../common/attributes');
 
@@ -60,17 +62,20 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customElement)('md-carousel'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
+var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customElement)('md-carousel'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec(_class = _dec2(_class = (_class2 = function () {
-  function MdCarousel(element) {
+}), _dec5 = (0, _aureliaTemplating.children)('md-carousel-item'), _dec(_class = _dec2(_class = (_class2 = function () {
+  function MdCarousel(element, taskQueue) {
     _classCallCheck(this, MdCarousel);
 
     _initDefineProp(this, 'mdIndicators', _descriptor, this);
 
     _initDefineProp(this, 'mdSlider', _descriptor2, this);
 
+    _initDefineProp(this, 'items', _descriptor3, this);
+
     this.element = element;
+    this.taskQueue = taskQueue;
   }
 
   MdCarousel.prototype.attached = function attached() {
@@ -78,12 +83,28 @@ var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customEleme
       this.element.classList.add('carousel-slider');
     }
 
-    var options = {
-      full_width: (0, _attributes.getBooleanFromAttributeValue)(this.mdSlider),
-      indicators: this.mdIndicators
-    };
+    this.refresh();
+  };
 
-    $(this.element).carousel(options);
+  MdCarousel.prototype.itemsChanged = function itemsChanged(newValue) {
+    this.refresh();
+  };
+
+  MdCarousel.prototype.refresh = function refresh() {
+    var _this = this;
+
+    if (this.items.length > 0) {
+      (function () {
+        var options = {
+          full_width: (0, _attributes.getBooleanFromAttributeValue)(_this.mdSlider),
+          indicators: _this.mdIndicators
+        };
+
+        _this.taskQueue.queueTask(function () {
+          $(_this.element).carousel(options);
+        });
+      })();
+    }
   };
 
   return MdCarousel;
@@ -96,5 +117,10 @@ var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customEleme
   enumerable: true,
   initializer: function initializer() {
     return false;
+  }
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'items', [_dec5], {
+  enumerable: true,
+  initializer: function initializer() {
+    return [];
   }
 })), _class2)) || _class) || _class);

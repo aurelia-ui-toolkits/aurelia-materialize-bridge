@@ -37,6 +37,21 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], functi
       });
     };
 
+    MdCollection.prototype.clearSelection = function clearSelection() {
+      var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+      items.forEach(function (i) {
+        return i.au['md-collection-selector'].viewModel.isSelected = false;
+      });
+    };
+
+    MdCollection.prototype.selectAll = function selectAll() {
+      var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+      items.forEach(function (i) {
+        var vm = i.au['md-collection-selector'].viewModel;
+        vm.isSelected = !vm.mdDisabled;
+      });
+    };
+
     return MdCollection;
   }()) || _class) || _class);
 });
