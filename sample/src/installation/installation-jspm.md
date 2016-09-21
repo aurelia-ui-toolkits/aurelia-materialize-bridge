@@ -61,6 +61,11 @@ $ jspm install materialize-css
 
   Please make sure that you use **only one** of the imports shown above.
 
+  **Note:** You could just `import 'materialize'` into your app but since
+  Materialize is not a direct dependency of this bridge anymore, it may get loaded
+  asynchronously. This may lead to Materialize being initialized *after* components
+  are `attached()` which essentally applies Materialize twice.
+
   **Note:** The above shows how to use all available controls at once. If you choose to pick which you'd like to use, you can ```use``` single components like this:
 
   ```javascript
