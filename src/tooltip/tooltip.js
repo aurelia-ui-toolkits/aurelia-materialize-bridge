@@ -38,6 +38,7 @@ export class MdTooltip {
   }
 
   initTooltip() {
+    $(this.element).tooltip('remove');
     $(this.element).tooltip({
       delay: parseInt(this.delay, 10),
       html: this.html
