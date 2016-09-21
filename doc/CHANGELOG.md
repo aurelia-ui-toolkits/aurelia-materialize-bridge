@@ -1,3 +1,24 @@
+<a name="0.16.1"></a>
+## [0.16.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.16.0...v0.16.1) (2016-09-21)
+
+
+### Bug Fixes
+
+* **dropdown:** add dropdown fix for 0.97.7 ([d3eb997](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d3eb997))
+* **md-autocomplete:** find autocomplete using closest, fix #209 ([75b85f4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/75b85f4)), closes [#209](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/209)
+* **md-carousel:** delay jQuery initialization, fix #268 ([def7089](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/def7089)), closes [#268](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/268)
+* **md-colors:** add error text to html5 validated fields, close #247 ([0f8c8e9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0f8c8e9)), closes [#247](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/247)
+* **md-colors:** allow setting colors for collection avatar, ref #277 ([0daa331](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0daa331))
+* **md-tooltip:** update tooltip when tooltip text change ([1b23a8d](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/1b23a8d))
+
+### Features
+
+* **collection:** add select all, clear and disabled, close #276 ([e3f3bf0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e3f3bf0)), closes [#276](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/276)
+* **md-collection:** invert theme color for avatar ([ab09b97](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/ab09b97))
+* **md-progress:** allow size changes, close #274 ([bf7aaeb](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/bf7aaeb)), closes [#274](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/274)
+
+
+
 <a name="0.16.0"></a>
 # [0.16.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.15.0...v0.16.0) (2016-09-14)
 
