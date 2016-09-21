@@ -1,5 +1,5 @@
 <a name="0.16.1"></a>
-## [0.16.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.16.0...v0.16.1) (2016-09-21)
+## [0.17.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.16.0...v0.16.1) (2016-09-21)
 
 
 ### Bug Fixes
