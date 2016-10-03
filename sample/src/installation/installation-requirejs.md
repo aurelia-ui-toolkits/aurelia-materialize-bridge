@@ -82,7 +82,11 @@ Apply the following changes to `aurelia_project/aurelia.json`:
         "main": "js/materialize.amd",
         "deps": [
           "jquery"
-        ]
+        ],
+        "resources": [
+          "css/materialize.css"
+        ],
+        "exports": "Materialize"
       },
       {
         "name": "aurelia-materialize-bridge",
