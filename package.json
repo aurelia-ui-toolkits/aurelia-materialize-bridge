@@ -183,6 +183,7 @@
         "aurelia-materialize-bridge/tooltip/tooltip",
         "aurelia-materialize-bridge/transitions/fadein-image",
         "aurelia-materialize-bridge/transitions/staggered-list",
+        "aurelia-materialize-bridge/validation/validationRenderer",
         "aurelia-materialize-bridge/waves/waves",
         "aurelia-materialize-bridge/well/md-well.html"
       ]
