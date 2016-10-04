@@ -1,6 +1,6 @@
 {
   "name": "aurelia-materialize-bridge",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "registry": "github",
   "description": "Aurelia interface to http://materializecss.com/",
   "keywords": [

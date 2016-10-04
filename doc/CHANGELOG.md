@@ -1,3 +1,15 @@
+<a name="0.17.1"></a>
+## [0.17.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.17.0...v0.17.1) (2016-10-04)
+
+
+### Bug Fixes
+
+* **md-chip:** add chip close button css, ref #289 ([7b3c7e8](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/7b3c7e8)), closes [#289](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/289)
+* **md-range:** hide native thumb in Edge, ref #290 ([e5bf4ca](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e5bf4ca))
+* **md-select:** wrap initialization in a taskQueue task, fix #292 ([67e3c80](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/67e3c80)), closes [#292](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/292)
+
+
+
 <a name="0.16.1"></a>
 ## [0.17.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.16.0...v0.16.1) (2016-09-21)
 
