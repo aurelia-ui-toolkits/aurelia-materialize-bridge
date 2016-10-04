@@ -98,20 +98,25 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   }
 
   MdSelect.prototype.attached = function attached() {
+    var _this = this;
+
+    this.taskQueue.queueTask(function () {
+      _this.createMaterialSelect(false);
+
+      if (_this.label) {
+        var wrapper = $(_this.element).parent('.select-wrapper');
+        var div = $('<div class="input-field"></div>');
+        var va = _this.element.attributes.getNamedItem('validate');
+        if (va) {
+          div.attr(va.name, va.label);
+        }
+        wrapper.wrap(div);
+        $('<label>' + _this.label + '</label>').insertAfter(wrapper);
+      }
+    });
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
 
-    this.createMaterialSelect(false);
 
-    if (this.label) {
-      var wrapper = $(this.element).parent('.select-wrapper');
-      var div = $('<div class="input-field"></div>');
-      var va = this.element.attributes.getNamedItem('validate');
-      if (va) {
-        div.attr(va.name, va.label);
-      }
-      wrapper.wrap(div);
-      $('<label>' + this.label + '</label>').insertAfter(wrapper);
-    }
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   };
 
@@ -126,10 +131,10 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   };
 
   MdSelect.prototype.refresh = function refresh() {
-    var _this = this;
+    var _this2 = this;
 
     this.taskQueue.queueTask(function () {
-      _this.createMaterialSelect(true);
+      _this2.createMaterialSelect(true);
     });
   };
 
@@ -196,7 +201,7 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   };
 
   MdSelect.prototype.observeVisibleDropdownContent = function observeVisibleDropdownContent(attach) {
-    var _this2 = this;
+    var _this3 = this;
 
     if (attach) {
       if (!this.dropdownMutationObserver) {
@@ -221,8 +226,8 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
             }
           }
           if (isHidden) {
-            _this2.dropdownMutationObserver.takeRecords();
-            _this2.handleBlur();
+            _this3.dropdownMutationObserver.takeRecords();
+            _this3.handleBlur();
           }
         });
       }
@@ -239,14 +244,14 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   };
 
   MdSelect.prototype.handleBlur = function handleBlur() {
-    var _this3 = this;
+    var _this4 = this;
 
     if (this._taskqueueRunning) return;
     this._taskqueueRunning = true;
     this.taskQueue.queueTask(function () {
-      _this3.log.debug('fire blur event');
-      (0, _events.fireEvent)(_this3.element, 'blur');
-      _this3._taskqueueRunning = false;
+      _this4.log.debug('fire blur event');
+      (0, _events.fireEvent)(_this4.element, 'blur');
+      _this4._taskqueueRunning = false;
     });
   };
 

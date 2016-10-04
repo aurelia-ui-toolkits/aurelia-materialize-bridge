@@ -513,35 +513,6 @@ export class MdButton {
   }
 }
 
-@customElement('md-card')
-@inject(Element)
-export class MdCard {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdHorizontal;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdImage = null;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdReveal = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneWay
-  }) mdSize = '';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdTitle;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    this.mdHorizontal = getBooleanFromAttributeValue(this.mdHorizontal);
-    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
-  }
-}
-
 // @customElement('md-carousel-item')
 @inject(Element)
 export class MdCarouselItem {
@@ -602,6 +573,35 @@ export class MdCarousel {
         $(this.element).carousel(options);
       });
     }
+  }
+}
+
+@customElement('md-card')
+@inject(Element)
+export class MdCard {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdHorizontal;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdImage = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdReveal = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneWay
+  }) mdSize = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.mdHorizontal = getBooleanFromAttributeValue(this.mdHorizontal);
+    this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
   }
 }
 
@@ -2218,24 +2218,27 @@ export class MdSelect {
   }
 
   attached() {
+    this.taskQueue.queueTask(() => {
+      this.createMaterialSelect(false);
+
+      if (this.label) {
+        let wrapper = $(this.element).parent('.select-wrapper');
+        let div = $('<div class="input-field"></div>');
+        let va = this.element.attributes.getNamedItem('validate');
+        if (va) {
+          div.attr(va.name, va.label);
+        }
+        wrapper.wrap(div);
+        $(`<label>${this.label}</label>`).insertAfter(wrapper);
+      }
+    });
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
     // this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'selectedOptions').subscribe(this.notifyBindingEngine.bind(this)));
     // $(this.element).material_select(() => {
     //   this.log.warn('materialize callback', $(this.element).val());
     //   this.handleChangeFromNativeSelect();
     // });
-    this.createMaterialSelect(false);
 
-    if (this.label) {
-      let wrapper = $(this.element).parent('.select-wrapper');
-      let div = $('<div class="input-field"></div>');
-      let va = this.element.attributes.getNamedItem('validate');
-      if (va) {
-        div.attr(va.name, va.label);
-      }
-      wrapper.wrap(div);
-      $(`<label>${this.label}</label>`).insertAfter(wrapper);
-    }
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   }
 

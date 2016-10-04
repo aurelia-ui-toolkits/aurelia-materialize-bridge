@@ -144,15 +144,6 @@ export declare class MdButton {
   disabledChanged(newValue?: any): any;
   flatChanged(newValue?: any): any;
 }
-export declare class MdCard {
-  mdHorizontal: any;
-  mdImage: any;
-  mdReveal: any;
-  mdSize: any;
-  mdTitle: any;
-  constructor(element?: any);
-  attached(): any;
-}
 
 // @customElement('md-carousel-item')
 export declare class MdCarouselItem {
@@ -169,6 +160,15 @@ export declare class MdCarousel {
   attached(): any;
   itemsChanged(newValue?: any): any;
   refresh(): any;
+}
+export declare class MdCard {
+  mdHorizontal: any;
+  mdImage: any;
+  mdReveal: any;
+  mdSize: any;
+  mdTitle: any;
+  constructor(element?: any);
+  attached(): any;
 }
 export declare class MdCharCounter {
   length: any;
