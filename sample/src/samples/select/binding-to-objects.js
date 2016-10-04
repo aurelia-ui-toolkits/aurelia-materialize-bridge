@@ -6,7 +6,7 @@ export class BasicUse {
     { id: 3, name: 'Pasta' },
     { id: 4, name: 'Fries' }
   ];
-  selectedMeal = null;
+  selectedMeal = this.food[1];
 
   setSelectedMeal() {
     this.selectedMeal = this.food[2];
