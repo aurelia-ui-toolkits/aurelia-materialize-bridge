@@ -29,24 +29,27 @@ export class MdSelect {
   }
 
   attached() {
+    this.taskQueue.queueTask(() => {
+      this.createMaterialSelect(false);
+
+      if (this.label) {
+        let wrapper = $(this.element).parent('.select-wrapper');
+        let div = $('<div class="input-field"></div>');
+        let va = this.element.attributes.getNamedItem('validate');
+        if (va) {
+          div.attr(va.name, va.label);
+        }
+        wrapper.wrap(div);
+        $(`<label>${this.label}</label>`).insertAfter(wrapper);
+      }
+    });
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
     // this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'selectedOptions').subscribe(this.notifyBindingEngine.bind(this)));
     // $(this.element).material_select(() => {
     //   this.log.warn('materialize callback', $(this.element).val());
     //   this.handleChangeFromNativeSelect();
     // });
-    this.createMaterialSelect(false);
 
-    if (this.label) {
-      let wrapper = $(this.element).parent('.select-wrapper');
-      let div = $('<div class="input-field"></div>');
-      let va = this.element.attributes.getNamedItem('validate');
-      if (va) {
-        div.attr(va.name, va.label);
-      }
-      wrapper.wrap(div);
-      $(`<label>${this.label}</label>`).insertAfter(wrapper);
-    }
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   }
 
