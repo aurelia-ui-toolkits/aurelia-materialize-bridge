@@ -100,6 +100,65 @@ export declare class ConfigBuilder {
   withoutGlobalResources(): ConfigBuilder;
   withScrollfirePatch(): ConfigBuilder;
 }
+export * from 'aurelia-materialize-bridge/autocomplete/autocomplete';
+export * from 'aurelia-materialize-bridge/badge/badge';
+export * from 'aurelia-materialize-bridge/box/box';
+export * from 'aurelia-materialize-bridge/breadcrumbs/breadcrumbs';
+export * from 'aurelia-materialize-bridge/breadcrumbs/instructionFilter';
+export * from 'aurelia-materialize-bridge/button/button';
+export * from 'aurelia-materialize-bridge/card/card';
+export * from 'aurelia-materialize-bridge/carousel/carousel-item';
+export * from 'aurelia-materialize-bridge/carousel/carousel';
+export * from 'aurelia-materialize-bridge/char-counter/char-counter';
+export * from 'aurelia-materialize-bridge/checkbox/checkbox';
+export * from 'aurelia-materialize-bridge/chip/chip';
+export * from 'aurelia-materialize-bridge/chip/chips';
+export * from 'aurelia-materialize-bridge/collapsible/collapsible';
+export * from 'aurelia-materialize-bridge/collection/collection-header';
+export * from 'aurelia-materialize-bridge/collection/collection-item';
+export * from 'aurelia-materialize-bridge/collection/collection';
+export * from 'aurelia-materialize-bridge/collection/md-collection-selector';
+export * from 'aurelia-materialize-bridge/colors/colorValueConverters';
+export * from 'aurelia-materialize-bridge/colors/md-colors';
+export * from 'aurelia-materialize-bridge/common/attributeManager';
+export * from 'aurelia-materialize-bridge/common/attributes';
+export * from 'aurelia-materialize-bridge/common/constants';
+export * from 'aurelia-materialize-bridge/common/events';
+export * from 'aurelia-materialize-bridge/datepicker/datepicker.default-parser';
+export * from 'aurelia-materialize-bridge/datepicker/datepicker';
+export * from 'aurelia-materialize-bridge/dropdown/dropdown-element';
+export * from 'aurelia-materialize-bridge/dropdown/dropdown';
+export * from 'aurelia-materialize-bridge/dropdown/dropdown-fix';
+export * from 'aurelia-materialize-bridge/fab/fab';
+export * from 'aurelia-materialize-bridge/file/file';
+export * from 'aurelia-materialize-bridge/footer/footer';
+export * from 'aurelia-materialize-bridge/input/input-prefix';
+export * from 'aurelia-materialize-bridge/input/input-update-service';
+export * from 'aurelia-materialize-bridge/input/input';
+export * from 'aurelia-materialize-bridge/modal/modal-trigger';
+export * from 'aurelia-materialize-bridge/navbar/navbar';
+export * from 'aurelia-materialize-bridge/pagination/pagination';
+export * from 'aurelia-materialize-bridge/parallax/parallax';
+export * from 'aurelia-materialize-bridge/progress/progress';
+export * from 'aurelia-materialize-bridge/pushpin/pushpin';
+export * from 'aurelia-materialize-bridge/radio/radio';
+export * from 'aurelia-materialize-bridge/range/range';
+export * from 'aurelia-materialize-bridge/scrollfire/scrollfire-patch';
+export * from 'aurelia-materialize-bridge/scrollfire/scrollfire-target';
+export * from 'aurelia-materialize-bridge/scrollfire/scrollfire';
+export * from 'aurelia-materialize-bridge/scrollspy/scrollspy';
+export * from 'aurelia-materialize-bridge/select/select';
+export * from 'aurelia-materialize-bridge/sidenav/sidenav-collapse';
+export * from 'aurelia-materialize-bridge/sidenav/sidenav';
+export * from 'aurelia-materialize-bridge/slider/slider';
+export * from 'aurelia-materialize-bridge/switch/switch';
+export * from 'aurelia-materialize-bridge/tabs/tabs';
+export * from 'aurelia-materialize-bridge/toast/toastService';
+export * from 'aurelia-materialize-bridge/tooltip/tooltip';
+export * from 'aurelia-materialize-bridge/transitions/fadein-image';
+export * from 'aurelia-materialize-bridge/transitions/staggered-list';
+export * from 'aurelia-materialize-bridge/validation/validationRenderer';
+export * from 'aurelia-materialize-bridge/waves/waves';
 export declare function configure(aurelia?: any, configCallback?: any): any;
 export declare class MdAutoComplete {
   input: any;
@@ -144,6 +203,15 @@ export declare class MdButton {
   disabledChanged(newValue?: any): any;
   flatChanged(newValue?: any): any;
 }
+export declare class MdCard {
+  mdHorizontal: any;
+  mdImage: any;
+  mdReveal: any;
+  mdSize: any;
+  mdTitle: any;
+  constructor(element?: any);
+  attached(): any;
+}
 
 // @customElement('md-carousel-item')
 export declare class MdCarouselItem {
@@ -160,15 +228,6 @@ export declare class MdCarousel {
   attached(): any;
   itemsChanged(newValue?: any): any;
   refresh(): any;
-}
-export declare class MdCard {
-  mdHorizontal: any;
-  mdImage: any;
-  mdReveal: any;
-  mdSize: any;
-  mdTitle: any;
-  constructor(element?: any);
-  attached(): any;
 }
 export declare class MdCharCounter {
   length: any;
