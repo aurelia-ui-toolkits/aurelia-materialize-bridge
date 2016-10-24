@@ -13,7 +13,7 @@ Aurelia components for http://materializecss.com/
 ### [Gist.run playground](https://gist.run/?id=e8eed34e8bba17f5213535bcdd004a9e)
 
 ## Installing the plugin
-[![Installation](http://dabuttonfactory.com/button.png?t=Installation+instructions&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)](http://aurelia-ui-toolkits.github.io/demo-materialize/#/installation)
+[![Installation](http://dabuttonfactory.com/button.png?t=Installation+instructions&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)](https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/installation.html)
 
 ## Running tests
 1. `npm install`
