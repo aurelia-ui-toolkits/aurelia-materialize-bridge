@@ -1,3 +1,13 @@
+<a name="0.17.2"></a>
+## [0.17.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.17.1...v0.17.2) (2016-10-24)
+
+
+### Bug Fixes
+
+* **md-carousel-item:** remove image if there is now image, #299 ([501f3e8](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/501f3e8))
+
+
+
 <a name="0.17.1"></a>
 ## [0.17.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.17.0...v0.17.1) (2016-10-04)
 
