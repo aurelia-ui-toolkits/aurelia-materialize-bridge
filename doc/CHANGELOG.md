@@ -1,3 +1,14 @@
+<a name="0.17.3"></a>
+## [0.17.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.17.2...v0.17.3) (2016-10-25)
+
+
+### Bug Fixes
+
+* **chip:** add a click handler to remove the chip ([39cb66c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/39cb66c))
+* **typescript:** cannot find module errors during compile ([35b5502](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/35b5502))
+
+
+
 <a name="0.17.2"></a>
 ## [0.17.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.17.1...v0.17.2) (2016-10-24)
 
