@@ -63,14 +63,20 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
     }],
     execute: function () {
       _export('MdChip', MdChip = (_dec = customElement('md-chip'), _dec2 = inject(Element), _dec3 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
-        function MdChip() {
+        function MdChip(element) {
           _classCallCheck(this, MdChip);
 
           _initDefineProp(this, 'mdClose', _descriptor, this);
+
+          this.element = element;
         }
 
         MdChip.prototype.attached = function attached() {
           this.mdClose = getBooleanFromAttributeValue(this.mdClose);
+        };
+
+        MdChip.prototype.close = function close() {
+          this.element.parentElement.removeChild(this.element);
         };
 
         return MdChip;

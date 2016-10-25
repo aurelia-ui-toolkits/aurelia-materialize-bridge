@@ -59,14 +59,20 @@ function _initializerWarningHelper(descriptor, context) {
 }
 
 var MdChip = exports.MdChip = (_dec = (0, _aureliaTemplating.customElement)('md-chip'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-  function MdChip() {
+  function MdChip(element) {
     _classCallCheck(this, MdChip);
 
     _initDefineProp(this, 'mdClose', _descriptor, this);
+
+    this.element = element;
   }
 
   MdChip.prototype.attached = function attached() {
     this.mdClose = (0, _attributes.getBooleanFromAttributeValue)(this.mdClose);
+  };
+
+  MdChip.prototype.close = function close() {
+    this.element.parentElement.removeChild(this.element);
   };
 
   return MdChip;

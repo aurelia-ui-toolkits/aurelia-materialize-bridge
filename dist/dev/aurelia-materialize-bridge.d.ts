@@ -10,14 +10,14 @@ import {
   inject
 } from 'aurelia-dependency-injection';
 import {
+  Router
+} from 'aurelia-router';
+import {
   bindingMode,
   observable,
   BindingEngine,
   ObserverLocator
 } from 'aurelia-binding';
-import {
-  Router
-} from 'aurelia-router';
 import {
   TaskQueue
 } from 'aurelia-task-queue';
@@ -100,65 +100,6 @@ export declare class ConfigBuilder {
   withoutGlobalResources(): ConfigBuilder;
   withScrollfirePatch(): ConfigBuilder;
 }
-export * from 'aurelia-materialize-bridge/autocomplete/autocomplete';
-export * from 'aurelia-materialize-bridge/badge/badge';
-export * from 'aurelia-materialize-bridge/box/box';
-export * from 'aurelia-materialize-bridge/breadcrumbs/breadcrumbs';
-export * from 'aurelia-materialize-bridge/breadcrumbs/instructionFilter';
-export * from 'aurelia-materialize-bridge/button/button';
-export * from 'aurelia-materialize-bridge/card/card';
-export * from 'aurelia-materialize-bridge/carousel/carousel-item';
-export * from 'aurelia-materialize-bridge/carousel/carousel';
-export * from 'aurelia-materialize-bridge/char-counter/char-counter';
-export * from 'aurelia-materialize-bridge/checkbox/checkbox';
-export * from 'aurelia-materialize-bridge/chip/chip';
-export * from 'aurelia-materialize-bridge/chip/chips';
-export * from 'aurelia-materialize-bridge/collapsible/collapsible';
-export * from 'aurelia-materialize-bridge/collection/collection-header';
-export * from 'aurelia-materialize-bridge/collection/collection-item';
-export * from 'aurelia-materialize-bridge/collection/collection';
-export * from 'aurelia-materialize-bridge/collection/md-collection-selector';
-export * from 'aurelia-materialize-bridge/colors/colorValueConverters';
-export * from 'aurelia-materialize-bridge/colors/md-colors';
-export * from 'aurelia-materialize-bridge/common/attributeManager';
-export * from 'aurelia-materialize-bridge/common/attributes';
-export * from 'aurelia-materialize-bridge/common/constants';
-export * from 'aurelia-materialize-bridge/common/events';
-export * from 'aurelia-materialize-bridge/datepicker/datepicker.default-parser';
-export * from 'aurelia-materialize-bridge/datepicker/datepicker';
-export * from 'aurelia-materialize-bridge/dropdown/dropdown-element';
-export * from 'aurelia-materialize-bridge/dropdown/dropdown';
-export * from 'aurelia-materialize-bridge/dropdown/dropdown-fix';
-export * from 'aurelia-materialize-bridge/fab/fab';
-export * from 'aurelia-materialize-bridge/file/file';
-export * from 'aurelia-materialize-bridge/footer/footer';
-export * from 'aurelia-materialize-bridge/input/input-prefix';
-export * from 'aurelia-materialize-bridge/input/input-update-service';
-export * from 'aurelia-materialize-bridge/input/input';
-export * from 'aurelia-materialize-bridge/modal/modal-trigger';
-export * from 'aurelia-materialize-bridge/navbar/navbar';
-export * from 'aurelia-materialize-bridge/pagination/pagination';
-export * from 'aurelia-materialize-bridge/parallax/parallax';
-export * from 'aurelia-materialize-bridge/progress/progress';
-export * from 'aurelia-materialize-bridge/pushpin/pushpin';
-export * from 'aurelia-materialize-bridge/radio/radio';
-export * from 'aurelia-materialize-bridge/range/range';
-export * from 'aurelia-materialize-bridge/scrollfire/scrollfire-patch';
-export * from 'aurelia-materialize-bridge/scrollfire/scrollfire-target';
-export * from 'aurelia-materialize-bridge/scrollfire/scrollfire';
-export * from 'aurelia-materialize-bridge/scrollspy/scrollspy';
-export * from 'aurelia-materialize-bridge/select/select';
-export * from 'aurelia-materialize-bridge/sidenav/sidenav-collapse';
-export * from 'aurelia-materialize-bridge/sidenav/sidenav';
-export * from 'aurelia-materialize-bridge/slider/slider';
-export * from 'aurelia-materialize-bridge/switch/switch';
-export * from 'aurelia-materialize-bridge/tabs/tabs';
-export * from 'aurelia-materialize-bridge/toast/toastService';
-export * from 'aurelia-materialize-bridge/tooltip/tooltip';
-export * from 'aurelia-materialize-bridge/transitions/fadein-image';
-export * from 'aurelia-materialize-bridge/transitions/staggered-list';
-export * from 'aurelia-materialize-bridge/validation/validationRenderer';
-export * from 'aurelia-materialize-bridge/waves/waves';
 export declare function configure(aurelia?: any, configCallback?: any): any;
 export declare class MdAutoComplete {
   input: any;
@@ -175,12 +116,6 @@ export declare class MdBadge {
   attached(): any;
   detached(): any;
 }
-export declare class MdBox {
-  caption: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 export declare class MdBreadcrumbs {
@@ -192,6 +127,21 @@ export declare class MdBreadcrumbs {
 export declare class InstructionFilterValueConverter {
   toView(navigationInstructions?: any): any;
 }
+export declare class MdBox {
+  caption: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
+export declare class MdCard {
+  mdHorizontal: any;
+  mdImage: any;
+  mdReveal: any;
+  mdSize: any;
+  mdTitle: any;
+  constructor(element?: any);
+  attached(): any;
+}
 export declare class MdButton {
   disabled: any;
   flat: any;
@@ -202,15 +152,6 @@ export declare class MdButton {
   detached(): any;
   disabledChanged(newValue?: any): any;
   flatChanged(newValue?: any): any;
-}
-export declare class MdCard {
-  mdHorizontal: any;
-  mdImage: any;
-  mdReveal: any;
-  mdSize: any;
-  mdTitle: any;
-  constructor(element?: any);
-  attached(): any;
 }
 
 // @customElement('md-carousel-item')
@@ -250,7 +191,9 @@ export declare class MdCheckbox {
 }
 export declare class MdChip {
   mdClose: any;
+  constructor(element?: any);
   attached(): any;
+  close(): any;
 }
 
 // @customAttribute('md-chips')
@@ -273,13 +216,6 @@ export declare class MdChips {
 }
 
 // fireEvent(this.element, 'change');
-export declare class MdCollapsible {
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  refresh(): any;
-  accordionChanged(): any;
-}
 export declare class MdCollectionHeader {
   constructor(element?: any);
 }
@@ -314,6 +250,13 @@ export declare class MdColors {
   mdAccentColor: any;
   mdErrorColor: any;
   mdSuccessColor: any;
+}
+export declare class MdCollapsible {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  refresh(): any;
+  accordionChanged(): any;
 }
 
 /**
@@ -415,6 +358,11 @@ export declare class MdFab {
   constructor(element?: any);
   attached(): any;
 }
+export declare class MdFooter {
+  constructor(element?: any);
+  bind(): any;
+  unbind(): any;
+}
 export declare class MdFileInput {
   mdCaption: any;
   mdMultiple: any;
@@ -424,11 +372,6 @@ export declare class MdFileInput {
   attached(): any;
   detached(): any;
   handleChangeFromNativeInput(): any;
-}
-export declare class MdFooter {
-  constructor(element?: any);
-  bind(): any;
-  unbind(): any;
 }
 export declare class MdPrefix {
   constructor(element?: any);
@@ -646,6 +589,18 @@ export declare class MdSidenav {
   detached(): any;
   mdFixedChanged(newValue?: any): any;
 }
+export declare class MdSwitch {
+  mdChecked: any;
+  mdDisabled: any;
+  mdLabelOff: any;
+  mdLabelOn: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  handleChange(): any;
+  blur(): any;
+  mdCheckedChanged(newValue?: any): any;
+}
 export declare class MdSlider {
   mdFillContainer: any;
   mdHeight: any;
@@ -670,18 +625,6 @@ export declare class MdSlider {
 // mdTransitionChanged() {
 //   this.refresh();
 // }
-export declare class MdSwitch {
-  mdChecked: any;
-  mdDisabled: any;
-  mdLabelOff: any;
-  mdLabelOn: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  handleChange(): any;
-  blur(): any;
-  mdCheckedChanged(newValue?: any): any;
-}
 export declare class MdTabs {
   constructor(element?: any, taskQueue?: any);
   attached(): any;

@@ -7,7 +7,15 @@ import { getBooleanFromAttributeValue } from '../common/attributes';
 export class MdChip {
   @bindable() mdClose = false;
 
+  constructor(element) {
+    this.element = element;
+  }
+
   attached() {
     this.mdClose = getBooleanFromAttributeValue(this.mdClose);
+  }
+
+  close() {
+    this.element.parentElement.removeChild(this.element);
   }
 }
