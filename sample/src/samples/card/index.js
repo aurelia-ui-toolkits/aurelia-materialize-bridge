@@ -1,17 +1,15 @@
-import {useView} from 'aurelia-framework';
+import { inject, useView } from 'aurelia-framework';
+import { Registry } from 'shared/registry';
 
+@inject(Registry)
 @useView('shared/showcase.html')
 export class Index {
-  configureRouter(config, router) {
-    config.title = 'Card';
-    config.map([
-      { route: ['', 'basic-use'], moduleId: './basic-use', nav: true,  title: 'Basic use' },
-      { route: 'image', moduleId: './image', nav: true,  title: 'Image card' },
-      { route: 'reveal', moduleId: './reveal', nav: true,  title: 'Reveal card' },
-      { route: 'sizes', moduleId: './sizes', nav: true,  title: 'Card sizes' },
-      { route: 'horizontal', moduleId: './horizontal', nav: true,  title: 'Horizontal card' }
-    ]);
+  constructor(registry) {
+    this.registry = registry;
+  }
 
+  configureRouter(config, router) {
     this.router = router;
+    return this.registry.load(config, 'card');
   }
 }

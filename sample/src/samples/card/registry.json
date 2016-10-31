@@ -1,0 +1,25 @@
+{
+  "title": "Card",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    },
+    "horizontal": {
+      "route": "horizontal",
+      "files": ["html", "js"]
+    },
+    "image": {
+      "route": "image",
+      "files": ["html", "js"]
+    },
+    "reveal": {
+      "route": "reveal",
+      "files": ["html", "js"]
+    },
+    "sizes": {
+      "route": "sizes",
+      "files": ["html", "js"]
+    }
+  }
+}
