@@ -1,0 +1,17 @@
+{
+  "title": "Button",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    },
+    "fab": {
+      "route": "fab",
+      "files": ["html", "js"]
+    },
+    "fab-fixed": {
+      "route": "fab-fixed",
+      "files": ["html", "js"]
+    }
+  }
+}

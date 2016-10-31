@@ -5,50 +5,29 @@
     }
   </style>
   <div>
-    <div class="row">
-      <div class="col s12 m8">
-        <md-card md-title="Basic use">
-          <div class="button-row">
-            <button md-button="disabled.bind: !firstButtonEnabled; flat.bind: !firstButtonRaised"><i class="left material-icons">mode_edit</i>I'm a basic button</button>
-            <button md-button="flat: true;">I'm a flat button</button>
-          </div>
-          <div class="button-row">
-            <button md-button="large: true;">I'm a large button</button>
-            <button md-button="flat: true; large: true;">I'm a large flat button</button>
-          </div>
-          <div class="button-row">
-            <button md-button="disabled: true;">I'm a basic disabled button</button>
-            <button md-button="disabled: true; flat: true;">I'm a flat disabled button</button>
-          </div>
-          <div class="button-row">
-            <button md-button class="primary">I'm a primary colored button</button>
-          </div>
-          <div class="button-row">
-            <button md-button="flat: true;" class="primary-text">I'm a flat primary colored button</button>
-          </div>
-          <div class="actions">
-            <hr />
-            First button:
-            <md-switch md-label-on="enabled" md-label-off="disabled" md-checked.bind="firstButtonEnabled"></md-switch>
-            <md-switch md-label-on="raised" md-label-off="flat" md-checked.bind="firstButtonRaised"></md-switch>
-          </div>
-        </md-card>
+    <div class="button-row">
+      <button md-button="disabled.bind: !firstButtonEnabled; flat.bind: !firstButtonRaised"><i class="left material-icons">mode_edit</i>I'm a basic button</button>
+      <button md-button="flat: true;">I'm a flat button</button>
     </div>
+    <div class="button-row">
+      <button md-button="large: true;">I'm a large button</button>
+      <button md-button="flat: true; large: true;">I'm a large flat button</button>
     </div>
-
-    <div class="row">
-        <div class="col s12 m8">
-          <md-card md-title="Code Preview">
-            <div class="row">
-              <ul md-tabs class="z-depth-1">
-                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
-              </ul>
-              <div id="html" class="z-depth-1">
-                <au-code language="markup" url="samples/button/basic-use-sample.html"></au-code>
-              </div>
-            </div>
-          </md-card>
-        </div>
+    <div class="button-row">
+      <button md-button="disabled: true;">I'm a basic disabled button</button>
+      <button md-button="disabled: true; flat: true;">I'm a flat disabled button</button>
+    </div>
+    <div class="button-row">
+      <button md-button class="primary">I'm a primary colored button</button>
+    </div>
+    <div class="button-row">
+      <button md-button="flat: true;" class="primary-text">I'm a flat primary colored button</button>
+    </div>
+    <div class="actions">
+      <hr />
+      First button:
+      <md-switch md-label-on="enabled" md-label-off="disabled" md-checked.bind="firstButtonEnabled"></md-switch>
+      <md-switch md-label-on="raised" md-label-off="flat" md-checked.bind="firstButtonRaised"></md-switch>
     </div>
   </div>
 </template>
