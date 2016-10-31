@@ -1,0 +1,17 @@
+{
+  "title": "Checkbox",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    },
+    "filled-in": {
+      "route": "filled-in",
+      "files": ["html", "js"]
+    },
+    "switch": {
+      "route": "switch",
+      "files": ["html", "js"]
+    }
+  }
+}

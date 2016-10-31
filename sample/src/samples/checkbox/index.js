@@ -1,15 +1,15 @@
-import { useView } from 'aurelia-framework';
+import { inject, useView } from 'aurelia-framework';
+import { Registry } from 'shared/registry';
 
+@inject(Registry)
 @useView('shared/showcase.html')
 export class Index {
-  configureRouter(config, router) {
-    config.title = 'Checkbox';
-    config.map([
-      { route: ['', 'basic-use'], moduleId: './basic-use', nav: true, title: 'Default checkbox' },
-      { route: 'filled-in', moduleId: './filled-in', nav: true, title: 'Filled-in checkbox' },
-      { route: 'switch', moduleId: './switch', nav: true, title: 'Switch' }
-    ]);
+  constructor(registry) {
+    this.registry = registry;
+  }
 
+  configureRouter(config, router) {
     this.router = router;
+    return this.registry.load(config, 'checkbox');
   }
 }

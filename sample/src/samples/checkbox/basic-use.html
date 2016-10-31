@@ -1,34 +1,13 @@
 <template>
   <div>
-    <div class="row">
-      <div class="col s12 m8">
-        <md-card md-title="Default checkbox">
-          <p>
-            <md-checkbox md-checked.bind="checked">A default checkbox</md-checkbox> with value: ${checked | stringify}
-          </p>
-          <p>
-            <md-checkbox md-checked="false" md-disabled="true">A disabled checkbox</md-checkbox>
-          </p>
-          <p>
-            <md-checkbox md-checked.bind="indeterminateChecked">An indeterminate checkbox</md-checkbox> with value: ${indeterminateChecked | stringify}
-          </p>
-        </md-card>
-    </div>
-    </div>
-
-    <div class="row">
-        <div class="col s12 m8">
-          <md-card md-title="Code Preview">
-            <div class="row">
-              <ul md-tabs class="z-depth-1">
-                <li md-waves="color: primary;" class="col"><a class="active" href="#html">Html</a></li>
-              </ul>
-              <div id="html" class="z-depth-1">
-                <au-code language="markup" url="samples/checkbox/basic-use-sample.html"></au-code>
-              </div>
-            </div>
-          </md-card>
-        </div>
-    </div>
+    <p>
+      <md-checkbox md-checked.bind="checked">A default checkbox</md-checkbox> with value: ${checked | stringify}
+    </p>
+    <p>
+      <md-checkbox md-checked="false" md-disabled="true">A disabled checkbox</md-checkbox>
+    </p>
+    <p>
+      <md-checkbox md-checked.bind="indeterminateChecked">An indeterminate checkbox</md-checkbox> with value: ${indeterminateChecked | stringify}
+    </p>
   </div>
 </template>
