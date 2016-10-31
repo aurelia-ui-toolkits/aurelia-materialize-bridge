@@ -1,0 +1,13 @@
+{
+  "title": "Color",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    },
+    "theming": {
+      "route": "theming",
+      "files": ["html", "js"]
+    }
+  }
+}
