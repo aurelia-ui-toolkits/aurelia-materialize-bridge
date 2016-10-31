@@ -1,0 +1,17 @@
+{
+  "title": "Collapsible",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    },
+    "accordion": {
+      "route": "accordion",
+      "files": ["html", "js"]
+    },
+    "popout": {
+      "route": "popout",
+      "files": ["html", "js"]
+    }
+  }
+}
