@@ -2,9 +2,9 @@
   <div>
       <div>
         A modal which is not closable by clicking the overlay:
-        <p><a md-button md-modal-trigger="dismissible: false;" href="#modal1">show modal</a></p>
+        <p><a md-button href="#modal1">show modal</a></p>
       </div>
-      <div id="modal1" class="modal">
+      <div id="modal1" md-modal="dismissible: false;">
         <div class="modal-content">
           <h4>Modal Header</h4>
           <p>A bunch of text</p>

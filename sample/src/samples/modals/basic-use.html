@@ -1,9 +1,10 @@
 <template>
   <div>
       <div>
-        <p><a md-button md-modal-trigger href="#modal1">show modal</a></p>
+        <p><a md-button href="#modal1">show modal (href with ID)</a></p>
+        <p style="margin-top: 15px;"><button md-button click.delegate="openModal()">show modal (button without ID)</button></p>
       </div>
-      <div id="modal1" class="modal">
+      <div id="modal1" md-modal md-modal.ref="modal">
         <div class="modal-content">
           <h4>Modal Header</h4>
           <p>A bunch of text</p>

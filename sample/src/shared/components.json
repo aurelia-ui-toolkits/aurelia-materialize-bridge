@@ -19,7 +19,7 @@
     "Dialogs (toast/tooltip)": { "moduleId": "dialogs", "status": "done" },
     "Dropdown": { "status": "done" },
     "Media (Box/Slider/Carousel)": { "moduleId": "media", "status": "done" },
-    "Modals": { "status": "done" },
+    "Modals": { "status": "wip" },
     "Parallax": { "status": "done" },
     "Pushpin": { "status": "done" },
     "Scrollfire": { "status": "done" },

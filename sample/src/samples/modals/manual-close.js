@@ -7,7 +7,7 @@ export class ManualClose {
 
   agree(e) {
     if (this.closeDialog) {
-      $(this.myDialog).closeModal();
+      this.myDialog.close();
     }
   }
 }

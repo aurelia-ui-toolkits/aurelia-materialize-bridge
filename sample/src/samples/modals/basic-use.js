@@ -1,5 +1,5 @@
 import { inject } from 'aurelia-framework';
-import { MdToastService } from 'aurelia-materialize-bridge/toast/toastService';
+import { MdToastService } from 'aurelia-materialize-bridge';
 
 @inject(MdToastService)
 export class BasicUse {
@@ -13,5 +13,9 @@ export class BasicUse {
 
   disagree(e) {
     this.toast.show('You disagreed!', 4000);
+  }
+
+  openModal() {
+    this.modal.open();
   }
 }

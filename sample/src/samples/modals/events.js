@@ -18,4 +18,8 @@ export class Events {
   onComplete(e) {
     this.logger.log('modal complete');
   }
+
+  onReady(e) {
+    this.logger.log('modal ready');
+  }
 }
