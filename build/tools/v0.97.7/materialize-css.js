@@ -20,7 +20,7 @@ require([
   'jquery.easing',
   'jquery.hammer',
   'jquery.timeago',
-  'modal',
+  'leanModal',
   'materialbox',
   'parallax',
   'picker',
