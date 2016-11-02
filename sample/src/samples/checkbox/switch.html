@@ -12,7 +12,10 @@
     </div>
     <div style="margin-top: 10px;">
       Disabled:
-      <md-switch md-disabled="true"></md-switch>
+      <md-switch md-disabled.bind="disabled"></md-switch>
+    </div>
+    <div style="margin-top: 10px;">
+      <button md-button="flat: true;" click.delegate="toggleDisabled()">toggle disabled</button>
     </div>
   </div>
 </template>
