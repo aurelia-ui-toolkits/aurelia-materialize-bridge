@@ -163,6 +163,7 @@
         "aurelia-materialize-bridge/footer/footer",
         "aurelia-materialize-bridge/input/input",
         "aurelia-materialize-bridge/input/input-prefix",
+        "aurelia-materialize-bridge/modal/modal",
         "aurelia-materialize-bridge/modal/modal-trigger",
         "aurelia-materialize-bridge/navbar/navbar",
         "aurelia-materialize-bridge/pagination/pagination",
