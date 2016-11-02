@@ -45,4 +45,10 @@ export class MdSwitch {
       this.checkbox.checked = !!newValue;
     }
   }
+
+  mdDisabledChanged(newValue) {
+    if (this.checkbox) {
+      this.checkbox.disabled = !!newValue;
+    }
+  }
 }
