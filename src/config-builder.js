@@ -167,6 +167,7 @@ export class ConfigBuilder {
   }
 
   useModal(): ConfigBuilder {
+    this.globalResources.push('./modal/modal');
     this.globalResources.push('./modal/modal-trigger');
     return this;
   }
