@@ -68,6 +68,11 @@ export class MdInput {
       this.input.setAttribute('data-show-errortext', this.mdShowErrortext);
     }
     this.updateService.update();
+
+    // special case: time inputs are not covered by Materialize
+    if (this.mdType === 'time') {
+      $(this.input).siblings('label').addClass('active');
+    }
   }
 
   blur() {
