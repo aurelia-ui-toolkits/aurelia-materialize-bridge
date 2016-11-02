@@ -29,7 +29,7 @@ export function configure(aurelia) {
           .useColors()
           .useDatePicker()
           .useDropdown()
-          .useDropdownFix()
+          // .useDropdownFix()
           .useFab()
           .useFile()
           .useFooter()
