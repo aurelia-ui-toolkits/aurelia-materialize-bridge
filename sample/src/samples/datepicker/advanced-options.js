@@ -1,4 +1,4 @@
-import {DatePickerDefaultParser} from '../../../../src/aurelia-materialize-bridge/datepicker/datepicker-default-parser';
+import {DatePickerDefaultParser} from 'aurelia-materialize-bridge/datepicker/datepicker-default-parser';
 import {inject} from 'aurelia-framework';
 
 @inject(DatePickerDefaultParser)
