@@ -1,3 +1,19 @@
+<a name="0.17.4"></a>
+## [0.17.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.17.3...v0.17.4) (2016-11-03)
+
+
+### Bug Fixes
+
+* **md-input:** handle time input label, fix #310 ([9c5f631](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/9c5f631)), closes [#310](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/310)
+* **md-select:** add select caret fix for iPhone, #400 ([66ebfeb](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/66ebfeb)), closes [#400](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/400)
+
+### Features
+
+* **md-modal:** add modal for 0.97.8, keep trigger for older versions, add ready event ([3f01961](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/3f01961))
+* **md-switch:** make md-disabled bindable, close #306 ([d961b15](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d961b15)), closes [#306](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/306)
+
+
+
 <a name="0.17.3"></a>
 ## [0.17.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.17.2...v0.17.3) (2016-10-25)
 
