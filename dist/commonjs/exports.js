@@ -292,7 +292,19 @@ Object.keys(_events).forEach(function (key) {
   });
 });
 
-var _datepicker = require('./datepicker/datepicker.default-parser');
+var _datepickerDefaultParser = require('./datepicker/datepicker-default-parser');
+
+Object.keys(_datepickerDefaultParser).forEach(function (key) {
+  if (key === "default") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _datepickerDefaultParser[key];
+    }
+  });
+});
+
+var _datepicker = require('./datepicker/datepicker');
 
 Object.keys(_datepicker).forEach(function (key) {
   if (key === "default") return;
@@ -300,18 +312,6 @@ Object.keys(_datepicker).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _datepicker[key];
-    }
-  });
-});
-
-var _datepicker2 = require('./datepicker/datepicker');
-
-Object.keys(_datepicker2).forEach(function (key) {
-  if (key === "default") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _datepicker2[key];
     }
   });
 });
