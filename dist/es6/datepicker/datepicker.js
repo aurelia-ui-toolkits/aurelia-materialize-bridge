@@ -4,7 +4,7 @@ import {TaskQueue} from 'aurelia-task-queue';
 import {inject} from 'aurelia-dependency-injection';
 import {getLogger} from 'aurelia-logging';
 import {getBooleanFromAttributeValue} from '../common/attributes';
-import {DatePickerDefaultParser} from './datepicker.default-parser';
+import {DatePickerDefaultParser} from './datepicker-default-parser';
 
 @inject(Element, TaskQueue, DatePickerDefaultParser)
 @customAttribute('md-datepicker')
