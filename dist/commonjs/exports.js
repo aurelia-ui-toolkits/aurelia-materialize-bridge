@@ -424,6 +424,18 @@ Object.keys(_input).forEach(function (key) {
   });
 });
 
+var _modal = require('./modal/modal');
+
+Object.keys(_modal).forEach(function (key) {
+  if (key === "default") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _modal[key];
+    }
+  });
+});
+
 var _modalTrigger = require('./modal/modal-trigger');
 
 Object.keys(_modalTrigger).forEach(function (key) {

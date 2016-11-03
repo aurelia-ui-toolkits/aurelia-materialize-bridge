@@ -107,6 +107,12 @@ var MdSwitch = exports.MdSwitch = (_dec = (0, _aureliaTemplating.customElement)(
     }
   };
 
+  MdSwitch.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
+    if (this.checkbox) {
+      this.checkbox.disabled = !!newValue;
+    }
+  };
+
   return MdSwitch;
 }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdChecked', [_dec3], {
   enumerable: true,

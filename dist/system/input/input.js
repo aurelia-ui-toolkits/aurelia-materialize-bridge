@@ -140,6 +140,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this.input.setAttribute('data-show-errortext', this.mdShowErrortext);
           }
           this.updateService.update();
+
+          if (this.mdType === 'time') {
+            $(this.input).siblings('label').addClass('active');
+          }
         };
 
         MdInput.prototype.blur = function blur() {

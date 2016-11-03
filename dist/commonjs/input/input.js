@@ -136,6 +136,10 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
       this.input.setAttribute('data-show-errortext', this.mdShowErrortext);
     }
     this.updateService.update();
+
+    if (this.mdType === 'time') {
+      $(this.input).siblings('label').addClass('active');
+    }
   };
 
   MdInput.prototype.blur = function blur() {

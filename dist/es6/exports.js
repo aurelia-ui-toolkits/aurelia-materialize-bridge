@@ -34,6 +34,7 @@ export * from './footer/footer';
 export * from './input/input-prefix';
 export * from './input/input-update-service';
 export * from './input/input';
+export * from './modal/modal';
 export * from './modal/modal-trigger';
 export * from './navbar/navbar';
 export * from './pagination/pagination';

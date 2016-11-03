@@ -137,6 +137,7 @@ define(['exports', './dropdown/dropdown-fix'], function (exports, _dropdownFix) 
     };
 
     ConfigBuilder.prototype.useModal = function useModal() {
+      this.globalResources.push('./modal/modal');
       this.globalResources.push('./modal/modal-trigger');
       return this;
     };

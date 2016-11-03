@@ -139,6 +139,7 @@ System.register(['./dropdown/dropdown-fix'], function (_export, _context) {
         };
 
         ConfigBuilder.prototype.useModal = function useModal() {
+          this.globalResources.push('./modal/modal');
           this.globalResources.push('./modal/modal-trigger');
           return this;
         };

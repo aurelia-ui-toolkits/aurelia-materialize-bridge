@@ -10,14 +10,14 @@ import {
   inject
 } from 'aurelia-dependency-injection';
 import {
-  Router
-} from 'aurelia-router';
-import {
   bindingMode,
   observable,
   BindingEngine,
   ObserverLocator
 } from 'aurelia-binding';
+import {
+  Router
+} from 'aurelia-router';
 import {
   TaskQueue
 } from 'aurelia-task-queue';
@@ -116,6 +116,12 @@ export declare class MdBadge {
   attached(): any;
   detached(): any;
 }
+export declare class MdBox {
+  caption: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 export declare class MdBreadcrumbs {
@@ -127,21 +133,6 @@ export declare class MdBreadcrumbs {
 export declare class InstructionFilterValueConverter {
   toView(navigationInstructions?: any): any;
 }
-export declare class MdBox {
-  caption: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
-export declare class MdCard {
-  mdHorizontal: any;
-  mdImage: any;
-  mdReveal: any;
-  mdSize: any;
-  mdTitle: any;
-  constructor(element?: any);
-  attached(): any;
-}
 export declare class MdButton {
   disabled: any;
   flat: any;
@@ -152,6 +143,15 @@ export declare class MdButton {
   detached(): any;
   disabledChanged(newValue?: any): any;
   flatChanged(newValue?: any): any;
+}
+export declare class MdCard {
+  mdHorizontal: any;
+  mdImage: any;
+  mdReveal: any;
+  mdSize: any;
+  mdTitle: any;
+  constructor(element?: any);
+  attached(): any;
 }
 
 // @customElement('md-carousel-item')
@@ -216,6 +216,13 @@ export declare class MdChips {
 }
 
 // fireEvent(this.element, 'change');
+export declare class MdCollapsible {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  refresh(): any;
+  accordionChanged(): any;
+}
 export declare class MdCollectionHeader {
   constructor(element?: any);
 }
@@ -250,13 +257,6 @@ export declare class MdColors {
   mdAccentColor: any;
   mdErrorColor: any;
   mdSuccessColor: any;
-}
-export declare class MdCollapsible {
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  refresh(): any;
-  accordionChanged(): any;
 }
 
 /**
@@ -358,11 +358,6 @@ export declare class MdFab {
   constructor(element?: any);
   attached(): any;
 }
-export declare class MdFooter {
-  constructor(element?: any);
-  bind(): any;
-  unbind(): any;
-}
 export declare class MdFileInput {
   mdCaption: any;
   mdMultiple: any;
@@ -372,6 +367,11 @@ export declare class MdFileInput {
   attached(): any;
   detached(): any;
   handleChangeFromNativeInput(): any;
+}
+export declare class MdFooter {
+  constructor(element?: any);
+  bind(): any;
+  unbind(): any;
 }
 export declare class MdPrefix {
   constructor(element?: any);
@@ -408,6 +408,16 @@ export declare class MdModalTrigger {
   attached(): any;
   detached(): any;
   onComplete(): any;
+}
+export declare class MdModal {
+  dismissible: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  onComplete(): any;
+  onReady(modal?: any, trigger?: any): any;
+  open(): any;
+  close(): any;
 }
 export declare class MdNavbar {
   mdFixed: any;
@@ -589,18 +599,6 @@ export declare class MdSidenav {
   detached(): any;
   mdFixedChanged(newValue?: any): any;
 }
-export declare class MdSwitch {
-  mdChecked: any;
-  mdDisabled: any;
-  mdLabelOff: any;
-  mdLabelOn: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  handleChange(): any;
-  blur(): any;
-  mdCheckedChanged(newValue?: any): any;
-}
 export declare class MdSlider {
   mdFillContainer: any;
   mdHeight: any;
@@ -625,6 +623,19 @@ export declare class MdSlider {
 // mdTransitionChanged() {
 //   this.refresh();
 // }
+export declare class MdSwitch {
+  mdChecked: any;
+  mdDisabled: any;
+  mdLabelOff: any;
+  mdLabelOn: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  handleChange(): any;
+  blur(): any;
+  mdCheckedChanged(newValue?: any): any;
+  mdDisabledChanged(newValue?: any): any;
+}
 export declare class MdTabs {
   constructor(element?: any, taskQueue?: any);
   attached(): any;

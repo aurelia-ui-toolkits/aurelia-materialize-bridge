@@ -102,6 +102,12 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       }
     };
 
+    MdSwitch.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
+      if (this.checkbox) {
+        this.checkbox.disabled = !!newValue;
+      }
+    };
+
     return MdSwitch;
   }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdChecked', [_dec3], {
     enumerable: true,
