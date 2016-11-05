@@ -20,7 +20,7 @@ export class MaterializeFormValidationRenderer {
     switch (element.tagName) {
     case 'MD-INPUT': {
       let label = element.querySelector('label');
-      let input = element.querySelector('input');
+      let input = element.querySelector('input') || element.querySelector('textarea');
       if (label) {
         label.removeAttribute('data-error');
       }
@@ -51,6 +51,14 @@ export class MaterializeFormValidationRenderer {
       }
       break;
     }
+    case 'INPUT' : {
+      if (element.hasAttribute('md-datepicker')) {
+        element.classList.remove('valid');
+        element.classList.add('invalid');
+        this.addMessage(element.parentNode, error);
+      }
+      break;
+    }
     default: break;
     }
   }
@@ -60,7 +68,7 @@ export class MaterializeFormValidationRenderer {
     case 'MD-INPUT': {
       this.removeMessage(element, error);
 
-      let input = element.querySelector('input');
+      let input = element.querySelector('input') || element.querySelector('textarea');
       if (input && element.querySelectorAll('.' + this.className).length === 0) {
         input.classList.remove('invalid');
         input.classList.add('valid');
@@ -78,6 +86,14 @@ export class MaterializeFormValidationRenderer {
       if (input && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
         input.classList.remove('invalid');
         input.classList.add('valid');
+      }
+      break;
+    }
+    case 'INPUT' : {
+      if (element.hasAttribute('md-datepicker')) {
+        this.removeMessage(element.parentNode, error);
+        element.classList.remove('invalid');
+        element.classList.add('valid');
       }
       break;
     }
