@@ -55,7 +55,10 @@ export class MaterializeFormValidationRenderer {
       if (element.hasAttribute('md-datepicker')) {
         element.classList.remove('valid');
         element.classList.add('invalid');
-        this.addMessage(element.parentNode, error);
+        if (!(element.hasAttribute('data-show-errortext') &&
+            element.getAttribute('data-show-errortext') === 'false')) {
+          this.addMessage(element.parentNode, error);
+        }
       }
       break;
     }
@@ -92,8 +95,10 @@ export class MaterializeFormValidationRenderer {
     case 'INPUT' : {
       if (element.hasAttribute('md-datepicker')) {
         this.removeMessage(element.parentNode, error);
-        element.classList.remove('invalid');
-        element.classList.add('valid');
+        if (element && element.parentNode.querySelectorAll('.' + this.className).length === 0) {
+          element.classList.remove('invalid');
+          element.classList.add('valid');
+        }
       }
       break;
     }
