@@ -4,8 +4,8 @@ import { MaterializeFormValidationRenderer } from 'aurelia-materialize-bridge';
 
 @inject(NewInstance.of(ValidationController))
 export class Validation {
-  date = '';
-  date2 = '';
+  date = null;
+  date2 = null;
   showErrortext = false;
 
   controller = null;
@@ -26,12 +26,12 @@ export class Validation {
   }
 
   reset() {
-    this.selectedValue = '';
+    this.date = null;
     this.controller.reset({ object: this, propertyName: 'date' });
   }
 
   reset2() {
-    this.selectedValue2 = '';
+    this.date2 = null;
     this.controller.reset({ object: this, propertyName: 'date2' });
   }
 
@@ -41,5 +41,10 @@ export class Validation {
 
   validateModel2() {
     return this.controller.validate({ object: this, propertyName: 'date2' });
+  }
+
+  openErrorTarget(error, $event) {
+    this[`${error.propertyName}Picker`].openDatePicker();
+    $event.preventDefault();
   }
 }
