@@ -12,6 +12,10 @@
     "advanced-options": {
       "route": "advanced-options",
       "files": ["html", "js"]
+    },
+    "validation": {
+      "route": "validation",
+      "files": ["html", "js"]
     }
   }
 }
