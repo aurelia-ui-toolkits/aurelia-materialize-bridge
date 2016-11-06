@@ -9,9 +9,7 @@ export class AureliaValidation {
   lastName = 'Doe';
   email = '';
   noErrorText = '';
-  textarea = '';
-  selectedItem = '';
-  selectedDate = '';
+  textareaValue = '';
 
   controller = null;
 
@@ -26,11 +24,7 @@ export class AureliaValidation {
       .email()
     .ensure('noErrorText')
       .required()
-    .ensure('selectedItem').displayName('Item')
-      .required()
     .ensure('textareaValue').displayName('Some text')
-      .required()
-    .ensure('selectedDate').displayName('Date')
       .required()
     .rules;
 

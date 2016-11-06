@@ -31,18 +31,6 @@
       md-value.bind="textareaValue & validate:rules"
       md-text-area="true">
     </md-input>
-
-    <select md-select="label: select a value" value.two-way="selectedItem & validate:rules">
-      <option value="" disabled selected>select an item</option>
-      <option value="item1">item 1</option>
-      <option value="item2">item 2</option>
-      <option value="item3">item 3</option>
-      <option value="item4">item 4</option>
-    </select>
-
-    <div>
-      <input md-datepicker="container: body; value.two-way: selectedDate & validate:rules;" type="date" placeholder="pick a date">
-    </div>
   </div>
 
   <div style="margin-top: 15px;">
