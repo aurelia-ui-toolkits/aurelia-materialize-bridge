@@ -325,7 +325,11 @@
   }
 
   /* side-nav */
-  .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {
+  md-sidenav .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {
+    background-color: ${mdPrimaryColor};
+  }
+
+  .side-nav .collapsible-body > ul:not(.collapsible) > li.active, .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
     background-color: ${mdPrimaryColor};
   }
 
@@ -367,9 +371,9 @@
 
   /* md-select label */
   .select-wrapper input {
-    // make input fit in div
+    /* make input fit in div */
     display: inline-block !important;
-    // fix validation border thickness
+    /* fix validation border thickness */
     border-bottom: 1px solid #4CAF50;
   }
 
