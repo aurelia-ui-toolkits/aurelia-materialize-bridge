@@ -1,0 +1,26 @@
+<template>
+  <div>
+    <div style="position: relative;">
+      <p>
+        The button on the right of this card is a FAB with absolute positioning.<br />
+        It has a child list of smaller buttons. <br />
+        These buttons transform into a toolbar when you click on the button, attaching to the bottom of its container (this card).
+        <div style="height: 100px;">
+          <!-- making some room for the toolbar -->
+        </div>
+      </p>
+      
+      <div class="fixed-action-btn toolbar" style="position: absolute;">
+        <a md-button="floating: true; large: true;" md-tooltip="position: bottom; text: edit;" md-waves="color: light; circle: true;">
+          <i class="large material-icons">mode_edit</i>
+        </a>
+        <ul>
+          <li><a md-tooltip="position: top; text: charts;" md-waves="color: light;" class="red"><i class="material-icons">insert_chart</i></a></li>
+          <li><a md-tooltip="position: top; text: quote;" md-waves="color: light;" class="yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+          <li><a md-tooltip="position: top; text: publish;" md-waves="color: light;" class="green"><i class="material-icons">publish</i></a></li>
+          <li><a md-tooltip="position: top; text: attach file;" md-waves="color: light;" class="blue"><i class="material-icons">attach_file</i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

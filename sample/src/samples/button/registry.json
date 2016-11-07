@@ -12,6 +12,10 @@
     "fab-fixed": {
       "route": "fab-fixed",
       "files": ["html", "js"]
+    },
+    "fab-fixed-toolbar": {
+      "route": "fab-fixed-toolbar",
+      "files": ["html", "js"]
     }
   }
 }
