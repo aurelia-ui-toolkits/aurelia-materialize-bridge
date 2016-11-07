@@ -1,3 +1,14 @@
+<a name="0.18.1"></a>
+## [0.18.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.18.0...v0.18.1) (2016-11-07)
+
+
+### Bug Fixes
+
+* **md-collection-selector:** fix typo, #314 ([e05be10](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e05be10)), closes [#314](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/314)
+* **md-colors:** fix sidenav colors ([0c32379](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0c32379))
+
+
+
 <a name="0.18.0"></a>
 # [0.18.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.17.3...v0.18.0) (2016-11-03)
 
