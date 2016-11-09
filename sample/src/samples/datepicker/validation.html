@@ -1,0 +1,34 @@
+<template>
+  <md-card md-title="Basic">
+    <div>
+      <input md-datepicker="container: body; value.two-way: date & validate:rules;" md-datepicker.ref="datePicker" type="date" placeholder="pick a date">
+    </div>
+    <div style="margin-top: 15px;">
+      <button md-waves md-button click.delegate="validateModel()">validate</button>
+      <button md-waves md-button click.delegate="reset()">reset</button>
+    </div>
+  </md-card>
+
+  <md-card md-title="Show or hide error text">
+    <div>
+      <input md-datepicker="show-errortext.bind: showErrortext; container: body; value.two-way: date2 & validate:rules;" md-datepicker.ref="date2Picker" type="date" placeholder="pick a date">
+    </div>
+    <div style="margin-top: 15px;">
+      <button md-waves md-button click.delegate="validateModel2()">validate</button>
+      <button md-waves md-button click.delegate="reset2()">reset</button>
+    </div>
+    <md-switch style="margin-top: 15px;" md-label-on="show" md-label-off="hide" md-checked.bind="showErrortext"></md-switch>
+  </md-card>
+
+  <md-card if.bind="controller.errors.length">
+    <h5 class="error-text">You have errors!</h5>
+    <ul style="margin-top: 15px;">
+      <li repeat.for="error of controller.errors">
+        <a href="#" click.delegate="openErrorTarget(error, $event)">
+          ${error.message}
+        </a>
+      </li>
+    </ul>
+  </md-card>
+
+</template>

@@ -5,6 +5,7 @@ import {inject} from 'aurelia-dependency-injection';
 import {getLogger} from 'aurelia-logging';
 import {getBooleanFromAttributeValue} from '../common/attributes';
 import {DatePickerDefaultParser} from './datepicker-default-parser';
+import {fireEvent} from '../common/events';
 
 @inject(Element, TaskQueue, DatePickerDefaultParser)
 @customAttribute('md-datepicker')
@@ -16,6 +17,7 @@ export class MdDatePicker {
   @bindable({defaultBindingMode: bindingMode.oneTime}) selectMonths = true;
   @bindable({defaultBindingMode: bindingMode.oneTime}) selectYears = 15;
   @bindable({defaultBindingMode: bindingMode.oneTime}) options = {};
+  @bindable() showErrortext = true;
 
   constructor(element, taskQueue, defaultParser) {
     this.element = element;
@@ -106,6 +108,7 @@ export class MdDatePicker {
     }
 
     this.movePickerCloserToSrc();
+    this.setErrorTextAttribute();
   }
 
   parseDate(value) {
@@ -144,6 +147,7 @@ export class MdDatePicker {
   onClose() {
     let selected = this.picker.get('select');
     this.value = selected ? selected.obj : null;
+    fireEvent(this.element, 'blur');
   }
 
   onCalendarIconClick(event) {
@@ -170,5 +174,14 @@ export class MdDatePicker {
     // });
   }
 
+  showErrortextChanged() {
+    this.setErrorTextAttribute();
+  }
 
+  setErrorTextAttribute() {
+    const element = this.element;
+    if (!element) return;
+    this.log.debug('showErrortextChanged: ' + this.showErrortext);
+    element.setAttribute('data-show-errortext', getBooleanFromAttributeValue(this.showErrortext));
+  }
 }

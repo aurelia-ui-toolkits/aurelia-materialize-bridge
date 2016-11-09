@@ -25,6 +25,12 @@
       md-show-errortext="false"
       md-value.bind="noErrorText & validate:rules">
     </md-input>
+
+    <md-input
+      md-label="put some text here"
+      md-value.bind="textareaValue & validate:rules"
+      md-text-area="true">
+    </md-input>
   </div>
 
   <div style="margin-top: 15px;">
