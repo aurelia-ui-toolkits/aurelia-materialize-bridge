@@ -5,6 +5,7 @@ import {inject} from 'aurelia-dependency-injection';
 import {getLogger} from 'aurelia-logging';
 import {getBooleanFromAttributeValue} from '../common/attributes';
 import {DatePickerDefaultParser} from './datepicker-default-parser';
+import {fireEvent} from '../common/events';
 
 @inject(Element, TaskQueue, DatePickerDefaultParser)
 @customAttribute('md-datepicker')
@@ -146,6 +147,7 @@ export class MdDatePicker {
   onClose() {
     let selected = this.picker.get('select');
     this.value = selected ? selected.obj : null;
+    fireEvent(this.element, 'blur');
   }
 
   onCalendarIconClick(event) {
