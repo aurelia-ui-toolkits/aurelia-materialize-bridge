@@ -1,3 +1,16 @@
+<a name="0.19.0"></a>
+# [0.19.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.18.1...v0.19.0) (2016-11-10)
+
+
+### Bug Fixes
+
+* **md-datepicker:** fire the blur event on close of the date picker ([b9b026a](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b9b026a))
+
+### Features
+
+* **md-datepicker:** add datepicker validation (by @GanBin)
+* **md-input:** add textarea validation (by @GanBin)
+
 <a name="0.18.1"></a>
 ## [0.18.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.18.0...v0.18.1) (2016-11-07)
 
