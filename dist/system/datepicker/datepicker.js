@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging', '../common/attributes', './datepicker-default-parser'], function (_export, _context) {
-  var bindable, customAttribute, bindingMode, TaskQueue, inject, getLogger, getBooleanFromAttributeValue, DatePickerDefaultParser, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, MdDatePicker;
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging', '../common/attributes', './datepicker-default-parser', '../common/events'], function (_export, _context) {
+  var bindable, customAttribute, bindingMode, TaskQueue, inject, getLogger, getBooleanFromAttributeValue, DatePickerDefaultParser, fireEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, MdDatePicker;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -68,9 +68,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }, function (_datepickerDefaultParser) {
       DatePickerDefaultParser = _datepickerDefaultParser.DatePickerDefaultParser;
+    }, function (_commonEvents) {
+      fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
-      _export('MdDatePicker', MdDatePicker = (_dec = inject(Element, TaskQueue, DatePickerDefaultParser), _dec2 = customAttribute('md-datepicker'), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec6 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec7 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec8 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec9 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec(_class = _dec2(_class = (_class2 = function () {
+      _export('MdDatePicker', MdDatePicker = (_dec = inject(Element, TaskQueue, DatePickerDefaultParser), _dec2 = customAttribute('md-datepicker'), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec6 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec7 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec8 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec9 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec10 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdDatePicker(element, taskQueue, defaultParser) {
           _classCallCheck(this, MdDatePicker);
 
@@ -87,6 +89,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
           _initDefineProp(this, 'selectYears', _descriptor6, this);
 
           _initDefineProp(this, 'options', _descriptor7, this);
+
+          _initDefineProp(this, 'showErrortext', _descriptor8, this);
 
           this.element = element;
           this.log = getLogger('md-datepicker');
@@ -162,6 +166,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
           }
 
           this.movePickerCloserToSrc();
+          this.setErrorTextAttribute();
         };
 
         MdDatePicker.prototype.parseDate = function parseDate(value) {
@@ -213,6 +218,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
         MdDatePicker.prototype.onClose = function onClose() {
           var selected = this.picker.get('select');
           this.value = selected ? selected.obj : null;
+          fireEvent(this.element, 'blur');
         };
 
         MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
@@ -234,6 +240,17 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
           this.log.debug('selectedChanged', this.value);
 
           this.picker.set('select', this.value);
+        };
+
+        MdDatePicker.prototype.showErrortextChanged = function showErrortextChanged() {
+          this.setErrorTextAttribute();
+        };
+
+        MdDatePicker.prototype.setErrorTextAttribute = function setErrorTextAttribute() {
+          var element = this.element;
+          if (!element) return;
+          this.log.debug('showErrortextChanged: ' + this.showErrortext);
+          element.setAttribute('data-show-errortext', getBooleanFromAttributeValue(this.showErrortext));
         };
 
         return MdDatePicker;
@@ -265,6 +282,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
         enumerable: true,
         initializer: function initializer() {
           return {};
+        }
+      }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'showErrortext', [_dec10], {
+        enumerable: true,
+        initializer: function initializer() {
+          return true;
         }
       })), _class2)) || _class) || _class));
 

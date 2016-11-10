@@ -88,7 +88,7 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
       case 'MD-INPUT':
         {
           var label = element.querySelector('label');
-          var input = element.querySelector('input');
+          var input = element.querySelector('input') || element.querySelector('textarea');
           if (label) {
             label.removeAttribute('data-error');
           }
@@ -119,6 +119,17 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
           }
           break;
         }
+      case 'INPUT':
+        {
+          if (element.hasAttribute('md-datepicker')) {
+            element.classList.remove('valid');
+            element.classList.add('invalid');
+            if (!(element.hasAttribute('data-show-errortext') && element.getAttribute('data-show-errortext') === 'false')) {
+              this.addMessage(element.parentNode, error);
+            }
+          }
+          break;
+        }
       default:
         break;
     }
@@ -130,7 +141,7 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
         {
           this.removeMessage(element, error);
 
-          var input = element.querySelector('input');
+          var input = element.querySelector('input') || element.querySelector('textarea');
           if (input && element.querySelectorAll('.' + this.className).length === 0) {
             input.classList.remove('invalid');
             input.classList.add('valid');
@@ -149,6 +160,17 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
           if (_input2 && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
             _input2.classList.remove('invalid');
             _input2.classList.add('valid');
+          }
+          break;
+        }
+      case 'INPUT':
+        {
+          if (element.hasAttribute('md-datepicker')) {
+            this.removeMessage(element.parentNode, error);
+            if (element && element.parentNode.querySelectorAll('.' + this.className).length === 0) {
+              element.classList.remove('invalid');
+              element.classList.add('valid');
+            }
           }
           break;
         }

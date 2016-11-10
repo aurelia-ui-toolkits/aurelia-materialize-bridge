@@ -94,7 +94,7 @@ System.register([], function (_export, _context) {
             case 'MD-INPUT':
               {
                 var label = element.querySelector('label');
-                var input = element.querySelector('input');
+                var input = element.querySelector('input') || element.querySelector('textarea');
                 if (label) {
                   label.removeAttribute('data-error');
                 }
@@ -125,6 +125,17 @@ System.register([], function (_export, _context) {
                 }
                 break;
               }
+            case 'INPUT':
+              {
+                if (element.hasAttribute('md-datepicker')) {
+                  element.classList.remove('valid');
+                  element.classList.add('invalid');
+                  if (!(element.hasAttribute('data-show-errortext') && element.getAttribute('data-show-errortext') === 'false')) {
+                    this.addMessage(element.parentNode, error);
+                  }
+                }
+                break;
+              }
             default:
               break;
           }
@@ -136,7 +147,7 @@ System.register([], function (_export, _context) {
               {
                 this.removeMessage(element, error);
 
-                var input = element.querySelector('input');
+                var input = element.querySelector('input') || element.querySelector('textarea');
                 if (input && element.querySelectorAll('.' + this.className).length === 0) {
                   input.classList.remove('invalid');
                   input.classList.add('valid');
@@ -155,6 +166,17 @@ System.register([], function (_export, _context) {
                 if (_input2 && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
                   _input2.classList.remove('invalid');
                   _input2.classList.add('valid');
+                }
+                break;
+              }
+            case 'INPUT':
+              {
+                if (element.hasAttribute('md-datepicker')) {
+                  this.removeMessage(element.parentNode, error);
+                  if (element && element.parentNode.querySelectorAll('.' + this.className).length === 0) {
+                    element.classList.remove('invalid');
+                    element.classList.add('valid');
+                  }
                 }
                 break;
               }

@@ -308,6 +308,7 @@ export declare class MdDatePicker {
   selectMonths: any;
   selectYears: any;
   options: any;
+  showErrortext: any;
   constructor(element?: any, taskQueue?: any, defaultParser?: any);
   bind(): any;
   parseDate(value?: any): any;
@@ -321,9 +322,11 @@ export declare class MdDatePicker {
   
   // this.value = new Date(value.select);
   valueChanged(newValue?: any): any;
+  
+  // });
+  showErrortextChanged(): any;
+  setErrorTextAttribute(): any;
 }
-
-// });
 export declare class MdDropdownElement {
   static id: any;
   alignment: any;

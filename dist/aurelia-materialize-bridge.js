@@ -1078,6 +1078,7 @@ export class MdDatePicker {
   @bindable({defaultBindingMode: bindingMode.oneTime}) selectMonths = true;
   @bindable({defaultBindingMode: bindingMode.oneTime}) selectYears = 15;
   @bindable({defaultBindingMode: bindingMode.oneTime}) options = {};
+  @bindable() showErrortext = true;
 
   constructor(element, taskQueue, defaultParser) {
     this.element = element;
@@ -1168,6 +1169,7 @@ export class MdDatePicker {
     }
 
     this.movePickerCloserToSrc();
+    this.setErrorTextAttribute();
   }
 
   parseDate(value) {
@@ -1206,6 +1208,7 @@ export class MdDatePicker {
   onClose() {
     let selected = this.picker.get('select');
     this.value = selected ? selected.obj : null;
+    fireEvent(this.element, 'blur');
   }
 
   onCalendarIconClick(event) {
@@ -1232,7 +1235,16 @@ export class MdDatePicker {
     // });
   }
 
+  showErrortextChanged() {
+    this.setErrorTextAttribute();
+  }
 
+  setErrorTextAttribute() {
+    const element = this.element;
+    if (!element) return;
+    this.log.debug('showErrortextChanged: ' + this.showErrortext);
+    element.setAttribute('data-show-errortext', getBooleanFromAttributeValue(this.showErrortext));
+  }
 }
 
 @customElement('md-dropdown')
@@ -2867,7 +2879,7 @@ export class MaterializeFormValidationRenderer {
     switch (element.tagName) {
     case 'MD-INPUT': {
       let label = element.querySelector('label');
-      let input = element.querySelector('input');
+      let input = element.querySelector('input') || element.querySelector('textarea');
       if (label) {
         label.removeAttribute('data-error');
       }
@@ -2898,6 +2910,17 @@ export class MaterializeFormValidationRenderer {
       }
       break;
     }
+    case 'INPUT' : {
+      if (element.hasAttribute('md-datepicker')) {
+        element.classList.remove('valid');
+        element.classList.add('invalid');
+        if (!(element.hasAttribute('data-show-errortext') &&
+            element.getAttribute('data-show-errortext') === 'false')) {
+          this.addMessage(element.parentNode, error);
+        }
+      }
+      break;
+    }
     default: break;
     }
   }
@@ -2907,7 +2930,7 @@ export class MaterializeFormValidationRenderer {
     case 'MD-INPUT': {
       this.removeMessage(element, error);
 
-      let input = element.querySelector('input');
+      let input = element.querySelector('input') || element.querySelector('textarea');
       if (input && element.querySelectorAll('.' + this.className).length === 0) {
         input.classList.remove('invalid');
         input.classList.add('valid');
@@ -2925,6 +2948,16 @@ export class MaterializeFormValidationRenderer {
       if (input && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
         input.classList.remove('invalid');
         input.classList.add('valid');
+      }
+      break;
+    }
+    case 'INPUT' : {
+      if (element.hasAttribute('md-datepicker')) {
+        this.removeMessage(element.parentNode, error);
+        if (element && element.parentNode.querySelectorAll('.' + this.className).length === 0) {
+          element.classList.remove('invalid');
+          element.classList.add('valid');
+        }
       }
       break;
     }

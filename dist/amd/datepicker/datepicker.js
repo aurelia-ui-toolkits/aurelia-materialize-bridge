@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging', '../common/attributes', './datepicker-default-parser'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaTaskQueue, _aureliaDependencyInjection, _aureliaLogging, _attributes, _datepickerDefaultParser) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging', '../common/attributes', './datepicker-default-parser', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaTaskQueue, _aureliaDependencyInjection, _aureliaLogging, _attributes, _datepickerDefaultParser, _events) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -55,9 +55,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8;
 
-  var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, _datepickerDefaultParser.DatePickerDefaultParser), _dec2 = (0, _aureliaTemplating.customAttribute)('md-datepicker'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec6 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec7 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec8 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec9 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec(_class = _dec2(_class = (_class2 = function () {
+  var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, _datepickerDefaultParser.DatePickerDefaultParser), _dec2 = (0, _aureliaTemplating.customAttribute)('md-datepicker'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec6 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec7 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec8 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec9 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec10 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
     function MdDatePicker(element, taskQueue, defaultParser) {
       _classCallCheck(this, MdDatePicker);
 
@@ -74,6 +74,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
       _initDefineProp(this, 'selectYears', _descriptor6, this);
 
       _initDefineProp(this, 'options', _descriptor7, this);
+
+      _initDefineProp(this, 'showErrortext', _descriptor8, this);
 
       this.element = element;
       this.log = (0, _aureliaLogging.getLogger)('md-datepicker');
@@ -149,6 +151,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
       }
 
       this.movePickerCloserToSrc();
+      this.setErrorTextAttribute();
     };
 
     MdDatePicker.prototype.parseDate = function parseDate(value) {
@@ -200,6 +203,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
     MdDatePicker.prototype.onClose = function onClose() {
       var selected = this.picker.get('select');
       this.value = selected ? selected.obj : null;
+      (0, _events.fireEvent)(this.element, 'blur');
     };
 
     MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
@@ -221,6 +225,17 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
       this.log.debug('selectedChanged', this.value);
 
       this.picker.set('select', this.value);
+    };
+
+    MdDatePicker.prototype.showErrortextChanged = function showErrortextChanged() {
+      this.setErrorTextAttribute();
+    };
+
+    MdDatePicker.prototype.setErrorTextAttribute = function setErrorTextAttribute() {
+      var element = this.element;
+      if (!element) return;
+      this.log.debug('showErrortextChanged: ' + this.showErrortext);
+      element.setAttribute('data-show-errortext', (0, _attributes.getBooleanFromAttributeValue)(this.showErrortext));
     };
 
     return MdDatePicker;
@@ -252,6 +267,11 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
     enumerable: true,
     initializer: function initializer() {
       return {};
+    }
+  }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'showErrortext', [_dec10], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
     }
   })), _class2)) || _class) || _class);
 });
