@@ -8,6 +8,7 @@ import { AttributeManager } from '../common/attributeManager';
 @inject(Element, TaskQueue)
 export class MdTabs {
   @bindable() fixed = false;
+  @bindable() transparent = false;
 
   constructor(element, taskQueue) {
     this.element = element;
@@ -55,7 +56,15 @@ export class MdTabs {
     if (newValue) {
       this.attributeManager.addClasses('tabs-fixed-width');
     } else {
-      this.attributeManager.addClasses('tabs-fixed-width');
+      this.attributeManager.removeClasses('tabs-fixed-width');
+    }
+  }
+
+  transparentChanged(newValue) {
+    if (newValue) {
+      this.attributeManager.addClasses('tabs-transparent');
+    } else {
+      this.attributeManager.removeClasses('tabs-transparent');
     }
   }
 
