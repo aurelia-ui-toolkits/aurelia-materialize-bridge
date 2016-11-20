@@ -69,15 +69,6 @@ export class MdTabs {
   }
 
   fireTabSelectedEvent(e) {
-    // fix Materialize tab indicator (see: https://github.com/Dogfalo/materialize/pull/2809)
-    // happens only when the indicator animation is finished
-    // Waves animation duration: 300ms, delay: 90ms
-    // window.setTimeout(() => {
-    //   let indicatorRight = $('.indicator', this.element).css('right');
-    //   if (indicatorRight.indexOf('-') === 0) {
-    //     $('.indicator', this.element).css('right', 0);
-    //   }
-    // }, 310);
     let href = e.target.getAttribute('href');
     fireMaterializeEvent(this.element, 'selected', href);
   }
