@@ -1,3 +1,19 @@
+<a name="0.19.1"></a>
+## [0.19.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.19.0...v0.19.1) (2016-11-20)
+
+
+### Bug Fixes
+
+* **md-colors:** fix tab indicator in IE, close #315 ([ca9cbf3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/ca9cbf3)), closes [#315](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/315)
+* **md-colors:** fix tabs with waves, fix tab indicator, close #315 ([4f85e50](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/4f85e50)), closes [#315](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/315)
+* **md-sidenav:** enablle closeOnClick for screens >  992px, close #318 ([4a86ab8](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/4a86ab8)), closes [#318](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/318)
+
+### Features
+
+* **md-dropdown:** allow for "ref" initialization, #164 ([9713cca](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/9713cca))
+
+
+
 <a name="0.19.0"></a>
 # [0.19.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.18.1...v0.19.0) (2016-11-10)
 
