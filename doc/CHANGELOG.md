@@ -1,3 +1,19 @@
+<a name="0.20.0"></a>
+# [0.20.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.19.1...v0.20.0) (2016-11-20)
+
+
+### Bug Fixes
+
+* **md-tabs:** remove fixed when detached ([823cc38](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/823cc38))
+
+### Features
+
+* **md-navbar:** add auto-height style ([a9687cf](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a9687cf))
+* **md-tabs:** add fixed tab mode ([40f6ba6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/40f6ba6))
+* **md-tabs:** handle onShow ([57e3041](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/57e3041))
+
+
+
 <a name="0.19.1"></a>
 ## [0.19.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.19.0...v0.19.1) (2016-11-20)
 
