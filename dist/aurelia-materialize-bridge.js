@@ -422,38 +422,6 @@ export class MdBox {
   }
 }
 
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-
-@customElement('md-breadcrumbs')
-@inject(Element, Router)
-export class MdBreadcrumbs {
-  constructor(element, router) {
-    this.element = element;
-    this._childRouter = router;
-    while (router.parent) {
-      router = router.parent;
-    }
-    this.router = router;
-  }
-
-  navigate(navigationInstruction) {
-    this._childRouter.navigateToRoute(navigationInstruction.config.name);
-    // this.router.navigate(navigationInstruction.config.name);
-  }
-}
-
-export class InstructionFilterValueConverter {
-  toView(navigationInstructions) {
-    return navigationInstructions.filter(i => {
-      let result = false;
-      if (i.config.title) {
-        result = true;
-      }
-      return result;
-    });
-  }
-}
-
 @customAttribute('md-button')
 @inject(Element)
 export class MdButton {
@@ -513,6 +481,38 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
+  }
+}
+
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+
+@customElement('md-breadcrumbs')
+@inject(Element, Router)
+export class MdBreadcrumbs {
+  constructor(element, router) {
+    this.element = element;
+    this._childRouter = router;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  navigate(navigationInstruction) {
+    this._childRouter.navigateToRoute(navigationInstruction.config.name);
+    // this.router.navigate(navigationInstruction.config.name);
+  }
+}
+
+export class InstructionFilterValueConverter {
+  toView(navigationInstructions) {
+    return navigationInstructions.filter(i => {
+      let result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
   }
 }
 
@@ -1901,6 +1901,9 @@ export class MdNavbar {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdFixed;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdAutoHeight;
   fixedAttributeManager;
 
   constructor(element) {
@@ -1909,14 +1912,21 @@ export class MdNavbar {
 
   attached() {
     this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
+    this.navAttributeManager = new AttributeManager(this.nav);
     if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.addClasses('navbar-fixed');
+    }
+    if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
+      this.navAttributeManager.addClasses('md-auto-height');
     }
   }
 
   detached() {
     if (getBooleanFromAttributeValue(this.mdFixed)) {
       this.fixedAttributeManager.removeClasses('navbar-fixed');
+    }
+    if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
+      this.navAttributeManager.addClasses('md-auto-height');
     }
   }
 }
@@ -2681,6 +2691,10 @@ export class MdSwitch {
 @customAttribute('md-tabs')
 @inject(Element, TaskQueue)
 export class MdTabs {
+  @bindable() fixed = false;
+  @bindable() onShow = null;
+  @bindable() transparent = false;
+
   constructor(element, taskQueue) {
     this.element = element;
     this.taskQueue = taskQueue;
@@ -2699,13 +2713,18 @@ export class MdTabs {
       this.tabAttributeManagers.push(setter);
     });
 
-    // this.taskQueue.queueTask(() => {
-    $(this.element).tabs();
+    const self = this;
+    $(this.element).tabs({
+      onShow: function(jQueryElement) {
+        if (self.onShow) {
+          self.onShow({ element: jQueryElement});
+        }
+      }
+    });
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
       a.addEventListener('click', this.fireTabSelectedEvent);
     });
-    // });
   }
 
   detached() {
@@ -2723,16 +2742,23 @@ export class MdTabs {
     });
   }
 
+  fixedChanged(newValue) {
+    if (newValue) {
+      this.attributeManager.addClasses('tabs-fixed-width');
+    } else {
+      this.attributeManager.removeClasses('tabs-fixed-width');
+    }
+  }
+
+  transparentChanged(newValue) {
+    if (newValue) {
+      this.attributeManager.addClasses('tabs-transparent');
+    } else {
+      this.attributeManager.removeClasses('tabs-transparent');
+    }
+  }
+
   fireTabSelectedEvent(e) {
-    // fix Materialize tab indicator (see: https://github.com/Dogfalo/materialize/pull/2809)
-    // happens only when the indicator animation is finished
-    // Waves animation duration: 300ms, delay: 90ms
-    // window.setTimeout(() => {
-    //   let indicatorRight = $('.indicator', this.element).css('right');
-    //   if (indicatorRight.indexOf('-') === 0) {
-    //     $('.indicator', this.element).css('right', 0);
-    //   }
-    // }, 310);
     let href = e.target.getAttribute('href');
     fireMaterializeEvent(this.element, 'selected', href);
   }
@@ -2744,7 +2770,7 @@ export class MdTabs {
     });
   }
 
-  // FIXME: probably bad
+  // FIXME: probably bad - binding this introduces dirty checking
   get selectedTab() {
     let children = this.element.querySelectorAll('li.tab a');
     let index = -1;

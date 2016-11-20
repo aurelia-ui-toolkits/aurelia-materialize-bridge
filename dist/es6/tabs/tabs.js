@@ -1,4 +1,4 @@
-import { customAttribute } from 'aurelia-templating';
+import { bindable, customAttribute } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 import { TaskQueue } from 'aurelia-task-queue';
 import { fireMaterializeEvent } from '../common/events';
@@ -7,6 +7,10 @@ import { AttributeManager } from '../common/attributeManager';
 @customAttribute('md-tabs')
 @inject(Element, TaskQueue)
 export class MdTabs {
+  @bindable() fixed = false;
+  @bindable() onShow = null;
+  @bindable() transparent = false;
+
   constructor(element, taskQueue) {
     this.element = element;
     this.taskQueue = taskQueue;
@@ -25,13 +29,18 @@ export class MdTabs {
       this.tabAttributeManagers.push(setter);
     });
 
-    // this.taskQueue.queueTask(() => {
-    $(this.element).tabs();
+    const self = this;
+    $(this.element).tabs({
+      onShow: function(jQueryElement) {
+        if (self.onShow) {
+          self.onShow({ element: jQueryElement});
+        }
+      }
+    });
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
       a.addEventListener('click', this.fireTabSelectedEvent);
     });
-    // });
   }
 
   detached() {
@@ -49,16 +58,23 @@ export class MdTabs {
     });
   }
 
+  fixedChanged(newValue) {
+    if (newValue) {
+      this.attributeManager.addClasses('tabs-fixed-width');
+    } else {
+      this.attributeManager.removeClasses('tabs-fixed-width');
+    }
+  }
+
+  transparentChanged(newValue) {
+    if (newValue) {
+      this.attributeManager.addClasses('tabs-transparent');
+    } else {
+      this.attributeManager.removeClasses('tabs-transparent');
+    }
+  }
+
   fireTabSelectedEvent(e) {
-    // fix Materialize tab indicator (see: https://github.com/Dogfalo/materialize/pull/2809)
-    // happens only when the indicator animation is finished
-    // Waves animation duration: 300ms, delay: 90ms
-    // window.setTimeout(() => {
-    //   let indicatorRight = $('.indicator', this.element).css('right');
-    //   if (indicatorRight.indexOf('-') === 0) {
-    //     $('.indicator', this.element).css('right', 0);
-    //   }
-    // }, 310);
     let href = e.target.getAttribute('href');
     fireMaterializeEvent(this.element, 'selected', href);
   }
@@ -70,7 +86,7 @@ export class MdTabs {
     });
   }
 
-  // FIXME: probably bad
+  // FIXME: probably bad - binding this introduces dirty checking
   get selectedTab() {
     let children = this.element.querySelectorAll('li.tab a');
     let index = -1;

@@ -122,17 +122,6 @@ export declare class MdBox {
   attached(): any;
   detached(): any;
 }
-
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-export declare class MdBreadcrumbs {
-  constructor(element?: any, router?: any);
-  navigate(navigationInstruction?: any): any;
-}
-
-// this.router.navigate(navigationInstruction.config.name);
-export declare class InstructionFilterValueConverter {
-  toView(navigationInstructions?: any): any;
-}
 export declare class MdButton {
   disabled: any;
   flat: any;
@@ -143,6 +132,17 @@ export declare class MdButton {
   detached(): any;
   disabledChanged(newValue?: any): any;
   flatChanged(newValue?: any): any;
+}
+
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+export declare class MdBreadcrumbs {
+  constructor(element?: any, router?: any);
+  navigate(navigationInstruction?: any): any;
+}
+
+// this.router.navigate(navigationInstruction.config.name);
+export declare class InstructionFilterValueConverter {
+  toView(navigationInstructions?: any): any;
 }
 export declare class MdCard {
   mdHorizontal: any;
@@ -427,6 +427,7 @@ export declare class MdModal {
 }
 export declare class MdNavbar {
   mdFixed: any;
+  mdAutoHeight: any;
   fixedAttributeManager: any;
   constructor(element?: any);
   attached(): any;
@@ -643,15 +644,18 @@ export declare class MdSwitch {
   mdDisabledChanged(newValue?: any): any;
 }
 export declare class MdTabs {
+  fixed: any;
+  onShow: any;
+  transparent: any;
   constructor(element?: any, taskQueue?: any);
   attached(): any;
-  
-  // });
   detached(): any;
+  fixedChanged(newValue?: any): any;
+  transparentChanged(newValue?: any): any;
   fireTabSelectedEvent(e?: any): any;
   selectTab(id?: any): any;
   
-  // FIXME: probably bad
+  // FIXME: probably bad - binding this introduces dirty checking
   selectedTab: any;
 }
 export declare class MdToastService {
