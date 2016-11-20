@@ -82,10 +82,13 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
           this.ref.whenAttached.then(function () {
 
+            var closeOnClick = _this.ref.mdFixed && window.innerWidth > 992 ? false : getBooleanFromAttributeValue(_this.ref.mdCloseOnClick);
+
             _this.element.setAttribute('data-activates', _this.ref.controlId);
             var sideNavConfig = {
               edge: _this.ref.mdEdge || 'left',
-              closeOnClick: _this.ref.mdFixed ? false : getBooleanFromAttributeValue(_this.ref.mdCloseOnClick),
+
+              closeOnClick: closeOnClick,
               menuWidth: parseInt(_this.ref.mdWidth, 10)
             };
 

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdDropdown = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class3, _temp;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -80,38 +80,44 @@ var MdDropdown = exports.MdDropdown = (_dec = (0, _aureliaTemplating.customAttri
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec11 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec(_class = _dec2(_class = (_class2 = function () {
+}), _dec12 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
   function MdDropdown(element) {
     _classCallCheck(this, MdDropdown);
 
     _initDefineProp(this, 'activates', _descriptor, this);
 
-    _initDefineProp(this, 'alignment', _descriptor2, this);
+    _initDefineProp(this, 'ref', _descriptor2, this);
 
-    _initDefineProp(this, 'belowOrigin', _descriptor3, this);
+    _initDefineProp(this, 'alignment', _descriptor3, this);
 
-    _initDefineProp(this, 'constrainWidth', _descriptor4, this);
+    _initDefineProp(this, 'belowOrigin', _descriptor4, this);
 
-    _initDefineProp(this, 'gutter', _descriptor5, this);
+    _initDefineProp(this, 'constrainWidth', _descriptor5, this);
 
-    _initDefineProp(this, 'hover', _descriptor6, this);
+    _initDefineProp(this, 'gutter', _descriptor6, this);
 
-    _initDefineProp(this, 'mdTitle', _descriptor7, this);
+    _initDefineProp(this, 'hover', _descriptor7, this);
 
-    _initDefineProp(this, 'inDuration', _descriptor8, this);
+    _initDefineProp(this, 'mdTitle', _descriptor8, this);
 
-    _initDefineProp(this, 'outDuration', _descriptor9, this);
+    _initDefineProp(this, 'inDuration', _descriptor9, this);
+
+    _initDefineProp(this, 'outDuration', _descriptor10, this);
 
     this.element = element;
     this.attributeManager = new _attributeManager.AttributeManager(this.element);
   }
 
   MdDropdown.prototype.attached = function attached() {
+    this.handleActivateElement();
     this.contentAttributeManager = new _attributeManager.AttributeManager(document.getElementById(this.activates));
 
     this.attributeManager.addClasses('dropdown-button');
     this.contentAttributeManager.addClasses('dropdown-content');
-    this.attributeManager.addAttributes({ 'data-activates': this.activates });
+
+
     $(this.element).dropdown({
       alignment: this.alignment,
       belowOrigin: (0, _attributes.getBooleanFromAttributeValue)(this.belowOrigin),
@@ -129,46 +135,64 @@ var MdDropdown = exports.MdDropdown = (_dec = (0, _aureliaTemplating.customAttri
     this.contentAttributeManager.removeClasses('dropdown-content');
   };
 
+  MdDropdown.prototype.handleActivateElement = function handleActivateElement() {
+    if (this.ref) {
+      var id = this.ref.getAttribute('id');
+      if (!id) {
+        id = 'md-dropdown-' + MdDropdown.elementId++;
+        this.ref.setAttribute('id', id);
+        this.activates = id;
+      }
+      this.id = MdDropdown.elementId++;
+    }
+    this.attributeManager.addAttributes({ 'data-activates': this.activates });
+  };
+
   return MdDropdown;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'activates', [_dec3], {
+}(), _class3.elementId = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'activates', [_dec3], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'alignment', [_dec4], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec4], {
+  enumerable: true,
+  initializer: function initializer() {
+    return null;
+  }
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'alignment', [_dec5], {
   enumerable: true,
   initializer: function initializer() {
     return 'left';
   }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'belowOrigin', [_dec5], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'belowOrigin', [_dec6], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'constrainWidth', [_dec6], {
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'constrainWidth', [_dec7], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'gutter', [_dec7], {
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'gutter', [_dec8], {
   enumerable: true,
   initializer: function initializer() {
     return 0;
   }
-}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'hover', [_dec8], {
+}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'hover', [_dec9], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec9], {
+}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec10], {
   enumerable: true,
   initializer: null
-}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'inDuration', [_dec10], {
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'inDuration', [_dec11], {
   enumerable: true,
   initializer: function initializer() {
     return 300;
   }
-}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'outDuration', [_dec11], {
+}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'outDuration', [_dec12], {
   enumerable: true,
   initializer: function initializer() {
     return 225;

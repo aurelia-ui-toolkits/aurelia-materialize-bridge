@@ -7,9 +7,14 @@ import { getBooleanFromAttributeValue } from '../common/attributes';
 @customAttribute('md-dropdown')
 @inject(Element)
 export class MdDropdown {
+  static elementId = 0;
+
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) activates = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) ref = null;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) alignment = 'left';
@@ -41,11 +46,13 @@ export class MdDropdown {
   }
 
   attached() {
+    this.handleActivateElement();
     this.contentAttributeManager = new AttributeManager(document.getElementById(this.activates));
 
     this.attributeManager.addClasses('dropdown-button');
     this.contentAttributeManager.addClasses('dropdown-content');
-    this.attributeManager.addAttributes({ 'data-activates': this.activates });
+    // this.attributeManager.addAttributes({ 'data-activates': this.activates });
+
     $(this.element).dropdown({
       alignment: this.alignment,
       belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
@@ -61,5 +68,18 @@ export class MdDropdown {
     this.attributeManager.removeAttributes('data-activates');
     this.attributeManager.removeClasses('dropdown-button');
     this.contentAttributeManager.removeClasses('dropdown-content');
+  }
+
+  handleActivateElement() {
+    if (this.ref) {
+      let id = this.ref.getAttribute('id');
+      if (!id) {
+        id = `md-dropdown-${MdDropdown.elementId++}`;
+        this.ref.setAttribute('id', id);
+        this.activates = id;
+      }
+      this.id = MdDropdown.elementId++;
+    }
+    this.attributeManager.addAttributes({ 'data-activates': this.activates });
   }
 }

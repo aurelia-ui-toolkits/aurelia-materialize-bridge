@@ -1554,9 +1554,14 @@ export function applyMaterializeDropdownFix() {
 @customAttribute('md-dropdown')
 @inject(Element)
 export class MdDropdown {
+  static elementId = 0;
+
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) activates = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) ref = null;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) alignment = 'left';
@@ -1588,11 +1593,13 @@ export class MdDropdown {
   }
 
   attached() {
+    this.handleActivateElement();
     this.contentAttributeManager = new AttributeManager(document.getElementById(this.activates));
 
     this.attributeManager.addClasses('dropdown-button');
     this.contentAttributeManager.addClasses('dropdown-content');
-    this.attributeManager.addAttributes({ 'data-activates': this.activates });
+    // this.attributeManager.addAttributes({ 'data-activates': this.activates });
+
     $(this.element).dropdown({
       alignment: this.alignment,
       belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
@@ -1608,6 +1615,19 @@ export class MdDropdown {
     this.attributeManager.removeAttributes('data-activates');
     this.attributeManager.removeClasses('dropdown-button');
     this.contentAttributeManager.removeClasses('dropdown-content');
+  }
+
+  handleActivateElement() {
+    if (this.ref) {
+      let id = this.ref.getAttribute('id');
+      if (!id) {
+        id = `md-dropdown-${MdDropdown.elementId++}`;
+        this.ref.setAttribute('id', id);
+        this.activates = id;
+      }
+      this.id = MdDropdown.elementId++;
+    }
+    this.attributeManager.addAttributes({ 'data-activates': this.activates });
   }
 }
 
@@ -2453,10 +2473,13 @@ export class MdSidenavCollapse {
       // this.widthSubscription = this.observerLocator.getObserver(this.ref, 'mdWidth').subscribe(this.widthChanged.bind(this));
       // this.fixedSubscription = this.observerLocator.getObserver(this.ref, 'fixed').subscribe(this.fixedChanged.bind(this));
 
+      const closeOnClick = this.ref.mdFixed && window.innerWidth > 992 ? false : getBooleanFromAttributeValue(this.ref.mdCloseOnClick);
+
       this.element.setAttribute('data-activates', this.ref.controlId);
       let sideNavConfig = {
         edge: this.ref.mdEdge || 'left',
-        closeOnClick: (this.ref.mdFixed ? false : getBooleanFromAttributeValue(this.ref.mdCloseOnClick)),
+        // closeOnClick: (this.ref.mdFixed ? false : getBooleanFromAttributeValue(this.ref.mdCloseOnClick)),
+        closeOnClick,
         menuWidth: parseInt(this.ref.mdWidth, 10)
       };
       // this.log.debug('sideNavConfig:', sideNavConfig);

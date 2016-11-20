@@ -19,10 +19,13 @@ export class MdSidenavCollapse {
       // this.widthSubscription = this.observerLocator.getObserver(this.ref, 'mdWidth').subscribe(this.widthChanged.bind(this));
       // this.fixedSubscription = this.observerLocator.getObserver(this.ref, 'fixed').subscribe(this.fixedChanged.bind(this));
 
+      const closeOnClick = this.ref.mdFixed && window.innerWidth > 992 ? false : getBooleanFromAttributeValue(this.ref.mdCloseOnClick);
+
       this.element.setAttribute('data-activates', this.ref.controlId);
       let sideNavConfig = {
         edge: this.ref.mdEdge || 'left',
-        closeOnClick: (this.ref.mdFixed ? false : getBooleanFromAttributeValue(this.ref.mdCloseOnClick)),
+        // closeOnClick: (this.ref.mdFixed ? false : getBooleanFromAttributeValue(this.ref.mdCloseOnClick)),
+        closeOnClick,
         menuWidth: parseInt(this.ref.mdWidth, 10)
       };
       // this.log.debug('sideNavConfig:', sideNavConfig);

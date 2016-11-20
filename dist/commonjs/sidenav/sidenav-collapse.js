@@ -78,10 +78,13 @@ var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec = (0, _aureliaTemplati
 
     this.ref.whenAttached.then(function () {
 
+      var closeOnClick = _this.ref.mdFixed && window.innerWidth > 992 ? false : (0, _attributes.getBooleanFromAttributeValue)(_this.ref.mdCloseOnClick);
+
       _this.element.setAttribute('data-activates', _this.ref.controlId);
       var sideNavConfig = {
         edge: _this.ref.mdEdge || 'left',
-        closeOnClick: _this.ref.mdFixed ? false : (0, _attributes.getBooleanFromAttributeValue)(_this.ref.mdCloseOnClick),
+
+        closeOnClick: closeOnClick,
         menuWidth: parseInt(_this.ref.mdWidth, 10)
       };
 

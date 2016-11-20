@@ -342,7 +342,9 @@ export declare class MdDropdownElement {
 }
 export declare function applyMaterializeDropdownFix(): any;
 export declare class MdDropdown {
+  static elementId: any;
   activates: any;
+  ref: any;
   alignment: any;
   belowOrigin: any;
   constrainWidth: any;
@@ -354,6 +356,7 @@ export declare class MdDropdown {
   constructor(element?: any);
   attached(): any;
   detached(): any;
+  handleActivateElement(): any;
 }
 export declare class MdFab {
   mdFixed: any;
