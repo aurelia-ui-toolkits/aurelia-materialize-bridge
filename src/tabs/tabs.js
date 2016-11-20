@@ -8,6 +8,7 @@ import { AttributeManager } from '../common/attributeManager';
 @inject(Element, TaskQueue)
 export class MdTabs {
   @bindable() fixed = false;
+  @bindable() onShow = null;
   @bindable() transparent = false;
 
   constructor(element, taskQueue) {
@@ -28,13 +29,18 @@ export class MdTabs {
       this.tabAttributeManagers.push(setter);
     });
 
-    // this.taskQueue.queueTask(() => {
-    $(this.element).tabs();
+    const self = this;
+    $(this.element).tabs({
+      onShow: function(jQueryElement) {
+        if (self.onShow) {
+          self.onShow({ element: jQueryElement});
+        }
+      }
+    });
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
       a.addEventListener('click', this.fireTabSelectedEvent);
     });
-    // });
   }
 
   detached() {
@@ -80,7 +86,7 @@ export class MdTabs {
     });
   }
 
-  // FIXME: probably bad
+  // FIXME: probably bad - binding this introduces dirty checking
   get selectedTab() {
     let children = this.element.querySelectorAll('li.tab a');
     let index = -1;
