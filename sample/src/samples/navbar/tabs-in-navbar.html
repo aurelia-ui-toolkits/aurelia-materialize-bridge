@@ -1,0 +1,51 @@
+<template>
+  <require from="./tabs-in-navbar.css"></require>
+  <div class="tabs-in-navbar">
+    <md-navbar md-auto-height="true">
+      <a href="#/samples/navbar" class="brand-logo"><span>Brand logo</span></a>
+      <ul class="hide-on-med-and-down right">
+        <li md-waves><a>About</a></li>
+        <li md-waves><a>Installation</a></li>
+        <li md-waves><a>Project Status</a></li>
+      </ul>
+      <ul md-tabs="transparent: true;" class="z-depth-1">
+        <li md-waves="color: primary;"><a class="active" href="#tab1">Tab 1</a></li>
+        <li md-waves="color: primary;"><a href="#tab2">Tab 2</a></li>
+        <li md-waves="color: primary;"><a href="#tab3">Tab 3</a></li>
+        <li md-waves="color: primary;"><a href="#tab4">Tab 4</a></li>
+      </ul>
+    </md-navbar>
+    <div id="tab1" class="tab-content z-depth-1">
+      <p>
+        This is tab 1
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.
+      </p>
+    </div>
+    <div id="tab2" class="tab-content z-depth-1">
+      <p>
+        This is tab 2
+      </p>
+      <p>
+        Nunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.
+      </p>
+    </div>
+    <div id="tab3" class="tab-content z-depth-1">
+      <p>
+        This is tab 3
+      </p>
+      <p>
+        Praesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+      </p>
+    </div>
+    <div id="tab4" class="tab-content z-depth-1">
+      <p>
+        This is tab 4
+      </p>
+      <p>
+        In tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.
+      </p>
+    </div>
+  </div>
+</template>

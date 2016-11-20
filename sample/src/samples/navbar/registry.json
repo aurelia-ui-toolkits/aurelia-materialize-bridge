@@ -24,6 +24,10 @@
     "search-bar": {
       "route": "search-bar",
       "files": ["html"]
+    },
+    "tabs-in-navbar": {
+      "route": "tabs-in-navbar",
+      "files": ["html"]
     }
   }
 }
