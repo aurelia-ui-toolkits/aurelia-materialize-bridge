@@ -14,11 +14,13 @@ export class MdCheckbox {
   }) mdChecked;
   @bindable() mdDisabled;
   @bindable() mdFilledIn;
+  @bindable() matcher;
+  @bindable() model;
 
   constructor(element) {
     this.element = element;
     this.controlId = `md-checkbox-${MdCheckbox.id++}`;
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   attached() {
@@ -34,29 +36,30 @@ export class MdCheckbox {
     if (getBooleanFromAttributeValue(this.mdDisabled)) {
       this.checkbox.disabled = true;
     }
-    this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
-    this.checkbox.addEventListener('change', this.handleChange);
+    // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
+    // this.checkbox.addEventListener('change', this.handleChange);
   }
 
-  blur() {
-    fireEvent(this.element, 'blur');
-  }
+  // blur() {
+  //   fireEvent(this.element, 'blur');
+  // }
 
   detached() {
     this.attributeManager.removeClasses(['filled-in', 'disabled']);
-    this.checkbox.removeEventListener('change', this.handleChange);
+    // this.checkbox.removeEventListener('change', this.handleChange);
   }
 
-  handleChange() {
-    this.mdChecked = this.checkbox.checked;
-    fireEvent(this.element, 'blur');
-  }
+  // handleChange() {
+  //   this.mdChecked = this.checkbox.checked;
+  //   fireEvent(this.element, 'blur');
+  // }
 
-  mdCheckedChanged(newValue) {
-    if (this.checkbox) {
-      this.checkbox.checked = !!newValue;
-    }
-  }
+  // mdCheckedChanged(newValue) {
+  //   // if (this.checkbox) {
+  //   //   this.checkbox.checked = !!newValue;
+  //   // }
+  //   fireEvent(this.element, 'blur');
+  // }
 
   mdDisabledChanged(newValue) {
     if (this.checkbox) {
