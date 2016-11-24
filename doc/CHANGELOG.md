@@ -1,3 +1,13 @@
+<a name="0.20.2"></a>
+## [0.20.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.1...v0.20.2) (2016-11-24)
+
+
+### Bug Fixes
+
+* **md-checkbox:** rename attributes for consistency ([46b881f](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/46b881f))
+
+
+
 <a name="0.20.1"></a>
 ## [0.20.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.0...v0.20.1) (2016-11-24)
 
