@@ -12,6 +12,14 @@
     "switch": {
       "route": "switch",
       "files": ["html", "js"]
+    },
+    "binding-to-objects": {
+      "route": "binding-to-objects",
+      "files": ["html", "js"]
+    },
+    "binding-with-matcher": {
+      "route": "binding-with-matcher",
+      "files": ["html", "js"]
     }
   }
 }
