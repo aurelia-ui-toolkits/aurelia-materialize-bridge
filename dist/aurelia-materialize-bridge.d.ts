@@ -122,17 +122,6 @@ export declare class MdBox {
   attached(): any;
   detached(): any;
 }
-export declare class MdButton {
-  disabled: any;
-  flat: any;
-  floating: any;
-  large: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  disabledChanged(newValue?: any): any;
-  flatChanged(newValue?: any): any;
-}
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 export declare class MdBreadcrumbs {
@@ -143,6 +132,17 @@ export declare class MdBreadcrumbs {
 // this.router.navigate(navigationInstruction.config.name);
 export declare class InstructionFilterValueConverter {
   toView(navigationInstructions?: any): any;
+}
+export declare class MdButton {
+  disabled: any;
+  flat: any;
+  floating: any;
+  large: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  disabledChanged(newValue?: any): any;
+  flatChanged(newValue?: any): any;
 }
 export declare class MdCard {
   mdHorizontal: any;
@@ -181,12 +181,31 @@ export declare class MdCheckbox {
   mdChecked: any;
   mdDisabled: any;
   mdFilledIn: any;
+  matcher: any;
+  model: any;
   constructor(element?: any);
+  
+  // this.handleChange = this.handleChange.bind(this);
   attached(): any;
-  blur(): any;
+  
+  // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
+  // this.checkbox.addEventListener('change', this.handleChange);
+  // blur() {
+  //   fireEvent(this.element, 'blur');
+  // }
   detached(): any;
-  handleChange(): any;
-  mdCheckedChanged(newValue?: any): any;
+  
+  // this.checkbox.removeEventListener('change', this.handleChange);
+  // handleChange() {
+  //   this.mdChecked = this.checkbox.checked;
+  //   fireEvent(this.element, 'blur');
+  // }
+  // mdCheckedChanged(newValue) {
+  //   // if (this.checkbox) {
+  //   //   this.checkbox.checked = !!newValue;
+  //   // }
+  //   fireEvent(this.element, 'blur');
+  // }
   mdDisabledChanged(newValue?: any): any;
 }
 export declare class MdChip {

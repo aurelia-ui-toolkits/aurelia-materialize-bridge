@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdCheckbox = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _class3, _temp;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _class3, _temp;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -66,7 +66,7 @@ function _initializerWarningHelper(descriptor, context) {
 
 var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customElement)('md-checkbox'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-}), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
+}), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
   function MdCheckbox(element) {
     _classCallCheck(this, MdCheckbox);
 
@@ -76,9 +76,12 @@ var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customEleme
 
     _initDefineProp(this, 'mdFilledIn', _descriptor3, this);
 
+    _initDefineProp(this, 'matcher', _descriptor4, this);
+
+    _initDefineProp(this, 'model', _descriptor5, this);
+
     this.element = element;
     this.controlId = 'md-checkbox-' + MdCheckbox.id++;
-    this.handleChange = this.handleChange.bind(this);
   }
 
   MdCheckbox.prototype.attached = function attached() {
@@ -94,28 +97,10 @@ var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customEleme
     if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
       this.checkbox.disabled = true;
     }
-    this.checkbox.checked = (0, _attributes.getBooleanFromAttributeValue)(this.mdChecked);
-    this.checkbox.addEventListener('change', this.handleChange);
-  };
-
-  MdCheckbox.prototype.blur = function blur() {
-    (0, _events.fireEvent)(this.element, 'blur');
   };
 
   MdCheckbox.prototype.detached = function detached() {
     this.attributeManager.removeClasses(['filled-in', 'disabled']);
-    this.checkbox.removeEventListener('change', this.handleChange);
-  };
-
-  MdCheckbox.prototype.handleChange = function handleChange() {
-    this.mdChecked = this.checkbox.checked;
-    (0, _events.fireEvent)(this.element, 'blur');
-  };
-
-  MdCheckbox.prototype.mdCheckedChanged = function mdCheckedChanged(newValue) {
-    if (this.checkbox) {
-      this.checkbox.checked = !!newValue;
-    }
   };
 
   MdCheckbox.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
@@ -132,6 +117,12 @@ var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customEleme
   enumerable: true,
   initializer: null
 }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdFilledIn', [_dec5], {
+  enumerable: true,
+  initializer: null
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'matcher', [_dec6], {
+  enumerable: true,
+  initializer: null
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'model', [_dec7], {
   enumerable: true,
   initializer: null
 })), _class2)) || _class) || _class);

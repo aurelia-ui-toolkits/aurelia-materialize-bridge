@@ -1,5 +1,5 @@
 <template>
-  <input type="checkbox" id="${controlId}" ref="checkbox" blur.trigger="blur()" />
+  <input type="checkbox" id="${controlId}" checked.bind="mdChecked" matcher.bind="matcher" model.bind="model" ref="checkbox" />
   <label for="${controlId}">
     <slot></slot>
   </label>

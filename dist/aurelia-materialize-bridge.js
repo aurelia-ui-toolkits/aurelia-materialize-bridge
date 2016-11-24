@@ -422,6 +422,38 @@ export class MdBox {
   }
 }
 
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+
+@customElement('md-breadcrumbs')
+@inject(Element, Router)
+export class MdBreadcrumbs {
+  constructor(element, router) {
+    this.element = element;
+    this._childRouter = router;
+    while (router.parent) {
+      router = router.parent;
+    }
+    this.router = router;
+  }
+
+  navigate(navigationInstruction) {
+    this._childRouter.navigateToRoute(navigationInstruction.config.name);
+    // this.router.navigate(navigationInstruction.config.name);
+  }
+}
+
+export class InstructionFilterValueConverter {
+  toView(navigationInstructions) {
+    return navigationInstructions.filter(i => {
+      let result = false;
+      if (i.config.title) {
+        result = true;
+      }
+      return result;
+    });
+  }
+}
+
 @customAttribute('md-button')
 @inject(Element)
 export class MdButton {
@@ -481,38 +513,6 @@ export class MdButton {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
     }
-  }
-}
-
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-
-@customElement('md-breadcrumbs')
-@inject(Element, Router)
-export class MdBreadcrumbs {
-  constructor(element, router) {
-    this.element = element;
-    this._childRouter = router;
-    while (router.parent) {
-      router = router.parent;
-    }
-    this.router = router;
-  }
-
-  navigate(navigationInstruction) {
-    this._childRouter.navigateToRoute(navigationInstruction.config.name);
-    // this.router.navigate(navigationInstruction.config.name);
-  }
-}
-
-export class InstructionFilterValueConverter {
-  toView(navigationInstructions) {
-    return navigationInstructions.filter(i => {
-      let result = false;
-      if (i.config.title) {
-        result = true;
-      }
-      return result;
-    });
   }
 }
 
@@ -646,11 +646,13 @@ export class MdCheckbox {
   }) mdChecked;
   @bindable() mdDisabled;
   @bindable() mdFilledIn;
+  @bindable() matcher;
+  @bindable() model;
 
   constructor(element) {
     this.element = element;
     this.controlId = `md-checkbox-${MdCheckbox.id++}`;
-    this.handleChange = this.handleChange.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   attached() {
@@ -666,29 +668,30 @@ export class MdCheckbox {
     if (getBooleanFromAttributeValue(this.mdDisabled)) {
       this.checkbox.disabled = true;
     }
-    this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
-    this.checkbox.addEventListener('change', this.handleChange);
+    // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
+    // this.checkbox.addEventListener('change', this.handleChange);
   }
 
-  blur() {
-    fireEvent(this.element, 'blur');
-  }
+  // blur() {
+  //   fireEvent(this.element, 'blur');
+  // }
 
   detached() {
     this.attributeManager.removeClasses(['filled-in', 'disabled']);
-    this.checkbox.removeEventListener('change', this.handleChange);
+    // this.checkbox.removeEventListener('change', this.handleChange);
   }
 
-  handleChange() {
-    this.mdChecked = this.checkbox.checked;
-    fireEvent(this.element, 'blur');
-  }
+  // handleChange() {
+  //   this.mdChecked = this.checkbox.checked;
+  //   fireEvent(this.element, 'blur');
+  // }
 
-  mdCheckedChanged(newValue) {
-    if (this.checkbox) {
-      this.checkbox.checked = !!newValue;
-    }
-  }
+  // mdCheckedChanged(newValue) {
+  //   // if (this.checkbox) {
+  //   //   this.checkbox.checked = !!newValue;
+  //   // }
+  //   fireEvent(this.element, 'blur');
+  // }
 
   mdDisabledChanged(newValue) {
     if (this.checkbox) {

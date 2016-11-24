@@ -1,7 +1,7 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes', '../common/events'], function (_export, _context) {
-  var bindable, customElement, bindingMode, inject, AttributeManager, getBooleanFromAttributeValue, fireEvent, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _class3, _temp, MdCheckbox;
+  var bindable, customElement, bindingMode, inject, AttributeManager, getBooleanFromAttributeValue, fireEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _class3, _temp, MdCheckbox;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -70,7 +70,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     execute: function () {
       _export('MdCheckbox', MdCheckbox = (_dec = customElement('md-checkbox'), _dec2 = inject(Element), _dec3 = bindable({
         defaultBindingMode: bindingMode.twoWay
-      }), _dec4 = bindable(), _dec5 = bindable(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
+      }), _dec4 = bindable(), _dec5 = bindable(), _dec6 = bindable(), _dec7 = bindable(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
         function MdCheckbox(element) {
           _classCallCheck(this, MdCheckbox);
 
@@ -80,9 +80,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
           _initDefineProp(this, 'mdFilledIn', _descriptor3, this);
 
+          _initDefineProp(this, 'matcher', _descriptor4, this);
+
+          _initDefineProp(this, 'model', _descriptor5, this);
+
           this.element = element;
           this.controlId = 'md-checkbox-' + MdCheckbox.id++;
-          this.handleChange = this.handleChange.bind(this);
         }
 
         MdCheckbox.prototype.attached = function attached() {
@@ -98,28 +101,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           if (getBooleanFromAttributeValue(this.mdDisabled)) {
             this.checkbox.disabled = true;
           }
-          this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
-          this.checkbox.addEventListener('change', this.handleChange);
-        };
-
-        MdCheckbox.prototype.blur = function blur() {
-          fireEvent(this.element, 'blur');
         };
 
         MdCheckbox.prototype.detached = function detached() {
           this.attributeManager.removeClasses(['filled-in', 'disabled']);
-          this.checkbox.removeEventListener('change', this.handleChange);
-        };
-
-        MdCheckbox.prototype.handleChange = function handleChange() {
-          this.mdChecked = this.checkbox.checked;
-          fireEvent(this.element, 'blur');
-        };
-
-        MdCheckbox.prototype.mdCheckedChanged = function mdCheckedChanged(newValue) {
-          if (this.checkbox) {
-            this.checkbox.checked = !!newValue;
-          }
         };
 
         MdCheckbox.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
@@ -136,6 +121,12 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         enumerable: true,
         initializer: null
       }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdFilledIn', [_dec5], {
+        enumerable: true,
+        initializer: null
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'matcher', [_dec6], {
+        enumerable: true,
+        initializer: null
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'model', [_dec7], {
         enumerable: true,
         initializer: null
       })), _class2)) || _class) || _class));
