@@ -1,6 +1,6 @@
 <template>
   <p repeat.for="product of products ">
-    <md-checkbox model.bind="product" md-checked.bind="selectedProducts ">
+    <md-checkbox md-model.bind="product" md-checked.bind="selectedProducts ">
         ${product.name}
     </md-checkbox>
   </p>
