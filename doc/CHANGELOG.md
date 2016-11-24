@@ -1,3 +1,8 @@
+<a name="0.20.1"></a>
+## [0.20.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.0...v0.20.1) (2016-11-24)
+
+* **md-checkbox:** Refactor to allow for `model` and `matcher` bindings. 
+
 <a name="0.20.0"></a>
 # [0.20.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.19.1...v0.20.0) (2016-11-20)
 
