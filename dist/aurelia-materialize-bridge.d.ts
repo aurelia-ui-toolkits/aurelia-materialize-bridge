@@ -181,8 +181,8 @@ export declare class MdCheckbox {
   mdChecked: any;
   mdDisabled: any;
   mdFilledIn: any;
-  matcher: any;
-  model: any;
+  mdMatcher: any;
+  mdModel: any;
   constructor(element?: any);
   
   // this.handleChange = this.handleChange.bind(this);

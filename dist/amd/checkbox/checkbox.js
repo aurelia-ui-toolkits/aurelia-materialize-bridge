@@ -69,9 +69,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
       _initDefineProp(this, 'mdFilledIn', _descriptor3, this);
 
-      _initDefineProp(this, 'matcher', _descriptor4, this);
+      _initDefineProp(this, 'mdMatcher', _descriptor4, this);
 
-      _initDefineProp(this, 'model', _descriptor5, this);
+      _initDefineProp(this, 'mdModel', _descriptor5, this);
 
       this.element = element;
       this.controlId = 'md-checkbox-' + MdCheckbox.id++;
@@ -112,10 +112,10 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
   }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdFilledIn', [_dec5], {
     enumerable: true,
     initializer: null
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'matcher', [_dec6], {
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdMatcher', [_dec6], {
     enumerable: true,
     initializer: null
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'model', [_dec7], {
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdModel', [_dec7], {
     enumerable: true,
     initializer: null
   })), _class2)) || _class) || _class);

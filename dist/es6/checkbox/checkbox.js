@@ -14,8 +14,8 @@ export class MdCheckbox {
   }) mdChecked;
   @bindable() mdDisabled;
   @bindable() mdFilledIn;
-  @bindable() matcher;
-  @bindable() model;
+  @bindable() mdMatcher;
+  @bindable() mdModel;
 
   constructor(element) {
     this.element = element;

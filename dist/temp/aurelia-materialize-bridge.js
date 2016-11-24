@@ -777,9 +777,9 @@ var MdCheckbox = exports.MdCheckbox = (_dec36 = (0, _aureliaTemplating.customEle
 
     _initDefineProp(this, 'mdFilledIn', _descriptor21, this);
 
-    _initDefineProp(this, 'matcher', _descriptor22, this);
+    _initDefineProp(this, 'mdMatcher', _descriptor22, this);
 
-    _initDefineProp(this, 'model', _descriptor23, this);
+    _initDefineProp(this, 'mdModel', _descriptor23, this);
 
     this.element = element;
     this.controlId = 'md-checkbox-' + MdCheckbox.id++;
@@ -820,10 +820,10 @@ var MdCheckbox = exports.MdCheckbox = (_dec36 = (0, _aureliaTemplating.customEle
 }), _descriptor21 = _applyDecoratedDescriptor(_class29.prototype, 'mdFilledIn', [_dec40], {
   enumerable: true,
   initializer: null
-}), _descriptor22 = _applyDecoratedDescriptor(_class29.prototype, 'matcher', [_dec41], {
+}), _descriptor22 = _applyDecoratedDescriptor(_class29.prototype, 'mdMatcher', [_dec41], {
   enumerable: true,
   initializer: null
-}), _descriptor23 = _applyDecoratedDescriptor(_class29.prototype, 'model', [_dec42], {
+}), _descriptor23 = _applyDecoratedDescriptor(_class29.prototype, 'mdModel', [_dec42], {
   enumerable: true,
   initializer: null
 })), _class29)) || _class28) || _class28);
