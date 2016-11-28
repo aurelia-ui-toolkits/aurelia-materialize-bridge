@@ -1,9 +1,10 @@
+import * as LogManager from 'aurelia-logging';
 import * as components from './components.json!json';
 
 export class ComponentService {
   constructor() {
     this.components = components;
-    // this.componentsMap = this.transformToMap(components);
+    this.log = LogManager.getLogger('ComponentService');
   }
 
   transformToMap(obj) {
@@ -50,16 +51,61 @@ export class ComponentService {
 
   getRouterConfig() {
     let routes = [];
-    Object.keys(this.components).forEach(cat => {
-      let cfg = this.components[cat];
+    Object.keys(this.components).forEach(category => {
+      let cfg = this.components[category];
       Object.keys(cfg).forEach(title => {
-        if (cfg[title].status && cfg[title].nav !== false) {
-          let shortModuleId = cfg[title].moduleId || title.toLowerCase();
+        let component = cfg[title];
+        if (component.status && component.nav !== false) {
+          let shortModuleId = component.moduleId || title.toLowerCase();
           let moduleId = `samples/${shortModuleId}/index`;
-          routes.push({ name: shortModuleId, route: shortModuleId, moduleId, title });
+
+          if (component.samples) {
+            let keys = Object.keys(component.samples);
+            keys.forEach(key => {
+              let sample = component.samples[key];
+              sample = this.normalizeSample(key, sample);
+              let route = {
+                name: `${shortModuleId}-${key}`,
+                route: `${shortModuleId}-${key}`,
+                moduleId: './sample-runner',
+                title: sample.title,
+                sample,
+                category,
+                nav: true
+              };
+              this.log.debug('added route', route);
+              routes.push(route);
+
+              if (sample.default) {
+                route = {
+                  name: shortModuleId,
+                  route: shortModuleId,
+                  redirect: route.route
+                };
+                this.log.debug('added default route', route);
+                routes.push(route);
+              }
+            });
+          } else {
+            this.log.warn('DEPRECATED: component route has no gist:', title, component);
+            routes.push({ name: shortModuleId, route: shortModuleId, moduleId, title });
+          }
         }
       });
     });
     return routes;
+  }
+
+  normalizeSample(name, sample) {
+    if (typeof sample !== 'object') {
+      sample = {
+        gist: sample
+      };
+    }
+    if (!sample.title) {
+      sample.title = name.replace(/-/g, ' ');
+      sample.title = sample.title.charAt(0).toUpperCase() + sample.title.slice(1);
+    }
+    return sample;
   }
 }

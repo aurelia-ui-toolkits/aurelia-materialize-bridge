@@ -14,6 +14,7 @@ export class AuCode {
 
   @bindable language;
   @bindable url;
+  @bindable text;
 
   constructor(element, targetInstruction, loader) {
     this.element = element;
@@ -30,6 +31,13 @@ export class AuCode {
       });
     } else {
       this.html = '';
+      this.render();
+    }
+  }
+
+  textChanged() {
+    if (this.text) {
+      this.html = this.text;
       this.render();
     }
   }
