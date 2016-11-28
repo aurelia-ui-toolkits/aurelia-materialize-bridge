@@ -1,4 +1,3 @@
 export class Settings {
-  defaultTheme = 'material';
-  activeTheme = 'material';
+  gistProxy = 'https://gist-serve.jeroenvinke.nl/';
 }
