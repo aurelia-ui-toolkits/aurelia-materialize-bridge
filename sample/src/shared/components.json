@@ -4,7 +4,15 @@
   },
   "Components": {
     "Badges": { "moduleId": "badge", "status": "done" },
-    "Button": { "status": "done" },
+    "Button": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "e8eed34e8bba17f5213535bcdd004a9e"
+        }
+      }
+    },
     "Breadcrumbs": { "status": "done" },
     "Cards": { "moduleId": "card", "status": "done" },
     "Chips": { "moduleId": "chip", "status": "done" },

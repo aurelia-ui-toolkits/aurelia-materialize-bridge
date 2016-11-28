@@ -62,29 +62,4 @@ export class ComponentService {
     });
     return routes;
   }
-
-  // getProjectStatusFromMap() {
-  //   let categories = [];
-  //   for (let [cat, cfg] of this.componentsMap) {
-  //     if (cat === 'default') {
-  //       continue;
-  //     }
-  //     let category = {
-  //       title: cat,
-  //       controls: []
-  //     };
-  //     for (let [title, comp] of cfg) {
-  //       let ctrl = {
-  //         title,
-  //         status: comp.get('status')
-  //       };
-  //       if (comp.get('status') && comp.get('nav') !== false) {
-  //         ctrl.link = `#/samples/${comp.get('moduleId') || title.toLowerCase()}`;
-  //       }
-  //       category.controls.push(ctrl);
-  //     }
-  //     categories.push(category);
-  //   }
-  //   return categories;
-  // }
 }
