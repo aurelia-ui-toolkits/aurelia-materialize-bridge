@@ -1,6 +1,15 @@
 {
   "Css": {
-    "Color": { "status": "done" }
+    "Color": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "7f03e2f74e1a96831b700da7b6a050e8"
+        },
+        "theming": "7f03e2f74e1a96831b700da7b6a050e8"
+      }
+    }
   },
   "Components": {
     "Badges": { "moduleId": "badge", "status": "done" },
@@ -9,8 +18,11 @@
       "samples": {
         "basic-use": {
           "default": true,
-          "gist": "e8eed34e8bba17f5213535bcdd004a9e"
-        }
+          "gist": "09534739133e8f53bbf5ad3fff6fa75a"
+        },
+        "fab": "8c5bcfc325dcced715e2ea5d70ff1b44",
+        "fab-fixed": "94c6cf6fd564e68dc2cac0952261b320",
+        "fab-fixed-toolbar": "1dd0131d47642edadf583e946e256f0b"
       }
     },
     "Breadcrumbs": { "status": "done" },
