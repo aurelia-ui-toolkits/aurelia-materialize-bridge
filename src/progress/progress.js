@@ -25,23 +25,24 @@ export class MdProgress {
   //   console.log('mdValueChanged, newValue:', JSON.stringify(newValue), 'oldValue:', JSON.stringify(oldValue));
   // }
 
+  bind() {
+    // This disables property changed callbacks for any bindable properties during initialization
+    // Prevents mdPixelSize getting cleared by the mdSizeChanged event during binding
+  }
+
+  attached() {
+    this.mdPixelSizeChanged(this.mdPixelSize);
+  }
+
   mdSizeChanged(newValue) {
     this.mdPixelSize = null;
-    if (this.wrapper) {
-      this.wrapper.style.height = '';
-      this.wrapper.style.width = '';
-    }
   }
 
   mdPixelSizeChanged(newValue) {
-    if (isNaN(newValue)) {
-      this.mdPixelSize = null;
-    } else {
-      this.mdSize = '';
-      if (this.wrapper) {
-        this.wrapper.style.height = `${newValue}px`;
-        this.wrapper.style.width = `${newValue}px`;
-      }
+    if (this.wrapper) {
+      newValue = (newValue === null || newValue === '' || isNaN(newValue)) ? '' : `${newValue}px`;
+      this.wrapper.style.height = newValue;
+      this.wrapper.style.width = newValue;
     }
   }
 }
