@@ -176,6 +176,8 @@ export declare class MdCharCounter {
   attached(): any;
   detached(): any;
 }
+
+// @customElement('md-checkbox')
 export declare class MdCheckbox {
   static id: any;
   mdChecked: any;
@@ -493,6 +495,11 @@ export declare class MdProgress {
   // mdValueChanged(newValue, oldValue) {
   //   console.log('mdValueChanged, newValue:', JSON.stringify(newValue), 'oldValue:', JSON.stringify(oldValue));
   // }
+  bind(): any;
+  
+  // This disables property changed callbacks for any bindable properties during initialization
+  // Prevents mdPixelSize getting cleared by the mdSizeChanged event during binding
+  attached(): any;
   mdSizeChanged(newValue?: any): any;
   mdPixelSizeChanged(newValue?: any): any;
 }

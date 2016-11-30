@@ -3,7 +3,7 @@ import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { AttributeManager } from '../common/attributeManager';
 import { getBooleanFromAttributeValue } from '../common/attributes';
-import {fireEvent} from '../common/events';
+// import {fireEvent} from '../common/events';
 
 @customElement('md-checkbox')
 @inject(Element)

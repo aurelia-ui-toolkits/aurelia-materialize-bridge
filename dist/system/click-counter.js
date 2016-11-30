@@ -1,6 +1,8 @@
 "use strict";
 
 System.register([], function (_export, _context) {
+  "use strict";
+
   var ClickCounter;
 
   function _classCallCheck(instance, Constructor) {

@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (_export, _context) {
+  "use strict";
+
   var bindable, customElement, bindingMode, inject, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, MdProgress;
 
   function _initDefineProp(target, property, descriptor, context) {
@@ -85,23 +87,21 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           this.element = element;
         }
 
+        MdProgress.prototype.bind = function bind() {};
+
+        MdProgress.prototype.attached = function attached() {
+          this.mdPixelSizeChanged(this.mdPixelSize);
+        };
+
         MdProgress.prototype.mdSizeChanged = function mdSizeChanged(newValue) {
           this.mdPixelSize = null;
-          if (this.wrapper) {
-            this.wrapper.style.height = '';
-            this.wrapper.style.width = '';
-          }
         };
 
         MdProgress.prototype.mdPixelSizeChanged = function mdPixelSizeChanged(newValue) {
-          if (isNaN(newValue)) {
-            this.mdPixelSize = null;
-          } else {
-            this.mdSize = '';
-            if (this.wrapper) {
-              this.wrapper.style.height = newValue + 'px';
-              this.wrapper.style.width = newValue + 'px';
-            }
+          if (this.wrapper) {
+            newValue = newValue === null || newValue === '' || isNaN(newValue) ? '' : newValue + 'px';
+            this.wrapper.style.height = newValue;
+            this.wrapper.style.width = newValue;
           }
         };
 

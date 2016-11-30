@@ -15,7 +15,6 @@ define(['exports'], function (exports) {
         while (elements[index] && elements[index] !== element) {
           ++index;
         }
-
         return Boolean(elements[index]);
       };
     }
@@ -31,7 +30,6 @@ define(['exports'], function (exports) {
 
           element = element.parentNode;
         }
-
         return null;
       };
     }

@@ -1,6 +1,8 @@
 'use strict';
 
 System.register([], function (_export, _context) {
+  "use strict";
+
   return {
     setters: [],
     execute: function () {
@@ -14,7 +16,6 @@ System.register([], function (_export, _context) {
             while (elements[index] && elements[index] !== element) {
               ++index;
             }
-
             return Boolean(elements[index]);
           };
         }
@@ -30,7 +31,6 @@ System.register([], function (_export, _context) {
 
               element = element.parentNode;
             }
-
             return null;
           };
         }

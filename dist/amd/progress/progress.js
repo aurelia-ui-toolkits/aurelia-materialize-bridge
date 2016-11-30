@@ -80,23 +80,21 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this.element = element;
     }
 
+    MdProgress.prototype.bind = function bind() {};
+
+    MdProgress.prototype.attached = function attached() {
+      this.mdPixelSizeChanged(this.mdPixelSize);
+    };
+
     MdProgress.prototype.mdSizeChanged = function mdSizeChanged(newValue) {
       this.mdPixelSize = null;
-      if (this.wrapper) {
-        this.wrapper.style.height = '';
-        this.wrapper.style.width = '';
-      }
     };
 
     MdProgress.prototype.mdPixelSizeChanged = function mdPixelSizeChanged(newValue) {
-      if (isNaN(newValue)) {
-        this.mdPixelSize = null;
-      } else {
-        this.mdSize = '';
-        if (this.wrapper) {
-          this.wrapper.style.height = newValue + 'px';
-          this.wrapper.style.width = newValue + 'px';
-        }
+      if (this.wrapper) {
+        newValue = newValue === null || newValue === '' || isNaN(newValue) ? '' : newValue + 'px';
+        this.wrapper.style.height = newValue;
+        this.wrapper.style.width = newValue;
       }
     };
 

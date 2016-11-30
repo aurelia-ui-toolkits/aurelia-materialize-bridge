@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating'], function (_export, _context) {
+  "use strict";
+
   var customElement, _dec, _class, MdCollectionItem;
 
   function _classCallCheck(instance, Constructor) {

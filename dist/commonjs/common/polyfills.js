@@ -14,7 +14,6 @@ function polyfillElementClosest() {
       while (elements[index] && elements[index] !== element) {
         ++index;
       }
-
       return Boolean(elements[index]);
     };
   }
@@ -30,7 +29,6 @@ function polyfillElementClosest() {
 
         element = element.parentNode;
       }
-
       return null;
     };
   }
