@@ -1,3 +1,13 @@
+<a name="0.20.3"></a>
+## [0.20.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.2...v0.20.3) (2016-11-30)
+
+
+### Bug Fixes
+
+* **md-progress:** set md-pixel-size on attached ([b7a83a7](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b7a83a7))
+
+
+
 <a name="0.20.2"></a>
 ## [0.20.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.1...v0.20.2) (2016-11-24)
 
