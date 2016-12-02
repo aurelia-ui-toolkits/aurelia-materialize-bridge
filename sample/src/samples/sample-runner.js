@@ -9,6 +9,9 @@ import {Settings} from '../settings';
 @inject(Settings, TemplatingEngine, ViewResources, TaskQueue, HttpClient)
 export class SampleRunner {
   @bindable() router;
+  fakeRouter = {
+    navigation: []
+  };
   loading = true;
   tabs = [];
 
@@ -26,6 +29,7 @@ export class SampleRunner {
     let category = route.navModel.config.category;
     this.router = route.navModel.router;
     this.routes = this.router.routes.filter(r => r.category === category);
+    this.fakeRouter.navigation = this.routes.map(r => r.navModel);
     this.log.debug('activate sample', sample);
     this.log.debug('activate router', this.router);
     this.log.debug('activate route', route);
