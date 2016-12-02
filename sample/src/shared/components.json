@@ -7,12 +7,22 @@
           "default": true,
           "gist": "7f03e2f74e1a96831b700da7b6a050e8"
         },
-        "theming": "7f03e2f74e1a96831b700da7b6a050e8"
+        "theming": "dc0e677f3dc9a56c0a14dfdbcf07d40e"
       }
     }
   },
   "Components": {
-    "Badges": { "moduleId": "badge", "status": "done" },
+    "Badges": {
+      "moduleId": "badge",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "1de36c8c3739a233656def9fb66b3ab0"
+        },
+        "badges-in-dropdown": "3199e3e3cf436ccadca30fcc4f0b45a2"
+      }
+    },
     "Button": {
       "status": "done",
       "samples": {
