@@ -16,7 +16,8 @@
         <li repeat.for="tab of tabs"><a href.bind="'#tab' + $index">${tab.title}</a></li>
       </ul>
       <div repeat.for="tab of tabs" class="z-depth-1" id.bind="'tab' + $index">
-        <au-code language.bind="tab.language" text.bind="getSampleFile(tab.filename)"></au-code>
+        <au-code if.bind="tab.language != 'markdown'" language.bind="tab.language" text.bind="getSampleFile(tab.filename)"></au-code>
+        <au-markdown if.bind="tab.language == 'markdown'" text.bind="getSampleFile(tab.filename)"></au-markdown>
       </div>
     </div>
   </div>
