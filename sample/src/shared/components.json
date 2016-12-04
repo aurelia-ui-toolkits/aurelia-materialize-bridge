@@ -35,7 +35,15 @@
         "fab-fixed-toolbar": "1dd0131d47642edadf583e946e256f0b"
       }
     },
-    "Breadcrumbs": { "status": "done" },
+    "Breadcrumbs": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "1d034001ee7f6c1fb01985a8dde6cfc5"
+        }
+      }
+    },
     "Cards": {
       "moduleId": "card",
       "status": "done",
@@ -122,9 +130,39 @@
     }
   },
   "Javascript": {
-    "Collapsible": { "status": "done" },
-    "Dialogs (toast/tooltip)": { "moduleId": "dialogs", "status": "done" },
-    "Dropdown": { "status": "done" },
+    "Collapsible": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "11ad8a83b750f39bd0e9c6159d6861b4"
+        },
+        "accordion": "6fd3210550aef8ef490242e45c01e669",
+        "popout": "8ca123a0299c7bb7be32fb181d6d1644"
+      }
+    },
+    "Dialogs (toast/tooltip)": {
+      "moduleId": "dialogs",
+      "status": "done",
+      "samples": {
+        "toast": {
+          "default": true,
+          "gist": "3551f49bbeccc4b6b4a2bd4b45e1ce91"
+        },
+        "tooltip": "9836bb6ec893e5a6dd34d36188cd900d",
+        "tooltip-html": "34ad6d0d91f227b9173680af1bc0308d"
+      }
+    },
+    "Dropdown": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "445d76931fd5229a2520f17929d67e8f"
+        },
+        "options": "35cc55360682d5d740d6bf4f3aa0286e"
+      }
+    },
     "Media (Box/Slider/Carousel)": { "moduleId": "media", "status": "done" },
     "Modals": { "status": "wip" },
     "Parallax": { "status": "done" },
