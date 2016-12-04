@@ -27,9 +27,11 @@ export class SampleRunner {
   activate(params, route) {
     let sample = route.navModel.config.sample;
     let category = route.navModel.config.category;
+    let baseModuleId = route.baseModuleId;
     this.router = route.navModel.router;
-    this.routes = this.router.routes.filter(r => r.category === category);
+    this.routes = this.router.routes.filter(r => r.category === category && r.baseModuleId === baseModuleId);
     this.fakeRouter.navigation = this.routes.map(r => r.navModel);
+
     this.log.debug('activate sample', sample);
     this.log.debug('activate router', this.router);
     this.log.debug('activate route', route);
@@ -39,7 +41,7 @@ export class SampleRunner {
     sample.path = `${this.settings.gistProxy}file-cache-bust/${cacheBust}/${sample.gist}/app`;
     this.sample = sample;
     this.category = category;
-    this.title = route.title;
+    this.title = route.baseModuleTitle;
   }
 
   attached() {
