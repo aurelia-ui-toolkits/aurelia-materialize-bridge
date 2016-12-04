@@ -36,13 +36,90 @@
       }
     },
     "Breadcrumbs": { "status": "done" },
-    "Cards": { "moduleId": "card", "status": "done" },
-    "Chips": { "moduleId": "chip", "status": "done" },
-    "Collections": { "status": "done" },
-    "Footer": { "status": "done" },
-    "Navbar": { "status": "done" },
-    "Pagination": { "status": "done" },
-    "Preloader": { "moduleId": "progress", "status": "done" }
+    "Cards": {
+      "moduleId": "card",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "5e35028c92724d78aa477adbfe34f3e3"
+        },
+        "horizontal": "1ed99af2e41ecef67d4f4c9d33611267",
+        "image": "2fe5734dde84fe24de685003ab67a084",
+        "reveal": "960f62fcbf7c19ad4c0c59fac0925feb",
+        "sizes": "9b5e3552819324c043eddebef2dcb992"
+      }
+    },
+    "Chips": {
+      "moduleId": "chip",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "7f8c36b1151d5d43cad0d93ce4389e2f"
+        },
+        "editor": "3fc5244efdde52fa68d25220a443359c"
+      }
+    },
+    "Collections": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "29f690ca24b736eb67b5f06345e607be"
+        },
+        "header": "a47ddce2fe222d86ae7c8f412037c3fa",
+        "secondary-content": "dc5c8a12f5748cb7fd030d3250d71872",
+        "avatar": "3379c238f3b37e075babbcc2fca528a9",
+        "selection": "7ba94af3f523959514751758bf66a333"
+      }
+    },
+    "Footer": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "de26fe253ae9e20ed163222323900f8d"
+        }
+      }
+    },
+    "Navbar": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "7abdaa002d4052830cb6236e1d87b325"
+        },
+        "left-aligned-links": "780903e504bbc803999fcc3782dec4d9",
+        "centered-logo": "b9c58785b3a19f154ffb393c597da8e5",
+        "active-items": "fbc7a9807cb4123f6d5ec6114ff71cf7",
+        "dropdown-menu": "7243799e9e3a6a5d4a289ca601bb1b95",
+        "search-bar": "c6c775ff29ffb34ed6a873b034310713",
+        "tabs-in-navbar": "2ced7e8f51d41099e8a06bc371de7c53"
+      } 
+    },
+    "Pagination": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "06a4f271d48585ff49a82b37f7aee8e9"
+        },
+        "options": "1910179160e9270b57f2d255ffcdd31d",
+        "events": "2d5095a485d95ad283a96a3a3fd1e140"
+      } 
+    },
+    "Preloader": {
+      "moduleId": "progress",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "a263209c99bd951d1e0e2c7a43f68944"
+        },
+        "circular": "5ab744b646350722f308fafc6dc74204"
+      }
+    }
   },
   "Javascript": {
     "Collapsible": { "status": "done" },
