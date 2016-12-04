@@ -72,6 +72,7 @@ export class ComponentService {
                 sample,
                 category,
                 baseModuleId: `${shortModuleId}`,
+                baseModuleTitle: title,
                 nav: true
               };
               this.log.debug('added route', route);

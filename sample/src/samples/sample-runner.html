@@ -1,11 +1,13 @@
 <template>
   <require from="./sample-runner.css"></require>
+  <section>
+    <h4>${ title }</h4>
   <div class="row sample-runner">
     <div class="col s12 m4 l2">
       <md-well router.bind="fakeRouter"></md-well>
     </div>
     <div class="col s12 m8 l8">
-      <md-card md-title.bind="title">
+      <md-card md-title.bind="sample.title">
         <a class="md-catalog__play-button" md-button="flat: true;" md-waves href="https://gist.run/?id=${sample.gist}" show.bind="sample.gist" target="_blank">
           <i class="left material-icons">play_arrow</i>play
         </a>
@@ -21,4 +23,5 @@
       </div>
     </div>
   </div>
+  </section>
 </template>
