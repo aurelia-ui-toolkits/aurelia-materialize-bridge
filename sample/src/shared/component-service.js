@@ -71,6 +71,7 @@ export class ComponentService {
                 title: sample.title,
                 sample,
                 category,
+                baseModuleId: `${shortModuleId}`,
                 nav: true
               };
               this.log.debug('added route', route);
