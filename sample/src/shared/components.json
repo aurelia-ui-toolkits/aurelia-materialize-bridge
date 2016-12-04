@@ -163,16 +163,140 @@
         "options": "35cc55360682d5d740d6bf4f3aa0286e"
       }
     },
-    "Media (Box/Slider/Carousel)": { "moduleId": "media", "status": "done" },
-    "Modals": { "status": "wip" },
-    "Parallax": { "status": "done" },
-    "Pushpin": { "status": "done" },
-    "Scrollfire": { "status": "done" },
-    "Scrollspy": { "status": "done" },
-    "SideNav": { "status": "wip" },
-    "Tabs": { "status": "done" },
-    "Transitions": { "status": "done" },
-    "Waves": { "status": "done" }
+    "Media (Box/Slider/Carousel)": {
+      "moduleId": "media",
+      "status": "done",
+      "samples": {
+        "box-basic": {
+          "default": true,
+          "title": "Material Box (basic)",
+          "gist": "8c2ec4a3f6f4ed266a27cb37fe3ec088"
+        },
+        "box-caption": {
+          "title": "Material Box (caption)",
+          "gist": "acdacc6b6b30e0f10e1c5db677efc17b"
+        },
+        "slider-basic": {
+          "title": "Slider (basic)",
+          "gist": "cb49940b2f840bf853346047f7ff6fe3"
+        },
+        "slider-fullscreen": {
+          "title": "Slider (fullscreen)",
+          "gist": "20c53c5a53ad07eb55bd87e8912cb826"
+        },
+        "slider-api": {
+          "title": "Slider (API)",
+          "gist": "1eeb9d5c09c45daccb7e08856c3ca6f0"
+        },
+        "slider-options": {
+          "title": "Slider (options)",
+          "gist": "ccb2439c67c7aef7ae16985e4e938eb9"
+        },
+        "carousel-basic": {
+          "title": "Carousel (basic)",
+          "gist": "8d3ddf3455390b673844cfd798af8892"
+        },
+        "carousel-slider": {
+          "title": "Carousel (slider)",
+          "gist": "b8441d5a82e3988da406800cedda93a1"
+        },
+        "carousel-special": {
+          "title": "Carousel (special)",
+          "gist": "059ade54a997afe7ac0f870f69ee58f7"
+        }
+      }
+    },
+    "Modals": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "e24f28f2d7bb9452f6cb494d087a2ecf"
+        },
+        "events": "780456926eb9b4eb0d9db2be3a1d123c",
+        "options": "ba05e0c18f6df96efc33cc59c544f6a0",
+        "manual-close": "7c9701cfc15d1020d418d55dd0620fca"
+      }
+    },
+    "Parallax": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "586589a99303020b983a5d33b5bf9084"
+        }
+      }
+    },
+    "Pushpin": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "81cdeb5cd3c9da27418bd30e103e811e"
+        }
+      }
+    },
+    "Scrollfire": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "0f1efef050a770259a3dea53453e5842"
+        }
+      }
+    },
+    "Scrollspy": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "372e83ef3a44946b7b26896985091200"
+        }
+      }
+    },
+    "SideNav": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "ada7906badc1842d0141e7e16d01d58f"
+        },
+        "options": "d394011184cbd5d1df1edbfb3a1fa009",
+        "fixed-sidenav": "38098f4618ca84d3cc2710648afc7053"
+      }
+    },
+    "Tabs": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "33cf3252acea3c4363585170a9ed8482"
+        },
+        "events": "932f9f95c0c198f91bf91c45a0561a0f",
+        "api": "6a238e618806289a3800dd4560cf1959",
+        "tabs-in-navbar": "e0038b59a779f57f9079058c5910ce77"
+      }
+    },
+    "Transitions": {
+      "status": "done",
+      "samples": {
+        "staggered-list": {
+          "default": true,
+          "gist": "c7da54fd63fabdc94384908e5fced05a"
+        },
+        "fadein-image": "ba296720c805e847aa82c7d5a933bfb6"
+      }
+    },
+    "Waves": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "ccba8775351a611d31a72e0d8ddcaf53"
+        },
+        "colors": "0febae142f5c7950720ca8d2965ed094"
+      }
+    }
   },
   "Forms": {
     "Input fields": { "moduleId": "input", "status": "done" },

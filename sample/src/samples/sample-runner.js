@@ -52,9 +52,12 @@ export class SampleRunner {
       this.updateTabs(files);
     });
     return new Promise(resolve => {
-      this.sampleTarget.innerHTML = '<compose view-model.bind="sample.path" compose.ref="composeVM"></compose>';
-      this.instruction = this.templatingEngine.enhance({element: this.sampleTarget, bindingContext: this, overrideContext: this, resources: this.viewResources});
-      this.instruction.attached();
+      // this.sampleTarget.innerHTML = '<compose view-model.bind="sample.path" compose.ref="composeVM"></compose>';
+      // this.instruction = this.templatingEngine.enhance({element: this.sampleTarget, bindingContext: this, overrideContext: this, resources: this.viewResources});
+      // this.instruction.attached();
+      // if (this.instruction.configureRouter) {
+      //   this.instruction.configureRouter(config, this.router);
+      // }
       resolve();
       // window.setTimeout(() => this.loading = false, 1500);
     })
@@ -62,8 +65,8 @@ export class SampleRunner {
   }
 
   detached() {
-    this.instruction.unbind();
-    this.instruction.detached();
+    // this.instruction.unbind();
+    // this.instruction.detached();
     this.sample = undefined;
   }
 

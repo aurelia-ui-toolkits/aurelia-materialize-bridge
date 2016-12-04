@@ -12,7 +12,10 @@
           <i class="left material-icons">play_arrow</i>play
         </a>
         <md-progress md-type="circular" md-size="small" md-color="flashing" show.bind="loading"></md-progress>
-        <div ref="sampleTarget" show.bind="!loading"></div>
+        <!--<div ref="sampleTarget" show.bind="!loading"></div>-->
+        <div ref="sampleTarget" if.bind="!loading">
+          <compose view-model.bind="sample.path" compose.ref="composeVM"></compose>
+        </div>
       </md-card>
       <ul if.bind="tabs.length > 0" md-tabs class="z-depth-1">
         <li repeat.for="tab of tabs"><a href.bind="'#tab' + $index">${tab.title}</a></li>
