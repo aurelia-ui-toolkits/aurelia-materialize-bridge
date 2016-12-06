@@ -42,4 +42,8 @@ export class Validation {
   validateModel2() {
     return this.controller.validate({ object: this, propertyName: 'selectedValue2' });
   }
+
+  setItem3() {
+    this.selectedValue = 'item3';
+  }
 }
