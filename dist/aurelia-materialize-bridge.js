@@ -2994,7 +2994,12 @@ export class MaterializeFormValidationRenderer {
       if (!selectWrapper) {
         return;
       }
-      this.removeMessage(selectWrapper, error);
+
+      if ($(selectWrapper.parentElement).children().hasClass('md-input-validation') ) {
+        this.removeMessage(selectWrapper.parentElement, error);
+      } else {
+        this.removeMessage(selectWrapper, error);
+      }
 
       let input = selectWrapper.querySelector('input');
       if (input && selectWrapper.querySelectorAll('.' + this.className).length === 0) {

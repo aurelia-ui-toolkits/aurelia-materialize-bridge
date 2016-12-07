@@ -3738,7 +3738,12 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
           if (!selectWrapper) {
             return;
           }
-          this.removeMessage(selectWrapper, error);
+
+          if ($(selectWrapper.parentElement).children().hasClass('md-input-validation')) {
+            this.removeMessage(selectWrapper.parentElement, error);
+          } else {
+            this.removeMessage(selectWrapper, error);
+          }
 
           var _input2 = selectWrapper.querySelector('input');
           if (_input2 && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
