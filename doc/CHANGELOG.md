@@ -1,3 +1,11 @@
+<a name="0.20.5"></a>
+## [0.20.5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.4...v0.20.5) (2016-12-08)
+
+### Small Fixes
+
+* **md-range:** rhange range to one-way instead of one-time
+
+
 <a name="0.20.4"></a>
 ## [0.20.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.3...v0.20.4) (2016-12-07)
 
