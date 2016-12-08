@@ -1,8 +1,13 @@
 <template>
   <div>
-    <md-range md-value.bind="rangeValue" md-min="0" md-max="4" md-step="0.1"></md-range>
+    <md-range md-value.bind="rangeValue" md-min.bind="min" md-max.bind="max" md-step.bind="step"></md-range>
   </div>
   <div>
     Value: ${rangeValue}
+  </div>
+  <div>
+    <md-input md-type="number" md-label="min" md-value.bind="min"></md-input>
+    <md-input md-type="number" md-label="max" md-value.bind="max"></md-input>
+    <md-input md-type="number" md-step="any" md-label="step" md-value.bind="step"></md-input>
   </div>
 </template>
