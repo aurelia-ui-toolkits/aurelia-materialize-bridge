@@ -3,7 +3,7 @@
 
 ### Small Fixes
 
-* **md-range:** rhange range to one-way instead of one-time
+* **md-range:** change range to one-way instead of one-time
 
 
 <a name="0.20.4"></a>
