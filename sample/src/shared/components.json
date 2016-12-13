@@ -6,8 +6,7 @@
         "basic-use": {
           "default": true,
           "gist": "7f03e2f74e1a96831b700da7b6a050e8"
-        },
-        "theming": "dc0e677f3dc9a56c0a14dfdbcf07d40e"
+        }
       }
     }
   },
@@ -36,13 +35,7 @@
       }
     },
     "Breadcrumbs": {
-      "status": "done",
-      "samples": {
-        "basic-use": {
-          "default": true,
-          "gist": "1d034001ee7f6c1fb01985a8dde6cfc5"
-        }
-      }
+      "status": "done"
     },
     "Cards": {
       "moduleId": "card",
@@ -299,13 +292,106 @@
     }
   },
   "Forms": {
-    "Input fields": { "moduleId": "input", "status": "done" },
-    "Select": { "status": "done" },
-    "Radio buttons": { "moduleId": "radio", "status": "done" },
-    "Checkbox/Switch": { "moduleId": "checkbox", "status": "done" },
-    "File input button": { "moduleId": "file", "status": "done" },
-    "Range": { "status": "done" },
-    "DatePicker": { "status": "done" },
-    "AutoComplete": { "status": "wip" }
+    "Input fields": {
+      "moduleId": "input",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "7f43a76e56cebd918067110634d730da"
+        },
+        "textarea": "9a3c06adf7e9587207d63b1148bad5ef",
+        "input-types": "d520ffe2c7ad795273f093a1dd19fa64",
+        "html5-validation": "47a37bcb9981da746361c2dc6c869a84",
+        "aurelia-validation": "59525172dc31afb0de610d0b174676a0",
+        "character-counter": "008631e09037fe0edf804368b75326e6",
+        "icon-prefixes": "e8dc60e7c50f7a10f9c4b6e261886906",
+        "placeholder": "0ea8becbd1ba5639b27637012fff76ef"
+      }
+    },
+    "Select": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "1ac1e348fa4e362183d5706aaa01fcf7"
+        },
+        "multiple": "96f557b67eb2476825cd252fec9dc8c0",
+        "binding-to-objects": "ab6f81744f4b0fa8a93e509ad95604ff",
+        "refresh": "ac63c711d88089b5e98aa0dee6ed2c62",
+        "validation": "f3fe5a7dd8042ff110473ab8e3d4594e"
+      }
+    },
+    "Radio buttons": {
+      "moduleId": "radio",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "230dcede5b578b01d89d3d2664c05cc3"
+        },
+        "binding-to-objects": "a66a6be4d5710315db5d159c6acf78c9"
+      }
+    },
+    "Checkbox/Switch": {
+      "moduleId": "checkbox",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "88760ad04830c41fadfea9d3d1884790"
+        },
+        "filled-in": "ded51bc5f5c1212c15c3f68478809c71",
+        "switch": "b83ea7d57ff7b24e7414187714f9ebee",
+        "binding-to-objects": "c43a57beceefc217340710e80650ddf2",
+        "binding-with-matcher": "65a451de2e2d4a37602057c1af840ae8"
+      }
+    },
+    "File input button": {
+      "moduleId": "file",
+      "status": "done",
+      "samples":{
+        "basic-use": {
+          "default": true,
+          "gist": "51595a0e932444adf5005f75827e0a48"
+        },
+        "multiple": "56b900abe758396c583d6698bcbced4c",
+        "events": "13a28317af7ec78e24367639fd25f054"
+      }
+    },
+    "Range": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "23a9e3edf0e4b47342949a845ae045bd"
+        },
+        "steps": "9dfb15ca72056748e8084192874e60b8",
+        "min-and-max": "74b1e19d51f7c386e300b7401c108ce0",
+        "events": "963f04789e322a393a81223902a4f463",
+        "range-with-input": "e86d166b4ba80cd90c28ebacc7cf90d5"
+      }
+    },
+    "DatePicker": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "147373f37db88a8318fda1debf334e32"
+        },
+        "options": "e72cf616090742d644df7c64454d6907",
+        "advanced-options": "fbeec4d10efb7a20d19ff953850a35a9",
+        "validation": "43dc539ffe5d302b922a2abc14600b48"
+      }
+    },
+    "AutoComplete": {
+      "status": "wip",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "f0d0d2059b5c5f01970cd494260099fc"
+        }
+      }
+    }
   }
 }
