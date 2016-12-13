@@ -61,7 +61,7 @@ export class SampleRunner {
       resolve();
       // window.setTimeout(() => this.loading = false, 1500);
     })
-    .delay(500).then(() => this.loading = false);
+    .delay(800).then(() => this.loading = false);
   }
 
   detached() {
