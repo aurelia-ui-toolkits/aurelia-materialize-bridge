@@ -58,10 +58,15 @@ export class SampleRunner {
       // if (this.instruction.configureRouter) {
       //   this.instruction.configureRouter(config, this.router);
       // }
-      resolve();
-      // window.setTimeout(() => this.loading = false, 1500);
+
+      // resolve();
+      window.setTimeout(() => {
+        this.loading = false;
+        resolve();
+      }, 1500);
     })
-    .delay(800).then(() => this.loading = false);
+    // .delay(800)
+    .then(() => this.loading = false);
   }
 
   detached() {
