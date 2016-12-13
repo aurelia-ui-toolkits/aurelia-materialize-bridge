@@ -100,6 +100,11 @@ export class MaterializeFormValidationRenderer {
       if (input && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
         input.classList.remove('invalid');
         input.classList.add('valid');
+
+        let label = element.querySelector('label');
+        if (label) {
+          label.removeAttribute('data-error');
+        }
       }
       break;
     }
