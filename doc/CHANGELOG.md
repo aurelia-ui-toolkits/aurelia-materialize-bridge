@@ -1,3 +1,16 @@
+<a name="0.20.6"></a>
+## [0.20.6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.5...v0.20.6) (2016-12-13)
+
+
+### Small Features
+
+* **md-breadcrumbs:** allow for custom router ([4e1fb1b](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/4e1fb1b))
+* **md-breadcrumbs:** allow for custom router ([192a678](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/192a678))
+
+### Bug Fixes
+
+* **validation:** Update validationRenderer to comply with aurelia-validation@1.0.0
+
 <a name="0.20.5"></a>
 ## [0.20.5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.4...v0.20.5) (2016-12-08)
 
