@@ -1,8 +1,6 @@
 'use strict';
 
 System.register(['./config-builder', './scrollfire/scrollfire-patch', './common/polyfills', './exports'], function (_export, _context) {
-  "use strict";
-
   var ConfigBuilder, ScrollfirePatch, polyfillElementClosest;
 
 

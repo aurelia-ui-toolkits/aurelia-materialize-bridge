@@ -28,7 +28,7 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
       }
 
       var _ref3 = _ref;
-      var error = _ref3.error;
+      var result = _ref3.result;
       var elements = _ref3.elements;
 
       for (var _iterator3 = elements, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
@@ -45,7 +45,7 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
 
         var element = _ref4;
 
-        this.remove(element, error);
+        this.remove(element, result);
       }
     }
     for (var _iterator2 = instruction.render, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
@@ -61,7 +61,7 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
       }
 
       var _ref5 = _ref2;
-      var error = _ref5.error;
+      var result = _ref5.result;
       var elements = _ref5.elements;
 
       for (var _iterator4 = elements, _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
@@ -78,12 +78,15 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
 
         var _element = _ref6;
 
-        this.add(_element, error);
+        this.add(_element, result);
       }
     }
   };
 
-  MaterializeFormValidationRenderer.prototype.add = function add(element, error) {
+  MaterializeFormValidationRenderer.prototype.add = function add(element, result) {
+    if (result.valid) {
+      return;
+    }
     switch (element.tagName) {
       case 'MD-INPUT':
         {
@@ -95,9 +98,9 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
           if (input) {
             input.classList.remove('valid');
             input.classList.add('invalid');
-            error.target = input;
+            result.target = input;
             if (input.hasAttribute('data-show-errortext')) {
-              this.addMessage(element, error);
+              this.addMessage(element, result);
             }
           }
           break;
@@ -112,9 +115,9 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
           if (_input) {
             _input.classList.remove('valid');
             _input.classList.add('invalid');
-            error.target = _input;
+            result.target = _input;
             if (!(_input.hasAttribute('data-show-errortext') && _input.getAttribute('data-show-errortext') === 'false')) {
-              this.addMessage(selectWrapper, error);
+              this.addMessage(selectWrapper, result);
             }
           }
           break;
@@ -125,7 +128,7 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
             element.classList.remove('valid');
             element.classList.add('invalid');
             if (!(element.hasAttribute('data-show-errortext') && element.getAttribute('data-show-errortext') === 'false')) {
-              this.addMessage(element.parentNode, error);
+              this.addMessage(element.parentNode, result);
             }
           }
           break;
@@ -135,11 +138,14 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
     }
   };
 
-  MaterializeFormValidationRenderer.prototype.remove = function remove(element, error) {
+  MaterializeFormValidationRenderer.prototype.remove = function remove(element, result) {
+    if (result.valid) {
+      return;
+    }
     switch (element.tagName) {
       case 'MD-INPUT':
         {
-          this.removeMessage(element, error);
+          this.removeMessage(element, result);
 
           var input = element.querySelector('input') || element.querySelector('textarea');
           if (input && element.querySelectorAll('.' + this.className).length === 0) {
@@ -156,9 +162,9 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
           }
 
           if ($(selectWrapper.parentElement).children().hasClass('md-input-validation')) {
-            this.removeMessage(selectWrapper.parentElement, error);
+            this.removeMessage(selectWrapper.parentElement, result);
           } else {
-            this.removeMessage(selectWrapper, error);
+            this.removeMessage(selectWrapper, result);
           }
 
           var _input2 = selectWrapper.querySelector('input');
@@ -171,7 +177,7 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
       case 'INPUT':
         {
           if (element.hasAttribute('md-datepicker')) {
-            this.removeMessage(element.parentNode, error);
+            this.removeMessage(element.parentNode, result);
             if (element && element.parentNode.querySelectorAll('.' + this.className).length === 0) {
               element.classList.remove('invalid');
               element.classList.add('valid');
@@ -184,10 +190,10 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
     }
   };
 
-  MaterializeFormValidationRenderer.prototype.addMessage = function addMessage(element, error) {
+  MaterializeFormValidationRenderer.prototype.addMessage = function addMessage(element, result) {
     var message = document.createElement('div');
-    message.id = 'md-input-validation-' + error.id;
-    message.textContent = error.message;
+    message.id = 'md-input-validation-' + result.id;
+    message.textContent = result.message;
     message.className = this.className;
     if (element.querySelectorAll('.' + this.className).length === 0) {
       message.className += ' ' + this.classNameFirst;
@@ -198,8 +204,8 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
     message.style.opacity = 1;
   };
 
-  MaterializeFormValidationRenderer.prototype.removeMessage = function removeMessage(element, error) {
-    var message = element.querySelector('#md-input-validation-' + error.id);
+  MaterializeFormValidationRenderer.prototype.removeMessage = function removeMessage(element, result) {
+    var message = element.querySelector('#md-input-validation-' + result.id);
     if (message) {
       element.removeChild(message);
     }

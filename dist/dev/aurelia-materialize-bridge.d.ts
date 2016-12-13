@@ -125,7 +125,16 @@ export declare class MdBox {
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 export declare class MdBreadcrumbs {
+  router: any;
   constructor(element?: any, router?: any);
+  
+  // this._childRouter = router;
+  // while (router.parent) {
+  //   router = router.parent;
+  // }
+  // this.router = router;
+  bind(): any;
+  routerChanged(): any;
   navigate(navigationInstruction?: any): any;
 }
 
@@ -719,10 +728,10 @@ export declare class MaterializeFormValidationRenderer {
   className: any;
   classNameFirst: any;
   render(instruction?: any): any;
-  add(element?: any, error?: any): any;
-  remove(element?: any, error?: any): any;
-  addMessage(element?: any, error?: any): any;
-  removeMessage(element?: any, error?: any): any;
+  add(element?: any, result?: any): any;
+  remove(element?: any, result?: any): any;
+  addMessage(element?: any, result?: any): any;
+  removeMessage(element?: any, result?: any): any;
 }
 export declare class MdWaves {
   block: any;
