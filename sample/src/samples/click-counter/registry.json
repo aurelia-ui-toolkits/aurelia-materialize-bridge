@@ -1,9 +1,0 @@
-{
-  "title": "Click counter",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "files": ["html", "js"]
-    }
-  }
-}
