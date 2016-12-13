@@ -1,0 +1,30 @@
+<template>
+  <require from="./sample-runner.css"></require>
+  <section>
+    <h4>${ title }</h4>
+  <div class="row sample-runner">
+    <div class="col s12 m4 l2">
+      <md-well router.bind="fakeRouter"></md-well>
+    </div>
+    <div class="col s12 m8 l8">
+      <md-card md-title.bind="sample.title">
+        <a class="md-catalog__play-button" md-button="flat: true;" md-waves href="https://gist.run/?id=${sample.gist}" show.bind="sample.gist" target="_blank">
+          <i class="left material-icons">play_arrow</i>play
+        </a>
+        <md-progress md-type="circular" md-size="small" md-color="flashing" show.bind="loading"></md-progress>
+        <!--<div ref="sampleTarget" show.bind="!loading"></div>-->
+        <div ref="sampleTarget" if.bind="!loading">
+          <compose view-model.bind="sample.path" compose.ref="composeVM"></compose>
+        </div>
+      </md-card>
+      <ul if.bind="tabs.length > 0" md-tabs class="z-depth-1">
+        <li repeat.for="tab of tabs"><a href.bind="'#tab' + $index">${tab.title}</a></li>
+      </ul>
+      <div repeat.for="tab of tabs" class="z-depth-1" id.bind="'tab' + $index">
+        <au-code if.bind="tab.language != 'markdown'" language.bind="tab.language" text.bind="getSampleFile(tab.filename)"></au-code>
+        <au-markdown if.bind="tab.language == 'markdown'" text.bind="getSampleFile(tab.filename)"></au-markdown>
+      </div>
+    </div>
+  </div>
+  </section>
+</template>

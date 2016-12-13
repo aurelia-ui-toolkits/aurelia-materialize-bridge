@@ -1,4 +1,6 @@
 export class Settings {
-  defaultTheme = 'material';
-  activeTheme = 'material';
+  primaryColor = '#ee6e73';
+  accentColor = '#2bbbad';
+  errorColor = '#f44336';
+  gistProxy = 'https://gist-serve.jeroenvinke.nl/';
 }

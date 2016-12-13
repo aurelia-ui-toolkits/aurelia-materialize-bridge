@@ -39,8 +39,14 @@ export class Menu {
 
   routeChanged(e) {
     this.log.debug('routeChanged', e);
+    this.log.debug('routeChanged activeItem before', this.activeItem);
     let link = `#${e.instruction.fragment}`;
-    this.activeItem = link.split('/').splice(0, 3).join('/');
+    // this.activeItem = link.split('/').splice(0, 3).join('/');
+    let tokens = link.split('/');
+    let lastFragment = tokens.splice(2)[0].split('-')[0];
+    tokens.push(lastFragment);
+    this.activeItem = tokens.join('/');
+    this.log.debug('routeChanged activeItem after', this.activeItem);
   }
 
   detached() {

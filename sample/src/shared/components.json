@@ -1,42 +1,397 @@
 {
   "Css": {
-    "Color": { "status": "done" }
+    "Color": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "7f03e2f74e1a96831b700da7b6a050e8"
+        }
+      }
+    }
   },
   "Components": {
-    "Badges": { "moduleId": "badge", "status": "done" },
-    "Button": { "status": "done" },
-    "Breadcrumbs": { "status": "done" },
-    "Cards": { "moduleId": "card", "status": "done" },
-    "Chips": { "moduleId": "chip", "status": "done" },
-    "Collections": { "status": "done" },
-    "Footer": { "status": "done" },
-    "Navbar": { "status": "done" },
-    "Pagination": { "status": "done" },
-    "Preloader": { "moduleId": "progress", "status": "done" }
+    "Badges": {
+      "moduleId": "badge",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "1de36c8c3739a233656def9fb66b3ab0"
+        },
+        "badges-in-dropdown": "3199e3e3cf436ccadca30fcc4f0b45a2"
+      }
+    },
+    "Button": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "09534739133e8f53bbf5ad3fff6fa75a"
+        },
+        "fab": "8c5bcfc325dcced715e2ea5d70ff1b44",
+        "fab-fixed": "94c6cf6fd564e68dc2cac0952261b320",
+        "fab-fixed-toolbar": "1dd0131d47642edadf583e946e256f0b"
+      }
+    },
+    "Breadcrumbs": {
+      "status": "done"
+    },
+    "Cards": {
+      "moduleId": "card",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "5e35028c92724d78aa477adbfe34f3e3"
+        },
+        "horizontal": "1ed99af2e41ecef67d4f4c9d33611267",
+        "image": "2fe5734dde84fe24de685003ab67a084",
+        "reveal": "960f62fcbf7c19ad4c0c59fac0925feb",
+        "sizes": "9b5e3552819324c043eddebef2dcb992"
+      }
+    },
+    "Chips": {
+      "moduleId": "chip",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "7f8c36b1151d5d43cad0d93ce4389e2f"
+        },
+        "editor": "3fc5244efdde52fa68d25220a443359c"
+      }
+    },
+    "Collections": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "29f690ca24b736eb67b5f06345e607be"
+        },
+        "header": "a47ddce2fe222d86ae7c8f412037c3fa",
+        "secondary-content": "dc5c8a12f5748cb7fd030d3250d71872",
+        "avatar": "3379c238f3b37e075babbcc2fca528a9",
+        "selection": "7ba94af3f523959514751758bf66a333"
+      }
+    },
+    "Footer": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "de26fe253ae9e20ed163222323900f8d"
+        }
+      }
+    },
+    "Navbar": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "7abdaa002d4052830cb6236e1d87b325"
+        },
+        "left-aligned-links": "780903e504bbc803999fcc3782dec4d9",
+        "centered-logo": "b9c58785b3a19f154ffb393c597da8e5",
+        "active-items": "fbc7a9807cb4123f6d5ec6114ff71cf7",
+        "dropdown-menu": "7243799e9e3a6a5d4a289ca601bb1b95",
+        "search-bar": "c6c775ff29ffb34ed6a873b034310713",
+        "tabs-in-navbar": "2ced7e8f51d41099e8a06bc371de7c53"
+      } 
+    },
+    "Pagination": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "06a4f271d48585ff49a82b37f7aee8e9"
+        },
+        "options": "1910179160e9270b57f2d255ffcdd31d",
+        "events": "2d5095a485d95ad283a96a3a3fd1e140"
+      } 
+    },
+    "Preloader": {
+      "moduleId": "progress",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "a263209c99bd951d1e0e2c7a43f68944"
+        },
+        "circular": "5ab744b646350722f308fafc6dc74204"
+      }
+    }
   },
   "Javascript": {
-    "Collapsible": { "status": "done" },
-    "Dialogs (toast/tooltip)": { "moduleId": "dialogs", "status": "done" },
-    "Dropdown": { "status": "done" },
-    "Media (Box/Slider/Carousel)": { "moduleId": "media", "status": "done" },
-    "Modals": { "status": "wip" },
-    "Parallax": { "status": "done" },
-    "Pushpin": { "status": "done" },
-    "Scrollfire": { "status": "done" },
-    "Scrollspy": { "status": "done" },
-    "SideNav": { "status": "wip" },
-    "Tabs": { "status": "done" },
-    "Transitions": { "status": "done" },
-    "Waves": { "status": "done" }
+    "Collapsible": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "11ad8a83b750f39bd0e9c6159d6861b4"
+        },
+        "accordion": "6fd3210550aef8ef490242e45c01e669",
+        "popout": "8ca123a0299c7bb7be32fb181d6d1644"
+      }
+    },
+    "Dialogs (toast/tooltip)": {
+      "moduleId": "dialogs",
+      "status": "done",
+      "samples": {
+        "toast": {
+          "default": true,
+          "gist": "3551f49bbeccc4b6b4a2bd4b45e1ce91"
+        },
+        "tooltip": "9836bb6ec893e5a6dd34d36188cd900d",
+        "tooltip-html": "34ad6d0d91f227b9173680af1bc0308d"
+      }
+    },
+    "Dropdown": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "445d76931fd5229a2520f17929d67e8f"
+        },
+        "options": "35cc55360682d5d740d6bf4f3aa0286e"
+      }
+    },
+    "Media (Box/Slider/Carousel)": {
+      "moduleId": "media",
+      "status": "done",
+      "samples": {
+        "box-basic": {
+          "default": true,
+          "title": "Material Box (basic)",
+          "gist": "8c2ec4a3f6f4ed266a27cb37fe3ec088"
+        },
+        "box-caption": {
+          "title": "Material Box (caption)",
+          "gist": "acdacc6b6b30e0f10e1c5db677efc17b"
+        },
+        "slider-basic": {
+          "title": "Slider (basic)",
+          "gist": "cb49940b2f840bf853346047f7ff6fe3"
+        },
+        "slider-fullscreen": {
+          "title": "Slider (fullscreen)",
+          "gist": "20c53c5a53ad07eb55bd87e8912cb826"
+        },
+        "slider-api": {
+          "title": "Slider (API)",
+          "gist": "1eeb9d5c09c45daccb7e08856c3ca6f0"
+        },
+        "slider-options": {
+          "title": "Slider (options)",
+          "gist": "ccb2439c67c7aef7ae16985e4e938eb9"
+        },
+        "carousel-basic": {
+          "title": "Carousel (basic)",
+          "gist": "8d3ddf3455390b673844cfd798af8892"
+        },
+        "carousel-slider": {
+          "title": "Carousel (slider)",
+          "gist": "b8441d5a82e3988da406800cedda93a1"
+        },
+        "carousel-special": {
+          "title": "Carousel (special)",
+          "gist": "059ade54a997afe7ac0f870f69ee58f7"
+        }
+      }
+    },
+    "Modals": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "e24f28f2d7bb9452f6cb494d087a2ecf"
+        },
+        "events": "780456926eb9b4eb0d9db2be3a1d123c",
+        "options": "ba05e0c18f6df96efc33cc59c544f6a0",
+        "manual-close": "7c9701cfc15d1020d418d55dd0620fca"
+      }
+    },
+    "Parallax": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "586589a99303020b983a5d33b5bf9084"
+        }
+      }
+    },
+    "Pushpin": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "81cdeb5cd3c9da27418bd30e103e811e"
+        }
+      }
+    },
+    "Scrollfire": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "0f1efef050a770259a3dea53453e5842"
+        }
+      }
+    },
+    "Scrollspy": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "372e83ef3a44946b7b26896985091200"
+        }
+      }
+    },
+    "SideNav": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "ada7906badc1842d0141e7e16d01d58f"
+        },
+        "options": "d394011184cbd5d1df1edbfb3a1fa009",
+        "fixed-sidenav": "38098f4618ca84d3cc2710648afc7053"
+      }
+    },
+    "Tabs": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "33cf3252acea3c4363585170a9ed8482"
+        },
+        "events": "932f9f95c0c198f91bf91c45a0561a0f",
+        "api": "6a238e618806289a3800dd4560cf1959",
+        "tabs-in-navbar": "e0038b59a779f57f9079058c5910ce77"
+      }
+    },
+    "Transitions": {
+      "status": "done",
+      "samples": {
+        "staggered-list": {
+          "default": true,
+          "gist": "c7da54fd63fabdc94384908e5fced05a"
+        },
+        "fadein-image": "ba296720c805e847aa82c7d5a933bfb6"
+      }
+    },
+    "Waves": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "ccba8775351a611d31a72e0d8ddcaf53"
+        },
+        "colors": "0febae142f5c7950720ca8d2965ed094"
+      }
+    }
   },
   "Forms": {
-    "Input fields": { "moduleId": "input", "status": "done" },
-    "Select": { "status": "done" },
-    "Radio buttons": { "moduleId": "radio", "status": "done" },
-    "Checkbox/Switch": { "moduleId": "checkbox", "status": "done" },
-    "File input button": { "moduleId": "file", "status": "done" },
-    "Range": { "status": "done" },
-    "DatePicker": { "status": "done" },
-    "AutoComplete": { "status": "wip" }
+    "Input fields": {
+      "moduleId": "input",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "7f43a76e56cebd918067110634d730da"
+        },
+        "textarea": "9a3c06adf7e9587207d63b1148bad5ef",
+        "input-types": "d520ffe2c7ad795273f093a1dd19fa64",
+        "html5-validation": "47a37bcb9981da746361c2dc6c869a84",
+        "aurelia-validation": "59525172dc31afb0de610d0b174676a0",
+        "character-counter": "008631e09037fe0edf804368b75326e6",
+        "icon-prefixes": "e8dc60e7c50f7a10f9c4b6e261886906",
+        "placeholder": "0ea8becbd1ba5639b27637012fff76ef"
+      }
+    },
+    "Select": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "1ac1e348fa4e362183d5706aaa01fcf7"
+        },
+        "multiple": "96f557b67eb2476825cd252fec9dc8c0",
+        "binding-to-objects": "ab6f81744f4b0fa8a93e509ad95604ff",
+        "refresh": "ac63c711d88089b5e98aa0dee6ed2c62",
+        "validation": "f3fe5a7dd8042ff110473ab8e3d4594e"
+      }
+    },
+    "Radio buttons": {
+      "moduleId": "radio",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "230dcede5b578b01d89d3d2664c05cc3"
+        },
+        "binding-to-objects": "a66a6be4d5710315db5d159c6acf78c9"
+      }
+    },
+    "Checkbox/Switch": {
+      "moduleId": "checkbox",
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "88760ad04830c41fadfea9d3d1884790"
+        },
+        "filled-in": "ded51bc5f5c1212c15c3f68478809c71",
+        "switch": "b83ea7d57ff7b24e7414187714f9ebee",
+        "binding-to-objects": "c43a57beceefc217340710e80650ddf2",
+        "binding-with-matcher": "65a451de2e2d4a37602057c1af840ae8"
+      }
+    },
+    "File input button": {
+      "moduleId": "file",
+      "status": "done",
+      "samples":{
+        "basic-use": {
+          "default": true,
+          "gist": "51595a0e932444adf5005f75827e0a48"
+        },
+        "multiple": "56b900abe758396c583d6698bcbced4c",
+        "events": "13a28317af7ec78e24367639fd25f054"
+      }
+    },
+    "Range": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "23a9e3edf0e4b47342949a845ae045bd"
+        },
+        "steps": "9dfb15ca72056748e8084192874e60b8",
+        "min-and-max": "74b1e19d51f7c386e300b7401c108ce0",
+        "events": "963f04789e322a393a81223902a4f463",
+        "range-with-input": "e86d166b4ba80cd90c28ebacc7cf90d5"
+      }
+    },
+    "DatePicker": {
+      "status": "done",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "147373f37db88a8318fda1debf334e32"
+        },
+        "options": "e72cf616090742d644df7c64454d6907",
+        "advanced-options": "fbeec4d10efb7a20d19ff953850a35a9",
+        "validation": "43dc539ffe5d302b922a2abc14600b48"
+      }
+    },
+    "AutoComplete": {
+      "status": "wip",
+      "samples": {
+        "basic-use": {
+          "default": true,
+          "gist": "f0d0d2059b5c5f01970cd494260099fc"
+        }
+      }
+    }
   }
 }
