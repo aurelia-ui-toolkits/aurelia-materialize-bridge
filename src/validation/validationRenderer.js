@@ -4,19 +4,22 @@ export class MaterializeFormValidationRenderer {
   classNameFirst = 'md-input-validation-first';
 
   render(instruction) {
-    for (let { error, elements } of instruction.unrender) {
+    for (let { result, elements } of instruction.unrender) {
       for (let element of elements) {
-        this.remove(element, error);
+        this.remove(element, result);
       }
     }
-    for (let { error, elements } of instruction.render) {
+    for (let { result, elements } of instruction.render) {
       for (let element of elements) {
-        this.add(element, error);
+        this.add(element, result);
       }
     }
   }
 
-  add(element, error) {
+  add(element, result) {
+    if (result.valid) {
+      return;
+    }
     switch (element.tagName) {
     case 'MD-INPUT': {
       let label = element.querySelector('label');
@@ -27,9 +30,9 @@ export class MaterializeFormValidationRenderer {
       if (input) {
         input.classList.remove('valid');
         input.classList.add('invalid');
-        error.target = input;
+        result.target = input;
         if (input.hasAttribute('data-show-errortext')) {
-          this.addMessage(element, error);
+          this.addMessage(element, result);
         }
       }
       break;
@@ -43,10 +46,10 @@ export class MaterializeFormValidationRenderer {
       if (input) {
         input.classList.remove('valid');
         input.classList.add('invalid');
-        error.target = input;
+        result.target = input;
         if (!(input.hasAttribute('data-show-errortext') &&
             input.getAttribute('data-show-errortext') === 'false')) {
-          this.addMessage(selectWrapper, error);
+          this.addMessage(selectWrapper, result);
         }
       }
       break;
@@ -57,7 +60,7 @@ export class MaterializeFormValidationRenderer {
         element.classList.add('invalid');
         if (!(element.hasAttribute('data-show-errortext') &&
             element.getAttribute('data-show-errortext') === 'false')) {
-          this.addMessage(element.parentNode, error);
+          this.addMessage(element.parentNode, result);
         }
       }
       break;
@@ -66,10 +69,13 @@ export class MaterializeFormValidationRenderer {
     }
   }
 
-  remove(element, error) {
+  remove(element, result) {
+    if (result.valid) {
+      return;
+    }
     switch (element.tagName) {
     case 'MD-INPUT': {
-      this.removeMessage(element, error);
+      this.removeMessage(element, result);
 
       let input = element.querySelector('input') || element.querySelector('textarea');
       if (input && element.querySelectorAll('.' + this.className).length === 0) {
@@ -85,9 +91,9 @@ export class MaterializeFormValidationRenderer {
       }
 
       if ($(selectWrapper.parentElement).children().hasClass('md-input-validation') ) {
-        this.removeMessage(selectWrapper.parentElement, error);
+        this.removeMessage(selectWrapper.parentElement, result);
       } else {
-        this.removeMessage(selectWrapper, error);
+        this.removeMessage(selectWrapper, result);
       }
 
       let input = selectWrapper.querySelector('input');
@@ -99,7 +105,7 @@ export class MaterializeFormValidationRenderer {
     }
     case 'INPUT' : {
       if (element.hasAttribute('md-datepicker')) {
-        this.removeMessage(element.parentNode, error);
+        this.removeMessage(element.parentNode, result);
         if (element && element.parentNode.querySelectorAll('.' + this.className).length === 0) {
           element.classList.remove('invalid');
           element.classList.add('valid');
@@ -111,10 +117,10 @@ export class MaterializeFormValidationRenderer {
     }
   }
 
-  addMessage(element, error) {
+  addMessage(element, result) {
     let message = document.createElement('div');
-    message.id = `md-input-validation-${error.id}`;
-    message.textContent = error.message;
+    message.id = `md-input-validation-${result.id}`;
+    message.textContent = result.message;
     message.className = this.className;
     if (element.querySelectorAll('.' + this.className).length === 0) {
       message.className += ' ' + this.classNameFirst;
@@ -125,8 +131,8 @@ export class MaterializeFormValidationRenderer {
     message.style.opacity = 1;
   }
 
-  removeMessage(element, error) {
-    let message = element.querySelector(`#md-input-validation-${error.id}`);
+  removeMessage(element, result) {
+    let message = element.querySelector(`#md-input-validation-${result.id}`);
     if (message) {
       element.removeChild(message);
     }
