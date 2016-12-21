@@ -9,5 +9,5 @@ The following steps will allow you to contribute to our project:
 6. Run all unit tests using `gulp test`
 7. Run `gulp build` (and fix any errors)
 8. Run `gulp lint` (and fix any errors)
-9. Create a git commit using our [commit message guidelines](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/wiki/Development-Protocol) so your change can be automatically added to the changelog.
+9. Create a git commit using our [commit message guidelines](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/wiki/Development-Protocol) so your change can be automatically added to the changelog. **Note**: Don't include any dist output (f.i. from running `gulp build-release`).
 10. Create a pull request
