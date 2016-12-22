@@ -74,7 +74,7 @@
     "browser-sync": "^2.9.3",
     "conventional-changelog": "^1.1.0",
     "del": "^1.1.0",
-    "gulp": "^3.8.10",
+    "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-bump": "^0.3.1",
     "gulp-concat": "^2.6.0",
