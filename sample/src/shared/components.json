@@ -153,7 +153,8 @@
           "default": true,
           "gist": "445d76931fd5229a2520f17929d67e8f"
         },
-        "options": "35cc55360682d5d740d6bf4f3aa0286e"
+        "options": "35cc55360682d5d740d6bf4f3aa0286e",
+        "repeat": "b46c02e4e301e6ba5eab731b2650953c"
       }
     },
     "Media (Box/Slider/Carousel)": {
