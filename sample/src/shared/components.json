@@ -358,7 +358,8 @@
           "gist": "51595a0e932444adf5005f75827e0a48"
         },
         "multiple": "56b900abe758396c583d6698bcbced4c",
-        "events": "13a28317af7ec78e24367639fd25f054"
+        "events": "13a28317af7ec78e24367639fd25f054",
+        "disabled": "093a5617a5eb01a38f73c452cb9984fb"
       }
     },
     "Range": {
