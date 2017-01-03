@@ -58,6 +58,25 @@ export class MdTabs {
     });
   }
 
+  refresh() {
+    this.taskQueue.queueTask(() => {
+      let hrefs = [];
+      $('li a', this.element).each(function(i, tab) {
+        $(tab).parent().addClass('tab');
+        hrefs.push($(tab).attr('href'));
+      });
+      $(hrefs).each((i, tab) => {
+        if (this.selectedTab.index != i) {
+          $(tab).hide();
+        }
+      });
+      this.taskQueue.queueTask(() => {
+        // window resize adjusts Materialize tab indicator
+        $(window).trigger('resize');
+      });
+    });
+  }
+
   fixedChanged(newValue) {
     if (newValue) {
       this.attributeManager.addClasses('tabs-fixed-width');

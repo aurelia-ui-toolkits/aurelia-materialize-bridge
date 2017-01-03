@@ -153,7 +153,8 @@
           "default": true,
           "gist": "445d76931fd5229a2520f17929d67e8f"
         },
-        "options": "35cc55360682d5d740d6bf4f3aa0286e"
+        "options": "35cc55360682d5d740d6bf4f3aa0286e",
+        "repeat": "b46c02e4e301e6ba5eab731b2650953c"
       }
     },
     "Media (Box/Slider/Carousel)": {
@@ -255,7 +256,8 @@
           "gist": "ada7906badc1842d0141e7e16d01d58f"
         },
         "options": "d394011184cbd5d1df1edbfb3a1fa009",
-        "fixed-sidenav": "38098f4618ca84d3cc2710648afc7053"
+        "fixed-sidenav": "38098f4618ca84d3cc2710648afc7053",
+        "controller": "cfed100e08d04de0f4e480cee98bfac0"
       }
     },
     "Tabs": {
@@ -267,7 +269,8 @@
         },
         "events": "932f9f95c0c198f91bf91c45a0561a0f",
         "api": "6a238e618806289a3800dd4560cf1959",
-        "tabs-in-navbar": "e0038b59a779f57f9079058c5910ce77"
+        "tabs-in-navbar": "e0038b59a779f57f9079058c5910ce77",
+        "dynamic": "d0e8387e57ddd52e203bfe37a2bf03dd"
       }
     },
     "Transitions": {
@@ -356,7 +359,8 @@
           "gist": "51595a0e932444adf5005f75827e0a48"
         },
         "multiple": "56b900abe758396c583d6698bcbced4c",
-        "events": "13a28317af7ec78e24367639fd25f054"
+        "events": "13a28317af7ec78e24367639fd25f054",
+        "disabled": "093a5617a5eb01a38f73c452cb9984fb"
       }
     },
     "Range": {

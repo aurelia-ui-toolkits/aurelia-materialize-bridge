@@ -37,6 +37,14 @@ export class MdSidenavCollapse {
     // this.widthSubscription.unsubscribe();
   }
 
+  show() {
+    $(this.element).sideNav('show');
+  }
+
+  hide() {
+    $(this.element).sideNav('hide');
+  }
+
   // fixedChanged() {
   //   this.log.debug('fixedChanged');
   //   $(this.element).sideNav({
