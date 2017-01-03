@@ -406,7 +406,8 @@
           "default": true,
           "gist": "84902f36468f914041ef1b2244ed6804"
         },
-        "wait-cursor": "94945f3ead604a6b86ac2c318b51c4e9"
+        "wait-cursor": "94945f3ead604a6b86ac2c318b51c4e9",
+        "datepicker-label": "975bb3889aaf8ba0622f5cd5affd61c6"
       }
     }
   }
