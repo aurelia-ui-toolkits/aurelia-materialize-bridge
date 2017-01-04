@@ -8,7 +8,7 @@
 });
 
 export function configure(aurelia) {
-  return System.import('materialize').then(() => {
+  return aurelia.loader.loadModule('materialize').then(() => {
     aurelia.use
       .standardConfiguration()
       .developmentLogging()
