@@ -1,10 +1,10 @@
-import { bindable, customElement } from 'aurelia-templating';
-import { bindingMode } from 'aurelia-binding';
-import { inject } from 'aurelia-dependency-injection';
-import { TaskQueue } from 'aurelia-task-queue';
-import { getBooleanFromAttributeValue } from '../common/attributes';
-import { MdInputUpdateService } from './input-update-service';
-import { fireEvent } from '../common/events';
+import {bindable, customElement} from 'aurelia-templating';
+import {bindingMode} from 'aurelia-binding';
+import {inject} from 'aurelia-dependency-injection';
+import {TaskQueue} from 'aurelia-task-queue';
+import {getBooleanFromAttributeValue} from '../common/attributes';
+import {MdInputUpdateService} from './input-update-service';
+import {fireEvent} from '../common/events';
 
 @customElement('md-input')
 @inject(Element, TaskQueue, MdInputUpdateService)
@@ -12,6 +12,7 @@ export class MdInput {
   static id = 0;
 
   @bindable() mdLabel = '';
+  @bindable() mdBlurOnEnter = false;
   @bindable() mdDisabled = false;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
@@ -44,11 +45,13 @@ export class MdInput {
     this.taskQueue = taskQueue;
     this.controlId = `md-input-${MdInput.id++}`;
     this.updateService = updateService;
+    this.blurOnEnter = this.blurOnEnter.bind(this);
   }
 
   bind() {
     this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
     this.mdShowErrortext = getBooleanFromAttributeValue(this.mdShowErrortext);
+    this.mdBlurOnEnter = getBooleanFromAttributeValue(this.mdBlurOnEnter);
   }
 
   attached() {
@@ -73,10 +76,19 @@ export class MdInput {
     if (this.mdType === 'time') {
       $(this.input).siblings('label').addClass('active');
     }
+    this.attachEventHandlers();
+  }
+
+  detached() {
+    this.detachEventHandlers();
   }
 
   blur() {
     fireEvent(this.element, 'blur');
+  }
+
+  focus() {
+    fireEvent(this.element, 'focus');
   }
 
   mdValueChanged() {
@@ -85,6 +97,24 @@ export class MdInput {
     }
     if (this.mdTextArea) {
       $(this.input).trigger('autoresize');
+    }
+  }
+
+  attachEventHandlers() {
+    if (this.mdBlurOnEnter) {
+      this.element.addEventListener('keyup', this.blurOnEnter);
+    }
+  }
+
+  detachEventHandlers() {
+    if (this.mdBlurOnEnter) {
+      this.element.removeEventListener('keyup', this.blurOnEnter);
+    }
+  }
+
+  blurOnEnter(e) {
+    if (e.keyCode && e.keyCode === 13) {
+      this.input.blur();
     }
   }
 }
