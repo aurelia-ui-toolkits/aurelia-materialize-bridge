@@ -89,6 +89,14 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
     MdSidenavCollapse.prototype.detached = function detached() {};
 
+    MdSidenavCollapse.prototype.show = function show() {
+      $(this.element).sideNav('show');
+    };
+
+    MdSidenavCollapse.prototype.hide = function hide() {
+      $(this.element).sideNav('hide');
+    };
+
     return MdSidenavCollapse;
   }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec3], {
     enumerable: true,

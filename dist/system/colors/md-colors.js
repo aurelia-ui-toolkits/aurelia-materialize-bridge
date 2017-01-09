@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating'], function (_export, _context) {
+  "use strict";
+
   var bindable, _dec, _dec2, _dec3, _dec4, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, MdColors;
 
   function _initDefineProp(target, property, descriptor, context) {

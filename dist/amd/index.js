@@ -6,7 +6,7 @@ define(['exports', './exports', './config-builder', './scrollfire/scrollfire-pat
   });
   exports.configure = configure;
   Object.keys(_exports).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {

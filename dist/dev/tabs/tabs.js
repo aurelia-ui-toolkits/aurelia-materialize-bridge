@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/events', '../common/attributeManager'], function (_export, _context) {
+  "use strict";
+
   var bindable, customAttribute, inject, TaskQueue, fireMaterializeEvent, AttributeManager, _createClass, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, MdTabs;
 
   function _initDefineProp(target, property, descriptor, context) {
@@ -139,6 +141,26 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
           var childAnchors = this.element.querySelectorAll('li a');
           [].forEach.call(childAnchors, function (a) {
             a.removeEventListener('click', _this2.fireTabSelectedEvent);
+          });
+        };
+
+        MdTabs.prototype.refresh = function refresh() {
+          var _this3 = this;
+
+          this.taskQueue.queueTask(function () {
+            var hrefs = [];
+            $('li a', _this3.element).each(function (i, tab) {
+              $(tab).parent().addClass('tab');
+              hrefs.push($(tab).attr('href'));
+            });
+            $(hrefs).each(function (i, tab) {
+              if (_this3.selectedTab.index != i) {
+                $(tab).hide();
+              }
+            });
+            _this3.taskQueue.queueTask(function () {
+              $(window).trigger('resize');
+            });
           });
         };
 

@@ -452,7 +452,7 @@ export class MdBreadcrumbs {
   }
 
   routerChanged() {
-    console.log('[breadcrumbs]', this.router);
+    // console.log('[breadcrumbs]', this.router);
   }
 
   navigate(navigationInstruction) {
@@ -1186,6 +1186,9 @@ export class MdDatePicker {
       calendarIcon.textContent = 'today';
       this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
       $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+
+      options.iconClass = options.iconClass || 'std-icon-fixup';
+      calendarIcon.classList.add(options.iconClass);
     }
 
     this.movePickerCloserToSrc();
@@ -1668,6 +1671,23 @@ export class MdFab {
   }
 }
 
+@customAttribute('md-footer')
+@inject(Element)
+export class MdFooter {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  bind() {
+    this.attributeManager.addClasses('page-footer');
+  }
+
+  unbind() {
+    this.attributeManager.removeClasses('page-footer');
+  }
+}
+
 @customElement('md-file')
 @inject(Element)
 export class MdFileInput {
@@ -1678,6 +1698,7 @@ export class MdFileInput {
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) mdLabelValue;
+  @bindable() disabled = false;
   files = [];
 
   _suspendUpdate = false;
@@ -1703,23 +1724,6 @@ export class MdFileInput {
       fireMaterializeEvent(this.filePath, 'change', { files: this.files });
       this._suspendUpdate = false;
     }
-  }
-}
-
-@customAttribute('md-footer')
-@inject(Element)
-export class MdFooter {
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  bind() {
-    this.attributeManager.addClasses('page-footer');
-  }
-
-  unbind() {
-    this.attributeManager.removeClasses('page-footer');
   }
 }
 
@@ -1769,6 +1773,7 @@ export class MdInput {
   static id = 0;
 
   @bindable() mdLabel = '';
+  @bindable() mdBlurOnEnter = false;
   @bindable() mdDisabled = false;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
@@ -1801,11 +1806,13 @@ export class MdInput {
     this.taskQueue = taskQueue;
     this.controlId = `md-input-${MdInput.id++}`;
     this.updateService = updateService;
+    this.blurOnEnter = this.blurOnEnter.bind(this);
   }
 
   bind() {
     this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
     this.mdShowErrortext = getBooleanFromAttributeValue(this.mdShowErrortext);
+    this.mdBlurOnEnter = getBooleanFromAttributeValue(this.mdBlurOnEnter);
   }
 
   attached() {
@@ -1830,10 +1837,19 @@ export class MdInput {
     if (this.mdType === 'time') {
       $(this.input).siblings('label').addClass('active');
     }
+    this.attachEventHandlers();
+  }
+
+  detached() {
+    this.detachEventHandlers();
   }
 
   blur() {
     fireEvent(this.element, 'blur');
+  }
+
+  focus() {
+    fireEvent(this.element, 'focus');
   }
 
   mdValueChanged() {
@@ -1842,6 +1858,24 @@ export class MdInput {
     }
     if (this.mdTextArea) {
       $(this.input).trigger('autoresize');
+    }
+  }
+
+  attachEventHandlers() {
+    if (this.mdBlurOnEnter) {
+      this.element.addEventListener('keyup', this.blurOnEnter);
+    }
+  }
+
+  detachEventHandlers() {
+    if (this.mdBlurOnEnter) {
+      this.element.removeEventListener('keyup', this.blurOnEnter);
+    }
+  }
+
+  blurOnEnter(e) {
+    if (e.keyCode && e.keyCode === 13) {
+      this.input.blur();
     }
   }
 }
@@ -2523,6 +2557,14 @@ export class MdSidenavCollapse {
     // this.widthSubscription.unsubscribe();
   }
 
+  show() {
+    $(this.element).sideNav('show');
+  }
+
+  hide() {
+    $(this.element).sideNav('hide');
+  }
+
   // fixedChanged() {
   //   this.log.debug('fixedChanged');
   //   $(this.element).sideNav({
@@ -2764,6 +2806,25 @@ export class MdTabs {
     });
   }
 
+  refresh() {
+    this.taskQueue.queueTask(() => {
+      let hrefs = [];
+      $('li a', this.element).each(function(i, tab) {
+        $(tab).parent().addClass('tab');
+        hrefs.push($(tab).attr('href'));
+      });
+      $(hrefs).each((i, tab) => {
+        if (this.selectedTab.index != i) {
+          $(tab).hide();
+        }
+      });
+      this.taskQueue.queueTask(() => {
+        // window resize adjusts Materialize tab indicator
+        $(window).trigger('resize');
+      });
+    });
+  }
+
   fixedChanged(newValue) {
     if (newValue) {
       this.attributeManager.addClasses('tabs-fixed-width');
@@ -2934,14 +2995,54 @@ export class MaterializeFormValidationRenderer {
   classNameFirst = 'md-input-validation-first';
 
   render(instruction) {
+    let allElements = new Array();
     for (let { result, elements } of instruction.unrender) {
       for (let element of elements) {
         this.remove(element, result);
+        if (allElements.indexOf(element) == -1) {
+          allElements.push(element);
+        }
       }
     }
     for (let { result, elements } of instruction.render) {
       for (let element of elements) {
         this.add(element, result);
+        if (allElements.indexOf(element) == -1) {
+          allElements.push(element);
+        }
+      }
+    }
+    allElements.forEach(e => this.underlineInput(e));
+  }
+
+  underlineInput(element) {
+    let input;
+    switch (element.tagName) {
+      case 'MD-INPUT': {
+        input = element.querySelector('input') || element.querySelector('textarea');
+        break;
+      }
+      case 'SELECT': {
+        const selectWrapper = element.closest('.select-wrapper');
+        if (selectWrapper) {
+          input = selectWrapper.querySelector('input');
+        }
+        break;
+      }
+      case 'INPUT': {
+        input = element;
+        break;
+      }
+      default: break;
+    }
+    if (input) {
+      if (element.querySelectorAll('.' + this.className).length === 0) {
+        input.classList.remove('invalid');
+        input.classList.add('valid');
+      }
+      else {
+        input.classList.remove('valid');
+        input.classList.add('invalid');
       }
     }
   }
@@ -2958,8 +3059,6 @@ export class MaterializeFormValidationRenderer {
         label.removeAttribute('data-error');
       }
       if (input) {
-        input.classList.remove('valid');
-        input.classList.add('invalid');
         result.target = input;
         if (input.hasAttribute('data-show-errortext')) {
           this.addMessage(element, result);
@@ -2974,8 +3073,6 @@ export class MaterializeFormValidationRenderer {
       }
       let input = selectWrapper.querySelector('input');
       if (input) {
-        input.classList.remove('valid');
-        input.classList.add('invalid');
         result.target = input;
         if (!(input.hasAttribute('data-show-errortext') &&
             input.getAttribute('data-show-errortext') === 'false')) {
@@ -2986,8 +3083,6 @@ export class MaterializeFormValidationRenderer {
     }
     case 'INPUT' : {
       if (element.hasAttribute('md-datepicker')) {
-        element.classList.remove('valid');
-        element.classList.add('invalid');
         if (!(element.hasAttribute('data-show-errortext') &&
             element.getAttribute('data-show-errortext') === 'false')) {
           this.addMessage(element.parentNode, result);
@@ -3006,12 +3101,6 @@ export class MaterializeFormValidationRenderer {
     switch (element.tagName) {
     case 'MD-INPUT': {
       this.removeMessage(element, result);
-
-      let input = element.querySelector('input') || element.querySelector('textarea');
-      if (input && element.querySelectorAll('.' + this.className).length === 0) {
-        input.classList.remove('invalid');
-        input.classList.add('valid');
-      }
       break;
     }
     case 'SELECT': {
@@ -3025,21 +3114,11 @@ export class MaterializeFormValidationRenderer {
       } else {
         this.removeMessage(selectWrapper, result);
       }
-
-      let input = selectWrapper.querySelector('input');
-      if (input && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
-        input.classList.remove('invalid');
-        input.classList.add('valid');
-      }
       break;
     }
     case 'INPUT' : {
       if (element.hasAttribute('md-datepicker')) {
         this.removeMessage(element.parentNode, result);
-        if (element && element.parentNode.querySelectorAll('.' + this.className).length === 0) {
-          element.classList.remove('invalid');
-          element.classList.add('valid');
-        }
       }
       break;
     }

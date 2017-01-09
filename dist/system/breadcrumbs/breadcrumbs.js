@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-router'], function (_export, _context) {
+  "use strict";
+
   var bindable, customElement, inject, Router, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdBreadcrumbs;
 
   function _initDefineProp(target, property, descriptor, context) {
@@ -84,9 +86,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
           this.router = router;
         };
 
-        MdBreadcrumbs.prototype.routerChanged = function routerChanged() {
-          console.log('[breadcrumbs]', this.router);
-        };
+        MdBreadcrumbs.prototype.routerChanged = function routerChanged() {};
 
         MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {
           this._childRouter.navigateToRoute(navigationInstruction.config.name);

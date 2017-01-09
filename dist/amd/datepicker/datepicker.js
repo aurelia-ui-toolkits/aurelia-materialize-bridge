@@ -148,6 +148,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
         calendarIcon.textContent = 'today';
         this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
         $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+
+        options.iconClass = options.iconClass || 'std-icon-fixup';
+        calendarIcon.classList.add(options.iconClass);
       }
 
       this.movePickerCloserToSrc();

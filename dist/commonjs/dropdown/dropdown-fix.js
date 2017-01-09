@@ -193,31 +193,31 @@ function applyMaterializeDropdownFix() {
           });
         })();
       } else {
-          origin.unbind('click.' + origin.attr('id'));
-          origin.bind('click.' + origin.attr('id'), function (e) {
-            if (!isFocused) {
-              if (origin[0] === e.currentTarget && !origin.hasClass('active') && $(e.target).closest('.dropdown-content').length === 0) {
-                e.preventDefault();
-                if (currentOptions.stopPropagation) {
-                  e.stopPropagation();
-                }
-                placeDropdown('click');
-              } else if (origin.hasClass('active')) {
-                hideDropdown();
-                $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
+        origin.unbind('click.' + origin.attr('id'));
+        origin.bind('click.' + origin.attr('id'), function (e) {
+          if (!isFocused) {
+            if (origin[0] === e.currentTarget && !origin.hasClass('active') && $(e.target).closest('.dropdown-content').length === 0) {
+              e.preventDefault();
+              if (currentOptions.stopPropagation) {
+                e.stopPropagation();
               }
-
-              if (activates.hasClass('active')) {
-                $(document).bind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e2) {
-                  if (!activates.is(e2.target) && !origin.is(e2.target) && !origin.find(e2.target).length) {
-                    hideDropdown();
-                    $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
-                  }
-                });
-              }
+              placeDropdown('click');
+            } else if (origin.hasClass('active')) {
+              hideDropdown();
+              $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
             }
-          });
-        }
+
+            if (activates.hasClass('active')) {
+              $(document).bind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e2) {
+                if (!activates.is(e2.target) && !origin.is(e2.target) && !origin.find(e2.target).length) {
+                  hideDropdown();
+                  $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
+                }
+              });
+            }
+          }
+        });
+      }
       origin.on('open', function (e, eventType) {
         placeDropdown(eventType);
       });

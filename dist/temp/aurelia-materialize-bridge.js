@@ -1,11 +1,11 @@
 'use strict';
 
 exports.__esModule = true;
-exports.MdWaves = exports.MaterializeFormValidationRenderer = exports.MdStaggeredList = exports.MdFadeinImage = exports.MdTooltip = exports.MdToastService = exports.MdTabs = exports.MdSwitch = exports.MdSlider = exports.MdSidenav = exports.MdSidenavCollapse = exports.MdSelect = exports.MdScrollSpy = exports.MdScrollfire = exports.MdScrollfireTarget = exports.ScrollfirePatch = exports.MdRange = exports.MdRadio = exports.MdPushpin = exports.MdProgress = exports.MdParallax = exports.MdPagination = exports.MdNavbar = exports.MdModal = exports.MdModalTrigger = exports.MdInput = exports.MdInputUpdateService = exports.MdPrefix = exports.MdFooter = exports.MdFileInput = exports.MdFab = exports.MdDropdown = exports.MdDropdownElement = exports.MdDatePicker = exports.DatePickerDefaultParser = exports.constants = exports.AttributeManager = exports.MdColors = exports.LightenValueConverter = exports.DarkenValueConverter = exports.MdlListSelector = exports.MdCollection = exports.MdCollectionItem = exports.MdCollectionHeader = exports.MdCollapsible = exports.MdChips = exports.MdChip = exports.MdCheckbox = exports.MdCharCounter = exports.MdCarousel = exports.MdCarouselItem = exports.MdCard = exports.MdButton = exports.InstructionFilterValueConverter = exports.MdBreadcrumbs = exports.MdBox = exports.MdBadge = exports.MdAutoComplete = exports.ConfigBuilder = exports.ClickCounter = undefined;
+exports.MdWaves = exports.MaterializeFormValidationRenderer = exports.MdStaggeredList = exports.MdFadeinImage = exports.MdTooltip = exports.MdToastService = exports.MdTabs = exports.MdSwitch = exports.MdSlider = exports.MdSidenav = exports.MdSidenavCollapse = exports.MdSelect = exports.MdScrollSpy = exports.MdScrollfire = exports.MdScrollfireTarget = exports.ScrollfirePatch = exports.MdRange = exports.MdRadio = exports.MdPushpin = exports.MdProgress = exports.MdParallax = exports.MdPagination = exports.MdNavbar = exports.MdModal = exports.MdModalTrigger = exports.MdInput = exports.MdInputUpdateService = exports.MdPrefix = exports.MdFileInput = exports.MdFooter = exports.MdFab = exports.MdDropdown = exports.MdDropdownElement = exports.MdDatePicker = exports.DatePickerDefaultParser = exports.constants = exports.AttributeManager = exports.MdColors = exports.LightenValueConverter = exports.DarkenValueConverter = exports.MdlListSelector = exports.MdCollection = exports.MdCollectionItem = exports.MdCollectionHeader = exports.MdCollapsible = exports.MdChips = exports.MdChip = exports.MdCheckbox = exports.MdCharCounter = exports.MdCarousel = exports.MdCarouselItem = exports.MdCard = exports.MdButton = exports.InstructionFilterValueConverter = exports.MdBreadcrumbs = exports.MdBox = exports.MdBadge = exports.MdAutoComplete = exports.ConfigBuilder = exports.ClickCounter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _class3, _desc, _value, _class4, _descriptor, _dec4, _dec5, _dec6, _class6, _desc2, _value2, _class7, _descriptor2, _dec7, _dec8, _dec9, _class9, _desc3, _value3, _class10, _descriptor3, _dec10, _dec11, _dec12, _class12, _desc4, _value4, _class13, _descriptor4, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _class15, _desc5, _value5, _class16, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _class18, _desc6, _value6, _class19, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _dec26, _dec27, _dec28, _class21, _desc7, _value7, _class22, _descriptor14, _descriptor15, _dec29, _dec30, _dec31, _dec32, _dec33, _class24, _desc8, _value8, _class25, _descriptor16, _descriptor17, _descriptor18, _dec34, _dec35, _dec36, _class27, _desc9, _value9, _class28, _descriptor19, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _class30, _desc10, _value10, _class31, _descriptor20, _descriptor21, _descriptor22, _descriptor23, _descriptor24, _class32, _temp, _dec43, _dec44, _dec45, _class33, _desc11, _value11, _class34, _descriptor25, _dec46, _dec47, _dec48, _dec49, _class36, _desc12, _value12, _class37, _descriptor26, _descriptor27, _descriptor28, _dec50, _dec51, _dec52, _dec53, _class39, _dec54, _dec55, _class40, _dec56, _class41, _dec57, _dec58, _class42, _dec59, _dec60, _dec61, _dec62, _dec63, _class43, _desc13, _value13, _class44, _descriptor29, _descriptor30, _descriptor31, _dec64, _dec65, _dec66, _dec67, _desc14, _value14, _class46, _descriptor32, _descriptor33, _descriptor34, _descriptor35, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _class49, _desc15, _value15, _class50, _descriptor36, _descriptor37, _descriptor38, _descriptor39, _descriptor40, _descriptor41, _descriptor42, _descriptor43, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _class52, _desc16, _value16, _class53, _descriptor44, _descriptor45, _descriptor46, _descriptor47, _descriptor48, _descriptor49, _descriptor50, _descriptor51, _class54, _temp2, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _class55, _desc17, _value17, _class56, _descriptor52, _descriptor53, _descriptor54, _descriptor55, _descriptor56, _descriptor57, _descriptor58, _descriptor59, _descriptor60, _descriptor61, _class57, _temp3, _dec100, _dec101, _dec102, _dec103, _class58, _desc18, _value18, _class59, _descriptor62, _descriptor63, _dec104, _dec105, _dec106, _dec107, _dec108, _class61, _desc19, _value19, _class62, _descriptor64, _descriptor65, _descriptor66, _dec109, _dec110, _class64, _dec111, _dec112, _class65, _dec113, _class66, _dec114, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _dec126, _class68, _desc20, _value20, _class69, _descriptor67, _descriptor68, _descriptor69, _descriptor70, _descriptor71, _descriptor72, _descriptor73, _descriptor74, _descriptor75, _descriptor76, _descriptor77, _class70, _temp4, _dec127, _dec128, _dec129, _class71, _desc21, _value21, _class72, _descriptor78, _dec130, _dec131, _dec132, _class74, _desc22, _value22, _class75, _descriptor79, _dec133, _dec134, _dec135, _dec136, _class77, _desc23, _value23, _class78, _descriptor80, _descriptor81, _dec137, _dec138, _dec139, _dec140, _dec141, _dec142, _dec143, _dec144, _dec145, _class80, _desc24, _value24, _class81, _descriptor82, _descriptor83, _descriptor84, _descriptor85, _descriptor86, _descriptor87, _descriptor88, _dec146, _dec147, _class83, _dec148, _dec149, _dec150, _dec151, _dec152, _dec153, _dec154, _class84, _desc25, _value25, _class85, _descriptor89, _descriptor90, _descriptor91, _descriptor92, _descriptor93, _dec155, _dec156, _dec157, _dec158, _dec159, _class87, _desc26, _value26, _class88, _descriptor94, _descriptor95, _descriptor96, _dec160, _dec161, _dec162, _dec163, _dec164, _dec165, _dec166, _dec167, _class90, _desc27, _value27, _class91, _descriptor97, _descriptor98, _descriptor99, _descriptor100, _descriptor101, _descriptor102, _class92, _temp5, _dec168, _dec169, _dec170, _dec171, _dec172, _dec173, _class93, _desc28, _value28, _class94, _descriptor103, _descriptor104, _descriptor105, _descriptor106, _class96, _temp6, _dec174, _dec175, _dec176, _dec177, _class97, _desc29, _value29, _class98, _descriptor107, _descriptor108, _dec178, _dec179, _class100, _dec180, _dec181, _dec182, _class102, _desc30, _value30, _class103, _descriptor109, _dec183, _dec184, _dec185, _dec186, _dec187, _class105, _desc31, _value31, _class106, _descriptor110, _descriptor111, _descriptor112, _dec188, _dec189, _dec190, _class108, _desc32, _value32, _class109, _descriptor113, _dec191, _dec192, _dec193, _dec194, _dec195, _dec196, _class111, _desc33, _value33, _class112, _descriptor114, _descriptor115, _descriptor116, _descriptor117, _class113, _temp7, _dec197, _dec198, _dec199, _dec200, _dec201, _dec202, _dec203, _dec204, _class114, _desc34, _value34, _class115, _descriptor118, _descriptor119, _descriptor120, _descriptor121, _descriptor122, _dec205, _dec206, _dec207, _dec208, _dec209, _dec210, _class117, _desc35, _value35, _class118, _descriptor123, _descriptor124, _descriptor125, _descriptor126, _dec211, _dec212, _dec213, _dec214, _dec215, _class120, _desc36, _value36, _class121, _descriptor127, _descriptor128, _descriptor129, _dec216, _dec217, _dec218, _dec219, _dec220, _dec221, _class123, _desc37, _value37, _class124, _descriptor130, _descriptor131, _descriptor132, _descriptor133, _dec222, _dec223, _dec224, _class126, _desc38, _value38, _class127, _descriptor134, _dec225, _dec226, _dec227, _class129, _desc39, _value39, _class130, _descriptor135, _dec228, _dec229, _dec230, _dec231, _dec232, _class133, _desc40, _value40, _class134, _descriptor136, _descriptor137, _descriptor138;
+var _dec, _dec2, _dec3, _class3, _desc, _value, _class4, _descriptor, _dec4, _dec5, _dec6, _class6, _desc2, _value2, _class7, _descriptor2, _dec7, _dec8, _dec9, _class9, _desc3, _value3, _class10, _descriptor3, _dec10, _dec11, _dec12, _class12, _desc4, _value4, _class13, _descriptor4, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _class15, _desc5, _value5, _class16, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _class18, _desc6, _value6, _class19, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _dec26, _dec27, _dec28, _class21, _desc7, _value7, _class22, _descriptor14, _descriptor15, _dec29, _dec30, _dec31, _dec32, _dec33, _class24, _desc8, _value8, _class25, _descriptor16, _descriptor17, _descriptor18, _dec34, _dec35, _dec36, _class27, _desc9, _value9, _class28, _descriptor19, _dec37, _dec38, _dec39, _dec40, _dec41, _dec42, _class30, _desc10, _value10, _class31, _descriptor20, _descriptor21, _descriptor22, _descriptor23, _descriptor24, _class32, _temp, _dec43, _dec44, _dec45, _class33, _desc11, _value11, _class34, _descriptor25, _dec46, _dec47, _dec48, _dec49, _class36, _desc12, _value12, _class37, _descriptor26, _descriptor27, _descriptor28, _dec50, _dec51, _dec52, _dec53, _class39, _dec54, _dec55, _class40, _dec56, _class41, _dec57, _dec58, _class42, _dec59, _dec60, _dec61, _dec62, _dec63, _class43, _desc13, _value13, _class44, _descriptor29, _descriptor30, _descriptor31, _dec64, _dec65, _dec66, _dec67, _desc14, _value14, _class46, _descriptor32, _descriptor33, _descriptor34, _descriptor35, _dec68, _dec69, _dec70, _dec71, _dec72, _dec73, _dec74, _dec75, _dec76, _dec77, _class49, _desc15, _value15, _class50, _descriptor36, _descriptor37, _descriptor38, _descriptor39, _descriptor40, _descriptor41, _descriptor42, _descriptor43, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _dec85, _dec86, _dec87, _class52, _desc16, _value16, _class53, _descriptor44, _descriptor45, _descriptor46, _descriptor47, _descriptor48, _descriptor49, _descriptor50, _descriptor51, _class54, _temp2, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _dec97, _dec98, _dec99, _class55, _desc17, _value17, _class56, _descriptor52, _descriptor53, _descriptor54, _descriptor55, _descriptor56, _descriptor57, _descriptor58, _descriptor59, _descriptor60, _descriptor61, _class57, _temp3, _dec100, _dec101, _dec102, _dec103, _class58, _desc18, _value18, _class59, _descriptor62, _descriptor63, _dec104, _dec105, _class61, _dec106, _dec107, _dec108, _dec109, _dec110, _dec111, _class62, _desc19, _value19, _class63, _descriptor64, _descriptor65, _descriptor66, _descriptor67, _dec112, _dec113, _class65, _dec114, _class66, _dec115, _dec116, _dec117, _dec118, _dec119, _dec120, _dec121, _dec122, _dec123, _dec124, _dec125, _dec126, _dec127, _dec128, _class68, _desc20, _value20, _class69, _descriptor68, _descriptor69, _descriptor70, _descriptor71, _descriptor72, _descriptor73, _descriptor74, _descriptor75, _descriptor76, _descriptor77, _descriptor78, _descriptor79, _class70, _temp4, _dec129, _dec130, _dec131, _class71, _desc21, _value21, _class72, _descriptor80, _dec132, _dec133, _dec134, _class74, _desc22, _value22, _class75, _descriptor81, _dec135, _dec136, _dec137, _dec138, _class77, _desc23, _value23, _class78, _descriptor82, _descriptor83, _dec139, _dec140, _dec141, _dec142, _dec143, _dec144, _dec145, _dec146, _dec147, _class80, _desc24, _value24, _class81, _descriptor84, _descriptor85, _descriptor86, _descriptor87, _descriptor88, _descriptor89, _descriptor90, _dec148, _dec149, _class83, _dec150, _dec151, _dec152, _dec153, _dec154, _dec155, _dec156, _class84, _desc25, _value25, _class85, _descriptor91, _descriptor92, _descriptor93, _descriptor94, _descriptor95, _dec157, _dec158, _dec159, _dec160, _dec161, _class87, _desc26, _value26, _class88, _descriptor96, _descriptor97, _descriptor98, _dec162, _dec163, _dec164, _dec165, _dec166, _dec167, _dec168, _dec169, _class90, _desc27, _value27, _class91, _descriptor99, _descriptor100, _descriptor101, _descriptor102, _descriptor103, _descriptor104, _class92, _temp5, _dec170, _dec171, _dec172, _dec173, _dec174, _dec175, _class93, _desc28, _value28, _class94, _descriptor105, _descriptor106, _descriptor107, _descriptor108, _class96, _temp6, _dec176, _dec177, _dec178, _dec179, _class97, _desc29, _value29, _class98, _descriptor109, _descriptor110, _dec180, _dec181, _class100, _dec182, _dec183, _dec184, _class102, _desc30, _value30, _class103, _descriptor111, _dec185, _dec186, _dec187, _dec188, _dec189, _class105, _desc31, _value31, _class106, _descriptor112, _descriptor113, _descriptor114, _dec190, _dec191, _dec192, _class108, _desc32, _value32, _class109, _descriptor115, _dec193, _dec194, _dec195, _dec196, _dec197, _dec198, _class111, _desc33, _value33, _class112, _descriptor116, _descriptor117, _descriptor118, _descriptor119, _class113, _temp7, _dec199, _dec200, _dec201, _dec202, _dec203, _dec204, _dec205, _dec206, _class114, _desc34, _value34, _class115, _descriptor120, _descriptor121, _descriptor122, _descriptor123, _descriptor124, _dec207, _dec208, _dec209, _dec210, _dec211, _dec212, _class117, _desc35, _value35, _class118, _descriptor125, _descriptor126, _descriptor127, _descriptor128, _dec213, _dec214, _dec215, _dec216, _dec217, _class120, _desc36, _value36, _class121, _descriptor129, _descriptor130, _descriptor131, _dec218, _dec219, _dec220, _dec221, _dec222, _dec223, _class123, _desc37, _value37, _class124, _descriptor132, _descriptor133, _descriptor134, _descriptor135, _dec224, _dec225, _dec226, _class126, _desc38, _value38, _class127, _descriptor136, _dec227, _dec228, _dec229, _class129, _desc39, _value39, _class130, _descriptor137, _dec230, _dec231, _dec232, _dec233, _dec234, _class133, _desc40, _value40, _class134, _descriptor138, _descriptor139, _descriptor140;
 
 exports.configure = configure;
 exports.getBooleanFromAttributeValue = getBooleanFromAttributeValue;
@@ -481,9 +481,7 @@ var MdBreadcrumbs = exports.MdBreadcrumbs = (_dec10 = (0, _aureliaTemplating.cus
     this.router = router;
   };
 
-  MdBreadcrumbs.prototype.routerChanged = function routerChanged() {
-    console.log('[breadcrumbs]', this.router);
-  };
+  MdBreadcrumbs.prototype.routerChanged = function routerChanged() {};
 
   MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {
     this._childRouter.navigateToRoute(navigationInstruction.config.name);
@@ -1179,11 +1177,11 @@ var AttributeManager = exports.AttributeManager = function () {
         return _this6.element.classList.contains(cc);
       }).length > 0;
       if (_this6._colorClasses.indexOf(c) > -1 && classListHasColor) {} else {
-          if (!_this6.element.classList.contains(c)) {
-            _this6.addedClasses.push(c);
-            _this6.element.classList.add(c);
-          }
+        if (!_this6.element.classList.contains(c)) {
+          _this6.addedClasses.push(c);
+          _this6.element.classList.add(c);
         }
+      }
     });
   };
 
@@ -1214,7 +1212,7 @@ var constants = exports.constants = {
 };
 
 function fireEvent(element, name) {
-  var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+  var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
   var event = new CustomEvent(name, {
     detail: data,
@@ -1226,7 +1224,7 @@ function fireEvent(element, name) {
 }
 
 function fireMaterializeEvent(element, name) {
-  var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+  var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
   return fireEvent(element, '' + constants.eventPrefix + name, data);
 }
@@ -1376,6 +1374,9 @@ var MdDatePicker = exports.MdDatePicker = (_dec68 = (0, _aureliaDependencyInject
       calendarIcon.textContent = 'today';
       this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
       $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+
+      options.iconClass = options.iconClass || 'std-icon-fixup';
+      calendarIcon.classList.add(options.iconClass);
     }
 
     this.movePickerCloserToSrc();
@@ -1783,31 +1784,31 @@ function applyMaterializeDropdownFix() {
           });
         })();
       } else {
-          origin.unbind('click.' + origin.attr('id'));
-          origin.bind('click.' + origin.attr('id'), function (e) {
-            if (!isFocused) {
-              if (origin[0] === e.currentTarget && !origin.hasClass('active') && $(e.target).closest('.dropdown-content').length === 0) {
-                e.preventDefault();
-                if (currentOptions.stopPropagation) {
-                  e.stopPropagation();
-                }
-                placeDropdown('click');
-              } else if (origin.hasClass('active')) {
-                hideDropdown();
-                $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
+        origin.unbind('click.' + origin.attr('id'));
+        origin.bind('click.' + origin.attr('id'), function (e) {
+          if (!isFocused) {
+            if (origin[0] === e.currentTarget && !origin.hasClass('active') && $(e.target).closest('.dropdown-content').length === 0) {
+              e.preventDefault();
+              if (currentOptions.stopPropagation) {
+                e.stopPropagation();
               }
-
-              if (activates.hasClass('active')) {
-                $(document).bind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e2) {
-                  if (!activates.is(e2.target) && !origin.is(e2.target) && !origin.find(e2.target).length) {
-                    hideDropdown();
-                    $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
-                  }
-                });
-              }
+              placeDropdown('click');
+            } else if (origin.hasClass('active')) {
+              hideDropdown();
+              $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
             }
-          });
-        }
+
+            if (activates.hasClass('active')) {
+              $(document).bind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e2) {
+                if (!activates.is(e2.target) && !origin.is(e2.target) && !origin.find(e2.target).length) {
+                  hideDropdown();
+                  $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
+                }
+              });
+            }
+          }
+        });
+      }
       origin.on('open', function (e, eventType) {
         placeDropdown(eventType);
       });
@@ -1984,11 +1985,29 @@ var MdFab = exports.MdFab = (_dec100 = (0, _aureliaTemplating.customElement)('md
     return false;
   }
 })), _class59)) || _class58) || _class58);
-var MdFileInput = exports.MdFileInput = (_dec104 = (0, _aureliaTemplating.customElement)('md-file'), _dec105 = (0, _aureliaDependencyInjection.inject)(Element), _dec106 = (0, _aureliaTemplating.bindable)(), _dec107 = (0, _aureliaTemplating.bindable)({
+var MdFooter = exports.MdFooter = (_dec104 = (0, _aureliaTemplating.customAttribute)('md-footer'), _dec105 = (0, _aureliaDependencyInjection.inject)(Element), _dec104(_class61 = _dec105(_class61 = function () {
+  function MdFooter(element) {
+    _classCallCheck(this, MdFooter);
+
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  MdFooter.prototype.bind = function bind() {
+    this.attributeManager.addClasses('page-footer');
+  };
+
+  MdFooter.prototype.unbind = function unbind() {
+    this.attributeManager.removeClasses('page-footer');
+  };
+
+  return MdFooter;
+}()) || _class61) || _class61);
+var MdFileInput = exports.MdFileInput = (_dec106 = (0, _aureliaTemplating.customElement)('md-file'), _dec107 = (0, _aureliaDependencyInjection.inject)(Element), _dec108 = (0, _aureliaTemplating.bindable)(), _dec109 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec108 = (0, _aureliaTemplating.bindable)({
+}), _dec110 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-}), _dec104(_class61 = _dec105(_class61 = (_class62 = function () {
+}), _dec111 = (0, _aureliaTemplating.bindable)(), _dec106(_class62 = _dec107(_class62 = (_class63 = function () {
   function MdFileInput(element) {
     _classCallCheck(this, MdFileInput);
 
@@ -1997,6 +2016,8 @@ var MdFileInput = exports.MdFileInput = (_dec104 = (0, _aureliaTemplating.custom
     _initDefineProp(this, 'mdMultiple', _descriptor65, this);
 
     _initDefineProp(this, 'mdLabelValue', _descriptor66, this);
+
+    _initDefineProp(this, 'disabled', _descriptor67, this);
 
     this.files = [];
     this._suspendUpdate = false;
@@ -2024,39 +2045,26 @@ var MdFileInput = exports.MdFileInput = (_dec104 = (0, _aureliaTemplating.custom
   };
 
   return MdFileInput;
-}(), (_descriptor64 = _applyDecoratedDescriptor(_class62.prototype, 'mdCaption', [_dec106], {
+}(), (_descriptor64 = _applyDecoratedDescriptor(_class63.prototype, 'mdCaption', [_dec108], {
   enumerable: true,
   initializer: function initializer() {
     return 'File';
   }
-}), _descriptor65 = _applyDecoratedDescriptor(_class62.prototype, 'mdMultiple', [_dec107], {
+}), _descriptor65 = _applyDecoratedDescriptor(_class63.prototype, 'mdMultiple', [_dec109], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor66 = _applyDecoratedDescriptor(_class62.prototype, 'mdLabelValue', [_dec108], {
+}), _descriptor66 = _applyDecoratedDescriptor(_class63.prototype, 'mdLabelValue', [_dec110], {
   enumerable: true,
   initializer: null
-})), _class62)) || _class61) || _class61);
-var MdFooter = exports.MdFooter = (_dec109 = (0, _aureliaTemplating.customAttribute)('md-footer'), _dec110 = (0, _aureliaDependencyInjection.inject)(Element), _dec109(_class64 = _dec110(_class64 = function () {
-  function MdFooter(element) {
-    _classCallCheck(this, MdFooter);
-
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
+}), _descriptor67 = _applyDecoratedDescriptor(_class63.prototype, 'disabled', [_dec111], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
   }
-
-  MdFooter.prototype.bind = function bind() {
-    this.attributeManager.addClasses('page-footer');
-  };
-
-  MdFooter.prototype.unbind = function unbind() {
-    this.attributeManager.removeClasses('page-footer');
-  };
-
-  return MdFooter;
-}()) || _class64) || _class64);
-var MdPrefix = exports.MdPrefix = (_dec111 = (0, _aureliaTemplating.customAttribute)('md-prefix'), _dec112 = (0, _aureliaDependencyInjection.inject)(Element), _dec111(_class65 = _dec112(_class65 = function () {
+})), _class63)) || _class62) || _class62);
+var MdPrefix = exports.MdPrefix = (_dec112 = (0, _aureliaTemplating.customAttribute)('md-prefix'), _dec113 = (0, _aureliaDependencyInjection.inject)(Element), _dec112(_class65 = _dec113(_class65 = function () {
   function MdPrefix(element) {
     _classCallCheck(this, MdPrefix);
 
@@ -2074,7 +2082,7 @@ var MdPrefix = exports.MdPrefix = (_dec111 = (0, _aureliaTemplating.customAttrib
 
   return MdPrefix;
 }()) || _class65) || _class65);
-var MdInputUpdateService = exports.MdInputUpdateService = (_dec113 = (0, _aureliaDependencyInjection.inject)(_aureliaTaskQueue.TaskQueue), _dec113(_class66 = function () {
+var MdInputUpdateService = exports.MdInputUpdateService = (_dec114 = (0, _aureliaDependencyInjection.inject)(_aureliaTaskQueue.TaskQueue), _dec114(_class66 = function () {
   function MdInputUpdateService(taskQueue) {
     _classCallCheck(this, MdInputUpdateService);
 
@@ -2100,11 +2108,7 @@ var MdInputUpdateService = exports.MdInputUpdateService = (_dec113 = (0, _aureli
 
   return MdInputUpdateService;
 }()) || _class66);
-var MdInput = exports.MdInput = (_dec114 = (0, _aureliaTemplating.customElement)('md-input'), _dec115 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, MdInputUpdateService), _dec116 = (0, _aureliaTemplating.bindable)(), _dec117 = (0, _aureliaTemplating.bindable)(), _dec118 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec119 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec120 = (0, _aureliaTemplating.bindable)({
+var MdInput = exports.MdInput = (_dec115 = (0, _aureliaTemplating.customElement)('md-input'), _dec116 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, MdInputUpdateService), _dec117 = (0, _aureliaTemplating.bindable)(), _dec118 = (0, _aureliaTemplating.bindable)(), _dec119 = (0, _aureliaTemplating.bindable)(), _dec120 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec121 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
@@ -2112,33 +2116,39 @@ var MdInput = exports.MdInput = (_dec114 = (0, _aureliaTemplating.customElement)
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec123 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec124 = (0, _aureliaTemplating.bindable)(), _dec125 = (0, _aureliaTemplating.bindable)(), _dec126 = (0, _aureliaTemplating.bindable)({
+}), _dec124 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec125 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec126 = (0, _aureliaTemplating.bindable)(), _dec127 = (0, _aureliaTemplating.bindable)(), _dec128 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-}), _dec114(_class68 = _dec115(_class68 = (_class69 = (_temp4 = _class70 = function () {
+}), _dec115(_class68 = _dec116(_class68 = (_class69 = (_temp4 = _class70 = function () {
   function MdInput(element, taskQueue, updateService) {
     _classCallCheck(this, MdInput);
 
-    _initDefineProp(this, 'mdLabel', _descriptor67, this);
+    _initDefineProp(this, 'mdLabel', _descriptor68, this);
 
-    _initDefineProp(this, 'mdDisabled', _descriptor68, this);
+    _initDefineProp(this, 'mdBlurOnEnter', _descriptor69, this);
 
-    _initDefineProp(this, 'mdPlaceholder', _descriptor69, this);
+    _initDefineProp(this, 'mdDisabled', _descriptor70, this);
 
-    _initDefineProp(this, 'mdTextArea', _descriptor70, this);
+    _initDefineProp(this, 'mdPlaceholder', _descriptor71, this);
 
-    _initDefineProp(this, 'mdType', _descriptor71, this);
+    _initDefineProp(this, 'mdTextArea', _descriptor72, this);
 
-    _initDefineProp(this, 'mdStep', _descriptor72, this);
+    _initDefineProp(this, 'mdType', _descriptor73, this);
 
-    _initDefineProp(this, 'mdValidate', _descriptor73, this);
+    _initDefineProp(this, 'mdStep', _descriptor74, this);
 
-    _initDefineProp(this, 'mdShowErrortext', _descriptor74, this);
+    _initDefineProp(this, 'mdValidate', _descriptor75, this);
 
-    _initDefineProp(this, 'mdValidateError', _descriptor75, this);
+    _initDefineProp(this, 'mdShowErrortext', _descriptor76, this);
 
-    _initDefineProp(this, 'mdValidateSuccess', _descriptor76, this);
+    _initDefineProp(this, 'mdValidateError', _descriptor77, this);
 
-    _initDefineProp(this, 'mdValue', _descriptor77, this);
+    _initDefineProp(this, 'mdValidateSuccess', _descriptor78, this);
+
+    _initDefineProp(this, 'mdValue', _descriptor79, this);
 
     this._suspendUpdate = false;
 
@@ -2146,11 +2156,13 @@ var MdInput = exports.MdInput = (_dec114 = (0, _aureliaTemplating.customElement)
     this.taskQueue = taskQueue;
     this.controlId = 'md-input-' + MdInput.id++;
     this.updateService = updateService;
+    this.blurOnEnter = this.blurOnEnter.bind(this);
   }
 
   MdInput.prototype.bind = function bind() {
     this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
     this.mdShowErrortext = getBooleanFromAttributeValue(this.mdShowErrortext);
+    this.mdBlurOnEnter = getBooleanFromAttributeValue(this.mdBlurOnEnter);
   };
 
   MdInput.prototype.attached = function attached() {
@@ -2174,10 +2186,19 @@ var MdInput = exports.MdInput = (_dec114 = (0, _aureliaTemplating.customElement)
     if (this.mdType === 'time') {
       $(this.input).siblings('label').addClass('active');
     }
+    this.attachEventHandlers();
+  };
+
+  MdInput.prototype.detached = function detached() {
+    this.detachEventHandlers();
   };
 
   MdInput.prototype.blur = function blur() {
     fireEvent(this.element, 'blur');
+  };
+
+  MdInput.prototype.focus = function focus() {
+    fireEvent(this.element, 'focus');
   };
 
   MdInput.prototype.mdValueChanged = function mdValueChanged() {
@@ -2189,64 +2210,87 @@ var MdInput = exports.MdInput = (_dec114 = (0, _aureliaTemplating.customElement)
     }
   };
 
+  MdInput.prototype.attachEventHandlers = function attachEventHandlers() {
+    if (this.mdBlurOnEnter) {
+      this.element.addEventListener('keyup', this.blurOnEnter);
+    }
+  };
+
+  MdInput.prototype.detachEventHandlers = function detachEventHandlers() {
+    if (this.mdBlurOnEnter) {
+      this.element.removeEventListener('keyup', this.blurOnEnter);
+    }
+  };
+
+  MdInput.prototype.blurOnEnter = function blurOnEnter(e) {
+    if (e.keyCode && e.keyCode === 13) {
+      this.input.blur();
+    }
+  };
+
   return MdInput;
-}(), _class70.id = 0, _temp4), (_descriptor67 = _applyDecoratedDescriptor(_class69.prototype, 'mdLabel', [_dec116], {
+}(), _class70.id = 0, _temp4), (_descriptor68 = _applyDecoratedDescriptor(_class69.prototype, 'mdLabel', [_dec117], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
-}), _descriptor68 = _applyDecoratedDescriptor(_class69.prototype, 'mdDisabled', [_dec117], {
+}), _descriptor69 = _applyDecoratedDescriptor(_class69.prototype, 'mdBlurOnEnter', [_dec118], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor69 = _applyDecoratedDescriptor(_class69.prototype, 'mdPlaceholder', [_dec118], {
+}), _descriptor70 = _applyDecoratedDescriptor(_class69.prototype, 'mdDisabled', [_dec119], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
+  }
+}), _descriptor71 = _applyDecoratedDescriptor(_class69.prototype, 'mdPlaceholder', [_dec120], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
-}), _descriptor70 = _applyDecoratedDescriptor(_class69.prototype, 'mdTextArea', [_dec119], {
+}), _descriptor72 = _applyDecoratedDescriptor(_class69.prototype, 'mdTextArea', [_dec121], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor71 = _applyDecoratedDescriptor(_class69.prototype, 'mdType', [_dec120], {
+}), _descriptor73 = _applyDecoratedDescriptor(_class69.prototype, 'mdType', [_dec122], {
   enumerable: true,
   initializer: function initializer() {
     return 'text';
   }
-}), _descriptor72 = _applyDecoratedDescriptor(_class69.prototype, 'mdStep', [_dec121], {
+}), _descriptor74 = _applyDecoratedDescriptor(_class69.prototype, 'mdStep', [_dec123], {
   enumerable: true,
   initializer: function initializer() {
     return 'any';
   }
-}), _descriptor73 = _applyDecoratedDescriptor(_class69.prototype, 'mdValidate', [_dec122], {
+}), _descriptor75 = _applyDecoratedDescriptor(_class69.prototype, 'mdValidate', [_dec124], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor74 = _applyDecoratedDescriptor(_class69.prototype, 'mdShowErrortext', [_dec123], {
+}), _descriptor76 = _applyDecoratedDescriptor(_class69.prototype, 'mdShowErrortext', [_dec125], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
-}), _descriptor75 = _applyDecoratedDescriptor(_class69.prototype, 'mdValidateError', [_dec124], {
+}), _descriptor77 = _applyDecoratedDescriptor(_class69.prototype, 'mdValidateError', [_dec126], {
   enumerable: true,
   initializer: null
-}), _descriptor76 = _applyDecoratedDescriptor(_class69.prototype, 'mdValidateSuccess', [_dec125], {
+}), _descriptor78 = _applyDecoratedDescriptor(_class69.prototype, 'mdValidateSuccess', [_dec127], {
   enumerable: true,
   initializer: null
-}), _descriptor77 = _applyDecoratedDescriptor(_class69.prototype, 'mdValue', [_dec126], {
+}), _descriptor79 = _applyDecoratedDescriptor(_class69.prototype, 'mdValue', [_dec128], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
 })), _class69)) || _class68) || _class68);
-var MdModalTrigger = exports.MdModalTrigger = (_dec127 = (0, _aureliaTemplating.customAttribute)('md-modal-trigger'), _dec128 = (0, _aureliaDependencyInjection.inject)(Element), _dec129 = (0, _aureliaTemplating.bindable)(), _dec127(_class71 = _dec128(_class71 = (_class72 = function () {
+var MdModalTrigger = exports.MdModalTrigger = (_dec129 = (0, _aureliaTemplating.customAttribute)('md-modal-trigger'), _dec130 = (0, _aureliaDependencyInjection.inject)(Element), _dec131 = (0, _aureliaTemplating.bindable)(), _dec129(_class71 = _dec130(_class71 = (_class72 = function () {
   function MdModalTrigger(element) {
     _classCallCheck(this, MdModalTrigger);
 
-    _initDefineProp(this, 'dismissible', _descriptor78, this);
+    _initDefineProp(this, 'dismissible', _descriptor80, this);
 
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
@@ -2270,17 +2314,17 @@ var MdModalTrigger = exports.MdModalTrigger = (_dec127 = (0, _aureliaTemplating.
   };
 
   return MdModalTrigger;
-}(), (_descriptor78 = _applyDecoratedDescriptor(_class72.prototype, 'dismissible', [_dec129], {
+}(), (_descriptor80 = _applyDecoratedDescriptor(_class72.prototype, 'dismissible', [_dec131], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
 })), _class72)) || _class71) || _class71);
-var MdModal = exports.MdModal = (_dec130 = (0, _aureliaTemplating.customAttribute)('md-modal'), _dec131 = (0, _aureliaDependencyInjection.inject)(Element), _dec132 = (0, _aureliaTemplating.bindable)(), _dec130(_class74 = _dec131(_class74 = (_class75 = function () {
+var MdModal = exports.MdModal = (_dec132 = (0, _aureliaTemplating.customAttribute)('md-modal'), _dec133 = (0, _aureliaDependencyInjection.inject)(Element), _dec134 = (0, _aureliaTemplating.bindable)(), _dec132(_class74 = _dec133(_class74 = (_class75 = function () {
   function MdModal(element) {
     _classCallCheck(this, MdModal);
 
-    _initDefineProp(this, 'dismissible', _descriptor79, this);
+    _initDefineProp(this, 'dismissible', _descriptor81, this);
 
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
@@ -2318,23 +2362,23 @@ var MdModal = exports.MdModal = (_dec130 = (0, _aureliaTemplating.customAttribut
   };
 
   return MdModal;
-}(), (_descriptor79 = _applyDecoratedDescriptor(_class75.prototype, 'dismissible', [_dec132], {
+}(), (_descriptor81 = _applyDecoratedDescriptor(_class75.prototype, 'dismissible', [_dec134], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
 })), _class75)) || _class74) || _class74);
-var MdNavbar = exports.MdNavbar = (_dec133 = (0, _aureliaTemplating.customElement)('md-navbar'), _dec134 = (0, _aureliaDependencyInjection.inject)(Element), _dec135 = (0, _aureliaTemplating.bindable)({
+var MdNavbar = exports.MdNavbar = (_dec135 = (0, _aureliaTemplating.customElement)('md-navbar'), _dec136 = (0, _aureliaDependencyInjection.inject)(Element), _dec137 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec136 = (0, _aureliaTemplating.bindable)({
+}), _dec138 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec133(_class77 = _dec134(_class77 = (_class78 = function () {
+}), _dec135(_class77 = _dec136(_class77 = (_class78 = function () {
   function MdNavbar(element) {
     _classCallCheck(this, MdNavbar);
 
-    _initDefineProp(this, 'mdFixed', _descriptor80, this);
+    _initDefineProp(this, 'mdFixed', _descriptor82, this);
 
-    _initDefineProp(this, 'mdAutoHeight', _descriptor81, this);
+    _initDefineProp(this, 'mdAutoHeight', _descriptor83, this);
 
     this.element = element;
   }
@@ -2360,38 +2404,38 @@ var MdNavbar = exports.MdNavbar = (_dec133 = (0, _aureliaTemplating.customElemen
   };
 
   return MdNavbar;
-}(), (_descriptor80 = _applyDecoratedDescriptor(_class78.prototype, 'mdFixed', [_dec135], {
+}(), (_descriptor82 = _applyDecoratedDescriptor(_class78.prototype, 'mdFixed', [_dec137], {
   enumerable: true,
   initializer: null
-}), _descriptor81 = _applyDecoratedDescriptor(_class78.prototype, 'mdAutoHeight', [_dec136], {
+}), _descriptor83 = _applyDecoratedDescriptor(_class78.prototype, 'mdAutoHeight', [_dec138], {
   enumerable: true,
   initializer: null
 })), _class78)) || _class77) || _class77);
-var MdPagination = exports.MdPagination = (_dec137 = (0, _aureliaTemplating.customElement)('md-pagination'), _dec138 = (0, _aureliaDependencyInjection.inject)(Element), _dec139 = (0, _aureliaTemplating.bindable)({
+var MdPagination = exports.MdPagination = (_dec139 = (0, _aureliaTemplating.customElement)('md-pagination'), _dec140 = (0, _aureliaDependencyInjection.inject)(Element), _dec141 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-}), _dec140 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-}), _dec141 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneWay
 }), _dec142 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-}), _dec143 = (0, _aureliaTemplating.bindable)(), _dec144 = (0, _aureliaTemplating.bindable)(), _dec145 = (0, _aureliaTemplating.bindable)(), _dec137(_class80 = _dec138(_class80 = (_class81 = function () {
+}), _dec143 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+}), _dec144 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+}), _dec145 = (0, _aureliaTemplating.bindable)(), _dec146 = (0, _aureliaTemplating.bindable)(), _dec147 = (0, _aureliaTemplating.bindable)(), _dec139(_class80 = _dec140(_class80 = (_class81 = function () {
   function MdPagination(element) {
     _classCallCheck(this, MdPagination);
 
-    _initDefineProp(this, 'mdActivePage', _descriptor82, this);
+    _initDefineProp(this, 'mdActivePage', _descriptor84, this);
 
-    _initDefineProp(this, 'mdPages', _descriptor83, this);
+    _initDefineProp(this, 'mdPages', _descriptor85, this);
 
-    _initDefineProp(this, 'mdVisiblePageLinks', _descriptor84, this);
+    _initDefineProp(this, 'mdVisiblePageLinks', _descriptor86, this);
 
-    _initDefineProp(this, 'mdPageLinks', _descriptor85, this);
+    _initDefineProp(this, 'mdPageLinks', _descriptor87, this);
 
-    _initDefineProp(this, 'mdShowFirstLast', _descriptor86, this);
+    _initDefineProp(this, 'mdShowFirstLast', _descriptor88, this);
 
-    _initDefineProp(this, 'mdShowPrevNext', _descriptor87, this);
+    _initDefineProp(this, 'mdShowPrevNext', _descriptor89, this);
 
-    _initDefineProp(this, 'mdShowPageLinks', _descriptor88, this);
+    _initDefineProp(this, 'mdShowPageLinks', _descriptor90, this);
 
     this.numberOfLinks = 15;
     this.pages = 5;
@@ -2465,43 +2509,43 @@ var MdPagination = exports.MdPagination = (_dec137 = (0, _aureliaTemplating.cust
   };
 
   return MdPagination;
-}(), (_descriptor82 = _applyDecoratedDescriptor(_class81.prototype, 'mdActivePage', [_dec139], {
+}(), (_descriptor84 = _applyDecoratedDescriptor(_class81.prototype, 'mdActivePage', [_dec141], {
   enumerable: true,
   initializer: function initializer() {
     return 1;
   }
-}), _descriptor83 = _applyDecoratedDescriptor(_class81.prototype, 'mdPages', [_dec140], {
+}), _descriptor85 = _applyDecoratedDescriptor(_class81.prototype, 'mdPages', [_dec142], {
   enumerable: true,
   initializer: function initializer() {
     return 5;
   }
-}), _descriptor84 = _applyDecoratedDescriptor(_class81.prototype, 'mdVisiblePageLinks', [_dec141], {
+}), _descriptor86 = _applyDecoratedDescriptor(_class81.prototype, 'mdVisiblePageLinks', [_dec143], {
   enumerable: true,
   initializer: function initializer() {
     return 15;
   }
-}), _descriptor85 = _applyDecoratedDescriptor(_class81.prototype, 'mdPageLinks', [_dec142], {
+}), _descriptor87 = _applyDecoratedDescriptor(_class81.prototype, 'mdPageLinks', [_dec144], {
   enumerable: true,
   initializer: function initializer() {
     return [];
   }
-}), _descriptor86 = _applyDecoratedDescriptor(_class81.prototype, 'mdShowFirstLast', [_dec143], {
+}), _descriptor88 = _applyDecoratedDescriptor(_class81.prototype, 'mdShowFirstLast', [_dec145], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
-}), _descriptor87 = _applyDecoratedDescriptor(_class81.prototype, 'mdShowPrevNext', [_dec144], {
+}), _descriptor89 = _applyDecoratedDescriptor(_class81.prototype, 'mdShowPrevNext', [_dec146], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
-}), _descriptor88 = _applyDecoratedDescriptor(_class81.prototype, 'mdShowPageLinks', [_dec145], {
+}), _descriptor90 = _applyDecoratedDescriptor(_class81.prototype, 'mdShowPageLinks', [_dec147], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
 })), _class81)) || _class80) || _class80);
-var MdParallax = exports.MdParallax = (_dec146 = (0, _aureliaTemplating.customAttribute)('md-parallax'), _dec147 = (0, _aureliaDependencyInjection.inject)(Element), _dec146(_class83 = _dec147(_class83 = function () {
+var MdParallax = exports.MdParallax = (_dec148 = (0, _aureliaTemplating.customAttribute)('md-parallax'), _dec149 = (0, _aureliaDependencyInjection.inject)(Element), _dec148(_class83 = _dec149(_class83 = function () {
   function MdParallax(element) {
     _classCallCheck(this, MdParallax);
 
@@ -2516,25 +2560,25 @@ var MdParallax = exports.MdParallax = (_dec146 = (0, _aureliaTemplating.customAt
 
   return MdParallax;
 }()) || _class83) || _class83);
-var MdProgress = exports.MdProgress = (_dec148 = (0, _aureliaTemplating.customElement)('md-progress'), _dec149 = (0, _aureliaDependencyInjection.inject)(Element), _dec150 = (0, _aureliaTemplating.bindable)(), _dec151 = (0, _aureliaTemplating.bindable)({
+var MdProgress = exports.MdProgress = (_dec150 = (0, _aureliaTemplating.customElement)('md-progress'), _dec151 = (0, _aureliaDependencyInjection.inject)(Element), _dec152 = (0, _aureliaTemplating.bindable)(), _dec153 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-}), _dec152 = (0, _aureliaTemplating.bindable)(), _dec153 = (0, _aureliaTemplating.bindable)({
+}), _dec154 = (0, _aureliaTemplating.bindable)(), _dec155 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec154 = (0, _aureliaTemplating.bindable)({
+}), _dec156 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-}), _dec148(_class84 = _dec149(_class84 = (_class85 = function () {
+}), _dec150(_class84 = _dec151(_class84 = (_class85 = function () {
   function MdProgress(element) {
     _classCallCheck(this, MdProgress);
 
-    _initDefineProp(this, 'mdColor', _descriptor89, this);
+    _initDefineProp(this, 'mdColor', _descriptor91, this);
 
-    _initDefineProp(this, 'mdPixelSize', _descriptor90, this);
+    _initDefineProp(this, 'mdPixelSize', _descriptor92, this);
 
-    _initDefineProp(this, 'mdSize', _descriptor91, this);
+    _initDefineProp(this, 'mdSize', _descriptor93, this);
 
-    _initDefineProp(this, 'mdType', _descriptor92, this);
+    _initDefineProp(this, 'mdType', _descriptor94, this);
 
-    _initDefineProp(this, 'mdValue', _descriptor93, this);
+    _initDefineProp(this, 'mdValue', _descriptor95, this);
 
     this.element = element;
   }
@@ -2558,41 +2602,41 @@ var MdProgress = exports.MdProgress = (_dec148 = (0, _aureliaTemplating.customEl
   };
 
   return MdProgress;
-}(), (_descriptor89 = _applyDecoratedDescriptor(_class85.prototype, 'mdColor', [_dec150], {
+}(), (_descriptor91 = _applyDecoratedDescriptor(_class85.prototype, 'mdColor', [_dec152], {
   enumerable: true,
   initializer: function initializer() {
     return null;
   }
-}), _descriptor90 = _applyDecoratedDescriptor(_class85.prototype, 'mdPixelSize', [_dec151], {
+}), _descriptor92 = _applyDecoratedDescriptor(_class85.prototype, 'mdPixelSize', [_dec153], {
   enumerable: true,
   initializer: function initializer() {
     return null;
   }
-}), _descriptor91 = _applyDecoratedDescriptor(_class85.prototype, 'mdSize', [_dec152], {
+}), _descriptor93 = _applyDecoratedDescriptor(_class85.prototype, 'mdSize', [_dec154], {
   enumerable: true,
   initializer: function initializer() {
     return 'big';
   }
-}), _descriptor92 = _applyDecoratedDescriptor(_class85.prototype, 'mdType', [_dec153], {
+}), _descriptor94 = _applyDecoratedDescriptor(_class85.prototype, 'mdType', [_dec155], {
   enumerable: true,
   initializer: function initializer() {
     return 'linear';
   }
-}), _descriptor93 = _applyDecoratedDescriptor(_class85.prototype, 'mdValue', [_dec154], {
+}), _descriptor95 = _applyDecoratedDescriptor(_class85.prototype, 'mdValue', [_dec156], {
   enumerable: true,
   initializer: function initializer() {
     return null;
   }
 })), _class85)) || _class84) || _class84);
-var MdPushpin = exports.MdPushpin = (_dec155 = (0, _aureliaTemplating.customAttribute)('md-pushpin'), _dec156 = (0, _aureliaDependencyInjection.inject)(Element), _dec157 = (0, _aureliaTemplating.bindable)(), _dec158 = (0, _aureliaTemplating.bindable)(), _dec159 = (0, _aureliaTemplating.bindable)(), _dec155(_class87 = _dec156(_class87 = (_class88 = function () {
+var MdPushpin = exports.MdPushpin = (_dec157 = (0, _aureliaTemplating.customAttribute)('md-pushpin'), _dec158 = (0, _aureliaDependencyInjection.inject)(Element), _dec159 = (0, _aureliaTemplating.bindable)(), _dec160 = (0, _aureliaTemplating.bindable)(), _dec161 = (0, _aureliaTemplating.bindable)(), _dec157(_class87 = _dec158(_class87 = (_class88 = function () {
   function MdPushpin(element) {
     _classCallCheck(this, MdPushpin);
 
-    _initDefineProp(this, 'bottom', _descriptor94, this);
+    _initDefineProp(this, 'bottom', _descriptor96, this);
 
-    _initDefineProp(this, 'offset', _descriptor95, this);
+    _initDefineProp(this, 'offset', _descriptor97, this);
 
-    _initDefineProp(this, 'top', _descriptor96, this);
+    _initDefineProp(this, 'top', _descriptor98, this);
 
     this.element = element;
   }
@@ -2608,39 +2652,39 @@ var MdPushpin = exports.MdPushpin = (_dec155 = (0, _aureliaTemplating.customAttr
   MdPushpin.prototype.detached = function detached() {};
 
   return MdPushpin;
-}(), (_descriptor94 = _applyDecoratedDescriptor(_class88.prototype, 'bottom', [_dec157], {
+}(), (_descriptor96 = _applyDecoratedDescriptor(_class88.prototype, 'bottom', [_dec159], {
   enumerable: true,
   initializer: function initializer() {
     return Infinity;
   }
-}), _descriptor95 = _applyDecoratedDescriptor(_class88.prototype, 'offset', [_dec158], {
+}), _descriptor97 = _applyDecoratedDescriptor(_class88.prototype, 'offset', [_dec160], {
   enumerable: true,
   initializer: function initializer() {
     return 0;
   }
-}), _descriptor96 = _applyDecoratedDescriptor(_class88.prototype, 'top', [_dec159], {
+}), _descriptor98 = _applyDecoratedDescriptor(_class88.prototype, 'top', [_dec161], {
   enumerable: true,
   initializer: function initializer() {
     return 0;
   }
 })), _class88)) || _class87) || _class87);
-var MdRadio = exports.MdRadio = (_dec160 = (0, _aureliaTemplating.customElement)('md-radio'), _dec161 = (0, _aureliaDependencyInjection.inject)(Element), _dec162 = (0, _aureliaTemplating.bindable)({
+var MdRadio = exports.MdRadio = (_dec162 = (0, _aureliaTemplating.customElement)('md-radio'), _dec163 = (0, _aureliaDependencyInjection.inject)(Element), _dec164 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-}), _dec163 = (0, _aureliaTemplating.bindable)(), _dec164 = (0, _aureliaTemplating.bindable)(), _dec165 = (0, _aureliaTemplating.bindable)(), _dec166 = (0, _aureliaTemplating.bindable)(), _dec167 = (0, _aureliaTemplating.bindable)(), _dec160(_class90 = _dec161(_class90 = (_class91 = (_temp5 = _class92 = function () {
+}), _dec165 = (0, _aureliaTemplating.bindable)(), _dec166 = (0, _aureliaTemplating.bindable)(), _dec167 = (0, _aureliaTemplating.bindable)(), _dec168 = (0, _aureliaTemplating.bindable)(), _dec169 = (0, _aureliaTemplating.bindable)(), _dec162(_class90 = _dec163(_class90 = (_class91 = (_temp5 = _class92 = function () {
   function MdRadio(element) {
     _classCallCheck(this, MdRadio);
 
-    _initDefineProp(this, 'mdChecked', _descriptor97, this);
+    _initDefineProp(this, 'mdChecked', _descriptor99, this);
 
-    _initDefineProp(this, 'mdDisabled', _descriptor98, this);
+    _initDefineProp(this, 'mdDisabled', _descriptor100, this);
 
-    _initDefineProp(this, 'mdGap', _descriptor99, this);
+    _initDefineProp(this, 'mdGap', _descriptor101, this);
 
-    _initDefineProp(this, 'mdModel', _descriptor100, this);
+    _initDefineProp(this, 'mdModel', _descriptor102, this);
 
-    _initDefineProp(this, 'mdName', _descriptor101, this);
+    _initDefineProp(this, 'mdName', _descriptor103, this);
 
-    _initDefineProp(this, 'mdValue', _descriptor102, this);
+    _initDefineProp(this, 'mdValue', _descriptor104, this);
 
     this.element = element;
     this.controlId = 'md-radio-' + MdRadio.id++;
@@ -2667,70 +2711,70 @@ var MdRadio = exports.MdRadio = (_dec160 = (0, _aureliaTemplating.customElement)
   };
 
   return MdRadio;
-}(), _class92.id = 0, _temp5), (_descriptor97 = _applyDecoratedDescriptor(_class91.prototype, 'mdChecked', [_dec162], {
+}(), _class92.id = 0, _temp5), (_descriptor99 = _applyDecoratedDescriptor(_class91.prototype, 'mdChecked', [_dec164], {
   enumerable: true,
   initializer: null
-}), _descriptor98 = _applyDecoratedDescriptor(_class91.prototype, 'mdDisabled', [_dec163], {
+}), _descriptor100 = _applyDecoratedDescriptor(_class91.prototype, 'mdDisabled', [_dec165], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor99 = _applyDecoratedDescriptor(_class91.prototype, 'mdGap', [_dec164], {
+}), _descriptor101 = _applyDecoratedDescriptor(_class91.prototype, 'mdGap', [_dec166], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor100 = _applyDecoratedDescriptor(_class91.prototype, 'mdModel', [_dec165], {
+}), _descriptor102 = _applyDecoratedDescriptor(_class91.prototype, 'mdModel', [_dec167], {
   enumerable: true,
   initializer: null
-}), _descriptor101 = _applyDecoratedDescriptor(_class91.prototype, 'mdName', [_dec166], {
+}), _descriptor103 = _applyDecoratedDescriptor(_class91.prototype, 'mdName', [_dec168], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
-}), _descriptor102 = _applyDecoratedDescriptor(_class91.prototype, 'mdValue', [_dec167], {
+}), _descriptor104 = _applyDecoratedDescriptor(_class91.prototype, 'mdValue', [_dec169], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
 })), _class91)) || _class90) || _class90);
-var MdRange = exports.MdRange = (_dec168 = (0, _aureliaTemplating.customElement)('md-range'), _dec169 = (0, _aureliaDependencyInjection.inject)(Element), _dec170 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec171 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec172 = (0, _aureliaTemplating.bindable)({
+var MdRange = exports.MdRange = (_dec170 = (0, _aureliaTemplating.customElement)('md-range'), _dec171 = (0, _aureliaDependencyInjection.inject)(Element), _dec172 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec173 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec174 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec175 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-}), _dec168(_class93 = _dec169(_class93 = (_class94 = function MdRange(element) {
+}), _dec170(_class93 = _dec171(_class93 = (_class94 = function MdRange(element) {
   _classCallCheck(this, MdRange);
 
-  _initDefineProp(this, 'mdMin', _descriptor103, this);
+  _initDefineProp(this, 'mdMin', _descriptor105, this);
 
-  _initDefineProp(this, 'mdMax', _descriptor104, this);
+  _initDefineProp(this, 'mdMax', _descriptor106, this);
 
-  _initDefineProp(this, 'mdStep', _descriptor105, this);
+  _initDefineProp(this, 'mdStep', _descriptor107, this);
 
-  _initDefineProp(this, 'mdValue', _descriptor106, this);
+  _initDefineProp(this, 'mdValue', _descriptor108, this);
 
   this.element = element;
   this.log = (0, _aureliaLogging.getLogger)('md-range');
-}, (_descriptor103 = _applyDecoratedDescriptor(_class94.prototype, 'mdMin', [_dec170], {
+}, (_descriptor105 = _applyDecoratedDescriptor(_class94.prototype, 'mdMin', [_dec172], {
   enumerable: true,
   initializer: function initializer() {
     return 0;
   }
-}), _descriptor104 = _applyDecoratedDescriptor(_class94.prototype, 'mdMax', [_dec171], {
+}), _descriptor106 = _applyDecoratedDescriptor(_class94.prototype, 'mdMax', [_dec173], {
   enumerable: true,
   initializer: function initializer() {
     return 100;
   }
-}), _descriptor105 = _applyDecoratedDescriptor(_class94.prototype, 'mdStep', [_dec172], {
+}), _descriptor107 = _applyDecoratedDescriptor(_class94.prototype, 'mdStep', [_dec174], {
   enumerable: true,
   initializer: function initializer() {
     return 1;
   }
-}), _descriptor106 = _applyDecoratedDescriptor(_class94.prototype, 'mdValue', [_dec173], {
+}), _descriptor108 = _applyDecoratedDescriptor(_class94.prototype, 'mdValue', [_dec175], {
   enumerable: true,
   initializer: function initializer() {
     return 0;
@@ -2787,26 +2831,26 @@ var ScrollfirePatch = exports.ScrollfirePatch = (_temp6 = _class96 = function ()
 
   return ScrollfirePatch;
 }(), _class96.patched = false, _temp6);
-var MdScrollfireTarget = exports.MdScrollfireTarget = (_dec174 = (0, _aureliaTemplating.customAttribute)('md-scrollfire-target'), _dec175 = (0, _aureliaDependencyInjection.inject)(Element), _dec176 = (0, _aureliaTemplating.bindable)(), _dec177 = (0, _aureliaTemplating.bindable)(), _dec174(_class97 = _dec175(_class97 = (_class98 = function MdScrollfireTarget(element) {
+var MdScrollfireTarget = exports.MdScrollfireTarget = (_dec176 = (0, _aureliaTemplating.customAttribute)('md-scrollfire-target'), _dec177 = (0, _aureliaDependencyInjection.inject)(Element), _dec178 = (0, _aureliaTemplating.bindable)(), _dec179 = (0, _aureliaTemplating.bindable)(), _dec176(_class97 = _dec177(_class97 = (_class98 = function MdScrollfireTarget(element) {
   _classCallCheck(this, MdScrollfireTarget);
 
-  _initDefineProp(this, 'callback', _descriptor107, this);
+  _initDefineProp(this, 'callback', _descriptor109, this);
 
-  _initDefineProp(this, 'offset', _descriptor108, this);
+  _initDefineProp(this, 'offset', _descriptor110, this);
 
   this.element = element;
-}, (_descriptor107 = _applyDecoratedDescriptor(_class98.prototype, 'callback', [_dec176], {
+}, (_descriptor109 = _applyDecoratedDescriptor(_class98.prototype, 'callback', [_dec178], {
   enumerable: true,
   initializer: function initializer() {
     return null;
   }
-}), _descriptor108 = _applyDecoratedDescriptor(_class98.prototype, 'offset', [_dec177], {
+}), _descriptor110 = _applyDecoratedDescriptor(_class98.prototype, 'offset', [_dec179], {
   enumerable: true,
   initializer: function initializer() {
     return 0;
   }
 })), _class98)) || _class97) || _class97);
-var MdScrollfire = exports.MdScrollfire = (_dec178 = (0, _aureliaTemplating.customAttribute)('md-scrollfire'), _dec179 = (0, _aureliaDependencyInjection.inject)(Element), _dec178(_class100 = _dec179(_class100 = function () {
+var MdScrollfire = exports.MdScrollfire = (_dec180 = (0, _aureliaTemplating.customAttribute)('md-scrollfire'), _dec181 = (0, _aureliaDependencyInjection.inject)(Element), _dec180(_class100 = _dec181(_class100 = function () {
   function MdScrollfire(element) {
     _classCallCheck(this, MdScrollfire);
 
@@ -2846,11 +2890,11 @@ var MdScrollfire = exports.MdScrollfire = (_dec178 = (0, _aureliaTemplating.cust
 
   return MdScrollfire;
 }()) || _class100) || _class100);
-var MdScrollSpy = exports.MdScrollSpy = (_dec180 = (0, _aureliaTemplating.customAttribute)('md-scrollspy'), _dec181 = (0, _aureliaDependencyInjection.inject)(Element), _dec182 = (0, _aureliaTemplating.bindable)(), _dec180(_class102 = _dec181(_class102 = (_class103 = function () {
+var MdScrollSpy = exports.MdScrollSpy = (_dec182 = (0, _aureliaTemplating.customAttribute)('md-scrollspy'), _dec183 = (0, _aureliaDependencyInjection.inject)(Element), _dec184 = (0, _aureliaTemplating.bindable)(), _dec182(_class102 = _dec183(_class102 = (_class103 = function () {
   function MdScrollSpy(element) {
     _classCallCheck(this, MdScrollSpy);
 
-    _initDefineProp(this, 'target', _descriptor109, this);
+    _initDefineProp(this, 'target', _descriptor111, this);
 
     this.element = element;
   }
@@ -2862,19 +2906,19 @@ var MdScrollSpy = exports.MdScrollSpy = (_dec180 = (0, _aureliaTemplating.custom
   MdScrollSpy.prototype.detached = function detached() {};
 
   return MdScrollSpy;
-}(), (_descriptor109 = _applyDecoratedDescriptor(_class103.prototype, 'target', [_dec182], {
+}(), (_descriptor111 = _applyDecoratedDescriptor(_class103.prototype, 'target', [_dec184], {
   enumerable: true,
   initializer: null
 })), _class103)) || _class102) || _class102);
-var MdSelect = exports.MdSelect = (_dec183 = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.BindingEngine, _aureliaTaskQueue.TaskQueue), _dec184 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec185 = (0, _aureliaTemplating.bindable)(), _dec186 = (0, _aureliaTemplating.bindable)(), _dec187 = (0, _aureliaTemplating.bindable)(), _dec183(_class105 = _dec184(_class105 = (_class106 = function () {
+var MdSelect = exports.MdSelect = (_dec185 = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.BindingEngine, _aureliaTaskQueue.TaskQueue), _dec186 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec187 = (0, _aureliaTemplating.bindable)(), _dec188 = (0, _aureliaTemplating.bindable)(), _dec189 = (0, _aureliaTemplating.bindable)(), _dec185(_class105 = _dec186(_class105 = (_class106 = function () {
   function MdSelect(element, logManager, bindingEngine, taskQueue) {
     _classCallCheck(this, MdSelect);
 
-    _initDefineProp(this, 'disabled', _descriptor110, this);
+    _initDefineProp(this, 'disabled', _descriptor112, this);
 
-    _initDefineProp(this, 'label', _descriptor111, this);
+    _initDefineProp(this, 'label', _descriptor113, this);
 
-    _initDefineProp(this, 'showErrortext', _descriptor112, this);
+    _initDefineProp(this, 'showErrortext', _descriptor114, this);
 
     this._suspendUpdate = false;
     this.subscriptions = [];
@@ -3050,27 +3094,27 @@ var MdSelect = exports.MdSelect = (_dec183 = (0, _aureliaDependencyInjection.inj
   };
 
   return MdSelect;
-}(), (_descriptor110 = _applyDecoratedDescriptor(_class106.prototype, 'disabled', [_dec185], {
+}(), (_descriptor112 = _applyDecoratedDescriptor(_class106.prototype, 'disabled', [_dec187], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor111 = _applyDecoratedDescriptor(_class106.prototype, 'label', [_dec186], {
+}), _descriptor113 = _applyDecoratedDescriptor(_class106.prototype, 'label', [_dec188], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
-}), _descriptor112 = _applyDecoratedDescriptor(_class106.prototype, 'showErrortext', [_dec187], {
+}), _descriptor114 = _applyDecoratedDescriptor(_class106.prototype, 'showErrortext', [_dec189], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
 })), _class106)) || _class105) || _class105);
-var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec188 = (0, _aureliaTemplating.customAttribute)('md-sidenav-collapse'), _dec189 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaBinding.ObserverLocator), _dec190 = (0, _aureliaTemplating.bindable)(), _dec188(_class108 = _dec189(_class108 = (_class109 = function () {
+var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec190 = (0, _aureliaTemplating.customAttribute)('md-sidenav-collapse'), _dec191 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaBinding.ObserverLocator), _dec192 = (0, _aureliaTemplating.bindable)(), _dec190(_class108 = _dec191(_class108 = (_class109 = function () {
   function MdSidenavCollapse(element, observerLocator) {
     _classCallCheck(this, MdSidenavCollapse);
 
-    _initDefineProp(this, 'ref', _descriptor113, this);
+    _initDefineProp(this, 'ref', _descriptor115, this);
 
     this.element = element;
     this.observerLocator = observerLocator;
@@ -3098,24 +3142,32 @@ var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec188 = (0, _aureliaTempl
 
   MdSidenavCollapse.prototype.detached = function detached() {};
 
+  MdSidenavCollapse.prototype.show = function show() {
+    $(this.element).sideNav('show');
+  };
+
+  MdSidenavCollapse.prototype.hide = function hide() {
+    $(this.element).sideNav('hide');
+  };
+
   return MdSidenavCollapse;
-}(), (_descriptor113 = _applyDecoratedDescriptor(_class109.prototype, 'ref', [_dec190], {
+}(), (_descriptor115 = _applyDecoratedDescriptor(_class109.prototype, 'ref', [_dec192], {
   enumerable: true,
   initializer: null
 })), _class109)) || _class108) || _class108);
-var MdSidenav = exports.MdSidenav = (_dec191 = (0, _aureliaTemplating.customElement)('md-sidenav'), _dec192 = (0, _aureliaDependencyInjection.inject)(Element), _dec193 = (0, _aureliaTemplating.bindable)(), _dec194 = (0, _aureliaTemplating.bindable)(), _dec195 = (0, _aureliaTemplating.bindable)(), _dec196 = (0, _aureliaTemplating.bindable)(), _dec191(_class111 = _dec192(_class111 = (_class112 = (_temp7 = _class113 = function () {
+var MdSidenav = exports.MdSidenav = (_dec193 = (0, _aureliaTemplating.customElement)('md-sidenav'), _dec194 = (0, _aureliaDependencyInjection.inject)(Element), _dec195 = (0, _aureliaTemplating.bindable)(), _dec196 = (0, _aureliaTemplating.bindable)(), _dec197 = (0, _aureliaTemplating.bindable)(), _dec198 = (0, _aureliaTemplating.bindable)(), _dec193(_class111 = _dec194(_class111 = (_class112 = (_temp7 = _class113 = function () {
   function MdSidenav(element) {
     var _this15 = this;
 
     _classCallCheck(this, MdSidenav);
 
-    _initDefineProp(this, 'mdCloseOnClick', _descriptor114, this);
+    _initDefineProp(this, 'mdCloseOnClick', _descriptor116, this);
 
-    _initDefineProp(this, 'mdEdge', _descriptor115, this);
+    _initDefineProp(this, 'mdEdge', _descriptor117, this);
 
-    _initDefineProp(this, 'mdFixed', _descriptor116, this);
+    _initDefineProp(this, 'mdFixed', _descriptor118, this);
 
-    _initDefineProp(this, 'mdWidth', _descriptor117, this);
+    _initDefineProp(this, 'mdWidth', _descriptor119, this);
 
     this.element = element;
     this.controlId = 'md-sidenav-' + MdSidenav.id++;
@@ -3152,40 +3204,40 @@ var MdSidenav = exports.MdSidenav = (_dec191 = (0, _aureliaTemplating.customElem
   };
 
   return MdSidenav;
-}(), _class113.id = 0, _temp7), (_descriptor114 = _applyDecoratedDescriptor(_class112.prototype, 'mdCloseOnClick', [_dec193], {
+}(), _class113.id = 0, _temp7), (_descriptor116 = _applyDecoratedDescriptor(_class112.prototype, 'mdCloseOnClick', [_dec195], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor115 = _applyDecoratedDescriptor(_class112.prototype, 'mdEdge', [_dec194], {
+}), _descriptor117 = _applyDecoratedDescriptor(_class112.prototype, 'mdEdge', [_dec196], {
   enumerable: true,
   initializer: function initializer() {
     return 'left';
   }
-}), _descriptor116 = _applyDecoratedDescriptor(_class112.prototype, 'mdFixed', [_dec195], {
+}), _descriptor118 = _applyDecoratedDescriptor(_class112.prototype, 'mdFixed', [_dec197], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor117 = _applyDecoratedDescriptor(_class112.prototype, 'mdWidth', [_dec196], {
+}), _descriptor119 = _applyDecoratedDescriptor(_class112.prototype, 'mdWidth', [_dec198], {
   enumerable: true,
   initializer: function initializer() {
     return 300;
   }
 })), _class112)) || _class111) || _class111);
-var MdSlider = exports.MdSlider = (_dec197 = (0, _aureliaTemplating.customElement)('md-slider'), _dec198 = (0, _aureliaDependencyInjection.inject)(Element), _dec199 = (0, _aureliaTemplating.inlineView)('\n  <template class="slider">\n  <require from="./slider.css"></require>\n  <ul class="slides">\n    <slot></slot>\n  </ul>\n  </template>\n'), _dec200 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec201 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec202 = (0, _aureliaTemplating.bindable)(), _dec203 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec204 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec197(_class114 = _dec198(_class114 = _dec199(_class114 = (_class115 = function () {
+var MdSlider = exports.MdSlider = (_dec199 = (0, _aureliaTemplating.customElement)('md-slider'), _dec200 = (0, _aureliaDependencyInjection.inject)(Element), _dec201 = (0, _aureliaTemplating.inlineView)('\n  <template class="slider">\n  <require from="./slider.css"></require>\n  <ul class="slides">\n    <slot></slot>\n  </ul>\n  </template>\n'), _dec202 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec203 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec204 = (0, _aureliaTemplating.bindable)(), _dec205 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec206 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec199(_class114 = _dec200(_class114 = _dec201(_class114 = (_class115 = function () {
   function MdSlider(element) {
     _classCallCheck(this, MdSlider);
 
-    _initDefineProp(this, 'mdFillContainer', _descriptor118, this);
+    _initDefineProp(this, 'mdFillContainer', _descriptor120, this);
 
-    _initDefineProp(this, 'mdHeight', _descriptor119, this);
+    _initDefineProp(this, 'mdHeight', _descriptor121, this);
 
-    _initDefineProp(this, 'mdIndicators', _descriptor120, this);
+    _initDefineProp(this, 'mdIndicators', _descriptor122, this);
 
-    _initDefineProp(this, 'mdInterval', _descriptor121, this);
+    _initDefineProp(this, 'mdInterval', _descriptor123, this);
 
-    _initDefineProp(this, 'mdTransition', _descriptor122, this);
+    _initDefineProp(this, 'mdTransition', _descriptor124, this);
 
     this.element = element;
     this.log = (0, _aureliaLogging.getLogger)('md-slider');
@@ -3230,45 +3282,45 @@ var MdSlider = exports.MdSlider = (_dec197 = (0, _aureliaTemplating.customElemen
   };
 
   return MdSlider;
-}(), (_descriptor118 = _applyDecoratedDescriptor(_class115.prototype, 'mdFillContainer', [_dec200], {
+}(), (_descriptor120 = _applyDecoratedDescriptor(_class115.prototype, 'mdFillContainer', [_dec202], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor119 = _applyDecoratedDescriptor(_class115.prototype, 'mdHeight', [_dec201], {
+}), _descriptor121 = _applyDecoratedDescriptor(_class115.prototype, 'mdHeight', [_dec203], {
   enumerable: true,
   initializer: function initializer() {
     return 400;
   }
-}), _descriptor120 = _applyDecoratedDescriptor(_class115.prototype, 'mdIndicators', [_dec202], {
+}), _descriptor122 = _applyDecoratedDescriptor(_class115.prototype, 'mdIndicators', [_dec204], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
-}), _descriptor121 = _applyDecoratedDescriptor(_class115.prototype, 'mdInterval', [_dec203], {
+}), _descriptor123 = _applyDecoratedDescriptor(_class115.prototype, 'mdInterval', [_dec205], {
   enumerable: true,
   initializer: function initializer() {
     return 6000;
   }
-}), _descriptor122 = _applyDecoratedDescriptor(_class115.prototype, 'mdTransition', [_dec204], {
+}), _descriptor124 = _applyDecoratedDescriptor(_class115.prototype, 'mdTransition', [_dec206], {
   enumerable: true,
   initializer: function initializer() {
     return 500;
   }
 })), _class115)) || _class114) || _class114) || _class114);
-var MdSwitch = exports.MdSwitch = (_dec205 = (0, _aureliaTemplating.customElement)('md-switch'), _dec206 = (0, _aureliaDependencyInjection.inject)(Element), _dec207 = (0, _aureliaTemplating.bindable)({
+var MdSwitch = exports.MdSwitch = (_dec207 = (0, _aureliaTemplating.customElement)('md-switch'), _dec208 = (0, _aureliaDependencyInjection.inject)(Element), _dec209 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-}), _dec208 = (0, _aureliaTemplating.bindable)(), _dec209 = (0, _aureliaTemplating.bindable)(), _dec210 = (0, _aureliaTemplating.bindable)(), _dec205(_class117 = _dec206(_class117 = (_class118 = function () {
+}), _dec210 = (0, _aureliaTemplating.bindable)(), _dec211 = (0, _aureliaTemplating.bindable)(), _dec212 = (0, _aureliaTemplating.bindable)(), _dec207(_class117 = _dec208(_class117 = (_class118 = function () {
   function MdSwitch(element) {
     _classCallCheck(this, MdSwitch);
 
-    _initDefineProp(this, 'mdChecked', _descriptor123, this);
+    _initDefineProp(this, 'mdChecked', _descriptor125, this);
 
-    _initDefineProp(this, 'mdDisabled', _descriptor124, this);
+    _initDefineProp(this, 'mdDisabled', _descriptor126, this);
 
-    _initDefineProp(this, 'mdLabelOff', _descriptor125, this);
+    _initDefineProp(this, 'mdLabelOff', _descriptor127, this);
 
-    _initDefineProp(this, 'mdLabelOn', _descriptor126, this);
+    _initDefineProp(this, 'mdLabelOn', _descriptor128, this);
 
     this.element = element;
     this.handleChange = this.handleChange.bind(this);
@@ -3308,32 +3360,32 @@ var MdSwitch = exports.MdSwitch = (_dec205 = (0, _aureliaTemplating.customElemen
   };
 
   return MdSwitch;
-}(), (_descriptor123 = _applyDecoratedDescriptor(_class118.prototype, 'mdChecked', [_dec207], {
+}(), (_descriptor125 = _applyDecoratedDescriptor(_class118.prototype, 'mdChecked', [_dec209], {
   enumerable: true,
   initializer: null
-}), _descriptor124 = _applyDecoratedDescriptor(_class118.prototype, 'mdDisabled', [_dec208], {
+}), _descriptor126 = _applyDecoratedDescriptor(_class118.prototype, 'mdDisabled', [_dec210], {
   enumerable: true,
   initializer: null
-}), _descriptor125 = _applyDecoratedDescriptor(_class118.prototype, 'mdLabelOff', [_dec209], {
+}), _descriptor127 = _applyDecoratedDescriptor(_class118.prototype, 'mdLabelOff', [_dec211], {
   enumerable: true,
   initializer: function initializer() {
     return 'Off';
   }
-}), _descriptor126 = _applyDecoratedDescriptor(_class118.prototype, 'mdLabelOn', [_dec210], {
+}), _descriptor128 = _applyDecoratedDescriptor(_class118.prototype, 'mdLabelOn', [_dec212], {
   enumerable: true,
   initializer: function initializer() {
     return 'On';
   }
 })), _class118)) || _class117) || _class117);
-var MdTabs = exports.MdTabs = (_dec211 = (0, _aureliaTemplating.customAttribute)('md-tabs'), _dec212 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue), _dec213 = (0, _aureliaTemplating.bindable)(), _dec214 = (0, _aureliaTemplating.bindable)(), _dec215 = (0, _aureliaTemplating.bindable)(), _dec211(_class120 = _dec212(_class120 = (_class121 = function () {
+var MdTabs = exports.MdTabs = (_dec213 = (0, _aureliaTemplating.customAttribute)('md-tabs'), _dec214 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue), _dec215 = (0, _aureliaTemplating.bindable)(), _dec216 = (0, _aureliaTemplating.bindable)(), _dec217 = (0, _aureliaTemplating.bindable)(), _dec213(_class120 = _dec214(_class120 = (_class121 = function () {
   function MdTabs(element, taskQueue) {
     _classCallCheck(this, MdTabs);
 
-    _initDefineProp(this, 'fixed', _descriptor127, this);
+    _initDefineProp(this, 'fixed', _descriptor129, this);
 
-    _initDefineProp(this, 'onShow', _descriptor128, this);
+    _initDefineProp(this, 'onShow', _descriptor130, this);
 
-    _initDefineProp(this, 'transparent', _descriptor129, this);
+    _initDefineProp(this, 'transparent', _descriptor131, this);
 
     this.element = element;
     this.taskQueue = taskQueue;
@@ -3380,6 +3432,26 @@ var MdTabs = exports.MdTabs = (_dec211 = (0, _aureliaTemplating.customAttribute)
     var childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, function (a) {
       a.removeEventListener('click', _this17.fireTabSelectedEvent);
+    });
+  };
+
+  MdTabs.prototype.refresh = function refresh() {
+    var _this18 = this;
+
+    this.taskQueue.queueTask(function () {
+      var hrefs = [];
+      $('li a', _this18.element).each(function (i, tab) {
+        $(tab).parent().addClass('tab');
+        hrefs.push($(tab).attr('href'));
+      });
+      $(hrefs).each(function (i, tab) {
+        if (_this18.selectedTab.index != i) {
+          $(tab).hide();
+        }
+      });
+      _this18.taskQueue.queueTask(function () {
+        $(window).trigger('resize');
+      });
     });
   };
 
@@ -3431,17 +3503,17 @@ var MdTabs = exports.MdTabs = (_dec211 = (0, _aureliaTemplating.customAttribute)
   }]);
 
   return MdTabs;
-}(), (_descriptor127 = _applyDecoratedDescriptor(_class121.prototype, 'fixed', [_dec213], {
+}(), (_descriptor129 = _applyDecoratedDescriptor(_class121.prototype, 'fixed', [_dec215], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor128 = _applyDecoratedDescriptor(_class121.prototype, 'onShow', [_dec214], {
+}), _descriptor130 = _applyDecoratedDescriptor(_class121.prototype, 'onShow', [_dec216], {
   enumerable: true,
   initializer: function initializer() {
     return null;
   }
-}), _descriptor129 = _applyDecoratedDescriptor(_class121.prototype, 'transparent', [_dec215], {
+}), _descriptor131 = _applyDecoratedDescriptor(_class121.prototype, 'transparent', [_dec217], {
   enumerable: true,
   initializer: function initializer() {
     return false;
@@ -3464,17 +3536,17 @@ var MdToastService = exports.MdToastService = function () {
   return MdToastService;
 }();
 
-var MdTooltip = exports.MdTooltip = (_dec216 = (0, _aureliaTemplating.customAttribute)('md-tooltip'), _dec217 = (0, _aureliaDependencyInjection.inject)(Element), _dec218 = (0, _aureliaTemplating.bindable)(), _dec219 = (0, _aureliaTemplating.bindable)(), _dec220 = (0, _aureliaTemplating.bindable)(), _dec221 = (0, _aureliaTemplating.bindable)(), _dec216(_class123 = _dec217(_class123 = (_class124 = function () {
+var MdTooltip = exports.MdTooltip = (_dec218 = (0, _aureliaTemplating.customAttribute)('md-tooltip'), _dec219 = (0, _aureliaDependencyInjection.inject)(Element), _dec220 = (0, _aureliaTemplating.bindable)(), _dec221 = (0, _aureliaTemplating.bindable)(), _dec222 = (0, _aureliaTemplating.bindable)(), _dec223 = (0, _aureliaTemplating.bindable)(), _dec218(_class123 = _dec219(_class123 = (_class124 = function () {
   function MdTooltip(element) {
     _classCallCheck(this, MdTooltip);
 
-    _initDefineProp(this, 'position', _descriptor130, this);
+    _initDefineProp(this, 'position', _descriptor132, this);
 
-    _initDefineProp(this, 'delay', _descriptor131, this);
+    _initDefineProp(this, 'delay', _descriptor133, this);
 
-    _initDefineProp(this, 'html', _descriptor132, this);
+    _initDefineProp(this, 'html', _descriptor134, this);
 
-    _initDefineProp(this, 'text', _descriptor133, this);
+    _initDefineProp(this, 'text', _descriptor135, this);
 
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
@@ -3510,32 +3582,32 @@ var MdTooltip = exports.MdTooltip = (_dec216 = (0, _aureliaTemplating.customAttr
   };
 
   return MdTooltip;
-}(), (_descriptor130 = _applyDecoratedDescriptor(_class124.prototype, 'position', [_dec218], {
+}(), (_descriptor132 = _applyDecoratedDescriptor(_class124.prototype, 'position', [_dec220], {
   enumerable: true,
   initializer: function initializer() {
     return 'bottom';
   }
-}), _descriptor131 = _applyDecoratedDescriptor(_class124.prototype, 'delay', [_dec219], {
+}), _descriptor133 = _applyDecoratedDescriptor(_class124.prototype, 'delay', [_dec221], {
   enumerable: true,
   initializer: function initializer() {
     return 50;
   }
-}), _descriptor132 = _applyDecoratedDescriptor(_class124.prototype, 'html', [_dec220], {
+}), _descriptor134 = _applyDecoratedDescriptor(_class124.prototype, 'html', [_dec222], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor133 = _applyDecoratedDescriptor(_class124.prototype, 'text', [_dec221], {
+}), _descriptor135 = _applyDecoratedDescriptor(_class124.prototype, 'text', [_dec223], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
 })), _class124)) || _class123) || _class123);
-var MdFadeinImage = exports.MdFadeinImage = (_dec222 = (0, _aureliaTemplating.customAttribute)('md-fadein-image'), _dec223 = (0, _aureliaDependencyInjection.inject)(Element), _dec224 = (0, _aureliaTemplating.bindable)(), _dec222(_class126 = _dec223(_class126 = (_class127 = function () {
+var MdFadeinImage = exports.MdFadeinImage = (_dec224 = (0, _aureliaTemplating.customAttribute)('md-fadein-image'), _dec225 = (0, _aureliaDependencyInjection.inject)(Element), _dec226 = (0, _aureliaTemplating.bindable)(), _dec224(_class126 = _dec225(_class126 = (_class127 = function () {
   function MdFadeinImage(element) {
     _classCallCheck(this, MdFadeinImage);
 
-    _initDefineProp(this, 'ref', _descriptor134, this);
+    _initDefineProp(this, 'ref', _descriptor136, this);
 
     this.element = element;
     this.fadeInImage = this.fadeInImage.bind(this);
@@ -3563,15 +3635,15 @@ var MdFadeinImage = exports.MdFadeinImage = (_dec222 = (0, _aureliaTemplating.cu
   };
 
   return MdFadeinImage;
-}(), (_descriptor134 = _applyDecoratedDescriptor(_class127.prototype, 'ref', [_dec224], {
+}(), (_descriptor136 = _applyDecoratedDescriptor(_class127.prototype, 'ref', [_dec226], {
   enumerable: true,
   initializer: null
 })), _class127)) || _class126) || _class126);
-var MdStaggeredList = exports.MdStaggeredList = (_dec225 = (0, _aureliaTemplating.customAttribute)('md-staggered-list'), _dec226 = (0, _aureliaDependencyInjection.inject)(Element), _dec227 = (0, _aureliaTemplating.bindable)(), _dec225(_class129 = _dec226(_class129 = (_class130 = function () {
+var MdStaggeredList = exports.MdStaggeredList = (_dec227 = (0, _aureliaTemplating.customAttribute)('md-staggered-list'), _dec228 = (0, _aureliaDependencyInjection.inject)(Element), _dec229 = (0, _aureliaTemplating.bindable)(), _dec227(_class129 = _dec228(_class129 = (_class130 = function () {
   function MdStaggeredList(element) {
     _classCallCheck(this, MdStaggeredList);
 
-    _initDefineProp(this, 'ref', _descriptor135, this);
+    _initDefineProp(this, 'ref', _descriptor137, this);
 
     this.element = element;
     this.staggerList = this.staggerList.bind(this);
@@ -3602,7 +3674,7 @@ var MdStaggeredList = exports.MdStaggeredList = (_dec225 = (0, _aureliaTemplatin
   };
 
   return MdStaggeredList;
-}(), (_descriptor135 = _applyDecoratedDescriptor(_class130.prototype, 'ref', [_dec227], {
+}(), (_descriptor137 = _applyDecoratedDescriptor(_class130.prototype, 'ref', [_dec229], {
   enumerable: true,
   initializer: null
 })), _class130)) || _class129) || _class129);
@@ -3616,70 +3688,117 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
   }
 
   MaterializeFormValidationRenderer.prototype.render = function render(instruction) {
+    var _this19 = this;
+
+    var allElements = new Array();
     for (var _iterator3 = instruction.unrender, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
-      var _ref3;
+      var _ref4;
 
       if (_isArray3) {
         if (_i3 >= _iterator3.length) break;
-        _ref3 = _iterator3[_i3++];
+        _ref4 = _iterator3[_i3++];
       } else {
         _i3 = _iterator3.next();
         if (_i3.done) break;
-        _ref3 = _i3.value;
-      }
-
-      var _ref5 = _ref3;
-      var result = _ref5.result;
-      var elements = _ref5.elements;
-
-      for (var _iterator5 = elements, _isArray5 = Array.isArray(_iterator5), _i5 = 0, _iterator5 = _isArray5 ? _iterator5 : _iterator5[Symbol.iterator]();;) {
-        var _ref6;
-
-        if (_isArray5) {
-          if (_i5 >= _iterator5.length) break;
-          _ref6 = _iterator5[_i5++];
-        } else {
-          _i5 = _iterator5.next();
-          if (_i5.done) break;
-          _ref6 = _i5.value;
-        }
-
-        var element = _ref6;
-
-        this.remove(element, result);
-      }
-    }
-    for (var _iterator4 = instruction.render, _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
-      var _ref4;
-
-      if (_isArray4) {
-        if (_i4 >= _iterator4.length) break;
-        _ref4 = _iterator4[_i4++];
-      } else {
-        _i4 = _iterator4.next();
-        if (_i4.done) break;
-        _ref4 = _i4.value;
+        _ref4 = _i3.value;
       }
 
       var _ref7 = _ref4;
-      var result = _ref7.result;
-      var elements = _ref7.elements;
+      var result = _ref7.result,
+          elements = _ref7.elements;
+
+      for (var _iterator5 = elements, _isArray5 = Array.isArray(_iterator5), _i5 = 0, _iterator5 = _isArray5 ? _iterator5 : _iterator5[Symbol.iterator]();;) {
+        var _ref8;
+
+        if (_isArray5) {
+          if (_i5 >= _iterator5.length) break;
+          _ref8 = _iterator5[_i5++];
+        } else {
+          _i5 = _iterator5.next();
+          if (_i5.done) break;
+          _ref8 = _i5.value;
+        }
+
+        var element = _ref8;
+
+        this.remove(element, result);
+        if (allElements.indexOf(element) == -1) {
+          allElements.push(element);
+        }
+      }
+    }
+    for (var _iterator4 = instruction.render, _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
+      var _ref6;
+
+      if (_isArray4) {
+        if (_i4 >= _iterator4.length) break;
+        _ref6 = _iterator4[_i4++];
+      } else {
+        _i4 = _iterator4.next();
+        if (_i4.done) break;
+        _ref6 = _i4.value;
+      }
+
+      var _ref9 = _ref6;
+      var result = _ref9.result,
+          elements = _ref9.elements;
 
       for (var _iterator6 = elements, _isArray6 = Array.isArray(_iterator6), _i6 = 0, _iterator6 = _isArray6 ? _iterator6 : _iterator6[Symbol.iterator]();;) {
-        var _ref8;
+        var _ref10;
 
         if (_isArray6) {
           if (_i6 >= _iterator6.length) break;
-          _ref8 = _iterator6[_i6++];
+          _ref10 = _iterator6[_i6++];
         } else {
           _i6 = _iterator6.next();
           if (_i6.done) break;
-          _ref8 = _i6.value;
+          _ref10 = _i6.value;
         }
 
-        var _element = _ref8;
+        var _element = _ref10;
 
         this.add(_element, result);
+        if (allElements.indexOf(_element) == -1) {
+          allElements.push(_element);
+        }
+      }
+    }
+    allElements.forEach(function (e) {
+      return _this19.underlineInput(e);
+    });
+  };
+
+  MaterializeFormValidationRenderer.prototype.underlineInput = function underlineInput(element) {
+    var input = void 0;
+    switch (element.tagName) {
+      case 'MD-INPUT':
+        {
+          input = element.querySelector('input') || element.querySelector('textarea');
+          break;
+        }
+      case 'SELECT':
+        {
+          var selectWrapper = element.closest('.select-wrapper');
+          if (selectWrapper) {
+            input = selectWrapper.querySelector('input');
+          }
+          break;
+        }
+      case 'INPUT':
+        {
+          input = element;
+          break;
+        }
+      default:
+        break;
+    }
+    if (input) {
+      if (element.querySelectorAll('.' + this.className).length === 0) {
+        input.classList.remove('invalid');
+        input.classList.add('valid');
+      } else {
+        input.classList.remove('valid');
+        input.classList.add('invalid');
       }
     }
   };
@@ -3697,8 +3816,6 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
             label.removeAttribute('data-error');
           }
           if (input) {
-            input.classList.remove('valid');
-            input.classList.add('invalid');
             result.target = input;
             if (input.hasAttribute('data-show-errortext')) {
               this.addMessage(element, result);
@@ -3714,8 +3831,6 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
           }
           var _input = selectWrapper.querySelector('input');
           if (_input) {
-            _input.classList.remove('valid');
-            _input.classList.add('invalid');
             result.target = _input;
             if (!(_input.hasAttribute('data-show-errortext') && _input.getAttribute('data-show-errortext') === 'false')) {
               this.addMessage(selectWrapper, result);
@@ -3726,8 +3841,6 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
       case 'INPUT':
         {
           if (element.hasAttribute('md-datepicker')) {
-            element.classList.remove('valid');
-            element.classList.add('invalid');
             if (!(element.hasAttribute('data-show-errortext') && element.getAttribute('data-show-errortext') === 'false')) {
               this.addMessage(element.parentNode, result);
             }
@@ -3747,12 +3860,6 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
       case 'MD-INPUT':
         {
           this.removeMessage(element, result);
-
-          var input = element.querySelector('input') || element.querySelector('textarea');
-          if (input && element.querySelectorAll('.' + this.className).length === 0) {
-            input.classList.remove('invalid');
-            input.classList.add('valid');
-          }
           break;
         }
       case 'SELECT':
@@ -3767,22 +3874,12 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
           } else {
             this.removeMessage(selectWrapper, result);
           }
-
-          var _input2 = selectWrapper.querySelector('input');
-          if (_input2 && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
-            _input2.classList.remove('invalid');
-            _input2.classList.add('valid');
-          }
           break;
         }
       case 'INPUT':
         {
           if (element.hasAttribute('md-datepicker')) {
             this.removeMessage(element.parentNode, result);
-            if (element && element.parentNode.querySelectorAll('.' + this.className).length === 0) {
-              element.classList.remove('invalid');
-              element.classList.add('valid');
-            }
           }
           break;
         }
@@ -3815,21 +3912,21 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
   return MaterializeFormValidationRenderer;
 }();
 
-var MdWaves = exports.MdWaves = (_dec228 = (0, _aureliaTemplating.customAttribute)('md-waves'), _dec229 = (0, _aureliaDependencyInjection.inject)(Element), _dec230 = (0, _aureliaTemplating.bindable)({
+var MdWaves = exports.MdWaves = (_dec230 = (0, _aureliaTemplating.customAttribute)('md-waves'), _dec231 = (0, _aureliaDependencyInjection.inject)(Element), _dec232 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec231 = (0, _aureliaTemplating.bindable)({
+}), _dec233 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec232 = (0, _aureliaTemplating.bindable)({
+}), _dec234 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec228(_class133 = _dec229(_class133 = (_class134 = function () {
+}), _dec230(_class133 = _dec231(_class133 = (_class134 = function () {
   function MdWaves(element) {
     _classCallCheck(this, MdWaves);
 
-    _initDefineProp(this, 'block', _descriptor136, this);
+    _initDefineProp(this, 'block', _descriptor138, this);
 
-    _initDefineProp(this, 'circle', _descriptor137, this);
+    _initDefineProp(this, 'circle', _descriptor139, this);
 
-    _initDefineProp(this, 'color', _descriptor138, this);
+    _initDefineProp(this, 'color', _descriptor140, this);
 
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
@@ -3861,17 +3958,17 @@ var MdWaves = exports.MdWaves = (_dec228 = (0, _aureliaTemplating.customAttribut
   };
 
   return MdWaves;
-}(), (_descriptor136 = _applyDecoratedDescriptor(_class134.prototype, 'block', [_dec230], {
+}(), (_descriptor138 = _applyDecoratedDescriptor(_class134.prototype, 'block', [_dec232], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor137 = _applyDecoratedDescriptor(_class134.prototype, 'circle', [_dec231], {
+}), _descriptor139 = _applyDecoratedDescriptor(_class134.prototype, 'circle', [_dec233], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor138 = _applyDecoratedDescriptor(_class134.prototype, 'color', [_dec232], {
+}), _descriptor140 = _applyDecoratedDescriptor(_class134.prototype, 'color', [_dec234], {
   enumerable: true,
   initializer: null
 })), _class134)) || _class133) || _class133);

@@ -5,7 +5,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     value: true
   });
   Object.keys(_autocomplete).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -14,7 +14,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_badge).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -23,7 +23,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_box).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -32,7 +32,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_breadcrumbs).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -41,7 +41,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_instructionFilter).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -50,7 +50,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_button).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -59,7 +59,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_card).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -68,7 +68,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_carouselItem).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -77,7 +77,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_carousel).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -86,7 +86,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_charCounter).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -95,7 +95,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_checkbox).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -104,7 +104,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_chip).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -113,7 +113,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_chips).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -122,7 +122,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_collapsible).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -131,7 +131,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_collectionHeader).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -140,7 +140,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_collectionItem).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -149,7 +149,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_collection).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -158,7 +158,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_mdCollectionSelector).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -167,7 +167,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_colorValueConverters).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -176,7 +176,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_mdColors).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -185,7 +185,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_attributeManager).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -194,7 +194,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_attributes).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -203,7 +203,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_constants).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -212,7 +212,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_events).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -221,7 +221,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_datepickerDefaultParser).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -230,7 +230,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_datepicker).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -239,7 +239,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_dropdownElement).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -248,7 +248,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_dropdown).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -257,7 +257,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_dropdownFix).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -266,7 +266,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_fab).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -275,7 +275,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_file).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -284,7 +284,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_footer).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -293,7 +293,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_inputPrefix).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -302,7 +302,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_inputUpdateService).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -311,7 +311,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_input).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -320,7 +320,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_modal).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -329,7 +329,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_modalTrigger).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -338,7 +338,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_navbar).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -347,7 +347,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_pagination).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -356,7 +356,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_parallax).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -365,7 +365,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_progress).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -374,7 +374,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_pushpin).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -383,7 +383,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_radio).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -392,7 +392,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_range).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -401,7 +401,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_scrollfirePatch).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -410,7 +410,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_scrollfireTarget).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -419,7 +419,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_scrollfire).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -428,7 +428,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_scrollspy).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -437,7 +437,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_select).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -446,7 +446,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_sidenavCollapse).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -455,7 +455,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_sidenav).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -464,7 +464,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_slider).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -473,7 +473,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_switch).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -482,7 +482,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_tabs).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -491,7 +491,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_toastService).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -500,7 +500,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_tooltip).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -509,7 +509,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_fadeinImage).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -518,7 +518,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_staggeredList).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -527,7 +527,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_validationRenderer).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
@@ -536,7 +536,7 @@ define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', 
     });
   });
   Object.keys(_waves).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {

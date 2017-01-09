@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['./dropdown/dropdown-fix'], function (_export, _context) {
+  "use strict";
+
   var applyMaterializeDropdownFix, ConfigBuilder;
 
   function _classCallCheck(instance, Constructor) {

@@ -7,7 +7,7 @@ define(['exports', './constants'], function (exports, _constants) {
   exports.fireEvent = fireEvent;
   exports.fireMaterializeEvent = fireMaterializeEvent;
   function fireEvent(element, name) {
-    var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+    var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
     var event = new CustomEvent(name, {
       detail: data,
@@ -19,7 +19,7 @@ define(['exports', './constants'], function (exports, _constants) {
   }
 
   function fireMaterializeEvent(element, name) {
-    var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+    var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
     return fireEvent(element, '' + _constants.constants.eventPrefix + name, data);
   }

@@ -55,13 +55,13 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
   var MdFileInput = exports.MdFileInput = (_dec = (0, _aureliaTemplating.customElement)('md-file'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
     defaultBindingMode: _aureliaBinding.bindingMode.oneTime
   }), _dec5 = (0, _aureliaTemplating.bindable)({
     defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-  }), _dec(_class = _dec2(_class = (_class2 = function () {
+  }), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
     function MdFileInput(element) {
       _classCallCheck(this, MdFileInput);
 
@@ -70,6 +70,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       _initDefineProp(this, 'mdMultiple', _descriptor2, this);
 
       _initDefineProp(this, 'mdLabelValue', _descriptor3, this);
+
+      _initDefineProp(this, 'disabled', _descriptor4, this);
 
       this.files = [];
       this._suspendUpdate = false;
@@ -110,5 +112,10 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
   }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdLabelValue', [_dec5], {
     enumerable: true,
     initializer: null
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'disabled', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
   })), _class2)) || _class) || _class);
 });

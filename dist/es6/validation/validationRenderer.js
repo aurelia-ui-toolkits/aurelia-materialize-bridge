@@ -4,14 +4,54 @@ export class MaterializeFormValidationRenderer {
   classNameFirst = 'md-input-validation-first';
 
   render(instruction) {
+    let allElements = new Array();
     for (let { result, elements } of instruction.unrender) {
       for (let element of elements) {
         this.remove(element, result);
+        if (allElements.indexOf(element) == -1) {
+          allElements.push(element);
+        }
       }
     }
     for (let { result, elements } of instruction.render) {
       for (let element of elements) {
         this.add(element, result);
+        if (allElements.indexOf(element) == -1) {
+          allElements.push(element);
+        }
+      }
+    }
+    allElements.forEach(e => this.underlineInput(e));
+  }
+
+  underlineInput(element) {
+    let input;
+    switch (element.tagName) {
+      case 'MD-INPUT': {
+        input = element.querySelector('input') || element.querySelector('textarea');
+        break;
+      }
+      case 'SELECT': {
+        const selectWrapper = element.closest('.select-wrapper');
+        if (selectWrapper) {
+          input = selectWrapper.querySelector('input');
+        }
+        break;
+      }
+      case 'INPUT': {
+        input = element;
+        break;
+      }
+      default: break;
+    }
+    if (input) {
+      if (element.querySelectorAll('.' + this.className).length === 0) {
+        input.classList.remove('invalid');
+        input.classList.add('valid');
+      }
+      else {
+        input.classList.remove('valid');
+        input.classList.add('invalid');
       }
     }
   }
@@ -28,8 +68,6 @@ export class MaterializeFormValidationRenderer {
         label.removeAttribute('data-error');
       }
       if (input) {
-        input.classList.remove('valid');
-        input.classList.add('invalid');
         result.target = input;
         if (input.hasAttribute('data-show-errortext')) {
           this.addMessage(element, result);
@@ -44,8 +82,6 @@ export class MaterializeFormValidationRenderer {
       }
       let input = selectWrapper.querySelector('input');
       if (input) {
-        input.classList.remove('valid');
-        input.classList.add('invalid');
         result.target = input;
         if (!(input.hasAttribute('data-show-errortext') &&
             input.getAttribute('data-show-errortext') === 'false')) {
@@ -56,8 +92,6 @@ export class MaterializeFormValidationRenderer {
     }
     case 'INPUT' : {
       if (element.hasAttribute('md-datepicker')) {
-        element.classList.remove('valid');
-        element.classList.add('invalid');
         if (!(element.hasAttribute('data-show-errortext') &&
             element.getAttribute('data-show-errortext') === 'false')) {
           this.addMessage(element.parentNode, result);
@@ -76,12 +110,6 @@ export class MaterializeFormValidationRenderer {
     switch (element.tagName) {
     case 'MD-INPUT': {
       this.removeMessage(element, result);
-
-      let input = element.querySelector('input') || element.querySelector('textarea');
-      if (input && element.querySelectorAll('.' + this.className).length === 0) {
-        input.classList.remove('invalid');
-        input.classList.add('valid');
-      }
       break;
     }
     case 'SELECT': {
@@ -95,21 +123,11 @@ export class MaterializeFormValidationRenderer {
       } else {
         this.removeMessage(selectWrapper, result);
       }
-
-      let input = selectWrapper.querySelector('input');
-      if (input && selectWrapper.querySelectorAll('.' + this.className).length === 0) {
-        input.classList.remove('invalid');
-        input.classList.add('valid');
-      }
       break;
     }
     case 'INPUT' : {
       if (element.hasAttribute('md-datepicker')) {
         this.removeMessage(element.parentNode, result);
-        if (element && element.parentNode.querySelectorAll('.' + this.className).length === 0) {
-          element.classList.remove('invalid');
-          element.classList.add('valid');
-        }
       }
       break;
     }

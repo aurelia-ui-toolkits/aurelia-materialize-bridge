@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging', '../common/attributes', './datepicker-default-parser', '../common/events'], function (_export, _context) {
+  "use strict";
+
   var bindable, customAttribute, bindingMode, TaskQueue, inject, getLogger, getBooleanFromAttributeValue, DatePickerDefaultParser, fireEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, MdDatePicker;
 
   function _initDefineProp(target, property, descriptor, context) {
@@ -163,6 +165,9 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
             calendarIcon.textContent = 'today';
             this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
             $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+
+            options.iconClass = options.iconClass || 'std-icon-fixup';
+            calendarIcon.classList.add(options.iconClass);
           }
 
           this.movePickerCloserToSrc();

@@ -122,6 +122,26 @@ var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('m
     });
   };
 
+  MdTabs.prototype.refresh = function refresh() {
+    var _this3 = this;
+
+    this.taskQueue.queueTask(function () {
+      var hrefs = [];
+      $('li a', _this3.element).each(function (i, tab) {
+        $(tab).parent().addClass('tab');
+        hrefs.push($(tab).attr('href'));
+      });
+      $(hrefs).each(function (i, tab) {
+        if (_this3.selectedTab.index != i) {
+          $(tab).hide();
+        }
+      });
+      _this3.taskQueue.queueTask(function () {
+        $(window).trigger('resize');
+      });
+    });
+  };
+
   MdTabs.prototype.fixedChanged = function fixedChanged(newValue) {
     if (newValue) {
       this.attributeManager.addClasses('tabs-fixed-width');

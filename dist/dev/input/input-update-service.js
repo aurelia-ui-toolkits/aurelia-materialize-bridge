@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export, _context) {
+  "use strict";
+
   var TaskQueue, inject, getLogger, _dec, _class, MdInputUpdateService;
 
   function _classCallCheck(instance, Constructor) {

@@ -32,7 +32,7 @@ export class MdBreadcrumbs {
   }
 
   routerChanged() {
-    console.log('[breadcrumbs]', this.router);
+    // console.log('[breadcrumbs]', this.router);
   }
 
   navigate(navigationInstruction) {

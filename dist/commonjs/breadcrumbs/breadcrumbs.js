@@ -80,9 +80,7 @@ var MdBreadcrumbs = exports.MdBreadcrumbs = (_dec = (0, _aureliaTemplating.custo
     this.router = router;
   };
 
-  MdBreadcrumbs.prototype.routerChanged = function routerChanged() {
-    console.log('[breadcrumbs]', this.router);
-  };
+  MdBreadcrumbs.prototype.routerChanged = function routerChanged() {};
 
   MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {
     this._childRouter.navigateToRoute(navigationInstruction.config.name);

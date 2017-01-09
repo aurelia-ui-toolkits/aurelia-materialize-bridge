@@ -127,18 +127,10 @@ export declare class MdBox {
 export declare class MdBreadcrumbs {
   router: any;
   constructor(element?: any, router?: any);
-  
-  // this._childRouter = router;
-  // while (router.parent) {
-  //   router = router.parent;
-  // }
-  // this.router = router;
   bind(): any;
   routerChanged(): any;
   navigate(navigationInstruction?: any): any;
 }
-
-// this.router.navigate(navigationInstruction.config.name);
 export declare class InstructionFilterValueConverter {
   toView(navigationInstructions?: any): any;
 }
@@ -195,18 +187,13 @@ export declare class MdCheckbox {
   mdMatcher: any;
   mdModel: any;
   constructor(element?: any);
-  
-  // this.handleChange = this.handleChange.bind(this);
   attached(): any;
   
-  // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
-  // this.checkbox.addEventListener('change', this.handleChange);
   // blur() {
   //   fireEvent(this.element, 'blur');
   // }
   detached(): any;
   
-  // this.checkbox.removeEventListener('change', this.handleChange);
   // handleChange() {
   //   this.mdChecked = this.checkbox.checked;
   //   fireEvent(this.element, 'blur');
@@ -234,18 +221,10 @@ export declare class MdChips {
   constructor(element?: any);
   attached(): any;
   detached(): any;
-  
-  //
   onChipAdd(e?: any, chip?: any): any;
-  
-  // fireEvent(this.element, 'change');
   onChipDelete(e?: any, chip?: any): any;
-  
-  // fireEvent(this.element, 'change');
   onChipSelect(e?: any, chip?: any): any;
 }
-
-// fireEvent(this.element, 'change');
 export declare class MdCollapsible {
   constructor(element?: any);
   attached(): any;
@@ -349,11 +328,7 @@ export declare class MdDatePicker {
   onClose(): any;
   onCalendarIconClick(event?: any): any;
   onSet(value?: any): any;
-  
-  // this.value = new Date(value.select);
   valueChanged(newValue?: any): any;
-  
-  // });
   showErrortextChanged(): any;
   setErrorTextAttribute(): any;
 }
@@ -394,20 +369,21 @@ export declare class MdFab {
   constructor(element?: any);
   attached(): any;
 }
+export declare class MdFooter {
+  constructor(element?: any);
+  bind(): any;
+  unbind(): any;
+}
 export declare class MdFileInput {
   mdCaption: any;
   mdMultiple: any;
   mdLabelValue: any;
+  disabled: any;
   files: any;
   constructor(element?: any);
   attached(): any;
   detached(): any;
   handleChangeFromNativeInput(): any;
-}
-export declare class MdFooter {
-  constructor(element?: any);
-  bind(): any;
-  unbind(): any;
 }
 export declare class MdPrefix {
   constructor(element?: any);
@@ -422,6 +398,7 @@ export declare class MdInputUpdateService {
 export declare class MdInput {
   static id: any;
   mdLabel: any;
+  mdBlurOnEnter: any;
   mdDisabled: any;
   mdPlaceholder: any;
   mdTextArea: any;
@@ -435,8 +412,13 @@ export declare class MdInput {
   constructor(element?: any, taskQueue?: any, updateService?: any);
   bind(): any;
   attached(): any;
+  detached(): any;
   blur(): any;
+  focus(): any;
   mdValueChanged(): any;
+  attachEventHandlers(): any;
+  detachEventHandlers(): any;
+  blurOnEnter(e?: any): any;
 }
 export declare class MdModalTrigger {
   dismissible: any;
@@ -491,8 +473,6 @@ export declare class MdParallax {
   attached(): any;
   detached(): any;
 }
-
-// destroy handler not available
 export declare class MdProgress {
   mdColor: any;
   mdPixelSize: any;
@@ -505,9 +485,6 @@ export declare class MdProgress {
   //   console.log('mdValueChanged, newValue:', JSON.stringify(newValue), 'oldValue:', JSON.stringify(oldValue));
   // }
   bind(): any;
-  
-  // This disables property changed callbacks for any bindable properties during initialization
-  // Prevents mdPixelSize getting cleared by the mdSizeChanged event during binding
   attached(): any;
   mdSizeChanged(newValue?: any): any;
   mdPixelSizeChanged(newValue?: any): any;
@@ -520,8 +497,6 @@ export declare class MdPushpin {
   attached(): any;
   detached(): any;
 }
-
-// destroy handler not available
 export declare class MdRadio {
   static id: any;
   mdChecked: any;
@@ -531,15 +506,9 @@ export declare class MdRadio {
   mdName: any;
   mdValue: any;
   constructor(element?: any);
-  
-  // this.handleChange = this.handleChange.bind(this);
   attached(): any;
-  
-  // this.radio.checked = getBooleanFromAttributeValue(this.mdChecked);
-  // this.radio.addEventListener('change', this.handleChange);
   detached(): any;
   
-  // this.radio.removeEventListener('change', this.handleChange);
   // handleChange() {
   //   this.mdChecked = this.radio.checked;
   // }
@@ -579,8 +548,6 @@ export declare class MdScrollSpy {
   attached(): any;
   detached(): any;
 }
-
-// destroy handler not available
 export declare class MdSelect {
   disabled: any;
   label: any;
@@ -608,26 +575,9 @@ export declare class MdSidenavCollapse {
   constructor(element?: any, observerLocator?: any);
   attached(): any;
   detached(): any;
+  show(): any;
+  hide(): any;
 }
-
-// this.widthSubscription.unsubscribe();
-// fixedChanged() {
-//   this.log.debug('fixedChanged');
-//   $(this.element).sideNav({
-//     edge: this.ref.edge || 'left',
-//     closeOnClick: this.ref.closeOnClick,
-//     menuWidth: parseInt(this.ref.mdWidth, 10)
-//   });
-// }
-//
-// widthChanged() {
-//   this.log.debug('widthChanged');
-//   $(this.element).sideNav({
-//     edge: this.ref.edge || 'left',
-//     closeOnClick: this.ref.closeOnClick,
-//     menuWidth: parseInt(this.ref.mdWidth, 10)
-//   });
-// }
 export declare class MdSidenav {
   static id: any;
   mdCloseOnClick: any;
@@ -656,15 +606,6 @@ export declare class MdSlider {
   refresh(): any;
   mdIndicatorsChanged(): any;
 }
-
-// commented since that leads to strange effects
-// mdIntervalChanged() {
-//   this.refresh();
-// }
-//
-// mdTransitionChanged() {
-//   this.refresh();
-// }
 export declare class MdSwitch {
   mdChecked: any;
   mdDisabled: any;
@@ -685,6 +626,7 @@ export declare class MdTabs {
   constructor(element?: any, taskQueue?: any);
   attached(): any;
   detached(): any;
+  refresh(): any;
   fixedChanged(newValue?: any): any;
   transparentChanged(newValue?: any): any;
   fireTabSelectedEvent(e?: any): any;
@@ -728,6 +670,7 @@ export declare class MaterializeFormValidationRenderer {
   className: any;
   classNameFirst: any;
   render(instruction?: any): any;
+  underlineInput(element?: any): any;
   add(element?: any, result?: any): any;
   remove(element?: any, result?: any): any;
   addMessage(element?: any, result?: any): any;

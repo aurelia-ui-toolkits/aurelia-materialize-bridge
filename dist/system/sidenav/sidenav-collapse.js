@@ -1,6 +1,8 @@
 'use strict';
 
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (_export, _context) {
+  "use strict";
+
   var bindable, customAttribute, ObserverLocator, inject, getBooleanFromAttributeValue, getLogger, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdSidenavCollapse;
 
   function _initDefineProp(target, property, descriptor, context) {
@@ -97,6 +99,14 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         };
 
         MdSidenavCollapse.prototype.detached = function detached() {};
+
+        MdSidenavCollapse.prototype.show = function show() {
+          $(this.element).sideNav('show');
+        };
+
+        MdSidenavCollapse.prototype.hide = function hide() {
+          $(this.element).sideNav('hide');
+        };
 
         return MdSidenavCollapse;
       }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec3], {
