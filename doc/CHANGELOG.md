@@ -1,3 +1,23 @@
+<a name="0.21.0"></a>
+# [0.21.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.6...v0.21.0) (2017-01-09)
+
+
+### Bug Fixes
+
+* **md-input:** trigger focus, add blur-on-enter option, fix [#349](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/349), fix [#302](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/302) ([9a50daa](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/9a50daa))
+* **md-input:** Update renderer to properly show validation result
+* **md-pagination:** fix ... display when items.length == 3, fix [#327](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/327) ([8635ef2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/8635ef2))
+* **md-tabs:** add refresh method to support dynamic tabs ([be904a8](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/be904a8))
+
+
+### Features
+
+* **md-datepicker:** add icon fixup for datepicker, [#340](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/340) ([1e767c9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/1e767c9))
+* **md-file:** add disabled binding, close [#329](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/329) ([f81ac82](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/f81ac82))
+* **md-sidenav:** add show/hide functions ([156fd68](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/156fd68))
+
+
+
 <a name="0.20.6"></a>
 ## [0.20.6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.5...v0.20.6) (2016-12-13)
 
