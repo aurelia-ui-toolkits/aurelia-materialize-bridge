@@ -131,7 +131,8 @@
           "gist": "11ad8a83b750f39bd0e9c6159d6861b4"
         },
         "accordion": "6fd3210550aef8ef490242e45c01e669",
-        "popout": "8ca123a0299c7bb7be32fb181d6d1644"
+        "popout": "8ca123a0299c7bb7be32fb181d6d1644",
+        "open-close-callbacks": "24b0ae0562e766878eabbf3ced10d0df"
       }
     },
     "Dialogs (toast/tooltip)": {
