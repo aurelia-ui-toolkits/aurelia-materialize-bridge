@@ -5,7 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdCollapsible = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _class;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class;
+
+var _aureliaEventAggregator = require('aurelia-event-aggregator');
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -17,11 +19,12 @@ var _attributeManager = require('../common/attributeManager');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.customAttribute)('md-collapsible'), _dec2 = (0, _aureliaTemplating.bindable)({ name: 'accordion', defaultValue: false }), _dec3 = (0, _aureliaTemplating.bindable)({ name: 'popout', defaultValue: false }), _dec4 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = function () {
-  function MdCollapsible(element) {
+var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.customAttribute)('md-collapsible'), _dec2 = (0, _aureliaTemplating.bindable)({ name: 'accordion', defaultValue: false }), _dec3 = (0, _aureliaTemplating.bindable)({ name: 'popout', defaultValue: false }), _dec4 = (0, _aureliaTemplating.bindable)({ name: 'onOpen' }), _dec5 = (0, _aureliaTemplating.bindable)({ name: 'onClose' }), _dec6 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaEventAggregator.EventAggregator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = function () {
+  function MdCollapsible(element, eventAggregator) {
     _classCallCheck(this, MdCollapsible);
 
     this.element = element;
+    this.eventAggregator = eventAggregator;
     this.attributeManager = new _attributeManager.AttributeManager(this.element);
   }
 
@@ -40,14 +43,14 @@ var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.custo
 
   MdCollapsible.prototype.refresh = function refresh() {
     var accordion = (0, _attributes.getBooleanFromAttributeValue)(this.accordion);
-    if (accordion) {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
-    } else {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
-    }
+    var dataCollapsibleAttributeValue = accordion ? 'accordion' : 'expandable';
+
+    this.attributeManager.addAttributes({ 'data-collapsible': dataCollapsibleAttributeValue });
 
     $(this.element).collapsible({
-      accordion: accordion
+      accordion: accordion,
+      onOpen: this.buildCollapsibleOpenCloseCallbackHandler(this.onOpen),
+      onClose: this.buildCollapsibleOpenCloseCallbackHandler(this.onClose)
     });
   };
 
@@ -55,5 +58,13 @@ var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.custo
     this.refresh();
   };
 
+  MdCollapsible.prototype.buildCollapsibleOpenCloseCallbackHandler = function buildCollapsibleOpenCloseCallbackHandler(handler) {
+    return typeof handler === 'function' ? function (targetElementJquery) {
+      var targetElement = targetElementJquery[0];
+
+      handler(targetElement);
+    } : null;
+  };
+
   return MdCollapsible;
-}()) || _class) || _class) || _class) || _class);
+}()) || _class) || _class) || _class) || _class) || _class) || _class);

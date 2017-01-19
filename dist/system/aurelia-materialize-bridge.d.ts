@@ -25,6 +25,9 @@ import {
   getLogger
 } from 'aurelia-logging';
 import {
+  EventAggregator
+} from 'aurelia-event-aggregator';
+import {
   DOM
 } from 'aurelia-pal';
 export declare class ClickCounter {
@@ -101,6 +104,12 @@ export declare class ConfigBuilder {
   withScrollfirePatch(): ConfigBuilder;
 }
 export declare function configure(aurelia?: any, configCallback?: any): any;
+export declare class MdBadge {
+  isNew: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
 export declare class MdAutoComplete {
   input: any;
   values: any;
@@ -109,12 +118,6 @@ export declare class MdAutoComplete {
   detached(): any;
   refresh(): any;
   valuesChanged(newValue?: any): any;
-}
-export declare class MdBadge {
-  isNew: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
 }
 export declare class MdBox {
   caption: any;
@@ -226,11 +229,12 @@ export declare class MdChips {
   onChipSelect(e?: any, chip?: any): any;
 }
 export declare class MdCollapsible {
-  constructor(element?: any);
+  constructor(element?: any, eventAggregator?: any);
   attached(): any;
   detached(): any;
   refresh(): any;
   accordionChanged(): any;
+  buildCollapsibleOpenCloseCallbackHandler(handler?: any): any;
 }
 export declare class MdCollectionHeader {
   constructor(element?: any);
@@ -369,11 +373,6 @@ export declare class MdFab {
   constructor(element?: any);
   attached(): any;
 }
-export declare class MdFooter {
-  constructor(element?: any);
-  bind(): any;
-  unbind(): any;
-}
 export declare class MdFileInput {
   mdCaption: any;
   mdMultiple: any;
@@ -384,6 +383,11 @@ export declare class MdFileInput {
   attached(): any;
   detached(): any;
   handleChangeFromNativeInput(): any;
+}
+export declare class MdFooter {
+  constructor(element?: any);
+  bind(): any;
+  unbind(): any;
 }
 export declare class MdPrefix {
   constructor(element?: any);

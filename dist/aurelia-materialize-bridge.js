@@ -5,6 +5,7 @@ import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-bind
 import {Router} from 'aurelia-router';
 import {TaskQueue} from 'aurelia-task-queue';
 import {getLogger} from 'aurelia-logging';
+import {EventAggregator} from 'aurelia-event-aggregator';
 import {DOM} from 'aurelia-pal';
 
 export class ClickCounter {
@@ -326,6 +327,31 @@ export function configure(aurelia, configCallback) {
 
 
 
+@customAttribute('md-badge')
+@inject(Element)
+export class MdBadge {
+  @bindable() isNew = false;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    let classes = [
+      'badge'
+    ];
+    if (getBooleanFromAttributeValue(this.isNew)) {
+      classes.push('new');
+    }
+    this.attributeManager.addClasses(classes);
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['badge', 'new']);
+  }
+}
+
 @customAttribute('md-autocomplete')
 @inject(Element)
 export class MdAutoComplete {
@@ -368,31 +394,6 @@ export class MdAutoComplete {
 
   valuesChanged(newValue) {
     this.refresh();
-  }
-}
-
-@customAttribute('md-badge')
-@inject(Element)
-export class MdBadge {
-  @bindable() isNew = false;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    let classes = [
-      'badge'
-    ];
-    if (getBooleanFromAttributeValue(this.isNew)) {
-      classes.push('new');
-    }
-    this.attributeManager.addClasses(classes);
-  }
-
-  detached() {
-    this.attributeManager.removeClasses(['badge', 'new']);
   }
 }
 
@@ -783,11 +784,13 @@ export class MdChips {
 @customAttribute('md-collapsible')
 @bindable({ name: 'accordion', defaultValue: false })
 @bindable({ name: 'popout', defaultValue: false })
-@inject(Element)
-
+@bindable({ name: 'onOpen' })
+@bindable({ name: 'onClose' })
+@inject(Element, EventAggregator)
 export class MdCollapsible {
-  constructor(element) {
+  constructor(element, eventAggregator) {
     this.element = element;
+    this.eventAggregator = eventAggregator;
     this.attributeManager = new AttributeManager(this.element);
   }
 
@@ -806,19 +809,28 @@ export class MdCollapsible {
 
   refresh() {
     let accordion = getBooleanFromAttributeValue(this.accordion);
-    if (accordion) {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'accordion' });
-    } else {
-      this.attributeManager.addAttributes({ 'data-collapsible': 'expandable' });
-    }
+    let dataCollapsibleAttributeValue = accordion ? 'accordion' : 'expandable';
+
+    this.attributeManager.addAttributes({ 'data-collapsible': dataCollapsibleAttributeValue });
 
     $(this.element).collapsible({
-      accordion
+      accordion,
+      onOpen: this.buildCollapsibleOpenCloseCallbackHandler(this.onOpen),
+      onClose: this.buildCollapsibleOpenCloseCallbackHandler(this.onClose)
     });
   }
 
   accordionChanged() {
     this.refresh();
+  }
+
+  buildCollapsibleOpenCloseCallbackHandler(handler) {
+    return typeof(handler) === 'function' ?
+     (targetElementJquery) => {
+       let targetElement = targetElementJquery[0];
+
+       handler(targetElement);
+     } : null;
   }
 }
 
@@ -1671,23 +1683,6 @@ export class MdFab {
   }
 }
 
-@customAttribute('md-footer')
-@inject(Element)
-export class MdFooter {
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  bind() {
-    this.attributeManager.addClasses('page-footer');
-  }
-
-  unbind() {
-    this.attributeManager.removeClasses('page-footer');
-  }
-}
-
 @customElement('md-file')
 @inject(Element)
 export class MdFileInput {
@@ -1724,6 +1719,23 @@ export class MdFileInput {
       fireMaterializeEvent(this.filePath, 'change', { files: this.files });
       this._suspendUpdate = false;
     }
+  }
+}
+
+@customAttribute('md-footer')
+@inject(Element)
+export class MdFooter {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  bind() {
+    this.attributeManager.addClasses('page-footer');
+  }
+
+  unbind() {
+    this.attributeManager.removeClasses('page-footer');
   }
 }
 
