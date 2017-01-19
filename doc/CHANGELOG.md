@@ -1,3 +1,13 @@
+<a name="0.22.0"></a>
+# [0.22.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.21.0...v0.22.0) (2017-01-19)
+
+
+### Features
+
+* **md-collapsible:** add onOpen/Close event support ([a1f1e61](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a1f1e61)), closes [#348](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/348)
+
+
+
 <a name="0.21.0"></a>
 # [0.21.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.20.6...v0.21.0) (2017-01-09)
 
