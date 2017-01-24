@@ -19,7 +19,8 @@
           "default": true,
           "gist": "1de36c8c3739a233656def9fb66b3ab0"
         },
-        "badges-in-dropdown": "3199e3e3cf436ccadca30fcc4f0b45a2"
+        "badges-in-dropdown": "3199e3e3cf436ccadca30fcc4f0b45a2",
+        "badge-with-custom-caption": "7d087a011cf7a0c3341eae48eb1f4ed6"
       }
     },
     "Button": {
