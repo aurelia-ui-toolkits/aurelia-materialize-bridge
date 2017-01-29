@@ -1,4 +1,5 @@
 import {bindable, customAttribute} from 'aurelia-templating';
+import {bindingMode} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
 import {getLogger} from 'aurelia-logging';
 
@@ -7,7 +8,7 @@ import {getLogger} from 'aurelia-logging';
 @customAttribute('md-chips')
 @inject(Element)
 export class MdChips {
-  @bindable() data = [];
+  @bindable({ defaultBindingMode: bindingMode.twoWay }) data = [];
   @bindable() placeholder = '';
   @bindable() secondaryPlaceholder = '';
 
@@ -38,9 +39,11 @@ export class MdChips {
 
   onChipAdd(e, chip) {
     // fireEvent(this.element, 'change');
+    this.data = $(this.element).material_chip('data');
   }
   onChipDelete(e, chip) {
     // fireEvent(this.element, 'change');
+    this.data = $(this.element).material_chip('data');
   }
   onChipSelect(e, chip) {
     // fireEvent(this.element, 'change');
