@@ -1,3 +1,26 @@
+<a name="0.23.0"></a>
+# [0.23.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.22.0...v0.23.0) (2017-01-29)
+
+
+### Bug Fixes
+
+* **markdown:** fix import of run_prettify ([543a462](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/543a462))
+* **md-chips:** change data when chips change, fix [#363](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/363) ([b212037](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b212037))
+* **md-chips:** fix event propagation ([115937e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/115937e))
+* **md-tabs:** remove bind to trigger initial updates ([cb9dca6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/cb9dca6))
+
+
+### Features
+
+* **md-badge:** add custom caption support ([d0a69c2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d0a69c2))
+* **md-carousel:** add support for camelCase options ([b5a9a02](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b5a9a02))
+* **md-chips:** add autocomplete support ([c64115c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/c64115c))
+* **md-chips:** propagate chip editor events ([b8d13be](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b8d13be))
+* **md-dropdown:** add support for camelCase options ([848c212](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/848c212))
+* **md-tabs:** add support for swipeable tabs ([5aac16e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/5aac16e))
+
+
+
 <a name="0.22.0"></a>
 # [0.22.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.21.0...v0.22.0) (2017-01-19)
 
