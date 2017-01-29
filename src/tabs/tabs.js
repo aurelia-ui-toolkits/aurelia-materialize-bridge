@@ -22,10 +22,6 @@ export class MdTabs {
     this.tabAttributeManagers = [];
   }
 
-  bind() {
-    this.swipeable = getBooleanFromAttributeValue(this.swipeable);
-  }
-
   attached() {
     this.attributeManager.addClasses('tabs');
 
@@ -43,7 +39,7 @@ export class MdTabs {
           self.onShow({ element: jQueryElement});
         }
       },
-      swipeable: this.swipeable,
+      swipeable: getBooleanFromAttributeValue(this.swipeable),
       responsiveThreshold: this.responsiveThreshold
     });
     let childAnchors = this.element.querySelectorAll('li a');
