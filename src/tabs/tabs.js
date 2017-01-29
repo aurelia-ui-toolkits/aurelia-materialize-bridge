@@ -3,12 +3,15 @@ import { inject } from 'aurelia-dependency-injection';
 import { TaskQueue } from 'aurelia-task-queue';
 import { fireMaterializeEvent } from '../common/events';
 import { AttributeManager } from '../common/attributeManager';
+import {getBooleanFromAttributeValue} from '../common/attributes';
 
 @customAttribute('md-tabs')
 @inject(Element, TaskQueue)
 export class MdTabs {
   @bindable() fixed = false;
   @bindable() onShow = null;
+  @bindable() responsiveThreshold = Infinity;
+  @bindable() swipeable = false;
   @bindable() transparent = false;
 
   constructor(element, taskQueue) {
@@ -17,6 +20,10 @@ export class MdTabs {
     this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
     this.attributeManager = new AttributeManager(this.element);
     this.tabAttributeManagers = [];
+  }
+
+  bind() {
+    this.swipeable = getBooleanFromAttributeValue(this.swipeable);
   }
 
   attached() {
@@ -35,7 +42,9 @@ export class MdTabs {
         if (self.onShow) {
           self.onShow({ element: jQueryElement});
         }
-      }
+      },
+      swipeable: this.swipeable,
+      responsiveThreshold: this.responsiveThreshold
     });
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {
