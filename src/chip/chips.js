@@ -3,7 +3,7 @@ import {bindingMode} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
 import {getLogger} from 'aurelia-logging';
 
-// import {fireEvent} from '../common/events';
+import {fireEvent} from '../common/events';
 
 @customAttribute('md-chips')
 @inject(Element)
@@ -38,14 +38,14 @@ export class MdChips {
   }
 
   onChipAdd(e, chip) {
-    // fireEvent(this.element, 'change');
     this.data = $(this.element).material_chip('data');
+    fireEvent(this.element, 'change', { operation: 'add', target: chip, data });
   }
   onChipDelete(e, chip) {
-    // fireEvent(this.element, 'change');
     this.data = $(this.element).material_chip('data');
+    fireEvent(this.element, 'change', { operation: 'delete', target: chip, data });
   }
   onChipSelect(e, chip) {
-    // fireEvent(this.element, 'change');
+    fireEvent(this.element, 'selected', { target: chip });
   }
 }
