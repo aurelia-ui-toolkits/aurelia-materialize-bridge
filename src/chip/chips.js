@@ -39,11 +39,11 @@ export class MdChips {
 
   onChipAdd(e, chip) {
     this.data = $(this.element).material_chip('data');
-    fireEvent(this.element, 'change', { operation: 'add', target: chip, data });
+    fireEvent(this.element, 'change', { operation: 'add', target: chip, data: this.data });
   }
   onChipDelete(e, chip) {
     this.data = $(this.element).material_chip('data');
-    fireEvent(this.element, 'change', { operation: 'delete', target: chip, data });
+    fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
   }
   onChipSelect(e, chip) {
     fireEvent(this.element, 'selected', { target: chip });
