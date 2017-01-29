@@ -40,6 +40,7 @@ export class MdCarousel {
     if (this.items.length > 0) {
       let options = {
         full_width: getBooleanFromAttributeValue(this.mdSlider),
+        fullWidth: getBooleanFromAttributeValue(this.mdSlider),
         indicators: this.mdIndicators
       };
 

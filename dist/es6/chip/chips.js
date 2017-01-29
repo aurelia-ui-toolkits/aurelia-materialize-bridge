@@ -1,13 +1,15 @@
 import {bindable, customAttribute} from 'aurelia-templating';
+import {bindingMode} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
 import {getLogger} from 'aurelia-logging';
 
-// import {fireEvent} from '../common/events';
+import {fireEvent} from '../common/events';
 
 @customAttribute('md-chips')
 @inject(Element)
 export class MdChips {
-  @bindable() data = [];
+  @bindable() autocompleteData = {};
+  @bindable({ defaultBindingMode: bindingMode.twoWay }) data = [];
   @bindable() placeholder = '';
   @bindable() secondaryPlaceholder = '';
 
@@ -22,6 +24,7 @@ export class MdChips {
 
   attached() {
     let options = {
+      autocompleteData: this.autocompleteData,
       data: this.data,
       placeholder: this.placeholder,
       secondaryPlaceholder: this.secondaryPlaceholder
@@ -37,12 +40,14 @@ export class MdChips {
   }
 
   onChipAdd(e, chip) {
-    // fireEvent(this.element, 'change');
+    this.data = $(this.element).material_chip('data');
+    fireEvent(this.element, 'change', { operation: 'add', target: chip, data: this.data });
   }
   onChipDelete(e, chip) {
-    // fireEvent(this.element, 'change');
+    this.data = $(this.element).material_chip('data');
+    fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
   }
   onChipSelect(e, chip) {
-    // fireEvent(this.element, 'change');
+    fireEvent(this.element, 'selected', { target: chip });
   }
 }

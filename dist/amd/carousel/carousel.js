@@ -92,6 +92,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         (function () {
           var options = {
             full_width: (0, _attributes.getBooleanFromAttributeValue)(_this.mdSlider),
+            fullWidth: (0, _attributes.getBooleanFromAttributeValue)(_this.mdSlider),
             indicators: _this.mdIndicators
           };
 

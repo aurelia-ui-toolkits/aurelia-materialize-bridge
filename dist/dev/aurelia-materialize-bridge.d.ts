@@ -104,12 +104,6 @@ export declare class ConfigBuilder {
   withScrollfirePatch(): ConfigBuilder;
 }
 export declare function configure(aurelia?: any, configCallback?: any): any;
-export declare class MdBadge {
-  isNew: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
 export declare class MdAutoComplete {
   input: any;
   values: any;
@@ -118,6 +112,15 @@ export declare class MdAutoComplete {
   detached(): any;
   refresh(): any;
   valuesChanged(newValue?: any): any;
+}
+export declare class MdBadge {
+  isNew: any;
+  caption: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  newChanged(newValue?: any): any;
+  captionChanged(newValue?: any): any;
 }
 export declare class MdBox {
   caption: any;
@@ -157,6 +160,12 @@ export declare class MdCard {
   constructor(element?: any);
   attached(): any;
 }
+export declare class MdCharCounter {
+  length: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
 
 // @customElement('md-carousel-item')
 export declare class MdCarouselItem {
@@ -173,12 +182,6 @@ export declare class MdCarousel {
   attached(): any;
   itemsChanged(newValue?: any): any;
   refresh(): any;
-}
-export declare class MdCharCounter {
-  length: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
 }
 
 // @customElement('md-checkbox')
@@ -215,9 +218,8 @@ export declare class MdChip {
   attached(): any;
   close(): any;
 }
-
-// @customAttribute('md-chips')
 export declare class MdChips {
+  autocompleteData: any;
   data: any;
   placeholder: any;
   secondaryPlaceholder: any;
@@ -626,6 +628,8 @@ export declare class MdSwitch {
 export declare class MdTabs {
   fixed: any;
   onShow: any;
+  responsiveThreshold: any;
+  swipeable: any;
   transparent: any;
   constructor(element?: any, taskQueue?: any);
   attached(): any;

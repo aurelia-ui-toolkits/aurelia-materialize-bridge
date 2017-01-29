@@ -3,7 +3,7 @@
 System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export, _context) {
   "use strict";
 
-  var bindable, customAttribute, inject, AttributeManager, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdBadge;
+  var bindable, customAttribute, inject, AttributeManager, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, MdBadge;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -66,11 +66,13 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
-      _export('MdBadge', MdBadge = (_dec = customAttribute('md-badge'), _dec2 = inject(Element), _dec3 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
+      _export('MdBadge', MdBadge = (_dec = customAttribute('md-badge'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdBadge(element) {
           _classCallCheck(this, MdBadge);
 
           _initDefineProp(this, 'isNew', _descriptor, this);
+
+          _initDefineProp(this, 'caption', _descriptor2, this);
 
           this.element = element;
           this.attributeManager = new AttributeManager(this.element);
@@ -78,14 +80,37 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
 
         MdBadge.prototype.attached = function attached() {
           var classes = ['badge'];
+
           if (getBooleanFromAttributeValue(this.isNew)) {
             classes.push('new');
           }
+
+          if (this.caption !== null) {
+            this.attributeManager.addAttributes({ 'data-badge-caption': this.caption });
+          }
+
           this.attributeManager.addClasses(classes);
         };
 
         MdBadge.prototype.detached = function detached() {
           this.attributeManager.removeClasses(['badge', 'new']);
+          this.attributeManager.removeAttributes(['data-badge-caption']);
+        };
+
+        MdBadge.prototype.newChanged = function newChanged(newValue) {
+          if (getBooleanFromAttributeValue(newValue)) {
+            this.attributeManager.addClasses('new');
+          } else {
+            this.attributeManager.removeClasses('new');
+          }
+        };
+
+        MdBadge.prototype.captionChanged = function captionChanged(newValue) {
+          if (newValue !== null) {
+            this.attributeManager.addAttributes({ 'data-badge-caption': newValue });
+          } else {
+            this.attributeManager.removeAttributes(['data-badge-caption']);
+          }
         };
 
         return MdBadge;
@@ -93,6 +118,11 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
         enumerable: true,
         initializer: function initializer() {
           return false;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'caption', [_dec4], {
+        enumerable: true,
+        initializer: function initializer() {
+          return null;
         }
       })), _class2)) || _class) || _class));
 

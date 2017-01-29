@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdBadge = undefined;
 
-var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -60,11 +60,13 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var MdBadge = exports.MdBadge = (_dec = (0, _aureliaTemplating.customAttribute)('md-badge'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+var MdBadge = exports.MdBadge = (_dec = (0, _aureliaTemplating.customAttribute)('md-badge'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
   function MdBadge(element) {
     _classCallCheck(this, MdBadge);
 
     _initDefineProp(this, 'isNew', _descriptor, this);
+
+    _initDefineProp(this, 'caption', _descriptor2, this);
 
     this.element = element;
     this.attributeManager = new _attributeManager.AttributeManager(this.element);
@@ -72,14 +74,37 @@ var MdBadge = exports.MdBadge = (_dec = (0, _aureliaTemplating.customAttribute)(
 
   MdBadge.prototype.attached = function attached() {
     var classes = ['badge'];
+
     if ((0, _attributes.getBooleanFromAttributeValue)(this.isNew)) {
       classes.push('new');
     }
+
+    if (this.caption !== null) {
+      this.attributeManager.addAttributes({ 'data-badge-caption': this.caption });
+    }
+
     this.attributeManager.addClasses(classes);
   };
 
   MdBadge.prototype.detached = function detached() {
     this.attributeManager.removeClasses(['badge', 'new']);
+    this.attributeManager.removeAttributes(['data-badge-caption']);
+  };
+
+  MdBadge.prototype.newChanged = function newChanged(newValue) {
+    if ((0, _attributes.getBooleanFromAttributeValue)(newValue)) {
+      this.attributeManager.addClasses('new');
+    } else {
+      this.attributeManager.removeClasses('new');
+    }
+  };
+
+  MdBadge.prototype.captionChanged = function captionChanged(newValue) {
+    if (newValue !== null) {
+      this.attributeManager.addAttributes({ 'data-badge-caption': newValue });
+    } else {
+      this.attributeManager.removeAttributes(['data-badge-caption']);
+    }
   };
 
   return MdBadge;
@@ -87,5 +112,10 @@ var MdBadge = exports.MdBadge = (_dec = (0, _aureliaTemplating.customAttribute)(
   enumerable: true,
   initializer: function initializer() {
     return false;
+  }
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'caption', [_dec4], {
+  enumerable: true,
+  initializer: function initializer() {
+    return null;
   }
 })), _class2)) || _class) || _class);

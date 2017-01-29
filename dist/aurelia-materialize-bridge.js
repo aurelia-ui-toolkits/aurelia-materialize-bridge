@@ -327,31 +327,6 @@ export function configure(aurelia, configCallback) {
 
 
 
-@customAttribute('md-badge')
-@inject(Element)
-export class MdBadge {
-  @bindable() isNew = false;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    let classes = [
-      'badge'
-    ];
-    if (getBooleanFromAttributeValue(this.isNew)) {
-      classes.push('new');
-    }
-    this.attributeManager.addClasses(classes);
-  }
-
-  detached() {
-    this.attributeManager.removeClasses(['badge', 'new']);
-  }
-}
-
 @customAttribute('md-autocomplete')
 @inject(Element)
 export class MdAutoComplete {
@@ -394,6 +369,55 @@ export class MdAutoComplete {
 
   valuesChanged(newValue) {
     this.refresh();
+  }
+}
+
+@customAttribute('md-badge')
+@inject(Element)
+export class MdBadge {
+  @bindable() isNew = false;
+  @bindable() caption = null;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    let classes = [
+      'badge'
+    ];
+
+    if (getBooleanFromAttributeValue(this.isNew)) {
+      classes.push('new');
+    }
+
+    if (this.caption !== null) {
+      this.attributeManager.addAttributes({ 'data-badge-caption': this.caption });
+    }
+
+    this.attributeManager.addClasses(classes);
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['badge', 'new']);
+    this.attributeManager.removeAttributes(['data-badge-caption']);
+  }
+
+  newChanged(newValue) {
+    if (getBooleanFromAttributeValue(newValue)) {
+      this.attributeManager.addClasses('new');
+    } else {
+      this.attributeManager.removeClasses('new');
+    }
+  }
+
+  captionChanged(newValue) {
+    if (newValue !== null) {
+      this.attributeManager.addAttributes({ 'data-badge-caption': newValue });
+    } else {
+      this.attributeManager.removeAttributes(['data-badge-caption']);
+    }
   }
 }
 
@@ -565,6 +589,35 @@ export class MdCard {
   }
 }
 
+@customAttribute('md-char-counter')
+@inject(Element)
+export class MdCharCounter {
+  @bindable() length = 120;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.length = parseInt(this.length, 10);
+
+    // attach to input element explicitly, so this counter can be used on
+    // containers (or custom elements like md-input)
+    if (this.element.tagName.toUpperCase() === 'INPUT') {
+      this.attributeManager.addAttributes({ 'length': this.length });
+      $(this.element).characterCounter();
+    } else {
+      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
+      $(this.element).find('input').characterCounter();
+    }
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes(['length']);
+  }
+}
+
 // @customElement('md-carousel-item')
 @inject(Element)
 export class MdCarouselItem {
@@ -618,6 +671,7 @@ export class MdCarousel {
     if (this.items.length > 0) {
       let options = {
         full_width: getBooleanFromAttributeValue(this.mdSlider),
+        fullWidth: getBooleanFromAttributeValue(this.mdSlider),
         indicators: this.mdIndicators
       };
 
@@ -625,35 +679,6 @@ export class MdCarousel {
         $(this.element).carousel(options);
       });
     }
-  }
-}
-
-@customAttribute('md-char-counter')
-@inject(Element)
-export class MdCharCounter {
-  @bindable() length = 120;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.length = parseInt(this.length, 10);
-
-    // attach to input element explicitly, so this counter can be used on
-    // containers (or custom elements like md-input)
-    if (this.element.tagName.toUpperCase() === 'INPUT') {
-      this.attributeManager.addAttributes({ 'length': this.length });
-      $(this.element).characterCounter();
-    } else {
-      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
-      $(this.element).find('input').characterCounter();
-    }
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes(['length']);
   }
 }
 
@@ -738,10 +763,11 @@ export class MdChip {
   }
 }
 
-// @customAttribute('md-chips')
+@customAttribute('md-chips')
 @inject(Element)
 export class MdChips {
-  @bindable() data = [];
+  @bindable() autocompleteData = {};
+  @bindable({ defaultBindingMode: bindingMode.twoWay }) data = [];
   @bindable() placeholder = '';
   @bindable() secondaryPlaceholder = '';
 
@@ -756,6 +782,7 @@ export class MdChips {
 
   attached() {
     let options = {
+      autocompleteData: this.autocompleteData,
       data: this.data,
       placeholder: this.placeholder,
       secondaryPlaceholder: this.secondaryPlaceholder
@@ -771,13 +798,15 @@ export class MdChips {
   }
 
   onChipAdd(e, chip) {
-    // fireEvent(this.element, 'change');
+    this.data = $(this.element).material_chip('data');
+    fireEvent(this.element, 'change', { operation: 'add', target: chip, data: this.data });
   }
   onChipDelete(e, chip) {
-    // fireEvent(this.element, 'change');
+    this.data = $(this.element).material_chip('data');
+    fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
   }
   onChipSelect(e, chip) {
-    // fireEvent(this.element, 'change');
+    fireEvent(this.element, 'selected', { target: chip });
   }
 }
 
@@ -1640,6 +1669,7 @@ export class MdDropdown {
       alignment: this.alignment,
       belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
       constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
+      constrainWidth: getBooleanFromAttributeValue(this.constrainWidth),
       gutter: parseInt(this.gutter, 10),
       hover: getBooleanFromAttributeValue(this.hover),
       inDuration: parseInt(this.inDuration, 10),
@@ -2769,6 +2799,8 @@ export class MdSwitch {
 export class MdTabs {
   @bindable() fixed = false;
   @bindable() onShow = null;
+  @bindable() responsiveThreshold = Infinity;
+  @bindable() swipeable = false;
   @bindable() transparent = false;
 
   constructor(element, taskQueue) {
@@ -2795,7 +2827,9 @@ export class MdTabs {
         if (self.onShow) {
           self.onShow({ element: jQueryElement});
         }
-      }
+      },
+      swipeable: getBooleanFromAttributeValue(this.swipeable),
+      responsiveThreshold: this.responsiveThreshold
     });
     let childAnchors = this.element.querySelectorAll('li a');
     [].forEach.call(childAnchors, a => {

@@ -104,6 +104,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             (function () {
               var options = {
                 full_width: getBooleanFromAttributeValue(_this.mdSlider),
+                fullWidth: getBooleanFromAttributeValue(_this.mdSlider),
                 indicators: _this.mdIndicators
               };
 

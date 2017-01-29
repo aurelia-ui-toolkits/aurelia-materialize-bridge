@@ -117,6 +117,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         alignment: this.alignment,
         belowOrigin: (0, _attributes.getBooleanFromAttributeValue)(this.belowOrigin),
         constrain_width: (0, _attributes.getBooleanFromAttributeValue)(this.constrainWidth),
+        constrainWidth: (0, _attributes.getBooleanFromAttributeValue)(this.constrainWidth),
         gutter: parseInt(this.gutter, 10),
         hover: (0, _attributes.getBooleanFromAttributeValue)(this.hover),
         inDuration: parseInt(this.inDuration, 10),

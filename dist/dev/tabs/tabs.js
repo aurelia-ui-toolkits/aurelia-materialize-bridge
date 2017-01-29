@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/events', '../common/attributeManager'], function (_export, _context) {
+System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/events', '../common/attributeManager', '../common/attributes'], function (_export, _context) {
   "use strict";
 
-  var bindable, customAttribute, inject, TaskQueue, fireMaterializeEvent, AttributeManager, _createClass, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, MdTabs;
+  var bindable, customAttribute, inject, TaskQueue, fireMaterializeEvent, AttributeManager, getBooleanFromAttributeValue, _createClass, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, MdTabs;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -66,6 +66,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
       fireMaterializeEvent = _commonEvents.fireMaterializeEvent;
     }, function (_commonAttributeManager) {
       AttributeManager = _commonAttributeManager.AttributeManager;
+    }, function (_commonAttributes) {
+      getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
       _createClass = function () {
@@ -86,7 +88,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
         };
       }();
 
-      _export('MdTabs', MdTabs = (_dec = customAttribute('md-tabs'), _dec2 = inject(Element, TaskQueue), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
+      _export('MdTabs', MdTabs = (_dec = customAttribute('md-tabs'), _dec2 = inject(Element, TaskQueue), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable(), _dec6 = bindable(), _dec7 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdTabs(element, taskQueue) {
           _classCallCheck(this, MdTabs);
 
@@ -94,7 +96,11 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
 
           _initDefineProp(this, 'onShow', _descriptor2, this);
 
-          _initDefineProp(this, 'transparent', _descriptor3, this);
+          _initDefineProp(this, 'responsiveThreshold', _descriptor3, this);
+
+          _initDefineProp(this, 'swipeable', _descriptor4, this);
+
+          _initDefineProp(this, 'transparent', _descriptor5, this);
 
           this.element = element;
           this.taskQueue = taskQueue;
@@ -121,7 +127,9 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
               if (self.onShow) {
                 self.onShow({ element: jQueryElement });
               }
-            }
+            },
+            swipeable: getBooleanFromAttributeValue(this.swipeable),
+            responsiveThreshold: this.responsiveThreshold
           });
           var childAnchors = this.element.querySelectorAll('li a');
           [].forEach.call(childAnchors, function (a) {
@@ -222,7 +230,17 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
         initializer: function initializer() {
           return null;
         }
-      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'transparent', [_dec5], {
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'responsiveThreshold', [_dec5], {
+        enumerable: true,
+        initializer: function initializer() {
+          return Infinity;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'swipeable', [_dec6], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'transparent', [_dec7], {
         enumerable: true,
         initializer: function initializer() {
           return false;

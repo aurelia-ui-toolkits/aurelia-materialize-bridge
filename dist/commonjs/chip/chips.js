@@ -5,13 +5,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdChips = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
 var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaBinding = require('aurelia-binding');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaLogging = require('aurelia-logging');
+
+var _events = require('../common/events');
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -58,15 +62,17 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)('md-chips'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)('md-chips'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
   function MdChips(element) {
     _classCallCheck(this, MdChips);
 
-    _initDefineProp(this, 'data', _descriptor, this);
+    _initDefineProp(this, 'autocompleteData', _descriptor, this);
 
-    _initDefineProp(this, 'placeholder', _descriptor2, this);
+    _initDefineProp(this, 'data', _descriptor2, this);
 
-    _initDefineProp(this, 'secondaryPlaceholder', _descriptor3, this);
+    _initDefineProp(this, 'placeholder', _descriptor3, this);
+
+    _initDefineProp(this, 'secondaryPlaceholder', _descriptor4, this);
 
     this.element = element;
     this.log = (0, _aureliaLogging.getLogger)('md-chips');
@@ -78,6 +84,7 @@ var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)(
 
   MdChips.prototype.attached = function attached() {
     var options = {
+      autocompleteData: this.autocompleteData,
       data: this.data,
       placeholder: this.placeholder,
       secondaryPlaceholder: this.secondaryPlaceholder
@@ -90,24 +97,37 @@ var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)(
 
   MdChips.prototype.detached = function detached() {};
 
-  MdChips.prototype.onChipAdd = function onChipAdd(e, chip) {};
+  MdChips.prototype.onChipAdd = function onChipAdd(e, chip) {
+    this.data = $(this.element).material_chip('data');
+    (0, _events.fireEvent)(this.element, 'change', { operation: 'add', target: chip, data: this.data });
+  };
 
-  MdChips.prototype.onChipDelete = function onChipDelete(e, chip) {};
+  MdChips.prototype.onChipDelete = function onChipDelete(e, chip) {
+    this.data = $(this.element).material_chip('data');
+    (0, _events.fireEvent)(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
+  };
 
-  MdChips.prototype.onChipSelect = function onChipSelect(e, chip) {};
+  MdChips.prototype.onChipSelect = function onChipSelect(e, chip) {
+    (0, _events.fireEvent)(this.element, 'selected', { target: chip });
+  };
 
   return MdChips;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'data', [_dec3], {
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'autocompleteData', [_dec3], {
+  enumerable: true,
+  initializer: function initializer() {
+    return {};
+  }
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'data', [_dec4], {
   enumerable: true,
   initializer: function initializer() {
     return [];
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'placeholder', [_dec4], {
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'placeholder', [_dec5], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'secondaryPlaceholder', [_dec5], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'secondaryPlaceholder', [_dec6], {
   enumerable: true,
   initializer: function initializer() {
     return '';

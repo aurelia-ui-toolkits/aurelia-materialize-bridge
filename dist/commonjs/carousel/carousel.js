@@ -97,6 +97,7 @@ var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customEleme
       (function () {
         var options = {
           full_width: (0, _attributes.getBooleanFromAttributeValue)(_this.mdSlider),
+          fullWidth: (0, _attributes.getBooleanFromAttributeValue)(_this.mdSlider),
           indicators: _this.mdIndicators
         };
 

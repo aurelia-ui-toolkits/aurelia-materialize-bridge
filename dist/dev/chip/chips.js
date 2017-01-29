@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export, _context) {
+System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging', '../common/events'], function (_export, _context) {
   "use strict";
 
-  var bindable, customAttribute, inject, getLogger, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, MdChips;
+  var bindable, customAttribute, bindingMode, inject, getLogger, fireEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, MdChips;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -58,21 +58,27 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
     setters: [function (_aureliaTemplating) {
       bindable = _aureliaTemplating.bindable;
       customAttribute = _aureliaTemplating.customAttribute;
+    }, function (_aureliaBinding) {
+      bindingMode = _aureliaBinding.bindingMode;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaLogging) {
       getLogger = _aureliaLogging.getLogger;
+    }, function (_commonEvents) {
+      fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
-      _export('MdChips', MdChips = (_dec = customAttribute('md-chips'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
+      _export('MdChips', MdChips = (_dec = customAttribute('md-chips'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec5 = bindable(), _dec6 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdChips(element) {
           _classCallCheck(this, MdChips);
 
-          _initDefineProp(this, 'data', _descriptor, this);
+          _initDefineProp(this, 'autocompleteData', _descriptor, this);
 
-          _initDefineProp(this, 'placeholder', _descriptor2, this);
+          _initDefineProp(this, 'data', _descriptor2, this);
 
-          _initDefineProp(this, 'secondaryPlaceholder', _descriptor3, this);
+          _initDefineProp(this, 'placeholder', _descriptor3, this);
+
+          _initDefineProp(this, 'secondaryPlaceholder', _descriptor4, this);
 
           this.element = element;
           this.log = getLogger('md-chips');
@@ -84,6 +90,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
 
         MdChips.prototype.attached = function attached() {
           var options = {
+            autocompleteData: this.autocompleteData,
             data: this.data,
             placeholder: this.placeholder,
             secondaryPlaceholder: this.secondaryPlaceholder
@@ -96,24 +103,37 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
 
         MdChips.prototype.detached = function detached() {};
 
-        MdChips.prototype.onChipAdd = function onChipAdd(e, chip) {};
+        MdChips.prototype.onChipAdd = function onChipAdd(e, chip) {
+          this.data = $(this.element).material_chip('data');
+          fireEvent(this.element, 'change', { operation: 'add', target: chip, data: this.data });
+        };
 
-        MdChips.prototype.onChipDelete = function onChipDelete(e, chip) {};
+        MdChips.prototype.onChipDelete = function onChipDelete(e, chip) {
+          this.data = $(this.element).material_chip('data');
+          fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
+        };
 
-        MdChips.prototype.onChipSelect = function onChipSelect(e, chip) {};
+        MdChips.prototype.onChipSelect = function onChipSelect(e, chip) {
+          fireEvent(this.element, 'selected', { target: chip });
+        };
 
         return MdChips;
-      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'data', [_dec3], {
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'autocompleteData', [_dec3], {
+        enumerable: true,
+        initializer: function initializer() {
+          return {};
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'data', [_dec4], {
         enumerable: true,
         initializer: function initializer() {
           return [];
         }
-      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'placeholder', [_dec4], {
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'placeholder', [_dec5], {
         enumerable: true,
         initializer: function initializer() {
           return '';
         }
-      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'secondaryPlaceholder', [_dec5], {
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'secondaryPlaceholder', [_dec6], {
         enumerable: true,
         initializer: function initializer() {
           return '';

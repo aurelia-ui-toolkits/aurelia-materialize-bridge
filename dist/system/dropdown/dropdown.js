@@ -128,6 +128,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             alignment: this.alignment,
             belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
             constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
+            constrainWidth: getBooleanFromAttributeValue(this.constrainWidth),
             gutter: parseInt(this.gutter, 10),
             hover: getBooleanFromAttributeValue(this.hover),
             inDuration: parseInt(this.inDuration, 10),
