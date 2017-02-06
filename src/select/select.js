@@ -17,6 +17,7 @@ export class MdSelect {
   subscriptions = [];
   input = null;
   dropdownMutationObserver = null;
+  optionsMutationObserver = null;
 
   constructor(element, logManager, bindingEngine, taskQueue) {
     this.element = element;
@@ -56,6 +57,7 @@ export class MdSelect {
   detached() {
     $(this.element).off('change', this.handleChangeFromNativeSelect);
     this.observeVisibleDropdownContent(false);
+    this.observeOptions(false);
     this.dropdownMutationObserver = null;
     $(this.element).material_select('destroy');
     this.subscriptions.forEach(sub => sub.dispose());
@@ -120,12 +122,14 @@ export class MdSelect {
 
   createMaterialSelect(destroy) {
     this.observeVisibleDropdownContent(false);
+    this.observeOptions(false);
     if (destroy) {
       $(this.element).material_select('destroy');
     }
     $(this.element).material_select();
     this.toggleControl(this.disabled);
     this.observeVisibleDropdownContent(true);
+    this.observeOptions(true);
     this.setErrorTextAttribute();
   }
 
@@ -153,6 +157,27 @@ export class MdSelect {
       if (this.dropdownMutationObserver) {
         this.dropdownMutationObserver.disconnect();
         this.dropdownMutationObserver.takeRecords();
+      }
+    }
+  }
+
+  observeOptions(attach) {
+    if (attach) {
+      if (!this.optionsMutationObserver) {
+        this.optionsMutationObserver = DOM.createMutationObserver(mutations => {
+          this.log.debug('observeOptions', mutations);
+          this.refresh();
+        });
+      }
+      this.optionsMutationObserver.observe(this.element, {
+        // childList: true,
+        characterData: true,
+        subtree: true
+      });
+    } else {
+      if (this.optionsMutationObserver) {
+        this.optionsMutationObserver.disconnect();
+        this.optionsMutationObserver.takeRecords();
       }
     }
   }
