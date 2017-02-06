@@ -108,7 +108,7 @@
     "yargs": "^2.1.1"
   },
   "peerDependencies": {
-    "materialize-css": "^0.97.6"
+    "materialize-css": "^0.98.0"
   },
   "aurelia": {
     "usedBy": [],
