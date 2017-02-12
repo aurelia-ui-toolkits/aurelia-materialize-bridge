@@ -1,3 +1,20 @@
+<a name="0.24.0"></a>
+# [0.24.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.23.0...v0.24.0) (2017-02-12)
+
+
+### Bug Fixes
+
+* **md-colors:** add accent colors to number and time inputs, fix [#371](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/371) ([bb4de5e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/bb4de5e))
+* **md-select:** make option observation optional ([6ee15b3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6ee15b3))
+
+
+### Features
+
+* **md-modal:** add available options as attributes, close [#366](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/366) ([616c045](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/616c045))
+* **md-select:** observe native select options, ref [#372](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/372) ([9b20a88](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/9b20a88))
+
+
+
 <a name="0.23.0"></a>
 # [0.23.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.22.0...v0.23.0) (2017-01-29)
 
