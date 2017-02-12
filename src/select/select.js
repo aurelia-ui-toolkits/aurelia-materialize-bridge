@@ -11,6 +11,7 @@ import {DOM} from 'aurelia-pal';
 @customAttribute('md-select')
 export class MdSelect {
   @bindable() disabled = false;
+  @bindable() enableOptionObserver = false;
   @bindable() label = '';
   @bindable() showErrortext = true;
   _suspendUpdate = false;
@@ -162,22 +163,24 @@ export class MdSelect {
   }
 
   observeOptions(attach) {
-    if (attach) {
-      if (!this.optionsMutationObserver) {
-        this.optionsMutationObserver = DOM.createMutationObserver(mutations => {
-          this.log.debug('observeOptions', mutations);
-          this.refresh();
+    if (getBooleanFromAttributeValue(this.enableOptionObserver)) {
+      if (attach) {
+        if (!this.optionsMutationObserver) {
+          this.optionsMutationObserver = DOM.createMutationObserver(mutations => {
+            // this.log.debug('observeOptions', mutations);
+            this.refresh();
+          });
+        }
+        this.optionsMutationObserver.observe(this.element, {
+          // childList: true,
+          characterData: true,
+          subtree: true
         });
-      }
-      this.optionsMutationObserver.observe(this.element, {
-        // childList: true,
-        characterData: true,
-        subtree: true
-      });
-    } else {
-      if (this.optionsMutationObserver) {
-        this.optionsMutationObserver.disconnect();
-        this.optionsMutationObserver.takeRecords();
+      } else {
+        if (this.optionsMutationObserver) {
+          this.optionsMutationObserver.disconnect();
+          this.optionsMutationObserver.takeRecords();
+        }
       }
     }
   }
