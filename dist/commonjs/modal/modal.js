@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdModal = undefined;
 
-var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -62,11 +62,21 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var MdModal = exports.MdModal = (_dec = (0, _aureliaTemplating.customAttribute)('md-modal'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+var MdModal = exports.MdModal = (_dec = (0, _aureliaTemplating.customAttribute)('md-modal'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec8 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
   function MdModal(element) {
     _classCallCheck(this, MdModal);
 
     _initDefineProp(this, 'dismissible', _descriptor, this);
+
+    _initDefineProp(this, 'opacity', _descriptor2, this);
+
+    _initDefineProp(this, 'inDuration', _descriptor3, this);
+
+    _initDefineProp(this, 'outDuration', _descriptor4, this);
+
+    _initDefineProp(this, 'startingTop', _descriptor5, this);
+
+    _initDefineProp(this, 'endingTop', _descriptor6, this);
 
     this.element = element;
     this.attributeManager = new _attributeManager.AttributeManager(this.element);
@@ -79,7 +89,12 @@ var MdModal = exports.MdModal = (_dec = (0, _aureliaTemplating.customAttribute)(
     $(this.element).modal({
       complete: this.onComplete,
       dismissible: (0, _attributes.getBooleanFromAttributeValue)(this.dismissible),
-      ready: this.onReady
+      endingTop: this.endingTop,
+      inDuration: parseInt(this.inDuration, 10),
+      opacity: parseFloat(this.opacity),
+      outDuration: parseInt(this.outDuration, 10),
+      ready: this.onReady,
+      startingTop: this.startingTop
     });
   };
 
@@ -108,5 +123,30 @@ var MdModal = exports.MdModal = (_dec = (0, _aureliaTemplating.customAttribute)(
   enumerable: true,
   initializer: function initializer() {
     return true;
+  }
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'opacity', [_dec4], {
+  enumerable: true,
+  initializer: function initializer() {
+    return 0.5;
+  }
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'inDuration', [_dec5], {
+  enumerable: true,
+  initializer: function initializer() {
+    return 300;
+  }
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'outDuration', [_dec6], {
+  enumerable: true,
+  initializer: function initializer() {
+    return 200;
+  }
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'startingTop', [_dec7], {
+  enumerable: true,
+  initializer: function initializer() {
+    return '4%';
+  }
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'endingTop', [_dec8], {
+  enumerable: true,
+  initializer: function initializer() {
+    return '10%';
   }
 })), _class2)) || _class) || _class);

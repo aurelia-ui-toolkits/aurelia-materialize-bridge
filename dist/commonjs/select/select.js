@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdSelect = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -72,20 +72,23 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.BindingEngine, _aureliaTaskQueue.TaskQueue), _dec2 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.BindingEngine, _aureliaTaskQueue.TaskQueue), _dec2 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
   function MdSelect(element, logManager, bindingEngine, taskQueue) {
     _classCallCheck(this, MdSelect);
 
     _initDefineProp(this, 'disabled', _descriptor, this);
 
-    _initDefineProp(this, 'label', _descriptor2, this);
+    _initDefineProp(this, 'enableOptionObserver', _descriptor2, this);
 
-    _initDefineProp(this, 'showErrortext', _descriptor3, this);
+    _initDefineProp(this, 'label', _descriptor3, this);
+
+    _initDefineProp(this, 'showErrortext', _descriptor4, this);
 
     this._suspendUpdate = false;
     this.subscriptions = [];
     this.input = null;
     this.dropdownMutationObserver = null;
+    this.optionsMutationObserver = null;
     this._taskqueueRunning = false;
 
     this.element = element;
@@ -123,6 +126,7 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   MdSelect.prototype.detached = function detached() {
     $(this.element).off('change', this.handleChangeFromNativeSelect);
     this.observeVisibleDropdownContent(false);
+    this.observeOptions(false);
     this.dropdownMutationObserver = null;
     $(this.element).material_select('destroy');
     this.subscriptions.forEach(function (sub) {
@@ -191,12 +195,14 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
 
   MdSelect.prototype.createMaterialSelect = function createMaterialSelect(destroy) {
     this.observeVisibleDropdownContent(false);
+    this.observeOptions(false);
     if (destroy) {
       $(this.element).material_select('destroy');
     }
     $(this.element).material_select();
     this.toggleControl(this.disabled);
     this.observeVisibleDropdownContent(true);
+    this.observeOptions(true);
     this.setErrorTextAttribute();
   };
 
@@ -243,15 +249,38 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     }
   };
 
-  MdSelect.prototype.handleBlur = function handleBlur() {
+  MdSelect.prototype.observeOptions = function observeOptions(attach) {
     var _this4 = this;
+
+    if ((0, _attributes.getBooleanFromAttributeValue)(this.enableOptionObserver)) {
+      if (attach) {
+        if (!this.optionsMutationObserver) {
+          this.optionsMutationObserver = _aureliaPal.DOM.createMutationObserver(function (mutations) {
+            _this4.refresh();
+          });
+        }
+        this.optionsMutationObserver.observe(this.element, {
+          characterData: true,
+          subtree: true
+        });
+      } else {
+        if (this.optionsMutationObserver) {
+          this.optionsMutationObserver.disconnect();
+          this.optionsMutationObserver.takeRecords();
+        }
+      }
+    }
+  };
+
+  MdSelect.prototype.handleBlur = function handleBlur() {
+    var _this5 = this;
 
     if (this._taskqueueRunning) return;
     this._taskqueueRunning = true;
     this.taskQueue.queueTask(function () {
-      _this4.log.debug('fire blur event');
-      (0, _events.fireEvent)(_this4.element, 'blur');
-      _this4._taskqueueRunning = false;
+      _this5.log.debug('fire blur event');
+      (0, _events.fireEvent)(_this5.element, 'blur');
+      _this5._taskqueueRunning = false;
     });
   };
 
@@ -261,12 +290,17 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   initializer: function initializer() {
     return false;
   }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'label', [_dec4], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'enableOptionObserver', [_dec4], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
+  }
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'label', [_dec5], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'showErrortext', [_dec5], {
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'showErrortext', [_dec6], {
   enumerable: true,
   initializer: function initializer() {
     return true;

@@ -3,7 +3,7 @@
 System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', '../common/events'], function (_export, _context) {
   "use strict";
 
-  var bindable, customAttribute, inject, getBooleanFromAttributeValue, AttributeManager, fireMaterializeEvent, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdModal;
+  var bindable, customAttribute, inject, getBooleanFromAttributeValue, AttributeManager, fireMaterializeEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, MdModal;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -68,11 +68,21 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       fireMaterializeEvent = _commonEvents.fireMaterializeEvent;
     }],
     execute: function () {
-      _export('MdModal', MdModal = (_dec = customAttribute('md-modal'), _dec2 = inject(Element), _dec3 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
+      _export('MdModal', MdModal = (_dec = customAttribute('md-modal'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable(), _dec6 = bindable(), _dec7 = bindable(), _dec8 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdModal(element) {
           _classCallCheck(this, MdModal);
 
           _initDefineProp(this, 'dismissible', _descriptor, this);
+
+          _initDefineProp(this, 'opacity', _descriptor2, this);
+
+          _initDefineProp(this, 'inDuration', _descriptor3, this);
+
+          _initDefineProp(this, 'outDuration', _descriptor4, this);
+
+          _initDefineProp(this, 'startingTop', _descriptor5, this);
+
+          _initDefineProp(this, 'endingTop', _descriptor6, this);
 
           this.element = element;
           this.attributeManager = new AttributeManager(this.element);
@@ -85,7 +95,12 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           $(this.element).modal({
             complete: this.onComplete,
             dismissible: getBooleanFromAttributeValue(this.dismissible),
-            ready: this.onReady
+            endingTop: this.endingTop,
+            inDuration: parseInt(this.inDuration, 10),
+            opacity: parseFloat(this.opacity),
+            outDuration: parseInt(this.outDuration, 10),
+            ready: this.onReady,
+            startingTop: this.startingTop
           });
         };
 
@@ -114,6 +129,31 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
         enumerable: true,
         initializer: function initializer() {
           return true;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'opacity', [_dec4], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 0.5;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'inDuration', [_dec5], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 300;
+        }
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'outDuration', [_dec6], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 200;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'startingTop', [_dec7], {
+        enumerable: true,
+        initializer: function initializer() {
+          return '4%';
+        }
+      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'endingTop', [_dec8], {
+        enumerable: true,
+        initializer: function initializer() {
+          return '10%';
         }
       })), _class2)) || _class) || _class));
 

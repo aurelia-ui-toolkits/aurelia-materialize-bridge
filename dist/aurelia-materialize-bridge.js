@@ -589,35 +589,6 @@ export class MdCard {
   }
 }
 
-@customAttribute('md-char-counter')
-@inject(Element)
-export class MdCharCounter {
-  @bindable() length = 120;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.length = parseInt(this.length, 10);
-
-    // attach to input element explicitly, so this counter can be used on
-    // containers (or custom elements like md-input)
-    if (this.element.tagName.toUpperCase() === 'INPUT') {
-      this.attributeManager.addAttributes({ 'length': this.length });
-      $(this.element).characterCounter();
-    } else {
-      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
-      $(this.element).find('input').characterCounter();
-    }
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes(['length']);
-  }
-}
-
 // @customElement('md-carousel-item')
 @inject(Element)
 export class MdCarouselItem {
@@ -679,6 +650,35 @@ export class MdCarousel {
         $(this.element).carousel(options);
       });
     }
+  }
+}
+
+@customAttribute('md-char-counter')
+@inject(Element)
+export class MdCharCounter {
+  @bindable() length = 120;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.length = parseInt(this.length, 10);
+
+    // attach to input element explicitly, so this counter can be used on
+    // containers (or custom elements like md-input)
+    if (this.element.tagName.toUpperCase() === 'INPUT') {
+      this.attributeManager.addAttributes({ 'length': this.length });
+      $(this.element).characterCounter();
+    } else {
+      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
+      $(this.element).find('input').characterCounter();
+    }
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes(['length']);
   }
 }
 
@@ -1954,6 +1954,11 @@ export class MdModalTrigger {
 @inject(Element)
 export class MdModal {
   @bindable() dismissible = true;
+  @bindable() opacity = 0.5; // Opacity of modal background
+  @bindable() inDuration = 300; // Transition in duration
+  @bindable() outDuration = 200; // Transition out duration
+  @bindable() startingTop = '4%'; // Starting top style attribute
+  @bindable() endingTop = '10%'; // Ending top style attribute
 
   constructor(element) {
     this.element = element;
@@ -1967,7 +1972,12 @@ export class MdModal {
     $(this.element).modal({
       complete: this.onComplete,
       dismissible: getBooleanFromAttributeValue(this.dismissible),
-      ready: this.onReady
+      endingTop: this.endingTop,
+      inDuration: parseInt(this.inDuration, 10),
+      opacity: parseFloat(this.opacity),
+      outDuration: parseInt(this.outDuration, 10),
+      ready: this.onReady,
+      startingTop: this.startingTop
     });
   }
 
@@ -2398,12 +2408,14 @@ export class MdScrollSpy {
 @customAttribute('md-select')
 export class MdSelect {
   @bindable() disabled = false;
+  @bindable() enableOptionObserver = false;
   @bindable() label = '';
   @bindable() showErrortext = true;
   _suspendUpdate = false;
   subscriptions = [];
   input = null;
   dropdownMutationObserver = null;
+  optionsMutationObserver = null;
 
   constructor(element, logManager, bindingEngine, taskQueue) {
     this.element = element;
@@ -2443,6 +2455,7 @@ export class MdSelect {
   detached() {
     $(this.element).off('change', this.handleChangeFromNativeSelect);
     this.observeVisibleDropdownContent(false);
+    this.observeOptions(false);
     this.dropdownMutationObserver = null;
     $(this.element).material_select('destroy');
     this.subscriptions.forEach(sub => sub.dispose());
@@ -2507,12 +2520,14 @@ export class MdSelect {
 
   createMaterialSelect(destroy) {
     this.observeVisibleDropdownContent(false);
+    this.observeOptions(false);
     if (destroy) {
       $(this.element).material_select('destroy');
     }
     $(this.element).material_select();
     this.toggleControl(this.disabled);
     this.observeVisibleDropdownContent(true);
+    this.observeOptions(true);
     this.setErrorTextAttribute();
   }
 
@@ -2540,6 +2555,29 @@ export class MdSelect {
       if (this.dropdownMutationObserver) {
         this.dropdownMutationObserver.disconnect();
         this.dropdownMutationObserver.takeRecords();
+      }
+    }
+  }
+
+  observeOptions(attach) {
+    if (getBooleanFromAttributeValue(this.enableOptionObserver)) {
+      if (attach) {
+        if (!this.optionsMutationObserver) {
+          this.optionsMutationObserver = DOM.createMutationObserver(mutations => {
+            // this.log.debug('observeOptions', mutations);
+            this.refresh();
+          });
+        }
+        this.optionsMutationObserver.observe(this.element, {
+          // childList: true,
+          characterData: true,
+          subtree: true
+        });
+      } else {
+        if (this.optionsMutationObserver) {
+          this.optionsMutationObserver.disconnect();
+          this.optionsMutationObserver.takeRecords();
+        }
       }
     }
   }

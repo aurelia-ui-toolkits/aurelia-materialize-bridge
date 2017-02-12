@@ -160,12 +160,6 @@ export declare class MdCard {
   constructor(element?: any);
   attached(): any;
 }
-export declare class MdCharCounter {
-  length: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
 
 // @customElement('md-carousel-item')
 export declare class MdCarouselItem {
@@ -182,6 +176,12 @@ export declare class MdCarousel {
   attached(): any;
   itemsChanged(newValue?: any): any;
   refresh(): any;
+}
+export declare class MdCharCounter {
+  length: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
 }
 
 // @customElement('md-checkbox')
@@ -435,6 +435,13 @@ export declare class MdModalTrigger {
 }
 export declare class MdModal {
   dismissible: any;
+  opacity: any;
+  inDuration: any;
+  outDuration: any;
+  startingTop: any;
+  endingTop: any;
+  
+  // Ending top style attribute
   constructor(element?: any);
   attached(): any;
   detached(): any;
@@ -556,11 +563,13 @@ export declare class MdScrollSpy {
 }
 export declare class MdSelect {
   disabled: any;
+  enableOptionObserver: any;
   label: any;
   showErrortext: any;
   subscriptions: any;
   input: any;
   dropdownMutationObserver: any;
+  optionsMutationObserver: any;
   constructor(element?: any, logManager?: any, bindingEngine?: any, taskQueue?: any);
   attached(): any;
   detached(): any;
@@ -574,6 +583,7 @@ export declare class MdSelect {
   toggleControl(disable?: any): any;
   createMaterialSelect(destroy?: any): any;
   observeVisibleDropdownContent(attach?: any): any;
+  observeOptions(attach?: any): any;
   handleBlur(): any;
 }
 export declare class MdSidenavCollapse {

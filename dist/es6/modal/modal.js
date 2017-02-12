@@ -8,6 +8,11 @@ import { fireMaterializeEvent } from '../common/events';
 @inject(Element)
 export class MdModal {
   @bindable() dismissible = true;
+  @bindable() opacity = 0.5; // Opacity of modal background
+  @bindable() inDuration = 300; // Transition in duration
+  @bindable() outDuration = 200; // Transition out duration
+  @bindable() startingTop = '4%'; // Starting top style attribute
+  @bindable() endingTop = '10%'; // Ending top style attribute
 
   constructor(element) {
     this.element = element;
@@ -21,7 +26,12 @@ export class MdModal {
     $(this.element).modal({
       complete: this.onComplete,
       dismissible: getBooleanFromAttributeValue(this.dismissible),
-      ready: this.onReady
+      endingTop: this.endingTop,
+      inDuration: parseInt(this.inDuration, 10),
+      opacity: parseFloat(this.opacity),
+      outDuration: parseInt(this.outDuration, 10),
+      ready: this.onReady,
+      startingTop: this.startingTop
     });
   }
 
