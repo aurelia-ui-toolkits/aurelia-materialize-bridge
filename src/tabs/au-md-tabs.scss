@@ -1,0 +1,44 @@
+au-md-tabs {
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 48px;
+  width: 100%;
+  background-color: white;
+  margin: 0 auto;
+  white-space: nowrap;
+
+  .au-md-tab-bar {
+    position: relative;
+    display: flex;
+
+    .au-md-tab {
+      cursor: pointer;
+      flex-grow: 1;
+      display: inline-block;
+      text-align: center;
+      line-height: 48px;
+      height: 48px;
+      padding: 0;
+      margin: 0;
+      text-transform: uppercase;
+      transition: color .28s ease;
+    }
+
+    .indicator {
+      position: absolute;
+      bottom: 0;
+      height: 2px;
+      will-change: left, right;
+    }
+  }
+
+  .au-md-tab-panel {
+    au-md-tab {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
