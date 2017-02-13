@@ -52,7 +52,8 @@ export function configure(aurelia) {
           .useTooltip()
           .useTransitions()
           .useWaves()
-          .useWell();
+          .useWell()
+          .useAuTabs();
       })
       .plugin('aurelia-validation');
 
