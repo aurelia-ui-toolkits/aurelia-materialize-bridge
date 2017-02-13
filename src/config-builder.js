@@ -248,6 +248,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useAuTabs(): ConfigBuilder {
+    this.globalResources.push('./tabs/au-md-tabs');
+    this.globalResources.push('./tabs/au-md-tab');
+  }
+
   useTooltip(): ConfigBuilder {
     this.globalResources.push('./tooltip/tooltip');
     return this;

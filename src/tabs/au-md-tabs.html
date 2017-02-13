@@ -1,0 +1,10 @@
+<template>
+  <require from="./au-md-tabs.css"></require>
+  <div class="au-md-tab-bar" ref="tabBar">
+    <div repeat.for="tab of tabs" click.delegate="setActive(tab)" class="au-md-tab primary-text ${tab.isActive ? 'active' : ''}">${tab.mdLabel}</div>
+    <div class="indicator" ref="indicator"></div>
+  </div>
+  <div class="au-md-tab-panel">
+    <slot></slot>
+  </div>
+</template>
