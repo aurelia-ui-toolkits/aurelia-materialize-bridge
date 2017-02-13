@@ -12,6 +12,7 @@ var tools = require('aurelia-tools');
 var del = require('del');
 var sourcemaps = require('gulp-sourcemaps');
 var vinylPaths = require('vinyl-paths');
+var sass = require('gulp-sass');
 
 var jsName = paths.packageName + '.js';
 
@@ -98,23 +99,31 @@ gulp.task('build-dts', function(){
 });
 
 gulp.task('copy-html', function() {
- return gulp.src(paths.html)
-  .pipe(gulp.dest(paths.output + 'es6'))
-  .pipe(gulp.dest(paths.output + 'commonjs'))
-  .pipe(gulp.dest(paths.output + 'amd'))
-  .pipe(gulp.dest(paths.output + 'dev'))
-  .pipe(gulp.dest(paths.output + 'system'));
-
+  return gulp.src(paths.html)
+    .pipe(gulp.dest(paths.output + 'es6'))
+    .pipe(gulp.dest(paths.output + 'commonjs'))
+    .pipe(gulp.dest(paths.output + 'amd'))
+    .pipe(gulp.dest(paths.output + 'dev'))
+    .pipe(gulp.dest(paths.output + 'system'));
 });
 
 gulp.task('copy-css', function() {
- return gulp.src(paths.style)
-  .pipe(gulp.dest(paths.output + 'es6'))
-  .pipe(gulp.dest(paths.output + 'commonjs'))
-  .pipe(gulp.dest(paths.output + 'amd'))
-  .pipe(gulp.dest(paths.output + 'dev'))
-  .pipe(gulp.dest(paths.output + 'system'));
+  return gulp.src(paths.style)
+    .pipe(gulp.dest(paths.output + 'es6'))
+    .pipe(gulp.dest(paths.output + 'commonjs'))
+    .pipe(gulp.dest(paths.output + 'amd'))
+    .pipe(gulp.dest(paths.output + 'dev'))
+    .pipe(gulp.dest(paths.output + 'system'));
+});
 
+gulp.task('build-sass', function(){
+  return gulp.src(paths.sass)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest(paths.output + 'es6'))
+    .pipe(gulp.dest(paths.output + 'commonjs'))
+    .pipe(gulp.dest(paths.output + 'amd'))
+    .pipe(gulp.dest(paths.output + 'dev'))
+    .pipe(gulp.dest(paths.output + 'system'));
 });
 
 
@@ -122,7 +131,7 @@ gulp.task('build', function(callback) {
   return runSequence(
     'clean',
     'build-index',
-    ['build-es6-temp', 'build-es6', 'build-commonjs', 'build-amd', 'build-system', 'build-dev'],
+    ['build-es6-temp', 'build-es6', 'build-commonjs', 'build-amd', 'build-system', 'build-dev', 'build-sass'],
     ['copy-html', 'copy-css'],
     'build-dts',
     callback
