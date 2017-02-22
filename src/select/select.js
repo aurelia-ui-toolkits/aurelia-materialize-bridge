@@ -2,12 +2,12 @@ import {bindable, customAttribute} from 'aurelia-templating';
 import {BindingEngine} from 'aurelia-binding';
 import {inject} from 'aurelia-dependency-injection';
 import {TaskQueue} from 'aurelia-task-queue';
-import * as LogManager from 'aurelia-logging';
+import {getLogger} from 'aurelia-logging';
 import {fireEvent} from '../common/events';
 import {getBooleanFromAttributeValue} from '../common/attributes';
 import {DOM} from 'aurelia-pal';
 
-@inject(Element, LogManager, BindingEngine, TaskQueue)
+@inject(Element, BindingEngine, TaskQueue)
 @customAttribute('md-select')
 export class MdSelect {
   @bindable() disabled = false;
@@ -20,13 +20,13 @@ export class MdSelect {
   dropdownMutationObserver = null;
   optionsMutationObserver = null;
 
-  constructor(element, logManager, bindingEngine, taskQueue) {
+  constructor(element, bindingEngine, taskQueue) {
     this.element = element;
     this.taskQueue = taskQueue;
     this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
     this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
-    this.log = LogManager.getLogger('md-select');
+    this.log = getLogger('md-select');
     this.bindingEngine = bindingEngine;
   }
 
