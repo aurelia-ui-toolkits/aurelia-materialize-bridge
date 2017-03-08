@@ -134,6 +134,55 @@
         }
       ]
     },
+    "import": {
+      "patches": [
+        { "op": "replace", "path": "/build/loader/plugins/0/stub", "value": false}
+      ],
+      "bundles": [
+        {
+          "name": "materialize-bundle.js",
+          "dependencies": [
+            "jquery",
+            {
+              "name": "materialize-css",
+              "path": "../node_modules/materialize-css/dist",
+              "main": "js/materialize.amd",
+              "deps": [
+                "jquery"
+              ],
+              "resources": [
+                "css/materialize.css"
+              ],
+              "exports": "Materialize"
+            },
+            {
+              "name": "aurelia-materialize-bridge",
+              "path": "../node_modules/aurelia-materialize-bridge/dist/amd",
+              "main": "index",
+              "deps": [
+                "jquery"
+              ],
+              "resources": [
+                "**/*.{css,html}",
+                "index.js"
+              ]
+            }
+          ]
+        }
+      ],
+      "tasks": [
+        "prepare-materialize"
+      ],
+      "scripts": {
+        "install": [
+          "au prepare-materialize",
+          "node node_modules/requirejs/bin/r.js -o tools/rbuild.js"
+        ]
+      },
+      "tutorial": [
+        "1. in main.js add .plugin('aurelia-materialize-bridge')"
+      ]
+    },
     "build": {
       "resources": [
         "aurelia-materialize-bridge/autocomplete/autocomplete",
