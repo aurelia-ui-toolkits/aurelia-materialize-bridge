@@ -130,7 +130,7 @@ export class MdDatePicker {
   }
 
   movePickerCloserToSrc() {
-    $(this.picker.$root).appendTo($(this.element).parent());
+    // $(this.picker.$node).appendTo($(this.element).parent());
   }
 
   detached() {
