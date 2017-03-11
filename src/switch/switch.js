@@ -11,6 +11,7 @@ export class MdSwitch {
     defaultBindingMode: bindingMode.twoWay
   }) mdChecked;
   @bindable() mdDisabled;
+  @bindable() mdReadonly = false;
   @bindable() mdLabelOff = 'Off';
   @bindable() mdLabelOn = 'On';
 

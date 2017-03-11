@@ -13,6 +13,7 @@ export class MdCheckbox {
     defaultBindingMode: bindingMode.twoWay
   }) mdChecked;
   @bindable() mdDisabled;
+  @bindable() mdReadonly = false;
   @bindable() mdFilledIn;
   @bindable() mdMatcher;
   @bindable() mdModel;
