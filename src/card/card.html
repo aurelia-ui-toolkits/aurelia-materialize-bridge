@@ -14,7 +14,11 @@
         ${mdTitle}
         <i class="material-icons right">more_vert</i>
       </span>
-      <span if.bind="mdImage === null" class="card-title">${mdTitle}</span>
+      <span if.bind="mdImage === null && mdReveal !== true" class="card-title">${mdTitle}</span>
+      <!-- 
+        Print a title when image is null and card is not revealable.
+        This condition should complement the other two if conditions. 
+      -->
       <slot></slot>
     </div>
 
