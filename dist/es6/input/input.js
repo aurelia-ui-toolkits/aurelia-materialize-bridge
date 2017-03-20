@@ -50,6 +50,7 @@ export class MdInput {
   }
 
   bind() {
+    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
     this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
     this.mdShowErrortext = getBooleanFromAttributeValue(this.mdShowErrortext);
     this.mdBlurOnEnter = getBooleanFromAttributeValue(this.mdBlurOnEnter);

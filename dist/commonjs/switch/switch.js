@@ -88,6 +88,7 @@ var MdSwitch = exports.MdSwitch = (_dec = (0, _aureliaTemplating.customElement)(
       this.checkbox.disabled = true;
     }
     this.checkbox.addEventListener('change', this.handleChange);
+    this.mdReadonly = (0, _attributes.getBooleanFromAttributeValue)(this.mdReadonly);
   };
 
   MdSwitch.prototype.detached = function detached() {

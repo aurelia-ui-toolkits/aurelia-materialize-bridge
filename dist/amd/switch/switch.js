@@ -83,6 +83,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         this.checkbox.disabled = true;
       }
       this.checkbox.addEventListener('change', this.handleChange);
+      this.mdReadonly = (0, _attributes.getBooleanFromAttributeValue)(this.mdReadonly);
     };
 
     MdSwitch.prototype.detached = function detached() {

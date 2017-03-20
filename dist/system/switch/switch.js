@@ -94,6 +94,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this.checkbox.disabled = true;
           }
           this.checkbox.addEventListener('change', this.handleChange);
+          this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
         };
 
         MdSwitch.prototype.detached = function detached() {

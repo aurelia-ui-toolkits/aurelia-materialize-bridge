@@ -32,6 +32,7 @@ export class MdRadio {
     if (getBooleanFromAttributeValue(this.mdDisabled)) {
       this.radio.disabled = true;
     }
+    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
     // this.radio.checked = getBooleanFromAttributeValue(this.mdChecked);
     // this.radio.addEventListener('change', this.handleChange);
   }

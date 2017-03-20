@@ -120,6 +120,7 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
   }
 
   MdInput.prototype.bind = function bind() {
+    this.mdReadonly = (0, _attributes.getBooleanFromAttributeValue)(this.mdReadonly);
     this.mdTextArea = (0, _attributes.getBooleanFromAttributeValue)(this.mdTextArea);
     this.mdShowErrortext = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowErrortext);
     this.mdBlurOnEnter = (0, _attributes.getBooleanFromAttributeValue)(this.mdBlurOnEnter);

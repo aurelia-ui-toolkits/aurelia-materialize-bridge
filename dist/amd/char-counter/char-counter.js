@@ -73,18 +73,18 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       this.length = parseInt(this.length, 10);
 
       if (this.element.tagName.toUpperCase() === 'INPUT') {
-        this.attributeManager.addAttributes({ 'length': this.length });
+        this.attributeManager.addAttributes({ 'data-length': this.length });
         $(this.element).characterCounter();
       } else {
         $(this.element).find('input').each(function (i, el) {
-          $(el).attr('length', _this.length);
+          $(el).attr('data-length', _this.length);
         });
         $(this.element).find('input').characterCounter();
       }
     };
 
     MdCharCounter.prototype.detached = function detached() {
-      this.attributeManager.removeAttributes(['length']);
+      this.attributeManager.removeAttributes(['data-length']);
     };
 
     return MdCharCounter;

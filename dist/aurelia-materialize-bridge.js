@@ -1,7 +1,7 @@
 import {bindable,customAttribute,customElement,children,inlineView} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
-import {Router} from 'aurelia-router';
 import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-binding';
+import {Router} from 'aurelia-router';
 import {TaskQueue} from 'aurelia-task-queue';
 import {getLogger} from 'aurelia-logging';
 import {EventAggregator} from 'aurelia-event-aggregator';
@@ -420,6 +420,32 @@ export class MdBadge {
   }
 }
 
+@customAttribute('md-box')
+@inject(Element)
+export class MdBox {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) caption;
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('materialboxed');
+    if (this.caption) {
+      this.attributeManager.addAttributes({ 'data-caption': this.caption });
+    }
+    // FIXME:0 throws "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
+    $(this.element).materialbox();
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes('data-caption');
+    this.attributeManager.removeClasses('materialboxed');
+  }
+}
+
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 
 @customElement('md-breadcrumbs')
@@ -468,32 +494,6 @@ export class InstructionFilterValueConverter {
       }
       return result;
     });
-  }
-}
-
-@customAttribute('md-box')
-@inject(Element)
-export class MdBox {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) caption;
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('materialboxed');
-    if (this.caption) {
-      this.attributeManager.addAttributes({ 'data-caption': this.caption });
-    }
-    // FIXME:0 throws "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
-    $(this.element).materialbox();
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes('data-caption');
-    this.attributeManager.removeClasses('materialboxed');
   }
 }
 
@@ -668,16 +668,16 @@ export class MdCharCounter {
     // attach to input element explicitly, so this counter can be used on
     // containers (or custom elements like md-input)
     if (this.element.tagName.toUpperCase() === 'INPUT') {
-      this.attributeManager.addAttributes({ 'length': this.length });
+      this.attributeManager.addAttributes({ 'data-length': this.length });
       $(this.element).characterCounter();
     } else {
-      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
+      $(this.element).find('input').each((i, el) => { $(el).attr('data-length', this.length); });
       $(this.element).find('input').characterCounter();
     }
   }
 
   detached() {
-    this.attributeManager.removeAttributes(['length']);
+    this.attributeManager.removeAttributes(['data-length']);
   }
 }
 
@@ -713,6 +713,7 @@ export class MdCheckbox {
     if (getBooleanFromAttributeValue(this.mdDisabled)) {
       this.checkbox.disabled = true;
     }
+    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
     // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
     // this.checkbox.addEventListener('change', this.handleChange);
   }
@@ -1232,7 +1233,6 @@ export class MdDatePicker {
       calendarIcon.classList.add(options.iconClass);
     }
 
-    this.movePickerCloserToSrc();
     this.setErrorTextAttribute();
   }
 
@@ -1249,10 +1249,6 @@ export class MdDatePicker {
       }
     }
     return false;
-  }
-
-  movePickerCloserToSrc() {
-    // $(this.picker.$node).appendTo($(this.element).parent());
   }
 
   detached() {
@@ -1697,6 +1693,22 @@ export class MdDropdown {
   }
 }
 
+@customElement('md-fab')
+@inject(Element)
+export class MdFab {
+  @bindable() mdFixed = false;
+  @bindable() mdLarge = false;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.mdFixed = getBooleanFromAttributeValue(this.mdFixed);
+    this.mdLarge = getBooleanFromAttributeValue(this.mdLarge);
+  }
+}
+
 @customElement('md-file')
 @inject(Element)
 export class MdFileInput {
@@ -1733,22 +1745,6 @@ export class MdFileInput {
       fireMaterializeEvent(this.filePath, 'change', { files: this.files });
       this._suspendUpdate = false;
     }
-  }
-}
-
-@customElement('md-fab')
-@inject(Element)
-export class MdFab {
-  @bindable() mdFixed = false;
-  @bindable() mdLarge = false;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    this.mdFixed = getBooleanFromAttributeValue(this.mdFixed);
-    this.mdLarge = getBooleanFromAttributeValue(this.mdLarge);
   }
 }
 
@@ -1853,6 +1849,7 @@ export class MdInput {
   }
 
   bind() {
+    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
     this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
     this.mdShowErrortext = getBooleanFromAttributeValue(this.mdShowErrortext);
     this.mdBlurOnEnter = getBooleanFromAttributeValue(this.mdBlurOnEnter);
@@ -2003,6 +2000,42 @@ export class MdModal {
   }
 }
 
+@customElement('md-navbar')
+@inject(Element)
+export class MdNavbar {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdFixed;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdAutoHeight;
+  fixedAttributeManager;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
+    this.navAttributeManager = new AttributeManager(this.nav);
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
+      this.fixedAttributeManager.addClasses('navbar-fixed');
+    }
+    if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
+      this.navAttributeManager.addClasses('md-auto-height');
+    }
+  }
+
+  detached() {
+    if (getBooleanFromAttributeValue(this.mdFixed)) {
+      this.fixedAttributeManager.removeClasses('navbar-fixed');
+    }
+    if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
+      this.navAttributeManager.addClasses('md-auto-height');
+    }
+  }
+}
+
 @customElement('md-pagination')
 @inject(Element)
 export class MdPagination {
@@ -2097,42 +2130,6 @@ export class MdPagination {
   }
 }
 
-@customElement('md-navbar')
-@inject(Element)
-export class MdNavbar {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdFixed;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdAutoHeight;
-  fixedAttributeManager;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
-    this.navAttributeManager = new AttributeManager(this.nav);
-    if (getBooleanFromAttributeValue(this.mdFixed)) {
-      this.fixedAttributeManager.addClasses('navbar-fixed');
-    }
-    if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
-      this.navAttributeManager.addClasses('md-auto-height');
-    }
-  }
-
-  detached() {
-    if (getBooleanFromAttributeValue(this.mdFixed)) {
-      this.fixedAttributeManager.removeClasses('navbar-fixed');
-    }
-    if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
-      this.navAttributeManager.addClasses('md-auto-height');
-    }
-  }
-}
-
 @customAttribute('md-parallax')
 @inject(Element)
 export class MdParallax {
@@ -2194,6 +2191,30 @@ export class MdProgress {
   }
 }
 
+@customAttribute('md-pushpin')
+@inject(Element)
+export class MdPushpin {
+  @bindable() bottom = Infinity;
+  @bindable() offset = 0;
+  @bindable() top = 0;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    $(this.element).pushpin({
+      bottom: (this.bottom === Infinity ? Infinity : parseInt(this.bottom, 10)),
+      offset: parseInt(this.offset, 10),
+      top: parseInt(this.top, 10)
+    });
+  }
+
+  detached() {
+    // destroy handler not available
+  }
+}
+
 @customElement('md-radio')
 @inject(Element)
 export class MdRadio {
@@ -2222,6 +2243,7 @@ export class MdRadio {
     if (getBooleanFromAttributeValue(this.mdDisabled)) {
       this.radio.disabled = true;
     }
+    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
     // this.radio.checked = getBooleanFromAttributeValue(this.mdChecked);
     // this.radio.addEventListener('change', this.handleChange);
   }
@@ -2245,30 +2267,6 @@ export class MdRadio {
     if (this.radio) {
       this.radio.disabled = !!newValue;
     }
-  }
-}
-
-@customAttribute('md-pushpin')
-@inject(Element)
-export class MdPushpin {
-  @bindable() bottom = Infinity;
-  @bindable() offset = 0;
-  @bindable() top = 0;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    $(this.element).pushpin({
-      bottom: (this.bottom === Infinity ? Infinity : parseInt(this.bottom, 10)),
-      offset: parseInt(this.offset, 10),
-      top: parseInt(this.top, 10)
-    });
-  }
-
-  detached() {
-    // destroy handler not available
   }
 }
 
@@ -2715,56 +2713,6 @@ export class MdSidenav {
   }
 }
 
-@customElement('md-switch')
-@inject(Element)
-export class MdSwitch {
-  @bindable({
-    defaultBindingMode: bindingMode.twoWay
-  }) mdChecked;
-  @bindable() mdDisabled;
-  @bindable() mdReadonly = false;
-  @bindable() mdLabelOff = 'Off';
-  @bindable() mdLabelOn = 'On';
-
-  constructor(element) {
-    this.element = element;
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  attached() {
-    this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
-    if (getBooleanFromAttributeValue(this.mdDisabled)) {
-      this.checkbox.disabled = true;
-    }
-    this.checkbox.addEventListener('change', this.handleChange);
-  }
-
-  detached() {
-    this.checkbox.removeEventListener('change', this.handleChange);
-  }
-
-  handleChange() {
-    this.mdChecked = this.checkbox.checked;
-    fireEvent(this.element, 'blur');
-  }
-
-  blur() {
-    fireEvent(this.element, 'blur');
-  }
-
-  mdCheckedChanged(newValue) {
-    if (this.checkbox) {
-      this.checkbox.checked = !!newValue;
-    }
-  }
-
-  mdDisabledChanged(newValue) {
-    if (this.checkbox) {
-      this.checkbox.disabled = !!newValue;
-    }
-  }
-}
-
 @customElement('md-slider')
 @inject(Element)
 @inlineView(`
@@ -2835,13 +2783,54 @@ export class MdSlider {
   // }
 }
 
-export class MdToastService {
-  show(message, displayLength, className?) {
-    return new Promise((resolve, reject) => {
-      Materialize.toast(message, displayLength, className, () => {
-        resolve();
-      });
-    });
+@customElement('md-switch')
+@inject(Element)
+export class MdSwitch {
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdChecked;
+  @bindable() mdDisabled;
+  @bindable() mdReadonly = false;
+  @bindable() mdLabelOff = 'Off';
+  @bindable() mdLabelOn = 'On';
+
+  constructor(element) {
+    this.element = element;
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  attached() {
+    this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
+    if (getBooleanFromAttributeValue(this.mdDisabled)) {
+      this.checkbox.disabled = true;
+    }
+    this.checkbox.addEventListener('change', this.handleChange);
+    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
+  }
+
+  detached() {
+    this.checkbox.removeEventListener('change', this.handleChange);
+  }
+
+  handleChange() {
+    this.mdChecked = this.checkbox.checked;
+    fireEvent(this.element, 'blur');
+  }
+
+  blur() {
+    fireEvent(this.element, 'blur');
+  }
+
+  mdCheckedChanged(newValue) {
+    if (this.checkbox) {
+      this.checkbox.checked = !!newValue;
+    }
+  }
+
+  mdDisabledChanged(newValue) {
+    if (this.checkbox) {
+      this.checkbox.disabled = !!newValue;
+    }
   }
 }
 
@@ -2963,6 +2952,16 @@ export class MdTabs {
       }
     });
     return { href, index };
+  }
+}
+
+export class MdToastService {
+  show(message, displayLength, className?) {
+    return new Promise((resolve, reject) => {
+      Materialize.toast(message, displayLength, className, () => {
+        resolve();
+      });
+    });
   }
 }
 

@@ -164,7 +164,6 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
       calendarIcon.classList.add(options.iconClass);
     }
 
-    this.movePickerCloserToSrc();
     this.setErrorTextAttribute();
   };
 
@@ -195,8 +194,6 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
     }
     return false;
   };
-
-  MdDatePicker.prototype.movePickerCloserToSrc = function movePickerCloserToSrc() {};
 
   MdDatePicker.prototype.detached = function detached() {
     if (this.picker) {

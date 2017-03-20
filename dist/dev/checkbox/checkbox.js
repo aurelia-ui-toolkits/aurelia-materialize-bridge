@@ -103,6 +103,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           if (getBooleanFromAttributeValue(this.mdDisabled)) {
             this.checkbox.disabled = true;
           }
+          this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
         };
 
         MdCheckbox.prototype.detached = function detached() {

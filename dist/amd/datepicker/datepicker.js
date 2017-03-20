@@ -153,7 +153,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
         calendarIcon.classList.add(options.iconClass);
       }
 
-      this.movePickerCloserToSrc();
       this.setErrorTextAttribute();
     };
 
@@ -184,8 +183,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
       }
       return false;
     };
-
-    MdDatePicker.prototype.movePickerCloserToSrc = function movePickerCloserToSrc() {};
 
     MdDatePicker.prototype.detached = function detached() {
       if (this.picker) {

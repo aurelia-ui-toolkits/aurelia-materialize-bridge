@@ -111,6 +111,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     }
 
     MdInput.prototype.bind = function bind() {
+      this.mdReadonly = (0, _attributes.getBooleanFromAttributeValue)(this.mdReadonly);
       this.mdTextArea = (0, _attributes.getBooleanFromAttributeValue)(this.mdTextArea);
       this.mdShowErrortext = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowErrortext);
       this.mdBlurOnEnter = (0, _attributes.getBooleanFromAttributeValue)(this.mdBlurOnEnter);

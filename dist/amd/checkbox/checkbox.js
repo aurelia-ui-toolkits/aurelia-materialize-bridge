@@ -92,6 +92,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
         this.checkbox.disabled = true;
       }
+      this.mdReadonly = (0, _attributes.getBooleanFromAttributeValue)(this.mdReadonly);
     };
 
     MdCheckbox.prototype.detached = function detached() {

@@ -100,6 +100,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           if (getBooleanFromAttributeValue(this.mdDisabled)) {
             this.radio.disabled = true;
           }
+          this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
         };
 
         MdRadio.prototype.detached = function detached() {

@@ -97,6 +97,7 @@ var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customEleme
     if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
       this.checkbox.disabled = true;
     }
+    this.mdReadonly = (0, _attributes.getBooleanFromAttributeValue)(this.mdReadonly);
   };
 
   MdCheckbox.prototype.detached = function detached() {

@@ -9,14 +9,14 @@ import {
   inject
 } from 'aurelia-dependency-injection';
 import {
-  Router
-} from 'aurelia-router';
-import {
   bindingMode,
   observable,
   BindingEngine,
   ObserverLocator
 } from 'aurelia-binding';
+import {
+  Router
+} from 'aurelia-router';
 import {
   TaskQueue
 } from 'aurelia-task-queue';
@@ -121,6 +121,12 @@ export declare class MdBadge {
   newChanged(newValue?: any): any;
   captionChanged(newValue?: any): any;
 }
+export declare class MdBox {
+  caption: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 export declare class MdBreadcrumbs {
@@ -132,12 +138,6 @@ export declare class MdBreadcrumbs {
 }
 export declare class InstructionFilterValueConverter {
   toView(navigationInstructions?: any): any;
-}
-export declare class MdBox {
-  caption: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
 }
 export declare class MdButton {
   disabled: any;
@@ -327,7 +327,6 @@ export declare class MdDatePicker {
   constructor(element?: any, taskQueue?: any, defaultParser?: any);
   bind(): any;
   parseDate(value?: any): any;
-  movePickerCloserToSrc(): any;
   detached(): any;
   openDatePicker(): any;
   closeDatePicker(): any;
@@ -369,6 +368,12 @@ export declare class MdDropdown {
   detached(): any;
   handleActivateElement(): any;
 }
+export declare class MdFab {
+  mdFixed: any;
+  mdLarge: any;
+  constructor(element?: any);
+  attached(): any;
+}
 export declare class MdFileInput {
   mdCaption: any;
   mdMultiple: any;
@@ -379,12 +384,6 @@ export declare class MdFileInput {
   attached(): any;
   detached(): any;
   handleChangeFromNativeInput(): any;
-}
-export declare class MdFab {
-  mdFixed: any;
-  mdLarge: any;
-  constructor(element?: any);
-  attached(): any;
 }
 export declare class MdFooter {
   constructor(element?: any);
@@ -451,6 +450,14 @@ export declare class MdModal {
   open(): any;
   close(): any;
 }
+export declare class MdNavbar {
+  mdFixed: any;
+  mdAutoHeight: any;
+  fixedAttributeManager: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
 export declare class MdPagination {
   mdActivePage: any;
   mdPages: any;
@@ -474,14 +481,6 @@ export declare class MdPagination {
   mdVisiblePageLinksChanged(): any;
   generatePageLinks(): any;
 }
-export declare class MdNavbar {
-  mdFixed: any;
-  mdAutoHeight: any;
-  fixedAttributeManager: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
 export declare class MdParallax {
   constructor(element?: any);
   attached(): any;
@@ -502,6 +501,14 @@ export declare class MdProgress {
   attached(): any;
   mdSizeChanged(newValue?: any): any;
   mdPixelSizeChanged(newValue?: any): any;
+}
+export declare class MdPushpin {
+  bottom: any;
+  offset: any;
+  top: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
 }
 export declare class MdRadio {
   static id: any;
@@ -525,14 +532,6 @@ export declare class MdRadio {
   //   }
   // }
   mdDisabledChanged(newValue?: any): any;
-}
-export declare class MdPushpin {
-  bottom: any;
-  offset: any;
-  top: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
 }
 export declare class MdRange {
   mdMin: any;
@@ -609,20 +608,6 @@ export declare class MdSidenav {
   detached(): any;
   mdFixedChanged(newValue?: any): any;
 }
-export declare class MdSwitch {
-  mdChecked: any;
-  mdDisabled: any;
-  mdReadonly: any;
-  mdLabelOff: any;
-  mdLabelOn: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  handleChange(): any;
-  blur(): any;
-  mdCheckedChanged(newValue?: any): any;
-  mdDisabledChanged(newValue?: any): any;
-}
 export declare class MdSlider {
   mdFillContainer: any;
   mdHeight: any;
@@ -638,8 +623,19 @@ export declare class MdSlider {
   refresh(): any;
   mdIndicatorsChanged(): any;
 }
-export declare class MdToastService {
-  show(message?: any, displayLength?: any, className?: any): any;
+export declare class MdSwitch {
+  mdChecked: any;
+  mdDisabled: any;
+  mdReadonly: any;
+  mdLabelOff: any;
+  mdLabelOn: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  handleChange(): any;
+  blur(): any;
+  mdCheckedChanged(newValue?: any): any;
+  mdDisabledChanged(newValue?: any): any;
 }
 export declare class MdTabs {
   fixed: any;
@@ -658,6 +654,9 @@ export declare class MdTabs {
   
   // FIXME: probably bad - binding this introduces dirty checking
   selectedTab: any;
+}
+export declare class MdToastService {
+  show(message?: any, displayLength?: any, className?: any): any;
 }
 export declare class MdTooltip {
   position: any;
