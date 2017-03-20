@@ -37,6 +37,7 @@ export class MdCheckbox {
     if (getBooleanFromAttributeValue(this.mdDisabled)) {
       this.checkbox.disabled = true;
     }
+    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
     // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
     // this.checkbox.addEventListener('change', this.handleChange);
   }

@@ -26,6 +26,7 @@ export class MdSwitch {
       this.checkbox.disabled = true;
     }
     this.checkbox.addEventListener('change', this.handleChange);
+    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
   }
 
   detached() {
