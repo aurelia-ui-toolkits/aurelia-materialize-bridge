@@ -110,7 +110,6 @@ export class MdDatePicker {
       calendarIcon.classList.add(options.iconClass);
     }
 
-    this.movePickerCloserToSrc();
     this.setErrorTextAttribute();
   }
 
@@ -127,10 +126,6 @@ export class MdDatePicker {
       }
     }
     return false;
-  }
-
-  movePickerCloserToSrc() {
-    // $(this.picker.$node).appendTo($(this.element).parent());
   }
 
   detached() {
