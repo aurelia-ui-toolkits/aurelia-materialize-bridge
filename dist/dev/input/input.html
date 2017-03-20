@@ -1,0 +1,10 @@
+<template>
+  <require from="./input.css"></require>
+  <div class="input-field">
+    <!-- <content select="[md-prefix]"></content> -->
+    <slot></slot>
+    <input if.bind="mdTextArea === false" id="${controlId}" type.bind="mdType" step.bind="mdStep" ref="input" value.bind="mdValue" readonly.bind="mdReadonly"  disabled.bind="mdDisabled" blur.trigger="blur()" focus.trigger="focus()" />
+    <textarea if.bind="mdTextArea === true" id="${controlId}" ref="input" value.bind="mdValue" class="materialize-textarea" readonly.bind="mdReadonly" disabled.bind="mdDisabled" blur.trigger="blur()" focus.trigger="focus()"></textarea>
+    <label for="${controlId}" ref="label">${mdLabel}</label>
+  </div>
+</template>

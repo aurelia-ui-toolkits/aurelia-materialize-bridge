@@ -1,0 +1,1 @@
+{"version":3,"sources":["click-counter.js"],"names":["ClickCounter","count","increment"],"mappings":";;;;;;;;;;;;;;;;8BAAaA,Y;;;;eACXC,K,GAAQ,C;;;+BAERC,S,wBAAY;AACV,eAAKD,KAAL;AACD,S","file":"../../click-counter.js","sourcesContent":["export class ClickCounter {\n  count = 0;\n\n  increment() {\n    this.count++;\n  }\n}\n"]}

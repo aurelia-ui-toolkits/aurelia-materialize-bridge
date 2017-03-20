@@ -1,0 +1,1 @@
+{"version":3,"sources":["common/constants.js"],"names":["constants","eventPrefix","bindablePrefix"],"mappings":";;;;;;;;;2BAAaA,S,GAAY;AACvBC,qBAAa,QADU;AAEvBC,wBAAgB;AAFO,O","file":"../../../common/constants.js","sourcesContent":["export const constants = {\n  eventPrefix: 'md-on-',\n  bindablePrefix: 'md-'\n};\n"]}

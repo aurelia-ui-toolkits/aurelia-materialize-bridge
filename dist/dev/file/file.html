@@ -1,0 +1,11 @@
+<template>
+    <div class="file-field input-field">
+        <div disabled.bind="disabled" class="btn accent ${disabled ? 'disabled' : ''}">
+            <span>${mdCaption}</span>
+            <input disabled.bind="disabled" type="file" multiple.bind="mdMultiple" files.bind="files" />
+        </div>
+        <div class="file-path-wrapper">
+            <input disabled.bind="disabled" class="file-path validate" type="text" value.bind="mdLabelValue" ref="filePath" />
+        </div>
+    </div>
+</template>

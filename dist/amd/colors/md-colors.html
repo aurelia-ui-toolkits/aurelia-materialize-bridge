@@ -1,0 +1,432 @@
+<template>
+  <require from="./colorValueConverters"></require>
+
+  <!--
+    According to Material color spec (https://www.google.com/design/spec/style/color.html#color-ui-color-application)
+    and using Materialize terminology (darken/lighten instead of hue numbers)
+    the used palettes here consist of:
+    Primary - lighten-1 (400), lighten-2 (300), lighten-3 (200)
+    Accent  - lighten-1 (400), lighten-3 (200)
+
+    These should optionally be defined by the user. At the moment, they are
+    calculated and even not exact (but close).
+
+    Focused elements are an exception, these use "lighten-0.5" which is
+    not specified anywhere.
+  -->
+
+  <style>
+  .primary {
+    background-color: ${mdPrimaryColor};
+    color: white;
+  }
+
+  .primary-text {
+    /*background-color: white;*/
+    color: ${mdPrimaryColor};
+  }
+
+  .waves-effect.waves-primary .waves-ripple {
+    background-color: ${mdPrimaryColor};
+  }
+
+  .waves-effect.waves-accent .waves-ripple {
+    background-color: ${mdAccentColor};
+  }
+
+  .accent {
+    background-color: ${mdAccentColor};
+    color: white;
+  }
+
+  .accent-text {
+    /*background-color: white;*/
+    color: ${mdAccentColor};
+  }
+
+  .error {
+    background-color: ${mdErrorColor};
+  }
+
+  .error-text {
+    color: ${mdErrorColor}
+  }
+
+  .success {
+    background-color: ${mdAccentColor};
+    color: white;
+  }
+
+  .success-text {
+    color: ${mdAccentColor};
+  }
+
+  /* buttons */
+  .btn.primary, .btn-flat.primary, .btn-large.primary {
+    transition: .2s ease-out;
+  }
+  .btn.primary:hover, .btn-flat.primary:hover, .btn-large.primary:hover {
+    background-color: ${mdPrimaryColor | lighten:1};
+    transition: .2s ease-out;
+  }
+  .btn.primary:focus, .btn-flat.primary:focus, .btn-large.primary:focus {
+    background-color: ${mdPrimaryColor | lighten:0.5};
+    transition: .2s ease-out;
+  }
+  .btn-flat:not(.disabled):hover {
+    /*background-color: ${mdAccentColor | lighten:3};*/
+    background-color: rgba(50, 50, 50, .15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    border: none;
+    box-shadow: none;
+    transition: .2s ease-out;
+  }
+  .btn-flat:focus {
+    /*background-color: ${mdAccentColor | lighten:2};*/
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    transition: .2s ease-out;
+  }
+
+  .btn.accent, .btn-flat.accent, .btn-large.accent {
+    transition: .2s ease-out;
+  }
+  .btn.accent:hover, .btn-flat.accent:hover, .btn-large.accent:hover, .btn-floating:hover {
+    background-color: ${mdAccentColor | lighten:1};
+    transition: .2s ease-out;
+  }
+  .btn.accent:focus, .btn-flat.accent:focus, .btn-large.accent:focus, .btn-floating:focus {
+    background-color: ${mdAccentColor | lighten:0.5};
+    transition: .2s ease-out;
+  }
+
+  /* checkbox */
+  [type="checkbox"]:checked + label:before {
+    border-right-color: ${mdAccentColor};
+    border-bottom-color: ${mdAccentColor};
+  }
+
+  [type="checkbox"].filled-in:checked + label:after {
+    border-color: ${mdAccentColor};
+    background-color: ${mdAccentColor};
+  }
+
+  [type="checkbox"]:indeterminate + label:before {
+    border-right-color: ${mdAccentColor};
+  }
+
+  /* collection */
+  md-collection .collection md-collection-item.collection-item.active {
+    background-color: ${mdAccentColor};
+    color: white;
+  }
+
+  md-collection .collection md-collection-item.collection-item .secondary-content {
+    color: ${mdAccentColor};
+  }
+
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.primary {
+    background-color: ${mdPrimaryColor};
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.accent {
+    background-color: ${mdAccentColor};
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.error {
+    background-color: ${mdErrorColor};
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.success {
+    background-color: ${mdAccentColor};
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.primary-text {
+    color: ${mdPrimaryColor};
+    background-color: transparent;
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.accent-text {
+    color: ${mdAccentColor};
+    background-color: transparent;
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.error-text {
+    color: ${mdErrorColor};
+    background-color: transparent;
+  }
+  md-collection .collection md-collection-item.collection-item.avatar i.circle.success-text {
+    color: ${mdAccentColor};
+    background-color: transparent;
+  }   
+
+
+  /* datepicker */
+  .picker__date-display {
+    background-color: ${mdAccentColor};
+  }
+  .picker__weekday-display {
+    background-color: ${mdAccentColor | darken:1};
+  }
+  .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+    background-color: ${mdAccentColor};
+  }
+  .picker__day.picker__day--today {
+    color: ${mdAccentColor}
+  }
+  .picker__footer button:not(.picker__clear) {
+    color: ${mdAccentColor}
+  }
+  .picker__footer button:focus {
+    background-color: ${mdAccentColor | lighten:2};
+  }
+  [md-datepicker] + i.material-icons.std-icon-fixup {
+    margin-left: -24px;
+    line-height: 1;
+    margin-top: 12px;
+    cursor: pointer;
+  }
+
+  /* text input */
+  md-input .input-field label {
+    left: 0;
+  }
+  md-input .input-field input[type=text]:focus {
+    border-bottom: 1px solid ${mdAccentColor};
+    box-shadow: 0 1px 0 0 ${mdAccentColor};
+  }
+  md-input .input-field input[type=text]:focus + label {
+    color: ${mdAccentColor};
+  }
+  md-input .input-field input[type=email]:focus {
+    border-bottom: 1px solid ${mdAccentColor};
+    box-shadow: 0 1px 0 0 ${mdAccentColor};
+  }
+  md-input .input-field input[type=email]:focus + label {
+    color: ${mdAccentColor};
+  }
+  md-input .input-field input[type=password]:focus {
+    border-bottom: 1px solid ${mdAccentColor};
+    box-shadow: 0 1px 0 0 ${mdAccentColor};
+  }
+  md-input .input-field input[type=password]:focus + label {
+    color: ${mdAccentColor};
+  }
+  md-input .input-field input[type=number]:focus {
+    border-bottom: 1px solid ${mdAccentColor};
+    box-shadow: 0 1px 0 0 ${mdAccentColor};
+  }
+  md-input .input-field input[type=number]:focus + label {
+    color: ${mdAccentColor};
+  }
+  md-input .input-field input[type=time]:focus {
+    border-bottom: 1px solid ${mdAccentColor};
+    box-shadow: 0 1px 0 0 ${mdAccentColor};
+  }
+  md-input .input-field input[type=time]:focus + label {
+    color: ${mdAccentColor};
+  }
+  md-input .input-field .prefix.active {
+    color: ${mdAccentColor};
+  }
+  md-input textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid ${mdAccentColor};
+    box-shadow: 0 1px 0 0 ${mdAccentColor};
+  }
+  md-input textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: ${mdAccentColor}
+  }
+
+  md-input input:not([type]).invalid + label:after,
+  md-input input:not([type]):focus.invalid + label:after,
+  md-input input[type=text].invalid + label:after,
+  md-input input[type=text]:focus.invalid + label:after,
+  md-input input[type=password].invalid + label:after,
+  md-input input[type=password]:focus.invalid + label:after,
+  md-input input[type=email].invalid + label:after,
+  md-input input[type=email]:focus.invalid + label:after,
+  md-input input[type=url].invalid + label:after,
+  md-input input[type=url]:focus.invalid + label:after,
+  md-input input[type=time].invalid + label:after,
+  md-input input[type=time]:focus.invalid + label:after,
+  md-input input[type=date].invalid + label:after,
+  md-input input[type=date]:focus.invalid + label:after,
+  md-input input[type=datetime].invalid + label:after,
+  md-input input[type=datetime]:focus.invalid + label:after,
+  md-input input[type=datetime-local].invalid + label:after,
+  md-input input[type=datetime-local]:focus.invalid + label:after,
+  md-input input[type=tel].invalid + label:after,
+  md-input input[type=tel]:focus.invalid + label:after,
+  md-input input[type=number].invalid + label:after,
+  md-input input[type=number]:focus.invalid + label:after,
+  md-input input[type=search].invalid + label:after,
+  md-input input[type=search]:focus.invalid + label:after,
+  md-input textarea.materialize-textarea.invalid + label:after,
+  md-input textarea.materialize-textarea:focus.invalid + label:after
+  {
+    color: ${mdErrorColor}
+  }
+
+  /* text input aurelia-validation messages */
+  .md-input-validation {
+    left: 0;
+    /*color: #f44336;*/
+    color: ${mdErrorColor};
+    font-size: 0.8rem;
+    transition: opacity .2s ease-out;
+    margin-top: -4px;
+    margin-bottom: 0;
+  }
+  @media only screen and (min-width: 0) {
+    .md-input-validation-first {
+      margin-top: -14px;
+      margin-bottom: -2px;
+    }
+  }
+  @media only screen and (min-width: 992px) {
+    .md-input-validation-first {
+      margin-top: -18px;
+      padding-bottom: 3px;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .md-input-validation-first {
+      margin-top: -19px;
+    }
+  }
+
+  /* pagination */
+  md-pagination .pagination li.active {
+    background-color: ${mdPrimaryColor}
+  }
+
+  /* progress */
+  md-progress .progress {
+    background-color: ${mdAccentColor | lighten:2};
+  }
+
+  md-progress .progress .determinate, md-progress .progress .indeterminate {
+    background-color: ${mdAccentColor};
+  }
+
+  /* radio input */
+  md-radio input[type="radio"]:checked + label:after {
+    border: 2px solid ${mdAccentColor};
+    background-color: ${mdAccentColor};
+  }
+  md-radio [type="radio"].with-gap:checked + label:before {
+    border: 2px solid ${mdAccentColor};
+  }
+  md-radio [type="radio"].with-gap:checked + label:after {
+    border: 2px solid ${mdAccentColor};
+    background-color: ${mdAccentColor};
+  }
+
+  /* range */
+  md-range .range-field input[type="range"]::-webkit-slider-thumb {
+    background: ${mdAccentColor};
+  }
+  md-range .range-field input[type="range"]::-moz-range-thumb {
+    background: ${mdAccentColor};
+  }
+  md-range .range-field input[type="range"]::-ms-thumb {
+    background: ${mdAccentColor};
+  }
+  md-range input[type="range"] + .thumb {
+    background-color: ${mdAccentColor} !important;
+  }
+
+  /* select */
+  .dropdown-content li > a, .dropdown-content li > span {
+    color: ${mdAccentColor};
+  }
+
+  .select-wrapper input.select-dropdown {
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+  }
+
+  /* side-nav */
+  md-sidenav .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {
+    background-color: ${mdPrimaryColor};
+  }
+
+  .side-nav .collapsible-body > ul:not(.collapsible) > li.active, .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
+    background-color: ${mdPrimaryColor};
+  }
+
+  /* slider */
+  .slider .indicators .indicator-item.active {
+    background-color: ${mdAccentColor};
+  }
+
+  /* switch */
+  md-switch.switch label input[type=checkbox]:checked + .lever {
+    background-color: ${mdAccentColor | lighten:1};
+  }
+  md-switch.switch label input[type=checkbox]:checked + .lever:after {
+    background-color: ${mdAccentColor};
+  }
+
+  /* tabs */
+
+  .tab.primary-text a {
+    color: ${mdPrimaryColor};
+  }
+  .tab.primary-text a.active {
+    color: ${mdPrimaryColor};
+  }
+  .tab.waves-effect {
+    position: static;
+  }
+  .tab.primary-text a:hover {
+    color: ${mdPrimaryColor | lighten:2};
+  }
+  .tabs .indicator {
+    background-color: ${mdPrimaryColor | lighten:2};
+  }
+
+  /* well */
+  md-well li.active {
+    border-right: 2px solid ${mdPrimaryColor};
+    background-color: ${mdPrimaryColor | lighten:3};
+  }
+
+  /* footer */
+  footer.page-footer {
+    background-color: ${mdPrimaryColor};
+  }
+
+  /* md-select label */
+  .select-wrapper input {
+    /* make input fit in div */
+    display: inline-block !important;
+    /* fix validation border thickness */
+    border-bottom: 1px solid #4CAF50;
+  }
+
+  .select-wrapper input.invalid {
+    border-bottom: 1px solid ${mdErrorColor};
+  }
+
+  .select-wrapper + label {
+    color: ${mdAccentColor};
+    width: 100%;
+  }
+  /* position validation label */
+  .select-wrapper + label:after {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 60px;
+    opacity: 0;
+    transition: .2s opacity ease-out, .2s color ease-out;
+    transform: translateY(0) !important;
+  }
+  /* set validation text */
+  .select-wrapper.invalid + label:after {
+    content: attr(data-error);
+    color: ${mdErrorColor};
+    opacity: 1;
+  }
+
+  </style>
+</template>

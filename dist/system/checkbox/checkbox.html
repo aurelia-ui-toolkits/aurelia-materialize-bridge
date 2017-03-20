@@ -1,0 +1,6 @@
+<template>
+  <input type="checkbox" id="${controlId}" checked.bind="mdChecked" matcher.bind="mdMatcher" model.bind="mdModel" ref="checkbox" readonly.bind="mdReadonly" />
+  <label for="${controlId}">
+    <slot></slot>
+  </label>
+</template>

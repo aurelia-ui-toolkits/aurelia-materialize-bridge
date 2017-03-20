@@ -1,0 +1,9 @@
+<template class="switch">
+  <require from="./switch.css"></require>
+  <label>
+    ${mdLabelOff}
+    <input type="checkbox" ref="checkbox" blur.trigger="blur()" readonly.bind="mdReadonly" />
+    <span class="lever"></span>
+    ${mdLabelOn}
+  </label>
+</template>

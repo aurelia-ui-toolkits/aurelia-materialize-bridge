@@ -1,0 +1,6 @@
+md-chip i.material-icons {
+  float: right;
+  line-height: 32px;
+  font-size: 16px;
+  cursor: pointer;
+}

@@ -1,0 +1,29 @@
+<template>
+  <require from="./card.css"></require>
+  <div class="card ${ mdHorizontal ? 'horizontal' : '' } ${ mdSize || '' }">
+    <div if.bind="mdImage !== null" md-waves="color: light; block: true;" class="card-image">
+      <img class="${ mdReveal === true ? 'activator' : '' }" src.bind="mdImage" />
+      <span if.bind="mdReveal === false" class="card-title">${mdTitle}</span>
+    </div>
+
+    <!-- <div class="${ mdHorizontal ? 'card-stacked' : ''}">
+
+    </div> -->
+    <div class="card-content">
+      <span if.bind="mdReveal === true" class="card-title activator">
+        ${mdTitle}
+        <i class="material-icons right">more_vert</i>
+      </span>
+      <span if.bind="mdImage === null" class="card-title">${mdTitle}</span>
+      <slot></slot>
+    </div>
+
+    <div show.bind="mdReveal" class="${ mdReveal ? 'card-reveal' : '' }">
+      <span class="card-title ${ mdReveal ? 'activator' : '' }">
+        ${mdTitle}
+        <i class="material-icons right">close</i>
+      </span>
+      <slot name="reveal-text"></slot>
+    </div>
+  </div>
+</template>

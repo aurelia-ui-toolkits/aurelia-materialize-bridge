@@ -1,0 +1,1 @@
+{"version":3,"sources":["common/attributes.js"],"names":["getBooleanFromAttributeValue","value"],"mappings":";;;;;AAAO,WAASA,4BAAT,CAAsCC,KAAtC,EAA6C;AAClD,WAAQA,UAAU,IAAV,IAAkBA,UAAU,MAApC;AACD;;0CAFeD,4B","file":"../../../common/attributes.js","sourcesContent":["export function getBooleanFromAttributeValue(value) {\n  return (value === true || value === 'true');\n}\n"]}

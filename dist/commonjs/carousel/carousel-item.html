@@ -1,0 +1,7 @@
+<template class="carousel-item">
+  <a if.bind="mdHref" href.bind="mdHref">
+    <img if.bind="mdImage" src.bind="mdImage" />
+  </a>
+  <img if.bind="!mdHref && mdImage" src.bind="mdImage" />
+  <slot></slot>
+</template>

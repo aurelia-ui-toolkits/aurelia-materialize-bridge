@@ -1,0 +1,8 @@
+md-sidenav li[md-waves] {
+  display: block;
+}
+md-sidenav li a:hover {
+  background-color: transparent;
+  display: inline-block;
+  width: 100%;
+}
