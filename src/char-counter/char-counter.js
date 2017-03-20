@@ -18,15 +18,15 @@ export class MdCharCounter {
     // attach to input element explicitly, so this counter can be used on
     // containers (or custom elements like md-input)
     if (this.element.tagName.toUpperCase() === 'INPUT') {
-      this.attributeManager.addAttributes({ 'length': this.length });
+      this.attributeManager.addAttributes({ 'data-length': this.length });
       $(this.element).characterCounter();
     } else {
-      $(this.element).find('input').each((i, el) => { $(el).attr('length', this.length); });
+      $(this.element).find('input').each((i, el) => { $(el).attr('data-length', this.length); });
       $(this.element).find('input').characterCounter();
     }
   }
 
   detached() {
-    this.attributeManager.removeAttributes(['length']);
+    this.attributeManager.removeAttributes(['data-length']);
   }
 }
