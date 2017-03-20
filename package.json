@@ -1,6 +1,6 @@
 {
   "name": "aurelia-materialize-bridge",
-  "version": "0.24.0",
+  "version": "0.25.0",
   "registry": "github",
   "description": "Aurelia interface to http://materializecss.com/",
   "keywords": [
@@ -136,7 +136,11 @@
     },
     "import": {
       "patches": [
-        { "op": "replace", "path": "/build/loader/plugins/0/stub", "value": false}
+        {
+          "op": "replace",
+          "path": "/build/loader/plugins/0/stub",
+          "value": false
+        }
       ],
       "bundles": [
         {

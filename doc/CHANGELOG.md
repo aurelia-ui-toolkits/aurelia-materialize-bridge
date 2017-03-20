@@ -1,3 +1,16 @@
+<a name="0.25.0"></a>
+# [0.25.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.24.0...v0.25.0) (2017-03-20)
+
+
+### Bug Fixes
+
+* **md-card:** change condition to show title ([24c2ed6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/24c2ed6))
+* **md-char-counter:** use data-length, fix [#389](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/389) ([be2592a](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/be2592a))
+* **md-datepicker:** remove movePickerCloserToSrc ([6200c5c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6200c5c)), closes [#380](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/380)
+* **select:** do not inject LogManager ([1326a25](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/1326a25))
+
+
+
 <a name="0.24.0"></a>
 # [0.24.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.23.0...v0.24.0) (2017-02-12)
 
