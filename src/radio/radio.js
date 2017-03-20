@@ -12,6 +12,7 @@ export class MdRadio {
     defaultBindingMode: bindingMode.twoWay
   }) mdChecked;
   @bindable() mdDisabled = false;
+  @bindable() mdReadonly = false;
   @bindable() mdGap = false;
   @bindable() mdModel;
   @bindable() mdName = '';

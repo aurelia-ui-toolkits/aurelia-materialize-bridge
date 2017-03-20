@@ -14,6 +14,7 @@ export class MdInput {
   @bindable() mdLabel = '';
   @bindable() mdBlurOnEnter = false;
   @bindable() mdDisabled = false;
+  @bindable() mdReadonly = false;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdPlaceholder = '';
