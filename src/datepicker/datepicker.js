@@ -18,12 +18,14 @@ export class MdDatePicker {
   @bindable({defaultBindingMode: bindingMode.oneTime}) selectYears = 15;
   @bindable({defaultBindingMode: bindingMode.oneTime}) options = {};
   @bindable() showErrortext = true;
+  calendarIcon = null;
 
   constructor(element, taskQueue, defaultParser) {
     this.element = element;
     this.log = getLogger('md-datepicker');
     this.taskQueue = taskQueue;
     this.parsers.push(defaultParser);
+    this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
   }
 
   bind() {
@@ -99,15 +101,15 @@ export class MdDatePicker {
     }
     if (this.options.showIcon) {
       this.element.classList.add('left');
-      let calendarIcon = document.createElement('i');
-      calendarIcon.classList.add('right');
-      calendarIcon.classList.add('material-icons');
-      calendarIcon.textContent = 'today';
-      this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
-      $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+      this.calendarIcon = document.createElement('i');
+      this.calendarIcon.classList.add('right');
+      this.calendarIcon.classList.add('material-icons');
+      this.calendarIcon.textContent = 'today';
+      this.element.parentNode.insertBefore(this.calendarIcon, this.element.nextSibling);
+      $(this.calendarIcon).on('click', this.onCalendarIconClick);
 
       options.iconClass = options.iconClass || 'std-icon-fixup';
-      calendarIcon.classList.add(options.iconClass);
+      this.calendarIcon.classList.add(options.iconClass);
     }
 
     this.setErrorTextAttribute();
@@ -129,6 +131,12 @@ export class MdDatePicker {
   }
 
   detached() {
+    if (this.options.showIcon) {
+      this.element.classList.remove('left');
+      $(this.calendarIcon).off('click', this.onCalendarIconClick);
+      $(this.calendarIcon).remove();
+      this.calendarIcon = null;
+    }
     if (this.picker) {
       this.picker.stop();
     }
