@@ -1,4 +1,4 @@
-// import 'materialize';
+// import 'jquery';
 
 //Configure Bluebird Promises.
 (Promise.config || P.config)({
