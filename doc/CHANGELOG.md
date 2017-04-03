@@ -1,3 +1,20 @@
+<a name="0.26.0"></a>
+# [0.26.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.25.0...v0.26.0) (2017-04-03)
+
+
+### Bug Fixes
+
+* **colors:** Add error button styles ([c23b416](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/c23b416))
+* **md-datepicker:** remove icon on detached ([6bcb400](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6bcb400)), closes [#396](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/396)
+* **md-select:** update label text ([35c24d1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/35c24d1))
+
+
+### Features
+
+* **md-chip:** fire event on close, close [#399](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/399) ([e4c7ab5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e4c7ab5))
+
+
+
 <a name="0.25.0"></a>
 # [0.25.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.24.0...v0.25.0) (2017-03-20)
 
