@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/events'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _events) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -72,6 +72,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
 
     MdChip.prototype.close = function close() {
       this.element.parentElement.removeChild(this.element);
+      (0, _events.fireEvent)(this.element, 'close');
     };
 
     return MdChip;

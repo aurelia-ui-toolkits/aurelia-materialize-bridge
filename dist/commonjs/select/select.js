@@ -110,11 +110,10 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
           div.attr(va.name, va.label);
         }
         wrapper.wrap(div);
-        $('<label>' + _this.label + '</label>').insertAfter(wrapper);
+        $('<label class="md-select-label">' + _this.label + '</label>').insertAfter(wrapper);
       }
     });
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
-
 
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   };
@@ -136,6 +135,17 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     this.taskQueue.queueTask(function () {
       _this2.createMaterialSelect(true);
     });
+  };
+
+  MdSelect.prototype.labelChanged = function labelChanged(newValue) {
+    this.updateLabel();
+  };
+
+  MdSelect.prototype.updateLabel = function updateLabel() {
+    if (this.label) {
+      var $label = $(this.element).parent('.select-wrapper').siblings('.md-select-label');
+      $label.text(this.label);
+    }
   };
 
   MdSelect.prototype.disabledChanged = function disabledChanged(newValue) {

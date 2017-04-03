@@ -101,6 +101,18 @@
     transition: .2s ease-out;
   }
 
+  .btn.error, .btn-flat.error, .btn-large.error {
+    transition: .2s ease-out;
+  }
+  .btn.error:hover, .btn-flat.error:hover, .btn-large.error:hover, .btn-floating:hover {
+    background-color: ${mdErrorColor | lighten:1};
+    transition: .2s ease-out;
+  }
+  .btn.error:focus, .btn-flat.error:focus, .btn-large.error:focus, .btn-floating:focus {
+    background-color: ${mdErrorColor | lighten:0.5};
+    transition: .2s ease-out;
+  }
+    
   /* checkbox */
   [type="checkbox"]:checked + label:before {
     border-right-color: ${mdAccentColor};

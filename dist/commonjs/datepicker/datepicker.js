@@ -88,10 +88,13 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
 
     _initDefineProp(this, 'showErrortext', _descriptor8, this);
 
+    this.calendarIcon = null;
+
     this.element = element;
     this.log = (0, _aureliaLogging.getLogger)('md-datepicker');
     this.taskQueue = taskQueue;
     this.parsers.push(defaultParser);
+    this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
   }
 
   MdDatePicker.prototype.bind = function bind() {
@@ -153,15 +156,15 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
     }
     if (this.options.showIcon) {
       this.element.classList.add('left');
-      var calendarIcon = document.createElement('i');
-      calendarIcon.classList.add('right');
-      calendarIcon.classList.add('material-icons');
-      calendarIcon.textContent = 'today';
-      this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
-      $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+      this.calendarIcon = document.createElement('i');
+      this.calendarIcon.classList.add('right');
+      this.calendarIcon.classList.add('material-icons');
+      this.calendarIcon.textContent = 'today';
+      this.element.parentNode.insertBefore(this.calendarIcon, this.element.nextSibling);
+      $(this.calendarIcon).on('click', this.onCalendarIconClick);
 
       options.iconClass = options.iconClass || 'std-icon-fixup';
-      calendarIcon.classList.add(options.iconClass);
+      this.calendarIcon.classList.add(options.iconClass);
     }
 
     this.setErrorTextAttribute();
@@ -196,6 +199,12 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
   };
 
   MdDatePicker.prototype.detached = function detached() {
+    if (this.options.showIcon) {
+      this.element.classList.remove('left');
+      $(this.calendarIcon).off('click', this.onCalendarIconClick);
+      $(this.calendarIcon).remove();
+      this.calendarIcon = null;
+    }
     if (this.picker) {
       this.picker.stop();
     }

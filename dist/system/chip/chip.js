@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributes'], function (_export, _context) {
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/events'], function (_export, _context) {
   "use strict";
 
-  var bindable, customElement, inject, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdChip;
+  var bindable, customElement, inject, getBooleanFromAttributeValue, fireEvent, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdChip;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -62,6 +62,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       inject = _aureliaDependencyInjection.inject;
     }, function (_commonAttributes) {
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
+    }, function (_commonEvents) {
+      fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
       _export('MdChip', MdChip = (_dec = customElement('md-chip'), _dec2 = inject(Element), _dec3 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
@@ -79,6 +81,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
 
         MdChip.prototype.close = function close() {
           this.element.parentElement.removeChild(this.element);
+          fireEvent(this.element, 'close');
         };
 
         return MdChip;

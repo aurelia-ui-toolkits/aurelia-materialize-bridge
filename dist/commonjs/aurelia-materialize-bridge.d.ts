@@ -324,6 +324,7 @@ export declare class MdDatePicker {
   selectYears: any;
   options: any;
   showErrortext: any;
+  calendarIcon: any;
   constructor(element?: any, taskQueue?: any, defaultParser?: any);
   bind(): any;
   parseDate(value?: any): any;
@@ -575,6 +576,8 @@ export declare class MdSelect {
   attached(): any;
   detached(): any;
   refresh(): any;
+  labelChanged(newValue?: any): any;
+  updateLabel(): any;
   disabledChanged(newValue?: any): any;
   showErrortextChanged(): any;
   setErrorTextAttribute(): any;

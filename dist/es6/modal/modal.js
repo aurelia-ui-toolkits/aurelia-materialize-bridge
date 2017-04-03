@@ -1,3 +1,4 @@
+import { getLogger } from 'aurelia-logging';
 import { bindable, customAttribute } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
@@ -16,14 +17,14 @@ export class MdModal {
 
   constructor(element) {
     this.element = element;
+    this.log = getLogger('md-modal');
     this.attributeManager = new AttributeManager(this.element);
     this.onComplete = this.onComplete.bind(this);
     this.onReady = this.onReady.bind(this);
   }
 
   attached() {
-    this.attributeManager.addClasses('modal');
-    $(this.element).modal({
+    const options = {
       complete: this.onComplete,
       dismissible: getBooleanFromAttributeValue(this.dismissible),
       endingTop: this.endingTop,
@@ -32,7 +33,10 @@ export class MdModal {
       outDuration: parseInt(this.outDuration, 10),
       ready: this.onReady,
       startingTop: this.startingTop
-    });
+    };
+    this.log.debug('modal options: ', options);
+    this.attributeManager.addClasses('modal');
+    $(this.element).modal(options);
   }
 
   detached() {

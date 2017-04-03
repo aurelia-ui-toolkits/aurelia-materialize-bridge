@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', '../common/events'], function (_export, _context) {
+System.register(['aurelia-logging', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', '../common/events'], function (_export, _context) {
   "use strict";
 
-  var bindable, customAttribute, inject, getBooleanFromAttributeValue, AttributeManager, fireMaterializeEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, MdModal;
+  var getLogger, bindable, customAttribute, inject, getBooleanFromAttributeValue, AttributeManager, fireMaterializeEvent, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, MdModal;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -55,7 +55,9 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
   }
 
   return {
-    setters: [function (_aureliaTemplating) {
+    setters: [function (_aureliaLogging) {
+      getLogger = _aureliaLogging.getLogger;
+    }, function (_aureliaTemplating) {
       bindable = _aureliaTemplating.bindable;
       customAttribute = _aureliaTemplating.customAttribute;
     }, function (_aureliaDependencyInjection) {
@@ -85,14 +87,14 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           _initDefineProp(this, 'endingTop', _descriptor6, this);
 
           this.element = element;
+          this.log = getLogger('md-modal');
           this.attributeManager = new AttributeManager(this.element);
           this.onComplete = this.onComplete.bind(this);
           this.onReady = this.onReady.bind(this);
         }
 
         MdModal.prototype.attached = function attached() {
-          this.attributeManager.addClasses('modal');
-          $(this.element).modal({
+          var options = {
             complete: this.onComplete,
             dismissible: getBooleanFromAttributeValue(this.dismissible),
             endingTop: this.endingTop,
@@ -101,7 +103,10 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
             outDuration: parseInt(this.outDuration, 10),
             ready: this.onReady,
             startingTop: this.startingTop
-          });
+          };
+          this.log.debug('modal options: ', options);
+          this.attributeManager.addClasses('modal');
+          $(this.element).modal(options);
         };
 
         MdModal.prototype.detached = function detached() {

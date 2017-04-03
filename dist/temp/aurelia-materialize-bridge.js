@@ -894,6 +894,7 @@ var MdChip = exports.MdChip = (_dec45 = (0, _aureliaTemplating.customElement)('m
 
   MdChip.prototype.close = function close() {
     this.element.parentElement.removeChild(this.element);
+    fireEvent(this.element, 'close');
   };
 
   return MdChip;
@@ -1365,10 +1366,13 @@ var MdDatePicker = exports.MdDatePicker = (_dec74 = (0, _aureliaDependencyInject
 
     _initDefineProp(this, 'showErrortext', _descriptor46, this);
 
+    this.calendarIcon = null;
+
     this.element = element;
     this.log = (0, _aureliaLogging.getLogger)('md-datepicker');
     this.taskQueue = taskQueue;
     this.parsers.push(defaultParser);
+    this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
   }
 
   MdDatePicker.prototype.bind = function bind() {
@@ -1430,15 +1434,15 @@ var MdDatePicker = exports.MdDatePicker = (_dec74 = (0, _aureliaDependencyInject
     }
     if (this.options.showIcon) {
       this.element.classList.add('left');
-      var calendarIcon = document.createElement('i');
-      calendarIcon.classList.add('right');
-      calendarIcon.classList.add('material-icons');
-      calendarIcon.textContent = 'today';
-      this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
-      $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+      this.calendarIcon = document.createElement('i');
+      this.calendarIcon.classList.add('right');
+      this.calendarIcon.classList.add('material-icons');
+      this.calendarIcon.textContent = 'today';
+      this.element.parentNode.insertBefore(this.calendarIcon, this.element.nextSibling);
+      $(this.calendarIcon).on('click', this.onCalendarIconClick);
 
       options.iconClass = options.iconClass || 'std-icon-fixup';
-      calendarIcon.classList.add(options.iconClass);
+      this.calendarIcon.classList.add(options.iconClass);
     }
 
     this.setErrorTextAttribute();
@@ -1473,6 +1477,12 @@ var MdDatePicker = exports.MdDatePicker = (_dec74 = (0, _aureliaDependencyInject
   };
 
   MdDatePicker.prototype.detached = function detached() {
+    if (this.options.showIcon) {
+      this.element.classList.remove('left');
+      $(this.calendarIcon).off('click', this.onCalendarIconClick);
+      $(this.calendarIcon).remove();
+      this.calendarIcon = null;
+    }
     if (this.picker) {
       this.picker.stop();
     }
@@ -2403,14 +2413,14 @@ var MdModal = exports.MdModal = (_dec139 = (0, _aureliaTemplating.customAttribut
     _initDefineProp(this, 'endingTop', _descriptor90, this);
 
     this.element = element;
+    this.log = (0, _aureliaLogging.getLogger)('md-modal');
     this.attributeManager = new AttributeManager(this.element);
     this.onComplete = this.onComplete.bind(this);
     this.onReady = this.onReady.bind(this);
   }
 
   MdModal.prototype.attached = function attached() {
-    this.attributeManager.addClasses('modal');
-    $(this.element).modal({
+    var options = {
       complete: this.onComplete,
       dismissible: getBooleanFromAttributeValue(this.dismissible),
       endingTop: this.endingTop,
@@ -2419,7 +2429,10 @@ var MdModal = exports.MdModal = (_dec139 = (0, _aureliaTemplating.customAttribut
       outDuration: parseInt(this.outDuration, 10),
       ready: this.onReady,
       startingTop: this.startingTop
-    });
+    };
+    this.log.debug('modal options: ', options);
+    this.attributeManager.addClasses('modal');
+    $(this.element).modal(options);
   };
 
   MdModal.prototype.detached = function detached() {
@@ -3066,11 +3079,10 @@ var MdSelect = exports.MdSelect = (_dec198 = (0, _aureliaDependencyInjection.inj
           div.attr(va.name, va.label);
         }
         wrapper.wrap(div);
-        $('<label>' + _this10.label + '</label>').insertAfter(wrapper);
+        $('<label class="md-select-label">' + _this10.label + '</label>').insertAfter(wrapper);
       }
     });
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
-
 
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   };
@@ -3092,6 +3104,17 @@ var MdSelect = exports.MdSelect = (_dec198 = (0, _aureliaDependencyInjection.inj
     this.taskQueue.queueTask(function () {
       _this11.createMaterialSelect(true);
     });
+  };
+
+  MdSelect.prototype.labelChanged = function labelChanged(newValue) {
+    this.updateLabel();
+  };
+
+  MdSelect.prototype.updateLabel = function updateLabel() {
+    if (this.label) {
+      var $label = $(this.element).parent('.select-wrapper').siblings('.md-select-label');
+      $label.text(this.label);
+    }
   };
 
   MdSelect.prototype.disabledChanged = function disabledChanged(newValue) {

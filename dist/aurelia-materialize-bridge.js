@@ -761,6 +761,7 @@ export class MdChip {
 
   close() {
     this.element.parentElement.removeChild(this.element);
+    fireEvent(this.element, 'close');
   }
 }
 
@@ -1141,12 +1142,14 @@ export class MdDatePicker {
   @bindable({defaultBindingMode: bindingMode.oneTime}) selectYears = 15;
   @bindable({defaultBindingMode: bindingMode.oneTime}) options = {};
   @bindable() showErrortext = true;
+  calendarIcon = null;
 
   constructor(element, taskQueue, defaultParser) {
     this.element = element;
     this.log = getLogger('md-datepicker');
     this.taskQueue = taskQueue;
     this.parsers.push(defaultParser);
+    this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
   }
 
   bind() {
@@ -1222,15 +1225,15 @@ export class MdDatePicker {
     }
     if (this.options.showIcon) {
       this.element.classList.add('left');
-      let calendarIcon = document.createElement('i');
-      calendarIcon.classList.add('right');
-      calendarIcon.classList.add('material-icons');
-      calendarIcon.textContent = 'today';
-      this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
-      $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+      this.calendarIcon = document.createElement('i');
+      this.calendarIcon.classList.add('right');
+      this.calendarIcon.classList.add('material-icons');
+      this.calendarIcon.textContent = 'today';
+      this.element.parentNode.insertBefore(this.calendarIcon, this.element.nextSibling);
+      $(this.calendarIcon).on('click', this.onCalendarIconClick);
 
       options.iconClass = options.iconClass || 'std-icon-fixup';
-      calendarIcon.classList.add(options.iconClass);
+      this.calendarIcon.classList.add(options.iconClass);
     }
 
     this.setErrorTextAttribute();
@@ -1252,6 +1255,12 @@ export class MdDatePicker {
   }
 
   detached() {
+    if (this.options.showIcon) {
+      this.element.classList.remove('left');
+      $(this.calendarIcon).off('click', this.onCalendarIconClick);
+      $(this.calendarIcon).remove();
+      this.calendarIcon = null;
+    }
     if (this.picker) {
       this.picker.stop();
     }
@@ -1960,14 +1969,14 @@ export class MdModal {
 
   constructor(element) {
     this.element = element;
+    this.log = getLogger('md-modal');
     this.attributeManager = new AttributeManager(this.element);
     this.onComplete = this.onComplete.bind(this);
     this.onReady = this.onReady.bind(this);
   }
 
   attached() {
-    this.attributeManager.addClasses('modal');
-    $(this.element).modal({
+    const options = {
       complete: this.onComplete,
       dismissible: getBooleanFromAttributeValue(this.dismissible),
       endingTop: this.endingTop,
@@ -1976,7 +1985,10 @@ export class MdModal {
       outDuration: parseInt(this.outDuration, 10),
       ready: this.onReady,
       startingTop: this.startingTop
-    });
+    };
+    this.log.debug('modal options: ', options);
+    this.attributeManager.addClasses('modal');
+    $(this.element).modal(options);
   }
 
   detached() {
@@ -2439,15 +2451,10 @@ export class MdSelect {
           div.attr(va.name, va.label);
         }
         wrapper.wrap(div);
-        $(`<label>${this.label}</label>`).insertAfter(wrapper);
+        $(`<label class="md-select-label">${this.label}</label>`).insertAfter(wrapper);
       }
     });
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
-    // this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'selectedOptions').subscribe(this.notifyBindingEngine.bind(this)));
-    // $(this.element).material_select(() => {
-    //   this.log.warn('materialize callback', $(this.element).val());
-    //   this.handleChangeFromNativeSelect();
-    // });
 
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   }
@@ -2465,6 +2472,17 @@ export class MdSelect {
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(true);
     });
+  }
+
+  labelChanged(newValue) {
+    this.updateLabel();
+  }
+
+  updateLabel() {
+    if (this.label) {
+      const $label = $(this.element).parent('.select-wrapper').siblings('.md-select-label');
+      $label.text(this.label);
+    }
   }
 
   disabledChanged(newValue) {

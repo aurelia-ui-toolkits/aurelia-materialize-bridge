@@ -7,6 +7,8 @@ exports.MdModal = undefined;
 
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
 
+var _aureliaLogging = require('aurelia-logging');
+
 var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
@@ -79,14 +81,14 @@ var MdModal = exports.MdModal = (_dec = (0, _aureliaTemplating.customAttribute)(
     _initDefineProp(this, 'endingTop', _descriptor6, this);
 
     this.element = element;
+    this.log = (0, _aureliaLogging.getLogger)('md-modal');
     this.attributeManager = new _attributeManager.AttributeManager(this.element);
     this.onComplete = this.onComplete.bind(this);
     this.onReady = this.onReady.bind(this);
   }
 
   MdModal.prototype.attached = function attached() {
-    this.attributeManager.addClasses('modal');
-    $(this.element).modal({
+    var options = {
       complete: this.onComplete,
       dismissible: (0, _attributes.getBooleanFromAttributeValue)(this.dismissible),
       endingTop: this.endingTop,
@@ -95,7 +97,10 @@ var MdModal = exports.MdModal = (_dec = (0, _aureliaTemplating.customAttribute)(
       outDuration: parseInt(this.outDuration, 10),
       ready: this.onReady,
       startingTop: this.startingTop
-    });
+    };
+    this.log.debug('modal options: ', options);
+    this.attributeManager.addClasses('modal');
+    $(this.element).modal(options);
   };
 
   MdModal.prototype.detached = function detached() {
