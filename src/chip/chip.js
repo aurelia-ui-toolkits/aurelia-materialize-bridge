@@ -1,6 +1,7 @@
 import { bindable, customElement } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
+import { fireEvent } from '../common/events';
 
 @customElement('md-chip')
 @inject(Element)
@@ -17,5 +18,6 @@ export class MdChip {
 
   close() {
     this.element.parentElement.removeChild(this.element);
+    fireEvent(this.element, 'close');
   }
 }
