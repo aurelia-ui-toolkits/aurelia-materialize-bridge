@@ -49,6 +49,7 @@ export function configure(aurelia) {
           .useSlider()
           .useSwitch()
           .useTabs()
+          .useTapTarget()
           .useTooltip()
           .useTransitions()
           .useWaves()
