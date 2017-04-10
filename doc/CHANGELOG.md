@@ -1,3 +1,14 @@
+<a name="0.27.0"></a>
+# [0.27.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.26.0...v0.27.0) (2017-04-10)
+
+
+### Features
+
+* **md-button:** add pulse effect, ref [#391](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/391) ([521f3c1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/521f3c1))
+* **md-tap-target:** add tap-target, ref [#391](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/391) ([d2e3c00](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d2e3c00))
+
+
+
 <a name="0.26.0"></a>
 # [0.26.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.25.0...v0.26.0) (2017-04-03)
 
