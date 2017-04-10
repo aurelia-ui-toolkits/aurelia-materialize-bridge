@@ -279,7 +279,7 @@
       }
     },
     "TapTarget": {
-      "status": "wip",
+      "status": "done",
       "samples": {
         "basic-use":{
           "default": true,
