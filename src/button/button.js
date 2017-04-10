@@ -10,6 +10,7 @@ export class MdButton {
   @bindable() flat = false;
   @bindable() floating = false;
   @bindable() large = false;
+  @bindable() pulse = false;
 
   constructor(element) {
     this.attributeManager = new AttributeManager(element);
@@ -39,11 +40,14 @@ export class MdButton {
     if (!getBooleanFromAttributeValue(this.flat)) {
       classes.push('accent');
     }
+    if (getBooleanFromAttributeValue(this.pulse)) {
+      classes.push('pulse');
+    }
     this.attributeManager.addClasses(classes);
   }
 
   detached() {
-    this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+    this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled', 'pulse']);
   }
 
   disabledChanged(newValue) {
@@ -61,6 +65,14 @@ export class MdButton {
     } else {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
+    }
+  }
+
+  pulseChanged(newValue) {
+    if (getBooleanFromAttributeValue(newValue)) {
+      this.attributeManager.addClasses('pulse');
+    } else {
+      this.attributeManager.removeClasses('pulse');
     }
   }
 }
