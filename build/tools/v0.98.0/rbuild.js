@@ -31,7 +31,6 @@
     'sideNav': 'sideNav',
     'slider': 'slider',
     'tabs': 'tabs',
-    'tapTarget': 'tapTarget',
     'toasts': 'toasts',
     'tooltip': 'tooltip',
     'transitions': 'transitions',
@@ -64,7 +63,6 @@
     'sideNav': ['jquery'],
     'slider': ['jquery'],
     'tabs': ['jquery'],
-    'tapTarget': ['jquery'],
     'toasts': {
       deps: ['global', 'hammerjs', 'velocity'], init: function(Materialize, Hammer, Vel) {
         window.Hammer = Hammer;
@@ -105,7 +103,6 @@
     'sideNav',
     'slider',
     'tabs',
-    'tapTarget',
     'toasts',
     'tooltip',
     'transitions',
