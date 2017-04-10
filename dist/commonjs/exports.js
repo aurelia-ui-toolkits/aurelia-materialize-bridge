@@ -652,6 +652,18 @@ Object.keys(_tabs).forEach(function (key) {
   });
 });
 
+var _tapTarget = require('./tap-target/tap-target');
+
+Object.keys(_tapTarget).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _tapTarget[key];
+    }
+  });
+});
+
 var _toastService = require('./toast/toastService');
 
 Object.keys(_toastService).forEach(function (key) {

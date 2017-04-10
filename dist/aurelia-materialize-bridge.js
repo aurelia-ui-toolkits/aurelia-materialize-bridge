@@ -60,6 +60,7 @@ export class ConfigBuilder {
       .useSlider()
       .useSwitch()
       .useTabs()
+      .useTapTarget()
       .useTooltip()
       .useTransitions()
       .useWaves()
@@ -260,6 +261,11 @@ export class ConfigBuilder {
    */
   useTabs(): ConfigBuilder {
     this.globalResources.push('./tabs/tabs');
+    return this;
+  }
+
+  useTapTarget(): ConfigBuilder {
+    this.globalResources.push('./tap-target/tap-target');
     return this;
   }
 
@@ -504,6 +510,7 @@ export class MdButton {
   @bindable() flat = false;
   @bindable() floating = false;
   @bindable() large = false;
+  @bindable() pulse = false;
 
   constructor(element) {
     this.attributeManager = new AttributeManager(element);
@@ -533,11 +540,14 @@ export class MdButton {
     if (!getBooleanFromAttributeValue(this.flat)) {
       classes.push('accent');
     }
+    if (getBooleanFromAttributeValue(this.pulse)) {
+      classes.push('pulse');
+    }
     this.attributeManager.addClasses(classes);
   }
 
   detached() {
-    this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+    this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled', 'pulse']);
   }
 
   disabledChanged(newValue) {
@@ -555,6 +565,14 @@ export class MdButton {
     } else {
       this.attributeManager.removeClasses('btn-flat');
       this.attributeManager.addClasses(['btn', 'accent']);
+    }
+  }
+
+  pulseChanged(newValue) {
+    if (getBooleanFromAttributeValue(newValue)) {
+      this.attributeManager.addClasses('pulse');
+    } else {
+      this.attributeManager.removeClasses('pulse');
     }
   }
 }
@@ -2970,6 +2988,39 @@ export class MdTabs {
       }
     });
     return { href, index };
+  }
+}
+
+@customElement('md-tap-target')
+@inject(Element)
+export class MdTapTarget {
+  static controlId = 0;
+  @bindable() mdRef = null;
+
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-tap-target');
+  }
+
+  bind() {
+    if (!this.mdRef) {
+      throw new Error('md-tap-target needs a referenced element');
+    } else {
+      let id = this.mdRef.getAttribute('id');
+      if (!id) {
+        id = `md-tap-target-${MdTapTarget.controlId++}`;
+        this.mdRef.setAttribute('id', id);
+      }
+      this.element.setAttribute('data-activates', id);
+    }
+  }
+
+  open() {
+    $(this.element).tapTarget('open');
+  }
+
+  close() {
+    $(this.element).tapTarget('close');
   }
 }
 

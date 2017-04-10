@@ -3,7 +3,7 @@
 System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export, _context) {
   "use strict";
 
-  var bindable, customAttribute, inject, AttributeManager, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, MdButton;
+  var bindable, customAttribute, inject, AttributeManager, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, MdButton;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -66,7 +66,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
     }],
     execute: function () {
-      _export('MdButton', MdButton = (_dec = customAttribute('md-button'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable(), _dec6 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
+      _export('MdButton', MdButton = (_dec = customAttribute('md-button'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable(), _dec6 = bindable(), _dec7 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdButton(element) {
           _classCallCheck(this, MdButton);
 
@@ -77,6 +77,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           _initDefineProp(this, 'floating', _descriptor3, this);
 
           _initDefineProp(this, 'large', _descriptor4, this);
+
+          _initDefineProp(this, 'pulse', _descriptor5, this);
 
           this.attributeManager = new AttributeManager(element);
         }
@@ -105,11 +107,14 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           if (!getBooleanFromAttributeValue(this.flat)) {
             classes.push('accent');
           }
+          if (getBooleanFromAttributeValue(this.pulse)) {
+            classes.push('pulse');
+          }
           this.attributeManager.addClasses(classes);
         };
 
         MdButton.prototype.detached = function detached() {
-          this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+          this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled', 'pulse']);
         };
 
         MdButton.prototype.disabledChanged = function disabledChanged(newValue) {
@@ -130,6 +135,14 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           }
         };
 
+        MdButton.prototype.pulseChanged = function pulseChanged(newValue) {
+          if (getBooleanFromAttributeValue(newValue)) {
+            this.attributeManager.addClasses('pulse');
+          } else {
+            this.attributeManager.removeClasses('pulse');
+          }
+        };
+
         return MdButton;
       }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'disabled', [_dec3], {
         enumerable: true,
@@ -147,6 +160,11 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           return false;
         }
       }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'large', [_dec6], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'pulse', [_dec7], {
         enumerable: true,
         initializer: function initializer() {
           return false;

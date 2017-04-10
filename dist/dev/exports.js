@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['./autocomplete/autocomplete', './badge/badge', './box/box', './breadcrumbs/breadcrumbs', './breadcrumbs/instructionFilter', './button/button', './card/card', './carousel/carousel-item', './carousel/carousel', './char-counter/char-counter', './checkbox/checkbox', './chip/chip', './chip/chips', './collapsible/collapsible', './collection/collection-header', './collection/collection-item', './collection/collection', './collection/md-collection-selector', './colors/colorValueConverters', './colors/md-colors', './common/attributeManager', './common/attributes', './common/constants', './common/events', './datepicker/datepicker-default-parser', './datepicker/datepicker', './dropdown/dropdown-element', './dropdown/dropdown', './dropdown/dropdown-fix', './fab/fab', './file/file', './footer/footer', './input/input-prefix', './input/input-update-service', './input/input', './modal/modal', './modal/modal-trigger', './navbar/navbar', './pagination/pagination', './parallax/parallax', './progress/progress', './pushpin/pushpin', './radio/radio', './range/range', './scrollfire/scrollfire-patch', './scrollfire/scrollfire-target', './scrollfire/scrollfire', './scrollspy/scrollspy', './select/select', './sidenav/sidenav-collapse', './sidenav/sidenav', './slider/slider', './switch/switch', './tabs/tabs', './toast/toastService', './tooltip/tooltip', './transitions/fadein-image', './transitions/staggered-list', './validation/validationRenderer', './waves/waves'], function (_export, _context) {
+System.register(['./autocomplete/autocomplete', './badge/badge', './box/box', './breadcrumbs/breadcrumbs', './breadcrumbs/instructionFilter', './button/button', './card/card', './carousel/carousel-item', './carousel/carousel', './char-counter/char-counter', './checkbox/checkbox', './chip/chip', './chip/chips', './collapsible/collapsible', './collection/collection-header', './collection/collection-item', './collection/collection', './collection/md-collection-selector', './colors/colorValueConverters', './colors/md-colors', './common/attributeManager', './common/attributes', './common/constants', './common/events', './datepicker/datepicker-default-parser', './datepicker/datepicker', './dropdown/dropdown-element', './dropdown/dropdown', './dropdown/dropdown-fix', './fab/fab', './file/file', './footer/footer', './input/input-prefix', './input/input-update-service', './input/input', './modal/modal', './modal/modal-trigger', './navbar/navbar', './pagination/pagination', './parallax/parallax', './progress/progress', './pushpin/pushpin', './radio/radio', './range/range', './scrollfire/scrollfire-patch', './scrollfire/scrollfire-target', './scrollfire/scrollfire', './scrollspy/scrollspy', './select/select', './sidenav/sidenav-collapse', './sidenav/sidenav', './slider/slider', './switch/switch', './tabs/tabs', './tap-target/tap-target', './toast/toastService', './tooltip/tooltip', './transitions/fadein-image', './transitions/staggered-list', './validation/validationRenderer', './waves/waves'], function (_export, _context) {
   "use strict";
 
   return {
@@ -436,54 +436,62 @@ System.register(['./autocomplete/autocomplete', './badge/badge', './box/box', '.
       }
 
       _export(_exportObj54);
-    }, function (_toastToastService) {
+    }, function (_tapTargetTapTarget) {
       var _exportObj55 = {};
 
-      for (var _key55 in _toastToastService) {
-        if (_key55 !== "default" && _key55 !== "__esModule") _exportObj55[_key55] = _toastToastService[_key55];
+      for (var _key55 in _tapTargetTapTarget) {
+        if (_key55 !== "default" && _key55 !== "__esModule") _exportObj55[_key55] = _tapTargetTapTarget[_key55];
       }
 
       _export(_exportObj55);
-    }, function (_tooltipTooltip) {
+    }, function (_toastToastService) {
       var _exportObj56 = {};
 
-      for (var _key56 in _tooltipTooltip) {
-        if (_key56 !== "default" && _key56 !== "__esModule") _exportObj56[_key56] = _tooltipTooltip[_key56];
+      for (var _key56 in _toastToastService) {
+        if (_key56 !== "default" && _key56 !== "__esModule") _exportObj56[_key56] = _toastToastService[_key56];
       }
 
       _export(_exportObj56);
-    }, function (_transitionsFadeinImage) {
+    }, function (_tooltipTooltip) {
       var _exportObj57 = {};
 
-      for (var _key57 in _transitionsFadeinImage) {
-        if (_key57 !== "default" && _key57 !== "__esModule") _exportObj57[_key57] = _transitionsFadeinImage[_key57];
+      for (var _key57 in _tooltipTooltip) {
+        if (_key57 !== "default" && _key57 !== "__esModule") _exportObj57[_key57] = _tooltipTooltip[_key57];
       }
 
       _export(_exportObj57);
-    }, function (_transitionsStaggeredList) {
+    }, function (_transitionsFadeinImage) {
       var _exportObj58 = {};
 
-      for (var _key58 in _transitionsStaggeredList) {
-        if (_key58 !== "default" && _key58 !== "__esModule") _exportObj58[_key58] = _transitionsStaggeredList[_key58];
+      for (var _key58 in _transitionsFadeinImage) {
+        if (_key58 !== "default" && _key58 !== "__esModule") _exportObj58[_key58] = _transitionsFadeinImage[_key58];
       }
 
       _export(_exportObj58);
-    }, function (_validationValidationRenderer) {
+    }, function (_transitionsStaggeredList) {
       var _exportObj59 = {};
 
-      for (var _key59 in _validationValidationRenderer) {
-        if (_key59 !== "default" && _key59 !== "__esModule") _exportObj59[_key59] = _validationValidationRenderer[_key59];
+      for (var _key59 in _transitionsStaggeredList) {
+        if (_key59 !== "default" && _key59 !== "__esModule") _exportObj59[_key59] = _transitionsStaggeredList[_key59];
       }
 
       _export(_exportObj59);
-    }, function (_wavesWaves) {
+    }, function (_validationValidationRenderer) {
       var _exportObj60 = {};
 
-      for (var _key60 in _wavesWaves) {
-        if (_key60 !== "default" && _key60 !== "__esModule") _exportObj60[_key60] = _wavesWaves[_key60];
+      for (var _key60 in _validationValidationRenderer) {
+        if (_key60 !== "default" && _key60 !== "__esModule") _exportObj60[_key60] = _validationValidationRenderer[_key60];
       }
 
       _export(_exportObj60);
+    }, function (_wavesWaves) {
+      var _exportObj61 = {};
+
+      for (var _key61 in _wavesWaves) {
+        if (_key61 !== "default" && _key61 !== "__esModule") _exportObj61[_key61] = _wavesWaves[_key61];
+      }
+
+      _export(_exportObj61);
     }],
     execute: function () {}
   };

@@ -22,7 +22,7 @@ define(['exports', './dropdown/dropdown-fix'], function (exports, _dropdownFix) 
     }
 
     ConfigBuilder.prototype.useAll = function useAll() {
-      return this.useAutoComplete().useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useScrollSpy().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+      return this.useAutoComplete().useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useScrollSpy().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTapTarget().useTooltip().useTransitions().useWaves().useWell();
     };
 
     ConfigBuilder.prototype.useAutoComplete = function useAutoComplete() {
@@ -212,6 +212,11 @@ define(['exports', './dropdown/dropdown-fix'], function (exports, _dropdownFix) 
 
     ConfigBuilder.prototype.useTabs = function useTabs() {
       this.globalResources.push('./tabs/tabs');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useTapTarget = function useTapTarget() {
+      this.globalResources.push('./tap-target/tap-target');
       return this;
     };
 

@@ -45,6 +45,7 @@ export class ConfigBuilder {
       .useSlider()
       .useSwitch()
       .useTabs()
+      .useTapTarget()
       .useTooltip()
       .useTransitions()
       .useWaves()
@@ -245,6 +246,11 @@ export class ConfigBuilder {
    */
   useTabs(): ConfigBuilder {
     this.globalResources.push('./tabs/tabs');
+    return this;
+  }
+
+  useTapTarget(): ConfigBuilder {
+    this.globalResources.push('./tap-target/tap-target');
     return this;
   }
 

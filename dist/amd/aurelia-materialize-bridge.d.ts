@@ -86,6 +86,7 @@ export declare class ConfigBuilder {
      * Use materialized tabs
      */
   useTabs(): ConfigBuilder;
+  useTapTarget(): ConfigBuilder;
   useTooltip(): ConfigBuilder;
   useTransitions(): ConfigBuilder;
   
@@ -144,11 +145,13 @@ export declare class MdButton {
   flat: any;
   floating: any;
   large: any;
+  pulse: any;
   constructor(element?: any);
   attached(): any;
   detached(): any;
   disabledChanged(newValue?: any): any;
   flatChanged(newValue?: any): any;
+  pulseChanged(newValue?: any): any;
 }
 export declare class MdCard {
   mdHorizontal: any;
@@ -657,6 +660,14 @@ export declare class MdTabs {
   
   // FIXME: probably bad - binding this introduces dirty checking
   selectedTab: any;
+}
+export declare class MdTapTarget {
+  static controlId: any;
+  mdRef: any;
+  constructor(element?: any);
+  bind(): any;
+  open(): any;
+  close(): any;
 }
 export declare class MdToastService {
   show(message?: any, displayLength?: any, className?: any): any;
