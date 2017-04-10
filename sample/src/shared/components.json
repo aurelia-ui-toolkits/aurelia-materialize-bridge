@@ -278,6 +278,15 @@
         "swipeable": "28e13d1424552d4b5787c0c70141f9fc"
       }
     },
+    "TapTarget": {
+      "status": "wip",
+      "samples": {
+        "basic-use":{
+          "default": true,
+          "gist": "1f1e634267bcd81c07c6a617464c2191"
+        }
+      }
+    },
     "Transitions": {
       "status": "done",
       "samples": {
