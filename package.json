@@ -234,6 +234,7 @@
         "aurelia-materialize-bridge/slider/slider",
         "aurelia-materialize-bridge/switch/switch",
         "aurelia-materialize-bridge/tabs/tabs",
+        "aurelia-materialize-bridge/tap-target/tap-target",
         "aurelia-materialize-bridge/tooltip/tooltip",
         "aurelia-materialize-bridge/transitions/fadein-image",
         "aurelia-materialize-bridge/transitions/staggered-list",
