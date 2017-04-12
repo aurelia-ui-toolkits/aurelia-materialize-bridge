@@ -1,4 +1,4 @@
-import { bindable, customElement, inlineView } from 'aurelia-templating';
+import { bindable, customElement } from 'aurelia-templating';
 import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
@@ -6,14 +6,6 @@ import { getLogger } from 'aurelia-logging';
 
 @customElement('md-slider')
 @inject(Element)
-@inlineView(`
-  <template class="slider">
-  <require from="./slider.css"></require>
-  <ul class="slides">
-    <slot></slot>
-  </ul>
-  </template>
-`)
 export class MdSlider {
   @bindable({ defaultBindingMode: bindingMode.oneTime }) mdFillContainer = false;
   @bindable({ defaultBindingMode: bindingMode.oneTime }) mdHeight = 400;

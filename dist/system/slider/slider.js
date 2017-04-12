@@ -3,7 +3,7 @@
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (_export, _context) {
   "use strict";
 
-  var bindable, customElement, inlineView, bindingMode, inject, getBooleanFromAttributeValue, getLogger, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, MdSlider;
+  var bindable, customElement, bindingMode, inject, getBooleanFromAttributeValue, getLogger, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, MdSlider;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -58,7 +58,6 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     setters: [function (_aureliaTemplating) {
       bindable = _aureliaTemplating.bindable;
       customElement = _aureliaTemplating.customElement;
-      inlineView = _aureliaTemplating.inlineView;
     }, function (_aureliaBinding) {
       bindingMode = _aureliaBinding.bindingMode;
     }, function (_aureliaDependencyInjection) {
@@ -69,7 +68,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       getLogger = _aureliaLogging.getLogger;
     }],
     execute: function () {
-      _export('MdSlider', MdSlider = (_dec = customElement('md-slider'), _dec2 = inject(Element), _dec3 = inlineView('\n  <template class="slider">\n  <require from="./slider.css"></require>\n  <ul class="slides">\n    <slot></slot>\n  </ul>\n  </template>\n'), _dec4 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec5 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec6 = bindable(), _dec7 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec8 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+      _export('MdSlider', MdSlider = (_dec = customElement('md-slider'), _dec2 = inject(Element), _dec3 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec4 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec5 = bindable(), _dec6 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec7 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdSlider(element) {
           _classCallCheck(this, MdSlider);
 
@@ -126,32 +125,32 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         };
 
         return MdSlider;
-      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFillContainer', [_dec4], {
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFillContainer', [_dec3], {
         enumerable: true,
         initializer: function initializer() {
           return false;
         }
-      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdHeight', [_dec5], {
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdHeight', [_dec4], {
         enumerable: true,
         initializer: function initializer() {
           return 400;
         }
-      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdIndicators', [_dec6], {
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdIndicators', [_dec5], {
         enumerable: true,
         initializer: function initializer() {
           return true;
         }
-      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdInterval', [_dec7], {
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdInterval', [_dec6], {
         enumerable: true,
         initializer: function initializer() {
           return 6000;
         }
-      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdTransition', [_dec8], {
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdTransition', [_dec7], {
         enumerable: true,
         initializer: function initializer() {
           return 500;
         }
-      })), _class2)) || _class) || _class) || _class));
+      })), _class2)) || _class) || _class));
 
       _export('MdSlider', MdSlider);
     }
