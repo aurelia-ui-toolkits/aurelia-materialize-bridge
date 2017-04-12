@@ -1,3 +1,4 @@
+import {PLATFORM,DOM} from 'aurelia-pal';
 import {bindable,customAttribute,customElement,children,inlineView} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
 import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-binding';
@@ -5,7 +6,6 @@ import {Router} from 'aurelia-router';
 import {TaskQueue} from 'aurelia-task-queue';
 import {getLogger} from 'aurelia-logging';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {DOM} from 'aurelia-pal';
 
 export class ClickCounter {
   count = 0;
@@ -323,7 +323,8 @@ export function configure(aurelia, configCallback) {
   }
 
   if (builder.useGlobalResources) {
-    aurelia.globalResources(builder.globalResources);
+    const mappedResources = builder.globalResources.map(r => PLATFORM.moduleName(r));
+    aurelia.globalResources(mappedResources);
   }
   if (builder.useScrollfirePatch) {
     new ScrollfirePatch().patch();
@@ -699,71 +700,6 @@ export class MdCharCounter {
   }
 }
 
-// @customElement('md-checkbox')
-@inject(Element)
-export class MdCheckbox {
-  static id = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.twoWay
-  }) mdChecked;
-  @bindable() mdDisabled;
-  @bindable() mdReadonly = false;
-  @bindable() mdFilledIn;
-  @bindable() mdMatcher;
-  @bindable() mdModel;
-
-  constructor(element) {
-    this.element = element;
-    this.controlId = `md-checkbox-${MdCheckbox.id++}`;
-    // this.handleChange = this.handleChange.bind(this);
-  }
-
-  attached() {
-    this.attributeManager = new AttributeManager(this.checkbox);
-    if (getBooleanFromAttributeValue(this.mdFilledIn)) {
-      this.attributeManager.addClasses('filled-in');
-    }
-    if (this.mdChecked === null) {
-      this.checkbox.indeterminate = true;
-    } else {
-      this.checkbox.indeterminate = false;
-    }
-    if (getBooleanFromAttributeValue(this.mdDisabled)) {
-      this.checkbox.disabled = true;
-    }
-    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
-    // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
-    // this.checkbox.addEventListener('change', this.handleChange);
-  }
-
-  // blur() {
-  //   fireEvent(this.element, 'blur');
-  // }
-
-  detached() {
-    this.attributeManager.removeClasses(['filled-in', 'disabled']);
-    // this.checkbox.removeEventListener('change', this.handleChange);
-  }
-
-  // handleChange() {
-  //   this.mdChecked = this.checkbox.checked;
-  //   fireEvent(this.element, 'blur');
-  // }
-
-  // mdCheckedChanged(newValue) {
-  //   // if (this.checkbox) {
-  //   //   this.checkbox.checked = !!newValue;
-  //   // }
-  //   fireEvent(this.element, 'blur');
-  // }
-
-  mdDisabledChanged(newValue) {
-    if (this.checkbox) {
-      this.checkbox.disabled = !!newValue;
-    }
-  }
-}
-
 @customElement('md-chip')
 @inject(Element)
 export class MdChip {
@@ -827,6 +763,71 @@ export class MdChips {
   }
   onChipSelect(e, chip) {
     fireEvent(this.element, 'selected', { target: chip });
+  }
+}
+
+// @customElement('md-checkbox')
+@inject(Element)
+export class MdCheckbox {
+  static id = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdChecked;
+  @bindable() mdDisabled;
+  @bindable() mdReadonly = false;
+  @bindable() mdFilledIn;
+  @bindable() mdMatcher;
+  @bindable() mdModel;
+
+  constructor(element) {
+    this.element = element;
+    this.controlId = `md-checkbox-${MdCheckbox.id++}`;
+    // this.handleChange = this.handleChange.bind(this);
+  }
+
+  attached() {
+    this.attributeManager = new AttributeManager(this.checkbox);
+    if (getBooleanFromAttributeValue(this.mdFilledIn)) {
+      this.attributeManager.addClasses('filled-in');
+    }
+    if (this.mdChecked === null) {
+      this.checkbox.indeterminate = true;
+    } else {
+      this.checkbox.indeterminate = false;
+    }
+    if (getBooleanFromAttributeValue(this.mdDisabled)) {
+      this.checkbox.disabled = true;
+    }
+    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
+    // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
+    // this.checkbox.addEventListener('change', this.handleChange);
+  }
+
+  // blur() {
+  //   fireEvent(this.element, 'blur');
+  // }
+
+  detached() {
+    this.attributeManager.removeClasses(['filled-in', 'disabled']);
+    // this.checkbox.removeEventListener('change', this.handleChange);
+  }
+
+  // handleChange() {
+  //   this.mdChecked = this.checkbox.checked;
+  //   fireEvent(this.element, 'blur');
+  // }
+
+  // mdCheckedChanged(newValue) {
+  //   // if (this.checkbox) {
+  //   //   this.checkbox.checked = !!newValue;
+  //   // }
+  //   fireEvent(this.element, 'blur');
+  // }
+
+  mdDisabledChanged(newValue) {
+    if (this.checkbox) {
+      this.checkbox.disabled = !!newValue;
+    }
   }
 }
 
@@ -1792,6 +1793,89 @@ export class MdFooter {
   }
 }
 
+@customAttribute('md-modal-trigger')
+@inject(Element)
+export class MdModalTrigger {
+  @bindable() dismissible = true;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+    this.onComplete = this.onComplete.bind(this);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('modal-trigger');
+    $(this.element).leanModal({
+      complete: this.onComplete,
+      dismissible: getBooleanFromAttributeValue(this.dismissible)
+    });
+  }
+
+  detached() {
+    this.attributeManager.removeClasses('modal-trigger');
+  }
+
+  onComplete() {
+    fireMaterializeEvent(this.element, 'modal-complete');
+  }
+}
+
+@customAttribute('md-modal')
+@inject(Element)
+export class MdModal {
+  @bindable() dismissible = true;
+  @bindable() opacity = 0.5; // Opacity of modal background
+  @bindable() inDuration = 300; // Transition in duration
+  @bindable() outDuration = 200; // Transition out duration
+  @bindable() startingTop = '4%'; // Starting top style attribute
+  @bindable() endingTop = '10%'; // Ending top style attribute
+
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-modal');
+    this.attributeManager = new AttributeManager(this.element);
+    this.onComplete = this.onComplete.bind(this);
+    this.onReady = this.onReady.bind(this);
+  }
+
+  attached() {
+    const options = {
+      complete: this.onComplete,
+      dismissible: getBooleanFromAttributeValue(this.dismissible),
+      endingTop: this.endingTop,
+      inDuration: parseInt(this.inDuration, 10),
+      opacity: parseFloat(this.opacity),
+      outDuration: parseInt(this.outDuration, 10),
+      ready: this.onReady,
+      startingTop: this.startingTop
+    };
+    this.log.debug('modal options: ', options);
+    this.attributeManager.addClasses('modal');
+    $(this.element).modal(options);
+  }
+
+  detached() {
+    this.attributeManager.removeClasses('modal');
+  }
+
+  onComplete() {
+    fireMaterializeEvent(this.element, 'modal-complete');
+  }
+
+  onReady(modal, trigger) {
+    fireMaterializeEvent(this.element, 'modal-ready', { modal, trigger });
+  }
+
+  open() {
+    $(this.element).modal('open');
+  }
+
+  close() {
+    $(this.element).modal('close');
+  }
+}
+
 @customAttribute('md-prefix')
 @inject(Element)
 export class MdPrefix {
@@ -1944,89 +2028,6 @@ export class MdInput {
     if (e.keyCode && e.keyCode === 13) {
       this.input.blur();
     }
-  }
-}
-
-@customAttribute('md-modal-trigger')
-@inject(Element)
-export class MdModalTrigger {
-  @bindable() dismissible = true;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-    this.onComplete = this.onComplete.bind(this);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('modal-trigger');
-    $(this.element).leanModal({
-      complete: this.onComplete,
-      dismissible: getBooleanFromAttributeValue(this.dismissible)
-    });
-  }
-
-  detached() {
-    this.attributeManager.removeClasses('modal-trigger');
-  }
-
-  onComplete() {
-    fireMaterializeEvent(this.element, 'modal-complete');
-  }
-}
-
-@customAttribute('md-modal')
-@inject(Element)
-export class MdModal {
-  @bindable() dismissible = true;
-  @bindable() opacity = 0.5; // Opacity of modal background
-  @bindable() inDuration = 300; // Transition in duration
-  @bindable() outDuration = 200; // Transition out duration
-  @bindable() startingTop = '4%'; // Starting top style attribute
-  @bindable() endingTop = '10%'; // Ending top style attribute
-
-  constructor(element) {
-    this.element = element;
-    this.log = getLogger('md-modal');
-    this.attributeManager = new AttributeManager(this.element);
-    this.onComplete = this.onComplete.bind(this);
-    this.onReady = this.onReady.bind(this);
-  }
-
-  attached() {
-    const options = {
-      complete: this.onComplete,
-      dismissible: getBooleanFromAttributeValue(this.dismissible),
-      endingTop: this.endingTop,
-      inDuration: parseInt(this.inDuration, 10),
-      opacity: parseFloat(this.opacity),
-      outDuration: parseInt(this.outDuration, 10),
-      ready: this.onReady,
-      startingTop: this.startingTop
-    };
-    this.log.debug('modal options: ', options);
-    this.attributeManager.addClasses('modal');
-    $(this.element).modal(options);
-  }
-
-  detached() {
-    this.attributeManager.removeClasses('modal');
-  }
-
-  onComplete() {
-    fireMaterializeEvent(this.element, 'modal-complete');
-  }
-
-  onReady(modal, trigger) {
-    fireMaterializeEvent(this.element, 'modal-ready', { modal, trigger });
-  }
-
-  open() {
-    $(this.element).modal('open');
-  }
-
-  close() {
-    $(this.element).modal('close');
   }
 }
 

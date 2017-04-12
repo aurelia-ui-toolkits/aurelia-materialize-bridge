@@ -17,6 +17,8 @@ Object.keys(_exports).forEach(function (key) {
   });
 });
 
+var _aureliaPal = require('aurelia-pal');
+
 var _configBuilder = require('./config-builder');
 
 var _scrollfirePatch = require('./scrollfire/scrollfire-patch');
@@ -36,7 +38,10 @@ function configure(aurelia, configCallback) {
   }
 
   if (builder.useGlobalResources) {
-    aurelia.globalResources(builder.globalResources);
+    var mappedResources = builder.globalResources.map(function (r) {
+      return _aureliaPal.PLATFORM.moduleName(r);
+    });
+    aurelia.globalResources(mappedResources);
   }
   if (builder.useScrollfirePatch) {
     new _scrollfirePatch.ScrollfirePatch().patch();

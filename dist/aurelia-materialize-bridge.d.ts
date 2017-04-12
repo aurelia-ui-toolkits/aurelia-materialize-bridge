@@ -1,4 +1,8 @@
 import {
+  PLATFORM,
+  DOM
+} from 'aurelia-pal';
+import {
   bindable,
   customAttribute,
   customElement,
@@ -26,9 +30,6 @@ import {
 import {
   EventAggregator
 } from 'aurelia-event-aggregator';
-import {
-  DOM
-} from 'aurelia-pal';
 export declare class ClickCounter {
   count: any;
   increment(): any;
@@ -185,6 +186,24 @@ export declare class MdCharCounter {
   attached(): any;
   detached(): any;
 }
+export declare class MdChip {
+  mdClose: any;
+  constructor(element?: any);
+  attached(): any;
+  close(): any;
+}
+export declare class MdChips {
+  autocompleteData: any;
+  data: any;
+  placeholder: any;
+  secondaryPlaceholder: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  onChipAdd(e?: any, chip?: any): any;
+  onChipDelete(e?: any, chip?: any): any;
+  onChipSelect(e?: any, chip?: any): any;
+}
 
 // @customElement('md-checkbox')
 export declare class MdCheckbox {
@@ -214,24 +233,6 @@ export declare class MdCheckbox {
   //   fireEvent(this.element, 'blur');
   // }
   mdDisabledChanged(newValue?: any): any;
-}
-export declare class MdChip {
-  mdClose: any;
-  constructor(element?: any);
-  attached(): any;
-  close(): any;
-}
-export declare class MdChips {
-  autocompleteData: any;
-  data: any;
-  placeholder: any;
-  secondaryPlaceholder: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  onChipAdd(e?: any, chip?: any): any;
-  onChipDelete(e?: any, chip?: any): any;
-  onChipSelect(e?: any, chip?: any): any;
 }
 export declare class MdCollapsible {
   constructor(element?: any, eventAggregator?: any);
@@ -394,6 +395,30 @@ export declare class MdFooter {
   bind(): any;
   unbind(): any;
 }
+export declare class MdModalTrigger {
+  dismissible: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  onComplete(): any;
+}
+export declare class MdModal {
+  dismissible: any;
+  opacity: any;
+  inDuration: any;
+  outDuration: any;
+  startingTop: any;
+  endingTop: any;
+  
+  // Ending top style attribute
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  onComplete(): any;
+  onReady(modal?: any, trigger?: any): any;
+  open(): any;
+  close(): any;
+}
 export declare class MdPrefix {
   constructor(element?: any);
   bind(): any;
@@ -429,30 +454,6 @@ export declare class MdInput {
   attachEventHandlers(): any;
   detachEventHandlers(): any;
   blurOnEnter(e?: any): any;
-}
-export declare class MdModalTrigger {
-  dismissible: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  onComplete(): any;
-}
-export declare class MdModal {
-  dismissible: any;
-  opacity: any;
-  inDuration: any;
-  outDuration: any;
-  startingTop: any;
-  endingTop: any;
-  
-  // Ending top style attribute
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  onComplete(): any;
-  onReady(modal?: any, trigger?: any): any;
-  open(): any;
-  close(): any;
 }
 export declare class MdNavbar {
   mdFixed: any;

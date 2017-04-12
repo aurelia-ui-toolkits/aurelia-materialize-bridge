@@ -1,3 +1,4 @@
+import {PLATFORM} from 'aurelia-pal';
 import {ConfigBuilder} from './config-builder';
 import {ScrollfirePatch} from './scrollfire/scrollfire-patch';
 
@@ -16,7 +17,8 @@ export function configure(aurelia, configCallback) {
   }
 
   if (builder.useGlobalResources) {
-    aurelia.globalResources(builder.globalResources);
+    const mappedResources = builder.globalResources.map(r => PLATFORM.moduleName(r));
+    aurelia.globalResources(mappedResources);
   }
   if (builder.useScrollfirePatch) {
     new ScrollfirePatch().patch();
