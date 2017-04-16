@@ -1,3 +1,4 @@
+import {PLATFORM} from 'aurelia-pal';
 import {applyMaterializeDropdownFix} from './dropdown/dropdown-fix';
 
 /**
@@ -53,54 +54,54 @@ export class ConfigBuilder {
   }
 
   useAutoComplete(): ConfigBuilder {
-    this.globalResources.push('./autocomplete/autocomplete');
+    this.globalResources.push(PLATFORM.moduleName('./autocomplete/autocomplete'));
     return this;
   }
 
   useBadge(): ConfigBuilder {
-    this.globalResources.push('./badge/badge');
+    this.globalResources.push(PLATFORM.moduleName('./badge/badge'));
     return this;
   }
 
   useBox(): ConfigBuilder {
-    this.globalResources.push('./box/box');
+    this.globalResources.push(PLATFORM.moduleName('./box/box'));
     return this;
   }
 
   useBreadcrumbs(): ConfigBuilder {
-    this.globalResources.push('./breadcrumbs/breadcrumbs');
+    this.globalResources.push(PLATFORM.moduleName('./breadcrumbs/breadcrumbs'));
     return this;
   }
 
   useButton(): ConfigBuilder {
-    this.globalResources.push('./button/button');
+    this.globalResources.push(PLATFORM.moduleName('./button/button'));
     return this;
   }
 
   useCarousel(): ConfigBuilder {
-    this.globalResources.push('./carousel/carousel');
-    this.globalResources.push('./carousel/carousel-item');
+    this.globalResources.push(PLATFORM.moduleName('./carousel/carousel'));
+    this.globalResources.push(PLATFORM.moduleName('./carousel/carousel-item'));
     return this;
   }
 
   useCharacterCounter(): ConfigBuilder {
-    this.globalResources.push('./char-counter/char-counter');
+    this.globalResources.push(PLATFORM.moduleName('./char-counter/char-counter'));
     return this;
   }
 
   useCard(): ConfigBuilder {
-    this.globalResources.push('./card/card');
+    this.globalResources.push(PLATFORM.moduleName('./card/card'));
     return this;
   }
 
   useCheckbox(): ConfigBuilder {
-    this.globalResources.push('./checkbox/checkbox');
+    this.globalResources.push(PLATFORM.moduleName('./checkbox/checkbox'));
     return this;
   }
 
   useChip(): ConfigBuilder {
-    this.globalResources.push('./chip/chip');
-    this.globalResources.push('./chip/chips');
+    this.globalResources.push(PLATFORM.moduleName('./chip/chip'));
+    this.globalResources.push(PLATFORM.moduleName('./chip/chips'));
     return this;
   }
 
@@ -108,36 +109,36 @@ export class ConfigBuilder {
   * Use my control
   */
   useClickCounter(): ConfigBuilder {
-    this.globalResources.push('./click-counter');
+    this.globalResources.push(PLATFORM.moduleName('./click-counter'));
     return this;
   }
 
   useCollapsible(): ConfigBuilder {
-    this.globalResources.push('./collapsible/collapsible');
+    this.globalResources.push(PLATFORM.moduleName('./collapsible/collapsible'));
     return this;
   }
 
   useCollection() : ConfigBuilder {
-    this.globalResources.push('./collection/collection');
-    this.globalResources.push('./collection/collection-item');
-    this.globalResources.push('./collection/collection-header');
-    this.globalResources.push('./collection/md-collection-selector');
+    this.globalResources.push(PLATFORM.moduleName('./collection/collection'));
+    this.globalResources.push(PLATFORM.moduleName('./collection/collection-item'));
+    this.globalResources.push(PLATFORM.moduleName('./collection/collection-header'));
+    this.globalResources.push(PLATFORM.moduleName('./collection/md-collection-selector'));
     return this;
   }
 
   useColors() : ConfigBuilder {
-    this.globalResources.push('./colors/md-colors');
+    this.globalResources.push(PLATFORM.moduleName('./colors/md-colors'));
     return this;
   }
 
   useDatePicker() : ConfigBuilder {
-    this.globalResources.push('./datepicker/datepicker');
+    this.globalResources.push(PLATFORM.moduleName('./datepicker/datepicker'));
     return this;
   }
 
   useDropdown() : ConfigBuilder {
     // this.globalResources.push('./dropdown/dropdown-element');
-    this.globalResources.push('./dropdown/dropdown');
+    this.globalResources.push(PLATFORM.moduleName('./dropdown/dropdown'));
     return this;
   }
 
@@ -147,97 +148,97 @@ export class ConfigBuilder {
   }
 
   useFab() : ConfigBuilder {
-    this.globalResources.push('./fab/fab');
+    this.globalResources.push(PLATFORM.moduleName('./fab/fab'));
     return this;
   }
 
   useFile() : ConfigBuilder {
-    this.globalResources.push('./file/file');
+    this.globalResources.push(PLATFORM.moduleName('./file/file'));
     return this;
   }
 
   useFooter() : ConfigBuilder {
-    this.globalResources.push('./footer/footer');
+    this.globalResources.push(PLATFORM.moduleName('./footer/footer'));
     return this;
   }
 
   useInput() : ConfigBuilder {
-    this.globalResources.push('./input/input');
-    this.globalResources.push('./input/input-prefix');
+    this.globalResources.push(PLATFORM.moduleName('./input/input'));
+    this.globalResources.push(PLATFORM.moduleName('./input/input-prefix'));
     return this;
   }
 
   useModal(): ConfigBuilder {
-    this.globalResources.push('./modal/modal');
-    this.globalResources.push('./modal/modal-trigger');
+    this.globalResources.push(PLATFORM.moduleName('./modal/modal'));
+    this.globalResources.push(PLATFORM.moduleName('./modal/modal-trigger'));
     return this;
   }
 
   useNavbar(): ConfigBuilder {
-    this.globalResources.push('./navbar/navbar');
+    this.globalResources.push(PLATFORM.moduleName('./navbar/navbar'));
     return this;
   }
 
   usePagination(): ConfigBuilder {
-    this.globalResources.push('./pagination/pagination');
+    this.globalResources.push(PLATFORM.moduleName('./pagination/pagination'));
     return this;
   }
 
   useParallax(): ConfigBuilder {
-    this.globalResources.push('./parallax/parallax');
+    this.globalResources.push(PLATFORM.moduleName('./parallax/parallax'));
     return this;
   }
 
   useProgress(): ConfigBuilder {
-    this.globalResources.push('./progress/progress');
+    this.globalResources.push(PLATFORM.moduleName('./progress/progress'));
     return this;
   }
 
   usePushpin(): ConfigBuilder {
-    this.globalResources.push('./pushpin/pushpin');
+    this.globalResources.push(PLATFORM.moduleName('./pushpin/pushpin'));
     return this;
   }
 
   useRadio(): ConfigBuilder {
-    this.globalResources.push('./radio/radio');
+    this.globalResources.push(PLATFORM.moduleName('./radio/radio'));
     return this;
   }
 
   useRange(): ConfigBuilder {
-    this.globalResources.push('./range/range');
+    this.globalResources.push(PLATFORM.moduleName('./range/range'));
     return this;
   }
 
   useScrollfire(): ConfigBuilder {
-    this.globalResources.push('./scrollfire/scrollfire');
-    this.globalResources.push('./scrollfire/scrollfire-target');
+    this.globalResources.push(PLATFORM.moduleName('./scrollfire/scrollfire'));
+    this.globalResources.push(PLATFORM.moduleName('./scrollfire/scrollfire-target'));
     return this;
   }
 
   useScrollSpy(): ConfigBuilder {
-    this.globalResources.push('./scrollspy/scrollspy');
+    this.globalResources.push(PLATFORM.moduleName('./scrollspy/scrollspy'));
     return this;
   }
 
   useSelect(): ConfigBuilder {
-    this.globalResources.push('./select/select');
+    this.globalResources.push(PLATFORM.moduleName('./select/select'));
     return this;
   }
 
   useSidenav(): ConfigBuilder {
-    this.globalResources.push('./sidenav/sidenav');
-    this.globalResources.push('./sidenav/sidenav-collapse');
+    this.globalResources.push(PLATFORM.moduleName('./sidenav/sidenav'));
+    this.globalResources.push(PLATFORM.moduleName('./sidenav/sidenav-collapse'));
     return this;
   }
 
   useSlider(): ConfigBuilder {
-    this.globalResources.push('./slider/slider');
+    this.globalResources.push(PLATFORM.moduleName('./slider/slider'));
     // this.globalResources.push('./slider/slide');
     return this;
   }
 
   useSwitch(): ConfigBuilder {
-    this.globalResources.push('./switch/switch');
+    this.globalResources.push(PLATFORM.moduleName('./switch/switch'));
     return this;
   }
 
@@ -245,23 +246,23 @@ export class ConfigBuilder {
    * Use materialized tabs
    */
   useTabs(): ConfigBuilder {
-    this.globalResources.push('./tabs/tabs');
+    this.globalResources.push(PLATFORM.moduleName('./tabs/tabs'));
     return this;
   }
 
   useTapTarget(): ConfigBuilder {
-    this.globalResources.push('./tap-target/tap-target');
+    this.globalResources.push(PLATFORM.moduleName('./tap-target/tap-target'));
     return this;
   }
 
   useTooltip(): ConfigBuilder {
-    this.globalResources.push('./tooltip/tooltip');
+    this.globalResources.push(PLATFORM.moduleName('./tooltip/tooltip'));
     return this;
   }
 
   useTransitions(): ConfigBuilder {
-    this.globalResources.push('./transitions/fadein-image');
-    this.globalResources.push('./transitions/staggered-list');
+    this.globalResources.push(PLATFORM.moduleName('./transitions/fadein-image'));
+    this.globalResources.push(PLATFORM.moduleName('./transitions/staggered-list'));
     return this;
   }
 
@@ -269,12 +270,12 @@ export class ConfigBuilder {
    * Use ripple/waves effect
    */
   useWaves(): ConfigBuilder {
-    this.globalResources.push('./waves/waves');
+    this.globalResources.push(PLATFORM.moduleName('./waves/waves'));
     return this;
   }
 
   useWell(): ConfigBuilder {
-    this.globalResources.push('./well/md-well.html');
+    this.globalResources.push(PLATFORM.moduleName('./well/md-well.html'));
     return this;
   }
 
