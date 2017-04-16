@@ -1,4 +1,4 @@
-define(['exports', './exports', 'aurelia-pal', './config-builder', './scrollfire/scrollfire-patch', './common/polyfills'], function (exports, _exports, _aureliaPal, _configBuilder, _scrollfirePatch, _polyfills) {
+define(['exports', './exports', './config-builder', './scrollfire/scrollfire-patch', './common/polyfills'], function (exports, _exports, _configBuilder, _scrollfirePatch, _polyfills) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -29,10 +29,7 @@ define(['exports', './exports', 'aurelia-pal', './config-builder', './scrollfire
     }
 
     if (builder.useGlobalResources) {
-      var mappedResources = builder.globalResources.map(function (r) {
-        return _aureliaPal.PLATFORM.moduleName(r);
-      });
-      aurelia.globalResources(mappedResources);
+      aurelia.globalResources(builder.globalResources);
     }
     if (builder.useScrollfirePatch) {
       new _scrollfirePatch.ScrollfirePatch().patch();

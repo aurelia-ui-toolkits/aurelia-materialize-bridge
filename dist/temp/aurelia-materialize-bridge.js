@@ -1,11 +1,11 @@
 'use strict';
 
 exports.__esModule = true;
-exports.MdWaves = exports.MaterializeFormValidationRenderer = exports.MdStaggeredList = exports.MdFadeinImage = exports.MdTooltip = exports.MdToastService = exports.MdTapTarget = exports.MdTabs = exports.MdSwitch = exports.MdSlider = exports.MdSidenav = exports.MdSidenavCollapse = exports.MdSelect = exports.MdScrollSpy = exports.MdScrollfire = exports.MdScrollfireTarget = exports.ScrollfirePatch = exports.MdRange = exports.MdRadio = exports.MdPushpin = exports.MdProgress = exports.MdParallax = exports.MdPagination = exports.MdNavbar = exports.MdModal = exports.MdModalTrigger = exports.MdInput = exports.MdInputUpdateService = exports.MdPrefix = exports.MdFooter = exports.MdFileInput = exports.MdFab = exports.MdDropdown = exports.MdDropdownElement = exports.MdDatePicker = exports.DatePickerDefaultParser = exports.constants = exports.AttributeManager = exports.MdColors = exports.LightenValueConverter = exports.DarkenValueConverter = exports.MdlListSelector = exports.MdCollection = exports.MdCollectionItem = exports.MdCollectionHeader = exports.MdCollapsible = exports.MdChips = exports.MdChip = exports.MdCheckbox = exports.MdCharCounter = exports.MdCarousel = exports.MdCarouselItem = exports.MdCard = exports.MdButton = exports.InstructionFilterValueConverter = exports.MdBreadcrumbs = exports.MdBox = exports.MdBadge = exports.MdAutoComplete = exports.ConfigBuilder = exports.ClickCounter = undefined;
+exports.MdWaves = exports.MaterializeFormValidationRenderer = exports.MdStaggeredList = exports.MdFadeinImage = exports.MdTooltip = exports.MdToastService = exports.MdTapTarget = exports.MdTabs = exports.MdSwitch = exports.MdSlider = exports.MdSidenav = exports.MdSidenavCollapse = exports.MdSelect = exports.MdScrollSpy = exports.MdScrollfire = exports.MdScrollfireTarget = exports.ScrollfirePatch = exports.MdRange = exports.MdRadio = exports.MdPushpin = exports.MdProgress = exports.MdParallax = exports.MdPagination = exports.MdNavbar = exports.MdModal = exports.MdModalTrigger = exports.MdInput = exports.MdInputUpdateService = exports.MdPrefix = exports.MdFooter = exports.MdFileInput = exports.MdFab = exports.MdDatePicker = exports.DatePickerDefaultParser = exports.MdDropdown = exports.MdDropdownElement = exports.constants = exports.AttributeManager = exports.MdColors = exports.LightenValueConverter = exports.DarkenValueConverter = exports.MdlListSelector = exports.MdCollection = exports.MdCollectionItem = exports.MdCollectionHeader = exports.MdCollapsible = exports.MdChips = exports.MdChip = exports.MdCheckbox = exports.MdCharCounter = exports.MdCarousel = exports.MdCarouselItem = exports.MdCard = exports.MdButton = exports.InstructionFilterValueConverter = exports.MdBreadcrumbs = exports.MdBox = exports.MdBadge = exports.MdAutoComplete = exports.ConfigBuilder = exports.ClickCounter = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _dec3, _class3, _desc, _value, _class4, _descriptor, _dec4, _dec5, _dec6, _dec7, _class6, _desc2, _value2, _class7, _descriptor2, _descriptor3, _dec8, _dec9, _dec10, _class9, _desc3, _value3, _class10, _descriptor4, _dec11, _dec12, _dec13, _class12, _desc4, _value4, _class13, _descriptor5, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _class15, _desc5, _value5, _class16, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _class18, _desc6, _value6, _class19, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _dec28, _dec29, _dec30, _class21, _desc7, _value7, _class22, _descriptor16, _descriptor17, _dec31, _dec32, _dec33, _dec34, _dec35, _class24, _desc8, _value8, _class25, _descriptor18, _descriptor19, _descriptor20, _dec36, _dec37, _dec38, _class27, _desc9, _value9, _class28, _descriptor21, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _class30, _desc10, _value10, _class31, _descriptor22, _descriptor23, _descriptor24, _descriptor25, _descriptor26, _descriptor27, _class32, _temp, _dec46, _dec47, _dec48, _class33, _desc11, _value11, _class34, _descriptor28, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _class36, _desc12, _value12, _class37, _descriptor29, _descriptor30, _descriptor31, _descriptor32, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _class39, _dec61, _dec62, _class40, _dec63, _class41, _dec64, _dec65, _class42, _dec66, _dec67, _dec68, _dec69, _dec70, _class43, _desc13, _value13, _class44, _descriptor33, _descriptor34, _descriptor35, _dec71, _dec72, _dec73, _dec74, _desc14, _value14, _class46, _descriptor36, _descriptor37, _descriptor38, _descriptor39, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _class49, _desc15, _value15, _class50, _descriptor40, _descriptor41, _descriptor42, _descriptor43, _descriptor44, _descriptor45, _descriptor46, _descriptor47, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _class52, _desc16, _value16, _class53, _descriptor48, _descriptor49, _descriptor50, _descriptor51, _descriptor52, _descriptor53, _descriptor54, _descriptor55, _class54, _temp2, _dec95, _dec96, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _class55, _desc17, _value17, _class56, _descriptor56, _descriptor57, _descriptor58, _descriptor59, _descriptor60, _descriptor61, _descriptor62, _descriptor63, _descriptor64, _descriptor65, _class57, _temp3, _dec107, _dec108, _dec109, _dec110, _class58, _desc18, _value18, _class59, _descriptor66, _descriptor67, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _class61, _desc19, _value19, _class62, _descriptor68, _descriptor69, _descriptor70, _descriptor71, _dec117, _dec118, _class64, _dec119, _dec120, _class65, _dec121, _class66, _dec122, _dec123, _dec124, _dec125, _dec126, _dec127, _dec128, _dec129, _dec130, _dec131, _dec132, _dec133, _dec134, _dec135, _dec136, _class68, _desc20, _value20, _class69, _descriptor72, _descriptor73, _descriptor74, _descriptor75, _descriptor76, _descriptor77, _descriptor78, _descriptor79, _descriptor80, _descriptor81, _descriptor82, _descriptor83, _descriptor84, _class70, _temp4, _dec137, _dec138, _dec139, _class71, _desc21, _value21, _class72, _descriptor85, _dec140, _dec141, _dec142, _dec143, _dec144, _dec145, _dec146, _dec147, _class74, _desc22, _value22, _class75, _descriptor86, _descriptor87, _descriptor88, _descriptor89, _descriptor90, _descriptor91, _dec148, _dec149, _dec150, _dec151, _class77, _desc23, _value23, _class78, _descriptor92, _descriptor93, _dec152, _dec153, _dec154, _dec155, _dec156, _dec157, _dec158, _dec159, _dec160, _class80, _desc24, _value24, _class81, _descriptor94, _descriptor95, _descriptor96, _descriptor97, _descriptor98, _descriptor99, _descriptor100, _dec161, _dec162, _class83, _dec163, _dec164, _dec165, _dec166, _dec167, _dec168, _dec169, _class84, _desc25, _value25, _class85, _descriptor101, _descriptor102, _descriptor103, _descriptor104, _descriptor105, _dec170, _dec171, _dec172, _dec173, _dec174, _class87, _desc26, _value26, _class88, _descriptor106, _descriptor107, _descriptor108, _dec175, _dec176, _dec177, _dec178, _dec179, _dec180, _dec181, _dec182, _dec183, _class90, _desc27, _value27, _class91, _descriptor109, _descriptor110, _descriptor111, _descriptor112, _descriptor113, _descriptor114, _descriptor115, _class92, _temp5, _dec184, _dec185, _dec186, _dec187, _dec188, _dec189, _class93, _desc28, _value28, _class94, _descriptor116, _descriptor117, _descriptor118, _descriptor119, _class96, _temp6, _dec190, _dec191, _dec192, _dec193, _class97, _desc29, _value29, _class98, _descriptor120, _descriptor121, _dec194, _dec195, _class100, _dec196, _dec197, _dec198, _class102, _desc30, _value30, _class103, _descriptor122, _dec199, _dec200, _dec201, _dec202, _dec203, _dec204, _class105, _desc31, _value31, _class106, _descriptor123, _descriptor124, _descriptor125, _descriptor126, _dec205, _dec206, _dec207, _class108, _desc32, _value32, _class109, _descriptor127, _dec208, _dec209, _dec210, _dec211, _dec212, _dec213, _class111, _desc33, _value33, _class112, _descriptor128, _descriptor129, _descriptor130, _descriptor131, _class113, _temp7, _dec214, _dec215, _dec216, _dec217, _dec218, _dec219, _dec220, _class114, _desc34, _value34, _class115, _descriptor132, _descriptor133, _descriptor134, _descriptor135, _descriptor136, _dec221, _dec222, _dec223, _dec224, _dec225, _dec226, _dec227, _class117, _desc35, _value35, _class118, _descriptor137, _descriptor138, _descriptor139, _descriptor140, _descriptor141, _dec228, _dec229, _dec230, _dec231, _dec232, _dec233, _dec234, _class120, _desc36, _value36, _class121, _descriptor142, _descriptor143, _descriptor144, _descriptor145, _descriptor146, _dec235, _dec236, _dec237, _class123, _desc37, _value37, _class124, _descriptor147, _class125, _temp8, _dec238, _dec239, _dec240, _dec241, _dec242, _dec243, _class126, _desc38, _value38, _class127, _descriptor148, _descriptor149, _descriptor150, _descriptor151, _dec244, _dec245, _dec246, _class129, _desc39, _value39, _class130, _descriptor152, _dec247, _dec248, _dec249, _class132, _desc40, _value40, _class133, _descriptor153, _dec250, _dec251, _dec252, _dec253, _dec254, _class136, _desc41, _value41, _class137, _descriptor154, _descriptor155, _descriptor156;
+var _dec, _dec2, _dec3, _class3, _desc, _value, _class4, _descriptor, _dec4, _dec5, _dec6, _dec7, _class6, _desc2, _value2, _class7, _descriptor2, _descriptor3, _dec8, _dec9, _dec10, _class9, _desc3, _value3, _class10, _descriptor4, _dec11, _dec12, _dec13, _class12, _desc4, _value4, _class13, _descriptor5, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _class15, _desc5, _value5, _class16, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _dec21, _dec22, _dec23, _dec24, _dec25, _dec26, _dec27, _class18, _desc6, _value6, _class19, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _dec28, _dec29, _dec30, _class21, _desc7, _value7, _class22, _descriptor16, _descriptor17, _dec31, _dec32, _dec33, _dec34, _dec35, _class24, _desc8, _value8, _class25, _descriptor18, _descriptor19, _descriptor20, _dec36, _dec37, _dec38, _class27, _desc9, _value9, _class28, _descriptor21, _dec39, _dec40, _dec41, _dec42, _dec43, _dec44, _dec45, _class30, _desc10, _value10, _class31, _descriptor22, _descriptor23, _descriptor24, _descriptor25, _descriptor26, _descriptor27, _class32, _temp, _dec46, _dec47, _dec48, _class33, _desc11, _value11, _class34, _descriptor28, _dec49, _dec50, _dec51, _dec52, _dec53, _dec54, _class36, _desc12, _value12, _class37, _descriptor29, _descriptor30, _descriptor31, _descriptor32, _dec55, _dec56, _dec57, _dec58, _dec59, _dec60, _class39, _dec61, _dec62, _class40, _dec63, _class41, _dec64, _dec65, _class42, _dec66, _dec67, _dec68, _dec69, _dec70, _class43, _desc13, _value13, _class44, _descriptor33, _descriptor34, _descriptor35, _dec71, _dec72, _dec73, _dec74, _desc14, _value14, _class46, _descriptor36, _descriptor37, _descriptor38, _descriptor39, _dec75, _dec76, _dec77, _dec78, _dec79, _dec80, _dec81, _dec82, _dec83, _dec84, _class49, _desc15, _value15, _class50, _descriptor40, _descriptor41, _descriptor42, _descriptor43, _descriptor44, _descriptor45, _descriptor46, _descriptor47, _class51, _temp2, _dec85, _dec86, _dec87, _dec88, _dec89, _dec90, _dec91, _dec92, _dec93, _dec94, _dec95, _dec96, _class52, _desc16, _value16, _class53, _descriptor48, _descriptor49, _descriptor50, _descriptor51, _descriptor52, _descriptor53, _descriptor54, _descriptor55, _descriptor56, _descriptor57, _class54, _temp3, _dec97, _dec98, _dec99, _dec100, _dec101, _dec102, _dec103, _dec104, _dec105, _dec106, _class55, _desc17, _value17, _class56, _descriptor58, _descriptor59, _descriptor60, _descriptor61, _descriptor62, _descriptor63, _descriptor64, _descriptor65, _dec107, _dec108, _dec109, _dec110, _class58, _desc18, _value18, _class59, _descriptor66, _descriptor67, _dec111, _dec112, _dec113, _dec114, _dec115, _dec116, _class61, _desc19, _value19, _class62, _descriptor68, _descriptor69, _descriptor70, _descriptor71, _dec117, _dec118, _class64, _dec119, _dec120, _class65, _dec121, _class66, _dec122, _dec123, _dec124, _dec125, _dec126, _dec127, _dec128, _dec129, _dec130, _dec131, _dec132, _dec133, _dec134, _dec135, _dec136, _class68, _desc20, _value20, _class69, _descriptor72, _descriptor73, _descriptor74, _descriptor75, _descriptor76, _descriptor77, _descriptor78, _descriptor79, _descriptor80, _descriptor81, _descriptor82, _descriptor83, _descriptor84, _class70, _temp4, _dec137, _dec138, _dec139, _class71, _desc21, _value21, _class72, _descriptor85, _dec140, _dec141, _dec142, _dec143, _dec144, _dec145, _dec146, _dec147, _class74, _desc22, _value22, _class75, _descriptor86, _descriptor87, _descriptor88, _descriptor89, _descriptor90, _descriptor91, _dec148, _dec149, _dec150, _dec151, _class77, _desc23, _value23, _class78, _descriptor92, _descriptor93, _dec152, _dec153, _dec154, _dec155, _dec156, _dec157, _dec158, _dec159, _dec160, _class80, _desc24, _value24, _class81, _descriptor94, _descriptor95, _descriptor96, _descriptor97, _descriptor98, _descriptor99, _descriptor100, _dec161, _dec162, _class83, _dec163, _dec164, _dec165, _dec166, _dec167, _dec168, _dec169, _class84, _desc25, _value25, _class85, _descriptor101, _descriptor102, _descriptor103, _descriptor104, _descriptor105, _dec170, _dec171, _dec172, _dec173, _dec174, _class87, _desc26, _value26, _class88, _descriptor106, _descriptor107, _descriptor108, _dec175, _dec176, _dec177, _dec178, _dec179, _dec180, _dec181, _dec182, _dec183, _class90, _desc27, _value27, _class91, _descriptor109, _descriptor110, _descriptor111, _descriptor112, _descriptor113, _descriptor114, _descriptor115, _class92, _temp5, _dec184, _dec185, _dec186, _dec187, _dec188, _dec189, _class93, _desc28, _value28, _class94, _descriptor116, _descriptor117, _descriptor118, _descriptor119, _class96, _temp6, _dec190, _dec191, _dec192, _dec193, _class97, _desc29, _value29, _class98, _descriptor120, _descriptor121, _dec194, _dec195, _class100, _dec196, _dec197, _dec198, _class102, _desc30, _value30, _class103, _descriptor122, _dec199, _dec200, _dec201, _dec202, _dec203, _dec204, _class105, _desc31, _value31, _class106, _descriptor123, _descriptor124, _descriptor125, _descriptor126, _dec205, _dec206, _dec207, _class108, _desc32, _value32, _class109, _descriptor127, _dec208, _dec209, _dec210, _dec211, _dec212, _dec213, _class111, _desc33, _value33, _class112, _descriptor128, _descriptor129, _descriptor130, _descriptor131, _class113, _temp7, _dec214, _dec215, _dec216, _dec217, _dec218, _dec219, _dec220, _class114, _desc34, _value34, _class115, _descriptor132, _descriptor133, _descriptor134, _descriptor135, _descriptor136, _dec221, _dec222, _dec223, _dec224, _dec225, _dec226, _dec227, _class117, _desc35, _value35, _class118, _descriptor137, _descriptor138, _descriptor139, _descriptor140, _descriptor141, _dec228, _dec229, _dec230, _dec231, _dec232, _dec233, _dec234, _class120, _desc36, _value36, _class121, _descriptor142, _descriptor143, _descriptor144, _descriptor145, _descriptor146, _dec235, _dec236, _dec237, _class123, _desc37, _value37, _class124, _descriptor147, _class125, _temp8, _dec238, _dec239, _dec240, _dec241, _dec242, _dec243, _class126, _desc38, _value38, _class127, _descriptor148, _descriptor149, _descriptor150, _descriptor151, _dec244, _dec245, _dec246, _class129, _desc39, _value39, _class130, _descriptor152, _dec247, _dec248, _dec249, _class132, _desc40, _value40, _class133, _descriptor153, _dec250, _dec251, _dec252, _dec253, _dec254, _class136, _desc41, _value41, _class137, _descriptor154, _descriptor155, _descriptor156;
 
 exports.configure = configure;
 exports.getBooleanFromAttributeValue = getBooleanFromAttributeValue;
@@ -103,87 +103,87 @@ var ConfigBuilder = exports.ConfigBuilder = function () {
   };
 
   ConfigBuilder.prototype.useAutoComplete = function useAutoComplete() {
-    this.globalResources.push('./autocomplete/autocomplete');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./autocomplete/autocomplete'));
     return this;
   };
 
   ConfigBuilder.prototype.useBadge = function useBadge() {
-    this.globalResources.push('./badge/badge');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./badge/badge'));
     return this;
   };
 
   ConfigBuilder.prototype.useBox = function useBox() {
-    this.globalResources.push('./box/box');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./box/box'));
     return this;
   };
 
   ConfigBuilder.prototype.useBreadcrumbs = function useBreadcrumbs() {
-    this.globalResources.push('./breadcrumbs/breadcrumbs');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./breadcrumbs/breadcrumbs'));
     return this;
   };
 
   ConfigBuilder.prototype.useButton = function useButton() {
-    this.globalResources.push('./button/button');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./button/button'));
     return this;
   };
 
   ConfigBuilder.prototype.useCarousel = function useCarousel() {
-    this.globalResources.push('./carousel/carousel');
-    this.globalResources.push('./carousel/carousel-item');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./carousel/carousel'));
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./carousel/carousel-item'));
     return this;
   };
 
   ConfigBuilder.prototype.useCharacterCounter = function useCharacterCounter() {
-    this.globalResources.push('./char-counter/char-counter');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./char-counter/char-counter'));
     return this;
   };
 
   ConfigBuilder.prototype.useCard = function useCard() {
-    this.globalResources.push('./card/card');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./card/card'));
     return this;
   };
 
   ConfigBuilder.prototype.useCheckbox = function useCheckbox() {
-    this.globalResources.push('./checkbox/checkbox');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./checkbox/checkbox'));
     return this;
   };
 
   ConfigBuilder.prototype.useChip = function useChip() {
-    this.globalResources.push('./chip/chip');
-    this.globalResources.push('./chip/chips');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./chip/chip'));
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./chip/chips'));
     return this;
   };
 
   ConfigBuilder.prototype.useClickCounter = function useClickCounter() {
-    this.globalResources.push('./click-counter');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./click-counter'));
     return this;
   };
 
   ConfigBuilder.prototype.useCollapsible = function useCollapsible() {
-    this.globalResources.push('./collapsible/collapsible');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./collapsible/collapsible'));
     return this;
   };
 
   ConfigBuilder.prototype.useCollection = function useCollection() {
-    this.globalResources.push('./collection/collection');
-    this.globalResources.push('./collection/collection-item');
-    this.globalResources.push('./collection/collection-header');
-    this.globalResources.push('./collection/md-collection-selector');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./collection/collection'));
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./collection/collection-item'));
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./collection/collection-header'));
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./collection/md-collection-selector'));
     return this;
   };
 
   ConfigBuilder.prototype.useColors = function useColors() {
-    this.globalResources.push('./colors/md-colors');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./colors/md-colors'));
     return this;
   };
 
   ConfigBuilder.prototype.useDatePicker = function useDatePicker() {
-    this.globalResources.push('./datepicker/datepicker');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./datepicker/datepicker'));
     return this;
   };
 
   ConfigBuilder.prototype.useDropdown = function useDropdown() {
-    this.globalResources.push('./dropdown/dropdown');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./dropdown/dropdown'));
     return this;
   };
 
@@ -193,128 +193,128 @@ var ConfigBuilder = exports.ConfigBuilder = function () {
   };
 
   ConfigBuilder.prototype.useFab = function useFab() {
-    this.globalResources.push('./fab/fab');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./fab/fab'));
     return this;
   };
 
   ConfigBuilder.prototype.useFile = function useFile() {
-    this.globalResources.push('./file/file');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./file/file'));
     return this;
   };
 
   ConfigBuilder.prototype.useFooter = function useFooter() {
-    this.globalResources.push('./footer/footer');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./footer/footer'));
     return this;
   };
 
   ConfigBuilder.prototype.useInput = function useInput() {
-    this.globalResources.push('./input/input');
-    this.globalResources.push('./input/input-prefix');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./input/input'));
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./input/input-prefix'));
     return this;
   };
 
   ConfigBuilder.prototype.useModal = function useModal() {
-    this.globalResources.push('./modal/modal');
-    this.globalResources.push('./modal/modal-trigger');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./modal/modal'));
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./modal/modal-trigger'));
     return this;
   };
 
   ConfigBuilder.prototype.useNavbar = function useNavbar() {
-    this.globalResources.push('./navbar/navbar');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./navbar/navbar'));
     return this;
   };
 
   ConfigBuilder.prototype.usePagination = function usePagination() {
-    this.globalResources.push('./pagination/pagination');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./pagination/pagination'));
     return this;
   };
 
   ConfigBuilder.prototype.useParallax = function useParallax() {
-    this.globalResources.push('./parallax/parallax');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./parallax/parallax'));
     return this;
   };
 
   ConfigBuilder.prototype.useProgress = function useProgress() {
-    this.globalResources.push('./progress/progress');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./progress/progress'));
     return this;
   };
 
   ConfigBuilder.prototype.usePushpin = function usePushpin() {
-    this.globalResources.push('./pushpin/pushpin');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./pushpin/pushpin'));
     return this;
   };
 
   ConfigBuilder.prototype.useRadio = function useRadio() {
-    this.globalResources.push('./radio/radio');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./radio/radio'));
     return this;
   };
 
   ConfigBuilder.prototype.useRange = function useRange() {
-    this.globalResources.push('./range/range');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./range/range'));
     return this;
   };
 
   ConfigBuilder.prototype.useScrollfire = function useScrollfire() {
-    this.globalResources.push('./scrollfire/scrollfire');
-    this.globalResources.push('./scrollfire/scrollfire-target');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./scrollfire/scrollfire'));
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./scrollfire/scrollfire-target'));
     return this;
   };
 
   ConfigBuilder.prototype.useScrollSpy = function useScrollSpy() {
-    this.globalResources.push('./scrollspy/scrollspy');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./scrollspy/scrollspy'));
     return this;
   };
 
   ConfigBuilder.prototype.useSelect = function useSelect() {
-    this.globalResources.push('./select/select');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./select/select'));
     return this;
   };
 
   ConfigBuilder.prototype.useSidenav = function useSidenav() {
-    this.globalResources.push('./sidenav/sidenav');
-    this.globalResources.push('./sidenav/sidenav-collapse');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./sidenav/sidenav'));
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./sidenav/sidenav-collapse'));
     return this;
   };
 
   ConfigBuilder.prototype.useSlider = function useSlider() {
-    this.globalResources.push('./slider/slider');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./slider/slider'));
 
     return this;
   };
 
   ConfigBuilder.prototype.useSwitch = function useSwitch() {
-    this.globalResources.push('./switch/switch');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./switch/switch'));
     return this;
   };
 
   ConfigBuilder.prototype.useTabs = function useTabs() {
-    this.globalResources.push('./tabs/tabs');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./tabs/tabs'));
     return this;
   };
 
   ConfigBuilder.prototype.useTapTarget = function useTapTarget() {
-    this.globalResources.push('./tap-target/tap-target');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./tap-target/tap-target'));
     return this;
   };
 
   ConfigBuilder.prototype.useTooltip = function useTooltip() {
-    this.globalResources.push('./tooltip/tooltip');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./tooltip/tooltip'));
     return this;
   };
 
   ConfigBuilder.prototype.useTransitions = function useTransitions() {
-    this.globalResources.push('./transitions/fadein-image');
-    this.globalResources.push('./transitions/staggered-list');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./transitions/fadein-image'));
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./transitions/staggered-list'));
     return this;
   };
 
   ConfigBuilder.prototype.useWaves = function useWaves() {
-    this.globalResources.push('./waves/waves');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./waves/waves'));
     return this;
   };
 
   ConfigBuilder.prototype.useWell = function useWell() {
-    this.globalResources.push('./well/md-well.html');
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./well/md-well.html'));
     return this;
   };
 
@@ -344,10 +344,7 @@ function configure(aurelia, configCallback) {
   }
 
   if (builder.useGlobalResources) {
-    var mappedResources = builder.globalResources.map(function (r) {
-      return _aureliaPal.PLATFORM.moduleName(r);
-    });
-    aurelia.globalResources(mappedResources);
+    aurelia.globalResources(builder.globalResources);
   }
   if (builder.useScrollfirePatch) {
     new ScrollfirePatch().patch();
@@ -1348,289 +1345,41 @@ function polyfillElementClosest() {
   }
 }
 
-var DatePickerDefaultParser = exports.DatePickerDefaultParser = function () {
-  function DatePickerDefaultParser() {
-    _classCallCheck(this, DatePickerDefaultParser);
-  }
-
-  DatePickerDefaultParser.prototype.canParse = function canParse(value) {
-    if (value) {
-      return true;
-    }
-    return false;
-  };
-
-  DatePickerDefaultParser.prototype.parse = function parse(value) {
-    if (value) {
-      var result = value.split('/').join('-');
-      result = new Date(result);
-      return isNaN(result) ? null : result;
-    }
-    return null;
-  };
-
-  return DatePickerDefaultParser;
-}();
-
-var MdDatePicker = exports.MdDatePicker = (_dec75 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, DatePickerDefaultParser), _dec76 = (0, _aureliaTemplating.customAttribute)('md-datepicker'), _dec77 = (0, _aureliaTemplating.bindable)(), _dec78 = (0, _aureliaTemplating.bindable)(), _dec79 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec80 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec81 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec82 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec83 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec84 = (0, _aureliaTemplating.bindable)(), _dec75(_class49 = _dec76(_class49 = (_class50 = function () {
-  function MdDatePicker(element, taskQueue, defaultParser) {
-    _classCallCheck(this, MdDatePicker);
-
-    _initDefineProp(this, 'container', _descriptor40, this);
-
-    _initDefineProp(this, 'translation', _descriptor41, this);
-
-    _initDefineProp(this, 'value', _descriptor42, this);
-
-    _initDefineProp(this, 'parsers', _descriptor43, this);
-
-    _initDefineProp(this, 'selectMonths', _descriptor44, this);
-
-    _initDefineProp(this, 'selectYears', _descriptor45, this);
-
-    _initDefineProp(this, 'options', _descriptor46, this);
-
-    _initDefineProp(this, 'showErrortext', _descriptor47, this);
-
-    this.calendarIcon = null;
-
-    this.element = element;
-    this.log = (0, _aureliaLogging.getLogger)('md-datepicker');
-    this.taskQueue = taskQueue;
-    this.parsers.push(defaultParser);
-    this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
-  }
-
-  MdDatePicker.prototype.bind = function bind() {
-    var _this8 = this;
-
-    this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
-    this.selectYears = parseInt(this.selectYears, 10);
-    this.element.classList.add('date-picker');
-
-    var options = {
-      selectMonths: this.selectMonths,
-      selectYears: this.selectYears,
-      onClose: function onClose() {
-        $(document.activeElement).blur();
-      }
-    };
-    var i18n = {};
-
-    Object.assign(options, i18n);
-
-    if (this.options) {
-      Object.assign(options, this.options);
-
-      if (this.options.onClose) {
-        options.onClose = function () {
-          this.options.onClose();
-          $(document.activeElement).blur();
-        };
-      }
-    }
-    if (this.container) {
-      options.container = this.container;
-    }
-    this.picker = $(this.element).pickadate(options).pickadate('picker');
-    this.picker.on({
-      'close': this.onClose.bind(this),
-      'set': this.onSet.bind(this)
-    });
-
-    if (this.value) {
-      this.picker.set('select', this.value);
-    }
-    if (this.options && this.options.editable) {
-      $(this.element).on('keydown', function (e) {
-        if (e.keyCode === 13 || e.keyCode === 9) {
-          if (_this8.parseDate($(_this8.element).val())) {
-            _this8.closeDatePicker();
-          } else {
-            _this8.openDatePicker();
-          }
-        } else {
-          _this8.value = null;
-        }
-      });
-    } else {
-      $(this.element).on('focusin', function () {
-        _this8.openDatePicker();
-      });
-    }
-    if (this.options.showIcon) {
-      this.element.classList.add('left');
-      this.calendarIcon = document.createElement('i');
-      this.calendarIcon.classList.add('right');
-      this.calendarIcon.classList.add('material-icons');
-      this.calendarIcon.textContent = 'today';
-      this.element.parentNode.insertBefore(this.calendarIcon, this.element.nextSibling);
-      $(this.calendarIcon).on('click', this.onCalendarIconClick);
-
-      options.iconClass = options.iconClass || 'std-icon-fixup';
-      this.calendarIcon.classList.add(options.iconClass);
-    }
-
-    this.setErrorTextAttribute();
-  };
-
-  MdDatePicker.prototype.parseDate = function parseDate(value) {
-    if (this.parsers && this.parsers.length && this.parsers.length > 0) {
-      for (var _iterator = this.parsers, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-        var _ref;
-
-        if (_isArray) {
-          if (_i >= _iterator.length) break;
-          _ref = _iterator[_i++];
-        } else {
-          _i = _iterator.next();
-          if (_i.done) break;
-          _ref = _i.value;
-        }
-
-        var parser = _ref;
-
-        if (parser.canParse(value)) {
-          var parsedDate = parser.parse(value);
-          if (parsedDate !== null) {
-            this.picker.set('select', parsedDate);
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  };
-
-  MdDatePicker.prototype.detached = function detached() {
-    if (this.options.showIcon) {
-      this.element.classList.remove('left');
-      $(this.calendarIcon).off('click', this.onCalendarIconClick);
-      $(this.calendarIcon).remove();
-      this.calendarIcon = null;
-    }
-    if (this.picker) {
-      this.picker.stop();
-    }
-  };
-
-  MdDatePicker.prototype.openDatePicker = function openDatePicker() {
-    $(this.element).pickadate('open');
-  };
-
-  MdDatePicker.prototype.closeDatePicker = function closeDatePicker() {
-    $(this.element).pickadate('close');
-  };
-
-  MdDatePicker.prototype.onClose = function onClose() {
-    var selected = this.picker.get('select');
-    this.value = selected ? selected.obj : null;
-    fireEvent(this.element, 'blur');
-  };
-
-  MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
-    event.stopPropagation();
-    this.openDatePicker();
-  };
-
-  MdDatePicker.prototype.onSet = function onSet(value) {
-    if (this.options && this.options.closeOnSelect && value.select) {
-      this.value = value.select;
-      this.picker.close();
-    }
-  };
-
-  MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
-    if (this.options.max && newValue > this.options.max) {
-      this.value = this.options.max;
-    }
-    this.log.debug('selectedChanged', this.value);
-
-    this.picker.set('select', this.value);
-  };
-
-  MdDatePicker.prototype.showErrortextChanged = function showErrortextChanged() {
-    this.setErrorTextAttribute();
-  };
-
-  MdDatePicker.prototype.setErrorTextAttribute = function setErrorTextAttribute() {
-    var element = this.element;
-    if (!element) return;
-    this.log.debug('showErrortextChanged: ' + this.showErrortext);
-    element.setAttribute('data-show-errortext', getBooleanFromAttributeValue(this.showErrortext));
-  };
-
-  return MdDatePicker;
-}(), (_descriptor40 = _applyDecoratedDescriptor(_class50.prototype, 'container', [_dec77], {
-  enumerable: true,
-  initializer: null
-}), _descriptor41 = _applyDecoratedDescriptor(_class50.prototype, 'translation', [_dec78], {
-  enumerable: true,
-  initializer: null
-}), _descriptor42 = _applyDecoratedDescriptor(_class50.prototype, 'value', [_dec79], {
-  enumerable: true,
-  initializer: null
-}), _descriptor43 = _applyDecoratedDescriptor(_class50.prototype, 'parsers', [_dec80], {
-  enumerable: true,
-  initializer: function initializer() {
-    return [];
-  }
-}), _descriptor44 = _applyDecoratedDescriptor(_class50.prototype, 'selectMonths', [_dec81], {
-  enumerable: true,
-  initializer: function initializer() {
-    return true;
-  }
-}), _descriptor45 = _applyDecoratedDescriptor(_class50.prototype, 'selectYears', [_dec82], {
-  enumerable: true,
-  initializer: function initializer() {
-    return 15;
-  }
-}), _descriptor46 = _applyDecoratedDescriptor(_class50.prototype, 'options', [_dec83], {
-  enumerable: true,
-  initializer: function initializer() {
-    return {};
-  }
-}), _descriptor47 = _applyDecoratedDescriptor(_class50.prototype, 'showErrortext', [_dec84], {
-  enumerable: true,
-  initializer: function initializer() {
-    return true;
-  }
-})), _class50)) || _class49) || _class49);
-var MdDropdownElement = exports.MdDropdownElement = (_dec85 = (0, _aureliaTemplating.customElement)('md-dropdown'), _dec86 = (0, _aureliaDependencyInjection.inject)(Element), _dec87 = (0, _aureliaTemplating.bindable)({
+var MdDropdownElement = exports.MdDropdownElement = (_dec75 = (0, _aureliaTemplating.customElement)('md-dropdown'), _dec76 = (0, _aureliaDependencyInjection.inject)(Element), _dec77 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec88 = (0, _aureliaTemplating.bindable)({
+}), _dec78 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec89 = (0, _aureliaTemplating.bindable)({
+}), _dec79 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec90 = (0, _aureliaTemplating.bindable)({
+}), _dec80 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec91 = (0, _aureliaTemplating.bindable)({
+}), _dec81 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec92 = (0, _aureliaTemplating.bindable)({
+}), _dec82 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec93 = (0, _aureliaTemplating.bindable)({
+}), _dec83 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec94 = (0, _aureliaTemplating.bindable)({
+}), _dec84 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec85(_class52 = _dec86(_class52 = (_class53 = (_temp2 = _class54 = function () {
+}), _dec75(_class49 = _dec76(_class49 = (_class50 = (_temp2 = _class51 = function () {
   function MdDropdownElement(element) {
     _classCallCheck(this, MdDropdownElement);
 
-    _initDefineProp(this, 'alignment', _descriptor48, this);
+    _initDefineProp(this, 'alignment', _descriptor40, this);
 
-    _initDefineProp(this, 'belowOrigin', _descriptor49, this);
+    _initDefineProp(this, 'belowOrigin', _descriptor41, this);
 
-    _initDefineProp(this, 'constrainWidth', _descriptor50, this);
+    _initDefineProp(this, 'constrainWidth', _descriptor42, this);
 
-    _initDefineProp(this, 'gutter', _descriptor51, this);
+    _initDefineProp(this, 'gutter', _descriptor43, this);
 
-    _initDefineProp(this, 'hover', _descriptor52, this);
+    _initDefineProp(this, 'hover', _descriptor44, this);
 
-    _initDefineProp(this, 'mdTitle', _descriptor53, this);
+    _initDefineProp(this, 'mdTitle', _descriptor45, this);
 
-    _initDefineProp(this, 'inDuration', _descriptor54, this);
+    _initDefineProp(this, 'inDuration', _descriptor46, this);
 
-    _initDefineProp(this, 'outDuration', _descriptor55, this);
+    _initDefineProp(this, 'outDuration', _descriptor47, this);
 
     this.element = element;
     this.controlId = 'md-dropdown-' + MdDropdown.id++;
@@ -1649,45 +1398,45 @@ var MdDropdownElement = exports.MdDropdownElement = (_dec85 = (0, _aureliaTempla
   };
 
   return MdDropdownElement;
-}(), _class54.id = 0, _temp2), (_descriptor48 = _applyDecoratedDescriptor(_class53.prototype, 'alignment', [_dec87], {
+}(), _class51.id = 0, _temp2), (_descriptor40 = _applyDecoratedDescriptor(_class50.prototype, 'alignment', [_dec77], {
   enumerable: true,
   initializer: function initializer() {
     return 'left';
   }
-}), _descriptor49 = _applyDecoratedDescriptor(_class53.prototype, 'belowOrigin', [_dec88], {
+}), _descriptor41 = _applyDecoratedDescriptor(_class50.prototype, 'belowOrigin', [_dec78], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor50 = _applyDecoratedDescriptor(_class53.prototype, 'constrainWidth', [_dec89], {
+}), _descriptor42 = _applyDecoratedDescriptor(_class50.prototype, 'constrainWidth', [_dec79], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
-}), _descriptor51 = _applyDecoratedDescriptor(_class53.prototype, 'gutter', [_dec90], {
+}), _descriptor43 = _applyDecoratedDescriptor(_class50.prototype, 'gutter', [_dec80], {
   enumerable: true,
   initializer: function initializer() {
     return 0;
   }
-}), _descriptor52 = _applyDecoratedDescriptor(_class53.prototype, 'hover', [_dec91], {
+}), _descriptor44 = _applyDecoratedDescriptor(_class50.prototype, 'hover', [_dec81], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor53 = _applyDecoratedDescriptor(_class53.prototype, 'mdTitle', [_dec92], {
+}), _descriptor45 = _applyDecoratedDescriptor(_class50.prototype, 'mdTitle', [_dec82], {
   enumerable: true,
   initializer: null
-}), _descriptor54 = _applyDecoratedDescriptor(_class53.prototype, 'inDuration', [_dec93], {
+}), _descriptor46 = _applyDecoratedDescriptor(_class50.prototype, 'inDuration', [_dec83], {
   enumerable: true,
   initializer: function initializer() {
     return 300;
   }
-}), _descriptor55 = _applyDecoratedDescriptor(_class53.prototype, 'outDuration', [_dec94], {
+}), _descriptor47 = _applyDecoratedDescriptor(_class50.prototype, 'outDuration', [_dec84], {
   enumerable: true,
   initializer: function initializer() {
     return 225;
   }
-})), _class53)) || _class52) || _class52);
+})), _class50)) || _class49) || _class49);
 function applyMaterializeDropdownFix() {
   $.fn.dropdown = function (options) {
     var defaults = {
@@ -1914,49 +1663,49 @@ function applyMaterializeDropdownFix() {
   });
 }
 
-var MdDropdown = exports.MdDropdown = (_dec95 = (0, _aureliaTemplating.customAttribute)('md-dropdown'), _dec96 = (0, _aureliaDependencyInjection.inject)(Element), _dec97 = (0, _aureliaTemplating.bindable)({
+var MdDropdown = exports.MdDropdown = (_dec85 = (0, _aureliaTemplating.customAttribute)('md-dropdown'), _dec86 = (0, _aureliaDependencyInjection.inject)(Element), _dec87 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec98 = (0, _aureliaTemplating.bindable)({
+}), _dec88 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec99 = (0, _aureliaTemplating.bindable)({
+}), _dec89 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec100 = (0, _aureliaTemplating.bindable)({
+}), _dec90 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec101 = (0, _aureliaTemplating.bindable)({
+}), _dec91 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec102 = (0, _aureliaTemplating.bindable)({
+}), _dec92 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec103 = (0, _aureliaTemplating.bindable)({
+}), _dec93 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec104 = (0, _aureliaTemplating.bindable)({
+}), _dec94 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec105 = (0, _aureliaTemplating.bindable)({
+}), _dec95 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec106 = (0, _aureliaTemplating.bindable)({
+}), _dec96 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec95(_class55 = _dec96(_class55 = (_class56 = (_temp3 = _class57 = function () {
+}), _dec85(_class52 = _dec86(_class52 = (_class53 = (_temp3 = _class54 = function () {
   function MdDropdown(element) {
     _classCallCheck(this, MdDropdown);
 
-    _initDefineProp(this, 'activates', _descriptor56, this);
+    _initDefineProp(this, 'activates', _descriptor48, this);
 
-    _initDefineProp(this, 'ref', _descriptor57, this);
+    _initDefineProp(this, 'ref', _descriptor49, this);
 
-    _initDefineProp(this, 'alignment', _descriptor58, this);
+    _initDefineProp(this, 'alignment', _descriptor50, this);
 
-    _initDefineProp(this, 'belowOrigin', _descriptor59, this);
+    _initDefineProp(this, 'belowOrigin', _descriptor51, this);
 
-    _initDefineProp(this, 'constrainWidth', _descriptor60, this);
+    _initDefineProp(this, 'constrainWidth', _descriptor52, this);
 
-    _initDefineProp(this, 'gutter', _descriptor61, this);
+    _initDefineProp(this, 'gutter', _descriptor53, this);
 
-    _initDefineProp(this, 'hover', _descriptor62, this);
+    _initDefineProp(this, 'hover', _descriptor54, this);
 
-    _initDefineProp(this, 'mdTitle', _descriptor63, this);
+    _initDefineProp(this, 'mdTitle', _descriptor55, this);
 
-    _initDefineProp(this, 'inDuration', _descriptor64, this);
+    _initDefineProp(this, 'inDuration', _descriptor56, this);
 
-    _initDefineProp(this, 'outDuration', _descriptor65, this);
+    _initDefineProp(this, 'outDuration', _descriptor57, this);
 
     this.element = element;
     this.attributeManager = new AttributeManager(this.element);
@@ -2002,53 +1751,302 @@ var MdDropdown = exports.MdDropdown = (_dec95 = (0, _aureliaTemplating.customAtt
   };
 
   return MdDropdown;
-}(), _class57.elementId = 0, _temp3), (_descriptor56 = _applyDecoratedDescriptor(_class56.prototype, 'activates', [_dec97], {
+}(), _class54.elementId = 0, _temp3), (_descriptor48 = _applyDecoratedDescriptor(_class53.prototype, 'activates', [_dec87], {
   enumerable: true,
   initializer: function initializer() {
     return '';
   }
-}), _descriptor57 = _applyDecoratedDescriptor(_class56.prototype, 'ref', [_dec98], {
+}), _descriptor49 = _applyDecoratedDescriptor(_class53.prototype, 'ref', [_dec88], {
   enumerable: true,
   initializer: function initializer() {
     return null;
   }
-}), _descriptor58 = _applyDecoratedDescriptor(_class56.prototype, 'alignment', [_dec99], {
+}), _descriptor50 = _applyDecoratedDescriptor(_class53.prototype, 'alignment', [_dec89], {
   enumerable: true,
   initializer: function initializer() {
     return 'left';
   }
-}), _descriptor59 = _applyDecoratedDescriptor(_class56.prototype, 'belowOrigin', [_dec100], {
+}), _descriptor51 = _applyDecoratedDescriptor(_class53.prototype, 'belowOrigin', [_dec90], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor60 = _applyDecoratedDescriptor(_class56.prototype, 'constrainWidth', [_dec101], {
+}), _descriptor52 = _applyDecoratedDescriptor(_class53.prototype, 'constrainWidth', [_dec91], {
   enumerable: true,
   initializer: function initializer() {
     return true;
   }
-}), _descriptor61 = _applyDecoratedDescriptor(_class56.prototype, 'gutter', [_dec102], {
+}), _descriptor53 = _applyDecoratedDescriptor(_class53.prototype, 'gutter', [_dec92], {
   enumerable: true,
   initializer: function initializer() {
     return 0;
   }
-}), _descriptor62 = _applyDecoratedDescriptor(_class56.prototype, 'hover', [_dec103], {
+}), _descriptor54 = _applyDecoratedDescriptor(_class53.prototype, 'hover', [_dec93], {
   enumerable: true,
   initializer: function initializer() {
     return false;
   }
-}), _descriptor63 = _applyDecoratedDescriptor(_class56.prototype, 'mdTitle', [_dec104], {
+}), _descriptor55 = _applyDecoratedDescriptor(_class53.prototype, 'mdTitle', [_dec94], {
   enumerable: true,
   initializer: null
-}), _descriptor64 = _applyDecoratedDescriptor(_class56.prototype, 'inDuration', [_dec105], {
+}), _descriptor56 = _applyDecoratedDescriptor(_class53.prototype, 'inDuration', [_dec95], {
   enumerable: true,
   initializer: function initializer() {
     return 300;
   }
-}), _descriptor65 = _applyDecoratedDescriptor(_class56.prototype, 'outDuration', [_dec106], {
+}), _descriptor57 = _applyDecoratedDescriptor(_class53.prototype, 'outDuration', [_dec96], {
   enumerable: true,
   initializer: function initializer() {
     return 225;
+  }
+})), _class53)) || _class52) || _class52);
+
+var DatePickerDefaultParser = exports.DatePickerDefaultParser = function () {
+  function DatePickerDefaultParser() {
+    _classCallCheck(this, DatePickerDefaultParser);
+  }
+
+  DatePickerDefaultParser.prototype.canParse = function canParse(value) {
+    if (value) {
+      return true;
+    }
+    return false;
+  };
+
+  DatePickerDefaultParser.prototype.parse = function parse(value) {
+    if (value) {
+      var result = value.split('/').join('-');
+      result = new Date(result);
+      return isNaN(result) ? null : result;
+    }
+    return null;
+  };
+
+  return DatePickerDefaultParser;
+}();
+
+var MdDatePicker = exports.MdDatePicker = (_dec97 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, DatePickerDefaultParser), _dec98 = (0, _aureliaTemplating.customAttribute)('md-datepicker'), _dec99 = (0, _aureliaTemplating.bindable)(), _dec100 = (0, _aureliaTemplating.bindable)(), _dec101 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec102 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec103 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec104 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec105 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec106 = (0, _aureliaTemplating.bindable)(), _dec97(_class55 = _dec98(_class55 = (_class56 = function () {
+  function MdDatePicker(element, taskQueue, defaultParser) {
+    _classCallCheck(this, MdDatePicker);
+
+    _initDefineProp(this, 'container', _descriptor58, this);
+
+    _initDefineProp(this, 'translation', _descriptor59, this);
+
+    _initDefineProp(this, 'value', _descriptor60, this);
+
+    _initDefineProp(this, 'parsers', _descriptor61, this);
+
+    _initDefineProp(this, 'selectMonths', _descriptor62, this);
+
+    _initDefineProp(this, 'selectYears', _descriptor63, this);
+
+    _initDefineProp(this, 'options', _descriptor64, this);
+
+    _initDefineProp(this, 'showErrortext', _descriptor65, this);
+
+    this.calendarIcon = null;
+
+    this.element = element;
+    this.log = (0, _aureliaLogging.getLogger)('md-datepicker');
+    this.taskQueue = taskQueue;
+    this.parsers.push(defaultParser);
+    this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
+  }
+
+  MdDatePicker.prototype.bind = function bind() {
+    var _this8 = this;
+
+    this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
+    this.selectYears = parseInt(this.selectYears, 10);
+    this.element.classList.add('date-picker');
+
+    var options = {
+      selectMonths: this.selectMonths,
+      selectYears: this.selectYears,
+      onClose: function onClose() {
+        $(document.activeElement).blur();
+      }
+    };
+    var i18n = {};
+
+    Object.assign(options, i18n);
+
+    if (this.options) {
+      Object.assign(options, this.options);
+
+      if (this.options.onClose) {
+        options.onClose = function () {
+          this.options.onClose();
+          $(document.activeElement).blur();
+        };
+      }
+    }
+    if (this.container) {
+      options.container = this.container;
+    }
+    this.picker = $(this.element).pickadate(options).pickadate('picker');
+    this.picker.on({
+      'close': this.onClose.bind(this),
+      'set': this.onSet.bind(this)
+    });
+
+    if (this.value) {
+      this.picker.set('select', this.value);
+    }
+    if (this.options && this.options.editable) {
+      $(this.element).on('keydown', function (e) {
+        if (e.keyCode === 13 || e.keyCode === 9) {
+          if (_this8.parseDate($(_this8.element).val())) {
+            _this8.closeDatePicker();
+          } else {
+            _this8.openDatePicker();
+          }
+        } else {
+          _this8.value = null;
+        }
+      });
+    } else {
+      $(this.element).on('focusin', function () {
+        _this8.openDatePicker();
+      });
+    }
+    if (this.options.showIcon) {
+      this.element.classList.add('left');
+      this.calendarIcon = document.createElement('i');
+      this.calendarIcon.classList.add('right');
+      this.calendarIcon.classList.add('material-icons');
+      this.calendarIcon.textContent = 'today';
+      this.element.parentNode.insertBefore(this.calendarIcon, this.element.nextSibling);
+      $(this.calendarIcon).on('click', this.onCalendarIconClick);
+
+      options.iconClass = options.iconClass || 'std-icon-fixup';
+      this.calendarIcon.classList.add(options.iconClass);
+    }
+
+    this.setErrorTextAttribute();
+  };
+
+  MdDatePicker.prototype.parseDate = function parseDate(value) {
+    if (this.parsers && this.parsers.length && this.parsers.length > 0) {
+      for (var _iterator = this.parsers, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+        var _ref;
+
+        if (_isArray) {
+          if (_i >= _iterator.length) break;
+          _ref = _iterator[_i++];
+        } else {
+          _i = _iterator.next();
+          if (_i.done) break;
+          _ref = _i.value;
+        }
+
+        var parser = _ref;
+
+        if (parser.canParse(value)) {
+          var parsedDate = parser.parse(value);
+          if (parsedDate !== null) {
+            this.picker.set('select', parsedDate);
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  };
+
+  MdDatePicker.prototype.detached = function detached() {
+    if (this.options.showIcon) {
+      this.element.classList.remove('left');
+      $(this.calendarIcon).off('click', this.onCalendarIconClick);
+      $(this.calendarIcon).remove();
+      this.calendarIcon = null;
+    }
+    if (this.picker) {
+      this.picker.stop();
+    }
+  };
+
+  MdDatePicker.prototype.openDatePicker = function openDatePicker() {
+    $(this.element).pickadate('open');
+  };
+
+  MdDatePicker.prototype.closeDatePicker = function closeDatePicker() {
+    $(this.element).pickadate('close');
+  };
+
+  MdDatePicker.prototype.onClose = function onClose() {
+    var selected = this.picker.get('select');
+    this.value = selected ? selected.obj : null;
+    fireEvent(this.element, 'blur');
+  };
+
+  MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
+    event.stopPropagation();
+    this.openDatePicker();
+  };
+
+  MdDatePicker.prototype.onSet = function onSet(value) {
+    if (this.options && this.options.closeOnSelect && value.select) {
+      this.value = value.select;
+      this.picker.close();
+    }
+  };
+
+  MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
+    if (this.options.max && newValue > this.options.max) {
+      this.value = this.options.max;
+    }
+    this.log.debug('selectedChanged', this.value);
+
+    this.picker.set('select', this.value);
+  };
+
+  MdDatePicker.prototype.showErrortextChanged = function showErrortextChanged() {
+    this.setErrorTextAttribute();
+  };
+
+  MdDatePicker.prototype.setErrorTextAttribute = function setErrorTextAttribute() {
+    var element = this.element;
+    if (!element) return;
+    this.log.debug('showErrortextChanged: ' + this.showErrortext);
+    element.setAttribute('data-show-errortext', getBooleanFromAttributeValue(this.showErrortext));
+  };
+
+  return MdDatePicker;
+}(), (_descriptor58 = _applyDecoratedDescriptor(_class56.prototype, 'container', [_dec99], {
+  enumerable: true,
+  initializer: null
+}), _descriptor59 = _applyDecoratedDescriptor(_class56.prototype, 'translation', [_dec100], {
+  enumerable: true,
+  initializer: null
+}), _descriptor60 = _applyDecoratedDescriptor(_class56.prototype, 'value', [_dec101], {
+  enumerable: true,
+  initializer: null
+}), _descriptor61 = _applyDecoratedDescriptor(_class56.prototype, 'parsers', [_dec102], {
+  enumerable: true,
+  initializer: function initializer() {
+    return [];
+  }
+}), _descriptor62 = _applyDecoratedDescriptor(_class56.prototype, 'selectMonths', [_dec103], {
+  enumerable: true,
+  initializer: function initializer() {
+    return true;
+  }
+}), _descriptor63 = _applyDecoratedDescriptor(_class56.prototype, 'selectYears', [_dec104], {
+  enumerable: true,
+  initializer: function initializer() {
+    return 15;
+  }
+}), _descriptor64 = _applyDecoratedDescriptor(_class56.prototype, 'options', [_dec105], {
+  enumerable: true,
+  initializer: function initializer() {
+    return {};
+  }
+}), _descriptor65 = _applyDecoratedDescriptor(_class56.prototype, 'showErrortext', [_dec106], {
+  enumerable: true,
+  initializer: function initializer() {
+    return true;
   }
 })), _class56)) || _class55) || _class55);
 var MdFab = exports.MdFab = (_dec107 = (0, _aureliaTemplating.customElement)('md-fab'), _dec108 = (0, _aureliaDependencyInjection.inject)(Element), _dec109 = (0, _aureliaTemplating.bindable)(), _dec110 = (0, _aureliaTemplating.bindable)(), _dec107(_class58 = _dec108(_class58 = (_class59 = function () {
