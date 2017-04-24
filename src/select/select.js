@@ -34,8 +34,8 @@ export class MdSelect {
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(false);
 
-      if (this.label) {
-        let wrapper = $(this.element).parent('.select-wrapper');
+      let wrapper = $(this.element).parent('.select-wrapper');
+      if (this.label && !wrapper.siblings("label").length) {
         let div = $('<div class="input-field"></div>');
         let va = this.element.attributes.getNamedItem('validate');
         if (va) {
