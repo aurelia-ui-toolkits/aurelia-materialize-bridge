@@ -3,9 +3,10 @@ import { bindingMode } from 'aurelia-binding';
 import { inject } from 'aurelia-dependency-injection';
 import { AttributeManager } from '../common/attributeManager';
 import { getBooleanFromAttributeValue } from '../common/attributes';
+import { ConfigBuilder } from '../config-builder';
 
 @customAttribute('md-waves')
-@inject(Element)
+@inject(Element, ConfigBuilder)
 export class MdWaves {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
@@ -16,8 +17,10 @@ export class MdWaves {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) color;
-  constructor(element) {
+
+  constructor(element, configBuilder) {
     this.element = element;
+    this.configBuilder = configBuilder;
     this.attributeManager = new AttributeManager(this.element);
   }
 
@@ -34,7 +37,9 @@ export class MdWaves {
     }
 
     this.attributeManager.addClasses(classes);
-    Waves.attach(this.element);
+    if (!this.configBuilder.noWavesAttach) {
+      Waves.attach(this.element);
+    }
   }
 
   detached() {

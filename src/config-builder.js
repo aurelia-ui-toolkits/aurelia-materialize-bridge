@@ -6,9 +6,10 @@ import {applyMaterializeDropdownFix} from './dropdown/dropdown-fix';
 */
 export class ConfigBuilder {
 
+  globalResources = [];
+  noWavesAttach: boolean = false;
   useGlobalResources: boolean = true;
   useScrollfirePatch: boolean = false;
-  globalResources = [];
 
   useAll(): ConfigBuilder {
     return this
@@ -276,6 +277,11 @@ export class ConfigBuilder {
 
   useWell(): ConfigBuilder {
     this.globalResources.push(PLATFORM.moduleName('./well/md-well.html'));
+    return this;
+  }
+
+  preventWavesAttach(): ConfigBuilder {
+    this.noWavesAttach = true;
     return this;
   }
 
