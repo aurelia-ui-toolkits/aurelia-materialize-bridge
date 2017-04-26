@@ -55,6 +55,7 @@ export class MdSelect {
     this.observeVisibleDropdownContent(false);
     this.observeOptions(false);
     this.dropdownMutationObserver = null;
+    $(this.element).parent().children(".md-input-validation").remove();
     $(this.element).material_select('destroy');
     this.subscriptions.forEach(sub => sub.dispose());
   }
