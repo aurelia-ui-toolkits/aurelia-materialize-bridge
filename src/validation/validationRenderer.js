@@ -43,7 +43,7 @@ export class MaterializeFormValidationRenderer {
       }
       case 'INPUT': {
         input = element;
-        validationContainer = element.ParentNode;
+        validationContainer = element.parentElement;
         break;
       }
       default: break;
