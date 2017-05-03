@@ -34,11 +34,11 @@ export class MaterializeFormValidationRenderer {
         break;
       }
       case 'SELECT': {
-        const selectWrapper = element.closest('.select-wrapper');
-        if (selectWrapper) {
-          input = selectWrapper.querySelector('input');
+        const inputField = element.closest('.input-field');
+        if (inputField) {
+          input = inputField.querySelector('input');
+          validationContainer = inputField;
         }
-        validationContainer = selectWrapper;
         break;
       }
       case 'INPUT': {
@@ -80,16 +80,16 @@ export class MaterializeFormValidationRenderer {
       break;
     }
     case 'SELECT': {
-      const selectWrapper = element.closest('.select-wrapper');
-      if (!selectWrapper) {
+      const inputField = element.closest('.input-field');
+      if (!inputField) {
         return;
       }
-      let input = selectWrapper.querySelector('input');
+      let input = inputField.querySelector('input');
       if (input) {
         result.target = input;
         if (!(input.hasAttribute('data-show-errortext') &&
-            input.getAttribute('data-show-errortext') === 'false')) {
-          this.addMessage(selectWrapper, result);
+              input.getAttribute('data-show-errortext') === 'false')) {
+          this.addMessage(inputField, result);
         }
       }
       break;
@@ -117,16 +117,12 @@ export class MaterializeFormValidationRenderer {
       break;
     }
     case 'SELECT': {
-      const selectWrapper = element.closest('.select-wrapper');
-      if (!selectWrapper) {
+      const inputField = element.closest('.input-field');
+      if (!inputField) {
         return;
       }
-
-      if ($(selectWrapper.parentElement).children().hasClass('md-input-validation') ) {
-        this.removeMessage(selectWrapper.parentElement, result);
-      } else {
-        this.removeMessage(selectWrapper, result);
-      }
+      
+      this.removeMessage(inputField, result);
       break;
     }
     case 'INPUT' : {
