@@ -4,27 +4,21 @@ export class MaterializeFormValidationRenderer {
   classNameFirst = 'md-input-validation-first';
 
   render(instruction) {
-    let allElements = new Array();
     for (let { result, elements } of instruction.unrender) {
       for (let element of elements) {
         this.remove(element, result);
-        if (allElements.indexOf(element) == -1) {
-          allElements.push(element);
-        }
+        this.underlineInput(element, false);
       }
     }
     for (let { result, elements } of instruction.render) {
       for (let element of elements) {
         this.add(element, result);
-        if (allElements.indexOf(element) == -1) {
-          allElements.push(element);
-        }
+        this.underlineInput(element, true);
       }
     }
-    allElements.forEach(e => this.underlineInput(e));
   }
 
-  underlineInput(element) {
+  underlineInput(element, render) {
     let input;
  	  let validationContainer;
     switch (element.tagName) {
@@ -43,19 +37,25 @@ export class MaterializeFormValidationRenderer {
       }
       case 'INPUT': {
         input = element;
-        validationContainer = element.ParentNode;
+        validationContainer = element.parentElement;
         break;
       }
       default: break;
     }
     if (input) {
-      if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
-        input.classList.remove('invalid');
-        input.classList.add('valid');
+      if (render) {
+        if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
+          input.classList.remove('invalid');
+          input.classList.add('valid');
+        }
+        else {
+          input.classList.remove('valid');
+          input.classList.add('invalid');
+        }
       }
       else {
         input.classList.remove('valid');
-        input.classList.add('invalid');
+        input.classList.remove('invalid');
       }
     }
   }
