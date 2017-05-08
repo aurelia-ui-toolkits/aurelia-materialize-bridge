@@ -1,3 +1,28 @@
+<a name="0.28.0"></a>
+# [0.28.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.27.0...v0.28.0) (2017-05-08)
+
+
+### Bug Fixes
+
+* **all:** use PLATFORM-moduleName ([069518c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/069518c))
+* **colors:** color for `btn-floating.error:hover` ([68658ef](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/68658ef))
+* **md-input:** allow focus() ([799f897](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/799f897))
+* **md-slider:** change to html/css duo ([ebefc16](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/ebefc16))
+* **select:** Do not create duplicate label ([e2ad35a](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e2ad35a))
+* **select:** remove orphaned UL ([42feaf7](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/42feaf7))
+* **select:** remove validation errors on detached ([27a20e4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/27a20e4))
+* **validation:** remove border on unrender ([0867161](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0867161))
+* **validation:** use correct parent ([42558c1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/42558c1))
+* **webpack:** correctly use PLATFORM.moduleName, ref [#401](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/401) ([0e37448](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0e37448))
+
+
+### Features
+
+* **md-navbar:** add nav-extended, close [#406](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/406) ([3294cfc](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/3294cfc))
+* **md-waves:** add preventWavesAttach to config, ref [#168](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/168) ([7568aab](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/7568aab))
+
+
+
 <a name="0.27.0"></a>
 # [0.27.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.26.0...v0.27.0) (2017-04-10)
 
