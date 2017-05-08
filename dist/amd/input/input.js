@@ -150,6 +150,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     };
 
     MdInput.prototype.focus = function focus() {
+      this.input.focus();
       (0, _events.fireEvent)(this.element, 'focus');
     };
 

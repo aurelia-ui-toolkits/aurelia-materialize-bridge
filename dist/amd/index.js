@@ -22,7 +22,8 @@ define(['exports', './exports', './config-builder', './scrollfire/scrollfire-pat
 
   function configure(aurelia, configCallback) {
     applyPolyfills();
-    var builder = new _configBuilder.ConfigBuilder();
+
+    var builder = aurelia.container.get(_configBuilder.ConfigBuilder);
 
     if (configCallback !== undefined && typeof configCallback === 'function') {
       configCallback(builder);

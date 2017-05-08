@@ -9,7 +9,8 @@ function applyPolyfills() {
 
 export function configure(aurelia, configCallback) {
   applyPolyfills();
-  let builder = new ConfigBuilder();
+  // let builder = new ConfigBuilder();
+  const builder = aurelia.container.get(ConfigBuilder);
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
     configCallback(builder);

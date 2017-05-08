@@ -9,6 +9,9 @@ import { AttributeManager } from '../common/attributeManager';
 export class MdNavbar {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
+  }) mdExtended;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
   }) mdFixed;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
@@ -28,6 +31,9 @@ export class MdNavbar {
     if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
       this.navAttributeManager.addClasses('md-auto-height');
     }
+    if (getBooleanFromAttributeValue(this.mdExtended)) {
+      this.navAttributeManager.addClasses('nav-extended');
+    }
   }
 
   detached() {
@@ -35,7 +41,10 @@ export class MdNavbar {
       this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
     if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
-      this.navAttributeManager.addClasses('md-auto-height');
+      this.navAttributeManager.removeClasses('md-auto-height');
+    }
+    if (getBooleanFromAttributeValue(this.mdExtended)) {
+      this.navAttributeManager.removeClasses('nav-extended');
     }
   }
 }

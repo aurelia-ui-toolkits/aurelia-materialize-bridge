@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes) {
+define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes', '../config-builder'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes, _configBuilder) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -57,14 +57,14 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
   var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
 
-  var MdWaves = exports.MdWaves = (_dec = (0, _aureliaTemplating.customAttribute)('md-waves'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+  var MdWaves = exports.MdWaves = (_dec = (0, _aureliaTemplating.customAttribute)('md-waves'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _configBuilder.ConfigBuilder), _dec3 = (0, _aureliaTemplating.bindable)({
     defaultBindingMode: _aureliaBinding.bindingMode.oneTime
   }), _dec4 = (0, _aureliaTemplating.bindable)({
     defaultBindingMode: _aureliaBinding.bindingMode.oneTime
   }), _dec5 = (0, _aureliaTemplating.bindable)({
     defaultBindingMode: _aureliaBinding.bindingMode.oneTime
   }), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdWaves(element) {
+    function MdWaves(element, configBuilder) {
       _classCallCheck(this, MdWaves);
 
       _initDefineProp(this, 'block', _descriptor, this);
@@ -74,6 +74,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       _initDefineProp(this, 'color', _descriptor3, this);
 
       this.element = element;
+      this.configBuilder = configBuilder;
       this.attributeManager = new _attributeManager.AttributeManager(this.element);
     }
 
@@ -90,7 +91,9 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       }
 
       this.attributeManager.addClasses(classes);
-      Waves.attach(this.element);
+      if (!this.configBuilder.noWavesAttach) {
+        Waves.attach(this.element);
+      }
     };
 
     MdWaves.prototype.detached = function detached() {

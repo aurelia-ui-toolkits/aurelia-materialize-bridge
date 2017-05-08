@@ -20,9 +20,6 @@ define(['exports'], function (exports) {
     }
 
     MaterializeFormValidationRenderer.prototype.render = function render(instruction) {
-      var _this = this;
-
-      var allElements = new Array();
       for (var _iterator = instruction.unrender, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
         var _ref2;
 
@@ -54,9 +51,7 @@ define(['exports'], function (exports) {
           var element = _ref6;
 
           this.remove(element, result);
-          if (allElements.indexOf(element) == -1) {
-            allElements.push(element);
-          }
+          this.underlineInput(element, false);
         }
       }
       for (var _iterator2 = instruction.render, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
@@ -90,22 +85,19 @@ define(['exports'], function (exports) {
           var _element = _ref8;
 
           this.add(_element, result);
-          if (allElements.indexOf(_element) == -1) {
-            allElements.push(_element);
-          }
+          this.underlineInput(_element, true);
         }
       }
-      allElements.forEach(function (e) {
-        return _this.underlineInput(e);
-      });
     };
 
-    MaterializeFormValidationRenderer.prototype.underlineInput = function underlineInput(element) {
+    MaterializeFormValidationRenderer.prototype.underlineInput = function underlineInput(element, render) {
       var input = void 0;
+      var validationContainer = void 0;
       switch (element.tagName) {
         case 'MD-INPUT':
           {
             input = element.querySelector('input') || element.querySelector('textarea');
+            validationContainer = element;
             break;
           }
         case 'SELECT':
@@ -114,23 +106,30 @@ define(['exports'], function (exports) {
             if (selectWrapper) {
               input = selectWrapper.querySelector('input');
             }
+            validationContainer = selectWrapper;
             break;
           }
         case 'INPUT':
           {
             input = element;
+            validationContainer = element.parentElement;
             break;
           }
         default:
           break;
       }
       if (input) {
-        if (element.querySelectorAll('.' + this.className).length === 0) {
-          input.classList.remove('invalid');
-          input.classList.add('valid');
+        if (render) {
+          if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
+            input.classList.remove('invalid');
+            input.classList.add('valid');
+          } else {
+            input.classList.remove('valid');
+            input.classList.add('invalid');
+          }
         } else {
           input.classList.remove('valid');
-          input.classList.add('invalid');
+          input.classList.remove('invalid');
         }
       }
     };

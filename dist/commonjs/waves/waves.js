@@ -17,6 +17,8 @@ var _attributeManager = require('../common/attributeManager');
 
 var _attributes = require('../common/attributes');
 
+var _configBuilder = require('../config-builder');
+
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
   Object.defineProperty(target, property, {
@@ -62,14 +64,14 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var MdWaves = exports.MdWaves = (_dec = (0, _aureliaTemplating.customAttribute)('md-waves'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+var MdWaves = exports.MdWaves = (_dec = (0, _aureliaTemplating.customAttribute)('md-waves'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _configBuilder.ConfigBuilder), _dec3 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec4 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec5 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec(_class = _dec2(_class = (_class2 = function () {
-  function MdWaves(element) {
+  function MdWaves(element, configBuilder) {
     _classCallCheck(this, MdWaves);
 
     _initDefineProp(this, 'block', _descriptor, this);
@@ -79,6 +81,7 @@ var MdWaves = exports.MdWaves = (_dec = (0, _aureliaTemplating.customAttribute)(
     _initDefineProp(this, 'color', _descriptor3, this);
 
     this.element = element;
+    this.configBuilder = configBuilder;
     this.attributeManager = new _attributeManager.AttributeManager(this.element);
   }
 
@@ -95,7 +98,9 @@ var MdWaves = exports.MdWaves = (_dec = (0, _aureliaTemplating.customAttribute)(
     }
 
     this.attributeManager.addClasses(classes);
-    Waves.attach(this.element);
+    if (!this.configBuilder.noWavesAttach) {
+      Waves.attach(this.element);
+    }
   };
 
   MdWaves.prototype.detached = function detached() {

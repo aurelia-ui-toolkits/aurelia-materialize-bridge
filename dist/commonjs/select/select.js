@@ -102,8 +102,8 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     this.taskQueue.queueTask(function () {
       _this.createMaterialSelect(false);
 
-      if (_this.label) {
-        var wrapper = $(_this.element).parent('.select-wrapper');
+      var wrapper = $(_this.element).parent('.select-wrapper');
+      if (_this.label && !wrapper.siblings("label").length) {
         var div = $('<div class="input-field"></div>');
         var va = _this.element.attributes.getNamedItem('validate');
         if (va) {
@@ -123,6 +123,8 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     this.observeVisibleDropdownContent(false);
     this.observeOptions(false);
     this.dropdownMutationObserver = null;
+    $(this.element).parent().children(".md-input-validation").remove();
+    $(this.element).parent().children('ul#select-options-' + $(this.element).data('select-id')).remove();
     $(this.element).material_select('destroy');
     this.subscriptions.forEach(function (sub) {
       return sub.dispose();

@@ -120,7 +120,7 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
 
       if (this.options.onClose) {
         options.onClose = function () {
-          this.options.onClose();
+          _this.options.onClose();
           $(document.activeElement).blur();
         };
       }

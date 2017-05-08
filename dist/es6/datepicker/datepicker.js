@@ -64,7 +64,7 @@ export class MdDatePicker {
       Object.assign(options, this.options);
       //merge callback methods if there is a hook in the advanced options
       if (this.options.onClose) {
-        options.onClose = function() {
+        options.onClose = () => {
           this.options.onClose();
           $(document.activeElement).blur();
         };

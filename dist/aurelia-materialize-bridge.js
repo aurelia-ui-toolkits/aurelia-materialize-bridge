@@ -1,8 +1,8 @@
 import {PLATFORM,DOM} from 'aurelia-pal';
 import {bindable,customAttribute,customElement,children} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
-import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-binding';
 import {Router} from 'aurelia-router';
+import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
 import {getLogger} from 'aurelia-logging';
 import {EventAggregator} from 'aurelia-event-aggregator';
@@ -20,9 +20,10 @@ export class ClickCounter {
 */
 export class ConfigBuilder {
 
+  globalResources = [];
+  noWavesAttach: boolean = false;
   useGlobalResources: boolean = true;
   useScrollfirePatch: boolean = false;
-  globalResources = [];
 
   useAll(): ConfigBuilder {
     return this
@@ -293,6 +294,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  preventWavesAttach(): ConfigBuilder {
+    this.noWavesAttach = true;
+    return this;
+  }
+
   /**
   * Don't globalize any resources
   * Allows you to import yourself via <require></require>
@@ -316,7 +322,8 @@ function applyPolyfills() {
 
 export function configure(aurelia, configCallback) {
   applyPolyfills();
-  let builder = new ConfigBuilder();
+  // let builder = new ConfigBuilder();
+  const builder = aurelia.container.get(ConfigBuilder);
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
     configCallback(builder);
@@ -426,32 +433,6 @@ export class MdBadge {
   }
 }
 
-@customAttribute('md-box')
-@inject(Element)
-export class MdBox {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) caption;
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('materialboxed');
-    if (this.caption) {
-      this.attributeManager.addAttributes({ 'data-caption': this.caption });
-    }
-    // FIXME:0 throws "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
-    $(this.element).materialbox();
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes('data-caption');
-    this.attributeManager.removeClasses('materialboxed');
-  }
-}
-
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 
 @customElement('md-breadcrumbs')
@@ -500,6 +481,32 @@ export class InstructionFilterValueConverter {
       }
       return result;
     });
+  }
+}
+
+@customAttribute('md-box')
+@inject(Element)
+export class MdBox {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) caption;
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('materialboxed');
+    if (this.caption) {
+      this.attributeManager.addAttributes({ 'data-caption': this.caption });
+    }
+    // FIXME:0 throws "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
+    $(this.element).materialbox();
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes('data-caption');
+    this.attributeManager.removeClasses('materialboxed');
   }
 }
 
@@ -683,84 +690,21 @@ export class MdCharCounter {
   attached() {
     this.length = parseInt(this.length, 10);
 
-    // attach to input element explicitly, so this counter can be used on
-    // containers (or custom elements like md-input)
-    if (this.element.tagName.toUpperCase() === 'INPUT') {
+    // attach to input and textarea elements explicitly, so this counter can be 
+    // used on containers (or custom elements like md-input)
+    const tagName = this.element.tagName.toUpperCase();
+    if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
       this.attributeManager.addAttributes({ 'data-length': this.length });
       $(this.element).characterCounter();
     } else {
-      $(this.element).find('input').each((i, el) => { $(el).attr('data-length', this.length); });
-      $(this.element).find('input').characterCounter();
+      const elem = $(this.element).find('input,textarea');
+      elem.each((i, el) => { $(el).attr('data-length', this.length); });
+      elem.characterCounter();
     }
   }
 
   detached() {
     this.attributeManager.removeAttributes(['data-length']);
-  }
-}
-
-// @customElement('md-checkbox')
-@inject(Element)
-export class MdCheckbox {
-  static id = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.twoWay
-  }) mdChecked;
-  @bindable() mdDisabled;
-  @bindable() mdReadonly = false;
-  @bindable() mdFilledIn;
-  @bindable() mdMatcher;
-  @bindable() mdModel;
-
-  constructor(element) {
-    this.element = element;
-    this.controlId = `md-checkbox-${MdCheckbox.id++}`;
-    // this.handleChange = this.handleChange.bind(this);
-  }
-
-  attached() {
-    this.attributeManager = new AttributeManager(this.checkbox);
-    if (getBooleanFromAttributeValue(this.mdFilledIn)) {
-      this.attributeManager.addClasses('filled-in');
-    }
-    if (this.mdChecked === null) {
-      this.checkbox.indeterminate = true;
-    } else {
-      this.checkbox.indeterminate = false;
-    }
-    if (getBooleanFromAttributeValue(this.mdDisabled)) {
-      this.checkbox.disabled = true;
-    }
-    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
-    // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
-    // this.checkbox.addEventListener('change', this.handleChange);
-  }
-
-  // blur() {
-  //   fireEvent(this.element, 'blur');
-  // }
-
-  detached() {
-    this.attributeManager.removeClasses(['filled-in', 'disabled']);
-    // this.checkbox.removeEventListener('change', this.handleChange);
-  }
-
-  // handleChange() {
-  //   this.mdChecked = this.checkbox.checked;
-  //   fireEvent(this.element, 'blur');
-  // }
-
-  // mdCheckedChanged(newValue) {
-  //   // if (this.checkbox) {
-  //   //   this.checkbox.checked = !!newValue;
-  //   // }
-  //   fireEvent(this.element, 'blur');
-  // }
-
-  mdDisabledChanged(newValue) {
-    if (this.checkbox) {
-      this.checkbox.disabled = !!newValue;
-    }
   }
 }
 
@@ -830,56 +774,68 @@ export class MdChips {
   }
 }
 
-@customAttribute('md-collapsible')
-@bindable({ name: 'accordion', defaultValue: false })
-@bindable({ name: 'popout', defaultValue: false })
-@bindable({ name: 'onOpen' })
-@bindable({ name: 'onClose' })
-@inject(Element, EventAggregator)
-export class MdCollapsible {
-  constructor(element, eventAggregator) {
+// @customElement('md-checkbox')
+@inject(Element)
+export class MdCheckbox {
+  static id = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.twoWay
+  }) mdChecked;
+  @bindable() mdDisabled;
+  @bindable() mdReadonly = false;
+  @bindable() mdFilledIn;
+  @bindable() mdMatcher;
+  @bindable() mdModel;
+
+  constructor(element) {
     this.element = element;
-    this.eventAggregator = eventAggregator;
-    this.attributeManager = new AttributeManager(this.element);
+    this.controlId = `md-checkbox-${MdCheckbox.id++}`;
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   attached() {
-    this.attributeManager.addClasses('collapsible');
-    if (getBooleanFromAttributeValue(this.popout)) {
-      this.attributeManager.addClasses('popout');
+    this.attributeManager = new AttributeManager(this.checkbox);
+    if (getBooleanFromAttributeValue(this.mdFilledIn)) {
+      this.attributeManager.addClasses('filled-in');
     }
-    this.refresh();
+    if (this.mdChecked === null) {
+      this.checkbox.indeterminate = true;
+    } else {
+      this.checkbox.indeterminate = false;
+    }
+    if (getBooleanFromAttributeValue(this.mdDisabled)) {
+      this.checkbox.disabled = true;
+    }
+    this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
+    // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
+    // this.checkbox.addEventListener('change', this.handleChange);
   }
+
+  // blur() {
+  //   fireEvent(this.element, 'blur');
+  // }
 
   detached() {
-    this.attributeManager.removeClasses(['collapsible', 'popout']);
-    this.attributeManager.removeAttributes(['data-collapsible']);
+    this.attributeManager.removeClasses(['filled-in', 'disabled']);
+    // this.checkbox.removeEventListener('change', this.handleChange);
   }
 
-  refresh() {
-    let accordion = getBooleanFromAttributeValue(this.accordion);
-    let dataCollapsibleAttributeValue = accordion ? 'accordion' : 'expandable';
+  // handleChange() {
+  //   this.mdChecked = this.checkbox.checked;
+  //   fireEvent(this.element, 'blur');
+  // }
 
-    this.attributeManager.addAttributes({ 'data-collapsible': dataCollapsibleAttributeValue });
+  // mdCheckedChanged(newValue) {
+  //   // if (this.checkbox) {
+  //   //   this.checkbox.checked = !!newValue;
+  //   // }
+  //   fireEvent(this.element, 'blur');
+  // }
 
-    $(this.element).collapsible({
-      accordion,
-      onOpen: this.buildCollapsibleOpenCloseCallbackHandler(this.onOpen),
-      onClose: this.buildCollapsibleOpenCloseCallbackHandler(this.onClose)
-    });
-  }
-
-  accordionChanged() {
-    this.refresh();
-  }
-
-  buildCollapsibleOpenCloseCallbackHandler(handler) {
-    return typeof(handler) === 'function' ?
-     (targetElementJquery) => {
-       let targetElement = targetElementJquery[0];
-
-       handler(targetElement);
-     } : null;
+  mdDisabledChanged(newValue) {
+    if (this.checkbox) {
+      this.checkbox.disabled = !!newValue;
+    }
   }
 }
 
@@ -945,6 +901,59 @@ export class MdlListSelector {
 
   mdDisabledChanged(newValue) {
     this.mdDisabled = getBooleanFromAttributeValue(newValue);
+  }
+}
+
+@customAttribute('md-collapsible')
+@bindable({ name: 'accordion', defaultValue: false })
+@bindable({ name: 'popout', defaultValue: false })
+@bindable({ name: 'onOpen' })
+@bindable({ name: 'onClose' })
+@inject(Element, EventAggregator)
+export class MdCollapsible {
+  constructor(element, eventAggregator) {
+    this.element = element;
+    this.eventAggregator = eventAggregator;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('collapsible');
+    if (getBooleanFromAttributeValue(this.popout)) {
+      this.attributeManager.addClasses('popout');
+    }
+    this.refresh();
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
+  }
+
+  refresh() {
+    let accordion = getBooleanFromAttributeValue(this.accordion);
+    let dataCollapsibleAttributeValue = accordion ? 'accordion' : 'expandable';
+
+    this.attributeManager.addAttributes({ 'data-collapsible': dataCollapsibleAttributeValue });
+
+    $(this.element).collapsible({
+      accordion,
+      onOpen: this.buildCollapsibleOpenCloseCallbackHandler(this.onOpen),
+      onClose: this.buildCollapsibleOpenCloseCallbackHandler(this.onClose)
+    });
+  }
+
+  accordionChanged() {
+    this.refresh();
+  }
+
+  buildCollapsibleOpenCloseCallbackHandler(handler) {
+    return typeof(handler) === 'function' ?
+     (targetElementJquery) => {
+       let targetElement = targetElementJquery[0];
+
+       handler(targetElement);
+     } : null;
   }
 }
 
@@ -1128,6 +1137,209 @@ export function polyfillElementClosest() {
       }
       return null;
     };
+  }
+}
+
+export class DatePickerDefaultParser {
+  canParse(value) {
+    if (value) {
+      return true;
+    }
+    return false;
+  }
+
+  parse(value) {
+    if (value) {
+      let result = value.split('/').join('-');
+      result = new Date(result);
+      return isNaN(result) ? null : result;
+    }
+    return null;
+  }
+}
+
+@inject(Element, TaskQueue, DatePickerDefaultParser)
+@customAttribute('md-datepicker')
+export class MdDatePicker {
+  @bindable() container;
+  @bindable() translation;
+  @bindable({defaultBindingMode: bindingMode.twoWay}) value;
+  @bindable({defaultBindingMode: bindingMode.twoWay}) parsers = [];
+  @bindable({defaultBindingMode: bindingMode.oneTime}) selectMonths = true;
+  @bindable({defaultBindingMode: bindingMode.oneTime}) selectYears = 15;
+  @bindable({defaultBindingMode: bindingMode.oneTime}) options = {};
+  @bindable() showErrortext = true;
+  calendarIcon = null;
+
+  constructor(element, taskQueue, defaultParser) {
+    this.element = element;
+    this.log = getLogger('md-datepicker');
+    this.taskQueue = taskQueue;
+    this.parsers.push(defaultParser);
+    this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
+  }
+
+  bind() {
+    this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
+    this.selectYears = parseInt(this.selectYears, 10);
+    this.element.classList.add('date-picker');
+
+    let options = {
+      selectMonths: this.selectMonths,
+      selectYears: this.selectYears,
+      onClose: function() {
+        // see https://github.com/Dogfalo/materialize/issues/2067
+        // and: https://github.com/amsul/pickadate.js/issues/160
+        $(document.activeElement).blur();
+        // $(this.element).blur();
+      }
+    };
+    let i18n = {};
+    // let i18n = {
+    //   selectMonths: true, // Creates a dropdown to control month
+    //   selectYears: 15, // Creates a dropdown of 15 years to control year
+    //   monthsFull: [ 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ],
+    //   monthsShort: [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
+    //   weekdaysFull: [ 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag' ],
+    //   weekdaysShort: [ 'So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa' ],
+    //   today: 'Heute',
+    //   clear: 'Löschen',
+    //   close: 'Schließen',
+    //   firstDay: 1,
+    //   format: 'dddd, dd. mmmm yyyy',
+    //   formatSubmit: 'yyyy/mm/dd'
+    // };
+    Object.assign(options, i18n);
+
+    if (this.options) {
+      Object.assign(options, this.options);
+      //merge callback methods if there is a hook in the advanced options
+      if (this.options.onClose) {
+        options.onClose = () => {
+          this.options.onClose();
+          $(document.activeElement).blur();
+        };
+      }
+    }
+    if (this.container) {
+      options.container = this.container;
+    }
+    this.picker = $(this.element).pickadate(options).pickadate('picker');
+    this.picker.on({
+      'close': this.onClose.bind(this),
+      'set': this.onSet.bind(this)
+    });
+
+    if (this.value) {
+      this.picker.set('select', this.value);
+    }
+    if (this.options && this.options.editable) {
+      $(this.element).on('keydown', (e)=> {
+        if (e.keyCode === 13 || e.keyCode === 9) {
+          if (this.parseDate($(this.element).val())) {
+            this.closeDatePicker();
+          } else {
+            this.openDatePicker();
+          }
+        } else {
+          this.value = null;
+        }
+      });
+    } else {
+      $(this.element).on('focusin', () => {
+        this.openDatePicker();
+      });
+    }
+    if (this.options.showIcon) {
+      this.element.classList.add('left');
+      this.calendarIcon = document.createElement('i');
+      this.calendarIcon.classList.add('right');
+      this.calendarIcon.classList.add('material-icons');
+      this.calendarIcon.textContent = 'today';
+      this.element.parentNode.insertBefore(this.calendarIcon, this.element.nextSibling);
+      $(this.calendarIcon).on('click', this.onCalendarIconClick);
+
+      options.iconClass = options.iconClass || 'std-icon-fixup';
+      this.calendarIcon.classList.add(options.iconClass);
+    }
+
+    this.setErrorTextAttribute();
+  }
+
+  parseDate(value) {
+    if (this.parsers && this.parsers.length && this.parsers.length > 0) {
+      for (const parser of this.parsers) {
+        if (parser.canParse(value)) {
+          const parsedDate = parser.parse(value);
+          if (parsedDate !== null) {
+            this.picker.set('select', parsedDate);
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  detached() {
+    if (this.options.showIcon) {
+      this.element.classList.remove('left');
+      $(this.calendarIcon).off('click', this.onCalendarIconClick);
+      $(this.calendarIcon).remove();
+      this.calendarIcon = null;
+    }
+    if (this.picker) {
+      this.picker.stop();
+    }
+  }
+
+  openDatePicker() {
+    $(this.element).pickadate('open');
+  }
+
+  closeDatePicker() {
+    $(this.element).pickadate('close');
+  }
+
+  onClose() {
+    let selected = this.picker.get('select');
+    this.value = selected ? selected.obj : null;
+    fireEvent(this.element, 'blur');
+  }
+
+  onCalendarIconClick(event) {
+    event.stopPropagation();
+    this.openDatePicker();
+  }
+
+  onSet(value) {
+    //handle this ourselves since Dogfalo removed this functionality from the original plugin
+    if (this.options && this.options.closeOnSelect && value.select) {
+      this.value = value.select;
+      this.picker.close();
+    }
+    // this.value = new Date(value.select);
+  }
+
+  valueChanged(newValue) {
+    if (this.options.max && newValue > this.options.max) {
+      this.value = this.options.max;
+    }
+    this.log.debug('selectedChanged', this.value);
+    // this.taskQueue.queueTask(() => {
+    this.picker.set('select', this.value);
+    // });
+  }
+
+  showErrortextChanged() {
+    this.setErrorTextAttribute();
+  }
+
+  setErrorTextAttribute() {
+    const element = this.element;
+    if (!element) return;
+    this.log.debug('showErrortextChanged: ' + this.showErrortext);
+    element.setAttribute('data-show-errortext', getBooleanFromAttributeValue(this.showErrortext));
   }
 }
 
@@ -1517,209 +1729,6 @@ export class MdDropdown {
   }
 }
 
-export class DatePickerDefaultParser {
-  canParse(value) {
-    if (value) {
-      return true;
-    }
-    return false;
-  }
-
-  parse(value) {
-    if (value) {
-      let result = value.split('/').join('-');
-      result = new Date(result);
-      return isNaN(result) ? null : result;
-    }
-    return null;
-  }
-}
-
-@inject(Element, TaskQueue, DatePickerDefaultParser)
-@customAttribute('md-datepicker')
-export class MdDatePicker {
-  @bindable() container;
-  @bindable() translation;
-  @bindable({defaultBindingMode: bindingMode.twoWay}) value;
-  @bindable({defaultBindingMode: bindingMode.twoWay}) parsers = [];
-  @bindable({defaultBindingMode: bindingMode.oneTime}) selectMonths = true;
-  @bindable({defaultBindingMode: bindingMode.oneTime}) selectYears = 15;
-  @bindable({defaultBindingMode: bindingMode.oneTime}) options = {};
-  @bindable() showErrortext = true;
-  calendarIcon = null;
-
-  constructor(element, taskQueue, defaultParser) {
-    this.element = element;
-    this.log = getLogger('md-datepicker');
-    this.taskQueue = taskQueue;
-    this.parsers.push(defaultParser);
-    this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
-  }
-
-  bind() {
-    this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
-    this.selectYears = parseInt(this.selectYears, 10);
-    this.element.classList.add('date-picker');
-
-    let options = {
-      selectMonths: this.selectMonths,
-      selectYears: this.selectYears,
-      onClose: function() {
-        // see https://github.com/Dogfalo/materialize/issues/2067
-        // and: https://github.com/amsul/pickadate.js/issues/160
-        $(document.activeElement).blur();
-        // $(this.element).blur();
-      }
-    };
-    let i18n = {};
-    // let i18n = {
-    //   selectMonths: true, // Creates a dropdown to control month
-    //   selectYears: 15, // Creates a dropdown of 15 years to control year
-    //   monthsFull: [ 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ],
-    //   monthsShort: [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
-    //   weekdaysFull: [ 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag' ],
-    //   weekdaysShort: [ 'So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa' ],
-    //   today: 'Heute',
-    //   clear: 'Löschen',
-    //   close: 'Schließen',
-    //   firstDay: 1,
-    //   format: 'dddd, dd. mmmm yyyy',
-    //   formatSubmit: 'yyyy/mm/dd'
-    // };
-    Object.assign(options, i18n);
-
-    if (this.options) {
-      Object.assign(options, this.options);
-      //merge callback methods if there is a hook in the advanced options
-      if (this.options.onClose) {
-        options.onClose = function() {
-          this.options.onClose();
-          $(document.activeElement).blur();
-        };
-      }
-    }
-    if (this.container) {
-      options.container = this.container;
-    }
-    this.picker = $(this.element).pickadate(options).pickadate('picker');
-    this.picker.on({
-      'close': this.onClose.bind(this),
-      'set': this.onSet.bind(this)
-    });
-
-    if (this.value) {
-      this.picker.set('select', this.value);
-    }
-    if (this.options && this.options.editable) {
-      $(this.element).on('keydown', (e)=> {
-        if (e.keyCode === 13 || e.keyCode === 9) {
-          if (this.parseDate($(this.element).val())) {
-            this.closeDatePicker();
-          } else {
-            this.openDatePicker();
-          }
-        } else {
-          this.value = null;
-        }
-      });
-    } else {
-      $(this.element).on('focusin', () => {
-        this.openDatePicker();
-      });
-    }
-    if (this.options.showIcon) {
-      this.element.classList.add('left');
-      this.calendarIcon = document.createElement('i');
-      this.calendarIcon.classList.add('right');
-      this.calendarIcon.classList.add('material-icons');
-      this.calendarIcon.textContent = 'today';
-      this.element.parentNode.insertBefore(this.calendarIcon, this.element.nextSibling);
-      $(this.calendarIcon).on('click', this.onCalendarIconClick);
-
-      options.iconClass = options.iconClass || 'std-icon-fixup';
-      this.calendarIcon.classList.add(options.iconClass);
-    }
-
-    this.setErrorTextAttribute();
-  }
-
-  parseDate(value) {
-    if (this.parsers && this.parsers.length && this.parsers.length > 0) {
-      for (const parser of this.parsers) {
-        if (parser.canParse(value)) {
-          const parsedDate = parser.parse(value);
-          if (parsedDate !== null) {
-            this.picker.set('select', parsedDate);
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
-
-  detached() {
-    if (this.options.showIcon) {
-      this.element.classList.remove('left');
-      $(this.calendarIcon).off('click', this.onCalendarIconClick);
-      $(this.calendarIcon).remove();
-      this.calendarIcon = null;
-    }
-    if (this.picker) {
-      this.picker.stop();
-    }
-  }
-
-  openDatePicker() {
-    $(this.element).pickadate('open');
-  }
-
-  closeDatePicker() {
-    $(this.element).pickadate('close');
-  }
-
-  onClose() {
-    let selected = this.picker.get('select');
-    this.value = selected ? selected.obj : null;
-    fireEvent(this.element, 'blur');
-  }
-
-  onCalendarIconClick(event) {
-    event.stopPropagation();
-    this.openDatePicker();
-  }
-
-  onSet(value) {
-    //handle this ourselves since Dogfalo removed this functionality from the original plugin
-    if (this.options && this.options.closeOnSelect && value.select) {
-      this.value = value.select;
-      this.picker.close();
-    }
-    // this.value = new Date(value.select);
-  }
-
-  valueChanged(newValue) {
-    if (this.options.max && newValue > this.options.max) {
-      this.value = this.options.max;
-    }
-    this.log.debug('selectedChanged', this.value);
-    // this.taskQueue.queueTask(() => {
-    this.picker.set('select', this.value);
-    // });
-  }
-
-  showErrortextChanged() {
-    this.setErrorTextAttribute();
-  }
-
-  setErrorTextAttribute() {
-    const element = this.element;
-    if (!element) return;
-    this.log.debug('showErrortextChanged: ' + this.showErrortext);
-    element.setAttribute('data-show-errortext', getBooleanFromAttributeValue(this.showErrortext));
-  }
-}
-
 @customElement('md-fab')
 @inject(Element)
 export class MdFab {
@@ -1916,6 +1925,7 @@ export class MdInput {
   }
 
   focus() {
+    this.input.focus();
     fireEvent(this.element, 'focus');
   }
 
@@ -2035,6 +2045,9 @@ export class MdModal {
 export class MdNavbar {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
+  }) mdExtended;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
   }) mdFixed;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
@@ -2054,6 +2067,9 @@ export class MdNavbar {
     if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
       this.navAttributeManager.addClasses('md-auto-height');
     }
+    if (getBooleanFromAttributeValue(this.mdExtended)) {
+      this.navAttributeManager.addClasses('nav-extended');
+    }
   }
 
   detached() {
@@ -2061,7 +2077,10 @@ export class MdNavbar {
       this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
     if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
-      this.navAttributeManager.addClasses('md-auto-height');
+      this.navAttributeManager.removeClasses('md-auto-height');
+    }
+    if (getBooleanFromAttributeValue(this.mdExtended)) {
+      this.navAttributeManager.removeClasses('nav-extended');
     }
   }
 }
@@ -2461,8 +2480,8 @@ export class MdSelect {
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(false);
 
-      if (this.label) {
-        let wrapper = $(this.element).parent('.select-wrapper');
+      let wrapper = $(this.element).parent('.select-wrapper');
+      if (this.label && !wrapper.siblings("label").length) {
         let div = $('<div class="input-field"></div>');
         let va = this.element.attributes.getNamedItem('validate');
         if (va) {
@@ -2482,6 +2501,8 @@ export class MdSelect {
     this.observeVisibleDropdownContent(false);
     this.observeOptions(false);
     this.dropdownMutationObserver = null;
+    $(this.element).parent().children(".md-input-validation").remove();
+    $(this.element).parent().children(`ul#select-options-${$(this.element).data('select-id')}`).remove();
     $(this.element).material_select('destroy');
     this.subscriptions.forEach(sub => sub.dispose());
   }
@@ -3142,31 +3163,27 @@ export class MaterializeFormValidationRenderer {
   classNameFirst = 'md-input-validation-first';
 
   render(instruction) {
-    let allElements = new Array();
     for (let { result, elements } of instruction.unrender) {
       for (let element of elements) {
         this.remove(element, result);
-        if (allElements.indexOf(element) == -1) {
-          allElements.push(element);
-        }
+        this.underlineInput(element, false);
       }
     }
     for (let { result, elements } of instruction.render) {
       for (let element of elements) {
         this.add(element, result);
-        if (allElements.indexOf(element) == -1) {
-          allElements.push(element);
-        }
+        this.underlineInput(element, true);
       }
     }
-    allElements.forEach(e => this.underlineInput(e));
   }
 
-  underlineInput(element) {
+  underlineInput(element, render) {
     let input;
+ 	  let validationContainer;
     switch (element.tagName) {
       case 'MD-INPUT': {
         input = element.querySelector('input') || element.querySelector('textarea');
+        validationContainer = element;
         break;
       }
       case 'SELECT': {
@@ -3174,22 +3191,30 @@ export class MaterializeFormValidationRenderer {
         if (selectWrapper) {
           input = selectWrapper.querySelector('input');
         }
+        validationContainer = selectWrapper;
         break;
       }
       case 'INPUT': {
         input = element;
+        validationContainer = element.parentElement;
         break;
       }
       default: break;
     }
     if (input) {
-      if (element.querySelectorAll('.' + this.className).length === 0) {
-        input.classList.remove('invalid');
-        input.classList.add('valid');
+      if (render) {
+        if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
+          input.classList.remove('invalid');
+          input.classList.add('valid');
+        }
+        else {
+          input.classList.remove('valid');
+          input.classList.add('invalid');
+        }
       }
       else {
         input.classList.remove('valid');
-        input.classList.add('invalid');
+        input.classList.remove('invalid');
       }
     }
   }
@@ -3297,7 +3322,7 @@ export class MaterializeFormValidationRenderer {
 }
 
 @customAttribute('md-waves')
-@inject(Element)
+@inject(Element, ConfigBuilder)
 export class MdWaves {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
@@ -3308,8 +3333,10 @@ export class MdWaves {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) color;
-  constructor(element) {
+
+  constructor(element, configBuilder) {
     this.element = element;
+    this.configBuilder = configBuilder;
     this.attributeManager = new AttributeManager(this.element);
   }
 
@@ -3326,7 +3353,9 @@ export class MdWaves {
     }
 
     this.attributeManager.addClasses(classes);
-    Waves.attach(this.element);
+    if (!this.configBuilder.noWavesAttach) {
+      Waves.attach(this.element);
+    }
   }
 
   detached() {

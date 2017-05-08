@@ -126,7 +126,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
 
             if (this.options.onClose) {
               options.onClose = function () {
-                this.options.onClose();
+                _this.options.onClose();
                 $(document.activeElement).blur();
               };
             }

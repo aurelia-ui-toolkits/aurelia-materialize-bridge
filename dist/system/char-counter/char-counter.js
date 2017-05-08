@@ -79,14 +79,16 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
 
           this.length = parseInt(this.length, 10);
 
-          if (this.element.tagName.toUpperCase() === 'INPUT') {
+          var tagName = this.element.tagName.toUpperCase();
+          if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
             this.attributeManager.addAttributes({ 'data-length': this.length });
             $(this.element).characterCounter();
           } else {
-            $(this.element).find('input').each(function (i, el) {
+            var elem = $(this.element).find('input,textarea');
+            elem.each(function (i, el) {
               $(el).attr('data-length', _this.length);
             });
-            $(this.element).find('input').characterCounter();
+            elem.characterCounter();
           }
         };
 

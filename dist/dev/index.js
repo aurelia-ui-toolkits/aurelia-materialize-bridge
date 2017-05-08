@@ -12,7 +12,8 @@ System.register(['./config-builder', './scrollfire/scrollfire-patch', './common/
 
   function configure(aurelia, configCallback) {
     applyPolyfills();
-    var builder = new ConfigBuilder();
+
+    var builder = aurelia.container.get(ConfigBuilder);
 
     if (configCallback !== undefined && typeof configCallback === 'function') {
       configCallback(builder);

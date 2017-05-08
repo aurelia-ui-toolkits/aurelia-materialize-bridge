@@ -90,6 +90,7 @@ export class MdInput {
   }
 
   focus() {
+    this.input.focus();
     fireEvent(this.element, 'focus');
   }
 

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdNavbar = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -66,13 +66,17 @@ var MdNavbar = exports.MdNavbar = (_dec = (0, _aureliaTemplating.customElement)(
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec4 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec5 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec(_class = _dec2(_class = (_class2 = function () {
   function MdNavbar(element) {
     _classCallCheck(this, MdNavbar);
 
-    _initDefineProp(this, 'mdFixed', _descriptor, this);
+    _initDefineProp(this, 'mdExtended', _descriptor, this);
 
-    _initDefineProp(this, 'mdAutoHeight', _descriptor2, this);
+    _initDefineProp(this, 'mdFixed', _descriptor2, this);
+
+    _initDefineProp(this, 'mdAutoHeight', _descriptor3, this);
 
     this.element = element;
   }
@@ -86,6 +90,9 @@ var MdNavbar = exports.MdNavbar = (_dec = (0, _aureliaTemplating.customElement)(
     if ((0, _attributes.getBooleanFromAttributeValue)(this.mdAutoHeight)) {
       this.navAttributeManager.addClasses('md-auto-height');
     }
+    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdExtended)) {
+      this.navAttributeManager.addClasses('nav-extended');
+    }
   };
 
   MdNavbar.prototype.detached = function detached() {
@@ -93,15 +100,21 @@ var MdNavbar = exports.MdNavbar = (_dec = (0, _aureliaTemplating.customElement)(
       this.fixedAttributeManager.removeClasses('navbar-fixed');
     }
     if ((0, _attributes.getBooleanFromAttributeValue)(this.mdAutoHeight)) {
-      this.navAttributeManager.addClasses('md-auto-height');
+      this.navAttributeManager.removeClasses('md-auto-height');
+    }
+    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdExtended)) {
+      this.navAttributeManager.removeClasses('nav-extended');
     }
   };
 
   return MdNavbar;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec3], {
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdExtended', [_dec3], {
   enumerable: true,
   initializer: null
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdAutoHeight', [_dec4], {
+}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec4], {
+  enumerable: true,
+  initializer: null
+}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdAutoHeight', [_dec5], {
   enumerable: true,
   initializer: null
 })), _class2)) || _class) || _class);

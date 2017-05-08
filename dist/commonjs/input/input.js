@@ -159,6 +159,7 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
   };
 
   MdInput.prototype.focus = function focus() {
+    this.input.focus();
     (0, _events.fireEvent)(this.element, 'focus');
   };
 

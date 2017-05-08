@@ -34,8 +34,8 @@ export class MdSelect {
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(false);
 
-      if (this.label) {
-        let wrapper = $(this.element).parent('.select-wrapper');
+      let wrapper = $(this.element).parent('.select-wrapper');
+      if (this.label && !wrapper.siblings("label").length) {
         let div = $('<div class="input-field"></div>');
         let va = this.element.attributes.getNamedItem('validate');
         if (va) {
@@ -55,6 +55,8 @@ export class MdSelect {
     this.observeVisibleDropdownContent(false);
     this.observeOptions(false);
     this.dropdownMutationObserver = null;
+    $(this.element).parent().children(".md-input-validation").remove();
+    $(this.element).parent().children(`ul#select-options-${$(this.element).data('select-id')}`).remove();
     $(this.element).material_select('destroy');
     this.subscriptions.forEach(sub => sub.dispose());
   }

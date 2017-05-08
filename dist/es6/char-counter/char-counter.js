@@ -15,14 +15,16 @@ export class MdCharCounter {
   attached() {
     this.length = parseInt(this.length, 10);
 
-    // attach to input element explicitly, so this counter can be used on
-    // containers (or custom elements like md-input)
-    if (this.element.tagName.toUpperCase() === 'INPUT') {
+    // attach to input and textarea elements explicitly, so this counter can be 
+    // used on containers (or custom elements like md-input)
+    const tagName = this.element.tagName.toUpperCase();
+    if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
       this.attributeManager.addAttributes({ 'data-length': this.length });
       $(this.element).characterCounter();
     } else {
-      $(this.element).find('input').each((i, el) => { $(el).attr('data-length', this.length); });
-      $(this.element).find('input').characterCounter();
+      const elem = $(this.element).find('input,textarea');
+      elem.each((i, el) => { $(el).attr('data-length', this.length); });
+      elem.characterCounter();
     }
   }
 

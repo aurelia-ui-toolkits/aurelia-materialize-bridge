@@ -16,9 +16,10 @@ define(['exports', 'aurelia-pal', './dropdown/dropdown-fix'], function (exports,
     function ConfigBuilder() {
       _classCallCheck(this, ConfigBuilder);
 
+      this.globalResources = [];
+      this.noWavesAttach = false;
       this.useGlobalResources = true;
       this.useScrollfirePatch = false;
-      this.globalResources = [];
     }
 
     ConfigBuilder.prototype.useAll = function useAll() {
@@ -238,6 +239,11 @@ define(['exports', 'aurelia-pal', './dropdown/dropdown-fix'], function (exports,
 
     ConfigBuilder.prototype.useWell = function useWell() {
       this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./well/md-well.html'));
+      return this;
+    };
+
+    ConfigBuilder.prototype.preventWavesAttach = function preventWavesAttach() {
+      this.noWavesAttach = true;
       return this;
     };
 

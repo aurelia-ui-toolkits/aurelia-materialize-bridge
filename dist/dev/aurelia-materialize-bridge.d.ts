@@ -12,14 +12,14 @@ import {
   inject
 } from 'aurelia-dependency-injection';
 import {
+  Router
+} from 'aurelia-router';
+import {
   bindingMode,
   observable,
   BindingEngine,
   ObserverLocator
 } from 'aurelia-binding';
-import {
-  Router
-} from 'aurelia-router';
 import {
   TaskQueue
 } from 'aurelia-task-queue';
@@ -38,9 +38,10 @@ export declare class ClickCounter {
 * Plugin configuration builder
 */
 export declare class ConfigBuilder {
+  globalResources: any;
+  noWavesAttach: boolean;
   useGlobalResources: boolean;
   useScrollfirePatch: boolean;
-  globalResources: any;
   useAll(): ConfigBuilder;
   useAutoComplete(): ConfigBuilder;
   useBadge(): ConfigBuilder;
@@ -95,6 +96,7 @@ export declare class ConfigBuilder {
      */
   useWaves(): ConfigBuilder;
   useWell(): ConfigBuilder;
+  preventWavesAttach(): ConfigBuilder;
   
   /**
     * Don't globalize any resources
@@ -122,12 +124,6 @@ export declare class MdBadge {
   newChanged(newValue?: any): any;
   captionChanged(newValue?: any): any;
 }
-export declare class MdBox {
-  caption: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 export declare class MdBreadcrumbs {
@@ -139,6 +135,12 @@ export declare class MdBreadcrumbs {
 }
 export declare class InstructionFilterValueConverter {
   toView(navigationInstructions?: any): any;
+}
+export declare class MdBox {
+  caption: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
 }
 export declare class MdButton {
   disabled: any;
@@ -185,6 +187,24 @@ export declare class MdCharCounter {
   attached(): any;
   detached(): any;
 }
+export declare class MdChip {
+  mdClose: any;
+  constructor(element?: any);
+  attached(): any;
+  close(): any;
+}
+export declare class MdChips {
+  autocompleteData: any;
+  data: any;
+  placeholder: any;
+  secondaryPlaceholder: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  onChipAdd(e?: any, chip?: any): any;
+  onChipDelete(e?: any, chip?: any): any;
+  onChipSelect(e?: any, chip?: any): any;
+}
 
 // @customElement('md-checkbox')
 export declare class MdCheckbox {
@@ -215,32 +235,6 @@ export declare class MdCheckbox {
   // }
   mdDisabledChanged(newValue?: any): any;
 }
-export declare class MdChip {
-  mdClose: any;
-  constructor(element?: any);
-  attached(): any;
-  close(): any;
-}
-export declare class MdChips {
-  autocompleteData: any;
-  data: any;
-  placeholder: any;
-  secondaryPlaceholder: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  onChipAdd(e?: any, chip?: any): any;
-  onChipDelete(e?: any, chip?: any): any;
-  onChipSelect(e?: any, chip?: any): any;
-}
-export declare class MdCollapsible {
-  constructor(element?: any, eventAggregator?: any);
-  attached(): any;
-  detached(): any;
-  refresh(): any;
-  accordionChanged(): any;
-  buildCollapsibleOpenCloseCallbackHandler(handler?: any): any;
-}
 export declare class MdCollectionHeader {
   constructor(element?: any);
 }
@@ -261,6 +255,14 @@ export declare class MdlListSelector {
   constructor(element?: any);
   isSelectedChanged(newValue?: any): any;
   mdDisabledChanged(newValue?: any): any;
+}
+export declare class MdCollapsible {
+  constructor(element?: any, eventAggregator?: any);
+  attached(): any;
+  detached(): any;
+  refresh(): any;
+  accordionChanged(): any;
+  buildCollapsibleOpenCloseCallbackHandler(handler?: any): any;
 }
 
 /* eslint-enable */
@@ -314,6 +316,33 @@ export declare function fireMaterializeEvent(element: Element, name: string, dat
 
 // https://github.com/jonathantneal/closest/blob/master/closest.js
 export declare function polyfillElementClosest(): any;
+export declare class DatePickerDefaultParser {
+  canParse(value?: any): any;
+  parse(value?: any): any;
+}
+export declare class MdDatePicker {
+  container: any;
+  translation: any;
+  value: any;
+  parsers: any;
+  selectMonths: any;
+  selectYears: any;
+  options: any;
+  showErrortext: any;
+  calendarIcon: any;
+  constructor(element?: any, taskQueue?: any, defaultParser?: any);
+  bind(): any;
+  parseDate(value?: any): any;
+  detached(): any;
+  openDatePicker(): any;
+  closeDatePicker(): any;
+  onClose(): any;
+  onCalendarIconClick(event?: any): any;
+  onSet(value?: any): any;
+  valueChanged(newValue?: any): any;
+  showErrortextChanged(): any;
+  setErrorTextAttribute(): any;
+}
 export declare class MdDropdownElement {
   static id: any;
   alignment: any;
@@ -344,33 +373,6 @@ export declare class MdDropdown {
   attached(): any;
   detached(): any;
   handleActivateElement(): any;
-}
-export declare class DatePickerDefaultParser {
-  canParse(value?: any): any;
-  parse(value?: any): any;
-}
-export declare class MdDatePicker {
-  container: any;
-  translation: any;
-  value: any;
-  parsers: any;
-  selectMonths: any;
-  selectYears: any;
-  options: any;
-  showErrortext: any;
-  calendarIcon: any;
-  constructor(element?: any, taskQueue?: any, defaultParser?: any);
-  bind(): any;
-  parseDate(value?: any): any;
-  detached(): any;
-  openDatePicker(): any;
-  closeDatePicker(): any;
-  onClose(): any;
-  onCalendarIconClick(event?: any): any;
-  onSet(value?: any): any;
-  valueChanged(newValue?: any): any;
-  showErrortextChanged(): any;
-  setErrorTextAttribute(): any;
 }
 export declare class MdFab {
   mdFixed: any;
@@ -455,6 +457,7 @@ export declare class MdModal {
   close(): any;
 }
 export declare class MdNavbar {
+  mdExtended: any;
   mdFixed: any;
   mdAutoHeight: any;
   fixedAttributeManager: any;
@@ -704,7 +707,7 @@ export declare class MaterializeFormValidationRenderer {
   className: any;
   classNameFirst: any;
   render(instruction?: any): any;
-  underlineInput(element?: any): any;
+  underlineInput(element?: any, render?: any): any;
   add(element?: any, result?: any): any;
   remove(element?: any, result?: any): any;
   addMessage(element?: any, result?: any): any;
@@ -714,7 +717,7 @@ export declare class MdWaves {
   block: any;
   circle: any;
   color: any;
-  constructor(element?: any);
+  constructor(element?: any, configBuilder?: any);
   attached(): any;
   detached(): any;
 }

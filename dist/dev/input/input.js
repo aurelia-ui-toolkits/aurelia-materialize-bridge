@@ -165,6 +165,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         };
 
         MdInput.prototype.focus = function focus() {
+          this.input.focus();
           fireEvent(this.element, 'focus');
         };
 

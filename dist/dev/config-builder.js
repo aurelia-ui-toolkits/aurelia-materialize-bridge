@@ -22,9 +22,10 @@ System.register(['aurelia-pal', './dropdown/dropdown-fix'], function (_export, _
         function ConfigBuilder() {
           _classCallCheck(this, ConfigBuilder);
 
+          this.globalResources = [];
+          this.noWavesAttach = false;
           this.useGlobalResources = true;
           this.useScrollfirePatch = false;
-          this.globalResources = [];
         }
 
         ConfigBuilder.prototype.useAll = function useAll() {
@@ -244,6 +245,11 @@ System.register(['aurelia-pal', './dropdown/dropdown-fix'], function (_export, _
 
         ConfigBuilder.prototype.useWell = function useWell() {
           this.globalResources.push(PLATFORM.moduleName('./well/md-well.html'));
+          return this;
+        };
+
+        ConfigBuilder.prototype.preventWavesAttach = function preventWavesAttach() {
+          this.noWavesAttach = true;
           return this;
         };
 

@@ -4,31 +4,27 @@ export class MaterializeFormValidationRenderer {
   classNameFirst = 'md-input-validation-first';
 
   render(instruction) {
-    let allElements = new Array();
     for (let { result, elements } of instruction.unrender) {
       for (let element of elements) {
         this.remove(element, result);
-        if (allElements.indexOf(element) == -1) {
-          allElements.push(element);
-        }
+        this.underlineInput(element, false);
       }
     }
     for (let { result, elements } of instruction.render) {
       for (let element of elements) {
         this.add(element, result);
-        if (allElements.indexOf(element) == -1) {
-          allElements.push(element);
-        }
+        this.underlineInput(element, true);
       }
     }
-    allElements.forEach(e => this.underlineInput(e));
   }
 
-  underlineInput(element) {
+  underlineInput(element, render) {
     let input;
+ 	  let validationContainer;
     switch (element.tagName) {
       case 'MD-INPUT': {
         input = element.querySelector('input') || element.querySelector('textarea');
+        validationContainer = element;
         break;
       }
       case 'SELECT': {
@@ -36,22 +32,30 @@ export class MaterializeFormValidationRenderer {
         if (selectWrapper) {
           input = selectWrapper.querySelector('input');
         }
+        validationContainer = selectWrapper;
         break;
       }
       case 'INPUT': {
         input = element;
+        validationContainer = element.parentElement;
         break;
       }
       default: break;
     }
     if (input) {
-      if (element.querySelectorAll('.' + this.className).length === 0) {
-        input.classList.remove('invalid');
-        input.classList.add('valid');
+      if (render) {
+        if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
+          input.classList.remove('invalid');
+          input.classList.add('valid');
+        }
+        else {
+          input.classList.remove('valid');
+          input.classList.add('invalid');
+        }
       }
       else {
         input.classList.remove('valid');
-        input.classList.add('invalid');
+        input.classList.remove('invalid');
       }
     }
   }

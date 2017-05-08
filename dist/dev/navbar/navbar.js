@@ -3,7 +3,7 @@
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (_export, _context) {
   "use strict";
 
-  var bindable, customElement, bindingMode, inject, getBooleanFromAttributeValue, AttributeManager, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, MdNavbar;
+  var bindable, customElement, bindingMode, inject, getBooleanFromAttributeValue, AttributeManager, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, MdNavbar;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -72,13 +72,17 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         defaultBindingMode: bindingMode.oneTime
       }), _dec4 = bindable({
         defaultBindingMode: bindingMode.oneTime
+      }), _dec5 = bindable({
+        defaultBindingMode: bindingMode.oneTime
       }), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdNavbar(element) {
           _classCallCheck(this, MdNavbar);
 
-          _initDefineProp(this, 'mdFixed', _descriptor, this);
+          _initDefineProp(this, 'mdExtended', _descriptor, this);
 
-          _initDefineProp(this, 'mdAutoHeight', _descriptor2, this);
+          _initDefineProp(this, 'mdFixed', _descriptor2, this);
+
+          _initDefineProp(this, 'mdAutoHeight', _descriptor3, this);
 
           this.element = element;
         }
@@ -92,6 +96,9 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
             this.navAttributeManager.addClasses('md-auto-height');
           }
+          if (getBooleanFromAttributeValue(this.mdExtended)) {
+            this.navAttributeManager.addClasses('nav-extended');
+          }
         };
 
         MdNavbar.prototype.detached = function detached() {
@@ -99,15 +106,21 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this.fixedAttributeManager.removeClasses('navbar-fixed');
           }
           if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
-            this.navAttributeManager.addClasses('md-auto-height');
+            this.navAttributeManager.removeClasses('md-auto-height');
+          }
+          if (getBooleanFromAttributeValue(this.mdExtended)) {
+            this.navAttributeManager.removeClasses('nav-extended');
           }
         };
 
         return MdNavbar;
-      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec3], {
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdExtended', [_dec3], {
         enumerable: true,
         initializer: null
-      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdAutoHeight', [_dec4], {
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec4], {
+        enumerable: true,
+        initializer: null
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdAutoHeight', [_dec5], {
         enumerable: true,
         initializer: null
       })), _class2)) || _class) || _class));
