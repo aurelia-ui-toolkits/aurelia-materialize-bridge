@@ -6,9 +6,9 @@ import {fireEvent} from '../common/events';
 @inject(Element)
 export class MdAutoComplete {
   input = null;
-  @bindable() values = {};
-  @bindable() minLength = 1;
   @bindable() limit = 20;
+  @bindable() minLength = 1;
+  @bindable() values = {};
 
   constructor(element) {
     this.element = element;
