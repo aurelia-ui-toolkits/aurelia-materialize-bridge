@@ -7,6 +7,8 @@ import {fireEvent} from '../common/events';
 export class MdAutoComplete {
   input = null;
   @bindable() values = {};
+  @bindable() minLength = 1;
+  @bindable() limit = 20;
 
   constructor(element) {
     this.element = element;
@@ -32,7 +34,9 @@ export class MdAutoComplete {
   refresh() {
     this.detached();
     $(this.input).autocomplete({
-      data: this.values
+      data: this.values,
+      minLength: this.minLength,
+      limit: this.limit
     });
     // $('.autocomplete-content', this.element).on('click', () => {
     //   fireEvent(this.input, 'change');
