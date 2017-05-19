@@ -6,6 +6,7 @@ import { getLogger } from 'aurelia-logging';
 @customElement('md-range')
 @inject(Element)
 export class MdRange {
+  @bindable() mdReadonly = false;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdMin = 0;
