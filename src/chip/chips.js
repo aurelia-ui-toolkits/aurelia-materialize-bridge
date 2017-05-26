@@ -8,7 +8,7 @@ import {fireEvent} from '../common/events';
 @customAttribute('md-chips')
 @inject(Element)
 export class MdChips {
-  @bindable() autocompleteData = {};
+  @bindable() autocompleteOptions = {};
   @bindable({ defaultBindingMode: bindingMode.twoWay }) data = [];
   @bindable() placeholder = '';
   @bindable() secondaryPlaceholder = '';
@@ -24,7 +24,7 @@ export class MdChips {
 
   attached() {
     let options = {
-      autocompleteData: this.autocompleteData,
+      autocompleteOptions: this.autocompleteOptions,
       data: this.data,
       placeholder: this.placeholder,
       secondaryPlaceholder: this.secondaryPlaceholder
