@@ -31,8 +31,8 @@ export class MaterializeFormValidationRenderer {
         const selectWrapper = element.closest('.select-wrapper');
         if (selectWrapper) {
           input = selectWrapper.querySelector('input');
+          validationContainer = selectWrapper.closest(".input-field") || selectWrapper;
         }
-        validationContainer = selectWrapper;
         break;
       }
       case 'INPUT': {
@@ -89,7 +89,7 @@ export class MaterializeFormValidationRenderer {
         result.target = input;
         if (!(input.hasAttribute('data-show-errortext') &&
             input.getAttribute('data-show-errortext') === 'false')) {
-          this.addMessage(selectWrapper, result);
+          this.addMessage(selectWrapper.closest(".input-field") || selectWrapper, result);
         }
       }
       break;
