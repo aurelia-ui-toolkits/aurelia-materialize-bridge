@@ -15,6 +15,7 @@ export class MdFileInput {
     defaultBindingMode: bindingMode.twoWay
   }) mdLabelValue;
   @bindable() disabled = false;
+  @bindable() mdReadonly = false;
   files = [];
 
   _suspendUpdate = false;
