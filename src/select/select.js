@@ -31,33 +31,35 @@ export class MdSelect {
   }
 
   attached() {
+    let div = $('<div class="input-field"></div>');
+    let va = this.element.attributes.getNamedItem('validate');
+    if (va) {
+      div.attr(va.name, va.label);
+    }
+		$(this.element).wrap(div);
+    if (this.label) {
+      $(`<label class="md-select-label">${this.label}</label>`).insertAfter(this.element);
+    }
+		
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(false);
-
-      let wrapper = $(this.element).parent('.select-wrapper');
-      if (this.label && !wrapper.siblings("label").length) {
-        let div = $('<div class="input-field"></div>');
-        let va = this.element.attributes.getNamedItem('validate');
-        if (va) {
-          div.attr(va.name, va.label);
-        }
-        wrapper.wrap(div);
-        $(`<label class="md-select-label">${this.label}</label>`).insertAfter(wrapper);
-      }
     });
-    this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
-
+		this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
+    
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   }
 
   detached() {
-    $(this.element).off('change', this.handleChangeFromNativeSelect);
+    let $element = $(this.element);
+    $element.off('change', this.handleChangeFromNativeSelect);
     this.observeVisibleDropdownContent(false);
     this.observeOptions(false);
     this.dropdownMutationObserver = null;
-    $(this.element).parent().children(".md-input-validation").remove();
-    $(this.element).parent().children(`ul#select-options-${$(this.element).data('select-id')}`).remove();
-    $(this.element).material_select('destroy');
+    $element.siblings(`ul#select-options-${$element.data('select-id')}`).remove();
+    $element.material_select('destroy');
+    $element.siblings("label").remove();
+    $element.siblings(".md-input-validation").remove();
+    $element.unwrap();
     this.subscriptions.forEach(sub => sub.dispose());
   }
 
