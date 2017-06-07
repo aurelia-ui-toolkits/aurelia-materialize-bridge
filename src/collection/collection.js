@@ -33,4 +33,10 @@ export class MdCollection {
       vm.isSelected = !vm.mdDisabled;
     });
   }
+
+  toggleIndex(index) {
+    const items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+    const vm = items[index].au['md-collection-selector'].viewModel;
+    vm.isSelected = !vm.isSelected;
+  }
 }
