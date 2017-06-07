@@ -36,16 +36,17 @@ export class MdSelect {
     if (va) {
       div.attr(va.name, va.label);
     }
-		$(this.element).wrap(div);
+
+    $(this.element).wrap(div);
     if (this.label) {
       $(`<label class="md-select-label">${this.label}</label>`).insertAfter(this.element);
     }
-		
+
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(false);
     });
-		this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
-    
+    this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
+
     $(this.element).on('change', this.handleChangeFromNativeSelect);
   }
 
@@ -57,8 +58,8 @@ export class MdSelect {
     this.dropdownMutationObserver = null;
     $element.siblings(`ul#select-options-${$element.data('select-id')}`).remove();
     $element.material_select('destroy');
-    $element.siblings("label").remove();
-    $element.siblings(".md-input-validation").remove();
+    $element.siblings('label').remove();
+    $element.siblings('.md-input-validation').remove();
     $element.unwrap();
     this.subscriptions.forEach(sub => sub.dispose());
   }
