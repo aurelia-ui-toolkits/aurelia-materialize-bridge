@@ -196,6 +196,10 @@ export class MdSelect {
     }
   }
 
+  open() {
+    $(this.element).siblings('input.select-dropdown').trigger('focus');
+  }
+
   //
   // Firefox sometimes fire blur several times in a row
   // observable at http://localhost:3000/#/samples/select/
