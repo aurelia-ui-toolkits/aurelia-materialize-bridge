@@ -40,6 +40,8 @@ export class MdInput {
   }) mdValue = '';
 
   _suspendUpdate = false;
+  
+  validationParts = {};
 
   constructor(element, taskQueue, updateService) {
     this.element = element;
@@ -79,10 +81,14 @@ export class MdInput {
       $(this.input).siblings('label').addClass('active');
     }
     this.attachEventHandlers();
+    this.element.mdUnrenderValidateResult = this.mdUnrenderValidateResult;
+    this.element.mdRenderValidateResult = this.mdRenderValidateResult;
   }
 
   detached() {
     this.detachEventHandlers();
+    this.element.mdUnrenderValidateResult = null;
+    this.element.mdRenderValidateResult = null;
   }
 
   blur() {
@@ -120,4 +126,27 @@ export class MdInput {
       this.input.blur();
     }
   }
+
+  mdUnrenderValidateResult = (result, renderer) => {
+    if (!result.valid) {
+      renderer.removeMessage(this.element, result);
+    }
+    renderer.removeValidationClasses(this.input);
+  };
+
+  mdRenderValidateResult = (result, renderer) => {
+    if (!result.valid) {
+      if (this.label) {
+        this.label.removeAttribute('data-error');
+      }
+      if (this.input) {
+        result.target = this.input;
+        if (this.input.hasAttribute('data-show-errortext')) {
+          renderer.addMessage(this.element, result);
+        }
+      }
+    }
+    renderer.addValidationClasses(this.input, this.element);
+  };
+
 }
