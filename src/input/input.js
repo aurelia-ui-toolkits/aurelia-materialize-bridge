@@ -41,8 +41,6 @@ export class MdInput {
 
   _suspendUpdate = false;
   
-  validationParts = {};
-
   constructor(element, taskQueue, updateService) {
     this.element = element;
     this.taskQueue = taskQueue;
