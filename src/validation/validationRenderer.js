@@ -32,11 +32,6 @@ export class MaterializeFormValidationRenderer {
     let input;
  	  let validationContainer;
     switch (element.tagName) {
-      case 'MD-INPUT': {
-        input = element.querySelector('input') || element.querySelector('textarea');
-        validationContainer = element;
-        break;
-      }
       case 'SELECT': {
         const inputField = element.closest('.input-field');
         if (inputField) {
@@ -67,20 +62,6 @@ export class MaterializeFormValidationRenderer {
       return;
     }
     switch (element.tagName) {
-    case 'MD-INPUT': {
-      let label = element.querySelector('label');
-      let input = element.querySelector('input') || element.querySelector('textarea');
-      if (label) {
-        label.removeAttribute('data-error');
-      }
-      if (input) {
-        result.target = input;
-        if (input.hasAttribute('data-show-errortext')) {
-          this.addMessage(element, result);
-        }
-      }
-      break;
-    }
     case 'SELECT': {
       const inputField = element.closest('.input-field');
       if (!inputField) {
@@ -114,10 +95,6 @@ export class MaterializeFormValidationRenderer {
       return;
     }
     switch (element.tagName) {
-    case 'MD-INPUT': {
-      this.removeMessage(element, result);
-      break;
-    }
     case 'SELECT': {
       const inputField = element.closest('.input-field');
       if (!inputField) {
