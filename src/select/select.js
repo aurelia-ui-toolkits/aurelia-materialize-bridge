@@ -127,7 +127,6 @@ export class MdSelect {
         $('.caret', $wrapper).removeClass('disabled');
         $('input.select-dropdown', $wrapper).attr('disabled', null);
         $wrapper.attr('disabled', null);
-        $('.select-dropdown', $wrapper).dropdown({'hover': false, 'closeOnClick': false});
       }
     }
   }
