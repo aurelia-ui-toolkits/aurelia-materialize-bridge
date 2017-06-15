@@ -383,9 +383,6 @@ System.config({
     "npm:is-builtin-module@1.0.0": {
       "builtin-modules": "npm:builtin-modules@1.1.1"
     },
-    "npm:is-fullwidth-code-point@1.0.0": {
-      "number-is-nan": "npm:number-is-nan@1.0.1"
-    },
     "npm:isexe@2.0.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -539,16 +536,6 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "path-type": "npm:path-type@2.0.0"
     },
-    "npm:readable-stream@1.1.14": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.1",
-      "core-util-is": "npm:core-util-is@1.0.2",
-      "events": "github:jspm/nodelibs-events@0.1.1",
-      "inherits": "npm:inherits@2.0.1",
-      "isarray": "npm:isarray@1.0.0",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "stream-browserify": "npm:stream-browserify@1.0.0",
-      "string_decoder": "npm:string_decoder@1.0.2"
-    },
     "npm:readable-stream@2.2.11": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
       "core-util-is": "npm:core-util-is@1.0.2",
@@ -615,17 +602,9 @@ System.config({
       "inherits": "npm:inherits@2.0.1",
       "readable-stream": "npm:readable-stream@2.2.11"
     },
-    "npm:string-width@1.0.2": {
-      "code-point-at": "npm:code-point-at@1.1.0",
-      "is-fullwidth-code-point": "npm:is-fullwidth-code-point@2.0.0",
-      "strip-ansi": "npm:strip-ansi@3.0.1"
-    },
     "npm:string-width@2.0.0": {
       "is-fullwidth-code-point": "npm:is-fullwidth-code-point@2.0.0",
       "strip-ansi": "npm:strip-ansi@3.0.1"
-    },
-    "npm:string_decoder@0.10.31": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.1"
     },
     "npm:string_decoder@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.1",
