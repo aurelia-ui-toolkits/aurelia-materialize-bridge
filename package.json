@@ -105,9 +105,6 @@
     "vinyl-paths": "^1.0.0",
     "yargs": "^2.1.1"
   },
-  "peerDependencies": {
-    "materialize-css": "^0.98.0"
-  },
   "aurelia": {
     "usedBy": [],
     "documentation": {
