@@ -420,7 +420,7 @@
   }
 
   .select-wrapper + label {
-    color: ${mdAccentColor};
+    
     width: 100%;
   }
   /* position validation label */
@@ -438,6 +438,14 @@
     content: attr(data-error);
     color: ${mdErrorColor};
     opacity: 1;
+  }
+
+  .select-wrapper .md-select-label {
+    color: #9e9e9e;
+  }
+
+  .select-wrapper + .md-select-label.md-focused {
+    color: ${mdAccentColor};
   }
 
   </style>

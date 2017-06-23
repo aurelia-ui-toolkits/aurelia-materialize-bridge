@@ -28,6 +28,8 @@ export class MdSelect {
     this.handleBlur = this.handleBlur.bind(this);
     this.log = getLogger('md-select');
     this.bindingEngine = bindingEngine;
+
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
   attached() {
@@ -157,6 +159,8 @@ export class MdSelect {
           if (isHidden) {
             this.dropdownMutationObserver.takeRecords();
             this.handleBlur();
+          } else {
+            this.handleFocus();
           }
         });
       }
@@ -217,6 +221,18 @@ export class MdSelect {
       this.log.debug('fire blur event');
       fireEvent(this.element, 'blur');
       this._taskqueueRunning = false;
+
+      if (this.label) {
+        const $label = $(this.element).parent('.select-wrapper').siblings('.md-select-label');
+        $label.removeClass('md-focused');
+      }
     });
+  }
+
+  handleFocus() {
+    if (this.label) {
+      const $label = $(this.element).parent('.select-wrapper').siblings('.md-select-label');
+      $label.addClass('md-focused');
+    }
   }
 }
