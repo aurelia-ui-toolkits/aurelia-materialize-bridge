@@ -413,6 +413,15 @@
           "gist": "f0d0d2059b5c5f01970cd494260099fc"
         }
       }
+    },
+    "TimePicker": {
+      "status": "wip",
+      "samples":{
+        "basic-use":{
+          "default": true,
+          "gist": "dbc68795d93a7b32e90c898a068a1b67"
+        }
+      }
     }
   },
   "Contributions": {
