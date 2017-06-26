@@ -256,6 +256,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useTimePicker(): ConfigBuilder {
+    this.globalResources.push(PLATFORM.moduleName('./timepicker/timepicker'));
+    return this;
+  }
+
   useTooltip(): ConfigBuilder {
     this.globalResources.push(PLATFORM.moduleName('./tooltip/tooltip'));
     return this;

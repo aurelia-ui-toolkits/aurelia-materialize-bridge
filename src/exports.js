@@ -54,6 +54,7 @@ export * from './slider/slider';
 export * from './switch/switch';
 export * from './tabs/tabs';
 export * from './tap-target/tap-target';
+export * from './timepicker/timepicker';
 export * from './toast/toastService';
 export * from './tooltip/tooltip';
 export * from './transitions/fadein-image';
