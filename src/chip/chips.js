@@ -23,20 +23,30 @@ export class MdChips {
   }
 
   attached() {
-    let options = {
-      autocompleteOptions: this.autocompleteOptions,
-      data: this.data,
-      placeholder: this.placeholder,
-      secondaryPlaceholder: this.secondaryPlaceholder
-    };
-    $(this.element).material_chip(options);
+    this.refresh();
     $(this.element).on('chip.add', this.onChipAdd);
     $(this.element).on('chip.delete', this.onChipDelete);
     $(this.element).on('chip.select', this.onChipSelect);
   }
 
   detached() {
-    //
+    $(this.element).off('chip.add', this.onChipAdd);
+    $(this.element).off('chip.delete', this.onChipDelete);
+    $(this.element).off('chip.select', this.onChipSelect);
+  }
+
+  dataChanged(newValue) {
+    this.refresh();
+  }
+
+  refresh() {
+    const options = {
+      autocompleteOptions: this.autocompleteOptions,
+      data: this.data,
+      placeholder: this.placeholder,
+      secondaryPlaceholder: this.secondaryPlaceholder
+    };
+    $(this.element).material_chip(options);
   }
 
   onChipAdd(e, chip) {
