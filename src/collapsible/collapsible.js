@@ -26,6 +26,7 @@ export class MdCollapsible {
   detached() {
     this.attributeManager.removeClasses(['collapsible', 'popout']);
     this.attributeManager.removeAttributes(['data-collapsible']);
+    $(this.element).collapsible('destroy');
   }
 
   refresh() {
