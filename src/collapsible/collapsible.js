@@ -54,4 +54,12 @@ export class MdCollapsible {
        handler(targetElement);
      } : null;
   }
+
+  open(index = 0) {
+    $(this.element).collapsible('open', index);
+  }
+
+  close(index = 0) {
+    $(this.element).collapsible('close', index);
+  }
 }
