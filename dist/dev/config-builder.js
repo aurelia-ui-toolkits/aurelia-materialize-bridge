@@ -227,6 +227,11 @@ System.register(['aurelia-pal', './dropdown/dropdown-fix'], function (_export, _
           return this;
         };
 
+        ConfigBuilder.prototype.useTimePicker = function useTimePicker() {
+          this.globalResources.push(PLATFORM.moduleName('./timepicker/timepicker'));
+          return this;
+        };
+
         ConfigBuilder.prototype.useTooltip = function useTooltip() {
           this.globalResources.push(PLATFORM.moduleName('./tooltip/tooltip'));
           return this;

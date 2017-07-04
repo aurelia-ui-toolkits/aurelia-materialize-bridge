@@ -220,6 +220,11 @@ var ConfigBuilder = exports.ConfigBuilder = function () {
     return this;
   };
 
+  ConfigBuilder.prototype.useTimePicker = function useTimePicker() {
+    this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./timepicker/timepicker'));
+    return this;
+  };
+
   ConfigBuilder.prototype.useTooltip = function useTooltip() {
     this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./tooltip/tooltip'));
     return this;

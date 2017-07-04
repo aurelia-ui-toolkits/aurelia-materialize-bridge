@@ -170,10 +170,10 @@
 
   /* datepicker */
   .picker__date-display {
-    background-color: ${mdAccentColor};
+    background-color: ${mdAccentColor | darken:0.5};
   }
   .picker__weekday-display {
-    background-color: ${mdAccentColor | darken:1};
+    background-color: ${mdAccentColor | darken:0.5};
   }
   .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
     background-color: ${mdAccentColor};
@@ -420,7 +420,7 @@
   }
 
   .select-wrapper + label {
-    color: ${mdAccentColor};
+    
     width: 100%;
   }
   /* position validation label */
@@ -438,6 +438,14 @@
     content: attr(data-error);
     color: ${mdErrorColor};
     opacity: 1;
+  }
+
+  .select-wrapper .md-select-label {
+    color: #9e9e9e;
+  }
+
+  .select-wrapper + .md-select-label.md-focused {
+    color: ${mdAccentColor};
   }
 
   </style>

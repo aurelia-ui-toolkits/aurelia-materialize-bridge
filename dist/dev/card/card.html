@@ -9,7 +9,7 @@
     <!-- <div class="${ mdHorizontal ? 'card-stacked' : ''}">
 
     </div> -->
-    <div class="card-content">
+    <div class="card-content ${ mdStickyAction ? 'sticky-action' : '' }">
       <span if.bind="mdReveal === true" class="card-title activator">
         ${mdTitle}
         <i class="material-icons right">more_vert</i>
@@ -28,6 +28,10 @@
         <i class="material-icons right">close</i>
       </span>
       <slot name="reveal-text"></slot>
+    </div>
+
+    <div show.bind="mdAction" class="${ mdAction ? 'card-action' : '' }">
+      <slot name="action"></slot>
     </div>
   </div>
 </template>

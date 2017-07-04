@@ -1,4 +1,3 @@
-import { EventAggregator } from 'aurelia-event-aggregator';
 import { bindable, customAttribute } from 'aurelia-templating';
 import { inject } from 'aurelia-dependency-injection';
 import { getBooleanFromAttributeValue } from '../common/attributes';
@@ -9,11 +8,10 @@ import { AttributeManager } from '../common/attributeManager';
 @bindable({ name: 'popout', defaultValue: false })
 @bindable({ name: 'onOpen' })
 @bindable({ name: 'onClose' })
-@inject(Element, EventAggregator)
+@inject(Element)
 export class MdCollapsible {
-  constructor(element, eventAggregator) {
+  constructor(element) {
     this.element = element;
-    this.eventAggregator = eventAggregator;
     this.attributeManager = new AttributeManager(this.element);
   }
 
@@ -28,6 +26,7 @@ export class MdCollapsible {
   detached() {
     this.attributeManager.removeClasses(['collapsible', 'popout']);
     this.attributeManager.removeAttributes(['data-collapsible']);
+    $(this.element).collapsible('destroy');
   }
 
   refresh() {
@@ -54,5 +53,13 @@ export class MdCollapsible {
 
        handler(targetElement);
      } : null;
+  }
+
+  open(index = 0) {
+    $(this.element).collapsible('open', index);
+  }
+
+  close(index = 0) {
+    $(this.element).collapsible('close', index);
   }
 }

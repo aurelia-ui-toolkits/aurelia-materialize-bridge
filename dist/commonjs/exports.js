@@ -664,6 +664,18 @@ Object.keys(_tapTarget).forEach(function (key) {
   });
 });
 
+var _timepicker = require('./timepicker/timepicker');
+
+Object.keys(_timepicker).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _timepicker[key];
+    }
+  });
+});
+
 var _toastService = require('./toast/toastService');
 
 Object.keys(_toastService).forEach(function (key) {

@@ -94,17 +94,15 @@ var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customEleme
     var _this = this;
 
     if (this.items.length > 0) {
-      (function () {
-        var options = {
-          full_width: (0, _attributes.getBooleanFromAttributeValue)(_this.mdSlider),
-          fullWidth: (0, _attributes.getBooleanFromAttributeValue)(_this.mdSlider),
-          indicators: _this.mdIndicators
-        };
+      var options = {
+        full_width: (0, _attributes.getBooleanFromAttributeValue)(this.mdSlider),
+        fullWidth: (0, _attributes.getBooleanFromAttributeValue)(this.mdSlider),
+        indicators: this.mdIndicators
+      };
 
-        _this.taskQueue.queueTask(function () {
-          $(_this.element).carousel(options);
-        });
-      })();
+      this.taskQueue.queueTask(function () {
+        $(_this.element).carousel(options);
+      });
     }
   };
 

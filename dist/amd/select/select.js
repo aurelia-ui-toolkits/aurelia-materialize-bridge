@@ -83,24 +83,26 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this.handleBlur = this.handleBlur.bind(this);
       this.log = (0, _aureliaLogging.getLogger)('md-select');
       this.bindingEngine = bindingEngine;
+
+      this.handleFocus = this.handleFocus.bind(this);
     }
 
     MdSelect.prototype.attached = function attached() {
       var _this = this;
 
+      var div = $('<div class="input-field"></div>');
+      var va = this.element.attributes.getNamedItem('validate');
+      if (va) {
+        div.attr(va.name, va.label);
+      }
+
+      $(this.element).wrap(div);
+      if (this.label) {
+        $('<label class="md-select-label">' + this.label + '</label>').insertAfter(this.element);
+      }
+
       this.taskQueue.queueTask(function () {
         _this.createMaterialSelect(false);
-
-        var wrapper = $(_this.element).parent('.select-wrapper');
-        if (_this.label && !wrapper.siblings("label").length) {
-          var div = $('<div class="input-field"></div>');
-          var va = _this.element.attributes.getNamedItem('validate');
-          if (va) {
-            div.attr(va.name, va.label);
-          }
-          wrapper.wrap(div);
-          $('<label class="md-select-label">' + _this.label + '</label>').insertAfter(wrapper);
-        }
       });
       this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
 
@@ -108,13 +110,16 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
     };
 
     MdSelect.prototype.detached = function detached() {
-      $(this.element).off('change', this.handleChangeFromNativeSelect);
+      var $element = $(this.element);
+      $element.off('change', this.handleChangeFromNativeSelect);
       this.observeVisibleDropdownContent(false);
       this.observeOptions(false);
       this.dropdownMutationObserver = null;
-      $(this.element).parent().children(".md-input-validation").remove();
-      $(this.element).parent().children('ul#select-options-' + $(this.element).data('select-id')).remove();
-      $(this.element).material_select('destroy');
+      $element.siblings('ul#select-options-' + $element.data('select-id')).remove();
+      $element.material_select('destroy');
+      $element.siblings('label').remove();
+      $element.siblings('.md-input-validation').remove();
+      $element.unwrap();
       this.subscriptions.forEach(function (sub) {
         return sub.dispose();
       });
@@ -185,7 +190,6 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
           $('.caret', $wrapper).removeClass('disabled');
           $('input.select-dropdown', $wrapper).attr('disabled', null);
           $wrapper.attr('disabled', null);
-          $('.select-dropdown', $wrapper).dropdown({ 'hover': false, 'closeOnClick': false });
         }
       }
     };
@@ -231,6 +235,8 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
             if (isHidden) {
               _this3.dropdownMutationObserver.takeRecords();
               _this3.handleBlur();
+            } else {
+              _this3.handleFocus();
             }
           });
         }
@@ -269,6 +275,10 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       }
     };
 
+    MdSelect.prototype.open = function open() {
+      $(this.element).siblings('input.select-dropdown').trigger('focus');
+    };
+
     MdSelect.prototype.handleBlur = function handleBlur() {
       var _this5 = this;
 
@@ -278,7 +288,19 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
         _this5.log.debug('fire blur event');
         (0, _events.fireEvent)(_this5.element, 'blur');
         _this5._taskqueueRunning = false;
+
+        if (_this5.label) {
+          var $label = $(_this5.element).parent('.select-wrapper').siblings('.md-select-label');
+          $label.removeClass('md-focused');
+        }
       });
+    };
+
+    MdSelect.prototype.handleFocus = function handleFocus() {
+      if (this.label) {
+        var $label = $(this.element).parent('.select-wrapper').siblings('.md-select-label');
+        $label.addClass('md-focused');
+      }
     };
 
     return MdSelect;

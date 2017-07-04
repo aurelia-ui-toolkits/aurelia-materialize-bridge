@@ -165,34 +165,32 @@ define(['exports'], function (exports) {
         }
 
         if (currentOptions.hover) {
-          (function () {
-            var open = false;
-            origin.unbind('click.' + origin.attr('id'));
+          var open = false;
+          origin.unbind('click.' + origin.attr('id'));
 
-            origin.on('mouseenter', function (e) {
-              if (open === false) {
-                placeDropdown();
-                open = true;
-              }
-            });
-            origin.on('mouseleave', function (e) {
-              var toEl = e.toElement || e.relatedTarget;
-              if (!$(toEl).closest('.dropdown-content').is(activates)) {
-                activates.stop(true, true);
-                hideDropdown();
-                open = false;
-              }
-            });
+          origin.on('mouseenter', function (e) {
+            if (open === false) {
+              placeDropdown();
+              open = true;
+            }
+          });
+          origin.on('mouseleave', function (e) {
+            var toEl = e.toElement || e.relatedTarget;
+            if (!$(toEl).closest('.dropdown-content').is(activates)) {
+              activates.stop(true, true);
+              hideDropdown();
+              open = false;
+            }
+          });
 
-            activates.on('mouseleave', function (e) {
-              var toEl = e.toElement || e.relatedTarget;
-              if (!$(toEl).closest('.dropdown-button').is(origin)) {
-                activates.stop(true, true);
-                hideDropdown();
-                open = false;
-              }
-            });
-          })();
+          activates.on('mouseleave', function (e) {
+            var toEl = e.toElement || e.relatedTarget;
+            if (!$(toEl).closest('.dropdown-button').is(origin)) {
+              activates.stop(true, true);
+              hideDropdown();
+              open = false;
+            }
+          });
         } else {
           origin.unbind('click.' + origin.attr('id'));
           origin.bind('click.' + origin.attr('id'), function (e) {

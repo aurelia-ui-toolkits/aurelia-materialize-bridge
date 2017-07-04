@@ -9,13 +9,13 @@ var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
 
 var _aureliaTemplating = require('aurelia-templating');
 
-var _aureliaBinding = require('aurelia-binding');
+var _aureliaLogging = require('aurelia-logging');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _attributes = require('../common/attributes');
 
-var _aureliaLogging = require('aurelia-logging');
+var _events = require('../common/events');
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -62,14 +62,13 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec = (0, _aureliaTemplating.customAttribute)('md-sidenav-collapse'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaBinding.ObserverLocator), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-  function MdSidenavCollapse(element, observerLocator) {
+var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec = (0, _aureliaTemplating.customAttribute)('md-sidenav-collapse'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+  function MdSidenavCollapse(element) {
     _classCallCheck(this, MdSidenavCollapse);
 
     _initDefineProp(this, 'ref', _descriptor, this);
 
     this.element = element;
-    this.observerLocator = observerLocator;
     this.log = (0, _aureliaLogging.getLogger)('md-sidenav-collapse');
   }
 
@@ -77,17 +76,19 @@ var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec = (0, _aureliaTemplati
     var _this = this;
 
     this.ref.whenAttached.then(function () {
-
       var closeOnClick = _this.ref.mdFixed && window.innerWidth > 992 ? false : (0, _attributes.getBooleanFromAttributeValue)(_this.ref.mdCloseOnClick);
+
+      _this.onHide = _this.onHide.bind(_this);
+      _this.onShow = _this.onShow.bind(_this);
 
       _this.element.setAttribute('data-activates', _this.ref.controlId);
       var sideNavConfig = {
         edge: _this.ref.mdEdge || 'left',
-
         closeOnClick: closeOnClick,
-        menuWidth: parseInt(_this.ref.mdWidth, 10)
+        menuWidth: parseInt(_this.ref.mdWidth, 10),
+        onClose: _this.onHide,
+        onOpen: _this.onShow
       };
-
       $(_this.element).sideNav(sideNavConfig);
     });
   };
@@ -100,6 +101,14 @@ var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec = (0, _aureliaTemplati
 
   MdSidenavCollapse.prototype.hide = function hide() {
     $(this.element).sideNav('hide');
+  };
+
+  MdSidenavCollapse.prototype.onShow = function onShow(el) {
+    (0, _events.fireMaterializeEvent)(this.ref.element, 'sidenav-show');
+  };
+
+  MdSidenavCollapse.prototype.onHide = function onHide(el) {
+    (0, _events.fireMaterializeEvent)(this.ref.element, 'sidenav-hide');
   };
 
   return MdSidenavCollapse;

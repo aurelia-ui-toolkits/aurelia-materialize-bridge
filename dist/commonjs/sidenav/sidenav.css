@@ -3,6 +3,5 @@ md-sidenav li[md-waves] {
 }
 md-sidenav li a:hover {
   background-color: transparent;
-  display: inline-block;
   width: 100%;
 }

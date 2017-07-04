@@ -3,7 +3,7 @@
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/events', '../common/attributes'], function (_export, _context) {
   "use strict";
 
-  var bindable, customElement, bindingMode, inject, fireEvent, fireMaterializeEvent, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, MdFileInput;
+  var bindable, customElement, bindingMode, inject, fireEvent, fireMaterializeEvent, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, MdFileInput;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -73,7 +73,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         defaultBindingMode: bindingMode.oneTime
       }), _dec5 = bindable({
         defaultBindingMode: bindingMode.twoWay
-      }), _dec6 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
+      }), _dec6 = bindable(), _dec7 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdFileInput(element) {
           _classCallCheck(this, MdFileInput);
 
@@ -84,6 +84,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           _initDefineProp(this, 'mdLabelValue', _descriptor3, this);
 
           _initDefineProp(this, 'disabled', _descriptor4, this);
+
+          _initDefineProp(this, 'mdReadonly', _descriptor5, this);
 
           this.files = [];
           this._suspendUpdate = false;
@@ -125,6 +127,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         enumerable: true,
         initializer: null
       }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'disabled', [_dec6], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdReadonly', [_dec7], {
         enumerable: true,
         initializer: function initializer() {
           return false;

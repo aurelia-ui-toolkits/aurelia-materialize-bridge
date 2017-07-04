@@ -7,8 +7,6 @@ exports.MdCollapsible = undefined;
 
 var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class;
 
-var _aureliaEventAggregator = require('aurelia-event-aggregator');
-
 var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
@@ -19,12 +17,11 @@ var _attributeManager = require('../common/attributeManager');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.customAttribute)('md-collapsible'), _dec2 = (0, _aureliaTemplating.bindable)({ name: 'accordion', defaultValue: false }), _dec3 = (0, _aureliaTemplating.bindable)({ name: 'popout', defaultValue: false }), _dec4 = (0, _aureliaTemplating.bindable)({ name: 'onOpen' }), _dec5 = (0, _aureliaTemplating.bindable)({ name: 'onClose' }), _dec6 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaEventAggregator.EventAggregator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = function () {
-  function MdCollapsible(element, eventAggregator) {
+var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.customAttribute)('md-collapsible'), _dec2 = (0, _aureliaTemplating.bindable)({ name: 'accordion', defaultValue: false }), _dec3 = (0, _aureliaTemplating.bindable)({ name: 'popout', defaultValue: false }), _dec4 = (0, _aureliaTemplating.bindable)({ name: 'onOpen' }), _dec5 = (0, _aureliaTemplating.bindable)({ name: 'onClose' }), _dec6 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = function () {
+  function MdCollapsible(element) {
     _classCallCheck(this, MdCollapsible);
 
     this.element = element;
-    this.eventAggregator = eventAggregator;
     this.attributeManager = new _attributeManager.AttributeManager(this.element);
   }
 
@@ -39,6 +36,7 @@ var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.custo
   MdCollapsible.prototype.detached = function detached() {
     this.attributeManager.removeClasses(['collapsible', 'popout']);
     this.attributeManager.removeAttributes(['data-collapsible']);
+    $(this.element).collapsible('destroy');
   };
 
   MdCollapsible.prototype.refresh = function refresh() {
@@ -64,6 +62,18 @@ var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.custo
 
       handler(targetElement);
     } : null;
+  };
+
+  MdCollapsible.prototype.open = function open() {
+    var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+    $(this.element).collapsible('open', index);
+  };
+
+  MdCollapsible.prototype.close = function close() {
+    var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+    $(this.element).collapsible('close', index);
   };
 
   return MdCollapsible;

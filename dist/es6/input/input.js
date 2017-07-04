@@ -33,6 +33,9 @@ export class MdInput {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdShowErrortext = true;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdUpdateTrigger = ['input', 'change'];
   @bindable() mdValidateError;
   @bindable() mdValidateSuccess;
   @bindable({
