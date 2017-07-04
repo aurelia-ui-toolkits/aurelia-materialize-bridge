@@ -1,3 +1,34 @@
+<a name="0.29.0"></a>
+# [0.29.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.28.0...v0.29.0) (2017-07-04)
+
+
+### Bug Fixes
+
+* **md-colors:** fix datepicker colors, ref [#440](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/440) ([d417cf4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d417cf4))
+* **md-range, md-file:** add md-readonly ([eeef787](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/eeef787))
+* **md-select:** let label react to focus/blur, fix [#437](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/437) ([79d52f3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/79d52f3))
+* **md-select:** prevent dropdown from being initialized twice, fix [#433](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/433) ([50e2706](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/50e2706))
+* **md-sidenav:** remove inline-block, fix [#425](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/425) ([de132ed](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/de132ed))
+* **select:** Always wrap `select` with `.input-field` ([7f0084e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/7f0084e))
+* **validation:** Typo in validation for generic `input` ([dc53197](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/dc53197))
+* **validation:** use `select`s `.input-field` as a validation container ([bf7d91c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/bf7d91c))
+
+
+### Features
+
+* **md-autocomplete:** add support for minLength and limit ([263671b](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/263671b))
+* **md-card:** add action ([dcf767c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/dcf767c))
+* **md-chips:** add refresh for data binding updates, close [#445](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/445) ([18cc2d6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/18cc2d6))
+* **md-chips:** fire events on data-binding changes ([6550812](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6550812))
+* **md-chips:** Fixed broken autocomplete binding ([a3eea92](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a3eea92))
+* **md-collapsible:** add open/close methods, close [#436](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/436) ([f40dbb4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/f40dbb4))
+* **md-collection:** add toggleIndex function, ref [#412](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/412) ([a764214](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a764214))
+* **md-select:** add open method, close [#424](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/424) ([18b186b](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/18b186b))
+* **md-sidenav:** add open/close events, ref [#440](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/440) ([cfcd254](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/cfcd254))
+* **md-timepicker:** add timepicker, ref [#440](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/440) ([a540a53](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a540a53))
+
+
+
 <a name="0.28.0"></a>
 # [0.28.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.27.0...v0.28.0) (2017-05-08)
 
