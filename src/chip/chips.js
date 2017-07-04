@@ -35,8 +35,18 @@ export class MdChips {
     $(this.element).off('chip.select', this.onChipSelect);
   }
 
-  dataChanged(newValue) {
+  dataChanged(newValue, oldValue) {
     this.refresh();
+
+    // I know this is a bit naive..
+    if (newValue.length > oldValue.length) {
+      const chip = newValue.find(i => !oldValue.includes(i));
+      fireEvent(this.element, 'change', { operation: 'add', target: chip, data: newValue });
+    }
+    if (newValue.length < oldValue.length) {
+      const chip = oldValue.find(i => !newValue.includes(i));
+      fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: oldValue });
+    }
   }
 
   refresh() {
