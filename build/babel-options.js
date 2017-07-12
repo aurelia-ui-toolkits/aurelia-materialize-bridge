@@ -12,12 +12,12 @@ exports.base = function() {
     // experimental: false,
     comments: false,
     compact: false,
-    code:true,
+    code: true,
     presets: [ 'es2015-loose', 'stage-1' ],
     plugins: [
-      "syntax-flow",
-      "transform-decorators-legacy",
-      "transform-flow-strip-types"
+      'syntax-flow',
+      'transform-decorators-legacy',
+      'transform-flow-strip-types'
     ]
   };
 };
@@ -37,12 +37,18 @@ exports.amd = function() {
 exports.system = function() {
   var options = exports.base();
   options.plugins.push('transform-es2015-modules-systemjs');
+  // options.plugins.push([
+  //   'transform-es2015-modules-systemjs', {
+  //     strict: false
+  //   }
+  // ]);
+  options.plugins.push('transform-remove-strict-mode');
   return options;
 };
 
 exports.es2015 = function() {
   var options = exports.base();
-  options.presets = ['tage-1'];
+  options.presets = ['stage-1'];
   return options;
 };
 
