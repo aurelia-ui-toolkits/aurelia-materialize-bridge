@@ -11,6 +11,15 @@ import {DOM} from 'aurelia-pal';
 @customAttribute('md-select')
 export class MdSelect {
   @bindable() disabled = false;
+	@bindable() readonly = false;
+  readonlyChanged() {
+    if (this.readonly) {
+      this.makeReadonly($(this.element).siblings('input')[0]);
+    } else {
+      this.refresh();
+    }
+  }
+
   @bindable() enableOptionObserver = false;
   @bindable() label = '';
   @bindable() showErrortext = true;
@@ -144,6 +153,16 @@ export class MdSelect {
     this.observeVisibleDropdownContent(true);
     this.observeOptions(true);
     this.setErrorTextAttribute();
+    if (this.readonly) {
+      this.makeReadonly(input[0]);
+    }
+  }
+
+  makeReadonly(input) {
+    $(input).off('click');
+    $(input).off('focus');
+    $(input).off('keydown');
+    $(input).off('open');
   }
 
   observeVisibleDropdownContent(attach) {
