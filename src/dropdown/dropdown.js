@@ -65,7 +65,7 @@ export class MdDropdown {
       hover: getBooleanFromAttributeValue(this.hover),
       inDuration: parseInt(this.inDuration, 10),
       outDuration: parseInt(this.outDuration, 10),
-      stopPropagation: getBooleanFromAttributeValue(this.stopPropagation),
+      stopPropagation: getBooleanFromAttributeValue(this.stopPropagation)
     });
   }
 
