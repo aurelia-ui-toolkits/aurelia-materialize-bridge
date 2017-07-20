@@ -142,6 +142,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useDropdownFix() : ConfigBuilder {
+    console.warn("The method useDropdownFix has no effect in this version and will be removed in a future version.");
+    return this;
+  }
+
   useFab() : ConfigBuilder {
     this.globalResources.push(PLATFORM.moduleName('./fab/fab'));
     return this;
