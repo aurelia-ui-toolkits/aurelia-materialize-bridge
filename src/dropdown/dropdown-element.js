@@ -31,6 +31,9 @@ export class MdDropdownElement {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) outDuration = 225;
+  @bindable({
+      defaultBindingMode: bindingMode.oneTime
+  }) stopPropagation = false;
 
   constructor(element) {
     this.element = element;
@@ -44,7 +47,8 @@ export class MdDropdownElement {
       gutter: parseInt(this.gutter, 10),
       hover: getBooleanFromAttributeValue(this.hover),
       inDuration: parseInt(this.inDuration, 10),
-      outDuration: parseInt(this.outDuration, 10)
+      outDuration: parseInt(this.outDuration, 10),
+      stopPropagation: getBooleanFromAttributeValue(this.stopPropagation)
     });
   }
 }
