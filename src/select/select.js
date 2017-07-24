@@ -42,6 +42,9 @@ export class MdSelect {
   }
 
   attached() {
+    if (this.element.classList.contains('browser-default')) {
+      return;
+    }
     let div = $('<div class="input-field"></div>');
     let va = this.element.attributes.getNamedItem('validate');
     if (va) {
@@ -62,6 +65,9 @@ export class MdSelect {
   }
 
   detached() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     let $element = $(this.element);
     $element.off('change', this.handleChangeFromNativeSelect);
     this.observeVisibleDropdownContent(false);
@@ -76,16 +82,25 @@ export class MdSelect {
   }
 
   refresh() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(true);
     });
   }
 
   labelChanged(newValue) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     this.updateLabel();
   }
 
   updateLabel() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     if (this.label) {
       const $label = $(this.element).parent('.select-wrapper').siblings('.md-select-label');
       $label.text(this.label);
@@ -101,6 +116,9 @@ export class MdSelect {
   }
 
   setErrorTextAttribute() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     let input = this.element.parentElement.querySelector('input.select-dropdown');
     if (!input) return;
     this.log.debug('showErrortextChanged: ' + this.showErrortext);
@@ -108,10 +126,16 @@ export class MdSelect {
   }
 
   notifyBindingEngine() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     this.log.debug('selectedOptions changed', arguments);
   }
 
   handleChangeFromNativeSelect() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     if (!this._suspendUpdate) {
       this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
       this._suspendUpdate = true;
@@ -121,6 +145,9 @@ export class MdSelect {
   }
 
   handleChangeFromViewModel(newValue) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     this.log.debug('handleChangeFromViewModel', newValue, $(this.element).val());
     if (!this._suspendUpdate) {
       this.createMaterialSelect(false);
@@ -128,6 +155,9 @@ export class MdSelect {
   }
 
   toggleControl(disable) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     let $wrapper = $(this.element).parent('.select-wrapper');
     if ($wrapper.length > 0) {
       if (disable) {
@@ -143,6 +173,9 @@ export class MdSelect {
   }
 
   createMaterialSelect(destroy) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     this.observeVisibleDropdownContent(false);
     this.observeOptions(false);
     if (destroy) {
@@ -159,6 +192,9 @@ export class MdSelect {
   }
 
   makeReadonly(input) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     $(input).off('click');
     $(input).off('focus');
     $(input).off('keydown');
@@ -166,6 +202,9 @@ export class MdSelect {
   }
 
   observeVisibleDropdownContent(attach) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     if (attach) {
       if (!this.dropdownMutationObserver) {
         this.dropdownMutationObserver = DOM.createMutationObserver(mutations => {
@@ -196,6 +235,9 @@ export class MdSelect {
   }
 
   observeOptions(attach) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     if (getBooleanFromAttributeValue(this.enableOptionObserver)) {
       if (attach) {
         if (!this.optionsMutationObserver) {
@@ -219,6 +261,9 @@ export class MdSelect {
   }
 
   open() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     $(this.element).siblings('input.select-dropdown').trigger('focus');
   }
 
@@ -234,6 +279,9 @@ export class MdSelect {
   _taskqueueRunning = false;
 
   handleBlur() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     if (this._taskqueueRunning) return;
     this._taskqueueRunning = true;
     this.taskQueue.queueTask(() => {
@@ -249,6 +297,9 @@ export class MdSelect {
   }
 
   handleFocus() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     if (this.label) {
       const $label = $(this.element).parent('.select-wrapper').siblings('.md-select-label');
       $label.addClass('md-focused');
