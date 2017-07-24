@@ -43,7 +43,7 @@ System.config({
     "google/code-prettify": "github:google/code-prettify@master",
     "jquery": "npm:jquery@3.2.1",
     "json": "github:systemjs/plugin-json@0.1.2",
-    "materialize": "npm:materialize-css@0.99.0",
+    "materialize": "npm:materialize-css@0.100.1",
     "nprogress": "github:rstacruz/nprogress@0.2.0",
     "prettify": "npm:prettify@0.1.7",
     "prism": "github:PrismJS/prism@1.3.0",
@@ -363,7 +363,7 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0",
       "yallist": "npm:yallist@2.1.2"
     },
-    "npm:materialize-css@0.99.0": {
+    "npm:materialize-css@0.100.1": {
       "hammerjs": "npm:hammerjs@2.0.8",
       "jquery": "npm:jquery@3.2.1"
     },
