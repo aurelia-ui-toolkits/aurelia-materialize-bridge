@@ -40,7 +40,7 @@ export class MdDropdown {
     defaultBindingMode: bindingMode.oneTime
   }) outDuration = 225;
   @bindable({
-      defaultBindingMode: bindingMode.oneTime
+    defaultBindingMode: bindingMode.oneTime
   }) stopPropagation = false;
 
   constructor(element) {
@@ -73,6 +73,14 @@ export class MdDropdown {
     this.attributeManager.removeAttributes('data-activates');
     this.attributeManager.removeClasses('dropdown-button');
     this.contentAttributeManager.removeClasses('dropdown-content');
+  }
+
+  open() {
+    $(this.element).dropdown('open');
+  }
+
+  close() {
+    $(this.element).dropdown('close');
   }
 
   handleActivateElement() {
