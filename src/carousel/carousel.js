@@ -32,6 +32,10 @@ export class MdCarousel {
     this.refresh();
   }
 
+  detached() {
+    $(this.element).carousel('destroy');
+  }
+
   itemsChanged(newValue) {
     this.refresh();
   }
