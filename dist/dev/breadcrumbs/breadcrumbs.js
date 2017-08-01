@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-router'], function (_export, _context) {
   "use strict";
 

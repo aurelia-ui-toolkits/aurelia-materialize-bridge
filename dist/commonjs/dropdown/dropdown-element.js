@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdDropdownElement = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _class3, _temp;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _class3, _temp;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -76,6 +76,8 @@ var MdDropdownElement = exports.MdDropdownElement = (_dec = (0, _aureliaTemplati
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec10 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec11 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
   function MdDropdownElement(element) {
     _classCallCheck(this, MdDropdownElement);
@@ -96,6 +98,8 @@ var MdDropdownElement = exports.MdDropdownElement = (_dec = (0, _aureliaTemplati
 
     _initDefineProp(this, 'outDuration', _descriptor8, this);
 
+    _initDefineProp(this, 'stopPropagation', _descriptor9, this);
+
     this.element = element;
     this.controlId = 'md-dropdown-' + MdDropdown.id++;
   }
@@ -108,7 +112,8 @@ var MdDropdownElement = exports.MdDropdownElement = (_dec = (0, _aureliaTemplati
       gutter: parseInt(this.gutter, 10),
       hover: (0, _attributes.getBooleanFromAttributeValue)(this.hover),
       inDuration: parseInt(this.inDuration, 10),
-      outDuration: parseInt(this.outDuration, 10)
+      outDuration: parseInt(this.outDuration, 10),
+      stopPropagation: (0, _attributes.getBooleanFromAttributeValue)(this.stopPropagation)
     });
   };
 
@@ -150,5 +155,10 @@ var MdDropdownElement = exports.MdDropdownElement = (_dec = (0, _aureliaTemplati
   enumerable: true,
   initializer: function initializer() {
     return 225;
+  }
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'stopPropagation', [_dec11], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
   }
 })), _class2)) || _class) || _class);

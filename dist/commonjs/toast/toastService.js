@@ -11,10 +11,14 @@ var MdToastService = exports.MdToastService = function () {
     _classCallCheck(this, MdToastService);
   }
 
+  MdToastService.prototype.removeAll = function removeAll() {
+    Materialize.Toast.removeAll();
+  };
+
   MdToastService.prototype.show = function show(message, displayLength, className) {
     return new Promise(function (resolve, reject) {
-      Materialize.toast(message, displayLength, className, function () {
-        resolve();
+      var toastInstance = Materialize.toast(message, displayLength, className, function () {
+        resolve(toastInstance);
       });
     });
   };

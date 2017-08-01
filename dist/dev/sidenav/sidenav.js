@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', 'aurelia-logging'], function (_export, _context) {
   "use strict";
 

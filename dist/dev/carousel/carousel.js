@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes'], function (_export, _context) {
   "use strict";
 
@@ -91,6 +89,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           }
 
           this.refresh();
+        };
+
+        MdCarousel.prototype.detached = function detached() {
+          $(this.element).carousel('destroy');
         };
 
         MdCarousel.prototype.itemsChanged = function itemsChanged(newValue) {

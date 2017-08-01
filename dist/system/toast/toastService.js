@@ -1,5 +1,3 @@
-"use strict";
-
 System.register([], function (_export, _context) {
   "use strict";
 
@@ -19,10 +17,14 @@ System.register([], function (_export, _context) {
           _classCallCheck(this, MdToastService);
         }
 
+        MdToastService.prototype.removeAll = function removeAll() {
+          Materialize.Toast.removeAll();
+        };
+
         MdToastService.prototype.show = function show(message, displayLength, className) {
           return new Promise(function (resolve, reject) {
-            Materialize.toast(message, displayLength, className, function () {
-              resolve();
+            var toastInstance = Materialize.toast(message, displayLength, className, function () {
+              resolve(toastInstance);
             });
           });
         };

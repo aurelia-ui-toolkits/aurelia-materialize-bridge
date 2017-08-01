@@ -77,5 +77,7 @@ var MdColors = exports.MdColors = (_dec = (0, _aureliaTemplating.bindable)(), _d
   }
 }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, 'mdSuccessColor', [_dec4], {
   enumerable: true,
-  initializer: null
+  initializer: function initializer() {
+    return '#26a69a';
+  }
 })), _class));

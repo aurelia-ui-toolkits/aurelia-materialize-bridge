@@ -86,6 +86,10 @@ var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customEleme
     this.refresh();
   };
 
+  MdCarousel.prototype.detached = function detached() {
+    $(this.element).carousel('destroy');
+  };
+
   MdCarousel.prototype.itemsChanged = function itemsChanged(newValue) {
     this.refresh();
   };

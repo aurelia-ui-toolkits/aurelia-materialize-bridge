@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/events', '../common/attributeManager', '../common/attributes'], function (_export, _context) {
   "use strict";
 
@@ -160,6 +158,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
             $('li a', _this3.element).each(function (i, tab) {
               $(tab).parent().addClass('tab');
               hrefs.push($(tab).attr('href'));
+              tab.removeEventListener('click', _this3.fireTabSelectedEvent);
+              tab.addEventListener('click', _this3.fireTabSelectedEvent);
             });
             $(hrefs).each(function (i, tab) {
               if (_this3.selectedTab.index != i) {

@@ -7,8 +7,6 @@ exports.ConfigBuilder = undefined;
 
 var _aureliaPal = require('aurelia-pal');
 
-var _dropdownFix = require('./dropdown/dropdown-fix');
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ConfigBuilder = exports.ConfigBuilder = function () {
@@ -111,7 +109,7 @@ var ConfigBuilder = exports.ConfigBuilder = function () {
   };
 
   ConfigBuilder.prototype.useDropdownFix = function useDropdownFix() {
-    (0, _dropdownFix.applyMaterializeDropdownFix)();
+    console.warn("The method useDropdownFix has no effect in this version and will be removed in a future version.");
     return this;
   };
 

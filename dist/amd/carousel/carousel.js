@@ -81,6 +81,10 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       this.refresh();
     };
 
+    MdCarousel.prototype.detached = function detached() {
+      $(this.element).carousel('destroy');
+    };
+
     MdCarousel.prototype.itemsChanged = function itemsChanged(newValue) {
       this.refresh();
     };

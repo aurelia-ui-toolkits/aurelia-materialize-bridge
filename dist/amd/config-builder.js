@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-pal', './dropdown/dropdown-fix'], function (exports, _aureliaPal, _dropdownFix) {
+define(['exports', 'aurelia-pal'], function (exports, _aureliaPal) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -112,7 +112,7 @@ define(['exports', 'aurelia-pal', './dropdown/dropdown-fix'], function (exports,
     };
 
     ConfigBuilder.prototype.useDropdownFix = function useDropdownFix() {
-      (0, _dropdownFix.applyMaterializeDropdownFix)();
+      console.warn("The method useDropdownFix has no effect in this version and will be removed in a future version.");
       return this;
     };
 

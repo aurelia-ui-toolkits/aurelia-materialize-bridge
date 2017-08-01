@@ -1,5 +1,4 @@
 import {PLATFORM} from 'aurelia-pal';
-import {applyMaterializeDropdownFix} from './dropdown/dropdown-fix';
 
 /**
 * Plugin configuration builder
@@ -144,7 +143,7 @@ export class ConfigBuilder {
   }
 
   useDropdownFix() : ConfigBuilder {
-    applyMaterializeDropdownFix();
+    console.warn("The method useDropdownFix has no effect in this version and will be removed in a future version.");
     return this;
   }
 

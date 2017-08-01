@@ -130,8 +130,7 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
     }
     this.picker = $(this.element).pickadate(options).pickadate('picker');
     this.picker.on({
-      'close': this.onClose.bind(this),
-      'set': this.onSet.bind(this)
+      'close': this.onClose.bind(this)
     });
 
     if (this.value) {
@@ -227,13 +226,6 @@ var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjectio
   MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
     event.stopPropagation();
     this.openDatePicker();
-  };
-
-  MdDatePicker.prototype.onSet = function onSet(value) {
-    if (this.options && this.options.closeOnSelect && value.select) {
-      this.value = value.select;
-      this.picker.close();
-    }
   };
 
   MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {

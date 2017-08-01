@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging', '../common/events'], function (_export, _context) {
   "use strict";
 
@@ -108,13 +106,13 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             var chip = newValue.find(function (i) {
               return !oldValue.includes(i);
             });
-            fireEvent(this.element, 'change', { operation: 'add', target: chip, data: newValue });
+            fireEvent(this.element, 'change', { source: 'dataChanged', operation: 'add', target: chip, data: newValue });
           }
           if (newValue.length < oldValue.length) {
             var _chip = oldValue.find(function (i) {
               return !newValue.includes(i);
             });
-            fireEvent(this.element, 'change', { operation: 'delete', target: _chip, data: oldValue });
+            fireEvent(this.element, 'change', { source: 'dataChanged', operation: 'delete', target: _chip, data: newValue });
           }
         };
 
@@ -130,12 +128,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
         MdChips.prototype.onChipAdd = function onChipAdd(e, chip) {
           this.data = $(this.element).material_chip('data');
-          fireEvent(this.element, 'change', { operation: 'add', target: chip, data: this.data });
         };
 
         MdChips.prototype.onChipDelete = function onChipDelete(e, chip) {
           this.data = $(this.element).material_chip('data');
-          fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
         };
 
         MdChips.prototype.onChipSelect = function onChipSelect(e, chip) {

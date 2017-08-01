@@ -1,9 +1,7 @@
-'use strict';
-
-System.register(['aurelia-pal', './dropdown/dropdown-fix'], function (_export, _context) {
+System.register(['aurelia-pal'], function (_export, _context) {
   "use strict";
 
-  var PLATFORM, applyMaterializeDropdownFix, ConfigBuilder;
+  var PLATFORM, ConfigBuilder;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -14,8 +12,6 @@ System.register(['aurelia-pal', './dropdown/dropdown-fix'], function (_export, _
   return {
     setters: [function (_aureliaPal) {
       PLATFORM = _aureliaPal.PLATFORM;
-    }, function (_dropdownDropdownFix) {
-      applyMaterializeDropdownFix = _dropdownDropdownFix.applyMaterializeDropdownFix;
     }],
     execute: function () {
       _export('ConfigBuilder', ConfigBuilder = function () {
@@ -118,7 +114,7 @@ System.register(['aurelia-pal', './dropdown/dropdown-fix'], function (_export, _
         };
 
         ConfigBuilder.prototype.useDropdownFix = function useDropdownFix() {
-          applyMaterializeDropdownFix();
+          console.warn("The method useDropdownFix has no effect in this version and will be removed in a future version.");
           return this;
         };
 

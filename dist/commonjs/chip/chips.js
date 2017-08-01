@@ -102,13 +102,13 @@ var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)(
       var chip = newValue.find(function (i) {
         return !oldValue.includes(i);
       });
-      (0, _events.fireEvent)(this.element, 'change', { operation: 'add', target: chip, data: newValue });
+      (0, _events.fireEvent)(this.element, 'change', { source: 'dataChanged', operation: 'add', target: chip, data: newValue });
     }
     if (newValue.length < oldValue.length) {
       var _chip = oldValue.find(function (i) {
         return !newValue.includes(i);
       });
-      (0, _events.fireEvent)(this.element, 'change', { operation: 'delete', target: _chip, data: oldValue });
+      (0, _events.fireEvent)(this.element, 'change', { source: 'dataChanged', operation: 'delete', target: _chip, data: newValue });
     }
   };
 
@@ -124,12 +124,10 @@ var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)(
 
   MdChips.prototype.onChipAdd = function onChipAdd(e, chip) {
     this.data = $(this.element).material_chip('data');
-    (0, _events.fireEvent)(this.element, 'change', { operation: 'add', target: chip, data: this.data });
   };
 
   MdChips.prototype.onChipDelete = function onChipDelete(e, chip) {
     this.data = $(this.element).material_chip('data');
-    (0, _events.fireEvent)(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
   };
 
   MdChips.prototype.onChipSelect = function onChipSelect(e, chip) {

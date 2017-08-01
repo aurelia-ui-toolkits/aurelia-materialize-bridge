@@ -41,11 +41,11 @@ export class MdChips {
     // I know this is a bit naive..
     if (newValue.length > oldValue.length) {
       const chip = newValue.find(i => !oldValue.includes(i));
-      fireEvent(this.element, 'change', { operation: 'add', target: chip, data: newValue });
+      fireEvent(this.element, 'change', { source: 'dataChanged', operation: 'add', target: chip, data: newValue });
     }
     if (newValue.length < oldValue.length) {
       const chip = oldValue.find(i => !newValue.includes(i));
-      fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: oldValue });
+      fireEvent(this.element, 'change', { source: 'dataChanged', operation: 'delete', target: chip, data: newValue });
     }
   }
 
@@ -61,11 +61,11 @@ export class MdChips {
 
   onChipAdd(e, chip) {
     this.data = $(this.element).material_chip('data');
-    fireEvent(this.element, 'change', { operation: 'add', target: chip, data: this.data });
+    // fireEvent(this.element, 'change', { operation: 'add', target: chip, data: this.data });
   }
   onChipDelete(e, chip) {
     this.data = $(this.element).material_chip('data');
-    fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
+    // fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
   }
   onChipSelect(e, chip) {
     fireEvent(this.element, 'selected', { target: chip });

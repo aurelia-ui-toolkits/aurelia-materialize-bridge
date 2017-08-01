@@ -129,18 +129,6 @@ export declare class MdBox {
   attached(): any;
   detached(): any;
 }
-
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-export declare class MdBreadcrumbs {
-  router: any;
-  constructor(element?: any, router?: any);
-  bind(): any;
-  routerChanged(): any;
-  navigate(navigationInstruction?: any): any;
-}
-export declare class InstructionFilterValueConverter {
-  toView(navigationInstructions?: any): any;
-}
 export declare class MdButton {
   disabled: any;
   flat: any;
@@ -153,6 +141,29 @@ export declare class MdButton {
   disabledChanged(newValue?: any): any;
   flatChanged(newValue?: any): any;
   pulseChanged(newValue?: any): any;
+}
+
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+export declare class MdBreadcrumbs {
+  router: any;
+  constructor(element?: any, router?: any);
+  bind(): any;
+  routerChanged(): any;
+  navigate(navigationInstruction?: any): any;
+}
+export declare class InstructionFilterValueConverter {
+  toView(navigationInstructions?: any): any;
+}
+export declare class MdCard {
+  mdHorizontal: any;
+  mdImage: any;
+  mdReveal: any;
+  mdAction: any;
+  mdStickyAction: any;
+  mdSize: any;
+  mdTitle: any;
+  constructor(element?: any);
+  attached(): any;
 }
 
 // @customElement('md-carousel-item')
@@ -168,19 +179,9 @@ export declare class MdCarousel {
   items: any;
   constructor(element?: any, taskQueue?: any);
   attached(): any;
+  detached(): any;
   itemsChanged(newValue?: any): any;
   refresh(): any;
-}
-export declare class MdCard {
-  mdHorizontal: any;
-  mdImage: any;
-  mdReveal: any;
-  mdAction: any;
-  mdStickyAction: any;
-  mdSize: any;
-  mdTitle: any;
-  constructor(element?: any);
-  attached(): any;
 }
 export declare class MdCharCounter {
   length: any;
@@ -195,6 +196,7 @@ export declare class MdCheckbox {
   mdChecked: any;
   mdDisabled: any;
   mdReadonly: any;
+  mdReadonlyChanged(): any;
   mdFilledIn: any;
   mdMatcher: any;
   mdModel: any;
@@ -217,6 +219,7 @@ export declare class MdCheckbox {
   //   fireEvent(this.element, 'blur');
   // }
   mdDisabledChanged(newValue?: any): any;
+  preventChange(): any;
 }
 export declare class MdChip {
   mdClose: any;
@@ -344,7 +347,15 @@ export declare class MdDatePicker {
   closeDatePicker(): any;
   onClose(): any;
   onCalendarIconClick(event?: any): any;
-  onSet(value?: any): any;
+  
+  // onSet(value) {
+  //   //handle this ourselves since Dogfalo removed this functionality from the original plugin
+  //   if (this.options && this.options.closeOnSelect && value.select) {
+  //     this.value = value.select;
+  //     this.picker.close();
+  //   }
+  //   // this.value = new Date(value.select);
+  // }
   valueChanged(newValue?: any): any;
   showErrortextChanged(): any;
   setErrorTextAttribute(): any;
@@ -359,10 +370,10 @@ export declare class MdDropdownElement {
   mdTitle: any;
   inDuration: any;
   outDuration: any;
+  stopPropagation: any;
   constructor(element?: any);
   attached(): any;
 }
-export declare function applyMaterializeDropdownFix(): any;
 export declare class MdDropdown {
   static elementId: any;
   activates: any;
@@ -375,9 +386,12 @@ export declare class MdDropdown {
   mdTitle: any;
   inDuration: any;
   outDuration: any;
+  stopPropagation: any;
   constructor(element?: any);
   attached(): any;
   detached(): any;
+  open(): any;
+  close(): any;
   handleActivateElement(): any;
 }
 export declare class MdFab {
@@ -580,6 +594,8 @@ export declare class MdScrollSpy {
 }
 export declare class MdSelect {
   disabled: any;
+  readonly: any;
+  readonlyChanged(): any;
   enableOptionObserver: any;
   label: any;
   showErrortext: any;
@@ -601,6 +617,7 @@ export declare class MdSelect {
   handleChangeFromViewModel(newValue?: any): any;
   toggleControl(disable?: any): any;
   createMaterialSelect(destroy?: any): any;
+  makeReadonly(input?: any): any;
   observeVisibleDropdownContent(attach?: any): any;
   observeOptions(attach?: any): any;
   open(): any;
@@ -699,6 +716,7 @@ export declare class MdTimePicker {
   valueChanged(newValue?: any): any;
 }
 export declare class MdToastService {
+  removeAll(): any;
   show(message?: any, displayLength?: any, className?: any): any;
 }
 export declare class MdTooltip {
