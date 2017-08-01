@@ -1,3 +1,30 @@
+<a name="0.30.0"></a>
+# [0.30.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.29.0...v0.30.0) (2017-08-01)
+
+
+### Bug Fixes
+
+* **md-chips:** prevent events from firing twice, close [#448](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/448) ([f65cb0f](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/f65cb0f))
+* **md-colors:** fix input prefix color, ref [#449](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/449) ([d8029dc](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d8029dc))
+* **md-colors:** fix text field accent color, ref [#449](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/449) ([f3825d4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/f3825d4))
+* **md-tabs:** reset click event in refresh method to fire for dynamically added ([97a1a53](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/97a1a53))
+
+
+### Features
+
+* **checkbox:** implement readonly ([b7a2106](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b7a2106))
+* **checkbox:** remove not working readonly binding ([f69fc60](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/f69fc60))
+* **md-carousel:** add destroy function, ref [#459](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/459) ([3712945](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/3712945))
+* **md-dropdown:** add open/close methods ([e1841a3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e1841a3))
+* **md-dropdown:** add stopPropagation option ([ae39551](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/ae39551))
+* **md-select:** prevent anything from executing if browser-default is set, close [#456](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/456) ([3feef3c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/3feef3c))
+* **md-toast-service:** add removeAll, ref [#459](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/459) ([bd38cc9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/bd38cc9))
+* **md-toast-service:** show returns an instance of Toast ([116067a](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/116067a))
+* **select:** add readonly ([3f505ea](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/3f505ea))
+* **select:** make travis happy ([5f63bfc](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/5f63bfc))
+
+
+
 <a name="0.29.0"></a>
 # [0.29.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.28.0...v0.29.0) (2017-07-04)
 
