@@ -16,10 +16,10 @@ export class MdCard {
     defaultBindingMode: bindingMode.oneTime
   }) mdReveal = false;
   @bindable({
-      defaultBindingMode: bindingMode.oneTime
+    defaultBindingMode: bindingMode.oneTime
   }) mdAction = false;
   @bindable({
-      defaultBindingMode: bindingMode.oneTime
+    defaultBindingMode: bindingMode.oneTime
   }) mdStickyAction = false;
   @bindable({
     defaultBindingMode: bindingMode.oneWay

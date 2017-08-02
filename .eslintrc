@@ -1,6 +1,7 @@
 {
   "extends": "./node_modules/aurelia-tools/.eslintrc.json",
   "rules": {
-    "keyword-spacing": 0
+    "keyword-spacing": 0,
+    "indent": [2, 2, { "SwitchCase": 1 }]
   }
 }

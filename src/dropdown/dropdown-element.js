@@ -32,7 +32,7 @@ export class MdDropdownElement {
     defaultBindingMode: bindingMode.oneTime
   }) outDuration = 225;
   @bindable({
-      defaultBindingMode: bindingMode.oneTime
+    defaultBindingMode: bindingMode.oneTime
   }) stopPropagation = false;
 
   constructor(element) {

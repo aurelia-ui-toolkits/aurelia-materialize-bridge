@@ -73,7 +73,7 @@ export class MdTabs {
         tab.addEventListener('click', this.fireTabSelectedEvent);
       });
       $(hrefs).each((i, tab) => {
-        if (this.selectedTab.index != i) {
+        if (this.selectedTab.index !== i) {
           $(tab).hide();
         }
       });
