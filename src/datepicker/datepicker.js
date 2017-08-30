@@ -86,6 +86,7 @@ export class MdDatePicker {
       $(this.element).on('keydown', (e)=> {
         if (e.keyCode === 13 || e.keyCode === 9) {
           if (this.parseDate($(this.element).val())) {
+            this.updateValue();
             this.closeDatePicker();
           } else {
             this.openDatePicker();
@@ -150,9 +151,13 @@ export class MdDatePicker {
     $(this.element).pickadate('close');
   }
 
-  onClose() {
+  updateValue() {
     let selected = this.picker.get('select');
     this.value = selected ? selected.obj : null;
+  }
+
+  onClose() {
+    this.updateValue();
     fireEvent(this.element, 'blur');
   }
 
