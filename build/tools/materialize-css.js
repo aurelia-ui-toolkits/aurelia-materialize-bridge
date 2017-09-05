@@ -24,6 +24,7 @@ require([
   'parallax',
   'picker',
   'picker.date',
+  'picker.time',
   'pushpin',
   'scrollFire',
   'scrollspy',
