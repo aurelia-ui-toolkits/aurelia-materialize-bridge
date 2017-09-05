@@ -27,6 +27,9 @@ export class MdCard {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdTitle;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdClass;
 
   constructor(element) {
     this.element = element;
