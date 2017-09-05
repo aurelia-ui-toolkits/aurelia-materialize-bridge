@@ -47,6 +47,7 @@ export class ConfigBuilder {
       .useSwitch()
       .useTabs()
       .useTapTarget()
+      .useTimePicker()
       .useTooltip()
       .useTransitions()
       .useWaves()
