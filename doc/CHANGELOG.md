@@ -1,3 +1,16 @@
+<a name="0.31.0"></a>
+# [0.31.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.30.0...v0.31.0) (2017-09-06)
+
+
+### Bug Fixes
+
+* **datepicker:** update bound value on keyDown ([090e634](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/090e634))
+* **md-card:** Set sticky-action on correct div ([1bbd139](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/1bbd139))
+* **package:** add timepicker to .useAll, fix [#475](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/475) ([4465ba7](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/4465ba7))
+* **tools:** add timepicker to AMD scripts, [#475](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/475) ([0cece87](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0cece87))
+
+
+
 <a name="0.30.0"></a>
 # [0.30.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.29.0...v0.30.0) (2017-08-01)
 
