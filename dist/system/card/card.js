@@ -1,7 +1,7 @@
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-binding', '../common/attributes'], function (_export, _context) {
   "use strict";
 
-  var bindable, customElement, inject, bindingMode, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, MdCard;
+  var bindable, customElement, inject, bindingMode, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, MdCard;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -78,6 +78,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
         defaultBindingMode: bindingMode.oneWay
       }), _dec9 = bindable({
         defaultBindingMode: bindingMode.oneTime
+      }), _dec10 = bindable({
+        defaultBindingMode: bindingMode.oneTime
       }), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdCard(element) {
           _classCallCheck(this, MdCard);
@@ -95,6 +97,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
           _initDefineProp(this, 'mdSize', _descriptor6, this);
 
           _initDefineProp(this, 'mdTitle', _descriptor7, this);
+
+          _initDefineProp(this, 'mdClass', _descriptor8, this);
 
           this.element = element;
         }
@@ -136,6 +140,9 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
           return '';
         }
       }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec9], {
+        enumerable: true,
+        initializer: null
+      }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdClass', [_dec10], {
         enumerable: true,
         initializer: null
       })), _class2)) || _class) || _class));

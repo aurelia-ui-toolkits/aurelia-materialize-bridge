@@ -129,6 +129,18 @@ export declare class MdBox {
   attached(): any;
   detached(): any;
 }
+
+// taken from: https://github.com/heruan/aurelia-breadcrumbs
+export declare class MdBreadcrumbs {
+  router: any;
+  constructor(element?: any, router?: any);
+  bind(): any;
+  routerChanged(): any;
+  navigate(navigationInstruction?: any): any;
+}
+export declare class InstructionFilterValueConverter {
+  toView(navigationInstructions?: any): any;
+}
 export declare class MdButton {
   disabled: any;
   flat: any;
@@ -142,18 +154,6 @@ export declare class MdButton {
   flatChanged(newValue?: any): any;
   pulseChanged(newValue?: any): any;
 }
-
-// taken from: https://github.com/heruan/aurelia-breadcrumbs
-export declare class MdBreadcrumbs {
-  router: any;
-  constructor(element?: any, router?: any);
-  bind(): any;
-  routerChanged(): any;
-  navigate(navigationInstruction?: any): any;
-}
-export declare class InstructionFilterValueConverter {
-  toView(navigationInstructions?: any): any;
-}
 export declare class MdCard {
   mdHorizontal: any;
   mdImage: any;
@@ -162,6 +162,7 @@ export declare class MdCard {
   mdStickyAction: any;
   mdSize: any;
   mdTitle: any;
+  mdClass: any;
   constructor(element?: any);
   attached(): any;
 }
@@ -325,41 +326,6 @@ export declare function fireMaterializeEvent(element: Element, name: string, dat
 
 // https://github.com/jonathantneal/closest/blob/master/closest.js
 export declare function polyfillElementClosest(): any;
-export declare class DatePickerDefaultParser {
-  canParse(value?: any): any;
-  parse(value?: any): any;
-}
-export declare class MdDatePicker {
-  container: any;
-  translation: any;
-  value: any;
-  parsers: any;
-  selectMonths: any;
-  selectYears: any;
-  options: any;
-  showErrortext: any;
-  calendarIcon: any;
-  constructor(element?: any, taskQueue?: any, defaultParser?: any);
-  bind(): any;
-  parseDate(value?: any): any;
-  detached(): any;
-  openDatePicker(): any;
-  closeDatePicker(): any;
-  onClose(): any;
-  onCalendarIconClick(event?: any): any;
-  
-  // onSet(value) {
-  //   //handle this ourselves since Dogfalo removed this functionality from the original plugin
-  //   if (this.options && this.options.closeOnSelect && value.select) {
-  //     this.value = value.select;
-  //     this.picker.close();
-  //   }
-  //   // this.value = new Date(value.select);
-  // }
-  valueChanged(newValue?: any): any;
-  showErrortextChanged(): any;
-  setErrorTextAttribute(): any;
-}
 export declare class MdDropdownElement {
   static id: any;
   alignment: any;
@@ -393,6 +359,42 @@ export declare class MdDropdown {
   open(): any;
   close(): any;
   handleActivateElement(): any;
+}
+export declare class DatePickerDefaultParser {
+  canParse(value?: any): any;
+  parse(value?: any): any;
+}
+export declare class MdDatePicker {
+  container: any;
+  translation: any;
+  value: any;
+  parsers: any;
+  selectMonths: any;
+  selectYears: any;
+  options: any;
+  showErrortext: any;
+  calendarIcon: any;
+  constructor(element?: any, taskQueue?: any, defaultParser?: any);
+  bind(): any;
+  parseDate(value?: any): any;
+  detached(): any;
+  openDatePicker(): any;
+  closeDatePicker(): any;
+  updateValue(): any;
+  onClose(): any;
+  onCalendarIconClick(event?: any): any;
+  
+  // onSet(value) {
+  //   //handle this ourselves since Dogfalo removed this functionality from the original plugin
+  //   if (this.options && this.options.closeOnSelect && value.select) {
+  //     this.value = value.select;
+  //     this.picker.close();
+  //   }
+  //   // this.value = new Date(value.select);
+  // }
+  valueChanged(newValue?: any): any;
+  showErrortextChanged(): any;
+  setErrorTextAttribute(): any;
 }
 export declare class MdFab {
   mdFixed: any;

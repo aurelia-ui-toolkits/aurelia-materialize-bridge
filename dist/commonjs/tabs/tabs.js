@@ -142,7 +142,7 @@ var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('m
         tab.addEventListener('click', _this3.fireTabSelectedEvent);
       });
       $(hrefs).each(function (i, tab) {
-        if (_this3.selectedTab.index != i) {
+        if (_this3.selectedTab.index !== i) {
           $(tab).hide();
         }
       });

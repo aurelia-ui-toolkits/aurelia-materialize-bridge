@@ -23,7 +23,7 @@ define(['exports', 'aurelia-pal'], function (exports, _aureliaPal) {
     }
 
     ConfigBuilder.prototype.useAll = function useAll() {
-      return this.useAutoComplete().useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useScrollSpy().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTapTarget().useTooltip().useTransitions().useWaves().useWell();
+      return this.useAutoComplete().useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useScrollSpy().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTapTarget().useTimePicker().useTooltip().useTransitions().useWaves().useWell();
     };
 
     ConfigBuilder.prototype.useAutoComplete = function useAutoComplete() {
@@ -112,7 +112,8 @@ define(['exports', 'aurelia-pal'], function (exports, _aureliaPal) {
     };
 
     ConfigBuilder.prototype.useDropdownFix = function useDropdownFix() {
-      console.warn("The method useDropdownFix has no effect in this version and will be removed in a future version.");
+      console.warn('The method useDropdownFix has no effect in this version and will be removed in a future version.');
+
       return this;
     };
 

@@ -47,6 +47,7 @@ export class ConfigBuilder {
       .useSwitch()
       .useTabs()
       .useTapTarget()
+      .useTimePicker()
       .useTooltip()
       .useTransitions()
       .useWaves()
@@ -143,7 +144,9 @@ export class ConfigBuilder {
   }
 
   useDropdownFix() : ConfigBuilder {
-    console.warn("The method useDropdownFix has no effect in this version and will be removed in a future version.");
+    /*eslint-disable no-console*/
+    console.warn('The method useDropdownFix has no effect in this version and will be removed in a future version.');
+    /*eslint-disable no-console*/
     return this;
   }
 

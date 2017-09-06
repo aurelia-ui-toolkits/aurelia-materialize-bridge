@@ -1,6 +1,6 @@
 <template>
   <require from="./card.css"></require>
-  <div class="card ${ mdHorizontal ? 'horizontal' : '' } ${ mdSize || '' }">
+  <div class="card ${ mdHorizontal ? 'horizontal' : '' } ${ mdSize || '' } ${ mdStickyAction ? 'sticky-action' : '' } ${mdClass}">
     <div if.bind="mdImage !== null" md-waves="color: light; block: true;" class="card-image">
       <img class="${ mdReveal === true ? 'activator' : '' }" src.bind="mdImage" />
       <span if.bind="mdReveal === false" class="card-title">${mdTitle}</span>
@@ -9,7 +9,7 @@
     <!-- <div class="${ mdHorizontal ? 'card-stacked' : ''}">
 
     </div> -->
-    <div class="card-content ${ mdStickyAction ? 'sticky-action' : '' }">
+    <div class="card-content">
       <span if.bind="mdReveal === true" class="card-title activator">
         ${mdTitle}
         <i class="material-icons right">more_vert</i>

@@ -162,7 +162,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
               tab.addEventListener('click', _this3.fireTabSelectedEvent);
             });
             $(hrefs).each(function (i, tab) {
-              if (_this3.selectedTab.index != i) {
+              if (_this3.selectedTab.index !== i) {
                 $(tab).hide();
               }
             });
