@@ -27,6 +27,7 @@ export class MdTimePicker {
       twelvehour: this.twelveHour
     };
     $(this.element).pickatime(options);
+    this.element.value = this.value;
   }
 
   detached() {
