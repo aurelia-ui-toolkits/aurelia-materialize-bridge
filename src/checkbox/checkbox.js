@@ -15,6 +15,10 @@ export class MdCheckbox {
   @bindable() mdDisabled;
   @bindable() mdReadonly = false;
   mdReadonlyChanged() {
+    if(!this.checkbox) {
+      return;
+    }
+    
     if (this.mdReadonly) {
       this.checkbox.addEventListener('change', this.preventChange);
     } else {
@@ -45,6 +49,7 @@ export class MdCheckbox {
       this.checkbox.disabled = true;
     }
     this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
+    this.mdReadonlyChanged();
     // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
     // this.checkbox.addEventListener('change', this.handleChange);
   }
