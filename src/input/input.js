@@ -41,6 +41,15 @@ export class MdInput {
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) mdValue = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMin = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMax = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdName = '';
 
   _suspendUpdate = false;
 
