@@ -147,9 +147,11 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
         $('li a', _this3.element).each(function (i, tab) {
           $(tab).parent().addClass('tab');
           hrefs.push($(tab).attr('href'));
+          tab.removeEventListener('click', _this3.fireTabSelectedEvent);
+          tab.addEventListener('click', _this3.fireTabSelectedEvent);
         });
         $(hrefs).each(function (i, tab) {
-          if (_this3.selectedTab.index != i) {
+          if (_this3.selectedTab.index !== i) {
             $(tab).hide();
           }
         });

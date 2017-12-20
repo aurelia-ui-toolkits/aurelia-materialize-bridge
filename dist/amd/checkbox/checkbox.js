@@ -60,6 +60,14 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
   var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customElement)('md-checkbox'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
     defaultBindingMode: _aureliaBinding.bindingMode.twoWay
   }), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec8 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
+    MdCheckbox.prototype.mdReadonlyChanged = function mdReadonlyChanged() {
+      if (this.mdReadonly) {
+        this.checkbox.addEventListener('change', this.preventChange);
+      } else {
+        this.checkbox.removeEventListener('change', this.preventChange);
+      }
+    };
+
     function MdCheckbox(element) {
       _classCallCheck(this, MdCheckbox);
 
@@ -103,6 +111,10 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       if (this.checkbox) {
         this.checkbox.disabled = !!newValue;
       }
+    };
+
+    MdCheckbox.prototype.preventChange = function preventChange() {
+      this.checked = !this.checked;
     };
 
     return MdCheckbox;

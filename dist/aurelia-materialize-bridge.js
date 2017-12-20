@@ -1,11 +1,10 @@
 import {PLATFORM,DOM} from 'aurelia-pal';
 import {bindable,customAttribute,customElement,children} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
+import {bindingMode,observable,BindingEngine} from 'aurelia-binding';
 import {Router} from 'aurelia-router';
-import {bindingMode,observable,BindingEngine,ObserverLocator} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
 import {getLogger} from 'aurelia-logging';
-import {EventAggregator} from 'aurelia-event-aggregator';
 
 export class ClickCounter {
   count = 0;
@@ -62,6 +61,7 @@ export class ConfigBuilder {
       .useSwitch()
       .useTabs()
       .useTapTarget()
+      .useTimePicker()
       .useTooltip()
       .useTransitions()
       .useWaves()
@@ -158,7 +158,9 @@ export class ConfigBuilder {
   }
 
   useDropdownFix() : ConfigBuilder {
-    applyMaterializeDropdownFix();
+    /*eslint-disable no-console*/
+    console.warn('The method useDropdownFix has no effect in this version and will be removed in a future version.');
+    /*eslint-disable no-console*/
     return this;
   }
 
@@ -270,6 +272,11 @@ export class ConfigBuilder {
     return this;
   }
 
+  useTimePicker(): ConfigBuilder {
+    this.globalResources.push(PLATFORM.moduleName('./timepicker/timepicker'));
+    return this;
+  }
+
   useTooltip(): ConfigBuilder {
     this.globalResources.push(PLATFORM.moduleName('./tooltip/tooltip'));
     return this;
@@ -343,6 +350,8 @@ export function configure(aurelia, configCallback) {
 @inject(Element)
 export class MdAutoComplete {
   input = null;
+  @bindable() limit = 20;
+  @bindable() minLength = 1;
   @bindable() values = {};
 
   constructor(element) {
@@ -369,7 +378,9 @@ export class MdAutoComplete {
   refresh() {
     this.detached();
     $(this.input).autocomplete({
-      data: this.values
+      data: this.values,
+      minLength: this.minLength,
+      limit: this.limit
     });
     // $('.autocomplete-content', this.element).on('click', () => {
     //   fireEvent(this.input, 'change');
@@ -433,6 +444,32 @@ export class MdBadge {
   }
 }
 
+@customAttribute('md-box')
+@inject(Element)
+export class MdBox {
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) caption;
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('materialboxed');
+    if (this.caption) {
+      this.attributeManager.addAttributes({ 'data-caption': this.caption });
+    }
+    // FIXME:0 throws "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
+    $(this.element).materialbox();
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes('data-caption');
+    this.attributeManager.removeClasses('materialboxed');
+  }
+}
+
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 
 @customElement('md-breadcrumbs')
@@ -481,32 +518,6 @@ export class InstructionFilterValueConverter {
       }
       return result;
     });
-  }
-}
-
-@customAttribute('md-box')
-@inject(Element)
-export class MdBox {
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) caption;
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('materialboxed');
-    if (this.caption) {
-      this.attributeManager.addAttributes({ 'data-caption': this.caption });
-    }
-    // FIXME:0 throws "Uncaught TypeError: Cannot read property 'css' of undefined", but so does the original
-    $(this.element).materialbox();
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes('data-caption');
-    this.attributeManager.removeClasses('materialboxed');
   }
 }
 
@@ -597,11 +608,20 @@ export class MdCard {
     defaultBindingMode: bindingMode.oneTime
   }) mdReveal = false;
   @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdAction = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdStickyAction = false;
+  @bindable({
     defaultBindingMode: bindingMode.oneWay
   }) mdSize = '';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdTitle;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdClass;
 
   constructor(element) {
     this.element = element;
@@ -610,6 +630,8 @@ export class MdCard {
   attached() {
     this.mdHorizontal = getBooleanFromAttributeValue(this.mdHorizontal);
     this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
+    this.mdAction = getBooleanFromAttributeValue(this.mdAction);
+    this.mdStickyAction = getBooleanFromAttributeValue(this.mdStickyAction);
   }
 }
 
@@ -658,6 +680,10 @@ export class MdCarousel {
     this.refresh();
   }
 
+  detached() {
+    $(this.element).carousel('destroy');
+  }
+
   itemsChanged(newValue) {
     this.refresh();
   }
@@ -690,7 +716,7 @@ export class MdCharCounter {
   attached() {
     this.length = parseInt(this.length, 10);
 
-    // attach to input and textarea elements explicitly, so this counter can be 
+    // attach to input and textarea elements explicitly, so this counter can be
     // used on containers (or custom elements like md-input)
     const tagName = this.element.tagName.toUpperCase();
     if (tagName === 'INPUT' || tagName === 'TEXTAREA') {
@@ -708,72 +734,6 @@ export class MdCharCounter {
   }
 }
 
-@customElement('md-chip')
-@inject(Element)
-export class MdChip {
-  @bindable() mdClose = false;
-
-  constructor(element) {
-    this.element = element;
-  }
-
-  attached() {
-    this.mdClose = getBooleanFromAttributeValue(this.mdClose);
-  }
-
-  close() {
-    this.element.parentElement.removeChild(this.element);
-    fireEvent(this.element, 'close');
-  }
-}
-
-@customAttribute('md-chips')
-@inject(Element)
-export class MdChips {
-  @bindable() autocompleteData = {};
-  @bindable({ defaultBindingMode: bindingMode.twoWay }) data = [];
-  @bindable() placeholder = '';
-  @bindable() secondaryPlaceholder = '';
-
-  constructor(element) {
-    this.element = element;
-    this.log = getLogger('md-chips');
-
-    this.onChipAdd = this.onChipAdd.bind(this);
-    this.onChipDelete = this.onChipDelete.bind(this);
-    this.onChipSelect = this.onChipSelect.bind(this);
-  }
-
-  attached() {
-    let options = {
-      autocompleteData: this.autocompleteData,
-      data: this.data,
-      placeholder: this.placeholder,
-      secondaryPlaceholder: this.secondaryPlaceholder
-    };
-    $(this.element).material_chip(options);
-    $(this.element).on('chip.add', this.onChipAdd);
-    $(this.element).on('chip.delete', this.onChipDelete);
-    $(this.element).on('chip.select', this.onChipSelect);
-  }
-
-  detached() {
-    //
-  }
-
-  onChipAdd(e, chip) {
-    this.data = $(this.element).material_chip('data');
-    fireEvent(this.element, 'change', { operation: 'add', target: chip, data: this.data });
-  }
-  onChipDelete(e, chip) {
-    this.data = $(this.element).material_chip('data');
-    fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
-  }
-  onChipSelect(e, chip) {
-    fireEvent(this.element, 'selected', { target: chip });
-  }
-}
-
 // @customElement('md-checkbox')
 @inject(Element)
 export class MdCheckbox {
@@ -783,6 +743,13 @@ export class MdCheckbox {
   }) mdChecked;
   @bindable() mdDisabled;
   @bindable() mdReadonly = false;
+  mdReadonlyChanged() {
+    if (this.mdReadonly) {
+      this.checkbox.addEventListener('change', this.preventChange);
+    } else {
+      this.checkbox.removeEventListener('change', this.preventChange);
+    }
+  }
   @bindable() mdFilledIn;
   @bindable() mdMatcher;
   @bindable() mdModel;
@@ -837,6 +804,157 @@ export class MdCheckbox {
       this.checkbox.disabled = !!newValue;
     }
   }
+
+  preventChange() {
+    this.checked = !this.checked;
+  }
+}
+
+@customElement('md-chip')
+@inject(Element)
+export class MdChip {
+  @bindable() mdClose = false;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this.mdClose = getBooleanFromAttributeValue(this.mdClose);
+  }
+
+  close() {
+    this.element.parentElement.removeChild(this.element);
+    fireEvent(this.element, 'close');
+  }
+}
+
+@customAttribute('md-chips')
+@inject(Element)
+export class MdChips {
+  @bindable() autocompleteOptions = {};
+  @bindable({ defaultBindingMode: bindingMode.twoWay }) data = [];
+  @bindable() placeholder = '';
+  @bindable() secondaryPlaceholder = '';
+
+  constructor(element) {
+    this.element = element;
+    this.log = getLogger('md-chips');
+
+    this.onChipAdd = this.onChipAdd.bind(this);
+    this.onChipDelete = this.onChipDelete.bind(this);
+    this.onChipSelect = this.onChipSelect.bind(this);
+  }
+
+  attached() {
+    this.refresh();
+    $(this.element).on('chip.add', this.onChipAdd);
+    $(this.element).on('chip.delete', this.onChipDelete);
+    $(this.element).on('chip.select', this.onChipSelect);
+  }
+
+  detached() {
+    $(this.element).off('chip.add', this.onChipAdd);
+    $(this.element).off('chip.delete', this.onChipDelete);
+    $(this.element).off('chip.select', this.onChipSelect);
+  }
+
+  dataChanged(newValue, oldValue) {
+    this.refresh();
+
+    // I know this is a bit naive..
+    if (newValue.length > oldValue.length) {
+      const chip = newValue.find(i => !oldValue.includes(i));
+      fireEvent(this.element, 'change', { source: 'dataChanged', operation: 'add', target: chip, data: newValue });
+    }
+    if (newValue.length < oldValue.length) {
+      const chip = oldValue.find(i => !newValue.includes(i));
+      fireEvent(this.element, 'change', { source: 'dataChanged', operation: 'delete', target: chip, data: newValue });
+    }
+  }
+
+  refresh() {
+    const options = {
+      autocompleteOptions: this.autocompleteOptions,
+      data: this.data,
+      placeholder: this.placeholder,
+      secondaryPlaceholder: this.secondaryPlaceholder
+    };
+    $(this.element).material_chip(options);
+  }
+
+  onChipAdd(e, chip) {
+    this.data = $(this.element).material_chip('data');
+    // fireEvent(this.element, 'change', { operation: 'add', target: chip, data: this.data });
+  }
+  onChipDelete(e, chip) {
+    this.data = $(this.element).material_chip('data');
+    // fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
+  }
+  onChipSelect(e, chip) {
+    fireEvent(this.element, 'selected', { target: chip });
+  }
+}
+
+@customAttribute('md-collapsible')
+@bindable({ name: 'accordion', defaultValue: false })
+@bindable({ name: 'popout', defaultValue: false })
+@bindable({ name: 'onOpen' })
+@bindable({ name: 'onClose' })
+@inject(Element)
+export class MdCollapsible {
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.attributeManager.addClasses('collapsible');
+    if (getBooleanFromAttributeValue(this.popout)) {
+      this.attributeManager.addClasses('popout');
+    }
+    this.refresh();
+  }
+
+  detached() {
+    this.attributeManager.removeClasses(['collapsible', 'popout']);
+    this.attributeManager.removeAttributes(['data-collapsible']);
+    $(this.element).collapsible('destroy');
+  }
+
+  refresh() {
+    let accordion = getBooleanFromAttributeValue(this.accordion);
+    let dataCollapsibleAttributeValue = accordion ? 'accordion' : 'expandable';
+
+    this.attributeManager.addAttributes({ 'data-collapsible': dataCollapsibleAttributeValue });
+
+    $(this.element).collapsible({
+      accordion,
+      onOpen: this.buildCollapsibleOpenCloseCallbackHandler(this.onOpen),
+      onClose: this.buildCollapsibleOpenCloseCallbackHandler(this.onClose)
+    });
+  }
+
+  accordionChanged() {
+    this.refresh();
+  }
+
+  buildCollapsibleOpenCloseCallbackHandler(handler) {
+    return typeof(handler) === 'function' ?
+     (targetElementJquery) => {
+       let targetElement = targetElementJquery[0];
+
+       handler(targetElement);
+     } : null;
+  }
+
+  open(index = 0) {
+    $(this.element).collapsible('open', index);
+  }
+
+  close(index = 0) {
+    $(this.element).collapsible('close', index);
+  }
 }
 
 @customElement('md-collection-header')
@@ -882,6 +1000,12 @@ export class MdCollection {
       vm.isSelected = !vm.mdDisabled;
     });
   }
+
+  toggleIndex(index) {
+    const items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+    const vm = items[index].au['md-collection-selector'].viewModel;
+    vm.isSelected = !vm.isSelected;
+  }
 }
 
 @customElement('md-collection-selector')
@@ -901,59 +1025,6 @@ export class MdlListSelector {
 
   mdDisabledChanged(newValue) {
     this.mdDisabled = getBooleanFromAttributeValue(newValue);
-  }
-}
-
-@customAttribute('md-collapsible')
-@bindable({ name: 'accordion', defaultValue: false })
-@bindable({ name: 'popout', defaultValue: false })
-@bindable({ name: 'onOpen' })
-@bindable({ name: 'onClose' })
-@inject(Element, EventAggregator)
-export class MdCollapsible {
-  constructor(element, eventAggregator) {
-    this.element = element;
-    this.eventAggregator = eventAggregator;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.attributeManager.addClasses('collapsible');
-    if (getBooleanFromAttributeValue(this.popout)) {
-      this.attributeManager.addClasses('popout');
-    }
-    this.refresh();
-  }
-
-  detached() {
-    this.attributeManager.removeClasses(['collapsible', 'popout']);
-    this.attributeManager.removeAttributes(['data-collapsible']);
-  }
-
-  refresh() {
-    let accordion = getBooleanFromAttributeValue(this.accordion);
-    let dataCollapsibleAttributeValue = accordion ? 'accordion' : 'expandable';
-
-    this.attributeManager.addAttributes({ 'data-collapsible': dataCollapsibleAttributeValue });
-
-    $(this.element).collapsible({
-      accordion,
-      onOpen: this.buildCollapsibleOpenCloseCallbackHandler(this.onOpen),
-      onClose: this.buildCollapsibleOpenCloseCallbackHandler(this.onClose)
-    });
-  }
-
-  accordionChanged() {
-    this.refresh();
-  }
-
-  buildCollapsibleOpenCloseCallbackHandler(handler) {
-    return typeof(handler) === 'function' ?
-     (targetElementJquery) => {
-       let targetElement = targetElementJquery[0];
-
-       handler(targetElement);
-     } : null;
   }
 }
 
@@ -997,7 +1068,7 @@ export class MdColors {
   @bindable() mdPrimaryColor;
   @bindable() mdAccentColor;
   @bindable() mdErrorColor = '#F44336';
-  @bindable() mdSuccessColor;
+  @bindable() mdSuccessColor = '#26a69a';
 }
 
 /**
@@ -1140,6 +1211,149 @@ export function polyfillElementClosest() {
   }
 }
 
+@customElement('md-dropdown')
+@inject(Element)
+export class MdDropdownElement {
+  static id = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) alignment = 'left';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) belowOrigin = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) constrainWidth = true;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) gutter = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) hover = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) inDuration = 300;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) outDuration = 225;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) stopPropagation = false;
+
+  constructor(element) {
+    this.element = element;
+    this.controlId = `md-dropdown-${MdDropdown.id++}`;
+  }
+  attached() {
+    $(this.element).dropdown({
+      alignment: this.alignment,
+      belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
+      constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
+      gutter: parseInt(this.gutter, 10),
+      hover: getBooleanFromAttributeValue(this.hover),
+      inDuration: parseInt(this.inDuration, 10),
+      outDuration: parseInt(this.outDuration, 10),
+      stopPropagation: getBooleanFromAttributeValue(this.stopPropagation)
+    });
+  }
+}
+
+@customAttribute('md-dropdown')
+@inject(Element)
+export class MdDropdown {
+  static elementId = 0;
+
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) activates = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) ref = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) alignment = 'left';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) belowOrigin = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) constrainWidth = true;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) gutter = 0;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) hover = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdTitle;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) inDuration = 300;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) outDuration = 225;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) stopPropagation = false;
+
+  constructor(element) {
+    this.element = element;
+    this.attributeManager = new AttributeManager(this.element);
+  }
+
+  attached() {
+    this.handleActivateElement();
+    this.contentAttributeManager = new AttributeManager(document.getElementById(this.activates));
+
+    this.attributeManager.addClasses('dropdown-button');
+    this.contentAttributeManager.addClasses('dropdown-content');
+    // this.attributeManager.addAttributes({ 'data-activates': this.activates });
+
+    $(this.element).dropdown({
+      alignment: this.alignment,
+      belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
+      constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
+      constrainWidth: getBooleanFromAttributeValue(this.constrainWidth),
+      gutter: parseInt(this.gutter, 10),
+      hover: getBooleanFromAttributeValue(this.hover),
+      inDuration: parseInt(this.inDuration, 10),
+      outDuration: parseInt(this.outDuration, 10),
+      stopPropagation: getBooleanFromAttributeValue(this.stopPropagation)
+    });
+  }
+
+  detached() {
+    this.attributeManager.removeAttributes('data-activates');
+    this.attributeManager.removeClasses('dropdown-button');
+    this.contentAttributeManager.removeClasses('dropdown-content');
+  }
+
+  open() {
+    $(this.element).dropdown('open');
+  }
+
+  close() {
+    $(this.element).dropdown('close');
+  }
+
+  handleActivateElement() {
+    if (this.ref) {
+      let id = this.ref.getAttribute('id');
+      if (!id) {
+        id = `md-dropdown-${MdDropdown.elementId++}`;
+        this.ref.setAttribute('id', id);
+        this.activates = id;
+      }
+      this.id = MdDropdown.elementId++;
+    }
+    this.attributeManager.addAttributes({ 'data-activates': this.activates });
+  }
+}
+
 export class DatePickerDefaultParser {
   canParse(value) {
     if (value) {
@@ -1226,8 +1440,8 @@ export class MdDatePicker {
     }
     this.picker = $(this.element).pickadate(options).pickadate('picker');
     this.picker.on({
-      'close': this.onClose.bind(this),
-      'set': this.onSet.bind(this)
+      'close': this.onClose.bind(this)
+      // 'set': this.onSet.bind(this)
     });
 
     if (this.value) {
@@ -1237,6 +1451,7 @@ export class MdDatePicker {
       $(this.element).on('keydown', (e)=> {
         if (e.keyCode === 13 || e.keyCode === 9) {
           if (this.parseDate($(this.element).val())) {
+            this.updateValue();
             this.closeDatePicker();
           } else {
             this.openDatePicker();
@@ -1301,9 +1516,13 @@ export class MdDatePicker {
     $(this.element).pickadate('close');
   }
 
-  onClose() {
+  updateValue() {
     let selected = this.picker.get('select');
     this.value = selected ? selected.obj : null;
+  }
+
+  onClose() {
+    this.updateValue();
     fireEvent(this.element, 'blur');
   }
 
@@ -1312,14 +1531,14 @@ export class MdDatePicker {
     this.openDatePicker();
   }
 
-  onSet(value) {
-    //handle this ourselves since Dogfalo removed this functionality from the original plugin
-    if (this.options && this.options.closeOnSelect && value.select) {
-      this.value = value.select;
-      this.picker.close();
-    }
-    // this.value = new Date(value.select);
-  }
+  // onSet(value) {
+  //   //handle this ourselves since Dogfalo removed this functionality from the original plugin
+  //   if (this.options && this.options.closeOnSelect && value.select) {
+  //     this.value = value.select;
+  //     this.picker.close();
+  //   }
+  //   // this.value = new Date(value.select);
+  // }
 
   valueChanged(newValue) {
     if (this.options.max && newValue > this.options.max) {
@@ -1340,392 +1559,6 @@ export class MdDatePicker {
     if (!element) return;
     this.log.debug('showErrortextChanged: ' + this.showErrortext);
     element.setAttribute('data-show-errortext', getBooleanFromAttributeValue(this.showErrortext));
-  }
-}
-
-@customElement('md-dropdown')
-@inject(Element)
-export class MdDropdownElement {
-  static id = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) alignment = 'left';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) belowOrigin = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) constrainWidth = true;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) gutter = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) hover = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdTitle;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) inDuration = 300;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) outDuration = 225;
-
-  constructor(element) {
-    this.element = element;
-    this.controlId = `md-dropdown-${MdDropdown.id++}`;
-  }
-  attached() {
-    $(this.element).dropdown({
-      alignment: this.alignment,
-      belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
-      constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
-      gutter: parseInt(this.gutter, 10),
-      hover: getBooleanFromAttributeValue(this.hover),
-      inDuration: parseInt(this.inDuration, 10),
-      outDuration: parseInt(this.outDuration, 10)
-    });
-  }
-}
-
-export function applyMaterializeDropdownFix() {
-  $.fn.dropdown = function(options) {
-    let defaults = {
-      inDuration: 300,
-      outDuration: 225,
-      constrain_width: true, // Constrains width of dropdown to the activator
-      hover: false,
-      gutter: 0, // Spacing from edge
-      belowOrigin: false,
-      alignment: 'left',
-      stopPropagation: false
-    };
-
-    // Open dropdown.
-    if (options === 'open') {
-      this.each(function() {
-        $(this).trigger('open');
-      });
-      return false;
-    }
-
-    // Close dropdown.
-    if (options === 'close') {
-      this.each(function() {
-        $(this).trigger('close');
-      });
-      return false;
-    }
-
-    this.each(function() {
-      let origin = $(this);
-      let currentOptions = $.extend({}, defaults, options);
-      let isFocused = false;
-
-      // Dropdown menu
-      let activates = $('#' + origin.attr('data-activates'));
-
-      function updateOptions() {
-        if (origin.data('induration') !== undefined) {
-          currentOptions.inDuration = origin.data('induration');
-        }
-        if (origin.data('outduration') !== undefined) {
-          currentOptions.outDuration = origin.data('outduration');
-        }
-        if (origin.data('constrainwidth') !== undefined) {
-          currentOptions.constrain_width = origin.data('constrainwidth');
-        }
-        if (origin.data('hover') !== undefined) {
-          currentOptions.hover = origin.data('hover');
-        }
-        if (origin.data('gutter') !== undefined) {
-          currentOptions.gutter = origin.data('gutter');
-        }
-        if (origin.data('beloworigin') !== undefined) {
-          currentOptions.belowOrigin = origin.data('beloworigin');
-        }
-        if (origin.data('alignment') !== undefined) {
-          currentOptions.alignment = origin.data('alignment');
-        }
-        if (origin.data('stoppropagation') !== undefined) {
-          currentOptions.stopPropagation = origin.data('stoppropagation');
-        }
-      }
-
-      updateOptions();
-
-      // Attach dropdown to its activator
-      origin.after(activates);
-
-      /*
-        Helper function to position and resize dropdown.
-        Used in hover and click handler.
-      */
-      function placeDropdown(eventType) {
-        // Check for simultaneous focus and click events.
-        if (eventType === 'focus') {
-          isFocused = true;
-        }
-
-        // Check html data attributes
-        updateOptions();
-
-        // Set Dropdown state
-        activates.addClass('active');
-        origin.addClass('active');
-
-        // Constrain width
-        if (currentOptions.constrain_width === true) {
-          activates.css('width', origin.outerWidth());
-        } else {
-          activates.css('white-space', 'nowrap');
-        }
-
-        // Offscreen detection
-        let windowHeight = window.innerHeight;
-        let originHeight = origin.innerHeight();
-        let offsetLeft = origin.offset().left;
-        let offsetTop = origin.offset().top - $(window).scrollTop();
-        let currAlignment = currentOptions.alignment;
-        let gutterSpacing = 0;
-        let leftPosition = 0;
-
-        // Below Origin
-        let verticalOffset = 0;
-        if (currentOptions.belowOrigin === true) {
-          verticalOffset = originHeight;
-        }
-
-        // Check for scrolling positioned container.
-        let scrollYOffset = 0;
-        let scrollXOffset = 0;
-        let wrapper = origin.parent();
-        if (!wrapper.is('body')) {
-          if (wrapper[0].scrollHeight > wrapper[0].clientHeight) {
-            scrollYOffset = wrapper[0].scrollTop;
-          }
-          if (wrapper[0].scrollWidth > wrapper[0].clientWidth) {
-            scrollXOffset = wrapper[0].scrollLeft;
-          }
-        }
-
-
-        if (offsetLeft + activates.innerWidth() > $(window).width()) {
-          // Dropdown goes past screen on right, force right alignment
-          currAlignment = 'right';
-        } else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
-          // Dropdown goes past screen on left, force left alignment
-          currAlignment = 'left';
-        }
-        // Vertical bottom offscreen detection
-        if (offsetTop + activates.innerHeight() > windowHeight) {
-          // If going upwards still goes offscreen, just crop height of dropdown.
-          if (offsetTop + originHeight - activates.innerHeight() < 0) {
-            let adjustedHeight = windowHeight - offsetTop - verticalOffset;
-            activates.css('max-height', adjustedHeight);
-          } else {
-            // Flow upwards.
-            if (!verticalOffset) {
-              verticalOffset += originHeight;
-            }
-            verticalOffset -= activates.innerHeight();
-          }
-        }
-
-        // Handle edge alignment
-        if (currAlignment === 'left') {
-          gutterSpacing = currentOptions.gutter;
-          leftPosition = origin.position().left + gutterSpacing;
-        } else if (currAlignment === 'right') {
-          let offsetRight = origin.position().left + origin.outerWidth() - activates.outerWidth();
-          gutterSpacing = -currentOptions.gutter;
-          leftPosition =  offsetRight + gutterSpacing;
-        }
-
-        // Position dropdown
-        activates.css({
-          position: 'absolute',
-          top: origin.position().top + verticalOffset + scrollYOffset,
-          left: leftPosition + scrollXOffset
-        });
-
-
-        // Show dropdown
-        activates.stop(true, true).css('opacity', 0)
-          .slideDown({
-            queue: false,
-            duration: currentOptions.inDuration,
-            easing: 'easeOutCubic',
-            complete: function() {
-              $(this).css('height', '');
-            }
-          })
-          .animate( {opacity: 1}, {queue: false, duration: currentOptions.inDuration, easing: 'easeOutSine'});
-      }
-
-      function hideDropdown() {
-        // Check for simultaneous focus and click events.
-        isFocused = false;
-        activates.fadeOut(currentOptions.outDuration);
-        activates.removeClass('active');
-        origin.removeClass('active');
-        setTimeout(function() { activates.css('max-height', ''); }, currentOptions.outDuration);
-      }
-
-      // Hover
-      if (currentOptions.hover) {
-        let open = false;
-        origin.unbind('click.' + origin.attr('id'));
-        // Hover handler to show dropdown
-        origin.on('mouseenter', function(e) { // Mouse over
-          if (open === false) {
-            placeDropdown();
-            open = true;
-          }
-        });
-        origin.on('mouseleave', function(e) {
-          // If hover on origin then to something other than dropdown content, then close
-          let toEl = e.toElement || e.relatedTarget; // added browser compatibility for target element
-          if(!$(toEl).closest('.dropdown-content').is(activates)) {
-            activates.stop(true, true);
-            hideDropdown();
-            open = false;
-          }
-        });
-
-        activates.on('mouseleave', function(e) { // Mouse out
-          let toEl = e.toElement || e.relatedTarget;
-          if(!$(toEl).closest('.dropdown-button').is(origin)) {
-            activates.stop(true, true);
-            hideDropdown();
-            open = false;
-          }
-        });
-
-        // Click
-      } else {
-        // Click handler to show dropdown
-        origin.unbind('click.' + origin.attr('id'));
-        origin.bind('click.' + origin.attr('id'), function(e) {
-          if (!isFocused) {
-            if ( origin[0] === e.currentTarget &&
-                 !origin.hasClass('active') &&
-                 ($(e.target).closest('.dropdown-content').length === 0)) {
-              e.preventDefault(); // Prevents button click from moving window
-              if (currentOptions.stopPropagation) {
-                e.stopPropagation();
-              }
-              placeDropdown('click');
-            } else if (origin.hasClass('active')) {
-              // If origin is clicked and menu is open, close menu
-              hideDropdown();
-              $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
-            }
-            // If menu open, add click close handler to document
-            if (activates.hasClass('active')) {
-              $(document).bind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'), function(e2) {
-                if (!activates.is(e2.target) && !origin.is(e2.target) && (!origin.find(e2.target).length) ) {
-                  hideDropdown();
-                  $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
-                }
-              });
-            }
-          }
-        });
-      } // End else
-
-      // Listen to open and close event - useful for select component
-      origin.on('open', function(e, eventType) {
-        placeDropdown(eventType);
-      });
-      origin.on('close', hideDropdown);
-    });
-  }; // End dropdown plugin
-
-  $(document).ready(function() {
-    $('.dropdown-button').dropdown();
-  });
-}
-
-@customAttribute('md-dropdown')
-@inject(Element)
-export class MdDropdown {
-  static elementId = 0;
-
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) activates = '';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) ref = null;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) alignment = 'left';
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) belowOrigin = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) constrainWidth = true;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) gutter = 0;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) hover = false;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) mdTitle;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) inDuration = 300;
-  @bindable({
-    defaultBindingMode: bindingMode.oneTime
-  }) outDuration = 225;
-
-  constructor(element) {
-    this.element = element;
-    this.attributeManager = new AttributeManager(this.element);
-  }
-
-  attached() {
-    this.handleActivateElement();
-    this.contentAttributeManager = new AttributeManager(document.getElementById(this.activates));
-
-    this.attributeManager.addClasses('dropdown-button');
-    this.contentAttributeManager.addClasses('dropdown-content');
-    // this.attributeManager.addAttributes({ 'data-activates': this.activates });
-
-    $(this.element).dropdown({
-      alignment: this.alignment,
-      belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
-      constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
-      constrainWidth: getBooleanFromAttributeValue(this.constrainWidth),
-      gutter: parseInt(this.gutter, 10),
-      hover: getBooleanFromAttributeValue(this.hover),
-      inDuration: parseInt(this.inDuration, 10),
-      outDuration: parseInt(this.outDuration, 10)
-    });
-  }
-
-  detached() {
-    this.attributeManager.removeAttributes('data-activates');
-    this.attributeManager.removeClasses('dropdown-button');
-    this.contentAttributeManager.removeClasses('dropdown-content');
-  }
-
-  handleActivateElement() {
-    if (this.ref) {
-      let id = this.ref.getAttribute('id');
-      if (!id) {
-        id = `md-dropdown-${MdDropdown.elementId++}`;
-        this.ref.setAttribute('id', id);
-        this.activates = id;
-      }
-      this.id = MdDropdown.elementId++;
-    }
-    this.attributeManager.addAttributes({ 'data-activates': this.activates });
   }
 }
 
@@ -1756,6 +1589,7 @@ export class MdFileInput {
     defaultBindingMode: bindingMode.twoWay
   }) mdLabelValue;
   @bindable() disabled = false;
+  @bindable() mdReadonly = false;
   files = [];
 
   _suspendUpdate = false;
@@ -1868,6 +1702,9 @@ export class MdInput {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdShowErrortext = true;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdUpdateTrigger = ['input', 'change'];
   @bindable() mdValidateError;
   @bindable() mdValidateSuccess;
   @bindable({
@@ -2322,6 +2159,7 @@ export class MdRadio {
 @customElement('md-range')
 @inject(Element)
 export class MdRange {
+  @bindable() mdReadonly = false;
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdMin = 0;
@@ -2457,6 +2295,15 @@ export class MdScrollSpy {
 @customAttribute('md-select')
 export class MdSelect {
   @bindable() disabled = false;
+	@bindable() readonly = false;
+  readonlyChanged() {
+    if (this.readonly) {
+      this.makeReadonly($(this.element).siblings('input')[0]);
+    } else {
+      this.refresh();
+    }
+  }
+
   @bindable() enableOptionObserver = false;
   @bindable() label = '';
   @bindable() showErrortext = true;
@@ -2474,22 +2321,27 @@ export class MdSelect {
     this.handleBlur = this.handleBlur.bind(this);
     this.log = getLogger('md-select');
     this.bindingEngine = bindingEngine;
+
+    this.handleFocus = this.handleFocus.bind(this);
   }
 
   attached() {
+    if (this.element.classList.contains('browser-default')) {
+      return;
+    }
+    let div = $('<div class="input-field"></div>');
+    let va = this.element.attributes.getNamedItem('validate');
+    if (va) {
+      div.attr(va.name, va.label);
+    }
+
+    $(this.element).wrap(div);
+    if (this.label) {
+      $(`<label class="md-select-label">${this.label}</label>`).insertAfter(this.element);
+    }
+
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(false);
-
-      let wrapper = $(this.element).parent('.select-wrapper');
-      if (this.label && !wrapper.siblings("label").length) {
-        let div = $('<div class="input-field"></div>');
-        let va = this.element.attributes.getNamedItem('validate');
-        if (va) {
-          div.attr(va.name, va.label);
-        }
-        wrapper.wrap(div);
-        $(`<label class="md-select-label">${this.label}</label>`).insertAfter(wrapper);
-      }
     });
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
 
@@ -2497,27 +2349,42 @@ export class MdSelect {
   }
 
   detached() {
-    $(this.element).off('change', this.handleChangeFromNativeSelect);
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
+    let $element = $(this.element);
+    $element.off('change', this.handleChangeFromNativeSelect);
     this.observeVisibleDropdownContent(false);
     this.observeOptions(false);
     this.dropdownMutationObserver = null;
-    $(this.element).parent().children(".md-input-validation").remove();
-    $(this.element).parent().children(`ul#select-options-${$(this.element).data('select-id')}`).remove();
-    $(this.element).material_select('destroy');
+    $element.siblings(`ul#select-options-${$element.data('select-id')}`).remove();
+    $element.material_select('destroy');
+    $element.siblings('label').remove();
+    $element.siblings('.md-input-validation').remove();
+    $element.unwrap();
     this.subscriptions.forEach(sub => sub.dispose());
   }
 
   refresh() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     this.taskQueue.queueTask(() => {
       this.createMaterialSelect(true);
     });
   }
 
   labelChanged(newValue) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     this.updateLabel();
   }
 
   updateLabel() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     if (this.label) {
       const $label = $(this.element).parent('.select-wrapper').siblings('.md-select-label');
       $label.text(this.label);
@@ -2533,6 +2400,9 @@ export class MdSelect {
   }
 
   setErrorTextAttribute() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     let input = this.element.parentElement.querySelector('input.select-dropdown');
     if (!input) return;
     this.log.debug('showErrortextChanged: ' + this.showErrortext);
@@ -2540,10 +2410,16 @@ export class MdSelect {
   }
 
   notifyBindingEngine() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     this.log.debug('selectedOptions changed', arguments);
   }
 
   handleChangeFromNativeSelect() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     if (!this._suspendUpdate) {
       this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
       this._suspendUpdate = true;
@@ -2553,6 +2429,9 @@ export class MdSelect {
   }
 
   handleChangeFromViewModel(newValue) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     this.log.debug('handleChangeFromViewModel', newValue, $(this.element).val());
     if (!this._suspendUpdate) {
       this.createMaterialSelect(false);
@@ -2560,6 +2439,9 @@ export class MdSelect {
   }
 
   toggleControl(disable) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     let $wrapper = $(this.element).parent('.select-wrapper');
     if ($wrapper.length > 0) {
       if (disable) {
@@ -2570,12 +2452,14 @@ export class MdSelect {
         $('.caret', $wrapper).removeClass('disabled');
         $('input.select-dropdown', $wrapper).attr('disabled', null);
         $wrapper.attr('disabled', null);
-        $('.select-dropdown', $wrapper).dropdown({'hover': false, 'closeOnClick': false});
       }
     }
   }
 
   createMaterialSelect(destroy) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     this.observeVisibleDropdownContent(false);
     this.observeOptions(false);
     if (destroy) {
@@ -2586,9 +2470,25 @@ export class MdSelect {
     this.observeVisibleDropdownContent(true);
     this.observeOptions(true);
     this.setErrorTextAttribute();
+    if (this.readonly) {
+      this.makeReadonly(input[0]);
+    }
+  }
+
+  makeReadonly(input) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
+    $(input).off('click');
+    $(input).off('focus');
+    $(input).off('keydown');
+    $(input).off('open');
   }
 
   observeVisibleDropdownContent(attach) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     if (attach) {
       if (!this.dropdownMutationObserver) {
         this.dropdownMutationObserver = DOM.createMutationObserver(mutations => {
@@ -2601,6 +2501,8 @@ export class MdSelect {
           if (isHidden) {
             this.dropdownMutationObserver.takeRecords();
             this.handleBlur();
+          } else {
+            this.handleFocus();
           }
         });
       }
@@ -2617,6 +2519,9 @@ export class MdSelect {
   }
 
   observeOptions(attach) {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     if (getBooleanFromAttributeValue(this.enableOptionObserver)) {
       if (attach) {
         if (!this.optionsMutationObserver) {
@@ -2639,6 +2544,13 @@ export class MdSelect {
     }
   }
 
+  open() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
+    $(this.element).siblings('input.select-dropdown').trigger('focus');
+  }
+
   //
   // Firefox sometimes fire blur several times in a row
   // observable at http://localhost:3000/#/samples/select/
@@ -2651,48 +2563,63 @@ export class MdSelect {
   _taskqueueRunning = false;
 
   handleBlur() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
     if (this._taskqueueRunning) return;
     this._taskqueueRunning = true;
     this.taskQueue.queueTask(() => {
       this.log.debug('fire blur event');
       fireEvent(this.element, 'blur');
       this._taskqueueRunning = false;
+
+      if (this.label) {
+        const $label = $(this.element).parent('.select-wrapper').siblings('.md-select-label');
+        $label.removeClass('md-focused');
+      }
     });
+  }
+
+  handleFocus() {
+    if ((this.element).classList.contains('browser-default')) {
+      return;
+    }
+    if (this.label) {
+      const $label = $(this.element).parent('.select-wrapper').siblings('.md-select-label');
+      $label.addClass('md-focused');
+    }
   }
 }
 
 @customAttribute('md-sidenav-collapse')
-@inject(Element, ObserverLocator)
+@inject(Element)
 export class MdSidenavCollapse {
   @bindable() ref;
-  constructor(element, observerLocator) {
+  constructor(element) {
     this.element = element;
-    this.observerLocator = observerLocator;
     this.log = getLogger('md-sidenav-collapse');
   }
 
   attached() {
     this.ref.whenAttached.then(() => {
-      // this.widthSubscription = this.observerLocator.getObserver(this.ref, 'mdWidth').subscribe(this.widthChanged.bind(this));
-      // this.fixedSubscription = this.observerLocator.getObserver(this.ref, 'fixed').subscribe(this.fixedChanged.bind(this));
-
       const closeOnClick = this.ref.mdFixed && window.innerWidth > 992 ? false : getBooleanFromAttributeValue(this.ref.mdCloseOnClick);
+
+      this.onHide = this.onHide.bind(this);
+      this.onShow = this.onShow.bind(this);
 
       this.element.setAttribute('data-activates', this.ref.controlId);
       let sideNavConfig = {
         edge: this.ref.mdEdge || 'left',
-        // closeOnClick: (this.ref.mdFixed ? false : getBooleanFromAttributeValue(this.ref.mdCloseOnClick)),
         closeOnClick,
-        menuWidth: parseInt(this.ref.mdWidth, 10)
+        menuWidth: parseInt(this.ref.mdWidth, 10),
+        onClose: this.onHide,
+        onOpen: this.onShow
       };
-      // this.log.debug('sideNavConfig:', sideNavConfig);
       $(this.element).sideNav(sideNavConfig);
     });
   }
 
-  detached() {
-    // this.widthSubscription.unsubscribe();
-  }
+  detached() { }
 
   show() {
     $(this.element).sideNav('show');
@@ -2702,23 +2629,13 @@ export class MdSidenavCollapse {
     $(this.element).sideNav('hide');
   }
 
-  // fixedChanged() {
-  //   this.log.debug('fixedChanged');
-  //   $(this.element).sideNav({
-  //     edge: this.ref.edge || 'left',
-  //     closeOnClick: this.ref.closeOnClick,
-  //     menuWidth: parseInt(this.ref.mdWidth, 10)
-  //   });
-  // }
-  //
-  // widthChanged() {
-  //   this.log.debug('widthChanged');
-  //   $(this.element).sideNav({
-  //     edge: this.ref.edge || 'left',
-  //     closeOnClick: this.ref.closeOnClick,
-  //     menuWidth: parseInt(this.ref.mdWidth, 10)
-  //   });
-  // }
+  onShow(el) {
+    fireMaterializeEvent(this.ref.element, 'sidenav-show');
+  }
+
+  onHide(el) {
+    fireMaterializeEvent(this.ref.element, 'sidenav-hide');
+  }
 }
 
 @customElement('md-sidenav')
@@ -2944,12 +2861,14 @@ export class MdTabs {
   refresh() {
     this.taskQueue.queueTask(() => {
       let hrefs = [];
-      $('li a', this.element).each(function(i, tab) {
+      $('li a', this.element).each((i, tab) => {
         $(tab).parent().addClass('tab');
         hrefs.push($(tab).attr('href'));
+        tab.removeEventListener('click', this.fireTabSelectedEvent);
+        tab.addEventListener('click', this.fireTabSelectedEvent);
       });
       $(hrefs).each((i, tab) => {
-        if (this.selectedTab.index != i) {
+        if (this.selectedTab.index !== i) {
           $(tab).hide();
         }
       });
@@ -3037,11 +2956,53 @@ export class MdTapTarget {
   }
 }
 
+// // Materialize doesn't present the full api.
+// See here for full api: https://github.com/weareoutman/clockpicker
+
+@inject(Element)
+@customAttribute('md-timepicker')
+export class MdTimePicker {
+  @bindable() twelveHour = false;
+  @bindable({defaultBindingMode: bindingMode.twoWay}) value;
+
+  constructor(element) {
+    this.element = element;
+  }
+
+  bind() {
+    this.twelveHour = getBooleanFromAttributeValue(this.twelveHour);
+  }
+
+  attached() {
+    let options = {
+      afterDone: this.afterDone.bind(this),
+      twelvehour: this.twelveHour
+    };
+    $(this.element).pickatime(options);
+  }
+
+  detached() {
+    $(this.element).pickatime('remove');
+  }
+
+  afterDone() {
+    this.value = this.element.value;
+  }
+
+  valueChanged(newValue) {
+    this.element.value = newValue;
+  }
+}
+
 export class MdToastService {
+  removeAll() {
+    Materialize.Toast.removeAll();
+  }
+
   show(message, displayLength, className?) {
     return new Promise((resolve, reject) => {
-      Materialize.toast(message, displayLength, className, () => {
-        resolve();
+      const toastInstance = Materialize.toast(message, displayLength, className, () => {
+        resolve(toastInstance);
       });
     });
   }
@@ -3179,7 +3140,7 @@ export class MaterializeFormValidationRenderer {
 
   underlineInput(element, render) {
     let input;
- 	  let validationContainer;
+    let validationContainer;
     switch (element.tagName) {
       case 'MD-INPUT': {
         input = element.querySelector('input') || element.querySelector('textarea');
@@ -3187,11 +3148,11 @@ export class MaterializeFormValidationRenderer {
         break;
       }
       case 'SELECT': {
-        const selectWrapper = element.closest('.select-wrapper');
-        if (selectWrapper) {
-          input = selectWrapper.querySelector('input');
+        const inputField = element.closest('.input-field');
+        if (inputField) {
+          input = inputField.querySelector('input');
+          validationContainer = inputField;
         }
-        validationContainer = selectWrapper;
         break;
       }
       case 'INPUT': {
@@ -3206,13 +3167,11 @@ export class MaterializeFormValidationRenderer {
         if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
           input.classList.remove('invalid');
           input.classList.add('valid');
-        }
-        else {
+        } else {
           input.classList.remove('valid');
           input.classList.add('invalid');
         }
-      }
-      else {
+      } else {
         input.classList.remove('valid');
         input.classList.remove('invalid');
       }
@@ -3224,45 +3183,45 @@ export class MaterializeFormValidationRenderer {
       return;
     }
     switch (element.tagName) {
-    case 'MD-INPUT': {
-      let label = element.querySelector('label');
-      let input = element.querySelector('input') || element.querySelector('textarea');
-      if (label) {
-        label.removeAttribute('data-error');
-      }
-      if (input) {
-        result.target = input;
-        if (input.hasAttribute('data-show-errortext')) {
-          this.addMessage(element, result);
+      case 'MD-INPUT': {
+        let label = element.querySelector('label');
+        let input = element.querySelector('input') || element.querySelector('textarea');
+        if (label) {
+          label.removeAttribute('data-error');
         }
-      }
-      break;
-    }
-    case 'SELECT': {
-      const selectWrapper = element.closest('.select-wrapper');
-      if (!selectWrapper) {
-        return;
-      }
-      let input = selectWrapper.querySelector('input');
-      if (input) {
-        result.target = input;
-        if (!(input.hasAttribute('data-show-errortext') &&
-            input.getAttribute('data-show-errortext') === 'false')) {
-          this.addMessage(selectWrapper, result);
+        if (input) {
+          result.target = input;
+          if (input.hasAttribute('data-show-errortext')) {
+            this.addMessage(element, result);
+          }
         }
+        break;
       }
-      break;
-    }
-    case 'INPUT' : {
-      if (element.hasAttribute('md-datepicker')) {
-        if (!(element.hasAttribute('data-show-errortext') &&
-            element.getAttribute('data-show-errortext') === 'false')) {
-          this.addMessage(element.parentNode, result);
+      case 'SELECT': {
+        const inputField = element.closest('.input-field');
+        if (!inputField) {
+          return;
         }
+        let input = inputField.querySelector('input');
+        if (input) {
+          result.target = input;
+          if (!(input.hasAttribute('data-show-errortext') &&
+                input.getAttribute('data-show-errortext') === 'false')) {
+            this.addMessage(inputField, result);
+          }
+        }
+        break;
       }
-      break;
-    }
-    default: break;
+      case 'INPUT' : {
+        if (element.hasAttribute('md-datepicker')) {
+          if (!(element.hasAttribute('data-show-errortext') &&
+              element.getAttribute('data-show-errortext') === 'false')) {
+            this.addMessage(element.parentNode, result);
+          }
+        }
+        break;
+      }
+      default: break;
     }
   }
 
@@ -3271,30 +3230,26 @@ export class MaterializeFormValidationRenderer {
       return;
     }
     switch (element.tagName) {
-    case 'MD-INPUT': {
-      this.removeMessage(element, result);
-      break;
-    }
-    case 'SELECT': {
-      const selectWrapper = element.closest('.select-wrapper');
-      if (!selectWrapper) {
-        return;
+      case 'MD-INPUT': {
+        this.removeMessage(element, result);
+        break;
       }
+      case 'SELECT': {
+        const inputField = element.closest('.input-field');
+        if (!inputField) {
+          return;
+        }
 
-      if ($(selectWrapper.parentElement).children().hasClass('md-input-validation') ) {
-        this.removeMessage(selectWrapper.parentElement, result);
-      } else {
-        this.removeMessage(selectWrapper, result);
+        this.removeMessage(inputField, result);
+        break;
       }
-      break;
-    }
-    case 'INPUT' : {
-      if (element.hasAttribute('md-datepicker')) {
-        this.removeMessage(element.parentNode, result);
+      case 'INPUT' : {
+        if (element.hasAttribute('md-datepicker')) {
+          this.removeMessage(element.parentNode, result);
+        }
+        break;
       }
-      break;
-    }
-    default: break;
+      default: break;
     }
   }
 

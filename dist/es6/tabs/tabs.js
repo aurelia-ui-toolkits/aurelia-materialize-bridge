@@ -66,12 +66,14 @@ export class MdTabs {
   refresh() {
     this.taskQueue.queueTask(() => {
       let hrefs = [];
-      $('li a', this.element).each(function(i, tab) {
+      $('li a', this.element).each((i, tab) => {
         $(tab).parent().addClass('tab');
         hrefs.push($(tab).attr('href'));
+        tab.removeEventListener('click', this.fireTabSelectedEvent);
+        tab.addEventListener('click', this.fireTabSelectedEvent);
       });
       $(hrefs).each((i, tab) => {
-        if (this.selectedTab.index != i) {
+        if (this.selectedTab.index !== i) {
           $(tab).hide();
         }
       });

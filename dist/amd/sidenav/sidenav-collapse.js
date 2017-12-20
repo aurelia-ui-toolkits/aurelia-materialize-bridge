@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes, _aureliaLogging) {
+define(['exports', 'aurelia-templating', 'aurelia-logging', 'aurelia-dependency-injection', '../common/attributes', '../common/events'], function (exports, _aureliaTemplating, _aureliaLogging, _aureliaDependencyInjection, _attributes, _events) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -57,14 +57,13 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
   var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
 
-  var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec = (0, _aureliaTemplating.customAttribute)('md-sidenav-collapse'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaBinding.ObserverLocator), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdSidenavCollapse(element, observerLocator) {
+  var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec = (0, _aureliaTemplating.customAttribute)('md-sidenav-collapse'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdSidenavCollapse(element) {
       _classCallCheck(this, MdSidenavCollapse);
 
       _initDefineProp(this, 'ref', _descriptor, this);
 
       this.element = element;
-      this.observerLocator = observerLocator;
       this.log = (0, _aureliaLogging.getLogger)('md-sidenav-collapse');
     }
 
@@ -72,17 +71,19 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
       var _this = this;
 
       this.ref.whenAttached.then(function () {
-
         var closeOnClick = _this.ref.mdFixed && window.innerWidth > 992 ? false : (0, _attributes.getBooleanFromAttributeValue)(_this.ref.mdCloseOnClick);
+
+        _this.onHide = _this.onHide.bind(_this);
+        _this.onShow = _this.onShow.bind(_this);
 
         _this.element.setAttribute('data-activates', _this.ref.controlId);
         var sideNavConfig = {
           edge: _this.ref.mdEdge || 'left',
-
           closeOnClick: closeOnClick,
-          menuWidth: parseInt(_this.ref.mdWidth, 10)
+          menuWidth: parseInt(_this.ref.mdWidth, 10),
+          onClose: _this.onHide,
+          onOpen: _this.onShow
         };
-
         $(_this.element).sideNav(sideNavConfig);
       });
     };
@@ -95,6 +96,14 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-
 
     MdSidenavCollapse.prototype.hide = function hide() {
       $(this.element).sideNav('hide');
+    };
+
+    MdSidenavCollapse.prototype.onShow = function onShow(el) {
+      (0, _events.fireMaterializeEvent)(this.ref.element, 'sidenav-show');
+    };
+
+    MdSidenavCollapse.prototype.onHide = function onHide(el) {
+      (0, _events.fireMaterializeEvent)(this.ref.element, 'sidenav-hide');
     };
 
     return MdSidenavCollapse;

@@ -1,5 +1,4 @@
 import {PLATFORM} from 'aurelia-pal';
-import {applyMaterializeDropdownFix} from './dropdown/dropdown-fix';
 
 /**
 * Plugin configuration builder
@@ -48,6 +47,7 @@ export class ConfigBuilder {
       .useSwitch()
       .useTabs()
       .useTapTarget()
+      .useTimePicker()
       .useTooltip()
       .useTransitions()
       .useWaves()
@@ -144,7 +144,9 @@ export class ConfigBuilder {
   }
 
   useDropdownFix() : ConfigBuilder {
-    applyMaterializeDropdownFix();
+    /*eslint-disable no-console*/
+    console.warn('The method useDropdownFix has no effect in this version and will be removed in a future version.');
+    /*eslint-disable no-console*/
     return this;
   }
 
@@ -253,6 +255,11 @@ export class ConfigBuilder {
 
   useTapTarget(): ConfigBuilder {
     this.globalResources.push(PLATFORM.moduleName('./tap-target/tap-target'));
+    return this;
+  }
+
+  useTimePicker(): ConfigBuilder {
+    this.globalResources.push(PLATFORM.moduleName('./timepicker/timepicker'));
     return this;
   }
 

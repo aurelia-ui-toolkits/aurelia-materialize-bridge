@@ -12,23 +12,19 @@ import {
   inject
 } from 'aurelia-dependency-injection';
 import {
-  Router
-} from 'aurelia-router';
-import {
   bindingMode,
   observable,
-  BindingEngine,
-  ObserverLocator
+  BindingEngine
 } from 'aurelia-binding';
+import {
+  Router
+} from 'aurelia-router';
 import {
   TaskQueue
 } from 'aurelia-task-queue';
 import {
   getLogger
 } from 'aurelia-logging';
-import {
-  EventAggregator
-} from 'aurelia-event-aggregator';
 export declare class ClickCounter {
   count: any;
   increment(): any;
@@ -88,6 +84,7 @@ export declare class ConfigBuilder {
      */
   useTabs(): ConfigBuilder;
   useTapTarget(): ConfigBuilder;
+  useTimePicker(): ConfigBuilder;
   useTooltip(): ConfigBuilder;
   useTransitions(): ConfigBuilder;
   
@@ -108,6 +105,8 @@ export declare class ConfigBuilder {
 export declare function configure(aurelia?: any, configCallback?: any): any;
 export declare class MdAutoComplete {
   input: any;
+  limit: any;
+  minLength: any;
   values: any;
   constructor(element?: any);
   attached(): any;
@@ -124,6 +123,12 @@ export declare class MdBadge {
   newChanged(newValue?: any): any;
   captionChanged(newValue?: any): any;
 }
+export declare class MdBox {
+  caption: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 export declare class MdBreadcrumbs {
@@ -135,12 +140,6 @@ export declare class MdBreadcrumbs {
 }
 export declare class InstructionFilterValueConverter {
   toView(navigationInstructions?: any): any;
-}
-export declare class MdBox {
-  caption: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
 }
 export declare class MdButton {
   disabled: any;
@@ -159,8 +158,11 @@ export declare class MdCard {
   mdHorizontal: any;
   mdImage: any;
   mdReveal: any;
+  mdAction: any;
+  mdStickyAction: any;
   mdSize: any;
   mdTitle: any;
+  mdClass: any;
   constructor(element?: any);
   attached(): any;
 }
@@ -178,6 +180,7 @@ export declare class MdCarousel {
   items: any;
   constructor(element?: any, taskQueue?: any);
   attached(): any;
+  detached(): any;
   itemsChanged(newValue?: any): any;
   refresh(): any;
 }
@@ -187,24 +190,6 @@ export declare class MdCharCounter {
   attached(): any;
   detached(): any;
 }
-export declare class MdChip {
-  mdClose: any;
-  constructor(element?: any);
-  attached(): any;
-  close(): any;
-}
-export declare class MdChips {
-  autocompleteData: any;
-  data: any;
-  placeholder: any;
-  secondaryPlaceholder: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  onChipAdd(e?: any, chip?: any): any;
-  onChipDelete(e?: any, chip?: any): any;
-  onChipSelect(e?: any, chip?: any): any;
-}
 
 // @customElement('md-checkbox')
 export declare class MdCheckbox {
@@ -212,6 +197,7 @@ export declare class MdCheckbox {
   mdChecked: any;
   mdDisabled: any;
   mdReadonly: any;
+  mdReadonlyChanged(): any;
   mdFilledIn: any;
   mdMatcher: any;
   mdModel: any;
@@ -234,6 +220,37 @@ export declare class MdCheckbox {
   //   fireEvent(this.element, 'blur');
   // }
   mdDisabledChanged(newValue?: any): any;
+  preventChange(): any;
+}
+export declare class MdChip {
+  mdClose: any;
+  constructor(element?: any);
+  attached(): any;
+  close(): any;
+}
+export declare class MdChips {
+  autocompleteOptions: any;
+  data: any;
+  placeholder: any;
+  secondaryPlaceholder: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  dataChanged(newValue?: any, oldValue?: any): any;
+  refresh(): any;
+  onChipAdd(e?: any, chip?: any): any;
+  onChipDelete(e?: any, chip?: any): any;
+  onChipSelect(e?: any, chip?: any): any;
+}
+export declare class MdCollapsible {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  refresh(): any;
+  accordionChanged(): any;
+  buildCollapsibleOpenCloseCallbackHandler(handler?: any): any;
+  open(index?: any): any;
+  close(index?: any): any;
 }
 export declare class MdCollectionHeader {
   constructor(element?: any);
@@ -247,6 +264,7 @@ export declare class MdCollection {
   getSelected(): any;
   clearSelection(): any;
   selectAll(): any;
+  toggleIndex(index?: any): any;
 }
 export declare class MdlListSelector {
   item: any;
@@ -255,14 +273,6 @@ export declare class MdlListSelector {
   constructor(element?: any);
   isSelectedChanged(newValue?: any): any;
   mdDisabledChanged(newValue?: any): any;
-}
-export declare class MdCollapsible {
-  constructor(element?: any, eventAggregator?: any);
-  attached(): any;
-  detached(): any;
-  refresh(): any;
-  accordionChanged(): any;
-  buildCollapsibleOpenCloseCallbackHandler(handler?: any): any;
 }
 
 /* eslint-enable */
@@ -316,6 +326,40 @@ export declare function fireMaterializeEvent(element: Element, name: string, dat
 
 // https://github.com/jonathantneal/closest/blob/master/closest.js
 export declare function polyfillElementClosest(): any;
+export declare class MdDropdownElement {
+  static id: any;
+  alignment: any;
+  belowOrigin: any;
+  constrainWidth: any;
+  gutter: any;
+  hover: any;
+  mdTitle: any;
+  inDuration: any;
+  outDuration: any;
+  stopPropagation: any;
+  constructor(element?: any);
+  attached(): any;
+}
+export declare class MdDropdown {
+  static elementId: any;
+  activates: any;
+  ref: any;
+  alignment: any;
+  belowOrigin: any;
+  constrainWidth: any;
+  gutter: any;
+  hover: any;
+  mdTitle: any;
+  inDuration: any;
+  outDuration: any;
+  stopPropagation: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  open(): any;
+  close(): any;
+  handleActivateElement(): any;
+}
 export declare class DatePickerDefaultParser {
   canParse(value?: any): any;
   parse(value?: any): any;
@@ -336,43 +380,21 @@ export declare class MdDatePicker {
   detached(): any;
   openDatePicker(): any;
   closeDatePicker(): any;
+  updateValue(): any;
   onClose(): any;
   onCalendarIconClick(event?: any): any;
-  onSet(value?: any): any;
+  
+  // onSet(value) {
+  //   //handle this ourselves since Dogfalo removed this functionality from the original plugin
+  //   if (this.options && this.options.closeOnSelect && value.select) {
+  //     this.value = value.select;
+  //     this.picker.close();
+  //   }
+  //   // this.value = new Date(value.select);
+  // }
   valueChanged(newValue?: any): any;
   showErrortextChanged(): any;
   setErrorTextAttribute(): any;
-}
-export declare class MdDropdownElement {
-  static id: any;
-  alignment: any;
-  belowOrigin: any;
-  constrainWidth: any;
-  gutter: any;
-  hover: any;
-  mdTitle: any;
-  inDuration: any;
-  outDuration: any;
-  constructor(element?: any);
-  attached(): any;
-}
-export declare function applyMaterializeDropdownFix(): any;
-export declare class MdDropdown {
-  static elementId: any;
-  activates: any;
-  ref: any;
-  alignment: any;
-  belowOrigin: any;
-  constrainWidth: any;
-  gutter: any;
-  hover: any;
-  mdTitle: any;
-  inDuration: any;
-  outDuration: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  handleActivateElement(): any;
 }
 export declare class MdFab {
   mdFixed: any;
@@ -385,6 +407,7 @@ export declare class MdFileInput {
   mdMultiple: any;
   mdLabelValue: any;
   disabled: any;
+  mdReadonly: any;
   files: any;
   constructor(element?: any);
   attached(): any;
@@ -418,6 +441,7 @@ export declare class MdInput {
   mdStep: any;
   mdValidate: any;
   mdShowErrortext: any;
+  mdUpdateTrigger: any;
   mdValidateError: any;
   mdValidateSuccess: any;
   mdValue: any;
@@ -541,6 +565,7 @@ export declare class MdRadio {
   mdDisabledChanged(newValue?: any): any;
 }
 export declare class MdRange {
+  mdReadonly: any;
   mdMin: any;
   mdMax: any;
   mdStep: any;
@@ -571,6 +596,8 @@ export declare class MdScrollSpy {
 }
 export declare class MdSelect {
   disabled: any;
+  readonly: any;
+  readonlyChanged(): any;
   enableOptionObserver: any;
   label: any;
   showErrortext: any;
@@ -592,17 +619,22 @@ export declare class MdSelect {
   handleChangeFromViewModel(newValue?: any): any;
   toggleControl(disable?: any): any;
   createMaterialSelect(destroy?: any): any;
+  makeReadonly(input?: any): any;
   observeVisibleDropdownContent(attach?: any): any;
   observeOptions(attach?: any): any;
+  open(): any;
   handleBlur(): any;
+  handleFocus(): any;
 }
 export declare class MdSidenavCollapse {
   ref: any;
-  constructor(element?: any, observerLocator?: any);
+  constructor(element?: any);
   attached(): any;
   detached(): any;
   show(): any;
   hide(): any;
+  onShow(el?: any): any;
+  onHide(el?: any): any;
 }
 export declare class MdSidenav {
   static id: any;
@@ -672,7 +704,21 @@ export declare class MdTapTarget {
   open(): any;
   close(): any;
 }
+
+// // Materialize doesn't present the full api.
+// See here for full api: https://github.com/weareoutman/clockpicker
+export declare class MdTimePicker {
+  twelveHour: any;
+  value: any;
+  constructor(element?: any);
+  bind(): any;
+  attached(): any;
+  detached(): any;
+  afterDone(): any;
+  valueChanged(newValue?: any): any;
+}
 export declare class MdToastService {
+  removeAll(): any;
   show(message?: any, displayLength?: any, className?: any): any;
 }
 export declare class MdTooltip {

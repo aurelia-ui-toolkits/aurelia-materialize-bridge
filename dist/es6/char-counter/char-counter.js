@@ -15,7 +15,7 @@ export class MdCharCounter {
   attached() {
     this.length = parseInt(this.length, 10);
 
-    // attach to input and textarea elements explicitly, so this counter can be 
+    // attach to input and textarea elements explicitly, so this counter can be
     // used on containers (or custom elements like md-input)
     const tagName = this.element.tagName.toUpperCase();
     if (tagName === 'INPUT' || tagName === 'TEXTAREA') {

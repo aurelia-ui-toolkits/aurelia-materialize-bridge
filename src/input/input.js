@@ -33,11 +33,23 @@ export class MdInput {
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdShowErrortext = true;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdUpdateTrigger = ['input', 'change'];
   @bindable() mdValidateError;
   @bindable() mdValidateSuccess;
   @bindable({
     defaultBindingMode: bindingMode.twoWay
   }) mdValue = '';
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMin = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMax = null;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdName = '';
 
   _suspendUpdate = false;
   

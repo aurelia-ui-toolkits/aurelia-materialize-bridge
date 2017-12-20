@@ -8,7 +8,7 @@ import {fireEvent} from '../common/events';
 @customAttribute('md-chips')
 @inject(Element)
 export class MdChips {
-  @bindable() autocompleteData = {};
+  @bindable() autocompleteOptions = {};
   @bindable({ defaultBindingMode: bindingMode.twoWay }) data = [];
   @bindable() placeholder = '';
   @bindable() secondaryPlaceholder = '';
@@ -23,29 +23,49 @@ export class MdChips {
   }
 
   attached() {
-    let options = {
-      autocompleteData: this.autocompleteData,
-      data: this.data,
-      placeholder: this.placeholder,
-      secondaryPlaceholder: this.secondaryPlaceholder
-    };
-    $(this.element).material_chip(options);
+    this.refresh();
     $(this.element).on('chip.add', this.onChipAdd);
     $(this.element).on('chip.delete', this.onChipDelete);
     $(this.element).on('chip.select', this.onChipSelect);
   }
 
   detached() {
-    //
+    $(this.element).off('chip.add', this.onChipAdd);
+    $(this.element).off('chip.delete', this.onChipDelete);
+    $(this.element).off('chip.select', this.onChipSelect);
+  }
+
+  dataChanged(newValue, oldValue) {
+    this.refresh();
+
+    // I know this is a bit naive..
+    if (newValue.length > oldValue.length) {
+      const chip = newValue.find(i => !oldValue.includes(i));
+      fireEvent(this.element, 'change', { source: 'dataChanged', operation: 'add', target: chip, data: newValue });
+    }
+    if (newValue.length < oldValue.length) {
+      const chip = oldValue.find(i => !newValue.includes(i));
+      fireEvent(this.element, 'change', { source: 'dataChanged', operation: 'delete', target: chip, data: newValue });
+    }
+  }
+
+  refresh() {
+    const options = {
+      autocompleteOptions: this.autocompleteOptions,
+      data: this.data,
+      placeholder: this.placeholder,
+      secondaryPlaceholder: this.secondaryPlaceholder
+    };
+    $(this.element).material_chip(options);
   }
 
   onChipAdd(e, chip) {
     this.data = $(this.element).material_chip('data');
-    fireEvent(this.element, 'change', { operation: 'add', target: chip, data: this.data });
+    // fireEvent(this.element, 'change', { operation: 'add', target: chip, data: this.data });
   }
   onChipDelete(e, chip) {
     this.data = $(this.element).material_chip('data');
-    fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
+    // fireEvent(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
   }
   onChipSelect(e, chip) {
     fireEvent(this.element, 'selected', { target: chip });

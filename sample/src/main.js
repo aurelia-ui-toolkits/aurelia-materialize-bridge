@@ -50,6 +50,7 @@ export function configure(aurelia) {
           .useSwitch()
           .useTabs()
           .useTapTarget()
+          .useTimePicker()
           .useTooltip()
           .useTransitions()
           .useWaves()

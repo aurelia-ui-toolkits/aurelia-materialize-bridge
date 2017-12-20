@@ -52,6 +52,12 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], functi
       });
     };
 
+    MdCollection.prototype.toggleIndex = function toggleIndex(index) {
+      var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+      var vm = items[index].au['md-collection-selector'].viewModel;
+      vm.isSelected = !vm.isSelected;
+    };
+
     return MdCollection;
   }()) || _class) || _class);
 });

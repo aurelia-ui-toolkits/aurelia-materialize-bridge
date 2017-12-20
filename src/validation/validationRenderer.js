@@ -30,7 +30,7 @@ export class MaterializeFormValidationRenderer {
 
   underlineInput(element, render) {
     let input;
- 	  let validationContainer;
+    let validationContainer;
     switch (element.tagName) {
       case 'SELECT': {
         const inputField = element.closest('.input-field');
@@ -74,19 +74,26 @@ export class MaterializeFormValidationRenderer {
               input.getAttribute('data-show-errortext') === 'false')) {
           this.addMessage(inputField, result);
         }
-      }
-      break;
-    }
-    case 'INPUT' : {
-      if (element.hasAttribute('md-datepicker')) {
-        if (!(element.hasAttribute('data-show-errortext') &&
-            element.getAttribute('data-show-errortext') === 'false')) {
-          this.addMessage(element.parentNode, result);
+        let input = inputField.querySelector('input');
+        if (input) {
+          result.target = input;
+          if (!(input.hasAttribute('data-show-errortext') &&
+                input.getAttribute('data-show-errortext') === 'false')) {
+            this.addMessage(inputField, result);
+          }
         }
+        break;
       }
-      break;
-    }
-    default: break;
+      case 'INPUT' : {
+        if (element.hasAttribute('md-datepicker')) {
+          if (!(element.hasAttribute('data-show-errortext') &&
+              element.getAttribute('data-show-errortext') === 'false')) {
+            this.addMessage(element.parentNode, result);
+          }
+        }
+        break;
+      }
+      default: break;
     }
   }
 
@@ -95,22 +102,22 @@ export class MaterializeFormValidationRenderer {
       return;
     }
     switch (element.tagName) {
-    case 'SELECT': {
-      const inputField = element.closest('.input-field');
-      if (!inputField) {
-        return;
+      case 'SELECT': {
+        const inputField = element.closest('.input-field');
+        if (!inputField) {
+          return;
+        }
+
+        this.removeMessage(inputField, result);
+        break;
       }
-      
-      this.removeMessage(inputField, result);
-      break;
-    }
-    case 'INPUT' : {
-      if (element.hasAttribute('md-datepicker')) {
-        this.removeMessage(element.parentNode, result);
+      case 'INPUT' : {
+        if (element.hasAttribute('md-datepicker')) {
+          this.removeMessage(element.parentNode, result);
+        }
+        break;
       }
-      break;
-    }
-    default: break;
+      default: break;
     }
   }
 

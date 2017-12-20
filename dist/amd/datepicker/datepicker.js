@@ -119,8 +119,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
       }
       this.picker = $(this.element).pickadate(options).pickadate('picker');
       this.picker.on({
-        'close': this.onClose.bind(this),
-        'set': this.onSet.bind(this)
+        'close': this.onClose.bind(this)
       });
 
       if (this.value) {
@@ -130,6 +129,7 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
         $(this.element).on('keydown', function (e) {
           if (e.keyCode === 13 || e.keyCode === 9) {
             if (_this.parseDate($(_this.element).val())) {
+              _this.updateValue();
               _this.closeDatePicker();
             } else {
               _this.openDatePicker();
@@ -207,22 +207,19 @@ define(['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue'
       $(this.element).pickadate('close');
     };
 
-    MdDatePicker.prototype.onClose = function onClose() {
+    MdDatePicker.prototype.updateValue = function updateValue() {
       var selected = this.picker.get('select');
       this.value = selected ? selected.obj : null;
+    };
+
+    MdDatePicker.prototype.onClose = function onClose() {
+      this.updateValue();
       (0, _events.fireEvent)(this.element, 'blur');
     };
 
     MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
       event.stopPropagation();
       this.openDatePicker();
-    };
-
-    MdDatePicker.prototype.onSet = function onSet(value) {
-      if (this.options && this.options.closeOnSelect && value.select) {
-        this.value = value.select;
-        this.picker.close();
-      }
     };
 
     MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {

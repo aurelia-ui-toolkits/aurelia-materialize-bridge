@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes'], function (_export, _context) {
   "use strict";
 
@@ -93,6 +91,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           this.refresh();
         };
 
+        MdCarousel.prototype.detached = function detached() {
+          $(this.element).carousel('destroy');
+        };
+
         MdCarousel.prototype.itemsChanged = function itemsChanged(newValue) {
           this.refresh();
         };
@@ -101,17 +103,15 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           var _this = this;
 
           if (this.items.length > 0) {
-            (function () {
-              var options = {
-                full_width: getBooleanFromAttributeValue(_this.mdSlider),
-                fullWidth: getBooleanFromAttributeValue(_this.mdSlider),
-                indicators: _this.mdIndicators
-              };
+            var options = {
+              full_width: getBooleanFromAttributeValue(this.mdSlider),
+              fullWidth: getBooleanFromAttributeValue(this.mdSlider),
+              indicators: this.mdIndicators
+            };
 
-              _this.taskQueue.queueTask(function () {
-                $(_this.element).carousel(options);
-              });
-            })();
+            this.taskQueue.queueTask(function () {
+              $(_this.element).carousel(options);
+            });
           }
         };
 

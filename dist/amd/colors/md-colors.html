@@ -170,10 +170,10 @@
 
   /* datepicker */
   .picker__date-display {
-    background-color: ${mdAccentColor};
+    background-color: ${mdAccentColor | darken:0.5};
   }
   .picker__weekday-display {
-    background-color: ${mdAccentColor | darken:1};
+    background-color: ${mdAccentColor | darken:0.5};
   }
   .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
     background-color: ${mdAccentColor};
@@ -195,55 +195,45 @@
   }
 
   /* text input */
-  md-input .input-field label {
-    left: 0;
-  }
-  md-input .input-field input[type=text]:focus {
+  input:not([type]):focus:not([readonly]),
+  input[type=text]:not(.browser-default):focus:not([readonly]),
+  input[type=password]:not(.browser-default):focus:not([readonly]),
+  input[type=email]:not(.browser-default):focus:not([readonly]),
+  input[type=url]:not(.browser-default):focus:not([readonly]),
+  input[type=time]:not(.browser-default):focus:not([readonly]),
+  input[type=date]:not(.browser-default):focus:not([readonly]),
+  input[type=datetime]:not(.browser-default):focus:not([readonly]),
+  input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+  input[type=tel]:not(.browser-default):focus:not([readonly]),
+  input[type=number]:not(.browser-default):focus:not([readonly]),
+  input[type=search]:not(.browser-default):focus:not([readonly]),
+  textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom: 1px solid ${mdAccentColor};
     box-shadow: 0 1px 0 0 ${mdAccentColor};
   }
-  md-input .input-field input[type=text]:focus + label {
-    color: ${mdAccentColor};
-  }
-  md-input .input-field input[type=email]:focus {
-    border-bottom: 1px solid ${mdAccentColor};
-    box-shadow: 0 1px 0 0 ${mdAccentColor};
-  }
-  md-input .input-field input[type=email]:focus + label {
-    color: ${mdAccentColor};
-  }
-  md-input .input-field input[type=password]:focus {
-    border-bottom: 1px solid ${mdAccentColor};
-    box-shadow: 0 1px 0 0 ${mdAccentColor};
-  }
-  md-input .input-field input[type=password]:focus + label {
-    color: ${mdAccentColor};
-  }
-  md-input .input-field input[type=number]:focus {
-    border-bottom: 1px solid ${mdAccentColor};
-    box-shadow: 0 1px 0 0 ${mdAccentColor};
-  }
-  md-input .input-field input[type=number]:focus + label {
-    color: ${mdAccentColor};
-  }
-  md-input .input-field input[type=time]:focus {
-    border-bottom: 1px solid ${mdAccentColor};
-    box-shadow: 0 1px 0 0 ${mdAccentColor};
-  }
-  md-input .input-field input[type=time]:focus + label {
-    color: ${mdAccentColor};
-  }
-  md-input .input-field .prefix.active {
-    color: ${mdAccentColor};
-  }
-  md-input textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid ${mdAccentColor};
-    box-shadow: 0 1px 0 0 ${mdAccentColor};
-  }
-  md-input textarea.materialize-textarea:focus:not([readonly]) + label {
+
+  .input-field .prefix.active {
     color: ${mdAccentColor}
   }
 
+  /* text input label */
+  input:not([type]):focus:not([readonly]) + label,
+  input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+  input[type=password]:not(.browser-default):focus:not([readonly]) + label,
+  input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+  input[type=url]:not(.browser-default):focus:not([readonly]) + label,
+  input[type=time]:not(.browser-default):focus:not([readonly]) + label,
+  input[type=date]:not(.browser-default):focus:not([readonly]) + label,
+  input[type=datetime]:not(.browser-default):focus:not([readonly]) + label,
+  input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
+  input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
+  input[type=number]:not(.browser-default):focus:not([readonly]) + label,
+  input[type=search]:not(.browser-default):focus:not([readonly]) + label,
+  textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: ${mdAccentColor}
+  }
+
+  /* text input error label */
   md-input input:not([type]).invalid + label:after,
   md-input input:not([type]):focus.invalid + label:after,
   md-input input[type=text].invalid + label:after,
@@ -272,6 +262,12 @@
   md-input textarea.materialize-textarea:focus.invalid + label:after
   {
     color: ${mdErrorColor}
+  }
+
+  /* text input success border */
+  input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.browser-default).valid, input[type=text]:not(.browser-default):focus.valid, input[type=password]:not(.browser-default).valid, input[type=password]:not(.browser-default):focus.valid, input[type=email]:not(.browser-default).valid, input[type=email]:not(.browser-default):focus.valid, input[type=url]:not(.browser-default).valid, input[type=url]:not(.browser-default):focus.valid, input[type=time]:not(.browser-default).valid, input[type=time]:not(.browser-default):focus.valid, input[type=date]:not(.browser-default).valid, input[type=date]:not(.browser-default):focus.valid, input[type=datetime]:not(.browser-default).valid, input[type=datetime]:not(.browser-default):focus.valid, input[type=datetime-local]:not(.browser-default).valid, input[type=datetime-local]:not(.browser-default):focus.valid, input[type=tel]:not(.browser-default).valid, input[type=tel]:not(.browser-default):focus.valid, input[type=number]:not(.browser-default).valid, input[type=number]:not(.browser-default):focus.valid, input[type=search]:not(.browser-default).valid, input[type=search]:not(.browser-default):focus.valid, textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {
+    border-bottom: 1px solid ${mdSuccessColor};
+    box-shadow: 0 1px 0 0 ${mdSuccessColor};
   }
 
   /* text input aurelia-validation messages */
@@ -420,7 +416,7 @@
   }
 
   .select-wrapper + label {
-    color: ${mdAccentColor};
+    
     width: 100%;
   }
   /* position validation label */
@@ -438,6 +434,14 @@
     content: attr(data-error);
     color: ${mdErrorColor};
     opacity: 1;
+  }
+
+  .select-wrapper .md-select-label {
+    color: #9e9e9e;
+  }
+
+  .select-wrapper + .md-select-label.md-focused {
+    color: ${mdAccentColor};
   }
 
   </style>

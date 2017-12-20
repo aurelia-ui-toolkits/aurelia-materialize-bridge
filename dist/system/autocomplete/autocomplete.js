@@ -1,9 +1,7 @@
-'use strict';
-
 System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/events'], function (_export, _context) {
   "use strict";
 
-  var bindable, customAttribute, inject, fireEvent, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdAutoComplete;
+  var bindable, customAttribute, inject, fireEvent, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, MdAutoComplete;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -64,13 +62,17 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       fireEvent = _commonEvents.fireEvent;
     }],
     execute: function () {
-      _export('MdAutoComplete', MdAutoComplete = (_dec = customAttribute('md-autocomplete'), _dec2 = inject(Element), _dec3 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
+      _export('MdAutoComplete', MdAutoComplete = (_dec = customAttribute('md-autocomplete'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdAutoComplete(element) {
           _classCallCheck(this, MdAutoComplete);
 
           this.input = null;
 
-          _initDefineProp(this, 'values', _descriptor, this);
+          _initDefineProp(this, 'limit', _descriptor, this);
+
+          _initDefineProp(this, 'minLength', _descriptor2, this);
+
+          _initDefineProp(this, 'values', _descriptor3, this);
 
           this.element = element;
         }
@@ -96,7 +98,9 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
 
           this.detached();
           $(this.input).autocomplete({
-            data: this.values
+            data: this.values,
+            minLength: this.minLength,
+            limit: this.limit
           });
 
           $(this.input).siblings('.autocomplete-content').on('click', function () {
@@ -109,7 +113,17 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
         };
 
         return MdAutoComplete;
-      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'values', [_dec3], {
+      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'limit', [_dec3], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 20;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'minLength', [_dec4], {
+        enumerable: true,
+        initializer: function initializer() {
+          return 1;
+        }
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'values', [_dec5], {
         enumerable: true,
         initializer: function initializer() {
           return {};

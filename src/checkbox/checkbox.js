@@ -14,6 +14,17 @@ export class MdCheckbox {
   }) mdChecked;
   @bindable() mdDisabled;
   @bindable() mdReadonly = false;
+  mdReadonlyChanged() {
+    if(!this.checkbox) {
+      return;
+    }
+    
+    if (this.mdReadonly) {
+      this.checkbox.addEventListener('change', this.preventChange);
+    } else {
+      this.checkbox.removeEventListener('change', this.preventChange);
+    }
+  }
   @bindable() mdFilledIn;
   @bindable() mdMatcher;
   @bindable() mdModel;
@@ -38,6 +49,7 @@ export class MdCheckbox {
       this.checkbox.disabled = true;
     }
     this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
+    this.mdReadonlyChanged();
     // this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
     // this.checkbox.addEventListener('change', this.handleChange);
   }
@@ -67,5 +79,9 @@ export class MdCheckbox {
     if (this.checkbox) {
       this.checkbox.disabled = !!newValue;
     }
+  }
+
+  preventChange() {
+    this.checked = !this.checked;
   }
 }

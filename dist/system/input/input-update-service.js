@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export, _context) {
   "use strict";
 

@@ -340,18 +340,6 @@ Object.keys(_dropdown).forEach(function (key) {
   });
 });
 
-var _dropdownFix = require('./dropdown/dropdown-fix');
-
-Object.keys(_dropdownFix).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _dropdownFix[key];
-    }
-  });
-});
-
 var _fab = require('./fab/fab');
 
 Object.keys(_fab).forEach(function (key) {
@@ -660,6 +648,18 @@ Object.keys(_tapTarget).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _tapTarget[key];
+    }
+  });
+});
+
+var _timepicker = require('./timepicker/timepicker');
+
+Object.keys(_timepicker).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _timepicker[key];
     }
   });
 });

@@ -91,19 +91,19 @@ export class SampleRunner {
       let split = fileName.split('.');
       let ext = split[split.length - 1];
       switch (ext) {
-      default:
-      case 'html':
-        language = 'html';
-        break;
-      case 'js':
-        language = 'javascript';
-        break;
-      case 'css':
-        language = 'css';
-        break;
-      case 'md':
-        language = 'markdown';
-        break;
+        default:
+        case 'html':
+          language = 'html';
+          break;
+        case 'js':
+          language = 'javascript';
+          break;
+        case 'css':
+          language = 'css';
+          break;
+        case 'md':
+          language = 'markdown';
+          break;
       }
 
       this.tabs.push({

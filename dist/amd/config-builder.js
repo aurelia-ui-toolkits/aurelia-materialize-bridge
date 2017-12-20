@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-pal', './dropdown/dropdown-fix'], function (exports, _aureliaPal, _dropdownFix) {
+define(['exports', 'aurelia-pal'], function (exports, _aureliaPal) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -23,7 +23,7 @@ define(['exports', 'aurelia-pal', './dropdown/dropdown-fix'], function (exports,
     }
 
     ConfigBuilder.prototype.useAll = function useAll() {
-      return this.useAutoComplete().useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useScrollSpy().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTapTarget().useTooltip().useTransitions().useWaves().useWell();
+      return this.useAutoComplete().useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useScrollSpy().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTapTarget().useTimePicker().useTooltip().useTransitions().useWaves().useWell();
     };
 
     ConfigBuilder.prototype.useAutoComplete = function useAutoComplete() {
@@ -112,7 +112,8 @@ define(['exports', 'aurelia-pal', './dropdown/dropdown-fix'], function (exports,
     };
 
     ConfigBuilder.prototype.useDropdownFix = function useDropdownFix() {
-      (0, _dropdownFix.applyMaterializeDropdownFix)();
+      console.warn('The method useDropdownFix has no effect in this version and will be removed in a future version.');
+
       return this;
     };
 
@@ -218,6 +219,11 @@ define(['exports', 'aurelia-pal', './dropdown/dropdown-fix'], function (exports,
 
     ConfigBuilder.prototype.useTapTarget = function useTapTarget() {
       this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./tap-target/tap-target'));
+      return this;
+    };
+
+    ConfigBuilder.prototype.useTimePicker = function useTimePicker() {
+      this.globalResources.push(_aureliaPal.PLATFORM.moduleName('./timepicker/timepicker'));
       return this;
     };
 

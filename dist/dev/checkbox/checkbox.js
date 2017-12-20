@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export, _context) {
   "use strict";
 
@@ -71,6 +69,14 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       _export('MdCheckbox', MdCheckbox = (_dec = customElement('md-checkbox'), _dec2 = inject(Element), _dec3 = bindable({
         defaultBindingMode: bindingMode.twoWay
       }), _dec4 = bindable(), _dec5 = bindable(), _dec6 = bindable(), _dec7 = bindable(), _dec8 = bindable(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
+        MdCheckbox.prototype.mdReadonlyChanged = function mdReadonlyChanged() {
+          if (this.mdReadonly) {
+            this.checkbox.addEventListener('change', this.preventChange);
+          } else {
+            this.checkbox.removeEventListener('change', this.preventChange);
+          }
+        };
+
         function MdCheckbox(element) {
           _classCallCheck(this, MdCheckbox);
 
@@ -114,6 +120,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           if (this.checkbox) {
             this.checkbox.disabled = !!newValue;
           }
+        };
+
+        MdCheckbox.prototype.preventChange = function preventChange() {
+          this.checked = !this.checked;
         };
 
         return MdCheckbox;

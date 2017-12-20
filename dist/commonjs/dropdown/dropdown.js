@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdDropdown = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class3, _temp;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _class3, _temp;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -82,6 +82,8 @@ var MdDropdown = exports.MdDropdown = (_dec = (0, _aureliaTemplating.customAttri
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec12 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec13 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
   function MdDropdown(element) {
     _classCallCheck(this, MdDropdown);
@@ -106,6 +108,8 @@ var MdDropdown = exports.MdDropdown = (_dec = (0, _aureliaTemplating.customAttri
 
     _initDefineProp(this, 'outDuration', _descriptor10, this);
 
+    _initDefineProp(this, 'stopPropagation', _descriptor11, this);
+
     this.element = element;
     this.attributeManager = new _attributeManager.AttributeManager(this.element);
   }
@@ -126,7 +130,8 @@ var MdDropdown = exports.MdDropdown = (_dec = (0, _aureliaTemplating.customAttri
       gutter: parseInt(this.gutter, 10),
       hover: (0, _attributes.getBooleanFromAttributeValue)(this.hover),
       inDuration: parseInt(this.inDuration, 10),
-      outDuration: parseInt(this.outDuration, 10)
+      outDuration: parseInt(this.outDuration, 10),
+      stopPropagation: (0, _attributes.getBooleanFromAttributeValue)(this.stopPropagation)
     });
   };
 
@@ -134,6 +139,14 @@ var MdDropdown = exports.MdDropdown = (_dec = (0, _aureliaTemplating.customAttri
     this.attributeManager.removeAttributes('data-activates');
     this.attributeManager.removeClasses('dropdown-button');
     this.contentAttributeManager.removeClasses('dropdown-content');
+  };
+
+  MdDropdown.prototype.open = function open() {
+    $(this.element).dropdown('open');
+  };
+
+  MdDropdown.prototype.close = function close() {
+    $(this.element).dropdown('close');
   };
 
   MdDropdown.prototype.handleActivateElement = function handleActivateElement() {
@@ -197,5 +210,10 @@ var MdDropdown = exports.MdDropdown = (_dec = (0, _aureliaTemplating.customAttri
   enumerable: true,
   initializer: function initializer() {
     return 225;
+  }
+}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'stopPropagation', [_dec13], {
+  enumerable: true,
+  initializer: function initializer() {
+    return false;
   }
 })), _class2)) || _class) || _class);

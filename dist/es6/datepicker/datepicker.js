@@ -75,8 +75,8 @@ export class MdDatePicker {
     }
     this.picker = $(this.element).pickadate(options).pickadate('picker');
     this.picker.on({
-      'close': this.onClose.bind(this),
-      'set': this.onSet.bind(this)
+      'close': this.onClose.bind(this)
+      // 'set': this.onSet.bind(this)
     });
 
     if (this.value) {
@@ -86,6 +86,7 @@ export class MdDatePicker {
       $(this.element).on('keydown', (e)=> {
         if (e.keyCode === 13 || e.keyCode === 9) {
           if (this.parseDate($(this.element).val())) {
+            this.updateValue();
             this.closeDatePicker();
           } else {
             this.openDatePicker();
@@ -150,9 +151,13 @@ export class MdDatePicker {
     $(this.element).pickadate('close');
   }
 
-  onClose() {
+  updateValue() {
     let selected = this.picker.get('select');
     this.value = selected ? selected.obj : null;
+  }
+
+  onClose() {
+    this.updateValue();
     fireEvent(this.element, 'blur');
   }
 
@@ -161,14 +166,14 @@ export class MdDatePicker {
     this.openDatePicker();
   }
 
-  onSet(value) {
-    //handle this ourselves since Dogfalo removed this functionality from the original plugin
-    if (this.options && this.options.closeOnSelect && value.select) {
-      this.value = value.select;
-      this.picker.close();
-    }
-    // this.value = new Date(value.select);
-  }
+  // onSet(value) {
+  //   //handle this ourselves since Dogfalo removed this functionality from the original plugin
+  //   if (this.options && this.options.closeOnSelect && value.select) {
+  //     this.value = value.select;
+  //     this.picker.close();
+  //   }
+  //   // this.value = new Date(value.select);
+  // }
 
   valueChanged(newValue) {
     if (this.options.max && newValue > this.options.max) {

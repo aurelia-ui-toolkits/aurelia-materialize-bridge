@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-templating', 'aurelia-dependency-injection'], function (_export, _context) {
   "use strict";
 
@@ -54,6 +52,12 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection'], function
             var vm = i.au['md-collection-selector'].viewModel;
             vm.isSelected = !vm.mdDisabled;
           });
+        };
+
+        MdCollection.prototype.toggleIndex = function toggleIndex(index) {
+          var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+          var vm = items[index].au['md-collection-selector'].viewModel;
+          vm.isSelected = !vm.isSelected;
         };
 
         return MdCollection;

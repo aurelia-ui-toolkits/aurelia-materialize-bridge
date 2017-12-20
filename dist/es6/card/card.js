@@ -16,11 +16,20 @@ export class MdCard {
     defaultBindingMode: bindingMode.oneTime
   }) mdReveal = false;
   @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdAction = false;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdStickyAction = false;
+  @bindable({
     defaultBindingMode: bindingMode.oneWay
   }) mdSize = '';
   @bindable({
     defaultBindingMode: bindingMode.oneTime
   }) mdTitle;
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdClass;
 
   constructor(element) {
     this.element = element;
@@ -29,5 +38,7 @@ export class MdCard {
   attached() {
     this.mdHorizontal = getBooleanFromAttributeValue(this.mdHorizontal);
     this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
+    this.mdAction = getBooleanFromAttributeValue(this.mdAction);
+    this.mdStickyAction = getBooleanFromAttributeValue(this.mdStickyAction);
   }
 }

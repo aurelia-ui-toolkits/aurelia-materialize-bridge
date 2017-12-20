@@ -1,9 +1,7 @@
-'use strict';
-
-System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (_export, _context) {
+System.register(['aurelia-templating', 'aurelia-logging', 'aurelia-dependency-injection', '../common/attributes', '../common/events'], function (_export, _context) {
   "use strict";
 
-  var bindable, customAttribute, ObserverLocator, inject, getBooleanFromAttributeValue, getLogger, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdSidenavCollapse;
+  var bindable, customAttribute, getLogger, inject, getBooleanFromAttributeValue, fireMaterializeEvent, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, MdSidenavCollapse;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -58,24 +56,23 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     setters: [function (_aureliaTemplating) {
       bindable = _aureliaTemplating.bindable;
       customAttribute = _aureliaTemplating.customAttribute;
-    }, function (_aureliaBinding) {
-      ObserverLocator = _aureliaBinding.ObserverLocator;
+    }, function (_aureliaLogging) {
+      getLogger = _aureliaLogging.getLogger;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
     }, function (_commonAttributes) {
       getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
-    }, function (_aureliaLogging) {
-      getLogger = _aureliaLogging.getLogger;
+    }, function (_commonEvents) {
+      fireMaterializeEvent = _commonEvents.fireMaterializeEvent;
     }],
     execute: function () {
-      _export('MdSidenavCollapse', MdSidenavCollapse = (_dec = customAttribute('md-sidenav-collapse'), _dec2 = inject(Element, ObserverLocator), _dec3 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
-        function MdSidenavCollapse(element, observerLocator) {
+      _export('MdSidenavCollapse', MdSidenavCollapse = (_dec = customAttribute('md-sidenav-collapse'), _dec2 = inject(Element), _dec3 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
+        function MdSidenavCollapse(element) {
           _classCallCheck(this, MdSidenavCollapse);
 
           _initDefineProp(this, 'ref', _descriptor, this);
 
           this.element = element;
-          this.observerLocator = observerLocator;
           this.log = getLogger('md-sidenav-collapse');
         }
 
@@ -83,17 +80,19 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           var _this = this;
 
           this.ref.whenAttached.then(function () {
-
             var closeOnClick = _this.ref.mdFixed && window.innerWidth > 992 ? false : getBooleanFromAttributeValue(_this.ref.mdCloseOnClick);
+
+            _this.onHide = _this.onHide.bind(_this);
+            _this.onShow = _this.onShow.bind(_this);
 
             _this.element.setAttribute('data-activates', _this.ref.controlId);
             var sideNavConfig = {
               edge: _this.ref.mdEdge || 'left',
-
               closeOnClick: closeOnClick,
-              menuWidth: parseInt(_this.ref.mdWidth, 10)
+              menuWidth: parseInt(_this.ref.mdWidth, 10),
+              onClose: _this.onHide,
+              onOpen: _this.onShow
             };
-
             $(_this.element).sideNav(sideNavConfig);
           });
         };
@@ -106,6 +105,14 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
         MdSidenavCollapse.prototype.hide = function hide() {
           $(this.element).sideNav('hide');
+        };
+
+        MdSidenavCollapse.prototype.onShow = function onShow(el) {
+          fireMaterializeEvent(this.ref.element, 'sidenav-show');
+        };
+
+        MdSidenavCollapse.prototype.onHide = function onHide(el) {
+          fireMaterializeEvent(this.ref.element, 'sidenav-hide');
         };
 
         return MdSidenavCollapse;

@@ -97,11 +97,11 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
         }
       case 'SELECT':
         {
-          var selectWrapper = element.closest('.select-wrapper');
-          if (selectWrapper) {
-            input = selectWrapper.querySelector('input');
+          var inputField = element.closest('.input-field');
+          if (inputField) {
+            input = inputField.querySelector('input');
+            validationContainer = inputField;
           }
-          validationContainer = selectWrapper;
           break;
         }
       case 'INPUT':
@@ -151,15 +151,15 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
         }
       case 'SELECT':
         {
-          var selectWrapper = element.closest('.select-wrapper');
-          if (!selectWrapper) {
+          var inputField = element.closest('.input-field');
+          if (!inputField) {
             return;
           }
-          var _input = selectWrapper.querySelector('input');
+          var _input = inputField.querySelector('input');
           if (_input) {
             result.target = _input;
             if (!(_input.hasAttribute('data-show-errortext') && _input.getAttribute('data-show-errortext') === 'false')) {
-              this.addMessage(selectWrapper, result);
+              this.addMessage(inputField, result);
             }
           }
           break;
@@ -190,16 +190,12 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
         }
       case 'SELECT':
         {
-          var selectWrapper = element.closest('.select-wrapper');
-          if (!selectWrapper) {
+          var inputField = element.closest('.input-field');
+          if (!inputField) {
             return;
           }
 
-          if ($(selectWrapper.parentElement).children().hasClass('md-input-validation')) {
-            this.removeMessage(selectWrapper.parentElement, result);
-          } else {
-            this.removeMessage(selectWrapper, result);
-          }
+          this.removeMessage(inputField, result);
           break;
         }
       case 'INPUT':

@@ -20,7 +20,7 @@ export class MaterializeFormValidationRenderer {
 
   underlineInput(element, render) {
     let input;
- 	  let validationContainer;
+    let validationContainer;
     switch (element.tagName) {
       case 'MD-INPUT': {
         input = element.querySelector('input') || element.querySelector('textarea');
@@ -28,11 +28,11 @@ export class MaterializeFormValidationRenderer {
         break;
       }
       case 'SELECT': {
-        const selectWrapper = element.closest('.select-wrapper');
-        if (selectWrapper) {
-          input = selectWrapper.querySelector('input');
+        const inputField = element.closest('.input-field');
+        if (inputField) {
+          input = inputField.querySelector('input');
+          validationContainer = inputField;
         }
-        validationContainer = selectWrapper;
         break;
       }
       case 'INPUT': {
@@ -47,13 +47,11 @@ export class MaterializeFormValidationRenderer {
         if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
           input.classList.remove('invalid');
           input.classList.add('valid');
-        }
-        else {
+        } else {
           input.classList.remove('valid');
           input.classList.add('invalid');
         }
-      }
-      else {
+      } else {
         input.classList.remove('valid');
         input.classList.remove('invalid');
       }
@@ -65,45 +63,45 @@ export class MaterializeFormValidationRenderer {
       return;
     }
     switch (element.tagName) {
-    case 'MD-INPUT': {
-      let label = element.querySelector('label');
-      let input = element.querySelector('input') || element.querySelector('textarea');
-      if (label) {
-        label.removeAttribute('data-error');
-      }
-      if (input) {
-        result.target = input;
-        if (input.hasAttribute('data-show-errortext')) {
-          this.addMessage(element, result);
+      case 'MD-INPUT': {
+        let label = element.querySelector('label');
+        let input = element.querySelector('input') || element.querySelector('textarea');
+        if (label) {
+          label.removeAttribute('data-error');
         }
-      }
-      break;
-    }
-    case 'SELECT': {
-      const selectWrapper = element.closest('.select-wrapper');
-      if (!selectWrapper) {
-        return;
-      }
-      let input = selectWrapper.querySelector('input');
-      if (input) {
-        result.target = input;
-        if (!(input.hasAttribute('data-show-errortext') &&
-            input.getAttribute('data-show-errortext') === 'false')) {
-          this.addMessage(selectWrapper, result);
+        if (input) {
+          result.target = input;
+          if (input.hasAttribute('data-show-errortext')) {
+            this.addMessage(element, result);
+          }
         }
+        break;
       }
-      break;
-    }
-    case 'INPUT' : {
-      if (element.hasAttribute('md-datepicker')) {
-        if (!(element.hasAttribute('data-show-errortext') &&
-            element.getAttribute('data-show-errortext') === 'false')) {
-          this.addMessage(element.parentNode, result);
+      case 'SELECT': {
+        const inputField = element.closest('.input-field');
+        if (!inputField) {
+          return;
         }
+        let input = inputField.querySelector('input');
+        if (input) {
+          result.target = input;
+          if (!(input.hasAttribute('data-show-errortext') &&
+                input.getAttribute('data-show-errortext') === 'false')) {
+            this.addMessage(inputField, result);
+          }
+        }
+        break;
       }
-      break;
-    }
-    default: break;
+      case 'INPUT' : {
+        if (element.hasAttribute('md-datepicker')) {
+          if (!(element.hasAttribute('data-show-errortext') &&
+              element.getAttribute('data-show-errortext') === 'false')) {
+            this.addMessage(element.parentNode, result);
+          }
+        }
+        break;
+      }
+      default: break;
     }
   }
 
@@ -112,30 +110,26 @@ export class MaterializeFormValidationRenderer {
       return;
     }
     switch (element.tagName) {
-    case 'MD-INPUT': {
-      this.removeMessage(element, result);
-      break;
-    }
-    case 'SELECT': {
-      const selectWrapper = element.closest('.select-wrapper');
-      if (!selectWrapper) {
-        return;
+      case 'MD-INPUT': {
+        this.removeMessage(element, result);
+        break;
       }
+      case 'SELECT': {
+        const inputField = element.closest('.input-field');
+        if (!inputField) {
+          return;
+        }
 
-      if ($(selectWrapper.parentElement).children().hasClass('md-input-validation') ) {
-        this.removeMessage(selectWrapper.parentElement, result);
-      } else {
-        this.removeMessage(selectWrapper, result);
+        this.removeMessage(inputField, result);
+        break;
       }
-      break;
-    }
-    case 'INPUT' : {
-      if (element.hasAttribute('md-datepicker')) {
-        this.removeMessage(element.parentNode, result);
+      case 'INPUT' : {
+        if (element.hasAttribute('md-datepicker')) {
+          this.removeMessage(element.parentNode, result);
+        }
+        break;
       }
-      break;
-    }
-    default: break;
+      default: break;
     }
   }
 

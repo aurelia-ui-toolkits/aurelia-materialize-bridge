@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-templating'], function (_export, _context) {
   "use strict";
 
@@ -82,7 +80,9 @@ System.register(['aurelia-templating'], function (_export, _context) {
         }
       }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, 'mdSuccessColor', [_dec4], {
         enumerable: true,
-        initializer: null
+        initializer: function initializer() {
+          return '#26a69a';
+        }
       })), _class)));
 
       _export('MdColors', MdColors);

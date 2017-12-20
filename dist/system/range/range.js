@@ -1,9 +1,7 @@
-'use strict';
-
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export, _context) {
   "use strict";
 
-  var bindable, customElement, bindingMode, inject, getLogger, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, MdRange;
+  var bindable, customElement, bindingMode, inject, getLogger, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, MdRange;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -66,43 +64,50 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
       getLogger = _aureliaLogging.getLogger;
     }],
     execute: function () {
-      _export('MdRange', MdRange = (_dec = customElement('md-range'), _dec2 = inject(Element), _dec3 = bindable({
-        defaultBindingMode: bindingMode.oneTime
-      }), _dec4 = bindable({
+      _export('MdRange', MdRange = (_dec = customElement('md-range'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable({
         defaultBindingMode: bindingMode.oneTime
       }), _dec5 = bindable({
         defaultBindingMode: bindingMode.oneTime
       }), _dec6 = bindable({
+        defaultBindingMode: bindingMode.oneTime
+      }), _dec7 = bindable({
         defaultBindingMode: bindingMode.twoWay
       }), _dec(_class = _dec2(_class = (_class2 = function MdRange(element) {
         _classCallCheck(this, MdRange);
 
-        _initDefineProp(this, 'mdMin', _descriptor, this);
+        _initDefineProp(this, 'mdReadonly', _descriptor, this);
 
-        _initDefineProp(this, 'mdMax', _descriptor2, this);
+        _initDefineProp(this, 'mdMin', _descriptor2, this);
 
-        _initDefineProp(this, 'mdStep', _descriptor3, this);
+        _initDefineProp(this, 'mdMax', _descriptor3, this);
 
-        _initDefineProp(this, 'mdValue', _descriptor4, this);
+        _initDefineProp(this, 'mdStep', _descriptor4, this);
+
+        _initDefineProp(this, 'mdValue', _descriptor5, this);
 
         this.element = element;
         this.log = getLogger('md-range');
-      }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdMin', [_dec3], {
+      }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdReadonly', [_dec3], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
+        }
+      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdMin', [_dec4], {
         enumerable: true,
         initializer: function initializer() {
           return 0;
         }
-      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdMax', [_dec4], {
+      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdMax', [_dec5], {
         enumerable: true,
         initializer: function initializer() {
           return 100;
         }
-      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdStep', [_dec5], {
+      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdStep', [_dec6], {
         enumerable: true,
         initializer: function initializer() {
           return 1;
         }
-      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec6], {
+      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec7], {
         enumerable: true,
         initializer: function initializer() {
           return 0;

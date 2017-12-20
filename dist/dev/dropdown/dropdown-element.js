@@ -1,9 +1,7 @@
-'use strict';
-
 System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes'], function (_export, _context) {
   "use strict";
 
-  var bindable, customElement, bindingMode, inject, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _class3, _temp, MdDropdownElement;
+  var bindable, customElement, bindingMode, inject, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _class3, _temp, MdDropdownElement;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -82,6 +80,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         defaultBindingMode: bindingMode.oneTime
       }), _dec10 = bindable({
         defaultBindingMode: bindingMode.oneTime
+      }), _dec11 = bindable({
+        defaultBindingMode: bindingMode.oneTime
       }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
         function MdDropdownElement(element) {
           _classCallCheck(this, MdDropdownElement);
@@ -102,6 +102,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
           _initDefineProp(this, 'outDuration', _descriptor8, this);
 
+          _initDefineProp(this, 'stopPropagation', _descriptor9, this);
+
           this.element = element;
           this.controlId = 'md-dropdown-' + MdDropdown.id++;
         }
@@ -114,7 +116,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             gutter: parseInt(this.gutter, 10),
             hover: getBooleanFromAttributeValue(this.hover),
             inDuration: parseInt(this.inDuration, 10),
-            outDuration: parseInt(this.outDuration, 10)
+            outDuration: parseInt(this.outDuration, 10),
+            stopPropagation: getBooleanFromAttributeValue(this.stopPropagation)
           });
         };
 
@@ -156,6 +159,11 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         enumerable: true,
         initializer: function initializer() {
           return 225;
+        }
+      }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'stopPropagation', [_dec11], {
+        enumerable: true,
+        initializer: function initializer() {
+          return false;
         }
       })), _class2)) || _class) || _class));
 

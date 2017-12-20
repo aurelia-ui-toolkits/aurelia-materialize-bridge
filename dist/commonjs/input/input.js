@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdInput = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _class3, _temp;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _class3, _temp;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -78,7 +78,9 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec12 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec13 = (0, _aureliaTemplating.bindable)(), _dec14 = (0, _aureliaTemplating.bindable)(), _dec15 = (0, _aureliaTemplating.bindable)({
+}), _dec13 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec14 = (0, _aureliaTemplating.bindable)(), _dec15 = (0, _aureliaTemplating.bindable)(), _dec16 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
 }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
   function MdInput(element, taskQueue, updateService) {
@@ -104,11 +106,13 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
 
     _initDefineProp(this, 'mdShowErrortext', _descriptor10, this);
 
-    _initDefineProp(this, 'mdValidateError', _descriptor11, this);
+    _initDefineProp(this, 'mdUpdateTrigger', _descriptor11, this);
 
-    _initDefineProp(this, 'mdValidateSuccess', _descriptor12, this);
+    _initDefineProp(this, 'mdValidateError', _descriptor12, this);
 
-    _initDefineProp(this, 'mdValue', _descriptor13, this);
+    _initDefineProp(this, 'mdValidateSuccess', _descriptor13, this);
+
+    _initDefineProp(this, 'mdValue', _descriptor14, this);
 
     this._suspendUpdate = false;
 
@@ -241,13 +245,18 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
   initializer: function initializer() {
     return true;
   }
-}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateError', [_dec13], {
+}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'mdUpdateTrigger', [_dec13], {
+  enumerable: true,
+  initializer: function initializer() {
+    return ['input', 'change'];
+  }
+}), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateError', [_dec14], {
   enumerable: true,
   initializer: null
-}), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateSuccess', [_dec14], {
+}), _descriptor13 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateSuccess', [_dec15], {
   enumerable: true,
   initializer: null
-}), _descriptor13 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec15], {
+}), _descriptor14 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec16], {
   enumerable: true,
   initializer: function initializer() {
     return '';

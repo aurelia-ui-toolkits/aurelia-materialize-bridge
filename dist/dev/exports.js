@@ -1,6 +1,4 @@
-'use strict';
-
-System.register(['./autocomplete/autocomplete', './badge/badge', './box/box', './breadcrumbs/breadcrumbs', './breadcrumbs/instructionFilter', './button/button', './card/card', './carousel/carousel-item', './carousel/carousel', './char-counter/char-counter', './checkbox/checkbox', './chip/chip', './chip/chips', './collapsible/collapsible', './collection/collection-header', './collection/collection-item', './collection/collection', './collection/md-collection-selector', './colors/colorValueConverters', './colors/md-colors', './common/attributeManager', './common/attributes', './common/constants', './common/events', './datepicker/datepicker-default-parser', './datepicker/datepicker', './dropdown/dropdown-element', './dropdown/dropdown', './dropdown/dropdown-fix', './fab/fab', './file/file', './footer/footer', './input/input-prefix', './input/input-update-service', './input/input', './modal/modal', './modal/modal-trigger', './navbar/navbar', './pagination/pagination', './parallax/parallax', './progress/progress', './pushpin/pushpin', './radio/radio', './range/range', './scrollfire/scrollfire-patch', './scrollfire/scrollfire-target', './scrollfire/scrollfire', './scrollspy/scrollspy', './select/select', './sidenav/sidenav-collapse', './sidenav/sidenav', './slider/slider', './switch/switch', './tabs/tabs', './tap-target/tap-target', './toast/toastService', './tooltip/tooltip', './transitions/fadein-image', './transitions/staggered-list', './validation/validationRenderer', './waves/waves'], function (_export, _context) {
+System.register(['./autocomplete/autocomplete', './badge/badge', './box/box', './breadcrumbs/breadcrumbs', './breadcrumbs/instructionFilter', './button/button', './card/card', './carousel/carousel-item', './carousel/carousel', './char-counter/char-counter', './checkbox/checkbox', './chip/chip', './chip/chips', './collapsible/collapsible', './collection/collection-header', './collection/collection-item', './collection/collection', './collection/md-collection-selector', './colors/colorValueConverters', './colors/md-colors', './common/attributeManager', './common/attributes', './common/constants', './common/events', './datepicker/datepicker-default-parser', './datepicker/datepicker', './dropdown/dropdown-element', './dropdown/dropdown', './fab/fab', './file/file', './footer/footer', './input/input-prefix', './input/input-update-service', './input/input', './modal/modal', './modal/modal-trigger', './navbar/navbar', './pagination/pagination', './parallax/parallax', './progress/progress', './pushpin/pushpin', './radio/radio', './range/range', './scrollfire/scrollfire-patch', './scrollfire/scrollfire-target', './scrollfire/scrollfire', './scrollspy/scrollspy', './select/select', './sidenav/sidenav-collapse', './sidenav/sidenav', './slider/slider', './switch/switch', './tabs/tabs', './tap-target/tap-target', './timepicker/timepicker', './toast/toastService', './tooltip/tooltip', './transitions/fadein-image', './transitions/staggered-list', './validation/validationRenderer', './waves/waves'], function (_export, _context) {
   "use strict";
 
   return {
@@ -228,219 +226,219 @@ System.register(['./autocomplete/autocomplete', './badge/badge', './box/box', '.
       }
 
       _export(_exportObj28);
-    }, function (_dropdownDropdownFix) {
+    }, function (_fabFab) {
       var _exportObj29 = {};
 
-      for (var _key29 in _dropdownDropdownFix) {
-        if (_key29 !== "default" && _key29 !== "__esModule") _exportObj29[_key29] = _dropdownDropdownFix[_key29];
+      for (var _key29 in _fabFab) {
+        if (_key29 !== "default" && _key29 !== "__esModule") _exportObj29[_key29] = _fabFab[_key29];
       }
 
       _export(_exportObj29);
-    }, function (_fabFab) {
+    }, function (_fileFile) {
       var _exportObj30 = {};
 
-      for (var _key30 in _fabFab) {
-        if (_key30 !== "default" && _key30 !== "__esModule") _exportObj30[_key30] = _fabFab[_key30];
+      for (var _key30 in _fileFile) {
+        if (_key30 !== "default" && _key30 !== "__esModule") _exportObj30[_key30] = _fileFile[_key30];
       }
 
       _export(_exportObj30);
-    }, function (_fileFile) {
+    }, function (_footerFooter) {
       var _exportObj31 = {};
 
-      for (var _key31 in _fileFile) {
-        if (_key31 !== "default" && _key31 !== "__esModule") _exportObj31[_key31] = _fileFile[_key31];
+      for (var _key31 in _footerFooter) {
+        if (_key31 !== "default" && _key31 !== "__esModule") _exportObj31[_key31] = _footerFooter[_key31];
       }
 
       _export(_exportObj31);
-    }, function (_footerFooter) {
+    }, function (_inputInputPrefix) {
       var _exportObj32 = {};
 
-      for (var _key32 in _footerFooter) {
-        if (_key32 !== "default" && _key32 !== "__esModule") _exportObj32[_key32] = _footerFooter[_key32];
+      for (var _key32 in _inputInputPrefix) {
+        if (_key32 !== "default" && _key32 !== "__esModule") _exportObj32[_key32] = _inputInputPrefix[_key32];
       }
 
       _export(_exportObj32);
-    }, function (_inputInputPrefix) {
+    }, function (_inputInputUpdateService) {
       var _exportObj33 = {};
 
-      for (var _key33 in _inputInputPrefix) {
-        if (_key33 !== "default" && _key33 !== "__esModule") _exportObj33[_key33] = _inputInputPrefix[_key33];
+      for (var _key33 in _inputInputUpdateService) {
+        if (_key33 !== "default" && _key33 !== "__esModule") _exportObj33[_key33] = _inputInputUpdateService[_key33];
       }
 
       _export(_exportObj33);
-    }, function (_inputInputUpdateService) {
+    }, function (_inputInput) {
       var _exportObj34 = {};
 
-      for (var _key34 in _inputInputUpdateService) {
-        if (_key34 !== "default" && _key34 !== "__esModule") _exportObj34[_key34] = _inputInputUpdateService[_key34];
+      for (var _key34 in _inputInput) {
+        if (_key34 !== "default" && _key34 !== "__esModule") _exportObj34[_key34] = _inputInput[_key34];
       }
 
       _export(_exportObj34);
-    }, function (_inputInput) {
+    }, function (_modalModal) {
       var _exportObj35 = {};
 
-      for (var _key35 in _inputInput) {
-        if (_key35 !== "default" && _key35 !== "__esModule") _exportObj35[_key35] = _inputInput[_key35];
+      for (var _key35 in _modalModal) {
+        if (_key35 !== "default" && _key35 !== "__esModule") _exportObj35[_key35] = _modalModal[_key35];
       }
 
       _export(_exportObj35);
-    }, function (_modalModal) {
+    }, function (_modalModalTrigger) {
       var _exportObj36 = {};
 
-      for (var _key36 in _modalModal) {
-        if (_key36 !== "default" && _key36 !== "__esModule") _exportObj36[_key36] = _modalModal[_key36];
+      for (var _key36 in _modalModalTrigger) {
+        if (_key36 !== "default" && _key36 !== "__esModule") _exportObj36[_key36] = _modalModalTrigger[_key36];
       }
 
       _export(_exportObj36);
-    }, function (_modalModalTrigger) {
+    }, function (_navbarNavbar) {
       var _exportObj37 = {};
 
-      for (var _key37 in _modalModalTrigger) {
-        if (_key37 !== "default" && _key37 !== "__esModule") _exportObj37[_key37] = _modalModalTrigger[_key37];
+      for (var _key37 in _navbarNavbar) {
+        if (_key37 !== "default" && _key37 !== "__esModule") _exportObj37[_key37] = _navbarNavbar[_key37];
       }
 
       _export(_exportObj37);
-    }, function (_navbarNavbar) {
+    }, function (_paginationPagination) {
       var _exportObj38 = {};
 
-      for (var _key38 in _navbarNavbar) {
-        if (_key38 !== "default" && _key38 !== "__esModule") _exportObj38[_key38] = _navbarNavbar[_key38];
+      for (var _key38 in _paginationPagination) {
+        if (_key38 !== "default" && _key38 !== "__esModule") _exportObj38[_key38] = _paginationPagination[_key38];
       }
 
       _export(_exportObj38);
-    }, function (_paginationPagination) {
+    }, function (_parallaxParallax) {
       var _exportObj39 = {};
 
-      for (var _key39 in _paginationPagination) {
-        if (_key39 !== "default" && _key39 !== "__esModule") _exportObj39[_key39] = _paginationPagination[_key39];
+      for (var _key39 in _parallaxParallax) {
+        if (_key39 !== "default" && _key39 !== "__esModule") _exportObj39[_key39] = _parallaxParallax[_key39];
       }
 
       _export(_exportObj39);
-    }, function (_parallaxParallax) {
+    }, function (_progressProgress) {
       var _exportObj40 = {};
 
-      for (var _key40 in _parallaxParallax) {
-        if (_key40 !== "default" && _key40 !== "__esModule") _exportObj40[_key40] = _parallaxParallax[_key40];
+      for (var _key40 in _progressProgress) {
+        if (_key40 !== "default" && _key40 !== "__esModule") _exportObj40[_key40] = _progressProgress[_key40];
       }
 
       _export(_exportObj40);
-    }, function (_progressProgress) {
+    }, function (_pushpinPushpin) {
       var _exportObj41 = {};
 
-      for (var _key41 in _progressProgress) {
-        if (_key41 !== "default" && _key41 !== "__esModule") _exportObj41[_key41] = _progressProgress[_key41];
+      for (var _key41 in _pushpinPushpin) {
+        if (_key41 !== "default" && _key41 !== "__esModule") _exportObj41[_key41] = _pushpinPushpin[_key41];
       }
 
       _export(_exportObj41);
-    }, function (_pushpinPushpin) {
+    }, function (_radioRadio) {
       var _exportObj42 = {};
 
-      for (var _key42 in _pushpinPushpin) {
-        if (_key42 !== "default" && _key42 !== "__esModule") _exportObj42[_key42] = _pushpinPushpin[_key42];
+      for (var _key42 in _radioRadio) {
+        if (_key42 !== "default" && _key42 !== "__esModule") _exportObj42[_key42] = _radioRadio[_key42];
       }
 
       _export(_exportObj42);
-    }, function (_radioRadio) {
+    }, function (_rangeRange) {
       var _exportObj43 = {};
 
-      for (var _key43 in _radioRadio) {
-        if (_key43 !== "default" && _key43 !== "__esModule") _exportObj43[_key43] = _radioRadio[_key43];
+      for (var _key43 in _rangeRange) {
+        if (_key43 !== "default" && _key43 !== "__esModule") _exportObj43[_key43] = _rangeRange[_key43];
       }
 
       _export(_exportObj43);
-    }, function (_rangeRange) {
+    }, function (_scrollfireScrollfirePatch) {
       var _exportObj44 = {};
 
-      for (var _key44 in _rangeRange) {
-        if (_key44 !== "default" && _key44 !== "__esModule") _exportObj44[_key44] = _rangeRange[_key44];
+      for (var _key44 in _scrollfireScrollfirePatch) {
+        if (_key44 !== "default" && _key44 !== "__esModule") _exportObj44[_key44] = _scrollfireScrollfirePatch[_key44];
       }
 
       _export(_exportObj44);
-    }, function (_scrollfireScrollfirePatch) {
+    }, function (_scrollfireScrollfireTarget) {
       var _exportObj45 = {};
 
-      for (var _key45 in _scrollfireScrollfirePatch) {
-        if (_key45 !== "default" && _key45 !== "__esModule") _exportObj45[_key45] = _scrollfireScrollfirePatch[_key45];
+      for (var _key45 in _scrollfireScrollfireTarget) {
+        if (_key45 !== "default" && _key45 !== "__esModule") _exportObj45[_key45] = _scrollfireScrollfireTarget[_key45];
       }
 
       _export(_exportObj45);
-    }, function (_scrollfireScrollfireTarget) {
+    }, function (_scrollfireScrollfire) {
       var _exportObj46 = {};
 
-      for (var _key46 in _scrollfireScrollfireTarget) {
-        if (_key46 !== "default" && _key46 !== "__esModule") _exportObj46[_key46] = _scrollfireScrollfireTarget[_key46];
+      for (var _key46 in _scrollfireScrollfire) {
+        if (_key46 !== "default" && _key46 !== "__esModule") _exportObj46[_key46] = _scrollfireScrollfire[_key46];
       }
 
       _export(_exportObj46);
-    }, function (_scrollfireScrollfire) {
+    }, function (_scrollspyScrollspy) {
       var _exportObj47 = {};
 
-      for (var _key47 in _scrollfireScrollfire) {
-        if (_key47 !== "default" && _key47 !== "__esModule") _exportObj47[_key47] = _scrollfireScrollfire[_key47];
+      for (var _key47 in _scrollspyScrollspy) {
+        if (_key47 !== "default" && _key47 !== "__esModule") _exportObj47[_key47] = _scrollspyScrollspy[_key47];
       }
 
       _export(_exportObj47);
-    }, function (_scrollspyScrollspy) {
+    }, function (_selectSelect) {
       var _exportObj48 = {};
 
-      for (var _key48 in _scrollspyScrollspy) {
-        if (_key48 !== "default" && _key48 !== "__esModule") _exportObj48[_key48] = _scrollspyScrollspy[_key48];
+      for (var _key48 in _selectSelect) {
+        if (_key48 !== "default" && _key48 !== "__esModule") _exportObj48[_key48] = _selectSelect[_key48];
       }
 
       _export(_exportObj48);
-    }, function (_selectSelect) {
+    }, function (_sidenavSidenavCollapse) {
       var _exportObj49 = {};
 
-      for (var _key49 in _selectSelect) {
-        if (_key49 !== "default" && _key49 !== "__esModule") _exportObj49[_key49] = _selectSelect[_key49];
+      for (var _key49 in _sidenavSidenavCollapse) {
+        if (_key49 !== "default" && _key49 !== "__esModule") _exportObj49[_key49] = _sidenavSidenavCollapse[_key49];
       }
 
       _export(_exportObj49);
-    }, function (_sidenavSidenavCollapse) {
+    }, function (_sidenavSidenav) {
       var _exportObj50 = {};
 
-      for (var _key50 in _sidenavSidenavCollapse) {
-        if (_key50 !== "default" && _key50 !== "__esModule") _exportObj50[_key50] = _sidenavSidenavCollapse[_key50];
+      for (var _key50 in _sidenavSidenav) {
+        if (_key50 !== "default" && _key50 !== "__esModule") _exportObj50[_key50] = _sidenavSidenav[_key50];
       }
 
       _export(_exportObj50);
-    }, function (_sidenavSidenav) {
+    }, function (_sliderSlider) {
       var _exportObj51 = {};
 
-      for (var _key51 in _sidenavSidenav) {
-        if (_key51 !== "default" && _key51 !== "__esModule") _exportObj51[_key51] = _sidenavSidenav[_key51];
+      for (var _key51 in _sliderSlider) {
+        if (_key51 !== "default" && _key51 !== "__esModule") _exportObj51[_key51] = _sliderSlider[_key51];
       }
 
       _export(_exportObj51);
-    }, function (_sliderSlider) {
+    }, function (_switchSwitch) {
       var _exportObj52 = {};
 
-      for (var _key52 in _sliderSlider) {
-        if (_key52 !== "default" && _key52 !== "__esModule") _exportObj52[_key52] = _sliderSlider[_key52];
+      for (var _key52 in _switchSwitch) {
+        if (_key52 !== "default" && _key52 !== "__esModule") _exportObj52[_key52] = _switchSwitch[_key52];
       }
 
       _export(_exportObj52);
-    }, function (_switchSwitch) {
+    }, function (_tabsTabs) {
       var _exportObj53 = {};
 
-      for (var _key53 in _switchSwitch) {
-        if (_key53 !== "default" && _key53 !== "__esModule") _exportObj53[_key53] = _switchSwitch[_key53];
+      for (var _key53 in _tabsTabs) {
+        if (_key53 !== "default" && _key53 !== "__esModule") _exportObj53[_key53] = _tabsTabs[_key53];
       }
 
       _export(_exportObj53);
-    }, function (_tabsTabs) {
+    }, function (_tapTargetTapTarget) {
       var _exportObj54 = {};
 
-      for (var _key54 in _tabsTabs) {
-        if (_key54 !== "default" && _key54 !== "__esModule") _exportObj54[_key54] = _tabsTabs[_key54];
+      for (var _key54 in _tapTargetTapTarget) {
+        if (_key54 !== "default" && _key54 !== "__esModule") _exportObj54[_key54] = _tapTargetTapTarget[_key54];
       }
 
       _export(_exportObj54);
-    }, function (_tapTargetTapTarget) {
+    }, function (_timepickerTimepicker) {
       var _exportObj55 = {};
 
-      for (var _key55 in _tapTargetTapTarget) {
-        if (_key55 !== "default" && _key55 !== "__esModule") _exportObj55[_key55] = _tapTargetTapTarget[_key55];
+      for (var _key55 in _timepickerTimepicker) {
+        if (_key55 !== "default" && _key55 !== "__esModule") _exportObj55[_key55] = _timepickerTimepicker[_key55];
       }
 
       _export(_exportObj55);

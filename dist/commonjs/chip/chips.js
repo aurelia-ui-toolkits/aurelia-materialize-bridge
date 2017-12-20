@@ -66,7 +66,7 @@ var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)(
   function MdChips(element) {
     _classCallCheck(this, MdChips);
 
-    _initDefineProp(this, 'autocompleteData', _descriptor, this);
+    _initDefineProp(this, 'autocompleteOptions', _descriptor, this);
 
     _initDefineProp(this, 'data', _descriptor2, this);
 
@@ -83,28 +83,51 @@ var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)(
   }
 
   MdChips.prototype.attached = function attached() {
-    var options = {
-      autocompleteData: this.autocompleteData,
-      data: this.data,
-      placeholder: this.placeholder,
-      secondaryPlaceholder: this.secondaryPlaceholder
-    };
-    $(this.element).material_chip(options);
+    this.refresh();
     $(this.element).on('chip.add', this.onChipAdd);
     $(this.element).on('chip.delete', this.onChipDelete);
     $(this.element).on('chip.select', this.onChipSelect);
   };
 
-  MdChips.prototype.detached = function detached() {};
+  MdChips.prototype.detached = function detached() {
+    $(this.element).off('chip.add', this.onChipAdd);
+    $(this.element).off('chip.delete', this.onChipDelete);
+    $(this.element).off('chip.select', this.onChipSelect);
+  };
+
+  MdChips.prototype.dataChanged = function dataChanged(newValue, oldValue) {
+    this.refresh();
+
+    if (newValue.length > oldValue.length) {
+      var chip = newValue.find(function (i) {
+        return !oldValue.includes(i);
+      });
+      (0, _events.fireEvent)(this.element, 'change', { source: 'dataChanged', operation: 'add', target: chip, data: newValue });
+    }
+    if (newValue.length < oldValue.length) {
+      var _chip = oldValue.find(function (i) {
+        return !newValue.includes(i);
+      });
+      (0, _events.fireEvent)(this.element, 'change', { source: 'dataChanged', operation: 'delete', target: _chip, data: newValue });
+    }
+  };
+
+  MdChips.prototype.refresh = function refresh() {
+    var options = {
+      autocompleteOptions: this.autocompleteOptions,
+      data: this.data,
+      placeholder: this.placeholder,
+      secondaryPlaceholder: this.secondaryPlaceholder
+    };
+    $(this.element).material_chip(options);
+  };
 
   MdChips.prototype.onChipAdd = function onChipAdd(e, chip) {
     this.data = $(this.element).material_chip('data');
-    (0, _events.fireEvent)(this.element, 'change', { operation: 'add', target: chip, data: this.data });
   };
 
   MdChips.prototype.onChipDelete = function onChipDelete(e, chip) {
     this.data = $(this.element).material_chip('data');
-    (0, _events.fireEvent)(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
   };
 
   MdChips.prototype.onChipSelect = function onChipSelect(e, chip) {
@@ -112,7 +135,7 @@ var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)(
   };
 
   return MdChips;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'autocompleteData', [_dec3], {
+}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'autocompleteOptions', [_dec3], {
   enumerable: true,
   initializer: function initializer() {
     return {};
