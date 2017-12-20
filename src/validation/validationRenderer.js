@@ -74,14 +74,6 @@ export class MaterializeFormValidationRenderer {
               input.getAttribute('data-show-errortext') === 'false')) {
           this.addMessage(inputField, result);
         }
-        let input = inputField.querySelector('input');
-        if (input) {
-          result.target = input;
-          if (!(input.hasAttribute('data-show-errortext') &&
-                input.getAttribute('data-show-errortext') === 'false')) {
-            this.addMessage(inputField, result);
-          }
-        }
         break;
       }
       case 'INPUT' : {
