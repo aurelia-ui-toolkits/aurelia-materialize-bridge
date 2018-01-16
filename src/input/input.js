@@ -52,7 +52,7 @@ export class MdInput {
   }) mdName = '';
 
   _suspendUpdate = false;
-  
+
   constructor(element, taskQueue, updateService) {
     this.element = element;
     this.taskQueue = taskQueue;

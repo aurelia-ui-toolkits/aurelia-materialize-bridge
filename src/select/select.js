@@ -178,20 +178,20 @@ export class MdSelect {
     }
     this.observeVisibleDropdownContent(false);
     this.observeOptions(false);
-    let input = $(this.element).siblings("input");
-    let isValid = input.hasClass("valid");
-    let isInvalid = input.hasClass("invalid");    
+    let input = $(this.element).siblings('input');
+    let isValid = input.hasClass('valid');
+    let isInvalid = input.hasClass('invalid');
     if (destroy) {
       $(this.element).material_select('destroy');
     }
     $(this.element).material_select();
-    input = $(this.element).siblings("input");
+    input = $(this.element).siblings('input');
     if (isValid) {
-      input.addClass("valid");
+      input.addClass('valid');
     }
     if (isInvalid) {
-      input.addClass("invalid");
-    }    
+      input.addClass('invalid');
+    }
     this.toggleControl(this.disabled);
     this.observeVisibleDropdownContent(true);
     this.observeOptions(true);

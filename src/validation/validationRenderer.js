@@ -4,28 +4,26 @@ export class MaterializeFormValidationRenderer {
   classNameFirst = 'md-input-validation-first';
 
   render(instruction) {
-		for (let { result, elements } of instruction.unrender) {
-			for (let element of elements) {
-				if (element.mdUnrenderValidateResult) {
-					element.mdUnrenderValidateResult(result, this);
-				}
-				else {
-					this.remove(element, result);
-					this.underlineInput(element, false);
-				}
-			}
-		}
-		for (let { result, elements } of instruction.render) {
-			for (let element of elements) {
-				if (element.mdRenderValidateResult) {
-					element.mdRenderValidateResult(result, this);
-				}
-				else {
-					this.add(element, result);
-					this.underlineInput(element, true);
-				}
-			}
-		}
+    for (let { result, elements } of instruction.unrender) {
+      for (let element of elements) {
+        if (element.mdUnrenderValidateResult) {
+          element.mdUnrenderValidateResult(result, this);
+        } else {
+          this.remove(element, result);
+          this.underlineInput(element, false);
+        }
+      }
+    }
+    for (let { result, elements } of instruction.render) {
+      for (let element of elements) {
+        if (element.mdRenderValidateResult) {
+          element.mdRenderValidateResult(result, this);
+        } else {
+          this.add(element, result);
+          this.underlineInput(element, true);
+        }
+      }
+    }
   }
 
   underlineInput(element, render) {
@@ -50,8 +48,7 @@ export class MaterializeFormValidationRenderer {
     if (input) {
       if (render) {
         this.addValidationClasses(input, validationContainer);
-      }
-      else {
+      } else {
         this.removeValidationClasses(input);
       }
     }
@@ -134,17 +131,16 @@ export class MaterializeFormValidationRenderer {
     }
   }
 
-	removeValidationClasses(input) {
+  removeValidationClasses(input) {
     input.classList.remove('valid');
     input.classList.remove('invalid');
   }
-  
+
   addValidationClasses(input, validationContainer) {
     if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
       input.classList.remove('invalid');
       input.classList.add('valid');
-    }
-    else {
+    } else {
       input.classList.remove('valid');
       input.classList.add('invalid');
     }
