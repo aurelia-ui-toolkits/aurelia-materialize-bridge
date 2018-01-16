@@ -62,19 +62,19 @@ export class MaterializeFormValidationRenderer {
       return;
     }
     switch (element.tagName) {
-    case 'SELECT': {
-      const inputField = element.closest('.input-field');
-      if (!inputField) {
-        return;
-      }
-      let input = inputField.querySelector('input');
-      if (input) {
-        result.target = input;
-        if (!(input.hasAttribute('data-show-errortext') &&
-              input.getAttribute('data-show-errortext') === 'false')) {
-          this.addMessage(inputField, result);
+      case 'SELECT': {
+        const inputField = element.closest('.input-field');
+        if (!inputField) {
+          return;
         }
-        break;
+        let input = inputField.querySelector('input');
+        if (input) {
+          result.target = input;
+          if (!(input.hasAttribute('data-show-errortext') && input.getAttribute('data-show-errortext') === 'false')) {
+            this.addMessage(inputField, result);
+          }
+          break;
+        }
       }
       case 'INPUT' : {
         if (element.hasAttribute('md-datepicker')) {
