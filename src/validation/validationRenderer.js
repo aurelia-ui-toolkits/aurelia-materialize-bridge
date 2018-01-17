@@ -13,72 +13,48 @@ export class MaterializeFormValidationRenderer {
 
   render(instruction) {
     let elementResultsToUnrender = new Map();
+    // group validation results to unrender by elements
     for (let { result, elements } of instruction.unrender) {
       for (let element of elements) {
-        if (element.mdUnrenderValidateResults) {
-          this.pushElementResult(elementResultsToUnrender, element, result);
-        } else {
-          this.remove(element, result);
-          this.underlineInput(element, false);
-        }
+        this.pushElementResult(elementResultsToUnrender, element, result);
       }
     }
     for(let [element, results] of elementResultsToUnrender) {
-      element.mdUnrenderValidateResults(results, this);
+      if (element.mdUnrenderValidateResults) {
+        element.mdUnrenderValidateResults(results, this);
+      } else {
+        this.defaultUnrenderValidateResults(element, results);
+      }
     }
 
+    // group validation results to render by elements
     let elementResultsToRender = new Map();
     for (let { result, elements } of instruction.render) {
       for (let element of elements) {
-        if (element.mdRenderValidateResults) {
-          this.pushElementResult(elementResultsToRender, element, result);
-        } else {
-          this.add(element, result);
-          this.underlineInput(element, true);
-        }
+        this.pushElementResult(elementResultsToRender, element, result);
       }
     }
     for(let [element, results] of elementResultsToRender) {
-      element.mdRenderValidateResults(results, this);
-    }
-  }
-
-  underlineInput(element, render) {
-    let input;
-    let validationContainer;
-    switch (element.tagName) {
-      case 'INPUT': {
-        input = element;
-        validationContainer = element.parentElement;
-        break;
-      }
-      default: break;
-    }
-    if (input) {
-      if (render) {
-        this.addValidationClasses(input, validationContainer);
+      if (element.mdUnrenderValidateResults) {
+        element.mdRenderValidateResults(results, this);
       } else {
-        this.removeValidationClasses(input);
+        this.defaultRenderValidateResults(element, results);
       }
     }
   }
 
-  add(element, result) {
-    if (result.valid) {
+  defaultUnrenderValidateResults(element, results) {
+    if(element.tagName !== 'INPUT') {
       return;
     }
-    switch (element.tagName) {
-      default: break;
-    }
+    this.removeValidationClasses(element);
   }
 
-  remove(element, result) {
-    if (result.valid) {
+  defaultRenderValidateResults(element, results) {
+    if(element.tagName !== 'INPUT') {
       return;
     }
-    switch (element.tagName) {
-      default: break;
-    }
+    this.addValidationClasses(element, !results.find(x => !x.valid));
   }
 
   addMessage(element, result) {
