@@ -28,6 +28,11 @@ export class MdDatePicker {
     this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
   }
 
+  attached() {
+    this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
+    this.element.mdRenderValidateResults = this.mdRenderValidateResults;
+  }
+
   bind() {
     this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
     this.selectYears = parseInt(this.selectYears, 10);
@@ -195,4 +200,24 @@ export class MdDatePicker {
     this.log.debug('showErrortextChanged: ' + this.showErrortext);
     element.setAttribute('data-show-errortext', getBooleanFromAttributeValue(this.showErrortext));
   }
+
+  mdUnrenderValidateResults = (results, renderer) => {
+    for(let result of results) {
+      if (!result.valid) {
+        renderer.removeMessage(this.element.parentNode, result);
+      }
+    }
+    renderer.removeValidationClasses(this.element);
+  };
+
+  mdRenderValidateResults = (results, renderer) => {
+    if (!(this.element.hasAttribute('data-show-errortext') && this.element.getAttribute('data-show-errortext') === 'false')) {
+      for(let result of results) {
+        if (!result.valid) {
+          renderer.addMessage(this.element.parentNode, result);
+        }
+      }
+    }
+    renderer.addValidationClasses(this.element, !results.find(x => !x.valid));
+  };
 }

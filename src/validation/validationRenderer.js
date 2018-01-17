@@ -3,26 +3,43 @@ export class MaterializeFormValidationRenderer {
   className = 'md-input-validation';
   classNameFirst = 'md-input-validation-first';
 
+  pushElementResult(elementResults, element, result) {
+    if(elementResults.has(element)) {
+      elementResults.get(element).push(result);
+    } else {
+      elementResults.set(element, [result]);
+    }
+  }
+
   render(instruction) {
+    let elementResultsToUnrender = new Map();
     for (let { result, elements } of instruction.unrender) {
       for (let element of elements) {
-        if (element.mdUnrenderValidateResult) {
-          element.mdUnrenderValidateResult(result, this);
+        if (element.mdUnrenderValidateResults) {
+          this.pushElementResult(elementResultsToUnrender, element, result);
         } else {
           this.remove(element, result);
           this.underlineInput(element, false);
         }
       }
     }
+    for(let [element, results] of elementResultsToUnrender) {
+      element.mdUnrenderValidateResults(results, this);
+    }
+
+    let elementResultsToRender = new Map();
     for (let { result, elements } of instruction.render) {
       for (let element of elements) {
-        if (element.mdRenderValidateResult) {
-          element.mdRenderValidateResult(result, this);
+        if (element.mdRenderValidateResults) {
+          this.pushElementResult(elementResultsToRender, element, result);
         } else {
           this.add(element, result);
           this.underlineInput(element, true);
         }
       }
+    }
+    for(let [element, results] of elementResultsToRender) {
+      element.mdRenderValidateResults(results, this);
     }
   }
 
@@ -73,15 +90,6 @@ export class MaterializeFormValidationRenderer {
           break;
         }
       }
-      case 'INPUT' : {
-        if (element.hasAttribute('md-datepicker')) {
-          if (!(element.hasAttribute('data-show-errortext') &&
-              element.getAttribute('data-show-errortext') === 'false')) {
-            this.addMessage(element.parentNode, result);
-          }
-        }
-        break;
-      }
       default: break;
     }
   }
@@ -98,12 +106,6 @@ export class MaterializeFormValidationRenderer {
         }
 
         this.removeMessage(inputField, result);
-        break;
-      }
-      case 'INPUT' : {
-        if (element.hasAttribute('md-datepicker')) {
-          this.removeMessage(element.parentNode, result);
-        }
         break;
       }
       default: break;
@@ -136,8 +138,18 @@ export class MaterializeFormValidationRenderer {
     input.classList.remove('invalid');
   }
 
-  addValidationClasses(input, validationContainer) {
-    if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
+  // addValidationClasses(input, validationContainer) {
+  //   if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
+  //     input.classList.remove('invalid');
+  //     input.classList.add('valid');
+  //   } else {
+  //     input.classList.remove('valid');
+  //     input.classList.add('invalid');
+  //   }
+  // }
+
+  addValidationClasses(input, isValid) {
+    if (isValid) {
       input.classList.remove('invalid');
       input.classList.add('valid');
     } else {
