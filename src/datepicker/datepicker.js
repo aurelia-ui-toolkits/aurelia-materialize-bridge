@@ -146,6 +146,8 @@ export class MdDatePicker {
     if (this.picker) {
       this.picker.stop();
     }
+    this.element.mdUnrenderValidateResults = undefined;
+    this.element.mdRenderValidateResults = undefined;
   }
 
   openDatePicker() {

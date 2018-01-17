@@ -97,8 +97,8 @@ export class MdInput {
 
   detached() {
     this.detachEventHandlers();
-    this.element.mdUnrenderValidateResult = null;
-    this.element.mdRenderValidateResult = null;
+    this.element.mdUnrenderValidateResults = undefined;
+    this.element.mdRenderValidateResults = undefined;
   }
 
   blur() {
