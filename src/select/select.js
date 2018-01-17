@@ -25,6 +25,7 @@ export class MdSelect {
   @bindable() showErrortext = true;
   _suspendUpdate = false;
   subscriptions = [];
+  inputField = null;
   input = null;
   dropdownMutationObserver = null;
   optionsMutationObserver = null;
@@ -61,7 +62,10 @@ export class MdSelect {
     });
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
 
+    this.inputField = this.element.closest('.input-field');
     $(this.element).on('change', this.handleChangeFromNativeSelect);
+    this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
+    this.element.mdRenderValidateResults = this.mdRenderValidateResults;
   }
 
   detached() {
@@ -79,6 +83,8 @@ export class MdSelect {
     $element.siblings('.md-input-validation').remove();
     $element.unwrap();
     this.subscriptions.forEach(sub => sub.dispose());
+    this.element.mdUnrenderValidateResults = undefined;
+    this.element.mdRenderValidateResults = undefined;
   }
 
   refresh() {
@@ -178,20 +184,21 @@ export class MdSelect {
     }
     this.observeVisibleDropdownContent(false);
     this.observeOptions(false);
-    let input = $(this.element).siblings("input");
-    let isValid = input.hasClass("valid");
-    let isInvalid = input.hasClass("invalid");    
+    let input = $(this.element).siblings('input');
+    let isValid = input.hasClass('valid');
+    let isInvalid = input.hasClass('invalid');
     if (destroy) {
       $(this.element).material_select('destroy');
     }
     $(this.element).material_select();
-    input = $(this.element).siblings("input");
+    input = $(this.element).siblings('input');
     if (isValid) {
-      input.addClass("valid");
+      input.addClass('valid');
     }
     if (isInvalid) {
-      input.addClass("invalid");
-    }    
+      input.addClass('invalid');
+    }
+    this.input = input[0];
     this.toggleControl(this.disabled);
     this.observeVisibleDropdownContent(true);
     this.observeOptions(true);
@@ -315,4 +322,25 @@ export class MdSelect {
       $label.addClass('md-focused');
     }
   }
+
+  mdUnrenderValidateResults = (results, renderer) => {
+    for(let result of results) {
+      if (!result.valid) {
+        renderer.removeMessage(this.inputField, result);
+      }
+    }
+    renderer.removeValidationClasses(this.input);
+  };
+
+  mdRenderValidateResults = (results, renderer) => {
+    for(let result of results) {
+      if (!result.valid) {
+        result.target = this.input;
+        if (!(this.input.hasAttribute('data-show-errortext') && this.input.getAttribute('data-show-errortext') === 'false')) {
+          renderer.addMessage(this.inputField, result);
+        }
+      }
+    }
+    renderer.addValidationClasses(this.input, !results.find(x => !x.valid));
+  };
 }

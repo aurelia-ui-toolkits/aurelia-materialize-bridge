@@ -3,134 +3,58 @@ export class MaterializeFormValidationRenderer {
   className = 'md-input-validation';
   classNameFirst = 'md-input-validation-first';
 
+  pushElementResult(elementResults, element, result) {
+    if(elementResults.has(element)) {
+      elementResults.get(element).push(result);
+    } else {
+      elementResults.set(element, [result]);
+    }
+  }
+
   render(instruction) {
+    let elementResultsToUnrender = new Map();
+    // group validation results to unrender by elements
     for (let { result, elements } of instruction.unrender) {
       for (let element of elements) {
-        this.remove(element, result);
-        this.underlineInput(element, false);
+        this.pushElementResult(elementResultsToUnrender, element, result);
       }
     }
+    for(let [element, results] of elementResultsToUnrender) {
+      if (element.mdUnrenderValidateResults) {
+        element.mdUnrenderValidateResults(results, this);
+      } else {
+        this.defaultUnrenderValidateResults(element, results);
+      }
+    }
+
+    // group validation results to render by elements
+    let elementResultsToRender = new Map();
     for (let { result, elements } of instruction.render) {
       for (let element of elements) {
-        this.add(element, result);
-        this.underlineInput(element, true);
+        this.pushElementResult(elementResultsToRender, element, result);
       }
     }
-  }
-
-  underlineInput(element, render) {
-    let input;
-    let validationContainer;
-    switch (element.tagName) {
-      case 'MD-INPUT': {
-        input = element.querySelector('input') || element.querySelector('textarea');
-        validationContainer = element;
-        break;
-      }
-      case 'SELECT': {
-        const inputField = element.closest('.input-field');
-        if (inputField) {
-          input = inputField.querySelector('input');
-          validationContainer = inputField;
-        }
-        break;
-      }
-      case 'INPUT': {
-        input = element;
-        validationContainer = element.parentElement;
-        break;
-      }
-      default: break;
-    }
-    if (input) {
-      if (render) {
-        if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
-          input.classList.remove('invalid');
-          input.classList.add('valid');
-        } else {
-          input.classList.remove('valid');
-          input.classList.add('invalid');
-        }
+    for(let [element, results] of elementResultsToRender) {
+      if (element.mdUnrenderValidateResults) {
+        element.mdRenderValidateResults(results, this);
       } else {
-        input.classList.remove('valid');
-        input.classList.remove('invalid');
+        this.defaultRenderValidateResults(element, results);
       }
     }
   }
 
-  add(element, result) {
-    if (result.valid) {
+  defaultUnrenderValidateResults(element, results) {
+    if(element.tagName !== 'INPUT') {
       return;
     }
-    switch (element.tagName) {
-      case 'MD-INPUT': {
-        let label = element.querySelector('label');
-        let input = element.querySelector('input') || element.querySelector('textarea');
-        if (label) {
-          label.removeAttribute('data-error');
-        }
-        if (input) {
-          result.target = input;
-          if (input.hasAttribute('data-show-errortext')) {
-            this.addMessage(element, result);
-          }
-        }
-        break;
-      }
-      case 'SELECT': {
-        const inputField = element.closest('.input-field');
-        if (!inputField) {
-          return;
-        }
-        let input = inputField.querySelector('input');
-        if (input) {
-          result.target = input;
-          if (!(input.hasAttribute('data-show-errortext') &&
-                input.getAttribute('data-show-errortext') === 'false')) {
-            this.addMessage(inputField, result);
-          }
-        }
-        break;
-      }
-      case 'INPUT' : {
-        if (element.hasAttribute('md-datepicker')) {
-          if (!(element.hasAttribute('data-show-errortext') &&
-              element.getAttribute('data-show-errortext') === 'false')) {
-            this.addMessage(element.parentNode, result);
-          }
-        }
-        break;
-      }
-      default: break;
-    }
+    this.removeValidationClasses(element);
   }
 
-  remove(element, result) {
-    if (result.valid) {
+  defaultRenderValidateResults(element, results) {
+    if(element.tagName !== 'INPUT') {
       return;
     }
-    switch (element.tagName) {
-      case 'MD-INPUT': {
-        this.removeMessage(element, result);
-        break;
-      }
-      case 'SELECT': {
-        const inputField = element.closest('.input-field');
-        if (!inputField) {
-          return;
-        }
-
-        this.removeMessage(inputField, result);
-        break;
-      }
-      case 'INPUT' : {
-        if (element.hasAttribute('md-datepicker')) {
-          this.removeMessage(element.parentNode, result);
-        }
-        break;
-      }
-      default: break;
-    }
+    this.addValidationClasses(element, !results.find(x => !x.valid));
   }
 
   addMessage(element, result) {
@@ -154,4 +78,18 @@ export class MaterializeFormValidationRenderer {
     }
   }
 
+  removeValidationClasses(input) {
+    input.classList.remove('valid');
+    input.classList.remove('invalid');
+  }
+
+  addValidationClasses(input, isValid) {
+    if (isValid) {
+      input.classList.remove('invalid');
+      input.classList.add('valid');
+    } else {
+      input.classList.remove('valid');
+      input.classList.add('invalid');
+    }
+  }
 }

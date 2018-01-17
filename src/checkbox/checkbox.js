@@ -18,7 +18,7 @@ export class MdCheckbox {
     if(!this.checkbox) {
       return;
     }
-    
+
     if (this.mdReadonly) {
       this.checkbox.addEventListener('change', this.preventChange);
     } else {

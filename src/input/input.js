@@ -91,10 +91,14 @@ export class MdInput {
       $(this.input).siblings('label').addClass('active');
     }
     this.attachEventHandlers();
+    this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
+    this.element.mdRenderValidateResults = this.mdRenderValidateResults;
   }
 
   detached() {
     this.detachEventHandlers();
+    this.element.mdUnrenderValidateResults = undefined;
+    this.element.mdRenderValidateResults = undefined;
   }
 
   blur() {
@@ -132,4 +136,31 @@ export class MdInput {
       this.input.blur();
     }
   }
+
+  mdUnrenderValidateResults = (results, renderer) => {
+    for(let result of results) {
+      if (!result.valid) {
+        renderer.removeMessage(this.element, result);
+      }
+    }
+    renderer.removeValidationClasses(this.input);
+  };
+
+  mdRenderValidateResults = (results, renderer) => {
+    if(this.label && results.find(x => !x.valid)) {
+      this.label.removeAttribute('data-error');
+    }
+    if (this.input) {
+      for(let result of results) {
+        if (!result.valid) {
+          result.target = this.input;
+          if(this.input.hasAttribute('data-show-errortext')) {
+            renderer.addMessage(this.element, result);
+          }
+        }
+      }
+    }
+    renderer.addValidationClasses(this.input, !results.find(x => !x.valid));
+  };
+
 }
