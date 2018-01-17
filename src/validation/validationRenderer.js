@@ -47,14 +47,6 @@ export class MaterializeFormValidationRenderer {
     let input;
     let validationContainer;
     switch (element.tagName) {
-      case 'SELECT': {
-        const inputField = element.closest('.input-field');
-        if (inputField) {
-          input = inputField.querySelector('input');
-          validationContainer = inputField;
-        }
-        break;
-      }
       case 'INPUT': {
         input = element;
         validationContainer = element.parentElement;
@@ -76,20 +68,6 @@ export class MaterializeFormValidationRenderer {
       return;
     }
     switch (element.tagName) {
-      case 'SELECT': {
-        const inputField = element.closest('.input-field');
-        if (!inputField) {
-          return;
-        }
-        let input = inputField.querySelector('input');
-        if (input) {
-          result.target = input;
-          if (!(input.hasAttribute('data-show-errortext') && input.getAttribute('data-show-errortext') === 'false')) {
-            this.addMessage(inputField, result);
-          }
-          break;
-        }
-      }
       default: break;
     }
   }
@@ -99,15 +77,6 @@ export class MaterializeFormValidationRenderer {
       return;
     }
     switch (element.tagName) {
-      case 'SELECT': {
-        const inputField = element.closest('.input-field');
-        if (!inputField) {
-          return;
-        }
-
-        this.removeMessage(inputField, result);
-        break;
-      }
       default: break;
     }
   }
@@ -138,16 +107,6 @@ export class MaterializeFormValidationRenderer {
     input.classList.remove('invalid');
   }
 
-  // addValidationClasses(input, validationContainer) {
-  //   if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
-  //     input.classList.remove('invalid');
-  //     input.classList.add('valid');
-  //   } else {
-  //     input.classList.remove('valid');
-  //     input.classList.add('invalid');
-  //   }
-  // }
-
   addValidationClasses(input, isValid) {
     if (isValid) {
       input.classList.remove('invalid');
@@ -157,5 +116,4 @@ export class MaterializeFormValidationRenderer {
       input.classList.add('invalid');
     }
   }
-
 }
