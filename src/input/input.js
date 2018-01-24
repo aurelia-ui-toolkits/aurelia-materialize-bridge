@@ -51,6 +51,10 @@ export class MdInput {
     defaultBindingMode: bindingMode.oneTime
   }) mdName = '';
 
+  @bindable({
+    defaultBindingMode: bindingMode.oneTime
+  }) mdMaxlength = 524288;
+
   _suspendUpdate = false;
 
   constructor(element, taskQueue, updateService) {
