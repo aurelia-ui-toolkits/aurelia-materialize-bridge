@@ -1,3 +1,24 @@
+<a name="0.32.0"></a>
+## [0.32.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.31.0...v0.32.0) (2018-01-29)
+
+
+### Bug Fixes
+
+* **checkbox:** check for null reference ([1260915](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/1260915))
+* **colors:** color for `btn-floating.error:focus` ([6960a54](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6960a54))
+* **md-timepicker:** listen for change event on input, enabling clear btn, [#480](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/480) ([0bfcbdb](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0bfcbdb))
+* **md-timepicker:** Set value if assigned before the attach ([15b97a4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/15b97a4))
+* **select:** restore validation state after refresh ([2c4c5fa](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/2c4c5fa))
+
+
+### Features
+
+* **input:** add maxlenght attribute for input and textarea ([b8fea22](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b8fea22))
+* **md-input:** add min, max and name to md-input, close [#489](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/489), ref [#487](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/487) ([c72cf9a](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/c72cf9a))
+* **validation:** delegate validation rendering to custom elements ([#432](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/432)) ([7c6c34c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/7c6c34c))
+
+
+
 <a name="0.31.0"></a>
 # [0.31.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.30.0...v0.31.0) (2017-09-06)
 
