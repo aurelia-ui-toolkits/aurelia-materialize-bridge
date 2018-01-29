@@ -272,4 +272,4 @@ System.register(['aurelia-pal'], function (_export, _context) {
     }
   };
 });
-//# sourceMappingURL=dist/dev/config-builder.js.map
+//# sourceMappingURL=devbuild/dev/config-builder.js.map

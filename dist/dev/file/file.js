@@ -140,4 +140,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../dist/dev/file/file.js.map
+//# sourceMappingURL=../devbuild/dev/file/file.js.map

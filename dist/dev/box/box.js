@@ -100,4 +100,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../dist/dev/box/box.js.map
+//# sourceMappingURL=../devbuild/dev/box/box.js.map

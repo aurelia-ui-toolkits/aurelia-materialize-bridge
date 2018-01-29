@@ -46,4 +46,4 @@ System.register(['./config-builder', './scrollfire/scrollfire-patch', './common/
     execute: function () {}
   };
 });
-//# sourceMappingURL=dist/dev/index.js.map
+//# sourceMappingURL=devbuild/dev/index.js.map

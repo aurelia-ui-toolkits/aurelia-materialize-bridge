@@ -78,6 +78,8 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   };
 
   function MdSelect(element, bindingEngine, taskQueue) {
+    var _this = this;
+
     _classCallCheck(this, MdSelect);
 
     _initDefineProp(this, 'disabled', _descriptor, this);
@@ -92,10 +94,60 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
 
     this._suspendUpdate = false;
     this.subscriptions = [];
+    this.inputField = null;
     this.input = null;
     this.dropdownMutationObserver = null;
     this.optionsMutationObserver = null;
     this._taskqueueRunning = false;
+
+    this.mdUnrenderValidateResults = function (results, renderer) {
+      for (var _iterator = results, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+        var _ref;
+
+        if (_isArray) {
+          if (_i >= _iterator.length) break;
+          _ref = _iterator[_i++];
+        } else {
+          _i = _iterator.next();
+          if (_i.done) break;
+          _ref = _i.value;
+        }
+
+        var result = _ref;
+
+        if (!result.valid) {
+          renderer.removeMessage(_this.inputField, result);
+        }
+      }
+      renderer.removeValidationClasses(_this.input);
+    };
+
+    this.mdRenderValidateResults = function (results, renderer) {
+      for (var _iterator2 = results, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+        var _ref2;
+
+        if (_isArray2) {
+          if (_i2 >= _iterator2.length) break;
+          _ref2 = _iterator2[_i2++];
+        } else {
+          _i2 = _iterator2.next();
+          if (_i2.done) break;
+          _ref2 = _i2.value;
+        }
+
+        var result = _ref2;
+
+        if (!result.valid) {
+          result.target = _this.input;
+          if (!(_this.input.hasAttribute('data-show-errortext') && _this.input.getAttribute('data-show-errortext') === 'false')) {
+            renderer.addMessage(_this.inputField, result);
+          }
+        }
+      }
+      renderer.addValidationClasses(_this.input, !results.find(function (x) {
+        return !x.valid;
+      }));
+    };
 
     this.element = element;
     this.taskQueue = taskQueue;
@@ -109,7 +161,7 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   }
 
   MdSelect.prototype.attached = function attached() {
-    var _this = this;
+    var _this2 = this;
 
     if (this.element.classList.contains('browser-default')) {
       return;
@@ -126,11 +178,14 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     }
 
     this.taskQueue.queueTask(function () {
-      _this.createMaterialSelect(false);
+      _this2.createMaterialSelect(false);
     });
     this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
 
+    this.inputField = this.element.closest('.input-field');
     $(this.element).on('change', this.handleChangeFromNativeSelect);
+    this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
+    this.element.mdRenderValidateResults = this.mdRenderValidateResults;
   };
 
   MdSelect.prototype.detached = function detached() {
@@ -150,16 +205,18 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     this.subscriptions.forEach(function (sub) {
       return sub.dispose();
     });
+    this.element.mdUnrenderValidateResults = undefined;
+    this.element.mdRenderValidateResults = undefined;
   };
 
   MdSelect.prototype.refresh = function refresh() {
-    var _this2 = this;
+    var _this3 = this;
 
     if (this.element.classList.contains('browser-default')) {
       return;
     }
     this.taskQueue.queueTask(function () {
-      _this2.createMaterialSelect(true);
+      _this3.createMaterialSelect(true);
     });
   };
 
@@ -251,10 +308,21 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     }
     this.observeVisibleDropdownContent(false);
     this.observeOptions(false);
+    var input = $(this.element).siblings('input');
+    var isValid = input.hasClass('valid');
+    var isInvalid = input.hasClass('invalid');
     if (destroy) {
       $(this.element).material_select('destroy');
     }
     $(this.element).material_select();
+    input = $(this.element).siblings('input');
+    if (isValid) {
+      input.addClass('valid');
+    }
+    if (isInvalid) {
+      input.addClass('invalid');
+    }
+    this.input = input[0];
     this.toggleControl(this.disabled);
     this.observeVisibleDropdownContent(true);
     this.observeOptions(true);
@@ -275,7 +343,7 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   };
 
   MdSelect.prototype.observeVisibleDropdownContent = function observeVisibleDropdownContent(attach) {
-    var _this3 = this;
+    var _this4 = this;
 
     if (this.element.classList.contains('browser-default')) {
       return;
@@ -284,29 +352,29 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
       if (!this.dropdownMutationObserver) {
         this.dropdownMutationObserver = _aureliaPal.DOM.createMutationObserver(function (mutations) {
           var isHidden = false;
-          for (var _iterator = mutations, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-            var _ref;
+          for (var _iterator3 = mutations, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+            var _ref3;
 
-            if (_isArray) {
-              if (_i >= _iterator.length) break;
-              _ref = _iterator[_i++];
+            if (_isArray3) {
+              if (_i3 >= _iterator3.length) break;
+              _ref3 = _iterator3[_i3++];
             } else {
-              _i = _iterator.next();
-              if (_i.done) break;
-              _ref = _i.value;
+              _i3 = _iterator3.next();
+              if (_i3.done) break;
+              _ref3 = _i3.value;
             }
 
-            var mutation = _ref;
+            var mutation = _ref3;
 
             if (window.getComputedStyle(mutation.target).getPropertyValue('display') === 'none') {
               isHidden = true;
             }
           }
           if (isHidden) {
-            _this3.dropdownMutationObserver.takeRecords();
-            _this3.handleBlur();
+            _this4.dropdownMutationObserver.takeRecords();
+            _this4.handleBlur();
           } else {
-            _this3.handleFocus();
+            _this4.handleFocus();
           }
         });
       }
@@ -323,7 +391,7 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   };
 
   MdSelect.prototype.observeOptions = function observeOptions(attach) {
-    var _this4 = this;
+    var _this5 = this;
 
     if (this.element.classList.contains('browser-default')) {
       return;
@@ -332,7 +400,7 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
       if (attach) {
         if (!this.optionsMutationObserver) {
           this.optionsMutationObserver = _aureliaPal.DOM.createMutationObserver(function (mutations) {
-            _this4.refresh();
+            _this5.refresh();
           });
         }
         this.optionsMutationObserver.observe(this.element, {
@@ -356,7 +424,7 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
   };
 
   MdSelect.prototype.handleBlur = function handleBlur() {
-    var _this5 = this;
+    var _this6 = this;
 
     if (this.element.classList.contains('browser-default')) {
       return;
@@ -364,12 +432,12 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     if (this._taskqueueRunning) return;
     this._taskqueueRunning = true;
     this.taskQueue.queueTask(function () {
-      _this5.log.debug('fire blur event');
-      (0, _events.fireEvent)(_this5.element, 'blur');
-      _this5._taskqueueRunning = false;
+      _this6.log.debug('fire blur event');
+      (0, _events.fireEvent)(_this6.element, 'blur');
+      _this6._taskqueueRunning = false;
 
-      if (_this5.label) {
-        var $label = $(_this5.element).parent('.select-wrapper').siblings('.md-select-label');
+      if (_this6.label) {
+        var $label = $(_this6.element).parent('.select-wrapper').siblings('.md-select-label');
         $label.removeClass('md-focused');
       }
     });

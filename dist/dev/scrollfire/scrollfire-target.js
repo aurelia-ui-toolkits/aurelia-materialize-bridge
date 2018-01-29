@@ -84,4 +84,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection'], function
     }
   };
 });
-//# sourceMappingURL=../dist/dev/scrollfire/scrollfire-target.js.map
+//# sourceMappingURL=../devbuild/dev/scrollfire/scrollfire-target.js.map

@@ -66,6 +66,10 @@ var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customEleme
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
 }), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec8 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
   MdCheckbox.prototype.mdReadonlyChanged = function mdReadonlyChanged() {
+    if (!this.checkbox) {
+      return;
+    }
+
     if (this.mdReadonly) {
       this.checkbox.addEventListener('change', this.preventChange);
     } else {
@@ -106,6 +110,7 @@ var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customEleme
       this.checkbox.disabled = true;
     }
     this.mdReadonly = (0, _attributes.getBooleanFromAttributeValue)(this.mdReadonly);
+    this.mdReadonlyChanged();
   };
 
   MdCheckbox.prototype.detached = function detached() {

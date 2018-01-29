@@ -154,4 +154,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../dist/dev/slider/slider.js.map
+//# sourceMappingURL=../devbuild/dev/slider/slider.js.map

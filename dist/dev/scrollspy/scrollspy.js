@@ -85,4 +85,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection'], function
     }
   };
 });
-//# sourceMappingURL=../dist/dev/scrollspy/scrollspy.js.map
+//# sourceMappingURL=../devbuild/dev/scrollspy/scrollspy.js.map

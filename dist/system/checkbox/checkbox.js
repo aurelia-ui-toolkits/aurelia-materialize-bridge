@@ -70,6 +70,10 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
         defaultBindingMode: bindingMode.twoWay
       }), _dec4 = bindable(), _dec5 = bindable(), _dec6 = bindable(), _dec7 = bindable(), _dec8 = bindable(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
         MdCheckbox.prototype.mdReadonlyChanged = function mdReadonlyChanged() {
+          if (!this.checkbox) {
+            return;
+          }
+
           if (this.mdReadonly) {
             this.checkbox.addEventListener('change', this.preventChange);
           } else {
@@ -110,6 +114,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
             this.checkbox.disabled = true;
           }
           this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
+          this.mdReadonlyChanged();
         };
 
         MdCheckbox.prototype.detached = function detached() {

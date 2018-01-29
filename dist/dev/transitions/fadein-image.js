@@ -103,4 +103,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
     }
   };
 });
-//# sourceMappingURL=../dist/dev/transitions/fadein-image.js.map
+//# sourceMappingURL=../devbuild/dev/transitions/fadein-image.js.map

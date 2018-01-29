@@ -141,4 +141,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
     }
   };
 });
-//# sourceMappingURL=../dist/dev/sidenav/sidenav.js.map
+//# sourceMappingURL=../devbuild/dev/sidenav/sidenav.js.map

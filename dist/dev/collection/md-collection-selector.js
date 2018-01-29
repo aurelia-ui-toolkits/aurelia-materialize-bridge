@@ -107,4 +107,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
     }
   };
 });
-//# sourceMappingURL=../dist/dev/collection/md-collection-selector.js.map
+//# sourceMappingURL=../devbuild/dev/collection/md-collection-selector.js.map

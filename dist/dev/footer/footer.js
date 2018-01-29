@@ -41,4 +41,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
     }
   };
 });
-//# sourceMappingURL=../dist/dev/footer/footer.js.map
+//# sourceMappingURL=../devbuild/dev/footer/footer.js.map

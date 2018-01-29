@@ -105,4 +105,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection'], function
     }
   };
 });
-//# sourceMappingURL=../dist/dev/pushpin/pushpin.js.map
+//# sourceMappingURL=../devbuild/dev/pushpin/pushpin.js.map

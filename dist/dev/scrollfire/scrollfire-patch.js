@@ -68,4 +68,4 @@ System.register([], function (_export, _context) {
     }
   };
 });
-//# sourceMappingURL=../dist/dev/scrollfire/scrollfire-patch.js.map
+//# sourceMappingURL=../devbuild/dev/scrollfire/scrollfire-patch.js.map

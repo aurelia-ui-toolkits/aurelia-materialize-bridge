@@ -148,4 +148,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../dist/dev/switch/switch.js.map
+//# sourceMappingURL=../devbuild/dev/switch/switch.js.map

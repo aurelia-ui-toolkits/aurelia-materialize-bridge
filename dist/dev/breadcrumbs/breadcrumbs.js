@@ -100,4 +100,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
     }
   };
 });
-//# sourceMappingURL=../dist/dev/breadcrumbs/breadcrumbs.js.map
+//# sourceMappingURL=../devbuild/dev/breadcrumbs/breadcrumbs.js.map

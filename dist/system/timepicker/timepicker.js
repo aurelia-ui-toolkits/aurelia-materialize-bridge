@@ -73,6 +73,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
           _initDefineProp(this, 'value', _descriptor2, this);
 
           this.element = element;
+          this.updateFromElement = this.updateFromElement.bind(this);
         }
 
         MdTimePicker.prototype.bind = function bind() {
@@ -81,17 +82,19 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
 
         MdTimePicker.prototype.attached = function attached() {
           var options = {
-            afterDone: this.afterDone.bind(this),
             twelvehour: this.twelveHour
           };
           $(this.element).pickatime(options);
+          this.element.value = this.value;
+          $(this.element).on('change', this.updateFromElement);
         };
 
         MdTimePicker.prototype.detached = function detached() {
+          $(this.element).off('change', this.updateFromElement);
           $(this.element).pickatime('remove');
         };
 
-        MdTimePicker.prototype.afterDone = function afterDone() {
+        MdTimePicker.prototype.updateFromElement = function updateFromElement() {
           this.value = this.element.value;
         };
 

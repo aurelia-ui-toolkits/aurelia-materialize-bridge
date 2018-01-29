@@ -36,4 +36,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection'], function
     }
   };
 });
-//# sourceMappingURL=../dist/dev/parallax/parallax.js.map
+//# sourceMappingURL=../devbuild/dev/parallax/parallax.js.map

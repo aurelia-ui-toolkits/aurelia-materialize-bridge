@@ -12,13 +12,13 @@ import {
   inject
 } from 'aurelia-dependency-injection';
 import {
+  Router
+} from 'aurelia-router';
+import {
   bindingMode,
   observable,
   BindingEngine
 } from 'aurelia-binding';
-import {
-  Router
-} from 'aurelia-router';
 import {
   TaskQueue
 } from 'aurelia-task-queue';
@@ -123,12 +123,6 @@ export declare class MdBadge {
   newChanged(newValue?: any): any;
   captionChanged(newValue?: any): any;
 }
-export declare class MdBox {
-  caption: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-}
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 export declare class MdBreadcrumbs {
@@ -166,26 +160,8 @@ export declare class MdCard {
   constructor(element?: any);
   attached(): any;
 }
-
-// @customElement('md-carousel-item')
-export declare class MdCarouselItem {
-  mdHref: any;
-  mdImage: any;
-  constructor(element?: any);
-  attached(): any;
-}
-export declare class MdCarousel {
-  mdIndicators: any;
-  mdSlider: any;
-  items: any;
-  constructor(element?: any, taskQueue?: any);
-  attached(): any;
-  detached(): any;
-  itemsChanged(newValue?: any): any;
-  refresh(): any;
-}
-export declare class MdCharCounter {
-  length: any;
+export declare class MdBox {
+  caption: any;
   constructor(element?: any);
   attached(): any;
   detached(): any;
@@ -222,6 +198,44 @@ export declare class MdCheckbox {
   mdDisabledChanged(newValue?: any): any;
   preventChange(): any;
 }
+export declare class MdCharCounter {
+  length: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+}
+
+// @customElement('md-carousel-item')
+export declare class MdCarouselItem {
+  mdHref: any;
+  mdImage: any;
+  constructor(element?: any);
+  attached(): any;
+}
+export declare class MdCarousel {
+  mdIndicators: any;
+  mdSlider: any;
+  items: any;
+  constructor(element?: any, taskQueue?: any);
+  attached(): any;
+  detached(): any;
+  itemsChanged(newValue?: any): any;
+  refresh(): any;
+}
+
+/* eslint-enable */
+export declare class DarkenValueConverter {
+  toView(value?: any, steps?: any): any;
+}
+export declare class LightenValueConverter {
+  toView(value?: any, steps?: any): any;
+}
+export declare class MdColors {
+  mdPrimaryColor: any;
+  mdAccentColor: any;
+  mdErrorColor: any;
+  mdSuccessColor: any;
+}
 export declare class MdChip {
   mdClose: any;
   constructor(element?: any);
@@ -241,16 +255,6 @@ export declare class MdChips {
   onChipAdd(e?: any, chip?: any): any;
   onChipDelete(e?: any, chip?: any): any;
   onChipSelect(e?: any, chip?: any): any;
-}
-export declare class MdCollapsible {
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  refresh(): any;
-  accordionChanged(): any;
-  buildCollapsibleOpenCloseCallbackHandler(handler?: any): any;
-  open(index?: any): any;
-  close(index?: any): any;
 }
 export declare class MdCollectionHeader {
   constructor(element?: any);
@@ -274,19 +278,15 @@ export declare class MdlListSelector {
   isSelectedChanged(newValue?: any): any;
   mdDisabledChanged(newValue?: any): any;
 }
-
-/* eslint-enable */
-export declare class DarkenValueConverter {
-  toView(value?: any, steps?: any): any;
-}
-export declare class LightenValueConverter {
-  toView(value?: any, steps?: any): any;
-}
-export declare class MdColors {
-  mdPrimaryColor: any;
-  mdAccentColor: any;
-  mdErrorColor: any;
-  mdSuccessColor: any;
+export declare class MdCollapsible {
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  refresh(): any;
+  accordionChanged(): any;
+  buildCollapsibleOpenCloseCallbackHandler(handler?: any): any;
+  open(index?: any): any;
+  close(index?: any): any;
 }
 
 /**
@@ -326,6 +326,45 @@ export declare function fireMaterializeEvent(element: Element, name: string, dat
 
 // https://github.com/jonathantneal/closest/blob/master/closest.js
 export declare function polyfillElementClosest(): any;
+export declare class DatePickerDefaultParser {
+  canParse(value?: any): any;
+  parse(value?: any): any;
+}
+export declare class MdDatePicker {
+  container: any;
+  translation: any;
+  value: any;
+  parsers: any;
+  selectMonths: any;
+  selectYears: any;
+  options: any;
+  showErrortext: any;
+  calendarIcon: any;
+  constructor(element?: any, taskQueue?: any, defaultParser?: any);
+  attached(): any;
+  bind(): any;
+  parseDate(value?: any): any;
+  detached(): any;
+  openDatePicker(): any;
+  closeDatePicker(): any;
+  updateValue(): any;
+  onClose(): any;
+  onCalendarIconClick(event?: any): any;
+  
+  // onSet(value) {
+  //   //handle this ourselves since Dogfalo removed this functionality from the original plugin
+  //   if (this.options && this.options.closeOnSelect && value.select) {
+  //     this.value = value.select;
+  //     this.picker.close();
+  //   }
+  //   // this.value = new Date(value.select);
+  // }
+  valueChanged(newValue?: any): any;
+  showErrortextChanged(): any;
+  setErrorTextAttribute(): any;
+  mdUnrenderValidateResults: any;
+  mdRenderValidateResults: any;
+}
 export declare class MdDropdownElement {
   static id: any;
   alignment: any;
@@ -360,42 +399,6 @@ export declare class MdDropdown {
   close(): any;
   handleActivateElement(): any;
 }
-export declare class DatePickerDefaultParser {
-  canParse(value?: any): any;
-  parse(value?: any): any;
-}
-export declare class MdDatePicker {
-  container: any;
-  translation: any;
-  value: any;
-  parsers: any;
-  selectMonths: any;
-  selectYears: any;
-  options: any;
-  showErrortext: any;
-  calendarIcon: any;
-  constructor(element?: any, taskQueue?: any, defaultParser?: any);
-  bind(): any;
-  parseDate(value?: any): any;
-  detached(): any;
-  openDatePicker(): any;
-  closeDatePicker(): any;
-  updateValue(): any;
-  onClose(): any;
-  onCalendarIconClick(event?: any): any;
-  
-  // onSet(value) {
-  //   //handle this ourselves since Dogfalo removed this functionality from the original plugin
-  //   if (this.options && this.options.closeOnSelect && value.select) {
-  //     this.value = value.select;
-  //     this.picker.close();
-  //   }
-  //   // this.value = new Date(value.select);
-  // }
-  valueChanged(newValue?: any): any;
-  showErrortextChanged(): any;
-  setErrorTextAttribute(): any;
-}
 export declare class MdFab {
   mdFixed: any;
   mdLarge: any;
@@ -418,6 +421,30 @@ export declare class MdFooter {
   constructor(element?: any);
   bind(): any;
   unbind(): any;
+}
+export declare class MdModalTrigger {
+  dismissible: any;
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  onComplete(): any;
+}
+export declare class MdModal {
+  dismissible: any;
+  opacity: any;
+  inDuration: any;
+  outDuration: any;
+  startingTop: any;
+  endingTop: any;
+  
+  // Ending top style attribute
+  constructor(element?: any);
+  attached(): any;
+  detached(): any;
+  onComplete(): any;
+  onReady(modal?: any, trigger?: any): any;
+  open(): any;
+  close(): any;
 }
 export declare class MdPrefix {
   constructor(element?: any);
@@ -445,6 +472,10 @@ export declare class MdInput {
   mdValidateError: any;
   mdValidateSuccess: any;
   mdValue: any;
+  mdMin: any;
+  mdMax: any;
+  mdName: any;
+  mdMaxlength: any;
   constructor(element?: any, taskQueue?: any, updateService?: any);
   bind(): any;
   attached(): any;
@@ -455,30 +486,8 @@ export declare class MdInput {
   attachEventHandlers(): any;
   detachEventHandlers(): any;
   blurOnEnter(e?: any): any;
-}
-export declare class MdModalTrigger {
-  dismissible: any;
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  onComplete(): any;
-}
-export declare class MdModal {
-  dismissible: any;
-  opacity: any;
-  inDuration: any;
-  outDuration: any;
-  startingTop: any;
-  endingTop: any;
-  
-  // Ending top style attribute
-  constructor(element?: any);
-  attached(): any;
-  detached(): any;
-  onComplete(): any;
-  onReady(modal?: any, trigger?: any): any;
-  open(): any;
-  close(): any;
+  mdUnrenderValidateResults: any;
+  mdRenderValidateResults: any;
 }
 export declare class MdNavbar {
   mdExtended: any;
@@ -541,6 +550,22 @@ export declare class MdPushpin {
   attached(): any;
   detached(): any;
 }
+
+/* eslint no-new-func:0 */
+export declare class ScrollfirePatch {
+  static patched: any;
+  patch(): any;
+}
+export declare class MdScrollfireTarget {
+  callback: any;
+  offset: any;
+  constructor(element?: any);
+}
+export declare class MdScrollfire {
+  targetId: any;
+  constructor(element?: any);
+  attached(): any;
+}
 export declare class MdRadio {
   static id: any;
   mdChecked: any;
@@ -572,22 +597,6 @@ export declare class MdRange {
   mdValue: any;
   constructor(element?: any);
 }
-
-/* eslint no-new-func:0 */
-export declare class ScrollfirePatch {
-  static patched: any;
-  patch(): any;
-}
-export declare class MdScrollfireTarget {
-  callback: any;
-  offset: any;
-  constructor(element?: any);
-}
-export declare class MdScrollfire {
-  targetId: any;
-  constructor(element?: any);
-  attached(): any;
-}
 export declare class MdScrollSpy {
   target: any;
   constructor(element?: any);
@@ -602,6 +611,7 @@ export declare class MdSelect {
   label: any;
   showErrortext: any;
   subscriptions: any;
+  inputField: any;
   input: any;
   dropdownMutationObserver: any;
   optionsMutationObserver: any;
@@ -625,6 +635,8 @@ export declare class MdSelect {
   open(): any;
   handleBlur(): any;
   handleFocus(): any;
+  mdUnrenderValidateResults: any;
+  mdRenderValidateResults: any;
 }
 export declare class MdSidenavCollapse {
   ref: any;
@@ -714,24 +726,12 @@ export declare class MdTimePicker {
   bind(): any;
   attached(): any;
   detached(): any;
-  afterDone(): any;
+  updateFromElement(): any;
   valueChanged(newValue?: any): any;
 }
 export declare class MdToastService {
   removeAll(): any;
   show(message?: any, displayLength?: any, className?: any): any;
-}
-export declare class MdTooltip {
-  position: any;
-  delay: any;
-  html: any;
-  text: any;
-  constructor(element?: any);
-  bind(): any;
-  attached(): any;
-  detached(): any;
-  textChanged(): any;
-  initTooltip(): any;
 }
 export declare class MdFadeinImage {
   ref: any;
@@ -749,15 +749,29 @@ export declare class MdStaggeredList {
   staggerList(): any;
   ensureOpacity(): any;
 }
+export declare class MdTooltip {
+  position: any;
+  delay: any;
+  html: any;
+  text: any;
+  constructor(element?: any);
+  bind(): any;
+  attached(): any;
+  detached(): any;
+  textChanged(): any;
+  initTooltip(): any;
+}
 export declare class MaterializeFormValidationRenderer {
   className: any;
   classNameFirst: any;
+  pushElementResult(elementResults?: any, element?: any, result?: any): any;
   render(instruction?: any): any;
-  underlineInput(element?: any, render?: any): any;
-  add(element?: any, result?: any): any;
-  remove(element?: any, result?: any): any;
+  defaultUnrenderValidateResults(element?: any, results?: any): any;
+  defaultRenderValidateResults(element?: any, results?: any): any;
   addMessage(element?: any, result?: any): any;
   removeMessage(element?: any, result?: any): any;
+  removeValidationClasses(input?: any): any;
+  addValidationClasses(input?: any, isValid?: any): any;
 }
 export declare class MdWaves {
   block: any;

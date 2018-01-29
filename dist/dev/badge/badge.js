@@ -128,4 +128,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
     }
   };
 });
-//# sourceMappingURL=../dist/dev/badge/badge.js.map
+//# sourceMappingURL=../devbuild/dev/badge/badge.js.map

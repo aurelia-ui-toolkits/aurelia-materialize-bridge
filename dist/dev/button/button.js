@@ -173,4 +173,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
     }
   };
 });
-//# sourceMappingURL=../dist/dev/button/button.js.map
+//# sourceMappingURL=../devbuild/dev/button/button.js.map

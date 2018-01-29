@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MdInput = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _class3, _temp;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _descriptor18, _class3, _temp;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -82,8 +82,18 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
   defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec14 = (0, _aureliaTemplating.bindable)(), _dec15 = (0, _aureliaTemplating.bindable)(), _dec16 = (0, _aureliaTemplating.bindable)({
   defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+}), _dec17 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec18 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec19 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+}), _dec20 = (0, _aureliaTemplating.bindable)({
+  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
 }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
   function MdInput(element, taskQueue, updateService) {
+    var _this = this;
+
     _classCallCheck(this, MdInput);
 
     _initDefineProp(this, 'mdLabel', _descriptor, this);
@@ -114,7 +124,71 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
 
     _initDefineProp(this, 'mdValue', _descriptor14, this);
 
+    _initDefineProp(this, 'mdMin', _descriptor15, this);
+
+    _initDefineProp(this, 'mdMax', _descriptor16, this);
+
+    _initDefineProp(this, 'mdName', _descriptor17, this);
+
+    _initDefineProp(this, 'mdMaxlength', _descriptor18, this);
+
     this._suspendUpdate = false;
+
+    this.mdUnrenderValidateResults = function (results, renderer) {
+      for (var _iterator = results, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+        var _ref;
+
+        if (_isArray) {
+          if (_i >= _iterator.length) break;
+          _ref = _iterator[_i++];
+        } else {
+          _i = _iterator.next();
+          if (_i.done) break;
+          _ref = _i.value;
+        }
+
+        var result = _ref;
+
+        if (!result.valid) {
+          renderer.removeMessage(_this.element, result);
+        }
+      }
+      renderer.removeValidationClasses(_this.input);
+    };
+
+    this.mdRenderValidateResults = function (results, renderer) {
+      if (_this.label && results.find(function (x) {
+        return !x.valid;
+      })) {
+        _this.label.removeAttribute('data-error');
+      }
+      if (_this.input) {
+        for (var _iterator2 = results, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+          var _ref2;
+
+          if (_isArray2) {
+            if (_i2 >= _iterator2.length) break;
+            _ref2 = _iterator2[_i2++];
+          } else {
+            _i2 = _iterator2.next();
+            if (_i2.done) break;
+            _ref2 = _i2.value;
+          }
+
+          var result = _ref2;
+
+          if (!result.valid) {
+            result.target = _this.input;
+            if (_this.input.hasAttribute('data-show-errortext')) {
+              renderer.addMessage(_this.element, result);
+            }
+          }
+        }
+      }
+      renderer.addValidationClasses(_this.input, !results.find(function (x) {
+        return !x.valid;
+      }));
+    };
 
     this.element = element;
     this.taskQueue = taskQueue;
@@ -152,10 +226,14 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
       $(this.input).siblings('label').addClass('active');
     }
     this.attachEventHandlers();
+    this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
+    this.element.mdRenderValidateResults = this.mdRenderValidateResults;
   };
 
   MdInput.prototype.detached = function detached() {
     this.detachEventHandlers();
+    this.element.mdUnrenderValidateResults = undefined;
+    this.element.mdRenderValidateResults = undefined;
   };
 
   MdInput.prototype.blur = function blur() {
@@ -260,5 +338,25 @@ var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('m
   enumerable: true,
   initializer: function initializer() {
     return '';
+  }
+}), _descriptor15 = _applyDecoratedDescriptor(_class2.prototype, 'mdMin', [_dec17], {
+  enumerable: true,
+  initializer: function initializer() {
+    return null;
+  }
+}), _descriptor16 = _applyDecoratedDescriptor(_class2.prototype, 'mdMax', [_dec18], {
+  enumerable: true,
+  initializer: function initializer() {
+    return null;
+  }
+}), _descriptor17 = _applyDecoratedDescriptor(_class2.prototype, 'mdName', [_dec19], {
+  enumerable: true,
+  initializer: function initializer() {
+    return '';
+  }
+}), _descriptor18 = _applyDecoratedDescriptor(_class2.prototype, 'mdMaxlength', [_dec20], {
+  enumerable: true,
+  initializer: function initializer() {
+    return 524288;
   }
 })), _class2)) || _class) || _class);

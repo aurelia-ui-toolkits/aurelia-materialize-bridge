@@ -95,4 +95,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
     }
   };
 });
-//# sourceMappingURL=../dist/dev/fab/fab.js.map
+//# sourceMappingURL=../devbuild/dev/fab/fab.js.map

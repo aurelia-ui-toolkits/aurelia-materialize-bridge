@@ -14,7 +14,17 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
     this.classNameFirst = 'md-input-validation-first';
   }
 
+  MaterializeFormValidationRenderer.prototype.pushElementResult = function pushElementResult(elementResults, element, result) {
+    if (elementResults.has(element)) {
+      elementResults.get(element).push(result);
+    } else {
+      elementResults.set(element, [result]);
+    }
+  };
+
   MaterializeFormValidationRenderer.prototype.render = function render(instruction) {
+    var elementResultsToUnrender = new Map();
+
     for (var _iterator = instruction.unrender, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
       var _ref2;
 
@@ -27,187 +37,122 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
         _ref2 = _i.value;
       }
 
-      var _ref5 = _ref2;
-      var result = _ref5.result,
-          elements = _ref5.elements;
-
-      for (var _iterator3 = elements, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
-        var _ref6;
-
-        if (_isArray3) {
-          if (_i3 >= _iterator3.length) break;
-          _ref6 = _iterator3[_i3++];
-        } else {
-          _i3 = _iterator3.next();
-          if (_i3.done) break;
-          _ref6 = _i3.value;
-        }
-
-        var element = _ref6;
-
-        this.remove(element, result);
-        this.underlineInput(element, false);
-      }
-    }
-    for (var _iterator2 = instruction.render, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
-      var _ref4;
-
-      if (_isArray2) {
-        if (_i2 >= _iterator2.length) break;
-        _ref4 = _iterator2[_i2++];
-      } else {
-        _i2 = _iterator2.next();
-        if (_i2.done) break;
-        _ref4 = _i2.value;
-      }
-
-      var _ref7 = _ref4;
+      var _ref7 = _ref2;
       var result = _ref7.result,
           elements = _ref7.elements;
 
-      for (var _iterator4 = elements, _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
+      for (var _iterator5 = elements, _isArray5 = Array.isArray(_iterator5), _i5 = 0, _iterator5 = _isArray5 ? _iterator5 : _iterator5[Symbol.iterator]();;) {
         var _ref8;
 
-        if (_isArray4) {
-          if (_i4 >= _iterator4.length) break;
-          _ref8 = _iterator4[_i4++];
+        if (_isArray5) {
+          if (_i5 >= _iterator5.length) break;
+          _ref8 = _iterator5[_i5++];
         } else {
-          _i4 = _iterator4.next();
-          if (_i4.done) break;
-          _ref8 = _i4.value;
+          _i5 = _iterator5.next();
+          if (_i5.done) break;
+          _ref8 = _i5.value;
         }
 
-        var _element = _ref8;
+        var element = _ref8;
 
-        this.add(_element, result);
-        this.underlineInput(_element, true);
+        this.pushElementResult(elementResultsToUnrender, element, result);
       }
     }
-  };
+    for (var _iterator2 = elementResultsToUnrender, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+      var _ref3;
 
-  MaterializeFormValidationRenderer.prototype.underlineInput = function underlineInput(element, render) {
-    var input = void 0;
-    var validationContainer = void 0;
-    switch (element.tagName) {
-      case 'MD-INPUT':
-        {
-          input = element.querySelector('input') || element.querySelector('textarea');
-          validationContainer = element;
-          break;
-        }
-      case 'SELECT':
-        {
-          var inputField = element.closest('.input-field');
-          if (inputField) {
-            input = inputField.querySelector('input');
-            validationContainer = inputField;
-          }
-          break;
-        }
-      case 'INPUT':
-        {
-          input = element;
-          validationContainer = element.parentElement;
-          break;
-        }
-      default:
-        break;
-    }
-    if (input) {
-      if (render) {
-        if (validationContainer.querySelectorAll('.' + this.className).length === 0) {
-          input.classList.remove('invalid');
-          input.classList.add('valid');
-        } else {
-          input.classList.remove('valid');
-          input.classList.add('invalid');
-        }
+      if (_isArray2) {
+        if (_i2 >= _iterator2.length) break;
+        _ref3 = _iterator2[_i2++];
       } else {
-        input.classList.remove('valid');
-        input.classList.remove('invalid');
+        _i2 = _iterator2.next();
+        if (_i2.done) break;
+        _ref3 = _i2.value;
+      }
+
+      var _ref9 = _ref3,
+          _element = _ref9[0],
+          results = _ref9[1];
+
+      if (_element.mdUnrenderValidateResults) {
+        _element.mdUnrenderValidateResults(results, this);
+      } else {
+        this.defaultUnrenderValidateResults(_element, results);
+      }
+    }
+
+    var elementResultsToRender = new Map();
+    for (var _iterator3 = instruction.render, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+      var _ref5;
+
+      if (_isArray3) {
+        if (_i3 >= _iterator3.length) break;
+        _ref5 = _iterator3[_i3++];
+      } else {
+        _i3 = _iterator3.next();
+        if (_i3.done) break;
+        _ref5 = _i3.value;
+      }
+
+      var _ref10 = _ref5;
+      var result = _ref10.result,
+          elements = _ref10.elements;
+
+      for (var _iterator6 = elements, _isArray6 = Array.isArray(_iterator6), _i6 = 0, _iterator6 = _isArray6 ? _iterator6 : _iterator6[Symbol.iterator]();;) {
+        var _ref11;
+
+        if (_isArray6) {
+          if (_i6 >= _iterator6.length) break;
+          _ref11 = _iterator6[_i6++];
+        } else {
+          _i6 = _iterator6.next();
+          if (_i6.done) break;
+          _ref11 = _i6.value;
+        }
+
+        var _element2 = _ref11;
+
+        this.pushElementResult(elementResultsToRender, _element2, result);
+      }
+    }
+    for (var _iterator4 = elementResultsToRender, _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
+      var _ref6;
+
+      if (_isArray4) {
+        if (_i4 >= _iterator4.length) break;
+        _ref6 = _iterator4[_i4++];
+      } else {
+        _i4 = _iterator4.next();
+        if (_i4.done) break;
+        _ref6 = _i4.value;
+      }
+
+      var _ref12 = _ref6,
+          _element3 = _ref12[0],
+          results = _ref12[1];
+
+      if (_element3.mdUnrenderValidateResults) {
+        _element3.mdRenderValidateResults(results, this);
+      } else {
+        this.defaultRenderValidateResults(_element3, results);
       }
     }
   };
 
-  MaterializeFormValidationRenderer.prototype.add = function add(element, result) {
-    if (result.valid) {
+  MaterializeFormValidationRenderer.prototype.defaultUnrenderValidateResults = function defaultUnrenderValidateResults(element, results) {
+    if (element.tagName !== 'INPUT') {
       return;
     }
-    switch (element.tagName) {
-      case 'MD-INPUT':
-        {
-          var label = element.querySelector('label');
-          var input = element.querySelector('input') || element.querySelector('textarea');
-          if (label) {
-            label.removeAttribute('data-error');
-          }
-          if (input) {
-            result.target = input;
-            if (input.hasAttribute('data-show-errortext')) {
-              this.addMessage(element, result);
-            }
-          }
-          break;
-        }
-      case 'SELECT':
-        {
-          var inputField = element.closest('.input-field');
-          if (!inputField) {
-            return;
-          }
-          var _input = inputField.querySelector('input');
-          if (_input) {
-            result.target = _input;
-            if (!(_input.hasAttribute('data-show-errortext') && _input.getAttribute('data-show-errortext') === 'false')) {
-              this.addMessage(inputField, result);
-            }
-          }
-          break;
-        }
-      case 'INPUT':
-        {
-          if (element.hasAttribute('md-datepicker')) {
-            if (!(element.hasAttribute('data-show-errortext') && element.getAttribute('data-show-errortext') === 'false')) {
-              this.addMessage(element.parentNode, result);
-            }
-          }
-          break;
-        }
-      default:
-        break;
-    }
+    this.removeValidationClasses(element);
   };
 
-  MaterializeFormValidationRenderer.prototype.remove = function remove(element, result) {
-    if (result.valid) {
+  MaterializeFormValidationRenderer.prototype.defaultRenderValidateResults = function defaultRenderValidateResults(element, results) {
+    if (element.tagName !== 'INPUT') {
       return;
     }
-    switch (element.tagName) {
-      case 'MD-INPUT':
-        {
-          this.removeMessage(element, result);
-          break;
-        }
-      case 'SELECT':
-        {
-          var inputField = element.closest('.input-field');
-          if (!inputField) {
-            return;
-          }
-
-          this.removeMessage(inputField, result);
-          break;
-        }
-      case 'INPUT':
-        {
-          if (element.hasAttribute('md-datepicker')) {
-            this.removeMessage(element.parentNode, result);
-          }
-          break;
-        }
-      default:
-        break;
-    }
+    this.addValidationClasses(element, !results.find(function (x) {
+      return !x.valid;
+    }));
   };
 
   MaterializeFormValidationRenderer.prototype.addMessage = function addMessage(element, result) {
@@ -228,6 +173,21 @@ var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRendere
     var message = element.querySelector('#md-input-validation-' + result.id);
     if (message) {
       element.removeChild(message);
+    }
+  };
+
+  MaterializeFormValidationRenderer.prototype.removeValidationClasses = function removeValidationClasses(input) {
+    input.classList.remove('valid');
+    input.classList.remove('invalid');
+  };
+
+  MaterializeFormValidationRenderer.prototype.addValidationClasses = function addValidationClasses(input, isValid) {
+    if (isValid) {
+      input.classList.remove('invalid');
+      input.classList.add('valid');
+    } else {
+      input.classList.remove('valid');
+      input.classList.add('invalid');
     }
   };
 

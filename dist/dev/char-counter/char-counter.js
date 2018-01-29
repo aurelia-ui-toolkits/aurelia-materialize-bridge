@@ -106,4 +106,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
     }
   };
 });
-//# sourceMappingURL=../dist/dev/char-counter/char-counter.js.map
+//# sourceMappingURL=../devbuild/dev/char-counter/char-counter.js.map

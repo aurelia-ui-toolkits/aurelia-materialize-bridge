@@ -74,6 +74,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
     execute: function () {
       _export('MdDatePicker', MdDatePicker = (_dec = inject(Element, TaskQueue, DatePickerDefaultParser), _dec2 = customAttribute('md-datepicker'), _dec3 = bindable(), _dec4 = bindable(), _dec5 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec6 = bindable({ defaultBindingMode: bindingMode.twoWay }), _dec7 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec8 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec9 = bindable({ defaultBindingMode: bindingMode.oneTime }), _dec10 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
         function MdDatePicker(element, taskQueue, defaultParser) {
+          var _this = this;
+
           _classCallCheck(this, MdDatePicker);
 
           _initDefineProp(this, 'container', _descriptor, this);
@@ -94,6 +96,54 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
 
           this.calendarIcon = null;
 
+          this.mdUnrenderValidateResults = function (results, renderer) {
+            for (var _iterator = results, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+              var _ref;
+
+              if (_isArray) {
+                if (_i >= _iterator.length) break;
+                _ref = _iterator[_i++];
+              } else {
+                _i = _iterator.next();
+                if (_i.done) break;
+                _ref = _i.value;
+              }
+
+              var result = _ref;
+
+              if (!result.valid) {
+                renderer.removeMessage(_this.element.parentNode, result);
+              }
+            }
+            renderer.removeValidationClasses(_this.element);
+          };
+
+          this.mdRenderValidateResults = function (results, renderer) {
+            if (!(_this.element.hasAttribute('data-show-errortext') && _this.element.getAttribute('data-show-errortext') === 'false')) {
+              for (var _iterator2 = results, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+                var _ref2;
+
+                if (_isArray2) {
+                  if (_i2 >= _iterator2.length) break;
+                  _ref2 = _iterator2[_i2++];
+                } else {
+                  _i2 = _iterator2.next();
+                  if (_i2.done) break;
+                  _ref2 = _i2.value;
+                }
+
+                var result = _ref2;
+
+                if (!result.valid) {
+                  renderer.addMessage(_this.element.parentNode, result);
+                }
+              }
+            }
+            renderer.addValidationClasses(_this.element, !results.find(function (x) {
+              return !x.valid;
+            }));
+          };
+
           this.element = element;
           this.log = getLogger('md-datepicker');
           this.taskQueue = taskQueue;
@@ -101,8 +151,13 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
           this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
         }
 
+        MdDatePicker.prototype.attached = function attached() {
+          this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
+          this.element.mdRenderValidateResults = this.mdRenderValidateResults;
+        };
+
         MdDatePicker.prototype.bind = function bind() {
-          var _this = this;
+          var _this2 = this;
 
           this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
           this.selectYears = parseInt(this.selectYears, 10);
@@ -124,7 +179,7 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
 
             if (this.options.onClose) {
               options.onClose = function () {
-                _this.options.onClose();
+                _this2.options.onClose();
                 $(document.activeElement).blur();
               };
             }
@@ -143,19 +198,19 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
           if (this.options && this.options.editable) {
             $(this.element).on('keydown', function (e) {
               if (e.keyCode === 13 || e.keyCode === 9) {
-                if (_this.parseDate($(_this.element).val())) {
-                  _this.updateValue();
-                  _this.closeDatePicker();
+                if (_this2.parseDate($(_this2.element).val())) {
+                  _this2.updateValue();
+                  _this2.closeDatePicker();
                 } else {
-                  _this.openDatePicker();
+                  _this2.openDatePicker();
                 }
               } else {
-                _this.value = null;
+                _this2.value = null;
               }
             });
           } else {
             $(this.element).on('focusin', function () {
-              _this.openDatePicker();
+              _this2.openDatePicker();
             });
           }
           if (this.options.showIcon) {
@@ -176,19 +231,19 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
 
         MdDatePicker.prototype.parseDate = function parseDate(value) {
           if (this.parsers && this.parsers.length && this.parsers.length > 0) {
-            for (var _iterator = this.parsers, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-              var _ref;
+            for (var _iterator3 = this.parsers, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+              var _ref3;
 
-              if (_isArray) {
-                if (_i >= _iterator.length) break;
-                _ref = _iterator[_i++];
+              if (_isArray3) {
+                if (_i3 >= _iterator3.length) break;
+                _ref3 = _iterator3[_i3++];
               } else {
-                _i = _iterator.next();
-                if (_i.done) break;
-                _ref = _i.value;
+                _i3 = _iterator3.next();
+                if (_i3.done) break;
+                _ref3 = _i3.value;
               }
 
-              var parser = _ref;
+              var parser = _ref3;
 
               if (parser.canParse(value)) {
                 var parsedDate = parser.parse(value);
@@ -212,6 +267,8 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
           if (this.picker) {
             this.picker.stop();
           }
+          this.element.mdUnrenderValidateResults = undefined;
+          this.element.mdRenderValidateResults = undefined;
         };
 
         MdDatePicker.prototype.openDatePicker = function openDatePicker() {
@@ -298,4 +355,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
     }
   };
 });
-//# sourceMappingURL=../dist/dev/datepicker/datepicker.js.map
+//# sourceMappingURL=../devbuild/dev/datepicker/datepicker.js.map
