@@ -1,4 +1,4 @@
-import {constants} from './constants';
+import { constants } from './constants';
 
 /**
 * Fire DOM event on an element
@@ -6,14 +6,14 @@ import {constants} from './constants';
 * @param name The Event's name
 * @param data Addition data to attach to an event
 */
-export function fireEvent(element: Element, name: string, data? = {}) {
-  let event = new CustomEvent(name, {
-    detail: data,
-    bubbles: true
-  });
-  element.dispatchEvent(event);
+export function fireEvent(element: Element, name: string, data = {}) {
+	let event = new CustomEvent(name, {
+		detail: data,
+		bubbles: true
+	});
+	element.dispatchEvent(event);
 
-  return event;
+	return event;
 }
 
 /**
@@ -22,6 +22,6 @@ export function fireEvent(element: Element, name: string, data? = {}) {
 * @param name The Event's name, without md-on prefix
 * @param data Addition data to attach to an event
 */
-export function fireMaterializeEvent(element: Element, name: string, data? = {}) {
-  return fireEvent(element, `${constants.eventPrefix}${name}`, data);
+export function fireMaterializeEvent(element: Element, name: string, data = {}) {
+	return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
