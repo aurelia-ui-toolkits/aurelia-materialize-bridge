@@ -1,14 +1,12 @@
-import {autoinject } from "aurelia-framework";
-import { bindable, customAttribute } from "aurelia-templating";
-import { inject } from "aurelia-dependency-injection";
+import { autoinject, bindable } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
 import { getBooleanFromAttributeValue } from "../common/attributes";
 
 @autoinject
 export class MdButton {
 	@bindable
-	disabled = false;
-	disabledChanged(newValue) {
+	disabled: boolean | string = false;
+	disabledChanged(newValue: boolean | string) {
 		if (getBooleanFromAttributeValue(newValue)) {
 			this.attributeManager.addClasses("disabled");
 		} else {
@@ -17,8 +15,8 @@ export class MdButton {
 	}
 
 	@bindable
-	flat = false;
-	flatChanged(newValue) {
+	flat: boolean | string = false;
+	flatChanged(newValue: boolean | string) {
 		if (getBooleanFromAttributeValue(newValue)) {
 			this.attributeManager.removeClasses(["btn", "accent"]);
 			this.attributeManager.addClasses("btn-flat");
@@ -27,7 +25,7 @@ export class MdButton {
 			this.attributeManager.addClasses(["btn", "accent"]);
 		}
 	}
-	
+
 	@bindable
 	floating = false;
 
@@ -35,7 +33,7 @@ export class MdButton {
 	large = false;
 
 	@bindable
-	pulse = false;
+	pulse: boolean | string = false;
 	pulseChanged(newValue) {
 		if (getBooleanFromAttributeValue(newValue)) {
 			this.attributeManager.addClasses("pulse");
