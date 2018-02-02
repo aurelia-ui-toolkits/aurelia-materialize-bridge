@@ -1,18 +1,19 @@
-import { autoinject, bindable } from "aurelia-framework";
+import { autoinject, bindable, customAttribute } from "aurelia-framework";
 import { fireEvent } from "../common/events";
 import "../aurelia";
 
+@customAttribute("md-autocomplete")
 @autoinject
 export class MdAutoComplete {
 	input: Element = null;
 
-	@bindable()
+	@bindable
 	limit: number = 20;
 
-	@bindable()
+	@bindable
 	minLength: number = 1;
 
-	@bindable()
+	@bindable
 	values: any = {};
 
 	constructor(private element: Element) { }

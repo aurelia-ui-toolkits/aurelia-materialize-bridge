@@ -1,7 +1,8 @@
-import { autoinject, bindable, bindingMode } from "aurelia-framework";
+import { autoinject, bindable, bindingMode, customElement } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
 import { getBooleanFromAttributeValue } from "../common/attributes";
 
+@customElement("md-checkbox")
 @autoinject
 export class MdCheckbox {
 	constructor(private element: Element) {

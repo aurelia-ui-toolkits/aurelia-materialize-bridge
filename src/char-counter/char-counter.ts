@@ -1,6 +1,7 @@
-import { autoinject, bindable, bindingMode, children } from "aurelia-framework";
+import { autoinject, bindable, bindingMode, children,customAttribute } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
 
+@customAttribute("md-char-counter")
 @autoinject
 export class MdCharCounter {
 	constructor(private element: Element) {
@@ -10,7 +11,7 @@ export class MdCharCounter {
 
 	attributeManager: AttributeManager;
 
-	@bindable()
+	@bindable
 	length: number | string = 120;
 
 	attached() {

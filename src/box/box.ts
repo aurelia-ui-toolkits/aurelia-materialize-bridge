@@ -1,6 +1,7 @@
-import { autoinject, bindable, bindingMode } from "aurelia-framework";
+import { autoinject, bindable, bindingMode, customAttribute } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
 
+@customAttribute("md-box")
 @autoinject
 export class MdBox {
 	constructor(private element: Element) {

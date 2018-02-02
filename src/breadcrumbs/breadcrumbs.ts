@@ -1,13 +1,14 @@
-import { autoinject, bindable, bindingMode } from "aurelia-framework";
+import { autoinject, bindable, bindingMode, customElement } from "aurelia-framework";
 import { Router, NavigationInstruction } from "aurelia-router";
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 
+@customElement("md-breadcrumbs")
 @autoinject
 export class MdBreadcrumbs {
 	constructor(private element: Element, private aureliaRouter: Router) { }
 
-	@bindable()
+	@bindable
 	router: Router;
 
 	childRouter: Router;

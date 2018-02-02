@@ -1,14 +1,15 @@
-import { autoinject, bindable } from "aurelia-framework";
+import { autoinject, bindable, customAttribute } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
 import { getBooleanFromAttributeValue } from "../common/attributes";
 
+@customAttribute("md-badge")
 @autoinject
 export class MdBadge {
 	constructor(private element: Element) {
 		this.attributeManager = new AttributeManager(this.element);
 	}
 
-	@bindable()
+	@bindable
 	isNew: boolean | string = false;
 	isNewChanged(newValue) {
 		if (getBooleanFromAttributeValue(newValue)) {
@@ -18,7 +19,7 @@ export class MdBadge {
 		}
 	}
 
-	@bindable()
+	@bindable
 	caption: string = null;
 	captionChanged(newValue) {
 		if (newValue !== null) {

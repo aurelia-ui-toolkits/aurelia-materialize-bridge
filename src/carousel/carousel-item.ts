@@ -1,5 +1,6 @@
-import { autoinject, bindable, bindingMode } from "aurelia-framework";
+import { autoinject, bindable, bindingMode, customElement } from "aurelia-framework";
 
+@customElement("md-carousel-item")
 @autoinject
 export class MdCarouselItem {
 	constructor(private element: Element) {}
@@ -9,6 +10,4 @@ export class MdCarouselItem {
 
 	@bindable({ defaultBindingMode: bindingMode.oneWay })
 	mdImage: string = "";
-
-	attached() { }
 }

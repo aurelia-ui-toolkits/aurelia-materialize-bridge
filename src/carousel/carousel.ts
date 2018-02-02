@@ -1,12 +1,13 @@
-import { autoinject, bindable, bindingMode, children } from "aurelia-framework";
+import { autoinject, bindable, bindingMode, children, customElement } from "aurelia-framework";
 import { TaskQueue } from "aurelia-task-queue";
 import { getBooleanFromAttributeValue } from "../common/attributes";
 
+@customElement("md-carousel")
 @autoinject
 export class MdCarousel {
 	constructor(private element: Element, private taskQueue: TaskQueue) { }
 
-	@bindable()
+	@bindable
 	mdIndicators: boolean | string = true;
 
 	@bindable({ defaultBindingMode: bindingMode.oneTime })

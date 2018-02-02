@@ -1,7 +1,8 @@
-import { autoinject, bindable } from "aurelia-framework";
+import { autoinject, bindable, customAttribute } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
 import { getBooleanFromAttributeValue } from "../common/attributes";
 
+@customAttribute("md-button")
 @autoinject
 export class MdButton {
 	@bindable

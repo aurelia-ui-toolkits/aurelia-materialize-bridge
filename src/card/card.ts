@@ -1,6 +1,7 @@
-import { autoinject, bindable, bindingMode } from "aurelia-framework";
+import { autoinject, bindable, bindingMode, customElement } from "aurelia-framework";
 import { getBooleanFromAttributeValue } from "../common/attributes";
 
+@customElement("md-card")
 @autoinject
 export class MdCard {
 	constructor(private element: Element) {
