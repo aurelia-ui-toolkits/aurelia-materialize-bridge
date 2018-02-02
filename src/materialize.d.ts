@@ -8,4 +8,19 @@ interface JQuery {
 	material_chip(options?: any);
 	collapsible(command: string, index?: number);
 	collapsible(options?: any);
+	pickadate(options: DatePickerOptions): any;
+	pickadate(command: string);
+	dropdown(command: any);
+}
+
+interface DatePickerOptions {
+	selectMonths?: boolean;
+	selectYears?: number;
+	container?: Element;
+	editable?: boolean;
+	showIcon?: boolean;
+	iconClass?: string;
+	min?: Date;
+	max?: Date;
+	onClose?();
 }
