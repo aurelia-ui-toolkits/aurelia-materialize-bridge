@@ -9,8 +9,8 @@ export class MdColors {
 	mdAccentColor: string;
 
 	@bindable
-	mdErrorColor: string = '#F44336';
+	mdErrorColor: string = "#F44336";
 
 	@bindable
-	mdSuccessColor: string = '#26a69a';
+	mdSuccessColor: string = "#26a69a";
 }

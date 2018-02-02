@@ -1,4 +1,5 @@
 // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
+// tslint:disable
 function shadeBlendConvert(p: number, from: string, to?: string) {
 	if (p < -1 || p > 1 || (from[0] != 'r' && from[0] != '#')) {
 		return null; //ErrorCheck
@@ -21,6 +22,7 @@ function shadeBlendConvert(p: number, from: string, to?: string) {
 	if (h) return "rgb(" + r((t[0] - f[0]) * p + f[0]) + "," + r((t[1] - f[1]) * p + f[1]) + "," + r((t[2] - f[2]) * p + f[2]) + (f[3] < 0 && t[3] < 0 ? ")" : "," + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 10000) / 10000 : t[3] < 0 ? f[3] : t[3]) + ")");
 	else return "#" + (0x100000000 + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 255) : t[3] > -1 ? r(t[3] * 255) : f[3] > -1 ? r(f[3] * 255) : 255) * 0x1000000 + r((t[0] - f[0]) * p + f[0]) * 0x10000 + r((t[1] - f[1]) * p + f[1]) * 0x100 + r((t[2] - f[2]) * p + f[2])).toString(16).slice(f[3] > -1 || t[3] > -1 ? 1 : 3);
 }
+// tslint:enable
 
 export class DarkenValueConverter {
 	toView(value: string, steps: string) {
@@ -28,6 +30,7 @@ export class DarkenValueConverter {
 	}
 }
 
+// tslint:disable-next-line:max-classes-per-file
 export class LightenValueConverter {
 	toView(value: string, steps: string) {
 		return shadeBlendConvert(0.3 * parseFloat(steps), value);

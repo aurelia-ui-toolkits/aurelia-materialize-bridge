@@ -1,6 +1,6 @@
-import { autoinject, bindable, bindingMode, observable, customElement } from "aurelia-framework";
-import { fireMaterializeEvent } from "../common/events";
+import { autoinject, bindable, bindingMode, customElement, observable } from "aurelia-framework";
 import { getBooleanFromAttributeValue } from "../common/attributes";
+import { fireMaterializeEvent } from "../common/events";
 
 @customElement("md-collection-selector")
 @autoinject

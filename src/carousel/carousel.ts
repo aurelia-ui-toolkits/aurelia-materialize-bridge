@@ -33,7 +33,7 @@ export class MdCarousel {
 
 	refresh() {
 		if (this.items.length > 0) {
-			let options = {
+			const options = {
 				full_width: getBooleanFromAttributeValue(this.mdSlider),
 				fullWidth: getBooleanFromAttributeValue(this.mdSlider),
 				indicators: this.mdIndicators

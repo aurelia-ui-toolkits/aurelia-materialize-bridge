@@ -50,7 +50,7 @@ export class MdButton {
 	attributeManager: AttributeManager;
 
 	attached() {
-		let classes = [];
+		const classes = [];
 
 		if (getBooleanFromAttributeValue(this.flat)) {
 			classes.push("btn-flat");

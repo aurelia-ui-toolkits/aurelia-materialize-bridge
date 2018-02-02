@@ -1,5 +1,4 @@
 import { autoinject, bindable, bindingMode } from "aurelia-framework";
-import { inject } from "aurelia-dependency-injection";
 import { getLogger, Logger } from "aurelia-logging";
 
 import { fireEvent } from "../common/events";

@@ -32,7 +32,7 @@ export class MdBadge {
 	attributeManager: AttributeManager;
 
 	attached() {
-		let classes = ["badge"];
+		const classes = ["badge"];
 
 		if (getBooleanFromAttributeValue(this.isNew)) {
 			classes.push("new");

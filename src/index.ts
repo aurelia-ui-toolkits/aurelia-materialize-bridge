@@ -1,7 +1,7 @@
 import { FrameworkConfiguration } from "aurelia-framework";
+import { polyfillElementClosest } from "./common/polyfills";
 import { ConfigBuilder } from "./config-builder";
 import { ScrollfirePatch } from "./scrollfire/scrollfire-patch";
-import { polyfillElementClosest } from "./common/polyfills";
 
 function applyPolyfills() {
 	polyfillElementClosest();
@@ -9,7 +9,6 @@ function applyPolyfills() {
 
 export function configure(frameworkConfiguration: FrameworkConfiguration, configCallback) {
 	applyPolyfills();
-	// let builder = new ConfigBuilder();
 	const builder = frameworkConfiguration.container.get(ConfigBuilder);
 
 	if (configCallback !== undefined && typeof (configCallback) === "function") {

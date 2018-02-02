@@ -1,4 +1,4 @@
-import { autoinject, bindable, bindingMode, children,customAttribute } from "aurelia-framework";
+import { autoinject, bindable, bindingMode, children, customAttribute } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
 
 @customAttribute("md-char-counter")

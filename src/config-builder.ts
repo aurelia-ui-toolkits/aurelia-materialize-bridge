@@ -1,8 +1,8 @@
 import { PLATFORM } from "aurelia-pal";
 
 /**
-* Plugin configuration builder
-*/
+ * Plugin configuration builder
+ */
 export class ConfigBuilder {
 
 	globalResources = [];
@@ -107,8 +107,8 @@ export class ConfigBuilder {
 	}
 
 	/**
-	* Use my control
-	*/
+	 * Use my control
+	 */
 	useClickCounter(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./click-counter"));
 		return this;
@@ -140,13 +140,6 @@ export class ConfigBuilder {
 	useDropdown(): ConfigBuilder {
 		// this.globalResources.push("./dropdown/dropdown-element");
 		this.globalResources.push(PLATFORM.moduleName("./dropdown/dropdown"));
-		return this;
-	}
-
-	useDropdownFix(): ConfigBuilder {
-		/*eslint-disable no-console*/
-		console.warn("The method useDropdownFix has no effect in this version and will be removed in a future version.");
-		/*eslint-disable no-console*/
 		return this;
 	}
 
@@ -293,9 +286,9 @@ export class ConfigBuilder {
 	}
 
 	/**
-	* Don"t globalize any resources
-	* Allows you to import yourself via <require></require>
-	*/
+	 * Don't globalize any resources
+	 * Allows you to import yourself via <require></require>
+	 */
 	withoutGlobalResources(): ConfigBuilder {
 		this.useGlobalResources = false;
 		return this;

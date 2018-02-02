@@ -1,5 +1,5 @@
 import { autoinject, bindable, bindingMode, customElement } from "aurelia-framework";
-import { Router, NavigationInstruction } from "aurelia-router";
+import { NavigationInstruction, Router } from "aurelia-router";
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 

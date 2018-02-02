@@ -1,6 +1,6 @@
 import { autoinject, bindable, bindingMode, customAttribute } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
 import { AttributeManager } from "../common/attributeManager";
+import { getBooleanFromAttributeValue } from "../common/attributes";
 
 @customAttribute("md-collapsible")
 @autoinject
@@ -38,8 +38,8 @@ export class MdCollapsible {
 	}
 
 	refresh() {
-		let accordion = getBooleanFromAttributeValue(this.accordion);
-		let dataCollapsibleAttributeValue = accordion ? "accordion" : "expandable";
+		const accordion = getBooleanFromAttributeValue(this.accordion);
+		const dataCollapsibleAttributeValue = accordion ? "accordion" : "expandable";
 
 		this.attributeManager.addAttributes({ "data-collapsible": dataCollapsibleAttributeValue });
 
@@ -57,7 +57,7 @@ export class MdCollapsible {
 	buildCollapsibleOpenCloseCallbackHandler(handler: (element: Element) => {}) {
 		return typeof (handler) === "function" ?
 			(targetElementJquery: JQuery) => {
-				let targetElement = targetElementJquery[0];
+				const targetElement = targetElementJquery[0];
 
 				handler(targetElement);
 			} : null;

@@ -1,10 +1,12 @@
 import { autoinject, bindable, customAttribute } from "aurelia-framework";
-import { fireEvent } from "../common/events";
 import "../aurelia";
+import { fireEvent } from "../common/events";
 
 @customAttribute("md-autocomplete")
 @autoinject
 export class MdAutoComplete {
+	constructor(private element: Element) { }
+
 	input: Element = null;
 
 	@bindable
@@ -15,8 +17,6 @@ export class MdAutoComplete {
 
 	@bindable
 	values: any = {};
-
-	constructor(private element: Element) { }
 
 	attached() {
 		if (this.element.tagName.toLowerCase() === "input") {
