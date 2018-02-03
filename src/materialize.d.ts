@@ -11,6 +11,9 @@ interface JQuery {
 	pickadate(options: DatePickerOptions): any;
 	pickadate(command: string);
 	dropdown(command: any);
+	leanModal(options: any);
+	parallax();
+	pushpin(options: any);
 }
 
 interface DatePickerOptions {
@@ -23,4 +26,8 @@ interface DatePickerOptions {
 	min?: Date;
 	max?: Date;
 	onClose?();
+}
+
+declare namespace Materialize {
+	function updateTextFields();
 }
