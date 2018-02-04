@@ -1,0 +1,34 @@
+<template>
+	<require from="./card.css"></require>
+	<div class="card ${ mdHorizontal ? 'horizontal' : '' } ${ mdSize || '' } ${ mdStickyAction ? 'sticky-action' : '' } ${mdClass}">
+		<div if.bind="mdImage !== null" md-waves="color: light; block: true;" class="card-image">
+			<img class="${ mdReveal === true ? 'activator' : '' }" src.bind="mdImage" />
+			<span if.bind="mdReveal === false" class="card-title">${mdTitle}</span>
+		</div>
+
+		<div class="card-content">
+			<span if.bind="mdReveal === true" class="card-title activator">
+				${mdTitle}
+				<i class="material-icons right">more_vert</i>
+			</span>
+			<span if.bind="mdImage === null && mdReveal !== true" class="card-title">${mdTitle}</span>
+			<!-- 
+        Print a title when image is null and card is not revealable.
+        This condition should complement the other two if conditions. 
+      -->
+			<slot></slot>
+		</div>
+
+		<div show.bind="mdReveal" class="${ mdReveal ? 'card-reveal' : '' }">
+			<span class="card-title ${ mdReveal ? 'activator' : '' }">
+				${mdTitle}
+				<i class="material-icons right">close</i>
+			</span>
+			<slot name="reveal-text"></slot>
+		</div>
+
+		<div show.bind="mdAction" class="${ mdAction ? 'card-action' : '' }">
+			<slot name="action"></slot>
+		</div>
+	</div>
+</template>

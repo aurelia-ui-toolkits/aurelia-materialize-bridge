@@ -1,0 +1,7 @@
+md-navbar .primary {
+  transition: all .3s ease-out;
+}
+
+md-navbar .primary.md-auto-height {
+  height: auto;
+}
