@@ -1,4 +1,4 @@
-System.register(["aurelia-framework", "aurelia-logging", "../common/attributes", "../common/events"], function (exports_1, context_1) {
+System.register(["aurelia-framework", "aurelia-task-queue", "aurelia-logging", "../common/attributes", "./datepicker-default-parser", "../common/events"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -6,18 +6,27 @@ System.register(["aurelia-framework", "aurelia-logging", "../common/attributes",
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, aurelia_logging_1, attributes_1, events_1, MdDatePicker;
+    var aurelia_framework_1, aurelia_task_queue_1, aurelia_logging_1, attributes_1, datepicker_default_parser_1, events_1, MdDatePicker;
     return {
         setters: [
             function (aurelia_framework_1_1) {
                 aurelia_framework_1 = aurelia_framework_1_1;
+            },
+            function (aurelia_task_queue_1_1) {
+                aurelia_task_queue_1 = aurelia_task_queue_1_1;
             },
             function (aurelia_logging_1_1) {
                 aurelia_logging_1 = aurelia_logging_1_1;
             },
             function (attributes_1_1) {
                 attributes_1 = attributes_1_1;
+            },
+            function (datepicker_default_parser_1_1) {
+                datepicker_default_parser_1 = datepicker_default_parser_1_1;
             },
             function (events_1_1) {
                 events_1 = events_1_1;
@@ -220,32 +229,41 @@ System.register(["aurelia-framework", "aurelia-logging", "../common/attributes",
                 }
             };
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Element)
             ], MdDatePicker.prototype, "container", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
             ], MdDatePicker.prototype, "translation", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+                __metadata("design:type", Date)
             ], MdDatePicker.prototype, "value", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+                __metadata("design:type", Array)
             ], MdDatePicker.prototype, "parsers", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Boolean)
             ], MdDatePicker.prototype, "selectMonths", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdDatePicker.prototype, "selectYears", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdDatePicker.prototype, "options", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
             ], MdDatePicker.prototype, "showErrortext", void 0);
             MdDatePicker = __decorate([
                 aurelia_framework_1.autoinject,
-                aurelia_framework_1.customAttribute("md-datepicker")
+                aurelia_framework_1.customAttribute("md-datepicker"),
+                __metadata("design:paramtypes", [Element, aurelia_task_queue_1.TaskQueue, datepicker_default_parser_1.DatePickerDefaultParser])
             ], MdDatePicker);
             exports_1("MdDatePicker", MdDatePicker);
         }

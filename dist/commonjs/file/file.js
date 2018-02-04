@@ -5,6 +5,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const aurelia_framework_1 = require("aurelia-framework");
 const events_1 = require("../common/events");
@@ -36,22 +39,28 @@ let MdFileInput = class MdFileInput {
     }
 };
 __decorate([
-    aurelia_framework_1.bindable
+    aurelia_framework_1.bindable,
+    __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdCaption", void 0);
 __decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+    __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdMultiple", void 0);
 __decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay })
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+    __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdLabelValue", void 0);
 __decorate([
-    aurelia_framework_1.bindable
+    aurelia_framework_1.bindable,
+    __metadata("design:type", Object)
 ], MdFileInput.prototype, "disabled", void 0);
 __decorate([
-    aurelia_framework_1.bindable
+    aurelia_framework_1.bindable,
+    __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdReadonly", void 0);
 MdFileInput = __decorate([
     aurelia_framework_1.customElement("md-file"),
-    aurelia_framework_1.autoinject
+    aurelia_framework_1.autoinject,
+    __metadata("design:paramtypes", [Element])
 ], MdFileInput);
 exports.MdFileInput = MdFileInput;

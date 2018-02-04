@@ -16,7 +16,7 @@
 		"declaration": true,
 		"forceConsistentCasingInFileNames": true,
 		"experimentalDecorators": true,
-		"emitDecoratorMetadata": false,
+		"emitDecoratorMetadata": true,
 		"noEmitHelpers": false,
 		"stripInternal": true,
 		"strict": true

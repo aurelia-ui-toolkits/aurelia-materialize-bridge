@@ -4,8 +4,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
+import { TaskQueue } from "aurelia-task-queue";
 import { getBooleanFromAttributeValue } from "../common/attributes";
+import { MdInputUpdateService } from "./input-update-service";
 import { fireEvent } from "../common/events";
 let MdInput = MdInput_1 = class MdInput {
     constructor(element, taskQueue, updateService) {
@@ -125,62 +130,81 @@ let MdInput = MdInput_1 = class MdInput {
 };
 MdInput.id = 0;
 __decorate([
-    bindable
+    bindable,
+    __metadata("design:type", String)
 ], MdInput.prototype, "mdLabel", void 0);
 __decorate([
-    bindable
+    bindable,
+    __metadata("design:type", Object)
 ], MdInput.prototype, "mdBlurOnEnter", void 0);
 __decorate([
-    bindable
+    bindable,
+    __metadata("design:type", Object)
 ], MdInput.prototype, "mdDisabled", void 0);
 __decorate([
-    bindable
+    bindable,
+    __metadata("design:type", Object)
 ], MdInput.prototype, "mdReadonly", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", String)
 ], MdInput.prototype, "mdPlaceholder", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", Object)
 ], MdInput.prototype, "mdTextArea", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", String)
 ], MdInput.prototype, "mdType", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", String)
 ], MdInput.prototype, "mdStep", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", Object)
 ], MdInput.prototype, "mdValidate", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", Object)
 ], MdInput.prototype, "mdShowErrortext", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", Array)
 ], MdInput.prototype, "mdUpdateTrigger", void 0);
 __decorate([
-    bindable
+    bindable,
+    __metadata("design:type", String)
 ], MdInput.prototype, "mdValidateError", void 0);
 __decorate([
-    bindable
+    bindable,
+    __metadata("design:type", String)
 ], MdInput.prototype, "mdValidateSuccess", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.twoWay })
+    bindable({ defaultBindingMode: bindingMode.twoWay }),
+    __metadata("design:type", String)
 ], MdInput.prototype, "mdValue", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", String)
 ], MdInput.prototype, "mdMin", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", String)
 ], MdInput.prototype, "mdMax", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", String)
 ], MdInput.prototype, "mdName", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", Number)
 ], MdInput.prototype, "mdMaxlength", void 0);
 MdInput = MdInput_1 = __decorate([
     customElement("md-input"),
-    autoinject
+    autoinject,
+    __metadata("design:paramtypes", [Element, TaskQueue, MdInputUpdateService])
 ], MdInput);
 export { MdInput };
 var MdInput_1;

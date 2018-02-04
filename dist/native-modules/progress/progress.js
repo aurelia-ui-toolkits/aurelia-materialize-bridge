@@ -4,6 +4,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
 let MdProgress = class MdProgress {
     constructor(element) {
@@ -34,22 +37,28 @@ let MdProgress = class MdProgress {
     }
 };
 __decorate([
-    bindable
+    bindable,
+    __metadata("design:type", String)
 ], MdProgress.prototype, "mdColor", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.twoWay })
+    bindable({ defaultBindingMode: bindingMode.twoWay }),
+    __metadata("design:type", Object)
 ], MdProgress.prototype, "mdPixelSize", void 0);
 __decorate([
-    bindable
+    bindable,
+    __metadata("design:type", String)
 ], MdProgress.prototype, "mdSize", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime })
+    bindable({ defaultBindingMode: bindingMode.oneTime }),
+    __metadata("design:type", String)
 ], MdProgress.prototype, "mdType", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.twoWay })
+    bindable({ defaultBindingMode: bindingMode.twoWay }),
+    __metadata("design:type", Number)
 ], MdProgress.prototype, "mdValue", void 0);
 MdProgress = __decorate([
     customElement("md-progress"),
-    autoinject
+    autoinject,
+    __metadata("design:paramtypes", [Element])
 ], MdProgress);
 export { MdProgress };

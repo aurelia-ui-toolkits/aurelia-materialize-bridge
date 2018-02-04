@@ -4,7 +4,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "aurelia-framework", "../common/attributes", "../common/events"], function (require, exports, aurelia_framework_1, attributes_1, events_1) {
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define(["require", "exports", "aurelia-framework", "aurelia-task-queue", "../common/attributes", "./input-update-service", "../common/events"], function (require, exports, aurelia_framework_1, aurelia_task_queue_1, attributes_1, input_update_service_1, events_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let MdInput = MdInput_1 = class MdInput {
@@ -125,62 +128,81 @@ define(["require", "exports", "aurelia-framework", "../common/attributes", "../c
     };
     MdInput.id = 0;
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", String)
     ], MdInput.prototype, "mdLabel", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
     ], MdInput.prototype, "mdBlurOnEnter", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
     ], MdInput.prototype, "mdDisabled", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
     ], MdInput.prototype, "mdReadonly", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        __metadata("design:type", String)
     ], MdInput.prototype, "mdPlaceholder", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        __metadata("design:type", Object)
     ], MdInput.prototype, "mdTextArea", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        __metadata("design:type", String)
     ], MdInput.prototype, "mdType", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        __metadata("design:type", String)
     ], MdInput.prototype, "mdStep", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        __metadata("design:type", Object)
     ], MdInput.prototype, "mdValidate", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        __metadata("design:type", Object)
     ], MdInput.prototype, "mdShowErrortext", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        __metadata("design:type", Array)
     ], MdInput.prototype, "mdUpdateTrigger", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", String)
     ], MdInput.prototype, "mdValidateError", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", String)
     ], MdInput.prototype, "mdValidateSuccess", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+        __metadata("design:type", String)
     ], MdInput.prototype, "mdValue", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        __metadata("design:type", String)
     ], MdInput.prototype, "mdMin", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        __metadata("design:type", String)
     ], MdInput.prototype, "mdMax", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        __metadata("design:type", String)
     ], MdInput.prototype, "mdName", void 0);
     __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        __metadata("design:type", Number)
     ], MdInput.prototype, "mdMaxlength", void 0);
     MdInput = MdInput_1 = __decorate([
         aurelia_framework_1.customElement("md-input"),
-        aurelia_framework_1.autoinject
+        aurelia_framework_1.autoinject,
+        __metadata("design:paramtypes", [Element, aurelia_task_queue_1.TaskQueue, input_update_service_1.MdInputUpdateService])
     ], MdInput);
     exports.MdInput = MdInput;
     var MdInput_1;

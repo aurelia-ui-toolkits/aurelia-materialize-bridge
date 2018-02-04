@@ -6,6 +6,9 @@ System.register(["aurelia-framework", "../common/events", "../common/attributes"
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
     var __moduleName = context_1 && context_1.id;
     var aurelia_framework_1, events_1, attributes_1, MdPagination;
     return {
@@ -94,29 +97,37 @@ System.register(["aurelia-framework", "../common/events", "../common/attributes"
                 }
             };
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+                __metadata("design:type", Number)
             ], MdPagination.prototype, "mdActivePage", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneWay })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneWay }),
+                __metadata("design:type", Object)
             ], MdPagination.prototype, "mdPages", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneWay })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneWay }),
+                __metadata("design:type", Object)
             ], MdPagination.prototype, "mdVisiblePageLinks", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneWay })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneWay }),
+                __metadata("design:type", Array)
             ], MdPagination.prototype, "mdPageLinks", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
             ], MdPagination.prototype, "mdShowFirstLast", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
             ], MdPagination.prototype, "mdShowPrevNext", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
             ], MdPagination.prototype, "mdShowPageLinks", void 0);
             MdPagination = __decorate([
                 aurelia_framework_1.customElement("md-pagination"),
-                aurelia_framework_1.autoinject
+                aurelia_framework_1.autoinject,
+                __metadata("design:paramtypes", [Element])
             ], MdPagination);
             exports_1("MdPagination", MdPagination);
         }

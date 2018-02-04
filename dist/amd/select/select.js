@@ -4,7 +4,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "aurelia-framework", "aurelia-logging", "../common/events", "../common/attributes", "aurelia-pal"], function (require, exports, aurelia_framework_1, aurelia_logging_1, events_1, attributes_1, aurelia_pal_1) {
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define(["require", "exports", "aurelia-framework", "aurelia-binding", "aurelia-task-queue", "aurelia-logging", "../common/events", "../common/attributes", "aurelia-pal"], function (require, exports, aurelia_framework_1, aurelia_binding_1, aurelia_task_queue_1, aurelia_logging_1, events_1, attributes_1, aurelia_pal_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let MdSelect = class MdSelect {
@@ -323,23 +326,29 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "../common
         }
     };
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
     ], MdSelect.prototype, "disabled", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
     ], MdSelect.prototype, "readonly", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
     ], MdSelect.prototype, "enableOptionObserver", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", String)
     ], MdSelect.prototype, "label", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
     ], MdSelect.prototype, "showErrortext", void 0);
     MdSelect = __decorate([
         aurelia_framework_1.autoinject,
-        aurelia_framework_1.customAttribute("md-select")
+        aurelia_framework_1.customAttribute("md-select"),
+        __metadata("design:paramtypes", [Element, aurelia_binding_1.BindingEngine, aurelia_task_queue_1.TaskQueue])
     ], MdSelect);
     exports.MdSelect = MdSelect;
 });

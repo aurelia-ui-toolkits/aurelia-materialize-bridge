@@ -6,6 +6,9 @@ System.register(["aurelia-framework", "../common/attributes"], function (exports
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
     var __moduleName = context_1 && context_1.id;
     var aurelia_framework_1, attributes_1, MdCard;
     return {
@@ -35,32 +38,41 @@ System.register(["aurelia-framework", "../common/attributes"], function (exports
                 }
             };
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdCard.prototype, "mdHorizontal", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdCard.prototype, "mdImage", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdCard.prototype, "mdReveal", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdCard.prototype, "mdAction", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdCard.prototype, "mdStickyAction", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneWay })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneWay }),
+                __metadata("design:type", String)
             ], MdCard.prototype, "mdSize", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", String)
             ], MdCard.prototype, "mdTitle", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", String)
             ], MdCard.prototype, "mdClass", void 0);
             MdCard = __decorate([
                 aurelia_framework_1.customElement("md-card"),
-                aurelia_framework_1.autoinject
+                aurelia_framework_1.autoinject,
+                __metadata("design:paramtypes", [Element])
             ], MdCard);
             exports_1("MdCard", MdCard);
         }

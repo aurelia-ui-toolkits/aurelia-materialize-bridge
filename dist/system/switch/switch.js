@@ -6,6 +6,9 @@ System.register(["aurelia-framework", "../common/attributes", "../common/events"
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
     var __moduleName = context_1 && context_1.id;
     var aurelia_framework_1, attributes_1, events_1, MdSwitch;
     return {
@@ -59,23 +62,29 @@ System.register(["aurelia-framework", "../common/attributes", "../common/events"
                 }
             };
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+                __metadata("design:type", Object)
             ], MdSwitch.prototype, "mdChecked", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
             ], MdSwitch.prototype, "mdDisabled", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
             ], MdSwitch.prototype, "mdReadonly", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", String)
             ], MdSwitch.prototype, "mdLabelOff", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", String)
             ], MdSwitch.prototype, "mdLabelOn", void 0);
             MdSwitch = __decorate([
                 aurelia_framework_1.customElement("md-switch"),
-                aurelia_framework_1.autoinject
+                aurelia_framework_1.autoinject,
+                __metadata("design:paramtypes", [Element])
             ], MdSwitch);
             exports_1("MdSwitch", MdSwitch);
         }

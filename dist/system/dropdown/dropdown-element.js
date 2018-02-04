@@ -6,6 +6,9 @@ System.register(["aurelia-framework", "../common/attributes"], function (exports
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
     var __moduleName = context_1 && context_1.id;
     var aurelia_framework_1, attributes_1, MdDropdownElement, MdDropdownElement_1;
     return {
@@ -46,35 +49,45 @@ System.register(["aurelia-framework", "../common/attributes"], function (exports
             };
             MdDropdownElement.id = 0;
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", String)
             ], MdDropdownElement.prototype, "alignment", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdDropdownElement.prototype, "belowOrigin", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdDropdownElement.prototype, "constrainWidth", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Number)
             ], MdDropdownElement.prototype, "gutter", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdDropdownElement.prototype, "hover", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", String)
             ], MdDropdownElement.prototype, "mdTitle", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdDropdownElement.prototype, "inDuration", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdDropdownElement.prototype, "outDuration", void 0);
             __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                __metadata("design:type", Object)
             ], MdDropdownElement.prototype, "stopPropagation", void 0);
             MdDropdownElement = MdDropdownElement_1 = __decorate([
                 aurelia_framework_1.customElement("md-dropdown"),
-                aurelia_framework_1.autoinject
+                aurelia_framework_1.autoinject,
+                __metadata("design:paramtypes", [Element])
             ], MdDropdownElement);
             exports_1("MdDropdownElement", MdDropdownElement);
         }

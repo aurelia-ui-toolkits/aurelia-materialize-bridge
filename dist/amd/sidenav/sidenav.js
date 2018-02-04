@@ -4,6 +4,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 define(["require", "exports", "aurelia-framework", "../common/attributes", "../common/attributeManager", "aurelia-logging"], function (require, exports, aurelia_framework_1, attributes_1, attributeManager_1, aurelia_logging_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
@@ -48,20 +51,25 @@ define(["require", "exports", "aurelia-framework", "../common/attributes", "../c
     };
     MdSidenav.id = 0;
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
     ], MdSidenav.prototype, "mdCloseOnClick", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", String)
     ], MdSidenav.prototype, "mdEdge", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
     ], MdSidenav.prototype, "mdFixed", void 0);
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
     ], MdSidenav.prototype, "mdWidth", void 0);
     MdSidenav = MdSidenav_1 = __decorate([
         aurelia_framework_1.customElement("md-sidenav"),
-        aurelia_framework_1.autoinject
+        aurelia_framework_1.autoinject,
+        __metadata("design:paramtypes", [Element])
     ], MdSidenav);
     exports.MdSidenav = MdSidenav;
     var MdSidenav_1;

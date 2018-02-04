@@ -1,4 +1,4 @@
-System.register(["aurelia-framework", "../common/events", "../common/attributeManager", "../common/attributes"], function (exports_1, context_1) {
+System.register(["aurelia-framework", "aurelia-task-queue", "../common/events", "../common/attributeManager", "../common/attributes"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -6,12 +6,18 @@ System.register(["aurelia-framework", "../common/events", "../common/attributeMa
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, events_1, attributeManager_1, attributes_1, MdTabs;
+    var aurelia_framework_1, aurelia_task_queue_1, events_1, attributeManager_1, attributes_1, MdTabs;
     return {
         setters: [
             function (aurelia_framework_1_1) {
                 aurelia_framework_1 = aurelia_framework_1_1;
+            },
+            function (aurelia_task_queue_1_1) {
+                aurelia_task_queue_1 = aurelia_task_queue_1_1;
             },
             function (events_1_1) {
                 events_1 = events_1_1;
@@ -134,23 +140,29 @@ System.register(["aurelia-framework", "../common/events", "../common/attributeMa
                 }
             };
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
             ], MdTabs.prototype, "fixed", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Function)
             ], MdTabs.prototype, "onShow", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
             ], MdTabs.prototype, "responsiveThreshold", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
             ], MdTabs.prototype, "swipeable", void 0);
             __decorate([
-                aurelia_framework_1.bindable
+                aurelia_framework_1.bindable,
+                __metadata("design:type", Object)
             ], MdTabs.prototype, "transparent", void 0);
             MdTabs = __decorate([
                 aurelia_framework_1.customAttribute("md-tabs"),
-                aurelia_framework_1.autoinject
+                aurelia_framework_1.autoinject,
+                __metadata("design:paramtypes", [Element, aurelia_task_queue_1.TaskQueue])
             ], MdTabs);
             exports_1("MdTabs", MdTabs);
         }

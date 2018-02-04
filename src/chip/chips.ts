@@ -1,8 +1,9 @@
-import { autoinject, bindable, bindingMode } from "aurelia-framework";
+import { autoinject, bindable, bindingMode, customAttribute } from "aurelia-framework";
 import { getLogger, Logger } from "aurelia-logging";
 
 import { fireEvent } from "../common/events";
 
+@customAttribute("md-chips")
 @autoinject
 export class MdChips {
 	constructor(private element: Element) {

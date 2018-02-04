@@ -5,10 +5,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const aurelia_framework_1 = require("aurelia-framework");
+const aurelia_task_queue_1 = require("aurelia-task-queue");
 const aurelia_logging_1 = require("aurelia-logging");
 const attributes_1 = require("../common/attributes");
+const datepicker_default_parser_1 = require("./datepicker-default-parser");
 const events_1 = require("../common/events");
 let MdDatePicker = class MdDatePicker {
     constructor(element, taskQueue, defaultParser) {
@@ -206,31 +211,40 @@ let MdDatePicker = class MdDatePicker {
     }
 };
 __decorate([
-    aurelia_framework_1.bindable
+    aurelia_framework_1.bindable,
+    __metadata("design:type", Element)
 ], MdDatePicker.prototype, "container", void 0);
 __decorate([
-    aurelia_framework_1.bindable
+    aurelia_framework_1.bindable,
+    __metadata("design:type", Object)
 ], MdDatePicker.prototype, "translation", void 0);
 __decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay })
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+    __metadata("design:type", Date)
 ], MdDatePicker.prototype, "value", void 0);
 __decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay })
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+    __metadata("design:type", Array)
 ], MdDatePicker.prototype, "parsers", void 0);
 __decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+    __metadata("design:type", Boolean)
 ], MdDatePicker.prototype, "selectMonths", void 0);
 __decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+    __metadata("design:type", Object)
 ], MdDatePicker.prototype, "selectYears", void 0);
 __decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+    __metadata("design:type", Object)
 ], MdDatePicker.prototype, "options", void 0);
 __decorate([
-    aurelia_framework_1.bindable
+    aurelia_framework_1.bindable,
+    __metadata("design:type", Object)
 ], MdDatePicker.prototype, "showErrortext", void 0);
 MdDatePicker = __decorate([
     aurelia_framework_1.autoinject,
-    aurelia_framework_1.customAttribute("md-datepicker")
+    aurelia_framework_1.customAttribute("md-datepicker"),
+    __metadata("design:paramtypes", [Element, aurelia_task_queue_1.TaskQueue, datepicker_default_parser_1.DatePickerDefaultParser])
 ], MdDatePicker);
 exports.MdDatePicker = MdDatePicker;

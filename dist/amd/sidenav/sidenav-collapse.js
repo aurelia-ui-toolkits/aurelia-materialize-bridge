@@ -4,6 +4,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -12,7 +15,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-define(["require", "exports", "aurelia-framework", "aurelia-logging", "../common/attributes", "../common/events"], function (require, exports, aurelia_framework_1, aurelia_logging_1, attributes_1, events_1) {
+define(["require", "exports", "aurelia-framework", "aurelia-logging", "../common/attributes", "../common/events", "./sidenav"], function (require, exports, aurelia_framework_1, aurelia_logging_1, attributes_1, events_1, sidenav_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let MdSidenavCollapse = class MdSidenavCollapse {
@@ -55,11 +58,13 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "../common
         }
     };
     __decorate([
-        aurelia_framework_1.bindable
+        aurelia_framework_1.bindable,
+        __metadata("design:type", sidenav_1.MdSidenav)
     ], MdSidenavCollapse.prototype, "ref", void 0);
     MdSidenavCollapse = __decorate([
         aurelia_framework_1.customAttribute("md-sidenav-collapse"),
-        aurelia_framework_1.autoinject
+        aurelia_framework_1.autoinject,
+        __metadata("design:paramtypes", [Element])
     ], MdSidenavCollapse);
     exports.MdSidenavCollapse = MdSidenavCollapse;
 });

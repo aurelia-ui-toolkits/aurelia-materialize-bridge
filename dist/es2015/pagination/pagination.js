@@ -4,6 +4,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 import { bindable, customElement, autoinject, bindingMode } from "aurelia-framework";
 import { fireMaterializeEvent } from "../common/events";
 import { getBooleanFromAttributeValue } from "../common/attributes";
@@ -80,28 +83,36 @@ let MdPagination = class MdPagination {
     }
 };
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.twoWay })
+    bindable({ defaultBindingMode: bindingMode.twoWay }),
+    __metadata("design:type", Number)
 ], MdPagination.prototype, "mdActivePage", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneWay })
+    bindable({ defaultBindingMode: bindingMode.oneWay }),
+    __metadata("design:type", Object)
 ], MdPagination.prototype, "mdPages", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneWay })
+    bindable({ defaultBindingMode: bindingMode.oneWay }),
+    __metadata("design:type", Object)
 ], MdPagination.prototype, "mdVisiblePageLinks", void 0);
 __decorate([
-    bindable({ defaultBindingMode: bindingMode.oneWay })
+    bindable({ defaultBindingMode: bindingMode.oneWay }),
+    __metadata("design:type", Array)
 ], MdPagination.prototype, "mdPageLinks", void 0);
 __decorate([
-    bindable
+    bindable,
+    __metadata("design:type", Object)
 ], MdPagination.prototype, "mdShowFirstLast", void 0);
 __decorate([
-    bindable
+    bindable,
+    __metadata("design:type", Object)
 ], MdPagination.prototype, "mdShowPrevNext", void 0);
 __decorate([
-    bindable
+    bindable,
+    __metadata("design:type", Object)
 ], MdPagination.prototype, "mdShowPageLinks", void 0);
 MdPagination = __decorate([
     customElement("md-pagination"),
-    autoinject
+    autoinject,
+    __metadata("design:paramtypes", [Element])
 ], MdPagination);
 export { MdPagination };
