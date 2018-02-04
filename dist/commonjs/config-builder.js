@@ -236,7 +236,7 @@ class ConfigBuilder {
         return this;
     }
     useWell() {
-        this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./well/md-well.html"));
+        this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./well/md-well"));
         return this;
     }
     preventWavesAttach() {

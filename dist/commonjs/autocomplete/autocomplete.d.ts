@@ -1,4 +1,3 @@
-import "../aurelia";
 export declare class MdAutoComplete {
     private element;
     constructor(element: Element);

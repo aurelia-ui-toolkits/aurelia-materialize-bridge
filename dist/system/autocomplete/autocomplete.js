@@ -1,4 +1,4 @@
-System.register(["aurelia-framework", "../aurelia", "../common/events"], function (exports_1, context_1) {
+System.register(["aurelia-framework", "../common/events"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -12,8 +12,6 @@ System.register(["aurelia-framework", "../aurelia", "../common/events"], functio
         setters: [
             function (aurelia_framework_1_1) {
                 aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (_1) {
             },
             function (events_1_1) {
                 events_1 = events_1_1;

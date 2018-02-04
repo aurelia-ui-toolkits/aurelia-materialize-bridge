@@ -234,7 +234,7 @@ export class ConfigBuilder {
         return this;
     }
     useWell() {
-        this.globalResources.push(PLATFORM.moduleName("./well/md-well.html"));
+        this.globalResources.push(PLATFORM.moduleName("./well/md-well"));
         return this;
     }
     preventWavesAttach() {

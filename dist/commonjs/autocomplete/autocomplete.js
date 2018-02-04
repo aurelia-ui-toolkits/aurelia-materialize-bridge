@@ -7,7 +7,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const aurelia_framework_1 = require("aurelia-framework");
-require("../aurelia");
 const events_1 = require("../common/events");
 let MdAutoComplete = class MdAutoComplete {
     constructor(element) {

@@ -244,7 +244,7 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                     return this;
                 }
                 useWell() {
-                    this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./well/md-well.html"));
+                    this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./well/md-well"));
                     return this;
                 }
                 preventWavesAttach() {

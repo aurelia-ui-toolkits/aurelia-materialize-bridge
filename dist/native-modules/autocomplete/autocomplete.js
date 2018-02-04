@@ -5,7 +5,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { autoinject, bindable, customAttribute } from "aurelia-framework";
-import "../aurelia";
 import { fireEvent } from "../common/events";
 let MdAutoComplete = class MdAutoComplete {
     constructor(element) {
