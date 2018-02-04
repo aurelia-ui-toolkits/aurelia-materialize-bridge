@@ -1,158 +1,81 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MdChips = undefined;
-
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-
-var _aureliaTemplating = require('aurelia-templating');
-
-var _aureliaBinding = require('aurelia-binding');
-
-var _aureliaDependencyInjection = require('aurelia-dependency-injection');
-
-var _aureliaLogging = require('aurelia-logging');
-
-var _events = require('../common/events');
-
-function _initDefineProp(target, property, descriptor, context) {
-  if (!descriptor) return;
-  Object.defineProperty(target, property, {
-    enumerable: descriptor.enumerable,
-    configurable: descriptor.configurable,
-    writable: descriptor.writable,
-    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-  });
-}
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-  var desc = {};
-  Object['ke' + 'ys'](descriptor).forEach(function (key) {
-    desc[key] = descriptor[key];
-  });
-  desc.enumerable = !!desc.enumerable;
-  desc.configurable = !!desc.configurable;
-
-  if ('value' in desc || desc.initializer) {
-    desc.writable = true;
-  }
-
-  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-    return decorator(target, property, desc) || desc;
-  }, desc);
-
-  if (context && desc.initializer !== void 0) {
-    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-    desc.initializer = undefined;
-  }
-
-  if (desc.initializer === void 0) {
-    Object['define' + 'Property'](target, property, desc);
-    desc = null;
-  }
-
-  return desc;
-}
-
-function _initializerWarningHelper(descriptor, context) {
-  throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-}
-
-var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)('md-chips'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-  function MdChips(element) {
-    _classCallCheck(this, MdChips);
-
-    _initDefineProp(this, 'autocompleteOptions', _descriptor, this);
-
-    _initDefineProp(this, 'data', _descriptor2, this);
-
-    _initDefineProp(this, 'placeholder', _descriptor3, this);
-
-    _initDefineProp(this, 'secondaryPlaceholder', _descriptor4, this);
-
-    this.element = element;
-    this.log = (0, _aureliaLogging.getLogger)('md-chips');
-
-    this.onChipAdd = this.onChipAdd.bind(this);
-    this.onChipDelete = this.onChipDelete.bind(this);
-    this.onChipSelect = this.onChipSelect.bind(this);
-  }
-
-  MdChips.prototype.attached = function attached() {
-    this.refresh();
-    $(this.element).on('chip.add', this.onChipAdd);
-    $(this.element).on('chip.delete', this.onChipDelete);
-    $(this.element).on('chip.select', this.onChipSelect);
-  };
-
-  MdChips.prototype.detached = function detached() {
-    $(this.element).off('chip.add', this.onChipAdd);
-    $(this.element).off('chip.delete', this.onChipDelete);
-    $(this.element).off('chip.select', this.onChipSelect);
-  };
-
-  MdChips.prototype.dataChanged = function dataChanged(newValue, oldValue) {
-    this.refresh();
-
-    if (newValue.length > oldValue.length) {
-      var chip = newValue.find(function (i) {
-        return !oldValue.includes(i);
-      });
-      (0, _events.fireEvent)(this.element, 'change', { source: 'dataChanged', operation: 'add', target: chip, data: newValue });
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const aurelia_framework_1 = require("aurelia-framework");
+const aurelia_logging_1 = require("aurelia-logging");
+const events_1 = require("../common/events");
+let MdChips = class MdChips {
+    constructor(element) {
+        this.element = element;
+        this.autocompleteOptions = {};
+        this.data = [];
+        this.placeholder = "";
+        this.secondaryPlaceholder = "";
+        this.log = aurelia_logging_1.getLogger("md-chips");
+        this.onChipAdd = this.onChipAdd.bind(this);
+        this.onChipDelete = this.onChipDelete.bind(this);
+        this.onChipSelect = this.onChipSelect.bind(this);
     }
-    if (newValue.length < oldValue.length) {
-      var _chip = oldValue.find(function (i) {
-        return !newValue.includes(i);
-      });
-      (0, _events.fireEvent)(this.element, 'change', { source: 'dataChanged', operation: 'delete', target: _chip, data: newValue });
+    dataChanged(newValue, oldValue) {
+        this.refresh();
+        // I know this is a bit naive..
+        if (newValue.length > oldValue.length) {
+            const chip = newValue.find(i => !oldValue.includes(i));
+            events_1.fireEvent(this.element, "change", { source: "dataChanged", operation: "add", target: chip, data: newValue });
+        }
+        if (newValue.length < oldValue.length) {
+            const chip = oldValue.find(i => !newValue.includes(i));
+            events_1.fireEvent(this.element, "change", { source: "dataChanged", operation: "delete", target: chip, data: newValue });
+        }
     }
-  };
-
-  MdChips.prototype.refresh = function refresh() {
-    var options = {
-      autocompleteOptions: this.autocompleteOptions,
-      data: this.data,
-      placeholder: this.placeholder,
-      secondaryPlaceholder: this.secondaryPlaceholder
-    };
-    $(this.element).material_chip(options);
-  };
-
-  MdChips.prototype.onChipAdd = function onChipAdd(e, chip) {
-    this.data = $(this.element).material_chip('data');
-  };
-
-  MdChips.prototype.onChipDelete = function onChipDelete(e, chip) {
-    this.data = $(this.element).material_chip('data');
-  };
-
-  MdChips.prototype.onChipSelect = function onChipSelect(e, chip) {
-    (0, _events.fireEvent)(this.element, 'selected', { target: chip });
-  };
-
-  return MdChips;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'autocompleteOptions', [_dec3], {
-  enumerable: true,
-  initializer: function initializer() {
-    return {};
-  }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'data', [_dec4], {
-  enumerable: true,
-  initializer: function initializer() {
-    return [];
-  }
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'placeholder', [_dec5], {
-  enumerable: true,
-  initializer: function initializer() {
-    return '';
-  }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'secondaryPlaceholder', [_dec6], {
-  enumerable: true,
-  initializer: function initializer() {
-    return '';
-  }
-})), _class2)) || _class) || _class);
+    attached() {
+        this.refresh();
+        $(this.element).on("chip.add", this.onChipAdd);
+        $(this.element).on("chip.delete", this.onChipDelete);
+        $(this.element).on("chip.select", this.onChipSelect);
+    }
+    detached() {
+        $(this.element).off("chip.add", this.onChipAdd);
+        $(this.element).off("chip.delete", this.onChipDelete);
+        $(this.element).off("chip.select", this.onChipSelect);
+    }
+    refresh() {
+        const options = {
+            autocompleteOptions: this.autocompleteOptions,
+            data: this.data,
+            placeholder: this.placeholder,
+            secondaryPlaceholder: this.secondaryPlaceholder
+        };
+        $(this.element).material_chip(options);
+    }
+    onChipAdd(e, chip) {
+        this.data = $(this.element).material_chip("data");
+    }
+    onChipDelete(e, chip) {
+        this.data = $(this.element).material_chip("data");
+    }
+    onChipSelect(e, chip) {
+        events_1.fireEvent(this.element, "selected", { target: chip });
+    }
+};
+__decorate([
+    aurelia_framework_1.bindable
+], MdChips.prototype, "autocompleteOptions", void 0);
+__decorate([
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay })
+], MdChips.prototype, "data", void 0);
+__decorate([
+    aurelia_framework_1.bindable
+], MdChips.prototype, "placeholder", void 0);
+__decorate([
+    aurelia_framework_1.bindable
+], MdChips.prototype, "secondaryPlaceholder", void 0);
+MdChips = __decorate([
+    aurelia_framework_1.autoinject
+], MdChips);
+exports.MdChips = MdChips;

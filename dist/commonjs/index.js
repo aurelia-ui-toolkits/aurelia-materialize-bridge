@@ -1,45 +1,28 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.configure = configure;
-
-var _exports = require('./exports');
-
-Object.keys(_exports).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _exports[key];
-    }
-  });
-});
-
-var _configBuilder = require('./config-builder');
-
-var _scrollfirePatch = require('./scrollfire/scrollfire-patch');
-
-var _polyfills = require('./common/polyfills');
-
+"use strict";
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+const config_builder_1 = require("./config-builder");
+const scrollfire_patch_1 = require("./scrollfire/scrollfire-patch");
+const polyfills_1 = require("./common/polyfills");
 function applyPolyfills() {
-  (0, _polyfills.polyfillElementClosest)();
+    polyfills_1.polyfillElementClosest();
 }
-
-function configure(aurelia, configCallback) {
-  applyPolyfills();
-
-  var builder = aurelia.container.get(_configBuilder.ConfigBuilder);
-
-  if (configCallback !== undefined && typeof configCallback === 'function') {
-    configCallback(builder);
-  }
-
-  if (builder.useGlobalResources) {
-    aurelia.globalResources(builder.globalResources);
-  }
-  if (builder.useScrollfirePatch) {
-    new _scrollfirePatch.ScrollfirePatch().patch();
-  }
+function configure(frameworkConfiguration, configCallback) {
+    applyPolyfills();
+    const builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
+    if (configCallback !== undefined && typeof (configCallback) === "function") {
+        configCallback(builder);
+    }
+    if (builder.useGlobalResources) {
+        frameworkConfiguration.globalResources(builder.globalResources);
+    }
+    if (builder.useScrollfirePatch) {
+        new scrollfire_patch_1.ScrollfirePatch().patch();
+    }
 }
+exports.configure = configure;
+// build-index-remove start
+__export(require("./exports"));
+// build-index-remove end

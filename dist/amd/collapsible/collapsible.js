@@ -1,78 +1,73 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _attributeManager) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdCollapsible = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class;
-
-  var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.customAttribute)('md-collapsible'), _dec2 = (0, _aureliaTemplating.bindable)({ name: 'accordion', defaultValue: false }), _dec3 = (0, _aureliaTemplating.bindable)({ name: 'popout', defaultValue: false }), _dec4 = (0, _aureliaTemplating.bindable)({ name: 'onOpen' }), _dec5 = (0, _aureliaTemplating.bindable)({ name: 'onClose' }), _dec6 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = function () {
-    function MdCollapsible(element) {
-      _classCallCheck(this, MdCollapsible);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-    }
-
-    MdCollapsible.prototype.attached = function attached() {
-      this.attributeManager.addClasses('collapsible');
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.popout)) {
-        this.attributeManager.addClasses('popout');
-      }
-      this.refresh();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+define(["require", "exports", "aurelia-framework", "../common/attributeManager", "../common/attributes"], function (require, exports, aurelia_framework_1, attributeManager_1, attributes_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    let MdCollapsible = class MdCollapsible {
+        constructor(element) {
+            this.element = element;
+            this.accordion = false;
+            this.popout = false;
+            this.attributeManager = new attributeManager_1.AttributeManager(this.element);
+        }
+        attached() {
+            this.attributeManager.addClasses("collapsible");
+            if (attributes_1.getBooleanFromAttributeValue(this.popout)) {
+                this.attributeManager.addClasses("popout");
+            }
+            this.refresh();
+        }
+        detached() {
+            this.attributeManager.removeClasses(["collapsible", "popout"]);
+            this.attributeManager.removeAttributes(["data-collapsible"]);
+            $(this.element).collapsible("destroy");
+        }
+        refresh() {
+            const accordion = attributes_1.getBooleanFromAttributeValue(this.accordion);
+            const dataCollapsibleAttributeValue = accordion ? "accordion" : "expandable";
+            this.attributeManager.addAttributes({ "data-collapsible": dataCollapsibleAttributeValue });
+            $(this.element).collapsible({
+                accordion,
+                onOpen: this.buildCollapsibleOpenCloseCallbackHandler(this.onOpen),
+                onClose: this.buildCollapsibleOpenCloseCallbackHandler(this.onClose)
+            });
+        }
+        accordionChanged() {
+            this.refresh();
+        }
+        buildCollapsibleOpenCloseCallbackHandler(handler) {
+            return typeof (handler) === "function" ?
+                (targetElementJquery) => {
+                    const targetElement = targetElementJquery[0];
+                    handler(targetElement);
+                } : null;
+        }
+        open(index = 0) {
+            $(this.element).collapsible("open", index);
+        }
+        close(index = 0) {
+            $(this.element).collapsible("close", index);
+        }
     };
-
-    MdCollapsible.prototype.detached = function detached() {
-      this.attributeManager.removeClasses(['collapsible', 'popout']);
-      this.attributeManager.removeAttributes(['data-collapsible']);
-      $(this.element).collapsible('destroy');
-    };
-
-    MdCollapsible.prototype.refresh = function refresh() {
-      var accordion = (0, _attributes.getBooleanFromAttributeValue)(this.accordion);
-      var dataCollapsibleAttributeValue = accordion ? 'accordion' : 'expandable';
-
-      this.attributeManager.addAttributes({ 'data-collapsible': dataCollapsibleAttributeValue });
-
-      $(this.element).collapsible({
-        accordion: accordion,
-        onOpen: this.buildCollapsibleOpenCloseCallbackHandler(this.onOpen),
-        onClose: this.buildCollapsibleOpenCloseCallbackHandler(this.onClose)
-      });
-    };
-
-    MdCollapsible.prototype.accordionChanged = function accordionChanged() {
-      this.refresh();
-    };
-
-    MdCollapsible.prototype.buildCollapsibleOpenCloseCallbackHandler = function buildCollapsibleOpenCloseCallbackHandler(handler) {
-      return typeof handler === 'function' ? function (targetElementJquery) {
-        var targetElement = targetElementJquery[0];
-
-        handler(targetElement);
-      } : null;
-    };
-
-    MdCollapsible.prototype.open = function open() {
-      var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-
-      $(this.element).collapsible('open', index);
-    };
-
-    MdCollapsible.prototype.close = function close() {
-      var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-
-      $(this.element).collapsible('close', index);
-    };
-
-    return MdCollapsible;
-  }()) || _class) || _class) || _class) || _class) || _class) || _class);
+    __decorate([
+        aurelia_framework_1.bindable
+    ], MdCollapsible.prototype, "accordion", void 0);
+    __decorate([
+        aurelia_framework_1.bindable
+    ], MdCollapsible.prototype, "popout", void 0);
+    __decorate([
+        aurelia_framework_1.bindable
+    ], MdCollapsible.prototype, "onOpen", void 0);
+    __decorate([
+        aurelia_framework_1.bindable
+    ], MdCollapsible.prototype, "onClose", void 0);
+    MdCollapsible = __decorate([
+        aurelia_framework_1.customAttribute("md-collapsible"),
+        aurelia_framework_1.autoinject
+    ], MdCollapsible);
+    exports.MdCollapsible = MdCollapsible;
 });

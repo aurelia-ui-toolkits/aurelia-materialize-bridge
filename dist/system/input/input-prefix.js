@@ -1,43 +1,40 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (_export, _context) {
-  "use strict";
-
-  var customAttribute, inject, AttributeManager, _dec, _dec2, _class, MdPrefix;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  return {
-    setters: [function (_aureliaTemplating) {
-      customAttribute = _aureliaTemplating.customAttribute;
-    }, function (_aureliaDependencyInjection) {
-      inject = _aureliaDependencyInjection.inject;
-    }, function (_commonAttributeManager) {
-      AttributeManager = _commonAttributeManager.AttributeManager;
-    }],
-    execute: function () {
-      _export('MdPrefix', MdPrefix = (_dec = customAttribute('md-prefix'), _dec2 = inject(Element), _dec(_class = _dec2(_class = function () {
-        function MdPrefix(element) {
-          _classCallCheck(this, MdPrefix);
-
-          this.element = element;
-          this.attributeManager = new AttributeManager(this.element);
+System.register(["aurelia-framework", "../common/attributeManager"], function (exports_1, context_1) {
+    "use strict";
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __moduleName = context_1 && context_1.id;
+    var aurelia_framework_1, attributeManager_1, MdPrefix;
+    return {
+        setters: [
+            function (aurelia_framework_1_1) {
+                aurelia_framework_1 = aurelia_framework_1_1;
+            },
+            function (attributeManager_1_1) {
+                attributeManager_1 = attributeManager_1_1;
+            }
+        ],
+        execute: function () {
+            MdPrefix = class MdPrefix {
+                constructor(element) {
+                    this.element = element;
+                    this.attributeManager = new attributeManager_1.AttributeManager(this.element);
+                }
+                bind() {
+                    this.attributeManager.addClasses("prefix");
+                }
+                unbind() {
+                    this.attributeManager.removeClasses("prefix");
+                }
+            };
+            MdPrefix = __decorate([
+                aurelia_framework_1.customAttribute("md-prefix"),
+                aurelia_framework_1.autoinject
+            ], MdPrefix);
+            exports_1("MdPrefix", MdPrefix);
         }
-
-        MdPrefix.prototype.bind = function bind() {
-          this.attributeManager.addClasses('prefix');
-        };
-
-        MdPrefix.prototype.unbind = function unbind() {
-          this.attributeManager.removeClasses('prefix');
-        };
-
-        return MdPrefix;
-      }()) || _class) || _class));
-
-      _export('MdPrefix', MdPrefix);
-    }
-  };
+    };
 });

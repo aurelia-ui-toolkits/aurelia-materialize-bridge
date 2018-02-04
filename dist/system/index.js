@@ -1,48 +1,50 @@
-System.register(['./config-builder', './scrollfire/scrollfire-patch', './common/polyfills', './exports'], function (_export, _context) {
-  "use strict";
-
-  var ConfigBuilder, ScrollfirePatch, polyfillElementClosest;
-
-
-  function applyPolyfills() {
-    polyfillElementClosest();
-  }
-
-  function configure(aurelia, configCallback) {
-    applyPolyfills();
-
-    var builder = aurelia.container.get(ConfigBuilder);
-
-    if (configCallback !== undefined && typeof configCallback === 'function') {
-      configCallback(builder);
+System.register(["./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports"], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    function applyPolyfills() {
+        polyfills_1.polyfillElementClosest();
     }
-
-    if (builder.useGlobalResources) {
-      aurelia.globalResources(builder.globalResources);
+    function configure(frameworkConfiguration, configCallback) {
+        applyPolyfills();
+        const builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
+        if (configCallback !== undefined && typeof (configCallback) === "function") {
+            configCallback(builder);
+        }
+        if (builder.useGlobalResources) {
+            frameworkConfiguration.globalResources(builder.globalResources);
+        }
+        if (builder.useScrollfirePatch) {
+            new scrollfire_patch_1.ScrollfirePatch().patch();
+        }
     }
-    if (builder.useScrollfirePatch) {
-      new ScrollfirePatch().patch();
+    exports_1("configure", configure);
+    var config_builder_1, scrollfire_patch_1, polyfills_1;
+    var exportedNames_1 = {
+        "configure": true
+    };
+    function exportStar_1(m) {
+        var exports = {};
+        for (var n in m) {
+            if (n !== "default" && !exportedNames_1.hasOwnProperty(n)) exports[n] = m[n];
+        }
+        exports_1(exports);
     }
-  }
-
-  _export('configure', configure);
-
-  return {
-    setters: [function (_configBuilder) {
-      ConfigBuilder = _configBuilder.ConfigBuilder;
-    }, function (_scrollfireScrollfirePatch) {
-      ScrollfirePatch = _scrollfireScrollfirePatch.ScrollfirePatch;
-    }, function (_commonPolyfills) {
-      polyfillElementClosest = _commonPolyfills.polyfillElementClosest;
-    }, function (_exports) {
-      var _exportObj = {};
-
-      for (var _key in _exports) {
-        if (_key !== "default" && _key !== "__esModule") _exportObj[_key] = _exports[_key];
-      }
-
-      _export(_exportObj);
-    }],
-    execute: function () {}
-  };
+    return {
+        setters: [
+            function (config_builder_1_1) {
+                config_builder_1 = config_builder_1_1;
+            },
+            function (scrollfire_patch_1_1) {
+                scrollfire_patch_1 = scrollfire_patch_1_1;
+            },
+            function (polyfills_1_1) {
+                polyfills_1 = polyfills_1_1;
+            },
+            function (exports_2_1) {
+                exportStar_1(exports_2_1);
+            }
+        ],
+        execute: function () {
+        }
+    };
 });

@@ -1,130 +1,75 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (_export, _context) {
-  "use strict";
-
-  var bindable, customAttribute, inject, AttributeManager, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, MdBadge;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  return {
-    setters: [function (_aureliaTemplating) {
-      bindable = _aureliaTemplating.bindable;
-      customAttribute = _aureliaTemplating.customAttribute;
-    }, function (_aureliaDependencyInjection) {
-      inject = _aureliaDependencyInjection.inject;
-    }, function (_commonAttributeManager) {
-      AttributeManager = _commonAttributeManager.AttributeManager;
-    }, function (_commonAttributes) {
-      getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
-    }],
-    execute: function () {
-      _export('MdBadge', MdBadge = (_dec = customAttribute('md-badge'), _dec2 = inject(Element), _dec3 = bindable(), _dec4 = bindable(), _dec(_class = _dec2(_class = (_class2 = function () {
-        function MdBadge(element) {
-          _classCallCheck(this, MdBadge);
-
-          _initDefineProp(this, 'isNew', _descriptor, this);
-
-          _initDefineProp(this, 'caption', _descriptor2, this);
-
-          this.element = element;
-          this.attributeManager = new AttributeManager(this.element);
+System.register(["aurelia-framework", "../common/attributeManager", "../common/attributes"], function (exports_1, context_1) {
+    "use strict";
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __moduleName = context_1 && context_1.id;
+    var aurelia_framework_1, attributeManager_1, attributes_1, MdBadge;
+    return {
+        setters: [
+            function (aurelia_framework_1_1) {
+                aurelia_framework_1 = aurelia_framework_1_1;
+            },
+            function (attributeManager_1_1) {
+                attributeManager_1 = attributeManager_1_1;
+            },
+            function (attributes_1_1) {
+                attributes_1 = attributes_1_1;
+            }
+        ],
+        execute: function () {
+            MdBadge = class MdBadge {
+                constructor(element) {
+                    this.element = element;
+                    this.isNew = false;
+                    this.caption = null;
+                    this.attributeManager = new attributeManager_1.AttributeManager(this.element);
+                }
+                isNewChanged(newValue) {
+                    if (attributes_1.getBooleanFromAttributeValue(newValue)) {
+                        this.attributeManager.addClasses("new");
+                    }
+                    else {
+                        this.attributeManager.removeClasses("new");
+                    }
+                }
+                captionChanged(newValue) {
+                    if (newValue !== null) {
+                        this.attributeManager.addAttributes({ "data-badge-caption": newValue });
+                    }
+                    else {
+                        this.attributeManager.removeAttributes(["data-badge-caption"]);
+                    }
+                }
+                attached() {
+                    const classes = ["badge"];
+                    if (attributes_1.getBooleanFromAttributeValue(this.isNew)) {
+                        classes.push("new");
+                    }
+                    if (this.caption !== null) {
+                        this.attributeManager.addAttributes({ "data-badge-caption": this.caption });
+                    }
+                    this.attributeManager.addClasses(classes);
+                }
+                detached() {
+                    this.attributeManager.removeClasses(["badge", "new"]);
+                    this.attributeManager.removeAttributes(["data-badge-caption"]);
+                }
+            };
+            __decorate([
+                aurelia_framework_1.bindable
+            ], MdBadge.prototype, "isNew", void 0);
+            __decorate([
+                aurelia_framework_1.bindable
+            ], MdBadge.prototype, "caption", void 0);
+            MdBadge = __decorate([
+                aurelia_framework_1.customAttribute("md-badge"),
+                aurelia_framework_1.autoinject
+            ], MdBadge);
+            exports_1("MdBadge", MdBadge);
         }
-
-        MdBadge.prototype.attached = function attached() {
-          var classes = ['badge'];
-
-          if (getBooleanFromAttributeValue(this.isNew)) {
-            classes.push('new');
-          }
-
-          if (this.caption !== null) {
-            this.attributeManager.addAttributes({ 'data-badge-caption': this.caption });
-          }
-
-          this.attributeManager.addClasses(classes);
-        };
-
-        MdBadge.prototype.detached = function detached() {
-          this.attributeManager.removeClasses(['badge', 'new']);
-          this.attributeManager.removeAttributes(['data-badge-caption']);
-        };
-
-        MdBadge.prototype.newChanged = function newChanged(newValue) {
-          if (getBooleanFromAttributeValue(newValue)) {
-            this.attributeManager.addClasses('new');
-          } else {
-            this.attributeManager.removeClasses('new');
-          }
-        };
-
-        MdBadge.prototype.captionChanged = function captionChanged(newValue) {
-          if (newValue !== null) {
-            this.attributeManager.addAttributes({ 'data-badge-caption': newValue });
-          } else {
-            this.attributeManager.removeAttributes(['data-badge-caption']);
-          }
-        };
-
-        return MdBadge;
-      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'isNew', [_dec3], {
-        enumerable: true,
-        initializer: function initializer() {
-          return false;
-        }
-      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'caption', [_dec4], {
-        enumerable: true,
-        initializer: function initializer() {
-          return null;
-        }
-      })), _class2)) || _class) || _class));
-
-      _export('MdBadge', MdBadge);
-    }
-  };
+    };
 });

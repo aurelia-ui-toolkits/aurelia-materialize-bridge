@@ -31,7 +31,7 @@
 		"build": "concurrently \"npm run build:amd\" \"npm run build:commonjs\" \"npm run build:es2015\" \"npm run build:native-modules\" \"npm run build:system\""
 	},
 	"main": "dist/commonjs/index.js",
-	"typings": "dist/aurelia-materialize-bridge.d.ts",
+	"typings": "dist/commonjs/index.d.ts",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge"

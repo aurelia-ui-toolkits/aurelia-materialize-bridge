@@ -1,153 +1,68 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-binding', '../common/attributes'], function (_export, _context) {
-  "use strict";
-
-  var bindable, customElement, inject, bindingMode, getBooleanFromAttributeValue, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, MdCard;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  return {
-    setters: [function (_aureliaTemplating) {
-      bindable = _aureliaTemplating.bindable;
-      customElement = _aureliaTemplating.customElement;
-    }, function (_aureliaDependencyInjection) {
-      inject = _aureliaDependencyInjection.inject;
-    }, function (_aureliaBinding) {
-      bindingMode = _aureliaBinding.bindingMode;
-    }, function (_commonAttributes) {
-      getBooleanFromAttributeValue = _commonAttributes.getBooleanFromAttributeValue;
-    }],
-    execute: function () {
-      _export('MdCard', MdCard = (_dec = customElement('md-card'), _dec2 = inject(Element), _dec3 = bindable({
-        defaultBindingMode: bindingMode.oneTime
-      }), _dec4 = bindable({
-        defaultBindingMode: bindingMode.oneTime
-      }), _dec5 = bindable({
-        defaultBindingMode: bindingMode.oneTime
-      }), _dec6 = bindable({
-        defaultBindingMode: bindingMode.oneTime
-      }), _dec7 = bindable({
-        defaultBindingMode: bindingMode.oneTime
-      }), _dec8 = bindable({
-        defaultBindingMode: bindingMode.oneWay
-      }), _dec9 = bindable({
-        defaultBindingMode: bindingMode.oneTime
-      }), _dec10 = bindable({
-        defaultBindingMode: bindingMode.oneTime
-      }), _dec(_class = _dec2(_class = (_class2 = function () {
-        function MdCard(element) {
-          _classCallCheck(this, MdCard);
-
-          _initDefineProp(this, 'mdHorizontal', _descriptor, this);
-
-          _initDefineProp(this, 'mdImage', _descriptor2, this);
-
-          _initDefineProp(this, 'mdReveal', _descriptor3, this);
-
-          _initDefineProp(this, 'mdAction', _descriptor4, this);
-
-          _initDefineProp(this, 'mdStickyAction', _descriptor5, this);
-
-          _initDefineProp(this, 'mdSize', _descriptor6, this);
-
-          _initDefineProp(this, 'mdTitle', _descriptor7, this);
-
-          _initDefineProp(this, 'mdClass', _descriptor8, this);
-
-          this.element = element;
+System.register(["aurelia-framework", "../common/attributes"], function (exports_1, context_1) {
+    "use strict";
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __moduleName = context_1 && context_1.id;
+    var aurelia_framework_1, attributes_1, MdCard;
+    return {
+        setters: [
+            function (aurelia_framework_1_1) {
+                aurelia_framework_1 = aurelia_framework_1_1;
+            },
+            function (attributes_1_1) {
+                attributes_1 = attributes_1_1;
+            }
+        ],
+        execute: function () {
+            MdCard = class MdCard {
+                constructor(element) {
+                    this.element = element;
+                    this.mdImage = null;
+                    this.mdReveal = false;
+                    this.mdAction = false;
+                    this.mdStickyAction = false;
+                    this.mdSize = "";
+                }
+                attached() {
+                    this.mdHorizontal = attributes_1.getBooleanFromAttributeValue(this.mdHorizontal);
+                    this.mdReveal = attributes_1.getBooleanFromAttributeValue(this.mdReveal);
+                    this.mdAction = attributes_1.getBooleanFromAttributeValue(this.mdAction);
+                    this.mdStickyAction = attributes_1.getBooleanFromAttributeValue(this.mdStickyAction);
+                }
+            };
+            __decorate([
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+            ], MdCard.prototype, "mdHorizontal", void 0);
+            __decorate([
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+            ], MdCard.prototype, "mdImage", void 0);
+            __decorate([
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+            ], MdCard.prototype, "mdReveal", void 0);
+            __decorate([
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+            ], MdCard.prototype, "mdAction", void 0);
+            __decorate([
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+            ], MdCard.prototype, "mdStickyAction", void 0);
+            __decorate([
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneWay })
+            ], MdCard.prototype, "mdSize", void 0);
+            __decorate([
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+            ], MdCard.prototype, "mdTitle", void 0);
+            __decorate([
+                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime })
+            ], MdCard.prototype, "mdClass", void 0);
+            MdCard = __decorate([
+                aurelia_framework_1.customElement("md-card"),
+                aurelia_framework_1.autoinject
+            ], MdCard);
+            exports_1("MdCard", MdCard);
         }
-
-        MdCard.prototype.attached = function attached() {
-          this.mdHorizontal = getBooleanFromAttributeValue(this.mdHorizontal);
-          this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
-          this.mdAction = getBooleanFromAttributeValue(this.mdAction);
-          this.mdStickyAction = getBooleanFromAttributeValue(this.mdStickyAction);
-        };
-
-        return MdCard;
-      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdHorizontal', [_dec3], {
-        enumerable: true,
-        initializer: null
-      }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdImage', [_dec4], {
-        enumerable: true,
-        initializer: function initializer() {
-          return null;
-        }
-      }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdReveal', [_dec5], {
-        enumerable: true,
-        initializer: function initializer() {
-          return false;
-        }
-      }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdAction', [_dec6], {
-        enumerable: true,
-        initializer: function initializer() {
-          return false;
-        }
-      }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdStickyAction', [_dec7], {
-        enumerable: true,
-        initializer: function initializer() {
-          return false;
-        }
-      }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdSize', [_dec8], {
-        enumerable: true,
-        initializer: function initializer() {
-          return '';
-        }
-      }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec9], {
-        enumerable: true,
-        initializer: null
-      }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdClass', [_dec10], {
-        enumerable: true,
-        initializer: null
-      })), _class2)) || _class) || _class));
-
-      _export('MdCard', MdCard);
-    }
-  };
+    };
 });

@@ -1,80 +1,29 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdScrollSpy = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdScrollSpy = exports.MdScrollSpy = (_dec = (0, _aureliaTemplating.customAttribute)('md-scrollspy'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdScrollSpy(element) {
-      _classCallCheck(this, MdScrollSpy);
-
-      _initDefineProp(this, 'target', _descriptor, this);
-
-      this.element = element;
-    }
-
-    MdScrollSpy.prototype.attached = function attached() {
-      $(this.target, this.element).scrollSpy();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    let MdScrollSpy = class MdScrollSpy {
+        constructor(element) {
+            this.element = element;
+        }
+        attached() {
+            $(this.target, this.element).scrollSpy();
+        }
+        detached() {
+            // destroy handler not available
+        }
     };
-
-    MdScrollSpy.prototype.detached = function detached() {};
-
-    return MdScrollSpy;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'target', [_dec3], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
+    __decorate([
+        aurelia_framework_1.bindable
+    ], MdScrollSpy.prototype, "target", void 0);
+    MdScrollSpy = __decorate([
+        aurelia_framework_1.customAttribute("md-scrollspy"),
+        aurelia_framework_1.autoinject
+    ], MdScrollSpy);
+    exports.MdScrollSpy = MdScrollSpy;
 });

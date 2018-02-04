@@ -1,556 +1,70 @@
-define(['exports', './autocomplete/autocomplete', './badge/badge', './box/box', './breadcrumbs/breadcrumbs', './breadcrumbs/instructionFilter', './button/button', './card/card', './carousel/carousel-item', './carousel/carousel', './char-counter/char-counter', './checkbox/checkbox', './chip/chip', './chip/chips', './collapsible/collapsible', './collection/collection-header', './collection/collection-item', './collection/collection', './collection/md-collection-selector', './colors/colorValueConverters', './colors/md-colors', './common/attributeManager', './common/attributes', './common/constants', './common/events', './datepicker/datepicker-default-parser', './datepicker/datepicker', './dropdown/dropdown-element', './dropdown/dropdown', './fab/fab', './file/file', './footer/footer', './input/input-prefix', './input/input-update-service', './input/input', './modal/modal', './modal/modal-trigger', './navbar/navbar', './pagination/pagination', './parallax/parallax', './progress/progress', './pushpin/pushpin', './radio/radio', './range/range', './scrollfire/scrollfire-patch', './scrollfire/scrollfire-target', './scrollfire/scrollfire', './scrollspy/scrollspy', './select/select', './sidenav/sidenav-collapse', './sidenav/sidenav', './slider/slider', './switch/switch', './tabs/tabs', './tap-target/tap-target', './timepicker/timepicker', './toast/toastService', './tooltip/tooltip', './transitions/fadein-image', './transitions/staggered-list', './validation/validationRenderer', './waves/waves'], function (exports, _autocomplete, _badge, _box, _breadcrumbs, _instructionFilter, _button, _card, _carouselItem, _carousel, _charCounter, _checkbox, _chip, _chips, _collapsible, _collectionHeader, _collectionItem, _collection, _mdCollectionSelector, _colorValueConverters, _mdColors, _attributeManager, _attributes, _constants, _events, _datepickerDefaultParser, _datepicker, _dropdownElement, _dropdown, _fab, _file, _footer, _inputPrefix, _inputUpdateService, _input, _modal, _modalTrigger, _navbar, _pagination, _parallax, _progress, _pushpin, _radio, _range, _scrollfirePatch, _scrollfireTarget, _scrollfire, _scrollspy, _select, _sidenavCollapse, _sidenav, _slider, _switch, _tabs, _tapTarget, _timepicker, _toastService, _tooltip, _fadeinImage, _staggeredList, _validationRenderer, _waves) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  Object.keys(_autocomplete).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _autocomplete[key];
-      }
-    });
-  });
-  Object.keys(_badge).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _badge[key];
-      }
-    });
-  });
-  Object.keys(_box).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _box[key];
-      }
-    });
-  });
-  Object.keys(_breadcrumbs).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _breadcrumbs[key];
-      }
-    });
-  });
-  Object.keys(_instructionFilter).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _instructionFilter[key];
-      }
-    });
-  });
-  Object.keys(_button).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _button[key];
-      }
-    });
-  });
-  Object.keys(_card).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _card[key];
-      }
-    });
-  });
-  Object.keys(_carouselItem).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _carouselItem[key];
-      }
-    });
-  });
-  Object.keys(_carousel).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _carousel[key];
-      }
-    });
-  });
-  Object.keys(_charCounter).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _charCounter[key];
-      }
-    });
-  });
-  Object.keys(_checkbox).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _checkbox[key];
-      }
-    });
-  });
-  Object.keys(_chip).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _chip[key];
-      }
-    });
-  });
-  Object.keys(_chips).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _chips[key];
-      }
-    });
-  });
-  Object.keys(_collapsible).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _collapsible[key];
-      }
-    });
-  });
-  Object.keys(_collectionHeader).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _collectionHeader[key];
-      }
-    });
-  });
-  Object.keys(_collectionItem).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _collectionItem[key];
-      }
-    });
-  });
-  Object.keys(_collection).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _collection[key];
-      }
-    });
-  });
-  Object.keys(_mdCollectionSelector).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _mdCollectionSelector[key];
-      }
-    });
-  });
-  Object.keys(_colorValueConverters).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _colorValueConverters[key];
-      }
-    });
-  });
-  Object.keys(_mdColors).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _mdColors[key];
-      }
-    });
-  });
-  Object.keys(_attributeManager).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _attributeManager[key];
-      }
-    });
-  });
-  Object.keys(_attributes).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _attributes[key];
-      }
-    });
-  });
-  Object.keys(_constants).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _constants[key];
-      }
-    });
-  });
-  Object.keys(_events).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _events[key];
-      }
-    });
-  });
-  Object.keys(_datepickerDefaultParser).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _datepickerDefaultParser[key];
-      }
-    });
-  });
-  Object.keys(_datepicker).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _datepicker[key];
-      }
-    });
-  });
-  Object.keys(_dropdownElement).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _dropdownElement[key];
-      }
-    });
-  });
-  Object.keys(_dropdown).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _dropdown[key];
-      }
-    });
-  });
-  Object.keys(_fab).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _fab[key];
-      }
-    });
-  });
-  Object.keys(_file).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _file[key];
-      }
-    });
-  });
-  Object.keys(_footer).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _footer[key];
-      }
-    });
-  });
-  Object.keys(_inputPrefix).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _inputPrefix[key];
-      }
-    });
-  });
-  Object.keys(_inputUpdateService).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _inputUpdateService[key];
-      }
-    });
-  });
-  Object.keys(_input).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _input[key];
-      }
-    });
-  });
-  Object.keys(_modal).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _modal[key];
-      }
-    });
-  });
-  Object.keys(_modalTrigger).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _modalTrigger[key];
-      }
-    });
-  });
-  Object.keys(_navbar).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _navbar[key];
-      }
-    });
-  });
-  Object.keys(_pagination).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _pagination[key];
-      }
-    });
-  });
-  Object.keys(_parallax).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _parallax[key];
-      }
-    });
-  });
-  Object.keys(_progress).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _progress[key];
-      }
-    });
-  });
-  Object.keys(_pushpin).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _pushpin[key];
-      }
-    });
-  });
-  Object.keys(_radio).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _radio[key];
-      }
-    });
-  });
-  Object.keys(_range).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _range[key];
-      }
-    });
-  });
-  Object.keys(_scrollfirePatch).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _scrollfirePatch[key];
-      }
-    });
-  });
-  Object.keys(_scrollfireTarget).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _scrollfireTarget[key];
-      }
-    });
-  });
-  Object.keys(_scrollfire).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _scrollfire[key];
-      }
-    });
-  });
-  Object.keys(_scrollspy).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _scrollspy[key];
-      }
-    });
-  });
-  Object.keys(_select).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _select[key];
-      }
-    });
-  });
-  Object.keys(_sidenavCollapse).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _sidenavCollapse[key];
-      }
-    });
-  });
-  Object.keys(_sidenav).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _sidenav[key];
-      }
-    });
-  });
-  Object.keys(_slider).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _slider[key];
-      }
-    });
-  });
-  Object.keys(_switch).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _switch[key];
-      }
-    });
-  });
-  Object.keys(_tabs).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _tabs[key];
-      }
-    });
-  });
-  Object.keys(_tapTarget).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _tapTarget[key];
-      }
-    });
-  });
-  Object.keys(_timepicker).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _timepicker[key];
-      }
-    });
-  });
-  Object.keys(_toastService).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _toastService[key];
-      }
-    });
-  });
-  Object.keys(_tooltip).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _tooltip[key];
-      }
-    });
-  });
-  Object.keys(_fadeinImage).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _fadeinImage[key];
-      }
-    });
-  });
-  Object.keys(_staggeredList).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _staggeredList[key];
-      }
-    });
-  });
-  Object.keys(_validationRenderer).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _validationRenderer[key];
-      }
-    });
-  });
-  Object.keys(_waves).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _waves[key];
-      }
-    });
-  });
+define(["require", "exports", "./autocomplete/autocomplete", "./badge/badge", "./box/box", "./breadcrumbs/breadcrumbs", "./breadcrumbs/instructionFilter", "./button/button", "./card/card", "./carousel/carousel-item", "./carousel/carousel", "./char-counter/char-counter", "./checkbox/checkbox", "./chip/chip", "./chip/chips", "./collapsible/collapsible", "./collection/collection-header", "./collection/collection-item", "./collection/collection", "./collection/md-collection-selector", "./colors/colorValueConverters", "./colors/md-colors", "./common/attributeManager", "./common/attributes", "./common/constants", "./common/events", "./datepicker/datepicker-default-parser", "./datepicker/datepicker", "./dropdown/dropdown-element", "./dropdown/dropdown", "./fab/fab", "./file/file", "./footer/footer", "./input/input-prefix", "./input/input-update-service", "./input/input", "./modal/modal", "./modal/modal-trigger", "./navbar/navbar", "./pagination/pagination", "./parallax/parallax", "./progress/progress", "./pushpin/pushpin", "./radio/radio", "./range/range", "./scrollfire/scrollfire-patch", "./scrollfire/scrollfire-target", "./scrollfire/scrollfire", "./scrollspy/scrollspy", "./select/select", "./sidenav/sidenav-collapse", "./sidenav/sidenav", "./slider/slider", "./switch/switch", "./tabs/tabs", "./tap-target/tap-target", "./timepicker/timepicker", "./toast/toastService", "./tooltip/tooltip", "./transitions/fadein-image", "./transitions/staggered-list", "./validation/validationRenderer", "./waves/waves"], function (require, exports, autocomplete_1, badge_1, box_1, breadcrumbs_1, instructionFilter_1, button_1, card_1, carousel_item_1, carousel_1, char_counter_1, checkbox_1, chip_1, chips_1, collapsible_1, collection_header_1, collection_item_1, collection_1, md_collection_selector_1, colorValueConverters_1, md_colors_1, attributeManager_1, attributes_1, constants_1, events_1, datepicker_default_parser_1, datepicker_1, dropdown_element_1, dropdown_1, fab_1, file_1, footer_1, input_prefix_1, input_update_service_1, input_1, modal_1, modal_trigger_1, navbar_1, pagination_1, parallax_1, progress_1, pushpin_1, radio_1, range_1, scrollfire_patch_1, scrollfire_target_1, scrollfire_1, scrollspy_1, select_1, sidenav_collapse_1, sidenav_1, slider_1, switch_1, tabs_1, tap_target_1, timepicker_1, toastService_1, tooltip_1, fadein_image_1, staggered_list_1, validationRenderer_1, waves_1) {
+    "use strict";
+    function __export(m) {
+        for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+    }
+    Object.defineProperty(exports, "__esModule", { value: true });
+    // build-index-remove start
+    __export(autocomplete_1);
+    __export(badge_1);
+    __export(box_1);
+    __export(breadcrumbs_1);
+    __export(instructionFilter_1);
+    __export(button_1);
+    __export(card_1);
+    __export(carousel_item_1);
+    __export(carousel_1);
+    __export(char_counter_1);
+    __export(checkbox_1);
+    __export(chip_1);
+    __export(chips_1);
+    __export(collapsible_1);
+    __export(collection_header_1);
+    __export(collection_item_1);
+    __export(collection_1);
+    __export(md_collection_selector_1);
+    __export(colorValueConverters_1);
+    __export(md_colors_1);
+    __export(attributeManager_1);
+    __export(attributes_1);
+    __export(constants_1);
+    __export(events_1);
+    __export(datepicker_default_parser_1);
+    __export(datepicker_1);
+    __export(dropdown_element_1);
+    __export(dropdown_1);
+    __export(fab_1);
+    __export(file_1);
+    __export(footer_1);
+    __export(input_prefix_1);
+    __export(input_update_service_1);
+    __export(input_1);
+    __export(modal_1);
+    __export(modal_trigger_1);
+    __export(navbar_1);
+    __export(pagination_1);
+    __export(parallax_1);
+    __export(progress_1);
+    __export(pushpin_1);
+    __export(radio_1);
+    __export(range_1);
+    __export(scrollfire_patch_1);
+    __export(scrollfire_target_1);
+    __export(scrollfire_1);
+    __export(scrollspy_1);
+    __export(select_1);
+    __export(sidenav_collapse_1);
+    __export(sidenav_1);
+    __export(slider_1);
+    __export(switch_1);
+    __export(tabs_1);
+    __export(tap_target_1);
+    __export(timepicker_1);
+    __export(toastService_1);
+    __export(tooltip_1);
+    __export(fadein_image_1);
+    __export(staggered_list_1);
+    __export(validationRenderer_1);
+    __export(waves_1);
 });
+// build-index-remove end

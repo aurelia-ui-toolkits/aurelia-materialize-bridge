@@ -1,107 +1,58 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (_export, _context) {
-  "use strict";
-
-  var bindable, customElement, inject, getLogger, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _class3, _temp, MdTapTarget;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  return {
-    setters: [function (_aureliaTemplating) {
-      bindable = _aureliaTemplating.bindable;
-      customElement = _aureliaTemplating.customElement;
-    }, function (_aureliaDependencyInjection) {
-      inject = _aureliaDependencyInjection.inject;
-    }, function (_aureliaLogging) {
-      getLogger = _aureliaLogging.getLogger;
-    }],
-    execute: function () {
-      _export('MdTapTarget', MdTapTarget = (_dec = customElement('md-tap-target'), _dec2 = inject(Element), _dec3 = bindable(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
-        function MdTapTarget(element) {
-          _classCallCheck(this, MdTapTarget);
-
-          _initDefineProp(this, 'mdRef', _descriptor, this);
-
-          this.element = element;
-          this.log = getLogger('md-tap-target');
-        }
-
-        MdTapTarget.prototype.bind = function bind() {
-          if (!this.mdRef) {
-            throw new Error('md-tap-target needs a referenced element');
-          } else {
-            var id = this.mdRef.getAttribute('id');
-            if (!id) {
-              id = 'md-tap-target-' + MdTapTarget.controlId++;
-              this.mdRef.setAttribute('id', id);
+System.register(["aurelia-framework", "aurelia-logging"], function (exports_1, context_1) {
+    "use strict";
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __moduleName = context_1 && context_1.id;
+    var aurelia_framework_1, aurelia_logging_1, MdTapTarget, MdTapTarget_1;
+    return {
+        setters: [
+            function (aurelia_framework_1_1) {
+                aurelia_framework_1 = aurelia_framework_1_1;
+            },
+            function (aurelia_logging_1_1) {
+                aurelia_logging_1 = aurelia_logging_1_1;
             }
-            this.element.setAttribute('data-activates', id);
-          }
-        };
-
-        MdTapTarget.prototype.open = function open() {
-          $(this.element).tapTarget('open');
-        };
-
-        MdTapTarget.prototype.close = function close() {
-          $(this.element).tapTarget('close');
-        };
-
-        return MdTapTarget;
-      }(), _class3.controlId = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdRef', [_dec3], {
-        enumerable: true,
-        initializer: function initializer() {
-          return null;
+        ],
+        execute: function () {
+            MdTapTarget = MdTapTarget_1 = class MdTapTarget {
+                constructor(element) {
+                    this.element = element;
+                    this.mdRef = null;
+                    this.log = aurelia_logging_1.getLogger("md-tap-target");
+                }
+                bind() {
+                    if (!this.mdRef) {
+                        throw new Error("md-tap-target needs a referenced element");
+                    }
+                    else {
+                        let id = this.mdRef.getAttribute("id");
+                        if (!id) {
+                            id = `md-tap-target-${MdTapTarget_1.controlId++}`;
+                            this.mdRef.setAttribute("id", id);
+                        }
+                        this.element.setAttribute("data-activates", id);
+                    }
+                }
+                open() {
+                    $(this.element).tapTarget("open");
+                }
+                close() {
+                    $(this.element).tapTarget("close");
+                }
+            };
+            MdTapTarget.controlId = 0;
+            __decorate([
+                aurelia_framework_1.bindable
+            ], MdTapTarget.prototype, "mdRef", void 0);
+            MdTapTarget = MdTapTarget_1 = __decorate([
+                aurelia_framework_1.customElement("md-tap-target"),
+                aurelia_framework_1.autoinject
+            ], MdTapTarget);
+            exports_1("MdTapTarget", MdTapTarget);
         }
-      })), _class2)) || _class) || _class));
-
-      _export('MdTapTarget', MdTapTarget);
-    }
-  };
+    };
 });

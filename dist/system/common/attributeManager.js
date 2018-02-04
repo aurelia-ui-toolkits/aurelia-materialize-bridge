@@ -1,94 +1,78 @@
-System.register([], function (_export, _context) {
-  "use strict";
-
-  var AttributeManager;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  return {
-    setters: [],
-    execute: function () {
-      _export('AttributeManager', AttributeManager = function () {
-        function AttributeManager(element) {
-          _classCallCheck(this, AttributeManager);
-
-          this._colorClasses = ['accent', 'primary'];
-          this.addedClasses = [];
-          this.addedAttributes = {};
-
-          this.element = element;
+System.register([], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var AttributeManager;
+    return {
+        setters: [],
+        execute: function () {
+            /**
+             * Adds css classes to a given element only if these classes are not already
+             * present. Keeps a record of css classes which actually have been added.
+             * This way, they can also be removed in a way which keeps the original classes
+             * set by the user.
+             * Most useful in attached() and detached() handlers.
+             */
+            AttributeManager = class AttributeManager {
+                constructor(element) {
+                    this.element = element;
+                    this.colorClasses = ["accent", "primary"];
+                    this.addedClasses = [];
+                    this.addedAttributes = {};
+                }
+                addAttributes(attrs) {
+                    let keys = Object.keys(attrs);
+                    keys.forEach(k => {
+                        if (!this.element.getAttribute(k)) {
+                            this.addedAttributes[k] = attrs[k];
+                            this.element.setAttribute(k, attrs[k]);
+                        }
+                        else if (this.element.getAttribute(k) !== attrs[k]) {
+                            this.element.setAttribute(k, attrs[k]);
+                        }
+                    });
+                }
+                removeAttributes(attrs) {
+                    if (typeof attrs === "string") {
+                        attrs = [attrs];
+                    }
+                    attrs.forEach(a => {
+                        if (this.element.getAttribute(a) && !!this.addedAttributes[a]) {
+                            this.element.removeAttribute(a);
+                            this.addedAttributes[a] = null;
+                            delete this.addedAttributes[a];
+                        }
+                    });
+                }
+                addClasses(classes) {
+                    if (typeof classes === "string") {
+                        classes = [classes];
+                    }
+                    classes.forEach(c => {
+                        let classListHasColor = this.colorClasses.filter(cc => this.element.classList.contains(cc)).length > 0;
+                        if (this.colorClasses.indexOf(c) > -1 && classListHasColor) {
+                            //
+                        }
+                        else {
+                            if (!this.element.classList.contains(c)) {
+                                this.addedClasses.push(c);
+                                this.element.classList.add(c);
+                            }
+                        }
+                    });
+                }
+                removeClasses(classes) {
+                    if (typeof classes === "string") {
+                        classes = [classes];
+                    }
+                    classes.forEach(c => {
+                        if (this.element.classList.contains(c) && this.addedClasses.indexOf(c) > -1) {
+                            this.element.classList.remove(c);
+                            this.addedClasses.splice(this.addedClasses.indexOf(c), 1);
+                        }
+                    });
+                }
+            };
+            exports_1("AttributeManager", AttributeManager);
         }
-
-        AttributeManager.prototype.addAttributes = function addAttributes(attrs) {
-          var _this = this;
-
-          var keys = Object.keys(attrs);
-          keys.forEach(function (k) {
-            if (!_this.element.getAttribute(k)) {
-              _this.addedAttributes[k] = attrs[k];
-              _this.element.setAttribute(k, attrs[k]);
-            } else if (_this.element.getAttribute(k) !== attrs[k]) {
-              _this.element.setAttribute(k, attrs[k]);
-            }
-          });
-        };
-
-        AttributeManager.prototype.removeAttributes = function removeAttributes(attrs) {
-          var _this2 = this;
-
-          if (typeof attrs === 'string') {
-            attrs = [attrs];
-          }
-          attrs.forEach(function (a) {
-            if (_this2.element.getAttribute(a) && !!_this2.addedAttributes[a]) {
-              _this2.element.removeAttribute(a);
-              _this2.addedAttributes[a] = null;
-              delete _this2.addedAttributes[a];
-            }
-          });
-        };
-
-        AttributeManager.prototype.addClasses = function addClasses(classes) {
-          var _this3 = this;
-
-          if (typeof classes === 'string') {
-            classes = [classes];
-          }
-          classes.forEach(function (c) {
-            var classListHasColor = _this3._colorClasses.filter(function (cc) {
-              return _this3.element.classList.contains(cc);
-            }).length > 0;
-            if (_this3._colorClasses.indexOf(c) > -1 && classListHasColor) {} else {
-              if (!_this3.element.classList.contains(c)) {
-                _this3.addedClasses.push(c);
-                _this3.element.classList.add(c);
-              }
-            }
-          });
-        };
-
-        AttributeManager.prototype.removeClasses = function removeClasses(classes) {
-          var _this4 = this;
-
-          if (typeof classes === 'string') {
-            classes = [classes];
-          }
-          classes.forEach(function (c) {
-            if (_this4.element.classList.contains(c) && _this4.addedClasses.indexOf(c) > -1) {
-              _this4.element.classList.remove(c);
-              _this4.addedClasses.splice(_this4.addedClasses.indexOf(c), 1);
-            }
-          });
-        };
-
-        return AttributeManager;
-      }());
-
-      _export('AttributeManager', AttributeManager);
-    }
-  };
+    };
 });

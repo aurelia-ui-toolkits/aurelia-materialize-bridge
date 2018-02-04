@@ -1,151 +1,83 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MdCheckbox = undefined;
-
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _class3, _temp;
-
-var _aureliaTemplating = require('aurelia-templating');
-
-var _aureliaBinding = require('aurelia-binding');
-
-var _aureliaDependencyInjection = require('aurelia-dependency-injection');
-
-var _attributeManager = require('../common/attributeManager');
-
-var _attributes = require('../common/attributes');
-
-function _initDefineProp(target, property, descriptor, context) {
-  if (!descriptor) return;
-  Object.defineProperty(target, property, {
-    enumerable: descriptor.enumerable,
-    configurable: descriptor.configurable,
-    writable: descriptor.writable,
-    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-  });
-}
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-  var desc = {};
-  Object['ke' + 'ys'](descriptor).forEach(function (key) {
-    desc[key] = descriptor[key];
-  });
-  desc.enumerable = !!desc.enumerable;
-  desc.configurable = !!desc.configurable;
-
-  if ('value' in desc || desc.initializer) {
-    desc.writable = true;
-  }
-
-  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-    return decorator(target, property, desc) || desc;
-  }, desc);
-
-  if (context && desc.initializer !== void 0) {
-    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-    desc.initializer = undefined;
-  }
-
-  if (desc.initializer === void 0) {
-    Object['define' + 'Property'](target, property, desc);
-    desc = null;
-  }
-
-  return desc;
-}
-
-function _initializerWarningHelper(descriptor, context) {
-  throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-}
-
-var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customElement)('md-checkbox'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-}), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec8 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
-  MdCheckbox.prototype.mdReadonlyChanged = function mdReadonlyChanged() {
-    if (!this.checkbox) {
-      return;
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const aurelia_framework_1 = require("aurelia-framework");
+const attributeManager_1 = require("../common/attributeManager");
+const attributes_1 = require("../common/attributes");
+let MdCheckbox = MdCheckbox_1 = class MdCheckbox {
+    constructor(element) {
+        this.element = element;
+        this.mdReadonly = false;
+        this.controlId = `md-checkbox-${MdCheckbox_1.id++}`;
     }
-
-    if (this.mdReadonly) {
-      this.checkbox.addEventListener('change', this.preventChange);
-    } else {
-      this.checkbox.removeEventListener('change', this.preventChange);
+    mdDisabledChanged(newValue) {
+        if (this.checkbox) {
+            this.checkbox.disabled = !!newValue;
+        }
     }
-  };
-
-  function MdCheckbox(element) {
-    _classCallCheck(this, MdCheckbox);
-
-    _initDefineProp(this, 'mdChecked', _descriptor, this);
-
-    _initDefineProp(this, 'mdDisabled', _descriptor2, this);
-
-    _initDefineProp(this, 'mdReadonly', _descriptor3, this);
-
-    _initDefineProp(this, 'mdFilledIn', _descriptor4, this);
-
-    _initDefineProp(this, 'mdMatcher', _descriptor5, this);
-
-    _initDefineProp(this, 'mdModel', _descriptor6, this);
-
-    this.element = element;
-    this.controlId = 'md-checkbox-' + MdCheckbox.id++;
-  }
-
-  MdCheckbox.prototype.attached = function attached() {
-    this.attributeManager = new _attributeManager.AttributeManager(this.checkbox);
-    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFilledIn)) {
-      this.attributeManager.addClasses('filled-in');
+    mdReadonlyChanged() {
+        if (!this.checkbox) {
+            return;
+        }
+        if (this.mdReadonly) {
+            this.checkbox.addEventListener("change", this.preventChange);
+        }
+        else {
+            this.checkbox.removeEventListener("change", this.preventChange);
+        }
     }
-    if (this.mdChecked === null) {
-      this.checkbox.indeterminate = true;
-    } else {
-      this.checkbox.indeterminate = false;
+    attached() {
+        this.attributeManager = new attributeManager_1.AttributeManager(this.checkbox);
+        if (attributes_1.getBooleanFromAttributeValue(this.mdFilledIn)) {
+            this.attributeManager.addClasses("filled-in");
+        }
+        if (this.mdChecked === null) {
+            this.checkbox.indeterminate = true;
+        }
+        else {
+            this.checkbox.indeterminate = false;
+        }
+        if (attributes_1.getBooleanFromAttributeValue(this.mdDisabled)) {
+            this.checkbox.disabled = true;
+        }
+        this.mdReadonly = attributes_1.getBooleanFromAttributeValue(this.mdReadonly);
+        this.mdReadonlyChanged();
     }
-    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
-      this.checkbox.disabled = true;
+    detached() {
+        this.attributeManager.removeClasses(["filled-in", "disabled"]);
     }
-    this.mdReadonly = (0, _attributes.getBooleanFromAttributeValue)(this.mdReadonly);
-    this.mdReadonlyChanged();
-  };
-
-  MdCheckbox.prototype.detached = function detached() {
-    this.attributeManager.removeClasses(['filled-in', 'disabled']);
-  };
-
-  MdCheckbox.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
-    if (this.checkbox) {
-      this.checkbox.disabled = !!newValue;
+    // it is called with an element as this
+    preventChange() {
+        this.checked = !this.checked;
     }
-  };
-
-  MdCheckbox.prototype.preventChange = function preventChange() {
-    this.checked = !this.checked;
-  };
-
-  return MdCheckbox;
-}(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdChecked', [_dec3], {
-  enumerable: true,
-  initializer: null
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec4], {
-  enumerable: true,
-  initializer: null
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdReadonly', [_dec5], {
-  enumerable: true,
-  initializer: function initializer() {
-    return false;
-  }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdFilledIn', [_dec6], {
-  enumerable: true,
-  initializer: null
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdMatcher', [_dec7], {
-  enumerable: true,
-  initializer: null
-}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdModel', [_dec8], {
-  enumerable: true,
-  initializer: null
-})), _class2)) || _class) || _class);
+};
+MdCheckbox.id = 0;
+__decorate([
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay })
+], MdCheckbox.prototype, "mdChecked", void 0);
+__decorate([
+    aurelia_framework_1.bindable
+], MdCheckbox.prototype, "mdDisabled", void 0);
+__decorate([
+    aurelia_framework_1.bindable
+], MdCheckbox.prototype, "mdReadonly", void 0);
+__decorate([
+    aurelia_framework_1.bindable
+], MdCheckbox.prototype, "mdFilledIn", void 0);
+__decorate([
+    aurelia_framework_1.bindable
+], MdCheckbox.prototype, "mdMatcher", void 0);
+__decorate([
+    aurelia_framework_1.bindable
+], MdCheckbox.prototype, "mdModel", void 0);
+MdCheckbox = MdCheckbox_1 = __decorate([
+    aurelia_framework_1.customElement("md-checkbox"),
+    aurelia_framework_1.autoinject
+], MdCheckbox);
+exports.MdCheckbox = MdCheckbox;
+var MdCheckbox_1;

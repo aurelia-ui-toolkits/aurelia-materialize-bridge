@@ -1,0 +1,36 @@
+import { TaskQueue } from "aurelia-task-queue";
+import { Logger } from "aurelia-logging";
+import { DatePickerDefaultParser } from "./datepicker-default-parser";
+import { ValidateResult } from "aurelia-validation";
+import { MaterializeFormValidationRenderer } from "../index";
+export declare class MdDatePicker {
+    private element;
+    private taskQueue;
+    private defaultParser;
+    constructor(element: Element, taskQueue: TaskQueue, defaultParser: DatePickerDefaultParser);
+    log: Logger;
+    picker: any;
+    container: Element;
+    translation: any;
+    value: Date;
+    valueChanged(newValue: Date): void;
+    parsers: any[];
+    selectMonths: boolean;
+    selectYears: number | string;
+    options: DatePickerOptions;
+    showErrortext: boolean | string;
+    calendarIcon: any;
+    attached(): void;
+    bind(): void;
+    parseDate(value: any): boolean;
+    detached(): void;
+    openDatePicker(): void;
+    closeDatePicker(): void;
+    updateValue(): void;
+    onClose(): void;
+    onCalendarIconClick(event: any): void;
+    showErrortextChanged(): void;
+    setErrorTextAttribute(): void;
+    mdUnrenderValidateResults: (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => void;
+    mdRenderValidateResults: (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => void;
+}

@@ -1,70 +1,55 @@
-System.register([], function (_export, _context) {
-  "use strict";
-
-  var _class, _temp, ScrollfirePatch;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  return {
-    setters: [],
-    execute: function () {
-      _export('ScrollfirePatch', ScrollfirePatch = (_temp = _class = function () {
-        function ScrollfirePatch() {
-          _classCallCheck(this, ScrollfirePatch);
-        }
-
-        ScrollfirePatch.prototype.patch = function patch() {
-          if (!ScrollfirePatch.patched) {
-            ScrollfirePatch.patched = true;
-
-            window.Materialize.scrollFire = function (options) {
-              var didScroll = false;
-              window.addEventListener('scroll', function () {
-                didScroll = true;
-              });
-
-              setInterval(function () {
-                if (didScroll) {
-                  didScroll = false;
-
-                  var windowScroll = window.pageYOffset + window.innerHeight;
-                  for (var i = 0; i < options.length; i++) {
-                    var value = options[i];
-                    var selector = value.selector;
-                    var offset = value.offset;
-                    var callback = value.callback;
-
-                    var currentElement = document.querySelector(selector);
-                    if (currentElement !== null) {
-                      var elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
-
-                      if (windowScroll > elementOffset + offset) {
-                        if (value.done !== true) {
-                          if (typeof callback === 'string') {
-                            var callbackFunc = new Function(callback);
-                            callbackFunc();
-                          } else if (typeof callback === 'function') {
-                            callback();
-                          }
-                          value.done = true;
-                        }
-                      }
+System.register([], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var ScrollfirePatch;
+    return {
+        setters: [],
+        execute: function () {
+            /* eslint no-new-func:0 */
+            ScrollfirePatch = class ScrollfirePatch {
+                patch() {
+                    if (!ScrollfirePatch.patched) {
+                        ScrollfirePatch.patched = true;
+                        Materialize.scrollFire = function (options) {
+                            let didScroll = false;
+                            window.addEventListener("scroll", function () {
+                                didScroll = true;
+                            });
+                            // Rate limit to 100ms
+                            setInterval(function () {
+                                if (didScroll) {
+                                    didScroll = false;
+                                    let windowScroll = window.pageYOffset + window.innerHeight;
+                                    for (let value of options) {
+                                        // Get options from each line
+                                        let selector = value.selector;
+                                        let offset = value.offset;
+                                        let callback = value.callback;
+                                        let currentElement = document.querySelector(selector);
+                                        if (currentElement !== null) {
+                                            let elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
+                                            if (windowScroll > (elementOffset + offset)) {
+                                                if (value.done !== true) {
+                                                    if (typeof (callback) === "string") {
+                                                        let callbackFunc = new Function(callback);
+                                                        callbackFunc();
+                                                    }
+                                                    else if (typeof (callback) === "function") {
+                                                        callback();
+                                                    }
+                                                    value.done = true;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }, 100);
+                        };
                     }
-                  }
                 }
-              }, 100);
             };
-          }
-        };
-
-        return ScrollfirePatch;
-      }(), _class.patched = false, _temp));
-
-      _export('ScrollfirePatch', ScrollfirePatch);
-    }
-  };
+            ScrollfirePatch.patched = false;
+            exports_1("ScrollfirePatch", ScrollfirePatch);
+        }
+    };
 });

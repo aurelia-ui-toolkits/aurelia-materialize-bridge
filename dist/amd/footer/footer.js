@@ -1,35 +1,27 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdFooter = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _dec2, _class;
-
-  var MdFooter = exports.MdFooter = (_dec = (0, _aureliaTemplating.customAttribute)('md-footer'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
-    function MdFooter(element) {
-      _classCallCheck(this, MdFooter);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-    }
-
-    MdFooter.prototype.bind = function bind() {
-      this.attributeManager.addClasses('page-footer');
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+define(["require", "exports", "aurelia-framework", "../common/attributeManager"], function (require, exports, aurelia_framework_1, attributeManager_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    let MdFooter = class MdFooter {
+        constructor(element) {
+            this.element = element;
+            this.attributeManager = new attributeManager_1.AttributeManager(this.element);
+        }
+        bind() {
+            this.attributeManager.addClasses("page-footer");
+        }
+        unbind() {
+            this.attributeManager.removeClasses("page-footer");
+        }
     };
-
-    MdFooter.prototype.unbind = function unbind() {
-      this.attributeManager.removeClasses('page-footer');
-    };
-
-    return MdFooter;
-  }()) || _class) || _class);
+    MdFooter = __decorate([
+        aurelia_framework_1.customAttribute("md-footer"),
+        aurelia_framework_1.autoinject
+    ], MdFooter);
+    exports.MdFooter = MdFooter;
 });

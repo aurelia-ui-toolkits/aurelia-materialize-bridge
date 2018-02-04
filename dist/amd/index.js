@@ -1,39 +1,27 @@
-define(['exports', './exports', './config-builder', './scrollfire/scrollfire-patch', './common/polyfills'], function (exports, _exports, _configBuilder, _scrollfirePatch, _polyfills) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.configure = configure;
-  Object.keys(_exports).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _exports[key];
-      }
-    });
-  });
-
-
-  function applyPolyfills() {
-    (0, _polyfills.polyfillElementClosest)();
-  }
-
-  function configure(aurelia, configCallback) {
-    applyPolyfills();
-
-    var builder = aurelia.container.get(_configBuilder.ConfigBuilder);
-
-    if (configCallback !== undefined && typeof configCallback === 'function') {
-      configCallback(builder);
+define(["require", "exports", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports"], function (require, exports, config_builder_1, scrollfire_patch_1, polyfills_1, exports_1) {
+    "use strict";
+    function __export(m) {
+        for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
     }
-
-    if (builder.useGlobalResources) {
-      aurelia.globalResources(builder.globalResources);
+    Object.defineProperty(exports, "__esModule", { value: true });
+    function applyPolyfills() {
+        polyfills_1.polyfillElementClosest();
     }
-    if (builder.useScrollfirePatch) {
-      new _scrollfirePatch.ScrollfirePatch().patch();
+    function configure(frameworkConfiguration, configCallback) {
+        applyPolyfills();
+        const builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
+        if (configCallback !== undefined && typeof (configCallback) === "function") {
+            configCallback(builder);
+        }
+        if (builder.useGlobalResources) {
+            frameworkConfiguration.globalResources(builder.globalResources);
+        }
+        if (builder.useScrollfirePatch) {
+            new scrollfire_patch_1.ScrollfirePatch().patch();
+        }
     }
-  }
+    exports.configure = configure;
+    // build-index-remove start
+    __export(exports_1);
 });
+// build-index-remove end

@@ -1,14 +1,13 @@
-System.register([], function (_export, _context) {
-  "use strict";
-
-  function getBooleanFromAttributeValue(value) {
-    return value === true || value === 'true';
-  }
-
-  _export('getBooleanFromAttributeValue', getBooleanFromAttributeValue);
-
-  return {
-    setters: [],
-    execute: function () {}
-  };
+System.register([], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    function getBooleanFromAttributeValue(value) {
+        return (value === true || value === "true");
+    }
+    exports_1("getBooleanFromAttributeValue", getBooleanFromAttributeValue);
+    return {
+        setters: [],
+        execute: function () {
+        }
+    };
 });
