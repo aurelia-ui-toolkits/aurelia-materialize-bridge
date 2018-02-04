@@ -1,5 +1,5 @@
 import { MaterializeFormValidationRenderer } from "../validation/validationRenderer";
-import {ValidateResult} from "aurelia-validation";
+import { ValidateResult } from "aurelia-validation";
 
 declare global {
 	// tslint:disable-next-line:interface-name

@@ -19,7 +19,16 @@
 	},
 	"scripts": {
 		"test": "gulp test",
-		"ci": "gulp ci"
+		"ci": "gulp ci",
+		"lint": "tslint --project tsconfig.json",
+		"pretest": "npm run lint",
+		"build:amd": "tsc --outDir devbuild/amd --module amd",
+		"build:commonjs": "tsc --outDir devbuild/commonjs --module commonjs",
+		"build:es2015": "tsc --outDir devbuild/es2015 --module es2015",
+		"build:native-modules": "tsc --outDir devbuild/native-modules --module es2015",
+		"build:system": "tsc --outDir devbuild/system --module system",
+		"prebuild": "rimraf devbuild",
+		"build": "concurrently \"npm run build:amd\" \"npm run build:commonjs\" \"npm run build:es2015\" \"npm run build:native-modules\" \"npm run build:system\""
 	},
 	"main": "dist/commonjs/index.js",
 	"typings": "dist/aurelia-materialize-bridge.d.ts",
@@ -72,6 +81,7 @@
 		"babel-preset-stage-1": "^6.5.0",
 		"babel-runtime": "^5.8.20",
 		"browser-sync": "^2.9.3",
+		"concurrently": "^3.5.1",
 		"conventional-changelog": "^1.1.0",
 		"del": "^1.1.0",
 		"gulp": "^3.9.1",

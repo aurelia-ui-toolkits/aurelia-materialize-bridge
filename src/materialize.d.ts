@@ -26,6 +26,8 @@ interface JQuery {
 	pickatime(options: any);
 	tooltip(command?: string);
 	tooltip(options: any);
+	modal(command?: string);
+	modal(options: any);
 }
 
 interface DatePickerOptions {
