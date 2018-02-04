@@ -19,8 +19,7 @@
 		"emitDecoratorMetadata": false,
 		"noEmitHelpers": false,
 		"stripInternal": true,
-		"strict": true,
-		"allowJs": true
+		"strict": true
 	},
 	"include": [
 		"src/**/*"

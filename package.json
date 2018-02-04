@@ -56,7 +56,6 @@
 	},
 	"devDependencies": {
 		"@types/jquery": "^3.3.0",
-		"@types/materialize-css": "^1.0.1",
 		"aurelia-tools": "^0.2.3",
 		"babel": "^6.5.2",
 		"babel-dts-generator": "^0.6.1",

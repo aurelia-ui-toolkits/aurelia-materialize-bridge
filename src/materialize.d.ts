@@ -14,6 +14,18 @@ interface JQuery {
 	leanModal(options: any);
 	parallax();
 	pushpin(options: any);
+	scrollSpy();
+	material_select(command?: string);
+	sideNav(options: any);
+	slider(command?: string);
+	slider(options: any);
+	tabs(options: any);
+	tabs(command: string, index: number);
+	tapTarget(command?: string);
+	pickatime(command?: string);
+	pickatime(options: any);
+	tooltip(command?: string);
+	tooltip(options: any);
 }
 
 interface DatePickerOptions {
@@ -30,4 +42,11 @@ interface DatePickerOptions {
 
 declare namespace Materialize {
 	function updateTextFields();
+	function scrollFire(option: any);
+	function fadeInImage(options: any);
+	function showStaggeredList(options: any);
+}
+
+declare namespace Waves {
+	function attach(element: Element);
 }
