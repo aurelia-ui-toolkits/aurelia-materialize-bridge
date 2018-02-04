@@ -88,6 +88,7 @@ System.register(["aurelia-framework", "aurelia-logging", "../common/events"], fu
                 aurelia_framework_1.bindable
             ], MdChips.prototype, "secondaryPlaceholder", void 0);
             MdChips = __decorate([
+                aurelia_framework_1.customAttribute("md-chips"),
                 aurelia_framework_1.autoinject
             ], MdChips);
             exports_1("MdChips", MdChips);
