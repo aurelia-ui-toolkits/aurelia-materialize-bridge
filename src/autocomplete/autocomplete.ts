@@ -1,5 +1,4 @@
 import { autoinject, bindable, customAttribute } from "aurelia-framework";
-import "../aurelia";
 import { fireEvent } from "../common/events";
 
 @customAttribute("md-autocomplete")
