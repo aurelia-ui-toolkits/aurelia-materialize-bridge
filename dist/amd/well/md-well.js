@@ -7,17 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-define(["require", "exports", "aurelia-framework", "aurelia-router"], function (require, exports, aurelia_framework_1, aurelia_router_1) {
+define(["require", "exports", "aurelia-router", "aurelia-templating"], function (require, exports, aurelia_router_1, aurelia_templating_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    let MdWell = class MdWell {
-        constructor(router) {
-            this.router = router;
-        }
-    };
-    MdWell = __decorate([
-        aurelia_framework_1.autoinject,
-        __metadata("design:paramtypes", [aurelia_router_1.Router])
-    ], MdWell);
+    class MdWell {
+    }
+    __decorate([
+        aurelia_templating_1.bindable,
+        __metadata("design:type", aurelia_router_1.Router)
+    ], MdWell.prototype, "router", void 0);
     exports.MdWell = MdWell;
 });

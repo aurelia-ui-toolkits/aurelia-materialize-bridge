@@ -9,15 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const aurelia_framework_1 = require("aurelia-framework");
 const aurelia_router_1 = require("aurelia-router");
-let MdWell = class MdWell {
-    constructor(router) {
-        this.router = router;
-    }
-};
-MdWell = __decorate([
-    aurelia_framework_1.autoinject,
-    __metadata("design:paramtypes", [aurelia_router_1.Router])
-], MdWell);
+const aurelia_templating_1 = require("aurelia-templating");
+class MdWell {
+}
+__decorate([
+    aurelia_templating_1.bindable,
+    __metadata("design:type", aurelia_router_1.Router)
+], MdWell.prototype, "router", void 0);
 exports.MdWell = MdWell;

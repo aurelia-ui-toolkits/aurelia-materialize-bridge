@@ -1,4 +1,4 @@
-System.register(["aurelia-framework", "aurelia-router"], function (exports_1, context_1) {
+System.register(["aurelia-router", "aurelia-templating"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -10,26 +10,23 @@ System.register(["aurelia-framework", "aurelia-router"], function (exports_1, co
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, aurelia_router_1, MdWell;
+    var aurelia_router_1, aurelia_templating_1, MdWell;
     return {
         setters: [
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
             function (aurelia_router_1_1) {
                 aurelia_router_1 = aurelia_router_1_1;
+            },
+            function (aurelia_templating_1_1) {
+                aurelia_templating_1 = aurelia_templating_1_1;
             }
         ],
         execute: function () {
             MdWell = class MdWell {
-                constructor(router) {
-                    this.router = router;
-                }
             };
-            MdWell = __decorate([
-                aurelia_framework_1.autoinject,
-                __metadata("design:paramtypes", [aurelia_router_1.Router])
-            ], MdWell);
+            __decorate([
+                aurelia_templating_1.bindable,
+                __metadata("design:type", aurelia_router_1.Router)
+            ], MdWell.prototype, "router", void 0);
             exports_1("MdWell", MdWell);
         }
     };
