@@ -1,9 +1,9 @@
 .control-info.wip {
-  background: url('images/orange.png') left center no-repeat;
+  background: url('../../images/orange.png') left center no-repeat;
 }
 
 .control-info.done {
-  background: url('images/blue.png') left center no-repeat;
+  background: url('../../images/blue.png') left center no-repeat;
 }
 
 .control-info {

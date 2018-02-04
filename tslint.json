@@ -17,6 +17,8 @@
 		"only-arrow-functions": false,
 		"ordered-imports": false,
 		"prefer-const": false,
-		"max-line-length": false
+		"max-line-length": false,
+		"align": false,
+		"one-line": false
 	}
 }

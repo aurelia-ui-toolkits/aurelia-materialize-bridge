@@ -20,13 +20,13 @@
       </div>
       <div class="row">
         <div class="col s12 m4">
-          <a href="http://aurelia.io" target="_blank"><img src="images/aurelia-logo-04.png" /></a>
+          <a href="http://aurelia.io" target="_blank"><img src="../../images/aurelia-logo-04.png" /></a>
         </div>
         <div class="col s12 m4">
-          <img src="images/bridge-image-08-low.png" >
+          <img src="../../images/bridge-image-08-low.png" >
         </div>
         <div class="col s12 m4 center">
-          <a href="http://www.materializecss.com" target="_blank"><img src="images/materialize-logo.png" /></a>
+          <a href="http://www.materializecss.com" target="_blank"><img src="../../images/materialize-logo.png" /></a>
         </div>
       </div>
       <div class="row">
@@ -48,7 +48,7 @@
             <md-collection view-model.ref="list">
               <md-collection-item repeat.for="actor of actors" class="avatar ${ selector.isSelected ? 'selected' : '' }">
                 <md-collection-selector view-model.ref="selector" item.bind="actor" md-on-selection-changed.delegate="onSelectionChanged($event)">
-                  <img src="images/collections-sample-1.jpg" alt="" class="circle md-collection-selector__hover">
+                  <img src="../../images/collections-sample-1.jpg" alt="" class="circle md-collection-selector__hover">
                 </md-collection-selector>
                 <span class="accent-text title">${actor.name}</span>
                 <p style="max-width: 80%;">${actor.description}</p>

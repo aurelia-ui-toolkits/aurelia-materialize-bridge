@@ -1,0 +1,59 @@
+const fs = require('fs');
+const path = require("path");
+const webpack = require("webpack");
+const { AureliaPlugin, ModuleDependenciesPlugin, GlobDependenciesPlugin } = require("aurelia-webpack-plugin");
+const bundleOutputDir = "./dist";
+const nodeModules = path.join(process.cwd(), 'node_modules');
+const realNodeModules = fs.realpathSync(nodeModules);
+
+module.exports = (env) => {
+	const isDevBuild = !(env && env.prod);
+	return [{
+		entry: { "app": ["es6-promise/auto", "aurelia-bootstrapper"] },
+		resolve: {
+			extensions: [".ts", ".js"],
+			modules: ["src", "node_modules"]
+		},
+		output: {
+			path: path.resolve(bundleOutputDir),
+			publicPath: "dist/",
+			filename: "[name].js",
+			chunkFilename: "[name].js"
+		},
+		module: {
+			rules: [
+				{ test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, loader: "url-loader?limit=100000" },
+				{ test: /\.ts$/i, include: [/src/, /node_modules/], use: "ts-loader?silent=false" },
+				{ test: /\.html$/i, use: "html-loader" },
+				{ test: /\.json$/i, use: "json-loader" },
+				{ test: /\.css$/i, use: isDevBuild ? "css-loader" : "css-loader?minimize" },
+				{
+					test: /\.scss$/i,
+					use: [
+						{ loader: isDevBuild ? "css-loader" : "css-loader?minimize" },
+						{ loader: "sass-loader" }
+					]
+				}
+			]
+		},
+		plugins: [
+			new webpack.DefinePlugin({ IS_DEV_BUILD: JSON.stringify(isDevBuild) }),
+			new webpack.ProvidePlugin({ $: "jquery", jQuery: "jquery", "window.jQuery": "jquery" }),
+			new AureliaPlugin({ aureliaApp: "main", includeAll: "src" }),
+			new webpack.optimize.CommonsChunkPlugin({
+				"name": ["vendor"],
+				"minChunks": (module) => {
+					return module.resource && (module.resource.startsWith(nodeModules) || module.resource.startsWith(realNodeModules));
+				},
+				"chunks": ["app"]
+			})
+		].concat(isDevBuild ? [
+			new webpack.SourceMapDevToolPlugin({
+				filename: "[file].map", // Remove this line if you prefer inline source maps
+				moduleFilenameTemplate: path.relative(bundleOutputDir, "[resourcePath]")  // Point sourcemap entries to the original file locations on disk
+			})
+		] : [
+				new webpack.optimize.UglifyJsPlugin()
+			])
+	}];
+};
