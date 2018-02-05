@@ -1,3 +1,6 @@
+import { customElement } from "aurelia-framework";
+
+@customElement("logger")
 export class Logger {
 	attached() {
 		this.overrideStyles();

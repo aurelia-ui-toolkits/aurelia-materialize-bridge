@@ -15,11 +15,11 @@ export async function configure(aurelia: Aurelia) {
 		})
 		.plugin(PLATFORM.moduleName("aurelia-validation"));
 
-	aurelia.use.globalResources(PLATFORM.moduleName("./shared/collapse-panel"));
-	aurelia.use.globalResources(PLATFORM.moduleName("./shared/markdown"));
-	aurelia.use.globalResources(PLATFORM.moduleName("./shared/logger"));
-	aurelia.use.globalResources(PLATFORM.moduleName("./shared/au-code"));
-	aurelia.use.globalResources(PLATFORM.moduleName("./shared/sampleValueConverters"));
+	aurelia.use.globalResources("shared/collapse-panel");
+	aurelia.use.globalResources("shared/markdown");
+	aurelia.use.globalResources("shared/logger");
+	aurelia.use.globalResources("shared/au-code");
+	aurelia.use.globalResources("shared/sampleValueConverters");
 
 	await aurelia.start();
 	await new Promise(resolve => $(document).ready(() => resolve()));

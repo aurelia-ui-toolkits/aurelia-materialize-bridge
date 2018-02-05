@@ -1,15 +1,15 @@
 .tabs a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .help-viewer-container {
-  padding 0 5px;
+	padding: 0 5px;
 }
 
 #doc {
-  margin-top: 10px;
+	margin-top: 10px;
 }
 
 #support {
-  padding: 10px;
+	padding: 10px;
 }

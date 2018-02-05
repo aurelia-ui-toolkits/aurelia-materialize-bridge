@@ -6,11 +6,13 @@ import { bindable, TemplatingEngine, ViewResources } from "aurelia-templating";
 import * as LogManager from "aurelia-logging";
 import { Settings } from "../settings";
 import { ISample } from "../shared/i-sample";
+import { Loader } from "aurelia-framework";
+import "test";
 
 @autoinject
 export class SampleRunner {
 	constructor(private settings: Settings, private templatingEngine: TemplatingEngine, private viewResources: ViewResources, private taskQueue: TaskQueue,
-		private http: HttpClient) {
+		private http: HttpClient, private loader: Loader) {
 		this.log = LogManager.getLogger("sample-runner");
 	}
 
@@ -48,9 +50,11 @@ export class SampleRunner {
 	}
 
 	async attached() {
-		this.loading = false;
+		this.loading = true;
 		let response = await this.http.get(`${this.settings.gistProxy}files/${this.sample.gist}`);
 		let files = response.content;
+		// import(this.sample.path);
+		// __non_webpack_require__(this.sample.path);
 		this.sample.files = files;
 		this.updateTabs(files);
 		this.loading = false;

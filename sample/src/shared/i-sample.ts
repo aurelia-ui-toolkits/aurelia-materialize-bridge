@@ -3,4 +3,5 @@ export interface ISample {
 	title?: string;
 	gist: string;
 	files?: string[];
+	path?: string;
 }

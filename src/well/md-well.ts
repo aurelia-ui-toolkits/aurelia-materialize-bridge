@@ -1,7 +1,7 @@
-import { autoinject } from "aurelia-framework";
 import { Router } from "aurelia-router";
+import { bindable } from "aurelia-templating";
 
-@autoinject
 export class MdWell {
-	constructor(private router: Router) { }
+	@bindable
+	router: Router;
 }
