@@ -53,6 +53,13 @@ module.exports = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAEBAQE
 
 /***/ }),
 
+/***/ 97:
+/***/ (function(module, exports) {
+
+module.exports = "module.exports = \"<template>\\r\\n\\t<div>\\r\\n\\t\\t<ul class=\\\"collection\\\">\\r\\n\\t\\t\\t<li class=\\\"collection-item\\\">Sent</li>\\r\\n\\t\\t\\t<li class=\\\"collection-item\\\">Inbox<span md-badge=\\\"is-new: true;\\\">3</span></li>\\r\\n\\t\\t\\t<li class=\\\"collection-item\\\">Spam</li>\\r\\n\\t\\t</ul>\\r\\n\\t</div>\\r\\n\\t<div>\\r\\n\\t\\t${html}\\r\\n\\t</div>\\r\\n</template>\\r\\n\";"
+
+/***/ }),
+
 /***/ "about/about":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -113,7 +120,7 @@ module.exports = "<template>\n  <section class=\"container\">\n    <div class=\"
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__settings__ = __webpack_require__("settings");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -141,7 +148,7 @@ var App = /** @class */ (function () {
             { name: "help", route: "help", moduleId: "help/help", title: "Help" },
             // { name: 'docs',             route: 'help/docs/:category/:file',  moduleId: 'help/help',                   title: 'Help' },
             { name: "support", route: "help/support", moduleId: "help/support", title: "Support" },
-            { name: "samples", route: ["samples"], moduleId: "samples/index", title: "Samples" }
+            { name: "samples", route: "samples", moduleId: "./samples/index", title: "Samples" }
         ]);
         this.router = router;
     };
@@ -166,7 +173,7 @@ module.exports = "<template bindable=\"primaryColor, accentColor\">\n  <style>\n
 /***/ "app.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\n\t<require from=\"materialize-css/dist/css/materialize.css\"></require>\n  <require from=\"./loading-indicator\"></require>\n  <require from='./nav-bar'></require>\n  <require from=\"./color-switcher.html\"></require>\n  <require from=\"./app-colors.html\"></require>\n  <md-colors md-primary-color.bind=\"primaryColor\" md-accent-color.bind=\"accentColor\" md-error-color.bind=\"errorColor\"></md-colors>\n  <app-colors primary-color.bind=\"primaryColor\" accent-color.bind=\"accentColor\"></app-colors>\n  <loading-indicator></loading-indicator>\n  <header>\n    <nav-bar router.bind=\"router\"></nav-bar>\n  </header>\n    <main>\n\n      <div class=\"row\">\n        <div class=\"col s12 m3\">\n          <color-switcher primary-color.two-way=\"primaryColor\" accent-color.two-way=\"accentColor\" error-color.two-way=\"errorColor\"></color-switcher>\n        </div>\n      </div>\n\n      <div class=\"page-host\">\n        <router-view></router-view>\n      </div>\n    </main>\n    <footer>\n      <!-- placeholder footer -->\n    </footer>\n</template>\n";
+module.exports = "<template>\n\t<require from=\"materialize-css/dist/css/materialize.css\"></require>\n\t<require from=\"prismjs/themes/prism.css\"></require>\n  <require from=\"./loading-indicator\"></require>\n  <require from='./nav-bar'></require>\n  <require from=\"./color-switcher.html\"></require>\n  <require from=\"./app-colors.html\"></require>\n  <md-colors md-primary-color.bind=\"primaryColor\" md-accent-color.bind=\"accentColor\" md-error-color.bind=\"errorColor\"></md-colors>\n  <app-colors primary-color.bind=\"primaryColor\" accent-color.bind=\"accentColor\"></app-colors>\n  <loading-indicator></loading-indicator>\n  <header>\n    <nav-bar router.bind=\"router\"></nav-bar>\n  </header>\n    <main>\n\n      <div class=\"row\">\n        <div class=\"col s12 m3\">\n          <color-switcher primary-color.two-way=\"primaryColor\" accent-color.two-way=\"accentColor\" error-color.two-way=\"errorColor\"></color-switcher>\n        </div>\n      </div>\n\n      <div class=\"page-host\">\n        <router-view></router-view>\n      </div>\n    </main>\n    <footer>\n      <!-- placeholder footer -->\n    </footer>\n</template>\n";
 
 /***/ }),
 
@@ -733,7 +740,7 @@ module.exports = "<template>\n\t<require from=\"./installation.css\"></require>\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadingIndicator", function() { return LoadingIndicator; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nprogress__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nprogress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_nprogress__);
@@ -914,7 +921,7 @@ module.exports = "<template>\n  <require from=\"./route-highlight\"></require>\n
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Controls", function() { return Controls; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_component_service__ = __webpack_require__("shared/component-service");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1047,14 +1054,124 @@ var RouteHighlight = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "samples/index":
+/***/ "samples/badge/basic-use/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_router__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_raw_loader_app_html__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_raw_loader_app_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_raw_loader_app_html__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+// import ts from "raw-loader!./app";
+var App = /** @class */ (function () {
+    function App(router) {
+        this.router = router;
+        this.html = __WEBPACK_IMPORTED_MODULE_2_raw_loader_app_html__["default"];
+    }
+    App.prototype.activate = function () {
+        //const demoCode = require('!!raw-loader!./app');
+        console.log(__WEBPACK_IMPORTED_MODULE_2_raw_loader_app_html__);
+    };
+    App = __decorate([
+        __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_aurelia_router__["c" /* Router */]])
+    ], App);
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/badge/basic-use/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<ul class=\"collection\">\r\n\t\t\t<li class=\"collection-item\">Sent</li>\r\n\t\t\t<li class=\"collection-item\">Inbox<span md-badge=\"is-new: true;\">3</span></li>\r\n\t\t\t<li class=\"collection-item\">Spam</li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div>\r\n\t\t${html}\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/badge/in-dropdown/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__ = __webpack_require__("aurelia-materialize-bridge");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var App = /** @class */ (function () {
+    function App(toast) {
+        this.toast = toast;
+        this.toast = toast;
+    }
+    App.prototype.showToast = function (e) {
+        this.toast.show("You clicked " + e.target.innerText, 4000);
+    };
+    App = __decorate([
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
+    ], App);
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/badge/in-dropdown/app.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(6)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".badge-dropdown-sample {\r\n  min-height: 150px;\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "samples/badge/in-dropdown/app.html":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<div class=\"badge-dropdown-sample\">\r\n\t\t<md-dropdown md-title=\"drop me\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1;\">drop me!</a>\r\n\t\t\t<ul id=\"dropdown1\">\r\n\t\t\t\t<li><a click.trigger=\"showToast($event)\">one</a></li>\r\n\t\t\t\t<li><a click.trigger=\"showToast($event)\">two<span md-badge=\"is-new: true;\">3</span></a></li>\r\n\t\t\t\t<li class=\"divider\"></li>\r\n\t\t\t\t<li><a click.trigger=\"showToast($event)\">three</a></li>\r\n\t\t\t</ul>\r\n\t\t</md-dropdown>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/badge/index":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_component_service__ = __webpack_require__("shared/component-service");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1067,17 +1184,87 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var Index = /** @class */ (function () {
-    function Index(componentService) {
-        this.componentService = componentService;
+    function Index(eventAggregator) {
+        var _this = this;
+        this.eventAggregator = eventAggregator;
+        this.subscription = this.eventAggregator.subscribe("router:navigation:complete", function (e) { return _this.navigationComplete(e); });
     }
     Index.prototype.configureRouter = function (config, router) {
-        var routes = this.componentService.getRouterConfig();
+        var routes = [
+            { name: "basic-use", route: ["", "basic-use"], moduleId: "./basic-use/app", nav: true, title: "Basic use" },
+            { name: "in-dropdown", route: "in-dropdown", moduleId: "./in-dropdown/app", nav: true, title: "In dropdown" },
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index.prototype.navigationComplete = function (e) {
+        // tslint:disable-next-line:no-console
+        console.log(e);
+    };
+    Index.prototype.detached = function () {
+        if (this.subscription) {
+            this.subscription.dispose();
+        }
+    };
+    Index = __decorate([
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */]])
+    ], Index);
+    return Index;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/badge/index.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(6)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".sample-runner md-card {\n  position: relative;\n}\n\n.sample-runner md-card .md-catalog__play-button {\n  position: absolute;\n  display: inline-block;\n  right: 24px;\n  top: 10px;\n}\n\n.sample-runner md-card .md-catalog__play-button i {\n  color: black;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "samples/badge/index.html":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<template>\r\n\t<require from=\"./index.css\"></require>\r\n\t<section>\r\n\t\t<h4>${title}</h4>\r\n\t\t<div class=\"row sample-runner\">\r\n\t\t\t<div class=\"col s12 m4 l2\">\r\n\t\t\t\t<md-well router.bind=\"router\"></md-well>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col s12 m8 l8\">\r\n\t\t\t\t<md-card md-title.bind=\"sample.title\">\r\n\t\t\t\t\t<a class=\"md-catalog__play-button\" md-button=\"flat: true;\" md-waves href=\"https://gist.run/?id=${sample.gist}\" show.bind=\"sample.gist\"\r\n\t\t\t\t\t target=\"_blank\">\r\n\t\t\t\t\t\t<i class=\"left material-icons\">play_arrow</i>play\r\n\t\t\t\t\t</a>\r\n\t\t\t\t\t<md-progress md-type=\"circular\" md-size=\"small\" md-color=\"flashing\" show.bind=\"loading\"></md-progress>\r\n\t\t\t\t\t<!--<div ref=\"sampleTarget\" show.bind=\"!loading\"></div>-->\r\n\t\t\t\t\t<div ref=\"sampleTarget\">\r\n\t\t\t\t\t\t<router-view></router-view>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</md-card>\r\n\t\t\t\t<ul if.bind=\"tabs.length > 0\" md-tabs class=\"z-depth-1\">\r\n\t\t\t\t\t<li repeat.for=\"tab of tabs\"><a href.bind=\"'#tab' + $index\">${tab.title}</a></li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t<div repeat.for=\"tab of tabs\" class=\"z-depth-1\" id.bind=\"'tab' + $index\">\r\n\t\t\t\t\t<au-code if.bind=\"tab.language != 'markdown'\" language.bind=\"tab.language\" text.bind=\"getSampleFile(tab.filename)\"></au-code>\r\n\t\t\t\t\t<au-markdown if.bind=\"tab.language == 'markdown'\" text.bind=\"getSampleFile(tab.filename)\"></au-markdown>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</section>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var Index = /** @class */ (function () {
+    function Index() {
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { name: "badge", route: "badge", moduleId: "./badge/index", nav: true, title: "Badge" }
+        ];
         config.map(routes);
         this.router = router;
     };
     Index = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__shared_component_service__["ComponentService"]])
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */]
     ], Index);
     return Index;
 }());
@@ -1101,7 +1288,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Menu", function() { return Menu; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_component_service__ = __webpack_require__("shared/component-service");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_logging__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_framework__ = __webpack_require__("aurelia-framework");
@@ -1207,15 +1394,14 @@ module.exports = "<template>\n  <require from=\"./menu.css\"></require>\n  <styl
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SampleRunner", function() { return SampleRunner; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_http_client__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_http_client__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_router__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_task_queue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_templating__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_logging__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__settings__ = __webpack_require__("settings");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_aurelia_framework__ = __webpack_require__("aurelia-framework");
-throw new Error("Cannot find module \"test\"");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1260,7 +1446,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-
 
 
 
@@ -1353,6 +1538,9 @@ var SampleRunner = /** @class */ (function () {
             this.tabs.push({ title: fileName, language: language, filename: fileName });
         }
     };
+    SampleRunner.prototype.getSampleFile = function (filename) {
+        return this.sample.files[filename].content;
+    };
     __decorate([
         __WEBPACK_IMPORTED_MODULE_4_aurelia_templating__["o" /* bindable */],
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2_aurelia_router__["c" /* Router */])
@@ -1387,7 +1575,7 @@ exports.push([module.i, ".sample-runner md-card {\n  position: relative;\n}\n\n.
 /***/ "samples/sample-runner.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\n  <require from=\"./sample-runner.css\"></require>\n  <section>\n    <h4>${ title }</h4>\n  <div class=\"row sample-runner\">\n    <div class=\"col s12 m4 l2\">\n      <md-well router.bind=\"fakeRouter\"></md-well>\n    </div>\n    <div class=\"col s12 m8 l8\">\n      <md-card md-title.bind=\"sample.title\">\n        <a class=\"md-catalog__play-button\" md-button=\"flat: true;\" md-waves href=\"https://gist.run/?id=${sample.gist}\" show.bind=\"sample.gist\" target=\"_blank\">\n          <i class=\"left material-icons\">play_arrow</i>play\n        </a>\n        <md-progress md-type=\"circular\" md-size=\"small\" md-color=\"flashing\" show.bind=\"loading\"></md-progress>\n        <!--<div ref=\"sampleTarget\" show.bind=\"!loading\"></div>-->\n        <div ref=\"sampleTarget\" if.bind=\"!loading\">\n          <compose view-model.bind=\"sample.path\" compose.ref=\"composeVM\"></compose>\n        </div>\n      </md-card>\n      <ul if.bind=\"tabs.length > 0\" md-tabs class=\"z-depth-1\">\n        <li repeat.for=\"tab of tabs\"><a href.bind=\"'#tab' + $index\">${tab.title}</a></li>\n      </ul>\n      <div repeat.for=\"tab of tabs\" class=\"z-depth-1\" id.bind=\"'tab' + $index\">\n        <au-code if.bind=\"tab.language != 'markdown'\" language.bind=\"tab.language\" text.bind=\"getSampleFile(tab.filename)\"></au-code>\n        <au-markdown if.bind=\"tab.language == 'markdown'\" text.bind=\"getSampleFile(tab.filename)\"></au-markdown>\n      </div>\n    </div>\n  </div>\n  </section>\n</template>\n";
+module.exports = "<template>\n  <require from=\"./sample-runner.css\"></require>\n  <section>\n    <h4>${ title }</h4>\n  <div class=\"row sample-runner\">\n    <div class=\"col s12 m4 l2\">\n      <md-well router.bind=\"fakeRouter\"></md-well>\n    </div>\n    <div class=\"col s12 m8 l8\">\n      <md-card md-title.bind=\"sample.title\">\n        <a class=\"md-catalog__play-button\" md-button=\"flat: true;\" md-waves href=\"https://gist.run/?id=${sample.gist}\" show.bind=\"sample.gist\" target=\"_blank\">\n          <i class=\"left material-icons\">play_arrow</i>play\n        </a>\n        <md-progress md-type=\"circular\" md-size=\"small\" md-color=\"flashing\" show.bind=\"loading\"></md-progress>\n        <!--<div ref=\"sampleTarget\" show.bind=\"!loading\"></div>-->\n        <div ref=\"sampleTarget\" if.bind=\"!loading\">\n\t\t\t\t\t<iframe src=\"https://gist.host/run/${sample.gist}/index.html\"></iframe>\n          <!-- <compose view-model.bind=\"sample.path\" compose.ref=\"composeVM\"></compose> -->\n        </div>\n      </md-card>\n      <ul if.bind=\"tabs.length > 0\" md-tabs class=\"z-depth-1\">\n        <li repeat.for=\"tab of tabs\"><a href.bind=\"'#tab' + $index\">${tab.title}</a></li>\n      </ul>\n      <div repeat.for=\"tab of tabs\" class=\"z-depth-1\" id.bind=\"'tab' + $index\">\n        <au-code if.bind=\"tab.language != 'markdown'\" language.bind=\"tab.language\" text.bind=\"getSampleFile(tab.filename)\"></au-code>\n        <au-markdown if.bind=\"tab.language == 'markdown'\" text.bind=\"getSampleFile(tab.filename)\"></au-markdown>\n      </div>\n    </div>\n  </div>\n  </section>\n</template>\n";
 
 /***/ }),
 
@@ -1420,7 +1608,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prismjs__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prismjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prismjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css__ = __webpack_require__("prismjs/themes/prism.css");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_loader__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1868,9 +2056,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_showdown__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_showdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_showdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_showdown_prettify__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1947,7 +2135,7 @@ var AuMarkdown = /** @class */ (function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SampleRunner", function() { return SampleRunner; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_router__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_framework__ = __webpack_require__("aurelia-framework");

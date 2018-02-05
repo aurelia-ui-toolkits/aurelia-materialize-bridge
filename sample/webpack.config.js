@@ -41,7 +41,7 @@ module.exports = (env) => {
 			new webpack.DefinePlugin({ IS_DEV_BUILD: JSON.stringify(isDevBuild) }),
 			new webpack.ProvidePlugin({ $: "jquery", jQuery: "jquery", "window.jQuery": "jquery" }),
 			new AureliaPlugin({ aureliaApp: "main", includeAll: "src" }),
-			new ModuleDependenciesPlugin({"aurelia-materialize-bridge": ["./click-counter"]}),
+			new ModuleDependenciesPlugin({ "aurelia-materialize-bridge": ["./click-counter"] }),
 			new webpack.optimize.CommonsChunkPlugin({
 				"name": ["vendor"],
 				"minChunks": (module) => {

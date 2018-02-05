@@ -1,15 +1,14 @@
 import { autoinject } from "aurelia-dependency-injection";
-import { ComponentService } from "../shared/component-service";
-import { Router, RouterConfiguration } from "aurelia-router";
+import { Router, RouterConfiguration, RouteConfig } from "aurelia-router";
 
 @autoinject
 export class Index {
-	constructor(private componentService: ComponentService) { }
-
 	router: Router;
 
 	configureRouter(config: RouterConfiguration, router: Router) {
-		const routes = this.componentService.getRouterConfig();
+		const routes: RouteConfig[] = [
+			{name: "badge", route: "badge", moduleId: "./badge/index", nav: true, title: "Badge" }
+		];
 		config.map(routes);
 		this.router = router;
 	}

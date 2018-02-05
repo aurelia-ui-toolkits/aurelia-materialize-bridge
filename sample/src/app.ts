@@ -25,7 +25,7 @@ export class App {
 			{ name: "help", route: "help", moduleId: "help/help", title: "Help" },
 			// { name: 'docs',             route: 'help/docs/:category/:file',  moduleId: 'help/help',                   title: 'Help' },
 			{ name: "support", route: "help/support", moduleId: "help/support", title: "Support" },
-			{ name: "samples", route: ["samples"], moduleId: "samples/index", title: "Samples" }
+			{ name: "samples", route: "samples", moduleId: "./samples/index", title: "Samples" }
 		]);
 
 		this.router = router;

@@ -61,10 +61,11 @@
     "file-loader": "^1.1.6",
     "html-loader": "^0.5.5",
     "json-loader": "^0.5.7",
+    "null-loader": "^0.1.1",
+    "raw-loader": "^0.5.1",
     "ts-loader": "^3.4.0",
     "typescript": "^2.7.1",
     "url-loader": "^0.6.2",
-    "null-loader": "^0.1.1",
     "webpack": "^3.10.0"
   },
   "dependencies": {
