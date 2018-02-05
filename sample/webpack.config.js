@@ -12,10 +12,7 @@ module.exports = (env) => {
 		entry: { "app": ["es6-promise/auto", "aurelia-bootstrapper"] },
 		resolve: {
 			extensions: [".ts", ".js"],
-			modules: ["src", "node_modules"],
-			alias: {
-				"test": "https://gist-serve.jeroenvinke.nl/file-cache-bust/24021/3199e3e3cf436ccadca30fcc4f0b45a2/app.js"
-			}
+			modules: ["src", "node_modules"]
 		},
 		output: {
 			path: path.resolve(bundleOutputDir),

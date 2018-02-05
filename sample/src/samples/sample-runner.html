@@ -14,7 +14,8 @@
         <md-progress md-type="circular" md-size="small" md-color="flashing" show.bind="loading"></md-progress>
         <!--<div ref="sampleTarget" show.bind="!loading"></div>-->
         <div ref="sampleTarget" if.bind="!loading">
-          <compose view-model.bind="sample.path" compose.ref="composeVM"></compose>
+					<iframe src="https://gist.host/run/${sample.gist}/index.html"></iframe>
+          <!-- <compose view-model.bind="sample.path" compose.ref="composeVM"></compose> -->
         </div>
       </md-card>
       <ul if.bind="tabs.length > 0" md-tabs class="z-depth-1">

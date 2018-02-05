@@ -7,7 +7,6 @@ import * as LogManager from "aurelia-logging";
 import { Settings } from "../settings";
 import { ISample } from "../shared/i-sample";
 import { Loader } from "aurelia-framework";
-import "test";
 
 @autoinject
 export class SampleRunner {
@@ -96,5 +95,9 @@ export class SampleRunner {
 
 			this.tabs.push({ title: fileName, language, filename: fileName });
 		}
+	}
+
+	getSampleFile(filename: string) {
+		return (this.sample.files[filename] as any).content;
 	}
 }
