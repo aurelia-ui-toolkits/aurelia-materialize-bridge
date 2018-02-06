@@ -2,7 +2,10 @@ import { autoinject, bindable, noView, customElement, processContent, TargetInst
 import * as prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-typescript";
+import "prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js";
 import { Loader } from "aurelia-loader";
+
+prism.plugins.NormalizeWhitespace.setDefaults({ "tabs-to-spaces": 2 });
 
 @processContent((compiler, resources, element, instruction) => {
 	parseCode(element, resources, instruction);
@@ -55,6 +58,7 @@ export class AuCode {
 		jQuery("pre", this.element).remove();
 		let pre = document.createElement("pre");
 		this.element.appendChild(pre);
+		this.html = prism.plugins.NormalizeWhitespace.normalize(this.html);
 		pre.innerHTML = prism.highlight(this.html, prism.languages[this.language]);
 	}
 }

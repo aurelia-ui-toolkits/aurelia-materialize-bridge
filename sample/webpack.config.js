@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require("path");
 const webpack = require("webpack");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { AureliaPlugin, ModuleDependenciesPlugin, GlobDependenciesPlugin } = require("aurelia-webpack-plugin");
 const bundleOutputDir = "./dist";
 const nodeModules = path.join(process.cwd(), 'node_modules');
@@ -39,6 +40,7 @@ module.exports = (env) => {
 			]
 		},
 		plugins: [
+			new CopyWebpackPlugin([{ from: "src/samples/**/*.html", toType: "template", to: "[path][name].[ext].raw" }]),
 			new webpack.DefinePlugin({ IS_DEV_BUILD: JSON.stringify(isDevBuild) }),
 			new webpack.ProvidePlugin({ $: "jquery", jQuery: "jquery", "window.jQuery": "jquery" }),
 			new AureliaPlugin({ aureliaApp: "main", includeAll: "src" }),

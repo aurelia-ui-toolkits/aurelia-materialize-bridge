@@ -6,7 +6,7 @@ import { MdTabs } from "aurelia-materialize-bridge";
 
 declare var __webpack_require__: { m: any };
 
-// @useView("./sample-template.html")
+@useView("../sample-template.html")
 @autoinject
 export class Index {
 	constructor(private eventAggregator: EventAggregator, private loader: Loader, private taskQueue: TaskQueue) {
@@ -29,7 +29,7 @@ export class Index {
 	}
 
 	async navigationComplete(e: PipelineResult) {
-		// let tabs = [];
+		this.tabs = [];
 		let modules: string[] = Object.keys(__webpack_require__.m).filter(x => x.startsWith(e.instruction.fragment.substring(1)) && x.endsWith(".raw"));
 		for (let m of modules) {
 			let pathParts = m.split("/");
@@ -56,6 +56,10 @@ export class Index {
 			}
 			this.tabs.push({ title: fileName, language, filename: fileName, content: await this.loader.loadText(m) });
 		}
+		this.taskQueue.queueTask(() => {
+			this.mdTabs.detached();
+			this.mdTabs.attached();
+		});
 		// this.tabs = tabs;
 		// this.mdTabs.refresh();
 		// this.taskQueue.queueTask(() => { this.mdTabs.refresh(); });

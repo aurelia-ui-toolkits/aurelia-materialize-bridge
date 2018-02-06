@@ -1,5 +1,5 @@
 <template>
-	<require from="./index.css"></require>
+	<require from="./sample-template.css"></require>
 	<section>
 		<h4>${title}</h4>
 		<div class="row sample-runner">
@@ -9,16 +9,14 @@
 			<div class="col s12 m8 l8">
 				<md-card md-title.bind="sample.title">
 					<a class="md-catalog__play-button" md-button="flat: true;" md-waves href="https://gist.run/?id=${sample.gist}" show.bind="sample.gist"
-					  target="_blank">
+					 target="_blank">
 						<i class="left material-icons">play_arrow</i>play
 					</a>
-					<md-progress md-type="circular" md-size="small" md-color="flashing" show.bind="loading"></md-progress>
-					<!--<div ref="sampleTarget" show.bind="!loading"></div>-->
 					<div ref="sampleTarget">
 						<router-view></router-view>
 					</div>
 				</md-card>
-				<ul show.bind="tabs.length > 0" md-tabs class="z-depth-1" md-tabs.ref="mdTabs">
+				<ul show.bind="tabs.length" md-tabs class="z-depth-1" md-tabs.ref="mdTabs">
 					<li repeat.for="tab of tabs">
 						<a href.bind="'#tab' + $index">${tab.title}</a>
 					</li>
