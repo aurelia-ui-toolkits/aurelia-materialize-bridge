@@ -1,6 +1,7 @@
 import { autoinject, bindable, noView, customElement, processContent, TargetInstruction } from "aurelia-framework";
 import * as prism from "prismjs";
 import "prismjs/themes/prism.css";
+import "prismjs/components/prism-typescript";
 import { Loader } from "aurelia-loader";
 
 @processContent((compiler, resources, element, instruction) => {

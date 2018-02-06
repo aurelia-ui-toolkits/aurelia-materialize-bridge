@@ -53,13 +53,6 @@ module.exports = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAEBAQE
 
 /***/ }),
 
-/***/ 97:
-/***/ (function(module, exports) {
-
-module.exports = "module.exports = \"<template>\\r\\n\\t<div>\\r\\n\\t\\t<ul class=\\\"collection\\\">\\r\\n\\t\\t\\t<li class=\\\"collection-item\\\">Sent</li>\\r\\n\\t\\t\\t<li class=\\\"collection-item\\\">Inbox<span md-badge=\\\"is-new: true;\\\">3</span></li>\\r\\n\\t\\t\\t<li class=\\\"collection-item\\\">Spam</li>\\r\\n\\t\\t</ul>\\r\\n\\t</div>\\r\\n\\t<div>\\r\\n\\t\\t${html}\\r\\n\\t</div>\\r\\n</template>\\r\\n\";"
-
-/***/ }),
-
 /***/ "about/about":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1060,36 +1053,9 @@ var RouteHighlight = /** @class */ (function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_router__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_raw_loader_app_html__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_raw_loader_app_html___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_raw_loader_app_html__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-// import ts from "raw-loader!./app";
 var App = /** @class */ (function () {
-    function App(router) {
-        this.router = router;
-        this.html = __WEBPACK_IMPORTED_MODULE_2_raw_loader_app_html__["default"];
+    function App() {
     }
-    App.prototype.activate = function () {
-        //const demoCode = require('!!raw-loader!./app');
-        console.log(__WEBPACK_IMPORTED_MODULE_2_raw_loader_app_html__);
-    };
-    App = __decorate([
-        __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["e" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_aurelia_router__["c" /* Router */]])
-    ], App);
     return App;
 }());
 
@@ -1101,6 +1067,20 @@ var App = /** @class */ (function () {
 /***/ (function(module, exports) {
 
 module.exports = "<template>\r\n\t<div>\r\n\t\t<ul class=\"collection\">\r\n\t\t\t<li class=\"collection-item\">Sent</li>\r\n\t\t\t<li class=\"collection-item\">Inbox<span md-badge=\"is-new: true;\">3</span></li>\r\n\t\t\t<li class=\"collection-item\">Spam</li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div>\r\n\t\t${html}\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/badge/basic-use/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<ul class=\"collection\">\r\n\t\t\t<li class=\"collection-item\">Sent</li>\r\n\t\t\t<li class=\"collection-item\">Inbox<span md-badge=\"is-new: true;\">3</span></li>\r\n\t\t\t<li class=\"collection-item\">Spam</li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div>\r\n\t\t${html}\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/badge/basic-use/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { Router } from \"aurelia-router\";\r\nimport { autoinject } from \"aurelia-framework\";\r\nimport * as html from \"raw-loader!./app.html\";\r\n// import ts from \"raw-loader!./app\";\r\n\r\n@autoinject\r\nexport class App {\r\n\tconstructor(private router: Router) {\r\n\t\tthis.html = html.default;\r\n\t}\r\n\r\n\thtml: any;\r\n\r\n\tactivate() {\r\n\t\t//const demoCode = require('!!raw-loader!./app');\r\n\t\tconsole.log(html);\r\n\t}\r\n}\r\n"
 
 /***/ }),
 
@@ -1172,6 +1152,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1181,25 +1162,110 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 
 
+
+// @useView("./sample-template.html")
 var Index = /** @class */ (function () {
-    function Index(eventAggregator) {
+    function Index(eventAggregator, loader, taskQueue) {
         var _this = this;
         this.eventAggregator = eventAggregator;
-        this.subscription = this.eventAggregator.subscribe("router:navigation:complete", function (e) { return _this.navigationComplete(e); });
+        this.loader = loader;
+        this.taskQueue = taskQueue;
+        this.tabs = [];
+        this.subscription = this.eventAggregator.subscribe("router:navigation:complete", function (e) { return _this.taskQueue.queueTask(function () { return _this.navigationComplete(e); }); });
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
-            { name: "basic-use", route: ["", "basic-use"], moduleId: "./basic-use/app", nav: true, title: "Basic use" },
+            { route: "", redirect: "basic-use" },
+            { name: "basic-use", route: "basic-use", moduleId: "./basic-use/app", nav: true, title: "Basic use" },
             { name: "in-dropdown", route: "in-dropdown", moduleId: "./in-dropdown/app", nav: true, title: "In dropdown" },
         ];
         config.map(routes);
         this.router = router;
     };
     Index.prototype.navigationComplete = function (e) {
-        // tslint:disable-next-line:no-console
-        console.log(e);
+        return __awaiter(this, void 0, void 0, function () {
+            var modules, _i, modules_1, m, pathParts, fileName, fileNameParts, language, _a, _b, _c;
+            return __generator(this, function (_d) {
+                switch (_d.label) {
+                    case 0:
+                        modules = Object.keys(__webpack_require__.m).filter(function (x) { return x.startsWith(e.instruction.fragment.substring(1)) && x.endsWith(".raw"); });
+                        _i = 0, modules_1 = modules;
+                        _d.label = 1;
+                    case 1:
+                        if (!(_i < modules_1.length)) return [3 /*break*/, 4];
+                        m = modules_1[_i];
+                        pathParts = m.split("/");
+                        fileName = pathParts[pathParts.length - 1].replace(".raw", "");
+                        fileNameParts = fileName.split(".");
+                        language = void 0;
+                        switch (fileNameParts[1]) {
+                            default:
+                            case "html":
+                                language = "html";
+                                break;
+                            case "js":
+                                language = "javascript";
+                                break;
+                            case "ts":
+                                language = "typescript";
+                                break;
+                            case "css":
+                                language = "css";
+                                break;
+                            case "md":
+                                language = "markdown";
+                                break;
+                        }
+                        _b = (_a = this.tabs).push;
+                        _c = { title: fileName, language: language, filename: fileName };
+                        return [4 /*yield*/, this.loader.loadText(m)];
+                    case 2:
+                        _b.apply(_a, [(_c.content = _d.sent(), _c)]);
+                        _d.label = 3;
+                    case 3:
+                        _i++;
+                        return [3 /*break*/, 1];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
     };
     Index.prototype.detached = function () {
         if (this.subscription) {
@@ -1208,7 +1274,7 @@ var Index = /** @class */ (function () {
     };
     Index = __decorate([
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
     ], Index);
     return Index;
 }());
@@ -1235,7 +1301,7 @@ exports.push([module.i, ".sample-runner md-card {\n  position: relative;\n}\n\n.
 /***/ "samples/badge/index.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<require from=\"./index.css\"></require>\r\n\t<section>\r\n\t\t<h4>${title}</h4>\r\n\t\t<div class=\"row sample-runner\">\r\n\t\t\t<div class=\"col s12 m4 l2\">\r\n\t\t\t\t<md-well router.bind=\"router\"></md-well>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col s12 m8 l8\">\r\n\t\t\t\t<md-card md-title.bind=\"sample.title\">\r\n\t\t\t\t\t<a class=\"md-catalog__play-button\" md-button=\"flat: true;\" md-waves href=\"https://gist.run/?id=${sample.gist}\" show.bind=\"sample.gist\"\r\n\t\t\t\t\t target=\"_blank\">\r\n\t\t\t\t\t\t<i class=\"left material-icons\">play_arrow</i>play\r\n\t\t\t\t\t</a>\r\n\t\t\t\t\t<md-progress md-type=\"circular\" md-size=\"small\" md-color=\"flashing\" show.bind=\"loading\"></md-progress>\r\n\t\t\t\t\t<!--<div ref=\"sampleTarget\" show.bind=\"!loading\"></div>-->\r\n\t\t\t\t\t<div ref=\"sampleTarget\">\r\n\t\t\t\t\t\t<router-view></router-view>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</md-card>\r\n\t\t\t\t<ul if.bind=\"tabs.length > 0\" md-tabs class=\"z-depth-1\">\r\n\t\t\t\t\t<li repeat.for=\"tab of tabs\"><a href.bind=\"'#tab' + $index\">${tab.title}</a></li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t<div repeat.for=\"tab of tabs\" class=\"z-depth-1\" id.bind=\"'tab' + $index\">\r\n\t\t\t\t\t<au-code if.bind=\"tab.language != 'markdown'\" language.bind=\"tab.language\" text.bind=\"getSampleFile(tab.filename)\"></au-code>\r\n\t\t\t\t\t<au-markdown if.bind=\"tab.language == 'markdown'\" text.bind=\"getSampleFile(tab.filename)\"></au-markdown>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</section>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<require from=\"./index.css\"></require>\r\n\t<section>\r\n\t\t<h4>${title}</h4>\r\n\t\t<div class=\"row sample-runner\">\r\n\t\t\t<div class=\"col s12 m4 l2\">\r\n\t\t\t\t<md-well router.bind=\"router\"></md-well>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col s12 m8 l8\">\r\n\t\t\t\t<md-card md-title.bind=\"sample.title\">\r\n\t\t\t\t\t<a class=\"md-catalog__play-button\" md-button=\"flat: true;\" md-waves href=\"https://gist.run/?id=${sample.gist}\" show.bind=\"sample.gist\"\r\n\t\t\t\t\t  target=\"_blank\">\r\n\t\t\t\t\t\t<i class=\"left material-icons\">play_arrow</i>play\r\n\t\t\t\t\t</a>\r\n\t\t\t\t\t<md-progress md-type=\"circular\" md-size=\"small\" md-color=\"flashing\" show.bind=\"loading\"></md-progress>\r\n\t\t\t\t\t<!--<div ref=\"sampleTarget\" show.bind=\"!loading\"></div>-->\r\n\t\t\t\t\t<div ref=\"sampleTarget\">\r\n\t\t\t\t\t\t<router-view></router-view>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</md-card>\r\n\t\t\t\t<ul show.bind=\"tabs.length > 0\" md-tabs class=\"z-depth-1\" md-tabs.ref=\"mdTabs\">\r\n\t\t\t\t\t<li repeat.for=\"tab of tabs\">\r\n\t\t\t\t\t\t<a href.bind=\"'#tab' + $index\">${tab.title}</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t<div repeat.for=\"tab of tabs\" class=\"z-depth-1\" id.bind=\"'tab' + $index\">\r\n\t\t\t\t\t<au-code show.bind=\"tab.language != 'markdown'\" language.bind=\"tab.language\" text.bind=\"tab.content\"></au-code>\r\n\t\t\t\t\t<au-markdown show.bind=\"tab.language == 'markdown'\" text.bind=\"tab.content\"></au-markdown>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</section>\r\n</template>\r\n";
 
 /***/ }),
 
@@ -1395,7 +1461,7 @@ module.exports = "<template>\n  <require from=\"./menu.css\"></require>\n  <styl
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SampleRunner", function() { return SampleRunner; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_http_client__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_http_client__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_router__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_task_queue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_templating__ = __webpack_require__(4);
@@ -1610,7 +1676,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prismjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prismjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css__ = __webpack_require__("prismjs/themes/prism.css");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_loader__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1620,6 +1688,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1680,7 +1749,7 @@ var AuCode = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customElement */])("au-code"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* noView */],
         __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
-        __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["c" /* TargetInstruction */], __WEBPACK_IMPORTED_MODULE_3_aurelia_loader__["a" /* Loader */]])
+        __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["c" /* TargetInstruction */], __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["a" /* Loader */]])
     ], AuCode);
     return AuCode;
 }());
@@ -2056,9 +2125,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_showdown__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_showdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_showdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_showdown_prettify__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {

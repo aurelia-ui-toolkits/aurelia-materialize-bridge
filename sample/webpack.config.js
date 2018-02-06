@@ -27,6 +27,7 @@ module.exports = (env) => {
 				{ test: /\.html$/i, use: "html-loader" },
 				{ test: /\.json$/i, use: "json-loader" },
 				{ test: /\.md$/i, use: "null-loader" },
+				{ test: /\.raw$/i, use: "raw-loader" },
 				{ test: /\.css$/i, use: isDevBuild ? "css-loader" : "css-loader?minimize" },
 				{
 					test: /\.scss$/i,

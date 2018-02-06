@@ -8,7 +8,7 @@ declare module "raw-loader!*.html" {
 	export default value;
 }
 
-declare module "raw-loader!*" {
+declare module "*.raw" {
 	const value: any;
 	export default value;
 }
