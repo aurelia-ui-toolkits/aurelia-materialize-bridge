@@ -1,0 +1,14 @@
+<template>
+	<!--<require from="materialize/dist/css/materialize.css"></require>-->
+	<div>
+		<a md-button="floating: true; large: true; pulse.bind: pulse;" md-waves="color: light; circle: true;">
+			<i class="large material-icons">mode_edit</i>
+		</a>
+		<a md-button="floating: true; pulse.bind: pulse;" md-waves="color: light; circle: true;">
+			<i class="material-icons">thumb_up</i>
+		</a>
+	</div>
+	<div style="margin-top: 15px;">
+		<md-checkbox md-checked.bind="pulse">add pulse</md-checkbox>
+	</div>
+</template>

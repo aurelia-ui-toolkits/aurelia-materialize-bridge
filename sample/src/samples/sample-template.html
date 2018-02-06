@@ -13,9 +13,10 @@
 						<i class="left material-icons">play_arrow</i>play
 					</a>
 					<div ref="sampleTarget">
-						<router-view></router-view>
+						<router-view view-model.ref="childRouterView"></router-view>
 					</div>
 				</md-card>
+				${tabs}
 				<ul show.bind="tabs.length" md-tabs class="z-depth-1" md-tabs.ref="mdTabs">
 					<li repeat.for="tab of tabs">
 						<a href.bind="'#tab' + $index">${tab.title}</a>

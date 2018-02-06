@@ -16,7 +16,7 @@ export async function configure(aurelia: Aurelia) {
 		.plugin(PLATFORM.moduleName("aurelia-validation"));
 
 	aurelia.use.globalResources("shared/collapse-panel");
-	aurelia.use.globalResources("shared/markdown");
+	aurelia.use.globalResources("shared/au-markdown");
 	aurelia.use.globalResources("shared/logger");
 	aurelia.use.globalResources("shared/au-code");
 	aurelia.use.globalResources("shared/sampleValueConverters");

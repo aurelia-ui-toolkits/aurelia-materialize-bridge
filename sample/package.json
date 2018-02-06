@@ -57,7 +57,6 @@
     "@types/prismjs": "^1.9.0",
     "@types/showdown": "^1.7.2",
     "aurelia-webpack-plugin": "^2.0.0-rc.5",
-    "copy-webpack-plugin": "^4.3.1",
     "css-loader": "^0.28.9",
     "file-loader": "^1.1.6",
     "html-loader": "^0.5.5",
