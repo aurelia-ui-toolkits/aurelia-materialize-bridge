@@ -1205,8 +1205,8 @@ var Index = /** @class */ (function (_super) {
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
-            { route: "", redirect: "basic-use" },
-            { name: "basic-use", route: "basic-use", moduleId: "./basic-use/app", nav: true, title: "Basic use" },
+            //			{ route: "", redirect: "basic-use" },
+            { name: "basic-use", route: ["", "basic-use"], moduleId: "./basic-use/app", nav: true, title: "Basic use" },
             { name: "in-dropdown", route: "in-dropdown", moduleId: "./in-dropdown/app", nav: true, title: "In dropdown" },
         ];
         config.map(routes);
@@ -1348,8 +1348,8 @@ var Index = /** @class */ (function (_super) {
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
-            { route: "", redirect: "basic-use" },
-            { name: "basic-use", route: "basic-use", moduleId: "./basic-use/app", nav: true, title: "Basic use" },
+            // { route: "", redirect: "basic-use" },
+            { name: "basic-use", route: ["", "basic-use"], moduleId: "./basic-use/app", nav: true, title: "Basic use" },
             { name: "fab", route: "fab", moduleId: "./fab/app", nav: true, title: "Fab" },
         ];
         config.map(routes);
@@ -1582,29 +1582,29 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 var SampleIndexBase = /** @class */ (function () {
     function SampleIndexBase(eventAggregator, loader, taskQueue) {
+        var _this = this;
         this.eventAggregator = eventAggregator;
         this.loader = loader;
         this.taskQueue = taskQueue;
         this.tabs = [];
-        // this.subscription = this.eventAggregator.subscribe("router:navigation:complete", e => this.navigationComplete(e));
+        this.subscription = this.eventAggregator.subscribe("router:navigation:complete", function (e) { return _this.navigationComplete(e); });
     }
-    SampleIndexBase.prototype.activate = function (a, b) {
-        var _this = this;
-        this.taskQueue.queueTask(function () { console.log("Activated", _this.childRouterView); _this.navigationComplete({ instruction: b.navModel.router.currentInstruction.parentInstruction }); });
-    };
     SampleIndexBase.prototype.navigationComplete = function (e) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
-            var modules, _i, modules_1, m, pathParts, fileName, fileNameParts, language, _a, _b, _c;
+            var fragment, modules, _i, modules_1, m, pathParts, fileName, fileNameParts, language, _a, _b, _c;
             return __generator(this, function (_d) {
                 switch (_d.label) {
                     case 0:
-                        console.log(e);
-                        if (this.subscription) {
-                            this.subscription.dispose();
+                        fragment = e.instruction.router.currentInstruction.fragment;
+                        if (fragment.split("/").length < 4) {
+                            fragment += "/basic-use";
+                        }
+                        if (fragment.endsWith("/")) {
+                            fragment += "basic-use";
                         }
                         this.tabs = [];
-                        modules = Object.keys(__webpack_require__.m).filter(function (x) { return x.startsWith(e.instruction.fragment.substring(1)) && x.endsWith(".raw"); });
+                        modules = Object.keys(__webpack_require__.m).filter(function (x) { return x.startsWith(fragment.substring(1)) && x.endsWith(".raw"); });
                         _i = 0, modules_1 = modules;
                         _d.label = 1;
                     case 1:
@@ -1651,10 +1651,11 @@ var SampleIndexBase = /** @class */ (function () {
             });
         });
     };
-    SampleIndexBase.prototype.deactivate = function () {
-        // if (this.subscription) {
-        // 	this.subscription.dispose();
-        // }
+    SampleIndexBase.prototype.detached = function () {
+        if (this.subscription) {
+            this.subscription.dispose();
+            this.subscription = null;
+        }
     };
     SampleIndexBase = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["n" /* useView */])("../sample-template.html"),
@@ -1686,7 +1687,7 @@ exports.push([module.i, ".sample-runner md-card {\n  position: relative;\n}\n\n.
 /***/ "samples/sample-template.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<require from=\"./sample-template.css\"></require>\r\n\t<section>\r\n\t\t<h4>${title}</h4>\r\n\t\t<div class=\"row sample-runner\">\r\n\t\t\t<div class=\"col s12 m4 l2\">\r\n\t\t\t\t<md-well router.bind=\"router\"></md-well>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col s12 m8 l8\">\r\n\t\t\t\t<md-card md-title.bind=\"sample.title\">\r\n\t\t\t\t\t<a class=\"md-catalog__play-button\" md-button=\"flat: true;\" md-waves href=\"https://gist.run/?id=${sample.gist}\" show.bind=\"sample.gist\"\r\n\t\t\t\t\t target=\"_blank\">\r\n\t\t\t\t\t\t<i class=\"left material-icons\">play_arrow</i>play\r\n\t\t\t\t\t</a>\r\n\t\t\t\t\t<div ref=\"sampleTarget\">\r\n\t\t\t\t\t\t<router-view view-model.ref=\"childRouterView\"></router-view>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</md-card>\r\n\t\t\t\t${tabs}\r\n\t\t\t\t<ul show.bind=\"tabs.length\" md-tabs class=\"z-depth-1\" md-tabs.ref=\"mdTabs\">\r\n\t\t\t\t\t<li repeat.for=\"tab of tabs\">\r\n\t\t\t\t\t\t<a href.bind=\"'#tab' + $index\">${tab.title}</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t<div repeat.for=\"tab of tabs\" class=\"z-depth-1\" id.bind=\"'tab' + $index\">\r\n\t\t\t\t\t<au-code show.bind=\"tab.language != 'markdown'\" language.bind=\"tab.language\" text.bind=\"tab.content\"></au-code>\r\n\t\t\t\t\t<au-markdown show.bind=\"tab.language == 'markdown'\" text.bind=\"tab.content\"></au-markdown>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</section>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<require from=\"./sample-template.css\"></require>\r\n\t<section>\r\n\t\t<h4>${title}</h4> ${fragment}\r\n\t\t<div class=\"row sample-runner\">\r\n\t\t\t<div class=\"col s12 m4 l2\">\r\n\t\t\t\t<md-well router.bind=\"router\"></md-well>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col s12 m8 l8\">\r\n\t\t\t\t<md-card md-title.bind=\"sample.title\">\r\n\t\t\t\t\t<a class=\"md-catalog__play-button\" md-button=\"flat: true;\" md-waves href=\"https://gist.run/?id=${sample.gist}\" show.bind=\"sample.gist\"\r\n\t\t\t\t\t target=\"_blank\">\r\n\t\t\t\t\t\t<i class=\"left material-icons\">play_arrow</i>play\r\n\t\t\t\t\t</a>\r\n\t\t\t\t\t<div ref=\"sampleTarget\">\r\n\t\t\t\t\t\t<router-view></router-view>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</md-card>\r\n\t\t\t\t<ul show.bind=\"tabs.length\" md-tabs class=\"z-depth-1\" md-tabs.ref=\"mdTabs\">\r\n\t\t\t\t\t<li repeat.for=\"tab of tabs\">\r\n\t\t\t\t\t\t<a href.bind=\"'#tab' + $index\">${tab.title}</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t<div repeat.for=\"tab of tabs\" class=\"z-depth-1\" id.bind=\"'tab' + $index\">\r\n\t\t\t\t\t<au-code show.bind=\"tab.language != 'markdown'\" language.bind=\"tab.language\" text.bind=\"tab.content\"></au-code>\r\n\t\t\t\t\t<au-markdown show.bind=\"tab.language == 'markdown'\" text.bind=\"tab.content\"></au-markdown>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</section>\r\n</template>\r\n";
 
 /***/ }),
 

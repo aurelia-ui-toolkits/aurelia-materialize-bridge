@@ -1,5 +1,5 @@
 import { autoinject } from "aurelia-dependency-injection";
-import { Router, RouterConfiguration, RouteConfig, NavigationInstruction, PipelineResult } from "aurelia-router";
+import { Router, RouterConfiguration, RouteConfig, NavigationInstruction, PipelineResult, activationStrategy } from "aurelia-router";
 import { Subscription, EventAggregator } from "aurelia-event-aggregator";
 import { Loader, useView, TaskQueue } from "aurelia-framework";
 import { MdTabs } from "aurelia-materialize-bridge";
@@ -11,7 +11,7 @@ declare var __webpack_require__: { m: any };
 @autoinject
 export class SampleIndexBase {
 	constructor(private eventAggregator: EventAggregator, private loader: Loader, private taskQueue: TaskQueue) {
-		// this.subscription = this.eventAggregator.subscribe("router:navigation:complete", e => this.navigationComplete(e));
+		this.subscription = this.eventAggregator.subscribe("router:navigation:complete", e => this.navigationComplete(e));
 	}
 	subscription: Subscription;
 
@@ -19,17 +19,16 @@ export class SampleIndexBase {
 	mdTabs: MdTabs;
 	childRouterView: any;
 
-	activate(a, b) {
-		this.taskQueue.queueTask(() => { console.log("Activated", this.childRouterView); this.navigationComplete({ instruction: b.navModel.router.currentInstruction.parentInstruction }); });
-	}
-
 	async navigationComplete(e: any) {
-		console.log(e);
-		if (this.subscription) {
-			this.subscription.dispose();
+		let fragment = e.instruction.router.currentInstruction.fragment;
+		if (fragment.split("/").length < 4) {
+			fragment += "/basic-use";
+		}
+		if (fragment.endsWith("/")) {
+			fragment += "basic-use";
 		}
 		this.tabs = [];
-		let modules: string[] = Object.keys(__webpack_require__.m).filter(x => x.startsWith(e.instruction.fragment.substring(1)) && x.endsWith(".raw"));
+		let modules: string[] = Object.keys(__webpack_require__.m).filter(x => x.startsWith(fragment.substring(1)) && x.endsWith(".raw"));
 		for (let m of modules) {
 			let pathParts = m.split("/");
 			let fileName = pathParts[pathParts.length - 1].replace(".raw", "");
@@ -59,15 +58,12 @@ export class SampleIndexBase {
 			this.mdTabs.detached();
 			this.mdTabs.attached();
 		});
-		// this.tabs = tabs;
-		// this.mdTabs.refresh();
-		// this.taskQueue.queueTask(() => { this.mdTabs.refresh(); });
-		// this.taskQueue.queueTask(() => { this.mdTabs.selectTab(0); });
 	}
 
-	deactivate() {
-		// if (this.subscription) {
-		// 	this.subscription.dispose();
-		// }
+	detached() {
+		if (this.subscription) {
+			this.subscription.dispose();
+			this.subscription = null;
+		}
 	}
 }
