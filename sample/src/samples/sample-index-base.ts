@@ -11,7 +11,6 @@ declare var __webpack_require__: { m: any };
 @autoinject
 export class SampleIndexBase {
 	constructor(private eventAggregator: EventAggregator, private loader: Loader, private taskQueue: TaskQueue) {
-		this.subscription = this.eventAggregator.subscribe("router:navigation:complete", e => this.navigationComplete(e));
 	}
 	subscription: Subscription;
 
@@ -19,14 +18,12 @@ export class SampleIndexBase {
 	mdTabs: MdTabs;
 	childRouterView: any;
 
+	attached(){
+		this.subscription = this.eventAggregator.subscribe("router:navigation:complete", e => this.navigationComplete(e));
+	}
+
 	async navigationComplete(e: any) {
 		let fragment = e.instruction.router.currentInstruction.fragment;
-		if (fragment.split("/").length < 4) {
-			fragment += "/basic-use";
-		}
-		if (fragment.endsWith("/")) {
-			fragment += "basic-use";
-		}
 		this.tabs = [];
 		let modules: string[] = Object.keys(__webpack_require__.m).filter(x => x.startsWith(fragment.substring(1)) && x.endsWith(".raw"));
 		for (let m of modules) {

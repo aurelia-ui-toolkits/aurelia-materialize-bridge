@@ -15,8 +15,8 @@ export class Index extends SampleIndexBase {
 
 	configureRouter(config: RouterConfiguration, router: Router) {
 		const routes: RouteConfig[] = [
-			// { route: "", redirect: "basic-use" },
-			{ name: "basic-use", route: ["", "basic-use"], moduleId: "./basic-use/app", nav: true, title: "Basic use" },
+			{ route: "", redirect: "basic-use" },
+			{ name: "basic-use", route: "basic-use", moduleId: "./basic-use/app", nav: true, title: "Basic use" },
 			{ name: "fab", route: "fab", moduleId: "./fab/app", nav: true, title: "Fab" },
 		];
 		config.map(routes);
