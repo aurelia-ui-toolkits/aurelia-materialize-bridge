@@ -2648,6 +2648,8 @@ var Index = /** @class */ (function () {
             this.getRouteConfig("collections"),
             this.getRouteConfig("footer"),
             this.getRouteConfig("navbar"),
+            this.getRouteConfig("pagination"),
+            this.getRouteConfig("progress"),
         ];
         config.map(routes);
         this.router = router;
@@ -3152,6 +3154,341 @@ module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<d
 /***/ (function(module, exports) {
 
 module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/pagination/basic-use/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.activePage = 1;
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/pagination/basic-use/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-pagination md-pages=\"6\" md-active-page.bind=\"activePage\"></md-pagination>\r\n\t</div>\r\n\t<div>\r\n\t\tactive page: ${activePage}\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/pagination/basic-use/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-pagination md-pages=\"6\" md-active-page.bind=\"activePage\"></md-pagination>\r\n\t</div>\r\n\t<div>\r\n\t\tactive page: ${activePage}\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/pagination/basic-use/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\tactivePage = 1;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/pagination/events/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.activePage = 1;
+    }
+    App.prototype.onPageChanged = function (e) {
+        this.logger.log("page changed " + e.detail);
+    };
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/pagination/events/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12 m8\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-pagination md-on-page-changed.delegate=\"onPageChanged($event)\" md-pages=\"4\" md-active-page.bind=\"activePage\"></md-pagination>\r\n\t\t\t</div>\r\n\t\t\t<div>\r\n\t\t\t\tactive page: ${activePage}\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12 m8\">\r\n\t\t\t<md-card md-title=\"Console log\">\r\n\t\t\t\t<logger class=\"z-depth-1\" view-model.ref=\"logger\"></logger>\r\n\t\t\t</md-card>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/pagination/events/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12 m8\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-pagination md-on-page-changed.delegate=\"onPageChanged($event)\" md-pages=\"4\" md-active-page.bind=\"activePage\"></md-pagination>\r\n\t\t\t</div>\r\n\t\t\t<div>\r\n\t\t\t\tactive page: ${activePage}\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12 m8\">\r\n\t\t\t<md-card md-title=\"Console log\">\r\n\t\t\t\t<logger class=\"z-depth-1\" view-model.ref=\"logger\"></logger>\r\n\t\t\t</md-card>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/pagination/events/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { Logger } from \"../../../shared/logger\";\r\n\r\nexport class App {\r\n\tlogger: Logger;\r\n\tactivePage = 1;\r\n\r\n\tonPageChanged(e) {\r\n\t\tthis.logger.log(`page changed ${e.detail}`);\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/pagination/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var Index = /** @class */ (function (_super) {
+    __extends(Index, _super);
+    function Index(eventAggregator, loader, taskQueue) {
+        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { route: "", redirect: "basic-use" },
+            _super.prototype.getRouteConfig.call(this, "basic-use"),
+            _super.prototype.getRouteConfig.call(this, "options"),
+            _super.prototype.getRouteConfig.call(this, "events"),
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+    ], Index);
+    return Index;
+}(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
+
+
+
+/***/ }),
+
+/***/ "samples/pagination/index.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue) {\n\t\tsuper(eventAggregator, loader, taskQueue);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"options\"),\n\t\t\tsuper.getRouteConfig(\"events\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
+
+/***/ }),
+
+/***/ "samples/pagination/options/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.activePage = 1;
+        this.overallPageLinks = 200;
+        this.showFirstLast = true;
+        this.showPrevNext = true;
+        this.showPageLinks = true;
+        this.visiblePageLinks = "16";
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/pagination/options/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-pagination md-show-first-last.two-way=\"showFirstLast\" md-show-prev-next.two-way=\"showPrevNext\" md-show-page-links.two-way=\"showPageLinks\"\r\n\t\t md-pages.bind=\"overallPageLinks\" md-visible-page-links.two-way=\"visiblePageLinks\" md-active-page.bind=\"activePage\"></md-pagination>\r\n\t</div>\r\n\t<div>\r\n\t\tactive page: ${activePage}\r\n\t</div>\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\tShow first/last page:\r\n\t\t<md-switch md-checked.bind=\"showFirstLast\"></md-switch>\r\n\t</div>\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\tShow previous/next page:\r\n\t\t<md-switch md-checked.bind=\"showPrevNext\"></md-switch>\r\n\t</div>\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\tShow page links:\r\n\t\t<md-switch md-checked.bind=\"showPageLinks\"></md-switch>\r\n\t</div>\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\tNumber of pages:\r\n\t\t<md-input md-value.bind=\"overallPageLinks\"></md-input>\r\n\t</div>\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\tNumber of visible links:\r\n\t\t<md-input md-value.bind=\"visiblePageLinks\"></md-input>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/pagination/options/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-pagination md-show-first-last.two-way=\"showFirstLast\" md-show-prev-next.two-way=\"showPrevNext\" md-show-page-links.two-way=\"showPageLinks\"\r\n\t\t md-pages.bind=\"overallPageLinks\" md-visible-page-links.two-way=\"visiblePageLinks\" md-active-page.bind=\"activePage\"></md-pagination>\r\n\t</div>\r\n\t<div>\r\n\t\tactive page: ${activePage}\r\n\t</div>\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\tShow first/last page:\r\n\t\t<md-switch md-checked.bind=\"showFirstLast\"></md-switch>\r\n\t</div>\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\tShow previous/next page:\r\n\t\t<md-switch md-checked.bind=\"showPrevNext\"></md-switch>\r\n\t</div>\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\tShow page links:\r\n\t\t<md-switch md-checked.bind=\"showPageLinks\"></md-switch>\r\n\t</div>\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\tNumber of pages:\r\n\t\t<md-input md-value.bind=\"overallPageLinks\"></md-input>\r\n\t</div>\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\tNumber of visible links:\r\n\t\t<md-input md-value.bind=\"visiblePageLinks\"></md-input>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/pagination/options/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\tactivePage = 1;\r\n\toverallPageLinks = 200;\r\n\tshowFirstLast = true;\r\n\tshowPrevNext = true;\r\n\tshowPageLinks = true;\r\n\tvisiblePageLinks = \"16\";\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/progress/basic-use/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.value = 15;
+    }
+    App.prototype.setNull = function () {
+        this.inputValue.mdValue = null;
+    };
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/progress/basic-use/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-progress md-value.bind=\"value\"></md-progress>\r\n\t</div>\r\n\t<div>\r\n\t\t<md-input md-label=\"value\" md-value.bind=\"value\" view-model.ref=\"inputValue\"></md-input>\r\n\t</div>\r\n\t<div>\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setNull()\">set value = null (indeterminate)</button>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/progress/basic-use/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-progress md-value.bind=\"value\"></md-progress>\r\n\t</div>\r\n\t<div>\r\n\t\t<md-input md-label=\"value\" md-value.bind=\"value\" view-model.ref=\"inputValue\"></md-input>\r\n\t</div>\r\n\t<div>\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setNull()\">set value = null (indeterminate)</button>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/progress/basic-use/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { MdInput } from \"aurelia-materialize-bridge\";\r\n\r\nexport class App {\r\n\tinputValue: MdInput;\r\n\r\n\tvalue = 15;\r\n\r\n\tsetNull() {\r\n\t\tthis.inputValue.mdValue = null;\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/progress/circular/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.color = "blue";
+        this.size = "";
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/progress/circular/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-progress md-type=\"circular\" md-pixel-size.bind=\"pixelSize\" md-size.bind=\"size\" md-color.bind=\"color\"></md-progress>\r\n\t</div>\r\n\t<div>\r\n\t\t<select md-select=\"label: color;\" value.two-way=\"color\">\r\n\t\t\t<option value=\"blue\">blue</option>\r\n\t\t\t<option value=\"red\">red</option>\r\n\t\t\t<option value=\"green\">green</option>\r\n\t\t\t<option value=\"flashing\">flashing</option>\r\n\t\t</select>\r\n\t</div>\r\n\t<div>\r\n\t\t<select md-select=\"label: size;\" value.two-way=\"size\">\r\n\t\t\t<option value=\"big\">big</option>\r\n\t\t\t<option value=\"\">default</option>\r\n\t\t\t<option value=\"small\">small</option>\r\n\t\t</select>\r\n\t</div>\r\n\t<div>\r\n\t\t<md-input md-label=\"custom size in pixels\" md-value.bind=\"pixelSize\"></md-input>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/progress/circular/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-progress md-type=\"circular\" md-pixel-size.bind=\"pixelSize\" md-size.bind=\"size\" md-color.bind=\"color\"></md-progress>\r\n\t</div>\r\n\t<div>\r\n\t\t<select md-select=\"label: color;\" value.two-way=\"color\">\r\n\t\t\t<option value=\"blue\">blue</option>\r\n\t\t\t<option value=\"red\">red</option>\r\n\t\t\t<option value=\"green\">green</option>\r\n\t\t\t<option value=\"flashing\">flashing</option>\r\n\t\t</select>\r\n\t</div>\r\n\t<div>\r\n\t\t<select md-select=\"label: size;\" value.two-way=\"size\">\r\n\t\t\t<option value=\"big\">big</option>\r\n\t\t\t<option value=\"\">default</option>\r\n\t\t\t<option value=\"small\">small</option>\r\n\t\t</select>\r\n\t</div>\r\n\t<div>\r\n\t\t<md-input md-label=\"custom size in pixels\" md-value.bind=\"pixelSize\"></md-input>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/progress/circular/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\tcolor = \"blue\";\r\n\tsize = \"\";\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/progress/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var Index = /** @class */ (function (_super) {
+    __extends(Index, _super);
+    function Index(eventAggregator, loader, taskQueue) {
+        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { route: "", redirect: "basic-use" },
+            _super.prototype.getRouteConfig.call(this, "basic-use"),
+            _super.prototype.getRouteConfig.call(this, "circular"),
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+    ], Index);
+    return Index;
+}(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
+
+
+
+/***/ }),
+
+/***/ "samples/progress/index.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue) {\n\t\tsuper(eventAggregator, loader, taskQueue);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"circular\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 

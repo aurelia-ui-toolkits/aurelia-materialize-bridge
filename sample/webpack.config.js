@@ -3,12 +3,12 @@ const path = require("path");
 const webpack = require("webpack");
 const { AureliaPlugin, ModuleDependenciesPlugin, GlobDependenciesPlugin } = require("aurelia-webpack-plugin");
 const bundleOutputDir = "./dist";
-const nodeModules = path.join(process.cwd(), 'node_modules');
+const nodeModules = path.join(process.cwd(), "node_modules");
 const realNodeModules = fs.realpathSync(nodeModules);
+const WebpackDeletePlugin = require("webpack-delete-plugin");
 
 function copyToRawRecursive(dir) {
 	fs.readdirSync(dir).forEach(it => {
-		console.log(dir);
 		const itsPath = path.resolve(dir, it);
 		const itsStat = fs.statSync(itsPath);
 
@@ -23,6 +23,7 @@ function copyToRawRecursive(dir) {
 	})
 }
 
+console.log("Creating raw files for code examples...");
 copyToRawRecursive("src/samples");
 
 module.exports = (env) => {
@@ -68,7 +69,8 @@ module.exports = (env) => {
 					return module.resource && (module.resource.startsWith(nodeModules) || module.resource.startsWith(realNodeModules));
 				},
 				"chunks": ["app"]
-			})
+			}),
+			new WebpackDeletePlugin(["./src/**/*.raw"])
 		].concat(isDevBuild ? [
 			new webpack.SourceMapDevToolPlugin({
 				filename: "[file].map", // Remove this line if you prefer inline source maps

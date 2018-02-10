@@ -1,0 +1,23 @@
+<template>
+	<div>
+		<md-progress md-type="circular" md-pixel-size.bind="pixelSize" md-size.bind="size" md-color.bind="color"></md-progress>
+	</div>
+	<div>
+		<select md-select="label: color;" value.two-way="color">
+			<option value="blue">blue</option>
+			<option value="red">red</option>
+			<option value="green">green</option>
+			<option value="flashing">flashing</option>
+		</select>
+	</div>
+	<div>
+		<select md-select="label: size;" value.two-way="size">
+			<option value="big">big</option>
+			<option value="">default</option>
+			<option value="small">small</option>
+		</select>
+	</div>
+	<div>
+		<md-input md-label="custom size in pixels" md-value.bind="pixelSize"></md-input>
+	</div>
+</template>

@@ -15,6 +15,8 @@ export class Index {
 			this.getRouteConfig("collections"),
 			this.getRouteConfig("footer"),
 			this.getRouteConfig("navbar"),
+			this.getRouteConfig("pagination"),
+			this.getRouteConfig("progress"),
 		];
 		config.map(routes);
 		this.router = router;
