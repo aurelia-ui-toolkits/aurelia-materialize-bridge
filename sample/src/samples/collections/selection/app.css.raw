@@ -1,0 +1,7 @@
+md-collection-item.collection-item.selected {
+  background-color: #ccc;
+}
+
+md-collection-item.collection-item.disabled {
+  background-color: #eee;
+}

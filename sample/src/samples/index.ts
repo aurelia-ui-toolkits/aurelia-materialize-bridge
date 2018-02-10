@@ -12,6 +12,9 @@ export class Index {
 			this.getRouteConfig("breadcrumbs"),
 			this.getRouteConfig("card"),
 			this.getRouteConfig("chip"),
+			this.getRouteConfig("collections"),
+			this.getRouteConfig("footer"),
+			this.getRouteConfig("navbar"),
 		];
 		config.map(routes);
 		this.router = router;
