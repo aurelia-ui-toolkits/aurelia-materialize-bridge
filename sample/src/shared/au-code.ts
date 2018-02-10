@@ -2,6 +2,7 @@ import { autoinject, bindable, noView, customElement, processContent, TargetInst
 import * as prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-markdown";
 import "prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.js";
 import { Loader } from "aurelia-loader";
 

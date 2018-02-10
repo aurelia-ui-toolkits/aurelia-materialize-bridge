@@ -16,7 +16,7 @@ function copyToRawRecursive(dir) {
 			copyToRawRecursive(itsPath);
 		}
 		else if (dir !== "src/samples") {
-			if (itsPath.endsWith(".html") || itsPath.endsWith(".ts") || itsPath.endsWith(".css")) {
+			if (itsPath.endsWith(".html") || itsPath.endsWith(".ts") || itsPath.endsWith(".css") || itsPath.endsWith(".md")) {
 				fs.copyFileSync(itsPath, itsPath + ".raw");
 			}
 		}

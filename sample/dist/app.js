@@ -337,7 +337,7 @@ var Doc = /** @class */ (function () {
 /***/ "help/doc.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -610,7 +610,7 @@ var Help = /** @class */ (function () {
 /***/ "help/help.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -655,7 +655,7 @@ var Support = /** @class */ (function () {
 /***/ "help/support.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -714,7 +714,7 @@ var Installation = /** @class */ (function () {
 /***/ "installation/installation.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -739,7 +739,7 @@ module.exports = "<template>\n\t<require from=\"./installation.css\"></require>\
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadingIndicator", function() { return LoadingIndicator; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nprogress__ = __webpack_require__(74);
@@ -953,7 +953,7 @@ var Controls = /** @class */ (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(28);
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -1132,7 +1132,7 @@ var App = /** @class */ (function () {
 /***/ "samples/badge/in-dropdown/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -2479,7 +2479,7 @@ var App = /** @class */ (function () {
 /***/ "samples/collections/selection/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -2516,6 +2516,144 @@ module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<d
 /***/ (function(module, exports) {
 
 module.exports = "import { MdCollection } from \"aurelia-materialize-bridge\";\r\nimport { Logger } from \"../../../shared/logger\";\r\n\r\nexport class App {\r\n\tlist: MdCollection;\r\n\tlogger: Logger;\r\n\r\n\tactors = [\r\n\t\t{\r\n\t\t\tname: \"Bryan Cranston\",\r\n\t\t\tepisodes: 62,\r\n\t\t\tdescription: \"Bryan Cranston played the role of Walter in Breaking Bad. He is also known for playing Hal in Malcom in the Middle.\"\r\n\t\t}, {\r\n\t\t\tname: \"Aaron Paul\",\r\n\t\t\tepisodes: 62,\r\n\t\t\tdescription: \"Aaron Paul played the role of Jesse in Breaking Bad. He also featured in the \\\"Need For Speed\\\" Movie.\"\r\n\t\t}, {\r\n\t\t\tname: \"Bob Odenkirk\",\r\n\t\t\tepisodes: 62,\r\n\t\t\tdescription: \"Bob Odenkrik played the role of Saul in Breaking Bad. Due to public fondness for the character, Bob stars in his own show now, called \\\"Better Call Saul\\\".\"\r\n\t\t}\r\n\t];\r\n\r\n\tonSelectionChanged(e) {\r\n\t\tlet selected = this.list.getSelected();\r\n\t\tlet names = selected.map(i => i.name);\r\n\t\tthis.logger.log(\"selection changed: \" + names.join(\", \"));\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/color/basic-use/_usage.md":
+/***/ (function(module, exports) {
+
+// empty (null-loader)
+
+/***/ }),
+
+/***/ "samples/color/basic-use/_usage.md.raw":
+/***/ (function(module, exports) {
+
+module.exports = "##### Using `md-colors`\r\n\r\nSince the catalog app needs to be the primary source for theme changes (to not be overwritten by this sample),\r\nwe cannot display the relevant code in `app.html`.\r\n\r\n`md-colors` is used like this:\r\n\r\n```html\r\n<md-colors md-primary-color=\"#ee6e73\" md-accent-color=\"#009688\" md-error-color=\"#FF0000\"></md-colors>\r\n```\r\n\r\nOf course the three color attributes can be bound to a view-model variable and thus can be changed dynamically\r\nby your application.\r\n\r\nView:\r\n\r\n```html\r\n<md-colors md-primary-color.bind=\"primaryColor\" md-accent-color.bind=\"accentColor\" md-error-color=\"errorColor\"></md-colors>\r\n```\r\n\r\nView model:\r\n\r\n```javascript\r\nexport class MyApp() {\r\n  primaryColor = '#ee6e73';\r\n  accentColor = '#009688';\r\n  errorColor = '#FF0000';\r\n}\r\n```\r\n\r\nHex values are definitely supported while rgb(a) values should be possible, too.\r\nBut named colors aren't since we darken/lighten some colors using their values.\r\n"
+
+/***/ }),
+
+/***/ "samples/color/basic-use/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/color/basic-use/app.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".color-box div {\r\n  display: inline-block;\r\n  margin: 10px;\r\n  width: 120px;\r\n  height: 100px;\r\n  border: dashed 1px black;\r\n  text-align: center;\r\n  line-height: 100px;\r\n}\r\n\r\nul.native-list {\r\n  padding: 0 30px;\r\n}\r\n\r\nul.native-list li {\r\n  list-style-type: initial;\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "samples/color/basic-use/app.css.raw":
+/***/ (function(module, exports) {
+
+module.exports = ".color-box div {\r\n  display: inline-block;\r\n  margin: 10px;\r\n  width: 120px;\r\n  height: 100px;\r\n  border: dashed 1px black;\r\n  text-align: center;\r\n  line-height: 100px;\r\n}\r\n\r\nul.native-list {\r\n  padding: 0 30px;\r\n}\r\n\r\nul.native-list li {\r\n  list-style-type: initial;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/color/basic-use/app.html":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<!--\r\n    use this to initialize colors in your app\r\n  \r\n    <md-colors md-primary-color=\"#ee6e73\" md-accent-color=\"#009688\"></md-colors>\r\n  -->\r\n\r\n\t<!-- css classes -->\r\n\t<div class=\"color-box\">\r\n\t\t<div class=\"primary\">primary</div>\r\n\t\t<div class=\"accent\">accent</div>\r\n\t\t<div class=\"primary-text\">primary-text</div>\r\n\t\t<div class=\"accent-text\">accent-text</div>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/color/basic-use/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<!--\r\n    use this to initialize colors in your app\r\n  \r\n    <md-colors md-primary-color=\"#ee6e73\" md-accent-color=\"#009688\"></md-colors>\r\n  -->\r\n\r\n\t<!-- css classes -->\r\n\t<div class=\"color-box\">\r\n\t\t<div class=\"primary\">primary</div>\r\n\t\t<div class=\"accent\">accent</div>\r\n\t\t<div class=\"primary-text\">primary-text</div>\r\n\t\t<div class=\"accent-text\">accent-text</div>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/color/basic-use/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/color/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var Index = /** @class */ (function (_super) {
+    __extends(Index, _super);
+    function Index(eventAggregator, loader, taskQueue) {
+        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { route: "", redirect: "basic-use" },
+            _super.prototype.getRouteConfig.call(this, "basic-use"),
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+    ], Index);
+    return Index;
+}(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
+
+
+
+/***/ }),
+
+/***/ "samples/color/index.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue) {\n\t\tsuper(eventAggregator, loader, taskQueue);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 
@@ -2640,6 +2778,7 @@ var Index = /** @class */ (function () {
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
+            this.getRouteConfig("color"),
             this.getRouteConfig("badge"),
             this.getRouteConfig("button"),
             this.getRouteConfig("breadcrumbs"),
@@ -2681,7 +2820,7 @@ module.exports = "<template>\n  <require from=\"./menu\"></require>\n  <menu></m
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Menu", function() { return Menu; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_component_service__ = __webpack_require__("shared/component-service");
@@ -2764,7 +2903,7 @@ var Menu = /** @class */ (function () {
 /***/ "samples/menu.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -3117,7 +3256,7 @@ var App = /** @class */ (function () {
 /***/ "samples/navbar/tabs-in-navbar/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -3640,7 +3779,7 @@ var SampleIndexBase = /** @class */ (function () {
 /***/ "samples/sample-template.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -3692,9 +3831,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_loader__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_loader__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3704,6 +3845,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -3768,7 +3910,7 @@ var AuCode = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("au-code"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* noView */],
         __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
-        __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["c" /* TargetInstruction */], __WEBPACK_IMPORTED_MODULE_5_aurelia_loader__["a" /* Loader */]])
+        __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["c" /* TargetInstruction */], __WEBPACK_IMPORTED_MODULE_6_aurelia_loader__["a" /* Loader */]])
     ], AuCode);
     return AuCode;
 }());

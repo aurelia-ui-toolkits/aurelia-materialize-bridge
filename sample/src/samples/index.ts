@@ -7,6 +7,7 @@ export class Index {
 
 	configureRouter(config: RouterConfiguration, router: Router) {
 		const routes: RouteConfig[] = [
+			this.getRouteConfig("color"),
 			this.getRouteConfig("badge"),
 			this.getRouteConfig("button"),
 			this.getRouteConfig("breadcrumbs"),

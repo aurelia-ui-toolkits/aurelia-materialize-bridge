@@ -13072,6 +13072,132 @@ return Promise$1;
 
 /***/ }),
 
+/***/ 104:
+/***/ (function(module, exports) {
+
+Prism.languages.markdown = Prism.languages.extend('markup', {});
+Prism.languages.insertBefore('markdown', 'prolog', {
+	'blockquote': {
+		// > ...
+		pattern: /^>(?:[\t ]*>)*/m,
+		alias: 'punctuation'
+	},
+	'code': [
+		{
+			// Prefixed by 4 spaces or 1 tab
+			pattern: /^(?: {4}|\t).+/m,
+			alias: 'keyword'
+		},
+		{
+			// `code`
+			// ``code``
+			pattern: /``.+?``|`[^`\n]+`/,
+			alias: 'keyword'
+		}
+	],
+	'title': [
+		{
+			// title 1
+			// =======
+
+			// title 2
+			// -------
+			pattern: /\w+.*(?:\r?\n|\r)(?:==+|--+)/,
+			alias: 'important',
+			inside: {
+				punctuation: /==+$|--+$/
+			}
+		},
+		{
+			// # title 1
+			// ###### title 6
+			pattern: /(^\s*)#+.+/m,
+			lookbehind: true,
+			alias: 'important',
+			inside: {
+				punctuation: /^#+|#+$/
+			}
+		}
+	],
+	'hr': {
+		// ***
+		// ---
+		// * * *
+		// -----------
+		pattern: /(^\s*)([*-])(?:[\t ]*\2){2,}(?=\s*$)/m,
+		lookbehind: true,
+		alias: 'punctuation'
+	},
+	'list': {
+		// * item
+		// + item
+		// - item
+		// 1. item
+		pattern: /(^\s*)(?:[*+-]|\d+\.)(?=[\t ].)/m,
+		lookbehind: true,
+		alias: 'punctuation'
+	},
+	'url-reference': {
+		// [id]: http://example.com "Optional title"
+		// [id]: http://example.com 'Optional title'
+		// [id]: http://example.com (Optional title)
+		// [id]: <http://example.com> "Optional title"
+		pattern: /!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/,
+		inside: {
+			'variable': {
+				pattern: /^(!?\[)[^\]]+/,
+				lookbehind: true
+			},
+			'string': /(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/,
+			'punctuation': /^[\[\]!:]|[<>]/
+		},
+		alias: 'url'
+	},
+	'bold': {
+		// **strong**
+		// __strong__
+
+		// Allow only one line break
+		pattern: /(^|[^\\])(\*\*|__)(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,
+		lookbehind: true,
+		inside: {
+			'punctuation': /^\*\*|^__|\*\*$|__$/
+		}
+	},
+	'italic': {
+		// *em*
+		// _em_
+
+		// Allow only one line break
+		pattern: /(^|[^\\])([*_])(?:(?:\r?\n|\r)(?!\r?\n|\r)|.)+?\2/,
+		lookbehind: true,
+		inside: {
+			'punctuation': /^[*_]|[*_]$/
+		}
+	},
+	'url': {
+		// [example](http://example.com "Optional title")
+		// [example] [id]
+		pattern: /!?\[[^\]]+\](?:\([^\s)]+(?:[\t ]+"(?:\\.|[^"\\])*")?\)| ?\[[^\]\n]*\])/,
+		inside: {
+			'variable': {
+				pattern: /(!?\[)[^\]]+(?=\]$)/,
+				lookbehind: true
+			},
+			'string': {
+				pattern: /"(?:\\.|[^"\\])*"(?=\)$)/
+			}
+		}
+	}
+});
+
+Prism.languages.markdown['bold'].inside['url'] = Prism.util.clone(Prism.languages.markdown['url']);
+Prism.languages.markdown['italic'].inside['url'] = Prism.util.clone(Prism.languages.markdown['url']);
+Prism.languages.markdown['bold'].inside['italic'] = Prism.util.clone(Prism.languages.markdown['italic']);
+Prism.languages.markdown['italic'].inside['bold'] = Prism.util.clone(Prism.languages.markdown['bold']);
+
+/***/ }),
+
 /***/ 11:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -16655,7 +16781,7 @@ var ValidationMessageProvider = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ValidationMessageParser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageExpressionValidator; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__expression_visitor__ = __webpack_require__(93);
 var __extends = (this && this.__extends) || (function () {
@@ -17777,6 +17903,817 @@ var HTMLSanitizer = function () {
 /***/ }),
 
 /***/ 4:
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ 40:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BindingSignaler; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(7);
+
+
+
+
+var BindingSignaler = function () {
+  function BindingSignaler() {
+    
+
+    this.signals = {};
+  }
+
+  BindingSignaler.prototype.signal = function signal(name) {
+    var bindings = this.signals[name];
+    if (!bindings) {
+      return;
+    }
+    var i = bindings.length;
+    while (i--) {
+      bindings[i].call(__WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["G" /* sourceContext */]);
+    }
+  };
+
+  return BindingSignaler;
+}();
+
+/***/ }),
+
+/***/ 41:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["bootstrap"] = bootstrap;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "starting", function() { return starting; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_polyfills__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(3);
+
+
+
+var bootstrapPromises = [];
+var startResolve = void 0;
+
+var startPromise = new Promise(function (resolve) {
+  return startResolve = resolve;
+});
+var host = __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].global;
+var isNodeLike = typeof process !== 'undefined' && !process.browser;
+
+function ready() {
+  if (!host.document || host.document.readyState === 'complete') {
+    return Promise.resolve();
+  }
+
+  return new Promise(function (resolve) {
+    host.document.addEventListener('DOMContentLoaded', completed);
+    host.addEventListener('load', completed);
+
+    function completed() {
+      host.document.removeEventListener('DOMContentLoaded', completed);
+      host.removeEventListener('load', completed);
+      resolve();
+    }
+  });
+}
+
+function createLoader() {
+  if (__WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].Loader) {
+    return Promise.resolve(new __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].Loader());
+  }
+
+  if (false) {
+    if (typeof __webpack_require__ !== 'undefined') {
+      var m = __webpack_require__(require.resolve('aurelia-loader-webpack'));
+      return Promise.resolve(new m.WebpackLoader());
+    }
+
+    if (host.System && typeof host.System.config === 'function') {
+      return host.System.normalize('aurelia-bootstrapper').then(function (bsn) {
+        return host.System.normalize('aurelia-loader-default', bsn);
+      }).then(function (loaderName) {
+        return host.System.import(loaderName).then(function (m) {
+          return new m.DefaultLoader();
+        });
+      });
+    }
+
+    if (typeof host.require === 'function' && typeof host.require.version === 'string') {
+      return new Promise(function (resolve, reject) {
+        return host.require(['aurelia-loader-default'], function (m) {
+          return resolve(new m.DefaultLoader());
+        }, reject);
+      });
+    }
+
+    if (isNodeLike && typeof module !== 'undefined' && typeof module.require !== 'undefined') {
+      var _m = module.require('aurelia-loader-nodejs');
+      return Promise.resolve(new _m.NodeJsLoader());
+    }
+  }
+
+  return Promise.reject('No PLATFORM.Loader is defined and there is neither a System API (ES6) or a Require API (AMD) globally available to load your app.');
+}
+
+function initializePal(loader) {
+  var type = void 0;
+
+  var isRenderer = isNodeLike && (process.type === 'renderer' || process.versions['node-webkit']);
+
+  if (isNodeLike && !isRenderer) {
+    type = 'nodejs';
+  } else if (typeof window !== 'undefined') {
+    type = 'browser';
+  } else if (typeof self !== 'undefined') {
+    type = 'worker';
+  } else {
+    throw new Error('Could not determine platform implementation to load.');
+  }
+
+  return loader.loadModule('aurelia-pal-' + type).then(function (palModule) {
+    return type === 'nodejs' && !__WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["f" /* isInitialized */] && palModule.globalize() || palModule.initialize();
+  });
+}
+
+function preparePlatform(loader) {
+  var map = function map(moduleId, relativeTo) {
+    return loader.normalize(moduleId, relativeTo).then(function (normalized) {
+      loader.map(moduleId, normalized);
+      return normalized;
+    });
+  };
+
+  return initializePal(loader).then(function () {
+    return loader.normalize('aurelia-bootstrapper');
+  }).then(function (bootstrapperName) {
+    var frameworkPromise = map('aurelia-framework', bootstrapperName);
+
+    return Promise.all([frameworkPromise, frameworkPromise.then(function (frameworkName) {
+      return map('aurelia-dependency-injection', frameworkName);
+    }), map('aurelia-router', bootstrapperName), map('aurelia-logging-console', bootstrapperName)]);
+  }).then(function (_ref) {
+    var frameworkName = _ref[0];
+    return loader.loadModule(frameworkName);
+  }).then(function (fx) {
+    return startResolve(function () {
+      return new fx.Aurelia(loader);
+    });
+  });
+}
+
+function config(appHost, configModuleId, aurelia) {
+  aurelia.host = appHost;
+  aurelia.configModuleId = configModuleId || null;
+
+  if (configModuleId) {
+    return aurelia.loader.loadModule(configModuleId).then(function (customConfig) {
+      if (!customConfig.configure) {
+        throw new Error('Cannot initialize module \'' + configModuleId + '\' without a configure function.');
+      }
+
+      return customConfig.configure(aurelia);
+    });
+  }
+
+  aurelia.use.standardConfiguration().developmentLogging();
+
+  return aurelia.start().then(function () {
+    return aurelia.setRoot();
+  });
+}
+
+function run() {
+  return ready().then(createLoader).then(preparePlatform).then(function () {
+    var appHosts = host.document.querySelectorAll('[aurelia-app],[data-aurelia-app]');
+    for (var i = 0, ii = appHosts.length; i < ii; ++i) {
+      var appHost = appHosts[i];
+      var moduleId = appHost.getAttribute('aurelia-app') || appHost.getAttribute('data-aurelia-app');
+      bootstrap(config.bind(null, appHost, moduleId));
+    }
+
+    var toConsole = console.error.bind(console);
+    var bootstraps = bootstrapPromises.map(function (p) {
+      return p.catch(toConsole);
+    });
+    bootstrapPromises = null;
+    return Promise.all(bootstraps);
+  });
+}
+
+function bootstrap(configure) {
+  var p = startPromise.then(function (factory) {
+    return configure(factory());
+  });
+  if (bootstrapPromises) bootstrapPromises.push(p);
+  return p;
+}
+
+var starting = run();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(21)))
+
+/***/ }),
+
+/***/ 42:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+
+/**
+ * Plugin configuration builder
+ */
+class ConfigBuilder {
+    constructor() {
+        this.globalResources = [];
+        this.noWavesAttach = false;
+        this.useGlobalResources = true;
+        this.useScrollfirePatch = false;
+    }
+    useAll() {
+        return this
+            .useAutoComplete()
+            .useBadge()
+            .useBox()
+            .useBreadcrumbs()
+            .useButton()
+            .useCard()
+            .useCarousel()
+            .useCharacterCounter()
+            .useCheckbox()
+            .useChip()
+            .useCollapsible()
+            .useCollection()
+            .useColors()
+            .useDatePicker()
+            .useDropdown()
+            .useFab()
+            .useFile()
+            .useFooter()
+            .useInput()
+            .useModal()
+            .useNavbar()
+            .usePagination()
+            .useParallax()
+            .useProgress()
+            .usePushpin()
+            .useRadio()
+            .useRange()
+            .useScrollfire()
+            .useScrollSpy()
+            .useSelect()
+            .useSidenav()
+            .useSlider()
+            .useSwitch()
+            .useTabs()
+            .useTapTarget()
+            .useTimePicker()
+            .useTooltip()
+            .useTransitions()
+            .useWaves()
+            .useWell();
+    }
+    useAutoComplete() {
+        this.globalResources.push('./autocomplete/autocomplete');
+        return this;
+    }
+    useBadge() {
+        this.globalResources.push('./badge/badge');
+        return this;
+    }
+    useBox() {
+        this.globalResources.push('./box/box');
+        return this;
+    }
+    useBreadcrumbs() {
+        this.globalResources.push('./breadcrumbs/breadcrumbs');
+        return this;
+    }
+    useButton() {
+        this.globalResources.push('./button/button');
+        return this;
+    }
+    useCarousel() {
+        this.globalResources.push('./carousel/carousel');
+        this.globalResources.push('./carousel/carousel-item');
+        return this;
+    }
+    useCharacterCounter() {
+        this.globalResources.push('./char-counter/char-counter');
+        return this;
+    }
+    useCard() {
+        this.globalResources.push('./card/card');
+        return this;
+    }
+    useCheckbox() {
+        this.globalResources.push('./checkbox/checkbox');
+        return this;
+    }
+    useChip() {
+        this.globalResources.push('./chip/chip');
+        this.globalResources.push('./chip/chips');
+        return this;
+    }
+    /**
+     * Use my control
+     */
+    useClickCounter() {
+        this.globalResources.push('./click-counter');
+        return this;
+    }
+    useCollapsible() {
+        this.globalResources.push('./collapsible/collapsible');
+        return this;
+    }
+    useCollection() {
+        this.globalResources.push('./collection/collection');
+        this.globalResources.push('./collection/collection-item');
+        this.globalResources.push('./collection/collection-header');
+        this.globalResources.push('./collection/md-collection-selector');
+        return this;
+    }
+    useColors() {
+        this.globalResources.push('./colors/md-colors');
+        return this;
+    }
+    useDatePicker() {
+        this.globalResources.push('./datepicker/datepicker');
+        return this;
+    }
+    useDropdown() {
+        // this.globalResources.push("./dropdown/dropdown-element");
+        this.globalResources.push('./dropdown/dropdown');
+        return this;
+    }
+    useFab() {
+        this.globalResources.push('./fab/fab');
+        return this;
+    }
+    useFile() {
+        this.globalResources.push('./file/file');
+        return this;
+    }
+    useFooter() {
+        this.globalResources.push('./footer/footer');
+        return this;
+    }
+    useInput() {
+        this.globalResources.push('./input/input');
+        this.globalResources.push('./input/input-prefix');
+        return this;
+    }
+    useModal() {
+        this.globalResources.push('./modal/modal');
+        this.globalResources.push('./modal/modal-trigger');
+        return this;
+    }
+    useNavbar() {
+        this.globalResources.push('./navbar/navbar');
+        return this;
+    }
+    usePagination() {
+        this.globalResources.push('./pagination/pagination');
+        return this;
+    }
+    useParallax() {
+        this.globalResources.push('./parallax/parallax');
+        return this;
+    }
+    useProgress() {
+        this.globalResources.push('./progress/progress');
+        return this;
+    }
+    usePushpin() {
+        this.globalResources.push('./pushpin/pushpin');
+        return this;
+    }
+    useRadio() {
+        this.globalResources.push('./radio/radio');
+        return this;
+    }
+    useRange() {
+        this.globalResources.push('./range/range');
+        return this;
+    }
+    useScrollfire() {
+        this.globalResources.push('./scrollfire/scrollfire');
+        this.globalResources.push('./scrollfire/scrollfire-target');
+        return this;
+    }
+    useScrollSpy() {
+        this.globalResources.push('./scrollspy/scrollspy');
+        return this;
+    }
+    useSelect() {
+        this.globalResources.push('./select/select');
+        return this;
+    }
+    useSidenav() {
+        this.globalResources.push('./sidenav/sidenav');
+        this.globalResources.push('./sidenav/sidenav-collapse');
+        return this;
+    }
+    useSlider() {
+        this.globalResources.push('./slider/slider');
+        // this.globalResources.push("./slider/slide");
+        return this;
+    }
+    useSwitch() {
+        this.globalResources.push('./switch/switch');
+        return this;
+    }
+    /**
+     * Use materialized tabs
+     */
+    useTabs() {
+        this.globalResources.push('./tabs/tabs');
+        return this;
+    }
+    useTapTarget() {
+        this.globalResources.push('./tap-target/tap-target');
+        return this;
+    }
+    useTimePicker() {
+        this.globalResources.push('./timepicker/timepicker');
+        return this;
+    }
+    useTooltip() {
+        this.globalResources.push('./tooltip/tooltip');
+        return this;
+    }
+    useTransitions() {
+        this.globalResources.push('./transitions/fadein-image');
+        this.globalResources.push('./transitions/staggered-list');
+        return this;
+    }
+    /**
+     * Use ripple/waves effect
+     */
+    useWaves() {
+        this.globalResources.push('./waves/waves');
+        return this;
+    }
+    useWell() {
+        this.globalResources.push('./well/md-well');
+        return this;
+    }
+    preventWavesAttach() {
+        this.noWavesAttach = true;
+        return this;
+    }
+    /**
+     * Don't globalize any resources
+     * Allows you to import yourself via <require></require>
+     */
+    withoutGlobalResources() {
+        this.useGlobalResources = false;
+        return this;
+    }
+    withScrollfirePatch() {
+        this.useScrollfirePatch = true;
+        return this;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = ConfigBuilder;
+
+
+
+/***/ }),
+
+/***/ 43:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const constants = {
+    eventPrefix: "md-on-",
+    bindablePrefix: "md-"
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = constants;
+
+
+
+/***/ }),
+
+/***/ 44:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+class DatePickerDefaultParser {
+    canParse(value) {
+        if (value) {
+            return true;
+        }
+        return false;
+    }
+    parse(value) {
+        if (value) {
+            let result = value.split("/").join("-");
+            result = new Date(result);
+            return isNaN(result) ? null : result;
+        }
+        return null;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = DatePickerDefaultParser;
+
+
+
+/***/ }),
+
+/***/ 45:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MdInputUpdateService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_task_queue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(6);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+let MdInputUpdateService = class MdInputUpdateService {
+    constructor(taskQueue) {
+        this.taskQueue = taskQueue;
+        this.updateCalled = false;
+        this.log = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_logging__["getLogger"])("MdInputUpdateService");
+        this.taskQueue = taskQueue;
+    }
+    materializeUpdate() {
+        this.log.debug("executing Materialize.updateTextFields");
+        Materialize.updateTextFields();
+        this.updateCalled = false;
+    }
+    update() {
+        this.log.debug("update called");
+        if (!this.updateCalled) {
+            this.updateCalled = true;
+            this.taskQueue.queueTask(this.materializeUpdate.bind(this));
+        }
+    }
+};
+MdInputUpdateService = __decorate([
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["d" /* autoinject */],
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_aurelia_task_queue__["a" /* TaskQueue */]])
+], MdInputUpdateService);
+
+
+
+/***/ }),
+
+/***/ 46:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* eslint no-new-func:0 */
+class ScrollfirePatch {
+    patch() {
+        if (!ScrollfirePatch.patched) {
+            ScrollfirePatch.patched = true;
+            Materialize.scrollFire = function (options) {
+                let didScroll = false;
+                window.addEventListener("scroll", function () {
+                    didScroll = true;
+                });
+                // Rate limit to 100ms
+                setInterval(function () {
+                    if (didScroll) {
+                        didScroll = false;
+                        let windowScroll = window.pageYOffset + window.innerHeight;
+                        for (let value of options) {
+                            // Get options from each line
+                            let selector = value.selector;
+                            let offset = value.offset;
+                            let callback = value.callback;
+                            let currentElement = document.querySelector(selector);
+                            if (currentElement !== null) {
+                                let elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
+                                if (windowScroll > (elementOffset + offset)) {
+                                    if (value.done !== true) {
+                                        if (typeof (callback) === "string") {
+                                            let callbackFunc = new Function(callback);
+                                            callbackFunc();
+                                        }
+                                        else if (typeof (callback) === "function") {
+                                            callback();
+                                        }
+                                        value.done = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }, 100);
+            };
+        }
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = ScrollfirePatch;
+
+ScrollfirePatch.patched = false;
+
+
+/***/ }),
+
+/***/ 47:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = getPropertyInfo;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(7);
+
+function getObject(expression, objectExpression, source) {
+    var value = objectExpression.evaluate(source, null);
+    if (value === null || value === undefined || value instanceof Object) {
+        return value;
+    }
+    // tslint:disable-next-line:max-line-length
+    throw new Error("The '" + objectExpression + "' part of '" + expression + "' evaluates to " + value + " instead of an object, null or undefined.");
+}
+/**
+ * Retrieves the object and property name for the specified expression.
+ * @param expression The expression
+ * @param source The scope
+ */
+function getPropertyInfo(expression, source) {
+    var originalExpression = expression;
+    while (expression instanceof __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["e" /* BindingBehavior */] || expression instanceof __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["u" /* ValueConverter */]) {
+        expression = expression.expression;
+    }
+    var object;
+    var propertyName;
+    if (expression instanceof __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["c" /* AccessScope */]) {
+        object = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["D" /* getContextFor */])(expression.name, source, expression.ancestor);
+        propertyName = expression.name;
+    }
+    else if (expression instanceof __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["b" /* AccessMember */]) {
+        object = getObject(originalExpression, expression.object, source);
+        propertyName = expression.name;
+    }
+    else if (expression instanceof __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["a" /* AccessKeyed */]) {
+        object = getObject(originalExpression, expression.object, source);
+        propertyName = expression.key.evaluate(source);
+    }
+    else {
+        throw new Error("Expression '" + originalExpression + "' is not compatible with the validate binding-behavior.");
+    }
+    if (object === null || object === undefined) {
+        return null;
+    }
+    return { object: object, propertyName: propertyName };
+}
+
+
+/***/ }),
+
+/***/ 48:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = isString;
+function isString(value) {
+    return Object.prototype.toString.call(value) === '[object String]';
+}
+
+
+/***/ }),
+
+/***/ 49:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ValidateEvent; });
+var ValidateEvent = (function () {
+    function ValidateEvent(
+        /**
+         * The type of validate event. Either "validate" or "reset".
+         */
+        type, 
+        /**
+         * The controller's current array of errors. For an array containing both
+         * failed rules and passed rules, use the "results" property.
+         */
+        errors, 
+        /**
+         * The controller's current array of validate results. This
+         * includes both passed rules and failed rules. For an array of only failed rules,
+         * use the "errors" property.
+         */
+        results, 
+        /**
+         * The instruction passed to the "validate" or "reset" event. Will be null when
+         * the controller's validate/reset method was called with no instruction argument.
+         */
+        instruction, 
+        /**
+         * In events with type === "validate", this property will contain the result
+         * of validating the instruction (see "instruction" property). Use the controllerValidateResult
+         * to access the validate results specific to the call to "validate"
+         * (as opposed to using the "results" and "errors" properties to access the controller's entire
+         * set of results/errors).
+         */
+        controllerValidateResult) {
+        this.type = type;
+        this.errors = errors;
+        this.results = results;
+        this.instruction = instruction;
+        this.controllerValidateResult = controllerValidateResult;
+    }
+    return ValidateEvent;
+}());
+
+
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22740,817 +23677,6 @@ var TemplatingEngine = (_dec11 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_depe
 
 /***/ }),
 
-/***/ 40:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BindingSignaler; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(7);
-
-
-
-
-var BindingSignaler = function () {
-  function BindingSignaler() {
-    
-
-    this.signals = {};
-  }
-
-  BindingSignaler.prototype.signal = function signal(name) {
-    var bindings = this.signals[name];
-    if (!bindings) {
-      return;
-    }
-    var i = bindings.length;
-    while (i--) {
-      bindings[i].call(__WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["G" /* sourceContext */]);
-    }
-  };
-
-  return BindingSignaler;
-}();
-
-/***/ }),
-
-/***/ 41:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["bootstrap"] = bootstrap;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "starting", function() { return starting; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_polyfills__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(3);
-
-
-
-var bootstrapPromises = [];
-var startResolve = void 0;
-
-var startPromise = new Promise(function (resolve) {
-  return startResolve = resolve;
-});
-var host = __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].global;
-var isNodeLike = typeof process !== 'undefined' && !process.browser;
-
-function ready() {
-  if (!host.document || host.document.readyState === 'complete') {
-    return Promise.resolve();
-  }
-
-  return new Promise(function (resolve) {
-    host.document.addEventListener('DOMContentLoaded', completed);
-    host.addEventListener('load', completed);
-
-    function completed() {
-      host.document.removeEventListener('DOMContentLoaded', completed);
-      host.removeEventListener('load', completed);
-      resolve();
-    }
-  });
-}
-
-function createLoader() {
-  if (__WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].Loader) {
-    return Promise.resolve(new __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].Loader());
-  }
-
-  if (false) {
-    if (typeof __webpack_require__ !== 'undefined') {
-      var m = __webpack_require__(require.resolve('aurelia-loader-webpack'));
-      return Promise.resolve(new m.WebpackLoader());
-    }
-
-    if (host.System && typeof host.System.config === 'function') {
-      return host.System.normalize('aurelia-bootstrapper').then(function (bsn) {
-        return host.System.normalize('aurelia-loader-default', bsn);
-      }).then(function (loaderName) {
-        return host.System.import(loaderName).then(function (m) {
-          return new m.DefaultLoader();
-        });
-      });
-    }
-
-    if (typeof host.require === 'function' && typeof host.require.version === 'string') {
-      return new Promise(function (resolve, reject) {
-        return host.require(['aurelia-loader-default'], function (m) {
-          return resolve(new m.DefaultLoader());
-        }, reject);
-      });
-    }
-
-    if (isNodeLike && typeof module !== 'undefined' && typeof module.require !== 'undefined') {
-      var _m = module.require('aurelia-loader-nodejs');
-      return Promise.resolve(new _m.NodeJsLoader());
-    }
-  }
-
-  return Promise.reject('No PLATFORM.Loader is defined and there is neither a System API (ES6) or a Require API (AMD) globally available to load your app.');
-}
-
-function initializePal(loader) {
-  var type = void 0;
-
-  var isRenderer = isNodeLike && (process.type === 'renderer' || process.versions['node-webkit']);
-
-  if (isNodeLike && !isRenderer) {
-    type = 'nodejs';
-  } else if (typeof window !== 'undefined') {
-    type = 'browser';
-  } else if (typeof self !== 'undefined') {
-    type = 'worker';
-  } else {
-    throw new Error('Could not determine platform implementation to load.');
-  }
-
-  return loader.loadModule('aurelia-pal-' + type).then(function (palModule) {
-    return type === 'nodejs' && !__WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["f" /* isInitialized */] && palModule.globalize() || palModule.initialize();
-  });
-}
-
-function preparePlatform(loader) {
-  var map = function map(moduleId, relativeTo) {
-    return loader.normalize(moduleId, relativeTo).then(function (normalized) {
-      loader.map(moduleId, normalized);
-      return normalized;
-    });
-  };
-
-  return initializePal(loader).then(function () {
-    return loader.normalize('aurelia-bootstrapper');
-  }).then(function (bootstrapperName) {
-    var frameworkPromise = map('aurelia-framework', bootstrapperName);
-
-    return Promise.all([frameworkPromise, frameworkPromise.then(function (frameworkName) {
-      return map('aurelia-dependency-injection', frameworkName);
-    }), map('aurelia-router', bootstrapperName), map('aurelia-logging-console', bootstrapperName)]);
-  }).then(function (_ref) {
-    var frameworkName = _ref[0];
-    return loader.loadModule(frameworkName);
-  }).then(function (fx) {
-    return startResolve(function () {
-      return new fx.Aurelia(loader);
-    });
-  });
-}
-
-function config(appHost, configModuleId, aurelia) {
-  aurelia.host = appHost;
-  aurelia.configModuleId = configModuleId || null;
-
-  if (configModuleId) {
-    return aurelia.loader.loadModule(configModuleId).then(function (customConfig) {
-      if (!customConfig.configure) {
-        throw new Error('Cannot initialize module \'' + configModuleId + '\' without a configure function.');
-      }
-
-      return customConfig.configure(aurelia);
-    });
-  }
-
-  aurelia.use.standardConfiguration().developmentLogging();
-
-  return aurelia.start().then(function () {
-    return aurelia.setRoot();
-  });
-}
-
-function run() {
-  return ready().then(createLoader).then(preparePlatform).then(function () {
-    var appHosts = host.document.querySelectorAll('[aurelia-app],[data-aurelia-app]');
-    for (var i = 0, ii = appHosts.length; i < ii; ++i) {
-      var appHost = appHosts[i];
-      var moduleId = appHost.getAttribute('aurelia-app') || appHost.getAttribute('data-aurelia-app');
-      bootstrap(config.bind(null, appHost, moduleId));
-    }
-
-    var toConsole = console.error.bind(console);
-    var bootstraps = bootstrapPromises.map(function (p) {
-      return p.catch(toConsole);
-    });
-    bootstrapPromises = null;
-    return Promise.all(bootstraps);
-  });
-}
-
-function bootstrap(configure) {
-  var p = startPromise.then(function (factory) {
-    return configure(factory());
-  });
-  if (bootstrapPromises) bootstrapPromises.push(p);
-  return p;
-}
-
-var starting = run();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(21)))
-
-/***/ }),
-
-/***/ 42:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
-
-/**
- * Plugin configuration builder
- */
-class ConfigBuilder {
-    constructor() {
-        this.globalResources = [];
-        this.noWavesAttach = false;
-        this.useGlobalResources = true;
-        this.useScrollfirePatch = false;
-    }
-    useAll() {
-        return this
-            .useAutoComplete()
-            .useBadge()
-            .useBox()
-            .useBreadcrumbs()
-            .useButton()
-            .useCard()
-            .useCarousel()
-            .useCharacterCounter()
-            .useCheckbox()
-            .useChip()
-            .useCollapsible()
-            .useCollection()
-            .useColors()
-            .useDatePicker()
-            .useDropdown()
-            .useFab()
-            .useFile()
-            .useFooter()
-            .useInput()
-            .useModal()
-            .useNavbar()
-            .usePagination()
-            .useParallax()
-            .useProgress()
-            .usePushpin()
-            .useRadio()
-            .useRange()
-            .useScrollfire()
-            .useScrollSpy()
-            .useSelect()
-            .useSidenav()
-            .useSlider()
-            .useSwitch()
-            .useTabs()
-            .useTapTarget()
-            .useTimePicker()
-            .useTooltip()
-            .useTransitions()
-            .useWaves()
-            .useWell();
-    }
-    useAutoComplete() {
-        this.globalResources.push('./autocomplete/autocomplete');
-        return this;
-    }
-    useBadge() {
-        this.globalResources.push('./badge/badge');
-        return this;
-    }
-    useBox() {
-        this.globalResources.push('./box/box');
-        return this;
-    }
-    useBreadcrumbs() {
-        this.globalResources.push('./breadcrumbs/breadcrumbs');
-        return this;
-    }
-    useButton() {
-        this.globalResources.push('./button/button');
-        return this;
-    }
-    useCarousel() {
-        this.globalResources.push('./carousel/carousel');
-        this.globalResources.push('./carousel/carousel-item');
-        return this;
-    }
-    useCharacterCounter() {
-        this.globalResources.push('./char-counter/char-counter');
-        return this;
-    }
-    useCard() {
-        this.globalResources.push('./card/card');
-        return this;
-    }
-    useCheckbox() {
-        this.globalResources.push('./checkbox/checkbox');
-        return this;
-    }
-    useChip() {
-        this.globalResources.push('./chip/chip');
-        this.globalResources.push('./chip/chips');
-        return this;
-    }
-    /**
-     * Use my control
-     */
-    useClickCounter() {
-        this.globalResources.push('./click-counter');
-        return this;
-    }
-    useCollapsible() {
-        this.globalResources.push('./collapsible/collapsible');
-        return this;
-    }
-    useCollection() {
-        this.globalResources.push('./collection/collection');
-        this.globalResources.push('./collection/collection-item');
-        this.globalResources.push('./collection/collection-header');
-        this.globalResources.push('./collection/md-collection-selector');
-        return this;
-    }
-    useColors() {
-        this.globalResources.push('./colors/md-colors');
-        return this;
-    }
-    useDatePicker() {
-        this.globalResources.push('./datepicker/datepicker');
-        return this;
-    }
-    useDropdown() {
-        // this.globalResources.push("./dropdown/dropdown-element");
-        this.globalResources.push('./dropdown/dropdown');
-        return this;
-    }
-    useFab() {
-        this.globalResources.push('./fab/fab');
-        return this;
-    }
-    useFile() {
-        this.globalResources.push('./file/file');
-        return this;
-    }
-    useFooter() {
-        this.globalResources.push('./footer/footer');
-        return this;
-    }
-    useInput() {
-        this.globalResources.push('./input/input');
-        this.globalResources.push('./input/input-prefix');
-        return this;
-    }
-    useModal() {
-        this.globalResources.push('./modal/modal');
-        this.globalResources.push('./modal/modal-trigger');
-        return this;
-    }
-    useNavbar() {
-        this.globalResources.push('./navbar/navbar');
-        return this;
-    }
-    usePagination() {
-        this.globalResources.push('./pagination/pagination');
-        return this;
-    }
-    useParallax() {
-        this.globalResources.push('./parallax/parallax');
-        return this;
-    }
-    useProgress() {
-        this.globalResources.push('./progress/progress');
-        return this;
-    }
-    usePushpin() {
-        this.globalResources.push('./pushpin/pushpin');
-        return this;
-    }
-    useRadio() {
-        this.globalResources.push('./radio/radio');
-        return this;
-    }
-    useRange() {
-        this.globalResources.push('./range/range');
-        return this;
-    }
-    useScrollfire() {
-        this.globalResources.push('./scrollfire/scrollfire');
-        this.globalResources.push('./scrollfire/scrollfire-target');
-        return this;
-    }
-    useScrollSpy() {
-        this.globalResources.push('./scrollspy/scrollspy');
-        return this;
-    }
-    useSelect() {
-        this.globalResources.push('./select/select');
-        return this;
-    }
-    useSidenav() {
-        this.globalResources.push('./sidenav/sidenav');
-        this.globalResources.push('./sidenav/sidenav-collapse');
-        return this;
-    }
-    useSlider() {
-        this.globalResources.push('./slider/slider');
-        // this.globalResources.push("./slider/slide");
-        return this;
-    }
-    useSwitch() {
-        this.globalResources.push('./switch/switch');
-        return this;
-    }
-    /**
-     * Use materialized tabs
-     */
-    useTabs() {
-        this.globalResources.push('./tabs/tabs');
-        return this;
-    }
-    useTapTarget() {
-        this.globalResources.push('./tap-target/tap-target');
-        return this;
-    }
-    useTimePicker() {
-        this.globalResources.push('./timepicker/timepicker');
-        return this;
-    }
-    useTooltip() {
-        this.globalResources.push('./tooltip/tooltip');
-        return this;
-    }
-    useTransitions() {
-        this.globalResources.push('./transitions/fadein-image');
-        this.globalResources.push('./transitions/staggered-list');
-        return this;
-    }
-    /**
-     * Use ripple/waves effect
-     */
-    useWaves() {
-        this.globalResources.push('./waves/waves');
-        return this;
-    }
-    useWell() {
-        this.globalResources.push('./well/md-well');
-        return this;
-    }
-    preventWavesAttach() {
-        this.noWavesAttach = true;
-        return this;
-    }
-    /**
-     * Don't globalize any resources
-     * Allows you to import yourself via <require></require>
-     */
-    withoutGlobalResources() {
-        this.useGlobalResources = false;
-        return this;
-    }
-    withScrollfirePatch() {
-        this.useScrollfirePatch = true;
-        return this;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = ConfigBuilder;
-
-
-
-/***/ }),
-
-/***/ 43:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-const constants = {
-    eventPrefix: "md-on-",
-    bindablePrefix: "md-"
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = constants;
-
-
-
-/***/ }),
-
-/***/ 44:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-class DatePickerDefaultParser {
-    canParse(value) {
-        if (value) {
-            return true;
-        }
-        return false;
-    }
-    parse(value) {
-        if (value) {
-            let result = value.split("/").join("-");
-            result = new Date(result);
-            return isNaN(result) ? null : result;
-        }
-        return null;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = DatePickerDefaultParser;
-
-
-
-/***/ }),
-
-/***/ 45:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MdInputUpdateService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_task_queue__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(6);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-let MdInputUpdateService = class MdInputUpdateService {
-    constructor(taskQueue) {
-        this.taskQueue = taskQueue;
-        this.updateCalled = false;
-        this.log = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_logging__["getLogger"])("MdInputUpdateService");
-        this.taskQueue = taskQueue;
-    }
-    materializeUpdate() {
-        this.log.debug("executing Materialize.updateTextFields");
-        Materialize.updateTextFields();
-        this.updateCalled = false;
-    }
-    update() {
-        this.log.debug("update called");
-        if (!this.updateCalled) {
-            this.updateCalled = true;
-            this.taskQueue.queueTask(this.materializeUpdate.bind(this));
-        }
-    }
-};
-MdInputUpdateService = __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["d" /* autoinject */],
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_aurelia_task_queue__["a" /* TaskQueue */]])
-], MdInputUpdateService);
-
-
-
-/***/ }),
-
-/***/ 46:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* eslint no-new-func:0 */
-class ScrollfirePatch {
-    patch() {
-        if (!ScrollfirePatch.patched) {
-            ScrollfirePatch.patched = true;
-            Materialize.scrollFire = function (options) {
-                let didScroll = false;
-                window.addEventListener("scroll", function () {
-                    didScroll = true;
-                });
-                // Rate limit to 100ms
-                setInterval(function () {
-                    if (didScroll) {
-                        didScroll = false;
-                        let windowScroll = window.pageYOffset + window.innerHeight;
-                        for (let value of options) {
-                            // Get options from each line
-                            let selector = value.selector;
-                            let offset = value.offset;
-                            let callback = value.callback;
-                            let currentElement = document.querySelector(selector);
-                            if (currentElement !== null) {
-                                let elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
-                                if (windowScroll > (elementOffset + offset)) {
-                                    if (value.done !== true) {
-                                        if (typeof (callback) === "string") {
-                                            let callbackFunc = new Function(callback);
-                                            callbackFunc();
-                                        }
-                                        else if (typeof (callback) === "function") {
-                                            callback();
-                                        }
-                                        value.done = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }, 100);
-            };
-        }
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = ScrollfirePatch;
-
-ScrollfirePatch.patched = false;
-
-
-/***/ }),
-
-/***/ 47:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = getPropertyInfo;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(7);
-
-function getObject(expression, objectExpression, source) {
-    var value = objectExpression.evaluate(source, null);
-    if (value === null || value === undefined || value instanceof Object) {
-        return value;
-    }
-    // tslint:disable-next-line:max-line-length
-    throw new Error("The '" + objectExpression + "' part of '" + expression + "' evaluates to " + value + " instead of an object, null or undefined.");
-}
-/**
- * Retrieves the object and property name for the specified expression.
- * @param expression The expression
- * @param source The scope
- */
-function getPropertyInfo(expression, source) {
-    var originalExpression = expression;
-    while (expression instanceof __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["e" /* BindingBehavior */] || expression instanceof __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["u" /* ValueConverter */]) {
-        expression = expression.expression;
-    }
-    var object;
-    var propertyName;
-    if (expression instanceof __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["c" /* AccessScope */]) {
-        object = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["D" /* getContextFor */])(expression.name, source, expression.ancestor);
-        propertyName = expression.name;
-    }
-    else if (expression instanceof __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["b" /* AccessMember */]) {
-        object = getObject(originalExpression, expression.object, source);
-        propertyName = expression.name;
-    }
-    else if (expression instanceof __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["a" /* AccessKeyed */]) {
-        object = getObject(originalExpression, expression.object, source);
-        propertyName = expression.key.evaluate(source);
-    }
-    else {
-        throw new Error("Expression '" + originalExpression + "' is not compatible with the validate binding-behavior.");
-    }
-    if (object === null || object === undefined) {
-        return null;
-    }
-    return { object: object, propertyName: propertyName };
-}
-
-
-/***/ }),
-
-/***/ 48:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = isString;
-function isString(value) {
-    return Object.prototype.toString.call(value) === '[object String]';
-}
-
-
-/***/ }),
-
-/***/ 49:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ValidateEvent; });
-var ValidateEvent = (function () {
-    function ValidateEvent(
-        /**
-         * The type of validate event. Either "validate" or "reset".
-         */
-        type, 
-        /**
-         * The controller's current array of errors. For an array containing both
-         * failed rules and passed rules, use the "results" property.
-         */
-        errors, 
-        /**
-         * The controller's current array of validate results. This
-         * includes both passed rules and failed rules. For an array of only failed rules,
-         * use the "errors" property.
-         */
-        results, 
-        /**
-         * The instruction passed to the "validate" or "reset" event. Will be null when
-         * the controller's validate/reset method was called with no instruction argument.
-         */
-        instruction, 
-        /**
-         * In events with type === "validate", this property will contain the result
-         * of validating the instruction (see "instruction" property). Use the controllerValidateResult
-         * to access the validate results specific to the call to "validate"
-         * (as opposed to using the "results" and "errors" properties to access the controller's entire
-         * set of results/errors).
-         */
-        controllerValidateResult) {
-        this.type = type;
-        this.errors = errors;
-        this.results = results;
-        this.instruction = instruction;
-        this.controllerValidateResult = controllerValidateResult;
-    }
-    return ValidateEvent;
-}());
-
-
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-
 /***/ 50:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -23593,7 +23719,7 @@ function getTargetDOMElement(binding, view) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StandardValidator; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validator__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__validate_result__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rules__ = __webpack_require__(24);
@@ -35884,7 +36010,7 @@ function addSegment(currentState, segment) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemplatingRouteLoader; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_router__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_path__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_metadata__ = __webpack_require__(12);
@@ -35987,7 +36113,7 @@ function createDynamicClass(moduleId) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _createCSSResource;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_loader__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_path__ = __webpack_require__(13);
@@ -36108,7 +36234,7 @@ function _createCSSResource(address) {
 "use strict";
 /* unused harmony export getElementName */
 /* harmony export (immutable) */ __webpack_exports__["a"] = configure;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dynamic_element__ = __webpack_require__(79);
 
 
@@ -36152,7 +36278,7 @@ function configure(config) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _createDynamicElement;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 
 
 
@@ -54237,7 +54363,7 @@ function configure(config) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_loader__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_path__ = __webpack_require__(13);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["d"]; });
@@ -55122,6 +55248,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__scrollfire_scrollfire_patch__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_polyfills__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__exports__ = __webpack_require__(88);
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ScrollfirePatch", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["_6"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdAutoComplete", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["g"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdBadge", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["h"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdBox", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["i"]; });
@@ -55167,7 +55294,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdPushpin", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["O"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdRadio", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["P"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdRange", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["Q"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ScrollfirePatch", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["_6"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollfireTarget", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["T"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollfire", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["S"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollSpy", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["R"]; });
@@ -55480,7 +55606,7 @@ MdBreadcrumbs = __decorate([
 /***/ "aurelia-materialize-bridge/breadcrumbs/breadcrumbs.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -55711,7 +55837,7 @@ MdCard = __decorate([
 /***/ "aurelia-materialize-bridge/card/card.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -55859,7 +55985,7 @@ module.exports = "<template class=\"carousel-item\">\n\t<a if.bind=\"mdHref\" hr
 /***/ "aurelia-materialize-bridge/carousel/carousel.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -56101,7 +56227,7 @@ MdChip = __decorate([
 /***/ "aurelia-materialize-bridge/chip/chip.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -56430,7 +56556,7 @@ MdCollectionHeader = __decorate([
 /***/ "aurelia-materialize-bridge/collection/collection-header.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -56476,7 +56602,7 @@ MdCollectionItem = __decorate([
 /***/ "aurelia-materialize-bridge/collection/collection-item.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -56561,7 +56687,7 @@ MdCollectionSelector = __decorate([
 /***/ "aurelia-materialize-bridge/collection/md-collection-selector.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -57644,7 +57770,7 @@ MdPrefix = __decorate([
 /***/ "aurelia-materialize-bridge/input/input.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -57902,7 +58028,7 @@ MdNavbar = __decorate([
 /***/ "aurelia-materialize-bridge/navbar/navbar.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -58065,7 +58191,7 @@ module.exports = "<template>\n\t<ul class=\"pagination\">\n\t\t<template if.bind
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdParallax", function() { return MdParallax; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(1);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58396,7 +58522,7 @@ MdRange = __decorate([
 /***/ "aurelia-materialize-bridge/range/range.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -59113,7 +59239,7 @@ MdSidenavCollapse = __decorate([
 /***/ "aurelia-materialize-bridge/sidenav/sidenav.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -59229,7 +59355,7 @@ MdSlider = __decorate([
 /***/ "aurelia-materialize-bridge/slider/slider.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -59339,7 +59465,7 @@ MdSwitch = __decorate([
 /***/ "aurelia-materialize-bridge/switch/switch.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -59943,7 +60069,7 @@ MdWaves = __decorate([
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_router__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60499,7 +60625,7 @@ function initialize() {
 /* harmony export (immutable) */ __webpack_exports__["configure"] = configure;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
 var _class, _temp, _dec, _class2, _class3, _temp2, _class4, _temp3;
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -61175,7 +61301,7 @@ function configure(config) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__sanitize_html__ = __webpack_require__("aurelia-templating-resources/sanitize-html");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__replaceable__ = __webpack_require__("aurelia-templating-resources/replaceable");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__focus__ = __webpack_require__("aurelia-templating-resources/focus");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__css_resource__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__html_sanitizer__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__attr_binding_behavior__ = __webpack_require__("aurelia-templating-resources/attr-binding-behavior");
@@ -61374,7 +61500,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(3);
 var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
@@ -61657,7 +61783,7 @@ var DebounceBindingBehavior = function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Else", function() { return Else; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__if_core__ = __webpack_require__(30);
 var _dec, _dec2, _class;
@@ -61717,7 +61843,7 @@ var Else = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Focus", function() { return Focus; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_task_queue__ = __webpack_require__(10);
@@ -61800,7 +61926,7 @@ var Focus = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" 
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hide", function() { return Hide; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aurelia_hide_style__ = __webpack_require__(22);
 var _dec, _dec2, _class;
@@ -61848,7 +61974,7 @@ var Hide = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "If", function() { return If; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__if_core__ = __webpack_require__(30);
 var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2;
@@ -61994,7 +62120,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Repeat", function() { return Repeat; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__repeat_strategy_locator__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__repeat_utilities__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__analyze_view_factory__ = __webpack_require__(37);
@@ -62303,7 +62429,7 @@ var Repeat = (_dec = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["q"
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Replaceable", function() { return Replaceable; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 var _dec, _dec2, _class;
 
 
@@ -62421,7 +62547,7 @@ var SelfBindingBehavior = function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Show", function() { return Show; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aurelia_hide_style__ = __webpack_require__(22);
 var _dec, _dec2, _class;
@@ -62667,7 +62793,7 @@ var UpdateTriggerBindingBehavior = (_temp = _class = function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "With", function() { return With; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_binding__ = __webpack_require__(7);
 var _dec, _dec2, _class;
 
@@ -62751,7 +62877,7 @@ function configure(config) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RouteHref", function() { return RouteHref; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_router__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_pal__ = __webpack_require__(3);
@@ -62829,7 +62955,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RouterViewLocator", function() { return RouterViewLocator; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_router__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_metadata__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_pal__ = __webpack_require__(3);
@@ -63311,7 +63437,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidationErrorsCustomAttribute", function() { return ValidationErrorsCustomAttribute; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validation_controller__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -63435,7 +63561,7 @@ var ValidationRendererCustomAttribute = (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(28);
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -63450,7 +63576,7 @@ exports.push([module.i, "/*!\r\n * Materialize v0.100.2 (http://materializecss.c
 /***/ "prismjs/themes/prism.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
