@@ -1,0 +1,18 @@
+<template>
+	<div class="dropdown-sample">
+		<table>
+			<tr repeat.for="n of 5">
+				<td>line ${n+1}</td>
+				<td>
+					<a md-button md-dropdown="ref.bind: dropdown;">drop me!</a>
+					<ul ref="dropdown">
+						<li><a click.trigger="showToast($event)">one</a></li>
+						<li><a click.trigger="showToast($event)">two</a></li>
+						<li class="divider"></li>
+						<li><a click.trigger="showToast($event)">three</a></li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</div>
+</template>

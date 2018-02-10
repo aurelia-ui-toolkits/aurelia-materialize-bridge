@@ -1,0 +1,22 @@
+<template>
+	<h5>By id</h5>
+	<div class="dropdown-sample">
+		<a md-button md-dropdown="activates: dropdown1;">drop me!</a>
+		<ul id="dropdown1">
+			<li><a click.trigger="showToast($event)">one</a></li>
+			<li><a click.trigger="showToast($event)">two</a></li>
+			<li class="divider"></li>
+			<li><a click.trigger="showToast($event)">three</a></li>
+		</ul>
+	</div>
+	<h5>By reference</h5>
+	<div class="dropdown-sample">
+		<a md-button md-dropdown="ref.bind: dropdown2;">drop me!</a>
+		<ul ref="dropdown2">
+			<li><a click.trigger="showToast($event)">one</a></li>
+			<li><a click.trigger="showToast($event)">two</a></li>
+			<li class="divider"></li>
+			<li><a click.trigger="showToast($event)">three</a></li>
+		</ul>
+	</div>
+</template>

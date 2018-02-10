@@ -1,0 +1,14 @@
+<template>
+	<div class="collapsible-open-close-events">
+		<ul md-collapsible="on-open.call: collapsibleOpen($event); on-close.call: collapsibleClose($event)">
+			<li ref="firstSection">
+        <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>First<span md-badge data-badge-caption="opens">${firstSection.openCount || 0}</span><span md-badge data-badge-caption="closes">${firstSection.closeCount || 0}</span></div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+			<li ref="secondSection">
+        <div class="collapsible-header"><i class="mdi-maps-place"></i>Second<span md-badge data-badge-caption="opens">${secondSection.openCount || 0}</span><span md-badge data-badge-caption="closes">${secondSection.closeCount || 0}</span></div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+		</ul>
+	</div>
+</template>

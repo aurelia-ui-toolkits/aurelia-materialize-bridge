@@ -32,8 +32,8 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACN
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(58);
-__webpack_require__(99);
-__webpack_require__(102);
+__webpack_require__(100);
+__webpack_require__(103);
 module.exports = __webpack_require__(41);
 
 
@@ -120,7 +120,7 @@ module.exports = "<template>\n  <section class=\"container\">\n    <div class=\"
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__settings__ = __webpack_require__("settings");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -195,7 +195,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__registry_json__ = __webpack_require__("help/registry.json");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__registry_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__registry_json__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_jquery__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -330,7 +330,7 @@ var Doc = /** @class */ (function () {
 }());
 
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 
@@ -603,7 +603,7 @@ var Help = /** @class */ (function () {
 }());
 
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 
@@ -740,7 +740,7 @@ module.exports = "<template>\n\t<require from=\"./installation.css\"></require>\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadingIndicator", function() { return LoadingIndicator; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nprogress__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nprogress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_nprogress__);
@@ -866,7 +866,7 @@ function configure(aurelia) {
     });
 }
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 
@@ -904,7 +904,7 @@ var NavBar = /** @class */ (function () {
 }());
 
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 
@@ -921,7 +921,7 @@ module.exports = "<template>\n  <require from=\"./route-highlight\"></require>\n
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Controls", function() { return Controls; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_component_service__ = __webpack_require__("shared/component-service");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1178,7 +1178,7 @@ module.exports = "import { autoinject } from \"aurelia-framework\";\r\nimport { 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
@@ -1369,7 +1369,7 @@ module.exports = "export class App { }\r\n"
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
@@ -1623,7 +1623,7 @@ module.exports = "export class App {\r\n\tpulse = false;\r\n}\r\n"
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
@@ -1839,7 +1839,7 @@ module.exports = "export class App { }\r\n"
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
@@ -2161,7 +2161,7 @@ module.exports = "import { Logger } from \"../../../shared/logger\";\r\n\r\nexpo
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
@@ -2220,6 +2220,253 @@ var Index = /** @class */ (function (_super) {
 /***/ (function(module, exports) {
 
 module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue) {\n\t\tsuper(eventAggregator, loader, taskQueue);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"autocomplete\"),\n\t\t\tsuper.getRouteConfig(\"editor\"),\n\t\t\tsuper.getRouteConfig(\"events\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
+
+/***/ }),
+
+/***/ "samples/collapsible/accordion/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/collapsible/accordion/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"collapsible-accordion\">\r\n\t\t<ul md-collapsible=\"accordion: true;\">\r\n\t\t\t<li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-image-filter-drama\"></i>First</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t\t<li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-maps-place\"></i>Second</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/collapsible/accordion/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"collapsible-accordion\">\r\n\t\t<ul md-collapsible=\"accordion: true;\">\r\n\t\t\t<li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-image-filter-drama\"></i>First</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t\t<li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-maps-place\"></i>Second</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/collapsible/accordion/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/collapsible/basic-use/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    App.prototype.openFirst = function () {
+        this.collapsible.open();
+    };
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/collapsible/basic-use/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"collapsible-basic-use\">\r\n\t\t<ul md-collapsible md-collapsible.ref=\"collapsible\">\r\n\t\t\t<li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-image-filter-drama\"></i>First</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t\t<li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-maps-place\"></i>Second</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/collapsible/basic-use/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"collapsible-basic-use\">\r\n\t\t<ul md-collapsible md-collapsible.ref=\"collapsible\">\r\n\t\t\t<li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-image-filter-drama\"></i>First</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t\t<li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-maps-place\"></i>Second</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/collapsible/basic-use/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { MdCollapsible } from \"aurelia-materialize-bridge\";\r\n\r\nexport class App {\r\n\tcollapsible: MdCollapsible;\r\n\r\n\topenFirst() {\r\n\t\tthis.collapsible.open();\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/collapsible/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var Index = /** @class */ (function (_super) {
+    __extends(Index, _super);
+    function Index(eventAggregator, loader, taskQueue) {
+        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { route: "", redirect: "basic-use" },
+            _super.prototype.getRouteConfig.call(this, "basic-use"),
+            _super.prototype.getRouteConfig.call(this, "accordion"),
+            _super.prototype.getRouteConfig.call(this, "popout"),
+            _super.prototype.getRouteConfig.call(this, "open-close-callbacks"),
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+    ], Index);
+    return Index;
+}(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
+
+
+
+/***/ }),
+
+/***/ "samples/collapsible/index.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue) {\n\t\tsuper(eventAggregator, loader, taskQueue);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"accordion\"),\n\t\t\tsuper.getRouteConfig(\"popuot\"),\n\t\t\tsuper.getRouteConfig(\"open-close-callbacks\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
+
+/***/ }),
+
+/***/ "samples/collapsible/open-close-callbacks/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__ = __webpack_require__("aurelia-materialize-bridge");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var App = /** @class */ (function () {
+    function App(toastService) {
+        this.toastService = toastService;
+        this.toastService = toastService;
+    }
+    App.prototype.collapsibleOpen = function (targetElement) {
+        targetElement.openCount = (targetElement.openCount || 0) + 1;
+        this.toastService.show("Open Callback Received!", 1000);
+    };
+    App.prototype.collapsibleClose = function (targetElement) {
+        targetElement.closeCount = (targetElement.closeCount || 0) + 1;
+        this.toastService.show("Close Callback Received!", 1000);
+    };
+    App = __decorate([
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
+    ], App);
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/collapsible/open-close-callbacks/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"collapsible-open-close-events\">\r\n\t\t<ul md-collapsible=\"on-open.call: collapsibleOpen($event); on-close.call: collapsibleClose($event)\">\r\n\t\t\t<li ref=\"firstSection\">\r\n        <div class=\"collapsible-header\"><i class=\"mdi-image-filter-drama\"></i>First<span md-badge data-badge-caption=\"opens\">${firstSection.openCount || 0}</span><span md-badge data-badge-caption=\"closes\">${firstSection.closeCount || 0}</span></div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t\t<li ref=\"secondSection\">\r\n        <div class=\"collapsible-header\"><i class=\"mdi-maps-place\"></i>Second<span md-badge data-badge-caption=\"opens\">${secondSection.openCount || 0}</span><span md-badge data-badge-caption=\"closes\">${secondSection.closeCount || 0}</span></div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/collapsible/open-close-callbacks/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-collection>\r\n\t\t\t<md-collection-item class=\"accent-text\">\r\n\t\t\t\tAlvin\r\n\t\t\t\t<div class=\"secondary-content\">\r\n\t\t\t\t\t<i class=\"material-icons\">send</i>\r\n\t\t\t\t</div>\r\n\t\t\t</md-collection-item>\r\n\t\t\t<md-collection-item class=\"accent-text active\">\r\n\t\t\t\tAlvin\r\n\t\t\t\t<div class=\"secondary-content\">\r\n\t\t\t\t\t<i class=\"material-icons\">send</i>\r\n\t\t\t\t</div>\r\n\t\t\t</md-collection-item>\r\n\t\t\t<md-collection-item class=\"accent-text\">\r\n\t\t\t\tAlvin\r\n\t\t\t\t<div class=\"secondary-content\">\r\n\t\t\t\t\t<i class=\"material-icons\">send</i>\r\n\t\t\t\t</div>\r\n\t\t\t</md-collection-item>\r\n\t\t\t<md-collection-item class=\"accent-text\">\r\n\t\t\t\tAlvin\r\n\t\t\t\t<div class=\"secondary-content\">\r\n\t\t\t\t\t<i class=\"material-icons\">send</i>\r\n\t\t\t\t</div>\r\n\t\t\t</md-collection-item>\r\n\t\t</md-collection>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/collapsible/open-close-callbacks/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject, bindable } from \"aurelia-framework\";\r\nimport { MdToastService } from \"aurelia-materialize-bridge\";\r\n\r\n@autoinject\r\nexport class App {\r\n\tconstructor(private toastService: MdToastService) {\r\n\t\tthis.toastService = toastService;\r\n\t}\r\n\r\n\tcollapsibleOpen(targetElement) {\r\n\t\ttargetElement.openCount = (targetElement.openCount || 0) + 1;\r\n\r\n\t\tthis.toastService.show(\"Open Callback Received!\", 1000);\r\n\t}\r\n\r\n\tcollapsibleClose(targetElement) {\r\n\t\ttargetElement.closeCount = (targetElement.closeCount || 0) + 1;\r\n\r\n\t\tthis.toastService.show(\"Close Callback Received!\", 1000);\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/collapsible/popout/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.accordion = false;
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/collapsible/popout/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n  <div class=\"collapsible-popout\">\r\n    <ul md-collapsible=\"accordion.bind: accordion; popout: true;\">\r\n      <li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-image-filter-drama\"></i>First</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n      <li>\r\n        <div class=\"collapsible-header active\"><i class=\"mdi-maps-place\"></i>Second</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n      <li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-maps-place\"></i>Third</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n    </ul>\r\n    <p>\r\n      <md-checkbox md-checked.bind=\"accordion\">use accordion</md-checkbox>\r\n    </p>\r\n  </div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/collapsible/popout/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n  <div class=\"collapsible-popout\">\r\n    <ul md-collapsible=\"accordion.bind: accordion; popout: true;\">\r\n      <li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-image-filter-drama\"></i>First</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n      <li>\r\n        <div class=\"collapsible-header active\"><i class=\"mdi-maps-place\"></i>Second</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n      <li>\r\n        <div class=\"collapsible-header\"><i class=\"mdi-maps-place\"></i>Third</div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n    </ul>\r\n    <p>\r\n      <md-checkbox md-checked.bind=\"accordion\">use accordion</md-checkbox>\r\n    </p>\r\n  </div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/collapsible/popout/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\taccordion = false;\r\n}\r\n"
 
 /***/ }),
 
@@ -2340,7 +2587,7 @@ module.exports = "export class App { }\r\n"
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
@@ -2598,7 +2845,7 @@ module.exports = "export class App { }\r\n"
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
@@ -2657,6 +2904,460 @@ module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\n
 
 /***/ }),
 
+/***/ "samples/dialogs/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var Index = /** @class */ (function (_super) {
+    __extends(Index, _super);
+    function Index(eventAggregator, loader, taskQueue) {
+        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { route: "", redirect: "toast" },
+            _super.prototype.getRouteConfig.call(this, "toast"),
+            _super.prototype.getRouteConfig.call(this, "tooltip"),
+            _super.prototype.getRouteConfig.call(this, "tooltip-html"),
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+    ], Index);
+    return Index;
+}(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
+
+
+
+/***/ }),
+
+/***/ "samples/dialogs/index.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue) {\n\t\tsuper(eventAggregator, loader, taskQueue);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"toast\" },\n\t\t\tsuper.getRouteConfig(\"toast\"),\n\t\t\tsuper.getRouteConfig(\"tooltip\"),\n\t\t\tsuper.getRouteConfig(\"tooltip-html\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
+
+/***/ }),
+
+/***/ "samples/dialogs/toast/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__ = __webpack_require__("aurelia-materialize-bridge");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var App = /** @class */ (function () {
+    function App(toast) {
+        this.toast = toast;
+        this.toast = toast;
+    }
+    App.prototype.showDefaultToast = function () {
+        this.toast.show("I am a toast!", 4000);
+    };
+    App.prototype.showStyledToast = function () {
+        this.toast.show("I've got style!", 4000, "rounded blue");
+    };
+    App.prototype.showToastWithPromise = function () {
+        var _this = this;
+        this.toast.show("When finished, I trigger another toast.", 2000).then(function () {
+            _this.toast.show("I am a toast called by a callback of another toast!", 2000);
+        });
+    };
+    App = __decorate([
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
+    ], App);
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/dialogs/toast/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<p><a md-button click.trigger=\"showDefaultToast()\">default toast</a></p>\r\n\t\t<p style=\"margin-top: 5px;\"><a md-button click.trigger=\"showToastWithPromise()\">toast with callback</a></p>\r\n\t\t<p style=\"margin-top: 5px;\"><a md-button click.trigger=\"showStyledToast()\">toast with style</a></p>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/dialogs/toast/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<p><a md-button click.trigger=\"showDefaultToast()\">default toast</a></p>\r\n\t\t<p style=\"margin-top: 5px;\"><a md-button click.trigger=\"showToastWithPromise()\">toast with callback</a></p>\r\n\t\t<p style=\"margin-top: 5px;\"><a md-button click.trigger=\"showStyledToast()\">toast with style</a></p>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/dialogs/toast/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject } from \"aurelia-framework\";\r\nimport { MdToastService } from \"aurelia-materialize-bridge\";\r\n\r\n@autoinject\r\nexport class App {\r\n\tconstructor(private toast: MdToastService) {\r\n\t\tthis.toast = toast;\r\n\t}\r\n\r\n\tshowDefaultToast() {\r\n\t\tthis.toast.show(\"I am a toast!\", 4000);\r\n\t}\r\n\r\n\tshowStyledToast() {\r\n\t\tthis.toast.show(\"I've got style!\", 4000, \"rounded blue\");\r\n\t}\r\n\r\n\tshowToastWithPromise() {\r\n\t\tthis.toast.show(\"When finished, I trigger another toast.\", 2000).then(() => {\r\n\t\t\tthis.toast.show(\"I am a toast called by a callback of another toast!\", 2000);\r\n\t\t});\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/dialogs/tooltip-html/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.htmlTooltip = "\n\t<table>\n\t  <tr>\n\t\t<td><img src=\"http://aurelia-ui-toolkits.github.io/demo-materialize/images/chips-sample-1.jpg\" /></td>\n\t\t<td>\n\t\t  custom html with crappy table layout<br />\n\t\t  but shows that it's working (I mean tables)\n\t\t</td>\n\t  </tr>\n\t</table>\n\t";
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/dialogs/tooltip-html/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<a md-button md-tooltip=\"html: true; position: bottom; text.bind: htmlTooltip;\">custom html</a>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/dialogs/tooltip-html/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<a md-button md-tooltip=\"html: true; position: bottom; text.bind: htmlTooltip;\">custom html</a>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/dialogs/tooltip-html/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\thtmlTooltip = `\r\n\t<table>\r\n\t  <tr>\r\n\t\t<td><img src=\"http://aurelia-ui-toolkits.github.io/demo-materialize/images/chips-sample-1.jpg\" /></td>\r\n\t\t<td>\r\n\t\t  custom html with crappy table layout<br />\r\n\t\t  but shows that it's working (I mean tables)\r\n\t\t</td>\r\n\t  </tr>\r\n\t</table>\r\n\t`;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/dialogs/tooltip/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/dialogs/tooltip/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<a md-button md-tooltip=\"position: left; text: A am a tooltip;\">on the left</a>\r\n\t\t<a md-button md-tooltip=\"position: top; text: A am a tooltip;\">on the top</a>\r\n\t\t<a md-button md-tooltip=\"position: bottom; text: A am a tooltip;\">on the bottom</a>\r\n\t\t<a md-button md-tooltip=\"position: right; text: A am a tooltip;\">on the right</a>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/dialogs/tooltip/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<a md-button md-tooltip=\"position: left; text: A am a tooltip;\">on the left</a>\r\n\t\t<a md-button md-tooltip=\"position: top; text: A am a tooltip;\">on the top</a>\r\n\t\t<a md-button md-tooltip=\"position: bottom; text: A am a tooltip;\">on the bottom</a>\r\n\t\t<a md-button md-tooltip=\"position: right; text: A am a tooltip;\">on the right</a>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/dialogs/tooltip/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/dropdown/basic-use/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__ = __webpack_require__("aurelia-materialize-bridge");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var App = /** @class */ (function () {
+    function App(toast) {
+        this.toast = toast;
+        this.toast = toast;
+    }
+    App.prototype.showToast = function (e) {
+        this.toast.show("You clicked " + e.target.innerText, 4000);
+    };
+    App = __decorate([
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
+    ], App);
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/dropdown/basic-use/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<h5>By id</h5>\r\n\t<div class=\"dropdown-sample\">\r\n\t\t<a md-button md-dropdown=\"activates: dropdown1;\">drop me!</a>\r\n\t\t<ul id=\"dropdown1\">\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">one</a></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">two</a></li>\r\n\t\t\t<li class=\"divider\"></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">three</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<h5>By reference</h5>\r\n\t<div class=\"dropdown-sample\">\r\n\t\t<a md-button md-dropdown=\"ref.bind: dropdown2;\">drop me!</a>\r\n\t\t<ul ref=\"dropdown2\">\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">one</a></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">two</a></li>\r\n\t\t\t<li class=\"divider\"></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">three</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/dropdown/basic-use/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<h5>By id</h5>\r\n\t<div class=\"dropdown-sample\">\r\n\t\t<a md-button md-dropdown=\"activates: dropdown1;\">drop me!</a>\r\n\t\t<ul id=\"dropdown1\">\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">one</a></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">two</a></li>\r\n\t\t\t<li class=\"divider\"></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">three</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<h5>By reference</h5>\r\n\t<div class=\"dropdown-sample\">\r\n\t\t<a md-button md-dropdown=\"ref.bind: dropdown2;\">drop me!</a>\r\n\t\t<ul ref=\"dropdown2\">\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">one</a></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">two</a></li>\r\n\t\t\t<li class=\"divider\"></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">three</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/dropdown/basic-use/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject } from \"aurelia-framework\";\r\nimport { MdToastService } from \"aurelia-materialize-bridge\";\r\n\r\n@autoinject\r\nexport class App {\r\n\tconstructor(private toast: MdToastService) {\r\n\t\tthis.toast = toast;\r\n\t}\r\n\r\n\tshowToast(e) {\r\n\t\tthis.toast.show(`You clicked ${e.target.innerText}`, 4000);\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/dropdown/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var Index = /** @class */ (function (_super) {
+    __extends(Index, _super);
+    function Index(eventAggregator, loader, taskQueue) {
+        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { route: "", redirect: "basic-use" },
+            _super.prototype.getRouteConfig.call(this, "basic-use"),
+            _super.prototype.getRouteConfig.call(this, "options"),
+            _super.prototype.getRouteConfig.call(this, "repeat"),
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+    ], Index);
+    return Index;
+}(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
+
+
+
+/***/ }),
+
+/***/ "samples/dropdown/index.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue) {\n\t\tsuper(eventAggregator, loader, taskQueue);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"options\"),\n\t\t\tsuper.getRouteConfig(\"repeat\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
+
+/***/ }),
+
+/***/ "samples/dropdown/options/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__ = __webpack_require__("aurelia-materialize-bridge");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var App = /** @class */ (function () {
+    function App(toast) {
+        this.toast = toast;
+        this.toast = toast;
+    }
+    App.prototype.showToast = function (e) {
+        this.toast.show("You clicked " + e.target.innerText, 4000);
+    };
+    App = __decorate([
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
+    ], App);
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/dropdown/options/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<style>\r\n\t\tdiv.actions {\r\n\t\t\tmargin-top: 10px;\r\n\t\t}\r\n\t</style>\r\n\t<div class=\"dropdown-options-sample\">\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; below-origin: true;\">below origin</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; hover: true;\">open on hover</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; constrain-width: false;\">no constrainWidth</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; gutter: 20;\">gutter 20</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; alignment: right; constrain-width: false;\">alignment right</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; in-duration: 1000; out-duration: 1000;\">custom durations (both at 1000)</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; stop-propagation: true;\">stop propagation</a>\r\n\t\t</div>\r\n\t\t<ul id=\"dropdown1\">\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">one</a></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">two</a></li>\r\n\t\t\t<li class=\"divider\"></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">three</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/dropdown/options/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<style>\r\n\t\tdiv.actions {\r\n\t\t\tmargin-top: 10px;\r\n\t\t}\r\n\t</style>\r\n\t<div class=\"dropdown-options-sample\">\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; below-origin: true;\">below origin</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; hover: true;\">open on hover</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; constrain-width: false;\">no constrainWidth</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; gutter: 20;\">gutter 20</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; alignment: right; constrain-width: false;\">alignment right</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; in-duration: 1000; out-duration: 1000;\">custom durations (both at 1000)</a>\r\n\t\t</div>\r\n\t\t<div class=\"actions\">\r\n\t\t\t<a md-button md-dropdown=\"activates: dropdown1; stop-propagation: true;\">stop propagation</a>\r\n\t\t</div>\r\n\t\t<ul id=\"dropdown1\">\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">one</a></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">two</a></li>\r\n\t\t\t<li class=\"divider\"></li>\r\n\t\t\t<li><a click.trigger=\"showToast($event)\">three</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/dropdown/options/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject } from \"aurelia-framework\";\r\nimport { MdToastService } from \"aurelia-materialize-bridge\";\r\n\r\n@autoinject\r\nexport class App {\r\n\tconstructor(private toast: MdToastService) {\r\n\t\tthis.toast = toast;\r\n\t}\r\n\r\n\tshowToast(e) {\r\n\t\tthis.toast.show(`You clicked ${e.target.innerText}`, 4000);\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/dropdown/repeat/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__ = __webpack_require__("aurelia-materialize-bridge");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var App = /** @class */ (function () {
+    function App(toast) {
+        this.toast = toast;
+        this.toast = toast;
+    }
+    App.prototype.showToast = function (e) {
+        this.toast.show("You clicked " + e.target.innerText, 4000);
+    };
+    App = __decorate([
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
+    ], App);
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/dropdown/repeat/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"dropdown-sample\">\r\n\t\t<table>\r\n\t\t\t<tr repeat.for=\"n of 5\">\r\n\t\t\t\t<td>line ${n+1}</td>\r\n\t\t\t\t<td>\r\n\t\t\t\t\t<a md-button md-dropdown=\"ref.bind: dropdown;\">drop me!</a>\r\n\t\t\t\t\t<ul ref=\"dropdown\">\r\n\t\t\t\t\t\t<li><a click.trigger=\"showToast($event)\">one</a></li>\r\n\t\t\t\t\t\t<li><a click.trigger=\"showToast($event)\">two</a></li>\r\n\t\t\t\t\t\t<li class=\"divider\"></li>\r\n\t\t\t\t\t\t<li><a click.trigger=\"showToast($event)\">three</a></li>\r\n\t\t\t\t\t</ul>\r\n\t\t\t\t</td>\r\n\t\t\t</tr>\r\n\t\t</table>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/dropdown/repeat/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"dropdown-sample\">\r\n\t\t<table>\r\n\t\t\t<tr repeat.for=\"n of 5\">\r\n\t\t\t\t<td>line ${n+1}</td>\r\n\t\t\t\t<td>\r\n\t\t\t\t\t<a md-button md-dropdown=\"ref.bind: dropdown;\">drop me!</a>\r\n\t\t\t\t\t<ul ref=\"dropdown\">\r\n\t\t\t\t\t\t<li><a click.trigger=\"showToast($event)\">one</a></li>\r\n\t\t\t\t\t\t<li><a click.trigger=\"showToast($event)\">two</a></li>\r\n\t\t\t\t\t\t<li class=\"divider\"></li>\r\n\t\t\t\t\t\t<li><a click.trigger=\"showToast($event)\">three</a></li>\r\n\t\t\t\t\t</ul>\r\n\t\t\t\t</td>\r\n\t\t\t</tr>\r\n\t\t</table>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/dropdown/repeat/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject } from \"aurelia-framework\";\r\nimport { MdToastService } from \"aurelia-materialize-bridge\";\r\n\r\n@autoinject\r\nexport class App {\r\n\tconstructor(private toast: MdToastService) {\r\n\t\tthis.toast = toast;\r\n\t}\r\n\r\n\tshowToast(e) {\r\n\t\tthis.toast.show(`You clicked ${e.target.innerText}`, 4000);\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
 /***/ "samples/footer/basic-use/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2700,7 +3401,7 @@ module.exports = "export class App { }\r\n"
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
@@ -2765,7 +3466,7 @@ module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\n
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2789,6 +3490,9 @@ var Index = /** @class */ (function () {
             this.getRouteConfig("navbar"),
             this.getRouteConfig("pagination"),
             this.getRouteConfig("progress"),
+            this.getRouteConfig("collapsible"),
+            this.getRouteConfig("dialogs"),
+            this.getRouteConfig("dropdown"),
         ];
         config.map(routes);
         this.router = router;
@@ -2822,7 +3526,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Menu", function() { return Menu; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_component_service__ = __webpack_require__("shared/component-service");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_logging__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_framework__ = __webpack_require__("aurelia-framework");
@@ -2896,7 +3600,7 @@ var Menu = /** @class */ (function () {
 }());
 
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 
@@ -3098,7 +3802,7 @@ module.exports = "import { autoinject } from \"aurelia-framework\";\r\nimport { 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
@@ -3381,7 +4085,7 @@ module.exports = "import { Logger } from \"../../../shared/logger\";\r\n\r\nexpo
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
@@ -3571,7 +4275,7 @@ module.exports = "export class App {\r\n\tcolor = \"blue\";\r\n\tsize = \"\";\r\
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
@@ -3637,7 +4341,7 @@ module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\n
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SampleIndexBase", function() { return SampleIndexBase; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3831,9 +4535,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_loader__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -3935,7 +4639,7 @@ function dedent(str) {
     return indent > 0 ? str.replace(re, "") : str;
 }
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 
@@ -3948,9 +4652,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_showdown__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_showdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_showdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__ = __webpack_require__(98);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_showdown_prettify__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -4348,7 +5052,7 @@ function getColor(elem, attr) {
     return getRGB(color);
 }
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0), __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1), __webpack_require__(1)))
 
 /***/ }),
 
@@ -4365,7 +5069,7 @@ module.exports = "<template>\n  <div class=\"console\">\n  </div>\n</template>\n
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SampleRunner", function() { return SampleRunner; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_router__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_framework__ = __webpack_require__("aurelia-framework");
@@ -4506,7 +5210,7 @@ var ThemeSelector = /** @class */ (function () {
 }());
 
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 

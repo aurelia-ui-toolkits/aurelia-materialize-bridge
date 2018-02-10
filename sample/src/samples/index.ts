@@ -18,6 +18,9 @@ export class Index {
 			this.getRouteConfig("navbar"),
 			this.getRouteConfig("pagination"),
 			this.getRouteConfig("progress"),
+			this.getRouteConfig("collapsible"),
+			this.getRouteConfig("dialogs"),
+			this.getRouteConfig("dropdown"),
 		];
 		config.map(routes);
 		this.router = router;
