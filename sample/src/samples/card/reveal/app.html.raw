@@ -1,0 +1,30 @@
+<template>
+	<div class="row">
+		<md-card class="col s3" md-title="Card title" md-size.bind="size" md-reveal="true">
+			<div>
+				This card has reveal true and no image
+			</div>
+			<div slot="reveal-text">
+				Reveal Text
+			</div>
+		</md-card>
+		<md-card class="col s3" md-title="Card title" md-size.bind="size" md-reveal="true" md-image="images/card-sample-1.jpg">
+			<div>
+				This card has reveal true and image
+			</div>
+			<div slot="reveal-text">
+				Reveal Text
+			</div>
+		</md-card>
+		<md-card class="col s3" md-title="Card title" md-size.bind="size" md-image="images/card-sample-1.jpg">
+			<div>
+				This card has reveal false and image.
+			</div>
+		</md-card>
+		<md-card class="col s3" md-title="Card title" md-size.bind="size">
+			<div>
+				This is simple card
+			</div>
+		</md-card>
+	</div>
+</template>

@@ -7,10 +7,19 @@ export class Index {
 
 	configureRouter(config: RouterConfiguration, router: Router) {
 		const routes: RouteConfig[] = [
-			{name: "badge", route: "badge", moduleId: "./badge/index", nav: true, title: "Badge" },
-			{name: "button", route: "button", moduleId: "./button/index", nav: true, title: "Button" }
+			this.getRouteConfig("badge"),
+			this.getRouteConfig("button"),
+			this.getRouteConfig("breadcrumbs"),
+			this.getRouteConfig("card"),
+			this.getRouteConfig("chip"),
 		];
 		config.map(routes);
 		this.router = router;
 	}
+
+	getRouteConfig(name: string): RouteConfig {
+		let title = name.replace(/-/g, " ");
+		return { route: name, name, moduleId: `./${name}/index`, nav: true, title: title.charAt(0).toUpperCase() + title.slice(1).toLowerCase() };
+	}
+
 }

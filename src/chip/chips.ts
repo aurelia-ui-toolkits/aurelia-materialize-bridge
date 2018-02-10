@@ -17,7 +17,7 @@ export class MdChips {
 	log: Logger;
 
 	@bindable
-	autocompleteOptions: any = {};
+	autocompleteData: any = {};
 
 	@bindable({ defaultBindingMode: bindingMode.twoWay })
 	data: any[] = [];
@@ -56,7 +56,9 @@ export class MdChips {
 
 	refresh() {
 		const options = {
-			autocompleteOptions: this.autocompleteOptions,
+			autocompleteOptions: {
+				data: this.autocompleteData
+			},
 			data: this.data,
 			placeholder: this.placeholder,
 			secondaryPlaceholder: this.secondaryPlaceholder

@@ -1,0 +1,13 @@
+<template>
+	<div>
+		<md-chip md-close="false">
+			<img src="../../../../images/chips-sample-1.jpg" alt="Contact Person"> Jane Doe
+		</md-chip>
+		<md-chip md-close="true" close.trigger="logClose()">
+			<img src="../../../../images/chips-sample-1.jpg" alt="Contact Person"> Jane Doe
+		</md-chip>
+	</div>
+	<div>
+		<logger class="z-depth-1" view-model.ref="logger"></logger>
+	</div>
+</template>

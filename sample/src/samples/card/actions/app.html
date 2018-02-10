@@ -1,0 +1,37 @@
+<template>
+	<div class="row">
+		<md-card class="col s4" md-title="Card title" md-action="true">
+			<div>
+				This card has some actions.
+			</div>
+			<div slot="action">
+				<a href="#">This is a link 1</a>
+				<a href="#">This is a link 2</a>
+			</div>
+		</md-card>
+		<md-card class="col s4" md-title="Card title" md-reveal="true" md-action="true" md-sticky-action="true">
+			<div>
+				This card has reveal true and the actions are always visible (sticky).
+			</div>
+			<div slot="action">
+				<a href="#">This is a link 1</a>
+				<a href="#">This is a link 2</a>
+			</div>
+			<div slot="reveal-text">
+				Reveal Text
+			</div>
+		</md-card>
+		<md-card class="col s4" md-title="Card title" md-reveal="true" md-action="true">
+			<div>
+				This card has reveal true and the actions are visible only when the card isn't revealed.
+			</div>
+			<div slot="action">
+				<a href="#">This is a link 1</a>
+				<a href="#">This is a link 2</a>
+			</div>
+			<div slot="reveal-text">
+				Reveal Text
+			</div>
+		</md-card>
+	</div>
+</template>

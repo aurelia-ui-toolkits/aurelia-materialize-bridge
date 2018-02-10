@@ -1,0 +1,9 @@
+<template>
+	<label>chips</label>
+	<div md-chips="data.two-way: chips"></div>
+	<div repeat.for="chip of chips">
+		<p>${chip.tag}</p>
+	</div>
+	<button md-button md-waves="color: light;" click.delegate="addChip()">Add a chip</button>
+	<button md-button md-waves="color: light;" click.delegate="removeChip()">Remove last chip</button>
+</template>

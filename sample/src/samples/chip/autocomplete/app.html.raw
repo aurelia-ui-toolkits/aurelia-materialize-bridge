@@ -1,0 +1,12 @@
+<template>
+	<div md-chips="data.bind: chips; autocomplete-data.bind: autocompleteData;"></div>
+	<div>
+		<!-- chip data: ${chips|stringify} -->
+		chip data:
+		<ul>
+			<li repeat.for="chip of chips">
+        ${chip.tag}
+      </li>
+		</ul>
+	</div>
+</template>

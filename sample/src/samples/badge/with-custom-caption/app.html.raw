@@ -1,0 +1,18 @@
+<template>
+	<div>
+		<ul class="collection">
+			<li class="collection-item">Sent</li>
+			<li class="collection-item">Inbox<span md-badge="is-new: true;">3</span></li>
+			<li class="collection-item">Spam<span show.bind="spamCount > 0" class="yellow black-text" md-badge="is-new: true; caption.bind: spamCaption">${spamCount}</span></li>
+		</ul>
+	</div>
+	<div class="actions">
+		<hr /> Add/Remove some emails to/from the Spam folder:
+		<button md-button="flat: true;" md-waves click.delegate="cleanSomeSpam()">
+			<i class="material-icons">remove</i>
+		</button>
+		<button md-button="flat: true;" md-waves click.delegate="addSomeSpam()">
+			<i class="material-icons">add</i>
+		</button>
+	</div>
+</template>

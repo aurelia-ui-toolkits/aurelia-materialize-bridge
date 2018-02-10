@@ -12,17 +12,18 @@ declare var __webpack_require__: { m: any };
 export class SampleIndexBase {
 	constructor(private eventAggregator: EventAggregator, private loader: Loader, private taskQueue: TaskQueue) {
 	}
+
 	subscription: Subscription;
 
 	tabs: any[] = [];
 	mdTabs: MdTabs;
 	childRouterView: any;
 
-	attached(){
+	attached() {
 		this.subscription = this.eventAggregator.subscribe("router:navigation:complete", e => this.navigationComplete(e));
 	}
 
-	async navigationComplete(e: any) {
+	async navigationComplete(e: PipelineResult) {
 		let fragment = e.instruction.router.currentInstruction.fragment;
 		this.tabs = [];
 		let modules: string[] = Object.keys(__webpack_require__.m).filter(x => x.startsWith(fragment.substring(1)) && x.endsWith(".raw"));
@@ -62,5 +63,10 @@ export class SampleIndexBase {
 			this.subscription.dispose();
 			this.subscription = null;
 		}
+	}
+
+	getRouteConfig(name: string): RouteConfig {
+		let title = name.replace(/-/g, " ");
+		return { route: name, name, moduleId: `./${name}/app`, nav: true, title: title.charAt(0).toUpperCase() + title.slice(1).toLowerCase() };
 	}
 }

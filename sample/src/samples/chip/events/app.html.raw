@@ -1,0 +1,17 @@
+<template>
+	<div md-chips="data.bind: chips; placeholder:+tag;" change.delegate="logChange($event.detail)" selected.delegate="logSelect($event.detail)"></div>
+	<div>
+		<!-- chip data: ${chips|stringify} -->
+		chip data:
+		<ul>
+			<li repeat.for="chip of chips">
+        ${chip.tag}
+      </li>
+		</ul>
+	</div>
+	<button md-button md-waves="color: light;" click.delegate="addChip()">Add a chip</button>
+	<button md-button md-waves="color: light;" click.delegate="removeChip()">Remove last chip</button>
+	<div>
+		<logger class="z-depth-1" view-model.ref="logger"></logger>
+	</div>
+</template>
