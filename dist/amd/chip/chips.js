@@ -47,7 +47,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "../common
         }
         refresh() {
             const options = {
-                autocompleteData: this.autocompleteData,
+                autocompleteOptions: {
+                    data: this.autocompleteData
+                },
                 data: this.data,
                 placeholder: this.placeholder,
                 secondaryPlaceholder: this.secondaryPlaceholder

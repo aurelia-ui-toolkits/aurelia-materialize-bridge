@@ -47,7 +47,9 @@ let MdChips = class MdChips {
     }
     refresh() {
         const options = {
-            autocompleteData: this.autocompleteData,
+            autocompleteOptions: {
+                data: this.autocompleteData
+            },
             data: this.data,
             placeholder: this.placeholder,
             secondaryPlaceholder: this.secondaryPlaceholder

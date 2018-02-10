@@ -61,7 +61,9 @@ System.register(["aurelia-framework", "aurelia-logging", "../common/events"], fu
                 }
                 refresh() {
                     const options = {
-                        autocompleteData: this.autocompleteData,
+                        autocompleteOptions: {
+                            data: this.autocompleteData
+                        },
                         data: this.data,
                         placeholder: this.placeholder,
                         secondaryPlaceholder: this.secondaryPlaceholder
