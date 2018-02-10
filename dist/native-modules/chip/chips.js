@@ -13,7 +13,7 @@ import { fireEvent } from "../common/events";
 let MdChips = class MdChips {
     constructor(element) {
         this.element = element;
-        this.autocompleteOptions = {};
+        this.autocompleteData = {};
         this.data = [];
         this.placeholder = "";
         this.secondaryPlaceholder = "";
@@ -47,7 +47,7 @@ let MdChips = class MdChips {
     }
     refresh() {
         const options = {
-            autocompleteOptions: this.autocompleteOptions,
+            autocompleteData: this.autocompleteData,
             data: this.data,
             placeholder: this.placeholder,
             secondaryPlaceholder: this.secondaryPlaceholder
@@ -67,7 +67,7 @@ let MdChips = class MdChips {
 __decorate([
     bindable,
     __metadata("design:type", Object)
-], MdChips.prototype, "autocompleteOptions", void 0);
+], MdChips.prototype, "autocompleteData", void 0);
 __decorate([
     bindable({ defaultBindingMode: bindingMode.twoWay }),
     __metadata("design:type", Array)

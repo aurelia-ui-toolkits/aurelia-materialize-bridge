@@ -3,7 +3,7 @@ export declare class MdChips {
     private element;
     constructor(element: Element);
     log: Logger;
-    autocompleteOptions: any;
+    autocompleteData: any;
     data: any[];
     dataChanged(newValue: any[], oldValue: any[]): void;
     placeholder: string;

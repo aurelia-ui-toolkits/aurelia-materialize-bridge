@@ -13,7 +13,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "../common
     let MdChips = class MdChips {
         constructor(element) {
             this.element = element;
-            this.autocompleteOptions = {};
+            this.autocompleteData = {};
             this.data = [];
             this.placeholder = "";
             this.secondaryPlaceholder = "";
@@ -47,7 +47,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "../common
         }
         refresh() {
             const options = {
-                autocompleteOptions: this.autocompleteOptions,
+                autocompleteData: this.autocompleteData,
                 data: this.data,
                 placeholder: this.placeholder,
                 secondaryPlaceholder: this.secondaryPlaceholder
@@ -67,7 +67,7 @@ define(["require", "exports", "aurelia-framework", "aurelia-logging", "../common
     __decorate([
         aurelia_framework_1.bindable,
         __metadata("design:type", Object)
-    ], MdChips.prototype, "autocompleteOptions", void 0);
+    ], MdChips.prototype, "autocompleteData", void 0);
     __decorate([
         aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
         __metadata("design:type", Array)
