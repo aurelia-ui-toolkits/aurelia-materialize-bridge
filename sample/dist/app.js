@@ -1,5 +1,273 @@
 webpackJsonp([0],{
 
+/***/ 100:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export json */
+/* unused harmony export HttpClientConfiguration */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpClient; });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+
+
+function json(body, replacer) {
+  return JSON.stringify(body !== undefined ? body : {}, replacer);
+}
+
+var HttpClientConfiguration = function () {
+  function HttpClientConfiguration() {
+    
+
+    this.baseUrl = '';
+    this.defaults = {};
+    this.interceptors = [];
+  }
+
+  HttpClientConfiguration.prototype.withBaseUrl = function withBaseUrl(baseUrl) {
+    this.baseUrl = baseUrl;
+    return this;
+  };
+
+  HttpClientConfiguration.prototype.withDefaults = function withDefaults(defaults) {
+    this.defaults = defaults;
+    return this;
+  };
+
+  HttpClientConfiguration.prototype.withInterceptor = function withInterceptor(interceptor) {
+    this.interceptors.push(interceptor);
+    return this;
+  };
+
+  HttpClientConfiguration.prototype.useStandardConfiguration = function useStandardConfiguration() {
+    var standardConfig = { credentials: 'same-origin' };
+    Object.assign(this.defaults, standardConfig, this.defaults);
+    return this.rejectErrorResponses();
+  };
+
+  HttpClientConfiguration.prototype.rejectErrorResponses = function rejectErrorResponses() {
+    return this.withInterceptor({ response: rejectOnError });
+  };
+
+  return HttpClientConfiguration;
+}();
+
+function rejectOnError(response) {
+  if (!response.ok) {
+    throw response;
+  }
+
+  return response;
+}
+
+var HttpClient = function () {
+  function HttpClient() {
+    
+
+    this.activeRequestCount = 0;
+    this.isRequesting = false;
+    this.isConfigured = false;
+    this.baseUrl = '';
+    this.defaults = null;
+    this.interceptors = [];
+
+    if (typeof fetch === 'undefined') {
+      throw new Error('HttpClient requires a Fetch API implementation, but the current environment doesn\'t support it. You may need to load a polyfill such as https://github.com/github/fetch');
+    }
+  }
+
+  HttpClient.prototype.configure = function configure(config) {
+    var normalizedConfig = void 0;
+
+    if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object') {
+      normalizedConfig = { defaults: config };
+    } else if (typeof config === 'function') {
+      normalizedConfig = new HttpClientConfiguration();
+      normalizedConfig.baseUrl = this.baseUrl;
+      normalizedConfig.defaults = Object.assign({}, this.defaults);
+      normalizedConfig.interceptors = this.interceptors;
+
+      var c = config(normalizedConfig);
+      if (HttpClientConfiguration.prototype.isPrototypeOf(c)) {
+        normalizedConfig = c;
+      }
+    } else {
+      throw new Error('invalid config');
+    }
+
+    var defaults = normalizedConfig.defaults;
+    if (defaults && Headers.prototype.isPrototypeOf(defaults.headers)) {
+      throw new Error('Default headers must be a plain object.');
+    }
+
+    this.baseUrl = normalizedConfig.baseUrl;
+    this.defaults = defaults;
+    this.interceptors = normalizedConfig.interceptors || [];
+    this.isConfigured = true;
+
+    return this;
+  };
+
+  HttpClient.prototype.fetch = function (_fetch) {
+    function fetch(_x, _x2) {
+      return _fetch.apply(this, arguments);
+    }
+
+    fetch.toString = function () {
+      return _fetch.toString();
+    };
+
+    return fetch;
+  }(function (input, init) {
+    var _this = this;
+
+    trackRequestStart.call(this);
+
+    var request = Promise.resolve().then(function () {
+      return buildRequest.call(_this, input, init, _this.defaults);
+    });
+    var promise = processRequest(request, this.interceptors).then(function (result) {
+      var response = null;
+
+      if (Response.prototype.isPrototypeOf(result)) {
+        response = result;
+      } else if (Request.prototype.isPrototypeOf(result)) {
+        request = Promise.resolve(result);
+        response = fetch(result);
+      } else {
+        throw new Error('An invalid result was returned by the interceptor chain. Expected a Request or Response instance, but got [' + result + ']');
+      }
+
+      return request.then(function (_request) {
+        return processResponse(response, _this.interceptors, _request);
+      });
+    });
+
+    return trackRequestEndWith.call(this, promise);
+  });
+
+  return HttpClient;
+}();
+
+var absoluteUrlRegexp = /^([a-z][a-z0-9+\-.]*:)?\/\//i;
+
+function trackRequestStart() {
+  this.isRequesting = !! ++this.activeRequestCount;
+}
+
+function trackRequestEnd() {
+  this.isRequesting = !! --this.activeRequestCount;
+}
+
+function trackRequestEndWith(promise) {
+  var handle = trackRequestEnd.bind(this);
+  promise.then(handle, handle);
+  return promise;
+}
+
+function parseHeaderValues(headers) {
+  var parsedHeaders = {};
+  for (var name in headers || {}) {
+    if (headers.hasOwnProperty(name)) {
+      parsedHeaders[name] = typeof headers[name] === 'function' ? headers[name]() : headers[name];
+    }
+  }
+  return parsedHeaders;
+}
+
+function buildRequest(input, init) {
+  var defaults = this.defaults || {};
+  var request = void 0;
+  var body = void 0;
+  var requestContentType = void 0;
+
+  var parsedDefaultHeaders = parseHeaderValues(defaults.headers);
+  if (Request.prototype.isPrototypeOf(input)) {
+    request = input;
+    requestContentType = new Headers(request.headers).get('Content-Type');
+  } else {
+    init || (init = {});
+    body = init.body;
+    var bodyObj = body ? { body: body } : null;
+    var requestInit = Object.assign({}, defaults, { headers: {} }, init, bodyObj);
+    requestContentType = new Headers(requestInit.headers).get('Content-Type');
+    request = new Request(getRequestUrl(this.baseUrl, input), requestInit);
+  }
+  if (!requestContentType) {
+    if (new Headers(parsedDefaultHeaders).has('content-type')) {
+      request.headers.set('Content-Type', new Headers(parsedDefaultHeaders).get('content-type'));
+    } else if (body && isJSON(body)) {
+      request.headers.set('Content-Type', 'application/json');
+    }
+  }
+  setDefaultHeaders(request.headers, parsedDefaultHeaders);
+  if (body && Blob.prototype.isPrototypeOf(body) && body.type) {
+    request.headers.set('Content-Type', body.type);
+  }
+  return request;
+}
+
+function getRequestUrl(baseUrl, url) {
+  if (absoluteUrlRegexp.test(url)) {
+    return url;
+  }
+
+  return (baseUrl || '') + url;
+}
+
+function setDefaultHeaders(headers, defaultHeaders) {
+  for (var name in defaultHeaders || {}) {
+    if (defaultHeaders.hasOwnProperty(name) && !headers.has(name)) {
+      headers.set(name, defaultHeaders[name]);
+    }
+  }
+}
+
+function processRequest(request, interceptors) {
+  return applyInterceptors(request, interceptors, 'request', 'requestError');
+}
+
+function processResponse(response, interceptors, request) {
+  return applyInterceptors(response, interceptors, 'response', 'responseError', request);
+}
+
+function applyInterceptors(input, interceptors, successName, errorName) {
+  for (var _len = arguments.length, interceptorArgs = Array(_len > 4 ? _len - 4 : 0), _key = 4; _key < _len; _key++) {
+    interceptorArgs[_key - 4] = arguments[_key];
+  }
+
+  return (interceptors || []).reduce(function (chain, interceptor) {
+    var successHandler = interceptor[successName];
+    var errorHandler = interceptor[errorName];
+
+    return chain.then(successHandler && function (value) {
+      return successHandler.call.apply(successHandler, [interceptor, value].concat(interceptorArgs));
+    } || identity, errorHandler && function (reason) {
+      return errorHandler.call.apply(errorHandler, [interceptor, reason].concat(interceptorArgs));
+    } || thrower);
+  }, Promise.resolve(input));
+}
+
+function isJSON(str) {
+  try {
+    JSON.parse(str);
+  } catch (err) {
+    return false;
+  }
+
+  return true;
+}
+
+function identity(x) {
+  return x;
+}
+
+function thrower(x) {
+  throw x;
+}
+
+/***/ }),
+
 /***/ 27:
 /***/ (function(module, exports) {
 
@@ -32,8 +300,8 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACN
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(58);
-__webpack_require__(100);
-__webpack_require__(103);
+__webpack_require__(101);
+__webpack_require__(104);
 module.exports = __webpack_require__(41);
 
 
@@ -396,7 +664,7 @@ var NavBar = /** @class */ (function () {
 /***/ "nav-bar.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\n  <require from=\"./route-highlight\"></require>\n\n  <md-navbar md-fixed=\"true\">\n    <a md-sidenav-collapse=\"ref.bind: sideNav;\" class=\"left hide-on-large-only\" style=\"cursor: pointer; padding: 0 10px;\"><i class=\"material-icons\">menu</i></a>\n    <a href=\"#/samples/navbar\" class=\"brand-logo right\"><span class=\"flow-text\">${router.title}</span></a>\n    <ul id=\"nav-mobile\" class=\"left hide-on-med-and-down\">\n      <li md-waves route-highlight=\"routes: about\">\n        <a route-href=\"route: about\">About</a>\n      </li>\n\n      <!-- <li md-waves route-highlight=\"routes: installation\">\n        <a route-href=\"route: installation\">Installation</a>\n      </li> -->\n\n      <li md-waves route-highlight=\"routes: project-status\">\n        <a route-href=\"route: project-status\">Components</a>\n      </li>\n\n      <li md-waves>\n        <a href=\"https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/installation.html\" target=\"_blank\">Installation</a>\n      </li>\n\n<!--   <li route-highlight=\"routes: theme\">\n        <a route-href=\"route: theme\">Theme</a>\n      </li> -->\n\n      <!-- <li md-waves route-highlight=\"routes: help\">\n        <a route-href=\"route: help;\">Docs</a>\n      </li> -->\n\n      <li md-waves>\n        <a href=\"https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/\" target=\"_blank\">Docs</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: support\">\n        <a route-href=\"route: support;\">Support</a>\n      </li>\n\n      <li md-waves>\n        <a href=\"https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge\" target=\"_blank\">GitHub</a>\n      </li>\n    </ul>\n  </md-navbar>\n  <md-sidenav md-close-on-click=\"true\" view-model.ref=\"sideNav\">\n    <ul>\n      <li md-waves route-highlight=\"routes: about\">\n        <a route-href=\"route: about\">About</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: installation\">\n        <a href=\"https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/installation.html\" target=\"_blank\">Installation</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: project-status\">\n        <a route-href=\"route: project-status\">Components</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: help\">\n        <a route-href=\"route: help;\">Docs</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: support\">\n        <a route-href=\"route: support;\">Support</a>\n      </li>\n\n      <li md-waves>\n        <a href=\"https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge\" target=\"_blank\">GitHub</a>\n      </li>\n    </ul>\n  </md-sidenav>\n</template>\n";
+module.exports = "<template>\n  <require from=\"./route-highlight\"></require>\n\n  <md-navbar md-fixed=\"true\">\n    <a md-sidenav-collapse=\"ref.bind: sideNav;\" class=\"left hide-on-large-only\" style=\"cursor: pointer; padding: 0 10px;\"><i class=\"material-icons\">menu</i></a>\n    <a href=\"#/samples/navbar\" class=\"brand-logo right\"><span class=\"flow-text\">${router.title}</span></a>\n    <ul id=\"nav-mobile\" class=\"left hide-on-med-and-down\">\n      <li md-waves route-highlight=\"routes: about\">\n        <a route-href=\"route: about\">About</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: project-status\">\n        <a route-href=\"route: project-status\">Components</a>\n      </li>\n\n      <li md-waves>\n        <a href=\"https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/installation.html\" target=\"_blank\">Installation</a>\n      </li>\n\n      <li md-waves>\n        <a href=\"https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/\" target=\"_blank\">Docs</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: support\">\n        <a route-href=\"route: support;\">Support</a>\n      </li>\n\n      <li md-waves>\n        <a href=\"https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge\" target=\"_blank\">GitHub</a>\n      </li>\n    </ul>\n  </md-navbar>\n  <md-sidenav md-close-on-click=\"true\" view-model.ref=\"sideNav\">\n    <ul>\n      <li md-waves route-highlight=\"routes: about\">\n        <a route-href=\"route: about\">About</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: project-status\">\n        <a route-href=\"route: project-status\">Components</a>\n      </li>\n\t\t\t\n      <li md-waves route-highlight=\"routes: installation\">\n        <a href=\"https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/installation.html\" target=\"_blank\">Installation</a>\n      </li>\n\n      <li md-waves>\n        <a href=\"https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/\" target=\"_blank\">Docs</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: support\">\n        <a route-href=\"route: support;\">Support</a>\n      </li>\n\n      <li md-waves>\n        <a href=\"https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge\" target=\"_blank\">GitHub</a>\n      </li>\n    </ul>\n  </md-sidenav>\n</template>\n";
 
 /***/ }),
 
@@ -610,6 +878,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -633,10 +902,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -651,7 +921,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -801,6 +1071,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -824,10 +1095,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -841,7 +1113,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -1055,6 +1327,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1078,10 +1351,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -1097,7 +1371,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -1271,6 +1545,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1294,10 +1569,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -1315,7 +1591,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -1686,6 +1962,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1709,10 +1986,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -1728,7 +2006,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -1831,6 +2109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1854,10 +2133,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -1873,7 +2153,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -2112,6 +2392,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2135,10 +2416,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -2155,7 +2437,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -2370,6 +2652,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2393,10 +2676,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -2409,7 +2693,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -2435,6 +2719,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2458,10 +2743,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -2476,7 +2762,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -2704,6 +2990,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2727,10 +3014,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -2745,7 +3033,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -2926,6 +3214,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2949,10 +3238,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -2965,7 +3255,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -3301,6 +3591,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3324,10 +3615,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -3346,7 +3638,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -3584,6 +3876,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3607,10 +3900,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -3625,7 +3919,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -3774,6 +4068,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(100);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3797,10 +4092,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var Index = /** @class */ (function (_super) {
     __extends(Index, _super);
-    function Index(eventAggregator, loader, taskQueue) {
-        return _super.call(this, eventAggregator, loader, taskQueue) || this;
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
     }
     Index.prototype.configureRouter = function (config, router) {
         var routes = [
@@ -3814,7 +4110,7 @@ var Index = /** @class */ (function (_super) {
     Index = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -3839,6 +4135,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_fetch_client__ = __webpack_require__(100);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3886,11 +4183,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var SampleIndexBase = /** @class */ (function () {
-    function SampleIndexBase(eventAggregator, loader, taskQueue) {
+    function SampleIndexBase(eventAggregator, loader, taskQueue, http) {
         this.eventAggregator = eventAggregator;
         this.loader = loader;
         this.taskQueue = taskQueue;
+        this.http = http;
         this.tabs = [];
     }
     SampleIndexBase.prototype.attached = function () {
@@ -3963,10 +4262,35 @@ var SampleIndexBase = /** @class */ (function () {
         var title = name.replace(/-/g, " ");
         return { route: name, name: name, moduleId: "./" + name + "/app", nav: true, title: title.charAt(0).toUpperCase() + title.slice(1).toLowerCase() };
     };
+    SampleIndexBase.prototype.runGist = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var gist, response, j;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        gist = {
+                            public: true,
+                            files: {}
+                        };
+                        this.tabs.forEach(function (x) {
+                            gist.files[x.title] = { content: x.content };
+                        });
+                        return [4 /*yield*/, this.http.fetch("https://api.github.com/gists", { method: "post", body: JSON.stringify(gist), headers: { "Content-Type": "application/json" } })];
+                    case 1:
+                        response = _a.sent();
+                        return [4 /*yield*/, response.json()];
+                    case 2:
+                        j = _a.sent();
+                        window.open("https://gist.run/?id=" + j.id);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     SampleIndexBase = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_3_aurelia_fetch_client__["a" /* HttpClient */]])
     ], SampleIndexBase);
     return SampleIndexBase;
 }());
@@ -3993,7 +4317,7 @@ exports.push([module.i, ".sample-template md-card {\n  position: relative;\n}\n\
 /***/ "samples/sample-template.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<require from=\"./sample-template.css\"></require>\r\n\t<section>\r\n\t\t<h4>${title}</h4>\r\n\t\t<div class=\"row sample-template\">\r\n\t\t\t<div class=\"col s12 m4 l2\">\r\n\t\t\t\t<md-well router.bind=\"router\"></md-well>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col s12 m8 l8\">\r\n\t\t\t\t<md-card md-title.bind=\"sample.title\">\r\n\t\t\t\t\t<a class=\"md-catalog__play-button\" md-button=\"flat: true;\" md-waves href=\"https://gist.run/?id=${sample.gist}\" show.bind=\"sample.gist\"\r\n\t\t\t\t\t target=\"_blank\">\r\n\t\t\t\t\t\t<i class=\"left material-icons\">play_arrow</i>play\r\n\t\t\t\t\t</a>\r\n\t\t\t\t\t<div ref=\"sampleTarget\">\r\n\t\t\t\t\t\t<router-view></router-view>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</md-card>\r\n\t\t\t\t<ul show.bind=\"tabs.length\" md-tabs class=\"z-depth-1\" md-tabs.ref=\"mdTabs\">\r\n\t\t\t\t\t<li repeat.for=\"tab of tabs\">\r\n\t\t\t\t\t\t<a href.bind=\"'#tab' + $index\">${tab.title}</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t<div repeat.for=\"tab of tabs\" class=\"z-depth-1\" id.bind=\"'tab' + $index\">\r\n\t\t\t\t\t<au-code show.bind=\"tab.language != 'markdown'\" language.bind=\"tab.language\" text.bind=\"tab.content\"></au-code>\r\n\t\t\t\t\t<au-markdown show.bind=\"tab.language == 'markdown'\" text.bind=\"tab.content\"></au-markdown>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</section>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<require from=\"./sample-template.css\"></require>\r\n\t<section>\r\n\t\t<h4>${title}</h4>\r\n\t\t<div class=\"row sample-template\">\r\n\t\t\t<div class=\"col s12 m4 l2\">\r\n\t\t\t\t<md-well router.bind=\"router\"></md-well>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col s12 m8 l8\">\r\n\t\t\t\t<md-card md-title.bind=\"sample.title\">\r\n\t\t\t\t\t<a class=\"md-catalog__play-button\" md-button=\"flat: true;\" md-waves click.delegate=\"runGist()\" href=\"#\">\r\n\t\t\t\t\t\t<i class=\"left material-icons\">play_arrow</i>play\r\n\t\t\t\t\t</a>\r\n\t\t\t\t\t<div ref=\"sampleTarget\">\r\n\t\t\t\t\t\t<router-view></router-view>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</md-card>\r\n\t\t\t\t<ul show.bind=\"tabs.length\" md-tabs class=\"z-depth-1\" md-tabs.ref=\"mdTabs\">\r\n\t\t\t\t\t<li repeat.for=\"tab of tabs\">\r\n\t\t\t\t\t\t<a href.bind=\"'#tab' + $index\">${tab.title}</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t<div repeat.for=\"tab of tabs\" class=\"z-depth-1\" id.bind=\"'tab' + $index\">\r\n\t\t\t\t\t<au-code show.bind=\"tab.language != 'markdown'\" language.bind=\"tab.language\" text.bind=\"tab.content\"></au-code>\r\n\t\t\t\t\t<au-markdown show.bind=\"tab.language == 'markdown'\" text.bind=\"tab.content\"></au-markdown>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</section>\r\n</template>\r\n";
 
 /***/ }),
 

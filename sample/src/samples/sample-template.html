@@ -8,8 +8,7 @@
 			</div>
 			<div class="col s12 m8 l8">
 				<md-card md-title.bind="sample.title">
-					<a class="md-catalog__play-button" md-button="flat: true;" md-waves href="https://gist.run/?id=${sample.gist}" show.bind="sample.gist"
-					 target="_blank">
+					<a class="md-catalog__play-button" md-button="flat: true;" md-waves click.delegate="runGist()" href="#">
 						<i class="left material-icons">play_arrow</i>play
 					</a>
 					<div ref="sampleTarget">

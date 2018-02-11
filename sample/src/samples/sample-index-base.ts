@@ -4,18 +4,19 @@ import { Subscription, EventAggregator } from "aurelia-event-aggregator";
 import { Loader, useView, TaskQueue } from "aurelia-framework";
 import { MdTabs } from "aurelia-materialize-bridge";
 import { RouterView } from "aurelia-templating-router";
+import { HttpClient } from "aurelia-fetch-client";
 
 declare var __webpack_require__: { m: any };
 
 @useView("../sample-template.html")
 @autoinject
 export class SampleIndexBase {
-	constructor(private eventAggregator: EventAggregator, private loader: Loader, private taskQueue: TaskQueue) {
+	constructor(private eventAggregator: EventAggregator, private loader: Loader, private taskQueue: TaskQueue, private http: HttpClient) {
 	}
 
 	subscription: Subscription;
 
-	tabs: any[] = [];
+	tabs: Array<{ title: string, language: string, content: string, [x: string]: any; }> = [];
 	mdTabs: MdTabs;
 	childRouterView: any;
 
@@ -68,5 +69,18 @@ export class SampleIndexBase {
 	getRouteConfig(name: string): RouteConfig {
 		let title = name.replace(/-/g, " ");
 		return { route: name, name, moduleId: `./${name}/app`, nav: true, title: title.charAt(0).toUpperCase() + title.slice(1).toLowerCase() };
+	}
+
+	async runGist() {
+		let gist = {
+			public: true,
+			files: {}
+		};
+		this.tabs.forEach(x => {
+			gist.files[x.title] = { content: x.content };
+		});
+		let response = await this.http.fetch("https://api.github.com/gists", { method: "post", body: JSON.stringify(gist), headers: { "Content-Type": "application/json" } });
+		let j = await response.json();
+		window.open(`https://gist.run/?id=${j.id}`);
 	}
 }

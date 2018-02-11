@@ -3,12 +3,13 @@ import { Router, RouterConfiguration, RouteConfig } from "aurelia-router";
 import { EventAggregator } from "aurelia-event-aggregator";
 import { Loader, useView, TaskQueue } from "aurelia-framework";
 import { SampleIndexBase } from "../sample-index-base";
+import { HttpClient } from "aurelia-fetch-client";
 
 @useView("../sample-template.html")
 @autoinject
 export class Index extends SampleIndexBase {
-	constructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue) {
-		super(eventAggregator, loader, taskQueue);
+	constructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {
+		super(eventAggregator, loader, taskQueue, http);
 	}
 
 	router: Router;

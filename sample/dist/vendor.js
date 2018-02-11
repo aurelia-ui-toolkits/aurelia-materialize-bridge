@@ -11512,7 +11512,7 @@ function filterFlushStack(stack) {
 
 /***/ }),
 
-/***/ 100:
+/***/ 101:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11544,7 +11544,7 @@ var Loader;
 
 Object.defineProperty(__WEBPACK_IMPORTED_MODULE_0_aurelia_pal__["d" /* PLATFORM */], "Loader", {
   get: function() {
-    return Loader || (Loader = __webpack_require__(101).WebpackLoader);
+    return Loader || (Loader = __webpack_require__(102).WebpackLoader);
   },
   set: function(value) {
     Loader = value;
@@ -11554,7 +11554,7 @@ Object.defineProperty(__WEBPACK_IMPORTED_MODULE_0_aurelia_pal__["d" /* PLATFORM 
 
 /***/ }),
 
-/***/ 101:
+/***/ 102:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11880,11 +11880,11 @@ var WebpackLoader = (function (_super) {
 
 __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["d" /* PLATFORM */].Loader = WebpackLoader;
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(102)(module)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(103)(module)))
 
 /***/ }),
 
-/***/ 102:
+/***/ 103:
 /***/ (function(module, exports) {
 
 module.exports = function(originalModule) {
@@ -11915,19 +11915,19 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
-/***/ 103:
+/***/ 104:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 // This file can be required in Browserify and Node.js for automatic polyfill
 // To use it:  require('es6-promise/auto');
 
-module.exports = __webpack_require__(104).polyfill();
+module.exports = __webpack_require__(105).polyfill();
 
 
 /***/ }),
 
-/***/ 104:
+/***/ 105:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process, global) {/*!
@@ -55248,6 +55248,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__scrollfire_scrollfire_patch__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_polyfills__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__exports__ = __webpack_require__(88);
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ScrollfirePatch", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["_6"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdAutoComplete", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["g"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdBadge", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["h"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdBox", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["i"]; });
@@ -55293,7 +55294,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdPushpin", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["O"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdRadio", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["P"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdRange", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["Q"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ScrollfirePatch", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["_6"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollfireTarget", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["T"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollfire", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["S"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollSpy", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["R"]; });
