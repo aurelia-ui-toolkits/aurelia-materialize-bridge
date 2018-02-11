@@ -19,7 +19,6 @@ export async function configure(aurelia: Aurelia) {
 	aurelia.use.globalResources("shared/au-markdown");
 	aurelia.use.globalResources("shared/logger");
 	aurelia.use.globalResources("shared/au-code");
-	aurelia.use.globalResources("shared/sampleValueConverters");
 
 	await aurelia.start();
 	await new Promise(resolve => $(document).ready(() => resolve()));

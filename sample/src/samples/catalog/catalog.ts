@@ -2,13 +2,12 @@ import { autoinject } from "aurelia-dependency-injection";
 import { Router, RouteConfig } from "aurelia-router";
 
 @autoinject
-export class Menu {
-	constructor(private element: Element, private router: Router) { }
+export class Controls {
+	constructor(private router: Router) { }
 
 	categories: Array<{ title: string, routes: RouteConfig[] }> = [];
 
 	attached() {
-		this.categories = [];
 		this.router.routes.forEach(r => {
 			if (!r.category) {
 				return;

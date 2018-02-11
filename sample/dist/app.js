@@ -143,10 +143,7 @@ var App = /** @class */ (function () {
         config.title = "Aurelia Materialize Components";
         config.map([
             { name: "about", route: ["", "about"], moduleId: "about/about", title: "About" },
-            { name: "installation", route: "installation", moduleId: "installation/installation", title: "Installation" },
-            { name: "project-status", route: "project-status", moduleId: "project-status/controls", title: "Components" },
-            { name: "help", route: "help", moduleId: "help/help", title: "Help" },
-            // { name: 'docs',             route: 'help/docs/:category/:file',  moduleId: 'help/help',                   title: 'Help' },
+            { name: "project-status", route: "project-status", title: "Components", redirect: "samples/catalog" },
             { name: "support", route: "help/support", moduleId: "help/support", title: "Support" },
             { name: "samples", route: "samples", moduleId: "./samples/index", title: "Samples" }
         ]);
@@ -184,458 +181,6 @@ module.exports = "<template bindable=\"primaryColor, accentColor, errorColor\">\
 
 /***/ }),
 
-/***/ "help/doc":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Doc", function() { return Doc; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_router__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__registry_json__ = __webpack_require__("help/registry.json");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__registry_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__registry_json__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_jquery__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var Doc = /** @class */ (function () {
-    function Doc(router, ea) {
-        var _this = this;
-        this.router = router;
-        this.ea = ea;
-        this.subscriptions = [];
-        this.registry = __WEBPACK_IMPORTED_MODULE_3__registry_json___default.a;
-        this.categories = [];
-        this.subscriptions.push(ea.subscribe("router:navigation:complete", function (e) { return _this.routeChanged(e); }));
-        // go through all the categories in the json
-        // and convert it into an array that allows for easier looping
-        for (var _i = 0, _a = Object.keys(this.registry); _i < _a.length; _i++) {
-            var categoryKey = _a[_i];
-            var category = {
-                name: categoryKey,
-                files: this.registry[categoryKey]
-            };
-            // if (category.name.includes('_') || category.files.some(i => i.name.includes('_'))) {
-            if (category.name.indexOf("_") > -1 || category.files.some(function (i) { return i.name.indexOf("_") > -1; })) {
-                throw new Error("Documentation categories or file names can\t contain underscore (_)");
-            }
-            this.categories.push(category);
-        }
-    }
-    // - adds the page to route params
-    // - sets the file path as activeDoc
-    // - selects the item in panelbar
-    Doc.prototype.switchPage = function (fileName, categoryName) {
-        var file = this.getFileByName(fileName, categoryName);
-        if (file) {
-            this.activeDoc = file.path;
-            this.selectInPanelBar(fileName, categoryName);
-        }
-    };
-    Doc.prototype.routeChanged = function (e) {
-        this.params = Object.assign({}, e.instruction.params, e.instruction.queryParams);
-        // retrieve categoryname and filename from route params
-        var file = this.params.file;
-        var cat = this.params.category;
-        // if a file and category name is in the route, switch to that page
-        if (file && cat) {
-            this.switchPage(file, cat);
-        }
-    };
-    Doc.prototype.routeToPage = function (fileName, categoryName) {
-        this.router.navigateToRoute("docs", {
-            category: this.encode(categoryName),
-            file: this.encode(fileName)
-        });
-    };
-    Doc.prototype.getFileByName = function (fileName, categoryName) {
-        var _this = this;
-        var cat = this.categories.find(function (i) { return _this.encode(i.name) === categoryName.toLowerCase(); });
-        if (cat) {
-            var file = cat.files.find(function (i) { return _this.encode(i.name) === fileName.toLowerCase(); });
-            if (file) {
-                return file;
-            }
-        }
-    };
-    // loop through all category items in the panelbar
-    // and their file items
-    // and expand the category by name and select the file by name
-    Doc.prototype.selectInPanelBar = function (fileName, categoryName) {
-        var _this = this;
-        var categoryLis = $(this.panelBarDiv).children("li");
-        $(categoryLis).each(function (index, element) {
-            var $categoryCandidate = $("div.collapsible-header", element);
-            var categoryText = $("span", $categoryCandidate).text().trim().toLowerCase();
-            if (_this.encode(categoryText) === categoryName) {
-                // this.panelBar.expand($(element));
-                $categoryCandidate.addClass("active");
-                // DOING:0 reinitialize collapsible since md-collapsible is already
-                //        initialized and Materialize has no method to just expand
-                // $categoryCandidate.parents('[md-collapsible]').collapsible();
-                _this.panelBarViewModel.refresh();
-                var fileLis = $(element).find("ul").children("li");
-                $(fileLis).each(function (i, elem) {
-                    var fileText = $(elem).children("span").text().trim().toLowerCase();
-                    if (_this.encode(fileText) === fileName) {
-                        // this.panelBar.select($(elem));
-                        $("li", _this.panelBarDiv).removeClass("primary");
-                        $(elem).addClass("primary");
-                    }
-                });
-            }
-        });
-    };
-    // scroll to top after a doc has been loaded
-    // if a anchor is in the route params, scroll to that instead
-    Doc.prototype.scrollToTarget = function () {
-        var _this = this;
-        if (this.params.anchor) {
-            setTimeout(function () {
-                var container = __WEBPACK_IMPORTED_MODULE_4_jquery__(_this.markdownCol);
-                var scrollTo = __WEBPACK_IMPORTED_MODULE_4_jquery__("#" + _this.params.anchor, _this.markdownCol);
-                container.animate({
-                    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-                });
-            }, 200);
-        }
-        else {
-            __WEBPACK_IMPORTED_MODULE_4_jquery__(this.markdownCol).animate({ scrollTop: 0 });
-        }
-    };
-    Doc.prototype.encode = function (s) {
-        return s.replace(/'|!|@|#|$|%|\^|&|\*|\(|\)|\+|:|"|\?|>|</g, "").replace(/\s/g, "_").toLowerCase();
-    };
-    Doc.prototype.detached = function () {
-        this.subscriptions.forEach(function (i) { return i.dispose(); });
-    };
-    Doc = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__["a" /* EventAggregator */]])
-    ], Doc);
-    return Doc;
-}());
-
-
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
-
-/***/ }),
-
-/***/ "help/doc.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)(false);
-// imports
-
-
-// module
-exports.push([module.i, "doc .collapsible-header {\n  line-height: 44px;\n  height: 44px;\n}\n\ndoc .collapsible-body li {\n  line-height: 44px;\n  height: 44px;\n  cursor: pointer;\n  padding: 0 10px;\n  display: block;\n}\n\ndoc .panel-bar {\n  /*margin-top: 20px;*/\n}\n\n.left-panel {\n  /*float: left;*/\n  height: 100%;\n  overflow: auto;\n}\n\n.right-panel {\n  /*float: right;*/\n  height: 100%;\n  overflow: auto;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "help/doc.html":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<template>\n  <require from=\"./doc.css\"></require>\n\n  <div class=\"row\">\n    <div class=\"left-panel col s12 m3\">\n      <ul class=\"panel-bar z-depth-1\" ref=\"panelBarDiv\" class=\"help-docs collapsible\" md-collapsible=\"accordion: true;\" md-collapsible.ref=\"panelBarViewModel\">\n        <li repeat.for=\"category of categories\">\n          <div md-waves=\"color: primary;\" class=\"collapsible-header\">\n            <span>${category.name}</span>\n            <i class=\"material-icons right\">arrow_drop_down</i>\n          </div>\n          <div class=\"collapsible-body\">\n            <ul>\n              <li md-waves repeat.for=\"file of category.files\" click.delegate=\"routeToPage(file.name, category.name)\">\n                <span>${file.name}</span>\n              </li>\n            </ul>\n          </div>\n        </li>\n      </ul>\n    </div>\n    <div class=\"right-panel col s12 m9 z-depth-1\" ref=\"markdownCol\">\n      <au-markdown url.bind=\"activeDoc\" loaded.delegate=\"scrollToTarget()\">\n      </au-markdown>\n    </div>\n\n  </div>\n</template>\n";
-
-/***/ }),
-
-/***/ "help/docs/about-aurelia/features.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/about-materialize/integrated-with-aurelia.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/about-materialize/why-choose-materialize.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/about-this-application/color-switcher.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/about-this-application/components-catalog.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/about-this-application/installation.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/about-this-application/internal-structure.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/about-this-application/introduction.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/about-this-application/navigation.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/about-this-application/project-status.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/app-developers-tutorials/button.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/app-developers-tutorials/collapsible.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/app-developers-tutorials/introduction.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/app-developers-tutorials/next-actions.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/app-developers-tutorials/select.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/app-developers-tutorials/setup.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/app-developers-tutorials/slider.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-notes/babel-dts-generator.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-notes/bindables.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-notes/bridge-utilities.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-notes/bundling.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-notes/html-api-of-kendo-grid.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-notes/introduction.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-notes/template-compilation.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-tutorials/button.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-tutorials/collapsible.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-tutorials/introduction.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-tutorials/next-actions.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-tutorials/select.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-tutorials/setup.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/bridge-developers-tutorials/slider.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/docs/lorem.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "help/help":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Help", function() { return Help; });
-// import { computedFrom } from 'aurelia-binding';
-var Help = /** @class */ (function () {
-    function Help() {
-    }
-    Help.prototype.scrollToTop = function () {
-        // window.scrollTo(0, 0);
-        $("html, body").animate({ scrollTop: 0 });
-    };
-    // @computedFrom('document.body.scrollTop')
-    Help.prototype.showScrollFAB = function () {
-        // return document.body.scrollTop > 200;
-        return true;
-    };
-    return Help;
-}());
-
-
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
-
-/***/ }),
-
-/***/ "help/help.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)(false);
-// imports
-
-
-// module
-exports.push([module.i, ".tabs a {\n\ttext-decoration: none;\n}\n\n.help-viewer-container {\n\tpadding: 0 5px;\n}\n\n#doc {\n\tmargin-top: 10px;\n}\n\n#support {\n\tpadding: 10px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "help/help.html":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<template>\n  <require from=\"./help.css\"></require>\n  <require from=\"./doc\"></require>\n\n  <section>\n    <iframe src=\"https://www.gitbook.com/read/book/aurelia-ui-toolkits/materialize-bridge-docs\" width=\"96%\" height=\"780px\"></iframe>\n    <!-- <h4>Aurelia-Materialize Components Catalog Help</h4>\n    <div class=\"row\">\n      <div class=\"col s12\">\n\n        <div class=\"help-viewer-container\">\n          <ul md-tabs class=\"tabs z-depth-1\" ref=\"tabs\">\n              <li md-waves=\"color: primary;\" class=\"tab\"><a class=\"active\" href=\"#doc\">Components Docs</a></li>\n              <li md-waves=\"color: primary;\" class=\"tab\"><a href=\"#support\">Support</a></li>\n          </ul>\n\n          <div id=\"doc\" class=\"z-depth-1\">\n            <doc></doc>\n          </div>\n          <div id=\"support\" class=\"z-depth-1\">\n            <h4>Gitter</h4>\n            <p>Do you need some help? We can help you out in our Gitter room.</p>\n            <a href=\"https://gitter.im/aurelia-ui-toolkits/aurelia-materialize-bridge?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge\" target=\"_blank\">\n              <img src=\"https://camo.githubusercontent.com/da2edb525cde1455a622c58c0effc3a90b9a181c/68747470733a2f2f6261646765732e6769747465722e696d2f4a6f696e253230436861742e737667\" alt=\"Join the chat\" data-canonical-src=\"https://badges.gitter.im/Join%20Chat.svg\" style=\"max-width:100%;\">\n            </a>\n\n            <h4>Github</h4>\n            We also monitor <a href=\"https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues\" target=\"_blank\">issues</a> on Github.\n          </div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"fixed-action-btn\" show.bind=\"showScrollFAB()\" style=\"bottom: 45px; right: 24px;\">\n      <a class=\"btn-floating btn-large accent\" click.delegate=\"scrollToTop()\"><i class=\"material-icons\">keyboard_arrow_up</i></a>\n    </div> -->\n  </section>\n</template>\n";
-
-/***/ }),
-
-/***/ "help/registry.json":
-/***/ (function(module, exports) {
-
-module.exports = {"About this application":[{"name":"1. Introduction","path":"help/docs/about-this-application/introduction.md"},{"name":"2. Navigation guide","path":"help/docs/about-this-application/navigation.md"},{"name":"3. Components catalog","path":"help/docs/about-this-application/components-catalog.md"},{"name":"4. Internal structure","path":"help/docs/about-this-application/internal-structure.md"},{"name":"5. Installation","path":"help/docs/about-this-application/installation.md"},{"name":"6. Project status","path":"help/docs/about-this-application/project-status.md"},{"name":"7. Color switcher","path":"help/docs/about-this-application/color-switcher.md"}],"About Aurelia":[{"name":"1. Key features","path":"help/docs/about-aurelia/features.md"}],"About Materialize":[{"name":"1. Integrated with Aurelia","path":"help/docs/about-materialize/integrated-with-aurelia.md"},{"name":"2. Why Choose Materialize","path":"help/docs/about-materialize/why-choose-materialize.md"}],"App developers tutorials":[{"name":"1. Introduction","path":"help/docs/app-developers-tutorials/introduction.md"},{"name":"2. Setup","path":"help/docs/app-developers-tutorials/setup.md"},{"name":"3. Select component","path":"help/docs/app-developers-tutorials/select.md"},{"name":"4. Button component","path":"help/docs/app-developers-tutorials/button.md"},{"name":"5. Slider component","path":"help/docs/app-developers-tutorials/slider.md"},{"name":"6. Collapsible component","path":"help/docs/app-developers-tutorials/collapsible.md"},{"name":"7. What you need to know","path":"help/docs/app-developers-tutorials/next-actions.md"}],"App developers notes":[{"name":"1. Introduction","path":"help/docs/bridge-developers-notes/introduction.md"},{"name":"2. On bundling","path":"help/docs/bridge-developers-notes/bundling.md"}]}
-
-/***/ }),
-
 /***/ "help/support":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -655,7 +200,7 @@ var Support = /** @class */ (function () {
 /***/ "help/support.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(5)(false);
 // imports
 
 
@@ -674,72 +219,13 @@ module.exports = "<template>\n  <require from=\"./support.css\"></require>\n  <d
 
 /***/ }),
 
-/***/ "installation/installation":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Installation", function() { return Installation; });
-var Installation = /** @class */ (function () {
-    function Installation() {
-    }
-    return Installation;
-}());
-
-
-
-/***/ }),
-
-/***/ "installation/installation-jspm.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "installation/installation-requirejs.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "installation/installation-webpack.md":
-/***/ (function(module, exports) {
-
-// empty (null-loader)
-
-/***/ }),
-
-/***/ "installation/installation.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(4)(false);
-// imports
-
-
-// module
-exports.push([module.i, ".installation au-markdown {\n  display: block;\n  padding: 10px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "installation/installation.html":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<template>\n\t<require from=\"./installation.css\"></require>\n  <div class=\"container\">\n    <h5>Installation instructions have moved <a href=\"https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/installation.html\" target=\"_blank\">here</a>.</h5>\n  </div>\n\t<!--<section class=\"installation\">\n\t\t<h4>Aurelia-Materialize bridge installation</h4>\n\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col s12 m8\">\n\t\t\t\t<ul md-tabs class=\"z-depth-1\">\n\t\t\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#requirejs\">Aurelia CLI</a></li>\n\t\t\t\t\t<li md-waves=\"color: primary;\"><a href=\"#jspm\">JSPM</a></li>\n\t\t\t\t\t<li md-waves=\"color: primary;\"><a href=\"#webpack\">Webpack</a></li>\n\t\t\t\t</ul>\n\t\t\t\t<div id=\"requirejs\" class=\"z-depth-1\">\n\t\t\t\t\t<au-markdown url=\"installation/installation-requirejs.md\"></au-markdown>\n\t\t\t\t</div>\n\t\t\t\t<div id=\"jspm\" class=\"z-depth-1\">\n\t\t\t\t\t<au-markdown url=\"installation/installation-jspm.md\"></au-markdown>\n\t\t\t\t</div>\n\t\t\t\t<div id=\"webpack\" class=\"z-depth-1\">\n\t\t\t\t\t<au-markdown url=\"installation/installation-webpack.md\"></au-markdown>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\n\t</section>-->\n</template>\n";
-
-/***/ }),
-
 /***/ "loading-indicator":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadingIndicator", function() { return LoadingIndicator; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nprogress__ = __webpack_require__(74);
@@ -852,7 +338,6 @@ function configure(aurelia) {
                     aurelia.use.globalResources("shared/au-markdown");
                     aurelia.use.globalResources("shared/logger");
                     aurelia.use.globalResources("shared/au-code");
-                    aurelia.use.globalResources("shared/sampleValueConverters");
                     return [4 /*yield*/, aurelia.start()];
                 case 1:
                     _a.sent();
@@ -912,63 +397,6 @@ var NavBar = /** @class */ (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = "<template>\n  <require from=\"./route-highlight\"></require>\n\n  <md-navbar md-fixed=\"true\">\n    <a md-sidenav-collapse=\"ref.bind: sideNav;\" class=\"left hide-on-large-only\" style=\"cursor: pointer; padding: 0 10px;\"><i class=\"material-icons\">menu</i></a>\n    <a href=\"#/samples/navbar\" class=\"brand-logo right\"><span class=\"flow-text\">${router.title}</span></a>\n    <ul id=\"nav-mobile\" class=\"left hide-on-med-and-down\">\n      <li md-waves route-highlight=\"routes: about\">\n        <a route-href=\"route: about\">About</a>\n      </li>\n\n      <!-- <li md-waves route-highlight=\"routes: installation\">\n        <a route-href=\"route: installation\">Installation</a>\n      </li> -->\n\n      <li md-waves route-highlight=\"routes: project-status\">\n        <a route-href=\"route: project-status\">Components</a>\n      </li>\n\n      <li md-waves>\n        <a href=\"https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/installation.html\" target=\"_blank\">Installation</a>\n      </li>\n\n<!--   <li route-highlight=\"routes: theme\">\n        <a route-href=\"route: theme\">Theme</a>\n      </li> -->\n\n      <!-- <li md-waves route-highlight=\"routes: help\">\n        <a route-href=\"route: help;\">Docs</a>\n      </li> -->\n\n      <li md-waves>\n        <a href=\"https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/\" target=\"_blank\">Docs</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: support\">\n        <a route-href=\"route: support;\">Support</a>\n      </li>\n\n      <li md-waves>\n        <a href=\"https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge\" target=\"_blank\">GitHub</a>\n      </li>\n    </ul>\n  </md-navbar>\n  <md-sidenav md-close-on-click=\"true\" view-model.ref=\"sideNav\">\n    <ul>\n      <li md-waves route-highlight=\"routes: about\">\n        <a route-href=\"route: about\">About</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: installation\">\n        <a href=\"https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/installation.html\" target=\"_blank\">Installation</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: project-status\">\n        <a route-href=\"route: project-status\">Components</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: help\">\n        <a route-href=\"route: help;\">Docs</a>\n      </li>\n\n      <li md-waves route-highlight=\"routes: support\">\n        <a route-href=\"route: support;\">Support</a>\n      </li>\n\n      <li md-waves>\n        <a href=\"https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge\" target=\"_blank\">GitHub</a>\n      </li>\n    </ul>\n  </md-sidenav>\n</template>\n";
-
-/***/ }),
-
-/***/ "project-status/controls":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Controls", function() { return Controls; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_component_service__ = __webpack_require__("shared/component-service");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var Controls = /** @class */ (function () {
-    function Controls(componentService) {
-        this.categories = componentService.getIterableComponents();
-    }
-    Controls = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__shared_component_service__["ComponentService"]])
-    ], Controls);
-    return Controls;
-}());
-
-
-
-/***/ }),
-
-/***/ "project-status/controls.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-var escape = __webpack_require__(28);
-exports = module.exports = __webpack_require__(4)(false);
-// imports
-
-
-// module
-exports.push([module.i, ".control-info.wip {\n  background: url(" + escape(__webpack_require__(55)) + ") left center no-repeat;\n}\n\n.control-info.done {\n  background: url(" + escape(__webpack_require__(56)) + ") left center no-repeat;\n}\n\n.control-info {\n  padding-left: 15px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "project-status/controls.html":
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = "<template>\n  <require from=\"./controls.css\"></require>\n  <section>\n  <div class=\"row\">\n   <div class=\"col s12\">\n     <h4>Component catalog</h4>\n        <div>\n           <!-- page title - single column -->\n           <div class=\"row\">\n             <div class=\"col s6 m4 l2\" style=\"font-size:18px\">\n               <img src=\"" + __webpack_require__(56) + "\">\n                 implemented controls\n               </div>\n               <div class=\"col s6 m4 l2\" style=\"font-size:18px\">\n                 <img src=\"" + __webpack_require__(55) + "\">\n                 controls in development\n             </div>\n           </div>\n       <div class=\"row\">\n\n         <div class=\"col s12 m3 l2\" repeat.for=\"category of categories\">\n           <md-card md-title=\"${category.title}\">\n             <div repeat.for=\"ctrl of category.controls\" class=\"control-info ${ ctrl.status }\">\n               <a if.bind=\"ctrl.link\" href=\"${ ctrl.link }\">${ ctrl.title }</a>\n               <span if.bind=\"!ctrl.link\">${ ctrl.title }</span>\n             </div>\n           </md-card>\n         </div>\n\n       </div>\n </div>\n </div>\n </div>\n </section>\n</template>\n";
 
 /***/ }),
 
@@ -1132,7 +560,7 @@ var App = /** @class */ (function () {
 /***/ "samples/badge/in-dropdown/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(5)(false);
 // imports
 
 
@@ -1978,6 +1406,99 @@ module.exports = "export class App {\r\n\tsize: string = \"\";\r\n}\r\n"
 
 /***/ }),
 
+/***/ "samples/catalog/catalog":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Controls", function() { return Controls; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_router__ = __webpack_require__(11);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var Controls = /** @class */ (function () {
+    function Controls(router) {
+        this.router = router;
+        this.categories = [];
+    }
+    Controls.prototype.attached = function () {
+        var _this = this;
+        this.router.routes.forEach(function (r) {
+            if (!r.category) {
+                return;
+            }
+            var category = _this.categories.find(function (x) { return x.title === r.category; });
+            if (!category) {
+                category = { title: r.category, routes: [] };
+                _this.categories.push(category);
+            }
+            category.routes.push(r);
+        });
+    };
+    Controls = __decorate([
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_router__["c" /* Router */]])
+    ], Controls);
+    return Controls;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/catalog/catalog.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+var escape = __webpack_require__(28);
+exports = module.exports = __webpack_require__(5)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".control-info.wip {\n  background: url(" + escape(__webpack_require__(55)) + ") left center no-repeat;\n}\n\n.control-info.done {\n  background: url(" + escape(__webpack_require__(56)) + ") left center no-repeat;\n}\n\n.control-info {\n  padding-left: 15px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "samples/catalog/catalog.css.raw":
+/***/ (function(module, exports) {
+
+module.exports = ".control-info.wip {\n  background: url('../../../images/orange.png') left center no-repeat;\n}\n\n.control-info.done {\n  background: url('../../../images/blue.png') left center no-repeat;\n}\n\n.control-info {\n  padding-left: 15px;\n}\n"
+
+/***/ }),
+
+/***/ "samples/catalog/catalog.html":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<template>\n\t<require from=\"./catalog.css\"></require>\n\t<section>\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col s12\">\n\t\t\t\t<h4>Component catalog</h4>\n\t\t\t\t<div>\n\t\t\t\t\t<!-- page title - single column -->\n\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t<div class=\"col s6 m4 l2\" style=\"font-size:18px\">\n\t\t\t\t\t\t\t<img src=\"" + __webpack_require__(56) + "\"> implemented controls\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col s6 m4 l2\" style=\"font-size:18px\">\n\t\t\t\t\t\t\t<img src=\"" + __webpack_require__(55) + "\"> controls in development\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"row\">\n\n\t\t\t\t\t\t<div class=\"col s12 m3 l2\" repeat.for=\"category of categories\">\n\t\t\t\t\t\t\t<md-card md-title=\"${category.title}\">\n\t\t\t\t\t\t\t\t<div repeat.for=\"r of category.routes\" class=\"control-info ${r.status}\">\n\t\t\t\t\t\t\t\t\t<a route-href=\"route.bind: r.route\">${r.title}</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</md-card>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>\n</template>\n";
+
+/***/ }),
+
+/***/ "samples/catalog/catalog.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\n\t<require from=\"./catalog.css\"></require>\n\t<section>\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col s12\">\n\t\t\t\t<h4>Component catalog</h4>\n\t\t\t\t<div>\n\t\t\t\t\t<!-- page title - single column -->\n\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t<div class=\"col s6 m4 l2\" style=\"font-size:18px\">\n\t\t\t\t\t\t\t<img src=\"../../../images/blue.png\"> implemented controls\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col s6 m4 l2\" style=\"font-size:18px\">\n\t\t\t\t\t\t\t<img src=\"../../../images/orange.png\"> controls in development\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"row\">\n\n\t\t\t\t\t\t<div class=\"col s12 m3 l2\" repeat.for=\"category of categories\">\n\t\t\t\t\t\t\t<md-card md-title=\"${category.title}\">\n\t\t\t\t\t\t\t\t<div repeat.for=\"r of category.routes\" class=\"control-info ${r.status}\">\n\t\t\t\t\t\t\t\t\t<a route-href=\"route.bind: r.route\">${r.title}</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</md-card>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>\n</template>\n"
+
+/***/ }),
+
+/***/ "samples/catalog/catalog.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouteConfig } from \"aurelia-router\";\n\n@autoinject\nexport class Controls {\n\tconstructor(private router: Router) { }\n\n\tcategories: Array<{ title: string, routes: RouteConfig[] }> = [];\n\n\tattached() {\n\t\tthis.router.routes.forEach(r => {\n\t\t\tif (!r.category) {\n\t\t\t\treturn;\n\t\t\t}\n\t\t\tlet category = this.categories.find(x => x.title === r.category);\n\t\t\tif (!category) {\n\t\t\t\tcategory = { title: r.category, routes: [] };\n\t\t\t\tthis.categories.push(category);\n\t\t\t}\n\t\t\tcategory.routes.push(r);\n\t\t});\n\t}\n}\n"
+
+/***/ }),
+
 /***/ "samples/chip/autocomplete/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2364,7 +1885,7 @@ var Index = /** @class */ (function (_super) {
 /***/ "samples/collapsible/index.ts.raw":
 /***/ (function(module, exports) {
 
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue) {\n\t\tsuper(eventAggregator, loader, taskQueue);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"accordion\"),\n\t\t\tsuper.getRouteConfig(\"popuot\"),\n\t\t\tsuper.getRouteConfig(\"open-close-callbacks\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
+module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue) {\n\t\tsuper(eventAggregator, loader, taskQueue);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"accordion\"),\n\t\t\tsuper.getRouteConfig(\"popout\"),\n\t\t\tsuper.getRouteConfig(\"open-close-callbacks\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 
@@ -2421,7 +1942,7 @@ module.exports = "<template>\r\n\t<div class=\"collapsible-open-close-events\">\
 /***/ "samples/collapsible/open-close-callbacks/app.html.raw":
 /***/ (function(module, exports) {
 
-module.exports = "<template>\r\n\t<div>\r\n\t\t<md-collection>\r\n\t\t\t<md-collection-item class=\"accent-text\">\r\n\t\t\t\tAlvin\r\n\t\t\t\t<div class=\"secondary-content\">\r\n\t\t\t\t\t<i class=\"material-icons\">send</i>\r\n\t\t\t\t</div>\r\n\t\t\t</md-collection-item>\r\n\t\t\t<md-collection-item class=\"accent-text active\">\r\n\t\t\t\tAlvin\r\n\t\t\t\t<div class=\"secondary-content\">\r\n\t\t\t\t\t<i class=\"material-icons\">send</i>\r\n\t\t\t\t</div>\r\n\t\t\t</md-collection-item>\r\n\t\t\t<md-collection-item class=\"accent-text\">\r\n\t\t\t\tAlvin\r\n\t\t\t\t<div class=\"secondary-content\">\r\n\t\t\t\t\t<i class=\"material-icons\">send</i>\r\n\t\t\t\t</div>\r\n\t\t\t</md-collection-item>\r\n\t\t\t<md-collection-item class=\"accent-text\">\r\n\t\t\t\tAlvin\r\n\t\t\t\t<div class=\"secondary-content\">\r\n\t\t\t\t\t<i class=\"material-icons\">send</i>\r\n\t\t\t\t</div>\r\n\t\t\t</md-collection-item>\r\n\t\t</md-collection>\r\n\t</div>\r\n</template>\r\n"
+module.exports = "<template>\r\n\t<div class=\"collapsible-open-close-events\">\r\n\t\t<ul md-collapsible=\"on-open.call: collapsibleOpen($event); on-close.call: collapsibleClose($event)\">\r\n\t\t\t<li ref=\"firstSection\">\r\n        <div class=\"collapsible-header\"><i class=\"mdi-image-filter-drama\"></i>First<span md-badge data-badge-caption=\"opens\">${firstSection.openCount || 0}</span><span md-badge data-badge-caption=\"closes\">${firstSection.closeCount || 0}</span></div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t\t<li ref=\"secondSection\">\r\n        <div class=\"collapsible-header\"><i class=\"mdi-maps-place\"></i>Second<span md-badge data-badge-caption=\"opens\">${secondSection.openCount || 0}</span><span md-badge data-badge-caption=\"closes\">${secondSection.closeCount || 0}</span></div>\r\n        <div class=\"collapsible-body\"><p>Lorem ipsum dolor sit amet.</p></div>\r\n      </li>\r\n\t\t</ul>\r\n\t</div>\r\n</template>\r\n"
 
 /***/ }),
 
@@ -2726,7 +2247,7 @@ var App = /** @class */ (function () {
 /***/ "samples/collections/selection/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(5)(false);
 // imports
 
 
@@ -2799,7 +2320,7 @@ var App = /** @class */ (function () {
 /***/ "samples/color/basic-use/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(5)(false);
 // imports
 
 
@@ -3478,28 +2999,37 @@ var Index = /** @class */ (function () {
     function Index() {
     }
     Index.prototype.configureRouter = function (config, router) {
+        var css = "Css";
+        var components = "Components";
+        var js = "Javascript";
+        var forms = "Forms";
+        var contrib = "Contributions";
         var routes = [
-            this.getRouteConfig("color"),
-            this.getRouteConfig("badge"),
-            this.getRouteConfig("button"),
-            this.getRouteConfig("breadcrumbs"),
-            this.getRouteConfig("card"),
-            this.getRouteConfig("chip"),
-            this.getRouteConfig("collections"),
-            this.getRouteConfig("footer"),
-            this.getRouteConfig("navbar"),
-            this.getRouteConfig("pagination"),
-            this.getRouteConfig("progress"),
-            this.getRouteConfig("collapsible"),
-            this.getRouteConfig("dialogs"),
-            this.getRouteConfig("dropdown"),
+            { route: "catalog", name: "catalog", moduleId: "./catalog/catalog", title: "Catalog" },
+            this.getRouteConfig("color", css),
+            this.getRouteConfig("badge", components),
+            this.getRouteConfig("button", components),
+            this.getRouteConfig("breadcrumbs", components),
+            this.getRouteConfig("card", components),
+            this.getRouteConfig("chip", components),
+            this.getRouteConfig("collections", components),
+            this.getRouteConfig("footer", components),
+            this.getRouteConfig("navbar", components),
+            this.getRouteConfig("pagination", components),
+            this.getRouteConfig("progress", components),
+            this.getRouteConfig("collapsible", js),
+            this.getRouteConfig("dialogs", js),
+            this.getRouteConfig("dropdown", js),
         ];
         config.map(routes);
         this.router = router;
     };
-    Index.prototype.getRouteConfig = function (name) {
+    Index.prototype.getRouteConfig = function (name, category, wip) {
         var title = name.replace(/-/g, " ");
-        return { route: name, name: name, moduleId: "./" + name + "/index", nav: true, title: title.charAt(0).toUpperCase() + title.slice(1).toLowerCase() };
+        return { route: name, name: name, moduleId: "./" + name + "/index", nav: true, title: title.charAt(0).toUpperCase() + title.slice(1).toLowerCase(), category: category, status: wip ? "wip" : "done" };
+    };
+    Index.prototype.attached = function () {
+        console.log(this.router);
     };
     Index = __decorate([
         __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */]
@@ -3514,7 +3044,7 @@ var Index = /** @class */ (function () {
 /***/ "samples/index.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\n  <require from=\"./menu\"></require>\n  <menu></menu>\n  <router-view></router-view>\n</template>\n";
+module.exports = "<template>\n  <require from=\"./menu\"></require>\n  <menu if.bind=\"router.currentInstruction.fragment !== 'catalog'\"></menu>\n  <router-view></router-view>\n</template>\n";
 
 /***/ }),
 
@@ -3523,13 +3053,9 @@ module.exports = "<template>\n  <require from=\"./menu\"></require>\n  <menu></m
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Menu", function() { return Menu; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_component_service__ = __webpack_require__("shared/component-service");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_logging__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Menu", function() { return Menu; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_router__ = __webpack_require__(11);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3541,73 +3067,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-
-
 var Menu = /** @class */ (function () {
-    function Menu(element, componentService, eventAggregator, taskQueue) {
-        var _this = this;
+    function Menu(element, router) {
         this.element = element;
-        this.taskQueue = taskQueue;
-        this.subscriptions = [];
-        this.categories = componentService.getIterableComponents(true);
-        this.subscriptions.push(eventAggregator.subscribe("router:navigation:complete", function (e) { return _this.routeChanged(e); }));
-        this.log = Object(__WEBPACK_IMPORTED_MODULE_4_aurelia_logging__["getLogger"])("menu");
+        this.router = router;
+        this.categories = [];
     }
-    Menu.prototype.activeItemChanged = function (newValue, oldValue) {
+    Menu.prototype.attached = function () {
         var _this = this;
-        this.taskQueue.queueTask(function () {
-            _this.log.debug("activeItemChanged", newValue, oldValue);
-            // find parent header and expand it
-            var header = $("li.active", _this.element).parents(".collapsible-body").siblings(".collapsible-header");
-            if (header.length > 0) {
-                header.addClass("active");
-                header.parents("[md-collapsible]").get(0).au["md-collapsible"].viewModel.refresh();
+        this.categories = [];
+        this.router.routes.forEach(function (r) {
+            if (!r.category) {
+                return;
             }
-            else {
-                _this.log.warn("activeItemChanged", "header not found");
+            var category = _this.categories.find(function (x) { return x.title === r.category; });
+            if (!category) {
+                category = { title: r.category, routes: [] };
+                _this.categories.push(category);
             }
+            category.routes.push(r);
         });
     };
-    Menu.prototype.setActive = function (ctrl) {
-        this.activeItem = ctrl.link;
-        return true;
-    };
-    Menu.prototype.routeChanged = function (e) {
-        this.log.debug("routeChanged", e);
-        this.log.debug("routeChanged activeItem before", this.activeItem);
-        var link = "#" + e.instruction.fragment;
-        // this.activeItem = link.split('/').splice(0, 3).join('/');
-        var tokens = link.split("/");
-        var lastFragment = tokens.splice(2)[0].split("-")[0];
-        tokens.push(lastFragment);
-        this.activeItem = tokens.join("/");
-        this.log.debug("routeChanged activeItem after", this.activeItem);
-    };
-    Menu.prototype.detached = function () {
-        this.subscriptions.forEach(function (i) { return i.dispose(); });
-    };
-    __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["o" /* bindable */],
-        __metadata("design:type", Object)
-    ], Menu.prototype, "activeItem", void 0);
     Menu = __decorate([
-        __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_3__shared_component_service__["ComponentService"], __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_5_aurelia_framework__["d" /* TaskQueue */]])
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_router__["c" /* Router */]])
     ], Menu);
     return Menu;
 }());
 
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 
 /***/ "samples/menu.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(5)(false);
 // imports
 
 
@@ -3622,7 +3117,7 @@ exports.push([module.i, "menu md-sidenav .side-nav.fixed {\n  overflow: hidden;\
 /***/ "samples/menu.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\n  <require from=\"./menu.css\"></require>\n  <style>\n    @media all and (min-width: 992px) {\n      header, main, footer {\n        padding-left: 300px;\n      }\n      md-navbar[md-fixed=\"true\"] nav {\n        padding-right: 300px;\n      }\n    }\n\n    @media all and (max-width: 992px) {\n        header, main, footer {\n            padding-left: 0;\n        }\n        md-navbar[md-fixed=\"true\"] nav {\n          padding-right: 0;\n        }\n    }\n\n    md-sidenav div.collapsible-body {\n      padding: 0;\n    }\n  </style>\n  <md-sidenav view-model.ref=\"sideNav\" md-fixed=\"true\" md-edge=\"left\">\n    <ul md-collapsible=\"accordion: true;\">\n      <li repeat.for=\"cat of categories\">\n        <div md-waves class=\"collapsible-header\">\n          <span>${ cat.title }</span>\n          <i class=\"material-icons right\">arrow_drop_down</i>\n        </div>\n        <div class=\"collapsible-body\">\n          <ul>\n            <template repeat.for=\"ctrl of cat.controls\">\n              <li md-waves=\"color: primary;\" if.bind=\"!!ctrl.link\" class=\"${ activeItem === ctrl.link ? 'active' : '' }\">\n                <a href.bind=\"ctrl.link\" click.delegate=\"setActive(ctrl)\">${ ctrl.title }<span show.bind=\"ctrl.status == 'wip'\" md-badge>WIP</span></a>\n              </li>\n            </template>\n          </ul>\n        </div>\n      </li>\n    </ul>\n  </md-sidenav>\n</template>\n";
+module.exports = "<template>\n  <require from=\"./menu.css\"></require>\n  <style>\n    @media all and (min-width: 992px) {\n      header, main, footer {\n        padding-left: 300px;\n      }\n      md-navbar[md-fixed=\"true\"] nav {\n        padding-right: 300px;\n      }\n    }\n\n    @media all and (max-width: 992px) {\n        header, main, footer {\n            padding-left: 0;\n        }\n        md-navbar[md-fixed=\"true\"] nav {\n          padding-right: 0;\n        }\n    }\n\n    md-sidenav div.collapsible-body {\n      padding: 0;\n    }\n  </style>\n  <md-sidenav view-model.ref=\"sideNav\" md-fixed=\"true\" md-edge=\"left\">\n    <ul md-collapsible=\"accordion: true;\">\n      <li repeat.for=\"cat of categories\">\n        <div md-waves class=\"collapsible-header\">\n          <span>${cat.title}</span>\n          <i class=\"material-icons right\">arrow_drop_down</i>\n        </div>\n        <div class=\"collapsible-body\">\n          <ul>\n            <template repeat.for=\"r of cat.routes\">\n              <li if.bind=\"r.nav\" md-waves=\"color: primary;\" class=\"${ r.navModel.isActive ? 'active' : '' }\">\n                <a route-href=\"route.bind: r.route\">${ r.title }<span show.bind=\"r.status === 'wip'\" md-badge>WIP</span></a>\n              </li>\n            </template>\n          </ul>\n        </div>\n      </li>\n    </ul>\n  </md-sidenav>\n</template>\n";
 
 /***/ }),
 
@@ -3960,7 +3455,7 @@ var App = /** @class */ (function () {
 /***/ "samples/navbar/tabs-in-navbar/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(5)(false);
 // imports
 
 
@@ -4483,12 +3978,12 @@ var SampleIndexBase = /** @class */ (function () {
 /***/ "samples/sample-template.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(5)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".sample-runner md-card {\n  position: relative;\n}\n\n.sample-runner md-card .md-catalog__play-button {\n  position: absolute;\n  display: inline-block;\n  right: 24px;\n  top: 10px;\n}\n\n.sample-runner md-card .md-catalog__play-button i {\n  color: black;\n}\n", ""]);
+exports.push([module.i, ".sample-template md-card {\n  position: relative;\n}\n\n.sample-template md-card .md-catalog__play-button {\n  position: absolute;\n  display: inline-block;\n  right: 24px;\n  top: 10px;\n}\n\n.sample-template md-card .md-catalog__play-button i {\n  color: black;\n}\n", ""]);
 
 // exports
 
@@ -4498,7 +3993,7 @@ exports.push([module.i, ".sample-runner md-card {\n  position: relative;\n}\n\n.
 /***/ "samples/sample-template.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<require from=\"./sample-template.css\"></require>\r\n\t<section>\r\n\t\t<h4>${title}</h4>\r\n\t\t<div class=\"row sample-runner\">\r\n\t\t\t<div class=\"col s12 m4 l2\">\r\n\t\t\t\t<md-well router.bind=\"router\"></md-well>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col s12 m8 l8\">\r\n\t\t\t\t<md-card md-title.bind=\"sample.title\">\r\n\t\t\t\t\t<a class=\"md-catalog__play-button\" md-button=\"flat: true;\" md-waves href=\"https://gist.run/?id=${sample.gist}\" show.bind=\"sample.gist\"\r\n\t\t\t\t\t target=\"_blank\">\r\n\t\t\t\t\t\t<i class=\"left material-icons\">play_arrow</i>play\r\n\t\t\t\t\t</a>\r\n\t\t\t\t\t<div ref=\"sampleTarget\">\r\n\t\t\t\t\t\t<router-view></router-view>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</md-card>\r\n\t\t\t\t<ul show.bind=\"tabs.length\" md-tabs class=\"z-depth-1\" md-tabs.ref=\"mdTabs\">\r\n\t\t\t\t\t<li repeat.for=\"tab of tabs\">\r\n\t\t\t\t\t\t<a href.bind=\"'#tab' + $index\">${tab.title}</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t<div repeat.for=\"tab of tabs\" class=\"z-depth-1\" id.bind=\"'tab' + $index\">\r\n\t\t\t\t\t<au-code show.bind=\"tab.language != 'markdown'\" language.bind=\"tab.language\" text.bind=\"tab.content\"></au-code>\r\n\t\t\t\t\t<au-markdown show.bind=\"tab.language == 'markdown'\" text.bind=\"tab.content\"></au-markdown>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</section>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<require from=\"./sample-template.css\"></require>\r\n\t<section>\r\n\t\t<h4>${title}</h4>\r\n\t\t<div class=\"row sample-template\">\r\n\t\t\t<div class=\"col s12 m4 l2\">\r\n\t\t\t\t<md-well router.bind=\"router\"></md-well>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col s12 m8 l8\">\r\n\t\t\t\t<md-card md-title.bind=\"sample.title\">\r\n\t\t\t\t\t<a class=\"md-catalog__play-button\" md-button=\"flat: true;\" md-waves href=\"https://gist.run/?id=${sample.gist}\" show.bind=\"sample.gist\"\r\n\t\t\t\t\t target=\"_blank\">\r\n\t\t\t\t\t\t<i class=\"left material-icons\">play_arrow</i>play\r\n\t\t\t\t\t</a>\r\n\t\t\t\t\t<div ref=\"sampleTarget\">\r\n\t\t\t\t\t\t<router-view></router-view>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</md-card>\r\n\t\t\t\t<ul show.bind=\"tabs.length\" md-tabs class=\"z-depth-1\" md-tabs.ref=\"mdTabs\">\r\n\t\t\t\t\t<li repeat.for=\"tab of tabs\">\r\n\t\t\t\t\t\t<a href.bind=\"'#tab' + $index\">${tab.title}</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t<div repeat.for=\"tab of tabs\" class=\"z-depth-1\" id.bind=\"'tab' + $index\">\r\n\t\t\t\t\t<au-code show.bind=\"tab.language != 'markdown'\" language.bind=\"tab.language\" text.bind=\"tab.content\"></au-code>\r\n\t\t\t\t\t<au-markdown show.bind=\"tab.language == 'markdown'\" text.bind=\"tab.content\"></au-markdown>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</section>\r\n</template>\r\n";
 
 /***/ }),
 
@@ -4787,162 +4282,6 @@ module.exports = "<template>\n  <div>\n    <div class=\"row\">\n      <div class
 
 /***/ }),
 
-/***/ "shared/component-service":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentService", function() { return ComponentService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_json__ = __webpack_require__("shared/components.json");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_json__);
-
-
-var ComponentService = /** @class */ (function () {
-    function ComponentService() {
-        this.components = __WEBPACK_IMPORTED_MODULE_1__components_json__;
-        this.log = __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__["getLogger"]("ComponentService");
-    }
-    ComponentService.prototype.transformToMap = function (obj) {
-        var map = new Map();
-        for (var key in obj) {
-            if (obj.hasOwnProperty(key)) {
-                var value = obj[key];
-                if (typeof value === "object") {
-                    map.set(key, this.transformToMap(value));
-                }
-                else {
-                    map.set(key, value);
-                }
-            }
-        }
-        return map;
-    };
-    ComponentService.prototype.getIterableComponents = function (hideEmptyCategories) {
-        var _this = this;
-        if (hideEmptyCategories === void 0) { hideEmptyCategories = false; }
-        var categories = [];
-        Object.keys(this.components).forEach(function (categoryTitle) {
-            if (categoryTitle !== "default") {
-                var category_1 = { title: categoryTitle, controls: [] };
-                var jsonCategory_1 = _this.components[categoryTitle];
-                Object.keys(jsonCategory_1).forEach(function (moduleTitle) {
-                    var mdl = jsonCategory_1[moduleTitle];
-                    var control = { title: moduleTitle, status: mdl.status, link: "" };
-                    if (mdl.status && mdl.nav !== false) {
-                        control.link = "#/samples/" + (mdl.moduleId || moduleTitle.toLowerCase());
-                    }
-                    category_1.controls.push(control);
-                });
-                if (!hideEmptyCategories || category_1.controls.some(function (c) { return !!c.link; })) {
-                    categories.push(category_1);
-                }
-            }
-        });
-        return categories;
-    };
-    ComponentService.prototype.getRouterConfig = function () {
-        var _this = this;
-        var routes = [];
-        Object.keys(this.components).forEach(function (categoryTitle) {
-            var category = _this.components[categoryTitle];
-            Object.keys(category).forEach(function (moduleTitle) {
-                var mdl = category[moduleTitle];
-                if (mdl.status && mdl.nav !== false) {
-                    var shortModuleId_1 = mdl.moduleId || moduleTitle.toLowerCase();
-                    var moduleId = "samples/" + shortModuleId_1 + "/index";
-                    if (mdl.samples) {
-                        var keys = Object.keys(mdl.samples);
-                        keys.forEach(function (sampleName) {
-                            var sample = mdl.samples[sampleName];
-                            sample = _this.normalizeSample(sampleName, sample);
-                            var route = {
-                                name: shortModuleId_1 + "-" + sampleName,
-                                route: shortModuleId_1 + "-" + sampleName,
-                                moduleId: "./sample-runner",
-                                title: sample.title,
-                                sample: sample,
-                                categoryTitle: categoryTitle,
-                                baseModuleId: "" + shortModuleId_1,
-                                baseModuleTitle: moduleTitle,
-                                nav: true
-                            };
-                            _this.log.debug("added route", route);
-                            routes.push(route);
-                            if (sample.default) {
-                                route = {
-                                    name: shortModuleId_1,
-                                    route: shortModuleId_1,
-                                    redirect: route.route
-                                };
-                                _this.log.debug("added default route", route);
-                                routes.push(route);
-                            }
-                        });
-                    }
-                    else {
-                        _this.log.warn("DEPRECATED: component route has no gist:", moduleTitle, mdl);
-                        routes.push({ name: shortModuleId_1, route: shortModuleId_1, moduleId: moduleId, moduleTitle: moduleTitle });
-                    }
-                }
-            });
-        });
-        return routes;
-    };
-    ComponentService.prototype.normalizeSample = function (name, sample) {
-        if (typeof sample !== "object") {
-            sample = {
-                gist: sample
-            };
-        }
-        if (!sample.title) {
-            sample.title = name.replace(/-/g, " ");
-            sample.title = sample.title.charAt(0).toUpperCase() + sample.title.slice(1);
-        }
-        return sample;
-    };
-    return ComponentService;
-}());
-
-
-
-/***/ }),
-
-/***/ "shared/components.json":
-/***/ (function(module, exports) {
-
-module.exports = {"Css":{"Color":{"status":"done","samples":{"basic-use":{"default":true,"gist":"7f03e2f74e1a96831b700da7b6a050e8"}}}},"Components":{"Badges":{"moduleId":"badge","status":"done","samples":{"basic-use":{"default":true,"gist":"1de36c8c3739a233656def9fb66b3ab0"},"badges-in-dropdown":"3199e3e3cf436ccadca30fcc4f0b45a2","badge-with-custom-caption":"7d087a011cf7a0c3341eae48eb1f4ed6"}},"Button":{"status":"done","samples":{"basic-use":{"default":true,"gist":"09534739133e8f53bbf5ad3fff6fa75a"},"fab":"8c5bcfc325dcced715e2ea5d70ff1b44","fab-fixed":"94c6cf6fd564e68dc2cac0952261b320","fab-fixed-toolbar":"1dd0131d47642edadf583e946e256f0b"}},"Breadcrumbs":{"status":"done"},"Cards":{"moduleId":"card","status":"done","samples":{"basic-use":{"default":true,"gist":"5e35028c92724d78aa477adbfe34f3e3"},"horizontal":"1ed99af2e41ecef67d4f4c9d33611267","image":"2fe5734dde84fe24de685003ab67a084","reveal":"960f62fcbf7c19ad4c0c59fac0925feb","sizes":"9b5e3552819324c043eddebef2dcb992","actions":"8ce0d3ac7ca2029f932c3dde1937fc6f"}},"Chips":{"moduleId":"chip","status":"done","samples":{"basic-use":{"default":true,"gist":"7f8c36b1151d5d43cad0d93ce4389e2f"},"editor":"88627b078c726f0918fd43571185d52e","events":"3e32f3ffbb10755250790636f569619e","autocomplete":"01dc072eba5c62144284eb14c9ff2265"}},"Collections":{"status":"done","samples":{"basic-use":{"default":true,"gist":"29f690ca24b736eb67b5f06345e607be"},"header":"a47ddce2fe222d86ae7c8f412037c3fa","secondary-content":"dc5c8a12f5748cb7fd030d3250d71872","avatar":"3379c238f3b37e075babbcc2fca528a9","selection":"7ba94af3f523959514751758bf66a333"}},"Footer":{"status":"done","samples":{"basic-use":{"default":true,"gist":"de26fe253ae9e20ed163222323900f8d"}}},"Navbar":{"status":"done","samples":{"basic-use":{"default":true,"gist":"7abdaa002d4052830cb6236e1d87b325"},"left-aligned-links":"780903e504bbc803999fcc3782dec4d9","centered-logo":"b9c58785b3a19f154ffb393c597da8e5","active-items":"fbc7a9807cb4123f6d5ec6114ff71cf7","dropdown-menu":"7243799e9e3a6a5d4a289ca601bb1b95","search-bar":"c6c775ff29ffb34ed6a873b034310713","tabs-in-navbar":"2ced7e8f51d41099e8a06bc371de7c53"}},"Pagination":{"status":"done","samples":{"basic-use":{"default":true,"gist":"06a4f271d48585ff49a82b37f7aee8e9"},"options":"1910179160e9270b57f2d255ffcdd31d","events":"2d5095a485d95ad283a96a3a3fd1e140"}},"Preloader":{"moduleId":"progress","status":"done","samples":{"basic-use":{"default":true,"gist":"a263209c99bd951d1e0e2c7a43f68944"},"circular":"5ab744b646350722f308fafc6dc74204"}}},"Javascript":{"Collapsible":{"status":"done","samples":{"basic-use":{"default":true,"gist":"11ad8a83b750f39bd0e9c6159d6861b4"},"accordion":"6fd3210550aef8ef490242e45c01e669","popout":"8ca123a0299c7bb7be32fb181d6d1644","open-close-callbacks":"24b0ae0562e766878eabbf3ced10d0df"}},"Dialogs (toast/tooltip)":{"moduleId":"dialogs","status":"done","samples":{"toast":{"default":true,"gist":"3551f49bbeccc4b6b4a2bd4b45e1ce91"},"tooltip":"9836bb6ec893e5a6dd34d36188cd900d","tooltip-html":"34ad6d0d91f227b9173680af1bc0308d"}},"Dropdown":{"status":"done","samples":{"basic-use":{"default":true,"gist":"445d76931fd5229a2520f17929d67e8f"},"options":"35cc55360682d5d740d6bf4f3aa0286e","repeat":"b46c02e4e301e6ba5eab731b2650953c"}},"Media (Box/Slider/Carousel)":{"moduleId":"media","status":"done","samples":{"box-basic":{"default":true,"title":"Material Box (basic)","gist":"8c2ec4a3f6f4ed266a27cb37fe3ec088"},"box-caption":{"title":"Material Box (caption)","gist":"acdacc6b6b30e0f10e1c5db677efc17b"},"slider-basic":{"title":"Slider (basic)","gist":"cb49940b2f840bf853346047f7ff6fe3"},"slider-fullscreen":{"title":"Slider (fullscreen)","gist":"20c53c5a53ad07eb55bd87e8912cb826"},"slider-api":{"title":"Slider (API)","gist":"1eeb9d5c09c45daccb7e08856c3ca6f0"},"slider-options":{"title":"Slider (options)","gist":"ccb2439c67c7aef7ae16985e4e938eb9"},"carousel-basic":{"title":"Carousel (basic)","gist":"8d3ddf3455390b673844cfd798af8892"},"carousel-slider":{"title":"Carousel (slider)","gist":"b8441d5a82e3988da406800cedda93a1"},"carousel-special":{"title":"Carousel (special)","gist":"059ade54a997afe7ac0f870f69ee58f7"}}},"Modals":{"status":"done","samples":{"basic-use":{"default":true,"gist":"e24f28f2d7bb9452f6cb494d087a2ecf"},"events":"780456926eb9b4eb0d9db2be3a1d123c","options":"ba05e0c18f6df96efc33cc59c544f6a0","manual-close":"7c9701cfc15d1020d418d55dd0620fca"}},"Parallax":{"status":"done","samples":{"basic-use":{"default":true,"gist":"586589a99303020b983a5d33b5bf9084"}}},"Pushpin":{"status":"done","samples":{"basic-use":{"default":true,"gist":"81cdeb5cd3c9da27418bd30e103e811e"}}},"Scrollfire":{"status":"done","samples":{"basic-use":{"default":true,"gist":"0f1efef050a770259a3dea53453e5842"}}},"Scrollspy":{"status":"done","samples":{"basic-use":{"default":true,"gist":"372e83ef3a44946b7b26896985091200"}}},"SideNav":{"status":"done","samples":{"basic-use":{"default":true,"gist":"ada7906badc1842d0141e7e16d01d58f"},"options":"d394011184cbd5d1df1edbfb3a1fa009","fixed-sidenav":"38098f4618ca84d3cc2710648afc7053","controller":"cfed100e08d04de0f4e480cee98bfac0","events":"c9cc3a3cbd22e47ab9ab9add89888fb6"}},"Tabs":{"status":"done","samples":{"basic-use":{"default":true,"gist":"33cf3252acea3c4363585170a9ed8482"},"events":"932f9f95c0c198f91bf91c45a0561a0f","api":"6a238e618806289a3800dd4560cf1959","tabs-in-navbar":"e0038b59a779f57f9079058c5910ce77","dynamic":"d0e8387e57ddd52e203bfe37a2bf03dd","swipeable":"28e13d1424552d4b5787c0c70141f9fc"}},"TapTarget":{"status":"done","samples":{"basic-use":{"default":true,"gist":"1f1e634267bcd81c07c6a617464c2191"}}},"Transitions":{"status":"done","samples":{"staggered-list":{"default":true,"gist":"c7da54fd63fabdc94384908e5fced05a"},"fadein-image":"ba296720c805e847aa82c7d5a933bfb6"}},"Waves":{"status":"done","samples":{"basic-use":{"default":true,"gist":"ccba8775351a611d31a72e0d8ddcaf53"},"colors":"0febae142f5c7950720ca8d2965ed094"}}},"Forms":{"Input fields":{"moduleId":"input","status":"done","samples":{"basic-use":{"default":true,"gist":"7f43a76e56cebd918067110634d730da"},"textarea":"9a3c06adf7e9587207d63b1148bad5ef","input-types":"d520ffe2c7ad795273f093a1dd19fa64","html5-validation":"47a37bcb9981da746361c2dc6c869a84","aurelia-validation":"59525172dc31afb0de610d0b174676a0","character-counter":"008631e09037fe0edf804368b75326e6","icon-prefixes":"e8dc60e7c50f7a10f9c4b6e261886906","placeholder":"0ea8becbd1ba5639b27637012fff76ef"}},"Select":{"status":"done","samples":{"basic-use":{"default":true,"gist":"1ac1e348fa4e362183d5706aaa01fcf7"},"multiple":"96f557b67eb2476825cd252fec9dc8c0","binding-to-objects":"ab6f81744f4b0fa8a93e509ad95604ff","refresh":"ac63c711d88089b5e98aa0dee6ed2c62","validation":"f3fe5a7dd8042ff110473ab8e3d4594e","filtered-repeat":"767feb33eeee670625180aaeac414c98","open-trigger":"84aa19b62f83ad66132e2eb84baecc10"}},"Radio buttons":{"moduleId":"radio","status":"done","samples":{"basic-use":{"default":true,"gist":"230dcede5b578b01d89d3d2664c05cc3"},"binding-to-objects":"a66a6be4d5710315db5d159c6acf78c9"}},"Checkbox/Switch":{"moduleId":"checkbox","status":"done","samples":{"basic-use":{"default":true,"gist":"88760ad04830c41fadfea9d3d1884790"},"filled-in":"ded51bc5f5c1212c15c3f68478809c71","switch":"b83ea7d57ff7b24e7414187714f9ebee","binding-to-objects":"c43a57beceefc217340710e80650ddf2","binding-with-matcher":"65a451de2e2d4a37602057c1af840ae8"}},"File input button":{"moduleId":"file","status":"done","samples":{"basic-use":{"default":true,"gist":"51595a0e932444adf5005f75827e0a48"},"multiple":"56b900abe758396c583d6698bcbced4c","events":"13a28317af7ec78e24367639fd25f054","disabled":"093a5617a5eb01a38f73c452cb9984fb"}},"Range":{"status":"done","samples":{"basic-use":{"default":true,"gist":"23a9e3edf0e4b47342949a845ae045bd"},"steps":"9dfb15ca72056748e8084192874e60b8","min-and-max":"74b1e19d51f7c386e300b7401c108ce0","events":"963f04789e322a393a81223902a4f463","range-with-input":"e86d166b4ba80cd90c28ebacc7cf90d5"}},"DatePicker":{"status":"done","samples":{"basic-use":{"default":true,"gist":"147373f37db88a8318fda1debf334e32"},"options":"e72cf616090742d644df7c64454d6907","advanced-options":"fbeec4d10efb7a20d19ff953850a35a9","validation":"43dc539ffe5d302b922a2abc14600b48","in-modal":"734d9dde3e55b3b8961d3371754e036c"}},"AutoComplete":{"status":"wip","samples":{"basic-use":{"default":true,"gist":"f0d0d2059b5c5f01970cd494260099fc"}}},"TimePicker":{"status":"wip","samples":{"basic-use":{"default":true,"gist":"dbc68795d93a7b32e90c898a068a1b67"}}}},"Contributions":{"Recipes":{"status":"wip","samples":{"autofocus":{"default":true,"gist":"84902f36468f914041ef1b2244ed6804"},"wait-cursor":"94945f3ead604a6b86ac2c318b51c4e9","datepicker-label":"975bb3889aaf8ba0622f5cd5affd61c6","prevent-collapsible-event":"dae9e6f50033374381b9d991f921b42c"}}}}
-
-/***/ }),
-
-/***/ "shared/i-category":
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "shared/i-components":
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "shared/i-module":
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
-/***/ "shared/i-sample":
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-
 /***/ "shared/logger":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5063,161 +4402,10 @@ module.exports = "<template>\n  <div class=\"console\">\n  </div>\n</template>\n
 
 /***/ }),
 
-/***/ "shared/sample-runner":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SampleRunner", function() { return SampleRunner; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_router__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_framework__ = __webpack_require__("aurelia-framework");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var SampleRunner = /** @class */ (function () {
-    function SampleRunner(ea, taskQueue) {
-        this.ea = ea;
-        this.taskQueue = taskQueue;
-    }
-    SampleRunner.prototype.activate = function (params, route) {
-        var sample = route.navModel.config.sample;
-        if (!sample) {
-            throw new Error("Route does not contain a 'sample' property");
-        }
-        this.sample = sample;
-    };
-    SampleRunner.prototype.restart = function () {
-        var _this = this;
-        var old = this.sample;
-        this.sample = undefined;
-        this.taskQueue.queueTask(function () {
-            _this.sample = old;
-        });
-    };
-    SampleRunner.prototype.determineActivationStrategy = function () {
-        return __WEBPACK_IMPORTED_MODULE_1_aurelia_router__["d" /* activationStrategy */].replace;
-    };
-    SampleRunner = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_3_aurelia_framework__["d" /* TaskQueue */]])
-    ], SampleRunner);
-    return SampleRunner;
-}());
-
-
-
-/***/ }),
-
-/***/ "shared/sample-runner.html":
-/***/ (function(module, exports) {
-
-module.exports = "<template>\n  <section>\n    <div class=\"row\">\n      <div class=\"col s12 m10\">\n        <collapse-panel>\n          <md-card md-title.bind=\"sample.title\">\n            <compose view-model.bind=\"sample.path\"></compose>\n          </md-card>\n        </collapse-panel>\n      </div>\n    </div>\n    <div class=\"row\">\n      <div class=\"col s12 m10\">\n        <md-card md-title=\"Code Preview\">\n          <div class=\"row\">\n            <ul md-tabs class=\"z-depth-1\">\n              <li show.bind=\"sample.html\" md-waves=\"color: primary;\"><a class=\"active\" href=\"#html\">Html</a></li>\n              <li show.bind=\"sample.js\" md-waves=\"color: primary;\"><a href=\"#js\">Javascript</a></li>\n              <li show.bind=\"sample.css\" md-waves=\"color: primary;\"><a href=\"#css\">Css</a></li>\n              <li show.bind=\"sample.json\" md-waves=\"color: primary;\"><a href=\"#json\">Json</a></li>\n              <li show.bind=\"sample.md\" md-waves=\"color: primary;\"><a href=\"#md\">Docs</a></li>\n            </ul>\n            <div id=\"html\" class=\"z-depth-1\">\n              <au-code language=\"markup\" url.bind=\"sample.html\"></au-code>\n            </div>\n            <div id=\"js\" class=\"z-depth-1\">\n              <au-code language=\"javascript\" url.bind=\"sample.js\"></au-code>\n            </div>\n            <div id=\"css\" class=\"z-depth-1\">\n              <au-code language=\"css\" url.bind=\"sample.css\"></au-code>\n            </div>\n            <div id=\"json\" class=\"z-depth-1\">\n              <au-code language=\"javascript\" url.bind=\"sample.json\"></au-code>\n            </div>\n            <div id=\"md\" class=\"z-depth-1\">\n              <au-markdown url.bind=\"sample.md\"></au-markdown>\n            </div>\n          </div>\n        </md-card>\n      </div>\n    </div>\n  </section>\n</template>\n";
-
-/***/ }),
-
-/***/ "shared/sampleValueConverters":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StringifyValueConverter", function() { return StringifyValueConverter; });
-var StringifyValueConverter = /** @class */ (function () {
-    function StringifyValueConverter() {
-    }
-    StringifyValueConverter.prototype.toView = function (value) {
-        return JSON.stringify(value);
-    };
-    return StringifyValueConverter;
-}());
-
-
-
-/***/ }),
-
 /***/ "shared/showcase.html":
 /***/ (function(module, exports) {
 
 module.exports = "<template>\n  <!-- Page is shared by all widgets and sets up the sub-navigation pane -->\n  <section class=\"view-showcase\">\n      <h4>${ router.title }</h4>\n      <div class=\"row\">\n          <div class=\"col s12 m2\">\n              <md-well router.bind=\"router\"></md-well>\n          </div>\n          <div class=\"col s10\">\n              <router-view></router-view>\n          </div>\n      </div>\n  </section>\n</template>\n";
-
-/***/ }),
-
-/***/ "theme-selector/theme-selector":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(jQuery) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThemeSelector", function() { return ThemeSelector; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__settings__ = __webpack_require__("settings");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var ThemeSelector = /** @class */ (function () {
-    function ThemeSelector(settings) {
-        this.settings = settings;
-        this.themes = [
-            // { value: 'black', name: 'Black', colors: [ '#0167cc', '#4698e9', '#272727' ]  },
-            // { value: 'blueopal', name: 'Blue Opal', colors: [ '#076186', '#7ed3f6', '#94c0d2' ]  },
-            // { value: 'bootstrap', name: 'Bootstrap', colors: [ '#3276b1', '#67afe9', '#fff' ]  },
-            // { value: 'default', name: 'Default', colors: [ '#ef6f1c', '#e24b17', '#5a4b43' ]  },
-            // { value: 'fiori', name: 'Fiori', colors: ['#007cc0', '#e6f2f9', '#f0f0f0'] },
-            // { value: 'flat', name: 'Flat', colors: [ '#363940', '#2eb3a6', '#fff' ]  },
-            // { value: 'highcontrast', name: 'High Contrast', colors: [ '#b11e9c', '#880275', '#1b141a' ]  },
-            { value: "material", name: "Material", colors: ["#3f51b5", "#283593", "#fff"] }
-            // { value: 'materialblack', name: 'Material Black', colors: ['#3f51b5', '#1c1c1c', '#4d4d4d'] },
-            // { value: 'metro', name: 'Metro', colors: [ '#8ebc00', '#787878', '#fff' ]  },
-            // { value: 'metroblack', name: 'Metro Black', colors: [ '#00aba9', '#0e0e0e', '#565656' ]  },
-            // { value: 'moonlight', name: 'Moonlight', colors: [ '#ee9f05', '#40444f', '#212a33' ]  },
-            // { value: 'nova', name: 'Nova', colors: ['#ff4350', '#00acc1', '#303553'] },
-            // { value: 'office365', name: 'Office 365', colors: ['#0072c6', '#cde6f7', '#fff'] },
-            // { value: 'silver', name: 'Silver', colors: [ '#298bc8', '#515967', '#eaeaec' ]  },
-            // { value: 'uniform', name: 'Uniform', colors: [ '#666', '#ccc', '#fff' ]  }
-        ];
-    }
-    ThemeSelector.prototype.selectTheme = function (theme) {
-        var _this = this;
-        jQuery("body").fadeOut(400, function () {
-            _this.settings.activeTheme = theme.value;
-            // this.themeManager.loadTheme(theme.value)
-            // 	.then(() => jQuery("body").fadeIn());
-        });
-    };
-    ThemeSelector = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__settings__["Settings"]])
-    ], ThemeSelector);
-    return ThemeSelector;
-}());
-
-
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
-
-/***/ }),
-
-/***/ "theme-selector/theme-selector.html":
-/***/ (function(module, exports) {
-
-module.exports = "<template>\n  <div class=\"tc-theme-list\">\n      <div class=\"tc-column\">\n        <div repeat.for=\"theme of themes\" click.delegate=\"selectTheme(theme)\" class=\"tc-item ${settings.activeTheme == theme.value ? 'tc-item-selected' : ''}\">\n          <span repeat.for=\"color of theme.colors\" class=\"tc-color\" css=\"background-color: ${color}\"></span>\n          <span class=\"tc-name\">${theme.name}</span>\n        </div>\n      </div>\n  </div>\n</template>\n";
 
 /***/ })
 

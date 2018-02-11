@@ -1,5 +1,5 @@
 <template>
   <require from="./menu"></require>
-  <menu></menu>
+  <menu if.bind="router.currentInstruction.fragment !== 'catalog'"></menu>
   <router-view></router-view>
 </template>

@@ -27,14 +27,14 @@
     <ul md-collapsible="accordion: true;">
       <li repeat.for="cat of categories">
         <div md-waves class="collapsible-header">
-          <span>${ cat.title }</span>
+          <span>${cat.title}</span>
           <i class="material-icons right">arrow_drop_down</i>
         </div>
         <div class="collapsible-body">
           <ul>
-            <template repeat.for="ctrl of cat.controls">
-              <li md-waves="color: primary;" if.bind="!!ctrl.link" class="${ activeItem === ctrl.link ? 'active' : '' }">
-                <a href.bind="ctrl.link" click.delegate="setActive(ctrl)">${ ctrl.title }<span show.bind="ctrl.status == 'wip'" md-badge>WIP</span></a>
+            <template repeat.for="r of cat.routes">
+              <li if.bind="r.nav" md-waves="color: primary;" class="${ r.navModel.isActive ? 'active' : '' }">
+                <a route-href="route.bind: r.route">${ r.title }<span show.bind="r.status === 'wip'" md-badge>WIP</span></a>
               </li>
             </template>
           </ul>

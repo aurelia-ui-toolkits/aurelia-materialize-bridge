@@ -1,14 +1,14 @@
-.sample-runner md-card {
+.sample-template md-card {
   position: relative;
 }
 
-.sample-runner md-card .md-catalog__play-button {
+.sample-template md-card .md-catalog__play-button {
   position: absolute;
   display: inline-block;
   right: 24px;
   top: 10px;
 }
 
-.sample-runner md-card .md-catalog__play-button i {
+.sample-template md-card .md-catalog__play-button i {
   color: black;
 }
