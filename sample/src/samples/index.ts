@@ -28,6 +28,7 @@ export class Index {
 			this.getRouteConfig("collapsible", js),
 			this.getRouteConfig("dialogs", js),
 			this.getRouteConfig("dropdown", js),
+			this.getRouteConfig("media", js),
 		];
 		config.map(routes);
 		this.router = router;

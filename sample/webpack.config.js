@@ -42,7 +42,7 @@ module.exports = (env) => {
 		},
 		module: {
 			rules: [
-				{ test: /\.(png|woff|woff2|eot|ttf|svg|jpg)(\?|$)/, loader: "url-loader?limit=100000" },
+				{ test: /\.(png|woff|woff2|eot|ttf|svg|jpg)(\?|$)/, loader: "url-loader?limit=1" },
 				{ test: /\.ts$/i, include: [/src/], use: "awesome-typescript-loader" },
 				{ test: /\.html$/i, use: "html-loader" },
 				{ test: /\.json$/i, use: "json-loader" },
