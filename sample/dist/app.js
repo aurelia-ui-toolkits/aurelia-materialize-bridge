@@ -1,76 +1,34 @@
 webpackJsonp([0],{
 
-/***/ 101:
+/***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "90030b133d3ea9e16d5dd081b3d81a63.jpg";
+__webpack_require__(55);
+__webpack_require__(97);
+__webpack_require__(100);
+module.exports = __webpack_require__(41);
+
 
 /***/ }),
 
-/***/ 102:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "9206b4a6d4f3401326e0e6297dfdf8af.jpg";
-
-/***/ }),
-
-/***/ 28:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "63f9d1233779f949c9fe540ac14d291d.jpg";
-
-/***/ }),
-
-/***/ 55:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "63f9d1233779f949c9fe540ac14d291d.jpg";
-
-/***/ }),
-
-/***/ 56:
+/***/ 94:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "66df37501c7fe8bfa8ac2219419c74ca.png";
 
 /***/ }),
 
-/***/ 57:
+/***/ 95:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "6ad1a6d8cd0242b24be43bdbe0433097.png";
 
 /***/ }),
 
-/***/ 58:
+/***/ 96:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(59);
-__webpack_require__(103);
-__webpack_require__(106);
-module.exports = __webpack_require__(42);
-
-
-/***/ }),
-
-/***/ 60:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "9fa2a66e01b3905db99f31c229eebde2.png";
-
-/***/ }),
-
-/***/ 61:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "651a2a51814386ec19b8a5d516164718.png";
-
-/***/ }),
-
-/***/ 62:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "7ee9f9de5b416702a2b493c8c9cde3c0.png";
+module.exports = __webpack_require__.p + "9206b4a6d4f3401326e0e6297dfdf8af.jpg";
 
 /***/ }),
 
@@ -122,9 +80,9 @@ var About = /** @class */ (function () {
 /***/ }),
 
 /***/ "about/about.html":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = "<template>\n  <section class=\"container\">\n    <div class=\"row\">\n      <div class=\"col s12\">\n        <ul md-tabs=\"fixed: true;\">\n          <li><a class=\"active\" href=\"#about\">What is Aurelia Materialize bridge?</a></li>\n          <li><a href=\"#example\">List - example of an Aurelia component</a></li>\n        </ul>\n      </div>\n    </div>\n    <section id=\"about\">\n      <div class=\"row\">\n        <div class=\"col s12\">\n          <div style=\"margin:auto;text-align:center\">\n            <h1 class=\"text-lg\">Aurelia Materialize <i>Bridge</i></h1>\n            <h3>Material design HTML5 widgets - enhanced by Aurelia</h3>\n            <span>Version ${version}</span>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col s12 m4\">\n          <a href=\"http://aurelia.io\" target=\"_blank\"><img src=\"" + __webpack_require__(60) + "\" /></a>\n        </div>\n        <div class=\"col s12 m4\">\n          <img src=\"" + __webpack_require__(61) + "\" >\n        </div>\n        <div class=\"col s12 m4 center\">\n          <a href=\"http://www.materializecss.com\" target=\"_blank\"><img src=\"" + __webpack_require__(62) + "\" /></a>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col s12 center\" style=\"padding-top: 20px; padding-bottom:20px\">\n          <ul class=\"features\">\n            <li><h4>We've done the hard work for you</h4></li>\n            <li>Use Materialize components in your Aurelia application <i style=\"text-decoration:underline\">without writing any wrapper code</i></li>\n            <li>Powerful binding expressions <i>directly in your markup</i></li>\n            <li><a href=\"#/project-status\">See the catalog</a> or check out the example in the second tab</li>\n          </ul>\n        </div>\n      </div>\n    </section>\n    <section id=\"example\">\n      <div class=\"row\">\n        <div class=\"col s12\">\n          <div>\n            <h5>Hover over the avatar images to select an actor</h5>\n            <md-collection view-model.ref=\"list\">\n              <md-collection-item repeat.for=\"actor of actors\" class=\"avatar ${ selector.isSelected ? 'selected' : '' }\">\n                <md-collection-selector view-model.ref=\"selector\" item.bind=\"actor\" md-on-selection-changed.delegate=\"onSelectionChanged($event)\">\n                  <img src=\"" + __webpack_require__(28) + "\" alt=\"\" class=\"circle md-collection-selector__hover\">\n                </md-collection-selector>\n                <span class=\"accent-text title\">${actor.name}</span>\n                <p style=\"max-width: 80%;\">${actor.description}</p>\n                <div class=\"secondary-content\">\n                  <i class=\"material-icons\">send</i>\n                </div>\n              </md-collection-item>\n            </md-collection>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n      <div class=\"col s12\">\n        <md-card md-title=\"Console log\">\n          <logger class=\"z-depth-1\" view-model.ref=\"logger\"></logger>\n        </md-card>\n      </div>\n    </div>\n    </section>\n  </section>\n</template>\n";
+module.exports = "<template>\n  <section class=\"container\">\n    <div class=\"row\">\n      <div class=\"col s12\">\n        <ul md-tabs=\"fixed: true;\">\n          <li><a class=\"active\" href=\"#about\">What is Aurelia Materialize bridge?</a></li>\n          <li><a href=\"#example\">List - example of an Aurelia component</a></li>\n        </ul>\n      </div>\n    </div>\n    <section id=\"about\">\n      <div class=\"row\">\n        <div class=\"col s12\">\n          <div style=\"margin:auto;text-align:center\">\n            <h1 class=\"text-lg\">Aurelia Materialize <i>Bridge</i></h1>\n            <h3>Material design HTML5 widgets - enhanced by Aurelia</h3>\n            <span>Version ${version}</span>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col s12 m4\">\n          <a href=\"http://aurelia.io\" target=\"_blank\"><img src=\"../../images/aurelia-logo-04.png\" /></a>\n        </div>\n        <div class=\"col s12 m4\">\n          <img src=\"../../images/bridge-image-08-low.png\" >\n        </div>\n        <div class=\"col s12 m4 center\">\n          <a href=\"http://www.materializecss.com\" target=\"_blank\"><img src=\"../../images/materialize-logo.png\" /></a>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col s12 center\" style=\"padding-top: 20px; padding-bottom:20px\">\n          <ul class=\"features\">\n            <li><h4>We've done the hard work for you</h4></li>\n            <li>Use Materialize components in your Aurelia application <i style=\"text-decoration:underline\">without writing any wrapper code</i></li>\n            <li>Powerful binding expressions <i>directly in your markup</i></li>\n            <li><a href=\"#/project-status\">See the catalog</a> or check out the example in the second tab</li>\n          </ul>\n        </div>\n      </div>\n    </section>\n    <section id=\"example\">\n      <div class=\"row\">\n        <div class=\"col s12\">\n          <div>\n            <h5>Hover over the avatar images to select an actor</h5>\n            <md-collection view-model.ref=\"list\">\n              <md-collection-item repeat.for=\"actor of actors\" class=\"avatar ${ selector.isSelected ? 'selected' : '' }\">\n                <md-collection-selector view-model.ref=\"selector\" item.bind=\"actor\" md-on-selection-changed.delegate=\"onSelectionChanged($event)\">\n                  <img src=\"../../images/collections-sample-1.jpg\" alt=\"\" class=\"circle md-collection-selector__hover\">\n                </md-collection-selector>\n                <span class=\"accent-text title\">${actor.name}</span>\n                <p style=\"max-width: 80%;\">${actor.description}</p>\n                <div class=\"secondary-content\">\n                  <i class=\"material-icons\">send</i>\n                </div>\n              </md-collection-item>\n            </md-collection>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n      <div class=\"col s12\">\n        <md-card md-title=\"Console log\">\n          <logger class=\"z-depth-1\" view-model.ref=\"logger\"></logger>\n        </md-card>\n      </div>\n    </div>\n    </section>\n  </section>\n</template>\n";
 
 /***/ }),
 
@@ -242,7 +200,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nprogress__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nprogress__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nprogress___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_nprogress__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -288,11 +246,11 @@ var LoadingIndicator = /** @class */ (function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (immutable) */ __webpack_exports__["configure"] = configure;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch__ = __webpack_require__(74);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_isomorphic_fetch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_materialize_css__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_materialize_css__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_materialize_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_materialize_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_bootstrapper__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_bootstrapper__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_framework__ = __webpack_require__("aurelia-framework");
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -1224,16 +1182,16 @@ var App = /** @class */ (function () {
 /***/ }),
 
 /***/ "samples/card/horizontal/app.html":
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<md-card md-horizontal=\"true\" md-image=\"images/card-sample-1.jpg\" md-title=\"Card title\">\r\n\t\t<div>\r\n\t\t\tI am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup\r\n\t\t\tto use effectively.\r\n\t\t</div>\r\n\t</md-card>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<md-card md-horizontal=\"true\" md-image=\"" + __webpack_require__(96) + "\" md-title=\"Card title\">\r\n\t\t<div>\r\n\t\t\tI am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup\r\n\t\t\tto use effectively.\r\n\t\t</div>\r\n\t</md-card>\r\n</template>\r\n";
 
 /***/ }),
 
 /***/ "samples/card/horizontal/app.html.raw":
 /***/ (function(module, exports) {
 
-module.exports = "<template>\r\n\t<md-card md-horizontal=\"true\" md-image=\"images/card-sample-1.jpg\" md-title=\"Card title\">\r\n\t\t<div>\r\n\t\t\tI am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup\r\n\t\t\tto use effectively.\r\n\t\t</div>\r\n\t</md-card>\r\n</template>\r\n"
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open 'C:\\Dev\\aurelia-materialize-bridge\\sample\\src\\samples\\card\\horizontal\\app.html.raw'");
 
 /***/ }),
 
@@ -1261,9 +1219,9 @@ var App = /** @class */ (function () {
 /***/ }),
 
 /***/ "samples/card/image/app.html":
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<md-card md-image=\"images/card-sample-1.jpg\" md-title=\"Card title\">\r\n\t\t<div>\r\n\t\t\tI am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup\r\n\t\t\tto use effectively.\r\n\t\t</div>\r\n\t</md-card>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<md-card md-image=\"" + __webpack_require__(96) + "\" md-title=\"Card title\">\r\n\t\t<div>\r\n\t\t\tI am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup\r\n\t\t\tto use effectively.\r\n\t\t</div>\r\n\t</md-card>\r\n</template>\r\n";
 
 /***/ }),
 
@@ -1370,9 +1328,9 @@ var App = /** @class */ (function () {
 /***/ }),
 
 /***/ "samples/card/reveal/app.html":
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<div class=\"row\">\r\n\t\t<md-card class=\"col s3\" md-title=\"Card title\" md-size.bind=\"size\" md-reveal=\"true\">\r\n\t\t\t<div>\r\n\t\t\t\tThis card has reveal true and no image\r\n\t\t\t</div>\r\n\t\t\t<div slot=\"reveal-text\">\r\n\t\t\t\tReveal Text\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card class=\"col s3\" md-title=\"Card title\" md-size.bind=\"size\" md-reveal=\"true\" md-image=\"images/card-sample-1.jpg\">\r\n\t\t\t<div>\r\n\t\t\t\tThis card has reveal true and image\r\n\t\t\t</div>\r\n\t\t\t<div slot=\"reveal-text\">\r\n\t\t\t\tReveal Text\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card class=\"col s3\" md-title=\"Card title\" md-size.bind=\"size\" md-image=\"images/card-sample-1.jpg\">\r\n\t\t\t<div>\r\n\t\t\t\tThis card has reveal false and image.\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card class=\"col s3\" md-title=\"Card title\" md-size.bind=\"size\">\r\n\t\t\t<div>\r\n\t\t\t\tThis is simple card\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t</div>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<div class=\"row\">\r\n\t\t<md-card class=\"col s3\" md-title=\"Card title\" md-size.bind=\"size\" md-reveal=\"true\">\r\n\t\t\t<div>\r\n\t\t\t\tThis card has reveal true and no image\r\n\t\t\t</div>\r\n\t\t\t<div slot=\"reveal-text\">\r\n\t\t\t\tReveal Text\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card class=\"col s3\" md-title=\"Card title\" md-size.bind=\"size\" md-reveal=\"true\" md-image=\"" + __webpack_require__(96) + "\">\r\n\t\t\t<div>\r\n\t\t\t\tThis card has reveal true and image\r\n\t\t\t</div>\r\n\t\t\t<div slot=\"reveal-text\">\r\n\t\t\t\tReveal Text\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card class=\"col s3\" md-title=\"Card title\" md-size.bind=\"size\" md-image=\"" + __webpack_require__(96) + "\">\r\n\t\t\t<div>\r\n\t\t\t\tThis card has reveal false and image.\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card class=\"col s3\" md-title=\"Card title\" md-size.bind=\"size\">\r\n\t\t\t<div>\r\n\t\t\t\tThis is simple card\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t</div>\r\n</template>\r\n";
 
 /***/ }),
 
@@ -1408,9 +1366,9 @@ var App = /** @class */ (function () {
 /***/ }),
 
 /***/ "samples/card/sizes/app.html":
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<div>\r\n\t\t<span class=\"accent-text\">Select size:</span>\r\n\t\t<select md-select value.two-way=\"size\">\r\n\t\t\t<option value=\"\">no size</option>\r\n\t\t\t<option value=\"small\">small</option>\r\n\t\t\t<option value=\"medium\">medium</option>\r\n\t\t\t<option value=\"large\">large</option>\r\n\t\t</select>\r\n\t</div>\r\n\t<md-card md-image=\"images/card-sample-1.jpg\" md-title=\"Card title\" md-size.bind=\"size\">\r\n\t\t<div>\r\n\t\t\tI am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup\r\n\t\t\tto use effectively.\r\n\t\t</div>\r\n\t</md-card>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<div>\r\n\t\t<span class=\"accent-text\">Select size:</span>\r\n\t\t<select md-select value.two-way=\"size\">\r\n\t\t\t<option value=\"\">no size</option>\r\n\t\t\t<option value=\"small\">small</option>\r\n\t\t\t<option value=\"medium\">medium</option>\r\n\t\t\t<option value=\"large\">large</option>\r\n\t\t</select>\r\n\t</div>\r\n\t<md-card md-image=\"" + __webpack_require__(96) + "\" md-title=\"Card title\" md-size.bind=\"size\">\r\n\t\t<div>\r\n\t\t\tI am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup\r\n\t\t\tto use effectively.\r\n\t\t</div>\r\n\t</md-card>\r\n</template>\r\n";
 
 /***/ }),
 
@@ -1480,13 +1438,13 @@ var Controls = /** @class */ (function () {
 /***/ "samples/catalog/catalog.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-var escape = __webpack_require__(29);
+var escape = __webpack_require__(28);
 exports = module.exports = __webpack_require__(5)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".control-info.wip {\n  background: url(" + escape(__webpack_require__(56)) + ") left center no-repeat;\n}\n\n.control-info.done {\n  background: url(" + escape(__webpack_require__(57)) + ") left center no-repeat;\n}\n\n.control-info {\n  padding-left: 15px;\n}\n", ""]);
+exports.push([module.i, ".control-info.wip {\n  background: url(" + escape(__webpack_require__(94)) + ") left center no-repeat;\n}\n\n.control-info.done {\n  background: url(" + escape(__webpack_require__(95)) + ") left center no-repeat;\n}\n\n.control-info {\n  padding-left: 15px;\n}\n", ""]);
 
 // exports
 
@@ -1503,7 +1461,7 @@ module.exports = ".control-info.wip {\n  background: url('../../../images/orange
 /***/ "samples/catalog/catalog.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\n\t<require from=\"./catalog.css\"></require>\n\t<section>\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col s12\">\n\t\t\t\t<h4>Component catalog</h4>\n\t\t\t\t<div>\n\t\t\t\t\t<!-- page title - single column -->\n\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t<div class=\"col s6 m4 l2\" style=\"font-size:18px\">\n\t\t\t\t\t\t\t<img src=\"" + __webpack_require__(57) + "\"> implemented controls\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col s6 m4 l2\" style=\"font-size:18px\">\n\t\t\t\t\t\t\t<img src=\"" + __webpack_require__(56) + "\"> controls in development\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"row\">\n\n\t\t\t\t\t\t<div class=\"col s12 m3 l2\" repeat.for=\"category of categories\">\n\t\t\t\t\t\t\t<md-card md-title=\"${category.title}\">\n\t\t\t\t\t\t\t\t<div repeat.for=\"r of category.routes\" class=\"control-info ${r.status}\">\n\t\t\t\t\t\t\t\t\t<a route-href=\"route.bind: r.route\">${r.title}</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</md-card>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>\n</template>\n";
+module.exports = "<template>\n\t<require from=\"./catalog.css\"></require>\n\t<section>\n\t\t<div class=\"row\">\n\t\t\t<div class=\"col s12\">\n\t\t\t\t<h4>Component catalog</h4>\n\t\t\t\t<div>\n\t\t\t\t\t<!-- page title - single column -->\n\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t<div class=\"col s6 m4 l2\" style=\"font-size:18px\">\n\t\t\t\t\t\t\t<img src=\"../../../images/blue.png\"> implemented controls\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col s6 m4 l2\" style=\"font-size:18px\">\n\t\t\t\t\t\t\t<img src=\"../../../images/orange.png\"> controls in development\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"row\">\n\n\t\t\t\t\t\t<div class=\"col s12 m3 l2\" repeat.for=\"category of categories\">\n\t\t\t\t\t\t\t<md-card md-title=\"${category.title}\">\n\t\t\t\t\t\t\t\t<div repeat.for=\"r of category.routes\" class=\"control-info ${r.status}\">\n\t\t\t\t\t\t\t\t\t<a route-href=\"route.bind: r.route\">${r.title}</a>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</md-card>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</section>\n</template>\n";
 
 /***/ }),
 
@@ -1584,9 +1542,9 @@ var App = /** @class */ (function () {
 /***/ }),
 
 /***/ "samples/chip/basic-use/app.html":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = "<template>\r\n\t<div>\r\n\t\t<md-chip md-close=\"false\">\r\n\t\t\t<img src=\"" + __webpack_require__(55) + "\" alt=\"Contact Person\"> Jane Doe\r\n\t\t</md-chip>\r\n\t\t<md-chip md-close=\"true\" close.trigger=\"logClose()\">\r\n\t\t\t<img src=\"" + __webpack_require__(55) + "\" alt=\"Contact Person\"> Jane Doe\r\n\t\t</md-chip>\r\n\t</div>\r\n\t<div>\r\n\t\t<logger class=\"z-depth-1\" view-model.ref=\"logger\"></logger>\r\n\t</div>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-chip md-close=\"false\">\r\n\t\t\t<img src=\"../../../../images/chips-sample-1.jpg\" alt=\"Contact Person\"> Jane Doe\r\n\t\t</md-chip>\r\n\t\t<md-chip md-close=\"true\" close.trigger=\"logClose()\">\r\n\t\t\t<img src=\"../../../../images/chips-sample-1.jpg\" alt=\"Contact Person\"> Jane Doe\r\n\t\t</md-chip>\r\n\t</div>\r\n\t<div>\r\n\t\t<logger class=\"z-depth-1\" view-model.ref=\"logger\"></logger>\r\n\t</div>\r\n</template>\r\n";
 
 /***/ }),
 
@@ -2297,7 +2255,7 @@ module.exports = "md-collection-item.collection-item.selected {\r\n  background-
 /***/ "samples/collections/selection/app.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-collection view-model.ref=\"list\">\r\n\t\t\t\t\t<md-collection-item repeat.for=\"actor of actors\" class=\"avatar ${ selector.isSelected ? 'selected' : '' } ${ selector.mdDisabled ? 'disabled' : '' }\">\r\n\t\t\t\t\t\t<md-collection-selector view-model.ref=\"selector\" item.bind=\"actor\" md-on-selection-changed.delegate=\"onSelectionChanged($event)\"\r\n\t\t\t\t\t\t md-disabled=\"${$index === 2}\">\r\n\t\t\t\t\t\t\t<img if.bind=\"$index !== 2\" src=\"" + __webpack_require__(28) + "\" alt=\"\"\r\n\t\t\t\t\t\t\t class=\"circle md-collection-selector__hover\">\r\n\t\t\t\t\t\t</md-collection-selector>\r\n\t\t\t\t\t\t<span class=\"accent-text title\">${actor.name}</span>\r\n\t\t\t\t\t\t<p>${actor.description}</p>\r\n\t\t\t\t\t\t<div class=\"secondary-content\">\r\n\t\t\t\t\t\t\t<i class=\"material-icons\">send</i>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</md-collection-item>\r\n\t\t\t\t</md-collection>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12\">\r\n\t\t\t<div>\r\n\t\t\t\t<button md-button click.delegate=\"list.selectAll()\">select all</button>\r\n\t\t\t\t<!--<button md-button click.delegate=\"list.toggleIndex(1)\">toggle second</button>-->\r\n\t\t\t\t<button md-button click.delegate=\"list.clearSelection()\">clear</button>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12\">\r\n\t\t\t<md-card md-title=\"Console log\">\r\n\t\t\t\t<logger class=\"z-depth-1\" view-model.ref=\"logger\"></logger>\r\n\t\t\t</md-card>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-collection view-model.ref=\"list\">\r\n\t\t\t\t\t<md-collection-item repeat.for=\"actor of actors\" class=\"avatar ${ selector.isSelected ? 'selected' : '' } ${ selector.mdDisabled ? 'disabled' : '' }\">\r\n\t\t\t\t\t\t<md-collection-selector view-model.ref=\"selector\" item.bind=\"actor\" md-on-selection-changed.delegate=\"onSelectionChanged($event)\"\r\n\t\t\t\t\t\t md-disabled=\"${$index === 2}\">\r\n\t\t\t\t\t\t\t<img if.bind=\"$index !== 2\" src=\"../../../../images/collections-sample-1.jpg\" alt=\"\"\r\n\t\t\t\t\t\t\t class=\"circle md-collection-selector__hover\">\r\n\t\t\t\t\t\t</md-collection-selector>\r\n\t\t\t\t\t\t<span class=\"accent-text title\">${actor.name}</span>\r\n\t\t\t\t\t\t<p>${actor.description}</p>\r\n\t\t\t\t\t\t<div class=\"secondary-content\">\r\n\t\t\t\t\t\t\t<i class=\"material-icons\">send</i>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</md-collection-item>\r\n\t\t\t\t</md-collection>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12\">\r\n\t\t\t<div>\r\n\t\t\t\t<button md-button click.delegate=\"list.selectAll()\">select all</button>\r\n\t\t\t\t<!--<button md-button click.delegate=\"list.toggleIndex(1)\">toggle second</button>-->\r\n\t\t\t\t<button md-button click.delegate=\"list.clearSelection()\">clear</button>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12\">\r\n\t\t\t<md-card md-title=\"Console log\">\r\n\t\t\t\t<logger class=\"z-depth-1\" view-model.ref=\"logger\"></logger>\r\n\t\t\t</md-card>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n";
 
 /***/ }),
 
@@ -3102,9 +3060,9 @@ var App = /** @class */ (function () {
 /***/ }),
 
 /***/ "samples/media/box-basic/app.html":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = "<template>\r\n\t<img md-box src=\"" + __webpack_require__(102) + "\" width=\"650\" />\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<img md-box src=\"../../../../images/box-sample-1.jpg\" width=\"650\" />\r\n</template>\r\n";
 
 /***/ }),
 
@@ -3139,9 +3097,9 @@ var App = /** @class */ (function () {
 /***/ }),
 
 /***/ "samples/media/box-caption/app.html":
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = "<template>\r\n\t<img md-box=\"caption: A picture of some deer and tons of trees;\" src=\"" + __webpack_require__(101) + "\"\r\n\t width=\"250\" />\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<img md-box=\"caption: A picture of some deer and tons of trees;\" src=\"../../../../images/box-sample-2.jpg\"\r\n\t width=\"250\" />\r\n</template>\r\n";
 
 /***/ }),
 
@@ -4506,15 +4464,15 @@ var Settings = /** @class */ (function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(jQuery) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuCode", function() { return AuCode; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prismjs__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prismjs__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prismjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prismjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css__ = __webpack_require__("prismjs/themes/prism.css");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_prismjs_themes_prism_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_prismjs_components_prism_typescript__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_prismjs_components_prism_markdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_prismjs_plugins_normalize_whitespace_prism_normalize_whitespace_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_loader__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -4627,11 +4585,11 @@ function dedent(str) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuMarkdown", function() { return AuMarkdown; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_showdown__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_showdown__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_showdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_showdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__ = __webpack_require__(99);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_code_prettify_run_prettify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_showdown_prettify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_showdown_prettify__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -4891,5 +4849,5 @@ module.exports = "<template>\n  <!-- Page is shared by all widgets and sets up t
 
 /***/ })
 
-},[58]);
+},[54]);
 //# sourceMappingURL=app.js.map
