@@ -43,19 +43,12 @@ module.exports = (env) => {
 		module: {
 			rules: [
 				{ test: /\.(png|woff|woff2|eot|ttf|svg|jpg)(\?|$)/, loader: "url-loader?limit=100000" },
-				{ test: /\.ts$/i, include: [/src/], use: "ts-loader?silent=false" },
+				{ test: /\.ts$/i, include: [/src/], use: "awesome-typescript-loader" },
 				{ test: /\.html$/i, use: "html-loader" },
 				{ test: /\.json$/i, use: "json-loader" },
 				{ test: /\.md$/i, use: "null-loader" },
 				{ test: /\.raw$/i, use: "raw-loader" },
-				{ test: /\.css$/i, use: isDevBuild ? "css-loader" : "css-loader?minimize" },
-				{
-					test: /\.scss$/i,
-					use: [
-						{ loader: isDevBuild ? "css-loader" : "css-loader?minimize" },
-						{ loader: "sass-loader" }
-					]
-				}
+				{ test: /\.css$/i, use: isDevBuild ? "css-loader" : "css-loader?minimize" }
 			]
 		},
 		plugins: [

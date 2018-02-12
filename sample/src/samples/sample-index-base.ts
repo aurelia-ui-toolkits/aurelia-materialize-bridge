@@ -19,6 +19,7 @@ export class SampleIndexBase {
 	tabs: Array<{ title: string, language: string, content: string, [x: string]: any; }> = [];
 	mdTabs: MdTabs;
 	childRouterView: any;
+	title: string;
 
 	attached() {
 		this.subscription = this.eventAggregator.subscribe("router:navigation:complete", e => this.navigationComplete(e));
@@ -26,6 +27,8 @@ export class SampleIndexBase {
 
 	async navigationComplete(e: PipelineResult) {
 		let fragment = e.instruction.router.currentInstruction.fragment;
+		let fragmentParts = fragment.split("/");
+		this.title = fragmentParts[fragmentParts.length - 2].replace("-", " ");
 		this.tabs = [];
 		let modules: string[] = Object.keys(__webpack_require__.m).filter(x => x.startsWith(fragment.substring(1)) && x.endsWith(".raw"));
 		for (let m of modules) {
