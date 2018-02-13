@@ -1,0 +1,39 @@
+<template>
+	<div>
+		<div>
+			<p>This demonstrates a modal which is not closable by clicking the overlay, with some ridiculously long transition durations,
+				changed opacity and positioning.</p>
+			<p>The following options are used:</p>
+			<code>
+          <pre>
+            {
+              dismissible: false,
+              in-duration: 1000,
+              out-duration: 1000,
+              starting-top: '10%',
+              ending-top: '20%',
+              opacity: 0.7
+            }
+          </pre>
+        </code>
+			<p><a class="modal-trigger" md-button href="#modal1">show modal</a></p>
+		</div>
+		<div id="modal1" md-modal="
+        dismissible: false;
+        in-duration: 1000;
+        out-duration: 1000;
+        starting-top: 10%;
+        ending-top: 20%;
+        opacity: 0.7;
+      ">
+			<div class="modal-content">
+				<h4>Modal Header</h4>
+				<p>A bunch of text</p>
+			</div>
+			<div class="modal-footer">
+				<a click.delegate="agree()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Agree</a>
+				<a click.delegate="disagree()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Disagree</a>
+			</div>
+		</div>
+	</div>
+</template>
