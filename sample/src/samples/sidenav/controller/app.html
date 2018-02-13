@@ -1,0 +1,16 @@
+<template>
+	<a disabled md-sidenav-collapse="ref.bind: sideNav;" md-sidenav-collapse.ref="sidenavController" md-button="flat: true;" md-waves>
+    Standard SideNav Toggle
+  </a>
+	<div>
+		<button md-button click.delegate="openSideNav()">open sidenav</button>
+	</div>
+	<md-sidenav view-model.ref="sideNav">
+		<ul>
+			<li md-waves><a href="#">About</a></li>
+			<li md-waves><a href="#">Installation</a></li>
+			<li md-waves><a href="#">Project Status</a></li>
+			<li md-waves><a href="#">Help/Docs</a></li>
+		</ul>
+	</md-sidenav>
+</template>

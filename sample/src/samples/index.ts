@@ -29,6 +29,12 @@ export class Index {
 			this.getRouteConfig("dialogs", js),
 			this.getRouteConfig("dropdown", js),
 			this.getRouteConfig("media", js),
+			this.getRouteConfig("modals", js),
+			this.getRouteConfig("parallax", js),
+			this.getRouteConfig("pushpin", js),
+			this.getRouteConfig("scrollfire", js),
+			this.getRouteConfig("scrollspy", js),
+			this.getRouteConfig("sidenav", js),
 		];
 		config.map(routes);
 		this.router = router;

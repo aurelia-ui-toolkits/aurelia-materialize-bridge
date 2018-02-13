@@ -1,0 +1,18 @@
+<template>
+	<div>
+		It's on the right edge. Make sure, your viewport is big enough.
+	</div>
+	<div>
+		<button md-button="flat: true;" md-waves="color: primary;" click.delegate="toggleSideNav()">toggle</button>
+	</div>
+
+	<md-sidenav view-model.ref="sideNav" md-fixed.bind="show" md-edge="right">
+		<!-- md-edge="right" -->
+		<ul>
+			<li md-waves><a>About</a></li>
+			<li md-waves><a>Installation</a></li>
+			<li md-waves><a>Project Status</a></li>
+			<li md-waves><a>Help/Docs</a></li>
+		</ul>
+	</md-sidenav>
+</template>

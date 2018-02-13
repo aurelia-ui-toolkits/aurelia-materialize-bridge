@@ -1,0 +1,15 @@
+<template>
+	<a md-sidenav-collapse="ref.bind: sideNav;" md-button md-waves>Toggle SideNav</a>
+	<div>
+		<logger class="z-depth-1" view-model.ref="logger"></logger>
+	</div>
+
+	<md-sidenav md-on-sidenav-show.delegate="onShow($event)" md-on-sidenav-hide.delegate="onHide($event)" view-model.ref="sideNav">
+		<ul>
+			<li md-waves><a href="#">About</a></li>
+			<li md-waves><a href="#">Installation</a></li>
+			<li md-waves><a href="#">Project Status</a></li>
+			<li md-waves><a href="#">Help/Docs</a></li>
+		</ul>
+	</md-sidenav>
+</template>
