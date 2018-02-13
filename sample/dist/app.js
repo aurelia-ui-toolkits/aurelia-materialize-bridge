@@ -704,13 +704,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/badge/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"in-dropdown\"),\n\t\t\tsuper.getRouteConfig(\"with-custom-caption\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/badge/with-custom-caption/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -893,13 +886,6 @@ var Index = /** @class */ (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
 
 
-
-/***/ }),
-
-/***/ "samples/breadcrumbs/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"second-target\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 
@@ -1154,13 +1140,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/button/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"fab\"),\n\t\t\tsuper.getRouteConfig(\"fab-fixed\"),\n\t\t\tsuper.getRouteConfig(\"fab-fixed-toolbar\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/card/actions/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1371,13 +1350,6 @@ var Index = /** @class */ (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
 
 
-
-/***/ }),
-
-/***/ "samples/card/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"actions\"),\n\t\t\tsuper.getRouteConfig(\"horizontal\"),\n\t\t\tsuper.getRouteConfig(\"image\"),\n\t\t\tsuper.getRouteConfig(\"reveal\"),\n\t\t\tsuper.getRouteConfig(\"sizes\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 
@@ -1789,13 +1761,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/chip/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"autocomplete\"),\n\t\t\tsuper.getRouteConfig(\"editor\"),\n\t\t\tsuper.getRouteConfig(\"events\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/collapsible/accordion/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1933,13 +1898,6 @@ var Index = /** @class */ (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
 
 
-
-/***/ }),
-
-/***/ "samples/collapsible/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"accordion\"),\n\t\t\tsuper.getRouteConfig(\"popout\"),\n\t\t\tsuper.getRouteConfig(\"open-close-callbacks\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 
@@ -2220,13 +2178,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/collections/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"header\"),\n\t\t\tsuper.getRouteConfig(\"secondary-content\"),\n\t\t\tsuper.getRouteConfig(\"avatar\"),\n\t\t\tsuper.getRouteConfig(\"selection\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/collections/secondary-content/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2476,13 +2427,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/color/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/dialogs/index":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2542,13 +2486,6 @@ var Index = /** @class */ (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
 
 
-
-/***/ }),
-
-/***/ "samples/dialogs/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"toast\" },\n\t\t\tsuper.getRouteConfig(\"toast\"),\n\t\t\tsuper.getRouteConfig(\"tooltip\"),\n\t\t\tsuper.getRouteConfig(\"tooltip-html\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 
@@ -2816,13 +2753,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/dropdown/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"options\"),\n\t\t\tsuper.getRouteConfig(\"repeat\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/dropdown/options/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3035,13 +2965,6 @@ var Index = /** @class */ (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
 
 
-
-/***/ }),
-
-/***/ "samples/footer/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 
@@ -3369,13 +3292,6 @@ var Index = /** @class */ (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
 
 
-
-/***/ }),
-
-/***/ "samples/media/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"box-basic\" },\n\t\t\tsuper.getRouteConfig(\"box-basic\"),\n\t\t\tsuper.getRouteConfig(\"box-caption\"),\n\t\t\tsuper.getRouteConfig(\"slider-basic\"),\n\t\t\tsuper.getRouteConfig(\"slider-fullscreen\"),\n\t\t\tsuper.getRouteConfig(\"slider-api\"),\n\t\t\tsuper.getRouteConfig(\"slider-options\"),\n\t\t\tsuper.getRouteConfig(\"carousel-basic\"),\n\t\t\tsuper.getRouteConfig(\"carousel-slider\"),\n\t\t\tsuper.getRouteConfig(\"carousel-special\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 
@@ -3798,13 +3714,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/modals/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"events\"),\n\t\t\tsuper.getRouteConfig(\"options\"),\n\t\t\tsuper.getRouteConfig(\"manual-close\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/modals/manual-close/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4145,13 +4054,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/navbar/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"left-aligned-links\"),\n\t\t\tsuper.getRouteConfig(\"centered-logo\"),\n\t\t\tsuper.getRouteConfig(\"active-items\"),\n\t\t\tsuper.getRouteConfig(\"dropdown-menu\"),\n\t\t\tsuper.getRouteConfig(\"search-bar\"),\n\t\t\tsuper.getRouteConfig(\"tabs-in-navbar\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/navbar/left-aligned-links/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4426,13 +4328,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/pagination/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"options\"),\n\t\t\tsuper.getRouteConfig(\"events\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/pagination/options/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4595,13 +4490,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/parallax/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/progress/basic-use/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4743,13 +4631,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/progress/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"circular\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/pushpin/basic-use/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4844,13 +4725,6 @@ var Index = /** @class */ (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
 
 
-
-/***/ }),
-
-/***/ "samples/pushpin/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 
@@ -5155,13 +5029,6 @@ var Index = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "samples/scrollfire/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
-
-/***/ }),
-
 /***/ "samples/scrollspy/basic-use/app":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5256,13 +5123,6 @@ var Index = /** @class */ (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
 
 
-
-/***/ }),
-
-/***/ "samples/scrollspy/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 
@@ -5488,13 +5348,6 @@ var Index = /** @class */ (function (_super) {
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
 
 
-
-/***/ }),
-
-/***/ "samples/sidenav/index.ts.raw":
-/***/ (function(module, exports) {
-
-module.exports = "import { autoinject } from \"aurelia-dependency-injection\";\nimport { Router, RouterConfiguration, RouteConfig } from \"aurelia-router\";\nimport { EventAggregator } from \"aurelia-event-aggregator\";\nimport { Loader, useView, TaskQueue } from \"aurelia-framework\";\nimport { SampleIndexBase } from \"../sample-index-base\";\nimport { HttpClient } from \"aurelia-fetch-client\";\n\n@useView(\"../sample-template.html\")\n@autoinject\nexport class Index extends SampleIndexBase {\n\tconstructor(eventAggregator: EventAggregator, loader: Loader, taskQueue: TaskQueue, http: HttpClient) {\n\t\tsuper(eventAggregator, loader, taskQueue, http);\n\t}\n\n\trouter: Router;\n\n\tconfigureRouter(config: RouterConfiguration, router: Router) {\n\t\tconst routes: RouteConfig[] = [\n\t\t\t{ route: \"\", redirect: \"basic-use\" },\n\t\t\tsuper.getRouteConfig(\"basic-use\"),\n\t\t\tsuper.getRouteConfig(\"options\"),\n\t\t\tsuper.getRouteConfig(\"fixed-sidenav\"),\n\t\t\tsuper.getRouteConfig(\"controller\"),\n\t\t\tsuper.getRouteConfig(\"events\"),\n\t\t];\n\t\tconfig.map(routes);\n\t\tthis.router = router;\n\t}\n}\n"
 
 /***/ }),
 
