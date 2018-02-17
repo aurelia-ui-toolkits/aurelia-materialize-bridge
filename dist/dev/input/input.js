@@ -369,4 +369,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/input/input.js.map
+//# sourceMappingURL=../dist/dev/input/input.js.map

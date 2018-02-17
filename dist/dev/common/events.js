@@ -31,4 +31,4 @@ System.register(['./constants'], function (_export, _context) {
     execute: function () {}
   };
 });
-//# sourceMappingURL=../devbuild/dev/common/events.js.map
+//# sourceMappingURL=../dist/dev/common/events.js.map

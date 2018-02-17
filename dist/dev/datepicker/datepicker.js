@@ -355,4 +355,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/datepicker/datepicker.js.map
+//# sourceMappingURL=../dist/dev/datepicker/datepicker.js.map

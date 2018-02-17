@@ -151,4 +151,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/card/card.js.map
+//# sourceMappingURL=../dist/dev/card/card.js.map

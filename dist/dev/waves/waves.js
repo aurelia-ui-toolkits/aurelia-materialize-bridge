@@ -136,4 +136,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/waves/waves.js.map
+//# sourceMappingURL=../dist/dev/waves/waves.js.map

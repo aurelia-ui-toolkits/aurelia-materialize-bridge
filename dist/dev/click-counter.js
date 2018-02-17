@@ -30,4 +30,4 @@ System.register([], function (_export, _context) {
     }
   };
 });
-//# sourceMappingURL=devbuild/dev/click-counter.js.map
+//# sourceMappingURL=dist/dev/click-counter.js.map

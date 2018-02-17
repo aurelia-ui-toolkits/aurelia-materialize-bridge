@@ -205,4 +205,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/pagination/pagination.js.map
+//# sourceMappingURL=../dist/dev/pagination/pagination.js.map

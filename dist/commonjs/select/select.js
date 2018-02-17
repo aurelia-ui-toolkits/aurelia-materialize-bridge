@@ -101,6 +101,9 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     this._taskqueueRunning = false;
 
     this.mdUnrenderValidateResults = function (results, renderer) {
+      if (!_this.input) {
+        return;
+      }
       for (var _iterator = results, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
         var _ref;
 
@@ -123,6 +126,9 @@ var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject
     };
 
     this.mdRenderValidateResults = function (results, renderer) {
+      if (!_this.input) {
+        return;
+      }
       for (var _iterator2 = results, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
         var _ref2;
 

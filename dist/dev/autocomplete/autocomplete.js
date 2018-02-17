@@ -134,4 +134,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/autocomplete/autocomplete.js.map
+//# sourceMappingURL=../dist/dev/autocomplete/autocomplete.js.map

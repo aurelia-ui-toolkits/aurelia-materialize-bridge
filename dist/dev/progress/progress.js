@@ -135,4 +135,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/progress/progress.js.map
+//# sourceMappingURL=../dist/dev/progress/progress.js.map

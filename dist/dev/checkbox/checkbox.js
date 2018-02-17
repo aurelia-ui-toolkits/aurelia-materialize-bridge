@@ -158,4 +158,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/checkbox/checkbox.js.map
+//# sourceMappingURL=../dist/dev/checkbox/checkbox.js.map

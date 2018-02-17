@@ -89,4 +89,4 @@ System.register(['aurelia-templating'], function (_export, _context) {
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/colors/md-colors.js.map
+//# sourceMappingURL=../dist/dev/colors/md-colors.js.map

@@ -226,4 +226,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/dropdown/dropdown.js.map
+//# sourceMappingURL=../dist/dev/dropdown/dropdown.js.map

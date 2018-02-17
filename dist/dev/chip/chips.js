@@ -165,4 +165,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/chip/chips.js.map
+//# sourceMappingURL=../dist/dev/chip/chips.js.map

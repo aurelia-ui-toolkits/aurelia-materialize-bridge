@@ -94,4 +94,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/chip/chip.js.map
+//# sourceMappingURL=../dist/dev/chip/chip.js.map

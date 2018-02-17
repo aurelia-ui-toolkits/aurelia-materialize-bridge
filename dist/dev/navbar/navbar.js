@@ -127,4 +127,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/navbar/navbar.js.map
+//# sourceMappingURL=../dist/dev/navbar/navbar.js.map

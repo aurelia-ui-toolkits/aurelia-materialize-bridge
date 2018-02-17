@@ -12,4 +12,4 @@ System.register([], function (_export, _context) {
     execute: function () {}
   };
 });
-//# sourceMappingURL=../devbuild/dev/common/attributes.js.map
+//# sourceMappingURL=../dist/dev/common/attributes.js.map

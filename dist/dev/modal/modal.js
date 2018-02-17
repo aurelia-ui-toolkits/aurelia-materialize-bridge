@@ -164,4 +164,4 @@ System.register(['aurelia-logging', 'aurelia-templating', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/modal/modal.js.map
+//# sourceMappingURL=../dist/dev/modal/modal.js.map

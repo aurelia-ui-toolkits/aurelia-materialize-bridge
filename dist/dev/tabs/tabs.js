@@ -251,4 +251,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/tabs/tabs.js.map
+//# sourceMappingURL=../dist/dev/tabs/tabs.js.map

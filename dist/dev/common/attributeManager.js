@@ -92,4 +92,4 @@ System.register([], function (_export, _context) {
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/common/attributeManager.js.map
+//# sourceMappingURL=../dist/dev/common/attributeManager.js.map

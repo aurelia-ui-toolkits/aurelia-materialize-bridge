@@ -106,4 +106,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/transitions/staggered-list.js.map
+//# sourceMappingURL=../dist/dev/transitions/staggered-list.js.map

@@ -87,4 +87,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/collapsible/collapsible.js.map
+//# sourceMappingURL=../dist/dev/collapsible/collapsible.js.map

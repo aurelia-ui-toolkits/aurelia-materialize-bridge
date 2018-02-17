@@ -117,4 +117,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/timepicker/timepicker.js.map
+//# sourceMappingURL=../dist/dev/timepicker/timepicker.js.map

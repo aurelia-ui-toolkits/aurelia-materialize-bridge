@@ -118,4 +118,4 @@ System.register(['aurelia-templating', 'aurelia-binding', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/range/range.js.map
+//# sourceMappingURL=../dist/dev/range/range.js.map

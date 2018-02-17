@@ -22,4 +22,4 @@ System.register(['aurelia-templating'], function (_export, _context) {
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/collection/collection-item.js.map
+//# sourceMappingURL=../dist/dev/collection/collection-item.js.map

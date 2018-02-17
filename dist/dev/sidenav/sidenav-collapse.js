@@ -125,4 +125,4 @@ System.register(['aurelia-templating', 'aurelia-logging', 'aurelia-dependency-in
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/sidenav/sidenav-collapse.js.map
+//# sourceMappingURL=../dist/dev/sidenav/sidenav-collapse.js.map

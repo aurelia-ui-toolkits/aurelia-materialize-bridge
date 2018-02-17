@@ -26,4 +26,4 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection'], function
     }
   };
 });
-//# sourceMappingURL=../devbuild/dev/collection/collection-header.js.map
+//# sourceMappingURL=../dist/dev/collection/collection-header.js.map
