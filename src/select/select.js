@@ -324,6 +324,9 @@ export class MdSelect {
   }
 
   mdUnrenderValidateResults = (results, renderer) => {
+    if(!this.input) {
+      return;
+    }
     for(let result of results) {
       if (!result.valid) {
         renderer.removeMessage(this.inputField, result);
@@ -333,6 +336,9 @@ export class MdSelect {
   };
 
   mdRenderValidateResults = (results, renderer) => {
+    if(!this.input) {
+      return;
+    }
     for(let result of results) {
       if (!result.valid) {
         result.target = this.input;
