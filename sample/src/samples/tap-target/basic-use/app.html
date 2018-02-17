@@ -1,0 +1,21 @@
+<template>
+	<!--<require from="materialize/dist/css/materialize.css"></require>-->
+	<div>
+		<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+			<a ref="tap" md-button="floating: true; large: true;" md-waves="color: light; circle: true;">
+				<i class="large material-icons">mode_edit</i>
+			</a>
+		</div>
+		<md-tap-target md-ref.bind="tap" view-model.ref="tapTarget">
+			<h5>I'm here!</h5>
+			I am here
+			<p>
+				Provide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.
+			</p>
+		</md-tap-target>
+	</div>
+	<div>
+		<button md-button click.delegate="openTapTarget()">open tap target</button>
+		<button md-button click.delegate="closeTapTarget()">close tap target</button>
+	</div>
+</template>

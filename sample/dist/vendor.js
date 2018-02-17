@@ -153,14 +153,14 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return resolver; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return resolver; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Lazy; });
 /* unused harmony export All */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Optional; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Optional; });
 /* unused harmony export Parent */
 /* unused harmony export StrategyResolver */
 /* unused harmony export Factory */
-/* unused harmony export NewInstance */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NewInstance; });
 /* unused harmony export getDecoratorDependencies */
 /* unused harmony export lazy */
 /* unused harmony export all */
@@ -179,10 +179,10 @@
 /* unused harmony export _emptyParameters */
 /* unused harmony export InvocationHandler */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Container; });
-/* harmony export (immutable) */ __webpack_exports__["d"] = autoinject;
-/* harmony export (immutable) */ __webpack_exports__["e"] = inject;
+/* harmony export (immutable) */ __webpack_exports__["e"] = autoinject;
+/* harmony export (immutable) */ __webpack_exports__["f"] = inject;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_metadata__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(4);
 var _dec, _class, _dec2, _class3, _dec3, _class5, _dec4, _class7, _dec5, _class9, _dec6, _class11, _dec7, _class13, _classInvokers;
 
 
@@ -13720,7 +13720,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
 // With default aurelia-loader-webpack config, this module is added as an extra entry
 // before any other code executes so that PAL.Loader is properly configured.
 // There are several tricky points worth noticing.
@@ -13767,7 +13767,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WebpackLoader", function() { return WebpackLoader; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_metadata__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_loader__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(4);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -14123,7 +14123,7 @@ module.exports = function(originalModule) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(setImmediate) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskQueue; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 
@@ -15514,7 +15514,7 @@ return Promise$1;
 
 //# sourceMappingURL=es6-promise.map
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(23), __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(24), __webpack_require__(17)))
 
 /***/ }),
 
@@ -17441,7 +17441,7 @@ function restorePreviousLocation(router) {
 /* unused harmony export deprecated */
 /* harmony export (immutable) */ __webpack_exports__["c"] = mixin;
 /* harmony export (immutable) */ __webpack_exports__["d"] = protocol;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -18198,7 +18198,7 @@ module.exports = g;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__validator__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validate_trigger__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__property_info__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validate_result__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validate_result__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__property_accessor_parser__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__validate_event__ = __webpack_require__(53);
 
@@ -18637,12 +18637,83 @@ var Validator = (function () {
 /***/ }),
 
 /***/ 2:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = getBooleanFromAttributeValue;
-function getBooleanFromAttributeValue(value) {
-    return (value === true || value === "true");
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
 }
 
 
@@ -18726,7 +18797,7 @@ function getAccessorExpression(fn) {
 
 /***/ }),
 
-/***/ 23:
+/***/ 24:
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -18917,14 +18988,14 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ 24:
+/***/ 25:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return aureliaHideClassName; });
 /* harmony export (immutable) */ __webpack_exports__["c"] = injectAureliaHideStyleAtHead;
 /* harmony export (immutable) */ __webpack_exports__["b"] = injectAureliaHideStyleAtBoundary;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
 
 
 var aureliaHideClassName = 'aurelia-hide';
@@ -18944,7 +19015,7 @@ function injectAureliaHideStyleAtBoundary(domBoundary) {
 
 /***/ }),
 
-/***/ 25:
+/***/ 26:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18979,7 +19050,7 @@ var ValidateResult = (function () {
 
 /***/ }),
 
-/***/ 26:
+/***/ 27:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -19025,13 +19096,13 @@ var Rules = (function () {
 
 /***/ }),
 
-/***/ 27:
+/***/ 28:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return validationMessages; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ValidationMessageProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__validation_message_parser__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__validation_message_parser__ = __webpack_require__(29);
 
 /**
  * Dictionary of validation messages. [messageKey]: messageExpression
@@ -19094,14 +19165,14 @@ var ValidationMessageProvider = (function () {
 
 /***/ }),
 
-/***/ 28:
+/***/ 29:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ValidationMessageParser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageExpressionValidator; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__expression_visitor__ = __webpack_require__(97);
 var __extends = (this && this.__extends) || (function () {
@@ -19181,108 +19252,11 @@ var MessageExpressionValidator = (function (_super) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (immutable) */ __webpack_exports__["a"] = AggregateError;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return FEATURE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PLATFORM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return DOM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return isInitialized; });
-/* harmony export (immutable) */ __webpack_exports__["e"] = initializePAL;
-/* unused harmony export reset */
-
-function AggregateError(message, innerError, skipIfAlreadyAggregate) {
-  if (innerError) {
-    if (innerError.innerError && skipIfAlreadyAggregate) {
-      return innerError;
-    }
-
-    var separator = '\n------------------------------------------------\n';
-
-    message += separator + 'Inner Error:\n';
-
-    if (typeof innerError === 'string') {
-      message += 'Message: ' + innerError;
-    } else {
-      if (innerError.message) {
-        message += 'Message: ' + innerError.message;
-      } else {
-        message += 'Unknown Inner Error Type. Displaying Inner Error as JSON:\n ' + JSON.stringify(innerError, null, '  ');
-      }
-
-      if (innerError.stack) {
-        message += '\nInner Error Stack:\n' + innerError.stack;
-        message += '\nEnd Inner Error Stack';
-      }
-    }
-
-    message += separator;
-  }
-
-  var e = new Error(message);
-  if (innerError) {
-    e.innerError = innerError;
-  }
-
-  return e;
+/* harmony export (immutable) */ __webpack_exports__["a"] = getBooleanFromAttributeValue;
+function getBooleanFromAttributeValue(value) {
+    return (value === true || value === "true");
 }
 
-var FEATURE = {};
-
-var PLATFORM = {
-  noop: function noop() {},
-  eachModule: function eachModule() {},
-  moduleName: function (_moduleName) {
-    function moduleName(_x) {
-      return _moduleName.apply(this, arguments);
-    }
-
-    moduleName.toString = function () {
-      return _moduleName.toString();
-    };
-
-    return moduleName;
-  }(function (moduleName) {
-    return moduleName;
-  })
-};
-
-PLATFORM.global = function () {
-  if (typeof self !== 'undefined') {
-    return self;
-  }
-
-  if (typeof global !== 'undefined') {
-    return global;
-  }
-
-  return new Function('return this')();
-}();
-
-var DOM = {};
-var isInitialized = false;
-
-function initializePAL(callback) {
-  if (isInitialized) {
-    return;
-  }
-  isInitialized = true;
-  if (typeof Object.getPropertyDescriptor !== 'function') {
-    Object.getPropertyDescriptor = function (subject, name) {
-      var pd = Object.getOwnPropertyDescriptor(subject, name);
-      var proto = Object.getPrototypeOf(subject);
-      while (typeof pd === 'undefined' && proto !== null) {
-        pd = Object.getOwnPropertyDescriptor(proto, name);
-        proto = Object.getPrototypeOf(proto);
-      }
-      return pd;
-    };
-  }
-
-  callback(PLATFORM, FEATURE, DOM);
-}
-function reset() {
-  isInitialized = false;
-}
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(17)))
 
 /***/ }),
 
@@ -20008,85 +19982,111 @@ var SetRepeatStrategy = function () {
 /***/ }),
 
 /***/ 4:
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (immutable) */ __webpack_exports__["a"] = AggregateError;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return FEATURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PLATFORM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return DOM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return isInitialized; });
+/* harmony export (immutable) */ __webpack_exports__["e"] = initializePAL;
+/* unused harmony export reset */
 
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
+function AggregateError(message, innerError, skipIfAlreadyAggregate) {
+  if (innerError) {
+    if (innerError.innerError && skipIfAlreadyAggregate) {
+      return innerError;
+    }
 
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
+    var separator = '\n------------------------------------------------\n';
+
+    message += separator + 'Inner Error:\n';
+
+    if (typeof innerError === 'string') {
+      message += 'Message: ' + innerError;
+    } else {
+      if (innerError.message) {
+        message += 'Message: ' + innerError.message;
+      } else {
+        message += 'Unknown Inner Error Type. Displaying Inner Error as JSON:\n ' + JSON.stringify(innerError, null, '  ');
+      }
+
+      if (innerError.stack) {
+        message += '\nInner Error Stack:\n' + innerError.stack;
+        message += '\nEnd Inner Error Stack';
+      }
+    }
+
+    message += separator;
+  }
+
+  var e = new Error(message);
+  if (innerError) {
+    e.innerError = innerError;
+  }
+
+  return e;
+}
+
+var FEATURE = {};
+
+var PLATFORM = {
+  noop: function noop() {},
+  eachModule: function eachModule() {},
+  moduleName: function (_moduleName) {
+    function moduleName(_x) {
+      return _moduleName.apply(this, arguments);
+    }
+
+    moduleName.toString = function () {
+      return _moduleName.toString();
+    };
+
+    return moduleName;
+  }(function (moduleName) {
+    return moduleName;
+  })
 };
 
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
+PLATFORM.global = function () {
+  if (typeof self !== 'undefined') {
+    return self;
+  }
 
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
+  if (typeof global !== 'undefined') {
+    return global;
+  }
 
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
+  return new Function('return this')();
+}();
 
-	return [content].join('\n');
+var DOM = {};
+var isInitialized = false;
+
+function initializePAL(callback) {
+  if (isInitialized) {
+    return;
+  }
+  isInitialized = true;
+  if (typeof Object.getPropertyDescriptor !== 'function') {
+    Object.getPropertyDescriptor = function (subject, name) {
+      var pd = Object.getOwnPropertyDescriptor(subject, name);
+      var proto = Object.getPrototypeOf(subject);
+      while (typeof pd === 'undefined' && proto !== null) {
+        pd = Object.getOwnPropertyDescriptor(proto, name);
+        proto = Object.getPrototypeOf(proto);
+      }
+      return pd;
+    };
+  }
+
+  callback(PLATFORM, FEATURE, DOM);
 }
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
+function reset() {
+  isInitialized = false;
 }
-
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(17)))
 
 /***/ }),
 
@@ -20346,7 +20346,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["bootstrap"] = bootstrap;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "starting", function() { return starting; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_polyfills__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(4);
 
 
 
@@ -20508,7 +20508,7 @@ function bootstrap(configure) {
 }
 
 var starting = run();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(23)))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(24)))
 
 /***/ }),
 
@@ -20516,7 +20516,7 @@ var starting = run();
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
 
 /**
  * Plugin configuration builder
@@ -20860,7 +20860,7 @@ let MdInputUpdateService = class MdInputUpdateService {
     }
 };
 MdInputUpdateService = __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["d" /* autoinject */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["e" /* autoinject */],
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_aurelia_task_queue__["a" /* TaskQueue */]])
 ], MdInputUpdateService);
 
@@ -20872,4963 +20872,267 @@ MdInputUpdateService = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export animationEvent */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Animator; });
-/* unused harmony export CompositionTransactionNotifier */
-/* unused harmony export CompositionTransactionOwnershipToken */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return CompositionTransaction; });
-/* unused harmony export _hyphenate */
-/* unused harmony export _isAllWhitespace */
-/* unused harmony export ViewEngineHooksResource */
-/* unused harmony export viewEngineHooks */
-/* unused harmony export ElementEvents */
-/* unused harmony export ResourceLoadContext */
-/* unused harmony export ViewCompileInstruction */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return BehaviorInstruction; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return TargetInstruction; });
-/* unused harmony export viewStrategy */
-/* unused harmony export RelativeViewStrategy */
-/* unused harmony export ConventionalViewStrategy */
-/* unused harmony export NoViewStrategy */
-/* unused harmony export TemplateRegistryViewStrategy */
-/* unused harmony export InlineViewStrategy */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return ViewLocator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return BindingLanguage; });
-/* unused harmony export SlotCustomAttribute */
-/* unused harmony export PassThroughSlot */
-/* unused harmony export ShadowSlot */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return ShadowDOM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return ViewResources; });
-/* unused harmony export View */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return ViewSlot; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BoundViewFactory; });
-/* unused harmony export ViewFactory */
-/* unused harmony export ViewCompiler */
-/* unused harmony export ResourceModule */
-/* unused harmony export ResourceDescription */
-/* unused harmony export ModuleAnalyzer */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return ViewEngine; });
-/* unused harmony export Controller */
-/* unused harmony export BehaviorPropertyObserver */
-/* unused harmony export BindableProperty */
-/* unused harmony export HtmlBehaviorResource */
-/* harmony export (immutable) */ __webpack_exports__["p"] = children;
-/* unused harmony export child */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return SwapStrategies; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return CompositionEngine; });
-/* unused harmony export ElementConfigResource */
-/* harmony export (immutable) */ __webpack_exports__["v"] = resource;
-/* unused harmony export behavior */
-/* harmony export (immutable) */ __webpack_exports__["r"] = customElement;
-/* harmony export (immutable) */ __webpack_exports__["q"] = customAttribute;
-/* harmony export (immutable) */ __webpack_exports__["w"] = templateController;
-/* harmony export (immutable) */ __webpack_exports__["o"] = bindable;
-/* unused harmony export dynamicOptions */
-/* unused harmony export useShadowDOM */
-/* unused harmony export processAttributes */
-/* harmony export (immutable) */ __webpack_exports__["u"] = processContent;
-/* unused harmony export containerless */
-/* unused harmony export useViewStrategy */
-/* harmony export (immutable) */ __webpack_exports__["x"] = useView;
-/* harmony export (immutable) */ __webpack_exports__["s"] = inlineView;
-/* harmony export (immutable) */ __webpack_exports__["t"] = noView;
-/* unused harmony export elementConfig */
-/* unused harmony export viewResources */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return TemplatingEngine; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_path__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_aurelia_task_queue__ = __webpack_require__(11);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-var _class, _temp, _dec, _class2, _dec2, _class3, _dec3, _class4, _dec4, _class5, _dec5, _class6, _class7, _temp2, _dec6, _class8, _class9, _temp3, _class11, _dec7, _class13, _dec8, _class14, _class15, _temp4, _dec9, _class16, _dec10, _class17, _dec11, _class18;
+/* unused harmony export json */
+/* unused harmony export HttpClientConfiguration */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpClient; });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 
 
+function json(body, replacer) {
+  return JSON.stringify(body !== undefined ? body : {}, replacer);
+}
 
-
-
-
-
-
-
-
-
-var animationEvent = {
-  enterBegin: 'animation:enter:begin',
-  enterActive: 'animation:enter:active',
-  enterDone: 'animation:enter:done',
-  enterTimeout: 'animation:enter:timeout',
-
-  leaveBegin: 'animation:leave:begin',
-  leaveActive: 'animation:leave:active',
-  leaveDone: 'animation:leave:done',
-  leaveTimeout: 'animation:leave:timeout',
-
-  staggerNext: 'animation:stagger:next',
-
-  removeClassBegin: 'animation:remove-class:begin',
-  removeClassActive: 'animation:remove-class:active',
-  removeClassDone: 'animation:remove-class:done',
-  removeClassTimeout: 'animation:remove-class:timeout',
-
-  addClassBegin: 'animation:add-class:begin',
-  addClassActive: 'animation:add-class:active',
-  addClassDone: 'animation:add-class:done',
-  addClassTimeout: 'animation:add-class:timeout',
-
-  animateBegin: 'animation:animate:begin',
-  animateActive: 'animation:animate:active',
-  animateDone: 'animation:animate:done',
-  animateTimeout: 'animation:animate:timeout',
-
-  sequenceBegin: 'animation:sequence:begin',
-  sequenceDone: 'animation:sequence:done'
-};
-
-var Animator = function () {
-  function Animator() {
+var HttpClientConfiguration = function () {
+  function HttpClientConfiguration() {
     
+
+    this.baseUrl = '';
+    this.defaults = {};
+    this.interceptors = [];
   }
 
-  Animator.prototype.enter = function enter(element) {
-    return Promise.resolve(false);
+  HttpClientConfiguration.prototype.withBaseUrl = function withBaseUrl(baseUrl) {
+    this.baseUrl = baseUrl;
+    return this;
   };
 
-  Animator.prototype.leave = function leave(element) {
-    return Promise.resolve(false);
+  HttpClientConfiguration.prototype.withDefaults = function withDefaults(defaults) {
+    this.defaults = defaults;
+    return this;
   };
 
-  Animator.prototype.removeClass = function removeClass(element, className) {
-    element.classList.remove(className);
-    return Promise.resolve(false);
+  HttpClientConfiguration.prototype.withInterceptor = function withInterceptor(interceptor) {
+    this.interceptors.push(interceptor);
+    return this;
   };
 
-  Animator.prototype.addClass = function addClass(element, className) {
-    element.classList.add(className);
-    return Promise.resolve(false);
+  HttpClientConfiguration.prototype.useStandardConfiguration = function useStandardConfiguration() {
+    var standardConfig = { credentials: 'same-origin' };
+    Object.assign(this.defaults, standardConfig, this.defaults);
+    return this.rejectErrorResponses();
   };
 
-  Animator.prototype.animate = function animate(element, className) {
-    return Promise.resolve(false);
+  HttpClientConfiguration.prototype.rejectErrorResponses = function rejectErrorResponses() {
+    return this.withInterceptor({ response: rejectOnError });
   };
 
-  Animator.prototype.runSequence = function runSequence(animations) {};
-
-  Animator.prototype.registerEffect = function registerEffect(effectName, properties) {};
-
-  Animator.prototype.unregisterEffect = function unregisterEffect(effectName) {};
-
-  return Animator;
+  return HttpClientConfiguration;
 }();
 
-var CompositionTransactionNotifier = function () {
-  function CompositionTransactionNotifier(owner) {
-    
-
-    this.owner = owner;
-    this.owner._compositionCount++;
+function rejectOnError(response) {
+  if (!response.ok) {
+    throw response;
   }
 
-  CompositionTransactionNotifier.prototype.done = function done() {
-    this.owner._compositionCount--;
-    this.owner._tryCompleteTransaction();
-  };
+  return response;
+}
 
-  return CompositionTransactionNotifier;
-}();
-
-var CompositionTransactionOwnershipToken = function () {
-  function CompositionTransactionOwnershipToken(owner) {
+var HttpClient = function () {
+  function HttpClient() {
     
 
-    this.owner = owner;
-    this.owner._ownershipToken = this;
-    this.thenable = this._createThenable();
+    this.activeRequestCount = 0;
+    this.isRequesting = false;
+    this.isConfigured = false;
+    this.baseUrl = '';
+    this.defaults = null;
+    this.interceptors = [];
+
+    if (typeof fetch === 'undefined') {
+      throw new Error('HttpClient requires a Fetch API implementation, but the current environment doesn\'t support it. You may need to load a polyfill such as https://github.com/github/fetch');
+    }
   }
 
-  CompositionTransactionOwnershipToken.prototype.waitForCompositionComplete = function waitForCompositionComplete() {
-    this.owner._tryCompleteTransaction();
-    return this.thenable;
+  HttpClient.prototype.configure = function configure(config) {
+    var normalizedConfig = void 0;
+
+    if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object') {
+      normalizedConfig = { defaults: config };
+    } else if (typeof config === 'function') {
+      normalizedConfig = new HttpClientConfiguration();
+      normalizedConfig.baseUrl = this.baseUrl;
+      normalizedConfig.defaults = Object.assign({}, this.defaults);
+      normalizedConfig.interceptors = this.interceptors;
+
+      var c = config(normalizedConfig);
+      if (HttpClientConfiguration.prototype.isPrototypeOf(c)) {
+        normalizedConfig = c;
+      }
+    } else {
+      throw new Error('invalid config');
+    }
+
+    var defaults = normalizedConfig.defaults;
+    if (defaults && Headers.prototype.isPrototypeOf(defaults.headers)) {
+      throw new Error('Default headers must be a plain object.');
+    }
+
+    this.baseUrl = normalizedConfig.baseUrl;
+    this.defaults = defaults;
+    this.interceptors = normalizedConfig.interceptors || [];
+    this.isConfigured = true;
+
+    return this;
   };
 
-  CompositionTransactionOwnershipToken.prototype.resolve = function resolve() {
-    this._resolveCallback();
-  };
+  HttpClient.prototype.fetch = function (_fetch) {
+    function fetch(_x, _x2) {
+      return _fetch.apply(this, arguments);
+    }
 
-  CompositionTransactionOwnershipToken.prototype._createThenable = function _createThenable() {
+    fetch.toString = function () {
+      return _fetch.toString();
+    };
+
+    return fetch;
+  }(function (input, init) {
     var _this = this;
 
-    return new Promise(function (resolve, reject) {
-      _this._resolveCallback = resolve;
+    trackRequestStart.call(this);
+
+    var request = Promise.resolve().then(function () {
+      return buildRequest.call(_this, input, init, _this.defaults);
     });
-  };
-
-  return CompositionTransactionOwnershipToken;
-}();
-
-var CompositionTransaction = function () {
-  function CompositionTransaction() {
-    
-
-    this._ownershipToken = null;
-    this._compositionCount = 0;
-  }
-
-  CompositionTransaction.prototype.tryCapture = function tryCapture() {
-    return this._ownershipToken === null ? new CompositionTransactionOwnershipToken(this) : null;
-  };
-
-  CompositionTransaction.prototype.enlist = function enlist() {
-    return new CompositionTransactionNotifier(this);
-  };
-
-  CompositionTransaction.prototype._tryCompleteTransaction = function _tryCompleteTransaction() {
-    if (this._compositionCount <= 0) {
-      this._compositionCount = 0;
-
-      if (this._ownershipToken !== null) {
-        var token = this._ownershipToken;
-        this._ownershipToken = null;
-        token.resolve();
-      }
-    }
-  };
-
-  return CompositionTransaction;
-}();
-
-var capitalMatcher = /([A-Z])/g;
-
-function addHyphenAndLower(char) {
-  return '-' + char.toLowerCase();
-}
-
-function _hyphenate(name) {
-  return (name.charAt(0).toLowerCase() + name.slice(1)).replace(capitalMatcher, addHyphenAndLower);
-}
-
-function _isAllWhitespace(node) {
-  return !(node.auInterpolationTarget || /[^\t\n\r ]/.test(node.textContent));
-}
-
-var ViewEngineHooksResource = function () {
-  function ViewEngineHooksResource() {
-    
-  }
-
-  ViewEngineHooksResource.prototype.initialize = function initialize(container, target) {
-    this.instance = container.get(target);
-  };
-
-  ViewEngineHooksResource.prototype.register = function register(registry, name) {
-    registry.registerViewEngineHooks(this.instance);
-  };
-
-  ViewEngineHooksResource.prototype.load = function load(container, target) {};
-
-  ViewEngineHooksResource.convention = function convention(name) {
-    if (name.endsWith('ViewEngineHooks')) {
-      return new ViewEngineHooksResource();
-    }
-  };
-
-  return ViewEngineHooksResource;
-}();
-
-function viewEngineHooks(target) {
-  var deco = function deco(t) {
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, new ViewEngineHooksResource(), t);
-  };
-
-  return target ? deco(target) : deco;
-}
-
-var ElementEvents = function () {
-  function ElementEvents(element) {
-    
-
-    this.element = element;
-    this.subscriptions = {};
-  }
-
-  ElementEvents.prototype._enqueueHandler = function _enqueueHandler(handler) {
-    this.subscriptions[handler.eventName] = this.subscriptions[handler.eventName] || [];
-    this.subscriptions[handler.eventName].push(handler);
-  };
-
-  ElementEvents.prototype._dequeueHandler = function _dequeueHandler(handler) {
-    var index = void 0;
-    var subscriptions = this.subscriptions[handler.eventName];
-    if (subscriptions) {
-      index = subscriptions.indexOf(handler);
-      if (index > -1) {
-        subscriptions.splice(index, 1);
-      }
-    }
-    return handler;
-  };
-
-  ElementEvents.prototype.publish = function publish(eventName) {
-    var detail = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    var bubbles = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-    var cancelable = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
-
-    var event = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createCustomEvent(eventName, { cancelable: cancelable, bubbles: bubbles, detail: detail });
-    this.element.dispatchEvent(event);
-  };
-
-  ElementEvents.prototype.subscribe = function subscribe(eventName, handler) {
-    var captureOrOptions = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
-    if (typeof handler === 'function') {
-      var eventHandler = new EventHandlerImpl(this, eventName, handler, captureOrOptions, false);
-      return eventHandler;
-    }
-
-    return undefined;
-  };
-
-  ElementEvents.prototype.subscribeOnce = function subscribeOnce(eventName, handler) {
-    var captureOrOptions = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
-    if (typeof handler === 'function') {
-      var eventHandler = new EventHandlerImpl(this, eventName, handler, captureOrOptions, true);
-      return eventHandler;
-    }
-
-    return undefined;
-  };
-
-  ElementEvents.prototype.dispose = function dispose(eventName) {
-    if (eventName && typeof eventName === 'string') {
-      var subscriptions = this.subscriptions[eventName];
-      if (subscriptions) {
-        while (subscriptions.length) {
-          var subscription = subscriptions.pop();
-          if (subscription) {
-            subscription.dispose();
-          }
-        }
-      }
-    } else {
-      this.disposeAll();
-    }
-  };
-
-  ElementEvents.prototype.disposeAll = function disposeAll() {
-    for (var key in this.subscriptions) {
-      this.dispose(key);
-    }
-  };
-
-  return ElementEvents;
-}();
-
-var EventHandlerImpl = function () {
-  function EventHandlerImpl(owner, eventName, handler, captureOrOptions, once) {
-    
-
-    this.owner = owner;
-    this.eventName = eventName;
-    this.handler = handler;
-
-    this.capture = typeof captureOrOptions === 'boolean' ? captureOrOptions : captureOrOptions.capture;
-    this.bubbles = !this.capture;
-    this.captureOrOptions = captureOrOptions;
-    this.once = once;
-    owner.element.addEventListener(eventName, this, captureOrOptions);
-    owner._enqueueHandler(this);
-  }
-
-  EventHandlerImpl.prototype.handleEvent = function handleEvent(e) {
-    var fn = this.handler;
-    fn(e);
-    if (this.once) {
-      this.dispose();
-    }
-  };
-
-  EventHandlerImpl.prototype.dispose = function dispose() {
-    this.owner.element.removeEventListener(this.eventName, this, this.captureOrOptions);
-    this.owner._dequeueHandler(this);
-    this.owner = this.handler = null;
-  };
-
-  return EventHandlerImpl;
-}();
-
-var ResourceLoadContext = function () {
-  function ResourceLoadContext() {
-    
-
-    this.dependencies = {};
-  }
-
-  ResourceLoadContext.prototype.addDependency = function addDependency(url) {
-    this.dependencies[url] = true;
-  };
-
-  ResourceLoadContext.prototype.hasDependency = function hasDependency(url) {
-    return url in this.dependencies;
-  };
-
-  return ResourceLoadContext;
-}();
-
-var ViewCompileInstruction = function ViewCompileInstruction() {
-  var targetShadowDOM = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-  var compileSurrogate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  
-
-  this.targetShadowDOM = targetShadowDOM;
-  this.compileSurrogate = compileSurrogate;
-  this.associatedModuleId = null;
-};
-
-ViewCompileInstruction.normal = new ViewCompileInstruction();
-
-var BehaviorInstruction = function () {
-  BehaviorInstruction.enhance = function enhance() {
-    var instruction = new BehaviorInstruction();
-    instruction.enhance = true;
-    return instruction;
-  };
-
-  BehaviorInstruction.unitTest = function unitTest(type, attributes) {
-    var instruction = new BehaviorInstruction();
-    instruction.type = type;
-    instruction.attributes = attributes || {};
-    return instruction;
-  };
-
-  BehaviorInstruction.element = function element(node, type) {
-    var instruction = new BehaviorInstruction();
-    instruction.type = type;
-    instruction.attributes = {};
-    instruction.anchorIsContainer = !(node.hasAttribute('containerless') || type.containerless);
-    instruction.initiatedByBehavior = true;
-    return instruction;
-  };
-
-  BehaviorInstruction.attribute = function attribute(attrName, type) {
-    var instruction = new BehaviorInstruction();
-    instruction.attrName = attrName;
-    instruction.type = type || null;
-    instruction.attributes = {};
-    return instruction;
-  };
-
-  BehaviorInstruction.dynamic = function dynamic(host, viewModel, viewFactory) {
-    var instruction = new BehaviorInstruction();
-    instruction.host = host;
-    instruction.viewModel = viewModel;
-    instruction.viewFactory = viewFactory;
-    instruction.inheritBindingContext = true;
-    return instruction;
-  };
-
-  function BehaviorInstruction() {
-    
-
-    this.initiatedByBehavior = false;
-    this.enhance = false;
-    this.partReplacements = null;
-    this.viewFactory = null;
-    this.originalAttrName = null;
-    this.skipContentProcessing = false;
-    this.contentFactory = null;
-    this.viewModel = null;
-    this.anchorIsContainer = false;
-    this.host = null;
-    this.attributes = null;
-    this.type = null;
-    this.attrName = null;
-    this.inheritBindingContext = false;
-  }
-
-  return BehaviorInstruction;
-}();
-
-BehaviorInstruction.normal = new BehaviorInstruction();
-
-var TargetInstruction = (_temp = _class = function () {
-  TargetInstruction.shadowSlot = function shadowSlot(parentInjectorId) {
-    var instruction = new TargetInstruction();
-    instruction.parentInjectorId = parentInjectorId;
-    instruction.shadowSlot = true;
-    return instruction;
-  };
-
-  TargetInstruction.contentExpression = function contentExpression(expression) {
-    var instruction = new TargetInstruction();
-    instruction.contentExpression = expression;
-    return instruction;
-  };
-
-  TargetInstruction.lifting = function lifting(parentInjectorId, liftingInstruction) {
-    var instruction = new TargetInstruction();
-    instruction.parentInjectorId = parentInjectorId;
-    instruction.expressions = TargetInstruction.noExpressions;
-    instruction.behaviorInstructions = [liftingInstruction];
-    instruction.viewFactory = liftingInstruction.viewFactory;
-    instruction.providers = [liftingInstruction.type.target];
-    instruction.lifting = true;
-    return instruction;
-  };
-
-  TargetInstruction.normal = function normal(injectorId, parentInjectorId, providers, behaviorInstructions, expressions, elementInstruction) {
-    var instruction = new TargetInstruction();
-    instruction.injectorId = injectorId;
-    instruction.parentInjectorId = parentInjectorId;
-    instruction.providers = providers;
-    instruction.behaviorInstructions = behaviorInstructions;
-    instruction.expressions = expressions;
-    instruction.anchorIsContainer = elementInstruction ? elementInstruction.anchorIsContainer : true;
-    instruction.elementInstruction = elementInstruction;
-    return instruction;
-  };
-
-  TargetInstruction.surrogate = function surrogate(providers, behaviorInstructions, expressions, values) {
-    var instruction = new TargetInstruction();
-    instruction.expressions = expressions;
-    instruction.behaviorInstructions = behaviorInstructions;
-    instruction.providers = providers;
-    instruction.values = values;
-    return instruction;
-  };
-
-  function TargetInstruction() {
-    
-
-    this.injectorId = null;
-    this.parentInjectorId = null;
-
-    this.shadowSlot = false;
-    this.slotName = null;
-    this.slotFallbackFactory = null;
-
-    this.contentExpression = null;
-
-    this.expressions = null;
-    this.behaviorInstructions = null;
-    this.providers = null;
-
-    this.viewFactory = null;
-
-    this.anchorIsContainer = false;
-    this.elementInstruction = null;
-    this.lifting = false;
-
-    this.values = null;
-  }
-
-  return TargetInstruction;
-}(), _class.noExpressions = Object.freeze([]), _temp);
-
-var viewStrategy = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["d" /* protocol */].create('aurelia:view-strategy', {
-  validate: function validate(target) {
-    if (!(typeof target.loadViewFactory === 'function')) {
-      return 'View strategies must implement: loadViewFactory(viewEngine: ViewEngine, compileInstruction: ViewCompileInstruction, loadContext?: ResourceLoadContext): Promise<ViewFactory>';
-    }
-
-    return true;
-  },
-  compose: function compose(target) {
-    if (!(typeof target.makeRelativeTo === 'function')) {
-      target.makeRelativeTo = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["d" /* PLATFORM */].noop;
-    }
-  }
-});
-
-var RelativeViewStrategy = (_dec = viewStrategy(), _dec(_class2 = function () {
-  function RelativeViewStrategy(path) {
-    
-
-    this.path = path;
-    this.absolutePath = null;
-  }
-
-  RelativeViewStrategy.prototype.loadViewFactory = function loadViewFactory(viewEngine, compileInstruction, loadContext, target) {
-    if (this.absolutePath === null && this.moduleId) {
-      this.absolutePath = Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_path__["d" /* relativeToFile */])(this.path, this.moduleId);
-    }
-
-    compileInstruction.associatedModuleId = this.moduleId;
-    return viewEngine.loadViewFactory(this.absolutePath || this.path, compileInstruction, loadContext, target);
-  };
-
-  RelativeViewStrategy.prototype.makeRelativeTo = function makeRelativeTo(file) {
-    if (this.absolutePath === null) {
-      this.absolutePath = Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_path__["d" /* relativeToFile */])(this.path, file);
-    }
-  };
-
-  return RelativeViewStrategy;
-}()) || _class2);
-
-var ConventionalViewStrategy = (_dec2 = viewStrategy(), _dec2(_class3 = function () {
-  function ConventionalViewStrategy(viewLocator, origin) {
-    
-
-    this.moduleId = origin.moduleId;
-    this.viewUrl = viewLocator.convertOriginToViewUrl(origin);
-  }
-
-  ConventionalViewStrategy.prototype.loadViewFactory = function loadViewFactory(viewEngine, compileInstruction, loadContext, target) {
-    compileInstruction.associatedModuleId = this.moduleId;
-    return viewEngine.loadViewFactory(this.viewUrl, compileInstruction, loadContext, target);
-  };
-
-  return ConventionalViewStrategy;
-}()) || _class3);
-
-var NoViewStrategy = (_dec3 = viewStrategy(), _dec3(_class4 = function () {
-  function NoViewStrategy(dependencies, dependencyBaseUrl) {
-    
-
-    this.dependencies = dependencies || null;
-    this.dependencyBaseUrl = dependencyBaseUrl || '';
-  }
-
-  NoViewStrategy.prototype.loadViewFactory = function loadViewFactory(viewEngine, compileInstruction, loadContext, target) {
-    var entry = this.entry;
-    var dependencies = this.dependencies;
-
-    if (entry && entry.factoryIsReady) {
-      return Promise.resolve(null);
-    }
-
-    this.entry = entry = new __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["b" /* TemplateRegistryEntry */](this.moduleId || this.dependencyBaseUrl);
-
-    entry.dependencies = [];
-    entry.templateIsLoaded = true;
-
-    if (dependencies !== null) {
-      for (var i = 0, ii = dependencies.length; i < ii; ++i) {
-        var current = dependencies[i];
-
-        if (typeof current === 'string' || typeof current === 'function') {
-          entry.addDependency(current);
-        } else {
-          entry.addDependency(current.from, current.as);
-        }
-      }
-    }
-
-    compileInstruction.associatedModuleId = this.moduleId;
-
-    return viewEngine.loadViewFactory(entry, compileInstruction, loadContext, target);
-  };
-
-  return NoViewStrategy;
-}()) || _class4);
-
-var TemplateRegistryViewStrategy = (_dec4 = viewStrategy(), _dec4(_class5 = function () {
-  function TemplateRegistryViewStrategy(moduleId, entry) {
-    
-
-    this.moduleId = moduleId;
-    this.entry = entry;
-  }
-
-  TemplateRegistryViewStrategy.prototype.loadViewFactory = function loadViewFactory(viewEngine, compileInstruction, loadContext, target) {
-    var entry = this.entry;
-
-    if (entry.factoryIsReady) {
-      return Promise.resolve(entry.factory);
-    }
-
-    compileInstruction.associatedModuleId = this.moduleId;
-    return viewEngine.loadViewFactory(entry, compileInstruction, loadContext, target);
-  };
-
-  return TemplateRegistryViewStrategy;
-}()) || _class5);
-
-var InlineViewStrategy = (_dec5 = viewStrategy(), _dec5(_class6 = function () {
-  function InlineViewStrategy(markup, dependencies, dependencyBaseUrl) {
-    
-
-    this.markup = markup;
-    this.dependencies = dependencies || null;
-    this.dependencyBaseUrl = dependencyBaseUrl || '';
-  }
-
-  InlineViewStrategy.prototype.loadViewFactory = function loadViewFactory(viewEngine, compileInstruction, loadContext, target) {
-    var entry = this.entry;
-    var dependencies = this.dependencies;
-
-    if (entry && entry.factoryIsReady) {
-      return Promise.resolve(entry.factory);
-    }
-
-    this.entry = entry = new __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["b" /* TemplateRegistryEntry */](this.moduleId || this.dependencyBaseUrl);
-    entry.template = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createTemplateFromMarkup(this.markup);
-
-    if (dependencies !== null) {
-      for (var i = 0, ii = dependencies.length; i < ii; ++i) {
-        var current = dependencies[i];
-
-        if (typeof current === 'string' || typeof current === 'function') {
-          entry.addDependency(current);
-        } else {
-          entry.addDependency(current.from, current.as);
-        }
-      }
-    }
-
-    compileInstruction.associatedModuleId = this.moduleId;
-    return viewEngine.loadViewFactory(entry, compileInstruction, loadContext, target);
-  };
-
-  return InlineViewStrategy;
-}()) || _class6);
-
-var ViewLocator = (_temp2 = _class7 = function () {
-  function ViewLocator() {
-    
-  }
-
-  ViewLocator.prototype.getViewStrategy = function getViewStrategy(value) {
-    if (!value) {
-      return null;
-    }
-
-    if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && 'getViewStrategy' in value) {
-      var _origin = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(value.constructor);
-
-      value = value.getViewStrategy();
-
-      if (typeof value === 'string') {
-        value = new RelativeViewStrategy(value);
-      }
-
-      viewStrategy.assert(value);
-
-      if (_origin.moduleId) {
-        value.makeRelativeTo(_origin.moduleId);
-      }
-
-      return value;
-    }
-
-    if (typeof value === 'string') {
-      value = new RelativeViewStrategy(value);
-    }
-
-    if (viewStrategy.validate(value)) {
-      return value;
-    }
-
-    if (typeof value !== 'function') {
-      value = value.constructor;
-    }
-
-    var origin = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(value);
-    var strategy = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].get(ViewLocator.viewStrategyMetadataKey, value);
-
-    if (!strategy) {
-      if (!origin.moduleId) {
-        throw new Error('Cannot determine default view strategy for object.', value);
-      }
-
-      strategy = this.createFallbackViewStrategy(origin);
-    } else if (origin.moduleId) {
-      strategy.moduleId = origin.moduleId;
-    }
-
-    return strategy;
-  };
-
-  ViewLocator.prototype.createFallbackViewStrategy = function createFallbackViewStrategy(origin) {
-    return new ConventionalViewStrategy(this, origin);
-  };
-
-  ViewLocator.prototype.convertOriginToViewUrl = function convertOriginToViewUrl(origin) {
-    var moduleId = origin.moduleId;
-    var id = moduleId.endsWith('.js') || moduleId.endsWith('.ts') ? moduleId.substring(0, moduleId.length - 3) : moduleId;
-    return id + '.html';
-  };
-
-  return ViewLocator;
-}(), _class7.viewStrategyMetadataKey = 'aurelia:view-strategy', _temp2);
-
-function mi(name) {
-  throw new Error('BindingLanguage must implement ' + name + '().');
-}
-
-var BindingLanguage = function () {
-  function BindingLanguage() {
-    
-  }
-
-  BindingLanguage.prototype.inspectAttribute = function inspectAttribute(resources, elementName, attrName, attrValue) {
-    mi('inspectAttribute');
-  };
-
-  BindingLanguage.prototype.createAttributeInstruction = function createAttributeInstruction(resources, element, info, existingInstruction) {
-    mi('createAttributeInstruction');
-  };
-
-  BindingLanguage.prototype.inspectTextContent = function inspectTextContent(resources, value) {
-    mi('inspectTextContent');
-  };
-
-  return BindingLanguage;
-}();
-
-var noNodes = Object.freeze([]);
-
-var SlotCustomAttribute = (_dec6 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element), _dec6(_class8 = function () {
-  function SlotCustomAttribute(element) {
-    
-
-    this.element = element;
-    this.element.auSlotAttribute = this;
-  }
-
-  SlotCustomAttribute.prototype.valueChanged = function valueChanged(newValue, oldValue) {};
-
-  return SlotCustomAttribute;
-}()) || _class8);
-
-var PassThroughSlot = function () {
-  function PassThroughSlot(anchor, name, destinationName, fallbackFactory) {
-    
-
-    this.anchor = anchor;
-    this.anchor.viewSlot = this;
-    this.name = name;
-    this.destinationName = destinationName;
-    this.fallbackFactory = fallbackFactory;
-    this.destinationSlot = null;
-    this.projections = 0;
-    this.contentView = null;
-
-    var attr = new SlotCustomAttribute(this.anchor);
-    attr.value = this.destinationName;
-  }
-
-  PassThroughSlot.prototype.renderFallbackContent = function renderFallbackContent(view, nodes, projectionSource, index) {
-    if (this.contentView === null) {
-      this.contentView = this.fallbackFactory.create(this.ownerView.container);
-      this.contentView.bind(this.ownerView.bindingContext, this.ownerView.overrideContext);
-
-      var slots = Object.create(null);
-      slots[this.destinationSlot.name] = this.destinationSlot;
-
-      ShadowDOM.distributeView(this.contentView, slots, projectionSource, index, this.destinationSlot.name);
-    }
-  };
-
-  PassThroughSlot.prototype.passThroughTo = function passThroughTo(destinationSlot) {
-    this.destinationSlot = destinationSlot;
-  };
-
-  PassThroughSlot.prototype.addNode = function addNode(view, node, projectionSource, index) {
-    if (this.contentView !== null) {
-      this.contentView.removeNodes();
-      this.contentView.detached();
-      this.contentView.unbind();
-      this.contentView = null;
-    }
-
-    if (node.viewSlot instanceof PassThroughSlot) {
-      node.viewSlot.passThroughTo(this);
-      return;
-    }
-
-    this.projections++;
-    this.destinationSlot.addNode(view, node, projectionSource, index);
-  };
-
-  PassThroughSlot.prototype.removeView = function removeView(view, projectionSource) {
-    this.projections--;
-    this.destinationSlot.removeView(view, projectionSource);
-
-    if (this.needsFallbackRendering) {
-      this.renderFallbackContent(null, noNodes, projectionSource);
-    }
-  };
-
-  PassThroughSlot.prototype.removeAll = function removeAll(projectionSource) {
-    this.projections = 0;
-    this.destinationSlot.removeAll(projectionSource);
-
-    if (this.needsFallbackRendering) {
-      this.renderFallbackContent(null, noNodes, projectionSource);
-    }
-  };
-
-  PassThroughSlot.prototype.projectFrom = function projectFrom(view, projectionSource) {
-    this.destinationSlot.projectFrom(view, projectionSource);
-  };
-
-  PassThroughSlot.prototype.created = function created(ownerView) {
-    this.ownerView = ownerView;
-  };
-
-  PassThroughSlot.prototype.bind = function bind(view) {
-    if (this.contentView) {
-      this.contentView.bind(view.bindingContext, view.overrideContext);
-    }
-  };
-
-  PassThroughSlot.prototype.attached = function attached() {
-    if (this.contentView) {
-      this.contentView.attached();
-    }
-  };
-
-  PassThroughSlot.prototype.detached = function detached() {
-    if (this.contentView) {
-      this.contentView.detached();
-    }
-  };
-
-  PassThroughSlot.prototype.unbind = function unbind() {
-    if (this.contentView) {
-      this.contentView.unbind();
-    }
-  };
-
-  _createClass(PassThroughSlot, [{
-    key: 'needsFallbackRendering',
-    get: function get() {
-      return this.fallbackFactory && this.projections === 0;
-    }
-  }]);
-
-  return PassThroughSlot;
-}();
-
-var ShadowSlot = function () {
-  function ShadowSlot(anchor, name, fallbackFactory) {
-    
-
-    this.anchor = anchor;
-    this.anchor.isContentProjectionSource = true;
-    this.anchor.viewSlot = this;
-    this.name = name;
-    this.fallbackFactory = fallbackFactory;
-    this.contentView = null;
-    this.projections = 0;
-    this.children = [];
-    this.projectFromAnchors = null;
-    this.destinationSlots = null;
-  }
-
-  ShadowSlot.prototype.addNode = function addNode(view, node, projectionSource, index, destination) {
-    if (this.contentView !== null) {
-      this.contentView.removeNodes();
-      this.contentView.detached();
-      this.contentView.unbind();
-      this.contentView = null;
-    }
-
-    if (node.viewSlot instanceof PassThroughSlot) {
-      node.viewSlot.passThroughTo(this);
-      return;
-    }
-
-    if (this.destinationSlots !== null) {
-      ShadowDOM.distributeNodes(view, [node], this.destinationSlots, this, index);
-    } else {
-      node.auOwnerView = view;
-      node.auProjectionSource = projectionSource;
-      node.auAssignedSlot = this;
-
-      var anchor = this._findAnchor(view, node, projectionSource, index);
-      var parent = anchor.parentNode;
-
-      parent.insertBefore(node, anchor);
-      this.children.push(node);
-      this.projections++;
-    }
-  };
-
-  ShadowSlot.prototype.removeView = function removeView(view, projectionSource) {
-    if (this.destinationSlots !== null) {
-      ShadowDOM.undistributeView(view, this.destinationSlots, this);
-    } else if (this.contentView && this.contentView.hasSlots) {
-      ShadowDOM.undistributeView(view, this.contentView.slots, projectionSource);
-    } else {
-      var found = this.children.find(function (x) {
-        return x.auSlotProjectFrom === projectionSource;
-      });
-      if (found) {
-        var _children = found.auProjectionChildren;
-
-        for (var i = 0, ii = _children.length; i < ii; ++i) {
-          var _child = _children[i];
-
-          if (_child.auOwnerView === view) {
-            _children.splice(i, 1);
-            view.fragment.appendChild(_child);
-            i--;ii--;
-            this.projections--;
-          }
-        }
-
-        if (this.needsFallbackRendering) {
-          this.renderFallbackContent(view, noNodes, projectionSource);
-        }
-      }
-    }
-  };
-
-  ShadowSlot.prototype.removeAll = function removeAll(projectionSource) {
-    if (this.destinationSlots !== null) {
-      ShadowDOM.undistributeAll(this.destinationSlots, this);
-    } else if (this.contentView && this.contentView.hasSlots) {
-      ShadowDOM.undistributeAll(this.contentView.slots, projectionSource);
-    } else {
-      var found = this.children.find(function (x) {
-        return x.auSlotProjectFrom === projectionSource;
-      });
-
-      if (found) {
-        var _children2 = found.auProjectionChildren;
-        for (var i = 0, ii = _children2.length; i < ii; ++i) {
-          var _child2 = _children2[i];
-          _child2.auOwnerView.fragment.appendChild(_child2);
-          this.projections--;
-        }
-
-        found.auProjectionChildren = [];
-
-        if (this.needsFallbackRendering) {
-          this.renderFallbackContent(null, noNodes, projectionSource);
-        }
-      }
-    }
-  };
-
-  ShadowSlot.prototype._findAnchor = function _findAnchor(view, node, projectionSource, index) {
-    if (projectionSource) {
-      var found = this.children.find(function (x) {
-        return x.auSlotProjectFrom === projectionSource;
-      });
-      if (found) {
-        if (index !== undefined) {
-          var _children3 = found.auProjectionChildren;
-          var viewIndex = -1;
-          var lastView = void 0;
-
-          for (var i = 0, ii = _children3.length; i < ii; ++i) {
-            var current = _children3[i];
-
-            if (current.auOwnerView !== lastView) {
-              viewIndex++;
-              lastView = current.auOwnerView;
-
-              if (viewIndex >= index && lastView !== view) {
-                _children3.splice(i, 0, node);
-                return current;
-              }
-            }
-          }
-        }
-
-        found.auProjectionChildren.push(node);
-        return found;
-      }
-    }
-
-    return this.anchor;
-  };
-
-  ShadowSlot.prototype.projectTo = function projectTo(slots) {
-    this.destinationSlots = slots;
-  };
-
-  ShadowSlot.prototype.projectFrom = function projectFrom(view, projectionSource) {
-    var anchor = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createComment('anchor');
-    var parent = this.anchor.parentNode;
-    anchor.auSlotProjectFrom = projectionSource;
-    anchor.auOwnerView = view;
-    anchor.auProjectionChildren = [];
-    parent.insertBefore(anchor, this.anchor);
-    this.children.push(anchor);
-
-    if (this.projectFromAnchors === null) {
-      this.projectFromAnchors = [];
-    }
-
-    this.projectFromAnchors.push(anchor);
-  };
-
-  ShadowSlot.prototype.renderFallbackContent = function renderFallbackContent(view, nodes, projectionSource, index) {
-    if (this.contentView === null) {
-      this.contentView = this.fallbackFactory.create(this.ownerView.container);
-      this.contentView.bind(this.ownerView.bindingContext, this.ownerView.overrideContext);
-      this.contentView.insertNodesBefore(this.anchor);
-    }
-
-    if (this.contentView.hasSlots) {
-      var slots = this.contentView.slots;
-      var projectFromAnchors = this.projectFromAnchors;
-
-      if (projectFromAnchors !== null) {
-        for (var slotName in slots) {
-          var slot = slots[slotName];
-
-          for (var i = 0, ii = projectFromAnchors.length; i < ii; ++i) {
-            var anchor = projectFromAnchors[i];
-            slot.projectFrom(anchor.auOwnerView, anchor.auSlotProjectFrom);
-          }
-        }
-      }
-
-      this.fallbackSlots = slots;
-      ShadowDOM.distributeNodes(view, nodes, slots, projectionSource, index);
-    }
-  };
-
-  ShadowSlot.prototype.created = function created(ownerView) {
-    this.ownerView = ownerView;
-  };
-
-  ShadowSlot.prototype.bind = function bind(view) {
-    if (this.contentView) {
-      this.contentView.bind(view.bindingContext, view.overrideContext);
-    }
-  };
-
-  ShadowSlot.prototype.attached = function attached() {
-    if (this.contentView) {
-      this.contentView.attached();
-    }
-  };
-
-  ShadowSlot.prototype.detached = function detached() {
-    if (this.contentView) {
-      this.contentView.detached();
-    }
-  };
-
-  ShadowSlot.prototype.unbind = function unbind() {
-    if (this.contentView) {
-      this.contentView.unbind();
-    }
-  };
-
-  _createClass(ShadowSlot, [{
-    key: 'needsFallbackRendering',
-    get: function get() {
-      return this.fallbackFactory && this.projections === 0;
-    }
-  }]);
-
-  return ShadowSlot;
-}();
-
-var ShadowDOM = (_temp3 = _class9 = function () {
-  function ShadowDOM() {
-    
-  }
-
-  ShadowDOM.getSlotName = function getSlotName(node) {
-    if (node.auSlotAttribute === undefined) {
-      return ShadowDOM.defaultSlotKey;
-    }
-
-    return node.auSlotAttribute.value;
-  };
-
-  ShadowDOM.distributeView = function distributeView(view, slots, projectionSource, index, destinationOverride) {
-    var nodes = void 0;
-
-    if (view === null) {
-      nodes = noNodes;
-    } else {
-      var childNodes = view.fragment.childNodes;
-      var ii = childNodes.length;
-      nodes = new Array(ii);
-
-      for (var i = 0; i < ii; ++i) {
-        nodes[i] = childNodes[i];
-      }
-    }
-
-    ShadowDOM.distributeNodes(view, nodes, slots, projectionSource, index, destinationOverride);
-  };
-
-  ShadowDOM.undistributeView = function undistributeView(view, slots, projectionSource) {
-    for (var slotName in slots) {
-      slots[slotName].removeView(view, projectionSource);
-    }
-  };
-
-  ShadowDOM.undistributeAll = function undistributeAll(slots, projectionSource) {
-    for (var slotName in slots) {
-      slots[slotName].removeAll(projectionSource);
-    }
-  };
-
-  ShadowDOM.distributeNodes = function distributeNodes(view, nodes, slots, projectionSource, index, destinationOverride) {
-    for (var i = 0, ii = nodes.length; i < ii; ++i) {
-      var currentNode = nodes[i];
-      var nodeType = currentNode.nodeType;
-
-      if (currentNode.isContentProjectionSource) {
-        currentNode.viewSlot.projectTo(slots);
-
-        for (var slotName in slots) {
-          slots[slotName].projectFrom(view, currentNode.viewSlot);
-        }
-
-        nodes.splice(i, 1);
-        ii--;i--;
-      } else if (nodeType === 1 || nodeType === 3 || currentNode.viewSlot instanceof PassThroughSlot) {
-        if (nodeType === 3 && _isAllWhitespace(currentNode)) {
-          nodes.splice(i, 1);
-          ii--;i--;
-        } else {
-          var found = slots[destinationOverride || ShadowDOM.getSlotName(currentNode)];
-
-          if (found) {
-            found.addNode(view, currentNode, projectionSource, index);
-            nodes.splice(i, 1);
-            ii--;i--;
-          }
-        }
+    var promise = processRequest(request, this.interceptors).then(function (result) {
+      var response = null;
+
+      if (Response.prototype.isPrototypeOf(result)) {
+        response = result;
+      } else if (Request.prototype.isPrototypeOf(result)) {
+        request = Promise.resolve(result);
+        response = fetch(result);
       } else {
-        nodes.splice(i, 1);
-        ii--;i--;
-      }
-    }
-
-    for (var _slotName in slots) {
-      var slot = slots[_slotName];
-
-      if (slot.needsFallbackRendering) {
-        slot.renderFallbackContent(view, nodes, projectionSource, index);
-      }
-    }
-  };
-
-  return ShadowDOM;
-}(), _class9.defaultSlotKey = '__au-default-slot-key__', _temp3);
-
-function register(lookup, name, resource, type) {
-  if (!name) {
-    return;
-  }
-
-  var existing = lookup[name];
-  if (existing) {
-    if (existing !== resource) {
-      throw new Error('Attempted to register ' + type + ' when one with the same name already exists. Name: ' + name + '.');
-    }
-
-    return;
-  }
-
-  lookup[name] = resource;
-}
-
-var ViewResources = function () {
-  function ViewResources(parent, viewUrl) {
-    
-
-    this.bindingLanguage = null;
-
-    this.parent = parent || null;
-    this.hasParent = this.parent !== null;
-    this.viewUrl = viewUrl || '';
-    this.lookupFunctions = {
-      valueConverters: this.getValueConverter.bind(this),
-      bindingBehaviors: this.getBindingBehavior.bind(this)
-    };
-    this.attributes = Object.create(null);
-    this.elements = Object.create(null);
-    this.valueConverters = Object.create(null);
-    this.bindingBehaviors = Object.create(null);
-    this.attributeMap = Object.create(null);
-    this.values = Object.create(null);
-    this.beforeCompile = this.afterCompile = this.beforeCreate = this.afterCreate = this.beforeBind = this.beforeUnbind = false;
-  }
-
-  ViewResources.prototype._tryAddHook = function _tryAddHook(obj, name) {
-    if (typeof obj[name] === 'function') {
-      var func = obj[name].bind(obj);
-      var counter = 1;
-      var callbackName = void 0;
-
-      while (this[callbackName = name + counter.toString()] !== undefined) {
-        counter++;
+        throw new Error('An invalid result was returned by the interceptor chain. Expected a Request or Response instance, but got [' + result + ']');
       }
 
-      this[name] = true;
-      this[callbackName] = func;
-    }
-  };
-
-  ViewResources.prototype._invokeHook = function _invokeHook(name, one, two, three, four) {
-    if (this.hasParent) {
-      this.parent._invokeHook(name, one, two, three, four);
-    }
-
-    if (this[name]) {
-      this[name + '1'](one, two, three, four);
-
-      var callbackName = name + '2';
-      if (this[callbackName]) {
-        this[callbackName](one, two, three, four);
-
-        callbackName = name + '3';
-        if (this[callbackName]) {
-          this[callbackName](one, two, three, four);
-
-          var counter = 4;
-
-          while (this[callbackName = name + counter.toString()] !== undefined) {
-            this[callbackName](one, two, three, four);
-            counter++;
-          }
-        }
-      }
-    }
-  };
-
-  ViewResources.prototype.registerViewEngineHooks = function registerViewEngineHooks(hooks) {
-    this._tryAddHook(hooks, 'beforeCompile');
-    this._tryAddHook(hooks, 'afterCompile');
-    this._tryAddHook(hooks, 'beforeCreate');
-    this._tryAddHook(hooks, 'afterCreate');
-    this._tryAddHook(hooks, 'beforeBind');
-    this._tryAddHook(hooks, 'beforeUnbind');
-  };
-
-  ViewResources.prototype.getBindingLanguage = function getBindingLanguage(bindingLanguageFallback) {
-    return this.bindingLanguage || (this.bindingLanguage = bindingLanguageFallback);
-  };
-
-  ViewResources.prototype.patchInParent = function patchInParent(newParent) {
-    var originalParent = this.parent;
-
-    this.parent = newParent || null;
-    this.hasParent = this.parent !== null;
-
-    if (newParent.parent === null) {
-      newParent.parent = originalParent;
-      newParent.hasParent = originalParent !== null;
-    }
-  };
-
-  ViewResources.prototype.relativeToView = function relativeToView(path) {
-    return Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_path__["d" /* relativeToFile */])(path, this.viewUrl);
-  };
-
-  ViewResources.prototype.registerElement = function registerElement(tagName, behavior) {
-    register(this.elements, tagName, behavior, 'an Element');
-  };
-
-  ViewResources.prototype.getElement = function getElement(tagName) {
-    return this.elements[tagName] || (this.hasParent ? this.parent.getElement(tagName) : null);
-  };
-
-  ViewResources.prototype.mapAttribute = function mapAttribute(attribute) {
-    return this.attributeMap[attribute] || (this.hasParent ? this.parent.mapAttribute(attribute) : null);
-  };
-
-  ViewResources.prototype.registerAttribute = function registerAttribute(attribute, behavior, knownAttribute) {
-    this.attributeMap[attribute] = knownAttribute;
-    register(this.attributes, attribute, behavior, 'an Attribute');
-  };
-
-  ViewResources.prototype.getAttribute = function getAttribute(attribute) {
-    return this.attributes[attribute] || (this.hasParent ? this.parent.getAttribute(attribute) : null);
-  };
-
-  ViewResources.prototype.registerValueConverter = function registerValueConverter(name, valueConverter) {
-    register(this.valueConverters, name, valueConverter, 'a ValueConverter');
-  };
-
-  ViewResources.prototype.getValueConverter = function getValueConverter(name) {
-    return this.valueConverters[name] || (this.hasParent ? this.parent.getValueConverter(name) : null);
-  };
-
-  ViewResources.prototype.registerBindingBehavior = function registerBindingBehavior(name, bindingBehavior) {
-    register(this.bindingBehaviors, name, bindingBehavior, 'a BindingBehavior');
-  };
-
-  ViewResources.prototype.getBindingBehavior = function getBindingBehavior(name) {
-    return this.bindingBehaviors[name] || (this.hasParent ? this.parent.getBindingBehavior(name) : null);
-  };
-
-  ViewResources.prototype.registerValue = function registerValue(name, value) {
-    register(this.values, name, value, 'a value');
-  };
-
-  ViewResources.prototype.getValue = function getValue(name) {
-    return this.values[name] || (this.hasParent ? this.parent.getValue(name) : null);
-  };
-
-  return ViewResources;
-}();
-
-var View = function () {
-  function View(container, viewFactory, fragment, controllers, bindings, children, slots) {
-    
-
-    this.container = container;
-    this.viewFactory = viewFactory;
-    this.resources = viewFactory.resources;
-    this.fragment = fragment;
-    this.firstChild = fragment.firstChild;
-    this.lastChild = fragment.lastChild;
-    this.controllers = controllers;
-    this.bindings = bindings;
-    this.children = children;
-    this.slots = slots;
-    this.hasSlots = false;
-    this.fromCache = false;
-    this.isBound = false;
-    this.isAttached = false;
-    this.bindingContext = null;
-    this.overrideContext = null;
-    this.controller = null;
-    this.viewModelScope = null;
-    this.animatableElement = undefined;
-    this._isUserControlled = false;
-    this.contentView = null;
-
-    for (var key in slots) {
-      this.hasSlots = true;
-      break;
-    }
-  }
-
-  View.prototype.returnToCache = function returnToCache() {
-    this.viewFactory.returnViewToCache(this);
-  };
-
-  View.prototype.created = function created() {
-    var i = void 0;
-    var ii = void 0;
-    var controllers = this.controllers;
-
-    for (i = 0, ii = controllers.length; i < ii; ++i) {
-      controllers[i].created(this);
-    }
-  };
-
-  View.prototype.bind = function bind(bindingContext, overrideContext, _systemUpdate) {
-    var controllers = void 0;
-    var bindings = void 0;
-    var children = void 0;
-    var i = void 0;
-    var ii = void 0;
-
-    if (_systemUpdate && this._isUserControlled) {
-      return;
-    }
-
-    if (this.isBound) {
-      if (this.bindingContext === bindingContext) {
-        return;
-      }
-
-      this.unbind();
-    }
-
-    this.isBound = true;
-    this.bindingContext = bindingContext;
-    this.overrideContext = overrideContext || Object(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["A" /* createOverrideContext */])(bindingContext);
-
-    this.resources._invokeHook('beforeBind', this);
-
-    bindings = this.bindings;
-    for (i = 0, ii = bindings.length; i < ii; ++i) {
-      bindings[i].bind(this);
-    }
-
-    if (this.viewModelScope !== null) {
-      bindingContext.bind(this.viewModelScope.bindingContext, this.viewModelScope.overrideContext);
-      this.viewModelScope = null;
-    }
-
-    controllers = this.controllers;
-    for (i = 0, ii = controllers.length; i < ii; ++i) {
-      controllers[i].bind(this);
-    }
-
-    children = this.children;
-    for (i = 0, ii = children.length; i < ii; ++i) {
-      children[i].bind(bindingContext, overrideContext, true);
-    }
-
-    if (this.hasSlots) {
-      ShadowDOM.distributeView(this.contentView, this.slots);
-    }
-  };
-
-  View.prototype.addBinding = function addBinding(binding) {
-    this.bindings.push(binding);
-
-    if (this.isBound) {
-      binding.bind(this);
-    }
-  };
-
-  View.prototype.unbind = function unbind() {
-    var controllers = void 0;
-    var bindings = void 0;
-    var children = void 0;
-    var i = void 0;
-    var ii = void 0;
-
-    if (this.isBound) {
-      this.isBound = false;
-      this.resources._invokeHook('beforeUnbind', this);
-
-      if (this.controller !== null) {
-        this.controller.unbind();
-      }
-
-      bindings = this.bindings;
-      for (i = 0, ii = bindings.length; i < ii; ++i) {
-        bindings[i].unbind();
-      }
-
-      controllers = this.controllers;
-      for (i = 0, ii = controllers.length; i < ii; ++i) {
-        controllers[i].unbind();
-      }
-
-      children = this.children;
-      for (i = 0, ii = children.length; i < ii; ++i) {
-        children[i].unbind();
-      }
-
-      this.bindingContext = null;
-      this.overrideContext = null;
-    }
-  };
-
-  View.prototype.insertNodesBefore = function insertNodesBefore(refNode) {
-    refNode.parentNode.insertBefore(this.fragment, refNode);
-  };
-
-  View.prototype.appendNodesTo = function appendNodesTo(parent) {
-    parent.appendChild(this.fragment);
-  };
-
-  View.prototype.removeNodes = function removeNodes() {
-    var fragment = this.fragment;
-    var current = this.firstChild;
-    var end = this.lastChild;
-    var next = void 0;
-
-    while (current) {
-      next = current.nextSibling;
-      fragment.appendChild(current);
-
-      if (current === end) {
-        break;
-      }
-
-      current = next;
-    }
-  };
-
-  View.prototype.attached = function attached() {
-    var controllers = void 0;
-    var children = void 0;
-    var i = void 0;
-    var ii = void 0;
-
-    if (this.isAttached) {
-      return;
-    }
-
-    this.isAttached = true;
-
-    if (this.controller !== null) {
-      this.controller.attached();
-    }
-
-    controllers = this.controllers;
-    for (i = 0, ii = controllers.length; i < ii; ++i) {
-      controllers[i].attached();
-    }
-
-    children = this.children;
-    for (i = 0, ii = children.length; i < ii; ++i) {
-      children[i].attached();
-    }
-  };
-
-  View.prototype.detached = function detached() {
-    var controllers = void 0;
-    var children = void 0;
-    var i = void 0;
-    var ii = void 0;
-
-    if (this.isAttached) {
-      this.isAttached = false;
-
-      if (this.controller !== null) {
-        this.controller.detached();
-      }
-
-      controllers = this.controllers;
-      for (i = 0, ii = controllers.length; i < ii; ++i) {
-        controllers[i].detached();
-      }
-
-      children = this.children;
-      for (i = 0, ii = children.length; i < ii; ++i) {
-        children[i].detached();
-      }
-    }
-  };
-
-  return View;
-}();
-
-function getAnimatableElement(view) {
-  if (view.animatableElement !== undefined) {
-    return view.animatableElement;
-  }
-
-  var current = view.firstChild;
-
-  while (current && current.nodeType !== 1) {
-    current = current.nextSibling;
-  }
-
-  if (current && current.nodeType === 1) {
-    return view.animatableElement = current.classList.contains('au-animate') ? current : null;
-  }
-
-  return view.animatableElement = null;
-}
-
-var ViewSlot = function () {
-  function ViewSlot(anchor, anchorIsContainer) {
-    var animator = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Animator.instance;
-
-    
-
-    this.anchor = anchor;
-    this.anchorIsContainer = anchorIsContainer;
-    this.bindingContext = null;
-    this.overrideContext = null;
-    this.animator = animator;
-    this.children = [];
-    this.isBound = false;
-    this.isAttached = false;
-    this.contentSelectors = null;
-    anchor.viewSlot = this;
-    anchor.isContentProjectionSource = false;
-  }
-
-  ViewSlot.prototype.animateView = function animateView(view) {
-    var direction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'enter';
-
-    var animatableElement = getAnimatableElement(view);
-
-    if (animatableElement !== null) {
-      switch (direction) {
-        case 'enter':
-          return this.animator.enter(animatableElement);
-        case 'leave':
-          return this.animator.leave(animatableElement);
-        default:
-          throw new Error('Invalid animation direction: ' + direction);
-      }
-    }
-  };
-
-  ViewSlot.prototype.transformChildNodesIntoView = function transformChildNodesIntoView() {
-    var parent = this.anchor;
-
-    this.children.push({
-      fragment: parent,
-      firstChild: parent.firstChild,
-      lastChild: parent.lastChild,
-      returnToCache: function returnToCache() {},
-      removeNodes: function removeNodes() {
-        var last = void 0;
-
-        while (last = parent.lastChild) {
-          parent.removeChild(last);
-        }
-      },
-      created: function created() {},
-      bind: function bind() {},
-      unbind: function unbind() {},
-      attached: function attached() {},
-      detached: function detached() {}
-    });
-  };
-
-  ViewSlot.prototype.bind = function bind(bindingContext, overrideContext) {
-    var i = void 0;
-    var ii = void 0;
-    var children = void 0;
-
-    if (this.isBound) {
-      if (this.bindingContext === bindingContext) {
-        return;
-      }
-
-      this.unbind();
-    }
-
-    this.isBound = true;
-    this.bindingContext = bindingContext = bindingContext || this.bindingContext;
-    this.overrideContext = overrideContext = overrideContext || this.overrideContext;
-
-    children = this.children;
-    for (i = 0, ii = children.length; i < ii; ++i) {
-      children[i].bind(bindingContext, overrideContext, true);
-    }
-  };
-
-  ViewSlot.prototype.unbind = function unbind() {
-    if (this.isBound) {
-      var i = void 0;
-      var ii = void 0;
-      var _children4 = this.children;
-
-      this.isBound = false;
-      this.bindingContext = null;
-      this.overrideContext = null;
-
-      for (i = 0, ii = _children4.length; i < ii; ++i) {
-        _children4[i].unbind();
-      }
-    }
-  };
-
-  ViewSlot.prototype.add = function add(view) {
-    if (this.anchorIsContainer) {
-      view.appendNodesTo(this.anchor);
-    } else {
-      view.insertNodesBefore(this.anchor);
-    }
-
-    this.children.push(view);
-
-    if (this.isAttached) {
-      view.attached();
-      return this.animateView(view, 'enter');
-    }
-  };
-
-  ViewSlot.prototype.insert = function insert(index, view) {
-    var children = this.children;
-    var length = children.length;
-
-    if (index === 0 && length === 0 || index >= length) {
-      return this.add(view);
-    }
-
-    view.insertNodesBefore(children[index].firstChild);
-    children.splice(index, 0, view);
-
-    if (this.isAttached) {
-      view.attached();
-      return this.animateView(view, 'enter');
-    }
-  };
-
-  ViewSlot.prototype.move = function move(sourceIndex, targetIndex) {
-    if (sourceIndex === targetIndex) {
-      return;
-    }
-
-    var children = this.children;
-    var view = children[sourceIndex];
-
-    view.removeNodes();
-    view.insertNodesBefore(children[targetIndex].firstChild);
-    children.splice(sourceIndex, 1);
-    children.splice(targetIndex, 0, view);
-  };
-
-  ViewSlot.prototype.remove = function remove(view, returnToCache, skipAnimation) {
-    return this.removeAt(this.children.indexOf(view), returnToCache, skipAnimation);
-  };
-
-  ViewSlot.prototype.removeMany = function removeMany(viewsToRemove, returnToCache, skipAnimation) {
-    var _this2 = this;
-
-    var children = this.children;
-    var ii = viewsToRemove.length;
-    var i = void 0;
-    var rmPromises = [];
-
-    viewsToRemove.forEach(function (child) {
-      if (skipAnimation) {
-        child.removeNodes();
-        return;
-      }
-
-      var animation = _this2.animateView(child, 'leave');
-      if (animation) {
-        rmPromises.push(animation.then(function () {
-          return child.removeNodes();
-        }));
-      } else {
-        child.removeNodes();
-      }
-    });
-
-    var removeAction = function removeAction() {
-      if (_this2.isAttached) {
-        for (i = 0; i < ii; ++i) {
-          viewsToRemove[i].detached();
-        }
-      }
-
-      if (returnToCache) {
-        for (i = 0; i < ii; ++i) {
-          viewsToRemove[i].returnToCache();
-        }
-      }
-
-      for (i = 0; i < ii; ++i) {
-        var index = children.indexOf(viewsToRemove[i]);
-        if (index >= 0) {
-          children.splice(index, 1);
-        }
-      }
-    };
-
-    if (rmPromises.length > 0) {
-      return Promise.all(rmPromises).then(function () {
-        return removeAction();
-      });
-    }
-
-    return removeAction();
-  };
-
-  ViewSlot.prototype.removeAt = function removeAt(index, returnToCache, skipAnimation) {
-    var _this3 = this;
-
-    var view = this.children[index];
-
-    var removeAction = function removeAction() {
-      index = _this3.children.indexOf(view);
-      view.removeNodes();
-      _this3.children.splice(index, 1);
-
-      if (_this3.isAttached) {
-        view.detached();
-      }
-
-      if (returnToCache) {
-        view.returnToCache();
-      }
-
-      return view;
-    };
-
-    if (!skipAnimation) {
-      var animation = this.animateView(view, 'leave');
-      if (animation) {
-        return animation.then(function () {
-          return removeAction();
-        });
-      }
-    }
-
-    return removeAction();
-  };
-
-  ViewSlot.prototype.removeAll = function removeAll(returnToCache, skipAnimation) {
-    var _this4 = this;
-
-    var children = this.children;
-    var ii = children.length;
-    var i = void 0;
-    var rmPromises = [];
-
-    children.forEach(function (child) {
-      if (skipAnimation) {
-        child.removeNodes();
-        return;
-      }
-
-      var animation = _this4.animateView(child, 'leave');
-      if (animation) {
-        rmPromises.push(animation.then(function () {
-          return child.removeNodes();
-        }));
-      } else {
-        child.removeNodes();
-      }
-    });
-
-    var removeAction = function removeAction() {
-      if (_this4.isAttached) {
-        for (i = 0; i < ii; ++i) {
-          children[i].detached();
-        }
-      }
-
-      if (returnToCache) {
-        for (i = 0; i < ii; ++i) {
-          var _child3 = children[i];
-
-          if (_child3) {
-            _child3.returnToCache();
-          }
-        }
-      }
-
-      _this4.children = [];
-    };
-
-    if (rmPromises.length > 0) {
-      return Promise.all(rmPromises).then(function () {
-        return removeAction();
-      });
-    }
-
-    return removeAction();
-  };
-
-  ViewSlot.prototype.attached = function attached() {
-    var i = void 0;
-    var ii = void 0;
-    var children = void 0;
-    var child = void 0;
-
-    if (this.isAttached) {
-      return;
-    }
-
-    this.isAttached = true;
-
-    children = this.children;
-    for (i = 0, ii = children.length; i < ii; ++i) {
-      child = children[i];
-      child.attached();
-      this.animateView(child, 'enter');
-    }
-  };
-
-  ViewSlot.prototype.detached = function detached() {
-    var i = void 0;
-    var ii = void 0;
-    var children = void 0;
-
-    if (this.isAttached) {
-      this.isAttached = false;
-      children = this.children;
-      for (i = 0, ii = children.length; i < ii; ++i) {
-        children[i].detached();
-      }
-    }
-  };
-
-  ViewSlot.prototype.projectTo = function projectTo(slots) {
-    var _this5 = this;
-
-    this.projectToSlots = slots;
-    this.add = this._projectionAdd;
-    this.insert = this._projectionInsert;
-    this.move = this._projectionMove;
-    this.remove = this._projectionRemove;
-    this.removeAt = this._projectionRemoveAt;
-    this.removeMany = this._projectionRemoveMany;
-    this.removeAll = this._projectionRemoveAll;
-    this.children.forEach(function (view) {
-      return ShadowDOM.distributeView(view, slots, _this5);
-    });
-  };
-
-  ViewSlot.prototype._projectionAdd = function _projectionAdd(view) {
-    ShadowDOM.distributeView(view, this.projectToSlots, this);
-
-    this.children.push(view);
-
-    if (this.isAttached) {
-      view.attached();
-    }
-  };
-
-  ViewSlot.prototype._projectionInsert = function _projectionInsert(index, view) {
-    if (index === 0 && !this.children.length || index >= this.children.length) {
-      this.add(view);
-    } else {
-      ShadowDOM.distributeView(view, this.projectToSlots, this, index);
-
-      this.children.splice(index, 0, view);
-
-      if (this.isAttached) {
-        view.attached();
-      }
-    }
-  };
-
-  ViewSlot.prototype._projectionMove = function _projectionMove(sourceIndex, targetIndex) {
-    if (sourceIndex === targetIndex) {
-      return;
-    }
-
-    var children = this.children;
-    var view = children[sourceIndex];
-
-    ShadowDOM.undistributeView(view, this.projectToSlots, this);
-    ShadowDOM.distributeView(view, this.projectToSlots, this, targetIndex);
-
-    children.splice(sourceIndex, 1);
-    children.splice(targetIndex, 0, view);
-  };
-
-  ViewSlot.prototype._projectionRemove = function _projectionRemove(view, returnToCache) {
-    ShadowDOM.undistributeView(view, this.projectToSlots, this);
-    this.children.splice(this.children.indexOf(view), 1);
-
-    if (this.isAttached) {
-      view.detached();
-    }
-  };
-
-  ViewSlot.prototype._projectionRemoveAt = function _projectionRemoveAt(index, returnToCache) {
-    var view = this.children[index];
-
-    ShadowDOM.undistributeView(view, this.projectToSlots, this);
-    this.children.splice(index, 1);
-
-    if (this.isAttached) {
-      view.detached();
-    }
-  };
-
-  ViewSlot.prototype._projectionRemoveMany = function _projectionRemoveMany(viewsToRemove, returnToCache) {
-    var _this6 = this;
-
-    viewsToRemove.forEach(function (view) {
-      return _this6.remove(view, returnToCache);
-    });
-  };
-
-  ViewSlot.prototype._projectionRemoveAll = function _projectionRemoveAll(returnToCache) {
-    ShadowDOM.undistributeAll(this.projectToSlots, this);
-
-    var children = this.children;
-
-    if (this.isAttached) {
-      for (var i = 0, ii = children.length; i < ii; ++i) {
-        children[i].detached();
-      }
-    }
-
-    this.children = [];
-  };
-
-  return ViewSlot;
-}();
-
-var ProviderResolver = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["f" /* resolver */])(_class11 = function () {
-  function ProviderResolver() {
-    
-  }
-
-  ProviderResolver.prototype.get = function get(container, key) {
-    var id = key.__providerId__;
-    return id in container ? container[id] : container[id] = container.invoke(key);
-  };
-
-  return ProviderResolver;
-}()) || _class11;
-
-var providerResolverInstance = new ProviderResolver();
-
-function elementContainerGet(key) {
-  if (key === __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element) {
-    return this.element;
-  }
-
-  if (key === BoundViewFactory) {
-    if (this.boundViewFactory) {
-      return this.boundViewFactory;
-    }
-
-    var factory = this.instruction.viewFactory;
-    var _partReplacements = this.partReplacements;
-
-    if (_partReplacements) {
-      factory = _partReplacements[factory.part] || factory;
-    }
-
-    this.boundViewFactory = new BoundViewFactory(this, factory, _partReplacements);
-    return this.boundViewFactory;
-  }
-
-  if (key === ViewSlot) {
-    if (this.viewSlot === undefined) {
-      this.viewSlot = new ViewSlot(this.element, this.instruction.anchorIsContainer);
-      this.element.isContentProjectionSource = this.instruction.lifting;
-      this.children.push(this.viewSlot);
-    }
-
-    return this.viewSlot;
-  }
-
-  if (key === ElementEvents) {
-    return this.elementEvents || (this.elementEvents = new ElementEvents(this.element));
-  }
-
-  if (key === CompositionTransaction) {
-    return this.compositionTransaction || (this.compositionTransaction = this.parent.get(key));
-  }
-
-  if (key === ViewResources) {
-    return this.viewResources;
-  }
-
-  if (key === TargetInstruction) {
-    return this.instruction;
-  }
-
-  return this.superGet(key);
-}
-
-function createElementContainer(parent, element, instruction, children, partReplacements, resources) {
-  var container = parent.createChild();
-  var providers = void 0;
-  var i = void 0;
-
-  container.element = element;
-  container.instruction = instruction;
-  container.children = children;
-  container.viewResources = resources;
-  container.partReplacements = partReplacements;
-
-  providers = instruction.providers;
-  i = providers.length;
-
-  while (i--) {
-    container._resolvers.set(providers[i], providerResolverInstance);
-  }
-
-  container.superGet = container.get;
-  container.get = elementContainerGet;
-
-  return container;
-}
-
-function hasAttribute(name) {
-  return this._element.hasAttribute(name);
-}
-
-function getAttribute(name) {
-  return this._element.getAttribute(name);
-}
-
-function setAttribute(name, value) {
-  this._element.setAttribute(name, value);
-}
-
-function makeElementIntoAnchor(element, elementInstruction) {
-  var anchor = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createComment('anchor');
-
-  if (elementInstruction) {
-    var firstChild = element.firstChild;
-
-    if (firstChild && firstChild.tagName === 'AU-CONTENT') {
-      anchor.contentElement = firstChild;
-    }
-
-    anchor._element = element;
-
-    anchor.hasAttribute = hasAttribute;
-    anchor.getAttribute = getAttribute;
-    anchor.setAttribute = setAttribute;
-  }
-
-  __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].replaceNode(anchor, element);
-
-  return anchor;
-}
-
-function applyInstructions(containers, element, instruction, controllers, bindings, children, shadowSlots, partReplacements, resources) {
-  var behaviorInstructions = instruction.behaviorInstructions;
-  var expressions = instruction.expressions;
-  var elementContainer = void 0;
-  var i = void 0;
-  var ii = void 0;
-  var current = void 0;
-  var instance = void 0;
-
-  if (instruction.contentExpression) {
-    bindings.push(instruction.contentExpression.createBinding(element.nextSibling));
-    element.nextSibling.auInterpolationTarget = true;
-    element.parentNode.removeChild(element);
-    return;
-  }
-
-  if (instruction.shadowSlot) {
-    var commentAnchor = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createComment('slot');
-    var slot = void 0;
-
-    if (instruction.slotDestination) {
-      slot = new PassThroughSlot(commentAnchor, instruction.slotName, instruction.slotDestination, instruction.slotFallbackFactory);
-    } else {
-      slot = new ShadowSlot(commentAnchor, instruction.slotName, instruction.slotFallbackFactory);
-    }
-
-    __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].replaceNode(commentAnchor, element);
-    shadowSlots[instruction.slotName] = slot;
-    controllers.push(slot);
-    return;
-  }
-
-  if (behaviorInstructions.length) {
-    if (!instruction.anchorIsContainer) {
-      element = makeElementIntoAnchor(element, instruction.elementInstruction);
-    }
-
-    containers[instruction.injectorId] = elementContainer = createElementContainer(containers[instruction.parentInjectorId], element, instruction, children, partReplacements, resources);
-
-    for (i = 0, ii = behaviorInstructions.length; i < ii; ++i) {
-      current = behaviorInstructions[i];
-      instance = current.type.create(elementContainer, current, element, bindings);
-      controllers.push(instance);
-    }
-  }
-
-  for (i = 0, ii = expressions.length; i < ii; ++i) {
-    bindings.push(expressions[i].createBinding(element));
-  }
-}
-
-function styleStringToObject(style, target) {
-  var attributes = style.split(';');
-  var firstIndexOfColon = void 0;
-  var i = void 0;
-  var current = void 0;
-  var key = void 0;
-  var value = void 0;
-
-  target = target || {};
-
-  for (i = 0; i < attributes.length; i++) {
-    current = attributes[i];
-    firstIndexOfColon = current.indexOf(':');
-    key = current.substring(0, firstIndexOfColon).trim();
-    value = current.substring(firstIndexOfColon + 1).trim();
-    target[key] = value;
-  }
-
-  return target;
-}
-
-function styleObjectToString(obj) {
-  var result = '';
-
-  for (var key in obj) {
-    result += key + ':' + obj[key] + ';';
-  }
-
-  return result;
-}
-
-function applySurrogateInstruction(container, element, instruction, controllers, bindings, children) {
-  var behaviorInstructions = instruction.behaviorInstructions;
-  var expressions = instruction.expressions;
-  var providers = instruction.providers;
-  var values = instruction.values;
-  var i = void 0;
-  var ii = void 0;
-  var current = void 0;
-  var instance = void 0;
-  var currentAttributeValue = void 0;
-
-  i = providers.length;
-  while (i--) {
-    container._resolvers.set(providers[i], providerResolverInstance);
-  }
-
-  for (var key in values) {
-    currentAttributeValue = element.getAttribute(key);
-
-    if (currentAttributeValue) {
-      if (key === 'class') {
-        element.setAttribute('class', currentAttributeValue + ' ' + values[key]);
-      } else if (key === 'style') {
-        var styleObject = styleStringToObject(values[key]);
-        styleStringToObject(currentAttributeValue, styleObject);
-        element.setAttribute('style', styleObjectToString(styleObject));
-      }
-    } else {
-      element.setAttribute(key, values[key]);
-    }
-  }
-
-  if (behaviorInstructions.length) {
-    for (i = 0, ii = behaviorInstructions.length; i < ii; ++i) {
-      current = behaviorInstructions[i];
-      instance = current.type.create(container, current, element, bindings);
-
-      if (instance.contentView) {
-        children.push(instance.contentView);
-      }
-
-      controllers.push(instance);
-    }
-  }
-
-  for (i = 0, ii = expressions.length; i < ii; ++i) {
-    bindings.push(expressions[i].createBinding(element));
-  }
-}
-
-var BoundViewFactory = function () {
-  function BoundViewFactory(parentContainer, viewFactory, partReplacements) {
-    
-
-    this.parentContainer = parentContainer;
-    this.viewFactory = viewFactory;
-    this.factoryCreateInstruction = { partReplacements: partReplacements };
-  }
-
-  BoundViewFactory.prototype.create = function create() {
-    var view = this.viewFactory.create(this.parentContainer.createChild(), this.factoryCreateInstruction);
-    view._isUserControlled = true;
-    return view;
-  };
-
-  BoundViewFactory.prototype.setCacheSize = function setCacheSize(size, doNotOverrideIfAlreadySet) {
-    this.viewFactory.setCacheSize(size, doNotOverrideIfAlreadySet);
-  };
-
-  BoundViewFactory.prototype.getCachedView = function getCachedView() {
-    return this.viewFactory.getCachedView();
-  };
-
-  BoundViewFactory.prototype.returnViewToCache = function returnViewToCache(view) {
-    this.viewFactory.returnViewToCache(view);
-  };
-
-  _createClass(BoundViewFactory, [{
-    key: 'isCaching',
-    get: function get() {
-      return this.viewFactory.isCaching;
-    }
-  }]);
-
-  return BoundViewFactory;
-}();
-
-var ViewFactory = function () {
-  function ViewFactory(template, instructions, resources) {
-    
-
-    this.isCaching = false;
-
-    this.template = template;
-    this.instructions = instructions;
-    this.resources = resources;
-    this.cacheSize = -1;
-    this.cache = null;
-  }
-
-  ViewFactory.prototype.setCacheSize = function setCacheSize(size, doNotOverrideIfAlreadySet) {
-    if (size) {
-      if (size === '*') {
-        size = Number.MAX_VALUE;
-      } else if (typeof size === 'string') {
-        size = parseInt(size, 10);
-      }
-    }
-
-    if (this.cacheSize === -1 || !doNotOverrideIfAlreadySet) {
-      this.cacheSize = size;
-    }
-
-    if (this.cacheSize > 0) {
-      this.cache = [];
-    } else {
-      this.cache = null;
-    }
-
-    this.isCaching = this.cacheSize > 0;
-  };
-
-  ViewFactory.prototype.getCachedView = function getCachedView() {
-    return this.cache !== null ? this.cache.pop() || null : null;
-  };
-
-  ViewFactory.prototype.returnViewToCache = function returnViewToCache(view) {
-    if (view.isAttached) {
-      view.detached();
-    }
-
-    if (view.isBound) {
-      view.unbind();
-    }
-
-    if (this.cache !== null && this.cache.length < this.cacheSize) {
-      view.fromCache = true;
-      this.cache.push(view);
-    }
-  };
-
-  ViewFactory.prototype.create = function create(container, createInstruction, element) {
-    createInstruction = createInstruction || BehaviorInstruction.normal;
-
-    var cachedView = this.getCachedView();
-    if (cachedView !== null) {
-      return cachedView;
-    }
-
-    var fragment = createInstruction.enhance ? this.template : this.template.cloneNode(true);
-    var instructables = fragment.querySelectorAll('.au-target');
-    var instructions = this.instructions;
-    var resources = this.resources;
-    var controllers = [];
-    var bindings = [];
-    var children = [];
-    var shadowSlots = Object.create(null);
-    var containers = { root: container };
-    var partReplacements = createInstruction.partReplacements;
-    var i = void 0;
-    var ii = void 0;
-    var view = void 0;
-    var instructable = void 0;
-    var instruction = void 0;
-
-    this.resources._invokeHook('beforeCreate', this, container, fragment, createInstruction);
-
-    if (element && this.surrogateInstruction !== null) {
-      applySurrogateInstruction(container, element, this.surrogateInstruction, controllers, bindings, children);
-    }
-
-    if (createInstruction.enhance && fragment.hasAttribute('au-target-id')) {
-      instructable = fragment;
-      instruction = instructions[instructable.getAttribute('au-target-id')];
-      applyInstructions(containers, instructable, instruction, controllers, bindings, children, shadowSlots, partReplacements, resources);
-    }
-
-    for (i = 0, ii = instructables.length; i < ii; ++i) {
-      instructable = instructables[i];
-      instruction = instructions[instructable.getAttribute('au-target-id')];
-      applyInstructions(containers, instructable, instruction, controllers, bindings, children, shadowSlots, partReplacements, resources);
-    }
-
-    view = new View(container, this, fragment, controllers, bindings, children, shadowSlots);
-
-    if (!createInstruction.initiatedByBehavior) {
-      view.created();
-    }
-
-    this.resources._invokeHook('afterCreate', view);
-
-    return view;
-  };
-
-  return ViewFactory;
-}();
-
-var nextInjectorId = 0;
-function getNextInjectorId() {
-  return ++nextInjectorId;
-}
-
-var lastAUTargetID = 0;
-function getNextAUTargetID() {
-  return (++lastAUTargetID).toString();
-}
-
-function makeIntoInstructionTarget(element) {
-  var value = element.getAttribute('class');
-  var auTargetID = getNextAUTargetID();
-
-  element.setAttribute('class', value ? value + ' au-target' : 'au-target');
-  element.setAttribute('au-target-id', auTargetID);
-
-  return auTargetID;
-}
-
-function makeShadowSlot(compiler, resources, node, instructions, parentInjectorId) {
-  var auShadowSlot = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createElement('au-shadow-slot');
-  __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].replaceNode(auShadowSlot, node);
-
-  var auTargetID = makeIntoInstructionTarget(auShadowSlot);
-  var instruction = TargetInstruction.shadowSlot(parentInjectorId);
-
-  instruction.slotName = node.getAttribute('name') || ShadowDOM.defaultSlotKey;
-  instruction.slotDestination = node.getAttribute('slot');
-
-  if (node.innerHTML.trim()) {
-    var fragment = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createDocumentFragment();
-    var _child4 = void 0;
-
-    while (_child4 = node.firstChild) {
-      fragment.appendChild(_child4);
-    }
-
-    instruction.slotFallbackFactory = compiler.compile(fragment, resources);
-  }
-
-  instructions[auTargetID] = instruction;
-
-  return auShadowSlot;
-}
-
-var ViewCompiler = (_dec7 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["e" /* inject */])(BindingLanguage, ViewResources), _dec7(_class13 = function () {
-  function ViewCompiler(bindingLanguage, resources) {
-    
-
-    this.bindingLanguage = bindingLanguage;
-    this.resources = resources;
-  }
-
-  ViewCompiler.prototype.compile = function compile(source, resources, compileInstruction) {
-    resources = resources || this.resources;
-    compileInstruction = compileInstruction || ViewCompileInstruction.normal;
-    source = typeof source === 'string' ? __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createTemplateFromMarkup(source) : source;
-
-    var content = void 0;
-    var part = void 0;
-    var cacheSize = void 0;
-
-    if (source.content) {
-      part = source.getAttribute('part');
-      cacheSize = source.getAttribute('view-cache');
-      content = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].adoptNode(source.content);
-    } else {
-      content = source;
-    }
-
-    compileInstruction.targetShadowDOM = compileInstruction.targetShadowDOM && __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["c" /* FEATURE */].shadowDOM;
-    resources._invokeHook('beforeCompile', content, resources, compileInstruction);
-
-    var instructions = {};
-    this._compileNode(content, resources, instructions, source, 'root', !compileInstruction.targetShadowDOM);
-
-    var firstChild = content.firstChild;
-    if (firstChild && firstChild.nodeType === 1) {
-      var targetId = firstChild.getAttribute('au-target-id');
-      if (targetId) {
-        var ins = instructions[targetId];
-
-        if (ins.shadowSlot || ins.lifting || ins.elementInstruction && !ins.elementInstruction.anchorIsContainer) {
-          content.insertBefore(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createComment('view'), firstChild);
-        }
-      }
-    }
-
-    var factory = new ViewFactory(content, instructions, resources);
-
-    factory.surrogateInstruction = compileInstruction.compileSurrogate ? this._compileSurrogate(source, resources) : null;
-    factory.part = part;
-
-    if (cacheSize) {
-      factory.setCacheSize(cacheSize);
-    }
-
-    resources._invokeHook('afterCompile', factory);
-
-    return factory;
-  };
-
-  ViewCompiler.prototype._compileNode = function _compileNode(node, resources, instructions, parentNode, parentInjectorId, targetLightDOM) {
-    switch (node.nodeType) {
-      case 1:
-        return this._compileElement(node, resources, instructions, parentNode, parentInjectorId, targetLightDOM);
-      case 3:
-        var expression = resources.getBindingLanguage(this.bindingLanguage).inspectTextContent(resources, node.wholeText);
-        if (expression) {
-          var marker = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createElement('au-marker');
-          var auTargetID = makeIntoInstructionTarget(marker);
-          (node.parentNode || parentNode).insertBefore(marker, node);
-          node.textContent = ' ';
-          instructions[auTargetID] = TargetInstruction.contentExpression(expression);
-
-          while (node.nextSibling && node.nextSibling.nodeType === 3) {
-            (node.parentNode || parentNode).removeChild(node.nextSibling);
-          }
-        } else {
-          while (node.nextSibling && node.nextSibling.nodeType === 3) {
-            node = node.nextSibling;
-          }
-        }
-        return node.nextSibling;
-      case 11:
-        var currentChild = node.firstChild;
-        while (currentChild) {
-          currentChild = this._compileNode(currentChild, resources, instructions, node, parentInjectorId, targetLightDOM);
-        }
-        break;
-      default:
-        break;
-    }
-
-    return node.nextSibling;
-  };
-
-  ViewCompiler.prototype._compileSurrogate = function _compileSurrogate(node, resources) {
-    var tagName = node.tagName.toLowerCase();
-    var attributes = node.attributes;
-    var bindingLanguage = resources.getBindingLanguage(this.bindingLanguage);
-    var knownAttribute = void 0;
-    var property = void 0;
-    var instruction = void 0;
-    var i = void 0;
-    var ii = void 0;
-    var attr = void 0;
-    var attrName = void 0;
-    var attrValue = void 0;
-    var info = void 0;
-    var type = void 0;
-    var expressions = [];
-    var expression = void 0;
-    var behaviorInstructions = [];
-    var values = {};
-    var hasValues = false;
-    var providers = [];
-
-    for (i = 0, ii = attributes.length; i < ii; ++i) {
-      attr = attributes[i];
-      attrName = attr.name;
-      attrValue = attr.value;
-
-      info = bindingLanguage.inspectAttribute(resources, tagName, attrName, attrValue);
-      type = resources.getAttribute(info.attrName);
-
-      if (type) {
-        knownAttribute = resources.mapAttribute(info.attrName);
-        if (knownAttribute) {
-          property = type.attributes[knownAttribute];
-
-          if (property) {
-            info.defaultBindingMode = property.defaultBindingMode;
-
-            if (!info.command && !info.expression) {
-              info.command = property.hasOptions ? 'options' : null;
-            }
-
-            if (info.command && info.command !== 'options' && type.primaryProperty) {
-              var primaryProperty = type.primaryProperty;
-              attrName = info.attrName = primaryProperty.attribute;
-
-              info.defaultBindingMode = primaryProperty.defaultBindingMode;
-            }
-          }
-        }
-      }
-
-      instruction = bindingLanguage.createAttributeInstruction(resources, node, info, undefined, type);
-
-      if (instruction) {
-        if (instruction.alteredAttr) {
-          type = resources.getAttribute(instruction.attrName);
-        }
-
-        if (instruction.discrete) {
-          expressions.push(instruction);
-        } else {
-          if (type) {
-            instruction.type = type;
-            this._configureProperties(instruction, resources);
-
-            if (type.liftsContent) {
-              throw new Error('You cannot place a template controller on a surrogate element.');
-            } else {
-              behaviorInstructions.push(instruction);
-            }
-          } else {
-            expressions.push(instruction.attributes[instruction.attrName]);
-          }
-        }
-      } else {
-        if (type) {
-          instruction = BehaviorInstruction.attribute(attrName, type);
-          instruction.attributes[resources.mapAttribute(attrName)] = attrValue;
-
-          if (type.liftsContent) {
-            throw new Error('You cannot place a template controller on a surrogate element.');
-          } else {
-            behaviorInstructions.push(instruction);
-          }
-        } else if (attrName !== 'id' && attrName !== 'part' && attrName !== 'replace-part') {
-          hasValues = true;
-          values[attrName] = attrValue;
-        }
-      }
-    }
-
-    if (expressions.length || behaviorInstructions.length || hasValues) {
-      for (i = 0, ii = behaviorInstructions.length; i < ii; ++i) {
-        instruction = behaviorInstructions[i];
-        instruction.type.compile(this, resources, node, instruction);
-        providers.push(instruction.type.target);
-      }
-
-      for (i = 0, ii = expressions.length; i < ii; ++i) {
-        expression = expressions[i];
-        if (expression.attrToRemove !== undefined) {
-          node.removeAttribute(expression.attrToRemove);
-        }
-      }
-
-      return TargetInstruction.surrogate(providers, behaviorInstructions, expressions, values);
-    }
-
-    return null;
-  };
-
-  ViewCompiler.prototype._compileElement = function _compileElement(node, resources, instructions, parentNode, parentInjectorId, targetLightDOM) {
-    var tagName = node.tagName.toLowerCase();
-    var attributes = node.attributes;
-    var expressions = [];
-    var expression = void 0;
-    var behaviorInstructions = [];
-    var providers = [];
-    var bindingLanguage = resources.getBindingLanguage(this.bindingLanguage);
-    var liftingInstruction = void 0;
-    var viewFactory = void 0;
-    var type = void 0;
-    var elementInstruction = void 0;
-    var elementProperty = void 0;
-    var i = void 0;
-    var ii = void 0;
-    var attr = void 0;
-    var attrName = void 0;
-    var attrValue = void 0;
-    var originalAttrName = void 0;
-    var instruction = void 0;
-    var info = void 0;
-    var property = void 0;
-    var knownAttribute = void 0;
-    var auTargetID = void 0;
-    var injectorId = void 0;
-
-    if (tagName === 'slot') {
-      if (targetLightDOM) {
-        node = makeShadowSlot(this, resources, node, instructions, parentInjectorId);
-      }
-      return node.nextSibling;
-    } else if (tagName === 'template') {
-      if (!('content' in node)) {
-        throw new Error('You cannot place a template element within ' + node.namespaceURI + ' namespace');
-      }
-      viewFactory = this.compile(node, resources);
-      viewFactory.part = node.getAttribute('part');
-    } else {
-      type = resources.getElement(node.getAttribute('as-element') || tagName);
-      if (type) {
-        elementInstruction = BehaviorInstruction.element(node, type);
-        type.processAttributes(this, resources, node, attributes, elementInstruction);
-        behaviorInstructions.push(elementInstruction);
-      }
-    }
-
-    for (i = 0, ii = attributes.length; i < ii; ++i) {
-      attr = attributes[i];
-      originalAttrName = attrName = attr.name;
-      attrValue = attr.value;
-      info = bindingLanguage.inspectAttribute(resources, tagName, attrName, attrValue);
-
-      if (targetLightDOM && info.attrName === 'slot') {
-        info.attrName = attrName = 'au-slot';
-      }
-
-      type = resources.getAttribute(info.attrName);
-      elementProperty = null;
-
-      if (type) {
-        knownAttribute = resources.mapAttribute(info.attrName);
-        if (knownAttribute) {
-          property = type.attributes[knownAttribute];
-
-          if (property) {
-            info.defaultBindingMode = property.defaultBindingMode;
-
-            if (!info.command && !info.expression) {
-              info.command = property.hasOptions ? 'options' : null;
-            }
-
-            if (info.command && info.command !== 'options' && type.primaryProperty) {
-              var primaryProperty = type.primaryProperty;
-              attrName = info.attrName = primaryProperty.attribute;
-
-              info.defaultBindingMode = primaryProperty.defaultBindingMode;
-            }
-          }
-        }
-      } else if (elementInstruction) {
-        elementProperty = elementInstruction.type.attributes[info.attrName];
-        if (elementProperty) {
-          info.defaultBindingMode = elementProperty.defaultBindingMode;
-        }
-      }
-
-      if (elementProperty) {
-        instruction = bindingLanguage.createAttributeInstruction(resources, node, info, elementInstruction);
-      } else {
-        instruction = bindingLanguage.createAttributeInstruction(resources, node, info, undefined, type);
-      }
-
-      if (instruction) {
-        if (instruction.alteredAttr) {
-          type = resources.getAttribute(instruction.attrName);
-        }
-
-        if (instruction.discrete) {
-          expressions.push(instruction);
-        } else {
-          if (type) {
-            instruction.type = type;
-            this._configureProperties(instruction, resources);
-
-            if (type.liftsContent) {
-              instruction.originalAttrName = originalAttrName;
-              liftingInstruction = instruction;
-              break;
-            } else {
-              behaviorInstructions.push(instruction);
-            }
-          } else if (elementProperty) {
-            elementInstruction.attributes[info.attrName].targetProperty = elementProperty.name;
-          } else {
-            expressions.push(instruction.attributes[instruction.attrName]);
-          }
-        }
-      } else {
-        if (type) {
-          instruction = BehaviorInstruction.attribute(attrName, type);
-          instruction.attributes[resources.mapAttribute(attrName)] = attrValue;
-
-          if (type.liftsContent) {
-            instruction.originalAttrName = originalAttrName;
-            liftingInstruction = instruction;
-            break;
-          } else {
-            behaviorInstructions.push(instruction);
-          }
-        } else if (elementProperty) {
-          elementInstruction.attributes[attrName] = attrValue;
-        }
-      }
-    }
-
-    if (liftingInstruction) {
-      liftingInstruction.viewFactory = viewFactory;
-      node = liftingInstruction.type.compile(this, resources, node, liftingInstruction, parentNode);
-      auTargetID = makeIntoInstructionTarget(node);
-      instructions[auTargetID] = TargetInstruction.lifting(parentInjectorId, liftingInstruction);
-    } else {
-      var skipContentProcessing = false;
-
-      if (expressions.length || behaviorInstructions.length) {
-        injectorId = behaviorInstructions.length ? getNextInjectorId() : false;
-
-        for (i = 0, ii = behaviorInstructions.length; i < ii; ++i) {
-          instruction = behaviorInstructions[i];
-          instruction.type.compile(this, resources, node, instruction, parentNode);
-          providers.push(instruction.type.target);
-          skipContentProcessing = skipContentProcessing || instruction.skipContentProcessing;
-        }
-
-        for (i = 0, ii = expressions.length; i < ii; ++i) {
-          expression = expressions[i];
-          if (expression.attrToRemove !== undefined) {
-            node.removeAttribute(expression.attrToRemove);
-          }
-        }
-
-        auTargetID = makeIntoInstructionTarget(node);
-        instructions[auTargetID] = TargetInstruction.normal(injectorId, parentInjectorId, providers, behaviorInstructions, expressions, elementInstruction);
-      }
-
-      if (skipContentProcessing) {
-        return node.nextSibling;
-      }
-
-      var currentChild = node.firstChild;
-      while (currentChild) {
-        currentChild = this._compileNode(currentChild, resources, instructions, node, injectorId || parentInjectorId, targetLightDOM);
-      }
-    }
-
-    return node.nextSibling;
-  };
-
-  ViewCompiler.prototype._configureProperties = function _configureProperties(instruction, resources) {
-    var type = instruction.type;
-    var attrName = instruction.attrName;
-    var attributes = instruction.attributes;
-    var property = void 0;
-    var key = void 0;
-    var value = void 0;
-
-    var knownAttribute = resources.mapAttribute(attrName);
-    if (knownAttribute && attrName in attributes && knownAttribute !== attrName) {
-      attributes[knownAttribute] = attributes[attrName];
-      delete attributes[attrName];
-    }
-
-    for (key in attributes) {
-      value = attributes[key];
-
-      if (value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
-        property = type.attributes[key];
-
-        if (property !== undefined) {
-          value.targetProperty = property.name;
-        } else {
-          value.targetProperty = key;
-        }
-      }
-    }
-  };
-
-  return ViewCompiler;
-}()) || _class13);
-
-var ResourceModule = function () {
-  function ResourceModule(moduleId) {
-    
-
-    this.id = moduleId;
-    this.moduleInstance = null;
-    this.mainResource = null;
-    this.resources = null;
-    this.viewStrategy = null;
-    this.isInitialized = false;
-    this.onLoaded = null;
-    this.loadContext = null;
-  }
-
-  ResourceModule.prototype.initialize = function initialize(container) {
-    var current = this.mainResource;
-    var resources = this.resources;
-    var vs = this.viewStrategy;
-
-    if (this.isInitialized) {
-      return;
-    }
-
-    this.isInitialized = true;
-
-    if (current !== undefined) {
-      current.metadata.viewStrategy = vs;
-      current.initialize(container);
-    }
-
-    for (var i = 0, ii = resources.length; i < ii; ++i) {
-      current = resources[i];
-      current.metadata.viewStrategy = vs;
-      current.initialize(container);
-    }
-  };
-
-  ResourceModule.prototype.register = function register(registry, name) {
-    var main = this.mainResource;
-    var resources = this.resources;
-
-    if (main !== undefined) {
-      main.register(registry, name);
-      name = null;
-    }
-
-    for (var i = 0, ii = resources.length; i < ii; ++i) {
-      resources[i].register(registry, name);
-      name = null;
-    }
-  };
-
-  ResourceModule.prototype.load = function load(container, loadContext) {
-    if (this.onLoaded !== null) {
-      return this.loadContext === loadContext ? Promise.resolve() : this.onLoaded;
-    }
-
-    var main = this.mainResource;
-    var resources = this.resources;
-    var loads = void 0;
-
-    if (main !== undefined) {
-      loads = new Array(resources.length + 1);
-      loads[0] = main.load(container, loadContext);
-      for (var i = 0, ii = resources.length; i < ii; ++i) {
-        loads[i + 1] = resources[i].load(container, loadContext);
-      }
-    } else {
-      loads = new Array(resources.length);
-      for (var _i = 0, _ii = resources.length; _i < _ii; ++_i) {
-        loads[_i] = resources[_i].load(container, loadContext);
-      }
-    }
-
-    this.loadContext = loadContext;
-    this.onLoaded = Promise.all(loads);
-    return this.onLoaded;
-  };
-
-  return ResourceModule;
-}();
-
-var ResourceDescription = function () {
-  function ResourceDescription(key, exportedValue, resourceTypeMeta) {
-    
-
-    if (!resourceTypeMeta) {
-      resourceTypeMeta = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].get(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, exportedValue);
-
-      if (!resourceTypeMeta) {
-        resourceTypeMeta = new HtmlBehaviorResource();
-        resourceTypeMeta.elementName = _hyphenate(key);
-        __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, resourceTypeMeta, exportedValue);
-      }
-    }
-
-    if (resourceTypeMeta instanceof HtmlBehaviorResource) {
-      if (resourceTypeMeta.elementName === undefined) {
-        resourceTypeMeta.elementName = _hyphenate(key);
-      } else if (resourceTypeMeta.attributeName === undefined) {
-        resourceTypeMeta.attributeName = _hyphenate(key);
-      } else if (resourceTypeMeta.attributeName === null && resourceTypeMeta.elementName === null) {
-        HtmlBehaviorResource.convention(key, resourceTypeMeta);
-      }
-    } else if (!resourceTypeMeta.name) {
-      resourceTypeMeta.name = _hyphenate(key);
-    }
-
-    this.metadata = resourceTypeMeta;
-    this.value = exportedValue;
-  }
-
-  ResourceDescription.prototype.initialize = function initialize(container) {
-    this.metadata.initialize(container, this.value);
-  };
-
-  ResourceDescription.prototype.register = function register(registry, name) {
-    this.metadata.register(registry, name);
-  };
-
-  ResourceDescription.prototype.load = function load(container, loadContext) {
-    return this.metadata.load(container, this.value, loadContext);
-  };
-
-  return ResourceDescription;
-}();
-
-var ModuleAnalyzer = function () {
-  function ModuleAnalyzer() {
-    
-
-    this.cache = Object.create(null);
-  }
-
-  ModuleAnalyzer.prototype.getAnalysis = function getAnalysis(moduleId) {
-    return this.cache[moduleId];
-  };
-
-  ModuleAnalyzer.prototype.analyze = function analyze(moduleId, moduleInstance, mainResourceKey) {
-    var mainResource = void 0;
-    var fallbackValue = void 0;
-    var fallbackKey = void 0;
-    var resourceTypeMeta = void 0;
-    var key = void 0;
-    var exportedValue = void 0;
-    var resources = [];
-    var conventional = void 0;
-    var vs = void 0;
-    var resourceModule = void 0;
-
-    resourceModule = this.cache[moduleId];
-    if (resourceModule) {
-      return resourceModule;
-    }
-
-    resourceModule = new ResourceModule(moduleId);
-    this.cache[moduleId] = resourceModule;
-
-    if (typeof moduleInstance === 'function') {
-      moduleInstance = { 'default': moduleInstance };
-    }
-
-    if (mainResourceKey) {
-      mainResource = new ResourceDescription(mainResourceKey, moduleInstance[mainResourceKey]);
-    }
-
-    for (key in moduleInstance) {
-      exportedValue = moduleInstance[key];
-
-      if (key === mainResourceKey || typeof exportedValue !== 'function') {
-        continue;
-      }
-
-      resourceTypeMeta = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].get(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, exportedValue);
-
-      if (resourceTypeMeta) {
-        if (resourceTypeMeta.attributeName === null && resourceTypeMeta.elementName === null) {
-          HtmlBehaviorResource.convention(key, resourceTypeMeta);
-        }
-
-        if (resourceTypeMeta.attributeName === null && resourceTypeMeta.elementName === null) {
-          resourceTypeMeta.elementName = _hyphenate(key);
-        }
-
-        if (!mainResource && resourceTypeMeta instanceof HtmlBehaviorResource && resourceTypeMeta.elementName !== null) {
-          mainResource = new ResourceDescription(key, exportedValue, resourceTypeMeta);
-        } else {
-          resources.push(new ResourceDescription(key, exportedValue, resourceTypeMeta));
-        }
-      } else if (viewStrategy.decorates(exportedValue)) {
-        vs = exportedValue;
-      } else if (exportedValue instanceof __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["b" /* TemplateRegistryEntry */]) {
-        vs = new TemplateRegistryViewStrategy(moduleId, exportedValue);
-      } else {
-        if (conventional = HtmlBehaviorResource.convention(key)) {
-          if (conventional.elementName !== null && !mainResource) {
-            mainResource = new ResourceDescription(key, exportedValue, conventional);
-          } else {
-            resources.push(new ResourceDescription(key, exportedValue, conventional));
-          }
-
-          __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, conventional, exportedValue);
-        } else if (conventional = __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["v" /* ValueConverterResource */].convention(key) || __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["f" /* BindingBehaviorResource */].convention(key) || ViewEngineHooksResource.convention(key)) {
-          resources.push(new ResourceDescription(key, exportedValue, conventional));
-          __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, conventional, exportedValue);
-        } else if (!fallbackValue) {
-          fallbackValue = exportedValue;
-          fallbackKey = key;
-        }
-      }
-    }
-
-    if (!mainResource && fallbackValue) {
-      mainResource = new ResourceDescription(fallbackKey, fallbackValue);
-    }
-
-    resourceModule.moduleInstance = moduleInstance;
-    resourceModule.mainResource = mainResource;
-    resourceModule.resources = resources;
-    resourceModule.viewStrategy = vs;
-
-    return resourceModule;
-  };
-
-  return ModuleAnalyzer;
-}();
-
-var logger = __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__["getLogger"]('templating');
-
-function ensureRegistryEntry(loader, urlOrRegistryEntry) {
-  if (urlOrRegistryEntry instanceof __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["b" /* TemplateRegistryEntry */]) {
-    return Promise.resolve(urlOrRegistryEntry);
-  }
-
-  return loader.loadTemplate(urlOrRegistryEntry);
-}
-
-var ProxyViewFactory = function () {
-  function ProxyViewFactory(promise) {
-    var _this7 = this;
-
-    
-
-    promise.then(function (x) {
-      return _this7.viewFactory = x;
-    });
-  }
-
-  ProxyViewFactory.prototype.create = function create(container, bindingContext, createInstruction, element) {
-    return this.viewFactory.create(container, bindingContext, createInstruction, element);
-  };
-
-  ProxyViewFactory.prototype.setCacheSize = function setCacheSize(size, doNotOverrideIfAlreadySet) {
-    this.viewFactory.setCacheSize(size, doNotOverrideIfAlreadySet);
-  };
-
-  ProxyViewFactory.prototype.getCachedView = function getCachedView() {
-    return this.viewFactory.getCachedView();
-  };
-
-  ProxyViewFactory.prototype.returnViewToCache = function returnViewToCache(view) {
-    this.viewFactory.returnViewToCache(view);
-  };
-
-  _createClass(ProxyViewFactory, [{
-    key: 'isCaching',
-    get: function get() {
-      return this.viewFactory.isCaching;
-    }
-  }]);
-
-  return ProxyViewFactory;
-}();
-
-var auSlotBehavior = null;
-
-var ViewEngine = (_dec8 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["a" /* Loader */], __WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["a" /* Container */], ViewCompiler, ModuleAnalyzer, ViewResources), _dec8(_class14 = (_temp4 = _class15 = function () {
-  function ViewEngine(loader, container, viewCompiler, moduleAnalyzer, appResources) {
-    
-
-    this.loader = loader;
-    this.container = container;
-    this.viewCompiler = viewCompiler;
-    this.moduleAnalyzer = moduleAnalyzer;
-    this.appResources = appResources;
-    this._pluginMap = {};
-
-    if (auSlotBehavior === null) {
-      auSlotBehavior = new HtmlBehaviorResource();
-      auSlotBehavior.attributeName = 'au-slot';
-      __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, auSlotBehavior, SlotCustomAttribute);
-    }
-
-    auSlotBehavior.initialize(container, SlotCustomAttribute);
-    auSlotBehavior.register(appResources);
-  }
-
-  ViewEngine.prototype.addResourcePlugin = function addResourcePlugin(extension, implementation) {
-    var name = extension.replace('.', '') + '-resource-plugin';
-    this._pluginMap[extension] = name;
-    this.loader.addPlugin(name, implementation);
-  };
-
-  ViewEngine.prototype.loadViewFactory = function loadViewFactory(urlOrRegistryEntry, compileInstruction, loadContext, target) {
-    var _this8 = this;
-
-    loadContext = loadContext || new ResourceLoadContext();
-
-    return ensureRegistryEntry(this.loader, urlOrRegistryEntry).then(function (registryEntry) {
-      var url = registryEntry.address;
-
-      if (registryEntry.onReady) {
-        if (!loadContext.hasDependency(url)) {
-          loadContext.addDependency(url);
-          return registryEntry.onReady;
-        }
-
-        if (registryEntry.template === null) {
-          return registryEntry.onReady;
-        }
-
-        return Promise.resolve(new ProxyViewFactory(registryEntry.onReady));
-      }
-
-      loadContext.addDependency(url);
-
-      registryEntry.onReady = _this8.loadTemplateResources(registryEntry, compileInstruction, loadContext, target).then(function (resources) {
-        registryEntry.resources = resources;
-
-        if (registryEntry.template === null) {
-          return registryEntry.factory = null;
-        }
-
-        var viewFactory = _this8.viewCompiler.compile(registryEntry.template, resources, compileInstruction);
-        return registryEntry.factory = viewFactory;
-      });
-
-      return registryEntry.onReady;
-    });
-  };
-
-  ViewEngine.prototype.loadTemplateResources = function loadTemplateResources(registryEntry, compileInstruction, loadContext, target) {
-    var resources = new ViewResources(this.appResources, registryEntry.address);
-    var dependencies = registryEntry.dependencies;
-    var importIds = void 0;
-    var names = void 0;
-
-    compileInstruction = compileInstruction || ViewCompileInstruction.normal;
-
-    if (dependencies.length === 0 && !compileInstruction.associatedModuleId) {
-      return Promise.resolve(resources);
-    }
-
-    importIds = dependencies.map(function (x) {
-      return x.src;
-    });
-    names = dependencies.map(function (x) {
-      return x.name;
-    });
-    logger.debug('importing resources for ' + registryEntry.address, importIds);
-
-    if (target) {
-      var viewModelRequires = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].get(ViewEngine.viewModelRequireMetadataKey, target);
-      if (viewModelRequires) {
-        var templateImportCount = importIds.length;
-        for (var i = 0, ii = viewModelRequires.length; i < ii; ++i) {
-          var req = viewModelRequires[i];
-          var importId = typeof req === 'function' ? __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(req).moduleId : Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_path__["d" /* relativeToFile */])(req.src || req, registryEntry.address);
-
-          if (importIds.indexOf(importId) === -1) {
-            importIds.push(importId);
-            names.push(req.as);
-          }
-        }
-        logger.debug('importing ViewModel resources for ' + compileInstruction.associatedModuleId, importIds.slice(templateImportCount));
-      }
-    }
-
-    return this.importViewResources(importIds, names, resources, compileInstruction, loadContext);
-  };
-
-  ViewEngine.prototype.importViewModelResource = function importViewModelResource(moduleImport, moduleMember) {
-    var _this9 = this;
-
-    return this.loader.loadModule(moduleImport).then(function (viewModelModule) {
-      var normalizedId = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(viewModelModule).moduleId;
-      var resourceModule = _this9.moduleAnalyzer.analyze(normalizedId, viewModelModule, moduleMember);
-
-      if (!resourceModule.mainResource) {
-        throw new Error('No view model found in module "' + moduleImport + '".');
-      }
-
-      resourceModule.initialize(_this9.container);
-
-      return resourceModule.mainResource;
-    });
-  };
-
-  ViewEngine.prototype.importViewResources = function importViewResources(moduleIds, names, resources, compileInstruction, loadContext) {
-    var _this10 = this;
-
-    loadContext = loadContext || new ResourceLoadContext();
-    compileInstruction = compileInstruction || ViewCompileInstruction.normal;
-
-    moduleIds = moduleIds.map(function (x) {
-      return _this10._applyLoaderPlugin(x);
-    });
-
-    return this.loader.loadAllModules(moduleIds).then(function (imports) {
-      var i = void 0;
-      var ii = void 0;
-      var analysis = void 0;
-      var normalizedId = void 0;
-      var current = void 0;
-      var associatedModule = void 0;
-      var container = _this10.container;
-      var moduleAnalyzer = _this10.moduleAnalyzer;
-      var allAnalysis = new Array(imports.length);
-
-      for (i = 0, ii = imports.length; i < ii; ++i) {
-        current = imports[i];
-        normalizedId = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(current).moduleId;
-
-        analysis = moduleAnalyzer.analyze(normalizedId, current);
-        analysis.initialize(container);
-        analysis.register(resources, names[i]);
-
-        allAnalysis[i] = analysis;
-      }
-
-      if (compileInstruction.associatedModuleId) {
-        associatedModule = moduleAnalyzer.getAnalysis(compileInstruction.associatedModuleId);
-
-        if (associatedModule) {
-          associatedModule.register(resources);
-        }
-      }
-
-      for (i = 0, ii = allAnalysis.length; i < ii; ++i) {
-        allAnalysis[i] = allAnalysis[i].load(container, loadContext);
-      }
-
-      return Promise.all(allAnalysis).then(function () {
-        return resources;
+      return request.then(function (_request) {
+        return processResponse(response, _this.interceptors, _request);
       });
     });
-  };
 
-  ViewEngine.prototype._applyLoaderPlugin = function _applyLoaderPlugin(id) {
-    var index = id.lastIndexOf('.');
-    if (index !== -1) {
-      var ext = id.substring(index);
-      var pluginName = this._pluginMap[ext];
+    return trackRequestEndWith.call(this, promise);
+  });
 
-      if (pluginName === undefined) {
-        return id;
-      }
-
-      return this.loader.applyPluginToUrl(id, pluginName);
-    }
-
-    return id;
-  };
-
-  return ViewEngine;
-}(), _class15.viewModelRequireMetadataKey = 'aurelia:view-model-require', _temp4)) || _class14);
-
-var Controller = function () {
-  function Controller(behavior, instruction, viewModel, container) {
-    
-
-    this.behavior = behavior;
-    this.instruction = instruction;
-    this.viewModel = viewModel;
-    this.isAttached = false;
-    this.view = null;
-    this.isBound = false;
-    this.scope = null;
-    this.container = container;
-    this.elementEvents = container.elementEvents || null;
-
-    var observerLookup = behavior.observerLocator.getOrCreateObserversLookup(viewModel);
-    var handlesBind = behavior.handlesBind;
-    var attributes = instruction.attributes;
-    var boundProperties = this.boundProperties = [];
-    var properties = behavior.properties;
-    var i = void 0;
-    var ii = void 0;
-
-    behavior._ensurePropertiesDefined(viewModel, observerLookup);
-
-    for (i = 0, ii = properties.length; i < ii; ++i) {
-      properties[i]._initialize(viewModel, observerLookup, attributes, handlesBind, boundProperties);
-    }
-  }
-
-  Controller.prototype.created = function created(owningView) {
-    if (this.behavior.handlesCreated) {
-      this.viewModel.created(owningView, this.view);
-    }
-  };
-
-  Controller.prototype.automate = function automate(overrideContext, owningView) {
-    this.view.bindingContext = this.viewModel;
-    this.view.overrideContext = overrideContext || Object(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["A" /* createOverrideContext */])(this.viewModel);
-    this.view._isUserControlled = true;
-
-    if (this.behavior.handlesCreated) {
-      this.viewModel.created(owningView || null, this.view);
-    }
-
-    this.bind(this.view);
-  };
-
-  Controller.prototype.bind = function bind(scope) {
-    var skipSelfSubscriber = this.behavior.handlesBind;
-    var boundProperties = this.boundProperties;
-    var i = void 0;
-    var ii = void 0;
-    var x = void 0;
-    var observer = void 0;
-    var selfSubscriber = void 0;
-
-    if (this.isBound) {
-      if (this.scope === scope) {
-        return;
-      }
-
-      this.unbind();
-    }
-
-    this.isBound = true;
-    this.scope = scope;
-
-    for (i = 0, ii = boundProperties.length; i < ii; ++i) {
-      x = boundProperties[i];
-      observer = x.observer;
-      selfSubscriber = observer.selfSubscriber;
-      observer.publishing = false;
-
-      if (skipSelfSubscriber) {
-        observer.selfSubscriber = null;
-      }
-
-      x.binding.bind(scope);
-      observer.call();
-
-      observer.publishing = true;
-      observer.selfSubscriber = selfSubscriber;
-    }
-
-    var overrideContext = void 0;
-    if (this.view !== null) {
-      if (skipSelfSubscriber) {
-        this.view.viewModelScope = scope;
-      }
-
-      if (this.viewModel === scope.overrideContext.bindingContext) {
-        overrideContext = scope.overrideContext;
-      } else if (this.instruction.inheritBindingContext) {
-        overrideContext = Object(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["A" /* createOverrideContext */])(this.viewModel, scope.overrideContext);
-      } else {
-        overrideContext = Object(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["A" /* createOverrideContext */])(this.viewModel);
-        overrideContext.__parentOverrideContext = scope.overrideContext;
-      }
-
-      this.view.bind(this.viewModel, overrideContext);
-    } else if (skipSelfSubscriber) {
-      overrideContext = scope.overrideContext;
-
-      if (scope.overrideContext.__parentOverrideContext !== undefined && this.viewModel.viewFactory && this.viewModel.viewFactory.factoryCreateInstruction.partReplacements) {
-        overrideContext = Object.assign({}, scope.overrideContext);
-        overrideContext.parentOverrideContext = scope.overrideContext.__parentOverrideContext;
-      }
-      this.viewModel.bind(scope.bindingContext, overrideContext);
-    }
-  };
-
-  Controller.prototype.unbind = function unbind() {
-    if (this.isBound) {
-      var _boundProperties = this.boundProperties;
-      var _i2 = void 0;
-      var _ii2 = void 0;
-
-      this.isBound = false;
-      this.scope = null;
-
-      if (this.view !== null) {
-        this.view.unbind();
-      }
-
-      if (this.behavior.handlesUnbind) {
-        this.viewModel.unbind();
-      }
-
-      if (this.elementEvents !== null) {
-        this.elementEvents.disposeAll();
-      }
-
-      for (_i2 = 0, _ii2 = _boundProperties.length; _i2 < _ii2; ++_i2) {
-        _boundProperties[_i2].binding.unbind();
-      }
-    }
-  };
-
-  Controller.prototype.attached = function attached() {
-    if (this.isAttached) {
-      return;
-    }
-
-    this.isAttached = true;
-
-    if (this.behavior.handlesAttached) {
-      this.viewModel.attached();
-    }
-
-    if (this.view !== null) {
-      this.view.attached();
-    }
-  };
-
-  Controller.prototype.detached = function detached() {
-    if (this.isAttached) {
-      this.isAttached = false;
-
-      if (this.view !== null) {
-        this.view.detached();
-      }
-
-      if (this.behavior.handlesDetached) {
-        this.viewModel.detached();
-      }
-    }
-  };
-
-  return Controller;
+  return HttpClient;
 }();
 
-var BehaviorPropertyObserver = (_dec9 = Object(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["H" /* subscriberCollection */])(), _dec9(_class16 = function () {
-  function BehaviorPropertyObserver(taskQueue, obj, propertyName, selfSubscriber, initialValue) {
-    
+var absoluteUrlRegexp = /^([a-z][a-z0-9+\-.]*:)?\/\//i;
 
-    this.taskQueue = taskQueue;
-    this.obj = obj;
-    this.propertyName = propertyName;
-    this.notqueued = true;
-    this.publishing = false;
-    this.selfSubscriber = selfSubscriber;
-    this.currentValue = this.oldValue = initialValue;
-  }
-
-  BehaviorPropertyObserver.prototype.getValue = function getValue() {
-    return this.currentValue;
-  };
-
-  BehaviorPropertyObserver.prototype.setValue = function setValue(newValue) {
-    var oldValue = this.currentValue;
-
-    if (oldValue !== newValue) {
-      this.oldValue = oldValue;
-      this.currentValue = newValue;
-
-      if (this.publishing && this.notqueued) {
-        if (this.taskQueue.flushing) {
-          this.call();
-        } else {
-          this.notqueued = false;
-          this.taskQueue.queueMicroTask(this);
-        }
-      }
-    }
-  };
-
-  BehaviorPropertyObserver.prototype.call = function call() {
-    var oldValue = this.oldValue;
-    var newValue = this.currentValue;
-
-    this.notqueued = true;
-
-    if (newValue === oldValue) {
-      return;
-    }
-
-    if (this.selfSubscriber) {
-      this.selfSubscriber(newValue, oldValue);
-    }
-
-    this.callSubscribers(newValue, oldValue);
-    this.oldValue = newValue;
-  };
-
-  BehaviorPropertyObserver.prototype.subscribe = function subscribe(context, callable) {
-    this.addSubscriber(context, callable);
-  };
-
-  BehaviorPropertyObserver.prototype.unsubscribe = function unsubscribe(context, callable) {
-    this.removeSubscriber(context, callable);
-  };
-
-  return BehaviorPropertyObserver;
-}()) || _class16);
-
-function getObserver(instance, name) {
-  var lookup = instance.__observers__;
-
-  if (lookup === undefined) {
-    var ctor = Object.getPrototypeOf(instance).constructor;
-    var _behavior = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].get(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, ctor);
-    if (!_behavior.isInitialized) {
-      _behavior.initialize(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["a" /* Container */].instance || new __WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["a" /* Container */](), instance.constructor);
-    }
-
-    lookup = _behavior.observerLocator.getOrCreateObserversLookup(instance);
-    _behavior._ensurePropertiesDefined(instance, lookup);
-  }
-
-  return lookup[name];
+function trackRequestStart() {
+  this.isRequesting = !! ++this.activeRequestCount;
 }
 
-var BindableProperty = function () {
-  function BindableProperty(nameOrConfig) {
-    
-
-    if (typeof nameOrConfig === 'string') {
-      this.name = nameOrConfig;
-    } else {
-      Object.assign(this, nameOrConfig);
-    }
-
-    this.attribute = this.attribute || _hyphenate(this.name);
-    if (this.defaultBindingMode === null || this.defaultBindingMode === undefined) {
-      this.defaultBindingMode = __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["w" /* bindingMode */].oneWay;
-    }
-    this.changeHandler = this.changeHandler || null;
-    this.owner = null;
-    this.descriptor = null;
-  }
-
-  BindableProperty.prototype.registerWith = function registerWith(target, behavior, descriptor) {
-    behavior.properties.push(this);
-    behavior.attributes[this.attribute] = this;
-    this.owner = behavior;
-
-    if (descriptor) {
-      this.descriptor = descriptor;
-      return this._configureDescriptor(descriptor);
-    }
-
-    return undefined;
-  };
-
-  BindableProperty.prototype._configureDescriptor = function _configureDescriptor(descriptor) {
-    var name = this.name;
-
-    descriptor.configurable = true;
-    descriptor.enumerable = true;
-
-    if ('initializer' in descriptor) {
-      this.defaultValue = descriptor.initializer;
-      delete descriptor.initializer;
-      delete descriptor.writable;
-    }
-
-    if ('value' in descriptor) {
-      this.defaultValue = descriptor.value;
-      delete descriptor.value;
-      delete descriptor.writable;
-    }
-
-    descriptor.get = function () {
-      return getObserver(this, name).getValue();
-    };
-
-    descriptor.set = function (value) {
-      getObserver(this, name).setValue(value);
-    };
-
-    descriptor.get.getObserver = function (obj) {
-      return getObserver(obj, name);
-    };
-
-    return descriptor;
-  };
-
-  BindableProperty.prototype.defineOn = function defineOn(target, behavior) {
-    var name = this.name;
-    var handlerName = void 0;
-
-    if (this.changeHandler === null) {
-      handlerName = name + 'Changed';
-      if (handlerName in target.prototype) {
-        this.changeHandler = handlerName;
-      }
-    }
-
-    if (this.descriptor === null) {
-      Object.defineProperty(target.prototype, name, this._configureDescriptor(behavior, {}));
-    }
-  };
-
-  BindableProperty.prototype.createObserver = function createObserver(viewModel) {
-    var selfSubscriber = null;
-    var defaultValue = this.defaultValue;
-    var changeHandlerName = this.changeHandler;
-    var name = this.name;
-    var initialValue = void 0;
-
-    if (this.hasOptions) {
-      return undefined;
-    }
-
-    if (changeHandlerName in viewModel) {
-      if ('propertyChanged' in viewModel) {
-        selfSubscriber = function selfSubscriber(newValue, oldValue) {
-          viewModel[changeHandlerName](newValue, oldValue);
-          viewModel.propertyChanged(name, newValue, oldValue);
-        };
-      } else {
-        selfSubscriber = function selfSubscriber(newValue, oldValue) {
-          return viewModel[changeHandlerName](newValue, oldValue);
-        };
-      }
-    } else if ('propertyChanged' in viewModel) {
-      selfSubscriber = function selfSubscriber(newValue, oldValue) {
-        return viewModel.propertyChanged(name, newValue, oldValue);
-      };
-    } else if (changeHandlerName !== null) {
-      throw new Error('Change handler ' + changeHandlerName + ' was specified but not declared on the class.');
-    }
-
-    if (defaultValue !== undefined) {
-      initialValue = typeof defaultValue === 'function' ? defaultValue.call(viewModel) : defaultValue;
-    }
-
-    return new BehaviorPropertyObserver(this.owner.taskQueue, viewModel, this.name, selfSubscriber, initialValue);
-  };
-
-  BindableProperty.prototype._initialize = function _initialize(viewModel, observerLookup, attributes, behaviorHandlesBind, boundProperties) {
-    var selfSubscriber = void 0;
-    var observer = void 0;
-    var attribute = void 0;
-    var defaultValue = this.defaultValue;
-
-    if (this.isDynamic) {
-      for (var key in attributes) {
-        this._createDynamicProperty(viewModel, observerLookup, behaviorHandlesBind, key, attributes[key], boundProperties);
-      }
-    } else if (!this.hasOptions) {
-      observer = observerLookup[this.name];
-
-      if (attributes !== null) {
-        selfSubscriber = observer.selfSubscriber;
-        attribute = attributes[this.attribute];
-
-        if (behaviorHandlesBind) {
-          observer.selfSubscriber = null;
-        }
-
-        if (typeof attribute === 'string') {
-          viewModel[this.name] = attribute;
-          observer.call();
-        } else if (attribute) {
-          boundProperties.push({ observer: observer, binding: attribute.createBinding(viewModel) });
-        } else if (defaultValue !== undefined) {
-          observer.call();
-        }
-
-        observer.selfSubscriber = selfSubscriber;
-      }
-
-      observer.publishing = true;
-    }
-  };
-
-  BindableProperty.prototype._createDynamicProperty = function _createDynamicProperty(viewModel, observerLookup, behaviorHandlesBind, name, attribute, boundProperties) {
-    var changeHandlerName = name + 'Changed';
-    var selfSubscriber = null;
-    var observer = void 0;
-    var info = void 0;
-
-    if (changeHandlerName in viewModel) {
-      if ('propertyChanged' in viewModel) {
-        selfSubscriber = function selfSubscriber(newValue, oldValue) {
-          viewModel[changeHandlerName](newValue, oldValue);
-          viewModel.propertyChanged(name, newValue, oldValue);
-        };
-      } else {
-        selfSubscriber = function selfSubscriber(newValue, oldValue) {
-          return viewModel[changeHandlerName](newValue, oldValue);
-        };
-      }
-    } else if ('propertyChanged' in viewModel) {
-      selfSubscriber = function selfSubscriber(newValue, oldValue) {
-        return viewModel.propertyChanged(name, newValue, oldValue);
-      };
-    }
-
-    observer = observerLookup[name] = new BehaviorPropertyObserver(this.owner.taskQueue, viewModel, name, selfSubscriber);
-
-    Object.defineProperty(viewModel, name, {
-      configurable: true,
-      enumerable: true,
-      get: observer.getValue.bind(observer),
-      set: observer.setValue.bind(observer)
-    });
-
-    if (behaviorHandlesBind) {
-      observer.selfSubscriber = null;
-    }
-
-    if (typeof attribute === 'string') {
-      viewModel[name] = attribute;
-      observer.call();
-    } else if (attribute) {
-      info = { observer: observer, binding: attribute.createBinding(viewModel) };
-      boundProperties.push(info);
-    }
-
-    observer.publishing = true;
-    observer.selfSubscriber = selfSubscriber;
-  };
-
-  return BindableProperty;
-}();
-
-var lastProviderId = 0;
-
-function nextProviderId() {
-  return ++lastProviderId;
+function trackRequestEnd() {
+  this.isRequesting = !! --this.activeRequestCount;
 }
 
-function doProcessContent() {
+function trackRequestEndWith(promise) {
+  var handle = trackRequestEnd.bind(this);
+  promise.then(handle, handle);
+  return promise;
+}
+
+function parseHeaderValues(headers) {
+  var parsedHeaders = {};
+  for (var name in headers || {}) {
+    if (headers.hasOwnProperty(name)) {
+      parsedHeaders[name] = typeof headers[name] === 'function' ? headers[name]() : headers[name];
+    }
+  }
+  return parsedHeaders;
+}
+
+function buildRequest(input, init) {
+  var defaults = this.defaults || {};
+  var request = void 0;
+  var body = void 0;
+  var requestContentType = void 0;
+
+  var parsedDefaultHeaders = parseHeaderValues(defaults.headers);
+  if (Request.prototype.isPrototypeOf(input)) {
+    request = input;
+    requestContentType = new Headers(request.headers).get('Content-Type');
+  } else {
+    init || (init = {});
+    body = init.body;
+    var bodyObj = body ? { body: body } : null;
+    var requestInit = Object.assign({}, defaults, { headers: {} }, init, bodyObj);
+    requestContentType = new Headers(requestInit.headers).get('Content-Type');
+    request = new Request(getRequestUrl(this.baseUrl, input), requestInit);
+  }
+  if (!requestContentType) {
+    if (new Headers(parsedDefaultHeaders).has('content-type')) {
+      request.headers.set('Content-Type', new Headers(parsedDefaultHeaders).get('content-type'));
+    } else if (body && isJSON(body)) {
+      request.headers.set('Content-Type', 'application/json');
+    }
+  }
+  setDefaultHeaders(request.headers, parsedDefaultHeaders);
+  if (body && Blob.prototype.isPrototypeOf(body) && body.type) {
+    request.headers.set('Content-Type', body.type);
+  }
+  return request;
+}
+
+function getRequestUrl(baseUrl, url) {
+  if (absoluteUrlRegexp.test(url)) {
+    return url;
+  }
+
+  return (baseUrl || '') + url;
+}
+
+function setDefaultHeaders(headers, defaultHeaders) {
+  for (var name in defaultHeaders || {}) {
+    if (defaultHeaders.hasOwnProperty(name) && !headers.has(name)) {
+      headers.set(name, defaultHeaders[name]);
+    }
+  }
+}
+
+function processRequest(request, interceptors) {
+  return applyInterceptors(request, interceptors, 'request', 'requestError');
+}
+
+function processResponse(response, interceptors, request) {
+  return applyInterceptors(response, interceptors, 'response', 'responseError', request);
+}
+
+function applyInterceptors(input, interceptors, successName, errorName) {
+  for (var _len = arguments.length, interceptorArgs = Array(_len > 4 ? _len - 4 : 0), _key = 4; _key < _len; _key++) {
+    interceptorArgs[_key - 4] = arguments[_key];
+  }
+
+  return (interceptors || []).reduce(function (chain, interceptor) {
+    var successHandler = interceptor[successName];
+    var errorHandler = interceptor[errorName];
+
+    return chain.then(successHandler && function (value) {
+      return successHandler.call.apply(successHandler, [interceptor, value].concat(interceptorArgs));
+    } || identity, errorHandler && function (reason) {
+      return errorHandler.call.apply(errorHandler, [interceptor, reason].concat(interceptorArgs));
+    } || thrower);
+  }, Promise.resolve(input));
+}
+
+function isJSON(str) {
+  try {
+    JSON.parse(str);
+  } catch (err) {
+    return false;
+  }
+
   return true;
 }
-function doProcessAttributes() {}
 
-var HtmlBehaviorResource = function () {
-  function HtmlBehaviorResource() {
-    
-
-    this.elementName = null;
-    this.attributeName = null;
-    this.attributeDefaultBindingMode = undefined;
-    this.liftsContent = false;
-    this.targetShadowDOM = false;
-    this.shadowDOMOptions = null;
-    this.processAttributes = doProcessAttributes;
-    this.processContent = doProcessContent;
-    this.usesShadowDOM = false;
-    this.childBindings = null;
-    this.hasDynamicOptions = false;
-    this.containerless = false;
-    this.properties = [];
-    this.attributes = {};
-    this.isInitialized = false;
-    this.primaryProperty = null;
-  }
-
-  HtmlBehaviorResource.convention = function convention(name, existing) {
-    var behavior = void 0;
-
-    if (name.endsWith('CustomAttribute')) {
-      behavior = existing || new HtmlBehaviorResource();
-      behavior.attributeName = _hyphenate(name.substring(0, name.length - 15));
-    }
-
-    if (name.endsWith('CustomElement')) {
-      behavior = existing || new HtmlBehaviorResource();
-      behavior.elementName = _hyphenate(name.substring(0, name.length - 13));
-    }
-
-    return behavior;
-  };
-
-  HtmlBehaviorResource.prototype.addChildBinding = function addChildBinding(behavior) {
-    if (this.childBindings === null) {
-      this.childBindings = [];
-    }
-
-    this.childBindings.push(behavior);
-  };
-
-  HtmlBehaviorResource.prototype.initialize = function initialize(container, target) {
-    var proto = target.prototype;
-    var properties = this.properties;
-    var attributeName = this.attributeName;
-    var attributeDefaultBindingMode = this.attributeDefaultBindingMode;
-    var i = void 0;
-    var ii = void 0;
-    var current = void 0;
-
-    if (this.isInitialized) {
-      return;
-    }
-
-    this.isInitialized = true;
-    target.__providerId__ = nextProviderId();
-
-    this.observerLocator = container.get(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["r" /* ObserverLocator */]);
-    this.taskQueue = container.get(__WEBPACK_IMPORTED_MODULE_7_aurelia_task_queue__["a" /* TaskQueue */]);
-
-    this.target = target;
-    this.usesShadowDOM = this.targetShadowDOM && __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["c" /* FEATURE */].shadowDOM;
-    this.handlesCreated = 'created' in proto;
-    this.handlesBind = 'bind' in proto;
-    this.handlesUnbind = 'unbind' in proto;
-    this.handlesAttached = 'attached' in proto;
-    this.handlesDetached = 'detached' in proto;
-    this.htmlName = this.elementName || this.attributeName;
-
-    if (attributeName !== null) {
-      if (properties.length === 0) {
-        new BindableProperty({
-          name: 'value',
-          changeHandler: 'valueChanged' in proto ? 'valueChanged' : null,
-          attribute: attributeName,
-          defaultBindingMode: attributeDefaultBindingMode
-        }).registerWith(target, this);
-      }
-
-      current = properties[0];
-
-      if (properties.length === 1 && current.name === 'value') {
-        current.isDynamic = current.hasOptions = this.hasDynamicOptions;
-        current.defineOn(target, this);
-      } else {
-        for (i = 0, ii = properties.length; i < ii; ++i) {
-          properties[i].defineOn(target, this);
-          if (properties[i].primaryProperty) {
-            if (this.primaryProperty) {
-              throw new Error('Only one bindable property on a custom element can be defined as the default');
-            }
-            this.primaryProperty = properties[i];
-          }
-        }
-
-        current = new BindableProperty({
-          name: 'value',
-          changeHandler: 'valueChanged' in proto ? 'valueChanged' : null,
-          attribute: attributeName,
-          defaultBindingMode: attributeDefaultBindingMode
-        });
-
-        current.hasOptions = true;
-        current.registerWith(target, this);
-      }
-    } else {
-      for (i = 0, ii = properties.length; i < ii; ++i) {
-        properties[i].defineOn(target, this);
-      }
-
-      this._copyInheritedProperties(container, target);
-    }
-  };
-
-  HtmlBehaviorResource.prototype.register = function register(registry, name) {
-    var _this11 = this;
-
-    if (this.attributeName !== null) {
-      registry.registerAttribute(name || this.attributeName, this, this.attributeName);
-
-      if (Array.isArray(this.aliases)) {
-        this.aliases.forEach(function (alias) {
-          registry.registerAttribute(alias, _this11, _this11.attributeName);
-        });
-      }
-    }
-
-    if (this.elementName !== null) {
-      registry.registerElement(name || this.elementName, this);
-    }
-  };
-
-  HtmlBehaviorResource.prototype.load = function load(container, target, loadContext, viewStrategy, transientView) {
-    var _this12 = this;
-
-    var options = void 0;
-
-    if (this.elementName !== null) {
-      viewStrategy = container.get(ViewLocator).getViewStrategy(viewStrategy || this.viewStrategy || target);
-      options = new ViewCompileInstruction(this.targetShadowDOM, true);
-
-      if (!viewStrategy.moduleId) {
-        viewStrategy.moduleId = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(target).moduleId;
-      }
-
-      return viewStrategy.loadViewFactory(container.get(ViewEngine), options, loadContext, target).then(function (viewFactory) {
-        if (!transientView || !_this12.viewFactory) {
-          _this12.viewFactory = viewFactory;
-        }
-
-        return viewFactory;
-      });
-    }
-
-    return Promise.resolve(this);
-  };
-
-  HtmlBehaviorResource.prototype.compile = function compile(compiler, resources, node, instruction, parentNode) {
-    if (this.liftsContent) {
-      if (!instruction.viewFactory) {
-        var template = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createElement('template');
-        var fragment = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createDocumentFragment();
-        var cacheSize = node.getAttribute('view-cache');
-        var part = node.getAttribute('part');
-
-        node.removeAttribute(instruction.originalAttrName);
-        __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].replaceNode(template, node, parentNode);
-        fragment.appendChild(node);
-        instruction.viewFactory = compiler.compile(fragment, resources);
-
-        if (part) {
-          instruction.viewFactory.part = part;
-          node.removeAttribute('part');
-        }
-
-        if (cacheSize) {
-          instruction.viewFactory.setCacheSize(cacheSize);
-          node.removeAttribute('view-cache');
-        }
-
-        node = template;
-      }
-    } else if (this.elementName !== null) {
-      var _partReplacements2 = {};
-
-      if (this.processContent(compiler, resources, node, instruction) && node.hasChildNodes()) {
-        var currentChild = node.firstChild;
-        var contentElement = this.usesShadowDOM ? null : __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createElement('au-content');
-        var nextSibling = void 0;
-        var toReplace = void 0;
-
-        while (currentChild) {
-          nextSibling = currentChild.nextSibling;
-
-          if (currentChild.tagName === 'TEMPLATE' && (toReplace = currentChild.getAttribute('replace-part'))) {
-            _partReplacements2[toReplace] = compiler.compile(currentChild, resources);
-            __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].removeNode(currentChild, parentNode);
-            instruction.partReplacements = _partReplacements2;
-          } else if (contentElement !== null) {
-            if (currentChild.nodeType === 3 && _isAllWhitespace(currentChild)) {
-              __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].removeNode(currentChild, parentNode);
-            } else {
-              contentElement.appendChild(currentChild);
-            }
-          }
-
-          currentChild = nextSibling;
-        }
-
-        if (contentElement !== null && contentElement.hasChildNodes()) {
-          node.appendChild(contentElement);
-        }
-
-        instruction.skipContentProcessing = false;
-      } else {
-        instruction.skipContentProcessing = true;
-      }
-    } else if (!this.processContent(compiler, resources, node, instruction)) {
-      instruction.skipContentProcessing = true;
-    }
-
-    return node;
-  };
-
-  HtmlBehaviorResource.prototype.create = function create(container, instruction, element, bindings) {
-    var viewHost = void 0;
-    var au = null;
-
-    instruction = instruction || BehaviorInstruction.normal;
-    element = element || null;
-    bindings = bindings || null;
-
-    if (this.elementName !== null && element) {
-      if (this.usesShadowDOM) {
-        viewHost = element.attachShadow(this.shadowDOMOptions);
-        container.registerInstance(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].boundary, viewHost);
-      } else {
-        viewHost = element;
-        if (this.targetShadowDOM) {
-          container.registerInstance(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].boundary, viewHost);
-        }
-      }
-    }
-
-    if (element !== null) {
-      element.au = au = element.au || {};
-    }
-
-    var viewModel = instruction.viewModel || container.get(this.target);
-    var controller = new Controller(this, instruction, viewModel, container);
-    var childBindings = this.childBindings;
-    var viewFactory = void 0;
-
-    if (this.liftsContent) {
-      au.controller = controller;
-    } else if (this.elementName !== null) {
-      viewFactory = instruction.viewFactory || this.viewFactory;
-      container.viewModel = viewModel;
-
-      if (viewFactory) {
-        controller.view = viewFactory.create(container, instruction, element);
-      }
-
-      if (element !== null) {
-        au.controller = controller;
-
-        if (controller.view) {
-          if (!this.usesShadowDOM && (element.childNodes.length === 1 || element.contentElement)) {
-            var contentElement = element.childNodes[0] || element.contentElement;
-            controller.view.contentView = { fragment: contentElement };
-            contentElement.parentNode && __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].removeNode(contentElement);
-          }
-
-          if (instruction.anchorIsContainer) {
-            if (childBindings !== null) {
-              for (var _i3 = 0, _ii3 = childBindings.length; _i3 < _ii3; ++_i3) {
-                controller.view.addBinding(childBindings[_i3].create(element, viewModel, controller));
-              }
-            }
-
-            controller.view.appendNodesTo(viewHost);
-          } else {
-            controller.view.insertNodesBefore(viewHost);
-          }
-        } else if (childBindings !== null) {
-          for (var _i4 = 0, _ii4 = childBindings.length; _i4 < _ii4; ++_i4) {
-            bindings.push(childBindings[_i4].create(element, viewModel, controller));
-          }
-        }
-      } else if (controller.view) {
-        controller.view.controller = controller;
-
-        if (childBindings !== null) {
-          for (var _i5 = 0, _ii5 = childBindings.length; _i5 < _ii5; ++_i5) {
-            controller.view.addBinding(childBindings[_i5].create(instruction.host, viewModel, controller));
-          }
-        }
-      } else if (childBindings !== null) {
-        for (var _i6 = 0, _ii6 = childBindings.length; _i6 < _ii6; ++_i6) {
-          bindings.push(childBindings[_i6].create(instruction.host, viewModel, controller));
-        }
-      }
-    } else if (childBindings !== null) {
-      for (var _i7 = 0, _ii7 = childBindings.length; _i7 < _ii7; ++_i7) {
-        bindings.push(childBindings[_i7].create(element, viewModel, controller));
-      }
-    }
-
-    if (au !== null) {
-      au[this.htmlName] = controller;
-    }
-
-    if (instruction.initiatedByBehavior && viewFactory) {
-      controller.view.created();
-    }
-
-    return controller;
-  };
-
-  HtmlBehaviorResource.prototype._ensurePropertiesDefined = function _ensurePropertiesDefined(instance, lookup) {
-    var properties = void 0;
-    var i = void 0;
-    var ii = void 0;
-    var observer = void 0;
-
-    if ('__propertiesDefined__' in lookup) {
-      return;
-    }
-
-    lookup.__propertiesDefined__ = true;
-    properties = this.properties;
-
-    for (i = 0, ii = properties.length; i < ii; ++i) {
-      observer = properties[i].createObserver(instance);
-
-      if (observer !== undefined) {
-        lookup[observer.propertyName] = observer;
-      }
-    }
-  };
-
-  HtmlBehaviorResource.prototype._copyInheritedProperties = function _copyInheritedProperties(container, target) {
-    var _this13 = this;
-
-    var behavior = void 0;
-    var derived = target;
-
-    while (true) {
-      var proto = Object.getPrototypeOf(target.prototype);
-      target = proto && proto.constructor;
-      if (!target) {
-        return;
-      }
-      behavior = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, target);
-      if (behavior) {
-        break;
-      }
-    }
-    behavior.initialize(container, target);
-
-    var _loop = function _loop(_i8, _ii8) {
-      var prop = behavior.properties[_i8];
-
-      if (_this13.properties.some(function (p) {
-        return p.name === prop.name;
-      })) {
-        return 'continue';
-      }
-
-      new BindableProperty(prop).registerWith(derived, _this13);
-    };
-
-    for (var _i8 = 0, _ii8 = behavior.properties.length; _i8 < _ii8; ++_i8) {
-      var _ret = _loop(_i8, _ii8);
-
-      if (_ret === 'continue') continue;
-    }
-  };
-
-  return HtmlBehaviorResource;
-}();
-
-function createChildObserverDecorator(selectorOrConfig, all) {
-  return function (target, key, descriptor) {
-    var actualTarget = typeof key === 'string' ? target.constructor : target;
-    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, actualTarget);
-
-    if (typeof selectorOrConfig === 'string') {
-      selectorOrConfig = {
-        selector: selectorOrConfig,
-        name: key
-      };
-    }
-
-    if (descriptor) {
-      descriptor.writable = true;
-      descriptor.configurable = true;
-    }
-
-    selectorOrConfig.all = all;
-    r.addChildBinding(new ChildObserver(selectorOrConfig));
-  };
+function identity(x) {
+  return x;
 }
 
-function children(selectorOrConfig) {
-  return createChildObserverDecorator(selectorOrConfig, true);
+function thrower(x) {
+  throw x;
 }
-
-function child(selectorOrConfig) {
-  return createChildObserverDecorator(selectorOrConfig, false);
-}
-
-var ChildObserver = function () {
-  function ChildObserver(config) {
-    
-
-    this.name = config.name;
-    this.changeHandler = config.changeHandler || this.name + 'Changed';
-    this.selector = config.selector;
-    this.all = config.all;
-  }
-
-  ChildObserver.prototype.create = function create(viewHost, viewModel, controller) {
-    return new ChildObserverBinder(this.selector, viewHost, this.name, viewModel, controller, this.changeHandler, this.all);
-  };
-
-  return ChildObserver;
-}();
-
-var noMutations = [];
-
-function trackMutation(groupedMutations, binder, record) {
-  var mutations = groupedMutations.get(binder);
-
-  if (!mutations) {
-    mutations = [];
-    groupedMutations.set(binder, mutations);
-  }
-
-  mutations.push(record);
-}
-
-function onChildChange(mutations, observer) {
-  var binders = observer.binders;
-  var bindersLength = binders.length;
-  var groupedMutations = new Map();
-
-  for (var _i9 = 0, _ii9 = mutations.length; _i9 < _ii9; ++_i9) {
-    var record = mutations[_i9];
-    var added = record.addedNodes;
-    var removed = record.removedNodes;
-
-    for (var j = 0, jj = removed.length; j < jj; ++j) {
-      var node = removed[j];
-      if (node.nodeType === 1) {
-        for (var k = 0; k < bindersLength; ++k) {
-          var binder = binders[k];
-          if (binder.onRemove(node)) {
-            trackMutation(groupedMutations, binder, record);
-          }
-        }
-      }
-    }
-
-    for (var _j = 0, _jj = added.length; _j < _jj; ++_j) {
-      var _node = added[_j];
-      if (_node.nodeType === 1) {
-        for (var _k = 0; _k < bindersLength; ++_k) {
-          var _binder = binders[_k];
-          if (_binder.onAdd(_node)) {
-            trackMutation(groupedMutations, _binder, record);
-          }
-        }
-      }
-    }
-  }
-
-  groupedMutations.forEach(function (value, key) {
-    if (key.changeHandler !== null) {
-      key.viewModel[key.changeHandler](value);
-    }
-  });
-}
-
-var ChildObserverBinder = function () {
-  function ChildObserverBinder(selector, viewHost, property, viewModel, controller, changeHandler, all) {
-    
-
-    this.selector = selector;
-    this.viewHost = viewHost;
-    this.property = property;
-    this.viewModel = viewModel;
-    this.controller = controller;
-    this.changeHandler = changeHandler in viewModel ? changeHandler : null;
-    this.usesShadowDOM = controller.behavior.usesShadowDOM;
-    this.all = all;
-
-    if (!this.usesShadowDOM && controller.view && controller.view.contentView) {
-      this.contentView = controller.view.contentView;
-    } else {
-      this.contentView = null;
-    }
-  }
-
-  ChildObserverBinder.prototype.matches = function matches(element) {
-    if (element.matches(this.selector)) {
-      if (this.contentView === null) {
-        return true;
-      }
-
-      var contentView = this.contentView;
-      var assignedSlot = element.auAssignedSlot;
-
-      if (assignedSlot && assignedSlot.projectFromAnchors) {
-        var anchors = assignedSlot.projectFromAnchors;
-
-        for (var _i10 = 0, _ii10 = anchors.length; _i10 < _ii10; ++_i10) {
-          if (anchors[_i10].auOwnerView === contentView) {
-            return true;
-          }
-        }
-
-        return false;
-      }
-
-      return element.auOwnerView === contentView;
-    }
-
-    return false;
-  };
-
-  ChildObserverBinder.prototype.bind = function bind(source) {
-    var viewHost = this.viewHost;
-    var viewModel = this.viewModel;
-    var observer = viewHost.__childObserver__;
-
-    if (!observer) {
-      observer = viewHost.__childObserver__ = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createMutationObserver(onChildChange);
-
-      var options = {
-        childList: true,
-        subtree: !this.usesShadowDOM
-      };
-
-      observer.observe(viewHost, options);
-      observer.binders = [];
-    }
-
-    observer.binders.push(this);
-
-    if (this.usesShadowDOM) {
-      var current = viewHost.firstElementChild;
-
-      if (this.all) {
-        var items = viewModel[this.property];
-        if (!items) {
-          items = viewModel[this.property] = [];
-        } else {
-          items.length = 0;
-        }
-
-        while (current) {
-          if (this.matches(current)) {
-            items.push(current.au && current.au.controller ? current.au.controller.viewModel : current);
-          }
-
-          current = current.nextElementSibling;
-        }
-
-        if (this.changeHandler !== null) {
-          this.viewModel[this.changeHandler](noMutations);
-        }
-      } else {
-        while (current) {
-          if (this.matches(current)) {
-            var value = current.au && current.au.controller ? current.au.controller.viewModel : current;
-            this.viewModel[this.property] = value;
-
-            if (this.changeHandler !== null) {
-              this.viewModel[this.changeHandler](value);
-            }
-
-            break;
-          }
-
-          current = current.nextElementSibling;
-        }
-      }
-    }
-  };
-
-  ChildObserverBinder.prototype.onRemove = function onRemove(element) {
-    if (this.matches(element)) {
-      var value = element.au && element.au.controller ? element.au.controller.viewModel : element;
-
-      if (this.all) {
-        var items = this.viewModel[this.property] || (this.viewModel[this.property] = []);
-        var index = items.indexOf(value);
-
-        if (index !== -1) {
-          items.splice(index, 1);
-        }
-
-        return true;
-      }
-
-      return false;
-    }
-
-    return false;
-  };
-
-  ChildObserverBinder.prototype.onAdd = function onAdd(element) {
-    if (this.matches(element)) {
-      var value = element.au && element.au.controller ? element.au.controller.viewModel : element;
-
-      if (this.all) {
-        var items = this.viewModel[this.property] || (this.viewModel[this.property] = []);
-
-        if (this.selector === '*') {
-          items.push(value);
-          return true;
-        }
-
-        var index = 0;
-        var prev = element.previousElementSibling;
-
-        while (prev) {
-          if (this.matches(prev)) {
-            index++;
-          }
-
-          prev = prev.previousElementSibling;
-        }
-
-        items.splice(index, 0, value);
-        return true;
-      }
-
-      this.viewModel[this.property] = value;
-
-      if (this.changeHandler !== null) {
-        this.viewModel[this.changeHandler](value);
-      }
-    }
-
-    return false;
-  };
-
-  ChildObserverBinder.prototype.unbind = function unbind() {
-    if (this.viewHost.__childObserver__) {
-      this.viewHost.__childObserver__.disconnect();
-      this.viewHost.__childObserver__ = null;
-    }
-  };
-
-  return ChildObserverBinder;
-}();
-
-function remove(viewSlot, previous) {
-  return Array.isArray(previous) ? viewSlot.removeMany(previous, true) : viewSlot.remove(previous, true);
-}
-
-var SwapStrategies = {
-  before: function before(viewSlot, previous, callback) {
-    return previous === undefined ? callback() : callback().then(function () {
-      return remove(viewSlot, previous);
-    });
-  },
-  with: function _with(viewSlot, previous, callback) {
-    return previous === undefined ? callback() : Promise.all([remove(viewSlot, previous), callback()]);
-  },
-  after: function after(viewSlot, previous, callback) {
-    return Promise.resolve(viewSlot.removeAll(true)).then(callback);
-  }
-};
-
-function tryActivateViewModel(context) {
-  if (context.skipActivation || typeof context.viewModel.activate !== 'function') {
-    return Promise.resolve();
-  }
-
-  return context.viewModel.activate(context.model) || Promise.resolve();
-}
-
-var CompositionEngine = (_dec10 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["e" /* inject */])(ViewEngine, ViewLocator), _dec10(_class17 = function () {
-  function CompositionEngine(viewEngine, viewLocator) {
-    
-
-    this.viewEngine = viewEngine;
-    this.viewLocator = viewLocator;
-  }
-
-  CompositionEngine.prototype._swap = function _swap(context, view) {
-    var swapStrategy = SwapStrategies[context.swapOrder] || SwapStrategies.after;
-    var previousViews = context.viewSlot.children.slice();
-
-    return swapStrategy(context.viewSlot, previousViews, function () {
-      return Promise.resolve(context.viewSlot.add(view)).then(function () {
-        if (context.currentController) {
-          context.currentController.unbind();
-        }
-      });
-    }).then(function () {
-      if (context.compositionTransactionNotifier) {
-        context.compositionTransactionNotifier.done();
-      }
-    });
-  };
-
-  CompositionEngine.prototype._createControllerAndSwap = function _createControllerAndSwap(context) {
-    var _this14 = this;
-
-    return this.createController(context).then(function (controller) {
-      controller.automate(context.overrideContext, context.owningView);
-
-      if (context.compositionTransactionOwnershipToken) {
-        return context.compositionTransactionOwnershipToken.waitForCompositionComplete().then(function () {
-          return _this14._swap(context, controller.view);
-        }).then(function () {
-          return controller;
-        });
-      }
-
-      return _this14._swap(context, controller.view).then(function () {
-        return controller;
-      });
-    });
-  };
-
-  CompositionEngine.prototype.createController = function createController(context) {
-    var _this15 = this;
-
-    var childContainer = void 0;
-    var viewModel = void 0;
-    var viewModelResource = void 0;
-    var m = void 0;
-
-    return this.ensureViewModel(context).then(tryActivateViewModel).then(function () {
-      childContainer = context.childContainer;
-      viewModel = context.viewModel;
-      viewModelResource = context.viewModelResource;
-      m = viewModelResource.metadata;
-
-      var viewStrategy = _this15.viewLocator.getViewStrategy(context.view || viewModel);
-
-      if (context.viewResources) {
-        viewStrategy.makeRelativeTo(context.viewResources.viewUrl);
-      }
-
-      return m.load(childContainer, viewModelResource.value, null, viewStrategy, true);
-    }).then(function (viewFactory) {
-      return m.create(childContainer, BehaviorInstruction.dynamic(context.host, viewModel, viewFactory));
-    });
-  };
-
-  CompositionEngine.prototype.ensureViewModel = function ensureViewModel(context) {
-    var childContainer = context.childContainer = context.childContainer || context.container.createChild();
-
-    if (typeof context.viewModel === 'string') {
-      context.viewModel = context.viewResources ? context.viewResources.relativeToView(context.viewModel) : context.viewModel;
-
-      return this.viewEngine.importViewModelResource(context.viewModel).then(function (viewModelResource) {
-        childContainer.autoRegister(viewModelResource.value);
-
-        if (context.host) {
-          childContainer.registerInstance(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element, context.host);
-        }
-
-        context.viewModel = childContainer.viewModel = childContainer.get(viewModelResource.value);
-        context.viewModelResource = viewModelResource;
-        return context;
-      });
-    }
-
-    var m = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, context.viewModel.constructor);
-    m.elementName = m.elementName || 'dynamic-element';
-    m.initialize(context.container || childContainer, context.viewModel.constructor);
-    context.viewModelResource = { metadata: m, value: context.viewModel.constructor };
-    childContainer.viewModel = context.viewModel;
-    return Promise.resolve(context);
-  };
-
-  CompositionEngine.prototype.compose = function compose(context) {
-    var _this16 = this;
-
-    context.childContainer = context.childContainer || context.container.createChild();
-    context.view = this.viewLocator.getViewStrategy(context.view);
-
-    var transaction = context.childContainer.get(CompositionTransaction);
-    var compositionTransactionOwnershipToken = transaction.tryCapture();
-
-    if (compositionTransactionOwnershipToken) {
-      context.compositionTransactionOwnershipToken = compositionTransactionOwnershipToken;
-    } else {
-      context.compositionTransactionNotifier = transaction.enlist();
-    }
-
-    if (context.viewModel) {
-      return this._createControllerAndSwap(context);
-    } else if (context.view) {
-      if (context.viewResources) {
-        context.view.makeRelativeTo(context.viewResources.viewUrl);
-      }
-
-      return context.view.loadViewFactory(this.viewEngine, new ViewCompileInstruction()).then(function (viewFactory) {
-        var result = viewFactory.create(context.childContainer);
-        result.bind(context.bindingContext, context.overrideContext);
-
-        if (context.compositionTransactionOwnershipToken) {
-          return context.compositionTransactionOwnershipToken.waitForCompositionComplete().then(function () {
-            return _this16._swap(context, result);
-          }).then(function () {
-            return result;
-          });
-        }
-
-        return _this16._swap(context, result).then(function () {
-          return result;
-        });
-      });
-    } else if (context.viewSlot) {
-      context.viewSlot.removeAll();
-
-      if (context.compositionTransactionNotifier) {
-        context.compositionTransactionNotifier.done();
-      }
-
-      return Promise.resolve(null);
-    }
-
-    return Promise.resolve(null);
-  };
-
-  return CompositionEngine;
-}()) || _class17);
-
-var ElementConfigResource = function () {
-  function ElementConfigResource() {
-    
-  }
-
-  ElementConfigResource.prototype.initialize = function initialize(container, target) {};
-
-  ElementConfigResource.prototype.register = function register(registry, name) {};
-
-  ElementConfigResource.prototype.load = function load(container, target) {
-    var config = new target();
-    var eventManager = container.get(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["m" /* EventManager */]);
-    eventManager.registerElementConfig(config);
-  };
-
-  return ElementConfigResource;
-}();
-
-function validateBehaviorName(name, type) {
-  if (/[A-Z]/.test(name)) {
-    var newName = _hyphenate(name);
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__["getLogger"]('templating').warn('\'' + name + '\' is not a valid ' + type + ' name and has been converted to \'' + newName + '\'. Upper-case letters are not allowed because the DOM is not case-sensitive.');
-    return newName;
-  }
-  return name;
-}
-
-function resource(instance) {
-  return function (target) {
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, instance, target);
-  };
-}
-
-function behavior(override) {
-  return function (target) {
-    if (override instanceof HtmlBehaviorResource) {
-      __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, override, target);
-    } else {
-      var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, target);
-      Object.assign(r, override);
-    }
-  };
-}
-
-function customElement(name) {
-  return function (target) {
-    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, target);
-    r.elementName = validateBehaviorName(name, 'custom element');
-  };
-}
-
-function customAttribute(name, defaultBindingMode, aliases) {
-  return function (target) {
-    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, target);
-    r.attributeName = validateBehaviorName(name, 'custom attribute');
-    r.attributeDefaultBindingMode = defaultBindingMode;
-    r.aliases = aliases;
-  };
-}
-
-function templateController(target) {
-  var deco = function deco(t) {
-    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
-    r.liftsContent = true;
-  };
-
-  return target ? deco(target) : deco;
-}
-
-function bindable(nameOrConfigOrTarget, key, descriptor) {
-  var deco = function deco(target, key2, descriptor2) {
-    var actualTarget = key2 ? target.constructor : target;
-    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, actualTarget);
-    var prop = void 0;
-
-    if (key2) {
-      nameOrConfigOrTarget = nameOrConfigOrTarget || {};
-      nameOrConfigOrTarget.name = key2;
-    }
-
-    prop = new BindableProperty(nameOrConfigOrTarget);
-    return prop.registerWith(actualTarget, r, descriptor2);
-  };
-
-  if (!nameOrConfigOrTarget) {
-    return deco;
-  }
-
-  if (key) {
-    var _target = nameOrConfigOrTarget;
-    nameOrConfigOrTarget = null;
-    return deco(_target, key, descriptor);
-  }
-
-  return deco;
-}
-
-function dynamicOptions(target) {
-  var deco = function deco(t) {
-    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
-    r.hasDynamicOptions = true;
-  };
-
-  return target ? deco(target) : deco;
-}
-
-var defaultShadowDOMOptions = { mode: 'open' };
-
-function useShadowDOM(targetOrOptions) {
-  var options = typeof targetOrOptions === 'function' || !targetOrOptions ? defaultShadowDOMOptions : targetOrOptions;
-
-  var deco = function deco(t) {
-    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
-    r.targetShadowDOM = true;
-    r.shadowDOMOptions = options;
-  };
-
-  return typeof targetOrOptions === 'function' ? deco(targetOrOptions) : deco;
-}
-
-function processAttributes(processor) {
-  return function (t) {
-    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
-    r.processAttributes = function (compiler, resources, node, attributes, elementInstruction) {
-      try {
-        processor(compiler, resources, node, attributes, elementInstruction);
-      } catch (error) {
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__["getLogger"]('templating').error(error);
-      }
-    };
-  };
-}
-
-function doNotProcessContent() {
-  return false;
-}
-
-function processContent(processor) {
-  return function (t) {
-    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
-    r.processContent = processor ? function (compiler, resources, node, instruction) {
-      try {
-        return processor(compiler, resources, node, instruction);
-      } catch (error) {
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__["getLogger"]('templating').error(error);
-        return false;
-      }
-    } : doNotProcessContent;
-  };
-}
-
-function containerless(target) {
-  var deco = function deco(t) {
-    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
-    r.containerless = true;
-  };
-
-  return target ? deco(target) : deco;
-}
-
-function useViewStrategy(strategy) {
-  return function (target) {
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(ViewLocator.viewStrategyMetadataKey, strategy, target);
-  };
-}
-
-function useView(path) {
-  return useViewStrategy(new RelativeViewStrategy(path));
-}
-
-function inlineView(markup, dependencies, dependencyBaseUrl) {
-  return useViewStrategy(new InlineViewStrategy(markup, dependencies, dependencyBaseUrl));
-}
-
-function noView(targetOrDependencies, dependencyBaseUrl) {
-  var target = void 0;
-  var dependencies = void 0;
-  if (typeof targetOrDependencies === 'function') {
-    target = targetOrDependencies;
-  } else {
-    dependencies = targetOrDependencies;
-    target = undefined;
-  }
-
-  var deco = function deco(t) {
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(ViewLocator.viewStrategyMetadataKey, new NoViewStrategy(dependencies, dependencyBaseUrl), t);
-  };
-
-  return target ? deco(target) : deco;
-}
-
-function elementConfig(target) {
-  var deco = function deco(t) {
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, new ElementConfigResource(), t);
-  };
-
-  return target ? deco(target) : deco;
-}
-
-function viewResources() {
-  for (var _len = arguments.length, resources = Array(_len), _key = 0; _key < _len; _key++) {
-    resources[_key] = arguments[_key];
-  }
-
-  return function (target) {
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(ViewEngine.viewModelRequireMetadataKey, resources, target);
-  };
-}
-
-var TemplatingEngine = (_dec11 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["a" /* Container */], ModuleAnalyzer, ViewCompiler, CompositionEngine), _dec11(_class18 = function () {
-  function TemplatingEngine(container, moduleAnalyzer, viewCompiler, compositionEngine) {
-    
-
-    this._container = container;
-    this._moduleAnalyzer = moduleAnalyzer;
-    this._viewCompiler = viewCompiler;
-    this._compositionEngine = compositionEngine;
-    container.registerInstance(Animator, Animator.instance = new Animator());
-  }
-
-  TemplatingEngine.prototype.configureAnimator = function configureAnimator(animator) {
-    this._container.unregister(Animator);
-    this._container.registerInstance(Animator, Animator.instance = animator);
-  };
-
-  TemplatingEngine.prototype.compose = function compose(context) {
-    return this._compositionEngine.compose(context);
-  };
-
-  TemplatingEngine.prototype.enhance = function enhance(instruction) {
-    if (instruction instanceof __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element) {
-      instruction = { element: instruction };
-    }
-
-    var compilerInstructions = {};
-    var resources = instruction.resources || this._container.get(ViewResources);
-
-    this._viewCompiler._compileNode(instruction.element, resources, compilerInstructions, instruction.element.parentNode, 'root', true);
-
-    var factory = new ViewFactory(instruction.element, compilerInstructions, resources);
-    var container = instruction.container || this._container.createChild();
-    var view = factory.create(container, BehaviorInstruction.enhance());
-
-    view.bind(instruction.bindingContext || {}, instruction.overrideContext);
-
-    view.firstChild = view.lastChild = view.fragment;
-    view.fragment = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createDocumentFragment();
-    view.attached();
-
-    return view;
-  };
-
-  return TemplatingEngine;
-}()) || _class18);
 
 /***/ }),
 
@@ -26002,7 +21306,7 @@ var ValidateEvent = (function () {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = getTargetDOMElement;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
 
 /**
  * Gets the DOM element associated with the data-binding. Most of the time it's
@@ -26039,11 +21343,11 @@ function getTargetDOMElement(binding, view) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StandardValidator; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validator__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__validate_result__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rules__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__validation_messages__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__validate_result__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rules__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__validation_messages__ = __webpack_require__(28);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -26195,8 +21499,8 @@ var StandardValidator = (function (_super) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return FluentRules; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FluentEnsure; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ValidationRules; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__rules__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validation_messages__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__rules__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validation_messages__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util__ = __webpack_require__(52);
 
 
@@ -31159,267 +26463,4963 @@ if (true) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export json */
-/* unused harmony export HttpClientConfiguration */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpClient; });
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+/* unused harmony export animationEvent */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Animator; });
+/* unused harmony export CompositionTransactionNotifier */
+/* unused harmony export CompositionTransactionOwnershipToken */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return CompositionTransaction; });
+/* unused harmony export _hyphenate */
+/* unused harmony export _isAllWhitespace */
+/* unused harmony export ViewEngineHooksResource */
+/* unused harmony export viewEngineHooks */
+/* unused harmony export ElementEvents */
+/* unused harmony export ResourceLoadContext */
+/* unused harmony export ViewCompileInstruction */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return BehaviorInstruction; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return TargetInstruction; });
+/* unused harmony export viewStrategy */
+/* unused harmony export RelativeViewStrategy */
+/* unused harmony export ConventionalViewStrategy */
+/* unused harmony export NoViewStrategy */
+/* unused harmony export TemplateRegistryViewStrategy */
+/* unused harmony export InlineViewStrategy */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return ViewLocator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return BindingLanguage; });
+/* unused harmony export SlotCustomAttribute */
+/* unused harmony export PassThroughSlot */
+/* unused harmony export ShadowSlot */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return ShadowDOM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return ViewResources; });
+/* unused harmony export View */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return ViewSlot; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return BoundViewFactory; });
+/* unused harmony export ViewFactory */
+/* unused harmony export ViewCompiler */
+/* unused harmony export ResourceModule */
+/* unused harmony export ResourceDescription */
+/* unused harmony export ModuleAnalyzer */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return ViewEngine; });
+/* unused harmony export Controller */
+/* unused harmony export BehaviorPropertyObserver */
+/* unused harmony export BindableProperty */
+/* unused harmony export HtmlBehaviorResource */
+/* harmony export (immutable) */ __webpack_exports__["p"] = children;
+/* unused harmony export child */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return SwapStrategies; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return CompositionEngine; });
+/* unused harmony export ElementConfigResource */
+/* harmony export (immutable) */ __webpack_exports__["v"] = resource;
+/* unused harmony export behavior */
+/* harmony export (immutable) */ __webpack_exports__["r"] = customElement;
+/* harmony export (immutable) */ __webpack_exports__["q"] = customAttribute;
+/* harmony export (immutable) */ __webpack_exports__["w"] = templateController;
+/* harmony export (immutable) */ __webpack_exports__["o"] = bindable;
+/* unused harmony export dynamicOptions */
+/* unused harmony export useShadowDOM */
+/* unused harmony export processAttributes */
+/* harmony export (immutable) */ __webpack_exports__["u"] = processContent;
+/* unused harmony export containerless */
+/* unused harmony export useViewStrategy */
+/* harmony export (immutable) */ __webpack_exports__["x"] = useView;
+/* harmony export (immutable) */ __webpack_exports__["s"] = inlineView;
+/* harmony export (immutable) */ __webpack_exports__["t"] = noView;
+/* unused harmony export elementConfig */
+/* unused harmony export viewResources */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return TemplatingEngine; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_path__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_aurelia_task_queue__ = __webpack_require__(11);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _class, _temp, _dec, _class2, _dec2, _class3, _dec3, _class4, _dec4, _class5, _dec5, _class6, _class7, _temp2, _dec6, _class8, _class9, _temp3, _class11, _dec7, _class13, _dec8, _class14, _class15, _temp4, _dec9, _class16, _dec10, _class17, _dec11, _class18;
 
 
 
-function json(body, replacer) {
-  return JSON.stringify(body !== undefined ? body : {}, replacer);
-}
 
-var HttpClientConfiguration = function () {
-  function HttpClientConfiguration() {
+
+
+
+
+
+
+
+
+var animationEvent = {
+  enterBegin: 'animation:enter:begin',
+  enterActive: 'animation:enter:active',
+  enterDone: 'animation:enter:done',
+  enterTimeout: 'animation:enter:timeout',
+
+  leaveBegin: 'animation:leave:begin',
+  leaveActive: 'animation:leave:active',
+  leaveDone: 'animation:leave:done',
+  leaveTimeout: 'animation:leave:timeout',
+
+  staggerNext: 'animation:stagger:next',
+
+  removeClassBegin: 'animation:remove-class:begin',
+  removeClassActive: 'animation:remove-class:active',
+  removeClassDone: 'animation:remove-class:done',
+  removeClassTimeout: 'animation:remove-class:timeout',
+
+  addClassBegin: 'animation:add-class:begin',
+  addClassActive: 'animation:add-class:active',
+  addClassDone: 'animation:add-class:done',
+  addClassTimeout: 'animation:add-class:timeout',
+
+  animateBegin: 'animation:animate:begin',
+  animateActive: 'animation:animate:active',
+  animateDone: 'animation:animate:done',
+  animateTimeout: 'animation:animate:timeout',
+
+  sequenceBegin: 'animation:sequence:begin',
+  sequenceDone: 'animation:sequence:done'
+};
+
+var Animator = function () {
+  function Animator() {
     
-
-    this.baseUrl = '';
-    this.defaults = {};
-    this.interceptors = [];
   }
 
-  HttpClientConfiguration.prototype.withBaseUrl = function withBaseUrl(baseUrl) {
-    this.baseUrl = baseUrl;
-    return this;
+  Animator.prototype.enter = function enter(element) {
+    return Promise.resolve(false);
   };
 
-  HttpClientConfiguration.prototype.withDefaults = function withDefaults(defaults) {
-    this.defaults = defaults;
-    return this;
+  Animator.prototype.leave = function leave(element) {
+    return Promise.resolve(false);
   };
 
-  HttpClientConfiguration.prototype.withInterceptor = function withInterceptor(interceptor) {
-    this.interceptors.push(interceptor);
-    return this;
+  Animator.prototype.removeClass = function removeClass(element, className) {
+    element.classList.remove(className);
+    return Promise.resolve(false);
   };
 
-  HttpClientConfiguration.prototype.useStandardConfiguration = function useStandardConfiguration() {
-    var standardConfig = { credentials: 'same-origin' };
-    Object.assign(this.defaults, standardConfig, this.defaults);
-    return this.rejectErrorResponses();
+  Animator.prototype.addClass = function addClass(element, className) {
+    element.classList.add(className);
+    return Promise.resolve(false);
   };
 
-  HttpClientConfiguration.prototype.rejectErrorResponses = function rejectErrorResponses() {
-    return this.withInterceptor({ response: rejectOnError });
+  Animator.prototype.animate = function animate(element, className) {
+    return Promise.resolve(false);
   };
 
-  return HttpClientConfiguration;
+  Animator.prototype.runSequence = function runSequence(animations) {};
+
+  Animator.prototype.registerEffect = function registerEffect(effectName, properties) {};
+
+  Animator.prototype.unregisterEffect = function unregisterEffect(effectName) {};
+
+  return Animator;
 }();
 
-function rejectOnError(response) {
-  if (!response.ok) {
-    throw response;
-  }
-
-  return response;
-}
-
-var HttpClient = function () {
-  function HttpClient() {
+var CompositionTransactionNotifier = function () {
+  function CompositionTransactionNotifier(owner) {
     
 
-    this.activeRequestCount = 0;
-    this.isRequesting = false;
-    this.isConfigured = false;
-    this.baseUrl = '';
-    this.defaults = null;
-    this.interceptors = [];
-
-    if (typeof fetch === 'undefined') {
-      throw new Error('HttpClient requires a Fetch API implementation, but the current environment doesn\'t support it. You may need to load a polyfill such as https://github.com/github/fetch');
-    }
+    this.owner = owner;
+    this.owner._compositionCount++;
   }
 
-  HttpClient.prototype.configure = function configure(config) {
-    var normalizedConfig = void 0;
-
-    if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object') {
-      normalizedConfig = { defaults: config };
-    } else if (typeof config === 'function') {
-      normalizedConfig = new HttpClientConfiguration();
-      normalizedConfig.baseUrl = this.baseUrl;
-      normalizedConfig.defaults = Object.assign({}, this.defaults);
-      normalizedConfig.interceptors = this.interceptors;
-
-      var c = config(normalizedConfig);
-      if (HttpClientConfiguration.prototype.isPrototypeOf(c)) {
-        normalizedConfig = c;
-      }
-    } else {
-      throw new Error('invalid config');
-    }
-
-    var defaults = normalizedConfig.defaults;
-    if (defaults && Headers.prototype.isPrototypeOf(defaults.headers)) {
-      throw new Error('Default headers must be a plain object.');
-    }
-
-    this.baseUrl = normalizedConfig.baseUrl;
-    this.defaults = defaults;
-    this.interceptors = normalizedConfig.interceptors || [];
-    this.isConfigured = true;
-
-    return this;
+  CompositionTransactionNotifier.prototype.done = function done() {
+    this.owner._compositionCount--;
+    this.owner._tryCompleteTransaction();
   };
 
-  HttpClient.prototype.fetch = function (_fetch) {
-    function fetch(_x, _x2) {
-      return _fetch.apply(this, arguments);
-    }
+  return CompositionTransactionNotifier;
+}();
 
-    fetch.toString = function () {
-      return _fetch.toString();
-    };
+var CompositionTransactionOwnershipToken = function () {
+  function CompositionTransactionOwnershipToken(owner) {
+    
 
-    return fetch;
-  }(function (input, init) {
+    this.owner = owner;
+    this.owner._ownershipToken = this;
+    this.thenable = this._createThenable();
+  }
+
+  CompositionTransactionOwnershipToken.prototype.waitForCompositionComplete = function waitForCompositionComplete() {
+    this.owner._tryCompleteTransaction();
+    return this.thenable;
+  };
+
+  CompositionTransactionOwnershipToken.prototype.resolve = function resolve() {
+    this._resolveCallback();
+  };
+
+  CompositionTransactionOwnershipToken.prototype._createThenable = function _createThenable() {
     var _this = this;
 
-    trackRequestStart.call(this);
-
-    var request = Promise.resolve().then(function () {
-      return buildRequest.call(_this, input, init, _this.defaults);
+    return new Promise(function (resolve, reject) {
+      _this._resolveCallback = resolve;
     });
-    var promise = processRequest(request, this.interceptors).then(function (result) {
-      var response = null;
+  };
 
-      if (Response.prototype.isPrototypeOf(result)) {
-        response = result;
-      } else if (Request.prototype.isPrototypeOf(result)) {
-        request = Promise.resolve(result);
-        response = fetch(result);
-      } else {
-        throw new Error('An invalid result was returned by the interceptor chain. Expected a Request or Response instance, but got [' + result + ']');
-      }
-
-      return request.then(function (_request) {
-        return processResponse(response, _this.interceptors, _request);
-      });
-    });
-
-    return trackRequestEndWith.call(this, promise);
-  });
-
-  return HttpClient;
+  return CompositionTransactionOwnershipToken;
 }();
 
-var absoluteUrlRegexp = /^([a-z][a-z0-9+\-.]*:)?\/\//i;
+var CompositionTransaction = function () {
+  function CompositionTransaction() {
+    
 
-function trackRequestStart() {
-  this.isRequesting = !! ++this.activeRequestCount;
+    this._ownershipToken = null;
+    this._compositionCount = 0;
+  }
+
+  CompositionTransaction.prototype.tryCapture = function tryCapture() {
+    return this._ownershipToken === null ? new CompositionTransactionOwnershipToken(this) : null;
+  };
+
+  CompositionTransaction.prototype.enlist = function enlist() {
+    return new CompositionTransactionNotifier(this);
+  };
+
+  CompositionTransaction.prototype._tryCompleteTransaction = function _tryCompleteTransaction() {
+    if (this._compositionCount <= 0) {
+      this._compositionCount = 0;
+
+      if (this._ownershipToken !== null) {
+        var token = this._ownershipToken;
+        this._ownershipToken = null;
+        token.resolve();
+      }
+    }
+  };
+
+  return CompositionTransaction;
+}();
+
+var capitalMatcher = /([A-Z])/g;
+
+function addHyphenAndLower(char) {
+  return '-' + char.toLowerCase();
 }
 
-function trackRequestEnd() {
-  this.isRequesting = !! --this.activeRequestCount;
+function _hyphenate(name) {
+  return (name.charAt(0).toLowerCase() + name.slice(1)).replace(capitalMatcher, addHyphenAndLower);
 }
 
-function trackRequestEndWith(promise) {
-  var handle = trackRequestEnd.bind(this);
-  promise.then(handle, handle);
-  return promise;
+function _isAllWhitespace(node) {
+  return !(node.auInterpolationTarget || /[^\t\n\r ]/.test(node.textContent));
 }
 
-function parseHeaderValues(headers) {
-  var parsedHeaders = {};
-  for (var name in headers || {}) {
-    if (headers.hasOwnProperty(name)) {
-      parsedHeaders[name] = typeof headers[name] === 'function' ? headers[name]() : headers[name];
+var ViewEngineHooksResource = function () {
+  function ViewEngineHooksResource() {
+    
+  }
+
+  ViewEngineHooksResource.prototype.initialize = function initialize(container, target) {
+    this.instance = container.get(target);
+  };
+
+  ViewEngineHooksResource.prototype.register = function register(registry, name) {
+    registry.registerViewEngineHooks(this.instance);
+  };
+
+  ViewEngineHooksResource.prototype.load = function load(container, target) {};
+
+  ViewEngineHooksResource.convention = function convention(name) {
+    if (name.endsWith('ViewEngineHooks')) {
+      return new ViewEngineHooksResource();
+    }
+  };
+
+  return ViewEngineHooksResource;
+}();
+
+function viewEngineHooks(target) {
+  var deco = function deco(t) {
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, new ViewEngineHooksResource(), t);
+  };
+
+  return target ? deco(target) : deco;
+}
+
+var ElementEvents = function () {
+  function ElementEvents(element) {
+    
+
+    this.element = element;
+    this.subscriptions = {};
+  }
+
+  ElementEvents.prototype._enqueueHandler = function _enqueueHandler(handler) {
+    this.subscriptions[handler.eventName] = this.subscriptions[handler.eventName] || [];
+    this.subscriptions[handler.eventName].push(handler);
+  };
+
+  ElementEvents.prototype._dequeueHandler = function _dequeueHandler(handler) {
+    var index = void 0;
+    var subscriptions = this.subscriptions[handler.eventName];
+    if (subscriptions) {
+      index = subscriptions.indexOf(handler);
+      if (index > -1) {
+        subscriptions.splice(index, 1);
+      }
+    }
+    return handler;
+  };
+
+  ElementEvents.prototype.publish = function publish(eventName) {
+    var detail = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var bubbles = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    var cancelable = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+
+    var event = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createCustomEvent(eventName, { cancelable: cancelable, bubbles: bubbles, detail: detail });
+    this.element.dispatchEvent(event);
+  };
+
+  ElementEvents.prototype.subscribe = function subscribe(eventName, handler) {
+    var captureOrOptions = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+    if (typeof handler === 'function') {
+      var eventHandler = new EventHandlerImpl(this, eventName, handler, captureOrOptions, false);
+      return eventHandler;
+    }
+
+    return undefined;
+  };
+
+  ElementEvents.prototype.subscribeOnce = function subscribeOnce(eventName, handler) {
+    var captureOrOptions = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+    if (typeof handler === 'function') {
+      var eventHandler = new EventHandlerImpl(this, eventName, handler, captureOrOptions, true);
+      return eventHandler;
+    }
+
+    return undefined;
+  };
+
+  ElementEvents.prototype.dispose = function dispose(eventName) {
+    if (eventName && typeof eventName === 'string') {
+      var subscriptions = this.subscriptions[eventName];
+      if (subscriptions) {
+        while (subscriptions.length) {
+          var subscription = subscriptions.pop();
+          if (subscription) {
+            subscription.dispose();
+          }
+        }
+      }
+    } else {
+      this.disposeAll();
+    }
+  };
+
+  ElementEvents.prototype.disposeAll = function disposeAll() {
+    for (var key in this.subscriptions) {
+      this.dispose(key);
+    }
+  };
+
+  return ElementEvents;
+}();
+
+var EventHandlerImpl = function () {
+  function EventHandlerImpl(owner, eventName, handler, captureOrOptions, once) {
+    
+
+    this.owner = owner;
+    this.eventName = eventName;
+    this.handler = handler;
+
+    this.capture = typeof captureOrOptions === 'boolean' ? captureOrOptions : captureOrOptions.capture;
+    this.bubbles = !this.capture;
+    this.captureOrOptions = captureOrOptions;
+    this.once = once;
+    owner.element.addEventListener(eventName, this, captureOrOptions);
+    owner._enqueueHandler(this);
+  }
+
+  EventHandlerImpl.prototype.handleEvent = function handleEvent(e) {
+    var fn = this.handler;
+    fn(e);
+    if (this.once) {
+      this.dispose();
+    }
+  };
+
+  EventHandlerImpl.prototype.dispose = function dispose() {
+    this.owner.element.removeEventListener(this.eventName, this, this.captureOrOptions);
+    this.owner._dequeueHandler(this);
+    this.owner = this.handler = null;
+  };
+
+  return EventHandlerImpl;
+}();
+
+var ResourceLoadContext = function () {
+  function ResourceLoadContext() {
+    
+
+    this.dependencies = {};
+  }
+
+  ResourceLoadContext.prototype.addDependency = function addDependency(url) {
+    this.dependencies[url] = true;
+  };
+
+  ResourceLoadContext.prototype.hasDependency = function hasDependency(url) {
+    return url in this.dependencies;
+  };
+
+  return ResourceLoadContext;
+}();
+
+var ViewCompileInstruction = function ViewCompileInstruction() {
+  var targetShadowDOM = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+  var compileSurrogate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  
+
+  this.targetShadowDOM = targetShadowDOM;
+  this.compileSurrogate = compileSurrogate;
+  this.associatedModuleId = null;
+};
+
+ViewCompileInstruction.normal = new ViewCompileInstruction();
+
+var BehaviorInstruction = function () {
+  BehaviorInstruction.enhance = function enhance() {
+    var instruction = new BehaviorInstruction();
+    instruction.enhance = true;
+    return instruction;
+  };
+
+  BehaviorInstruction.unitTest = function unitTest(type, attributes) {
+    var instruction = new BehaviorInstruction();
+    instruction.type = type;
+    instruction.attributes = attributes || {};
+    return instruction;
+  };
+
+  BehaviorInstruction.element = function element(node, type) {
+    var instruction = new BehaviorInstruction();
+    instruction.type = type;
+    instruction.attributes = {};
+    instruction.anchorIsContainer = !(node.hasAttribute('containerless') || type.containerless);
+    instruction.initiatedByBehavior = true;
+    return instruction;
+  };
+
+  BehaviorInstruction.attribute = function attribute(attrName, type) {
+    var instruction = new BehaviorInstruction();
+    instruction.attrName = attrName;
+    instruction.type = type || null;
+    instruction.attributes = {};
+    return instruction;
+  };
+
+  BehaviorInstruction.dynamic = function dynamic(host, viewModel, viewFactory) {
+    var instruction = new BehaviorInstruction();
+    instruction.host = host;
+    instruction.viewModel = viewModel;
+    instruction.viewFactory = viewFactory;
+    instruction.inheritBindingContext = true;
+    return instruction;
+  };
+
+  function BehaviorInstruction() {
+    
+
+    this.initiatedByBehavior = false;
+    this.enhance = false;
+    this.partReplacements = null;
+    this.viewFactory = null;
+    this.originalAttrName = null;
+    this.skipContentProcessing = false;
+    this.contentFactory = null;
+    this.viewModel = null;
+    this.anchorIsContainer = false;
+    this.host = null;
+    this.attributes = null;
+    this.type = null;
+    this.attrName = null;
+    this.inheritBindingContext = false;
+  }
+
+  return BehaviorInstruction;
+}();
+
+BehaviorInstruction.normal = new BehaviorInstruction();
+
+var TargetInstruction = (_temp = _class = function () {
+  TargetInstruction.shadowSlot = function shadowSlot(parentInjectorId) {
+    var instruction = new TargetInstruction();
+    instruction.parentInjectorId = parentInjectorId;
+    instruction.shadowSlot = true;
+    return instruction;
+  };
+
+  TargetInstruction.contentExpression = function contentExpression(expression) {
+    var instruction = new TargetInstruction();
+    instruction.contentExpression = expression;
+    return instruction;
+  };
+
+  TargetInstruction.lifting = function lifting(parentInjectorId, liftingInstruction) {
+    var instruction = new TargetInstruction();
+    instruction.parentInjectorId = parentInjectorId;
+    instruction.expressions = TargetInstruction.noExpressions;
+    instruction.behaviorInstructions = [liftingInstruction];
+    instruction.viewFactory = liftingInstruction.viewFactory;
+    instruction.providers = [liftingInstruction.type.target];
+    instruction.lifting = true;
+    return instruction;
+  };
+
+  TargetInstruction.normal = function normal(injectorId, parentInjectorId, providers, behaviorInstructions, expressions, elementInstruction) {
+    var instruction = new TargetInstruction();
+    instruction.injectorId = injectorId;
+    instruction.parentInjectorId = parentInjectorId;
+    instruction.providers = providers;
+    instruction.behaviorInstructions = behaviorInstructions;
+    instruction.expressions = expressions;
+    instruction.anchorIsContainer = elementInstruction ? elementInstruction.anchorIsContainer : true;
+    instruction.elementInstruction = elementInstruction;
+    return instruction;
+  };
+
+  TargetInstruction.surrogate = function surrogate(providers, behaviorInstructions, expressions, values) {
+    var instruction = new TargetInstruction();
+    instruction.expressions = expressions;
+    instruction.behaviorInstructions = behaviorInstructions;
+    instruction.providers = providers;
+    instruction.values = values;
+    return instruction;
+  };
+
+  function TargetInstruction() {
+    
+
+    this.injectorId = null;
+    this.parentInjectorId = null;
+
+    this.shadowSlot = false;
+    this.slotName = null;
+    this.slotFallbackFactory = null;
+
+    this.contentExpression = null;
+
+    this.expressions = null;
+    this.behaviorInstructions = null;
+    this.providers = null;
+
+    this.viewFactory = null;
+
+    this.anchorIsContainer = false;
+    this.elementInstruction = null;
+    this.lifting = false;
+
+    this.values = null;
+  }
+
+  return TargetInstruction;
+}(), _class.noExpressions = Object.freeze([]), _temp);
+
+var viewStrategy = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["d" /* protocol */].create('aurelia:view-strategy', {
+  validate: function validate(target) {
+    if (!(typeof target.loadViewFactory === 'function')) {
+      return 'View strategies must implement: loadViewFactory(viewEngine: ViewEngine, compileInstruction: ViewCompileInstruction, loadContext?: ResourceLoadContext): Promise<ViewFactory>';
+    }
+
+    return true;
+  },
+  compose: function compose(target) {
+    if (!(typeof target.makeRelativeTo === 'function')) {
+      target.makeRelativeTo = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["d" /* PLATFORM */].noop;
     }
   }
-  return parsedHeaders;
+});
+
+var RelativeViewStrategy = (_dec = viewStrategy(), _dec(_class2 = function () {
+  function RelativeViewStrategy(path) {
+    
+
+    this.path = path;
+    this.absolutePath = null;
+  }
+
+  RelativeViewStrategy.prototype.loadViewFactory = function loadViewFactory(viewEngine, compileInstruction, loadContext, target) {
+    if (this.absolutePath === null && this.moduleId) {
+      this.absolutePath = Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_path__["d" /* relativeToFile */])(this.path, this.moduleId);
+    }
+
+    compileInstruction.associatedModuleId = this.moduleId;
+    return viewEngine.loadViewFactory(this.absolutePath || this.path, compileInstruction, loadContext, target);
+  };
+
+  RelativeViewStrategy.prototype.makeRelativeTo = function makeRelativeTo(file) {
+    if (this.absolutePath === null) {
+      this.absolutePath = Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_path__["d" /* relativeToFile */])(this.path, file);
+    }
+  };
+
+  return RelativeViewStrategy;
+}()) || _class2);
+
+var ConventionalViewStrategy = (_dec2 = viewStrategy(), _dec2(_class3 = function () {
+  function ConventionalViewStrategy(viewLocator, origin) {
+    
+
+    this.moduleId = origin.moduleId;
+    this.viewUrl = viewLocator.convertOriginToViewUrl(origin);
+  }
+
+  ConventionalViewStrategy.prototype.loadViewFactory = function loadViewFactory(viewEngine, compileInstruction, loadContext, target) {
+    compileInstruction.associatedModuleId = this.moduleId;
+    return viewEngine.loadViewFactory(this.viewUrl, compileInstruction, loadContext, target);
+  };
+
+  return ConventionalViewStrategy;
+}()) || _class3);
+
+var NoViewStrategy = (_dec3 = viewStrategy(), _dec3(_class4 = function () {
+  function NoViewStrategy(dependencies, dependencyBaseUrl) {
+    
+
+    this.dependencies = dependencies || null;
+    this.dependencyBaseUrl = dependencyBaseUrl || '';
+  }
+
+  NoViewStrategy.prototype.loadViewFactory = function loadViewFactory(viewEngine, compileInstruction, loadContext, target) {
+    var entry = this.entry;
+    var dependencies = this.dependencies;
+
+    if (entry && entry.factoryIsReady) {
+      return Promise.resolve(null);
+    }
+
+    this.entry = entry = new __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["b" /* TemplateRegistryEntry */](this.moduleId || this.dependencyBaseUrl);
+
+    entry.dependencies = [];
+    entry.templateIsLoaded = true;
+
+    if (dependencies !== null) {
+      for (var i = 0, ii = dependencies.length; i < ii; ++i) {
+        var current = dependencies[i];
+
+        if (typeof current === 'string' || typeof current === 'function') {
+          entry.addDependency(current);
+        } else {
+          entry.addDependency(current.from, current.as);
+        }
+      }
+    }
+
+    compileInstruction.associatedModuleId = this.moduleId;
+
+    return viewEngine.loadViewFactory(entry, compileInstruction, loadContext, target);
+  };
+
+  return NoViewStrategy;
+}()) || _class4);
+
+var TemplateRegistryViewStrategy = (_dec4 = viewStrategy(), _dec4(_class5 = function () {
+  function TemplateRegistryViewStrategy(moduleId, entry) {
+    
+
+    this.moduleId = moduleId;
+    this.entry = entry;
+  }
+
+  TemplateRegistryViewStrategy.prototype.loadViewFactory = function loadViewFactory(viewEngine, compileInstruction, loadContext, target) {
+    var entry = this.entry;
+
+    if (entry.factoryIsReady) {
+      return Promise.resolve(entry.factory);
+    }
+
+    compileInstruction.associatedModuleId = this.moduleId;
+    return viewEngine.loadViewFactory(entry, compileInstruction, loadContext, target);
+  };
+
+  return TemplateRegistryViewStrategy;
+}()) || _class5);
+
+var InlineViewStrategy = (_dec5 = viewStrategy(), _dec5(_class6 = function () {
+  function InlineViewStrategy(markup, dependencies, dependencyBaseUrl) {
+    
+
+    this.markup = markup;
+    this.dependencies = dependencies || null;
+    this.dependencyBaseUrl = dependencyBaseUrl || '';
+  }
+
+  InlineViewStrategy.prototype.loadViewFactory = function loadViewFactory(viewEngine, compileInstruction, loadContext, target) {
+    var entry = this.entry;
+    var dependencies = this.dependencies;
+
+    if (entry && entry.factoryIsReady) {
+      return Promise.resolve(entry.factory);
+    }
+
+    this.entry = entry = new __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["b" /* TemplateRegistryEntry */](this.moduleId || this.dependencyBaseUrl);
+    entry.template = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createTemplateFromMarkup(this.markup);
+
+    if (dependencies !== null) {
+      for (var i = 0, ii = dependencies.length; i < ii; ++i) {
+        var current = dependencies[i];
+
+        if (typeof current === 'string' || typeof current === 'function') {
+          entry.addDependency(current);
+        } else {
+          entry.addDependency(current.from, current.as);
+        }
+      }
+    }
+
+    compileInstruction.associatedModuleId = this.moduleId;
+    return viewEngine.loadViewFactory(entry, compileInstruction, loadContext, target);
+  };
+
+  return InlineViewStrategy;
+}()) || _class6);
+
+var ViewLocator = (_temp2 = _class7 = function () {
+  function ViewLocator() {
+    
+  }
+
+  ViewLocator.prototype.getViewStrategy = function getViewStrategy(value) {
+    if (!value) {
+      return null;
+    }
+
+    if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && 'getViewStrategy' in value) {
+      var _origin = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(value.constructor);
+
+      value = value.getViewStrategy();
+
+      if (typeof value === 'string') {
+        value = new RelativeViewStrategy(value);
+      }
+
+      viewStrategy.assert(value);
+
+      if (_origin.moduleId) {
+        value.makeRelativeTo(_origin.moduleId);
+      }
+
+      return value;
+    }
+
+    if (typeof value === 'string') {
+      value = new RelativeViewStrategy(value);
+    }
+
+    if (viewStrategy.validate(value)) {
+      return value;
+    }
+
+    if (typeof value !== 'function') {
+      value = value.constructor;
+    }
+
+    var origin = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(value);
+    var strategy = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].get(ViewLocator.viewStrategyMetadataKey, value);
+
+    if (!strategy) {
+      if (!origin.moduleId) {
+        throw new Error('Cannot determine default view strategy for object.', value);
+      }
+
+      strategy = this.createFallbackViewStrategy(origin);
+    } else if (origin.moduleId) {
+      strategy.moduleId = origin.moduleId;
+    }
+
+    return strategy;
+  };
+
+  ViewLocator.prototype.createFallbackViewStrategy = function createFallbackViewStrategy(origin) {
+    return new ConventionalViewStrategy(this, origin);
+  };
+
+  ViewLocator.prototype.convertOriginToViewUrl = function convertOriginToViewUrl(origin) {
+    var moduleId = origin.moduleId;
+    var id = moduleId.endsWith('.js') || moduleId.endsWith('.ts') ? moduleId.substring(0, moduleId.length - 3) : moduleId;
+    return id + '.html';
+  };
+
+  return ViewLocator;
+}(), _class7.viewStrategyMetadataKey = 'aurelia:view-strategy', _temp2);
+
+function mi(name) {
+  throw new Error('BindingLanguage must implement ' + name + '().');
 }
 
-function buildRequest(input, init) {
-  var defaults = this.defaults || {};
-  var request = void 0;
-  var body = void 0;
-  var requestContentType = void 0;
-
-  var parsedDefaultHeaders = parseHeaderValues(defaults.headers);
-  if (Request.prototype.isPrototypeOf(input)) {
-    request = input;
-    requestContentType = new Headers(request.headers).get('Content-Type');
-  } else {
-    init || (init = {});
-    body = init.body;
-    var bodyObj = body ? { body: body } : null;
-    var requestInit = Object.assign({}, defaults, { headers: {} }, init, bodyObj);
-    requestContentType = new Headers(requestInit.headers).get('Content-Type');
-    request = new Request(getRequestUrl(this.baseUrl, input), requestInit);
+var BindingLanguage = function () {
+  function BindingLanguage() {
+    
   }
-  if (!requestContentType) {
-    if (new Headers(parsedDefaultHeaders).has('content-type')) {
-      request.headers.set('Content-Type', new Headers(parsedDefaultHeaders).get('content-type'));
-    } else if (body && isJSON(body)) {
-      request.headers.set('Content-Type', 'application/json');
+
+  BindingLanguage.prototype.inspectAttribute = function inspectAttribute(resources, elementName, attrName, attrValue) {
+    mi('inspectAttribute');
+  };
+
+  BindingLanguage.prototype.createAttributeInstruction = function createAttributeInstruction(resources, element, info, existingInstruction) {
+    mi('createAttributeInstruction');
+  };
+
+  BindingLanguage.prototype.inspectTextContent = function inspectTextContent(resources, value) {
+    mi('inspectTextContent');
+  };
+
+  return BindingLanguage;
+}();
+
+var noNodes = Object.freeze([]);
+
+var SlotCustomAttribute = (_dec6 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element), _dec6(_class8 = function () {
+  function SlotCustomAttribute(element) {
+    
+
+    this.element = element;
+    this.element.auSlotAttribute = this;
+  }
+
+  SlotCustomAttribute.prototype.valueChanged = function valueChanged(newValue, oldValue) {};
+
+  return SlotCustomAttribute;
+}()) || _class8);
+
+var PassThroughSlot = function () {
+  function PassThroughSlot(anchor, name, destinationName, fallbackFactory) {
+    
+
+    this.anchor = anchor;
+    this.anchor.viewSlot = this;
+    this.name = name;
+    this.destinationName = destinationName;
+    this.fallbackFactory = fallbackFactory;
+    this.destinationSlot = null;
+    this.projections = 0;
+    this.contentView = null;
+
+    var attr = new SlotCustomAttribute(this.anchor);
+    attr.value = this.destinationName;
+  }
+
+  PassThroughSlot.prototype.renderFallbackContent = function renderFallbackContent(view, nodes, projectionSource, index) {
+    if (this.contentView === null) {
+      this.contentView = this.fallbackFactory.create(this.ownerView.container);
+      this.contentView.bind(this.ownerView.bindingContext, this.ownerView.overrideContext);
+
+      var slots = Object.create(null);
+      slots[this.destinationSlot.name] = this.destinationSlot;
+
+      ShadowDOM.distributeView(this.contentView, slots, projectionSource, index, this.destinationSlot.name);
+    }
+  };
+
+  PassThroughSlot.prototype.passThroughTo = function passThroughTo(destinationSlot) {
+    this.destinationSlot = destinationSlot;
+  };
+
+  PassThroughSlot.prototype.addNode = function addNode(view, node, projectionSource, index) {
+    if (this.contentView !== null) {
+      this.contentView.removeNodes();
+      this.contentView.detached();
+      this.contentView.unbind();
+      this.contentView = null;
+    }
+
+    if (node.viewSlot instanceof PassThroughSlot) {
+      node.viewSlot.passThroughTo(this);
+      return;
+    }
+
+    this.projections++;
+    this.destinationSlot.addNode(view, node, projectionSource, index);
+  };
+
+  PassThroughSlot.prototype.removeView = function removeView(view, projectionSource) {
+    this.projections--;
+    this.destinationSlot.removeView(view, projectionSource);
+
+    if (this.needsFallbackRendering) {
+      this.renderFallbackContent(null, noNodes, projectionSource);
+    }
+  };
+
+  PassThroughSlot.prototype.removeAll = function removeAll(projectionSource) {
+    this.projections = 0;
+    this.destinationSlot.removeAll(projectionSource);
+
+    if (this.needsFallbackRendering) {
+      this.renderFallbackContent(null, noNodes, projectionSource);
+    }
+  };
+
+  PassThroughSlot.prototype.projectFrom = function projectFrom(view, projectionSource) {
+    this.destinationSlot.projectFrom(view, projectionSource);
+  };
+
+  PassThroughSlot.prototype.created = function created(ownerView) {
+    this.ownerView = ownerView;
+  };
+
+  PassThroughSlot.prototype.bind = function bind(view) {
+    if (this.contentView) {
+      this.contentView.bind(view.bindingContext, view.overrideContext);
+    }
+  };
+
+  PassThroughSlot.prototype.attached = function attached() {
+    if (this.contentView) {
+      this.contentView.attached();
+    }
+  };
+
+  PassThroughSlot.prototype.detached = function detached() {
+    if (this.contentView) {
+      this.contentView.detached();
+    }
+  };
+
+  PassThroughSlot.prototype.unbind = function unbind() {
+    if (this.contentView) {
+      this.contentView.unbind();
+    }
+  };
+
+  _createClass(PassThroughSlot, [{
+    key: 'needsFallbackRendering',
+    get: function get() {
+      return this.fallbackFactory && this.projections === 0;
+    }
+  }]);
+
+  return PassThroughSlot;
+}();
+
+var ShadowSlot = function () {
+  function ShadowSlot(anchor, name, fallbackFactory) {
+    
+
+    this.anchor = anchor;
+    this.anchor.isContentProjectionSource = true;
+    this.anchor.viewSlot = this;
+    this.name = name;
+    this.fallbackFactory = fallbackFactory;
+    this.contentView = null;
+    this.projections = 0;
+    this.children = [];
+    this.projectFromAnchors = null;
+    this.destinationSlots = null;
+  }
+
+  ShadowSlot.prototype.addNode = function addNode(view, node, projectionSource, index, destination) {
+    if (this.contentView !== null) {
+      this.contentView.removeNodes();
+      this.contentView.detached();
+      this.contentView.unbind();
+      this.contentView = null;
+    }
+
+    if (node.viewSlot instanceof PassThroughSlot) {
+      node.viewSlot.passThroughTo(this);
+      return;
+    }
+
+    if (this.destinationSlots !== null) {
+      ShadowDOM.distributeNodes(view, [node], this.destinationSlots, this, index);
+    } else {
+      node.auOwnerView = view;
+      node.auProjectionSource = projectionSource;
+      node.auAssignedSlot = this;
+
+      var anchor = this._findAnchor(view, node, projectionSource, index);
+      var parent = anchor.parentNode;
+
+      parent.insertBefore(node, anchor);
+      this.children.push(node);
+      this.projections++;
+    }
+  };
+
+  ShadowSlot.prototype.removeView = function removeView(view, projectionSource) {
+    if (this.destinationSlots !== null) {
+      ShadowDOM.undistributeView(view, this.destinationSlots, this);
+    } else if (this.contentView && this.contentView.hasSlots) {
+      ShadowDOM.undistributeView(view, this.contentView.slots, projectionSource);
+    } else {
+      var found = this.children.find(function (x) {
+        return x.auSlotProjectFrom === projectionSource;
+      });
+      if (found) {
+        var _children = found.auProjectionChildren;
+
+        for (var i = 0, ii = _children.length; i < ii; ++i) {
+          var _child = _children[i];
+
+          if (_child.auOwnerView === view) {
+            _children.splice(i, 1);
+            view.fragment.appendChild(_child);
+            i--;ii--;
+            this.projections--;
+          }
+        }
+
+        if (this.needsFallbackRendering) {
+          this.renderFallbackContent(view, noNodes, projectionSource);
+        }
+      }
+    }
+  };
+
+  ShadowSlot.prototype.removeAll = function removeAll(projectionSource) {
+    if (this.destinationSlots !== null) {
+      ShadowDOM.undistributeAll(this.destinationSlots, this);
+    } else if (this.contentView && this.contentView.hasSlots) {
+      ShadowDOM.undistributeAll(this.contentView.slots, projectionSource);
+    } else {
+      var found = this.children.find(function (x) {
+        return x.auSlotProjectFrom === projectionSource;
+      });
+
+      if (found) {
+        var _children2 = found.auProjectionChildren;
+        for (var i = 0, ii = _children2.length; i < ii; ++i) {
+          var _child2 = _children2[i];
+          _child2.auOwnerView.fragment.appendChild(_child2);
+          this.projections--;
+        }
+
+        found.auProjectionChildren = [];
+
+        if (this.needsFallbackRendering) {
+          this.renderFallbackContent(null, noNodes, projectionSource);
+        }
+      }
+    }
+  };
+
+  ShadowSlot.prototype._findAnchor = function _findAnchor(view, node, projectionSource, index) {
+    if (projectionSource) {
+      var found = this.children.find(function (x) {
+        return x.auSlotProjectFrom === projectionSource;
+      });
+      if (found) {
+        if (index !== undefined) {
+          var _children3 = found.auProjectionChildren;
+          var viewIndex = -1;
+          var lastView = void 0;
+
+          for (var i = 0, ii = _children3.length; i < ii; ++i) {
+            var current = _children3[i];
+
+            if (current.auOwnerView !== lastView) {
+              viewIndex++;
+              lastView = current.auOwnerView;
+
+              if (viewIndex >= index && lastView !== view) {
+                _children3.splice(i, 0, node);
+                return current;
+              }
+            }
+          }
+        }
+
+        found.auProjectionChildren.push(node);
+        return found;
+      }
+    }
+
+    return this.anchor;
+  };
+
+  ShadowSlot.prototype.projectTo = function projectTo(slots) {
+    this.destinationSlots = slots;
+  };
+
+  ShadowSlot.prototype.projectFrom = function projectFrom(view, projectionSource) {
+    var anchor = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createComment('anchor');
+    var parent = this.anchor.parentNode;
+    anchor.auSlotProjectFrom = projectionSource;
+    anchor.auOwnerView = view;
+    anchor.auProjectionChildren = [];
+    parent.insertBefore(anchor, this.anchor);
+    this.children.push(anchor);
+
+    if (this.projectFromAnchors === null) {
+      this.projectFromAnchors = [];
+    }
+
+    this.projectFromAnchors.push(anchor);
+  };
+
+  ShadowSlot.prototype.renderFallbackContent = function renderFallbackContent(view, nodes, projectionSource, index) {
+    if (this.contentView === null) {
+      this.contentView = this.fallbackFactory.create(this.ownerView.container);
+      this.contentView.bind(this.ownerView.bindingContext, this.ownerView.overrideContext);
+      this.contentView.insertNodesBefore(this.anchor);
+    }
+
+    if (this.contentView.hasSlots) {
+      var slots = this.contentView.slots;
+      var projectFromAnchors = this.projectFromAnchors;
+
+      if (projectFromAnchors !== null) {
+        for (var slotName in slots) {
+          var slot = slots[slotName];
+
+          for (var i = 0, ii = projectFromAnchors.length; i < ii; ++i) {
+            var anchor = projectFromAnchors[i];
+            slot.projectFrom(anchor.auOwnerView, anchor.auSlotProjectFrom);
+          }
+        }
+      }
+
+      this.fallbackSlots = slots;
+      ShadowDOM.distributeNodes(view, nodes, slots, projectionSource, index);
+    }
+  };
+
+  ShadowSlot.prototype.created = function created(ownerView) {
+    this.ownerView = ownerView;
+  };
+
+  ShadowSlot.prototype.bind = function bind(view) {
+    if (this.contentView) {
+      this.contentView.bind(view.bindingContext, view.overrideContext);
+    }
+  };
+
+  ShadowSlot.prototype.attached = function attached() {
+    if (this.contentView) {
+      this.contentView.attached();
+    }
+  };
+
+  ShadowSlot.prototype.detached = function detached() {
+    if (this.contentView) {
+      this.contentView.detached();
+    }
+  };
+
+  ShadowSlot.prototype.unbind = function unbind() {
+    if (this.contentView) {
+      this.contentView.unbind();
+    }
+  };
+
+  _createClass(ShadowSlot, [{
+    key: 'needsFallbackRendering',
+    get: function get() {
+      return this.fallbackFactory && this.projections === 0;
+    }
+  }]);
+
+  return ShadowSlot;
+}();
+
+var ShadowDOM = (_temp3 = _class9 = function () {
+  function ShadowDOM() {
+    
+  }
+
+  ShadowDOM.getSlotName = function getSlotName(node) {
+    if (node.auSlotAttribute === undefined) {
+      return ShadowDOM.defaultSlotKey;
+    }
+
+    return node.auSlotAttribute.value;
+  };
+
+  ShadowDOM.distributeView = function distributeView(view, slots, projectionSource, index, destinationOverride) {
+    var nodes = void 0;
+
+    if (view === null) {
+      nodes = noNodes;
+    } else {
+      var childNodes = view.fragment.childNodes;
+      var ii = childNodes.length;
+      nodes = new Array(ii);
+
+      for (var i = 0; i < ii; ++i) {
+        nodes[i] = childNodes[i];
+      }
+    }
+
+    ShadowDOM.distributeNodes(view, nodes, slots, projectionSource, index, destinationOverride);
+  };
+
+  ShadowDOM.undistributeView = function undistributeView(view, slots, projectionSource) {
+    for (var slotName in slots) {
+      slots[slotName].removeView(view, projectionSource);
+    }
+  };
+
+  ShadowDOM.undistributeAll = function undistributeAll(slots, projectionSource) {
+    for (var slotName in slots) {
+      slots[slotName].removeAll(projectionSource);
+    }
+  };
+
+  ShadowDOM.distributeNodes = function distributeNodes(view, nodes, slots, projectionSource, index, destinationOverride) {
+    for (var i = 0, ii = nodes.length; i < ii; ++i) {
+      var currentNode = nodes[i];
+      var nodeType = currentNode.nodeType;
+
+      if (currentNode.isContentProjectionSource) {
+        currentNode.viewSlot.projectTo(slots);
+
+        for (var slotName in slots) {
+          slots[slotName].projectFrom(view, currentNode.viewSlot);
+        }
+
+        nodes.splice(i, 1);
+        ii--;i--;
+      } else if (nodeType === 1 || nodeType === 3 || currentNode.viewSlot instanceof PassThroughSlot) {
+        if (nodeType === 3 && _isAllWhitespace(currentNode)) {
+          nodes.splice(i, 1);
+          ii--;i--;
+        } else {
+          var found = slots[destinationOverride || ShadowDOM.getSlotName(currentNode)];
+
+          if (found) {
+            found.addNode(view, currentNode, projectionSource, index);
+            nodes.splice(i, 1);
+            ii--;i--;
+          }
+        }
+      } else {
+        nodes.splice(i, 1);
+        ii--;i--;
+      }
+    }
+
+    for (var _slotName in slots) {
+      var slot = slots[_slotName];
+
+      if (slot.needsFallbackRendering) {
+        slot.renderFallbackContent(view, nodes, projectionSource, index);
+      }
+    }
+  };
+
+  return ShadowDOM;
+}(), _class9.defaultSlotKey = '__au-default-slot-key__', _temp3);
+
+function register(lookup, name, resource, type) {
+  if (!name) {
+    return;
+  }
+
+  var existing = lookup[name];
+  if (existing) {
+    if (existing !== resource) {
+      throw new Error('Attempted to register ' + type + ' when one with the same name already exists. Name: ' + name + '.');
+    }
+
+    return;
+  }
+
+  lookup[name] = resource;
+}
+
+var ViewResources = function () {
+  function ViewResources(parent, viewUrl) {
+    
+
+    this.bindingLanguage = null;
+
+    this.parent = parent || null;
+    this.hasParent = this.parent !== null;
+    this.viewUrl = viewUrl || '';
+    this.lookupFunctions = {
+      valueConverters: this.getValueConverter.bind(this),
+      bindingBehaviors: this.getBindingBehavior.bind(this)
+    };
+    this.attributes = Object.create(null);
+    this.elements = Object.create(null);
+    this.valueConverters = Object.create(null);
+    this.bindingBehaviors = Object.create(null);
+    this.attributeMap = Object.create(null);
+    this.values = Object.create(null);
+    this.beforeCompile = this.afterCompile = this.beforeCreate = this.afterCreate = this.beforeBind = this.beforeUnbind = false;
+  }
+
+  ViewResources.prototype._tryAddHook = function _tryAddHook(obj, name) {
+    if (typeof obj[name] === 'function') {
+      var func = obj[name].bind(obj);
+      var counter = 1;
+      var callbackName = void 0;
+
+      while (this[callbackName = name + counter.toString()] !== undefined) {
+        counter++;
+      }
+
+      this[name] = true;
+      this[callbackName] = func;
+    }
+  };
+
+  ViewResources.prototype._invokeHook = function _invokeHook(name, one, two, three, four) {
+    if (this.hasParent) {
+      this.parent._invokeHook(name, one, two, three, four);
+    }
+
+    if (this[name]) {
+      this[name + '1'](one, two, three, four);
+
+      var callbackName = name + '2';
+      if (this[callbackName]) {
+        this[callbackName](one, two, three, four);
+
+        callbackName = name + '3';
+        if (this[callbackName]) {
+          this[callbackName](one, two, three, four);
+
+          var counter = 4;
+
+          while (this[callbackName = name + counter.toString()] !== undefined) {
+            this[callbackName](one, two, three, four);
+            counter++;
+          }
+        }
+      }
+    }
+  };
+
+  ViewResources.prototype.registerViewEngineHooks = function registerViewEngineHooks(hooks) {
+    this._tryAddHook(hooks, 'beforeCompile');
+    this._tryAddHook(hooks, 'afterCompile');
+    this._tryAddHook(hooks, 'beforeCreate');
+    this._tryAddHook(hooks, 'afterCreate');
+    this._tryAddHook(hooks, 'beforeBind');
+    this._tryAddHook(hooks, 'beforeUnbind');
+  };
+
+  ViewResources.prototype.getBindingLanguage = function getBindingLanguage(bindingLanguageFallback) {
+    return this.bindingLanguage || (this.bindingLanguage = bindingLanguageFallback);
+  };
+
+  ViewResources.prototype.patchInParent = function patchInParent(newParent) {
+    var originalParent = this.parent;
+
+    this.parent = newParent || null;
+    this.hasParent = this.parent !== null;
+
+    if (newParent.parent === null) {
+      newParent.parent = originalParent;
+      newParent.hasParent = originalParent !== null;
+    }
+  };
+
+  ViewResources.prototype.relativeToView = function relativeToView(path) {
+    return Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_path__["d" /* relativeToFile */])(path, this.viewUrl);
+  };
+
+  ViewResources.prototype.registerElement = function registerElement(tagName, behavior) {
+    register(this.elements, tagName, behavior, 'an Element');
+  };
+
+  ViewResources.prototype.getElement = function getElement(tagName) {
+    return this.elements[tagName] || (this.hasParent ? this.parent.getElement(tagName) : null);
+  };
+
+  ViewResources.prototype.mapAttribute = function mapAttribute(attribute) {
+    return this.attributeMap[attribute] || (this.hasParent ? this.parent.mapAttribute(attribute) : null);
+  };
+
+  ViewResources.prototype.registerAttribute = function registerAttribute(attribute, behavior, knownAttribute) {
+    this.attributeMap[attribute] = knownAttribute;
+    register(this.attributes, attribute, behavior, 'an Attribute');
+  };
+
+  ViewResources.prototype.getAttribute = function getAttribute(attribute) {
+    return this.attributes[attribute] || (this.hasParent ? this.parent.getAttribute(attribute) : null);
+  };
+
+  ViewResources.prototype.registerValueConverter = function registerValueConverter(name, valueConverter) {
+    register(this.valueConverters, name, valueConverter, 'a ValueConverter');
+  };
+
+  ViewResources.prototype.getValueConverter = function getValueConverter(name) {
+    return this.valueConverters[name] || (this.hasParent ? this.parent.getValueConverter(name) : null);
+  };
+
+  ViewResources.prototype.registerBindingBehavior = function registerBindingBehavior(name, bindingBehavior) {
+    register(this.bindingBehaviors, name, bindingBehavior, 'a BindingBehavior');
+  };
+
+  ViewResources.prototype.getBindingBehavior = function getBindingBehavior(name) {
+    return this.bindingBehaviors[name] || (this.hasParent ? this.parent.getBindingBehavior(name) : null);
+  };
+
+  ViewResources.prototype.registerValue = function registerValue(name, value) {
+    register(this.values, name, value, 'a value');
+  };
+
+  ViewResources.prototype.getValue = function getValue(name) {
+    return this.values[name] || (this.hasParent ? this.parent.getValue(name) : null);
+  };
+
+  return ViewResources;
+}();
+
+var View = function () {
+  function View(container, viewFactory, fragment, controllers, bindings, children, slots) {
+    
+
+    this.container = container;
+    this.viewFactory = viewFactory;
+    this.resources = viewFactory.resources;
+    this.fragment = fragment;
+    this.firstChild = fragment.firstChild;
+    this.lastChild = fragment.lastChild;
+    this.controllers = controllers;
+    this.bindings = bindings;
+    this.children = children;
+    this.slots = slots;
+    this.hasSlots = false;
+    this.fromCache = false;
+    this.isBound = false;
+    this.isAttached = false;
+    this.bindingContext = null;
+    this.overrideContext = null;
+    this.controller = null;
+    this.viewModelScope = null;
+    this.animatableElement = undefined;
+    this._isUserControlled = false;
+    this.contentView = null;
+
+    for (var key in slots) {
+      this.hasSlots = true;
+      break;
     }
   }
-  setDefaultHeaders(request.headers, parsedDefaultHeaders);
-  if (body && Blob.prototype.isPrototypeOf(body) && body.type) {
-    request.headers.set('Content-Type', body.type);
+
+  View.prototype.returnToCache = function returnToCache() {
+    this.viewFactory.returnViewToCache(this);
+  };
+
+  View.prototype.created = function created() {
+    var i = void 0;
+    var ii = void 0;
+    var controllers = this.controllers;
+
+    for (i = 0, ii = controllers.length; i < ii; ++i) {
+      controllers[i].created(this);
+    }
+  };
+
+  View.prototype.bind = function bind(bindingContext, overrideContext, _systemUpdate) {
+    var controllers = void 0;
+    var bindings = void 0;
+    var children = void 0;
+    var i = void 0;
+    var ii = void 0;
+
+    if (_systemUpdate && this._isUserControlled) {
+      return;
+    }
+
+    if (this.isBound) {
+      if (this.bindingContext === bindingContext) {
+        return;
+      }
+
+      this.unbind();
+    }
+
+    this.isBound = true;
+    this.bindingContext = bindingContext;
+    this.overrideContext = overrideContext || Object(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["A" /* createOverrideContext */])(bindingContext);
+
+    this.resources._invokeHook('beforeBind', this);
+
+    bindings = this.bindings;
+    for (i = 0, ii = bindings.length; i < ii; ++i) {
+      bindings[i].bind(this);
+    }
+
+    if (this.viewModelScope !== null) {
+      bindingContext.bind(this.viewModelScope.bindingContext, this.viewModelScope.overrideContext);
+      this.viewModelScope = null;
+    }
+
+    controllers = this.controllers;
+    for (i = 0, ii = controllers.length; i < ii; ++i) {
+      controllers[i].bind(this);
+    }
+
+    children = this.children;
+    for (i = 0, ii = children.length; i < ii; ++i) {
+      children[i].bind(bindingContext, overrideContext, true);
+    }
+
+    if (this.hasSlots) {
+      ShadowDOM.distributeView(this.contentView, this.slots);
+    }
+  };
+
+  View.prototype.addBinding = function addBinding(binding) {
+    this.bindings.push(binding);
+
+    if (this.isBound) {
+      binding.bind(this);
+    }
+  };
+
+  View.prototype.unbind = function unbind() {
+    var controllers = void 0;
+    var bindings = void 0;
+    var children = void 0;
+    var i = void 0;
+    var ii = void 0;
+
+    if (this.isBound) {
+      this.isBound = false;
+      this.resources._invokeHook('beforeUnbind', this);
+
+      if (this.controller !== null) {
+        this.controller.unbind();
+      }
+
+      bindings = this.bindings;
+      for (i = 0, ii = bindings.length; i < ii; ++i) {
+        bindings[i].unbind();
+      }
+
+      controllers = this.controllers;
+      for (i = 0, ii = controllers.length; i < ii; ++i) {
+        controllers[i].unbind();
+      }
+
+      children = this.children;
+      for (i = 0, ii = children.length; i < ii; ++i) {
+        children[i].unbind();
+      }
+
+      this.bindingContext = null;
+      this.overrideContext = null;
+    }
+  };
+
+  View.prototype.insertNodesBefore = function insertNodesBefore(refNode) {
+    refNode.parentNode.insertBefore(this.fragment, refNode);
+  };
+
+  View.prototype.appendNodesTo = function appendNodesTo(parent) {
+    parent.appendChild(this.fragment);
+  };
+
+  View.prototype.removeNodes = function removeNodes() {
+    var fragment = this.fragment;
+    var current = this.firstChild;
+    var end = this.lastChild;
+    var next = void 0;
+
+    while (current) {
+      next = current.nextSibling;
+      fragment.appendChild(current);
+
+      if (current === end) {
+        break;
+      }
+
+      current = next;
+    }
+  };
+
+  View.prototype.attached = function attached() {
+    var controllers = void 0;
+    var children = void 0;
+    var i = void 0;
+    var ii = void 0;
+
+    if (this.isAttached) {
+      return;
+    }
+
+    this.isAttached = true;
+
+    if (this.controller !== null) {
+      this.controller.attached();
+    }
+
+    controllers = this.controllers;
+    for (i = 0, ii = controllers.length; i < ii; ++i) {
+      controllers[i].attached();
+    }
+
+    children = this.children;
+    for (i = 0, ii = children.length; i < ii; ++i) {
+      children[i].attached();
+    }
+  };
+
+  View.prototype.detached = function detached() {
+    var controllers = void 0;
+    var children = void 0;
+    var i = void 0;
+    var ii = void 0;
+
+    if (this.isAttached) {
+      this.isAttached = false;
+
+      if (this.controller !== null) {
+        this.controller.detached();
+      }
+
+      controllers = this.controllers;
+      for (i = 0, ii = controllers.length; i < ii; ++i) {
+        controllers[i].detached();
+      }
+
+      children = this.children;
+      for (i = 0, ii = children.length; i < ii; ++i) {
+        children[i].detached();
+      }
+    }
+  };
+
+  return View;
+}();
+
+function getAnimatableElement(view) {
+  if (view.animatableElement !== undefined) {
+    return view.animatableElement;
   }
-  return request;
+
+  var current = view.firstChild;
+
+  while (current && current.nodeType !== 1) {
+    current = current.nextSibling;
+  }
+
+  if (current && current.nodeType === 1) {
+    return view.animatableElement = current.classList.contains('au-animate') ? current : null;
+  }
+
+  return view.animatableElement = null;
 }
 
-function getRequestUrl(baseUrl, url) {
-  if (absoluteUrlRegexp.test(url)) {
-    return url;
+var ViewSlot = function () {
+  function ViewSlot(anchor, anchorIsContainer) {
+    var animator = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Animator.instance;
+
+    
+
+    this.anchor = anchor;
+    this.anchorIsContainer = anchorIsContainer;
+    this.bindingContext = null;
+    this.overrideContext = null;
+    this.animator = animator;
+    this.children = [];
+    this.isBound = false;
+    this.isAttached = false;
+    this.contentSelectors = null;
+    anchor.viewSlot = this;
+    anchor.isContentProjectionSource = false;
   }
 
-  return (baseUrl || '') + url;
+  ViewSlot.prototype.animateView = function animateView(view) {
+    var direction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'enter';
+
+    var animatableElement = getAnimatableElement(view);
+
+    if (animatableElement !== null) {
+      switch (direction) {
+        case 'enter':
+          return this.animator.enter(animatableElement);
+        case 'leave':
+          return this.animator.leave(animatableElement);
+        default:
+          throw new Error('Invalid animation direction: ' + direction);
+      }
+    }
+  };
+
+  ViewSlot.prototype.transformChildNodesIntoView = function transformChildNodesIntoView() {
+    var parent = this.anchor;
+
+    this.children.push({
+      fragment: parent,
+      firstChild: parent.firstChild,
+      lastChild: parent.lastChild,
+      returnToCache: function returnToCache() {},
+      removeNodes: function removeNodes() {
+        var last = void 0;
+
+        while (last = parent.lastChild) {
+          parent.removeChild(last);
+        }
+      },
+      created: function created() {},
+      bind: function bind() {},
+      unbind: function unbind() {},
+      attached: function attached() {},
+      detached: function detached() {}
+    });
+  };
+
+  ViewSlot.prototype.bind = function bind(bindingContext, overrideContext) {
+    var i = void 0;
+    var ii = void 0;
+    var children = void 0;
+
+    if (this.isBound) {
+      if (this.bindingContext === bindingContext) {
+        return;
+      }
+
+      this.unbind();
+    }
+
+    this.isBound = true;
+    this.bindingContext = bindingContext = bindingContext || this.bindingContext;
+    this.overrideContext = overrideContext = overrideContext || this.overrideContext;
+
+    children = this.children;
+    for (i = 0, ii = children.length; i < ii; ++i) {
+      children[i].bind(bindingContext, overrideContext, true);
+    }
+  };
+
+  ViewSlot.prototype.unbind = function unbind() {
+    if (this.isBound) {
+      var i = void 0;
+      var ii = void 0;
+      var _children4 = this.children;
+
+      this.isBound = false;
+      this.bindingContext = null;
+      this.overrideContext = null;
+
+      for (i = 0, ii = _children4.length; i < ii; ++i) {
+        _children4[i].unbind();
+      }
+    }
+  };
+
+  ViewSlot.prototype.add = function add(view) {
+    if (this.anchorIsContainer) {
+      view.appendNodesTo(this.anchor);
+    } else {
+      view.insertNodesBefore(this.anchor);
+    }
+
+    this.children.push(view);
+
+    if (this.isAttached) {
+      view.attached();
+      return this.animateView(view, 'enter');
+    }
+  };
+
+  ViewSlot.prototype.insert = function insert(index, view) {
+    var children = this.children;
+    var length = children.length;
+
+    if (index === 0 && length === 0 || index >= length) {
+      return this.add(view);
+    }
+
+    view.insertNodesBefore(children[index].firstChild);
+    children.splice(index, 0, view);
+
+    if (this.isAttached) {
+      view.attached();
+      return this.animateView(view, 'enter');
+    }
+  };
+
+  ViewSlot.prototype.move = function move(sourceIndex, targetIndex) {
+    if (sourceIndex === targetIndex) {
+      return;
+    }
+
+    var children = this.children;
+    var view = children[sourceIndex];
+
+    view.removeNodes();
+    view.insertNodesBefore(children[targetIndex].firstChild);
+    children.splice(sourceIndex, 1);
+    children.splice(targetIndex, 0, view);
+  };
+
+  ViewSlot.prototype.remove = function remove(view, returnToCache, skipAnimation) {
+    return this.removeAt(this.children.indexOf(view), returnToCache, skipAnimation);
+  };
+
+  ViewSlot.prototype.removeMany = function removeMany(viewsToRemove, returnToCache, skipAnimation) {
+    var _this2 = this;
+
+    var children = this.children;
+    var ii = viewsToRemove.length;
+    var i = void 0;
+    var rmPromises = [];
+
+    viewsToRemove.forEach(function (child) {
+      if (skipAnimation) {
+        child.removeNodes();
+        return;
+      }
+
+      var animation = _this2.animateView(child, 'leave');
+      if (animation) {
+        rmPromises.push(animation.then(function () {
+          return child.removeNodes();
+        }));
+      } else {
+        child.removeNodes();
+      }
+    });
+
+    var removeAction = function removeAction() {
+      if (_this2.isAttached) {
+        for (i = 0; i < ii; ++i) {
+          viewsToRemove[i].detached();
+        }
+      }
+
+      if (returnToCache) {
+        for (i = 0; i < ii; ++i) {
+          viewsToRemove[i].returnToCache();
+        }
+      }
+
+      for (i = 0; i < ii; ++i) {
+        var index = children.indexOf(viewsToRemove[i]);
+        if (index >= 0) {
+          children.splice(index, 1);
+        }
+      }
+    };
+
+    if (rmPromises.length > 0) {
+      return Promise.all(rmPromises).then(function () {
+        return removeAction();
+      });
+    }
+
+    return removeAction();
+  };
+
+  ViewSlot.prototype.removeAt = function removeAt(index, returnToCache, skipAnimation) {
+    var _this3 = this;
+
+    var view = this.children[index];
+
+    var removeAction = function removeAction() {
+      index = _this3.children.indexOf(view);
+      view.removeNodes();
+      _this3.children.splice(index, 1);
+
+      if (_this3.isAttached) {
+        view.detached();
+      }
+
+      if (returnToCache) {
+        view.returnToCache();
+      }
+
+      return view;
+    };
+
+    if (!skipAnimation) {
+      var animation = this.animateView(view, 'leave');
+      if (animation) {
+        return animation.then(function () {
+          return removeAction();
+        });
+      }
+    }
+
+    return removeAction();
+  };
+
+  ViewSlot.prototype.removeAll = function removeAll(returnToCache, skipAnimation) {
+    var _this4 = this;
+
+    var children = this.children;
+    var ii = children.length;
+    var i = void 0;
+    var rmPromises = [];
+
+    children.forEach(function (child) {
+      if (skipAnimation) {
+        child.removeNodes();
+        return;
+      }
+
+      var animation = _this4.animateView(child, 'leave');
+      if (animation) {
+        rmPromises.push(animation.then(function () {
+          return child.removeNodes();
+        }));
+      } else {
+        child.removeNodes();
+      }
+    });
+
+    var removeAction = function removeAction() {
+      if (_this4.isAttached) {
+        for (i = 0; i < ii; ++i) {
+          children[i].detached();
+        }
+      }
+
+      if (returnToCache) {
+        for (i = 0; i < ii; ++i) {
+          var _child3 = children[i];
+
+          if (_child3) {
+            _child3.returnToCache();
+          }
+        }
+      }
+
+      _this4.children = [];
+    };
+
+    if (rmPromises.length > 0) {
+      return Promise.all(rmPromises).then(function () {
+        return removeAction();
+      });
+    }
+
+    return removeAction();
+  };
+
+  ViewSlot.prototype.attached = function attached() {
+    var i = void 0;
+    var ii = void 0;
+    var children = void 0;
+    var child = void 0;
+
+    if (this.isAttached) {
+      return;
+    }
+
+    this.isAttached = true;
+
+    children = this.children;
+    for (i = 0, ii = children.length; i < ii; ++i) {
+      child = children[i];
+      child.attached();
+      this.animateView(child, 'enter');
+    }
+  };
+
+  ViewSlot.prototype.detached = function detached() {
+    var i = void 0;
+    var ii = void 0;
+    var children = void 0;
+
+    if (this.isAttached) {
+      this.isAttached = false;
+      children = this.children;
+      for (i = 0, ii = children.length; i < ii; ++i) {
+        children[i].detached();
+      }
+    }
+  };
+
+  ViewSlot.prototype.projectTo = function projectTo(slots) {
+    var _this5 = this;
+
+    this.projectToSlots = slots;
+    this.add = this._projectionAdd;
+    this.insert = this._projectionInsert;
+    this.move = this._projectionMove;
+    this.remove = this._projectionRemove;
+    this.removeAt = this._projectionRemoveAt;
+    this.removeMany = this._projectionRemoveMany;
+    this.removeAll = this._projectionRemoveAll;
+    this.children.forEach(function (view) {
+      return ShadowDOM.distributeView(view, slots, _this5);
+    });
+  };
+
+  ViewSlot.prototype._projectionAdd = function _projectionAdd(view) {
+    ShadowDOM.distributeView(view, this.projectToSlots, this);
+
+    this.children.push(view);
+
+    if (this.isAttached) {
+      view.attached();
+    }
+  };
+
+  ViewSlot.prototype._projectionInsert = function _projectionInsert(index, view) {
+    if (index === 0 && !this.children.length || index >= this.children.length) {
+      this.add(view);
+    } else {
+      ShadowDOM.distributeView(view, this.projectToSlots, this, index);
+
+      this.children.splice(index, 0, view);
+
+      if (this.isAttached) {
+        view.attached();
+      }
+    }
+  };
+
+  ViewSlot.prototype._projectionMove = function _projectionMove(sourceIndex, targetIndex) {
+    if (sourceIndex === targetIndex) {
+      return;
+    }
+
+    var children = this.children;
+    var view = children[sourceIndex];
+
+    ShadowDOM.undistributeView(view, this.projectToSlots, this);
+    ShadowDOM.distributeView(view, this.projectToSlots, this, targetIndex);
+
+    children.splice(sourceIndex, 1);
+    children.splice(targetIndex, 0, view);
+  };
+
+  ViewSlot.prototype._projectionRemove = function _projectionRemove(view, returnToCache) {
+    ShadowDOM.undistributeView(view, this.projectToSlots, this);
+    this.children.splice(this.children.indexOf(view), 1);
+
+    if (this.isAttached) {
+      view.detached();
+    }
+  };
+
+  ViewSlot.prototype._projectionRemoveAt = function _projectionRemoveAt(index, returnToCache) {
+    var view = this.children[index];
+
+    ShadowDOM.undistributeView(view, this.projectToSlots, this);
+    this.children.splice(index, 1);
+
+    if (this.isAttached) {
+      view.detached();
+    }
+  };
+
+  ViewSlot.prototype._projectionRemoveMany = function _projectionRemoveMany(viewsToRemove, returnToCache) {
+    var _this6 = this;
+
+    viewsToRemove.forEach(function (view) {
+      return _this6.remove(view, returnToCache);
+    });
+  };
+
+  ViewSlot.prototype._projectionRemoveAll = function _projectionRemoveAll(returnToCache) {
+    ShadowDOM.undistributeAll(this.projectToSlots, this);
+
+    var children = this.children;
+
+    if (this.isAttached) {
+      for (var i = 0, ii = children.length; i < ii; ++i) {
+        children[i].detached();
+      }
+    }
+
+    this.children = [];
+  };
+
+  return ViewSlot;
+}();
+
+var ProviderResolver = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["g" /* resolver */])(_class11 = function () {
+  function ProviderResolver() {
+    
+  }
+
+  ProviderResolver.prototype.get = function get(container, key) {
+    var id = key.__providerId__;
+    return id in container ? container[id] : container[id] = container.invoke(key);
+  };
+
+  return ProviderResolver;
+}()) || _class11;
+
+var providerResolverInstance = new ProviderResolver();
+
+function elementContainerGet(key) {
+  if (key === __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element) {
+    return this.element;
+  }
+
+  if (key === BoundViewFactory) {
+    if (this.boundViewFactory) {
+      return this.boundViewFactory;
+    }
+
+    var factory = this.instruction.viewFactory;
+    var _partReplacements = this.partReplacements;
+
+    if (_partReplacements) {
+      factory = _partReplacements[factory.part] || factory;
+    }
+
+    this.boundViewFactory = new BoundViewFactory(this, factory, _partReplacements);
+    return this.boundViewFactory;
+  }
+
+  if (key === ViewSlot) {
+    if (this.viewSlot === undefined) {
+      this.viewSlot = new ViewSlot(this.element, this.instruction.anchorIsContainer);
+      this.element.isContentProjectionSource = this.instruction.lifting;
+      this.children.push(this.viewSlot);
+    }
+
+    return this.viewSlot;
+  }
+
+  if (key === ElementEvents) {
+    return this.elementEvents || (this.elementEvents = new ElementEvents(this.element));
+  }
+
+  if (key === CompositionTransaction) {
+    return this.compositionTransaction || (this.compositionTransaction = this.parent.get(key));
+  }
+
+  if (key === ViewResources) {
+    return this.viewResources;
+  }
+
+  if (key === TargetInstruction) {
+    return this.instruction;
+  }
+
+  return this.superGet(key);
 }
 
-function setDefaultHeaders(headers, defaultHeaders) {
-  for (var name in defaultHeaders || {}) {
-    if (defaultHeaders.hasOwnProperty(name) && !headers.has(name)) {
-      headers.set(name, defaultHeaders[name]);
+function createElementContainer(parent, element, instruction, children, partReplacements, resources) {
+  var container = parent.createChild();
+  var providers = void 0;
+  var i = void 0;
+
+  container.element = element;
+  container.instruction = instruction;
+  container.children = children;
+  container.viewResources = resources;
+  container.partReplacements = partReplacements;
+
+  providers = instruction.providers;
+  i = providers.length;
+
+  while (i--) {
+    container._resolvers.set(providers[i], providerResolverInstance);
+  }
+
+  container.superGet = container.get;
+  container.get = elementContainerGet;
+
+  return container;
+}
+
+function hasAttribute(name) {
+  return this._element.hasAttribute(name);
+}
+
+function getAttribute(name) {
+  return this._element.getAttribute(name);
+}
+
+function setAttribute(name, value) {
+  this._element.setAttribute(name, value);
+}
+
+function makeElementIntoAnchor(element, elementInstruction) {
+  var anchor = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createComment('anchor');
+
+  if (elementInstruction) {
+    var firstChild = element.firstChild;
+
+    if (firstChild && firstChild.tagName === 'AU-CONTENT') {
+      anchor.contentElement = firstChild;
+    }
+
+    anchor._element = element;
+
+    anchor.hasAttribute = hasAttribute;
+    anchor.getAttribute = getAttribute;
+    anchor.setAttribute = setAttribute;
+  }
+
+  __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].replaceNode(anchor, element);
+
+  return anchor;
+}
+
+function applyInstructions(containers, element, instruction, controllers, bindings, children, shadowSlots, partReplacements, resources) {
+  var behaviorInstructions = instruction.behaviorInstructions;
+  var expressions = instruction.expressions;
+  var elementContainer = void 0;
+  var i = void 0;
+  var ii = void 0;
+  var current = void 0;
+  var instance = void 0;
+
+  if (instruction.contentExpression) {
+    bindings.push(instruction.contentExpression.createBinding(element.nextSibling));
+    element.nextSibling.auInterpolationTarget = true;
+    element.parentNode.removeChild(element);
+    return;
+  }
+
+  if (instruction.shadowSlot) {
+    var commentAnchor = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createComment('slot');
+    var slot = void 0;
+
+    if (instruction.slotDestination) {
+      slot = new PassThroughSlot(commentAnchor, instruction.slotName, instruction.slotDestination, instruction.slotFallbackFactory);
+    } else {
+      slot = new ShadowSlot(commentAnchor, instruction.slotName, instruction.slotFallbackFactory);
+    }
+
+    __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].replaceNode(commentAnchor, element);
+    shadowSlots[instruction.slotName] = slot;
+    controllers.push(slot);
+    return;
+  }
+
+  if (behaviorInstructions.length) {
+    if (!instruction.anchorIsContainer) {
+      element = makeElementIntoAnchor(element, instruction.elementInstruction);
+    }
+
+    containers[instruction.injectorId] = elementContainer = createElementContainer(containers[instruction.parentInjectorId], element, instruction, children, partReplacements, resources);
+
+    for (i = 0, ii = behaviorInstructions.length; i < ii; ++i) {
+      current = behaviorInstructions[i];
+      instance = current.type.create(elementContainer, current, element, bindings);
+      controllers.push(instance);
     }
   }
+
+  for (i = 0, ii = expressions.length; i < ii; ++i) {
+    bindings.push(expressions[i].createBinding(element));
+  }
 }
 
-function processRequest(request, interceptors) {
-  return applyInterceptors(request, interceptors, 'request', 'requestError');
-}
+function styleStringToObject(style, target) {
+  var attributes = style.split(';');
+  var firstIndexOfColon = void 0;
+  var i = void 0;
+  var current = void 0;
+  var key = void 0;
+  var value = void 0;
 
-function processResponse(response, interceptors, request) {
-  return applyInterceptors(response, interceptors, 'response', 'responseError', request);
-}
+  target = target || {};
 
-function applyInterceptors(input, interceptors, successName, errorName) {
-  for (var _len = arguments.length, interceptorArgs = Array(_len > 4 ? _len - 4 : 0), _key = 4; _key < _len; _key++) {
-    interceptorArgs[_key - 4] = arguments[_key];
+  for (i = 0; i < attributes.length; i++) {
+    current = attributes[i];
+    firstIndexOfColon = current.indexOf(':');
+    key = current.substring(0, firstIndexOfColon).trim();
+    value = current.substring(firstIndexOfColon + 1).trim();
+    target[key] = value;
   }
 
-  return (interceptors || []).reduce(function (chain, interceptor) {
-    var successHandler = interceptor[successName];
-    var errorHandler = interceptor[errorName];
-
-    return chain.then(successHandler && function (value) {
-      return successHandler.call.apply(successHandler, [interceptor, value].concat(interceptorArgs));
-    } || identity, errorHandler && function (reason) {
-      return errorHandler.call.apply(errorHandler, [interceptor, reason].concat(interceptorArgs));
-    } || thrower);
-  }, Promise.resolve(input));
+  return target;
 }
 
-function isJSON(str) {
-  try {
-    JSON.parse(str);
-  } catch (err) {
-    return false;
+function styleObjectToString(obj) {
+  var result = '';
+
+  for (var key in obj) {
+    result += key + ':' + obj[key] + ';';
   }
 
+  return result;
+}
+
+function applySurrogateInstruction(container, element, instruction, controllers, bindings, children) {
+  var behaviorInstructions = instruction.behaviorInstructions;
+  var expressions = instruction.expressions;
+  var providers = instruction.providers;
+  var values = instruction.values;
+  var i = void 0;
+  var ii = void 0;
+  var current = void 0;
+  var instance = void 0;
+  var currentAttributeValue = void 0;
+
+  i = providers.length;
+  while (i--) {
+    container._resolvers.set(providers[i], providerResolverInstance);
+  }
+
+  for (var key in values) {
+    currentAttributeValue = element.getAttribute(key);
+
+    if (currentAttributeValue) {
+      if (key === 'class') {
+        element.setAttribute('class', currentAttributeValue + ' ' + values[key]);
+      } else if (key === 'style') {
+        var styleObject = styleStringToObject(values[key]);
+        styleStringToObject(currentAttributeValue, styleObject);
+        element.setAttribute('style', styleObjectToString(styleObject));
+      }
+    } else {
+      element.setAttribute(key, values[key]);
+    }
+  }
+
+  if (behaviorInstructions.length) {
+    for (i = 0, ii = behaviorInstructions.length; i < ii; ++i) {
+      current = behaviorInstructions[i];
+      instance = current.type.create(container, current, element, bindings);
+
+      if (instance.contentView) {
+        children.push(instance.contentView);
+      }
+
+      controllers.push(instance);
+    }
+  }
+
+  for (i = 0, ii = expressions.length; i < ii; ++i) {
+    bindings.push(expressions[i].createBinding(element));
+  }
+}
+
+var BoundViewFactory = function () {
+  function BoundViewFactory(parentContainer, viewFactory, partReplacements) {
+    
+
+    this.parentContainer = parentContainer;
+    this.viewFactory = viewFactory;
+    this.factoryCreateInstruction = { partReplacements: partReplacements };
+  }
+
+  BoundViewFactory.prototype.create = function create() {
+    var view = this.viewFactory.create(this.parentContainer.createChild(), this.factoryCreateInstruction);
+    view._isUserControlled = true;
+    return view;
+  };
+
+  BoundViewFactory.prototype.setCacheSize = function setCacheSize(size, doNotOverrideIfAlreadySet) {
+    this.viewFactory.setCacheSize(size, doNotOverrideIfAlreadySet);
+  };
+
+  BoundViewFactory.prototype.getCachedView = function getCachedView() {
+    return this.viewFactory.getCachedView();
+  };
+
+  BoundViewFactory.prototype.returnViewToCache = function returnViewToCache(view) {
+    this.viewFactory.returnViewToCache(view);
+  };
+
+  _createClass(BoundViewFactory, [{
+    key: 'isCaching',
+    get: function get() {
+      return this.viewFactory.isCaching;
+    }
+  }]);
+
+  return BoundViewFactory;
+}();
+
+var ViewFactory = function () {
+  function ViewFactory(template, instructions, resources) {
+    
+
+    this.isCaching = false;
+
+    this.template = template;
+    this.instructions = instructions;
+    this.resources = resources;
+    this.cacheSize = -1;
+    this.cache = null;
+  }
+
+  ViewFactory.prototype.setCacheSize = function setCacheSize(size, doNotOverrideIfAlreadySet) {
+    if (size) {
+      if (size === '*') {
+        size = Number.MAX_VALUE;
+      } else if (typeof size === 'string') {
+        size = parseInt(size, 10);
+      }
+    }
+
+    if (this.cacheSize === -1 || !doNotOverrideIfAlreadySet) {
+      this.cacheSize = size;
+    }
+
+    if (this.cacheSize > 0) {
+      this.cache = [];
+    } else {
+      this.cache = null;
+    }
+
+    this.isCaching = this.cacheSize > 0;
+  };
+
+  ViewFactory.prototype.getCachedView = function getCachedView() {
+    return this.cache !== null ? this.cache.pop() || null : null;
+  };
+
+  ViewFactory.prototype.returnViewToCache = function returnViewToCache(view) {
+    if (view.isAttached) {
+      view.detached();
+    }
+
+    if (view.isBound) {
+      view.unbind();
+    }
+
+    if (this.cache !== null && this.cache.length < this.cacheSize) {
+      view.fromCache = true;
+      this.cache.push(view);
+    }
+  };
+
+  ViewFactory.prototype.create = function create(container, createInstruction, element) {
+    createInstruction = createInstruction || BehaviorInstruction.normal;
+
+    var cachedView = this.getCachedView();
+    if (cachedView !== null) {
+      return cachedView;
+    }
+
+    var fragment = createInstruction.enhance ? this.template : this.template.cloneNode(true);
+    var instructables = fragment.querySelectorAll('.au-target');
+    var instructions = this.instructions;
+    var resources = this.resources;
+    var controllers = [];
+    var bindings = [];
+    var children = [];
+    var shadowSlots = Object.create(null);
+    var containers = { root: container };
+    var partReplacements = createInstruction.partReplacements;
+    var i = void 0;
+    var ii = void 0;
+    var view = void 0;
+    var instructable = void 0;
+    var instruction = void 0;
+
+    this.resources._invokeHook('beforeCreate', this, container, fragment, createInstruction);
+
+    if (element && this.surrogateInstruction !== null) {
+      applySurrogateInstruction(container, element, this.surrogateInstruction, controllers, bindings, children);
+    }
+
+    if (createInstruction.enhance && fragment.hasAttribute('au-target-id')) {
+      instructable = fragment;
+      instruction = instructions[instructable.getAttribute('au-target-id')];
+      applyInstructions(containers, instructable, instruction, controllers, bindings, children, shadowSlots, partReplacements, resources);
+    }
+
+    for (i = 0, ii = instructables.length; i < ii; ++i) {
+      instructable = instructables[i];
+      instruction = instructions[instructable.getAttribute('au-target-id')];
+      applyInstructions(containers, instructable, instruction, controllers, bindings, children, shadowSlots, partReplacements, resources);
+    }
+
+    view = new View(container, this, fragment, controllers, bindings, children, shadowSlots);
+
+    if (!createInstruction.initiatedByBehavior) {
+      view.created();
+    }
+
+    this.resources._invokeHook('afterCreate', view);
+
+    return view;
+  };
+
+  return ViewFactory;
+}();
+
+var nextInjectorId = 0;
+function getNextInjectorId() {
+  return ++nextInjectorId;
+}
+
+var lastAUTargetID = 0;
+function getNextAUTargetID() {
+  return (++lastAUTargetID).toString();
+}
+
+function makeIntoInstructionTarget(element) {
+  var value = element.getAttribute('class');
+  var auTargetID = getNextAUTargetID();
+
+  element.setAttribute('class', value ? value + ' au-target' : 'au-target');
+  element.setAttribute('au-target-id', auTargetID);
+
+  return auTargetID;
+}
+
+function makeShadowSlot(compiler, resources, node, instructions, parentInjectorId) {
+  var auShadowSlot = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createElement('au-shadow-slot');
+  __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].replaceNode(auShadowSlot, node);
+
+  var auTargetID = makeIntoInstructionTarget(auShadowSlot);
+  var instruction = TargetInstruction.shadowSlot(parentInjectorId);
+
+  instruction.slotName = node.getAttribute('name') || ShadowDOM.defaultSlotKey;
+  instruction.slotDestination = node.getAttribute('slot');
+
+  if (node.innerHTML.trim()) {
+    var fragment = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createDocumentFragment();
+    var _child4 = void 0;
+
+    while (_child4 = node.firstChild) {
+      fragment.appendChild(_child4);
+    }
+
+    instruction.slotFallbackFactory = compiler.compile(fragment, resources);
+  }
+
+  instructions[auTargetID] = instruction;
+
+  return auShadowSlot;
+}
+
+var ViewCompiler = (_dec7 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["f" /* inject */])(BindingLanguage, ViewResources), _dec7(_class13 = function () {
+  function ViewCompiler(bindingLanguage, resources) {
+    
+
+    this.bindingLanguage = bindingLanguage;
+    this.resources = resources;
+  }
+
+  ViewCompiler.prototype.compile = function compile(source, resources, compileInstruction) {
+    resources = resources || this.resources;
+    compileInstruction = compileInstruction || ViewCompileInstruction.normal;
+    source = typeof source === 'string' ? __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createTemplateFromMarkup(source) : source;
+
+    var content = void 0;
+    var part = void 0;
+    var cacheSize = void 0;
+
+    if (source.content) {
+      part = source.getAttribute('part');
+      cacheSize = source.getAttribute('view-cache');
+      content = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].adoptNode(source.content);
+    } else {
+      content = source;
+    }
+
+    compileInstruction.targetShadowDOM = compileInstruction.targetShadowDOM && __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["c" /* FEATURE */].shadowDOM;
+    resources._invokeHook('beforeCompile', content, resources, compileInstruction);
+
+    var instructions = {};
+    this._compileNode(content, resources, instructions, source, 'root', !compileInstruction.targetShadowDOM);
+
+    var firstChild = content.firstChild;
+    if (firstChild && firstChild.nodeType === 1) {
+      var targetId = firstChild.getAttribute('au-target-id');
+      if (targetId) {
+        var ins = instructions[targetId];
+
+        if (ins.shadowSlot || ins.lifting || ins.elementInstruction && !ins.elementInstruction.anchorIsContainer) {
+          content.insertBefore(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createComment('view'), firstChild);
+        }
+      }
+    }
+
+    var factory = new ViewFactory(content, instructions, resources);
+
+    factory.surrogateInstruction = compileInstruction.compileSurrogate ? this._compileSurrogate(source, resources) : null;
+    factory.part = part;
+
+    if (cacheSize) {
+      factory.setCacheSize(cacheSize);
+    }
+
+    resources._invokeHook('afterCompile', factory);
+
+    return factory;
+  };
+
+  ViewCompiler.prototype._compileNode = function _compileNode(node, resources, instructions, parentNode, parentInjectorId, targetLightDOM) {
+    switch (node.nodeType) {
+      case 1:
+        return this._compileElement(node, resources, instructions, parentNode, parentInjectorId, targetLightDOM);
+      case 3:
+        var expression = resources.getBindingLanguage(this.bindingLanguage).inspectTextContent(resources, node.wholeText);
+        if (expression) {
+          var marker = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createElement('au-marker');
+          var auTargetID = makeIntoInstructionTarget(marker);
+          (node.parentNode || parentNode).insertBefore(marker, node);
+          node.textContent = ' ';
+          instructions[auTargetID] = TargetInstruction.contentExpression(expression);
+
+          while (node.nextSibling && node.nextSibling.nodeType === 3) {
+            (node.parentNode || parentNode).removeChild(node.nextSibling);
+          }
+        } else {
+          while (node.nextSibling && node.nextSibling.nodeType === 3) {
+            node = node.nextSibling;
+          }
+        }
+        return node.nextSibling;
+      case 11:
+        var currentChild = node.firstChild;
+        while (currentChild) {
+          currentChild = this._compileNode(currentChild, resources, instructions, node, parentInjectorId, targetLightDOM);
+        }
+        break;
+      default:
+        break;
+    }
+
+    return node.nextSibling;
+  };
+
+  ViewCompiler.prototype._compileSurrogate = function _compileSurrogate(node, resources) {
+    var tagName = node.tagName.toLowerCase();
+    var attributes = node.attributes;
+    var bindingLanguage = resources.getBindingLanguage(this.bindingLanguage);
+    var knownAttribute = void 0;
+    var property = void 0;
+    var instruction = void 0;
+    var i = void 0;
+    var ii = void 0;
+    var attr = void 0;
+    var attrName = void 0;
+    var attrValue = void 0;
+    var info = void 0;
+    var type = void 0;
+    var expressions = [];
+    var expression = void 0;
+    var behaviorInstructions = [];
+    var values = {};
+    var hasValues = false;
+    var providers = [];
+
+    for (i = 0, ii = attributes.length; i < ii; ++i) {
+      attr = attributes[i];
+      attrName = attr.name;
+      attrValue = attr.value;
+
+      info = bindingLanguage.inspectAttribute(resources, tagName, attrName, attrValue);
+      type = resources.getAttribute(info.attrName);
+
+      if (type) {
+        knownAttribute = resources.mapAttribute(info.attrName);
+        if (knownAttribute) {
+          property = type.attributes[knownAttribute];
+
+          if (property) {
+            info.defaultBindingMode = property.defaultBindingMode;
+
+            if (!info.command && !info.expression) {
+              info.command = property.hasOptions ? 'options' : null;
+            }
+
+            if (info.command && info.command !== 'options' && type.primaryProperty) {
+              var primaryProperty = type.primaryProperty;
+              attrName = info.attrName = primaryProperty.attribute;
+
+              info.defaultBindingMode = primaryProperty.defaultBindingMode;
+            }
+          }
+        }
+      }
+
+      instruction = bindingLanguage.createAttributeInstruction(resources, node, info, undefined, type);
+
+      if (instruction) {
+        if (instruction.alteredAttr) {
+          type = resources.getAttribute(instruction.attrName);
+        }
+
+        if (instruction.discrete) {
+          expressions.push(instruction);
+        } else {
+          if (type) {
+            instruction.type = type;
+            this._configureProperties(instruction, resources);
+
+            if (type.liftsContent) {
+              throw new Error('You cannot place a template controller on a surrogate element.');
+            } else {
+              behaviorInstructions.push(instruction);
+            }
+          } else {
+            expressions.push(instruction.attributes[instruction.attrName]);
+          }
+        }
+      } else {
+        if (type) {
+          instruction = BehaviorInstruction.attribute(attrName, type);
+          instruction.attributes[resources.mapAttribute(attrName)] = attrValue;
+
+          if (type.liftsContent) {
+            throw new Error('You cannot place a template controller on a surrogate element.');
+          } else {
+            behaviorInstructions.push(instruction);
+          }
+        } else if (attrName !== 'id' && attrName !== 'part' && attrName !== 'replace-part') {
+          hasValues = true;
+          values[attrName] = attrValue;
+        }
+      }
+    }
+
+    if (expressions.length || behaviorInstructions.length || hasValues) {
+      for (i = 0, ii = behaviorInstructions.length; i < ii; ++i) {
+        instruction = behaviorInstructions[i];
+        instruction.type.compile(this, resources, node, instruction);
+        providers.push(instruction.type.target);
+      }
+
+      for (i = 0, ii = expressions.length; i < ii; ++i) {
+        expression = expressions[i];
+        if (expression.attrToRemove !== undefined) {
+          node.removeAttribute(expression.attrToRemove);
+        }
+      }
+
+      return TargetInstruction.surrogate(providers, behaviorInstructions, expressions, values);
+    }
+
+    return null;
+  };
+
+  ViewCompiler.prototype._compileElement = function _compileElement(node, resources, instructions, parentNode, parentInjectorId, targetLightDOM) {
+    var tagName = node.tagName.toLowerCase();
+    var attributes = node.attributes;
+    var expressions = [];
+    var expression = void 0;
+    var behaviorInstructions = [];
+    var providers = [];
+    var bindingLanguage = resources.getBindingLanguage(this.bindingLanguage);
+    var liftingInstruction = void 0;
+    var viewFactory = void 0;
+    var type = void 0;
+    var elementInstruction = void 0;
+    var elementProperty = void 0;
+    var i = void 0;
+    var ii = void 0;
+    var attr = void 0;
+    var attrName = void 0;
+    var attrValue = void 0;
+    var originalAttrName = void 0;
+    var instruction = void 0;
+    var info = void 0;
+    var property = void 0;
+    var knownAttribute = void 0;
+    var auTargetID = void 0;
+    var injectorId = void 0;
+
+    if (tagName === 'slot') {
+      if (targetLightDOM) {
+        node = makeShadowSlot(this, resources, node, instructions, parentInjectorId);
+      }
+      return node.nextSibling;
+    } else if (tagName === 'template') {
+      if (!('content' in node)) {
+        throw new Error('You cannot place a template element within ' + node.namespaceURI + ' namespace');
+      }
+      viewFactory = this.compile(node, resources);
+      viewFactory.part = node.getAttribute('part');
+    } else {
+      type = resources.getElement(node.getAttribute('as-element') || tagName);
+      if (type) {
+        elementInstruction = BehaviorInstruction.element(node, type);
+        type.processAttributes(this, resources, node, attributes, elementInstruction);
+        behaviorInstructions.push(elementInstruction);
+      }
+    }
+
+    for (i = 0, ii = attributes.length; i < ii; ++i) {
+      attr = attributes[i];
+      originalAttrName = attrName = attr.name;
+      attrValue = attr.value;
+      info = bindingLanguage.inspectAttribute(resources, tagName, attrName, attrValue);
+
+      if (targetLightDOM && info.attrName === 'slot') {
+        info.attrName = attrName = 'au-slot';
+      }
+
+      type = resources.getAttribute(info.attrName);
+      elementProperty = null;
+
+      if (type) {
+        knownAttribute = resources.mapAttribute(info.attrName);
+        if (knownAttribute) {
+          property = type.attributes[knownAttribute];
+
+          if (property) {
+            info.defaultBindingMode = property.defaultBindingMode;
+
+            if (!info.command && !info.expression) {
+              info.command = property.hasOptions ? 'options' : null;
+            }
+
+            if (info.command && info.command !== 'options' && type.primaryProperty) {
+              var primaryProperty = type.primaryProperty;
+              attrName = info.attrName = primaryProperty.attribute;
+
+              info.defaultBindingMode = primaryProperty.defaultBindingMode;
+            }
+          }
+        }
+      } else if (elementInstruction) {
+        elementProperty = elementInstruction.type.attributes[info.attrName];
+        if (elementProperty) {
+          info.defaultBindingMode = elementProperty.defaultBindingMode;
+        }
+      }
+
+      if (elementProperty) {
+        instruction = bindingLanguage.createAttributeInstruction(resources, node, info, elementInstruction);
+      } else {
+        instruction = bindingLanguage.createAttributeInstruction(resources, node, info, undefined, type);
+      }
+
+      if (instruction) {
+        if (instruction.alteredAttr) {
+          type = resources.getAttribute(instruction.attrName);
+        }
+
+        if (instruction.discrete) {
+          expressions.push(instruction);
+        } else {
+          if (type) {
+            instruction.type = type;
+            this._configureProperties(instruction, resources);
+
+            if (type.liftsContent) {
+              instruction.originalAttrName = originalAttrName;
+              liftingInstruction = instruction;
+              break;
+            } else {
+              behaviorInstructions.push(instruction);
+            }
+          } else if (elementProperty) {
+            elementInstruction.attributes[info.attrName].targetProperty = elementProperty.name;
+          } else {
+            expressions.push(instruction.attributes[instruction.attrName]);
+          }
+        }
+      } else {
+        if (type) {
+          instruction = BehaviorInstruction.attribute(attrName, type);
+          instruction.attributes[resources.mapAttribute(attrName)] = attrValue;
+
+          if (type.liftsContent) {
+            instruction.originalAttrName = originalAttrName;
+            liftingInstruction = instruction;
+            break;
+          } else {
+            behaviorInstructions.push(instruction);
+          }
+        } else if (elementProperty) {
+          elementInstruction.attributes[attrName] = attrValue;
+        }
+      }
+    }
+
+    if (liftingInstruction) {
+      liftingInstruction.viewFactory = viewFactory;
+      node = liftingInstruction.type.compile(this, resources, node, liftingInstruction, parentNode);
+      auTargetID = makeIntoInstructionTarget(node);
+      instructions[auTargetID] = TargetInstruction.lifting(parentInjectorId, liftingInstruction);
+    } else {
+      var skipContentProcessing = false;
+
+      if (expressions.length || behaviorInstructions.length) {
+        injectorId = behaviorInstructions.length ? getNextInjectorId() : false;
+
+        for (i = 0, ii = behaviorInstructions.length; i < ii; ++i) {
+          instruction = behaviorInstructions[i];
+          instruction.type.compile(this, resources, node, instruction, parentNode);
+          providers.push(instruction.type.target);
+          skipContentProcessing = skipContentProcessing || instruction.skipContentProcessing;
+        }
+
+        for (i = 0, ii = expressions.length; i < ii; ++i) {
+          expression = expressions[i];
+          if (expression.attrToRemove !== undefined) {
+            node.removeAttribute(expression.attrToRemove);
+          }
+        }
+
+        auTargetID = makeIntoInstructionTarget(node);
+        instructions[auTargetID] = TargetInstruction.normal(injectorId, parentInjectorId, providers, behaviorInstructions, expressions, elementInstruction);
+      }
+
+      if (skipContentProcessing) {
+        return node.nextSibling;
+      }
+
+      var currentChild = node.firstChild;
+      while (currentChild) {
+        currentChild = this._compileNode(currentChild, resources, instructions, node, injectorId || parentInjectorId, targetLightDOM);
+      }
+    }
+
+    return node.nextSibling;
+  };
+
+  ViewCompiler.prototype._configureProperties = function _configureProperties(instruction, resources) {
+    var type = instruction.type;
+    var attrName = instruction.attrName;
+    var attributes = instruction.attributes;
+    var property = void 0;
+    var key = void 0;
+    var value = void 0;
+
+    var knownAttribute = resources.mapAttribute(attrName);
+    if (knownAttribute && attrName in attributes && knownAttribute !== attrName) {
+      attributes[knownAttribute] = attributes[attrName];
+      delete attributes[attrName];
+    }
+
+    for (key in attributes) {
+      value = attributes[key];
+
+      if (value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
+        property = type.attributes[key];
+
+        if (property !== undefined) {
+          value.targetProperty = property.name;
+        } else {
+          value.targetProperty = key;
+        }
+      }
+    }
+  };
+
+  return ViewCompiler;
+}()) || _class13);
+
+var ResourceModule = function () {
+  function ResourceModule(moduleId) {
+    
+
+    this.id = moduleId;
+    this.moduleInstance = null;
+    this.mainResource = null;
+    this.resources = null;
+    this.viewStrategy = null;
+    this.isInitialized = false;
+    this.onLoaded = null;
+    this.loadContext = null;
+  }
+
+  ResourceModule.prototype.initialize = function initialize(container) {
+    var current = this.mainResource;
+    var resources = this.resources;
+    var vs = this.viewStrategy;
+
+    if (this.isInitialized) {
+      return;
+    }
+
+    this.isInitialized = true;
+
+    if (current !== undefined) {
+      current.metadata.viewStrategy = vs;
+      current.initialize(container);
+    }
+
+    for (var i = 0, ii = resources.length; i < ii; ++i) {
+      current = resources[i];
+      current.metadata.viewStrategy = vs;
+      current.initialize(container);
+    }
+  };
+
+  ResourceModule.prototype.register = function register(registry, name) {
+    var main = this.mainResource;
+    var resources = this.resources;
+
+    if (main !== undefined) {
+      main.register(registry, name);
+      name = null;
+    }
+
+    for (var i = 0, ii = resources.length; i < ii; ++i) {
+      resources[i].register(registry, name);
+      name = null;
+    }
+  };
+
+  ResourceModule.prototype.load = function load(container, loadContext) {
+    if (this.onLoaded !== null) {
+      return this.loadContext === loadContext ? Promise.resolve() : this.onLoaded;
+    }
+
+    var main = this.mainResource;
+    var resources = this.resources;
+    var loads = void 0;
+
+    if (main !== undefined) {
+      loads = new Array(resources.length + 1);
+      loads[0] = main.load(container, loadContext);
+      for (var i = 0, ii = resources.length; i < ii; ++i) {
+        loads[i + 1] = resources[i].load(container, loadContext);
+      }
+    } else {
+      loads = new Array(resources.length);
+      for (var _i = 0, _ii = resources.length; _i < _ii; ++_i) {
+        loads[_i] = resources[_i].load(container, loadContext);
+      }
+    }
+
+    this.loadContext = loadContext;
+    this.onLoaded = Promise.all(loads);
+    return this.onLoaded;
+  };
+
+  return ResourceModule;
+}();
+
+var ResourceDescription = function () {
+  function ResourceDescription(key, exportedValue, resourceTypeMeta) {
+    
+
+    if (!resourceTypeMeta) {
+      resourceTypeMeta = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].get(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, exportedValue);
+
+      if (!resourceTypeMeta) {
+        resourceTypeMeta = new HtmlBehaviorResource();
+        resourceTypeMeta.elementName = _hyphenate(key);
+        __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, resourceTypeMeta, exportedValue);
+      }
+    }
+
+    if (resourceTypeMeta instanceof HtmlBehaviorResource) {
+      if (resourceTypeMeta.elementName === undefined) {
+        resourceTypeMeta.elementName = _hyphenate(key);
+      } else if (resourceTypeMeta.attributeName === undefined) {
+        resourceTypeMeta.attributeName = _hyphenate(key);
+      } else if (resourceTypeMeta.attributeName === null && resourceTypeMeta.elementName === null) {
+        HtmlBehaviorResource.convention(key, resourceTypeMeta);
+      }
+    } else if (!resourceTypeMeta.name) {
+      resourceTypeMeta.name = _hyphenate(key);
+    }
+
+    this.metadata = resourceTypeMeta;
+    this.value = exportedValue;
+  }
+
+  ResourceDescription.prototype.initialize = function initialize(container) {
+    this.metadata.initialize(container, this.value);
+  };
+
+  ResourceDescription.prototype.register = function register(registry, name) {
+    this.metadata.register(registry, name);
+  };
+
+  ResourceDescription.prototype.load = function load(container, loadContext) {
+    return this.metadata.load(container, this.value, loadContext);
+  };
+
+  return ResourceDescription;
+}();
+
+var ModuleAnalyzer = function () {
+  function ModuleAnalyzer() {
+    
+
+    this.cache = Object.create(null);
+  }
+
+  ModuleAnalyzer.prototype.getAnalysis = function getAnalysis(moduleId) {
+    return this.cache[moduleId];
+  };
+
+  ModuleAnalyzer.prototype.analyze = function analyze(moduleId, moduleInstance, mainResourceKey) {
+    var mainResource = void 0;
+    var fallbackValue = void 0;
+    var fallbackKey = void 0;
+    var resourceTypeMeta = void 0;
+    var key = void 0;
+    var exportedValue = void 0;
+    var resources = [];
+    var conventional = void 0;
+    var vs = void 0;
+    var resourceModule = void 0;
+
+    resourceModule = this.cache[moduleId];
+    if (resourceModule) {
+      return resourceModule;
+    }
+
+    resourceModule = new ResourceModule(moduleId);
+    this.cache[moduleId] = resourceModule;
+
+    if (typeof moduleInstance === 'function') {
+      moduleInstance = { 'default': moduleInstance };
+    }
+
+    if (mainResourceKey) {
+      mainResource = new ResourceDescription(mainResourceKey, moduleInstance[mainResourceKey]);
+    }
+
+    for (key in moduleInstance) {
+      exportedValue = moduleInstance[key];
+
+      if (key === mainResourceKey || typeof exportedValue !== 'function') {
+        continue;
+      }
+
+      resourceTypeMeta = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].get(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, exportedValue);
+
+      if (resourceTypeMeta) {
+        if (resourceTypeMeta.attributeName === null && resourceTypeMeta.elementName === null) {
+          HtmlBehaviorResource.convention(key, resourceTypeMeta);
+        }
+
+        if (resourceTypeMeta.attributeName === null && resourceTypeMeta.elementName === null) {
+          resourceTypeMeta.elementName = _hyphenate(key);
+        }
+
+        if (!mainResource && resourceTypeMeta instanceof HtmlBehaviorResource && resourceTypeMeta.elementName !== null) {
+          mainResource = new ResourceDescription(key, exportedValue, resourceTypeMeta);
+        } else {
+          resources.push(new ResourceDescription(key, exportedValue, resourceTypeMeta));
+        }
+      } else if (viewStrategy.decorates(exportedValue)) {
+        vs = exportedValue;
+      } else if (exportedValue instanceof __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["b" /* TemplateRegistryEntry */]) {
+        vs = new TemplateRegistryViewStrategy(moduleId, exportedValue);
+      } else {
+        if (conventional = HtmlBehaviorResource.convention(key)) {
+          if (conventional.elementName !== null && !mainResource) {
+            mainResource = new ResourceDescription(key, exportedValue, conventional);
+          } else {
+            resources.push(new ResourceDescription(key, exportedValue, conventional));
+          }
+
+          __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, conventional, exportedValue);
+        } else if (conventional = __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["v" /* ValueConverterResource */].convention(key) || __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["f" /* BindingBehaviorResource */].convention(key) || ViewEngineHooksResource.convention(key)) {
+          resources.push(new ResourceDescription(key, exportedValue, conventional));
+          __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, conventional, exportedValue);
+        } else if (!fallbackValue) {
+          fallbackValue = exportedValue;
+          fallbackKey = key;
+        }
+      }
+    }
+
+    if (!mainResource && fallbackValue) {
+      mainResource = new ResourceDescription(fallbackKey, fallbackValue);
+    }
+
+    resourceModule.moduleInstance = moduleInstance;
+    resourceModule.mainResource = mainResource;
+    resourceModule.resources = resources;
+    resourceModule.viewStrategy = vs;
+
+    return resourceModule;
+  };
+
+  return ModuleAnalyzer;
+}();
+
+var logger = __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__["getLogger"]('templating');
+
+function ensureRegistryEntry(loader, urlOrRegistryEntry) {
+  if (urlOrRegistryEntry instanceof __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["b" /* TemplateRegistryEntry */]) {
+    return Promise.resolve(urlOrRegistryEntry);
+  }
+
+  return loader.loadTemplate(urlOrRegistryEntry);
+}
+
+var ProxyViewFactory = function () {
+  function ProxyViewFactory(promise) {
+    var _this7 = this;
+
+    
+
+    promise.then(function (x) {
+      return _this7.viewFactory = x;
+    });
+  }
+
+  ProxyViewFactory.prototype.create = function create(container, bindingContext, createInstruction, element) {
+    return this.viewFactory.create(container, bindingContext, createInstruction, element);
+  };
+
+  ProxyViewFactory.prototype.setCacheSize = function setCacheSize(size, doNotOverrideIfAlreadySet) {
+    this.viewFactory.setCacheSize(size, doNotOverrideIfAlreadySet);
+  };
+
+  ProxyViewFactory.prototype.getCachedView = function getCachedView() {
+    return this.viewFactory.getCachedView();
+  };
+
+  ProxyViewFactory.prototype.returnViewToCache = function returnViewToCache(view) {
+    this.viewFactory.returnViewToCache(view);
+  };
+
+  _createClass(ProxyViewFactory, [{
+    key: 'isCaching',
+    get: function get() {
+      return this.viewFactory.isCaching;
+    }
+  }]);
+
+  return ProxyViewFactory;
+}();
+
+var auSlotBehavior = null;
+
+var ViewEngine = (_dec8 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["a" /* Loader */], __WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["a" /* Container */], ViewCompiler, ModuleAnalyzer, ViewResources), _dec8(_class14 = (_temp4 = _class15 = function () {
+  function ViewEngine(loader, container, viewCompiler, moduleAnalyzer, appResources) {
+    
+
+    this.loader = loader;
+    this.container = container;
+    this.viewCompiler = viewCompiler;
+    this.moduleAnalyzer = moduleAnalyzer;
+    this.appResources = appResources;
+    this._pluginMap = {};
+
+    if (auSlotBehavior === null) {
+      auSlotBehavior = new HtmlBehaviorResource();
+      auSlotBehavior.attributeName = 'au-slot';
+      __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, auSlotBehavior, SlotCustomAttribute);
+    }
+
+    auSlotBehavior.initialize(container, SlotCustomAttribute);
+    auSlotBehavior.register(appResources);
+  }
+
+  ViewEngine.prototype.addResourcePlugin = function addResourcePlugin(extension, implementation) {
+    var name = extension.replace('.', '') + '-resource-plugin';
+    this._pluginMap[extension] = name;
+    this.loader.addPlugin(name, implementation);
+  };
+
+  ViewEngine.prototype.loadViewFactory = function loadViewFactory(urlOrRegistryEntry, compileInstruction, loadContext, target) {
+    var _this8 = this;
+
+    loadContext = loadContext || new ResourceLoadContext();
+
+    return ensureRegistryEntry(this.loader, urlOrRegistryEntry).then(function (registryEntry) {
+      var url = registryEntry.address;
+
+      if (registryEntry.onReady) {
+        if (!loadContext.hasDependency(url)) {
+          loadContext.addDependency(url);
+          return registryEntry.onReady;
+        }
+
+        if (registryEntry.template === null) {
+          return registryEntry.onReady;
+        }
+
+        return Promise.resolve(new ProxyViewFactory(registryEntry.onReady));
+      }
+
+      loadContext.addDependency(url);
+
+      registryEntry.onReady = _this8.loadTemplateResources(registryEntry, compileInstruction, loadContext, target).then(function (resources) {
+        registryEntry.resources = resources;
+
+        if (registryEntry.template === null) {
+          return registryEntry.factory = null;
+        }
+
+        var viewFactory = _this8.viewCompiler.compile(registryEntry.template, resources, compileInstruction);
+        return registryEntry.factory = viewFactory;
+      });
+
+      return registryEntry.onReady;
+    });
+  };
+
+  ViewEngine.prototype.loadTemplateResources = function loadTemplateResources(registryEntry, compileInstruction, loadContext, target) {
+    var resources = new ViewResources(this.appResources, registryEntry.address);
+    var dependencies = registryEntry.dependencies;
+    var importIds = void 0;
+    var names = void 0;
+
+    compileInstruction = compileInstruction || ViewCompileInstruction.normal;
+
+    if (dependencies.length === 0 && !compileInstruction.associatedModuleId) {
+      return Promise.resolve(resources);
+    }
+
+    importIds = dependencies.map(function (x) {
+      return x.src;
+    });
+    names = dependencies.map(function (x) {
+      return x.name;
+    });
+    logger.debug('importing resources for ' + registryEntry.address, importIds);
+
+    if (target) {
+      var viewModelRequires = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].get(ViewEngine.viewModelRequireMetadataKey, target);
+      if (viewModelRequires) {
+        var templateImportCount = importIds.length;
+        for (var i = 0, ii = viewModelRequires.length; i < ii; ++i) {
+          var req = viewModelRequires[i];
+          var importId = typeof req === 'function' ? __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(req).moduleId : Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_path__["d" /* relativeToFile */])(req.src || req, registryEntry.address);
+
+          if (importIds.indexOf(importId) === -1) {
+            importIds.push(importId);
+            names.push(req.as);
+          }
+        }
+        logger.debug('importing ViewModel resources for ' + compileInstruction.associatedModuleId, importIds.slice(templateImportCount));
+      }
+    }
+
+    return this.importViewResources(importIds, names, resources, compileInstruction, loadContext);
+  };
+
+  ViewEngine.prototype.importViewModelResource = function importViewModelResource(moduleImport, moduleMember) {
+    var _this9 = this;
+
+    return this.loader.loadModule(moduleImport).then(function (viewModelModule) {
+      var normalizedId = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(viewModelModule).moduleId;
+      var resourceModule = _this9.moduleAnalyzer.analyze(normalizedId, viewModelModule, moduleMember);
+
+      if (!resourceModule.mainResource) {
+        throw new Error('No view model found in module "' + moduleImport + '".');
+      }
+
+      resourceModule.initialize(_this9.container);
+
+      return resourceModule.mainResource;
+    });
+  };
+
+  ViewEngine.prototype.importViewResources = function importViewResources(moduleIds, names, resources, compileInstruction, loadContext) {
+    var _this10 = this;
+
+    loadContext = loadContext || new ResourceLoadContext();
+    compileInstruction = compileInstruction || ViewCompileInstruction.normal;
+
+    moduleIds = moduleIds.map(function (x) {
+      return _this10._applyLoaderPlugin(x);
+    });
+
+    return this.loader.loadAllModules(moduleIds).then(function (imports) {
+      var i = void 0;
+      var ii = void 0;
+      var analysis = void 0;
+      var normalizedId = void 0;
+      var current = void 0;
+      var associatedModule = void 0;
+      var container = _this10.container;
+      var moduleAnalyzer = _this10.moduleAnalyzer;
+      var allAnalysis = new Array(imports.length);
+
+      for (i = 0, ii = imports.length; i < ii; ++i) {
+        current = imports[i];
+        normalizedId = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(current).moduleId;
+
+        analysis = moduleAnalyzer.analyze(normalizedId, current);
+        analysis.initialize(container);
+        analysis.register(resources, names[i]);
+
+        allAnalysis[i] = analysis;
+      }
+
+      if (compileInstruction.associatedModuleId) {
+        associatedModule = moduleAnalyzer.getAnalysis(compileInstruction.associatedModuleId);
+
+        if (associatedModule) {
+          associatedModule.register(resources);
+        }
+      }
+
+      for (i = 0, ii = allAnalysis.length; i < ii; ++i) {
+        allAnalysis[i] = allAnalysis[i].load(container, loadContext);
+      }
+
+      return Promise.all(allAnalysis).then(function () {
+        return resources;
+      });
+    });
+  };
+
+  ViewEngine.prototype._applyLoaderPlugin = function _applyLoaderPlugin(id) {
+    var index = id.lastIndexOf('.');
+    if (index !== -1) {
+      var ext = id.substring(index);
+      var pluginName = this._pluginMap[ext];
+
+      if (pluginName === undefined) {
+        return id;
+      }
+
+      return this.loader.applyPluginToUrl(id, pluginName);
+    }
+
+    return id;
+  };
+
+  return ViewEngine;
+}(), _class15.viewModelRequireMetadataKey = 'aurelia:view-model-require', _temp4)) || _class14);
+
+var Controller = function () {
+  function Controller(behavior, instruction, viewModel, container) {
+    
+
+    this.behavior = behavior;
+    this.instruction = instruction;
+    this.viewModel = viewModel;
+    this.isAttached = false;
+    this.view = null;
+    this.isBound = false;
+    this.scope = null;
+    this.container = container;
+    this.elementEvents = container.elementEvents || null;
+
+    var observerLookup = behavior.observerLocator.getOrCreateObserversLookup(viewModel);
+    var handlesBind = behavior.handlesBind;
+    var attributes = instruction.attributes;
+    var boundProperties = this.boundProperties = [];
+    var properties = behavior.properties;
+    var i = void 0;
+    var ii = void 0;
+
+    behavior._ensurePropertiesDefined(viewModel, observerLookup);
+
+    for (i = 0, ii = properties.length; i < ii; ++i) {
+      properties[i]._initialize(viewModel, observerLookup, attributes, handlesBind, boundProperties);
+    }
+  }
+
+  Controller.prototype.created = function created(owningView) {
+    if (this.behavior.handlesCreated) {
+      this.viewModel.created(owningView, this.view);
+    }
+  };
+
+  Controller.prototype.automate = function automate(overrideContext, owningView) {
+    this.view.bindingContext = this.viewModel;
+    this.view.overrideContext = overrideContext || Object(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["A" /* createOverrideContext */])(this.viewModel);
+    this.view._isUserControlled = true;
+
+    if (this.behavior.handlesCreated) {
+      this.viewModel.created(owningView || null, this.view);
+    }
+
+    this.bind(this.view);
+  };
+
+  Controller.prototype.bind = function bind(scope) {
+    var skipSelfSubscriber = this.behavior.handlesBind;
+    var boundProperties = this.boundProperties;
+    var i = void 0;
+    var ii = void 0;
+    var x = void 0;
+    var observer = void 0;
+    var selfSubscriber = void 0;
+
+    if (this.isBound) {
+      if (this.scope === scope) {
+        return;
+      }
+
+      this.unbind();
+    }
+
+    this.isBound = true;
+    this.scope = scope;
+
+    for (i = 0, ii = boundProperties.length; i < ii; ++i) {
+      x = boundProperties[i];
+      observer = x.observer;
+      selfSubscriber = observer.selfSubscriber;
+      observer.publishing = false;
+
+      if (skipSelfSubscriber) {
+        observer.selfSubscriber = null;
+      }
+
+      x.binding.bind(scope);
+      observer.call();
+
+      observer.publishing = true;
+      observer.selfSubscriber = selfSubscriber;
+    }
+
+    var overrideContext = void 0;
+    if (this.view !== null) {
+      if (skipSelfSubscriber) {
+        this.view.viewModelScope = scope;
+      }
+
+      if (this.viewModel === scope.overrideContext.bindingContext) {
+        overrideContext = scope.overrideContext;
+      } else if (this.instruction.inheritBindingContext) {
+        overrideContext = Object(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["A" /* createOverrideContext */])(this.viewModel, scope.overrideContext);
+      } else {
+        overrideContext = Object(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["A" /* createOverrideContext */])(this.viewModel);
+        overrideContext.__parentOverrideContext = scope.overrideContext;
+      }
+
+      this.view.bind(this.viewModel, overrideContext);
+    } else if (skipSelfSubscriber) {
+      overrideContext = scope.overrideContext;
+
+      if (scope.overrideContext.__parentOverrideContext !== undefined && this.viewModel.viewFactory && this.viewModel.viewFactory.factoryCreateInstruction.partReplacements) {
+        overrideContext = Object.assign({}, scope.overrideContext);
+        overrideContext.parentOverrideContext = scope.overrideContext.__parentOverrideContext;
+      }
+      this.viewModel.bind(scope.bindingContext, overrideContext);
+    }
+  };
+
+  Controller.prototype.unbind = function unbind() {
+    if (this.isBound) {
+      var _boundProperties = this.boundProperties;
+      var _i2 = void 0;
+      var _ii2 = void 0;
+
+      this.isBound = false;
+      this.scope = null;
+
+      if (this.view !== null) {
+        this.view.unbind();
+      }
+
+      if (this.behavior.handlesUnbind) {
+        this.viewModel.unbind();
+      }
+
+      if (this.elementEvents !== null) {
+        this.elementEvents.disposeAll();
+      }
+
+      for (_i2 = 0, _ii2 = _boundProperties.length; _i2 < _ii2; ++_i2) {
+        _boundProperties[_i2].binding.unbind();
+      }
+    }
+  };
+
+  Controller.prototype.attached = function attached() {
+    if (this.isAttached) {
+      return;
+    }
+
+    this.isAttached = true;
+
+    if (this.behavior.handlesAttached) {
+      this.viewModel.attached();
+    }
+
+    if (this.view !== null) {
+      this.view.attached();
+    }
+  };
+
+  Controller.prototype.detached = function detached() {
+    if (this.isAttached) {
+      this.isAttached = false;
+
+      if (this.view !== null) {
+        this.view.detached();
+      }
+
+      if (this.behavior.handlesDetached) {
+        this.viewModel.detached();
+      }
+    }
+  };
+
+  return Controller;
+}();
+
+var BehaviorPropertyObserver = (_dec9 = Object(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["H" /* subscriberCollection */])(), _dec9(_class16 = function () {
+  function BehaviorPropertyObserver(taskQueue, obj, propertyName, selfSubscriber, initialValue) {
+    
+
+    this.taskQueue = taskQueue;
+    this.obj = obj;
+    this.propertyName = propertyName;
+    this.notqueued = true;
+    this.publishing = false;
+    this.selfSubscriber = selfSubscriber;
+    this.currentValue = this.oldValue = initialValue;
+  }
+
+  BehaviorPropertyObserver.prototype.getValue = function getValue() {
+    return this.currentValue;
+  };
+
+  BehaviorPropertyObserver.prototype.setValue = function setValue(newValue) {
+    var oldValue = this.currentValue;
+
+    if (oldValue !== newValue) {
+      this.oldValue = oldValue;
+      this.currentValue = newValue;
+
+      if (this.publishing && this.notqueued) {
+        if (this.taskQueue.flushing) {
+          this.call();
+        } else {
+          this.notqueued = false;
+          this.taskQueue.queueMicroTask(this);
+        }
+      }
+    }
+  };
+
+  BehaviorPropertyObserver.prototype.call = function call() {
+    var oldValue = this.oldValue;
+    var newValue = this.currentValue;
+
+    this.notqueued = true;
+
+    if (newValue === oldValue) {
+      return;
+    }
+
+    if (this.selfSubscriber) {
+      this.selfSubscriber(newValue, oldValue);
+    }
+
+    this.callSubscribers(newValue, oldValue);
+    this.oldValue = newValue;
+  };
+
+  BehaviorPropertyObserver.prototype.subscribe = function subscribe(context, callable) {
+    this.addSubscriber(context, callable);
+  };
+
+  BehaviorPropertyObserver.prototype.unsubscribe = function unsubscribe(context, callable) {
+    this.removeSubscriber(context, callable);
+  };
+
+  return BehaviorPropertyObserver;
+}()) || _class16);
+
+function getObserver(instance, name) {
+  var lookup = instance.__observers__;
+
+  if (lookup === undefined) {
+    var ctor = Object.getPrototypeOf(instance).constructor;
+    var _behavior = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].get(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, ctor);
+    if (!_behavior.isInitialized) {
+      _behavior.initialize(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["a" /* Container */].instance || new __WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["a" /* Container */](), instance.constructor);
+    }
+
+    lookup = _behavior.observerLocator.getOrCreateObserversLookup(instance);
+    _behavior._ensurePropertiesDefined(instance, lookup);
+  }
+
+  return lookup[name];
+}
+
+var BindableProperty = function () {
+  function BindableProperty(nameOrConfig) {
+    
+
+    if (typeof nameOrConfig === 'string') {
+      this.name = nameOrConfig;
+    } else {
+      Object.assign(this, nameOrConfig);
+    }
+
+    this.attribute = this.attribute || _hyphenate(this.name);
+    if (this.defaultBindingMode === null || this.defaultBindingMode === undefined) {
+      this.defaultBindingMode = __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["w" /* bindingMode */].oneWay;
+    }
+    this.changeHandler = this.changeHandler || null;
+    this.owner = null;
+    this.descriptor = null;
+  }
+
+  BindableProperty.prototype.registerWith = function registerWith(target, behavior, descriptor) {
+    behavior.properties.push(this);
+    behavior.attributes[this.attribute] = this;
+    this.owner = behavior;
+
+    if (descriptor) {
+      this.descriptor = descriptor;
+      return this._configureDescriptor(descriptor);
+    }
+
+    return undefined;
+  };
+
+  BindableProperty.prototype._configureDescriptor = function _configureDescriptor(descriptor) {
+    var name = this.name;
+
+    descriptor.configurable = true;
+    descriptor.enumerable = true;
+
+    if ('initializer' in descriptor) {
+      this.defaultValue = descriptor.initializer;
+      delete descriptor.initializer;
+      delete descriptor.writable;
+    }
+
+    if ('value' in descriptor) {
+      this.defaultValue = descriptor.value;
+      delete descriptor.value;
+      delete descriptor.writable;
+    }
+
+    descriptor.get = function () {
+      return getObserver(this, name).getValue();
+    };
+
+    descriptor.set = function (value) {
+      getObserver(this, name).setValue(value);
+    };
+
+    descriptor.get.getObserver = function (obj) {
+      return getObserver(obj, name);
+    };
+
+    return descriptor;
+  };
+
+  BindableProperty.prototype.defineOn = function defineOn(target, behavior) {
+    var name = this.name;
+    var handlerName = void 0;
+
+    if (this.changeHandler === null) {
+      handlerName = name + 'Changed';
+      if (handlerName in target.prototype) {
+        this.changeHandler = handlerName;
+      }
+    }
+
+    if (this.descriptor === null) {
+      Object.defineProperty(target.prototype, name, this._configureDescriptor(behavior, {}));
+    }
+  };
+
+  BindableProperty.prototype.createObserver = function createObserver(viewModel) {
+    var selfSubscriber = null;
+    var defaultValue = this.defaultValue;
+    var changeHandlerName = this.changeHandler;
+    var name = this.name;
+    var initialValue = void 0;
+
+    if (this.hasOptions) {
+      return undefined;
+    }
+
+    if (changeHandlerName in viewModel) {
+      if ('propertyChanged' in viewModel) {
+        selfSubscriber = function selfSubscriber(newValue, oldValue) {
+          viewModel[changeHandlerName](newValue, oldValue);
+          viewModel.propertyChanged(name, newValue, oldValue);
+        };
+      } else {
+        selfSubscriber = function selfSubscriber(newValue, oldValue) {
+          return viewModel[changeHandlerName](newValue, oldValue);
+        };
+      }
+    } else if ('propertyChanged' in viewModel) {
+      selfSubscriber = function selfSubscriber(newValue, oldValue) {
+        return viewModel.propertyChanged(name, newValue, oldValue);
+      };
+    } else if (changeHandlerName !== null) {
+      throw new Error('Change handler ' + changeHandlerName + ' was specified but not declared on the class.');
+    }
+
+    if (defaultValue !== undefined) {
+      initialValue = typeof defaultValue === 'function' ? defaultValue.call(viewModel) : defaultValue;
+    }
+
+    return new BehaviorPropertyObserver(this.owner.taskQueue, viewModel, this.name, selfSubscriber, initialValue);
+  };
+
+  BindableProperty.prototype._initialize = function _initialize(viewModel, observerLookup, attributes, behaviorHandlesBind, boundProperties) {
+    var selfSubscriber = void 0;
+    var observer = void 0;
+    var attribute = void 0;
+    var defaultValue = this.defaultValue;
+
+    if (this.isDynamic) {
+      for (var key in attributes) {
+        this._createDynamicProperty(viewModel, observerLookup, behaviorHandlesBind, key, attributes[key], boundProperties);
+      }
+    } else if (!this.hasOptions) {
+      observer = observerLookup[this.name];
+
+      if (attributes !== null) {
+        selfSubscriber = observer.selfSubscriber;
+        attribute = attributes[this.attribute];
+
+        if (behaviorHandlesBind) {
+          observer.selfSubscriber = null;
+        }
+
+        if (typeof attribute === 'string') {
+          viewModel[this.name] = attribute;
+          observer.call();
+        } else if (attribute) {
+          boundProperties.push({ observer: observer, binding: attribute.createBinding(viewModel) });
+        } else if (defaultValue !== undefined) {
+          observer.call();
+        }
+
+        observer.selfSubscriber = selfSubscriber;
+      }
+
+      observer.publishing = true;
+    }
+  };
+
+  BindableProperty.prototype._createDynamicProperty = function _createDynamicProperty(viewModel, observerLookup, behaviorHandlesBind, name, attribute, boundProperties) {
+    var changeHandlerName = name + 'Changed';
+    var selfSubscriber = null;
+    var observer = void 0;
+    var info = void 0;
+
+    if (changeHandlerName in viewModel) {
+      if ('propertyChanged' in viewModel) {
+        selfSubscriber = function selfSubscriber(newValue, oldValue) {
+          viewModel[changeHandlerName](newValue, oldValue);
+          viewModel.propertyChanged(name, newValue, oldValue);
+        };
+      } else {
+        selfSubscriber = function selfSubscriber(newValue, oldValue) {
+          return viewModel[changeHandlerName](newValue, oldValue);
+        };
+      }
+    } else if ('propertyChanged' in viewModel) {
+      selfSubscriber = function selfSubscriber(newValue, oldValue) {
+        return viewModel.propertyChanged(name, newValue, oldValue);
+      };
+    }
+
+    observer = observerLookup[name] = new BehaviorPropertyObserver(this.owner.taskQueue, viewModel, name, selfSubscriber);
+
+    Object.defineProperty(viewModel, name, {
+      configurable: true,
+      enumerable: true,
+      get: observer.getValue.bind(observer),
+      set: observer.setValue.bind(observer)
+    });
+
+    if (behaviorHandlesBind) {
+      observer.selfSubscriber = null;
+    }
+
+    if (typeof attribute === 'string') {
+      viewModel[name] = attribute;
+      observer.call();
+    } else if (attribute) {
+      info = { observer: observer, binding: attribute.createBinding(viewModel) };
+      boundProperties.push(info);
+    }
+
+    observer.publishing = true;
+    observer.selfSubscriber = selfSubscriber;
+  };
+
+  return BindableProperty;
+}();
+
+var lastProviderId = 0;
+
+function nextProviderId() {
+  return ++lastProviderId;
+}
+
+function doProcessContent() {
   return true;
 }
+function doProcessAttributes() {}
 
-function identity(x) {
-  return x;
+var HtmlBehaviorResource = function () {
+  function HtmlBehaviorResource() {
+    
+
+    this.elementName = null;
+    this.attributeName = null;
+    this.attributeDefaultBindingMode = undefined;
+    this.liftsContent = false;
+    this.targetShadowDOM = false;
+    this.shadowDOMOptions = null;
+    this.processAttributes = doProcessAttributes;
+    this.processContent = doProcessContent;
+    this.usesShadowDOM = false;
+    this.childBindings = null;
+    this.hasDynamicOptions = false;
+    this.containerless = false;
+    this.properties = [];
+    this.attributes = {};
+    this.isInitialized = false;
+    this.primaryProperty = null;
+  }
+
+  HtmlBehaviorResource.convention = function convention(name, existing) {
+    var behavior = void 0;
+
+    if (name.endsWith('CustomAttribute')) {
+      behavior = existing || new HtmlBehaviorResource();
+      behavior.attributeName = _hyphenate(name.substring(0, name.length - 15));
+    }
+
+    if (name.endsWith('CustomElement')) {
+      behavior = existing || new HtmlBehaviorResource();
+      behavior.elementName = _hyphenate(name.substring(0, name.length - 13));
+    }
+
+    return behavior;
+  };
+
+  HtmlBehaviorResource.prototype.addChildBinding = function addChildBinding(behavior) {
+    if (this.childBindings === null) {
+      this.childBindings = [];
+    }
+
+    this.childBindings.push(behavior);
+  };
+
+  HtmlBehaviorResource.prototype.initialize = function initialize(container, target) {
+    var proto = target.prototype;
+    var properties = this.properties;
+    var attributeName = this.attributeName;
+    var attributeDefaultBindingMode = this.attributeDefaultBindingMode;
+    var i = void 0;
+    var ii = void 0;
+    var current = void 0;
+
+    if (this.isInitialized) {
+      return;
+    }
+
+    this.isInitialized = true;
+    target.__providerId__ = nextProviderId();
+
+    this.observerLocator = container.get(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["r" /* ObserverLocator */]);
+    this.taskQueue = container.get(__WEBPACK_IMPORTED_MODULE_7_aurelia_task_queue__["a" /* TaskQueue */]);
+
+    this.target = target;
+    this.usesShadowDOM = this.targetShadowDOM && __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["c" /* FEATURE */].shadowDOM;
+    this.handlesCreated = 'created' in proto;
+    this.handlesBind = 'bind' in proto;
+    this.handlesUnbind = 'unbind' in proto;
+    this.handlesAttached = 'attached' in proto;
+    this.handlesDetached = 'detached' in proto;
+    this.htmlName = this.elementName || this.attributeName;
+
+    if (attributeName !== null) {
+      if (properties.length === 0) {
+        new BindableProperty({
+          name: 'value',
+          changeHandler: 'valueChanged' in proto ? 'valueChanged' : null,
+          attribute: attributeName,
+          defaultBindingMode: attributeDefaultBindingMode
+        }).registerWith(target, this);
+      }
+
+      current = properties[0];
+
+      if (properties.length === 1 && current.name === 'value') {
+        current.isDynamic = current.hasOptions = this.hasDynamicOptions;
+        current.defineOn(target, this);
+      } else {
+        for (i = 0, ii = properties.length; i < ii; ++i) {
+          properties[i].defineOn(target, this);
+          if (properties[i].primaryProperty) {
+            if (this.primaryProperty) {
+              throw new Error('Only one bindable property on a custom element can be defined as the default');
+            }
+            this.primaryProperty = properties[i];
+          }
+        }
+
+        current = new BindableProperty({
+          name: 'value',
+          changeHandler: 'valueChanged' in proto ? 'valueChanged' : null,
+          attribute: attributeName,
+          defaultBindingMode: attributeDefaultBindingMode
+        });
+
+        current.hasOptions = true;
+        current.registerWith(target, this);
+      }
+    } else {
+      for (i = 0, ii = properties.length; i < ii; ++i) {
+        properties[i].defineOn(target, this);
+      }
+
+      this._copyInheritedProperties(container, target);
+    }
+  };
+
+  HtmlBehaviorResource.prototype.register = function register(registry, name) {
+    var _this11 = this;
+
+    if (this.attributeName !== null) {
+      registry.registerAttribute(name || this.attributeName, this, this.attributeName);
+
+      if (Array.isArray(this.aliases)) {
+        this.aliases.forEach(function (alias) {
+          registry.registerAttribute(alias, _this11, _this11.attributeName);
+        });
+      }
+    }
+
+    if (this.elementName !== null) {
+      registry.registerElement(name || this.elementName, this);
+    }
+  };
+
+  HtmlBehaviorResource.prototype.load = function load(container, target, loadContext, viewStrategy, transientView) {
+    var _this12 = this;
+
+    var options = void 0;
+
+    if (this.elementName !== null) {
+      viewStrategy = container.get(ViewLocator).getViewStrategy(viewStrategy || this.viewStrategy || target);
+      options = new ViewCompileInstruction(this.targetShadowDOM, true);
+
+      if (!viewStrategy.moduleId) {
+        viewStrategy.moduleId = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["a" /* Origin */].get(target).moduleId;
+      }
+
+      return viewStrategy.loadViewFactory(container.get(ViewEngine), options, loadContext, target).then(function (viewFactory) {
+        if (!transientView || !_this12.viewFactory) {
+          _this12.viewFactory = viewFactory;
+        }
+
+        return viewFactory;
+      });
+    }
+
+    return Promise.resolve(this);
+  };
+
+  HtmlBehaviorResource.prototype.compile = function compile(compiler, resources, node, instruction, parentNode) {
+    if (this.liftsContent) {
+      if (!instruction.viewFactory) {
+        var template = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createElement('template');
+        var fragment = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createDocumentFragment();
+        var cacheSize = node.getAttribute('view-cache');
+        var part = node.getAttribute('part');
+
+        node.removeAttribute(instruction.originalAttrName);
+        __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].replaceNode(template, node, parentNode);
+        fragment.appendChild(node);
+        instruction.viewFactory = compiler.compile(fragment, resources);
+
+        if (part) {
+          instruction.viewFactory.part = part;
+          node.removeAttribute('part');
+        }
+
+        if (cacheSize) {
+          instruction.viewFactory.setCacheSize(cacheSize);
+          node.removeAttribute('view-cache');
+        }
+
+        node = template;
+      }
+    } else if (this.elementName !== null) {
+      var _partReplacements2 = {};
+
+      if (this.processContent(compiler, resources, node, instruction) && node.hasChildNodes()) {
+        var currentChild = node.firstChild;
+        var contentElement = this.usesShadowDOM ? null : __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createElement('au-content');
+        var nextSibling = void 0;
+        var toReplace = void 0;
+
+        while (currentChild) {
+          nextSibling = currentChild.nextSibling;
+
+          if (currentChild.tagName === 'TEMPLATE' && (toReplace = currentChild.getAttribute('replace-part'))) {
+            _partReplacements2[toReplace] = compiler.compile(currentChild, resources);
+            __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].removeNode(currentChild, parentNode);
+            instruction.partReplacements = _partReplacements2;
+          } else if (contentElement !== null) {
+            if (currentChild.nodeType === 3 && _isAllWhitespace(currentChild)) {
+              __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].removeNode(currentChild, parentNode);
+            } else {
+              contentElement.appendChild(currentChild);
+            }
+          }
+
+          currentChild = nextSibling;
+        }
+
+        if (contentElement !== null && contentElement.hasChildNodes()) {
+          node.appendChild(contentElement);
+        }
+
+        instruction.skipContentProcessing = false;
+      } else {
+        instruction.skipContentProcessing = true;
+      }
+    } else if (!this.processContent(compiler, resources, node, instruction)) {
+      instruction.skipContentProcessing = true;
+    }
+
+    return node;
+  };
+
+  HtmlBehaviorResource.prototype.create = function create(container, instruction, element, bindings) {
+    var viewHost = void 0;
+    var au = null;
+
+    instruction = instruction || BehaviorInstruction.normal;
+    element = element || null;
+    bindings = bindings || null;
+
+    if (this.elementName !== null && element) {
+      if (this.usesShadowDOM) {
+        viewHost = element.attachShadow(this.shadowDOMOptions);
+        container.registerInstance(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].boundary, viewHost);
+      } else {
+        viewHost = element;
+        if (this.targetShadowDOM) {
+          container.registerInstance(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].boundary, viewHost);
+        }
+      }
+    }
+
+    if (element !== null) {
+      element.au = au = element.au || {};
+    }
+
+    var viewModel = instruction.viewModel || container.get(this.target);
+    var controller = new Controller(this, instruction, viewModel, container);
+    var childBindings = this.childBindings;
+    var viewFactory = void 0;
+
+    if (this.liftsContent) {
+      au.controller = controller;
+    } else if (this.elementName !== null) {
+      viewFactory = instruction.viewFactory || this.viewFactory;
+      container.viewModel = viewModel;
+
+      if (viewFactory) {
+        controller.view = viewFactory.create(container, instruction, element);
+      }
+
+      if (element !== null) {
+        au.controller = controller;
+
+        if (controller.view) {
+          if (!this.usesShadowDOM && (element.childNodes.length === 1 || element.contentElement)) {
+            var contentElement = element.childNodes[0] || element.contentElement;
+            controller.view.contentView = { fragment: contentElement };
+            contentElement.parentNode && __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].removeNode(contentElement);
+          }
+
+          if (instruction.anchorIsContainer) {
+            if (childBindings !== null) {
+              for (var _i3 = 0, _ii3 = childBindings.length; _i3 < _ii3; ++_i3) {
+                controller.view.addBinding(childBindings[_i3].create(element, viewModel, controller));
+              }
+            }
+
+            controller.view.appendNodesTo(viewHost);
+          } else {
+            controller.view.insertNodesBefore(viewHost);
+          }
+        } else if (childBindings !== null) {
+          for (var _i4 = 0, _ii4 = childBindings.length; _i4 < _ii4; ++_i4) {
+            bindings.push(childBindings[_i4].create(element, viewModel, controller));
+          }
+        }
+      } else if (controller.view) {
+        controller.view.controller = controller;
+
+        if (childBindings !== null) {
+          for (var _i5 = 0, _ii5 = childBindings.length; _i5 < _ii5; ++_i5) {
+            controller.view.addBinding(childBindings[_i5].create(instruction.host, viewModel, controller));
+          }
+        }
+      } else if (childBindings !== null) {
+        for (var _i6 = 0, _ii6 = childBindings.length; _i6 < _ii6; ++_i6) {
+          bindings.push(childBindings[_i6].create(instruction.host, viewModel, controller));
+        }
+      }
+    } else if (childBindings !== null) {
+      for (var _i7 = 0, _ii7 = childBindings.length; _i7 < _ii7; ++_i7) {
+        bindings.push(childBindings[_i7].create(element, viewModel, controller));
+      }
+    }
+
+    if (au !== null) {
+      au[this.htmlName] = controller;
+    }
+
+    if (instruction.initiatedByBehavior && viewFactory) {
+      controller.view.created();
+    }
+
+    return controller;
+  };
+
+  HtmlBehaviorResource.prototype._ensurePropertiesDefined = function _ensurePropertiesDefined(instance, lookup) {
+    var properties = void 0;
+    var i = void 0;
+    var ii = void 0;
+    var observer = void 0;
+
+    if ('__propertiesDefined__' in lookup) {
+      return;
+    }
+
+    lookup.__propertiesDefined__ = true;
+    properties = this.properties;
+
+    for (i = 0, ii = properties.length; i < ii; ++i) {
+      observer = properties[i].createObserver(instance);
+
+      if (observer !== undefined) {
+        lookup[observer.propertyName] = observer;
+      }
+    }
+  };
+
+  HtmlBehaviorResource.prototype._copyInheritedProperties = function _copyInheritedProperties(container, target) {
+    var _this13 = this;
+
+    var behavior = void 0;
+    var derived = target;
+
+    while (true) {
+      var proto = Object.getPrototypeOf(target.prototype);
+      target = proto && proto.constructor;
+      if (!target) {
+        return;
+      }
+      behavior = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, target);
+      if (behavior) {
+        break;
+      }
+    }
+    behavior.initialize(container, target);
+
+    var _loop = function _loop(_i8, _ii8) {
+      var prop = behavior.properties[_i8];
+
+      if (_this13.properties.some(function (p) {
+        return p.name === prop.name;
+      })) {
+        return 'continue';
+      }
+
+      new BindableProperty(prop).registerWith(derived, _this13);
+    };
+
+    for (var _i8 = 0, _ii8 = behavior.properties.length; _i8 < _ii8; ++_i8) {
+      var _ret = _loop(_i8, _ii8);
+
+      if (_ret === 'continue') continue;
+    }
+  };
+
+  return HtmlBehaviorResource;
+}();
+
+function createChildObserverDecorator(selectorOrConfig, all) {
+  return function (target, key, descriptor) {
+    var actualTarget = typeof key === 'string' ? target.constructor : target;
+    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, actualTarget);
+
+    if (typeof selectorOrConfig === 'string') {
+      selectorOrConfig = {
+        selector: selectorOrConfig,
+        name: key
+      };
+    }
+
+    if (descriptor) {
+      descriptor.writable = true;
+      descriptor.configurable = true;
+    }
+
+    selectorOrConfig.all = all;
+    r.addChildBinding(new ChildObserver(selectorOrConfig));
+  };
 }
 
-function thrower(x) {
-  throw x;
+function children(selectorOrConfig) {
+  return createChildObserverDecorator(selectorOrConfig, true);
 }
+
+function child(selectorOrConfig) {
+  return createChildObserverDecorator(selectorOrConfig, false);
+}
+
+var ChildObserver = function () {
+  function ChildObserver(config) {
+    
+
+    this.name = config.name;
+    this.changeHandler = config.changeHandler || this.name + 'Changed';
+    this.selector = config.selector;
+    this.all = config.all;
+  }
+
+  ChildObserver.prototype.create = function create(viewHost, viewModel, controller) {
+    return new ChildObserverBinder(this.selector, viewHost, this.name, viewModel, controller, this.changeHandler, this.all);
+  };
+
+  return ChildObserver;
+}();
+
+var noMutations = [];
+
+function trackMutation(groupedMutations, binder, record) {
+  var mutations = groupedMutations.get(binder);
+
+  if (!mutations) {
+    mutations = [];
+    groupedMutations.set(binder, mutations);
+  }
+
+  mutations.push(record);
+}
+
+function onChildChange(mutations, observer) {
+  var binders = observer.binders;
+  var bindersLength = binders.length;
+  var groupedMutations = new Map();
+
+  for (var _i9 = 0, _ii9 = mutations.length; _i9 < _ii9; ++_i9) {
+    var record = mutations[_i9];
+    var added = record.addedNodes;
+    var removed = record.removedNodes;
+
+    for (var j = 0, jj = removed.length; j < jj; ++j) {
+      var node = removed[j];
+      if (node.nodeType === 1) {
+        for (var k = 0; k < bindersLength; ++k) {
+          var binder = binders[k];
+          if (binder.onRemove(node)) {
+            trackMutation(groupedMutations, binder, record);
+          }
+        }
+      }
+    }
+
+    for (var _j = 0, _jj = added.length; _j < _jj; ++_j) {
+      var _node = added[_j];
+      if (_node.nodeType === 1) {
+        for (var _k = 0; _k < bindersLength; ++_k) {
+          var _binder = binders[_k];
+          if (_binder.onAdd(_node)) {
+            trackMutation(groupedMutations, _binder, record);
+          }
+        }
+      }
+    }
+  }
+
+  groupedMutations.forEach(function (value, key) {
+    if (key.changeHandler !== null) {
+      key.viewModel[key.changeHandler](value);
+    }
+  });
+}
+
+var ChildObserverBinder = function () {
+  function ChildObserverBinder(selector, viewHost, property, viewModel, controller, changeHandler, all) {
+    
+
+    this.selector = selector;
+    this.viewHost = viewHost;
+    this.property = property;
+    this.viewModel = viewModel;
+    this.controller = controller;
+    this.changeHandler = changeHandler in viewModel ? changeHandler : null;
+    this.usesShadowDOM = controller.behavior.usesShadowDOM;
+    this.all = all;
+
+    if (!this.usesShadowDOM && controller.view && controller.view.contentView) {
+      this.contentView = controller.view.contentView;
+    } else {
+      this.contentView = null;
+    }
+  }
+
+  ChildObserverBinder.prototype.matches = function matches(element) {
+    if (element.matches(this.selector)) {
+      if (this.contentView === null) {
+        return true;
+      }
+
+      var contentView = this.contentView;
+      var assignedSlot = element.auAssignedSlot;
+
+      if (assignedSlot && assignedSlot.projectFromAnchors) {
+        var anchors = assignedSlot.projectFromAnchors;
+
+        for (var _i10 = 0, _ii10 = anchors.length; _i10 < _ii10; ++_i10) {
+          if (anchors[_i10].auOwnerView === contentView) {
+            return true;
+          }
+        }
+
+        return false;
+      }
+
+      return element.auOwnerView === contentView;
+    }
+
+    return false;
+  };
+
+  ChildObserverBinder.prototype.bind = function bind(source) {
+    var viewHost = this.viewHost;
+    var viewModel = this.viewModel;
+    var observer = viewHost.__childObserver__;
+
+    if (!observer) {
+      observer = viewHost.__childObserver__ = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createMutationObserver(onChildChange);
+
+      var options = {
+        childList: true,
+        subtree: !this.usesShadowDOM
+      };
+
+      observer.observe(viewHost, options);
+      observer.binders = [];
+    }
+
+    observer.binders.push(this);
+
+    if (this.usesShadowDOM) {
+      var current = viewHost.firstElementChild;
+
+      if (this.all) {
+        var items = viewModel[this.property];
+        if (!items) {
+          items = viewModel[this.property] = [];
+        } else {
+          items.length = 0;
+        }
+
+        while (current) {
+          if (this.matches(current)) {
+            items.push(current.au && current.au.controller ? current.au.controller.viewModel : current);
+          }
+
+          current = current.nextElementSibling;
+        }
+
+        if (this.changeHandler !== null) {
+          this.viewModel[this.changeHandler](noMutations);
+        }
+      } else {
+        while (current) {
+          if (this.matches(current)) {
+            var value = current.au && current.au.controller ? current.au.controller.viewModel : current;
+            this.viewModel[this.property] = value;
+
+            if (this.changeHandler !== null) {
+              this.viewModel[this.changeHandler](value);
+            }
+
+            break;
+          }
+
+          current = current.nextElementSibling;
+        }
+      }
+    }
+  };
+
+  ChildObserverBinder.prototype.onRemove = function onRemove(element) {
+    if (this.matches(element)) {
+      var value = element.au && element.au.controller ? element.au.controller.viewModel : element;
+
+      if (this.all) {
+        var items = this.viewModel[this.property] || (this.viewModel[this.property] = []);
+        var index = items.indexOf(value);
+
+        if (index !== -1) {
+          items.splice(index, 1);
+        }
+
+        return true;
+      }
+
+      return false;
+    }
+
+    return false;
+  };
+
+  ChildObserverBinder.prototype.onAdd = function onAdd(element) {
+    if (this.matches(element)) {
+      var value = element.au && element.au.controller ? element.au.controller.viewModel : element;
+
+      if (this.all) {
+        var items = this.viewModel[this.property] || (this.viewModel[this.property] = []);
+
+        if (this.selector === '*') {
+          items.push(value);
+          return true;
+        }
+
+        var index = 0;
+        var prev = element.previousElementSibling;
+
+        while (prev) {
+          if (this.matches(prev)) {
+            index++;
+          }
+
+          prev = prev.previousElementSibling;
+        }
+
+        items.splice(index, 0, value);
+        return true;
+      }
+
+      this.viewModel[this.property] = value;
+
+      if (this.changeHandler !== null) {
+        this.viewModel[this.changeHandler](value);
+      }
+    }
+
+    return false;
+  };
+
+  ChildObserverBinder.prototype.unbind = function unbind() {
+    if (this.viewHost.__childObserver__) {
+      this.viewHost.__childObserver__.disconnect();
+      this.viewHost.__childObserver__ = null;
+    }
+  };
+
+  return ChildObserverBinder;
+}();
+
+function remove(viewSlot, previous) {
+  return Array.isArray(previous) ? viewSlot.removeMany(previous, true) : viewSlot.remove(previous, true);
+}
+
+var SwapStrategies = {
+  before: function before(viewSlot, previous, callback) {
+    return previous === undefined ? callback() : callback().then(function () {
+      return remove(viewSlot, previous);
+    });
+  },
+  with: function _with(viewSlot, previous, callback) {
+    return previous === undefined ? callback() : Promise.all([remove(viewSlot, previous), callback()]);
+  },
+  after: function after(viewSlot, previous, callback) {
+    return Promise.resolve(viewSlot.removeAll(true)).then(callback);
+  }
+};
+
+function tryActivateViewModel(context) {
+  if (context.skipActivation || typeof context.viewModel.activate !== 'function') {
+    return Promise.resolve();
+  }
+
+  return context.viewModel.activate(context.model) || Promise.resolve();
+}
+
+var CompositionEngine = (_dec10 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["f" /* inject */])(ViewEngine, ViewLocator), _dec10(_class17 = function () {
+  function CompositionEngine(viewEngine, viewLocator) {
+    
+
+    this.viewEngine = viewEngine;
+    this.viewLocator = viewLocator;
+  }
+
+  CompositionEngine.prototype._swap = function _swap(context, view) {
+    var swapStrategy = SwapStrategies[context.swapOrder] || SwapStrategies.after;
+    var previousViews = context.viewSlot.children.slice();
+
+    return swapStrategy(context.viewSlot, previousViews, function () {
+      return Promise.resolve(context.viewSlot.add(view)).then(function () {
+        if (context.currentController) {
+          context.currentController.unbind();
+        }
+      });
+    }).then(function () {
+      if (context.compositionTransactionNotifier) {
+        context.compositionTransactionNotifier.done();
+      }
+    });
+  };
+
+  CompositionEngine.prototype._createControllerAndSwap = function _createControllerAndSwap(context) {
+    var _this14 = this;
+
+    return this.createController(context).then(function (controller) {
+      controller.automate(context.overrideContext, context.owningView);
+
+      if (context.compositionTransactionOwnershipToken) {
+        return context.compositionTransactionOwnershipToken.waitForCompositionComplete().then(function () {
+          return _this14._swap(context, controller.view);
+        }).then(function () {
+          return controller;
+        });
+      }
+
+      return _this14._swap(context, controller.view).then(function () {
+        return controller;
+      });
+    });
+  };
+
+  CompositionEngine.prototype.createController = function createController(context) {
+    var _this15 = this;
+
+    var childContainer = void 0;
+    var viewModel = void 0;
+    var viewModelResource = void 0;
+    var m = void 0;
+
+    return this.ensureViewModel(context).then(tryActivateViewModel).then(function () {
+      childContainer = context.childContainer;
+      viewModel = context.viewModel;
+      viewModelResource = context.viewModelResource;
+      m = viewModelResource.metadata;
+
+      var viewStrategy = _this15.viewLocator.getViewStrategy(context.view || viewModel);
+
+      if (context.viewResources) {
+        viewStrategy.makeRelativeTo(context.viewResources.viewUrl);
+      }
+
+      return m.load(childContainer, viewModelResource.value, null, viewStrategy, true);
+    }).then(function (viewFactory) {
+      return m.create(childContainer, BehaviorInstruction.dynamic(context.host, viewModel, viewFactory));
+    });
+  };
+
+  CompositionEngine.prototype.ensureViewModel = function ensureViewModel(context) {
+    var childContainer = context.childContainer = context.childContainer || context.container.createChild();
+
+    if (typeof context.viewModel === 'string') {
+      context.viewModel = context.viewResources ? context.viewResources.relativeToView(context.viewModel) : context.viewModel;
+
+      return this.viewEngine.importViewModelResource(context.viewModel).then(function (viewModelResource) {
+        childContainer.autoRegister(viewModelResource.value);
+
+        if (context.host) {
+          childContainer.registerInstance(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element, context.host);
+        }
+
+        context.viewModel = childContainer.viewModel = childContainer.get(viewModelResource.value);
+        context.viewModelResource = viewModelResource;
+        return context;
+      });
+    }
+
+    var m = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, context.viewModel.constructor);
+    m.elementName = m.elementName || 'dynamic-element';
+    m.initialize(context.container || childContainer, context.viewModel.constructor);
+    context.viewModelResource = { metadata: m, value: context.viewModel.constructor };
+    childContainer.viewModel = context.viewModel;
+    return Promise.resolve(context);
+  };
+
+  CompositionEngine.prototype.compose = function compose(context) {
+    var _this16 = this;
+
+    context.childContainer = context.childContainer || context.container.createChild();
+    context.view = this.viewLocator.getViewStrategy(context.view);
+
+    var transaction = context.childContainer.get(CompositionTransaction);
+    var compositionTransactionOwnershipToken = transaction.tryCapture();
+
+    if (compositionTransactionOwnershipToken) {
+      context.compositionTransactionOwnershipToken = compositionTransactionOwnershipToken;
+    } else {
+      context.compositionTransactionNotifier = transaction.enlist();
+    }
+
+    if (context.viewModel) {
+      return this._createControllerAndSwap(context);
+    } else if (context.view) {
+      if (context.viewResources) {
+        context.view.makeRelativeTo(context.viewResources.viewUrl);
+      }
+
+      return context.view.loadViewFactory(this.viewEngine, new ViewCompileInstruction()).then(function (viewFactory) {
+        var result = viewFactory.create(context.childContainer);
+        result.bind(context.bindingContext, context.overrideContext);
+
+        if (context.compositionTransactionOwnershipToken) {
+          return context.compositionTransactionOwnershipToken.waitForCompositionComplete().then(function () {
+            return _this16._swap(context, result);
+          }).then(function () {
+            return result;
+          });
+        }
+
+        return _this16._swap(context, result).then(function () {
+          return result;
+        });
+      });
+    } else if (context.viewSlot) {
+      context.viewSlot.removeAll();
+
+      if (context.compositionTransactionNotifier) {
+        context.compositionTransactionNotifier.done();
+      }
+
+      return Promise.resolve(null);
+    }
+
+    return Promise.resolve(null);
+  };
+
+  return CompositionEngine;
+}()) || _class17);
+
+var ElementConfigResource = function () {
+  function ElementConfigResource() {
+    
+  }
+
+  ElementConfigResource.prototype.initialize = function initialize(container, target) {};
+
+  ElementConfigResource.prototype.register = function register(registry, name) {};
+
+  ElementConfigResource.prototype.load = function load(container, target) {
+    var config = new target();
+    var eventManager = container.get(__WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["m" /* EventManager */]);
+    eventManager.registerElementConfig(config);
+  };
+
+  return ElementConfigResource;
+}();
+
+function validateBehaviorName(name, type) {
+  if (/[A-Z]/.test(name)) {
+    var newName = _hyphenate(name);
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__["getLogger"]('templating').warn('\'' + name + '\' is not a valid ' + type + ' name and has been converted to \'' + newName + '\'. Upper-case letters are not allowed because the DOM is not case-sensitive.');
+    return newName;
+  }
+  return name;
+}
+
+function resource(instance) {
+  return function (target) {
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, instance, target);
+  };
+}
+
+function behavior(override) {
+  return function (target) {
+    if (override instanceof HtmlBehaviorResource) {
+      __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, override, target);
+    } else {
+      var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, target);
+      Object.assign(r, override);
+    }
+  };
+}
+
+function customElement(name) {
+  return function (target) {
+    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, target);
+    r.elementName = validateBehaviorName(name, 'custom element');
+  };
+}
+
+function customAttribute(name, defaultBindingMode, aliases) {
+  return function (target) {
+    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, target);
+    r.attributeName = validateBehaviorName(name, 'custom attribute');
+    r.attributeDefaultBindingMode = defaultBindingMode;
+    r.aliases = aliases;
+  };
+}
+
+function templateController(target) {
+  var deco = function deco(t) {
+    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
+    r.liftsContent = true;
+  };
+
+  return target ? deco(target) : deco;
+}
+
+function bindable(nameOrConfigOrTarget, key, descriptor) {
+  var deco = function deco(target, key2, descriptor2) {
+    var actualTarget = key2 ? target.constructor : target;
+    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, actualTarget);
+    var prop = void 0;
+
+    if (key2) {
+      nameOrConfigOrTarget = nameOrConfigOrTarget || {};
+      nameOrConfigOrTarget.name = key2;
+    }
+
+    prop = new BindableProperty(nameOrConfigOrTarget);
+    return prop.registerWith(actualTarget, r, descriptor2);
+  };
+
+  if (!nameOrConfigOrTarget) {
+    return deco;
+  }
+
+  if (key) {
+    var _target = nameOrConfigOrTarget;
+    nameOrConfigOrTarget = null;
+    return deco(_target, key, descriptor);
+  }
+
+  return deco;
+}
+
+function dynamicOptions(target) {
+  var deco = function deco(t) {
+    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
+    r.hasDynamicOptions = true;
+  };
+
+  return target ? deco(target) : deco;
+}
+
+var defaultShadowDOMOptions = { mode: 'open' };
+
+function useShadowDOM(targetOrOptions) {
+  var options = typeof targetOrOptions === 'function' || !targetOrOptions ? defaultShadowDOMOptions : targetOrOptions;
+
+  var deco = function deco(t) {
+    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
+    r.targetShadowDOM = true;
+    r.shadowDOMOptions = options;
+  };
+
+  return typeof targetOrOptions === 'function' ? deco(targetOrOptions) : deco;
+}
+
+function processAttributes(processor) {
+  return function (t) {
+    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
+    r.processAttributes = function (compiler, resources, node, attributes, elementInstruction) {
+      try {
+        processor(compiler, resources, node, attributes, elementInstruction);
+      } catch (error) {
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__["getLogger"]('templating').error(error);
+      }
+    };
+  };
+}
+
+function doNotProcessContent() {
+  return false;
+}
+
+function processContent(processor) {
+  return function (t) {
+    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
+    r.processContent = processor ? function (compiler, resources, node, instruction) {
+      try {
+        return processor(compiler, resources, node, instruction);
+      } catch (error) {
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__["getLogger"]('templating').error(error);
+        return false;
+      }
+    } : doNotProcessContent;
+  };
+}
+
+function containerless(target) {
+  var deco = function deco(t) {
+    var r = __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].getOrCreateOwn(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, HtmlBehaviorResource, t);
+    r.containerless = true;
+  };
+
+  return target ? deco(target) : deco;
+}
+
+function useViewStrategy(strategy) {
+  return function (target) {
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(ViewLocator.viewStrategyMetadataKey, strategy, target);
+  };
+}
+
+function useView(path) {
+  return useViewStrategy(new RelativeViewStrategy(path));
+}
+
+function inlineView(markup, dependencies, dependencyBaseUrl) {
+  return useViewStrategy(new InlineViewStrategy(markup, dependencies, dependencyBaseUrl));
+}
+
+function noView(targetOrDependencies, dependencyBaseUrl) {
+  var target = void 0;
+  var dependencies = void 0;
+  if (typeof targetOrDependencies === 'function') {
+    target = targetOrDependencies;
+  } else {
+    dependencies = targetOrDependencies;
+    target = undefined;
+  }
+
+  var deco = function deco(t) {
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(ViewLocator.viewStrategyMetadataKey, new NoViewStrategy(dependencies, dependencyBaseUrl), t);
+  };
+
+  return target ? deco(target) : deco;
+}
+
+function elementConfig(target) {
+  var deco = function deco(t) {
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(__WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].resource, new ElementConfigResource(), t);
+  };
+
+  return target ? deco(target) : deco;
+}
+
+function viewResources() {
+  for (var _len = arguments.length, resources = Array(_len), _key = 0; _key < _len; _key++) {
+    resources[_key] = arguments[_key];
+  }
+
+  return function (target) {
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__["b" /* metadata */].define(ViewEngine.viewModelRequireMetadataKey, resources, target);
+  };
+}
+
+var TemplatingEngine = (_dec11 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__["a" /* Container */], ModuleAnalyzer, ViewCompiler, CompositionEngine), _dec11(_class18 = function () {
+  function TemplatingEngine(container, moduleAnalyzer, viewCompiler, compositionEngine) {
+    
+
+    this._container = container;
+    this._moduleAnalyzer = moduleAnalyzer;
+    this._viewCompiler = viewCompiler;
+    this._compositionEngine = compositionEngine;
+    container.registerInstance(Animator, Animator.instance = new Animator());
+  }
+
+  TemplatingEngine.prototype.configureAnimator = function configureAnimator(animator) {
+    this._container.unregister(Animator);
+    this._container.registerInstance(Animator, Animator.instance = animator);
+  };
+
+  TemplatingEngine.prototype.compose = function compose(context) {
+    return this._compositionEngine.compose(context);
+  };
+
+  TemplatingEngine.prototype.enhance = function enhance(instruction) {
+    if (instruction instanceof __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element) {
+      instruction = { element: instruction };
+    }
+
+    var compilerInstructions = {};
+    var resources = instruction.resources || this._container.get(ViewResources);
+
+    this._viewCompiler._compileNode(instruction.element, resources, compilerInstructions, instruction.element.parentNode, 'root', true);
+
+    var factory = new ViewFactory(instruction.element, compilerInstructions, resources);
+    var container = instruction.container || this._container.createChild();
+    var view = factory.create(container, BehaviorInstruction.enhance());
+
+    view.bind(instruction.bindingContext || {}, instruction.overrideContext);
+
+    view.firstChild = view.lastChild = view.fragment;
+    view.fragment = __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].createDocumentFragment();
+    view.attached();
+
+    return view;
+  };
+
+  return TemplatingEngine;
+}()) || _class18);
 
 /***/ }),
 
@@ -31964,7 +31964,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(23)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17), __webpack_require__(24)))
 
 /***/ }),
 
@@ -33069,7 +33069,7 @@ function addSegment(currentState, segment) {
 /* unused harmony export connectBindingToSignal */
 /* unused harmony export signalBindings */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_metadata__ = __webpack_require__(13);
 
@@ -38598,7 +38598,7 @@ function signalBindings(name) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemplatingRouteLoader; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_path__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_metadata__ = __webpack_require__(13);
@@ -38622,7 +38622,7 @@ var EmptyClass = (_dec = __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["s" /*
   
 }) || _class);
 
-var TemplatingRouteLoader = (_dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["e" /* CompositionEngine */]), _dec2(_class2 = function (_RouteLoader) {
+var TemplatingRouteLoader = (_dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["e" /* CompositionEngine */]), _dec2(_class2 = function (_RouteLoader) {
   _inherits(TemplatingRouteLoader, _RouteLoader);
 
   function TemplatingRouteLoader(compositionEngine) {
@@ -38701,11 +38701,11 @@ function createDynamicClass(moduleId) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _createCSSResource;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_loader__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_path__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(4);
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
@@ -38822,7 +38822,7 @@ function _createCSSResource(address) {
 "use strict";
 /* unused harmony export getElementName */
 /* harmony export (immutable) */ __webpack_exports__["a"] = configure;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dynamic_element__ = __webpack_require__(83);
 
 
@@ -38866,7 +38866,7 @@ function configure(config) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _createDynamicElement;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(6);
 
 
 
@@ -52183,7 +52183,7 @@ class AttributeManager {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 
@@ -53113,14 +53113,14 @@ function polyfillElementClosest() {
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "t", function() { return __WEBPACK_IMPORTED_MODULE_16__collection_collection__["MdCollection"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__collection_md_collection_selector__ = __webpack_require__("aurelia-materialize-bridge/collection/md-collection-selector");
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "w", function() { return __WEBPACK_IMPORTED_MODULE_17__collection_md_collection_selector__["MdCollectionSelector"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__colors_colorValueConverters__ = __webpack_require__("aurelia-materialize-bridge/colors/colorValueConverters");
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_18__colors_colorValueConverters__["DarkenValueConverter"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_18__colors_colorValueConverters__["LightenValueConverter"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__colors_color_value_converters__ = __webpack_require__("aurelia-materialize-bridge/colors/color-value-converters");
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_18__colors_color_value_converters__["DarkenValueConverter"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_18__colors_color_value_converters__["LightenValueConverter"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__colors_md_colors__ = __webpack_require__("aurelia-materialize-bridge/colors/md-colors");
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "x", function() { return __WEBPACK_IMPORTED_MODULE_19__colors_md_colors__["MdColors"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__common_attributeManager__ = __webpack_require__(9);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_20__common_attributeManager__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__common_attributes__ = __webpack_require__(3);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "_10", function() { return __WEBPACK_IMPORTED_MODULE_21__common_attributes__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__common_constants__ = __webpack_require__(47);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "_7", function() { return __WEBPACK_IMPORTED_MODULE_22__common_constants__["a"]; });
@@ -53422,7 +53422,7 @@ var ValidateBindingBehaviorBase = (function () {
             controller = rulesOrController;
         }
         else {
-            controller = source.container.get(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["c" /* Optional */].of(__WEBPACK_IMPORTED_MODULE_1__validation_controller__["a" /* ValidationController */]));
+            controller = source.container.get(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* Optional */].of(__WEBPACK_IMPORTED_MODULE_1__validation_controller__["a" /* ValidationController */]));
             rules = rulesOrController;
         }
         if (controller === null) {
@@ -54631,27 +54631,29 @@ function configure(config) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_loader__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_path__ = __webpack_require__(14);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["d"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["c"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["e"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["f"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__ = __webpack_require__(8);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["w"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["y"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["F"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["w"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["y"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["F"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_aurelia_metadata__ = __webpack_require__(13);
 /* unused harmony namespace reexport */
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["i"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["o"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["p"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["q"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["r"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["t"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["u"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["x"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["i"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["o"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["p"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["q"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["r"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["t"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "p", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["u"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "q", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["x"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2_aurelia_loader__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_8_aurelia_task_queue__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_8_aurelia_task_queue__["a"]; });
 /* unused harmony namespace reexport */
 /* unused harmony namespace reexport */
 
@@ -55131,7 +55133,7 @@ var LogManager = __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__;
 /* unused harmony export DefaultLinkHandler */
 /* harmony export (immutable) */ __webpack_exports__["configure"] = configure;
 /* unused harmony export BrowserHistory */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_history__ = __webpack_require__(33);
 var _class, _temp;
 
@@ -55516,7 +55518,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__scrollfire_scrollfire_patch__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_polyfills__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__exports__ = __webpack_require__(92);
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ScrollfirePatch", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["_6"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdAutoComplete", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["g"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdBadge", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["h"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdBox", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["i"]; });
@@ -55562,6 +55563,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdPushpin", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["O"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdRadio", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["P"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdRange", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["Q"]; });
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ScrollfirePatch", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["_6"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollfireTarget", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["T"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollfire", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["S"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollSpy", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["R"]; });
@@ -55665,20 +55667,20 @@ let MdAutoComplete = class MdAutoComplete {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Number)
 ], MdAutoComplete.prototype, "limit", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Number)
 ], MdAutoComplete.prototype, "minLength", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdAutoComplete.prototype, "values", void 0);
 MdAutoComplete = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-autocomplete"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-autocomplete"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdAutoComplete);
 
@@ -55695,7 +55697,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdBadge", function() { return MdBadge; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -55747,16 +55749,16 @@ let MdBadge = class MdBadge {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdBadge.prototype, "isNew", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdBadge.prototype, "caption", void 0);
 MdBadge = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-badge"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-badge"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdBadge);
 
@@ -55803,12 +55805,12 @@ let MdBox = class MdBox {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdBox.prototype, "caption", void 0);
 MdBox = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-box"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-box"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdBox);
 
@@ -55858,12 +55860,12 @@ let MdBreadcrumbs = class MdBreadcrumbs {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_aurelia_router__["c" /* Router */])
 ], MdBreadcrumbs.prototype, "router", void 0);
 MdBreadcrumbs = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-breadcrumbs"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-breadcrumbs"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_router__["c" /* Router */]])
 ], MdBreadcrumbs);
 
@@ -55874,7 +55876,7 @@ MdBreadcrumbs = __decorate([
 /***/ "aurelia-materialize-bridge/breadcrumbs/breadcrumbs.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -55917,7 +55919,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdButton", function() { return MdButton; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -55996,28 +55998,28 @@ let MdButton = class MdButton {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdButton.prototype, "disabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdButton.prototype, "flat", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdButton.prototype, "floating", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdButton.prototype, "large", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdButton.prototype, "pulse", void 0);
 MdButton = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-button"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-button"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdButton);
 
@@ -56032,7 +56034,7 @@ MdButton = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdCard", function() { return MdCard; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56061,40 +56063,40 @@ let MdCard = class MdCard {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCard.prototype, "mdHorizontal", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCard.prototype, "mdImage", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCard.prototype, "mdReveal", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCard.prototype, "mdAction", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCard.prototype, "mdStickyAction", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneWay }),
     __metadata("design:type", String)
 ], MdCard.prototype, "mdSize", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdCard.prototype, "mdTitle", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdCard.prototype, "mdClass", void 0);
 MdCard = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-card"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-card"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCard);
 
@@ -56105,7 +56107,7 @@ MdCard = __decorate([
 /***/ "aurelia-materialize-bridge/card/card.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -56132,7 +56134,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdCarousel", function() { return MdCarousel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56179,20 +56181,20 @@ let MdCarousel = class MdCarousel {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdCarousel.prototype, "mdIndicators", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCarousel.prototype, "mdSlider", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* children */])("md-carousel-item"),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* children */])("md-carousel-item"),
     __metadata("design:type", Array)
 ], MdCarousel.prototype, "items", void 0);
 MdCarousel = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-carousel"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-carousel"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__["a" /* TaskQueue */]])
 ], MdCarousel);
 
@@ -56226,16 +56228,16 @@ let MdCarouselItem = class MdCarouselItem {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdCarouselItem.prototype, "mdHref", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneWay }),
     __metadata("design:type", String)
 ], MdCarouselItem.prototype, "mdImage", void 0);
 MdCarouselItem = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-carousel-item"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-carousel-item"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCarouselItem);
 
@@ -56253,7 +56255,7 @@ module.exports = "<template class=\"carousel-item\">\n\t<a if.bind=\"mdHref\" hr
 /***/ "aurelia-materialize-bridge/carousel/carousel.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -56320,12 +56322,12 @@ let MdCharCounter = class MdCharCounter {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdCharCounter.prototype, "length", void 0);
 MdCharCounter = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-char-counter"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-char-counter"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCharCounter);
 
@@ -56342,7 +56344,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdCheckbox", function() { return MdCheckbox; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56404,32 +56406,32 @@ let MdCheckbox = MdCheckbox_1 = class MdCheckbox {
 };
 MdCheckbox.id = 0;
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdCheckbox.prototype, "mdChecked", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdCheckbox.prototype, "mdDisabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Boolean)
 ], MdCheckbox.prototype, "mdReadonly", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdCheckbox.prototype, "mdFilledIn", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Function)
 ], MdCheckbox.prototype, "mdMatcher", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdCheckbox.prototype, "mdModel", void 0);
 MdCheckbox = MdCheckbox_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-checkbox"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-checkbox"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCheckbox);
 
@@ -56452,7 +56454,7 @@ module.exports = "<template>\n\t<input type=\"checkbox\" id=\"${controlId}\" che
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdChip", function() { return MdChip; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -56480,11 +56482,11 @@ let MdChip = class MdChip {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdChip.prototype, "mdClose", void 0);
 MdChip = __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdChip);
 
@@ -56495,7 +56497,7 @@ MdChip = __decorate([
 /***/ "aurelia-materialize-bridge/chip/chip.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -56592,24 +56594,24 @@ let MdChips = class MdChips {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdChips.prototype, "autocompleteData", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", Array)
 ], MdChips.prototype, "data", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdChips.prototype, "placeholder", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdChips.prototype, "secondaryPlaceholder", void 0);
 MdChips = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-chips"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-chips"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdChips);
 
@@ -56652,7 +56654,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdCollapsible", function() { return MdCollapsible; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56712,24 +56714,24 @@ let MdCollapsible = class MdCollapsible {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdCollapsible.prototype, "accordion", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdCollapsible.prototype, "popout", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Function)
 ], MdCollapsible.prototype, "onOpen", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Function)
 ], MdCollapsible.prototype, "onClose", void 0);
 MdCollapsible = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-collapsible"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-collapsible"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCollapsible);
 
@@ -56788,8 +56790,8 @@ let MdCollection = class MdCollection {
     }
 };
 MdCollection = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-collection"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-collection"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCollection);
 
@@ -56814,7 +56816,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 let MdCollectionHeader = class MdCollectionHeader {
 };
 MdCollectionHeader = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-collection-header")
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-collection-header")
 ], MdCollectionHeader);
 
 
@@ -56824,7 +56826,7 @@ MdCollectionHeader = __decorate([
 /***/ "aurelia-materialize-bridge/collection/collection-header.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -56860,7 +56862,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 let MdCollectionItem = class MdCollectionItem {
 };
 MdCollectionItem = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-collection-item")
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-collection-item")
 ], MdCollectionItem);
 
 
@@ -56870,7 +56872,7 @@ MdCollectionItem = __decorate([
 /***/ "aurelia-materialize-bridge/collection/collection-item.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -56903,7 +56905,7 @@ module.exports = "<template>\n\t<div class=\"collection\" ref=\"anchor\">\n\t\t<
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdCollectionSelector", function() { return MdCollectionSelector; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -56931,20 +56933,20 @@ let MdCollectionSelector = class MdCollectionSelector {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdCollectionSelector.prototype, "item", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdCollectionSelector.prototype, "mdDisabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* observable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["o" /* observable */],
     __metadata("design:type", Object)
 ], MdCollectionSelector.prototype, "isSelected", void 0);
 MdCollectionSelector = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-collection-selector"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-collection-selector"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCollectionSelector);
 
@@ -56955,7 +56957,7 @@ MdCollectionSelector = __decorate([
 /***/ "aurelia-materialize-bridge/collection/md-collection-selector.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -56974,7 +56976,7 @@ module.exports = "<template>\n\t<require from=\"./md-collection-selector.css\"><
 
 /***/ }),
 
-/***/ "aurelia-materialize-bridge/colors/colorValueConverters":
+/***/ "aurelia-materialize-bridge/colors/color-value-converters":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -56982,7 +56984,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
 // tslint:disable
 function shadeBlendConvert(p, from, to) {
-    if (p < -1 || p > 1 || (from[0] != 'r' && from[0] != '#')) {
+    if (typeof (p) != "number" || p < -1 || p > 1 || typeof (from) != "string" || (from[0] != 'r' && from[0] != '#') || (typeof (to) != "string" && typeof (to) != "undefined")) {
         return null; //ErrorCheck
     }
     let sbcRip = function (d) {
@@ -57059,23 +57061,23 @@ let MdColors = class MdColors {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdColors.prototype, "mdPrimaryColor", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdColors.prototype, "mdAccentColor", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdColors.prototype, "mdErrorColor", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdColors.prototype, "mdSuccessColor", void 0);
 MdColors = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-colors")
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-colors")
 ], MdColors);
 
 
@@ -57085,7 +57087,7 @@ MdColors = __decorate([
 /***/ "aurelia-materialize-bridge/colors/md-colors.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\n\t<require from=\"./colorValueConverters\"></require>\n\n\t<!--\n\t\tAccording to Material color spec (https://www.google.com/design/spec/style/color.html#color-ui-color-application)\n\t\tand using Materialize terminology (darken/lighten instead of hue numbers)\n\t\tthe used palettes here consist of:\n\t\tPrimary - lighten-1 (400), lighten-2 (300), lighten-3 (200)\n\t\tAccent\t- lighten-1 (400), lighten-3 (200)\n\n\t\tThese should optionally be defined by the user. At the moment, they are\n\t\tcalculated and even not exact (but close).\n\n\t\tFocused elements are an exception, these use \"lighten-0.5\" which is\n\t\tnot specified anywhere.\n\t-->\n\n\t<style>\n\t.primary {\n\t\tbackground-color: ${mdPrimaryColor};\n\t\tcolor: white;\n\t}\n\n\t.primary-text {\n\t\t/*background-color: white;*/\n\t\tcolor: ${mdPrimaryColor};\n\t}\n\n\t.waves-effect.waves-primary .waves-ripple {\n\t\tbackground-color: ${mdPrimaryColor};\n\t}\n\n\t.waves-effect.waves-accent .waves-ripple {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t.accent {\n\t\tbackground-color: ${mdAccentColor};\n\t\tcolor: white;\n\t}\n\n\t.accent-text {\n\t\t/*background-color: white;*/\n\t\tcolor: ${mdAccentColor};\n\t}\n\n\t.error {\n\t\tbackground-color: ${mdErrorColor};\n\t}\n\n\t.error-text {\n\t\tcolor: ${mdErrorColor}\n\t}\n\n\t.success {\n\t\tbackground-color: ${mdAccentColor};\n\t\tcolor: white;\n\t}\n\n\t.success-text {\n\t\tcolor: ${mdAccentColor};\n\t}\n\n\t/* buttons */\n\t.btn.primary, .btn-flat.primary, .btn-large.primary {\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.primary:hover, .btn-flat.primary:hover, .btn-large.primary:hover {\n\t\tbackground-color: ${mdPrimaryColor | lighten:1};\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.primary:focus, .btn-flat.primary:focus, .btn-large.primary:focus {\n\t\tbackground-color: ${mdPrimaryColor | lighten:0.5};\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn-flat:not(.disabled):hover {\n\t\t/*background-color: ${mdAccentColor | lighten:3};*/\n\t\tbackground-color: rgba(50, 50, 50, .15);\n\t\tbox-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);\n\t\tborder: none;\n\t\tbox-shadow: none;\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn-flat:focus {\n\t\t/*background-color: ${mdAccentColor | lighten:2};*/\n\t\tbackground-color: transparent;\n\t\tborder: none;\n\t\tbox-shadow: none;\n\t\ttransition: .2s ease-out;\n\t}\n\n\t.btn.accent, .btn-flat.accent, .btn-large.accent {\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.accent:hover, .btn-flat.accent:hover, .btn-large.accent:hover, .btn-floating:hover {\n\t\tbackground-color: ${mdAccentColor | lighten:1};\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.accent:focus, .btn-flat.accent:focus, .btn-large.accent:focus, .btn-floating:focus {\n\t\tbackground-color: ${mdAccentColor | lighten:0.5};\n\t\ttransition: .2s ease-out;\n\t}\n\n\t.btn.error, .btn-flat.error, .btn-large.error {\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.error:hover, .btn-flat.error:hover, .btn-large.error:hover, .btn-floating.error:hover {\n\t\tbackground-color: ${mdErrorColor | lighten:1};\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.error:focus, .btn-flat.error:focus, .btn-large.error:focus, .btn-floating.error:focus {\n\t\tbackground-color: ${mdErrorColor | lighten:0.5};\n\t\ttransition: .2s ease-out;\n\t}\n\t\t\n\t/* checkbox */\n\t[type=\"checkbox\"]:checked + label:before {\n\t\tborder-right-color: ${mdAccentColor};\n\t\tborder-bottom-color: ${mdAccentColor};\n\t}\n\n\t[type=\"checkbox\"].filled-in:checked + label:after {\n\t\tborder-color: ${mdAccentColor};\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t[type=\"checkbox\"]:indeterminate + label:before {\n\t\tborder-right-color: ${mdAccentColor};\n\t}\n\n\t/* collection */\n\tmd-collection .collection md-collection-item.collection-item.active {\n\t\tbackground-color: ${mdAccentColor};\n\t\tcolor: white;\n\t}\n\n\tmd-collection .collection md-collection-item.collection-item .secondary-content {\n\t\tcolor: ${mdAccentColor};\n\t}\n\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.primary {\n\t\tbackground-color: ${mdPrimaryColor};\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.accent {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.error {\n\t\tbackground-color: ${mdErrorColor};\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.success {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.primary-text {\n\t\tcolor: ${mdPrimaryColor};\n\t\tbackground-color: transparent;\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.accent-text {\n\t\tcolor: ${mdAccentColor};\n\t\tbackground-color: transparent;\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.error-text {\n\t\tcolor: ${mdErrorColor};\n\t\tbackground-color: transparent;\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.success-text {\n\t\tcolor: ${mdAccentColor};\n\t\tbackground-color: transparent;\n\t}\t \n\n\n\t/* datepicker */\n\t.picker__date-display {\n\t\tbackground-color: ${mdAccentColor | darken:0.5};\n\t}\n\t.picker__weekday-display {\n\t\tbackground-color: ${mdAccentColor | darken:0.5};\n\t}\n\t.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\t.picker__day.picker__day--today {\n\t\tcolor: ${mdAccentColor}\n\t}\n\t.picker__footer button:not(.picker__clear) {\n\t\tcolor: ${mdAccentColor}\n\t}\n\t.picker__footer button:focus {\n\t\tbackground-color: ${mdAccentColor | lighten:2};\n\t}\n\t[md-datepicker] + i.material-icons.std-icon-fixup {\n\t\tmargin-left: -24px;\n\t\tline-height: 1;\n\t\tmargin-top: 12px;\n\t\tcursor: pointer;\n\t}\n\n\t/* text input */\n\tinput:not([type]):focus:not([readonly]),\n\tinput[type=text]:not(.browser-default):focus:not([readonly]),\n\tinput[type=password]:not(.browser-default):focus:not([readonly]),\n\tinput[type=email]:not(.browser-default):focus:not([readonly]),\n\tinput[type=url]:not(.browser-default):focus:not([readonly]),\n\tinput[type=time]:not(.browser-default):focus:not([readonly]),\n\tinput[type=date]:not(.browser-default):focus:not([readonly]),\n\tinput[type=datetime]:not(.browser-default):focus:not([readonly]),\n\tinput[type=datetime-local]:not(.browser-default):focus:not([readonly]),\n\tinput[type=tel]:not(.browser-default):focus:not([readonly]),\n\tinput[type=number]:not(.browser-default):focus:not([readonly]),\n\tinput[type=search]:not(.browser-default):focus:not([readonly]),\n\ttextarea.materialize-textarea:focus:not([readonly]) {\n\t\tborder-bottom: 1px solid ${mdAccentColor};\n\t\tbox-shadow: 0 1px 0 0 ${mdAccentColor};\n\t}\n\n\t.input-field .prefix.active {\n\t\tcolor: ${mdAccentColor}\n\t}\n\n\t/* text input label */\n\tinput:not([type]):focus:not([readonly]) + label,\n\tinput[type=text]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=password]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=email]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=url]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=time]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=date]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=datetime]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=tel]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=number]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=search]:not(.browser-default):focus:not([readonly]) + label,\n\ttextarea.materialize-textarea:focus:not([readonly]) + label {\n\t\tcolor: ${mdAccentColor}\n\t}\n\n\t/* text input error label */\n\tmd-input input:not([type]).invalid + label:after,\n\tmd-input input:not([type]):focus.invalid + label:after,\n\tmd-input input[type=text].invalid + label:after,\n\tmd-input input[type=text]:focus.invalid + label:after,\n\tmd-input input[type=password].invalid + label:after,\n\tmd-input input[type=password]:focus.invalid + label:after,\n\tmd-input input[type=email].invalid + label:after,\n\tmd-input input[type=email]:focus.invalid + label:after,\n\tmd-input input[type=url].invalid + label:after,\n\tmd-input input[type=url]:focus.invalid + label:after,\n\tmd-input input[type=time].invalid + label:after,\n\tmd-input input[type=time]:focus.invalid + label:after,\n\tmd-input input[type=date].invalid + label:after,\n\tmd-input input[type=date]:focus.invalid + label:after,\n\tmd-input input[type=datetime].invalid + label:after,\n\tmd-input input[type=datetime]:focus.invalid + label:after,\n\tmd-input input[type=datetime-local].invalid + label:after,\n\tmd-input input[type=datetime-local]:focus.invalid + label:after,\n\tmd-input input[type=tel].invalid + label:after,\n\tmd-input input[type=tel]:focus.invalid + label:after,\n\tmd-input input[type=number].invalid + label:after,\n\tmd-input input[type=number]:focus.invalid + label:after,\n\tmd-input input[type=search].invalid + label:after,\n\tmd-input input[type=search]:focus.invalid + label:after,\n\tmd-input textarea.materialize-textarea.invalid + label:after,\n\tmd-input textarea.materialize-textarea:focus.invalid + label:after\n\t{\n\t\tcolor: ${mdErrorColor}\n\t}\n\n\t/* text input success border */\n\tinput:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.browser-default).valid, input[type=text]:not(.browser-default):focus.valid, input[type=password]:not(.browser-default).valid, input[type=password]:not(.browser-default):focus.valid, input[type=email]:not(.browser-default).valid, input[type=email]:not(.browser-default):focus.valid, input[type=url]:not(.browser-default).valid, input[type=url]:not(.browser-default):focus.valid, input[type=time]:not(.browser-default).valid, input[type=time]:not(.browser-default):focus.valid, input[type=date]:not(.browser-default).valid, input[type=date]:not(.browser-default):focus.valid, input[type=datetime]:not(.browser-default).valid, input[type=datetime]:not(.browser-default):focus.valid, input[type=datetime-local]:not(.browser-default).valid, input[type=datetime-local]:not(.browser-default):focus.valid, input[type=tel]:not(.browser-default).valid, input[type=tel]:not(.browser-default):focus.valid, input[type=number]:not(.browser-default).valid, input[type=number]:not(.browser-default):focus.valid, input[type=search]:not(.browser-default).valid, input[type=search]:not(.browser-default):focus.valid, textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {\n\t\tborder-bottom: 1px solid ${mdSuccessColor};\n\t\tbox-shadow: 0 1px 0 0 ${mdSuccessColor};\n\t}\n\n\t/* text input aurelia-validation messages */\n\t.md-input-validation {\n\t\tleft: 0;\n\t\t/*color: #f44336;*/\n\t\tcolor: ${mdErrorColor};\n\t\tfont-size: 0.8rem;\n\t\ttransition: opacity .2s ease-out;\n\t\tmargin-top: -4px;\n\t\tmargin-bottom: 0;\n\t}\n\t@media only screen and (min-width: 0) {\n\t\t.md-input-validation-first {\n\t\t\tmargin-top: -14px;\n\t\t\tmargin-bottom: -2px;\n\t\t}\n\t}\n\t@media only screen and (min-width: 992px) {\n\t\t.md-input-validation-first {\n\t\t\tmargin-top: -18px;\n\t\t\tpadding-bottom: 3px;\n\t\t}\n\t}\n\t@media only screen and (min-width: 1200px) {\n\t\t.md-input-validation-first {\n\t\t\tmargin-top: -19px;\n\t\t}\n\t}\n\n\t/* pagination */\n\tmd-pagination .pagination li.active {\n\t\tbackground-color: ${mdPrimaryColor}\n\t}\n\n\t/* progress */\n\tmd-progress .progress {\n\t\tbackground-color: ${mdAccentColor | lighten:2};\n\t}\n\n\tmd-progress .progress .determinate, md-progress .progress .indeterminate {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t/* radio input */\n\tmd-radio input[type=\"radio\"]:checked + label:after {\n\t\tborder: 2px solid ${mdAccentColor};\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\tmd-radio [type=\"radio\"].with-gap:checked + label:before {\n\t\tborder: 2px solid ${mdAccentColor};\n\t}\n\tmd-radio [type=\"radio\"].with-gap:checked + label:after {\n\t\tborder: 2px solid ${mdAccentColor};\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t/* range */\n\tmd-range .range-field input[type=\"range\"]::-webkit-slider-thumb {\n\t\tbackground: ${mdAccentColor};\n\t}\n\tmd-range .range-field input[type=\"range\"]::-moz-range-thumb {\n\t\tbackground: ${mdAccentColor};\n\t}\n\tmd-range .range-field input[type=\"range\"]::-ms-thumb {\n\t\tbackground: ${mdAccentColor};\n\t}\n\tmd-range input[type=\"range\"] + .thumb {\n\t\tbackground-color: ${mdAccentColor} !important;\n\t}\n\n\t/* select */\n\t.dropdown-content li > a, .dropdown-content li > span {\n\t\tcolor: ${mdAccentColor};\n\t}\n\n\t.select-wrapper input.select-dropdown {\n\t\t-webkit-user-select:none;\n\t\t-moz-user-select:none;\n\t\t-ms-user-select:none;\n\t\t-o-user-select:none;\n\t\tuser-select:none;\n\t}\n\n\t/* side-nav */\n\tmd-sidenav .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {\n\t\tbackground-color: ${mdPrimaryColor};\n\t}\n\n\t.side-nav .collapsible-body > ul:not(.collapsible) > li.active, .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {\n\t\tbackground-color: ${mdPrimaryColor};\n\t}\n\n\t/* slider */\n\t.slider .indicators .indicator-item.active {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t/* switch */\n\tmd-switch.switch label input[type=checkbox]:checked + .lever {\n\t\tbackground-color: ${mdAccentColor | lighten:1};\n\t}\n\tmd-switch.switch label input[type=checkbox]:checked + .lever:after {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t/* tabs */\n\n\t.tab.primary-text a {\n\t\tcolor: ${mdPrimaryColor};\n\t}\n\t.tab.primary-text a.active {\n\t\tcolor: ${mdPrimaryColor};\n\t}\n\t.tab.waves-effect {\n\t\tposition: static;\n\t}\n\t.tab.primary-text a:hover {\n\t\tcolor: ${mdPrimaryColor | lighten:2};\n\t}\n\t.tabs .indicator {\n\t\tbackground-color: ${mdPrimaryColor | lighten:2};\n\t}\n\n\t/* well */\n\tmd-well li.active {\n\t\tborder-right: 2px solid ${mdPrimaryColor};\n\t\tbackground-color: ${mdPrimaryColor | lighten:3};\n\t}\n\n\t/* footer */\n\tfooter.page-footer {\n\t\tbackground-color: ${mdPrimaryColor};\n\t}\n\n\t/* md-select label */\n\t.select-wrapper input {\n\t\t/* make input fit in div */\n\t\tdisplay: inline-block !important;\n\t\t/* fix validation border thickness */\n\t\tborder-bottom: 1px solid #4CAF50;\n\t}\n\n\t.select-wrapper input.invalid {\n\t\tborder-bottom: 1px solid ${mdErrorColor};\n\t}\n\n\t.select-wrapper + label {\n\t\t\n\t\twidth: 100%;\n\t}\n\t/* position validation label */\n\t.select-wrapper + label:after {\n\t\tdisplay: block;\n\t\tcontent: \"\";\n\t\tposition: absolute;\n\t\ttop: 60px;\n\t\topacity: 0;\n\t\ttransition: .2s opacity ease-out, .2s color ease-out;\n\t\ttransform: translateY(0) !important;\n\t}\n\t/* set validation text */\n\t.select-wrapper.invalid + label:after {\n\t\tcontent: attr(data-error);\n\t\tcolor: ${mdErrorColor};\n\t\topacity: 1;\n\t}\n\n\t.select-wrapper .md-select-label {\n\t\tcolor: #9e9e9e;\n\t}\n\n\t.select-wrapper + .md-select-label.md-focused {\n\t\tcolor: ${mdAccentColor};\n\t}\n\n\t</style>\n</template>\n";
+module.exports = "<template>\n\t<require from=\"./color-value-converters\"></require>\n\n\t<!--\n\t\tAccording to Material color spec (https://www.google.com/design/spec/style/color.html#color-ui-color-application)\n\t\tand using Materialize terminology (darken/lighten instead of hue numbers)\n\t\tthe used palettes here consist of:\n\t\tPrimary - lighten-1 (400), lighten-2 (300), lighten-3 (200)\n\t\tAccent\t- lighten-1 (400), lighten-3 (200)\n\n\t\tThese should optionally be defined by the user. At the moment, they are\n\t\tcalculated and even not exact (but close).\n\n\t\tFocused elements are an exception, these use \"lighten-0.5\" which is\n\t\tnot specified anywhere.\n\t-->\n\n\t<style>\n\t.primary {\n\t\tbackground-color: ${mdPrimaryColor};\n\t\tcolor: white;\n\t}\n\n\t.primary-text {\n\t\t/*background-color: white;*/\n\t\tcolor: ${mdPrimaryColor};\n\t}\n\n\t.waves-effect.waves-primary .waves-ripple {\n\t\tbackground-color: ${mdPrimaryColor};\n\t}\n\n\t.waves-effect.waves-accent .waves-ripple {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t.accent {\n\t\tbackground-color: ${mdAccentColor};\n\t\tcolor: white;\n\t}\n\n\t.accent-text {\n\t\t/*background-color: white;*/\n\t\tcolor: ${mdAccentColor};\n\t}\n\n\t.error {\n\t\tbackground-color: ${mdErrorColor};\n\t}\n\n\t.error-text {\n\t\tcolor: ${mdErrorColor}\n\t}\n\n\t.success {\n\t\tbackground-color: ${mdAccentColor};\n\t\tcolor: white;\n\t}\n\n\t.success-text {\n\t\tcolor: ${mdAccentColor};\n\t}\n\n\t/* buttons */\n\t.btn.primary, .btn-flat.primary, .btn-large.primary {\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.primary:hover, .btn-flat.primary:hover, .btn-large.primary:hover {\n\t\tbackground-color: ${mdPrimaryColor | lighten:1};\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.primary:focus, .btn-flat.primary:focus, .btn-large.primary:focus {\n\t\tbackground-color: ${mdPrimaryColor | lighten:0.5};\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn-flat:not(.disabled):hover {\n\t\t/*background-color: ${mdAccentColor | lighten:3};*/\n\t\tbackground-color: rgba(50, 50, 50, .15);\n\t\tbox-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);\n\t\tborder: none;\n\t\tbox-shadow: none;\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn-flat:focus {\n\t\t/*background-color: ${mdAccentColor | lighten:2};*/\n\t\tbackground-color: transparent;\n\t\tborder: none;\n\t\tbox-shadow: none;\n\t\ttransition: .2s ease-out;\n\t}\n\n\t.btn.accent, .btn-flat.accent, .btn-large.accent {\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.accent:hover, .btn-flat.accent:hover, .btn-large.accent:hover, .btn-floating:hover {\n\t\tbackground-color: ${mdAccentColor | lighten:1};\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.accent:focus, .btn-flat.accent:focus, .btn-large.accent:focus, .btn-floating:focus {\n\t\tbackground-color: ${mdAccentColor | lighten:0.5};\n\t\ttransition: .2s ease-out;\n\t}\n\n\t.btn.error, .btn-flat.error, .btn-large.error {\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.error:hover, .btn-flat.error:hover, .btn-large.error:hover, .btn-floating.error:hover {\n\t\tbackground-color: ${mdErrorColor | lighten:1};\n\t\ttransition: .2s ease-out;\n\t}\n\t.btn.error:focus, .btn-flat.error:focus, .btn-large.error:focus, .btn-floating.error:focus {\n\t\tbackground-color: ${mdErrorColor | lighten:0.5};\n\t\ttransition: .2s ease-out;\n\t}\n\t\t\n\t/* checkbox */\n\t[type=\"checkbox\"]:checked + label:before {\n\t\tborder-right-color: ${mdAccentColor};\n\t\tborder-bottom-color: ${mdAccentColor};\n\t}\n\n\t[type=\"checkbox\"].filled-in:checked + label:after {\n\t\tborder-color: ${mdAccentColor};\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t[type=\"checkbox\"]:indeterminate + label:before {\n\t\tborder-right-color: ${mdAccentColor};\n\t}\n\n\t/* collection */\n\tmd-collection .collection md-collection-item.collection-item.active {\n\t\tbackground-color: ${mdAccentColor};\n\t\tcolor: white;\n\t}\n\n\tmd-collection .collection md-collection-item.collection-item .secondary-content {\n\t\tcolor: ${mdAccentColor};\n\t}\n\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.primary {\n\t\tbackground-color: ${mdPrimaryColor};\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.accent {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.error {\n\t\tbackground-color: ${mdErrorColor};\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.success {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.primary-text {\n\t\tcolor: ${mdPrimaryColor};\n\t\tbackground-color: transparent;\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.accent-text {\n\t\tcolor: ${mdAccentColor};\n\t\tbackground-color: transparent;\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.error-text {\n\t\tcolor: ${mdErrorColor};\n\t\tbackground-color: transparent;\n\t}\n\tmd-collection .collection md-collection-item.collection-item.avatar i.circle.success-text {\n\t\tcolor: ${mdAccentColor};\n\t\tbackground-color: transparent;\n\t}\t \n\n\n\t/* datepicker */\n\t.picker__date-display {\n\t\tbackground-color: ${mdAccentColor | darken:0.5};\n\t}\n\t.picker__weekday-display {\n\t\tbackground-color: ${mdAccentColor | darken:0.5};\n\t}\n\t.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\t.picker__day.picker__day--today {\n\t\tcolor: ${mdAccentColor}\n\t}\n\t.picker__footer button:not(.picker__clear) {\n\t\tcolor: ${mdAccentColor}\n\t}\n\t.picker__footer button:focus {\n\t\tbackground-color: ${mdAccentColor | lighten:2};\n\t}\n\t[md-datepicker] + i.material-icons.std-icon-fixup {\n\t\tmargin-left: -24px;\n\t\tline-height: 1;\n\t\tmargin-top: 12px;\n\t\tcursor: pointer;\n\t}\n\n\t/* text input */\n\tinput:not([type]):focus:not([readonly]),\n\tinput[type=text]:not(.browser-default):focus:not([readonly]),\n\tinput[type=password]:not(.browser-default):focus:not([readonly]),\n\tinput[type=email]:not(.browser-default):focus:not([readonly]),\n\tinput[type=url]:not(.browser-default):focus:not([readonly]),\n\tinput[type=time]:not(.browser-default):focus:not([readonly]),\n\tinput[type=date]:not(.browser-default):focus:not([readonly]),\n\tinput[type=datetime]:not(.browser-default):focus:not([readonly]),\n\tinput[type=datetime-local]:not(.browser-default):focus:not([readonly]),\n\tinput[type=tel]:not(.browser-default):focus:not([readonly]),\n\tinput[type=number]:not(.browser-default):focus:not([readonly]),\n\tinput[type=search]:not(.browser-default):focus:not([readonly]),\n\ttextarea.materialize-textarea:focus:not([readonly]) {\n\t\tborder-bottom: 1px solid ${mdAccentColor};\n\t\tbox-shadow: 0 1px 0 0 ${mdAccentColor};\n\t}\n\n\t.input-field .prefix.active {\n\t\tcolor: ${mdAccentColor}\n\t}\n\n\t/* text input label */\n\tinput:not([type]):focus:not([readonly]) + label,\n\tinput[type=text]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=password]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=email]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=url]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=time]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=date]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=datetime]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=tel]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=number]:not(.browser-default):focus:not([readonly]) + label,\n\tinput[type=search]:not(.browser-default):focus:not([readonly]) + label,\n\ttextarea.materialize-textarea:focus:not([readonly]) + label {\n\t\tcolor: ${mdAccentColor}\n\t}\n\n\t/* text input error label */\n\tmd-input input:not([type]).invalid + label:after,\n\tmd-input input:not([type]):focus.invalid + label:after,\n\tmd-input input[type=text].invalid + label:after,\n\tmd-input input[type=text]:focus.invalid + label:after,\n\tmd-input input[type=password].invalid + label:after,\n\tmd-input input[type=password]:focus.invalid + label:after,\n\tmd-input input[type=email].invalid + label:after,\n\tmd-input input[type=email]:focus.invalid + label:after,\n\tmd-input input[type=url].invalid + label:after,\n\tmd-input input[type=url]:focus.invalid + label:after,\n\tmd-input input[type=time].invalid + label:after,\n\tmd-input input[type=time]:focus.invalid + label:after,\n\tmd-input input[type=date].invalid + label:after,\n\tmd-input input[type=date]:focus.invalid + label:after,\n\tmd-input input[type=datetime].invalid + label:after,\n\tmd-input input[type=datetime]:focus.invalid + label:after,\n\tmd-input input[type=datetime-local].invalid + label:after,\n\tmd-input input[type=datetime-local]:focus.invalid + label:after,\n\tmd-input input[type=tel].invalid + label:after,\n\tmd-input input[type=tel]:focus.invalid + label:after,\n\tmd-input input[type=number].invalid + label:after,\n\tmd-input input[type=number]:focus.invalid + label:after,\n\tmd-input input[type=search].invalid + label:after,\n\tmd-input input[type=search]:focus.invalid + label:after,\n\tmd-input textarea.materialize-textarea.invalid + label:after,\n\tmd-input textarea.materialize-textarea:focus.invalid + label:after\n\t{\n\t\tcolor: ${mdErrorColor}\n\t}\n\n\t/* text input success border */\n\tinput:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.browser-default).valid, input[type=text]:not(.browser-default):focus.valid, input[type=password]:not(.browser-default).valid, input[type=password]:not(.browser-default):focus.valid, input[type=email]:not(.browser-default).valid, input[type=email]:not(.browser-default):focus.valid, input[type=url]:not(.browser-default).valid, input[type=url]:not(.browser-default):focus.valid, input[type=time]:not(.browser-default).valid, input[type=time]:not(.browser-default):focus.valid, input[type=date]:not(.browser-default).valid, input[type=date]:not(.browser-default):focus.valid, input[type=datetime]:not(.browser-default).valid, input[type=datetime]:not(.browser-default):focus.valid, input[type=datetime-local]:not(.browser-default).valid, input[type=datetime-local]:not(.browser-default):focus.valid, input[type=tel]:not(.browser-default).valid, input[type=tel]:not(.browser-default):focus.valid, input[type=number]:not(.browser-default).valid, input[type=number]:not(.browser-default):focus.valid, input[type=search]:not(.browser-default).valid, input[type=search]:not(.browser-default):focus.valid, textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {\n\t\tborder-bottom: 1px solid ${mdSuccessColor};\n\t\tbox-shadow: 0 1px 0 0 ${mdSuccessColor};\n\t}\n\n\t/* text input aurelia-validation messages */\n\t.md-input-validation {\n\t\tleft: 0;\n\t\t/*color: #f44336;*/\n\t\tcolor: ${mdErrorColor};\n\t\tfont-size: 0.8rem;\n\t\ttransition: opacity .2s ease-out;\n\t\tmargin-top: -4px;\n\t\tmargin-bottom: 0;\n\t}\n\t@media only screen and (min-width: 0) {\n\t\t.md-input-validation-first {\n\t\t\tmargin-top: -14px;\n\t\t\tmargin-bottom: -2px;\n\t\t}\n\t}\n\t@media only screen and (min-width: 992px) {\n\t\t.md-input-validation-first {\n\t\t\tmargin-top: -18px;\n\t\t\tpadding-bottom: 3px;\n\t\t}\n\t}\n\t@media only screen and (min-width: 1200px) {\n\t\t.md-input-validation-first {\n\t\t\tmargin-top: -19px;\n\t\t}\n\t}\n\n\t/* pagination */\n\tmd-pagination .pagination li.active {\n\t\tbackground-color: ${mdPrimaryColor}\n\t}\n\n\t/* progress */\n\tmd-progress .progress {\n\t\tbackground-color: ${mdAccentColor | lighten:2};\n\t}\n\n\tmd-progress .progress .determinate, md-progress .progress .indeterminate {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t/* radio input */\n\tmd-radio input[type=\"radio\"]:checked + label:after {\n\t\tborder: 2px solid ${mdAccentColor};\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\tmd-radio [type=\"radio\"].with-gap:checked + label:before {\n\t\tborder: 2px solid ${mdAccentColor};\n\t}\n\tmd-radio [type=\"radio\"].with-gap:checked + label:after {\n\t\tborder: 2px solid ${mdAccentColor};\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t/* range */\n\tmd-range .range-field input[type=\"range\"]::-webkit-slider-thumb {\n\t\tbackground: ${mdAccentColor};\n\t}\n\tmd-range .range-field input[type=\"range\"]::-moz-range-thumb {\n\t\tbackground: ${mdAccentColor};\n\t}\n\tmd-range .range-field input[type=\"range\"]::-ms-thumb {\n\t\tbackground: ${mdAccentColor};\n\t}\n\tmd-range input[type=\"range\"] + .thumb {\n\t\tbackground-color: ${mdAccentColor} !important;\n\t}\n\n\t/* select */\n\t.dropdown-content li > a, .dropdown-content li > span {\n\t\tcolor: ${mdAccentColor};\n\t}\n\n\t.select-wrapper input.select-dropdown {\n\t\t-webkit-user-select:none;\n\t\t-moz-user-select:none;\n\t\t-ms-user-select:none;\n\t\t-o-user-select:none;\n\t\tuser-select:none;\n\t}\n\n\t/* side-nav */\n\tmd-sidenav .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {\n\t\tbackground-color: ${mdPrimaryColor};\n\t}\n\n\t.side-nav .collapsible-body > ul:not(.collapsible) > li.active, .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {\n\t\tbackground-color: ${mdPrimaryColor};\n\t}\n\n\t/* slider */\n\t.slider .indicators .indicator-item.active {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t/* switch */\n\tmd-switch.switch label input[type=checkbox]:checked + .lever {\n\t\tbackground-color: ${mdAccentColor | lighten:1};\n\t}\n\tmd-switch.switch label input[type=checkbox]:checked + .lever:after {\n\t\tbackground-color: ${mdAccentColor};\n\t}\n\n\t/* tabs */\n\n\t.tab.primary-text a {\n\t\tcolor: ${mdPrimaryColor};\n\t}\n\t.tab.primary-text a.active {\n\t\tcolor: ${mdPrimaryColor};\n\t}\n\t.tab.waves-effect {\n\t\tposition: static;\n\t}\n\t.tab.primary-text a:hover {\n\t\tcolor: ${mdPrimaryColor | lighten:2};\n\t}\n\t.tabs .indicator {\n\t\tbackground-color: ${mdPrimaryColor | lighten:2};\n\t}\n\n\t/* well */\n\tmd-well li.active {\n\t\tborder-right: 2px solid ${mdPrimaryColor};\n\t\tbackground-color: ${mdPrimaryColor | lighten:3};\n\t}\n\n\t/* footer */\n\tfooter.page-footer {\n\t\tbackground-color: ${mdPrimaryColor};\n\t}\n\n\t/* md-select label */\n\t.select-wrapper input {\n\t\t/* make input fit in div */\n\t\tdisplay: inline-block !important;\n\t\t/* fix validation border thickness */\n\t\tborder-bottom: 1px solid #4CAF50;\n\t}\n\n\t.select-wrapper input.invalid {\n\t\tborder-bottom: 1px solid ${mdErrorColor};\n\t}\n\n\t.select-wrapper + label {\n\t\t\n\t\twidth: 100%;\n\t}\n\t/* position validation label */\n\t.select-wrapper + label:after {\n\t\tdisplay: block;\n\t\tcontent: \"\";\n\t\tposition: absolute;\n\t\ttop: 60px;\n\t\topacity: 0;\n\t\ttransition: .2s opacity ease-out, .2s color ease-out;\n\t\ttransform: translateY(0) !important;\n\t}\n\t/* set validation text */\n\t.select-wrapper.invalid + label:after {\n\t\tcontent: attr(data-error);\n\t\tcolor: ${mdErrorColor};\n\t\topacity: 1;\n\t}\n\n\t.select-wrapper .md-select-label {\n\t\tcolor: #9e9e9e;\n\t}\n\n\t.select-wrapper + .md-select-label.md-focused {\n\t\tcolor: ${mdAccentColor};\n\t}\n\n\t</style>\n</template>\n";
 
 /***/ }),
 
@@ -57098,7 +57100,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__datepicker_default_parser__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57312,40 +57314,40 @@ let MdDatePicker = class MdDatePicker {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Element)
 ], MdDatePicker.prototype, "container", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdDatePicker.prototype, "translation", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", Date)
 ], MdDatePicker.prototype, "value", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", Array)
 ], MdDatePicker.prototype, "parsers", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Boolean)
 ], MdDatePicker.prototype, "selectMonths", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDatePicker.prototype, "selectYears", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDatePicker.prototype, "options", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdDatePicker.prototype, "showErrortext", void 0);
 MdDatePicker = __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-datepicker"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-datepicker"),
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__["a" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4__datepicker_default_parser__["a" /* DatePickerDefaultParser */]])
 ], MdDatePicker);
 
@@ -57362,7 +57364,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdDropdown", function() { return MdDropdown; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57434,52 +57436,52 @@ let MdDropdown = MdDropdown_1 = class MdDropdown {
 };
 MdDropdown.elementId = 0;
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "activates", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Element)
 ], MdDropdown.prototype, "ref", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdDropdown.prototype, "alignment", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "belowOrigin", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "constrainWidth", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "gutter", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "hover", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdDropdown.prototype, "mdTitle", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "inDuration", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "outDuration", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "stopPropagation", void 0);
 MdDropdown = MdDropdown_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-dropdown"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-dropdown"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdDropdown);
 
@@ -57495,7 +57497,7 @@ var MdDropdown_1;
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MdDropdownElement; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57535,44 +57537,44 @@ let MdDropdownElement = MdDropdownElement_1 = class MdDropdownElement {
 };
 MdDropdownElement.id = 0;
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdDropdownElement.prototype, "alignment", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "belowOrigin", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "constrainWidth", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Number)
 ], MdDropdownElement.prototype, "gutter", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "hover", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdDropdownElement.prototype, "mdTitle", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "inDuration", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "outDuration", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "stopPropagation", void 0);
 MdDropdownElement = MdDropdownElement_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-dropdown"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-dropdown"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdDropdownElement);
 
@@ -57596,7 +57598,7 @@ module.exports = "<template md-button class=\"dropdown-button\" data-activates=\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdFab", function() { return MdFab; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57619,16 +57621,16 @@ let MdFab = class MdFab {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdFab.prototype, "mdFixed", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdFab.prototype, "mdLarge", void 0);
 MdFab = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-fab"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */]
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-fab"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */]
 ], MdFab);
 
 
@@ -57650,7 +57652,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdFileInput", function() { return MdFileInput; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_events__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57690,28 +57692,28 @@ let MdFileInput = class MdFileInput {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdCaption", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdMultiple", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdLabelValue", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdFileInput.prototype, "disabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdReadonly", void 0);
 MdFileInput = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-file"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-file"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdFileInput);
 
@@ -57759,8 +57761,8 @@ let MdFooter = class MdFooter {
     }
 };
 MdFooter = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-footer"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-footer"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdFooter);
 
@@ -57776,7 +57778,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdInput", function() { return MdInput; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__input_update_service__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57911,80 +57913,80 @@ let MdInput = MdInput_1 = class MdInput {
 };
 MdInput.id = 0;
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdInput.prototype, "mdLabel", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdBlurOnEnter", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdDisabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdReadonly", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdPlaceholder", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdTextArea", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdType", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdStep", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdValidate", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdShowErrortext", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Array)
 ], MdInput.prototype, "mdUpdateTrigger", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdInput.prototype, "mdValidateError", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdInput.prototype, "mdValidateSuccess", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdValue", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdMin", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdMax", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdName", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Number)
 ], MdInput.prototype, "mdMaxlength", void 0);
 MdInput = MdInput_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-input"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-input"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__["a" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_3__input_update_service__["a" /* MdInputUpdateService */]])
 ], MdInput);
 
@@ -58026,8 +58028,8 @@ let MdPrefix = class MdPrefix {
     }
 };
 MdPrefix = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-prefix"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-prefix"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdPrefix);
 
@@ -58038,7 +58040,7 @@ MdPrefix = __decorate([
 /***/ "aurelia-materialize-bridge/input/input.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -58065,7 +58067,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdModal", function() { return MdModal; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_attributeManager__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -58128,32 +58130,32 @@ let MdModal = class MdModal {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["f" /* bindable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */])(),
     __metadata("design:type", Object)
 ], MdModal.prototype, "dismissible", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdModal.prototype, "opacity", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdModal.prototype, "inDuration", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdModal.prototype, "outDuration", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdModal.prototype, "startingTop", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdModal.prototype, "endingTop", void 0);
 MdModal = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["j" /* customAttribute */])("md-modal"),
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["k" /* customAttribute */])("md-modal"),
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdModal);
 
@@ -58169,7 +58171,7 @@ MdModal = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdModalTrigger", function() { return MdModalTrigger; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributeManager__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -58207,12 +58209,12 @@ let MdModalTrigger = class MdModalTrigger {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])(),
     __metadata("design:type", Object)
 ], MdModalTrigger.prototype, "dismissible", void 0);
 MdModalTrigger = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-modal-trigger"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-modal-trigger"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdModalTrigger);
 
@@ -58228,7 +58230,7 @@ MdModalTrigger = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdNavbar", function() { return MdNavbar; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributeManager__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58272,20 +58274,20 @@ let MdNavbar = class MdNavbar {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdNavbar.prototype, "mdExtended", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdNavbar.prototype, "mdFixed", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdNavbar.prototype, "mdAutoHeight", void 0);
 MdNavbar = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-navbar"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-navbar"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdNavbar);
 
@@ -58296,7 +58298,7 @@ MdNavbar = __decorate([
 /***/ "aurelia-materialize-bridge/navbar/navbar.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -58323,7 +58325,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdPagination", function() { return MdPagination; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_events__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58409,36 +58411,36 @@ let MdPagination = class MdPagination {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", Number)
 ], MdPagination.prototype, "mdActivePage", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneWay }),
     __metadata("design:type", Object)
 ], MdPagination.prototype, "mdPages", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneWay }),
     __metadata("design:type", Object)
 ], MdPagination.prototype, "mdVisiblePageLinks", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneWay }),
     __metadata("design:type", Array)
 ], MdPagination.prototype, "mdPageLinks", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdPagination.prototype, "mdShowFirstLast", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdPagination.prototype, "mdShowPrevNext", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdPagination.prototype, "mdShowPageLinks", void 0);
 MdPagination = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-pagination"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-pagination"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdPagination);
 
@@ -58459,7 +58461,7 @@ module.exports = "<template>\n\t<ul class=\"pagination\">\n\t\t<template if.bind
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdParallax", function() { return MdParallax; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58485,7 +58487,7 @@ let MdParallax = class MdParallax {
 };
 MdParallax = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /* customAttribute */])("md-parallax"),
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["d" /* autoinject */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["e" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdParallax);
 
@@ -58540,28 +58542,28 @@ let MdProgress = class MdProgress {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdProgress.prototype, "mdColor", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdProgress.prototype, "mdPixelSize", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdProgress.prototype, "mdSize", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdProgress.prototype, "mdType", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", Number)
 ], MdProgress.prototype, "mdValue", void 0);
 MdProgress = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-progress"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-progress"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdProgress);
 
@@ -58612,20 +58614,20 @@ let MdPushpin = class MdPushpin {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdPushpin.prototype, "bottom", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdPushpin.prototype, "offset", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdPushpin.prototype, "top", void 0);
 MdPushpin = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-pushpin"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-pushpin"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdPushpin);
 
@@ -58642,7 +58644,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdRadio", function() { return MdRadio; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58687,36 +58689,36 @@ let MdRadio = MdRadio_1 = class MdRadio {
 };
 MdRadio.id = 0;
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdRadio.prototype, "mdChecked", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdRadio.prototype, "mdDisabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdRadio.prototype, "mdReadonly", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdRadio.prototype, "mdGap", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdRadio.prototype, "mdModel", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdRadio.prototype, "mdName", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdRadio.prototype, "mdValue", void 0);
 MdRadio = MdRadio_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-radio"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-radio"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdRadio);
 
@@ -58759,28 +58761,28 @@ let MdRange = class MdRange {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdRange.prototype, "mdReadonly", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdRange.prototype, "mdMin", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdRange.prototype, "mdMax", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdRange.prototype, "mdStep", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdRange.prototype, "mdValue", void 0);
 MdRange = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-range"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */]
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-range"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */]
 ], MdRange);
 
 
@@ -58790,7 +58792,7 @@ MdRange = __decorate([
 /***/ "aurelia-materialize-bridge/range/range.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -58859,8 +58861,8 @@ let MdScrollfire = class MdScrollfire {
     }
 };
 MdScrollfire = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-scrollfire"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-scrollfire"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdScrollfire);
 
@@ -58893,16 +58895,16 @@ let MdScrollfireTarget = class MdScrollfireTarget {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Function)
 ], MdScrollfireTarget.prototype, "callback", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Number)
 ], MdScrollfireTarget.prototype, "offset", void 0);
 MdScrollfireTarget = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-scrollfire-target"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */]
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-scrollfire-target"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */]
 ], MdScrollfireTarget);
 
 
@@ -58938,12 +58940,12 @@ let MdScrollSpy = class MdScrollSpy {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdScrollSpy.prototype, "target", void 0);
 MdScrollSpy = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-scrollspy"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-scrollspy"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdScrollSpy);
 
@@ -58963,8 +58965,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_events__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__common_attributes__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_pal__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59303,28 +59305,28 @@ let MdSelect = class MdSelect {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdSelect.prototype, "disabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdSelect.prototype, "readonly", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdSelect.prototype, "enableOptionObserver", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdSelect.prototype, "label", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdSelect.prototype, "showErrortext", void 0);
 MdSelect = __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-select"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-select"),
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__["g" /* BindingEngine */], __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__["a" /* TaskQueue */]])
 ], MdSelect);
 
@@ -59340,7 +59342,7 @@ MdSelect = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdSidenav", function() { return MdSidenav; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributeManager__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_logging__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -59397,24 +59399,24 @@ let MdSidenav = MdSidenav_1 = class MdSidenav {
 };
 MdSidenav.id = 0;
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdSidenav.prototype, "mdCloseOnClick", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdSidenav.prototype, "mdEdge", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdSidenav.prototype, "mdFixed", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdSidenav.prototype, "mdWidth", void 0);
 MdSidenav = MdSidenav_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-sidenav"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-sidenav"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdSidenav);
 
@@ -59431,7 +59433,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdSidenavCollapse", function() { return MdSidenavCollapse; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_events__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sidenav__ = __webpack_require__("aurelia-materialize-bridge/sidenav/sidenav");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -59496,12 +59498,12 @@ let MdSidenavCollapse = class MdSidenavCollapse {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_4__sidenav__["MdSidenav"])
 ], MdSidenavCollapse.prototype, "ref", void 0);
 MdSidenavCollapse = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-sidenav-collapse"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-sidenav-collapse"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdSidenavCollapse);
 
@@ -59513,7 +59515,7 @@ MdSidenavCollapse = __decorate([
 /***/ "aurelia-materialize-bridge/sidenav/sidenav.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -59539,7 +59541,7 @@ module.exports = "<template>\n  <require from=\"./sidenav.css\"></require>\n  <d
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdSlider", function() { return MdSlider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -59596,28 +59598,28 @@ let MdSlider = class MdSlider {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdSlider.prototype, "mdFillContainer", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdSlider.prototype, "mdHeight", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdSlider.prototype, "mdIndicators", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdSlider.prototype, "mdInterval", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdSlider.prototype, "mdTransition", void 0);
 MdSlider = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-slider"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-slider"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdSlider);
 
@@ -59629,7 +59631,7 @@ MdSlider = __decorate([
 /***/ "aurelia-materialize-bridge/slider/slider.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -59655,7 +59657,7 @@ module.exports = "<template class=\"slider\">\n  <require from=\"./slider.css\">
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdSwitch", function() { return MdSwitch; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -59707,28 +59709,28 @@ let MdSwitch = class MdSwitch {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdSwitch.prototype, "mdChecked", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdSwitch.prototype, "mdDisabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdSwitch.prototype, "mdReadonly", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdSwitch.prototype, "mdLabelOff", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdSwitch.prototype, "mdLabelOn", void 0);
 MdSwitch = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-switch"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-switch"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdSwitch);
 
@@ -59739,7 +59741,7 @@ MdSwitch = __decorate([
 /***/ "aurelia-materialize-bridge/switch/switch.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -59768,7 +59770,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_events__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59893,28 +59895,28 @@ let MdTabs = class MdTabs {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdTabs.prototype, "fixed", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Function)
 ], MdTabs.prototype, "onShow", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdTabs.prototype, "responsiveThreshold", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdTabs.prototype, "swipeable", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdTabs.prototype, "transparent", void 0);
 MdTabs = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-tabs"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-tabs"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__["a" /* TaskQueue */]])
 ], MdTabs);
 
@@ -59970,12 +59972,12 @@ let MdTapTarget = MdTapTarget_1 = class MdTapTarget {
 };
 MdTapTarget.controlId = 0;
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", HTMLElement)
 ], MdTapTarget.prototype, "mdRef", void 0);
 MdTapTarget = MdTapTarget_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("md-tap-target"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-tap-target"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdTapTarget);
 
@@ -59999,7 +60001,7 @@ module.exports = "<template class=\"tap-target\">\n  <div class=\"tap-target-con
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdTimePicker", function() { return MdTimePicker; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60043,16 +60045,16 @@ let MdTimePicker = class MdTimePicker {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdTimePicker.prototype, "twelveHour", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
     __metadata("design:type", String)
 ], MdTimePicker.prototype, "value", void 0);
 MdTimePicker = __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-timepicker"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-timepicker"),
     __metadata("design:paramtypes", [Element])
 ], MdTimePicker);
 
@@ -60069,7 +60071,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdTooltip", function() { return MdTooltip; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60117,24 +60119,24 @@ let MdTooltip = class MdTooltip {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdTooltip.prototype, "position", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdTooltip.prototype, "delay", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", Object)
 ], MdTooltip.prototype, "html", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", String)
 ], MdTooltip.prototype, "text", void 0);
 MdTooltip = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-tooltip"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-tooltip"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdTooltip);
 
@@ -60186,12 +60188,12 @@ let MdFadeinImage = class MdFadeinImage {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", HTMLElement)
 ], MdFadeinImage.prototype, "ref", void 0);
 MdFadeinImage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-fadein-image"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-fadein-image"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdFadeinImage);
 
@@ -60246,12 +60248,12 @@ let MdStaggeredList = class MdStaggeredList {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
     __metadata("design:type", HTMLElement)
 ], MdStaggeredList.prototype, "ref", void 0);
 MdStaggeredList = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-staggered-list"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-staggered-list"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdStaggeredList);
 
@@ -60268,7 +60270,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdWaves", function() { return MdWaves; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_builder__ = __webpack_require__(46);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -60316,20 +60318,20 @@ let MdWaves = class MdWaves {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdWaves.prototype, "block", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdWaves.prototype, "circle", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdWaves.prototype, "color", void 0);
 MdWaves = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("md-waves"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-waves"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_3__config_builder__["a" /* ConfigBuilder */]])
 ], MdWaves);
 
@@ -60343,7 +60345,7 @@ MdWaves = __decorate([
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_router__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60383,7 +60385,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_FEATURE", function() { return _FEATURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_DOM", function() { return _DOM; });
 /* harmony export (immutable) */ __webpack_exports__["initialize"] = initialize;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
@@ -60899,7 +60901,7 @@ function initialize() {
 /* harmony export (immutable) */ __webpack_exports__["configure"] = configure;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(6);
 var _class, _temp, _dec, _class2, _class3, _temp2, _class4, _temp3;
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -61564,7 +61566,7 @@ function configure(config) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "configure", function() { return configure; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compose__ = __webpack_require__("aurelia-templating-resources/compose");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__if__ = __webpack_require__("aurelia-templating-resources/if");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__else__ = __webpack_require__("aurelia-templating-resources/else");
@@ -61575,7 +61577,7 @@ function configure(config) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__sanitize_html__ = __webpack_require__("aurelia-templating-resources/sanitize-html");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__replaceable__ = __webpack_require__("aurelia-templating-resources/replaceable");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__focus__ = __webpack_require__("aurelia-templating-resources/focus");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__css_resource__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__html_sanitizer__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__attr_binding_behavior__ = __webpack_require__("aurelia-templating-resources/attr-binding-behavior");
@@ -61596,7 +61598,7 @@ function configure(config) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__number_repeat_strategy__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__repeat_utilities__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__analyze_view_factory__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__aurelia_hide_style__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__aurelia_hide_style__ = __webpack_require__(25);
 /* unused harmony reexport Compose */
 /* unused harmony reexport If */
 /* unused harmony reexport Else */
@@ -61774,8 +61776,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(4);
 var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
 function _initDefineProp(target, property, descriptor, context) {
@@ -61831,7 +61833,7 @@ function _initializerWarningHelper(descriptor, context) {
 
 var logger = __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__["getLogger"]('templating-resources');
 
-var Compose = (_dec = Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["r" /* customElement */])('compose'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_4_aurelia_pal__["b" /* DOM */].Element, __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["a" /* Container */], __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["e" /* CompositionEngine */], __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["n" /* ViewSlot */], __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["m" /* ViewResources */], __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__["a" /* TaskQueue */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["t" /* noView */])(_class = _dec2(_class = (_class2 = function () {
+var Compose = (_dec = Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["r" /* customElement */])('compose'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_4_aurelia_pal__["b" /* DOM */].Element, __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["a" /* Container */], __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["e" /* CompositionEngine */], __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["n" /* ViewSlot */], __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["m" /* ViewResources */], __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__["a" /* TaskQueue */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["t" /* noView */])(_class = _dec2(_class = (_class2 = function () {
   function Compose(element, container, compositionEngine, viewSlot, viewResources, taskQueue) {
     
 
@@ -62057,7 +62059,7 @@ var DebounceBindingBehavior = function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Else", function() { return Else; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__if_core__ = __webpack_require__(34);
 var _dec, _dec2, _class;
@@ -62072,7 +62074,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var Else = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /* customAttribute */])('else'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["d" /* BoundViewFactory */], __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["n" /* ViewSlot */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["w" /* templateController */])(_class = _dec2(_class = function (_IfCore) {
+var Else = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /* customAttribute */])('else'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["d" /* BoundViewFactory */], __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["n" /* ViewSlot */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["w" /* templateController */])(_class = _dec2(_class = function (_IfCore) {
   _inherits(Else, _IfCore);
 
   function Else(viewFactory, viewSlot) {
@@ -62117,11 +62119,11 @@ var Else = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Focus", function() { return Focus; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(4);
 var _dec, _dec2, _class;
 
 
@@ -62132,7 +62134,7 @@ var _dec, _dec2, _class;
 
 
 
-var Focus = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /* customAttribute */])('focus', __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__["w" /* bindingMode */].twoWay), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_4_aurelia_pal__["b" /* DOM */].Element, __WEBPACK_IMPORTED_MODULE_3_aurelia_task_queue__["a" /* TaskQueue */]), _dec(_class = _dec2(_class = function () {
+var Focus = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /* customAttribute */])('focus', __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__["w" /* bindingMode */].twoWay), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_4_aurelia_pal__["b" /* DOM */].Element, __WEBPACK_IMPORTED_MODULE_3_aurelia_task_queue__["a" /* TaskQueue */]), _dec(_class = _dec2(_class = function () {
   function Focus(element, taskQueue) {
     
 
@@ -62200,9 +62202,9 @@ var Focus = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" 
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hide", function() { return Hide; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aurelia_hide_style__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aurelia_hide_style__ = __webpack_require__(25);
 var _dec, _dec2, _class;
 
 
@@ -62212,7 +62214,7 @@ var _dec, _dec2, _class;
 
 
 
-var Hide = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /* customAttribute */])('hide'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["a" /* Animator */], __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["c" /* Optional */].of(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].boundary, true)), _dec(_class = _dec2(_class = function () {
+var Hide = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /* customAttribute */])('hide'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["a" /* Animator */], __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* Optional */].of(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].boundary, true)), _dec(_class = _dec2(_class = function () {
   function Hide(element, animator, domBoundary) {
     
 
@@ -62248,7 +62250,7 @@ var Hide = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "If", function() { return If; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__if_core__ = __webpack_require__(34);
 var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2;
@@ -62306,7 +62308,7 @@ function _initializerWarningHelper(descriptor, context) {
 
 
 
-var If = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /* customAttribute */])('if'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["d" /* BoundViewFactory */], __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["n" /* ViewSlot */]), _dec3 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["o" /* bindable */])({ primaryProperty: true }), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["w" /* templateController */])(_class = _dec2(_class = (_class2 = function (_IfCore) {
+var If = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /* customAttribute */])('if'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["d" /* BoundViewFactory */], __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["n" /* ViewSlot */]), _dec3 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["o" /* bindable */])({ primaryProperty: true }), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["w" /* templateController */])(_class = _dec2(_class = (_class2 = function (_IfCore) {
   _inherits(If, _IfCore);
 
   function If() {
@@ -62394,7 +62396,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Repeat", function() { return Repeat; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__repeat_strategy_locator__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__repeat_utilities__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__analyze_view_factory__ = __webpack_require__(41);
@@ -62458,7 +62460,7 @@ function _initializerWarningHelper(descriptor, context) {
 
 
 
-var Repeat = (_dec = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["q" /* customAttribute */])('repeat'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["d" /* BoundViewFactory */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["i" /* TargetInstruction */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["n" /* ViewSlot */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["m" /* ViewResources */], __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__["r" /* ObserverLocator */], __WEBPACK_IMPORTED_MODULE_3__repeat_strategy_locator__["a" /* RepeatStrategyLocator */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["w" /* templateController */])(_class = _dec2(_class = (_class2 = function (_AbstractRepeater) {
+var Repeat = (_dec = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["q" /* customAttribute */])('repeat'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["d" /* BoundViewFactory */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["i" /* TargetInstruction */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["n" /* ViewSlot */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["m" /* ViewResources */], __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__["r" /* ObserverLocator */], __WEBPACK_IMPORTED_MODULE_3__repeat_strategy_locator__["a" /* RepeatStrategyLocator */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["w" /* templateController */])(_class = _dec2(_class = (_class2 = function (_AbstractRepeater) {
   _inherits(Repeat, _AbstractRepeater);
 
   function Repeat(viewFactory, instruction, viewSlot, viewResources, observerLocator, strategyLocator) {
@@ -62703,7 +62705,7 @@ var Repeat = (_dec = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["q"
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Replaceable", function() { return Replaceable; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(6);
 var _dec, _dec2, _class;
 
 
@@ -62711,7 +62713,7 @@ var _dec, _dec2, _class;
 
 
 
-var Replaceable = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /* customAttribute */])('replaceable'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["d" /* BoundViewFactory */], __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["n" /* ViewSlot */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["w" /* templateController */])(_class = _dec2(_class = function () {
+var Replaceable = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /* customAttribute */])('replaceable'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["d" /* BoundViewFactory */], __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["n" /* ViewSlot */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["w" /* templateController */])(_class = _dec2(_class = function () {
   function Replaceable(viewFactory, viewSlot) {
     
 
@@ -62755,7 +62757,7 @@ var _dec, _dec2, _class;
 
 
 
-var SanitizeHTMLValueConverter = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["I" /* valueConverter */])('sanitizeHTML'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_2__html_sanitizer__["a" /* HTMLSanitizer */]), _dec(_class = _dec2(_class = function () {
+var SanitizeHTMLValueConverter = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["I" /* valueConverter */])('sanitizeHTML'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_2__html_sanitizer__["a" /* HTMLSanitizer */]), _dec(_class = _dec2(_class = function () {
   function SanitizeHTMLValueConverter(sanitizer) {
     
 
@@ -62821,9 +62823,9 @@ var SelfBindingBehavior = function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Show", function() { return Show; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aurelia_hide_style__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aurelia_hide_style__ = __webpack_require__(25);
 var _dec, _dec2, _class;
 
 
@@ -62833,7 +62835,7 @@ var _dec, _dec2, _class;
 
 
 
-var Show = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /* customAttribute */])('show'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["a" /* Animator */], __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["c" /* Optional */].of(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].boundary, true)), _dec(_class = _dec2(_class = function () {
+var Show = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /* customAttribute */])('show'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["a" /* Animator */], __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* Optional */].of(__WEBPACK_IMPORTED_MODULE_2_aurelia_pal__["b" /* DOM */].boundary, true)), _dec(_class = _dec2(_class = function () {
   function Show(element, animator, domBoundary) {
     
 
@@ -63067,7 +63069,7 @@ var UpdateTriggerBindingBehavior = (_temp = _class = function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "With", function() { return With; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_binding__ = __webpack_require__(8);
 var _dec, _dec2, _class;
 
@@ -63077,7 +63079,7 @@ var _dec, _dec2, _class;
 
 
 
-var With = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /* customAttribute */])('with'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["d" /* BoundViewFactory */], __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["n" /* ViewSlot */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["w" /* templateController */])(_class = _dec2(_class = function () {
+var With = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /* customAttribute */])('with'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["d" /* BoundViewFactory */], __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["n" /* ViewSlot */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["w" /* templateController */])(_class = _dec2(_class = function () {
   function With(viewFactory, viewSlot) {
     
 
@@ -63121,7 +63123,7 @@ var With = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "configure", function() { return configure; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__route_loader__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router_view__ = __webpack_require__("aurelia-templating-router/router-view");
@@ -63151,10 +63153,10 @@ function configure(config) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RouteHref", function() { return RouteHref; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_router__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_pal__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_logging__ = __webpack_require__(7);
 var _dec, _dec2, _dec3, _dec4, _dec5, _class;
 
@@ -63168,7 +63170,7 @@ var _dec, _dec2, _dec3, _dec4, _dec5, _class;
 
 var logger = __WEBPACK_IMPORTED_MODULE_4_aurelia_logging__["getLogger"]('route-href');
 
-var RouteHref = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /* customAttribute */])('route-href'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["o" /* bindable */])({ name: 'route', changeHandler: 'processChange', primaryProperty: true }), _dec3 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["o" /* bindable */])({ name: 'params', changeHandler: 'processChange' }), _dec4 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["o" /* bindable */])({ name: 'attribute', defaultValue: 'href' }), _dec5 = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_2_aurelia_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_3_aurelia_pal__["b" /* DOM */].Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = function () {
+var RouteHref = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /* customAttribute */])('route-href'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["o" /* bindable */])({ name: 'route', changeHandler: 'processChange', primaryProperty: true }), _dec3 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["o" /* bindable */])({ name: 'params', changeHandler: 'processChange' }), _dec4 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["o" /* bindable */])({ name: 'attribute', defaultValue: 'href' }), _dec5 = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_2_aurelia_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_3_aurelia_pal__["b" /* DOM */].Element), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = function () {
   function RouteHref(router, element) {
     
 
@@ -63229,10 +63231,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RouterViewLocator", function() { return RouterViewLocator; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_metadata__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_pal__ = __webpack_require__(4);
 var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
 function _initDefineProp(target, property, descriptor, context) {
@@ -63287,7 +63289,7 @@ function _initializerWarningHelper(descriptor, context) {
 
 
 
-var RouterView = (_dec = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["r" /* customElement */])('router-view'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* inject */])(__WEBPACK_IMPORTED_MODULE_5_aurelia_pal__["b" /* DOM */].Element, __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["a" /* Container */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["n" /* ViewSlot */], __WEBPACK_IMPORTED_MODULE_3_aurelia_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["l" /* ViewLocator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["f" /* CompositionTransaction */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["e" /* CompositionEngine */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["t" /* noView */])(_class = _dec2(_class = (_class2 = function () {
+var RouterView = (_dec = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["r" /* customElement */])('router-view'), _dec2 = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["f" /* inject */])(__WEBPACK_IMPORTED_MODULE_5_aurelia_pal__["b" /* DOM */].Element, __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["a" /* Container */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["n" /* ViewSlot */], __WEBPACK_IMPORTED_MODULE_3_aurelia_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["l" /* ViewLocator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["f" /* CompositionTransaction */], __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["e" /* CompositionEngine */]), _dec(_class = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["t" /* noView */])(_class = _dec2(_class = (_class2 = function () {
   function RouterView(element, container, viewSlot, router, viewLocator, compositionTransaction, compositionEngine) {
     
 
@@ -63486,7 +63488,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ValidateOnChangeOrBlurBindingBehavior", function() { return __WEBPACK_IMPORTED_MODULE_3__validate_binding_behavior__["ValidateOnChangeOrBlurBindingBehavior"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__validate_event__ = __webpack_require__(53);
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ValidateEvent", function() { return __WEBPACK_IMPORTED_MODULE_4__validate_event__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__validate_result__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__validate_result__ = __webpack_require__(26);
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ValidateResult", function() { return __WEBPACK_IMPORTED_MODULE_5__validate_result__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__validate_trigger__ = __webpack_require__(21);
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "validateTrigger", function() { return __WEBPACK_IMPORTED_MODULE_6__validate_trigger__["a"]; });
@@ -63500,14 +63502,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ValidationRendererCustomAttribute", function() { return __WEBPACK_IMPORTED_MODULE_10__validation_renderer_custom_attribute__["ValidationRendererCustomAttribute"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__validator__ = __webpack_require__(19);
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "Validator", function() { return __WEBPACK_IMPORTED_MODULE_11__validator__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__implementation_rules__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__implementation_rules__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__get_target_dom_element__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__implementation_standard_validator__ = __webpack_require__(55);
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "StandardValidator", function() { return __WEBPACK_IMPORTED_MODULE_13__implementation_standard_validator__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__implementation_validation_messages__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__implementation_validation_messages__ = __webpack_require__(28);
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "validationMessages", function() { return __WEBPACK_IMPORTED_MODULE_14__implementation_validation_messages__["b"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ValidationMessageProvider", function() { return __WEBPACK_IMPORTED_MODULE_14__implementation_validation_messages__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__implementation_validation_message_parser__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__implementation_validation_message_parser__ = __webpack_require__(29);
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ValidationMessageParser", function() { return __WEBPACK_IMPORTED_MODULE_15__implementation_validation_message_parser__["b"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MessageExpressionValidator", function() { return __WEBPACK_IMPORTED_MODULE_15__implementation_validation_message_parser__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__implementation_validation_rules__ = __webpack_require__(56);
@@ -63515,7 +63517,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "FluentRules", function() { return __WEBPACK_IMPORTED_MODULE_16__implementation_validation_rules__["c"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "FluentEnsure", function() { return __WEBPACK_IMPORTED_MODULE_16__implementation_validation_rules__["a"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ValidationRules", function() { return __WEBPACK_IMPORTED_MODULE_16__implementation_validation_rules__["d"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_aurelia_pal__ = __webpack_require__(4);
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "Rules", function() { return __WEBPACK_IMPORTED_MODULE_12__implementation_rules__["a"]; });
 // Exports
 
@@ -63711,9 +63713,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidationErrorsCustomAttribute", function() { return ValidationErrorsCustomAttribute; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validation_controller__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63835,7 +63837,7 @@ var ValidationRendererCustomAttribute = (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(32);
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -63850,7 +63852,7 @@ exports.push([module.i, "/*!\r\n * Materialize v0.100.2 (http://materializecss.c
 /***/ "prismjs/themes/prism.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 

@@ -36,6 +36,10 @@ export class Index {
 			this.getRouteConfig("scrollspy", js),
 			this.getRouteConfig("sidenav", js),
 			this.getRouteConfig("tabs", js),
+			this.getRouteConfig("tap-target", js),
+			this.getRouteConfig("transitions", js),
+			this.getRouteConfig("waves", js),
+			this.getRouteConfig("input-fields", forms),
 		];
 		config.map(routes);
 		this.router = router;
@@ -43,10 +47,10 @@ export class Index {
 
 	getRouteConfig(name: string, category: string, wip?: boolean): RouteConfig {
 		let title = name.replace(/-/g, " ");
-		return { route: name, name, moduleId: `./${name}/index`, nav: true, title: title.charAt(0).toUpperCase() + title.slice(1).toLowerCase(), category, status: wip ? "wip" : "done" };
+		return { route: name, name, moduleId: `./${name}/index`, nav: true, title: title.charAt(0).toUpperCase() + title.slice(1).toLowerCase().replace("-", " "), category, status: wip ? "wip" : "done" };
 	}
 
-	attached(){
+	attached() {
 		console.log(this.router);
 	}
 }

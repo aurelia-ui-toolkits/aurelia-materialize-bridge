@@ -1,0 +1,16 @@
+<template>
+	<div>
+		<md-input md-label="put some text here" md-value.bind="textValue" md-char-counter="length: 120;"></md-input>
+		<br /> You entered: ${textValue}
+		<br />
+		<button md-button="flat: true;" md-waves class="accent-text" click.delegate="setText()">set text to something</button>
+
+		<br>
+		<br>
+		<md-input md-label="put some text here" md-value.bind="textAreaValue" md-text-area="true" md-char-counter="length: 200;"></md-input>
+		<br /> You entered: ${textAreaValue}
+		<br />
+		<button md-button="flat: true;" md-waves class="accent-text" click.delegate="setTextArea()">set text area to something else</button>
+
+	</div>
+</template>

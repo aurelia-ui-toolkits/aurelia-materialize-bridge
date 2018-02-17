@@ -28,7 +28,7 @@ module.exports = __webpack_require__.p + "9206b4a6d4f3401326e0e6297dfdf8af.jpg";
 
 /***/ }),
 
-/***/ 29:
+/***/ 23:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "d6d3d12dbdce9b232ff5d5b8fdb07bdf.jpg";
@@ -192,7 +192,7 @@ var App = /** @class */ (function () {
         this.router = router;
     };
     App = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__settings__["Settings"]])
     ], App);
     return App;
@@ -242,7 +242,7 @@ var Support = /** @class */ (function () {
 /***/ "help/support.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -267,7 +267,7 @@ module.exports = "<template>\n  <require from=\"./support.css\"></require>\n  <d
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadingIndicator", function() { return LoadingIndicator; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nprogress__ = __webpack_require__(78);
@@ -300,7 +300,7 @@ var LoadingIndicator = /** @class */ (function () {
     };
     LoadingIndicator = __decorate([
         __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["t" /* noView */],
-        __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["d" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["e" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__["a" /* EventAggregator */]])
     ], LoadingIndicator);
     return LoadingIndicator;
@@ -424,7 +424,7 @@ var NavBar = /** @class */ (function () {
         $(".button-collapse").sideNav();
     };
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_aurelia_router__["c" /* Router */])
     ], NavBar.prototype, "router", void 0);
     return NavBar;
@@ -509,12 +509,12 @@ var RouteHighlight = /** @class */ (function () {
         }
     };
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", Object)
     ], RouteHighlight.prototype, "routes", void 0);
     RouteHighlight = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
-        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* customAttribute */])("route-highlight"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("route-highlight"),
         __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__["a" /* EventAggregator */]])
     ], RouteHighlight);
     return RouteHighlight;
@@ -589,7 +589,7 @@ var App = /** @class */ (function () {
         this.toast.show("You clicked " + e.target.innerText, 4000);
     };
     App = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
     ], App);
     return App;
@@ -602,7 +602,7 @@ var App = /** @class */ (function () {
 /***/ "samples/badge/in-dropdown/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -652,7 +652,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -693,9 +693,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -755,11 +755,11 @@ var App = /** @class */ (function () {
         return Math.floor(Math.random() * 25) + 1;
     };
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", Number)
     ], App.prototype, "spamCount", void 0);
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* computedFrom */])("spamCount"),
+        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* computedFrom */])("spamCount"),
         __metadata("design:type", Object),
         __metadata("design:paramtypes", [])
     ], App.prototype, "spamCaption", null);
@@ -838,7 +838,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -878,9 +878,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -1087,7 +1087,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1129,9 +1129,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -1298,7 +1298,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1342,9 +1342,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -1467,7 +1467,7 @@ var Controls = /** @class */ (function () {
         });
     };
     Controls = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_router__["c" /* Router */]])
     ], Controls);
     return Controls;
@@ -1481,7 +1481,7 @@ var Controls = /** @class */ (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(32);
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -1708,7 +1708,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1750,9 +1750,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -1848,7 +1848,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1890,9 +1890,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -1934,7 +1934,7 @@ var App = /** @class */ (function () {
         this.toastService.show("Close Callback Received!", 1000);
     };
     App = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
     ], App);
     return App;
@@ -2124,7 +2124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2167,9 +2167,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -2254,7 +2254,7 @@ var App = /** @class */ (function () {
 /***/ "samples/collections/selection/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -2327,7 +2327,7 @@ var App = /** @class */ (function () {
 /***/ "samples/color/basic-use/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -2377,7 +2377,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2416,9 +2416,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -2437,7 +2437,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2478,9 +2478,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -2526,7 +2526,7 @@ var App = /** @class */ (function () {
         });
     };
     App = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
     ], App);
     return App;
@@ -2660,7 +2660,7 @@ var App = /** @class */ (function () {
         this.toast.show("You clicked " + e.target.innerText, 4000);
     };
     App = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
     ], App);
     return App;
@@ -2701,7 +2701,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2742,9 +2742,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -2781,7 +2781,7 @@ var App = /** @class */ (function () {
         this.toast.show("You clicked " + e.target.innerText, 4000);
     };
     App = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
     ], App);
     return App;
@@ -2840,7 +2840,7 @@ var App = /** @class */ (function () {
         this.toast.show("You clicked " + e.target.innerText, 4000);
     };
     App = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
     ], App);
     return App;
@@ -2918,7 +2918,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2957,9 +2957,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -3015,19 +3015,23 @@ var Index = /** @class */ (function () {
             this.getRouteConfig("scrollspy", js),
             this.getRouteConfig("sidenav", js),
             this.getRouteConfig("tabs", js),
+            this.getRouteConfig("tap-target", js),
+            this.getRouteConfig("transitions", js),
+            this.getRouteConfig("waves", js),
+            this.getRouteConfig("input-fields", forms),
         ];
         config.map(routes);
         this.router = router;
     };
     Index.prototype.getRouteConfig = function (name, category, wip) {
         var title = name.replace(/-/g, " ");
-        return { route: name, name: name, moduleId: "./" + name + "/index", nav: true, title: title.charAt(0).toUpperCase() + title.slice(1).toLowerCase(), category: category, status: wip ? "wip" : "done" };
+        return { route: name, name: name, moduleId: "./" + name + "/index", nav: true, title: title.charAt(0).toUpperCase() + title.slice(1).toLowerCase().replace("-", " "), category: category, status: wip ? "wip" : "done" };
     };
     Index.prototype.attached = function () {
         console.log(this.router);
     };
     Index = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */]
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */]
     ], Index);
     return Index;
 }());
@@ -3040,6 +3044,547 @@ var Index = /** @class */ (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = "<template>\n  <require from=\"./menu\"></require>\n  <menu if.bind=\"router.currentInstruction.fragment !== 'catalog'\"></menu>\n  <router-view></router-view>\n</template>\n";
+
+/***/ }),
+
+/***/ "samples/input-fields/aurelia-validation/_colors.md":
+/***/ (function(module, exports) {
+
+// empty (null-loader)
+
+/***/ }),
+
+/***/ "samples/input-fields/aurelia-validation/_colors.md.raw":
+/***/ (function(module, exports) {
+
+module.exports = "##### md-colors\r\n\r\nCurrently, the styles for validation messages are hosted in another component\r\nPlease use `<md-colors></md-colors>` in your main view to use colors.\r\n\r\nThis will be refactored.\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/aurelia-validation/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_validation__ = __webpack_require__("aurelia-validation");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_materialize_bridge__ = __webpack_require__("aurelia-materialize-bridge");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var App = /** @class */ (function () {
+    function App(controller) {
+        this.message = "";
+        this.firstName = "";
+        this.lastName = "Doe";
+        this.email = "";
+        this.noErrorText = "";
+        this.textareaValue = "";
+        this.controller = null;
+        this.rules = __WEBPACK_IMPORTED_MODULE_1_aurelia_validation__["ValidationRules"]
+            .ensure("firstName")
+            .required()
+            .ensure("lastName")
+            .minLength(4)
+            .ensure("email")
+            .required()
+            .withMessage("We need your email")
+            .email()
+            .ensure("noErrorText")
+            .required()
+            .ensure("textareaValue").displayName("Some text")
+            .required()
+            .rules;
+        this.controller = controller;
+        this.controller.addRenderer(new __WEBPACK_IMPORTED_MODULE_2_aurelia_materialize_bridge__["MaterializeFormValidationRenderer"]());
+    }
+    App.prototype.validateModel = function () {
+        var _this = this;
+        this.controller.validate().then(function (v) {
+            if (v.valid) {
+                _this.message = "All is good!";
+            }
+            else {
+                _this.message = "You have errors!";
+            }
+        });
+    };
+    App.prototype.onFocus = function () {
+        console.log("focus");
+    };
+    App = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* inject */])(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["c" /* NewInstance */].of(__WEBPACK_IMPORTED_MODULE_1_aurelia_validation__["ValidationController"])),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_validation__["ValidationController"]])
+    ], App);
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/input-fields/aurelia-validation/app.html":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<template>\r\n\t<require from=\"./blur-on-enter\"></require>\r\n\t<md-colors></md-colors>\r\n\t<div>\r\n\t\t<md-input md-blur-on-enter=\"true\" md-label=\"First Name\" md-value.bind=\"firstName & validate:rules\">\r\n\t\t</md-input>\r\n\r\n\t\t<md-input md-blur-on-enter=\"true\" md-label=\"Last Name\" md-placeholder=\"Last Name\" md-validate=\"true\" md-validate-success=\"good\" md-value.bind=\"lastName & validate:rules\">\r\n\t\t</md-input>\r\n\r\n\t\t<md-input md-blur-on-enter=\"true\" md-label=\"Email\" md-validate=\"true\" md-validate-success=\"yes!!\" md-value.bind=\"email & validate:rules\">\r\n\t\t</md-input>\r\n\r\n\t\t<md-input md-blur-on-enter=\"true\" md-label=\"Required without error text\" md-show-errortext=\"false\" md-value.bind=\"noErrorText & validate:rules\">\r\n\t\t</md-input>\r\n\r\n\t\t<md-input md-blur-on-enter=\"true\" md-label=\"put some text here\" md-value.bind=\"textareaValue & validate:rules\" md-text-area=\"true\">\r\n\t\t</md-input>\r\n\t</div>\r\n\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\t<button md-button click.delegate=\"validateModel()\">validate</button>\r\n\t</div>\r\n\r\n\t<h5>${message}</h5>\r\n\r\n\t<ul style=\"margin-top: 15px;\" show.bind=\"controller.errors.length\">\r\n\t\t<li repeat.for=\"error of controller.errors\">\r\n      <a href=\"#\" click.delegate=\"error.target.focus()\">\r\n        ${error.message}\r\n      </a>\r\n    </li>\r\n\t</ul>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/input-fields/aurelia-validation/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<require from=\"./blur-on-enter\"></require>\r\n\t<md-colors></md-colors>\r\n\t<div>\r\n\t\t<md-input md-blur-on-enter=\"true\" md-label=\"First Name\" md-value.bind=\"firstName & validate:rules\">\r\n\t\t</md-input>\r\n\r\n\t\t<md-input md-blur-on-enter=\"true\" md-label=\"Last Name\" md-placeholder=\"Last Name\" md-validate=\"true\" md-validate-success=\"good\" md-value.bind=\"lastName & validate:rules\">\r\n\t\t</md-input>\r\n\r\n\t\t<md-input md-blur-on-enter=\"true\" md-label=\"Email\" md-validate=\"true\" md-validate-success=\"yes!!\" md-value.bind=\"email & validate:rules\">\r\n\t\t</md-input>\r\n\r\n\t\t<md-input md-blur-on-enter=\"true\" md-label=\"Required without error text\" md-show-errortext=\"false\" md-value.bind=\"noErrorText & validate:rules\">\r\n\t\t</md-input>\r\n\r\n\t\t<md-input md-blur-on-enter=\"true\" md-label=\"put some text here\" md-value.bind=\"textareaValue & validate:rules\" md-text-area=\"true\">\r\n\t\t</md-input>\r\n\t</div>\r\n\r\n\t<div style=\"margin-top: 15px;\">\r\n\t\t<button md-button click.delegate=\"validateModel()\">validate</button>\r\n\t</div>\r\n\r\n\t<h5>${message}</h5>\r\n\r\n\t<ul style=\"margin-top: 15px;\" show.bind=\"controller.errors.length\">\r\n\t\t<li repeat.for=\"error of controller.errors\">\r\n      <a href=\"#\" click.delegate=\"error.target.focus()\">\r\n        ${error.message}\r\n      </a>\r\n    </li>\r\n\t</ul>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/aurelia-validation/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { inject, NewInstance } from \"aurelia-framework\";\r\nimport { ValidationController, ValidationRules } from \"aurelia-validation\";\r\nimport { MaterializeFormValidationRenderer } from \"aurelia-materialize-bridge\";\r\n\r\n@inject(NewInstance.of(ValidationController))\r\nexport class App {\r\n\tmessage = \"\";\r\n\tfirstName = \"\";\r\n\tlastName = \"Doe\";\r\n\temail = \"\";\r\n\tnoErrorText = \"\";\r\n\ttextareaValue = \"\";\r\n\r\n\tcontroller = null;\r\n\r\n\trules = ValidationRules\r\n\t\t.ensure(\"firstName\")\r\n\t\t.required()\r\n\t\t.ensure(\"lastName\")\r\n\t\t.minLength(4)\r\n\t\t.ensure(\"email\")\r\n\t\t.required()\r\n\t\t.withMessage(\"We need your email\")\r\n\t\t.email()\r\n\t\t.ensure(\"noErrorText\")\r\n\t\t.required()\r\n\t\t.ensure(\"textareaValue\").displayName(\"Some text\")\r\n\t\t.required()\r\n\t\t.rules;\r\n\r\n\tconstructor(controller: ValidationController) {\r\n\t\tthis.controller = controller;\r\n\t\tthis.controller.addRenderer(new MaterializeFormValidationRenderer());\r\n\t}\r\n\r\n\tvalidateModel() {\r\n\t\tthis.controller.validate().then(v => {\r\n\t\t\tif (v.valid) {\r\n\t\t\t\tthis.message = \"All is good!\";\r\n\t\t\t} else {\r\n\t\t\t\tthis.message = \"You have errors!\";\r\n\t\t\t}\r\n\t\t});\r\n\t}\r\n\r\n\tonFocus() {\r\n\t\tconsole.log(\"focus\");\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/aurelia-validation/blur-on-enter":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BlurOnEnter", function() { return BlurOnEnter; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var BlurOnEnter = /** @class */ (function () {
+    function BlurOnEnter(element) {
+        this.element = element;
+        this.handleKeyUp = this.handleKeyUp.bind(this);
+    }
+    BlurOnEnter.prototype.attached = function () {
+        this.element.addEventListener("keyup", this.handleKeyUp);
+    };
+    BlurOnEnter.prototype.detached = function () {
+        this.element.removeEventListener("keyup", this.handleKeyUp);
+    };
+    BlurOnEnter.prototype.handleKeyUp = function (e) {
+        if (e.keyCode === 13) {
+            this.element.blur();
+        }
+    };
+    BlurOnEnter = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("blur-on-enter"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+        __metadata("design:paramtypes", [Element])
+    ], BlurOnEnter);
+    return BlurOnEnter;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/input-fields/aurelia-validation/blur-on-enter.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject, customAttribute, inject } from \"aurelia-framework\";\r\n\r\n@customAttribute(\"blur-on-enter\")\r\n@autoinject\r\nexport class BlurOnEnter {\r\n\tconstructor(private element: Element) {\r\n\t\tthis.handleKeyUp = this.handleKeyUp.bind(this);\r\n\t}\r\n\r\n\tattached() {\r\n\t\tthis.element.addEventListener(\"keyup\", this.handleKeyUp);\r\n\t}\r\n\r\n\tdetached() {\r\n\t\tthis.element.removeEventListener(\"keyup\", this.handleKeyUp);\r\n\t}\r\n\r\n\thandleKeyUp(e) {\r\n\t\tif (e.keyCode === 13) {\r\n\t\t\t(this.element as HTMLElement).blur();\r\n\t\t}\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/basic-use/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.textValue = "";
+        this.disabledValue = false;
+    }
+    App.prototype.setText = function () {
+        this.textValue = "something";
+    };
+    App.prototype.setDisabled = function () {
+        this.disabledValue = !this.disabledValue;
+    };
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/input-fields/basic-use/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textValue\" md-disabled.bind=\"disabledValue\"></md-input>\r\n\t\t<br /> You entered: ${textValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setText()\">set text to something</button>\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setDisabled()\">Toggle Input Disabling</button>\r\n\r\n\t\t<md-input md-label=\"readonly - bound to the field above\" md-value.bind=\"textValue\" md-readonly.bind=\"true\"></md-input>\r\n\t\t<br />\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/input-fields/basic-use/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textValue\" md-disabled.bind=\"disabledValue\"></md-input>\r\n\t\t<br /> You entered: ${textValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setText()\">set text to something</button>\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setDisabled()\">Toggle Input Disabling</button>\r\n\r\n\t\t<md-input md-label=\"readonly - bound to the field above\" md-value.bind=\"textValue\" md-readonly.bind=\"true\"></md-input>\r\n\t\t<br />\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/basic-use/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\ttextValue = \"\";\r\n\tdisabledValue = false;\r\n\tsetText() {\r\n\t\tthis.textValue = \"something\";\r\n\t}\r\n\tsetDisabled() {\r\n\t\tthis.disabledValue = !this.disabledValue;\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/character-counter/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.textValue = "";
+        this.textAreaValue = "";
+    }
+    App.prototype.setText = function () {
+        this.textValue = "something";
+    };
+    App.prototype.setTextArea = function () {
+        this.textAreaValue = "Something else";
+    };
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/input-fields/character-counter/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textValue\" md-char-counter=\"length: 120;\"></md-input>\r\n\t\t<br /> You entered: ${textValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setText()\">set text to something</button>\r\n\r\n\t\t<br>\r\n\t\t<br>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textAreaValue\" md-text-area=\"true\" md-char-counter=\"length: 200;\"></md-input>\r\n\t\t<br /> You entered: ${textAreaValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setTextArea()\">set text area to something else</button>\r\n\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/input-fields/character-counter/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textValue\" md-char-counter=\"length: 120;\"></md-input>\r\n\t\t<br /> You entered: ${textValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setText()\">set text to something</button>\r\n\r\n\t\t<br>\r\n\t\t<br>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textAreaValue\" md-text-area=\"true\" md-char-counter=\"length: 200;\"></md-input>\r\n\t\t<br /> You entered: ${textAreaValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setTextArea()\">set text area to something else</button>\r\n\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/character-counter/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\ttextValue = \"\";\r\n\ttextAreaValue = \"\";\r\n\r\n\tsetText() {\r\n\t\tthis.textValue = \"something\";\r\n\t}\r\n\r\n\tsetTextArea() {\r\n\t\tthis.textAreaValue = \"Something else\";\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/html5-validation/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.email = "";
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/input-fields/html5-validation/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-type=\"email\" md-label=\"email text field\" md-validate=\"true\" md-validate-error=\"invalid email\" md-value.bind=\"email\"></md-input>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/input-fields/html5-validation/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-type=\"email\" md-label=\"email text field\" md-validate=\"true\" md-validate-error=\"invalid email\" md-value.bind=\"email\"></md-input>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/html5-validation/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\temail = \"\";\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/icon-prefixes/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.textValue = "";
+    }
+    App.prototype.setText = function () {
+        this.textValue = "something";
+    };
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/input-fields/icon-prefixes/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textValue\">\r\n\t\t\t<i md-prefix class=\"material-icons\">account_circle</i>\r\n\t\t</md-input>\r\n\t\t<br /> You entered: ${textValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setText()\">set text to something</button>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/input-fields/icon-prefixes/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textValue\">\r\n\t\t\t<i md-prefix class=\"material-icons\">account_circle</i>\r\n\t\t</md-input>\r\n\t\t<br /> You entered: ${textValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setText()\">set text to something</button>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/icon-prefixes/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\ttextValue = \"\";\r\n\tsetText() {\r\n\t\tthis.textValue = \"something\";\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var Index = /** @class */ (function (_super) {
+    __extends(Index, _super);
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { route: "", redirect: "basic-use" },
+            _super.prototype.getRouteConfig.call(this, "basic-use"),
+            _super.prototype.getRouteConfig.call(this, "textarea"),
+            _super.prototype.getRouteConfig.call(this, "input-types"),
+            _super.prototype.getRouteConfig.call(this, "html5-validation"),
+            _super.prototype.getRouteConfig.call(this, "aurelia-validation"),
+            _super.prototype.getRouteConfig.call(this, "character-counter"),
+            _super.prototype.getRouteConfig.call(this, "icon-prefixes"),
+            _super.prototype.getRouteConfig.call(this, "placeholder"),
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+    ], Index);
+    return Index;
+}(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
+
+
+
+/***/ }),
+
+/***/ "samples/input-fields/input-types/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.password = "";
+        this.email = "";
+        this.number = 0;
+        this.floatingNumber = 0.00;
+        this.time = null;
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/input-fields/input-types/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-card md-title=\"Password input\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-input md-type=\"password\" md-label=\"password text field\" md-value.bind=\"password\"></md-input>\r\n\t\t\t\t<br />\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card md-title=\"Email input\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-input md-type=\"email\" md-label=\"email text field\" md-validate=\"true\" md-validate-error=\"invalid email\" md-value.bind=\"email\"></md-input>\r\n\t\t\t\t<br />\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card md-title=\"Float Number input\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-input md-type=\"number\" md-step=\"any\" md-label=\"float number text field\" md-validate=\"true\" md-validate-error=\"invalid number\" md-value.bind=\"floatingNumber\"></md-input>\r\n\t\t\t\t<br />\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card md-title=\"Number input (with steps of two)\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-input md-type=\"number\" md-step=\"2\" md-label=\"number text field\" md-validate=\"true\" md-validate-error=\"invalid number\" md-value.bind=\"number\"></md-input>\r\n\t\t\t\t<br />\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card md-title=\"Time input\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-input md-type=\"time\" md-label=\"time text field\" md-validate=\"true\" md-validate-error=\"invalid time\" md-value.bind=\"time\"></md-input>\r\n\t\t\t\t<br />\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/input-fields/input-types/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-card md-title=\"Password input\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-input md-type=\"password\" md-label=\"password text field\" md-value.bind=\"password\"></md-input>\r\n\t\t\t\t<br />\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card md-title=\"Email input\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-input md-type=\"email\" md-label=\"email text field\" md-validate=\"true\" md-validate-error=\"invalid email\" md-value.bind=\"email\"></md-input>\r\n\t\t\t\t<br />\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card md-title=\"Float Number input\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-input md-type=\"number\" md-step=\"any\" md-label=\"float number text field\" md-validate=\"true\" md-validate-error=\"invalid number\" md-value.bind=\"floatingNumber\"></md-input>\r\n\t\t\t\t<br />\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card md-title=\"Number input (with steps of two)\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-input md-type=\"number\" md-step=\"2\" md-label=\"number text field\" md-validate=\"true\" md-validate-error=\"invalid number\" md-value.bind=\"number\"></md-input>\r\n\t\t\t\t<br />\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\t\t<md-card md-title=\"Time input\">\r\n\t\t\t<div>\r\n\t\t\t\t<md-input md-type=\"time\" md-label=\"time text field\" md-validate=\"true\" md-validate-error=\"invalid time\" md-value.bind=\"time\"></md-input>\r\n\t\t\t\t<br />\r\n\t\t\t</div>\r\n\t\t</md-card>\r\n\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/input-types/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\tpassword = \"\";\r\n\temail = \"\";\r\n\tnumber = 0;\r\n\tfloatingNumber = 0.00;\r\n\ttime = null;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/placeholder/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.textValue = "";
+        this.textAreaValue = "";
+    }
+    App.prototype.setText = function () {
+        this.textValue = "something";
+    };
+    App.prototype.setTextArea = function () {
+        this.textAreaValue = "something";
+    };
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/input-fields/placeholder/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-placeholder=\"placeholder text\" md-label=\"put some text here\" md-value.bind=\"textValue\"></md-input>\r\n\t\t<br /> You entered: ${textValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setText()\">set text to something</button>\r\n\t</div>\r\n\t<hr style=\"margin: 15px 0;\" />\r\n\t<div>\r\n\t\t<h6>Text area placeholder</h6>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textAreaValue\" md-placeholder=\"placeholder\" md-text-area=\"true\" md-disabled.bind=\"disabledValue\"></md-input>\r\n\t\t<br /> You entered: ${textAreaValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setTextArea()\">set text to something</button>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/input-fields/placeholder/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-placeholder=\"placeholder text\" md-label=\"put some text here\" md-value.bind=\"textValue\"></md-input>\r\n\t\t<br /> You entered: ${textValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setText()\">set text to something</button>\r\n\t</div>\r\n\t<hr style=\"margin: 15px 0;\" />\r\n\t<div>\r\n\t\t<h6>Text area placeholder</h6>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textAreaValue\" md-placeholder=\"placeholder\" md-text-area=\"true\" md-disabled.bind=\"disabledValue\"></md-input>\r\n\t\t<br /> You entered: ${textAreaValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setTextArea()\">set text to something</button>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/placeholder/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\ttextValue = \"\";\r\n\ttextAreaValue = \"\";\r\n\r\n\tsetText() {\r\n\t\tthis.textValue = \"something\";\r\n\t}\r\n\r\n\tsetTextArea() {\r\n\t\tthis.textAreaValue = \"something\";\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/textarea/_autoresize.md":
+/***/ (function(module, exports) {
+
+// empty (null-loader)
+
+/***/ }),
+
+/***/ "samples/input-fields/textarea/_autoresize.md.raw":
+/***/ (function(module, exports) {
+
+module.exports = "#### Textareas don't autoresize\r\n\r\nThe reason for that is there's a \"hiddendiv\" created on ```document.ready()``` to determine the height of the resized textarea.\r\nThat hidden div doesn't exist anymore when the sample app creates real textareas ([see here](https://github.com/Dogfalo/materialize/blob/master/js/forms.js#L111)).\r\nAfter Aurelia takes control, it replaces the content of its container (meaning ```aurelia-app=\"main\"```).\r\n\r\n<br/>\r\n\r\nThe reference to ```hiddenDiv``` (a variable) is essentially broken once Aurelia kicks in. I'm not sure if there is any good workaround apart from creating such a div manually and outside of Aurelia scope.\r\n\r\n<br/>\r\n\r\nWe've added such a div in this catalog app:\r\n\r\n```html\r\n<body>\r\n  <div class=\"hiddendiv\"></div>\r\n  <div aurelia-app=\"main\">\r\n  </div>\r\n</body>\r\n```\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/textarea/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+        this.textValue = "";
+        this.disabledValue = false;
+    }
+    App.prototype.setText = function () {
+        this.textValue = "something";
+    };
+    App.prototype.setDisabled = function () {
+        this.disabledValue = !this.disabledValue;
+    };
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/input-fields/textarea/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textValue\" md-text-area=\"true\" md-disabled.bind=\"disabledValue\"></md-input>\r\n\t\t<br /> You entered: ${textValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setText()\">set text to something</button>\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setDisabled()\">Toggle Input Disabling</button>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/input-fields/textarea/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<md-input md-label=\"put some text here\" md-value.bind=\"textValue\" md-text-area=\"true\" md-disabled.bind=\"disabledValue\"></md-input>\r\n\t\t<br /> You entered: ${textValue}\r\n\t\t<br />\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setText()\">set text to something</button>\r\n\t\t<button md-button=\"flat: true;\" md-waves class=\"accent-text\" click.delegate=\"setDisabled()\">Toggle Input Disabling</button>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/input-fields/textarea/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App {\r\n\ttextValue = \"\";\r\n\tdisabledValue = false;\r\n\tsetText() {\r\n\t\tthis.textValue = \"something\";\r\n\t}\r\n\tsetDisabled() {\r\n\t\tthis.disabledValue = !this.disabledValue;\r\n\t}\r\n}\r\n"
 
 /***/ }),
 
@@ -3238,7 +3783,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3285,9 +3830,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -3486,7 +4031,7 @@ var Menu = /** @class */ (function () {
         });
     };
     Menu = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
         __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_router__["c" /* Router */]])
     ], Menu);
     return Menu;
@@ -3499,7 +4044,7 @@ var Menu = /** @class */ (function () {
 /***/ "samples/menu.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -3551,7 +4096,7 @@ var BasicUse = /** @class */ (function () {
         this.modal.open();
     };
     BasicUse = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
     ], BasicUse);
     return BasicUse;
@@ -3621,7 +4166,7 @@ var Events = /** @class */ (function () {
         this.modal.open();
     };
     Events = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
     ], Events);
     return Events;
@@ -3662,7 +4207,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3704,9 +4249,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -3788,7 +4333,7 @@ var Options = /** @class */ (function () {
         this.toast.show("You disagreed!", 4000);
     };
     Options = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
     ], Options);
     return Options;
@@ -3958,7 +4503,7 @@ var App = /** @class */ (function () {
         this.toast.show("You clicked " + e.target.innerText, 4000);
     };
     App = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_materialize_bridge__["MdToastService"]])
     ], App);
     return App;
@@ -3999,7 +4544,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4044,9 +4589,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -4148,7 +4693,7 @@ var App = /** @class */ (function () {
 /***/ "samples/navbar/tabs-in-navbar/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -4277,7 +4822,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4318,9 +4863,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -4391,7 +4936,7 @@ var App = /** @class */ (function () {
 /***/ "samples/parallax/basic-use/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -4441,7 +4986,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4480,9 +5025,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -4581,7 +5126,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4621,9 +5166,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -4651,7 +5196,7 @@ var App = /** @class */ (function () {
 /***/ "samples/pushpin/basic-use/app.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<style>\r\n\t\t.card .card-content p.more-space {\r\n\t\t\tmargin: 20px 0;\r\n\t\t}\r\n\t</style>\r\n\t<div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col s12 m8\">\r\n\t\t\t\t<md-card md-title=\"Basic use\">\r\n\t\t\t\t\t<div>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\tLook at the right edge.\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\tFor demonstration purposes, this page has to be much longer.\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\tOr else the pushpin wouldn't make any sense.\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\tSo we put an image here.\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\t<img src=\"" + __webpack_require__(29) + "\" style=\"width: 500px;\" />\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\tAnd another one to make it really interesting...\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\t<img src=\"" + __webpack_require__(30) + "\" style=\"width: 500px;\" />\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</md-card>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col m4\">\r\n\t\t\t\t<div md-pushpin=\"top: 320; offset: 150;\">\r\n\t\t\t\t\t<md-card md-title=\"Look!\">\r\n\t\t\t\t\t\t<div>\r\n\t\t\t\t\t\t\tI'm a pushpin!\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</md-card>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<style>\r\n\t\t.card .card-content p.more-space {\r\n\t\t\tmargin: 20px 0;\r\n\t\t}\r\n\t</style>\r\n\t<div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col s12 m8\">\r\n\t\t\t\t<md-card md-title=\"Basic use\">\r\n\t\t\t\t\t<div>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\tLook at the right edge.\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\tFor demonstration purposes, this page has to be much longer.\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\tOr else the pushpin wouldn't make any sense.\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\tSo we put an image here.\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\t<img src=\"" + __webpack_require__(23) + "\" style=\"width: 500px;\" />\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\tAnd another one to make it really interesting...\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t\t<p class=\"more-space\">\r\n\t\t\t\t\t\t\t<img src=\"" + __webpack_require__(30) + "\" style=\"width: 500px;\" />\r\n\t\t\t\t\t\t</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</md-card>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col m4\">\r\n\t\t\t\t<div md-pushpin=\"top: 320; offset: 150;\">\r\n\t\t\t\t\t<md-card md-title=\"Look!\">\r\n\t\t\t\t\t\t<div>\r\n\t\t\t\t\t\t\tI'm a pushpin!\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</md-card>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n";
 
 /***/ }),
 
@@ -4679,7 +5224,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4718,9 +5263,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -4738,7 +5283,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_fetch_client__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4893,9 +5438,9 @@ var SampleIndexBase = /** @class */ (function () {
         });
     };
     SampleIndexBase = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_3_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_3_aurelia_fetch_client__["a" /* HttpClient */]])
     ], SampleIndexBase);
     return SampleIndexBase;
 }());
@@ -4907,7 +5452,7 @@ var SampleIndexBase = /** @class */ (function () {
 /***/ "samples/sample-template.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -4952,7 +5497,7 @@ var App = /** @class */ (function () {
 /***/ "samples/scrollfire/basic-use/app.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<div md-scrollfire>\r\n\t\t<div md-scrollfire-target=\"callback.call: firstTarget(); offset: 400;\">Target #1</div>\r\n\t\t<div>\r\n\t\t\t<p>\r\n\t\t\t\tScroll down to see Scrollfire in action.\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t\t<div>\r\n\t\t\t<ul ref=\"list\">\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t</ul>\r\n\t\t</div>\r\n\t\t<div md-scrollfire-target=\"callback.call: secondTarget(); offset: 500;\">Target #2</div>\r\n\t\t<div>\r\n\t\t\t<img ref=\"image\" src=\"" + __webpack_require__(29) + "\" class=\"responsive-img\"\r\n\t\t\t style=\"width: 500px; opacity: 0;\" />\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<div md-scrollfire>\r\n\t\t<div md-scrollfire-target=\"callback.call: firstTarget(); offset: 400;\">Target #1</div>\r\n\t\t<div>\r\n\t\t\t<p>\r\n\t\t\t\tScroll down to see Scrollfire in action.\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t\t<div>\r\n\t\t\t<ul ref=\"list\">\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t\t<li style=\"opacity: 0;\">\r\n          <h4><a>List Item</a></h4>\r\n          <p>This is a description</p>\r\n        </li>\r\n\t\t\t</ul>\r\n\t\t</div>\r\n\t\t<div md-scrollfire-target=\"callback.call: secondTarget(); offset: 500;\">Target #2</div>\r\n\t\t<div>\r\n\t\t\t<img ref=\"image\" src=\"" + __webpack_require__(23) + "\" class=\"responsive-img\"\r\n\t\t\t style=\"width: 500px; opacity: 0;\" />\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n";
 
 /***/ }),
 
@@ -4980,7 +5525,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -5019,9 +5564,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -5049,7 +5594,7 @@ var App = /** @class */ (function () {
 /***/ "samples/scrollspy/basic-use/app.html":
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<template>\r\n\t<style>\r\n\t\t.card .card-content p.more-space {\r\n\t\t\tmargin: 20px 0;\r\n\t\t}\r\n\r\n\t\t[md-pushpin] a {\r\n\t\t\tpadding-left: 20px;\r\n\t\t}\r\n\r\n\t\t[md-pushpin] a.active {\r\n\t\t\tfont-weight: 500;\r\n\t\t\tpadding-left: 18px;\r\n\t\t\tborder-left: 2px solid #ea4a4f;\r\n\t\t}\r\n\t</style>\r\n\t<div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col s12 m8\">\r\n\t\t\t\t<div md-scrollspy=\"target: .scrollspy\">\r\n\t\t\t\t\t<p id=\"spy1\" class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\tLook at the right edge.\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\tFor demonstration purposes, this page has to be much longer.\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\tOr else the scrollspy wouldn't make any sense.\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\tSo we put an image here.\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p id=\"spy2\" class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\t<img src=\"" + __webpack_require__(29) + "\" class=\"responsive-img\" style=\"width: 500px;\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\tAnd another one to make it really interesting...\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p id=\"spy3\" class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\t<img src=\"" + __webpack_require__(30) + "\" class=\"responsive-img\" style=\"width: 500px;\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</p>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col m4\">\r\n\t\t\t\t<div md-pushpin=\"top: 320; offset: 150;\">\r\n\t\t\t\t\t<md-card md-title=\"Look!\">\r\n\t\t\t\t\t\t<div>\r\n\t\t\t\t\t\t\t<ul class=\"section\">\r\n\t\t\t\t\t\t\t\t<li><a href=\"#spy1\">I'm a pushpin!</a></li>\r\n\t\t\t\t\t\t\t\t<li><a href=\"#spy2\">And a scrollSpy!</a></li>\r\n\t\t\t\t\t\t\t\t<li><a href=\"#spy3\">Even a card!</a></li>\r\n\t\t\t\t\t\t\t</ul>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</md-card>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t</div>\r\n</template>\r\n";
+module.exports = "<template>\r\n\t<style>\r\n\t\t.card .card-content p.more-space {\r\n\t\t\tmargin: 20px 0;\r\n\t\t}\r\n\r\n\t\t[md-pushpin] a {\r\n\t\t\tpadding-left: 20px;\r\n\t\t}\r\n\r\n\t\t[md-pushpin] a.active {\r\n\t\t\tfont-weight: 500;\r\n\t\t\tpadding-left: 18px;\r\n\t\t\tborder-left: 2px solid #ea4a4f;\r\n\t\t}\r\n\t</style>\r\n\t<div>\r\n\t\t<div class=\"row\">\r\n\t\t\t<div class=\"col s12 m8\">\r\n\t\t\t\t<div md-scrollspy=\"target: .scrollspy\">\r\n\t\t\t\t\t<p id=\"spy1\" class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\tLook at the right edge.\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\tFor demonstration purposes, this page has to be much longer.\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\tOr else the scrollspy wouldn't make any sense.\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\tSo we put an image here.\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p id=\"spy2\" class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\t<img src=\"" + __webpack_require__(23) + "\" class=\"responsive-img\" style=\"width: 500px;\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\tAnd another one to make it really interesting...\r\n\t\t\t\t\t</p>\r\n\t\t\t\t\t<p id=\"spy3\" class=\"more-space section scrollspy\">\r\n\t\t\t\t\t\t<img src=\"" + __webpack_require__(30) + "\" class=\"responsive-img\" style=\"width: 500px;\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t</p>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"col m4\">\r\n\t\t\t\t<div md-pushpin=\"top: 320; offset: 150;\">\r\n\t\t\t\t\t<md-card md-title=\"Look!\">\r\n\t\t\t\t\t\t<div>\r\n\t\t\t\t\t\t\t<ul class=\"section\">\r\n\t\t\t\t\t\t\t\t<li><a href=\"#spy1\">I'm a pushpin!</a></li>\r\n\t\t\t\t\t\t\t\t<li><a href=\"#spy2\">And a scrollSpy!</a></li>\r\n\t\t\t\t\t\t\t\t<li><a href=\"#spy3\">Even a card!</a></li>\r\n\t\t\t\t\t\t\t</ul>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</md-card>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t</div>\r\n</template>\r\n";
 
 /***/ }),
 
@@ -5077,7 +5622,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -5116,9 +5661,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -5298,7 +5843,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -5341,9 +5886,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -5473,7 +6018,7 @@ var App = /** @class */ (function () {
 /***/ "samples/tabs/basic-use/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -5563,8 +6108,8 @@ var App = /** @class */ (function () {
         });
     };
     App = __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["d" /* TaskQueue */]])
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* TaskQueue */]])
     ], App);
     return App;
 }());
@@ -5577,7 +6122,7 @@ var App = /** @class */ (function () {
 /***/ "samples/tabs/dynamic/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -5656,7 +6201,7 @@ module.exports = "<template>\r\n\t<div class=\"row\">\r\n\r\n\t\t<ul md-tabs=\"o
 /***/ "samples/tabs/events/app.ts.raw":
 /***/ (function(module, exports) {
 
-module.exports = "export class App { }\r\n"
+module.exports = "import { Logger } from \"../../../shared/logger\";\r\n\r\nexport class App {\r\n\tlogger: Logger;\r\n\r\n\tonTabSelected(e) {\r\n\t\tthis.logger.log(`tab selected ${e.detail}`);\r\n\t}\r\n\r\n\tonShow(element) {\r\n\t\tthis.logger.log(`onShow on element: ${element.attr(\"id\")}`);\r\n\t}\r\n}\r\n"
 
 /***/ }),
 
@@ -5707,7 +6252,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -5751,9 +6296,9 @@ var Index = /** @class */ (function (_super) {
         this.router = router;
     };
     Index = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
     ], Index);
     return Index;
 }(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
@@ -5795,7 +6340,7 @@ var App = /** @class */ (function () {
 /***/ "samples/tabs/swipeable/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(2)(false);
 // imports
 
 
@@ -5832,6 +6377,423 @@ module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<d
 /***/ (function(module, exports) {
 
 module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/tap-target/basic-use/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    App.prototype.openTapTarget = function () {
+        this.tapTarget.open();
+    };
+    App.prototype.closeTapTarget = function () {
+        this.tapTarget.close();
+    };
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/tap-target/basic-use/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<!--<require from=\"materialize/dist/css/materialize.css\"></require>-->\r\n\t<div>\r\n\t\t<div class=\"fixed-action-btn\" style=\"bottom: 45px; right: 24px;\">\r\n\t\t\t<a ref=\"tap\" md-button=\"floating: true; large: true;\" md-waves=\"color: light; circle: true;\">\r\n\t\t\t\t<i class=\"large material-icons\">mode_edit</i>\r\n\t\t\t</a>\r\n\t\t</div>\r\n\t\t<md-tap-target md-ref.bind=\"tap\" view-model.ref=\"tapTarget\">\r\n\t\t\t<h5>I'm here!</h5>\r\n\t\t\tI am here\r\n\t\t\t<p>\r\n\t\t\t\tProvide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.\r\n\t\t\t</p>\r\n\t\t</md-tap-target>\r\n\t</div>\r\n\t<div>\r\n\t\t<button md-button click.delegate=\"openTapTarget()\">open tap target</button>\r\n\t\t<button md-button click.delegate=\"closeTapTarget()\">close tap target</button>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/tap-target/basic-use/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<!--<require from=\"materialize/dist/css/materialize.css\"></require>-->\r\n\t<div>\r\n\t\t<div class=\"fixed-action-btn\" style=\"bottom: 45px; right: 24px;\">\r\n\t\t\t<a ref=\"tap\" md-button=\"floating: true; large: true;\" md-waves=\"color: light; circle: true;\">\r\n\t\t\t\t<i class=\"large material-icons\">mode_edit</i>\r\n\t\t\t</a>\r\n\t\t</div>\r\n\t\t<md-tap-target md-ref.bind=\"tap\" view-model.ref=\"tapTarget\">\r\n\t\t\t<h5>I'm here!</h5>\r\n\t\t\tI am here\r\n\t\t\t<p>\r\n\t\t\t\tProvide value and encourage return visits by introducing users to new features and functionality at contextually relevant moments.\r\n\t\t\t</p>\r\n\t\t</md-tap-target>\r\n\t</div>\r\n\t<div>\r\n\t\t<button md-button click.delegate=\"openTapTarget()\">open tap target</button>\r\n\t\t<button md-button click.delegate=\"closeTapTarget()\">close tap target</button>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/tap-target/basic-use/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { MdTapTarget } from \"aurelia-materialize-bridge\";\r\n\r\nexport class App {\r\n\ttapTarget: MdTapTarget;\r\n\r\n\topenTapTarget() {\r\n\t\tthis.tapTarget.open();\r\n\t}\r\n\r\n\tcloseTapTarget() {\r\n\t\tthis.tapTarget.close();\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/tap-target/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var Index = /** @class */ (function (_super) {
+    __extends(Index, _super);
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { route: "", redirect: "basic-use" },
+            _super.prototype.getRouteConfig.call(this, "basic-use"),
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+    ], Index);
+    return Index;
+}(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
+
+
+
+/***/ }),
+
+/***/ "samples/transitions/fadein-image/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/transitions/fadein-image/app.html":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<a md-button md-fadein-image=\"ref.bind: image\">fade in image</a>\r\n\t</div>\r\n\t<div>\r\n\t\t<!--\r\n      when attached, the referenced element will have its opacity set to 0\r\n    -->\r\n\t\t<img ref=\"image\" src=\"" + __webpack_require__(23) + "\" style=\"width: 500px;\" />\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/transitions/fadein-image/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div>\r\n\t\t<a md-button md-fadein-image=\"ref.bind: image\">fade in image</a>\r\n\t</div>\r\n\t<div>\r\n\t\t<!--\r\n      when attached, the referenced element will have its opacity set to 0\r\n    -->\r\n\t\t<img ref=\"image\" src=\"../../../../images/transition-sample-1.jpg\" style=\"width: 500px;\" />\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/transitions/fadein-image/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/transitions/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var Index = /** @class */ (function (_super) {
+    __extends(Index, _super);
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { route: "", redirect: "staggered-list" },
+            _super.prototype.getRouteConfig.call(this, "staggered-list"),
+            _super.prototype.getRouteConfig.call(this, "fadein-image"),
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+    ], Index);
+    return Index;
+}(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
+
+
+
+/***/ }),
+
+/***/ "samples/transitions/staggered-list/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/transitions/staggered-list/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<a md-button md-staggered-list=\"ref.bind: list\">stagger list</a>\r\n\t<!--\r\n    when attached, all li children of the referenced element will have\r\n    their opacity set to 0\r\n  -->\r\n\t<ul ref=\"list\">\r\n\t\t<li>\r\n      <h4><a>List Item</a></h4>\r\n      <p>This is a description</p>\r\n    </li>\r\n\t\t<li>\r\n      <h4><a>List Item</a></h4>\r\n      <p>This is a description</p>\r\n    </li>\r\n\t\t<li>\r\n      <h4><a>List Item</a></h4>\r\n      <p>This is a description</p>\r\n    </li>\r\n\t\t<li>\r\n      <h4><a>List Item</a></h4>\r\n      <p>This is a description</p>\r\n    </li>\r\n\t\t<li>\r\n      <h4><a>List Item</a></h4>\r\n      <p>This is a description</p>\r\n    </li>\r\n\t</ul>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/transitions/staggered-list/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<a md-button md-staggered-list=\"ref.bind: list\">stagger list</a>\r\n\t<!--\r\n    when attached, all li children of the referenced element will have\r\n    their opacity set to 0\r\n  -->\r\n\t<ul ref=\"list\">\r\n\t\t<li>\r\n      <h4><a>List Item</a></h4>\r\n      <p>This is a description</p>\r\n    </li>\r\n\t\t<li>\r\n      <h4><a>List Item</a></h4>\r\n      <p>This is a description</p>\r\n    </li>\r\n\t\t<li>\r\n      <h4><a>List Item</a></h4>\r\n      <p>This is a description</p>\r\n    </li>\r\n\t\t<li>\r\n      <h4><a>List Item</a></h4>\r\n      <p>This is a description</p>\r\n    </li>\r\n\t\t<li>\r\n      <h4><a>List Item</a></h4>\r\n      <p>This is a description</p>\r\n    </li>\r\n\t</ul>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/transitions/staggered-list/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/waves/basic-use/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/waves/basic-use/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<a md-button md-waves>Waves on a button</a>\r\n\t<a md-button=\"floating: true; large: true;\" md-waves=\"color: light; circle: true;\" style=\"line-height: 55px;\">circle</a>\r\n\t<div md-waves=\"block: true;\" style=\"border: 1px dotted grey; margin: 10px 0; height: 80px; width: 120px;\">\r\n\t\tWaves on a div.\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/waves/basic-use/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<a md-button md-waves>Waves on a button</a>\r\n\t<a md-button=\"floating: true; large: true;\" md-waves=\"color: light; circle: true;\" style=\"line-height: 55px;\">circle</a>\r\n\t<div md-waves=\"block: true;\" style=\"border: 1px dotted grey; margin: 10px 0; height: 80px; width: 120px;\">\r\n\t\tWaves on a div.\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/waves/basic-use/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/waves/colors/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/waves/colors/app.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, ".collection.waves-color-sample .collection-item {\r\n  height: 57px;\r\n  line-height: 37px;\r\n}\r\n\r\n.collection.waves-color-sample .collection-item a[md-waves] {\r\n  background-color: white;\r\n  color: #212121;\r\n}\r\n.collection.waves-color-sample .collection-item a[md-waves=\"color: light;\"] {\r\n  background-color: teal;\r\n  color: white;\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "samples/waves/colors/app.css.raw":
+/***/ (function(module, exports) {
+
+module.exports = ".collection.waves-color-sample .collection-item {\r\n  height: 57px;\r\n  line-height: 37px;\r\n}\r\n\r\n.collection.waves-color-sample .collection-item a[md-waves] {\r\n  background-color: white;\r\n  color: #212121;\r\n}\r\n.collection.waves-color-sample .collection-item a[md-waves=\"color: light;\"] {\r\n  background-color: teal;\r\n  color: white;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/waves/colors/app.html":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<require from=\"./custom-color.css\"></require>\r\n\t<div class=\"collection waves-color-sample\">\r\n\t\t<div class=\"collection-item\">Default<a md-button md-waves class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: light;\"</code><a md-button md-waves=\"color: light;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: red;\"</code><a md-button md-waves=\"color: red;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: yellow;\"</code><a md-button md-waves=\"color: yellow;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: orange;\"</code><a md-button md-waves=\"color: orange;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: purple;\"</code><a md-button md-waves=\"color: purple;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: green;\"</code><a md-button md-waves=\"color: green;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: teal;\"</code><a md-button md-waves=\"color: teal;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: indigo;\"</code> (custom color)<a md-button md-waves=\"color: indigo;\" class=\"secondary-content\">Send</a></div>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/waves/colors/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<require from=\"./custom-color.css\"></require>\r\n\t<div class=\"collection waves-color-sample\">\r\n\t\t<div class=\"collection-item\">Default<a md-button md-waves class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: light;\"</code><a md-button md-waves=\"color: light;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: red;\"</code><a md-button md-waves=\"color: red;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: yellow;\"</code><a md-button md-waves=\"color: yellow;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: orange;\"</code><a md-button md-waves=\"color: orange;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: purple;\"</code><a md-button md-waves=\"color: purple;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: green;\"</code><a md-button md-waves=\"color: green;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: teal;\"</code><a md-button md-waves=\"color: teal;\" class=\"secondary-content\">Send</a></div>\r\n\t\t<div class=\"collection-item\">\r\n\t\t\t<code class=\"language-markup\">md-waves=\"color: indigo;\"</code> (custom color)<a md-button md-waves=\"color: indigo;\" class=\"secondary-content\">Send</a></div>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/waves/colors/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/waves/colors/custom-color.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "/*\r\n  When creating your CSS selector,\r\n  change \"indigo\" to something of your choosing\r\n*/\r\n.waves-effect.waves-indigo .waves-ripple {\r\n\t/*\r\n\t\tThe alpha value allows the text and background color\r\n\t\tof the button to still show through.\r\n\t*/\r\n\t\tbackground-color: rgba(63, 81, 181, 0.65);\r\n\t}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "samples/waves/colors/custom-color.css.raw":
+/***/ (function(module, exports) {
+
+module.exports = "/*\r\n  When creating your CSS selector,\r\n  change \"indigo\" to something of your choosing\r\n*/\r\n.waves-effect.waves-indigo .waves-ripple {\r\n\t/*\r\n\t\tThe alpha value allows the text and background color\r\n\t\tof the button to still show through.\r\n\t*/\r\n\t\tbackground-color: rgba(63, 81, 181, 0.65);\r\n\t}\r\n"
+
+/***/ }),
+
+/***/ "samples/waves/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(5);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var Index = /** @class */ (function (_super) {
+    __extends(Index, _super);
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { route: "", redirect: "basic-use" },
+            _super.prototype.getRouteConfig.call(this, "basic-use"),
+            _super.prototype.getRouteConfig.call(this, "colors"),
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["q" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["e" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+    ], Index);
+    return Index;
+}(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
+
+
 
 /***/ }),
 
@@ -5928,26 +6890,26 @@ var AuCode = /** @class */ (function () {
         pre.innerHTML = __WEBPACK_IMPORTED_MODULE_1_prismjs__["highlight"](this.html, __WEBPACK_IMPORTED_MODULE_1_prismjs__["languages"][this.language]);
     };
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", String)
     ], AuCode.prototype, "language", void 0);
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", String)
     ], AuCode.prototype, "url", void 0);
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", String)
     ], AuCode.prototype, "text", void 0);
     AuCode = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["n" /* processContent */])(function (compiler, resources, element, instruction) {
+        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["p" /* processContent */])(function (compiler, resources, element, instruction) {
             parseCode(element, resources, instruction);
             return true;
         }),
-        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("au-code"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* noView */],
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
-        __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["c" /* TargetInstruction */], __WEBPACK_IMPORTED_MODULE_6_aurelia_loader__["a" /* Loader */]])
+        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("au-code"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["n" /* noView */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+        __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["d" /* TargetInstruction */], __WEBPACK_IMPORTED_MODULE_6_aurelia_loader__["a" /* Loader */]])
     ], AuCode);
     return AuCode;
 }());
@@ -6038,17 +7000,17 @@ var AuMarkdown = /** @class */ (function () {
         }
     };
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", String)
     ], AuMarkdown.prototype, "url", void 0);
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", String)
     ], AuMarkdown.prototype, "text", void 0);
     AuMarkdown = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("au-markdown"),
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* noView */],
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("au-markdown"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["n" /* noView */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
         __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__["a" /* Loader */]])
     ], AuMarkdown);
     return AuMarkdown;
@@ -6087,23 +7049,23 @@ var CollapsePanel = /** @class */ (function () {
         }
     };
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", String)
     ], CollapsePanel.prototype, "title", void 0);
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", String)
     ], CollapsePanel.prototype, "footer", void 0);
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", Boolean)
     ], CollapsePanel.prototype, "allowCollapse", void 0);
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", Boolean)
     ], CollapsePanel.prototype, "collapsed", void 0);
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* bindable */],
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
         __metadata("design:type", String)
     ], CollapsePanel.prototype, "panelClass", void 0);
     return CollapsePanel;
@@ -6187,7 +7149,7 @@ var Logger = /** @class */ (function () {
         });
     };
     Logger = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customElement */])("logger")
+        Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("logger")
     ], Logger);
     return Logger;
 }());

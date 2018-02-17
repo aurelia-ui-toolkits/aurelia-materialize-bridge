@@ -1,10 +1,10 @@
 // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
 // tslint:disable
 function shadeBlendConvert(p: number, from: string, to?: string) {
-	if (p < -1 || p > 1 || (from[0] != 'r' && from[0] != '#')) {
+	if (typeof (p) != "number" || p < -1 || p > 1 || typeof (from) != "string" || (from[0] != 'r' && from[0] != '#') || (typeof (to) != "string" && typeof (to) != "undefined")) {
 		return null; //ErrorCheck
 	}
-	let sbcRip = function (d: any) {
+	let sbcRip = function(d: any) {
 		var l = d.length, RGB = new Object();
 		if (l > 9) {
 			d = d.split(",");
