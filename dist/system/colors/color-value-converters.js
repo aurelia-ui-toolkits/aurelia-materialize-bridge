@@ -4,7 +4,7 @@ System.register([], function (exports_1, context_1) {
     // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
     // tslint:disable
     function shadeBlendConvert(p, from, to) {
-        if (p < -1 || p > 1 || (from[0] != 'r' && from[0] != '#')) {
+        if (typeof (p) != "number" || p < -1 || p > 1 || typeof (from) != "string" || (from[0] != 'r' && from[0] != '#') || (typeof (to) != "string" && typeof (to) != "undefined")) {
             return null; //ErrorCheck
         }
         let sbcRip = function (d) {

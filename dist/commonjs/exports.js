@@ -22,7 +22,7 @@ __export(require("./collection/collection-header"));
 __export(require("./collection/collection-item"));
 __export(require("./collection/collection"));
 __export(require("./collection/md-collection-selector"));
-__export(require("./colors/colorValueConverters"));
+__export(require("./colors/color-value-converters"));
 __export(require("./colors/md-colors"));
 __export(require("./common/attributeManager"));
 __export(require("./common/attributes"));

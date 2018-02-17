@@ -16,7 +16,7 @@ export * from "./collection/collection-header";
 export * from "./collection/collection-item";
 export * from "./collection/collection";
 export * from "./collection/md-collection-selector";
-export * from "./colors/colorValueConverters";
+export * from "./colors/color-value-converters";
 export * from "./colors/md-colors";
 export * from "./common/attributeManager";
 export * from "./common/attributes";
