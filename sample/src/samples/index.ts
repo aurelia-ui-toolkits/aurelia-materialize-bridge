@@ -35,6 +35,7 @@ export class Index {
 			this.getRouteConfig("scrollfire", js),
 			this.getRouteConfig("scrollspy", js),
 			this.getRouteConfig("sidenav", js),
+			this.getRouteConfig("tabs", js),
 		];
 		config.map(routes);
 		this.router = router;

@@ -5,6 +5,8 @@ import { getLogger, Logger } from "aurelia-logging";
 import { fireEvent } from "../common/events";
 import { getBooleanFromAttributeValue } from "../common/attributes";
 import { DOM } from "aurelia-pal";
+import { ValidateResult } from "aurelia-validation";
+import { MaterializeFormValidationRenderer } from "..";
 
 @autoinject
 @customAttribute("md-select")
@@ -331,7 +333,10 @@ export class MdSelect {
 		}
 	}
 
-	mdUnrenderValidateResults = (results, renderer) => {
+	mdUnrenderValidateResults = (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => {
+		if (!this.input) {
+			return;
+		}
 		for (let result of results) {
 			if (!result.valid) {
 				renderer.removeMessage(this.inputField, result);
@@ -340,10 +345,13 @@ export class MdSelect {
 		renderer.removeValidationClasses(this.input);
 	}
 
-	mdRenderValidateResults = (results, renderer) => {
+	mdRenderValidateResults = (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => {
+		if (!this.input) {
+			return;
+		}
 		for (let result of results) {
 			if (!result.valid) {
-				result.target = this.input;
+				(result as any).target = this.input;
 				if (!(this.input.hasAttribute("data-show-errortext") && this.input.getAttribute("data-show-errortext") === "false")) {
 					renderer.addMessage(this.inputField, result);
 				}

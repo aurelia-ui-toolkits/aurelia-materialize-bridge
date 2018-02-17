@@ -1,0 +1,16 @@
+<template>
+	<require from="./app.css"></require>
+	<div class="row">
+		Default:
+		<ul md-tabs md-tabs.ref="tabsVM" class="z-depth-1" ref="tabControl">
+			<li repeat.for="tab of tabs" md-waves="color: primary;"><a href="${'#tab_'+tab.id}">${tab.title}</a></li>
+		</ul>
+	</div>
+	<div ref="tabContents">
+		<div repeat.for="tab of tabs" id.bind="'tab_' + tab.id" class="tab-content z-depth-1">
+			${tab.content}
+		</div>
+	</div>
+
+	<button md-button click.delegate="addTab()">add tab</button>
+</template>

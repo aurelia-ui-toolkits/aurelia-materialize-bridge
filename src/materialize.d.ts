@@ -20,7 +20,7 @@ interface JQuery {
 	slider(command?: string);
 	slider(options: any);
 	tabs(options: any);
-	tabs(command: string, index: number);
+	tabs(command: string, index: string);
 	tapTarget(command?: string);
 	pickatime(command?: string);
 	pickatime(options: any);

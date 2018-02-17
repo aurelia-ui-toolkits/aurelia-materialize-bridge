@@ -242,7 +242,7 @@ var Support = /** @class */ (function () {
 /***/ "help/support.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -267,7 +267,7 @@ module.exports = "<template>\n  <require from=\"./support.css\"></require>\n  <d
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadingIndicator", function() { return LoadingIndicator; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_nprogress__ = __webpack_require__(78);
@@ -602,7 +602,7 @@ var App = /** @class */ (function () {
 /***/ "samples/badge/in-dropdown/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -652,7 +652,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -838,7 +838,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1087,7 +1087,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1298,7 +1298,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1481,7 +1481,7 @@ var Controls = /** @class */ (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(32);
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -1708,7 +1708,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1848,7 +1848,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2124,7 +2124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2254,7 +2254,7 @@ var App = /** @class */ (function () {
 /***/ "samples/collections/selection/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -2327,7 +2327,7 @@ var App = /** @class */ (function () {
 /***/ "samples/color/basic-use/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -2377,7 +2377,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2437,7 +2437,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2701,7 +2701,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2918,7 +2918,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3014,6 +3014,7 @@ var Index = /** @class */ (function () {
             this.getRouteConfig("scrollfire", js),
             this.getRouteConfig("scrollspy", js),
             this.getRouteConfig("sidenav", js),
+            this.getRouteConfig("tabs", js),
         ];
         config.map(routes);
         this.router = router;
@@ -3237,7 +3238,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3498,7 +3499,7 @@ var Menu = /** @class */ (function () {
 /***/ "samples/menu.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -3661,7 +3662,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -3998,7 +3999,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4147,7 +4148,7 @@ var App = /** @class */ (function () {
 /***/ "samples/navbar/tabs-in-navbar/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -4276,7 +4277,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4390,7 +4391,7 @@ var App = /** @class */ (function () {
 /***/ "samples/parallax/basic-use/app.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -4440,7 +4441,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4580,7 +4581,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4678,7 +4679,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -4737,7 +4738,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_fetch_client__ = __webpack_require__(6);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4906,7 +4907,7 @@ var SampleIndexBase = /** @class */ (function () {
 /***/ "samples/sample-template.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -4979,7 +4980,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -5076,7 +5077,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -5297,7 +5298,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -5382,6 +5383,452 @@ module.exports = "<template>\r\n\t<div>\r\n\t\t<a md-sidenav-collapse=\"ref.bind
 /***/ }),
 
 /***/ "samples/sidenav/options/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/api/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StringifyValueConverter", function() { return StringifyValueConverter; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    App.prototype.selectTab2 = function () {
+        this.demotabs.selectTab("tab_2");
+    };
+    return App;
+}());
+
+// tslint:disable-next-line:max-classes-per-file
+var StringifyValueConverter = /** @class */ (function () {
+    function StringifyValueConverter() {
+    }
+    StringifyValueConverter.prototype.toView = function (value) {
+        return JSON.stringify(value);
+    };
+    return StringifyValueConverter;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/tabs/api/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"row\">\r\n\t\t<div style=\"margin-bottom: 10px;\">\r\n\t\t\t<button md-button click.delegate=\"selectTab2()\">select tab 2</button>\r\n\t\t\t<br />\r\n\t\t\t<br /> Selected tab: ${demotabs.selectedTab | stringify}\r\n\t\t</div>\r\n\r\n\t\t<ul md-tabs md-tabs.ref=\"demotabs\" class=\"z-depth-1\">\r\n\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab_1\">Tab 1</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_2\">Tab 2</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_3\">Tab 3</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_4\">Tab 4</a></li>\r\n\t\t</ul>\r\n\r\n\t</div>\r\n\t<div id=\"tab_1\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 1\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_2\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 2\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_3\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 3\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_4\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 4\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t</p>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/tabs/api/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"row\">\r\n\t\t<div style=\"margin-bottom: 10px;\">\r\n\t\t\t<button md-button click.delegate=\"selectTab2()\">select tab 2</button>\r\n\t\t\t<br />\r\n\t\t\t<br /> Selected tab: ${demotabs.selectedTab | stringify}\r\n\t\t</div>\r\n\r\n\t\t<ul md-tabs md-tabs.ref=\"demotabs\" class=\"z-depth-1\">\r\n\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab_1\">Tab 1</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_2\">Tab 2</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_3\">Tab 3</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_4\">Tab 4</a></li>\r\n\t\t</ul>\r\n\r\n\t</div>\r\n\t<div id=\"tab_1\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 1\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_2\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 2\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_3\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 3\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_4\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 4\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t</p>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/api/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { MdTabs } from \"aurelia-materialize-bridge\";\r\n\r\nexport class App {\r\n\tdemotabs: MdTabs;\r\n\r\n\tselectTab2() {\r\n\t\tthis.demotabs.selectTab(\"tab_2\");\r\n\t}\r\n}\r\n\r\n// tslint:disable-next-line:max-classes-per-file\r\nexport class StringifyValueConverter {\r\n\ttoView(value) {\r\n\t\treturn JSON.stringify(value);\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/basic-use/_docs.md":
+/***/ (function(module, exports) {
+
+// empty (null-loader)
+
+/***/ }),
+
+/***/ "samples/tabs/basic-use/_docs.md.raw":
+/***/ (function(module, exports) {
+
+module.exports = "#### Indicator issue when using tabs with waves\r\n\r\nWaves make the container `position: relative;` and because of that the position of the child (a in the tab li) cannot be calculated correctly, it's always at `left: 0`.\r\n\r\nTo work around this, set this in a css file (like in `app.css` here):\r\n\r\n```css\r\n[md-tabs] .waves-effect {\r\n  position: static;\r\n}\r\n```\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/basic-use/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/tabs/basic-use/app.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "[md-tabs] .waves-effect {\r\n  position: static;\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "samples/tabs/basic-use/app.css.raw":
+/***/ (function(module, exports) {
+
+module.exports = "[md-tabs] .waves-effect {\r\n  position: static;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/basic-use/app.html":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<div class=\"row\">\r\n\t\tDefault:\r\n\t\t<ul md-tabs class=\"z-depth-1\">\r\n\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab_1\">Tab 1</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_2\">Tab 2</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_3\">Tab 3</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_4\">Tab 4</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a target=\"_blank\" href=\"http://materializecss.com/\">External link</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div id=\"tab_1\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 1\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_2\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 2\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_3\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 3\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_4\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 4\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t</p>\r\n\t</div>\r\n\t<hr />\r\n\t<div class=\"row\">\r\n\t\tFixed tabs:\r\n\t\t<ul md-tabs=\"fixed: true;\" class=\"z-depth-1\">\r\n\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab21\">Tab 1</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab22\">Tab 2</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab23\">Tab 3</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab24\">Tab 4</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a target=\"_blank\" href=\"http://materializecss.com/\">External link</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div id=\"tab21\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 1\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab22\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 2\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab23\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 3\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab24\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 4\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t</p>\r\n\t</div>\r\n\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/tabs/basic-use/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<div class=\"row\">\r\n\t\tDefault:\r\n\t\t<ul md-tabs class=\"z-depth-1\">\r\n\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab_1\">Tab 1</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_2\">Tab 2</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_3\">Tab 3</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab_4\">Tab 4</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a target=\"_blank\" href=\"http://materializecss.com/\">External link</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div id=\"tab_1\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 1\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_2\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 2\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_3\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 3\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab_4\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 4\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t</p>\r\n\t</div>\r\n\t<hr />\r\n\t<div class=\"row\">\r\n\t\tFixed tabs:\r\n\t\t<ul md-tabs=\"fixed: true;\" class=\"z-depth-1\">\r\n\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab21\">Tab 1</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab22\">Tab 2</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab23\">Tab 3</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab24\">Tab 4</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a target=\"_blank\" href=\"http://materializecss.com/\">External link</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div id=\"tab21\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 1\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab22\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 2\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab23\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 3\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab24\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 4\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t</p>\r\n\t</div>\r\n\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/basic-use/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/dynamic/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var App = /** @class */ (function () {
+    function App(tq) {
+        this.tq = tq;
+        this.tabs = [
+            { id: 0, title: "tab 1", content: "content for tab 1" },
+            { id: 1, title: "tab 2", content: "content for tab 2" },
+            { id: 2, title: "tab 3", content: "content for tab 3" },
+            { id: 3, title: "tab 4", content: "content for tab 4" }
+        ];
+    }
+    App.prototype.addTab = function () {
+        var id = this.tabs.length;
+        this.tabs.push({
+            id: id, title: "tab " + (id + 1), content: "content for tab " + (id + 1)
+        });
+        this.tabsVM.refresh();
+    };
+    App.prototype.refresh = function () {
+        var _this = this;
+        $("li", this.tabControl).each(function (i, tab) {
+            $(tab).addClass("tab");
+        });
+        $(".tab-content", this.tabContents).each(function (i, tab) {
+            if (_this.tabsVM.selectedTab.index !== i) {
+                $(tab).hide();
+            }
+        });
+        this.tq.queueTask(function () {
+            // window resize adjusts Materialize tab indicator
+            $(window).trigger("resize");
+        });
+    };
+    App = __decorate([
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["e" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["d" /* TaskQueue */]])
+    ], App);
+    return App;
+}());
+
+
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+
+/***/ }),
+
+/***/ "samples/tabs/dynamic/app.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "[md-tabs] .waves-effect {\r\n  position: static;\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "samples/tabs/dynamic/app.css.raw":
+/***/ (function(module, exports) {
+
+module.exports = "[md-tabs] .waves-effect {\r\n  position: static;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/dynamic/app.html":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<div class=\"row\">\r\n\t\tDefault:\r\n\t\t<ul md-tabs md-tabs.ref=\"tabsVM\" class=\"z-depth-1\" ref=\"tabControl\">\r\n\t\t\t<li repeat.for=\"tab of tabs\" md-waves=\"color: primary;\"><a href=\"${'#tab_'+tab.id}\">${tab.title}</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div ref=\"tabContents\">\r\n\t\t<div repeat.for=\"tab of tabs\" id.bind=\"'tab_' + tab.id\" class=\"tab-content z-depth-1\">\r\n\t\t\t${tab.content}\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<button md-button click.delegate=\"addTab()\">add tab</button>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/tabs/dynamic/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<div class=\"row\">\r\n\t\tDefault:\r\n\t\t<ul md-tabs md-tabs.ref=\"tabsVM\" class=\"z-depth-1\" ref=\"tabControl\">\r\n\t\t\t<li repeat.for=\"tab of tabs\" md-waves=\"color: primary;\"><a href=\"${'#tab_'+tab.id}\">${tab.title}</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div ref=\"tabContents\">\r\n\t\t<div repeat.for=\"tab of tabs\" id.bind=\"'tab_' + tab.id\" class=\"tab-content z-depth-1\">\r\n\t\t\t${tab.content}\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<button md-button click.delegate=\"addTab()\">add tab</button>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/dynamic/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "import { autoinject, TaskQueue } from \"aurelia-framework\";\r\nimport { MdTabs } from \"aurelia-materialize-bridge\";\r\n\r\n@autoinject\r\nexport class App {\r\n\tconstructor(private tq: TaskQueue) { }\r\n\r\n\ttabs = [\r\n\t\t{ id: 0, title: \"tab 1\", content: \"content for tab 1\" },\r\n\t\t{ id: 1, title: \"tab 2\", content: \"content for tab 2\" },\r\n\t\t{ id: 2, title: \"tab 3\", content: \"content for tab 3\" },\r\n\t\t{ id: 3, title: \"tab 4\", content: \"content for tab 4\" }\r\n\t];\r\n\ttabsVM: MdTabs;\r\n\ttabControl: HTMLUListElement;\r\n\ttabContents: HTMLDivElement;\r\n\r\n\taddTab() {\r\n\t\tconst id = this.tabs.length;\r\n\t\tthis.tabs.push({\r\n\t\t\tid, title: `tab ${id + 1}`, content: `content for tab ${id + 1}`\r\n\t\t});\r\n\t\tthis.tabsVM.refresh();\r\n\t}\r\n\r\n\trefresh() {\r\n\t\t$(\"li\", this.tabControl).each(function(i, tab) {\r\n\t\t\t$(tab).addClass(\"tab\");\r\n\t\t});\r\n\t\t$(\".tab-content\", this.tabContents).each((i, tab) => {\r\n\t\t\tif (this.tabsVM.selectedTab.index !== i) {\r\n\t\t\t\t$(tab).hide();\r\n\t\t\t}\r\n\t\t});\r\n\t\tthis.tq.queueTask(() => {\r\n\t\t\t// window resize adjusts Materialize tab indicator\r\n\t\t\t$(window).trigger(\"resize\");\r\n\t\t});\r\n\t}\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/events/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    App.prototype.onTabSelected = function (e) {
+        this.logger.log("tab selected " + e.detail);
+    };
+    App.prototype.onShow = function (element) {
+        this.logger.log("onShow on element: " + element.attr("id"));
+    };
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/tabs/events/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"row\">\r\n\r\n\t\t<ul md-tabs=\"on-show.call: onShow(element)\" md-on-selected.delegate=\"onTabSelected($event)\" class=\"z-depth-1\">\r\n\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab1\">Tab 1</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab2\">Tab 2</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab3\">Tab 3</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab4\">Tab 4</a></li>\r\n\t\t</ul>\r\n\r\n\t</div>\r\n\t<div id=\"tab1\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 1\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab2\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 2\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab3\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 3\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab4\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 4\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t</p>\r\n\t</div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12\">\r\n\t\t\t<md-card md-title=\"Console log\">\r\n\t\t\t\t<logger class=\"z-depth-1\" view-model.ref=\"logger\"></logger>\r\n\t\t\t</md-card>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/tabs/events/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"row\">\r\n\r\n\t\t<ul md-tabs=\"on-show.call: onShow(element)\" md-on-selected.delegate=\"onTabSelected($event)\" class=\"z-depth-1\">\r\n\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab1\">Tab 1</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab2\">Tab 2</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab3\">Tab 3</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab4\">Tab 4</a></li>\r\n\t\t</ul>\r\n\r\n\t</div>\r\n\t<div id=\"tab1\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 1\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab2\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 2\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab3\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 3\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab4\" class=\"tab-content z-depth-1\">\r\n\t\t<p>\r\n\t\t\tThis is tab 4\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t</p>\r\n\t</div>\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col s12\">\r\n\t\t\t<md-card md-title=\"Console log\">\r\n\t\t\t\t<logger class=\"z-depth-1\" view-model.ref=\"logger\"></logger>\r\n\t\t\t</md-card>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/events/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/in-navbar/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/tabs/in-navbar/app.html":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"tabs-basic-use\">\r\n\t\t<md-navbar md-auto-height=\"true\">\r\n\t\t\t<a href=\"#/samples/navbar\" class=\"brand-logo\">\r\n\t\t\t\t<span>Brand logo</span>\r\n\t\t\t</a>\r\n\t\t\t<ul class=\"hide-on-med-and-down right\">\r\n\t\t\t\t<li md-waves><a>About</a></li>\r\n\t\t\t\t<li md-waves><a>Installation</a></li>\r\n\t\t\t\t<li md-waves><a>Project Status</a></li>\r\n\t\t\t</ul>\r\n\t\t\t<ul md-tabs=\"transparent: true;\" class=\"z-depth-1\">\r\n\t\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab1\">Tab 1</a></li>\r\n\t\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab2\">Tab 2</a></li>\r\n\t\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab3\">Tab 3</a></li>\r\n\t\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab4\">Tab 4</a></li>\r\n\t\t\t</ul>\r\n\t\t</md-navbar>\r\n\t\t<div id=\"tab1\" class=\"tab-content z-depth-1\">\r\n\t\t\t<p>\r\n\t\t\t\tThis is tab 1\r\n\t\t\t</p>\r\n\t\t\t<p>\r\n\t\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t\t<div id=\"tab2\" class=\"tab-content z-depth-1\">\r\n\t\t\t<p>\r\n\t\t\t\tThis is tab 2\r\n\t\t\t</p>\r\n\t\t\t<p>\r\n\t\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t\t<div id=\"tab3\" class=\"tab-content z-depth-1\">\r\n\t\t\t<p>\r\n\t\t\t\tThis is tab 3\r\n\t\t\t</p>\r\n\t\t\t<p>\r\n\t\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t\t<div id=\"tab4\" class=\"tab-content z-depth-1\">\r\n\t\t\t<p>\r\n\t\t\t\tThis is tab 4\r\n\t\t\t</p>\r\n\t\t\t<p>\r\n\t\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/tabs/in-navbar/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<div class=\"tabs-basic-use\">\r\n\t\t<md-navbar md-auto-height=\"true\">\r\n\t\t\t<a href=\"#/samples/navbar\" class=\"brand-logo\">\r\n\t\t\t\t<span>Brand logo</span>\r\n\t\t\t</a>\r\n\t\t\t<ul class=\"hide-on-med-and-down right\">\r\n\t\t\t\t<li md-waves><a>About</a></li>\r\n\t\t\t\t<li md-waves><a>Installation</a></li>\r\n\t\t\t\t<li md-waves><a>Project Status</a></li>\r\n\t\t\t</ul>\r\n\t\t\t<ul md-tabs=\"transparent: true;\" class=\"z-depth-1\">\r\n\t\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab1\">Tab 1</a></li>\r\n\t\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab2\">Tab 2</a></li>\r\n\t\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab3\">Tab 3</a></li>\r\n\t\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab4\">Tab 4</a></li>\r\n\t\t\t</ul>\r\n\t\t</md-navbar>\r\n\t\t<div id=\"tab1\" class=\"tab-content z-depth-1\">\r\n\t\t\t<p>\r\n\t\t\t\tThis is tab 1\r\n\t\t\t</p>\r\n\t\t\t<p>\r\n\t\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t\t<div id=\"tab2\" class=\"tab-content z-depth-1\">\r\n\t\t\t<p>\r\n\t\t\t\tThis is tab 2\r\n\t\t\t</p>\r\n\t\t\t<p>\r\n\t\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t\t<div id=\"tab3\" class=\"tab-content z-depth-1\">\r\n\t\t\t<p>\r\n\t\t\t\tThis is tab 3\r\n\t\t\t</p>\r\n\t\t\t<p>\r\n\t\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t\t<div id=\"tab4\" class=\"tab-content z-depth-1\">\r\n\t\t\t<p>\r\n\t\t\t\tThis is tab 4\r\n\t\t\t</p>\r\n\t\t\t<p>\r\n\t\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t\t</p>\r\n\t\t</div>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/in-navbar/app.ts.raw":
+/***/ (function(module, exports) {
+
+module.exports = "export class App { }\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/index":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Index", function() { return Index; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__ = __webpack_require__("aurelia-event-aggregator");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__ = __webpack_require__("aurelia-framework");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__sample_index_base__ = __webpack_require__("samples/sample-index-base");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__ = __webpack_require__(6);
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var Index = /** @class */ (function (_super) {
+    __extends(Index, _super);
+    function Index(eventAggregator, loader, taskQueue, http) {
+        return _super.call(this, eventAggregator, loader, taskQueue, http) || this;
+    }
+    Index.prototype.configureRouter = function (config, router) {
+        var routes = [
+            { route: "", redirect: "basic-use" },
+            _super.prototype.getRouteConfig.call(this, "basic-use"),
+            _super.prototype.getRouteConfig.call(this, "events"),
+            _super.prototype.getRouteConfig.call(this, "api"),
+            _super.prototype.getRouteConfig.call(this, "in-navbar"),
+            _super.prototype.getRouteConfig.call(this, "dynamic"),
+            _super.prototype.getRouteConfig.call(this, "swipeable"),
+        ];
+        config.map(routes);
+        this.router = router;
+    };
+    Index = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["o" /* useView */])("../sample-template.html"),
+        __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__["d" /* autoinject */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_aurelia_event_aggregator__["a" /* EventAggregator */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["b" /* Loader */], __WEBPACK_IMPORTED_MODULE_2_aurelia_framework__["d" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4_aurelia_fetch_client__["a" /* HttpClient */]])
+    ], Index);
+    return Index;
+}(__WEBPACK_IMPORTED_MODULE_3__sample_index_base__["SampleIndexBase"]));
+
+
+
+/***/ }),
+
+/***/ "samples/tabs/swipeable/_docs.md":
+/***/ (function(module, exports) {
+
+// empty (null-loader)
+
+/***/ }),
+
+/***/ "samples/tabs/swipeable/_docs.md.raw":
+/***/ (function(module, exports) {
+
+module.exports = "    #### Indicator issue when using tabs with waves\r\n\r\nWaves make the container `position: relative;` and because of that the position of the child (a in the tab li) cannot be calculated correctly, it's always at `left: 0`.\r\n\r\nTo work around this, set this in a css file (like in `app.css` here):\r\n\r\n```css\r\n[md-tabs] .waves-effect {\r\n  position: static;\r\n}\r\n```\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/swipeable/app":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "App", function() { return App; });
+var App = /** @class */ (function () {
+    function App() {
+    }
+    return App;
+}());
+
+
+
+/***/ }),
+
+/***/ "samples/tabs/swipeable/app.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(4)(false);
+// imports
+
+
+// module
+exports.push([module.i, "[md-tabs] .waves-effect {\r\n  position: static;\r\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "samples/tabs/swipeable/app.css.raw":
+/***/ (function(module, exports) {
+
+module.exports = "[md-tabs] .waves-effect {\r\n  position: static;\r\n}\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/swipeable/app.html":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<div class=\"row\">\r\n\t\tSwipeable tabs:\r\n\t\t<ul md-tabs=\"swipeable: true;\" class=\"z-depth-1\">\r\n\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab31\">Tab 1</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab32\">Tab 2</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab33\">Tab 3</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab34\">Tab 4</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a target=\"_blank\" href=\"http://materializecss.com/\">External link</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div id=\"tab31\" class=\"tab-content z-depth-1\" style=\"width: 100%;\">\r\n\t\t<p>\r\n\t\t\tThis is tab 1\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab32\" class=\"tab-content z-depth-1\" style=\"width: 100%;\">\r\n\t\t<p>\r\n\t\t\tThis is tab 2\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab33\" class=\"tab-content z-depth-1\" style=\"width: 100%;\">\r\n\t\t<p>\r\n\t\t\tThis is tab 3\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab34\" class=\"tab-content z-depth-1\" style=\"width: 100%;\">\r\n\t\t<p>\r\n\t\t\tThis is tab 4\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t</p>\r\n\t</div>\r\n</template>\r\n";
+
+/***/ }),
+
+/***/ "samples/tabs/swipeable/app.html.raw":
+/***/ (function(module, exports) {
+
+module.exports = "<template>\r\n\t<require from=\"./app.css\"></require>\r\n\t<div class=\"row\">\r\n\t\tSwipeable tabs:\r\n\t\t<ul md-tabs=\"swipeable: true;\" class=\"z-depth-1\">\r\n\t\t\t<li md-waves=\"color: primary;\"><a class=\"active\" href=\"#tab31\">Tab 1</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab32\">Tab 2</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab33\">Tab 3</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a href=\"#tab34\">Tab 4</a></li>\r\n\t\t\t<li md-waves=\"color: primary;\"><a target=\"_blank\" href=\"http://materializecss.com/\">External link</a></li>\r\n\t\t</ul>\r\n\t</div>\r\n\t<div id=\"tab31\" class=\"tab-content z-depth-1\" style=\"width: 100%;\">\r\n\t\t<p>\r\n\t\t\tThis is tab 1\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nisi augue, sodales eget felis quis, fringilla luctus ex. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed in quam a velit ultricies suscipit eu sed arcu. Duis dapibus sodales est, a semper augue laoreet et. Quisque tristique molestie odio in pulvinar. Aliquam eget enim vitae felis varius varius at ut nisl.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab32\" class=\"tab-content z-depth-1\" style=\"width: 100%;\">\r\n\t\t<p>\r\n\t\t\tThis is tab 2\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tNunc quis lectus elementum, venenatis est eget, blandit dui. Vivamus fermentum nulla interdum massa blandit rhoncus. Ut dui libero, sollicitudin et gravida id, ultricies eu nunc. Nunc nisi sem, facilisis sed mauris et, pharetra tincidunt orci. Cras molestie, arcu ac venenatis fringilla, nulla dui laoreet magna, sit amet blandit diam tellus et nisl. Nunc a augue aliquam, tristique justo vel, efficitur metus. Nullam faucibus blandit tincidunt.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab33\" class=\"tab-content z-depth-1\" style=\"width: 100%;\">\r\n\t\t<p>\r\n\t\t\tThis is tab 3\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tPraesent ullamcorper tortor ante, sed tempor dui aliquet id. Donec vehicula fringilla vestibulum. Proin suscipit ex vitae massa ultricies tempus. Nulla id finibus metus. Phasellus sollicitudin mi ac rhoncus rutrum. Nullam vulputate semper turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.\r\n\t\t</p>\r\n\t</div>\r\n\t<div id=\"tab34\" class=\"tab-content z-depth-1\" style=\"width: 100%;\">\r\n\t\t<p>\r\n\t\t\tThis is tab 4\r\n\t\t</p>\r\n\t\t<p>\r\n\t\t\tIn tincidunt, massa sed mollis ornare, erat turpis aliquam orci, sed elementum nulla dui non nibh. Quisque et quam non ante ultrices pellentesque. Proin tempus ante justo, id placerat augue luctus at. Nullam tincidunt, lacus vitae dignissim aliquam, turpis tortor aliquam nisi, sit amet rhoncus urna odio in leo.\r\n\t\t</p>\r\n\t</div>\r\n</template>\r\n"
+
+/***/ }),
+
+/***/ "samples/tabs/swipeable/app.ts.raw":
 /***/ (function(module, exports) {
 
 module.exports = "export class App { }\r\n"

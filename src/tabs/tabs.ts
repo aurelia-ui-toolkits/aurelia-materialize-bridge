@@ -113,7 +113,7 @@ export class MdTabs {
 		fireMaterializeEvent(this.element, "selected", href);
 	}
 
-	selectTab(id: number) {
+	selectTab(id: string) {
 		$(this.element).tabs("select_tab", id);
 		this.fireTabSelectedEvent({
 			target: { getAttribute: () => `#${id}` }

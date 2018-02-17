@@ -15546,7 +15546,7 @@ return Promise$1;
 /* unused harmony export LoadRouteStep */
 /* unused harmony export PipelineProvider */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRouter; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_route_recognizer__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_history__ = __webpack_require__(33);
@@ -19101,8 +19101,8 @@ var ValidationMessageProvider = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ValidationMessageParser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageExpressionValidator; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__expression_visitor__ = __webpack_require__(97);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -20008,6 +20008,867 @@ var SetRepeatStrategy = function () {
 /***/ }),
 
 /***/ 4:
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+
+/***/ 40:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NumberRepeatStrategy; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__repeat_utilities__ = __webpack_require__(16);
+
+
+
+
+var NumberRepeatStrategy = function () {
+  function NumberRepeatStrategy() {
+    
+  }
+
+  NumberRepeatStrategy.prototype.getCollectionObserver = function getCollectionObserver() {
+    return null;
+  };
+
+  NumberRepeatStrategy.prototype.instanceChanged = function instanceChanged(repeat, value) {
+    var _this = this;
+
+    var removePromise = repeat.removeAllViews(true, !repeat.viewsRequireLifecycle);
+    if (removePromise instanceof Promise) {
+      removePromise.then(function () {
+        return _this._standardProcessItems(repeat, value);
+      });
+      return;
+    }
+    this._standardProcessItems(repeat, value);
+  };
+
+  NumberRepeatStrategy.prototype._standardProcessItems = function _standardProcessItems(repeat, value) {
+    var childrenLength = repeat.viewCount();
+    var i = void 0;
+    var ii = void 0;
+    var overrideContext = void 0;
+    var viewsToRemove = void 0;
+
+    value = Math.floor(value);
+    viewsToRemove = childrenLength - value;
+
+    if (viewsToRemove > 0) {
+      if (viewsToRemove > childrenLength) {
+        viewsToRemove = childrenLength;
+      }
+
+      for (i = 0, ii = viewsToRemove; i < ii; ++i) {
+        repeat.removeView(childrenLength - (i + 1), true, !repeat.viewsRequireLifecycle);
+      }
+
+      return;
+    }
+
+    for (i = childrenLength, ii = value; i < ii; ++i) {
+      overrideContext = Object(__WEBPACK_IMPORTED_MODULE_0__repeat_utilities__["a" /* createFullOverrideContext */])(repeat, i, i, ii);
+      repeat.addView(overrideContext.bindingContext, overrideContext);
+    }
+
+    Object(__WEBPACK_IMPORTED_MODULE_0__repeat_utilities__["h" /* updateOverrideContexts */])(repeat.views(), 0);
+  };
+
+  return NumberRepeatStrategy;
+}();
+
+/***/ }),
+
+/***/ 41:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export lifecycleOptionalBehaviors */
+/* harmony export (immutable) */ __webpack_exports__["a"] = viewsRequireLifecycle;
+
+var lifecycleOptionalBehaviors = ['focus', 'if', 'repeat', 'show', 'with'];
+
+function behaviorRequiresLifecycle(instruction) {
+  var t = instruction.type;
+  var name = t.elementName !== null ? t.elementName : t.attributeName;
+  return lifecycleOptionalBehaviors.indexOf(name) === -1 && (t.handlesAttached || t.handlesBind || t.handlesCreated || t.handlesDetached || t.handlesUnbind) || t.viewFactory && viewsRequireLifecycle(t.viewFactory) || instruction.viewFactory && viewsRequireLifecycle(instruction.viewFactory);
+}
+
+function targetRequiresLifecycle(instruction) {
+  var behaviors = instruction.behaviorInstructions;
+  if (behaviors) {
+    var i = behaviors.length;
+    while (i--) {
+      if (behaviorRequiresLifecycle(behaviors[i])) {
+        return true;
+      }
+    }
+  }
+
+  return instruction.viewFactory && viewsRequireLifecycle(instruction.viewFactory);
+}
+
+function viewsRequireLifecycle(viewFactory) {
+  if ('_viewsRequireLifecycle' in viewFactory) {
+    return viewFactory._viewsRequireLifecycle;
+  }
+
+  viewFactory._viewsRequireLifecycle = false;
+
+  if (viewFactory.viewFactory) {
+    viewFactory._viewsRequireLifecycle = viewsRequireLifecycle(viewFactory.viewFactory);
+    return viewFactory._viewsRequireLifecycle;
+  }
+
+  if (viewFactory.template.querySelector('.au-animate')) {
+    viewFactory._viewsRequireLifecycle = true;
+    return true;
+  }
+
+  for (var id in viewFactory.instructions) {
+    if (targetRequiresLifecycle(viewFactory.instructions[id])) {
+      viewFactory._viewsRequireLifecycle = true;
+      return true;
+    }
+  }
+
+  viewFactory._viewsRequireLifecycle = false;
+  return false;
+}
+
+/***/ }),
+
+/***/ 42:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AbstractRepeater; });
+
+
+var AbstractRepeater = function () {
+  function AbstractRepeater(options) {
+    
+
+    Object.assign(this, {
+      local: 'items',
+      viewsRequireLifecycle: true
+    }, options);
+  }
+
+  AbstractRepeater.prototype.viewCount = function viewCount() {
+    throw new Error('subclass must implement `viewCount`');
+  };
+
+  AbstractRepeater.prototype.views = function views() {
+    throw new Error('subclass must implement `views`');
+  };
+
+  AbstractRepeater.prototype.view = function view(index) {
+    throw new Error('subclass must implement `view`');
+  };
+
+  AbstractRepeater.prototype.matcher = function matcher() {
+    throw new Error('subclass must implement `matcher`');
+  };
+
+  AbstractRepeater.prototype.addView = function addView(bindingContext, overrideContext) {
+    throw new Error('subclass must implement `addView`');
+  };
+
+  AbstractRepeater.prototype.insertView = function insertView(index, bindingContext, overrideContext) {
+    throw new Error('subclass must implement `insertView`');
+  };
+
+  AbstractRepeater.prototype.moveView = function moveView(sourceIndex, targetIndex) {
+    throw new Error('subclass must implement `moveView`');
+  };
+
+  AbstractRepeater.prototype.removeAllViews = function removeAllViews(returnToCache, skipAnimation) {
+    throw new Error('subclass must implement `removeAllViews`');
+  };
+
+  AbstractRepeater.prototype.removeViews = function removeViews(viewsToRemove, returnToCache, skipAnimation) {
+    throw new Error('subclass must implement `removeView`');
+  };
+
+  AbstractRepeater.prototype.removeView = function removeView(index, returnToCache, skipAnimation) {
+    throw new Error('subclass must implement `removeView`');
+  };
+
+  AbstractRepeater.prototype.updateBindings = function updateBindings(view) {
+    throw new Error('subclass must implement `updateBindings`');
+  };
+
+  return AbstractRepeater;
+}();
+
+/***/ }),
+
+/***/ 43:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HTMLSanitizer; });
+
+
+var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+
+var HTMLSanitizer = function () {
+  function HTMLSanitizer() {
+    
+  }
+
+  HTMLSanitizer.prototype.sanitize = function sanitize(input) {
+    return input.replace(SCRIPT_REGEX, '');
+  };
+
+  return HTMLSanitizer;
+}();
+
+/***/ }),
+
+/***/ 44:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BindingSignaler; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(8);
+
+
+
+
+var BindingSignaler = function () {
+  function BindingSignaler() {
+    
+
+    this.signals = {};
+  }
+
+  BindingSignaler.prototype.signal = function signal(name) {
+    var bindings = this.signals[name];
+    if (!bindings) {
+      return;
+    }
+    var i = bindings.length;
+    while (i--) {
+      bindings[i].call(__WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["G" /* sourceContext */]);
+    }
+  };
+
+  return BindingSignaler;
+}();
+
+/***/ }),
+
+/***/ 45:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["bootstrap"] = bootstrap;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "starting", function() { return starting; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_polyfills__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(3);
+
+
+
+var bootstrapPromises = [];
+var startResolve = void 0;
+
+var startPromise = new Promise(function (resolve) {
+  return startResolve = resolve;
+});
+var host = __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].global;
+var isNodeLike = typeof process !== 'undefined' && !process.browser;
+
+function ready() {
+  if (!host.document || host.document.readyState === 'complete') {
+    return Promise.resolve();
+  }
+
+  return new Promise(function (resolve) {
+    host.document.addEventListener('DOMContentLoaded', completed);
+    host.addEventListener('load', completed);
+
+    function completed() {
+      host.document.removeEventListener('DOMContentLoaded', completed);
+      host.removeEventListener('load', completed);
+      resolve();
+    }
+  });
+}
+
+function createLoader() {
+  if (__WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].Loader) {
+    return Promise.resolve(new __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].Loader());
+  }
+
+  if (false) {
+    if (typeof __webpack_require__ !== 'undefined') {
+      var m = __webpack_require__(require.resolve('aurelia-loader-webpack'));
+      return Promise.resolve(new m.WebpackLoader());
+    }
+
+    if (host.System && typeof host.System.config === 'function') {
+      return host.System.normalize('aurelia-bootstrapper').then(function (bsn) {
+        return host.System.normalize('aurelia-loader-default', bsn);
+      }).then(function (loaderName) {
+        return host.System.import(loaderName).then(function (m) {
+          return new m.DefaultLoader();
+        });
+      });
+    }
+
+    if (typeof host.require === 'function' && typeof host.require.version === 'string') {
+      return new Promise(function (resolve, reject) {
+        return host.require(['aurelia-loader-default'], function (m) {
+          return resolve(new m.DefaultLoader());
+        }, reject);
+      });
+    }
+
+    if (isNodeLike && typeof module !== 'undefined' && typeof module.require !== 'undefined') {
+      var _m = module.require('aurelia-loader-nodejs');
+      return Promise.resolve(new _m.NodeJsLoader());
+    }
+  }
+
+  return Promise.reject('No PLATFORM.Loader is defined and there is neither a System API (ES6) or a Require API (AMD) globally available to load your app.');
+}
+
+function initializePal(loader) {
+  var type = void 0;
+
+  var isRenderer = isNodeLike && (process.type === 'renderer' || process.versions['node-webkit']);
+
+  if (isNodeLike && !isRenderer) {
+    type = 'nodejs';
+  } else if (typeof window !== 'undefined') {
+    type = 'browser';
+  } else if (typeof self !== 'undefined') {
+    type = 'worker';
+  } else {
+    throw new Error('Could not determine platform implementation to load.');
+  }
+
+  return loader.loadModule('aurelia-pal-' + type).then(function (palModule) {
+    return type === 'nodejs' && !__WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["f" /* isInitialized */] && palModule.globalize() || palModule.initialize();
+  });
+}
+
+function preparePlatform(loader) {
+  var map = function map(moduleId, relativeTo) {
+    return loader.normalize(moduleId, relativeTo).then(function (normalized) {
+      loader.map(moduleId, normalized);
+      return normalized;
+    });
+  };
+
+  return initializePal(loader).then(function () {
+    return loader.normalize('aurelia-bootstrapper');
+  }).then(function (bootstrapperName) {
+    var frameworkPromise = map('aurelia-framework', bootstrapperName);
+
+    return Promise.all([frameworkPromise, frameworkPromise.then(function (frameworkName) {
+      return map('aurelia-dependency-injection', frameworkName);
+    }), map('aurelia-router', bootstrapperName), map('aurelia-logging-console', bootstrapperName)]);
+  }).then(function (_ref) {
+    var frameworkName = _ref[0];
+    return loader.loadModule(frameworkName);
+  }).then(function (fx) {
+    return startResolve(function () {
+      return new fx.Aurelia(loader);
+    });
+  });
+}
+
+function config(appHost, configModuleId, aurelia) {
+  aurelia.host = appHost;
+  aurelia.configModuleId = configModuleId || null;
+
+  if (configModuleId) {
+    return aurelia.loader.loadModule(configModuleId).then(function (customConfig) {
+      if (!customConfig.configure) {
+        throw new Error('Cannot initialize module \'' + configModuleId + '\' without a configure function.');
+      }
+
+      return customConfig.configure(aurelia);
+    });
+  }
+
+  aurelia.use.standardConfiguration().developmentLogging();
+
+  return aurelia.start().then(function () {
+    return aurelia.setRoot();
+  });
+}
+
+function run() {
+  return ready().then(createLoader).then(preparePlatform).then(function () {
+    var appHosts = host.document.querySelectorAll('[aurelia-app],[data-aurelia-app]');
+    for (var i = 0, ii = appHosts.length; i < ii; ++i) {
+      var appHost = appHosts[i];
+      var moduleId = appHost.getAttribute('aurelia-app') || appHost.getAttribute('data-aurelia-app');
+      bootstrap(config.bind(null, appHost, moduleId));
+    }
+
+    var toConsole = console.error.bind(console);
+    var bootstraps = bootstrapPromises.map(function (p) {
+      return p.catch(toConsole);
+    });
+    bootstrapPromises = null;
+    return Promise.all(bootstraps);
+  });
+}
+
+function bootstrap(configure) {
+  var p = startPromise.then(function (factory) {
+    return configure(factory());
+  });
+  if (bootstrapPromises) bootstrapPromises.push(p);
+  return p;
+}
+
+var starting = run();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(23)))
+
+/***/ }),
+
+/***/ 46:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
+
+/**
+ * Plugin configuration builder
+ */
+class ConfigBuilder {
+    constructor() {
+        this.globalResources = [];
+        this.noWavesAttach = false;
+        this.useGlobalResources = true;
+        this.useScrollfirePatch = false;
+    }
+    useAll() {
+        return this
+            .useAutoComplete()
+            .useBadge()
+            .useBox()
+            .useBreadcrumbs()
+            .useButton()
+            .useCard()
+            .useCarousel()
+            .useCharacterCounter()
+            .useCheckbox()
+            .useChip()
+            .useCollapsible()
+            .useCollection()
+            .useColors()
+            .useDatePicker()
+            .useDropdown()
+            .useFab()
+            .useFile()
+            .useFooter()
+            .useInput()
+            .useModal()
+            .useNavbar()
+            .usePagination()
+            .useParallax()
+            .useProgress()
+            .usePushpin()
+            .useRadio()
+            .useRange()
+            .useScrollfire()
+            .useScrollSpy()
+            .useSelect()
+            .useSidenav()
+            .useSlider()
+            .useSwitch()
+            .useTabs()
+            .useTapTarget()
+            .useTimePicker()
+            .useTooltip()
+            .useTransitions()
+            .useWaves()
+            .useWell();
+    }
+    useAutoComplete() {
+        this.globalResources.push('./autocomplete/autocomplete');
+        return this;
+    }
+    useBadge() {
+        this.globalResources.push('./badge/badge');
+        return this;
+    }
+    useBox() {
+        this.globalResources.push('./box/box');
+        return this;
+    }
+    useBreadcrumbs() {
+        this.globalResources.push('./breadcrumbs/breadcrumbs');
+        return this;
+    }
+    useButton() {
+        this.globalResources.push('./button/button');
+        return this;
+    }
+    useCarousel() {
+        this.globalResources.push('./carousel/carousel');
+        this.globalResources.push('./carousel/carousel-item');
+        return this;
+    }
+    useCharacterCounter() {
+        this.globalResources.push('./char-counter/char-counter');
+        return this;
+    }
+    useCard() {
+        this.globalResources.push('./card/card');
+        return this;
+    }
+    useCheckbox() {
+        this.globalResources.push('./checkbox/checkbox');
+        return this;
+    }
+    useChip() {
+        this.globalResources.push('./chip/chip');
+        this.globalResources.push('./chip/chips');
+        return this;
+    }
+    /**
+     * Use my control
+     */
+    useClickCounter() {
+        this.globalResources.push('./click-counter');
+        return this;
+    }
+    useCollapsible() {
+        this.globalResources.push('./collapsible/collapsible');
+        return this;
+    }
+    useCollection() {
+        this.globalResources.push('./collection/collection');
+        this.globalResources.push('./collection/collection-item');
+        this.globalResources.push('./collection/collection-header');
+        this.globalResources.push('./collection/md-collection-selector');
+        return this;
+    }
+    useColors() {
+        this.globalResources.push('./colors/md-colors');
+        return this;
+    }
+    useDatePicker() {
+        this.globalResources.push('./datepicker/datepicker');
+        return this;
+    }
+    useDropdown() {
+        // this.globalResources.push("./dropdown/dropdown-element");
+        this.globalResources.push('./dropdown/dropdown');
+        return this;
+    }
+    useFab() {
+        this.globalResources.push('./fab/fab');
+        return this;
+    }
+    useFile() {
+        this.globalResources.push('./file/file');
+        return this;
+    }
+    useFooter() {
+        this.globalResources.push('./footer/footer');
+        return this;
+    }
+    useInput() {
+        this.globalResources.push('./input/input');
+        this.globalResources.push('./input/input-prefix');
+        return this;
+    }
+    useModal() {
+        this.globalResources.push('./modal/modal');
+        this.globalResources.push('./modal/modal-trigger');
+        return this;
+    }
+    useNavbar() {
+        this.globalResources.push('./navbar/navbar');
+        return this;
+    }
+    usePagination() {
+        this.globalResources.push('./pagination/pagination');
+        return this;
+    }
+    useParallax() {
+        this.globalResources.push('./parallax/parallax');
+        return this;
+    }
+    useProgress() {
+        this.globalResources.push('./progress/progress');
+        return this;
+    }
+    usePushpin() {
+        this.globalResources.push('./pushpin/pushpin');
+        return this;
+    }
+    useRadio() {
+        this.globalResources.push('./radio/radio');
+        return this;
+    }
+    useRange() {
+        this.globalResources.push('./range/range');
+        return this;
+    }
+    useScrollfire() {
+        this.globalResources.push('./scrollfire/scrollfire');
+        this.globalResources.push('./scrollfire/scrollfire-target');
+        return this;
+    }
+    useScrollSpy() {
+        this.globalResources.push('./scrollspy/scrollspy');
+        return this;
+    }
+    useSelect() {
+        this.globalResources.push('./select/select');
+        return this;
+    }
+    useSidenav() {
+        this.globalResources.push('./sidenav/sidenav');
+        this.globalResources.push('./sidenav/sidenav-collapse');
+        return this;
+    }
+    useSlider() {
+        this.globalResources.push('./slider/slider');
+        // this.globalResources.push("./slider/slide");
+        return this;
+    }
+    useSwitch() {
+        this.globalResources.push('./switch/switch');
+        return this;
+    }
+    /**
+     * Use materialized tabs
+     */
+    useTabs() {
+        this.globalResources.push('./tabs/tabs');
+        return this;
+    }
+    useTapTarget() {
+        this.globalResources.push('./tap-target/tap-target');
+        return this;
+    }
+    useTimePicker() {
+        this.globalResources.push('./timepicker/timepicker');
+        return this;
+    }
+    useTooltip() {
+        this.globalResources.push('./tooltip/tooltip');
+        return this;
+    }
+    useTransitions() {
+        this.globalResources.push('./transitions/fadein-image');
+        this.globalResources.push('./transitions/staggered-list');
+        return this;
+    }
+    /**
+     * Use ripple/waves effect
+     */
+    useWaves() {
+        this.globalResources.push('./waves/waves');
+        return this;
+    }
+    useWell() {
+        this.globalResources.push('./well/md-well');
+        return this;
+    }
+    preventWavesAttach() {
+        this.noWavesAttach = true;
+        return this;
+    }
+    /**
+     * Don't globalize any resources
+     * Allows you to import yourself via <require></require>
+     */
+    withoutGlobalResources() {
+        this.useGlobalResources = false;
+        return this;
+    }
+    withScrollfirePatch() {
+        this.useScrollfirePatch = true;
+        return this;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = ConfigBuilder;
+
+
+
+/***/ }),
+
+/***/ 47:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const constants = {
+    eventPrefix: "md-on-",
+    bindablePrefix: "md-"
+};
+/* harmony export (immutable) */ __webpack_exports__["a"] = constants;
+
+
+
+/***/ }),
+
+/***/ 48:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+class DatePickerDefaultParser {
+    canParse(value) {
+        if (value) {
+            return true;
+        }
+        return false;
+    }
+    parse(value) {
+        if (value) {
+            let result = value.split("/").join("-");
+            result = new Date(result);
+            return isNaN(result) ? null : result;
+        }
+        return null;
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = DatePickerDefaultParser;
+
+
+
+/***/ }),
+
+/***/ 49:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MdInputUpdateService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_task_queue__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(7);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+let MdInputUpdateService = class MdInputUpdateService {
+    constructor(taskQueue) {
+        this.taskQueue = taskQueue;
+        this.updateCalled = false;
+        this.log = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_logging__["getLogger"])("MdInputUpdateService");
+        this.taskQueue = taskQueue;
+    }
+    materializeUpdate() {
+        this.log.debug("executing Materialize.updateTextFields");
+        Materialize.updateTextFields();
+        this.updateCalled = false;
+    }
+    update() {
+        this.log.debug("update called");
+        if (!this.updateCalled) {
+            this.updateCalled = true;
+            this.taskQueue.queueTask(this.materializeUpdate.bind(this));
+        }
+    }
+};
+MdInputUpdateService = __decorate([
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["d" /* autoinject */],
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_aurelia_task_queue__["a" /* TaskQueue */]])
+], MdInputUpdateService);
+
+
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20074,7 +20935,7 @@ var SetRepeatStrategy = function () {
 /* unused harmony export elementConfig */
 /* unused harmony export viewResources */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return TemplatingEngine; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_path__ = __webpack_require__(14);
@@ -24971,867 +25832,6 @@ var TemplatingEngine = (_dec11 = Object(__WEBPACK_IMPORTED_MODULE_5_aurelia_depe
 
 /***/ }),
 
-/***/ 40:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NumberRepeatStrategy; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__repeat_utilities__ = __webpack_require__(16);
-
-
-
-
-var NumberRepeatStrategy = function () {
-  function NumberRepeatStrategy() {
-    
-  }
-
-  NumberRepeatStrategy.prototype.getCollectionObserver = function getCollectionObserver() {
-    return null;
-  };
-
-  NumberRepeatStrategy.prototype.instanceChanged = function instanceChanged(repeat, value) {
-    var _this = this;
-
-    var removePromise = repeat.removeAllViews(true, !repeat.viewsRequireLifecycle);
-    if (removePromise instanceof Promise) {
-      removePromise.then(function () {
-        return _this._standardProcessItems(repeat, value);
-      });
-      return;
-    }
-    this._standardProcessItems(repeat, value);
-  };
-
-  NumberRepeatStrategy.prototype._standardProcessItems = function _standardProcessItems(repeat, value) {
-    var childrenLength = repeat.viewCount();
-    var i = void 0;
-    var ii = void 0;
-    var overrideContext = void 0;
-    var viewsToRemove = void 0;
-
-    value = Math.floor(value);
-    viewsToRemove = childrenLength - value;
-
-    if (viewsToRemove > 0) {
-      if (viewsToRemove > childrenLength) {
-        viewsToRemove = childrenLength;
-      }
-
-      for (i = 0, ii = viewsToRemove; i < ii; ++i) {
-        repeat.removeView(childrenLength - (i + 1), true, !repeat.viewsRequireLifecycle);
-      }
-
-      return;
-    }
-
-    for (i = childrenLength, ii = value; i < ii; ++i) {
-      overrideContext = Object(__WEBPACK_IMPORTED_MODULE_0__repeat_utilities__["a" /* createFullOverrideContext */])(repeat, i, i, ii);
-      repeat.addView(overrideContext.bindingContext, overrideContext);
-    }
-
-    Object(__WEBPACK_IMPORTED_MODULE_0__repeat_utilities__["h" /* updateOverrideContexts */])(repeat.views(), 0);
-  };
-
-  return NumberRepeatStrategy;
-}();
-
-/***/ }),
-
-/***/ 41:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export lifecycleOptionalBehaviors */
-/* harmony export (immutable) */ __webpack_exports__["a"] = viewsRequireLifecycle;
-
-var lifecycleOptionalBehaviors = ['focus', 'if', 'repeat', 'show', 'with'];
-
-function behaviorRequiresLifecycle(instruction) {
-  var t = instruction.type;
-  var name = t.elementName !== null ? t.elementName : t.attributeName;
-  return lifecycleOptionalBehaviors.indexOf(name) === -1 && (t.handlesAttached || t.handlesBind || t.handlesCreated || t.handlesDetached || t.handlesUnbind) || t.viewFactory && viewsRequireLifecycle(t.viewFactory) || instruction.viewFactory && viewsRequireLifecycle(instruction.viewFactory);
-}
-
-function targetRequiresLifecycle(instruction) {
-  var behaviors = instruction.behaviorInstructions;
-  if (behaviors) {
-    var i = behaviors.length;
-    while (i--) {
-      if (behaviorRequiresLifecycle(behaviors[i])) {
-        return true;
-      }
-    }
-  }
-
-  return instruction.viewFactory && viewsRequireLifecycle(instruction.viewFactory);
-}
-
-function viewsRequireLifecycle(viewFactory) {
-  if ('_viewsRequireLifecycle' in viewFactory) {
-    return viewFactory._viewsRequireLifecycle;
-  }
-
-  viewFactory._viewsRequireLifecycle = false;
-
-  if (viewFactory.viewFactory) {
-    viewFactory._viewsRequireLifecycle = viewsRequireLifecycle(viewFactory.viewFactory);
-    return viewFactory._viewsRequireLifecycle;
-  }
-
-  if (viewFactory.template.querySelector('.au-animate')) {
-    viewFactory._viewsRequireLifecycle = true;
-    return true;
-  }
-
-  for (var id in viewFactory.instructions) {
-    if (targetRequiresLifecycle(viewFactory.instructions[id])) {
-      viewFactory._viewsRequireLifecycle = true;
-      return true;
-    }
-  }
-
-  viewFactory._viewsRequireLifecycle = false;
-  return false;
-}
-
-/***/ }),
-
-/***/ 42:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AbstractRepeater; });
-
-
-var AbstractRepeater = function () {
-  function AbstractRepeater(options) {
-    
-
-    Object.assign(this, {
-      local: 'items',
-      viewsRequireLifecycle: true
-    }, options);
-  }
-
-  AbstractRepeater.prototype.viewCount = function viewCount() {
-    throw new Error('subclass must implement `viewCount`');
-  };
-
-  AbstractRepeater.prototype.views = function views() {
-    throw new Error('subclass must implement `views`');
-  };
-
-  AbstractRepeater.prototype.view = function view(index) {
-    throw new Error('subclass must implement `view`');
-  };
-
-  AbstractRepeater.prototype.matcher = function matcher() {
-    throw new Error('subclass must implement `matcher`');
-  };
-
-  AbstractRepeater.prototype.addView = function addView(bindingContext, overrideContext) {
-    throw new Error('subclass must implement `addView`');
-  };
-
-  AbstractRepeater.prototype.insertView = function insertView(index, bindingContext, overrideContext) {
-    throw new Error('subclass must implement `insertView`');
-  };
-
-  AbstractRepeater.prototype.moveView = function moveView(sourceIndex, targetIndex) {
-    throw new Error('subclass must implement `moveView`');
-  };
-
-  AbstractRepeater.prototype.removeAllViews = function removeAllViews(returnToCache, skipAnimation) {
-    throw new Error('subclass must implement `removeAllViews`');
-  };
-
-  AbstractRepeater.prototype.removeViews = function removeViews(viewsToRemove, returnToCache, skipAnimation) {
-    throw new Error('subclass must implement `removeView`');
-  };
-
-  AbstractRepeater.prototype.removeView = function removeView(index, returnToCache, skipAnimation) {
-    throw new Error('subclass must implement `removeView`');
-  };
-
-  AbstractRepeater.prototype.updateBindings = function updateBindings(view) {
-    throw new Error('subclass must implement `updateBindings`');
-  };
-
-  return AbstractRepeater;
-}();
-
-/***/ }),
-
-/***/ 43:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HTMLSanitizer; });
-
-
-var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
-
-var HTMLSanitizer = function () {
-  function HTMLSanitizer() {
-    
-  }
-
-  HTMLSanitizer.prototype.sanitize = function sanitize(input) {
-    return input.replace(SCRIPT_REGEX, '');
-  };
-
-  return HTMLSanitizer;
-}();
-
-/***/ }),
-
-/***/ 44:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BindingSignaler; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(8);
-
-
-
-
-var BindingSignaler = function () {
-  function BindingSignaler() {
-    
-
-    this.signals = {};
-  }
-
-  BindingSignaler.prototype.signal = function signal(name) {
-    var bindings = this.signals[name];
-    if (!bindings) {
-      return;
-    }
-    var i = bindings.length;
-    while (i--) {
-      bindings[i].call(__WEBPACK_IMPORTED_MODULE_0_aurelia_binding__["G" /* sourceContext */]);
-    }
-  };
-
-  return BindingSignaler;
-}();
-
-/***/ }),
-
-/***/ 45:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["bootstrap"] = bootstrap;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "starting", function() { return starting; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_polyfills__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(3);
-
-
-
-var bootstrapPromises = [];
-var startResolve = void 0;
-
-var startPromise = new Promise(function (resolve) {
-  return startResolve = resolve;
-});
-var host = __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].global;
-var isNodeLike = typeof process !== 'undefined' && !process.browser;
-
-function ready() {
-  if (!host.document || host.document.readyState === 'complete') {
-    return Promise.resolve();
-  }
-
-  return new Promise(function (resolve) {
-    host.document.addEventListener('DOMContentLoaded', completed);
-    host.addEventListener('load', completed);
-
-    function completed() {
-      host.document.removeEventListener('DOMContentLoaded', completed);
-      host.removeEventListener('load', completed);
-      resolve();
-    }
-  });
-}
-
-function createLoader() {
-  if (__WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].Loader) {
-    return Promise.resolve(new __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["d" /* PLATFORM */].Loader());
-  }
-
-  if (false) {
-    if (typeof __webpack_require__ !== 'undefined') {
-      var m = __webpack_require__(require.resolve('aurelia-loader-webpack'));
-      return Promise.resolve(new m.WebpackLoader());
-    }
-
-    if (host.System && typeof host.System.config === 'function') {
-      return host.System.normalize('aurelia-bootstrapper').then(function (bsn) {
-        return host.System.normalize('aurelia-loader-default', bsn);
-      }).then(function (loaderName) {
-        return host.System.import(loaderName).then(function (m) {
-          return new m.DefaultLoader();
-        });
-      });
-    }
-
-    if (typeof host.require === 'function' && typeof host.require.version === 'string') {
-      return new Promise(function (resolve, reject) {
-        return host.require(['aurelia-loader-default'], function (m) {
-          return resolve(new m.DefaultLoader());
-        }, reject);
-      });
-    }
-
-    if (isNodeLike && typeof module !== 'undefined' && typeof module.require !== 'undefined') {
-      var _m = module.require('aurelia-loader-nodejs');
-      return Promise.resolve(new _m.NodeJsLoader());
-    }
-  }
-
-  return Promise.reject('No PLATFORM.Loader is defined and there is neither a System API (ES6) or a Require API (AMD) globally available to load your app.');
-}
-
-function initializePal(loader) {
-  var type = void 0;
-
-  var isRenderer = isNodeLike && (process.type === 'renderer' || process.versions['node-webkit']);
-
-  if (isNodeLike && !isRenderer) {
-    type = 'nodejs';
-  } else if (typeof window !== 'undefined') {
-    type = 'browser';
-  } else if (typeof self !== 'undefined') {
-    type = 'worker';
-  } else {
-    throw new Error('Could not determine platform implementation to load.');
-  }
-
-  return loader.loadModule('aurelia-pal-' + type).then(function (palModule) {
-    return type === 'nodejs' && !__WEBPACK_IMPORTED_MODULE_1_aurelia_pal__["f" /* isInitialized */] && palModule.globalize() || palModule.initialize();
-  });
-}
-
-function preparePlatform(loader) {
-  var map = function map(moduleId, relativeTo) {
-    return loader.normalize(moduleId, relativeTo).then(function (normalized) {
-      loader.map(moduleId, normalized);
-      return normalized;
-    });
-  };
-
-  return initializePal(loader).then(function () {
-    return loader.normalize('aurelia-bootstrapper');
-  }).then(function (bootstrapperName) {
-    var frameworkPromise = map('aurelia-framework', bootstrapperName);
-
-    return Promise.all([frameworkPromise, frameworkPromise.then(function (frameworkName) {
-      return map('aurelia-dependency-injection', frameworkName);
-    }), map('aurelia-router', bootstrapperName), map('aurelia-logging-console', bootstrapperName)]);
-  }).then(function (_ref) {
-    var frameworkName = _ref[0];
-    return loader.loadModule(frameworkName);
-  }).then(function (fx) {
-    return startResolve(function () {
-      return new fx.Aurelia(loader);
-    });
-  });
-}
-
-function config(appHost, configModuleId, aurelia) {
-  aurelia.host = appHost;
-  aurelia.configModuleId = configModuleId || null;
-
-  if (configModuleId) {
-    return aurelia.loader.loadModule(configModuleId).then(function (customConfig) {
-      if (!customConfig.configure) {
-        throw new Error('Cannot initialize module \'' + configModuleId + '\' without a configure function.');
-      }
-
-      return customConfig.configure(aurelia);
-    });
-  }
-
-  aurelia.use.standardConfiguration().developmentLogging();
-
-  return aurelia.start().then(function () {
-    return aurelia.setRoot();
-  });
-}
-
-function run() {
-  return ready().then(createLoader).then(preparePlatform).then(function () {
-    var appHosts = host.document.querySelectorAll('[aurelia-app],[data-aurelia-app]');
-    for (var i = 0, ii = appHosts.length; i < ii; ++i) {
-      var appHost = appHosts[i];
-      var moduleId = appHost.getAttribute('aurelia-app') || appHost.getAttribute('data-aurelia-app');
-      bootstrap(config.bind(null, appHost, moduleId));
-    }
-
-    var toConsole = console.error.bind(console);
-    var bootstraps = bootstrapPromises.map(function (p) {
-      return p.catch(toConsole);
-    });
-    bootstrapPromises = null;
-    return Promise.all(bootstraps);
-  });
-}
-
-function bootstrap(configure) {
-  var p = startPromise.then(function (factory) {
-    return configure(factory());
-  });
-  if (bootstrapPromises) bootstrapPromises.push(p);
-  return p;
-}
-
-var starting = run();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(23)))
-
-/***/ }),
-
-/***/ 46:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(3);
-
-/**
- * Plugin configuration builder
- */
-class ConfigBuilder {
-    constructor() {
-        this.globalResources = [];
-        this.noWavesAttach = false;
-        this.useGlobalResources = true;
-        this.useScrollfirePatch = false;
-    }
-    useAll() {
-        return this
-            .useAutoComplete()
-            .useBadge()
-            .useBox()
-            .useBreadcrumbs()
-            .useButton()
-            .useCard()
-            .useCarousel()
-            .useCharacterCounter()
-            .useCheckbox()
-            .useChip()
-            .useCollapsible()
-            .useCollection()
-            .useColors()
-            .useDatePicker()
-            .useDropdown()
-            .useFab()
-            .useFile()
-            .useFooter()
-            .useInput()
-            .useModal()
-            .useNavbar()
-            .usePagination()
-            .useParallax()
-            .useProgress()
-            .usePushpin()
-            .useRadio()
-            .useRange()
-            .useScrollfire()
-            .useScrollSpy()
-            .useSelect()
-            .useSidenav()
-            .useSlider()
-            .useSwitch()
-            .useTabs()
-            .useTapTarget()
-            .useTimePicker()
-            .useTooltip()
-            .useTransitions()
-            .useWaves()
-            .useWell();
-    }
-    useAutoComplete() {
-        this.globalResources.push('./autocomplete/autocomplete');
-        return this;
-    }
-    useBadge() {
-        this.globalResources.push('./badge/badge');
-        return this;
-    }
-    useBox() {
-        this.globalResources.push('./box/box');
-        return this;
-    }
-    useBreadcrumbs() {
-        this.globalResources.push('./breadcrumbs/breadcrumbs');
-        return this;
-    }
-    useButton() {
-        this.globalResources.push('./button/button');
-        return this;
-    }
-    useCarousel() {
-        this.globalResources.push('./carousel/carousel');
-        this.globalResources.push('./carousel/carousel-item');
-        return this;
-    }
-    useCharacterCounter() {
-        this.globalResources.push('./char-counter/char-counter');
-        return this;
-    }
-    useCard() {
-        this.globalResources.push('./card/card');
-        return this;
-    }
-    useCheckbox() {
-        this.globalResources.push('./checkbox/checkbox');
-        return this;
-    }
-    useChip() {
-        this.globalResources.push('./chip/chip');
-        this.globalResources.push('./chip/chips');
-        return this;
-    }
-    /**
-     * Use my control
-     */
-    useClickCounter() {
-        this.globalResources.push('./click-counter');
-        return this;
-    }
-    useCollapsible() {
-        this.globalResources.push('./collapsible/collapsible');
-        return this;
-    }
-    useCollection() {
-        this.globalResources.push('./collection/collection');
-        this.globalResources.push('./collection/collection-item');
-        this.globalResources.push('./collection/collection-header');
-        this.globalResources.push('./collection/md-collection-selector');
-        return this;
-    }
-    useColors() {
-        this.globalResources.push('./colors/md-colors');
-        return this;
-    }
-    useDatePicker() {
-        this.globalResources.push('./datepicker/datepicker');
-        return this;
-    }
-    useDropdown() {
-        // this.globalResources.push("./dropdown/dropdown-element");
-        this.globalResources.push('./dropdown/dropdown');
-        return this;
-    }
-    useFab() {
-        this.globalResources.push('./fab/fab');
-        return this;
-    }
-    useFile() {
-        this.globalResources.push('./file/file');
-        return this;
-    }
-    useFooter() {
-        this.globalResources.push('./footer/footer');
-        return this;
-    }
-    useInput() {
-        this.globalResources.push('./input/input');
-        this.globalResources.push('./input/input-prefix');
-        return this;
-    }
-    useModal() {
-        this.globalResources.push('./modal/modal');
-        this.globalResources.push('./modal/modal-trigger');
-        return this;
-    }
-    useNavbar() {
-        this.globalResources.push('./navbar/navbar');
-        return this;
-    }
-    usePagination() {
-        this.globalResources.push('./pagination/pagination');
-        return this;
-    }
-    useParallax() {
-        this.globalResources.push('./parallax/parallax');
-        return this;
-    }
-    useProgress() {
-        this.globalResources.push('./progress/progress');
-        return this;
-    }
-    usePushpin() {
-        this.globalResources.push('./pushpin/pushpin');
-        return this;
-    }
-    useRadio() {
-        this.globalResources.push('./radio/radio');
-        return this;
-    }
-    useRange() {
-        this.globalResources.push('./range/range');
-        return this;
-    }
-    useScrollfire() {
-        this.globalResources.push('./scrollfire/scrollfire');
-        this.globalResources.push('./scrollfire/scrollfire-target');
-        return this;
-    }
-    useScrollSpy() {
-        this.globalResources.push('./scrollspy/scrollspy');
-        return this;
-    }
-    useSelect() {
-        this.globalResources.push('./select/select');
-        return this;
-    }
-    useSidenav() {
-        this.globalResources.push('./sidenav/sidenav');
-        this.globalResources.push('./sidenav/sidenav-collapse');
-        return this;
-    }
-    useSlider() {
-        this.globalResources.push('./slider/slider');
-        // this.globalResources.push("./slider/slide");
-        return this;
-    }
-    useSwitch() {
-        this.globalResources.push('./switch/switch');
-        return this;
-    }
-    /**
-     * Use materialized tabs
-     */
-    useTabs() {
-        this.globalResources.push('./tabs/tabs');
-        return this;
-    }
-    useTapTarget() {
-        this.globalResources.push('./tap-target/tap-target');
-        return this;
-    }
-    useTimePicker() {
-        this.globalResources.push('./timepicker/timepicker');
-        return this;
-    }
-    useTooltip() {
-        this.globalResources.push('./tooltip/tooltip');
-        return this;
-    }
-    useTransitions() {
-        this.globalResources.push('./transitions/fadein-image');
-        this.globalResources.push('./transitions/staggered-list');
-        return this;
-    }
-    /**
-     * Use ripple/waves effect
-     */
-    useWaves() {
-        this.globalResources.push('./waves/waves');
-        return this;
-    }
-    useWell() {
-        this.globalResources.push('./well/md-well');
-        return this;
-    }
-    preventWavesAttach() {
-        this.noWavesAttach = true;
-        return this;
-    }
-    /**
-     * Don't globalize any resources
-     * Allows you to import yourself via <require></require>
-     */
-    withoutGlobalResources() {
-        this.useGlobalResources = false;
-        return this;
-    }
-    withScrollfirePatch() {
-        this.useScrollfirePatch = true;
-        return this;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = ConfigBuilder;
-
-
-
-/***/ }),
-
-/***/ 47:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-const constants = {
-    eventPrefix: "md-on-",
-    bindablePrefix: "md-"
-};
-/* harmony export (immutable) */ __webpack_exports__["a"] = constants;
-
-
-
-/***/ }),
-
-/***/ 48:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-class DatePickerDefaultParser {
-    canParse(value) {
-        if (value) {
-            return true;
-        }
-        return false;
-    }
-    parse(value) {
-        if (value) {
-            let result = value.split("/").join("-");
-            result = new Date(result);
-            return isNaN(result) ? null : result;
-        }
-        return null;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = DatePickerDefaultParser;
-
-
-
-/***/ }),
-
-/***/ 49:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MdInputUpdateService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(6);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-let MdInputUpdateService = class MdInputUpdateService {
-    constructor(taskQueue) {
-        this.taskQueue = taskQueue;
-        this.updateCalled = false;
-        this.log = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_logging__["getLogger"])("MdInputUpdateService");
-        this.taskQueue = taskQueue;
-    }
-    materializeUpdate() {
-        this.log.debug("executing Materialize.updateTextFields");
-        Materialize.updateTextFields();
-        this.updateCalled = false;
-    }
-    update() {
-        this.log.debug("update called");
-        if (!this.updateCalled) {
-            this.updateCalled = true;
-            this.taskQueue.queueTask(this.materializeUpdate.bind(this));
-        }
-    }
-};
-MdInputUpdateService = __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["d" /* autoinject */],
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_aurelia_task_queue__["a" /* TaskQueue */]])
-], MdInputUpdateService);
-
-
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-
 /***/ 50:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -26039,7 +26039,7 @@ function getTargetDOMElement(binding, view) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StandardValidator; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validator__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__validate_result__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rules__ = __webpack_require__(26);
@@ -31159,247 +31159,6 @@ if (true) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logLevel", function() { return logLevel; });
-/* harmony export (immutable) */ __webpack_exports__["getLogger"] = getLogger;
-/* harmony export (immutable) */ __webpack_exports__["addAppender"] = addAppender;
-/* harmony export (immutable) */ __webpack_exports__["removeAppender"] = removeAppender;
-/* harmony export (immutable) */ __webpack_exports__["getAppenders"] = getAppenders;
-/* harmony export (immutable) */ __webpack_exports__["clearAppenders"] = clearAppenders;
-/* harmony export (immutable) */ __webpack_exports__["addCustomLevel"] = addCustomLevel;
-/* harmony export (immutable) */ __webpack_exports__["removeCustomLevel"] = removeCustomLevel;
-/* harmony export (immutable) */ __webpack_exports__["setLevel"] = setLevel;
-/* harmony export (immutable) */ __webpack_exports__["getLevel"] = getLevel;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Logger", function() { return Logger; });
-
-
-var logLevel = {
-  none: 0,
-  error: 10,
-  warn: 20,
-  info: 30,
-  debug: 40
-};
-
-var loggers = {};
-var appenders = [];
-var globalDefaultLevel = logLevel.none;
-
-var standardLevels = ['none', 'error', 'warn', 'info', 'debug'];
-function isStandardLevel(level) {
-  return standardLevels.filter(function (l) {
-    return l === level;
-  }).length > 0;
-}
-
-function appendArgs() {
-  return [this].concat(Array.prototype.slice.call(arguments));
-}
-
-function logFactory(level) {
-  var threshold = logLevel[level];
-  return function () {
-    if (this.level < threshold) {
-      return;
-    }
-
-    var args = appendArgs.apply(this, arguments);
-    var i = appenders.length;
-    while (i--) {
-      var _appenders$i;
-
-      (_appenders$i = appenders[i])[level].apply(_appenders$i, args);
-    }
-  };
-}
-
-function logFactoryCustom(level) {
-  var threshold = logLevel[level];
-  return function () {
-    if (this.level < threshold) {
-      return;
-    }
-
-    var args = appendArgs.apply(this, arguments);
-    var i = appenders.length;
-    while (i--) {
-      var appender = appenders[i];
-      if (appender[level] !== undefined) {
-        appender[level].apply(appender, args);
-      }
-    }
-  };
-}
-
-function connectLoggers() {
-  var proto = Logger.prototype;
-  for (var _level in logLevel) {
-    if (isStandardLevel(_level)) {
-      if (_level !== 'none') {
-        proto[_level] = logFactory(_level);
-      }
-    } else {
-      proto[_level] = logFactoryCustom(_level);
-    }
-  }
-}
-
-function disconnectLoggers() {
-  var proto = Logger.prototype;
-  for (var _level2 in logLevel) {
-    if (_level2 !== 'none') {
-      proto[_level2] = function () {};
-    }
-  }
-}
-
-function getLogger(id) {
-  return loggers[id] || new Logger(id);
-}
-
-function addAppender(appender) {
-  if (appenders.push(appender) === 1) {
-    connectLoggers();
-  }
-}
-
-function removeAppender(appender) {
-  appenders = appenders.filter(function (a) {
-    return a !== appender;
-  });
-}
-
-function getAppenders() {
-  return [].concat(appenders);
-}
-
-function clearAppenders() {
-  appenders = [];
-  disconnectLoggers();
-}
-
-function addCustomLevel(name, value) {
-  if (logLevel[name] !== undefined) {
-    throw Error('Log level "' + name + '" already exists.');
-  }
-
-  if (isNaN(value)) {
-    throw Error('Value must be a number.');
-  }
-
-  logLevel[name] = value;
-
-  if (appenders.length > 0) {
-    connectLoggers();
-  } else {
-    Logger.prototype[name] = function () {};
-  }
-}
-
-function removeCustomLevel(name) {
-  if (logLevel[name] === undefined) {
-    return;
-  }
-
-  if (isStandardLevel(name)) {
-    throw Error('Built-in log level "' + name + '" cannot be removed.');
-  }
-
-  delete logLevel[name];
-  delete Logger.prototype[name];
-}
-
-function setLevel(level) {
-  globalDefaultLevel = level;
-  for (var key in loggers) {
-    loggers[key].setLevel(level);
-  }
-}
-
-function getLevel() {
-  return globalDefaultLevel;
-}
-
-var Logger = function () {
-  function Logger(id) {
-    
-
-    var cached = loggers[id];
-    if (cached) {
-      return cached;
-    }
-
-    loggers[id] = this;
-    this.id = id;
-    this.level = globalDefaultLevel;
-  }
-
-  Logger.prototype.debug = function debug(message) {};
-
-  Logger.prototype.info = function info(message) {};
-
-  Logger.prototype.warn = function warn(message) {};
-
-  Logger.prototype.error = function error(message) {};
-
-  Logger.prototype.setLevel = function setLevel(level) {
-    this.level = level;
-  };
-
-  return Logger;
-}();
-
-/***/ }),
-
-/***/ 62:
-/***/ (function(module, exports, __webpack_require__) {
-
-// This file contains an empty module that does nothing.
-// It's meant to be added as an entry point to the main bundle
-// and helps reliably adding some Aurelia dependencies that are attached 
-// to no module in particular, such as `includeAll` results or `aureliaApp`.
-//
-// Trying to attach those dependencies to, for example, 'aurelia-bootstrapper' 
-// is unreliable if 'aurelia-bootstrapper' is in a DLL outside the bundle.
-//
-// Trying to attach to 'aurelia-loader-webpack' works well, unless a user
-// configures a customized loader instead (unlikely, but in theory supported).
-
-
-/***/ }),
-
-/***/ 66:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "1f35e6a11d27d2e10d28946d42332dc5.woff2";
-
-/***/ }),
-
-/***/ 67:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "44b78f142603eb69f593ed4002ed7a4a.woff";
-
-/***/ }),
-
-/***/ 68:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "3c37aa69cd77e6a53a067170fa8fe2e9.woff2";
-
-/***/ }),
-
-/***/ 69:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "ea36cd9a0e9eee97012a67b8a4570d7b.woff";
-
-/***/ }),
-
-/***/ 7:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* unused harmony export json */
 /* unused harmony export HttpClientConfiguration */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpClient; });
@@ -31661,6 +31420,247 @@ function identity(x) {
 function thrower(x) {
   throw x;
 }
+
+/***/ }),
+
+/***/ 62:
+/***/ (function(module, exports, __webpack_require__) {
+
+// This file contains an empty module that does nothing.
+// It's meant to be added as an entry point to the main bundle
+// and helps reliably adding some Aurelia dependencies that are attached 
+// to no module in particular, such as `includeAll` results or `aureliaApp`.
+//
+// Trying to attach those dependencies to, for example, 'aurelia-bootstrapper' 
+// is unreliable if 'aurelia-bootstrapper' is in a DLL outside the bundle.
+//
+// Trying to attach to 'aurelia-loader-webpack' works well, unless a user
+// configures a customized loader instead (unlikely, but in theory supported).
+
+
+/***/ }),
+
+/***/ 66:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "1f35e6a11d27d2e10d28946d42332dc5.woff2";
+
+/***/ }),
+
+/***/ 67:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "44b78f142603eb69f593ed4002ed7a4a.woff";
+
+/***/ }),
+
+/***/ 68:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "3c37aa69cd77e6a53a067170fa8fe2e9.woff2";
+
+/***/ }),
+
+/***/ 69:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "ea36cd9a0e9eee97012a67b8a4570d7b.woff";
+
+/***/ }),
+
+/***/ 7:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logLevel", function() { return logLevel; });
+/* harmony export (immutable) */ __webpack_exports__["getLogger"] = getLogger;
+/* harmony export (immutable) */ __webpack_exports__["addAppender"] = addAppender;
+/* harmony export (immutable) */ __webpack_exports__["removeAppender"] = removeAppender;
+/* harmony export (immutable) */ __webpack_exports__["getAppenders"] = getAppenders;
+/* harmony export (immutable) */ __webpack_exports__["clearAppenders"] = clearAppenders;
+/* harmony export (immutable) */ __webpack_exports__["addCustomLevel"] = addCustomLevel;
+/* harmony export (immutable) */ __webpack_exports__["removeCustomLevel"] = removeCustomLevel;
+/* harmony export (immutable) */ __webpack_exports__["setLevel"] = setLevel;
+/* harmony export (immutable) */ __webpack_exports__["getLevel"] = getLevel;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Logger", function() { return Logger; });
+
+
+var logLevel = {
+  none: 0,
+  error: 10,
+  warn: 20,
+  info: 30,
+  debug: 40
+};
+
+var loggers = {};
+var appenders = [];
+var globalDefaultLevel = logLevel.none;
+
+var standardLevels = ['none', 'error', 'warn', 'info', 'debug'];
+function isStandardLevel(level) {
+  return standardLevels.filter(function (l) {
+    return l === level;
+  }).length > 0;
+}
+
+function appendArgs() {
+  return [this].concat(Array.prototype.slice.call(arguments));
+}
+
+function logFactory(level) {
+  var threshold = logLevel[level];
+  return function () {
+    if (this.level < threshold) {
+      return;
+    }
+
+    var args = appendArgs.apply(this, arguments);
+    var i = appenders.length;
+    while (i--) {
+      var _appenders$i;
+
+      (_appenders$i = appenders[i])[level].apply(_appenders$i, args);
+    }
+  };
+}
+
+function logFactoryCustom(level) {
+  var threshold = logLevel[level];
+  return function () {
+    if (this.level < threshold) {
+      return;
+    }
+
+    var args = appendArgs.apply(this, arguments);
+    var i = appenders.length;
+    while (i--) {
+      var appender = appenders[i];
+      if (appender[level] !== undefined) {
+        appender[level].apply(appender, args);
+      }
+    }
+  };
+}
+
+function connectLoggers() {
+  var proto = Logger.prototype;
+  for (var _level in logLevel) {
+    if (isStandardLevel(_level)) {
+      if (_level !== 'none') {
+        proto[_level] = logFactory(_level);
+      }
+    } else {
+      proto[_level] = logFactoryCustom(_level);
+    }
+  }
+}
+
+function disconnectLoggers() {
+  var proto = Logger.prototype;
+  for (var _level2 in logLevel) {
+    if (_level2 !== 'none') {
+      proto[_level2] = function () {};
+    }
+  }
+}
+
+function getLogger(id) {
+  return loggers[id] || new Logger(id);
+}
+
+function addAppender(appender) {
+  if (appenders.push(appender) === 1) {
+    connectLoggers();
+  }
+}
+
+function removeAppender(appender) {
+  appenders = appenders.filter(function (a) {
+    return a !== appender;
+  });
+}
+
+function getAppenders() {
+  return [].concat(appenders);
+}
+
+function clearAppenders() {
+  appenders = [];
+  disconnectLoggers();
+}
+
+function addCustomLevel(name, value) {
+  if (logLevel[name] !== undefined) {
+    throw Error('Log level "' + name + '" already exists.');
+  }
+
+  if (isNaN(value)) {
+    throw Error('Value must be a number.');
+  }
+
+  logLevel[name] = value;
+
+  if (appenders.length > 0) {
+    connectLoggers();
+  } else {
+    Logger.prototype[name] = function () {};
+  }
+}
+
+function removeCustomLevel(name) {
+  if (logLevel[name] === undefined) {
+    return;
+  }
+
+  if (isStandardLevel(name)) {
+    throw Error('Built-in log level "' + name + '" cannot be removed.');
+  }
+
+  delete logLevel[name];
+  delete Logger.prototype[name];
+}
+
+function setLevel(level) {
+  globalDefaultLevel = level;
+  for (var key in loggers) {
+    loggers[key].setLevel(level);
+  }
+}
+
+function getLevel() {
+  return globalDefaultLevel;
+}
+
+var Logger = function () {
+  function Logger(id) {
+    
+
+    var cached = loggers[id];
+    if (cached) {
+      return cached;
+    }
+
+    loggers[id] = this;
+    this.id = id;
+    this.level = globalDefaultLevel;
+  }
+
+  Logger.prototype.debug = function debug(message) {};
+
+  Logger.prototype.info = function info(message) {};
+
+  Logger.prototype.warn = function warn(message) {};
+
+  Logger.prototype.error = function error(message) {};
+
+  Logger.prototype.setLevel = function setLevel(level) {
+    this.level = level;
+  };
+
+  return Logger;
+}();
 
 /***/ }),
 
@@ -33068,7 +33068,7 @@ function addSegment(currentState, segment) {
 /* harmony export (immutable) */ __webpack_exports__["F"] = observable;
 /* unused harmony export connectBindingToSignal */
 /* unused harmony export signalBindings */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_metadata__ = __webpack_require__(13);
@@ -38598,7 +38598,7 @@ function signalBindings(name) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemplatingRouteLoader; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_path__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_metadata__ = __webpack_require__(13);
@@ -38701,7 +38701,7 @@ function createDynamicClass(moduleId) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _createCSSResource;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_loader__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_path__ = __webpack_require__(14);
@@ -38822,7 +38822,7 @@ function _createCSSResource(address) {
 "use strict";
 /* unused harmony export getElementName */
 /* harmony export (immutable) */ __webpack_exports__["a"] = configure;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dynamic_element__ = __webpack_require__(83);
 
 
@@ -38866,7 +38866,7 @@ function configure(config) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = _createDynamicElement;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 
 
 
@@ -53331,7 +53331,7 @@ class MaterializeFormValidationRenderer {
             }
         }
         for (let [element, results] of elementResultsToRender) {
-            if (element.mdUnrenderValidateResults) {
+            if (element.mdRenderValidateResults) {
                 element.mdRenderValidateResults(results, this);
             }
             else {
@@ -54481,7 +54481,7 @@ Prism.languages.ts = Prism.languages.typescript;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EventAggregator; });
 /* unused harmony export includeEventsIn */
 /* harmony export (immutable) */ __webpack_exports__["configure"] = configure;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 
 
 
@@ -54628,10 +54628,10 @@ function configure(config) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Aurelia", function() { return Aurelia; });
 /* unused harmony export FrameworkConfiguration */
 /* unused harmony export LogManager */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_loader__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_path__ = __webpack_require__(14);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["d"]; });
@@ -55451,7 +55451,7 @@ function createOrigin(protocol, hostname, port) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConsoleAppender", function() { return ConsoleAppender; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 
 
 
@@ -55516,6 +55516,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__scrollfire_scrollfire_patch__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_polyfills__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__exports__ = __webpack_require__(92);
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ScrollfirePatch", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["_6"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdAutoComplete", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["g"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdBadge", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["h"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdBox", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["i"]; });
@@ -55561,7 +55562,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdPushpin", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["O"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdRadio", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["P"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdRange", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["Q"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ScrollfirePatch", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["_6"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollfireTarget", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["T"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollfire", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["S"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollSpy", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["R"]; });
@@ -55874,7 +55874,7 @@ MdBreadcrumbs = __decorate([
 /***/ "aurelia-materialize-bridge/breadcrumbs/breadcrumbs.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -56105,7 +56105,7 @@ MdCard = __decorate([
 /***/ "aurelia-materialize-bridge/card/card.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -56253,7 +56253,7 @@ module.exports = "<template class=\"carousel-item\">\n\t<a if.bind=\"mdHref\" hr
 /***/ "aurelia-materialize-bridge/carousel/carousel.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -56495,7 +56495,7 @@ MdChip = __decorate([
 /***/ "aurelia-materialize-bridge/chip/chip.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -56521,7 +56521,7 @@ module.exports = "<template class=\"chip\">\n\t<require from=\"./chip.css\"></re
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdChips", function() { return MdChips; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -56824,7 +56824,7 @@ MdCollectionHeader = __decorate([
 /***/ "aurelia-materialize-bridge/collection/collection-header.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -56870,7 +56870,7 @@ MdCollectionItem = __decorate([
 /***/ "aurelia-materialize-bridge/collection/collection-item.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -56955,7 +56955,7 @@ MdCollectionSelector = __decorate([
 /***/ "aurelia-materialize-bridge/collection/md-collection-selector.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -57097,7 +57097,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdDatePicker", function() { return MdDatePicker; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_attributes__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__datepicker_default_parser__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__common_events__ = __webpack_require__(10);
@@ -58038,7 +58038,7 @@ MdPrefix = __decorate([
 /***/ "aurelia-materialize-bridge/input/input.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -58063,7 +58063,7 @@ module.exports = "<template>\n\t<require from=\"./input.css\"></require>\n\t<div
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdModal", function() { return MdModal; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_attributeManager__ = __webpack_require__(9);
@@ -58296,7 +58296,7 @@ MdNavbar = __decorate([
 /***/ "aurelia-materialize-bridge/navbar/navbar.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -58459,7 +58459,7 @@ module.exports = "<template>\n\t<ul class=\"pagination\">\n\t\t<template if.bind
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdParallax", function() { return MdParallax; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58790,7 +58790,7 @@ MdRange = __decorate([
 /***/ "aurelia-materialize-bridge/range/range.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -58816,7 +58816,7 @@ module.exports = "<template>\n\t<require from=\"./range.css\"></require>\n\t<p c
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdScrollfire", function() { return MdScrollfire; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58961,7 +58961,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_events__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__common_attributes__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_pal__ = __webpack_require__(3);
@@ -59007,6 +59007,9 @@ let MdSelect = class MdSelect {
         //
         this.taskqueueRunning = false;
         this.mdUnrenderValidateResults = (results, renderer) => {
+            if (!this.input) {
+                return;
+            }
             for (let result of results) {
                 if (!result.valid) {
                     renderer.removeMessage(this.inputField, result);
@@ -59015,6 +59018,9 @@ let MdSelect = class MdSelect {
             renderer.removeValidationClasses(this.input);
         };
         this.mdRenderValidateResults = (results, renderer) => {
+            if (!this.input) {
+                return;
+            }
             for (let result of results) {
                 if (!result.valid) {
                     result.target = this.input;
@@ -59336,7 +59342,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_logging__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59424,7 +59430,7 @@ var MdSidenav_1;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdSidenavCollapse", function() { return MdSidenavCollapse; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_events__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sidenav__ = __webpack_require__("aurelia-materialize-bridge/sidenav/sidenav");
@@ -59507,7 +59513,7 @@ MdSidenavCollapse = __decorate([
 /***/ "aurelia-materialize-bridge/sidenav/sidenav.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -59534,7 +59540,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdSlider", function() { return MdSlider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59623,7 +59629,7 @@ MdSlider = __decorate([
 /***/ "aurelia-materialize-bridge/slider/slider.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -59733,7 +59739,7 @@ MdSwitch = __decorate([
 /***/ "aurelia-materialize-bridge/switch/switch.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -59924,7 +59930,7 @@ MdTabs = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdTapTarget", function() { return MdTapTarget; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60144,7 +60150,7 @@ MdTooltip = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdFadeinImage", function() { return MdFadeinImage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60201,7 +60207,7 @@ MdFadeinImage = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdStaggeredList", function() { return MdStaggeredList; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60337,7 +60343,7 @@ MdWaves = __decorate([
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_router__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60891,9 +60897,9 @@ function initialize() {
 /* unused harmony export SyntaxInterpreter */
 /* unused harmony export TemplatingBindingLanguage */
 /* harmony export (immutable) */ __webpack_exports__["configure"] = configure;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
 var _class, _temp, _dec, _class2, _class3, _temp2, _class4, _temp3;
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -61569,7 +61575,7 @@ function configure(config) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__sanitize_html__ = __webpack_require__("aurelia-templating-resources/sanitize-html");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__replaceable__ = __webpack_require__("aurelia-templating-resources/replaceable");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__focus__ = __webpack_require__("aurelia-templating-resources/focus");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__css_resource__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__html_sanitizer__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__attr_binding_behavior__ = __webpack_require__("aurelia-templating-resources/attr-binding-behavior");
@@ -61766,9 +61772,9 @@ var TwoWayBindingBehavior = (_dec3 = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Compose", function() { return Compose; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(3);
 var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
@@ -62051,7 +62057,7 @@ var DebounceBindingBehavior = function () {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Else", function() { return Else; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__if_core__ = __webpack_require__(34);
 var _dec, _dec2, _class;
@@ -62111,7 +62117,7 @@ var Else = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" /
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Focus", function() { return Focus; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_task_queue__ = __webpack_require__(11);
@@ -62194,7 +62200,7 @@ var Focus = (_dec = Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_templating__["q" 
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hide", function() { return Hide; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aurelia_hide_style__ = __webpack_require__(24);
 var _dec, _dec2, _class;
@@ -62242,7 +62248,7 @@ var Hide = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "If", function() { return If; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__if_core__ = __webpack_require__(34);
 var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2;
@@ -62388,7 +62394,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Repeat", function() { return Repeat; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__repeat_strategy_locator__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__repeat_utilities__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__analyze_view_factory__ = __webpack_require__(41);
@@ -62697,7 +62703,7 @@ var Repeat = (_dec = Object(__WEBPACK_IMPORTED_MODULE_2_aurelia_templating__["q"
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Replaceable", function() { return Replaceable; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 var _dec, _dec2, _class;
 
 
@@ -62815,7 +62821,7 @@ var SelfBindingBehavior = function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Show", function() { return Show; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aurelia_hide_style__ = __webpack_require__(24);
 var _dec, _dec2, _class;
@@ -63061,7 +63067,7 @@ var UpdateTriggerBindingBehavior = (_temp = _class = function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "With", function() { return With; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_binding__ = __webpack_require__(8);
 var _dec, _dec2, _class;
 
@@ -63145,11 +63151,11 @@ function configure(config) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RouteHref", function() { return RouteHref; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_pal__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_logging__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_logging__ = __webpack_require__(7);
 var _dec, _dec2, _dec3, _dec4, _dec5, _class;
 
 
@@ -63223,7 +63229,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RouterViewLocator", function() { return RouterViewLocator; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_metadata__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_pal__ = __webpack_require__(3);
@@ -63705,7 +63711,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValidationErrorsCustomAttribute", function() { return ValidationErrorsCustomAttribute; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_binding__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validation_controller__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(3);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -63829,7 +63835,7 @@ var ValidationRendererCustomAttribute = (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(32);
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -63844,7 +63850,7 @@ exports.push([module.i, "/*!\r\n * Materialize v0.100.2 (http://materializecss.c
 /***/ "prismjs/themes/prism.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(5)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
