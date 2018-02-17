@@ -1,3 +1,13 @@
+<a name="0.32.1"></a>
+## [0.32.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.32.0...v0.32.1) (2018-02-17)
+
+
+### Bug Fixes
+
+* **select:** do not render/unreder validation if input is not available ([6b6c1e6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6b6c1e6)), closes [#495](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/495)
+
+
+
 <a name="0.32.0"></a>
 ## [0.32.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.31.0...v0.32.0) (2018-01-29)
 
