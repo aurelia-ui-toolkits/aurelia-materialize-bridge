@@ -17,7 +17,7 @@ export declare class MdTabs {
     fixedChanged(newValue: any): void;
     transparentChanged(newValue: any): void;
     fireTabSelectedEvent(e: any): void;
-    selectTab(id: number): void;
+    selectTab(id: string): void;
     readonly selectedTab: {
         href: any;
         index: number;

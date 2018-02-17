@@ -42,7 +42,7 @@ System.register([], function (exports_1, context_1) {
                         }
                     }
                     for (let [element, results] of elementResultsToRender) {
-                        if (element.mdUnrenderValidateResults) {
+                        if (element.mdRenderValidateResults) {
                             element.mdRenderValidateResults(results, this);
                         }
                         else {

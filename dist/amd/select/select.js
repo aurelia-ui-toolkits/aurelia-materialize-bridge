@@ -36,6 +36,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-binding", "aurelia-t
             //
             this.taskqueueRunning = false;
             this.mdUnrenderValidateResults = (results, renderer) => {
+                if (!this.input) {
+                    return;
+                }
                 for (let result of results) {
                     if (!result.valid) {
                         renderer.removeMessage(this.inputField, result);
@@ -44,6 +47,9 @@ define(["require", "exports", "aurelia-framework", "aurelia-binding", "aurelia-t
                 renderer.removeValidationClasses(this.input);
             };
             this.mdRenderValidateResults = (results, renderer) => {
+                if (!this.input) {
+                    return;
+                }
                 for (let result of results) {
                     if (!result.valid) {
                         result.target = this.input;

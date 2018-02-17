@@ -35,7 +35,7 @@ export class MaterializeFormValidationRenderer {
             }
         }
         for (let [element, results] of elementResultsToRender) {
-            if (element.mdUnrenderValidateResults) {
+            if (element.mdRenderValidateResults) {
                 element.mdRenderValidateResults(results, this);
             }
             else {

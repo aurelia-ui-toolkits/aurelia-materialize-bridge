@@ -1,6 +1,8 @@
 import { BindingEngine } from "aurelia-binding";
 import { TaskQueue } from "aurelia-task-queue";
 import { Logger } from "aurelia-logging";
+import { ValidateResult } from "aurelia-validation";
+import { MaterializeFormValidationRenderer } from "..";
 export declare class MdSelect {
     private bindingEngine;
     private taskQueue;
@@ -39,6 +41,6 @@ export declare class MdSelect {
     taskqueueRunning: boolean;
     handleBlur(): void;
     handleFocus(): void;
-    mdUnrenderValidateResults: (results: any, renderer: any) => void;
-    mdRenderValidateResults: (results: any, renderer: any) => void;
+    mdUnrenderValidateResults: (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => void;
+    mdRenderValidateResults: (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => void;
 }

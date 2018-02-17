@@ -40,6 +40,9 @@ let MdSelect = class MdSelect {
         //
         this.taskqueueRunning = false;
         this.mdUnrenderValidateResults = (results, renderer) => {
+            if (!this.input) {
+                return;
+            }
             for (let result of results) {
                 if (!result.valid) {
                     renderer.removeMessage(this.inputField, result);
@@ -48,6 +51,9 @@ let MdSelect = class MdSelect {
             renderer.removeValidationClasses(this.input);
         };
         this.mdRenderValidateResults = (results, renderer) => {
+            if (!this.input) {
+                return;
+            }
             for (let result of results) {
                 if (!result.valid) {
                     result.target = this.input;

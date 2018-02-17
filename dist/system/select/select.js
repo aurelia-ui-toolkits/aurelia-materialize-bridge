@@ -62,6 +62,9 @@ System.register(["aurelia-framework", "aurelia-binding", "aurelia-task-queue", "
                     //
                     this.taskqueueRunning = false;
                     this.mdUnrenderValidateResults = (results, renderer) => {
+                        if (!this.input) {
+                            return;
+                        }
                         for (let result of results) {
                             if (!result.valid) {
                                 renderer.removeMessage(this.inputField, result);
@@ -70,6 +73,9 @@ System.register(["aurelia-framework", "aurelia-binding", "aurelia-task-queue", "
                         renderer.removeValidationClasses(this.input);
                     };
                     this.mdRenderValidateResults = (results, renderer) => {
+                        if (!this.input) {
+                            return;
+                        }
                         for (let result of results) {
                             if (!result.valid) {
                                 result.target = this.input;
