@@ -1,0 +1,28 @@
+<template>
+	<require from="./mdx-no-collapse"></require>
+	<div>
+		Thanks to @djensen47!
+	</div>
+	<div class="collapsible-basic-use">
+		<ul md-collapsible>
+			<li>
+        <div class="collapsible-header">
+          First
+          <div class="secondary-content">
+            <a click.trigger="editClicked()" mdx-no-collapse class="no-collapse"><i class="left grey-text text-darken-2 material-icons">mode_edit</i></a>
+          </div>
+        </div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+			<li>
+        <div class="collapsible-header">
+          Second
+          <div class="secondary-content">
+            <a click.trigger="editClicked()" mdx-no-collapse class="no-collapse"><i class="left grey-text text-darken-2 material-icons">mode_edit</i></a>
+          </div>
+        </div>
+        <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+      </li>
+		</ul>
+	</div>
+</template>

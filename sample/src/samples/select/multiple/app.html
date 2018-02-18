@@ -1,0 +1,20 @@
+<template>
+	<div>
+		<select multiple md-select value.two-way="selectedValues">
+			<option value="" disabled selected>select an item</option>
+			<option value="item1">item 1</option>
+			<option value="item2">item 2</option>
+			<option value="item3">item 3</option>
+			<option value="item4">item 4</option>
+		</select>
+
+		<a md-button="flat: true;" md-waves click.trigger="setSelectedValues()" class="accent-text">set to item 3, item 4</a>
+		<!-- You selected: ${selectedValues | stringify} -->
+		You selected:
+		<ul>
+			<li repeat.for="val of selectedValues">
+        ${val}
+      </li>
+		</ul>
+	</div>
+</template>

@@ -1,0 +1,10 @@
+<template>
+	<select md-select.ref="select" md-select="label: select a value" value.two-way="selectedValue">
+		<option value="" disabled selected>select an item</option>
+		<option value="item1">item 1</option>
+		<option value="item2">item 2</option>
+		<option value="item3">item 3</option>
+		<option value="item4">item 4</option>
+	</select>
+	<button md-button md-waves="color: light;" click.delegate="triggerSelect()">trigger select</button>
+</template>

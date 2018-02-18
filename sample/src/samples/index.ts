@@ -40,6 +40,15 @@ export class Index {
 			this.getRouteConfig("transitions", js),
 			this.getRouteConfig("waves", js),
 			this.getRouteConfig("input-fields", forms),
+			this.getRouteConfig("select", forms),
+			this.getRouteConfig("radio-buttons", forms),
+			this.getRouteConfig("checkbox-and-switch", forms),
+			this.getRouteConfig("file-input-button", forms),
+			this.getRouteConfig("range", forms),
+			this.getRouteConfig("datepicker", forms),
+			this.getRouteConfig("autocomplete", forms, true),
+			this.getRouteConfig("timepicker", forms, true),
+			this.getRouteConfig("recepies", contrib),
 		];
 		config.map(routes);
 		this.router = router;

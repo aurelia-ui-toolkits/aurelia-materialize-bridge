@@ -1,0 +1,27 @@
+<template>
+	<require from="./md-wait-cursor"></require>
+	<div>
+		Thanks to @MaximBalaganskiy!
+	</div>
+	<p>
+		<button md-button md-waves="color: light;" md-wait-cursor1.bind="loading">wait</button>
+		<md-input md-wait-cursor1.bind="loading" md-label="text field"></md-input>
+	</p>
+	<table style="position: relative">
+		<thead>
+			<th>H1</th>
+			<th>H2</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>c1</td>
+				<td>c2</td>
+			</tr>
+			<tr md-wait-cursor.bind="loading">
+				<td>c3</td>
+				<td>c4</td>
+			</tr>
+		</tbody>
+	</table>
+	<button md-button md-waves="color: light;" click.delegate="toggleLoading()">toggle loading</button>
+</template>

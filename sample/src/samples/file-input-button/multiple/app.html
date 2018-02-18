@@ -1,0 +1,10 @@
+<template>
+	<md-file md-caption="upload file" view-model.ref="fileInput" md-multiple="true" md-label-value.bind="labelValue"></md-file>
+	<div if.bind="selectedFiles.length > 0">
+		<md-collection>
+			<md-collection-item repeat.for="file of selectedFiles">
+				${file.name} (${file.size} bytes)
+			</md-collection-item>
+		</md-collection>
+	</div>
+</template>

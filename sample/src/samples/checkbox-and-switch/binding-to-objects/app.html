@@ -1,0 +1,13 @@
+<template>
+	<p repeat.for="product of products ">
+		<md-checkbox md-model.bind="product" md-checked.bind="selectedProducts ">
+			${product.name}
+		</md-checkbox>
+	</p>
+	<p>
+		Selected products:
+		<ul>
+			<li repeat.for="product of selectedProducts">${product.name}</li>
+		</ul>
+	</p>
+</template>

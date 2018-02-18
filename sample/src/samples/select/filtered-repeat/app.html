@@ -1,0 +1,19 @@
+<template>
+	<require from="./filter-pizza-value-converter"></require>
+	<div style="margin-bottom: 15px;">
+		Thanks to @eikaramba
+	</div>
+	<div>
+		<md-checkbox md-checked.bind="shouldFilter">filter pizza (changes the array for select)</md-checkbox>
+		<select md-select multiple md-select.ref="select" value.two-way="selectedMeal">
+			<option value="" disabled>Select your meal</option>
+			<option repeat.for="meal of food | filterPizza:shouldFilter" model.bind="meal" value.bind="meal.id">${meal.name}</option>
+		</select>
+		<p>
+			You selected:
+		</p>
+		<ul>
+			<li repeat.for="meal of selectedMeal">${meal.name}</li>
+		</ul>
+	</div>
+</template>

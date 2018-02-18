@@ -1,0 +1,25 @@
+<template>
+	<div>
+		<p style="margin-top: 15px;">
+			<button md-button click.delegate="openModal()">show modal</button>
+		</p>
+	</div>
+	<div md-modal id="mm" md-modal.ref="modal">
+		<div class="modal-content">
+			<h4>Datepicker modal</h4>
+			<div>
+				<input md-datepicker="container: body; value.two-way: selectedDate;" type="date" placeholder="pick a date" />
+			</div>
+			<div>
+				<button md-button click.delegate="setDate()">set date</button>
+			</div>
+			<div>
+				<span if.bind="selectedDate">You selected (UTC time): ${selectedDate | stringify}</span>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a click.delegate="agree()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Agree</a>
+			<a click.delegate="disagree()" md-button="flat: true;" md-waves="color: accent;" class="modal-action modal-close">Disagree</a>
+		</div>
+	</div>
+</template>

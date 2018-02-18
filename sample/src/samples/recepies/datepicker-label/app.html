@@ -1,0 +1,16 @@
+<template>
+	<require from="./md-datepicker-label"></require>
+	<require from="./stringify-value-converter"></require>
+	<div>
+		Thanks to @MaximBalaganskiy!
+	</div>
+	<div>
+		<input md-datepicker-label="next appointment" md-datepicker="container: body; value.two-way: selectedDate;" type="date" />
+	</div>
+	<div>
+		<button md-button click.delegate="setDate()">set date</button>
+	</div>
+	<div>
+		<span if.bind="selectedDate">You selected (UTC time): ${selectedDate | stringify}</span>
+	</div>
+</template>

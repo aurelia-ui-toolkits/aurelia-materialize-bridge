@@ -182,7 +182,7 @@
 /* harmony export (immutable) */ __webpack_exports__["e"] = autoinject;
 /* harmony export (immutable) */ __webpack_exports__["f"] = inject;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_metadata__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(5);
 var _dec, _class, _dec2, _class3, _dec3, _class5, _dec4, _class7, _dec5, _class9, _dec6, _class11, _dec7, _class13, _classInvokers;
 
 
@@ -13720,7 +13720,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(5);
 // With default aurelia-loader-webpack config, this module is added as an extra entry
 // before any other code executes so that PAL.Loader is properly configured.
 // There are several tricky points worth noticing.
@@ -13767,7 +13767,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WebpackLoader", function() { return WebpackLoader; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_metadata__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_loader__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(5);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -14123,7 +14123,7 @@ module.exports = function(originalModule) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(setImmediate) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskQueue; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(5);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 
@@ -17441,7 +17441,7 @@ function restorePreviousLocation(router) {
 /* unused harmony export deprecated */
 /* harmony export (immutable) */ __webpack_exports__["c"] = mixin;
 /* harmony export (immutable) */ __webpack_exports__["d"] = protocol;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(5);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -18637,85 +18637,270 @@ var Validator = (function () {
 /***/ }),
 
 /***/ 2:
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
+"use strict";
+/* unused harmony export json */
+/* unused harmony export HttpClientConfiguration */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpClient; });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
 
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
 
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
+function json(body, replacer) {
+  return JSON.stringify(body !== undefined ? body : {}, replacer);
 }
 
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+var HttpClientConfiguration = function () {
+  function HttpClientConfiguration() {
+    
 
-	return '/*# ' + data + ' */';
+    this.baseUrl = '';
+    this.defaults = {};
+    this.interceptors = [];
+  }
+
+  HttpClientConfiguration.prototype.withBaseUrl = function withBaseUrl(baseUrl) {
+    this.baseUrl = baseUrl;
+    return this;
+  };
+
+  HttpClientConfiguration.prototype.withDefaults = function withDefaults(defaults) {
+    this.defaults = defaults;
+    return this;
+  };
+
+  HttpClientConfiguration.prototype.withInterceptor = function withInterceptor(interceptor) {
+    this.interceptors.push(interceptor);
+    return this;
+  };
+
+  HttpClientConfiguration.prototype.useStandardConfiguration = function useStandardConfiguration() {
+    var standardConfig = { credentials: 'same-origin' };
+    Object.assign(this.defaults, standardConfig, this.defaults);
+    return this.rejectErrorResponses();
+  };
+
+  HttpClientConfiguration.prototype.rejectErrorResponses = function rejectErrorResponses() {
+    return this.withInterceptor({ response: rejectOnError });
+  };
+
+  return HttpClientConfiguration;
+}();
+
+function rejectOnError(response) {
+  if (!response.ok) {
+    throw response;
+  }
+
+  return response;
 }
 
+var HttpClient = function () {
+  function HttpClient() {
+    
+
+    this.activeRequestCount = 0;
+    this.isRequesting = false;
+    this.isConfigured = false;
+    this.baseUrl = '';
+    this.defaults = null;
+    this.interceptors = [];
+
+    if (typeof fetch === 'undefined') {
+      throw new Error('HttpClient requires a Fetch API implementation, but the current environment doesn\'t support it. You may need to load a polyfill such as https://github.com/github/fetch');
+    }
+  }
+
+  HttpClient.prototype.configure = function configure(config) {
+    var normalizedConfig = void 0;
+
+    if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object') {
+      normalizedConfig = { defaults: config };
+    } else if (typeof config === 'function') {
+      normalizedConfig = new HttpClientConfiguration();
+      normalizedConfig.baseUrl = this.baseUrl;
+      normalizedConfig.defaults = Object.assign({}, this.defaults);
+      normalizedConfig.interceptors = this.interceptors;
+
+      var c = config(normalizedConfig);
+      if (HttpClientConfiguration.prototype.isPrototypeOf(c)) {
+        normalizedConfig = c;
+      }
+    } else {
+      throw new Error('invalid config');
+    }
+
+    var defaults = normalizedConfig.defaults;
+    if (defaults && Headers.prototype.isPrototypeOf(defaults.headers)) {
+      throw new Error('Default headers must be a plain object.');
+    }
+
+    this.baseUrl = normalizedConfig.baseUrl;
+    this.defaults = defaults;
+    this.interceptors = normalizedConfig.interceptors || [];
+    this.isConfigured = true;
+
+    return this;
+  };
+
+  HttpClient.prototype.fetch = function (_fetch) {
+    function fetch(_x, _x2) {
+      return _fetch.apply(this, arguments);
+    }
+
+    fetch.toString = function () {
+      return _fetch.toString();
+    };
+
+    return fetch;
+  }(function (input, init) {
+    var _this = this;
+
+    trackRequestStart.call(this);
+
+    var request = Promise.resolve().then(function () {
+      return buildRequest.call(_this, input, init, _this.defaults);
+    });
+    var promise = processRequest(request, this.interceptors).then(function (result) {
+      var response = null;
+
+      if (Response.prototype.isPrototypeOf(result)) {
+        response = result;
+      } else if (Request.prototype.isPrototypeOf(result)) {
+        request = Promise.resolve(result);
+        response = fetch(result);
+      } else {
+        throw new Error('An invalid result was returned by the interceptor chain. Expected a Request or Response instance, but got [' + result + ']');
+      }
+
+      return request.then(function (_request) {
+        return processResponse(response, _this.interceptors, _request);
+      });
+    });
+
+    return trackRequestEndWith.call(this, promise);
+  });
+
+  return HttpClient;
+}();
+
+var absoluteUrlRegexp = /^([a-z][a-z0-9+\-.]*:)?\/\//i;
+
+function trackRequestStart() {
+  this.isRequesting = !! ++this.activeRequestCount;
+}
+
+function trackRequestEnd() {
+  this.isRequesting = !! --this.activeRequestCount;
+}
+
+function trackRequestEndWith(promise) {
+  var handle = trackRequestEnd.bind(this);
+  promise.then(handle, handle);
+  return promise;
+}
+
+function parseHeaderValues(headers) {
+  var parsedHeaders = {};
+  for (var name in headers || {}) {
+    if (headers.hasOwnProperty(name)) {
+      parsedHeaders[name] = typeof headers[name] === 'function' ? headers[name]() : headers[name];
+    }
+  }
+  return parsedHeaders;
+}
+
+function buildRequest(input, init) {
+  var defaults = this.defaults || {};
+  var request = void 0;
+  var body = void 0;
+  var requestContentType = void 0;
+
+  var parsedDefaultHeaders = parseHeaderValues(defaults.headers);
+  if (Request.prototype.isPrototypeOf(input)) {
+    request = input;
+    requestContentType = new Headers(request.headers).get('Content-Type');
+  } else {
+    init || (init = {});
+    body = init.body;
+    var bodyObj = body ? { body: body } : null;
+    var requestInit = Object.assign({}, defaults, { headers: {} }, init, bodyObj);
+    requestContentType = new Headers(requestInit.headers).get('Content-Type');
+    request = new Request(getRequestUrl(this.baseUrl, input), requestInit);
+  }
+  if (!requestContentType) {
+    if (new Headers(parsedDefaultHeaders).has('content-type')) {
+      request.headers.set('Content-Type', new Headers(parsedDefaultHeaders).get('content-type'));
+    } else if (body && isJSON(body)) {
+      request.headers.set('Content-Type', 'application/json');
+    }
+  }
+  setDefaultHeaders(request.headers, parsedDefaultHeaders);
+  if (body && Blob.prototype.isPrototypeOf(body) && body.type) {
+    request.headers.set('Content-Type', body.type);
+  }
+  return request;
+}
+
+function getRequestUrl(baseUrl, url) {
+  if (absoluteUrlRegexp.test(url)) {
+    return url;
+  }
+
+  return (baseUrl || '') + url;
+}
+
+function setDefaultHeaders(headers, defaultHeaders) {
+  for (var name in defaultHeaders || {}) {
+    if (defaultHeaders.hasOwnProperty(name) && !headers.has(name)) {
+      headers.set(name, defaultHeaders[name]);
+    }
+  }
+}
+
+function processRequest(request, interceptors) {
+  return applyInterceptors(request, interceptors, 'request', 'requestError');
+}
+
+function processResponse(response, interceptors, request) {
+  return applyInterceptors(response, interceptors, 'response', 'responseError', request);
+}
+
+function applyInterceptors(input, interceptors, successName, errorName) {
+  for (var _len = arguments.length, interceptorArgs = Array(_len > 4 ? _len - 4 : 0), _key = 4; _key < _len; _key++) {
+    interceptorArgs[_key - 4] = arguments[_key];
+  }
+
+  return (interceptors || []).reduce(function (chain, interceptor) {
+    var successHandler = interceptor[successName];
+    var errorHandler = interceptor[errorName];
+
+    return chain.then(successHandler && function (value) {
+      return successHandler.call.apply(successHandler, [interceptor, value].concat(interceptorArgs));
+    } || identity, errorHandler && function (reason) {
+      return errorHandler.call.apply(errorHandler, [interceptor, reason].concat(interceptorArgs));
+    } || thrower);
+  }, Promise.resolve(input));
+}
+
+function isJSON(str) {
+  try {
+    JSON.parse(str);
+  } catch (err) {
+    return false;
+  }
+
+  return true;
+}
+
+function identity(x) {
+  return x;
+}
+
+function thrower(x) {
+  throw x;
+}
 
 /***/ }),
 
@@ -18995,7 +19180,7 @@ process.umask = function() { return 0; };
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return aureliaHideClassName; });
 /* harmony export (immutable) */ __webpack_exports__["c"] = injectAureliaHideStyleAtHead;
 /* harmony export (immutable) */ __webpack_exports__["b"] = injectAureliaHideStyleAtBoundary;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(5);
 
 
 var aureliaHideClassName = 'aurelia-hide';
@@ -19249,12 +19434,83 @@ var MessageExpressionValidator = (function (_super) {
 /***/ }),
 
 /***/ 3:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = getBooleanFromAttributeValue;
-function getBooleanFromAttributeValue(value) {
-    return (value === true || value === "true");
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
 }
 
 
@@ -19985,108 +20241,11 @@ var SetRepeatStrategy = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (immutable) */ __webpack_exports__["a"] = AggregateError;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return FEATURE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PLATFORM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return DOM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return isInitialized; });
-/* harmony export (immutable) */ __webpack_exports__["e"] = initializePAL;
-/* unused harmony export reset */
-
-function AggregateError(message, innerError, skipIfAlreadyAggregate) {
-  if (innerError) {
-    if (innerError.innerError && skipIfAlreadyAggregate) {
-      return innerError;
-    }
-
-    var separator = '\n------------------------------------------------\n';
-
-    message += separator + 'Inner Error:\n';
-
-    if (typeof innerError === 'string') {
-      message += 'Message: ' + innerError;
-    } else {
-      if (innerError.message) {
-        message += 'Message: ' + innerError.message;
-      } else {
-        message += 'Unknown Inner Error Type. Displaying Inner Error as JSON:\n ' + JSON.stringify(innerError, null, '  ');
-      }
-
-      if (innerError.stack) {
-        message += '\nInner Error Stack:\n' + innerError.stack;
-        message += '\nEnd Inner Error Stack';
-      }
-    }
-
-    message += separator;
-  }
-
-  var e = new Error(message);
-  if (innerError) {
-    e.innerError = innerError;
-  }
-
-  return e;
+/* harmony export (immutable) */ __webpack_exports__["a"] = getBooleanFromAttributeValue;
+function getBooleanFromAttributeValue(value) {
+    return (value === true || value === "true");
 }
 
-var FEATURE = {};
-
-var PLATFORM = {
-  noop: function noop() {},
-  eachModule: function eachModule() {},
-  moduleName: function (_moduleName) {
-    function moduleName(_x) {
-      return _moduleName.apply(this, arguments);
-    }
-
-    moduleName.toString = function () {
-      return _moduleName.toString();
-    };
-
-    return moduleName;
-  }(function (moduleName) {
-    return moduleName;
-  })
-};
-
-PLATFORM.global = function () {
-  if (typeof self !== 'undefined') {
-    return self;
-  }
-
-  if (typeof global !== 'undefined') {
-    return global;
-  }
-
-  return new Function('return this')();
-}();
-
-var DOM = {};
-var isInitialized = false;
-
-function initializePAL(callback) {
-  if (isInitialized) {
-    return;
-  }
-  isInitialized = true;
-  if (typeof Object.getPropertyDescriptor !== 'function') {
-    Object.getPropertyDescriptor = function (subject, name) {
-      var pd = Object.getOwnPropertyDescriptor(subject, name);
-      var proto = Object.getPrototypeOf(subject);
-      while (typeof pd === 'undefined' && proto !== null) {
-        pd = Object.getOwnPropertyDescriptor(proto, name);
-        proto = Object.getPrototypeOf(proto);
-      }
-      return pd;
-    };
-  }
-
-  callback(PLATFORM, FEATURE, DOM);
-}
-function reset() {
-  isInitialized = false;
-}
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(17)))
 
 /***/ }),
 
@@ -20346,7 +20505,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony export (immutable) */ __webpack_exports__["bootstrap"] = bootstrap;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "starting", function() { return starting; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_polyfills__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(5);
 
 
 
@@ -20516,7 +20675,7 @@ var starting = run();
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(5);
 
 /**
  * Plugin configuration builder
@@ -20872,267 +21031,108 @@ MdInputUpdateService = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export json */
-/* unused harmony export HttpClientConfiguration */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HttpClient; });
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (immutable) */ __webpack_exports__["a"] = AggregateError;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return FEATURE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PLATFORM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return DOM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return isInitialized; });
+/* harmony export (immutable) */ __webpack_exports__["e"] = initializePAL;
+/* unused harmony export reset */
 
-
-
-function json(body, replacer) {
-  return JSON.stringify(body !== undefined ? body : {}, replacer);
-}
-
-var HttpClientConfiguration = function () {
-  function HttpClientConfiguration() {
-    
-
-    this.baseUrl = '';
-    this.defaults = {};
-    this.interceptors = [];
-  }
-
-  HttpClientConfiguration.prototype.withBaseUrl = function withBaseUrl(baseUrl) {
-    this.baseUrl = baseUrl;
-    return this;
-  };
-
-  HttpClientConfiguration.prototype.withDefaults = function withDefaults(defaults) {
-    this.defaults = defaults;
-    return this;
-  };
-
-  HttpClientConfiguration.prototype.withInterceptor = function withInterceptor(interceptor) {
-    this.interceptors.push(interceptor);
-    return this;
-  };
-
-  HttpClientConfiguration.prototype.useStandardConfiguration = function useStandardConfiguration() {
-    var standardConfig = { credentials: 'same-origin' };
-    Object.assign(this.defaults, standardConfig, this.defaults);
-    return this.rejectErrorResponses();
-  };
-
-  HttpClientConfiguration.prototype.rejectErrorResponses = function rejectErrorResponses() {
-    return this.withInterceptor({ response: rejectOnError });
-  };
-
-  return HttpClientConfiguration;
-}();
-
-function rejectOnError(response) {
-  if (!response.ok) {
-    throw response;
-  }
-
-  return response;
-}
-
-var HttpClient = function () {
-  function HttpClient() {
-    
-
-    this.activeRequestCount = 0;
-    this.isRequesting = false;
-    this.isConfigured = false;
-    this.baseUrl = '';
-    this.defaults = null;
-    this.interceptors = [];
-
-    if (typeof fetch === 'undefined') {
-      throw new Error('HttpClient requires a Fetch API implementation, but the current environment doesn\'t support it. You may need to load a polyfill such as https://github.com/github/fetch');
+function AggregateError(message, innerError, skipIfAlreadyAggregate) {
+  if (innerError) {
+    if (innerError.innerError && skipIfAlreadyAggregate) {
+      return innerError;
     }
-  }
 
-  HttpClient.prototype.configure = function configure(config) {
-    var normalizedConfig = void 0;
+    var separator = '\n------------------------------------------------\n';
 
-    if ((typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object') {
-      normalizedConfig = { defaults: config };
-    } else if (typeof config === 'function') {
-      normalizedConfig = new HttpClientConfiguration();
-      normalizedConfig.baseUrl = this.baseUrl;
-      normalizedConfig.defaults = Object.assign({}, this.defaults);
-      normalizedConfig.interceptors = this.interceptors;
+    message += separator + 'Inner Error:\n';
 
-      var c = config(normalizedConfig);
-      if (HttpClientConfiguration.prototype.isPrototypeOf(c)) {
-        normalizedConfig = c;
-      }
+    if (typeof innerError === 'string') {
+      message += 'Message: ' + innerError;
     } else {
-      throw new Error('invalid config');
+      if (innerError.message) {
+        message += 'Message: ' + innerError.message;
+      } else {
+        message += 'Unknown Inner Error Type. Displaying Inner Error as JSON:\n ' + JSON.stringify(innerError, null, '  ');
+      }
+
+      if (innerError.stack) {
+        message += '\nInner Error Stack:\n' + innerError.stack;
+        message += '\nEnd Inner Error Stack';
+      }
     }
 
-    var defaults = normalizedConfig.defaults;
-    if (defaults && Headers.prototype.isPrototypeOf(defaults.headers)) {
-      throw new Error('Default headers must be a plain object.');
+    message += separator;
+  }
+
+  var e = new Error(message);
+  if (innerError) {
+    e.innerError = innerError;
+  }
+
+  return e;
+}
+
+var FEATURE = {};
+
+var PLATFORM = {
+  noop: function noop() {},
+  eachModule: function eachModule() {},
+  moduleName: function (_moduleName) {
+    function moduleName(_x) {
+      return _moduleName.apply(this, arguments);
     }
 
-    this.baseUrl = normalizedConfig.baseUrl;
-    this.defaults = defaults;
-    this.interceptors = normalizedConfig.interceptors || [];
-    this.isConfigured = true;
-
-    return this;
-  };
-
-  HttpClient.prototype.fetch = function (_fetch) {
-    function fetch(_x, _x2) {
-      return _fetch.apply(this, arguments);
-    }
-
-    fetch.toString = function () {
-      return _fetch.toString();
+    moduleName.toString = function () {
+      return _moduleName.toString();
     };
 
-    return fetch;
-  }(function (input, init) {
-    var _this = this;
+    return moduleName;
+  }(function (moduleName) {
+    return moduleName;
+  })
+};
 
-    trackRequestStart.call(this);
+PLATFORM.global = function () {
+  if (typeof self !== 'undefined') {
+    return self;
+  }
 
-    var request = Promise.resolve().then(function () {
-      return buildRequest.call(_this, input, init, _this.defaults);
-    });
-    var promise = processRequest(request, this.interceptors).then(function (result) {
-      var response = null;
+  if (typeof global !== 'undefined') {
+    return global;
+  }
 
-      if (Response.prototype.isPrototypeOf(result)) {
-        response = result;
-      } else if (Request.prototype.isPrototypeOf(result)) {
-        request = Promise.resolve(result);
-        response = fetch(result);
-      } else {
-        throw new Error('An invalid result was returned by the interceptor chain. Expected a Request or Response instance, but got [' + result + ']');
-      }
-
-      return request.then(function (_request) {
-        return processResponse(response, _this.interceptors, _request);
-      });
-    });
-
-    return trackRequestEndWith.call(this, promise);
-  });
-
-  return HttpClient;
+  return new Function('return this')();
 }();
 
-var absoluteUrlRegexp = /^([a-z][a-z0-9+\-.]*:)?\/\//i;
+var DOM = {};
+var isInitialized = false;
 
-function trackRequestStart() {
-  this.isRequesting = !! ++this.activeRequestCount;
-}
-
-function trackRequestEnd() {
-  this.isRequesting = !! --this.activeRequestCount;
-}
-
-function trackRequestEndWith(promise) {
-  var handle = trackRequestEnd.bind(this);
-  promise.then(handle, handle);
-  return promise;
-}
-
-function parseHeaderValues(headers) {
-  var parsedHeaders = {};
-  for (var name in headers || {}) {
-    if (headers.hasOwnProperty(name)) {
-      parsedHeaders[name] = typeof headers[name] === 'function' ? headers[name]() : headers[name];
-    }
+function initializePAL(callback) {
+  if (isInitialized) {
+    return;
   }
-  return parsedHeaders;
-}
-
-function buildRequest(input, init) {
-  var defaults = this.defaults || {};
-  var request = void 0;
-  var body = void 0;
-  var requestContentType = void 0;
-
-  var parsedDefaultHeaders = parseHeaderValues(defaults.headers);
-  if (Request.prototype.isPrototypeOf(input)) {
-    request = input;
-    requestContentType = new Headers(request.headers).get('Content-Type');
-  } else {
-    init || (init = {});
-    body = init.body;
-    var bodyObj = body ? { body: body } : null;
-    var requestInit = Object.assign({}, defaults, { headers: {} }, init, bodyObj);
-    requestContentType = new Headers(requestInit.headers).get('Content-Type');
-    request = new Request(getRequestUrl(this.baseUrl, input), requestInit);
-  }
-  if (!requestContentType) {
-    if (new Headers(parsedDefaultHeaders).has('content-type')) {
-      request.headers.set('Content-Type', new Headers(parsedDefaultHeaders).get('content-type'));
-    } else if (body && isJSON(body)) {
-      request.headers.set('Content-Type', 'application/json');
-    }
-  }
-  setDefaultHeaders(request.headers, parsedDefaultHeaders);
-  if (body && Blob.prototype.isPrototypeOf(body) && body.type) {
-    request.headers.set('Content-Type', body.type);
-  }
-  return request;
-}
-
-function getRequestUrl(baseUrl, url) {
-  if (absoluteUrlRegexp.test(url)) {
-    return url;
+  isInitialized = true;
+  if (typeof Object.getPropertyDescriptor !== 'function') {
+    Object.getPropertyDescriptor = function (subject, name) {
+      var pd = Object.getOwnPropertyDescriptor(subject, name);
+      var proto = Object.getPrototypeOf(subject);
+      while (typeof pd === 'undefined' && proto !== null) {
+        pd = Object.getOwnPropertyDescriptor(proto, name);
+        proto = Object.getPrototypeOf(proto);
+      }
+      return pd;
+    };
   }
 
-  return (baseUrl || '') + url;
+  callback(PLATFORM, FEATURE, DOM);
 }
-
-function setDefaultHeaders(headers, defaultHeaders) {
-  for (var name in defaultHeaders || {}) {
-    if (defaultHeaders.hasOwnProperty(name) && !headers.has(name)) {
-      headers.set(name, defaultHeaders[name]);
-    }
-  }
+function reset() {
+  isInitialized = false;
 }
-
-function processRequest(request, interceptors) {
-  return applyInterceptors(request, interceptors, 'request', 'requestError');
-}
-
-function processResponse(response, interceptors, request) {
-  return applyInterceptors(response, interceptors, 'response', 'responseError', request);
-}
-
-function applyInterceptors(input, interceptors, successName, errorName) {
-  for (var _len = arguments.length, interceptorArgs = Array(_len > 4 ? _len - 4 : 0), _key = 4; _key < _len; _key++) {
-    interceptorArgs[_key - 4] = arguments[_key];
-  }
-
-  return (interceptors || []).reduce(function (chain, interceptor) {
-    var successHandler = interceptor[successName];
-    var errorHandler = interceptor[errorName];
-
-    return chain.then(successHandler && function (value) {
-      return successHandler.call.apply(successHandler, [interceptor, value].concat(interceptorArgs));
-    } || identity, errorHandler && function (reason) {
-      return errorHandler.call.apply(errorHandler, [interceptor, reason].concat(interceptorArgs));
-    } || thrower);
-  }, Promise.resolve(input));
-}
-
-function isJSON(str) {
-  try {
-    JSON.parse(str);
-  } catch (err) {
-    return false;
-  }
-
-  return true;
-}
-
-function identity(x) {
-  return x;
-}
-
-function thrower(x) {
-  throw x;
-}
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(17)))
 
 /***/ }),
 
@@ -21306,7 +21306,7 @@ var ValidateEvent = (function () {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = getTargetDOMElement;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(5);
 
 /**
  * Gets the DOM element associated with the data-binding. Most of the time it's
@@ -26528,7 +26528,7 @@ if (true) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return TemplatingEngine; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_metadata__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_path__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_loader__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_dependency_injection__ = __webpack_require__(0);
@@ -33069,7 +33069,7 @@ function addSegment(currentState, segment) {
 /* unused harmony export connectBindingToSignal */
 /* unused harmony export signalBindings */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_pal__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_metadata__ = __webpack_require__(13);
 
@@ -38705,7 +38705,7 @@ function createDynamicClass(moduleId) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_loader__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_path__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(5);
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
@@ -52183,7 +52183,7 @@ class AttributeManager {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(5);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 
@@ -53120,7 +53120,7 @@ function polyfillElementClosest() {
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "x", function() { return __WEBPACK_IMPORTED_MODULE_19__colors_md_colors__["MdColors"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__common_attributeManager__ = __webpack_require__(9);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_20__common_attributeManager__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__common_attributes__ = __webpack_require__(4);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "_10", function() { return __WEBPACK_IMPORTED_MODULE_21__common_attributes__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__common_constants__ = __webpack_require__(47);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "_7", function() { return __WEBPACK_IMPORTED_MODULE_22__common_constants__["a"]; });
@@ -54632,25 +54632,26 @@ function configure(config) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_loader__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_path__ = __webpack_require__(14);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["c"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["e"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["f"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["e"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__["f"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__ = __webpack_require__(8);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["w"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["y"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["F"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["w"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["y"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "p", function() { return __WEBPACK_IMPORTED_MODULE_6_aurelia_binding__["F"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_aurelia_metadata__ = __webpack_require__(13);
 /* unused harmony namespace reexport */
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["i"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "g", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["o"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["p"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "k", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["q"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["r"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["t"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "p", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["u"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "q", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["x"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "f", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["j"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["o"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "j", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["p"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["q"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["r"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "o", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["t"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "q", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["u"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "r", function() { return __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__["x"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2_aurelia_loader__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_aurelia_task_queue__ = __webpack_require__(11);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_8_aurelia_task_queue__["a"]; });
@@ -55133,7 +55134,7 @@ var LogManager = __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__;
 /* unused harmony export DefaultLinkHandler */
 /* harmony export (immutable) */ __webpack_exports__["configure"] = configure;
 /* unused harmony export BrowserHistory */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_history__ = __webpack_require__(33);
 var _class, _temp;
 
@@ -55518,6 +55519,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__scrollfire_scrollfire_patch__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_polyfills__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__exports__ = __webpack_require__(92);
+/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ScrollfirePatch", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["_6"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdAutoComplete", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["g"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdBadge", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["h"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdBox", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["i"]; });
@@ -55563,7 +55565,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdPushpin", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["O"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdRadio", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["P"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdRange", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["Q"]; });
-/* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ScrollfirePatch", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["_6"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollfireTarget", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["T"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollfire", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["S"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "MdScrollSpy", function() { return __WEBPACK_IMPORTED_MODULE_3__exports__["R"]; });
@@ -55667,20 +55668,20 @@ let MdAutoComplete = class MdAutoComplete {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Number)
 ], MdAutoComplete.prototype, "limit", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Number)
 ], MdAutoComplete.prototype, "minLength", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdAutoComplete.prototype, "values", void 0);
 MdAutoComplete = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-autocomplete"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-autocomplete"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdAutoComplete);
 
@@ -55697,7 +55698,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdBadge", function() { return MdBadge; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -55749,16 +55750,16 @@ let MdBadge = class MdBadge {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdBadge.prototype, "isNew", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdBadge.prototype, "caption", void 0);
 MdBadge = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-badge"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-badge"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdBadge);
 
@@ -55805,12 +55806,12 @@ let MdBox = class MdBox {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdBox.prototype, "caption", void 0);
 MdBox = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-box"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-box"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdBox);
 
@@ -55860,12 +55861,12 @@ let MdBreadcrumbs = class MdBreadcrumbs {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_aurelia_router__["c" /* Router */])
 ], MdBreadcrumbs.prototype, "router", void 0);
 MdBreadcrumbs = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-breadcrumbs"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-breadcrumbs"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_router__["c" /* Router */]])
 ], MdBreadcrumbs);
 
@@ -55876,7 +55877,7 @@ MdBreadcrumbs = __decorate([
 /***/ "aurelia-materialize-bridge/breadcrumbs/breadcrumbs.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -55919,7 +55920,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdButton", function() { return MdButton; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -55998,28 +55999,28 @@ let MdButton = class MdButton {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdButton.prototype, "disabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdButton.prototype, "flat", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdButton.prototype, "floating", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdButton.prototype, "large", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdButton.prototype, "pulse", void 0);
 MdButton = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-button"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-button"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdButton);
 
@@ -56034,7 +56035,7 @@ MdButton = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdCard", function() { return MdCard; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56063,40 +56064,40 @@ let MdCard = class MdCard {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCard.prototype, "mdHorizontal", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCard.prototype, "mdImage", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCard.prototype, "mdReveal", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCard.prototype, "mdAction", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCard.prototype, "mdStickyAction", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneWay }),
     __metadata("design:type", String)
 ], MdCard.prototype, "mdSize", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdCard.prototype, "mdTitle", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdCard.prototype, "mdClass", void 0);
 MdCard = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-card"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-card"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCard);
 
@@ -56107,7 +56108,7 @@ MdCard = __decorate([
 /***/ "aurelia-materialize-bridge/card/card.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -56134,7 +56135,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdCarousel", function() { return MdCarousel; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56181,20 +56182,20 @@ let MdCarousel = class MdCarousel {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdCarousel.prototype, "mdIndicators", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdCarousel.prototype, "mdSlider", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* children */])("md-carousel-item"),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["j" /* children */])("md-carousel-item"),
     __metadata("design:type", Array)
 ], MdCarousel.prototype, "items", void 0);
 MdCarousel = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-carousel"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-carousel"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__["a" /* TaskQueue */]])
 ], MdCarousel);
 
@@ -56228,16 +56229,16 @@ let MdCarouselItem = class MdCarouselItem {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdCarouselItem.prototype, "mdHref", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneWay }),
     __metadata("design:type", String)
 ], MdCarouselItem.prototype, "mdImage", void 0);
 MdCarouselItem = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-carousel-item"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-carousel-item"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCarouselItem);
 
@@ -56255,7 +56256,7 @@ module.exports = "<template class=\"carousel-item\">\n\t<a if.bind=\"mdHref\" hr
 /***/ "aurelia-materialize-bridge/carousel/carousel.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -56322,12 +56323,12 @@ let MdCharCounter = class MdCharCounter {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdCharCounter.prototype, "length", void 0);
 MdCharCounter = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-char-counter"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-char-counter"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCharCounter);
 
@@ -56344,7 +56345,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdCheckbox", function() { return MdCheckbox; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56406,32 +56407,32 @@ let MdCheckbox = MdCheckbox_1 = class MdCheckbox {
 };
 MdCheckbox.id = 0;
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdCheckbox.prototype, "mdChecked", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdCheckbox.prototype, "mdDisabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Boolean)
 ], MdCheckbox.prototype, "mdReadonly", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdCheckbox.prototype, "mdFilledIn", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Function)
 ], MdCheckbox.prototype, "mdMatcher", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdCheckbox.prototype, "mdModel", void 0);
 MdCheckbox = MdCheckbox_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-checkbox"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-checkbox"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCheckbox);
 
@@ -56454,7 +56455,7 @@ module.exports = "<template>\n\t<input type=\"checkbox\" id=\"${controlId}\" che
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdChip", function() { return MdChip; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -56482,11 +56483,11 @@ let MdChip = class MdChip {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdChip.prototype, "mdClose", void 0);
 MdChip = __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdChip);
 
@@ -56497,7 +56498,7 @@ MdChip = __decorate([
 /***/ "aurelia-materialize-bridge/chip/chip.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -56594,24 +56595,24 @@ let MdChips = class MdChips {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdChips.prototype, "autocompleteData", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", Array)
 ], MdChips.prototype, "data", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdChips.prototype, "placeholder", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdChips.prototype, "secondaryPlaceholder", void 0);
 MdChips = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-chips"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-chips"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdChips);
 
@@ -56654,7 +56655,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdCollapsible", function() { return MdCollapsible; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56714,24 +56715,24 @@ let MdCollapsible = class MdCollapsible {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdCollapsible.prototype, "accordion", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdCollapsible.prototype, "popout", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Function)
 ], MdCollapsible.prototype, "onOpen", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Function)
 ], MdCollapsible.prototype, "onClose", void 0);
 MdCollapsible = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-collapsible"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-collapsible"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCollapsible);
 
@@ -56790,8 +56791,8 @@ let MdCollection = class MdCollection {
     }
 };
 MdCollection = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-collection"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-collection"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCollection);
 
@@ -56816,7 +56817,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 let MdCollectionHeader = class MdCollectionHeader {
 };
 MdCollectionHeader = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-collection-header")
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-collection-header")
 ], MdCollectionHeader);
 
 
@@ -56826,7 +56827,7 @@ MdCollectionHeader = __decorate([
 /***/ "aurelia-materialize-bridge/collection/collection-header.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -56862,7 +56863,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 let MdCollectionItem = class MdCollectionItem {
 };
 MdCollectionItem = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-collection-item")
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-collection-item")
 ], MdCollectionItem);
 
 
@@ -56872,7 +56873,7 @@ MdCollectionItem = __decorate([
 /***/ "aurelia-materialize-bridge/collection/collection-item.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -56905,7 +56906,7 @@ module.exports = "<template>\n\t<div class=\"collection\" ref=\"anchor\">\n\t\t<
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdCollectionSelector", function() { return MdCollectionSelector; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -56933,20 +56934,20 @@ let MdCollectionSelector = class MdCollectionSelector {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdCollectionSelector.prototype, "item", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdCollectionSelector.prototype, "mdDisabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["o" /* observable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["p" /* observable */],
     __metadata("design:type", Object)
 ], MdCollectionSelector.prototype, "isSelected", void 0);
 MdCollectionSelector = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-collection-selector"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-collection-selector"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdCollectionSelector);
 
@@ -56957,7 +56958,7 @@ MdCollectionSelector = __decorate([
 /***/ "aurelia-materialize-bridge/collection/md-collection-selector.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -57061,23 +57062,23 @@ let MdColors = class MdColors {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdColors.prototype, "mdPrimaryColor", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdColors.prototype, "mdAccentColor", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdColors.prototype, "mdErrorColor", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdColors.prototype, "mdSuccessColor", void 0);
 MdColors = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-colors")
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-colors")
 ], MdColors);
 
 
@@ -57100,7 +57101,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__datepicker_default_parser__ = __webpack_require__(48);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57314,40 +57315,40 @@ let MdDatePicker = class MdDatePicker {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Element)
 ], MdDatePicker.prototype, "container", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdDatePicker.prototype, "translation", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", Date)
 ], MdDatePicker.prototype, "value", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", Array)
 ], MdDatePicker.prototype, "parsers", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Boolean)
 ], MdDatePicker.prototype, "selectMonths", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDatePicker.prototype, "selectYears", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDatePicker.prototype, "options", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdDatePicker.prototype, "showErrortext", void 0);
 MdDatePicker = __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-datepicker"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-datepicker"),
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__["a" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_4__datepicker_default_parser__["a" /* DatePickerDefaultParser */]])
 ], MdDatePicker);
 
@@ -57364,7 +57365,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdDropdown", function() { return MdDropdown; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57436,52 +57437,52 @@ let MdDropdown = MdDropdown_1 = class MdDropdown {
 };
 MdDropdown.elementId = 0;
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "activates", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Element)
 ], MdDropdown.prototype, "ref", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdDropdown.prototype, "alignment", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "belowOrigin", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "constrainWidth", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "gutter", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "hover", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdDropdown.prototype, "mdTitle", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "inDuration", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "outDuration", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdown.prototype, "stopPropagation", void 0);
 MdDropdown = MdDropdown_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-dropdown"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-dropdown"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdDropdown);
 
@@ -57497,7 +57498,7 @@ var MdDropdown_1;
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MdDropdownElement; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57537,44 +57538,44 @@ let MdDropdownElement = MdDropdownElement_1 = class MdDropdownElement {
 };
 MdDropdownElement.id = 0;
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdDropdownElement.prototype, "alignment", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "belowOrigin", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "constrainWidth", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Number)
 ], MdDropdownElement.prototype, "gutter", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "hover", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdDropdownElement.prototype, "mdTitle", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "inDuration", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "outDuration", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdDropdownElement.prototype, "stopPropagation", void 0);
 MdDropdownElement = MdDropdownElement_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-dropdown"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-dropdown"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdDropdownElement);
 
@@ -57598,7 +57599,7 @@ module.exports = "<template md-button class=\"dropdown-button\" data-activates=\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdFab", function() { return MdFab; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57621,16 +57622,16 @@ let MdFab = class MdFab {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdFab.prototype, "mdFixed", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdFab.prototype, "mdLarge", void 0);
 MdFab = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-fab"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */]
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-fab"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */]
 ], MdFab);
 
 
@@ -57652,7 +57653,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdFileInput", function() { return MdFileInput; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_events__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57692,28 +57693,28 @@ let MdFileInput = class MdFileInput {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdCaption", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdMultiple", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdLabelValue", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdFileInput.prototype, "disabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdFileInput.prototype, "mdReadonly", void 0);
 MdFileInput = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-file"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-file"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdFileInput);
 
@@ -57761,8 +57762,8 @@ let MdFooter = class MdFooter {
     }
 };
 MdFooter = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-footer"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-footer"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdFooter);
 
@@ -57778,7 +57779,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdInput", function() { return MdInput; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__input_update_service__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -57913,80 +57914,80 @@ let MdInput = MdInput_1 = class MdInput {
 };
 MdInput.id = 0;
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdInput.prototype, "mdLabel", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdBlurOnEnter", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdDisabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdReadonly", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdPlaceholder", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdTextArea", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdType", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdStep", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdValidate", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdInput.prototype, "mdShowErrortext", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Array)
 ], MdInput.prototype, "mdUpdateTrigger", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdInput.prototype, "mdValidateError", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdInput.prototype, "mdValidateSuccess", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdValue", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdMin", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdMax", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdInput.prototype, "mdName", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Number)
 ], MdInput.prototype, "mdMaxlength", void 0);
 MdInput = MdInput_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-input"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-input"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__["a" /* TaskQueue */], __WEBPACK_IMPORTED_MODULE_3__input_update_service__["a" /* MdInputUpdateService */]])
 ], MdInput);
 
@@ -58028,8 +58029,8 @@ let MdPrefix = class MdPrefix {
     }
 };
 MdPrefix = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-prefix"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-prefix"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdPrefix);
 
@@ -58040,7 +58041,7 @@ MdPrefix = __decorate([
 /***/ "aurelia-materialize-bridge/input/input.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -58067,7 +58068,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdModal", function() { return MdModal; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_attributeManager__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -58130,32 +58131,32 @@ let MdModal = class MdModal {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["h" /* bindable */])(),
     __metadata("design:type", Object)
 ], MdModal.prototype, "dismissible", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdModal.prototype, "opacity", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdModal.prototype, "inDuration", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdModal.prototype, "outDuration", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdModal.prototype, "startingTop", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdModal.prototype, "endingTop", void 0);
 MdModal = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["k" /* customAttribute */])("md-modal"),
-    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["l" /* customAttribute */])("md-modal"),
+    __WEBPACK_IMPORTED_MODULE_1_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdModal);
 
@@ -58171,7 +58172,7 @@ MdModal = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdModalTrigger", function() { return MdModalTrigger; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributeManager__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -58209,12 +58210,12 @@ let MdModalTrigger = class MdModalTrigger {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])(),
     __metadata("design:type", Object)
 ], MdModalTrigger.prototype, "dismissible", void 0);
 MdModalTrigger = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-modal-trigger"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-modal-trigger"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdModalTrigger);
 
@@ -58230,7 +58231,7 @@ MdModalTrigger = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdNavbar", function() { return MdNavbar; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributeManager__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58274,20 +58275,20 @@ let MdNavbar = class MdNavbar {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdNavbar.prototype, "mdExtended", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdNavbar.prototype, "mdFixed", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdNavbar.prototype, "mdAutoHeight", void 0);
 MdNavbar = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-navbar"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-navbar"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdNavbar);
 
@@ -58298,7 +58299,7 @@ MdNavbar = __decorate([
 /***/ "aurelia-materialize-bridge/navbar/navbar.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -58325,7 +58326,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdPagination", function() { return MdPagination; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_events__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58411,36 +58412,36 @@ let MdPagination = class MdPagination {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", Number)
 ], MdPagination.prototype, "mdActivePage", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneWay }),
     __metadata("design:type", Object)
 ], MdPagination.prototype, "mdPages", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneWay }),
     __metadata("design:type", Object)
 ], MdPagination.prototype, "mdVisiblePageLinks", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneWay }),
     __metadata("design:type", Array)
 ], MdPagination.prototype, "mdPageLinks", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdPagination.prototype, "mdShowFirstLast", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdPagination.prototype, "mdShowPrevNext", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdPagination.prototype, "mdShowPageLinks", void 0);
 MdPagination = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-pagination"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-pagination"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdPagination);
 
@@ -58542,28 +58543,28 @@ let MdProgress = class MdProgress {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdProgress.prototype, "mdColor", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdProgress.prototype, "mdPixelSize", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdProgress.prototype, "mdSize", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdProgress.prototype, "mdType", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", Number)
 ], MdProgress.prototype, "mdValue", void 0);
 MdProgress = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-progress"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-progress"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdProgress);
 
@@ -58614,20 +58615,20 @@ let MdPushpin = class MdPushpin {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdPushpin.prototype, "bottom", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdPushpin.prototype, "offset", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdPushpin.prototype, "top", void 0);
 MdPushpin = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-pushpin"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-pushpin"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdPushpin);
 
@@ -58644,7 +58645,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdRadio", function() { return MdRadio; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58689,36 +58690,36 @@ let MdRadio = MdRadio_1 = class MdRadio {
 };
 MdRadio.id = 0;
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdRadio.prototype, "mdChecked", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdRadio.prototype, "mdDisabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdRadio.prototype, "mdReadonly", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdRadio.prototype, "mdGap", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdRadio.prototype, "mdModel", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdRadio.prototype, "mdName", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdRadio.prototype, "mdValue", void 0);
 MdRadio = MdRadio_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-radio"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-radio"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdRadio);
 
@@ -58761,28 +58762,28 @@ let MdRange = class MdRange {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdRange.prototype, "mdReadonly", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdRange.prototype, "mdMin", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdRange.prototype, "mdMax", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdRange.prototype, "mdStep", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdRange.prototype, "mdValue", void 0);
 MdRange = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-range"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */]
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-range"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */]
 ], MdRange);
 
 
@@ -58792,7 +58793,7 @@ MdRange = __decorate([
 /***/ "aurelia-materialize-bridge/range/range.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -58861,8 +58862,8 @@ let MdScrollfire = class MdScrollfire {
     }
 };
 MdScrollfire = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-scrollfire"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-scrollfire"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdScrollfire);
 
@@ -58895,16 +58896,16 @@ let MdScrollfireTarget = class MdScrollfireTarget {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Function)
 ], MdScrollfireTarget.prototype, "callback", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Number)
 ], MdScrollfireTarget.prototype, "offset", void 0);
 MdScrollfireTarget = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-scrollfire-target"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */]
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-scrollfire-target"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */]
 ], MdScrollfireTarget);
 
 
@@ -58940,12 +58941,12 @@ let MdScrollSpy = class MdScrollSpy {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdScrollSpy.prototype, "target", void 0);
 MdScrollSpy = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-scrollspy"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-scrollspy"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdScrollSpy);
 
@@ -58965,8 +58966,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_events__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__common_attributes__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__common_attributes__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_aurelia_pal__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59305,28 +59306,28 @@ let MdSelect = class MdSelect {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdSelect.prototype, "disabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdSelect.prototype, "readonly", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdSelect.prototype, "enableOptionObserver", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdSelect.prototype, "label", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdSelect.prototype, "showErrortext", void 0);
 MdSelect = __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-select"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-select"),
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__["g" /* BindingEngine */], __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__["a" /* TaskQueue */]])
 ], MdSelect);
 
@@ -59342,7 +59343,7 @@ MdSelect = __decorate([
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdSidenav", function() { return MdSidenav; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributeManager__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_logging__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -59399,24 +59400,24 @@ let MdSidenav = MdSidenav_1 = class MdSidenav {
 };
 MdSidenav.id = 0;
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdSidenav.prototype, "mdCloseOnClick", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdSidenav.prototype, "mdEdge", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdSidenav.prototype, "mdFixed", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdSidenav.prototype, "mdWidth", void 0);
 MdSidenav = MdSidenav_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-sidenav"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-sidenav"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdSidenav);
 
@@ -59433,7 +59434,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdSidenavCollapse", function() { return MdSidenavCollapse; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_events__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__sidenav__ = __webpack_require__("aurelia-materialize-bridge/sidenav/sidenav");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -59498,12 +59499,12 @@ let MdSidenavCollapse = class MdSidenavCollapse {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", __WEBPACK_IMPORTED_MODULE_4__sidenav__["MdSidenav"])
 ], MdSidenavCollapse.prototype, "ref", void 0);
 MdSidenavCollapse = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-sidenav-collapse"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-sidenav-collapse"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdSidenavCollapse);
 
@@ -59515,7 +59516,7 @@ MdSidenavCollapse = __decorate([
 /***/ "aurelia-materialize-bridge/sidenav/sidenav.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -59541,7 +59542,7 @@ module.exports = "<template>\n  <require from=\"./sidenav.css\"></require>\n  <d
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdSlider", function() { return MdSlider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_logging__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -59598,28 +59599,28 @@ let MdSlider = class MdSlider {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdSlider.prototype, "mdFillContainer", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdSlider.prototype, "mdHeight", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdSlider.prototype, "mdIndicators", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdSlider.prototype, "mdInterval", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdSlider.prototype, "mdTransition", void 0);
 MdSlider = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-slider"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-slider"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdSlider);
 
@@ -59631,7 +59632,7 @@ MdSlider = __decorate([
 /***/ "aurelia-materialize-bridge/slider/slider.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -59657,7 +59658,7 @@ module.exports = "<template class=\"slider\">\n  <require from=\"./slider.css\">
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdSwitch", function() { return MdSwitch; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_events__ = __webpack_require__(10);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -59709,28 +59710,28 @@ let MdSwitch = class MdSwitch {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", Object)
 ], MdSwitch.prototype, "mdChecked", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdSwitch.prototype, "mdDisabled", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdSwitch.prototype, "mdReadonly", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdSwitch.prototype, "mdLabelOff", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdSwitch.prototype, "mdLabelOn", void 0);
 MdSwitch = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-switch"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-switch"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdSwitch);
 
@@ -59741,7 +59742,7 @@ MdSwitch = __decorate([
 /***/ "aurelia-materialize-bridge/switch/switch.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -59770,7 +59771,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_events__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59895,28 +59896,28 @@ let MdTabs = class MdTabs {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdTabs.prototype, "fixed", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Function)
 ], MdTabs.prototype, "onShow", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdTabs.prototype, "responsiveThreshold", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdTabs.prototype, "swipeable", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdTabs.prototype, "transparent", void 0);
 MdTabs = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-tabs"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-tabs"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_1_aurelia_task_queue__["a" /* TaskQueue */]])
 ], MdTabs);
 
@@ -59972,12 +59973,12 @@ let MdTapTarget = MdTapTarget_1 = class MdTapTarget {
 };
 MdTapTarget.controlId = 0;
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", HTMLElement)
 ], MdTapTarget.prototype, "mdRef", void 0);
 MdTapTarget = MdTapTarget_1 = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customElement */])("md-tap-target"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["m" /* customElement */])("md-tap-target"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdTapTarget);
 
@@ -60001,7 +60002,7 @@ module.exports = "<template class=\"tap-target\">\n  <div class=\"tap-target-con
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdTimePicker", function() { return MdTimePicker; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60045,16 +60046,16 @@ let MdTimePicker = class MdTimePicker {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdTimePicker.prototype, "twelveHour", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].twoWay }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].twoWay }),
     __metadata("design:type", String)
 ], MdTimePicker.prototype, "value", void 0);
 MdTimePicker = __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-timepicker"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-timepicker"),
     __metadata("design:paramtypes", [Element])
 ], MdTimePicker);
 
@@ -60071,7 +60072,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdTooltip", function() { return MdTooltip; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60119,24 +60120,24 @@ let MdTooltip = class MdTooltip {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdTooltip.prototype, "position", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdTooltip.prototype, "delay", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", Object)
 ], MdTooltip.prototype, "html", void 0);
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", String)
 ], MdTooltip.prototype, "text", void 0);
 MdTooltip = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-tooltip"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-tooltip"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdTooltip);
 
@@ -60188,12 +60189,12 @@ let MdFadeinImage = class MdFadeinImage {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", HTMLElement)
 ], MdFadeinImage.prototype, "ref", void 0);
 MdFadeinImage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-fadein-image"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-fadein-image"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdFadeinImage);
 
@@ -60248,12 +60249,12 @@ let MdStaggeredList = class MdStaggeredList {
     }
 };
 __decorate([
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */],
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */],
     __metadata("design:type", HTMLElement)
 ], MdStaggeredList.prototype, "ref", void 0);
 MdStaggeredList = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-staggered-list"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-staggered-list"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element])
 ], MdStaggeredList);
 
@@ -60270,7 +60271,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MdWaves", function() { return MdWaves; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__ = __webpack_require__("aurelia-framework");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common_attributeManager__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common_attributes__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_builder__ = __webpack_require__(46);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -60318,20 +60319,20 @@ let MdWaves = class MdWaves {
     }
 };
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdWaves.prototype, "block", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", Object)
 ], MdWaves.prototype, "circle", void 0);
 __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindingMode */].oneTime }),
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["h" /* bindable */])({ defaultBindingMode: __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["i" /* bindingMode */].oneTime }),
     __metadata("design:type", String)
 ], MdWaves.prototype, "color", void 0);
 MdWaves = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["k" /* customAttribute */])("md-waves"),
-    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["f" /* autoinject */],
+    Object(__WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["l" /* customAttribute */])("md-waves"),
+    __WEBPACK_IMPORTED_MODULE_0_aurelia_framework__["g" /* autoinject */],
     __metadata("design:paramtypes", [Element, __WEBPACK_IMPORTED_MODULE_3__config_builder__["a" /* ConfigBuilder */]])
 ], MdWaves);
 
@@ -60385,7 +60386,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_FEATURE", function() { return _FEATURE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_DOM", function() { return _DOM; });
 /* harmony export (immutable) */ __webpack_exports__["initialize"] = initialize;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(5);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
@@ -61566,7 +61567,7 @@ function configure(config) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "configure", function() { return configure; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__compose__ = __webpack_require__("aurelia-templating-resources/compose");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__if__ = __webpack_require__("aurelia-templating-resources/if");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__else__ = __webpack_require__("aurelia-templating-resources/else");
@@ -61777,7 +61778,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_logging__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_task_queue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_templating__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(5);
 var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
 function _initDefineProp(target, property, descriptor, context) {
@@ -62123,7 +62124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_binding__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_task_queue__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(5);
 var _dec, _dec2, _class;
 
 
@@ -62203,7 +62204,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hide", function() { return Hide; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aurelia_hide_style__ = __webpack_require__(25);
 var _dec, _dec2, _class;
 
@@ -62824,7 +62825,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Show", function() { return Show; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_templating__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_pal__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__aurelia_hide_style__ = __webpack_require__(25);
 var _dec, _dec2, _class;
 
@@ -63123,7 +63124,7 @@ var With = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_aurelia_templating__["q" /
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "configure", function() { return configure; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_pal__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__route_loader__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router_view__ = __webpack_require__("aurelia-templating-router/router-view");
@@ -63156,7 +63157,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_router__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_pal__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_logging__ = __webpack_require__(7);
 var _dec, _dec2, _dec3, _dec4, _dec5, _class;
 
@@ -63234,7 +63235,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_aurelia_router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_metadata__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_aurelia_pal__ = __webpack_require__(5);
 var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
 function _initDefineProp(target, property, descriptor, context) {
@@ -63517,7 +63518,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "FluentRules", function() { return __WEBPACK_IMPORTED_MODULE_16__implementation_validation_rules__["c"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "FluentEnsure", function() { return __WEBPACK_IMPORTED_MODULE_16__implementation_validation_rules__["a"]; });
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "ValidationRules", function() { return __WEBPACK_IMPORTED_MODULE_16__implementation_validation_rules__["d"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_aurelia_pal__ = __webpack_require__(5);
 /* harmony namespace reexport (by provided) */ __webpack_require__.d(__webpack_exports__, "Rules", function() { return __WEBPACK_IMPORTED_MODULE_12__implementation_rules__["a"]; });
 // Exports
 
@@ -63715,7 +63716,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_aurelia_dependency_injection__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_aurelia_templating__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validation_controller__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_aurelia_pal__ = __webpack_require__(5);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63837,7 +63838,7 @@ var ValidationRendererCustomAttribute = (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var escape = __webpack_require__(32);
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -63852,7 +63853,7 @@ exports.push([module.i, "/*!\r\n * Materialize v0.100.2 (http://materializecss.c
 /***/ "prismjs/themes/prism.css":
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 

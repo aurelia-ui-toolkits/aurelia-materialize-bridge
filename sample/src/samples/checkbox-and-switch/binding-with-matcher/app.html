@@ -1,0 +1,23 @@
+<template>
+	<p>
+		<md-checkbox md-model.bind="{ id: 0, name: 'Motherboard' }" md-matcher.bind="productMatcher" md-checked.bind="selectedProducts ">
+			Motherboard
+		</md-checkbox>
+	</p>
+	<p>
+		<md-checkbox md-model.bind="{ id: 1, name: 'CPU' }" md-matcher.bind="productMatcher" md-checked.bind="selectedProducts ">
+			CPU
+		</md-checkbox>
+	</p>
+	<p>
+		<md-checkbox md-model.bind="{ id: 2, name: 'Memory' }" md-matcher.bind="productMatcher" md-checked.bind="selectedProducts ">
+			Memory
+		</md-checkbox>
+	</p>
+	<p>
+		Selected products:
+		<ul>
+			<li repeat.for="product of selectedProducts">${product.name}</li>
+		</ul>
+	</p>
+</template>
