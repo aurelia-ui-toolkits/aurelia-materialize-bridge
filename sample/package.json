@@ -1,7 +1,8 @@
 {
 	"name": "aurelia-materialize-bridge-sample",
 	"scripts": {
-		"build": "webpack"
+		"build": "webpack",
+		"start:dev": "webpack-dev-server"
 	},
 	"devDependencies": {
 		"@types/jquery": "^3.3.0",
@@ -19,7 +20,8 @@
 		"typescript": "^2.7.1",
 		"url-loader": "^0.6.2",
 		"webpack": "^3.10.0",
-		"webpack-delete-plugin": "^0.1.1"
+		"webpack-delete-plugin": "^0.1.1",
+		"webpack-dev-server": "^2.11.1"
 	},
 	"dependencies": {
 		"aurelia-binding": "^1.6.0",
