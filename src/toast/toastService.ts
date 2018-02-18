@@ -5,7 +5,7 @@ export class MdToastService {
 		Materialize.Toast.removeAll();
 	}
 
-	show(message: string, displayLength: number, className?: string) {
+	show(message: string, displayLength?: number, className?: string) {
 		return new Promise((resolve, reject) => {
 			const toastInstance = Materialize.toast(message, displayLength, className, () => {
 				resolve(toastInstance);
