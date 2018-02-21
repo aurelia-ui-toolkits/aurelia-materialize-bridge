@@ -17,6 +17,9 @@
 	"directories": {
 		"lib": "dist/system"
 	},
+	"standard-version": {
+		"infile": "doc/CHANGELOG.md"
+	},
 	"scripts": {
 		"test": "gulp test",
 		"ci": "gulp ci",
