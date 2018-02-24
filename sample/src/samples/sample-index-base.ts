@@ -31,6 +31,8 @@ export class SampleIndexBase {
 		this.title = fragmentParts[fragmentParts.length - 2].replace("-", " ");
 		this.tabs = [];
 		let modules: string[] = Object.keys(__webpack_require__.m).filter(x => x.startsWith(fragment.substring(1)) && x.endsWith(".raw"));
+		modules.push("samples/gist/index.html.raw");
+		modules.push("samples/gist/configure.ts.raw");
 		for (let m of modules) {
 			let pathParts = m.split("/");
 			let fileName = pathParts[pathParts.length - 1].replace(".raw", "");
@@ -54,6 +56,7 @@ export class SampleIndexBase {
 					language = "markdown";
 					break;
 			}
+			fileName = fileName === "index.html" ? fileName : `src\\${fileName}`;
 			this.tabs.push({ title: fileName, language, filename: fileName, content: await this.loader.loadText(m) });
 		}
 		this.taskQueue.queueTask(() => {

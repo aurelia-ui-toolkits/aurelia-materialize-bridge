@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+
+<head>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+	<div aurelia-app="src/configure">
+		Loading...
+	</div>
+
+	<script src="https://rawgit.com/MaximBalaganskiy/amb-jspm/master/system.js"></script>
+	<script src="https://rawgit.com/MaximBalaganskiy/amb-jspm/master/jspm.config.js"></script>
+	<script>
+		SystemJS.config({paths: { "bundle.js": "https://rawgit.com/MaximBalaganskiy/amb-jspm/master/bundle.js" } });
+		System.import("aurelia-bootstrapper");
+	</script>
+</body>
+
+</html>
