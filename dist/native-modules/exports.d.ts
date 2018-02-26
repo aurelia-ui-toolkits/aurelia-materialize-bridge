@@ -59,3 +59,4 @@ export * from "./transitions/fadein-image";
 export * from "./transitions/staggered-list";
 export * from "./validation/validationRenderer";
 export * from "./waves/waves";
+export * from "./well/md-well";
