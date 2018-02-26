@@ -14,7 +14,7 @@ export class MaterializeFormValidationRenderer {
 	}
 
 	render(instruction) {
-		let elementResultsToUnrender = new Map();
+		let elementResultsToUnrender = new Map<Element, ValidateResult[]>();
 		// group validation results to unrender by elements
 		for (let { result, elements } of instruction.unrender) {
 			for (let element of elements) {
@@ -30,7 +30,7 @@ export class MaterializeFormValidationRenderer {
 		}
 
 		// group validation results to render by elements
-		let elementResultsToRender = new Map();
+		let elementResultsToRender = new Map<Element, ValidateResult[]>();
 		for (let { result, elements } of instruction.render) {
 			for (let element of elements) {
 				this.pushElementResult(elementResultsToRender, element, result);
