@@ -2,7 +2,9 @@
 	"name": "gist-bundle",
 	"description": "JSPM based project used to generate the bundle which can later be used for gists",
 	"scripts": {
-		"bundle": "jspm bundle aurelia-bootstrapper + aurelia-framework + aurelia-pal-browser + aurelia-materialize-bridge + aurelia-loader + aurelia-logging-console + plugin-typescript + materialize-css + aurelia-loader-default + aurelia-templating-binding + aurelia-templating-resources + aurelia-history-browser + aurelia-templating-router + aurelia-materialize-bridge/**/*.html!text + aurelia-materialize-bridge/**/*.css!text + text + aurelia-validation  bundle.js --inject"
+		"bundle": "jspm bundle aurelia-bootstrapper + aurelia-framework + aurelia-pal-browser + aurelia-materialize-bridge + aurelia-loader + aurelia-logging-console + plugin-typescript + materialize-css + aurelia-loader-default + aurelia-templating-binding + aurelia-templating-resources + aurelia-history-browser + aurelia-templating-router + aurelia-materialize-bridge/**/*.html!text + aurelia-materialize-bridge/**/*.css!text + text + aurelia-validation  bundle.js --inject",
+		"uglify": "uglifyjs bundle.js -o bundle.min.js",
+		"build": "npm run bundle && npm run uglify"
 	},
 	"jspm": {
 		"name": "app",
@@ -104,6 +106,7 @@
 		}
 	},
 	"devDependencies": {
-		"jspm": "^0.17.0-beta.47"
+		"jspm": "^0.17.0-beta.47",
+		"uglify-es": "^3.3.9"
 	}
 }
