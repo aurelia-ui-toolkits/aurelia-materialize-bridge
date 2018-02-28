@@ -7,7 +7,7 @@
 					<md-collection-item repeat.for="actor of actors" class="avatar ${ selector.isSelected ? 'selected' : '' } ${ selector.mdDisabled ? 'disabled' : '' }">
 						<md-collection-selector view-model.ref="selector" item.bind="actor" md-on-selection-changed.delegate="onSelectionChanged($event)"
 						 md-disabled="${$index === 2}">
-							<img if.bind="$index !== 2" src="../../../../images/collections-sample-1.jpg" alt=""
+							<img if.bind="$index !== 2" src="https://aurelia-ui-toolkits.github.io/demo-materialize/images/collections-sample-1.jpg" alt=""
 							 class="circle md-collection-selector__hover">
 						</md-collection-selector>
 						<span class="accent-text title">${actor.name}</span>

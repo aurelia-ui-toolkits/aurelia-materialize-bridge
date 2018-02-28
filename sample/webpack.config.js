@@ -45,7 +45,7 @@ module.exports = (env) => {
 			rules: [
 				{ test: /\.(png|woff|woff2|eot|ttf|svg|jpg)(\?|$)/, loader: "url-loader?limit=1" },
 				{ test: /\.ts$/i, include: [/src/], use: "awesome-typescript-loader" },
-				{ test: /\.html$/i, use: { loader: "html-loader", options: { attrs: ["img:src", "md-card:md-image"] } } },
+				{ test: /\.html$/i, use: { loader: "html-loader", options: { attrs: [/* do not process images */] } } },
 				{ test: /\.json$/i, use: "json-loader" },
 				{ test: /\.md$/i, use: "null-loader" },
 				{ test: /\.raw$/i, use: "raw-loader" },

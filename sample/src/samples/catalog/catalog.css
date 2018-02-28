@@ -1,9 +1,9 @@
 .control-info.wip {
-  background: url('../../../images/orange.png') left center no-repeat;
+  background: url('https://aurelia-ui-toolkits.github.io/demo-materialize/images/orange.png') left center no-repeat;
 }
 
 .control-info.done {
-  background: url('../../../images/blue.png') left center no-repeat;
+  background: url('https://aurelia-ui-toolkits.github.io/demo-materialize/images/blue.png') left center no-repeat;
 }
 
 .control-info {
