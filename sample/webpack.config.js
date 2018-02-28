@@ -6,6 +6,7 @@ const bundleOutputDir = "./dist";
 const nodeModules = path.join(process.cwd(), "node_modules");
 const realNodeModules = fs.realpathSync(nodeModules);
 const WebpackDeletePlugin = require("webpack-delete-plugin");
+const UglifyEsPlugin = require("uglify-es-webpack-plugin");
 
 function copyToRawRecursive(dir) {
 	fs.readdirSync(dir).forEach(it => {
@@ -70,7 +71,7 @@ module.exports = (env) => {
 				moduleFilenameTemplate: path.relative(bundleOutputDir, "[resourcePath]")  // Point sourcemap entries to the original file locations on disk
 			})
 		] : [
-				new webpack.optimize.UglifyJsPlugin()
+				new UglifyEsPlugin()
 			])
 	}];
 };
