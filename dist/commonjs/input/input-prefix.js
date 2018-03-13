@@ -1,35 +1,31 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MdPrefix = undefined;
-
-var _dec, _dec2, _class;
-
-var _aureliaTemplating = require('aurelia-templating');
-
-var _aureliaDependencyInjection = require('aurelia-dependency-injection');
-
-var _attributeManager = require('../common/attributeManager');
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var MdPrefix = exports.MdPrefix = (_dec = (0, _aureliaTemplating.customAttribute)('md-prefix'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
-  function MdPrefix(element) {
-    _classCallCheck(this, MdPrefix);
-
-    this.element = element;
-    this.attributeManager = new _attributeManager.AttributeManager(this.element);
-  }
-
-  MdPrefix.prototype.bind = function bind() {
-    this.attributeManager.addClasses('prefix');
-  };
-
-  MdPrefix.prototype.unbind = function unbind() {
-    this.attributeManager.removeClasses('prefix');
-  };
-
-  return MdPrefix;
-}()) || _class) || _class);
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const aurelia_framework_1 = require("aurelia-framework");
+const attributeManager_1 = require("../common/attributeManager");
+let MdPrefix = class MdPrefix {
+    constructor(element) {
+        this.element = element;
+        this.attributeManager = new attributeManager_1.AttributeManager(this.element);
+    }
+    bind() {
+        this.attributeManager.addClasses("prefix");
+    }
+    unbind() {
+        this.attributeManager.removeClasses("prefix");
+    }
+};
+MdPrefix = __decorate([
+    aurelia_framework_1.customAttribute("md-prefix"),
+    aurelia_framework_1.autoinject,
+    __metadata("design:paramtypes", [Element])
+], MdPrefix);
+exports.MdPrefix = MdPrefix;

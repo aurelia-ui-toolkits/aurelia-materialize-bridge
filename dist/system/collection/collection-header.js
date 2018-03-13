@@ -1,28 +1,26 @@
-System.register(['aurelia-templating', 'aurelia-dependency-injection'], function (_export, _context) {
-  "use strict";
-
-  var customElement, inject, _dec, _dec2, _class, MdCollectionHeader;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  return {
-    setters: [function (_aureliaTemplating) {
-      customElement = _aureliaTemplating.customElement;
-    }, function (_aureliaDependencyInjection) {
-      inject = _aureliaDependencyInjection.inject;
-    }],
-    execute: function () {
-      _export('MdCollectionHeader', MdCollectionHeader = (_dec = customElement('md-collection-header'), _dec2 = inject(Element), _dec(_class = _dec2(_class = function MdCollectionHeader(element) {
-        _classCallCheck(this, MdCollectionHeader);
-
-        this.element = element;
-      }) || _class) || _class));
-
-      _export('MdCollectionHeader', MdCollectionHeader);
-    }
-  };
+System.register(["aurelia-framework"], function (exports_1, context_1) {
+    "use strict";
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __moduleName = context_1 && context_1.id;
+    var aurelia_framework_1, MdCollectionHeader;
+    return {
+        setters: [
+            function (aurelia_framework_1_1) {
+                aurelia_framework_1 = aurelia_framework_1_1;
+            }
+        ],
+        execute: function () {
+            MdCollectionHeader = class MdCollectionHeader {
+            };
+            MdCollectionHeader = __decorate([
+                aurelia_framework_1.customElement("md-collection-header")
+            ], MdCollectionHeader);
+            exports_1("MdCollectionHeader", MdCollectionHeader);
+        }
+    };
 });

@@ -1,4 +1,13 @@
 {
-    "typescript.check.workspaceVersion": false,
-    "jshint.enable": false
+	"[typescript]": {
+		"editor.useTabStops": true,
+		"editor.tabSize": 4
+	},
+	"[json]": {
+		"editor.useTabStops": true,
+		"editor.tabSize": 2
+	},
+	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+	"html.format.wrapLineLength": 0
 }

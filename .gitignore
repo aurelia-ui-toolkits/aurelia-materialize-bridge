@@ -1,5 +1,4 @@
 node_modules
-jspm_packages
 bower_components
 .idea
 .DS_STORE
@@ -7,3 +6,4 @@ build/reports
 devbuild
 .imdone/config.json
 npm-debug.log*
+sample/dist

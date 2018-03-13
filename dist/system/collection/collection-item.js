@@ -1,24 +1,26 @@
-System.register(['aurelia-templating'], function (_export, _context) {
-  "use strict";
-
-  var customElement, _dec, _class, MdCollectionItem;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  return {
-    setters: [function (_aureliaTemplating) {
-      customElement = _aureliaTemplating.customElement;
-    }],
-    execute: function () {
-      _export('MdCollectionItem', MdCollectionItem = (_dec = customElement('md-collection-item'), _dec(_class = function MdCollectionItem() {
-        _classCallCheck(this, MdCollectionItem);
-      }) || _class));
-
-      _export('MdCollectionItem', MdCollectionItem);
-    }
-  };
+System.register(["aurelia-framework"], function (exports_1, context_1) {
+    "use strict";
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __moduleName = context_1 && context_1.id;
+    var aurelia_framework_1, MdCollectionItem;
+    return {
+        setters: [
+            function (aurelia_framework_1_1) {
+                aurelia_framework_1 = aurelia_framework_1_1;
+            }
+        ],
+        execute: function () {
+            MdCollectionItem = class MdCollectionItem {
+            };
+            MdCollectionItem = __decorate([
+                aurelia_framework_1.customElement("md-collection-item")
+            ], MdCollectionItem);
+            exports_1("MdCollectionItem", MdCollectionItem);
+        }
+    };
 });

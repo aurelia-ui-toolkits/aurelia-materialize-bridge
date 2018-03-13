@@ -1,114 +1,70 @@
-define(['exports', 'aurelia-templating', 'aurelia-logging', 'aurelia-dependency-injection', '../common/attributes', '../common/events'], function (exports, _aureliaTemplating, _aureliaLogging, _aureliaDependencyInjection, _attributes, _events) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdSidenavCollapse = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec = (0, _aureliaTemplating.customAttribute)('md-sidenav-collapse'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdSidenavCollapse(element) {
-      _classCallCheck(this, MdSidenavCollapse);
-
-      _initDefineProp(this, 'ref', _descriptor, this);
-
-      this.element = element;
-      this.log = (0, _aureliaLogging.getLogger)('md-sidenav-collapse');
-    }
-
-    MdSidenavCollapse.prototype.attached = function attached() {
-      var _this = this;
-
-      this.ref.whenAttached.then(function () {
-        var closeOnClick = _this.ref.mdFixed && window.innerWidth > 992 ? false : (0, _attributes.getBooleanFromAttributeValue)(_this.ref.mdCloseOnClick);
-
-        _this.onHide = _this.onHide.bind(_this);
-        _this.onShow = _this.onShow.bind(_this);
-
-        _this.element.setAttribute('data-activates', _this.ref.controlId);
-        var sideNavConfig = {
-          edge: _this.ref.mdEdge || 'left',
-          closeOnClick: closeOnClick,
-          menuWidth: parseInt(_this.ref.mdWidth, 10),
-          onClose: _this.onHide,
-          onOpen: _this.onShow
-        };
-        $(_this.element).sideNav(sideNavConfig);
-      });
+};
+define(["require", "exports", "aurelia-framework", "aurelia-logging", "../common/attributes", "../common/events", "./sidenav"], function (require, exports, aurelia_framework_1, aurelia_logging_1, attributes_1, events_1, sidenav_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    let MdSidenavCollapse = class MdSidenavCollapse {
+        constructor(element) {
+            this.element = element;
+            this.element = element;
+            this.log = aurelia_logging_1.getLogger("md-sidenav-collapse");
+        }
+        attached() {
+            return __awaiter(this, void 0, void 0, function* () {
+                yield this.ref.whenAttached;
+                const closeOnClick = this.ref.mdFixed && window.innerWidth > 992 ? false : attributes_1.getBooleanFromAttributeValue(this.ref.mdCloseOnClick);
+                this.onHide = this.onHide.bind(this);
+                this.onShow = this.onShow.bind(this);
+                this.element.setAttribute("data-activates", this.ref.controlId);
+                let sideNavConfig = {
+                    edge: this.ref.mdEdge || "left",
+                    closeOnClick,
+                    menuWidth: parseInt(this.ref.mdWidth.toString(), 10),
+                    onClose: this.onHide,
+                    onOpen: this.onShow
+                };
+                $(this.element).sideNav(sideNavConfig);
+            });
+        }
+        detached() {
+            // destroy handler not available
+        }
+        show() {
+            $(this.element).sideNav("show");
+        }
+        hide() {
+            $(this.element).sideNav("hide");
+        }
+        onShow(el) {
+            events_1.fireMaterializeEvent(this.ref.element, "sidenav-show");
+        }
+        onHide(el) {
+            events_1.fireMaterializeEvent(this.ref.element, "sidenav-hide");
+        }
     };
-
-    MdSidenavCollapse.prototype.detached = function detached() {};
-
-    MdSidenavCollapse.prototype.show = function show() {
-      $(this.element).sideNav('show');
-    };
-
-    MdSidenavCollapse.prototype.hide = function hide() {
-      $(this.element).sideNav('hide');
-    };
-
-    MdSidenavCollapse.prototype.onShow = function onShow(el) {
-      (0, _events.fireMaterializeEvent)(this.ref.element, 'sidenav-show');
-    };
-
-    MdSidenavCollapse.prototype.onHide = function onHide(el) {
-      (0, _events.fireMaterializeEvent)(this.ref.element, 'sidenav-hide');
-    };
-
-    return MdSidenavCollapse;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec3], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", sidenav_1.MdSidenav)
+    ], MdSidenavCollapse.prototype, "ref", void 0);
+    MdSidenavCollapse = __decorate([
+        aurelia_framework_1.customAttribute("md-sidenav-collapse"),
+        aurelia_framework_1.autoinject,
+        __metadata("design:paramtypes", [Element])
+    ], MdSidenavCollapse);
+    exports.MdSidenavCollapse = MdSidenavCollapse;
 });

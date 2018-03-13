@@ -1,61 +1,47 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _class, _temp;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var ScrollfirePatch = exports.ScrollfirePatch = (_temp = _class = function () {
-  function ScrollfirePatch() {
-    _classCallCheck(this, ScrollfirePatch);
-  }
-
-  ScrollfirePatch.prototype.patch = function patch() {
-    if (!ScrollfirePatch.patched) {
-      ScrollfirePatch.patched = true;
-
-      window.Materialize.scrollFire = function (options) {
-        var didScroll = false;
-        window.addEventListener('scroll', function () {
-          didScroll = true;
-        });
-
-        setInterval(function () {
-          if (didScroll) {
-            didScroll = false;
-
-            var windowScroll = window.pageYOffset + window.innerHeight;
-            for (var i = 0; i < options.length; i++) {
-              var value = options[i];
-              var selector = value.selector;
-              var offset = value.offset;
-              var callback = value.callback;
-
-              var currentElement = document.querySelector(selector);
-              if (currentElement !== null) {
-                var elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
-
-                if (windowScroll > elementOffset + offset) {
-                  if (value.done !== true) {
-                    if (typeof callback === 'string') {
-                      var callbackFunc = new Function(callback);
-                      callbackFunc();
-                    } else if (typeof callback === 'function') {
-                      callback();
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint no-new-func:0 */
+class ScrollfirePatch {
+    patch() {
+        if (!ScrollfirePatch.patched) {
+            ScrollfirePatch.patched = true;
+            Materialize.scrollFire = function (options) {
+                let didScroll = false;
+                window.addEventListener("scroll", function () {
+                    didScroll = true;
+                });
+                // Rate limit to 100ms
+                setInterval(function () {
+                    if (didScroll) {
+                        didScroll = false;
+                        let windowScroll = window.pageYOffset + window.innerHeight;
+                        for (let value of options) {
+                            // Get options from each line
+                            let selector = value.selector;
+                            let offset = value.offset;
+                            let callback = value.callback;
+                            let currentElement = document.querySelector(selector);
+                            if (currentElement !== null) {
+                                let elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
+                                if (windowScroll > (elementOffset + offset)) {
+                                    if (value.done !== true) {
+                                        if (typeof (callback) === "string") {
+                                            let callbackFunc = new Function(callback);
+                                            callbackFunc();
+                                        }
+                                        else if (typeof (callback) === "function") {
+                                            callback();
+                                        }
+                                        value.done = true;
+                                    }
+                                }
+                            }
+                        }
                     }
-                    value.done = true;
-                  }
-                }
-              }
-            }
-          }
-        }, 100);
-      };
+                }, 100);
+            };
+        }
     }
-  };
-
-  return ScrollfirePatch;
-}(), _class.patched = false, _temp);
+}
+ScrollfirePatch.patched = false;
+exports.ScrollfirePatch = ScrollfirePatch;

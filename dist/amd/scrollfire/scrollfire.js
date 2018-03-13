@@ -1,53 +1,49 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdScrollfire = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _dec2, _class;
-
-  var MdScrollfire = exports.MdScrollfire = (_dec = (0, _aureliaTemplating.customAttribute)('md-scrollfire'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
-    function MdScrollfire(element) {
-      _classCallCheck(this, MdScrollfire);
-
-      this.targetId = 0;
-
-      this.element = element;
-      this.log = (0, _aureliaLogging.getLogger)('md-scrollfire');
-    }
-
-    MdScrollfire.prototype.attached = function attached() {
-      var targets = $('[md-scrollfire-target]', this.element);
-      if (targets.length > 0) {
-        this.log.debug('targets', targets);
-        var self = this;
-        var options = [];
-        targets.each(function (i, el) {
-          var target = $(el);
-          if (!target.attr('id')) {
-            target.attr('id', 'md-scrollfire-target-' + self.targetId++);
-          }
-          options.push({
-            selector: '#' + target.attr('id'),
-            callback: target.get(0).au['md-scrollfire-target'].viewModel.callback,
-            offset: parseInt(target.get(0).au['md-scrollfire-target'].viewModel.offset, 10)
-          });
-        });
-        if (options.length > 0) {
-          this.log.debug('configuring scrollFire with these options:', options);
-          Materialize.scrollFire(options);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define(["require", "exports", "aurelia-framework", "aurelia-logging"], function (require, exports, aurelia_framework_1, aurelia_logging_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    let MdScrollfire = class MdScrollfire {
+        constructor(element) {
+            this.element = element;
+            this.targetId = 0;
+            this.log = aurelia_logging_1.getLogger("md-scrollfire");
         }
-      }
+        attached() {
+            let targets = $("[md-scrollfire-target]", this.element);
+            if (targets.length > 0) {
+                this.log.debug("targets", targets);
+                let self = this;
+                let options = [];
+                targets.each((i, el) => {
+                    let target = $(el);
+                    if (!target.attr("id")) {
+                        target.attr("id", `md-scrollfire-target-${self.targetId++}`);
+                    }
+                    options.push({
+                        selector: "#" + target.attr("id"),
+                        callback: target.get(0).au["md-scrollfire-target"].viewModel.callback,
+                        offset: parseInt(target.get(0).au["md-scrollfire-target"].viewModel.offset, 10)
+                    });
+                });
+                if (options.length > 0) {
+                    this.log.debug("configuring scrollFire with these options:", options);
+                    Materialize.scrollFire(options);
+                }
+            }
+        }
     };
-
-    return MdScrollfire;
-  }()) || _class) || _class);
+    MdScrollfire = __decorate([
+        aurelia_framework_1.customAttribute("md-scrollfire"),
+        aurelia_framework_1.autoinject,
+        __metadata("design:paramtypes", [Element])
+    ], MdScrollfire);
+    exports.MdScrollfire = MdScrollfire;
 });

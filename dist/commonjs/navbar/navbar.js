@@ -1,120 +1,61 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MdNavbar = undefined;
-
-var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
-
-var _aureliaTemplating = require('aurelia-templating');
-
-var _aureliaBinding = require('aurelia-binding');
-
-var _aureliaDependencyInjection = require('aurelia-dependency-injection');
-
-var _attributes = require('../common/attributes');
-
-var _attributeManager = require('../common/attributeManager');
-
-function _initDefineProp(target, property, descriptor, context) {
-  if (!descriptor) return;
-  Object.defineProperty(target, property, {
-    enumerable: descriptor.enumerable,
-    configurable: descriptor.configurable,
-    writable: descriptor.writable,
-    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-  });
-}
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-  var desc = {};
-  Object['ke' + 'ys'](descriptor).forEach(function (key) {
-    desc[key] = descriptor[key];
-  });
-  desc.enumerable = !!desc.enumerable;
-  desc.configurable = !!desc.configurable;
-
-  if ('value' in desc || desc.initializer) {
-    desc.writable = true;
-  }
-
-  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-    return decorator(target, property, desc) || desc;
-  }, desc);
-
-  if (context && desc.initializer !== void 0) {
-    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-    desc.initializer = undefined;
-  }
-
-  if (desc.initializer === void 0) {
-    Object['define' + 'Property'](target, property, desc);
-    desc = null;
-  }
-
-  return desc;
-}
-
-function _initializerWarningHelper(descriptor, context) {
-  throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-}
-
-var MdNavbar = exports.MdNavbar = (_dec = (0, _aureliaTemplating.customElement)('md-navbar'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec4 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec5 = (0, _aureliaTemplating.bindable)({
-  defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-}), _dec(_class = _dec2(_class = (_class2 = function () {
-  function MdNavbar(element) {
-    _classCallCheck(this, MdNavbar);
-
-    _initDefineProp(this, 'mdExtended', _descriptor, this);
-
-    _initDefineProp(this, 'mdFixed', _descriptor2, this);
-
-    _initDefineProp(this, 'mdAutoHeight', _descriptor3, this);
-
-    this.element = element;
-  }
-
-  MdNavbar.prototype.attached = function attached() {
-    this.fixedAttributeManager = new _attributeManager.AttributeManager(this.fixedAnchor);
-    this.navAttributeManager = new _attributeManager.AttributeManager(this.nav);
-    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFixed)) {
-      this.fixedAttributeManager.addClasses('navbar-fixed');
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const aurelia_framework_1 = require("aurelia-framework");
+const attributes_1 = require("../common/attributes");
+const attributeManager_1 = require("../common/attributeManager");
+let MdNavbar = class MdNavbar {
+    constructor(element) {
+        this.element = element;
     }
-    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdAutoHeight)) {
-      this.navAttributeManager.addClasses('md-auto-height');
+    attached() {
+        this.fixedAttributeManager = new attributeManager_1.AttributeManager(this.fixedAnchor);
+        this.navAttributeManager = new attributeManager_1.AttributeManager(this.nav);
+        if (attributes_1.getBooleanFromAttributeValue(this.mdFixed)) {
+            this.fixedAttributeManager.addClasses("navbar-fixed");
+        }
+        if (attributes_1.getBooleanFromAttributeValue(this.mdAutoHeight)) {
+            this.navAttributeManager.addClasses("md-auto-height");
+        }
+        if (attributes_1.getBooleanFromAttributeValue(this.mdExtended)) {
+            this.navAttributeManager.addClasses("nav-extended");
+        }
     }
-    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdExtended)) {
-      this.navAttributeManager.addClasses('nav-extended');
+    detached() {
+        if (attributes_1.getBooleanFromAttributeValue(this.mdFixed)) {
+            this.fixedAttributeManager.removeClasses("navbar-fixed");
+        }
+        if (attributes_1.getBooleanFromAttributeValue(this.mdAutoHeight)) {
+            this.navAttributeManager.removeClasses("md-auto-height");
+        }
+        if (attributes_1.getBooleanFromAttributeValue(this.mdExtended)) {
+            this.navAttributeManager.removeClasses("nav-extended");
+        }
     }
-  };
-
-  MdNavbar.prototype.detached = function detached() {
-    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFixed)) {
-      this.fixedAttributeManager.removeClasses('navbar-fixed');
-    }
-    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdAutoHeight)) {
-      this.navAttributeManager.removeClasses('md-auto-height');
-    }
-    if ((0, _attributes.getBooleanFromAttributeValue)(this.mdExtended)) {
-      this.navAttributeManager.removeClasses('nav-extended');
-    }
-  };
-
-  return MdNavbar;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdExtended', [_dec3], {
-  enumerable: true,
-  initializer: null
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec4], {
-  enumerable: true,
-  initializer: null
-}), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdAutoHeight', [_dec5], {
-  enumerable: true,
-  initializer: null
-})), _class2)) || _class) || _class);
+};
+__decorate([
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+    __metadata("design:type", Object)
+], MdNavbar.prototype, "mdExtended", void 0);
+__decorate([
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+    __metadata("design:type", Object)
+], MdNavbar.prototype, "mdFixed", void 0);
+__decorate([
+    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+    __metadata("design:type", Object)
+], MdNavbar.prototype, "mdAutoHeight", void 0);
+MdNavbar = __decorate([
+    aurelia_framework_1.customElement("md-navbar"),
+    aurelia_framework_1.autoinject,
+    __metadata("design:paramtypes", [Element])
+], MdNavbar);
+exports.MdNavbar = MdNavbar;

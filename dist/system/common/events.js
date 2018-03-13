@@ -1,33 +1,39 @@
-System.register(['./constants'], function (_export, _context) {
-  "use strict";
-
-  var constants;
-  function fireEvent(element, name) {
-    var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-    var event = new CustomEvent(name, {
-      detail: data,
-      bubbles: true
-    });
-    element.dispatchEvent(event);
-
-    return event;
-  }
-
-  _export('fireEvent', fireEvent);
-
-  function fireMaterializeEvent(element, name) {
-    var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-    return fireEvent(element, '' + constants.eventPrefix + name, data);
-  }
-
-  _export('fireMaterializeEvent', fireMaterializeEvent);
-
-  return {
-    setters: [function (_constants) {
-      constants = _constants.constants;
-    }],
-    execute: function () {}
-  };
+System.register(["./constants"], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    /**
+     * Fire DOM event on an element
+     * @param element The Element which the DOM event will be fired on
+     * @param name The Event's name
+     * @param data Addition data to attach to an event
+     */
+    function fireEvent(element, name, data = {}) {
+        const event = new CustomEvent(name, {
+            detail: data,
+            bubbles: true
+        });
+        element.dispatchEvent(event);
+        return event;
+    }
+    exports_1("fireEvent", fireEvent);
+    /**
+     * Fire DOM event on an element with the md-on prefix
+     * @param element The Element which the DOM event will be fired on
+     * @param name The Event's name, without md-on prefix
+     * @param data Addition data to attach to an event
+     */
+    function fireMaterializeEvent(element, name, data = {}) {
+        return fireEvent(element, `${constants_1.constants.eventPrefix}${name}`, data);
+    }
+    exports_1("fireMaterializeEvent", fireMaterializeEvent);
+    var constants_1;
+    return {
+        setters: [
+            function (constants_1_1) {
+                constants_1 = constants_1_1;
+            }
+        ],
+        execute: function () {
+        }
+    };
 });

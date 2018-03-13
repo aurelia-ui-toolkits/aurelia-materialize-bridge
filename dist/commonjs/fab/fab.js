@@ -1,88 +1,36 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MdFab = undefined;
-
-var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
-
-var _aureliaTemplating = require('aurelia-templating');
-
-var _aureliaDependencyInjection = require('aurelia-dependency-injection');
-
-var _attributes = require('../common/attributes');
-
-function _initDefineProp(target, property, descriptor, context) {
-  if (!descriptor) return;
-  Object.defineProperty(target, property, {
-    enumerable: descriptor.enumerable,
-    configurable: descriptor.configurable,
-    writable: descriptor.writable,
-    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-  });
-}
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-  var desc = {};
-  Object['ke' + 'ys'](descriptor).forEach(function (key) {
-    desc[key] = descriptor[key];
-  });
-  desc.enumerable = !!desc.enumerable;
-  desc.configurable = !!desc.configurable;
-
-  if ('value' in desc || desc.initializer) {
-    desc.writable = true;
-  }
-
-  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-    return decorator(target, property, desc) || desc;
-  }, desc);
-
-  if (context && desc.initializer !== void 0) {
-    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-    desc.initializer = undefined;
-  }
-
-  if (desc.initializer === void 0) {
-    Object['define' + 'Property'](target, property, desc);
-    desc = null;
-  }
-
-  return desc;
-}
-
-function _initializerWarningHelper(descriptor, context) {
-  throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-}
-
-var MdFab = exports.MdFab = (_dec = (0, _aureliaTemplating.customElement)('md-fab'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-  function MdFab(element) {
-    _classCallCheck(this, MdFab);
-
-    _initDefineProp(this, 'mdFixed', _descriptor, this);
-
-    _initDefineProp(this, 'mdLarge', _descriptor2, this);
-
-    this.element = element;
-  }
-
-  MdFab.prototype.attached = function attached() {
-    this.mdFixed = (0, _attributes.getBooleanFromAttributeValue)(this.mdFixed);
-    this.mdLarge = (0, _attributes.getBooleanFromAttributeValue)(this.mdLarge);
-  };
-
-  return MdFab;
-}(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec3], {
-  enumerable: true,
-  initializer: function initializer() {
-    return false;
-  }
-}), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdLarge', [_dec4], {
-  enumerable: true,
-  initializer: function initializer() {
-    return false;
-  }
-})), _class2)) || _class) || _class);
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const aurelia_framework_1 = require("aurelia-framework");
+const attributes_1 = require("../common/attributes");
+let MdFab = class MdFab {
+    constructor() {
+        this.mdFixed = false;
+        this.mdLarge = false;
+    }
+    attached() {
+        this.mdFixed = attributes_1.getBooleanFromAttributeValue(this.mdFixed);
+        this.mdLarge = attributes_1.getBooleanFromAttributeValue(this.mdLarge);
+    }
+};
+__decorate([
+    aurelia_framework_1.bindable,
+    __metadata("design:type", Object)
+], MdFab.prototype, "mdFixed", void 0);
+__decorate([
+    aurelia_framework_1.bindable,
+    __metadata("design:type", Object)
+], MdFab.prototype, "mdLarge", void 0);
+MdFab = __decorate([
+    aurelia_framework_1.customElement("md-fab"),
+    aurelia_framework_1.autoinject
+], MdFab);
+exports.MdFab = MdFab;

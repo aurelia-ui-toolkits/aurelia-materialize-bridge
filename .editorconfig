@@ -7,7 +7,22 @@ root = true
 [*]
 insert_final_newline = true
 
-# 2 space indentation
-[**.*]
-indent_style = space
+[**.ts]
+indent_style = tab
+indent_size = 4
+
+[**.js]
+indent_style = tab
+indent_size = 4
+
+[**.json]
+indent_style = tab
+indent_size = 2
+
+[**.css]
+indent_style = tab
+indent_size = 2
+
+[**.html]
+indent_style = tab
 indent_size = 2

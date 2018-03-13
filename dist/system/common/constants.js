@@ -1,16 +1,14 @@
-System.register([], function (_export, _context) {
-  "use strict";
-
-  var constants;
-  return {
-    setters: [],
-    execute: function () {
-      _export('constants', constants = {
-        eventPrefix: 'md-on-',
-        bindablePrefix: 'md-'
-      });
-
-      _export('constants', constants);
-    }
-  };
+System.register([], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var constants;
+    return {
+        setters: [],
+        execute: function () {
+            exports_1("constants", constants = {
+                eventPrefix: "md-on-",
+                bindablePrefix: "md-"
+            });
+        }
+    };
 });

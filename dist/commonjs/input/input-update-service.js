@@ -1,43 +1,39 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MdInputUpdateService = undefined;
-
-var _dec, _class;
-
-var _aureliaTaskQueue = require('aurelia-task-queue');
-
-var _aureliaDependencyInjection = require('aurelia-dependency-injection');
-
-var _aureliaLogging = require('aurelia-logging');
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var MdInputUpdateService = exports.MdInputUpdateService = (_dec = (0, _aureliaDependencyInjection.inject)(_aureliaTaskQueue.TaskQueue), _dec(_class = function () {
-  function MdInputUpdateService(taskQueue) {
-    _classCallCheck(this, MdInputUpdateService);
-
-    this._updateCalled = false;
-
-    this.log = (0, _aureliaLogging.getLogger)('MdInputUpdateService');
-    this.taskQueue = taskQueue;
-  }
-
-  MdInputUpdateService.prototype.materializeUpdate = function materializeUpdate() {
-    this.log.debug('executing Materialize.updateTextFields');
-    Materialize.updateTextFields();
-    this._updateCalled = false;
-  };
-
-  MdInputUpdateService.prototype.update = function update() {
-    this.log.debug('update called');
-    if (!this._updateCalled) {
-      this._updateCalled = true;
-      this.taskQueue.queueTask(this.materializeUpdate.bind(this));
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const aurelia_task_queue_1 = require("aurelia-task-queue");
+const aurelia_dependency_injection_1 = require("aurelia-dependency-injection");
+const aurelia_logging_1 = require("aurelia-logging");
+let MdInputUpdateService = class MdInputUpdateService {
+    constructor(taskQueue) {
+        this.taskQueue = taskQueue;
+        this.updateCalled = false;
+        this.log = aurelia_logging_1.getLogger("MdInputUpdateService");
+        this.taskQueue = taskQueue;
     }
-  };
-
-  return MdInputUpdateService;
-}()) || _class);
+    materializeUpdate() {
+        this.log.debug("executing Materialize.updateTextFields");
+        Materialize.updateTextFields();
+        this.updateCalled = false;
+    }
+    update() {
+        this.log.debug("update called");
+        if (!this.updateCalled) {
+            this.updateCalled = true;
+            this.taskQueue.queueTask(this.materializeUpdate.bind(this));
+        }
+    }
+};
+MdInputUpdateService = __decorate([
+    aurelia_dependency_injection_1.autoinject,
+    __metadata("design:paramtypes", [aurelia_task_queue_1.TaskQueue])
+], MdInputUpdateService);
+exports.MdInputUpdateService = MdInputUpdateService;

@@ -1,85 +1,35 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/events'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _events) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdChip = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdChip = exports.MdChip = (_dec = (0, _aureliaTemplating.customElement)('md-chip'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdChip(element) {
-      _classCallCheck(this, MdChip);
-
-      _initDefineProp(this, 'mdClose', _descriptor, this);
-
-      this.element = element;
-    }
-
-    MdChip.prototype.attached = function attached() {
-      this.mdClose = (0, _attributes.getBooleanFromAttributeValue)(this.mdClose);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+define(["require", "exports", "aurelia-framework", "../common/attributes", "../common/events"], function (require, exports, aurelia_framework_1, attributes_1, events_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    let MdChip = class MdChip {
+        constructor(element) {
+            this.element = element;
+            this.mdClose = false;
+        }
+        attached() {
+            this.mdClose = attributes_1.getBooleanFromAttributeValue(this.mdClose);
+        }
+        close() {
+            this.element.parentElement.removeChild(this.element);
+            events_1.fireEvent(this.element, "close");
+        }
     };
-
-    MdChip.prototype.close = function close() {
-      this.element.parentElement.removeChild(this.element);
-      (0, _events.fireEvent)(this.element, 'close');
-    };
-
-    return MdChip;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdClose', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  })), _class2)) || _class) || _class);
+    __decorate([
+        aurelia_framework_1.bindable,
+        __metadata("design:type", Object)
+    ], MdChip.prototype, "mdClose", void 0);
+    MdChip = __decorate([
+        aurelia_framework_1.autoinject,
+        __metadata("design:paramtypes", [Element])
+    ], MdChip);
+    exports.MdChip = MdChip;
 });

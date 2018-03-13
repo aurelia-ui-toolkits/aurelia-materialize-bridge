@@ -1,38 +1,23 @@
-System.register([], function (_export, _context) {
-  "use strict";
-
-  var MdToastService;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  return {
-    setters: [],
-    execute: function () {
-      _export("MdToastService", MdToastService = function () {
-        function MdToastService() {
-          _classCallCheck(this, MdToastService);
+System.register([], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var MdToastService;
+    return {
+        setters: [],
+        execute: function () {
+            MdToastService = class MdToastService {
+                removeAll() {
+                    Materialize.Toast.removeAll();
+                }
+                show(message, displayLength, className) {
+                    return new Promise((resolve, reject) => {
+                        const toastInstance = Materialize.toast(message, displayLength, className, () => {
+                            resolve(toastInstance);
+                        });
+                    });
+                }
+            };
+            exports_1("MdToastService", MdToastService);
         }
-
-        MdToastService.prototype.removeAll = function removeAll() {
-          Materialize.Toast.removeAll();
-        };
-
-        MdToastService.prototype.show = function show(message, displayLength, className) {
-          return new Promise(function (resolve, reject) {
-            var toastInstance = Materialize.toast(message, displayLength, className, function () {
-              resolve(toastInstance);
-            });
-          });
-        };
-
-        return MdToastService;
-      }());
-
-      _export("MdToastService", MdToastService);
-    }
-  };
+    };
 });

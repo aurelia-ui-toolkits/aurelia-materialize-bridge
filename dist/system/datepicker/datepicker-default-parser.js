@@ -1,42 +1,27 @@
-System.register([], function (_export, _context) {
-  "use strict";
-
-  var DatePickerDefaultParser;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  return {
-    setters: [],
-    execute: function () {
-      _export('DatePickerDefaultParser', DatePickerDefaultParser = function () {
-        function DatePickerDefaultParser() {
-          _classCallCheck(this, DatePickerDefaultParser);
+System.register([], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var DatePickerDefaultParser;
+    return {
+        setters: [],
+        execute: function () {
+            DatePickerDefaultParser = class DatePickerDefaultParser {
+                canParse(value) {
+                    if (value) {
+                        return true;
+                    }
+                    return false;
+                }
+                parse(value) {
+                    if (value) {
+                        let result = value.split("/").join("-");
+                        result = new Date(result);
+                        return isNaN(result) ? null : result;
+                    }
+                    return null;
+                }
+            };
+            exports_1("DatePickerDefaultParser", DatePickerDefaultParser);
         }
-
-        DatePickerDefaultParser.prototype.canParse = function canParse(value) {
-          if (value) {
-            return true;
-          }
-          return false;
-        };
-
-        DatePickerDefaultParser.prototype.parse = function parse(value) {
-          if (value) {
-            var result = value.split('/').join('-');
-            result = new Date(result);
-            return isNaN(result) ? null : result;
-          }
-          return null;
-        };
-
-        return DatePickerDefaultParser;
-      }());
-
-      _export('DatePickerDefaultParser', DatePickerDefaultParser);
-    }
-  };
+    };
 });
