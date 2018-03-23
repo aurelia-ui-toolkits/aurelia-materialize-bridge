@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.33.1"></a>
+## [0.33.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.33.0...v0.33.1) (2018-03-23)
+
+
+### Bug Fixes
+
+* **export:** Export ConfigBuilder ([d4decc0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d4decc0))
+
+
+
 <a name="0.33.0"></a>
 # [0.33.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/0.32.1...0.33.0) (2018-03-13)
 
