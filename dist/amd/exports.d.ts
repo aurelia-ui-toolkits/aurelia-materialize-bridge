@@ -60,3 +60,4 @@ export * from "./transitions/staggered-list";
 export * from "./validation/validationRenderer";
 export * from "./waves/waves";
 export * from "./well/md-well";
+export * from "./config-builder";

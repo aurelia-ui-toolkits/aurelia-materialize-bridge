@@ -66,4 +66,5 @@ __export(require("./transitions/staggered-list"));
 __export(require("./validation/validationRenderer"));
 __export(require("./waves/waves"));
 __export(require("./well/md-well"));
+__export(require("./config-builder"));
 // build-index-remove end
