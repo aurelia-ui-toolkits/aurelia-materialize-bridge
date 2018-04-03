@@ -1,3 +1,5 @@
+// tslint:disable-next-line:no-reference
+/// <reference path="materialize.d.ts" />
 import { ConfigBuilder } from "./config-builder";
 import { ScrollfirePatch } from "./scrollfire/scrollfire-patch";
 import { polyfillElementClosest } from "./common/polyfills";

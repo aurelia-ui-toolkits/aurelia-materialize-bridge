@@ -1,4 +1,6 @@
 "use strict";
+// tslint:disable-next-line:no-reference
+/// <reference path="materialize.d.ts" />
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }

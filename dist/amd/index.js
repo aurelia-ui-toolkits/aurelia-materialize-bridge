@@ -1,3 +1,5 @@
+// tslint:disable-next-line:no-reference
+/// <reference path="materialize.d.ts" />
 define(["require", "exports", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports"], function (require, exports, config_builder_1, scrollfire_patch_1, polyfills_1, exports_1) {
     "use strict";
     function __export(m) {

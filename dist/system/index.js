@@ -1,3 +1,5 @@
+// tslint:disable-next-line:no-reference
+/// <reference path="materialize.d.ts" />
 System.register(["./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
