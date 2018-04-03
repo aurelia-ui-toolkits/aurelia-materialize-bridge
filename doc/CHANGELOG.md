@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.33.2"></a>
+## [0.33.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.33.1...v0.33.2) (2018-04-03)
+
+
+### Bug Fixes
+
+* **typings:** fix jquery dependency and materialize typings ([5f698ce](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/5f698ce))
+
+
+
 <a name="0.33.1"></a>
 ## [0.33.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.33.0...v0.33.1) (2018-03-23)
 
