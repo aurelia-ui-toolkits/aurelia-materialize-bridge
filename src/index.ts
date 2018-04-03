@@ -1,3 +1,6 @@
+// tslint:disable-next-line:no-reference
+/// <reference path="materialize.d.ts" />
+
 import { FrameworkConfiguration } from "aurelia-framework";
 import { ConfigBuilder } from "./config-builder";
 import { ScrollfirePatch } from "./scrollfire/scrollfire-patch";

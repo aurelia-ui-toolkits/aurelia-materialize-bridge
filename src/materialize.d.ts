@@ -16,7 +16,7 @@ interface JQuery {
 	pushpin(options: any);
 	scrollSpy();
 	material_select(command?: string);
-	sideNav(options: any);
+	sideNav(options?: any);
 	slider(command?: string);
 	slider(options: any);
 	tabs(options: any);
