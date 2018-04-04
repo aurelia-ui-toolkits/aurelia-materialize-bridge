@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.34.0"></a>
+# [0.34.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.33.2...v0.34.0) (2018-04-04)
+
+
+### Bug Fixes
+
+* **typings:** move typings to modules ([49323eb](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/49323eb))
+* **validation:** add types to validation renderer ([8e4125f](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/8e4125f))
+
+
+### Features
+
+* **all:** compile TS to ES5 ([5f407fb](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/5f407fb))
+
+
+
 <a name="0.33.2"></a>
 ## [0.33.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.33.1...v0.33.2) (2018-04-03)
 

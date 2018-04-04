@@ -1,133 +1,136 @@
 {
-	"name": "aurelia-materialize-bridge",
-	"version": "0.33.2",
-	"registry": "github",
-	"description": "Aurelia interface to http://materializecss.com/",
-	"keywords": [
-		"aurelia",
-		"plugin",
-		"materialize"
-	],
-	"homepage": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge",
-	"bugs": {
-		"url": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues"
-	},
-	"license": "MIT",
-	"author": "aurelia-ui-toolkits",
-	"directories": {
-		"lib": "dist/system"
-	},
-	"standard-version": {
-		"infile": "doc/CHANGELOG.md"
-	},
-	"scripts": {
-		"test": "gulp test",
-		"ci": "gulp ci",
-		"lint": "tslint --project tsconfig.json",
-		"pretest": "npm run lint",
-		"build:amd": "tsc --outDir dist/amd --module amd",
-		"postbuild:amd": "copyfiles --up 1 src/**/*.html src/**/*.css dist/amd",
-		"build:commonjs": "tsc --outDir dist/commonjs --module commonjs",
-		"postbuild:commonjs": "copyfiles --up 1 src/**/*.html src/**/*.css dist/commonjs",
-		"build:es2015": "tsc --outDir dist/es2015 --module es2015",
-		"postbuild:es2015": "copyfiles --up 1 src/**/*.html src/**/*.css dist/es2015",
-		"build:native-modules": "tsc --outDir dist/native-modules --module es2015",
-		"postbuild:native-modules": "copyfiles --up 1 src/**/*.html src/**/*.css dist/native-modules",
-		"build:system": "tsc --outDir dist/system --module system",
-		"postbuild:system": "copyfiles --up 1 src/**/*.html src/**/*.css dist/system",
-		"prebuild": "rimraf dist",
-		"build": "concurrently \"npm run build:amd\" \"npm run build:commonjs\" \"npm run build:es2015\" \"npm run build:native-modules\" \"npm run build:system\"",
-		"postbuild": "concurrently \"npm run postbuild:amd\" \"npm run postbuild:commonjs\" \"npm run postbuild:es2015\" \"npm run postbuild:native-modules\" \"npm run postbuild:system\"",
-		"release": "standard-version"
-	},
-	"main": "dist/commonjs/index.js",
-	"typings": "dist/commonjs/index.d.ts",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge"
-	},
-	"devDependencies": {
-		"concurrently": "^3.5.1",
-		"copyfiles": "^2.0.0",
-		"isparta": "^4.0.0",
-		"jasmine-core": "^3.1.0",
-		"karma": "^2.0.0",
-		"karma-babel-preprocessor": "^7.0.0",
-		"karma-chrome-launcher": "^2.2.0",
-		"karma-coverage": "^1.1.1",
-		"karma-jasmine": "^1.1.1",
-		"karma-jspm": "^2.0.2",
-		"karma-sourcemap-loader": "^0.3.6",
-		"phantomjs-polyfill": "0.0.2",
-		"standard-version": "^4.3.0",
-		"tslint": "^5.9.1",
-		"typescript": "^2.7.1"
-	},
-	"jspm": {
-		"main": "index",
-		"directories": {
-			"lib": "dist/system"
-		},
-		"dependencies": {
-			"aurelia-binding": "npm:aurelia-binding@^1.0.0",
-			"aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0",
-			"aurelia-logging": "npm:aurelia-logging@^1.0.0",
-			"aurelia-metadata": "npm:aurelia-metadata@^1.0.0",
-			"aurelia-pal": "npm:aurelia-pal@^1.2.0",
-			"aurelia-router": "npm:aurelia-router@^1.0.0",
-			"aurelia-task-queue": "npm:aurelia-task-queue@^1.0.0",
-			"aurelia-templating": "npm:aurelia-templating@^1.0.0",
-			"tslib": "npm:tslib@^1.9.0"
-		},
-		"devDependencies": {
-			"aurelia-loader": "npm:aurelia-loader@^1.0.0",
-			"aurelia-pal-browser": "npm:aurelia-pal-browser@^1.0.0",
-			"aurelia-path": "npm:aurelia-path@^1.0.0",
-			"aurelia-polyfills": "npm:aurelia-polyfills@^1.0.0",
-			"babel": "npm:babel-core@^5.8.24",
-			"babel-runtime": "npm:babel-runtime@^5.8.24",
-			"core-js": "npm:core-js@^1.1.4",
-			"polymer/mutationobservers": "^0.4.2",
-			"text": "systemjs/plugin-text@^0.0.4"
-		}
-	},
-	"aurelia": {
-		"documentation": {
-			"links": [{
-					"rel": "license",
-					"mediaType": "text/plain",
-					"title": "The MIT License (MIT)",
-					"href": "LICENSE"
-				},
-				{
-					"rel": "version-history",
-					"mediaType": "text/markdown",
-					"title": "Change Log",
-					"href": "doc/CHANGELOG.md"
-				}
-			]
-		},
-		"import": {
-			"dependencies": [{
-				"name": "aurelia-materialize-bridge",
-				"main": "index",
-				"path": "../node_modules/aurelia-materialize-bridge/dist/amd",
-				"resources": [
-					"**/*.{css,html}"
-				]
-			}],
-			"tutorial": [
-				"1. in main.js add .plugin('aurelia-materialize-bridge')"
-			]
-		}
-	},
-	"dependencies": {
-		"@types/jquery": "^3.3.0",
-		"aurelia-fetch-client": "^1.3.1",
-		"aurelia-framework": "^1.1.5",
-		"aurelia-router": "^1.5.0",
-		"aurelia-templating": "^1.7.0",
-		"aurelia-validation": "^1.1.2",
-		"tslib": "^1.9.0"
-	}
+  "name": "aurelia-materialize-bridge",
+  "version": "0.34.0",
+  "registry": "github",
+  "description": "Aurelia interface to http://materializecss.com/",
+  "keywords": [
+    "aurelia",
+    "plugin",
+    "materialize"
+  ],
+  "homepage": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge",
+  "bugs": {
+    "url": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues"
+  },
+  "license": "MIT",
+  "author": "aurelia-ui-toolkits",
+  "directories": {
+    "lib": "dist/system"
+  },
+  "standard-version": {
+    "infile": "doc/CHANGELOG.md"
+  },
+  "scripts": {
+    "test": "gulp test",
+    "ci": "gulp ci",
+    "lint": "tslint --project tsconfig.json",
+    "pretest": "npm run lint",
+    "build:amd": "tsc --outDir dist/amd --module amd",
+    "postbuild:amd": "copyfiles --up 1 src/**/*.html src/**/*.css dist/amd",
+    "build:commonjs": "tsc --outDir dist/commonjs --module commonjs",
+    "postbuild:commonjs": "copyfiles --up 1 src/**/*.html src/**/*.css dist/commonjs",
+    "build:es2015": "tsc --outDir dist/es2015 --module es2015",
+    "postbuild:es2015": "copyfiles --up 1 src/**/*.html src/**/*.css dist/es2015",
+    "build:native-modules": "tsc --outDir dist/native-modules --module es2015",
+    "postbuild:native-modules": "copyfiles --up 1 src/**/*.html src/**/*.css dist/native-modules",
+    "build:system": "tsc --outDir dist/system --module system",
+    "postbuild:system": "copyfiles --up 1 src/**/*.html src/**/*.css dist/system",
+    "prebuild": "rimraf dist",
+    "build": "concurrently \"npm run build:amd\" \"npm run build:commonjs\" \"npm run build:es2015\" \"npm run build:native-modules\" \"npm run build:system\"",
+    "postbuild": "concurrently \"npm run postbuild:amd\" \"npm run postbuild:commonjs\" \"npm run postbuild:es2015\" \"npm run postbuild:native-modules\" \"npm run postbuild:system\"",
+    "release": "standard-version"
+  },
+  "main": "dist/commonjs/index.js",
+  "typings": "dist/commonjs/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "copyfiles": "^2.0.0",
+    "isparta": "^4.0.0",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.0",
+    "karma-babel-preprocessor": "^7.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.1",
+    "karma-jspm": "^2.0.2",
+    "karma-sourcemap-loader": "^0.3.6",
+    "phantomjs-polyfill": "0.0.2",
+    "standard-version": "^4.3.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.1"
+  },
+  "jspm": {
+    "main": "index",
+    "directories": {
+      "lib": "dist/system"
+    },
+    "dependencies": {
+      "aurelia-binding": "npm:aurelia-binding@^1.0.0",
+      "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0",
+      "aurelia-logging": "npm:aurelia-logging@^1.0.0",
+      "aurelia-metadata": "npm:aurelia-metadata@^1.0.0",
+      "aurelia-pal": "npm:aurelia-pal@^1.2.0",
+      "aurelia-router": "npm:aurelia-router@^1.0.0",
+      "aurelia-task-queue": "npm:aurelia-task-queue@^1.0.0",
+      "aurelia-templating": "npm:aurelia-templating@^1.0.0",
+      "tslib": "npm:tslib@^1.9.0"
+    },
+    "devDependencies": {
+      "aurelia-loader": "npm:aurelia-loader@^1.0.0",
+      "aurelia-pal-browser": "npm:aurelia-pal-browser@^1.0.0",
+      "aurelia-path": "npm:aurelia-path@^1.0.0",
+      "aurelia-polyfills": "npm:aurelia-polyfills@^1.0.0",
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4",
+      "polymer/mutationobservers": "^0.4.2",
+      "text": "systemjs/plugin-text@^0.0.4"
+    }
+  },
+  "aurelia": {
+    "documentation": {
+      "links": [
+        {
+          "rel": "license",
+          "mediaType": "text/plain",
+          "title": "The MIT License (MIT)",
+          "href": "LICENSE"
+        },
+        {
+          "rel": "version-history",
+          "mediaType": "text/markdown",
+          "title": "Change Log",
+          "href": "doc/CHANGELOG.md"
+        }
+      ]
+    },
+    "import": {
+      "dependencies": [
+        {
+          "name": "aurelia-materialize-bridge",
+          "main": "index",
+          "path": "../node_modules/aurelia-materialize-bridge/dist/amd",
+          "resources": [
+            "**/*.{css,html}"
+          ]
+        }
+      ],
+      "tutorial": [
+        "1. in main.js add .plugin('aurelia-materialize-bridge')"
+      ]
+    }
+  },
+  "dependencies": {
+    "@types/jquery": "^3.3.0",
+    "aurelia-fetch-client": "^1.3.1",
+    "aurelia-framework": "^1.1.5",
+    "aurelia-router": "^1.5.0",
+    "aurelia-templating": "^1.7.0",
+    "aurelia-validation": "^1.1.2",
+    "tslib": "^1.9.0"
+  }
 }
