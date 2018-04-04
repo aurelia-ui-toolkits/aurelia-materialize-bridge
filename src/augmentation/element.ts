@@ -6,5 +6,6 @@ declare global {
 	interface Element {
 		mdUnrenderValidateResults(results: ValidateResult[], renderer: MaterializeFormValidationRenderer);
 		mdRenderValidateResults(results: ValidateResult[], renderer: MaterializeFormValidationRenderer);
+		au: { controller: { viewModel: { input: Element } } };
 	}
 }

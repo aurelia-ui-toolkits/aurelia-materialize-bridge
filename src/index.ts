@@ -1,6 +1,7 @@
-// tslint:disable-next-line:no-reference
-/// <reference path="materialize.d.ts" />
-
+// the following two imports are needed for consumer TS projects
+// without them types will not be found
+import "./augmentation/element";
+import "./augmentation/materialize";
 import { FrameworkConfiguration } from "aurelia-framework";
 import { ConfigBuilder } from "./config-builder";
 import { ScrollfirePatch } from "./scrollfire/scrollfire-patch";

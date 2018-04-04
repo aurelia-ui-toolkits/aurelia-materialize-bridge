@@ -1,3 +1,4 @@
+// tslint:disable:interface-name
 interface JQuery {
 	autocomplete(options: any);
 	materialbox();
@@ -47,6 +48,10 @@ declare namespace Materialize {
 	function scrollFire(option: any);
 	function fadeInImage(options: any);
 	function showStaggeredList(options: any);
+
+	interface DropDownOptions {
+		closeOnClick?: boolean;
+	}
 }
 
 declare namespace Waves {
