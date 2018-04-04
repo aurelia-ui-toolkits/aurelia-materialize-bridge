@@ -223,7 +223,7 @@ export class MdDatePicker {
 	mdUnrenderValidateResults = (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => {
 		for (let result of results) {
 			if (!result.valid) {
-				renderer.removeMessage(this.element.parentNode, result);
+				renderer.removeMessage(this.element.parentElement, result);
 			}
 		}
 		renderer.removeValidationClasses(this.element);
@@ -233,7 +233,7 @@ export class MdDatePicker {
 		if (!(this.element.hasAttribute("data-show-errortext") && this.element.getAttribute("data-show-errortext") === "false")) {
 			for (let result of results) {
 				if (!result.valid) {
-					renderer.addMessage(this.element.parentNode, result);
+					renderer.addMessage(this.element.parentElement, result);
 				}
 			}
 		}

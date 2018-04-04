@@ -1,4 +1,4 @@
-import { ValidateResult } from "aurelia-validation";
+import { ValidateResult, RenderInstruction } from "aurelia-validation";
 
 export class MaterializeFormValidationRenderer {
 
@@ -13,7 +13,7 @@ export class MaterializeFormValidationRenderer {
 		}
 	}
 
-	render(instruction) {
+	render(instruction: RenderInstruction) {
 		let elementResultsToUnrender = new Map<Element, ValidateResult[]>();
 		// group validation results to unrender by elements
 		for (let { result, elements } of instruction.unrender) {
@@ -45,21 +45,21 @@ export class MaterializeFormValidationRenderer {
 		}
 	}
 
-	defaultUnrenderValidateResults(element, results) {
+	defaultUnrenderValidateResults(element: Element, results: ValidateResult[]) {
 		if (element.tagName !== "INPUT") {
 			return;
 		}
 		this.removeValidationClasses(element);
 	}
 
-	defaultRenderValidateResults(element, results) {
+	defaultRenderValidateResults(element: Element, results: ValidateResult[]) {
 		if (element.tagName !== "INPUT") {
 			return;
 		}
 		this.addValidationClasses(element, !results.find(x => !x.valid));
 	}
 
-	addMessage(element, result) {
+	addMessage(element: Element, result: ValidateResult) {
 		let message = document.createElement("div");
 		message.id = `md-input-validation-${result.id}`;
 		message.textContent = result.message;
@@ -68,25 +68,25 @@ export class MaterializeFormValidationRenderer {
 			message.className += " " + this.classNameFirst;
 		}
 		message.style.opacity = "0";
-		element.appendChild(message, element.nextSibling);
+		element.appendChild(message);
 		// tslint:disable-next-line:no-unused-expression
-		window.getComputedStyle(message).opacity; // why we need this?
+		window.getComputedStyle(message).opacity;
 		message.style.opacity = "1";
 	}
 
-	removeMessage(element, result) {
+	removeMessage(element: Element, result: ValidateResult) {
 		let message = element.querySelector(`#md-input-validation-${result.id}`);
 		if (message) {
 			element.removeChild(message);
 		}
 	}
 
-	removeValidationClasses(input) {
+	removeValidationClasses(input: Element) {
 		input.classList.remove("valid");
 		input.classList.remove("invalid");
 	}
 
-	addValidationClasses(input, isValid) {
+	addValidationClasses(input: Element, isValid: boolean) {
 		if (isValid) {
 			input.classList.remove("invalid");
 			input.classList.add("valid");
