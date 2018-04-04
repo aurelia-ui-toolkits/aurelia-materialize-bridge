@@ -1,31 +1,24 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const aurelia_framework_1 = require("aurelia-framework");
-const attributeManager_1 = require("../common/attributeManager");
-let MdPrefix = class MdPrefix {
-    constructor(element) {
+var tslib_1 = require("tslib");
+var aurelia_framework_1 = require("aurelia-framework");
+var attributeManager_1 = require("../common/attributeManager");
+var MdPrefix = /** @class */ (function () {
+    function MdPrefix(element) {
         this.element = element;
         this.attributeManager = new attributeManager_1.AttributeManager(this.element);
     }
-    bind() {
+    MdPrefix.prototype.bind = function () {
         this.attributeManager.addClasses("prefix");
-    }
-    unbind() {
+    };
+    MdPrefix.prototype.unbind = function () {
         this.attributeManager.removeClasses("prefix");
-    }
-};
-MdPrefix = __decorate([
-    aurelia_framework_1.customAttribute("md-prefix"),
-    aurelia_framework_1.autoinject,
-    __metadata("design:paramtypes", [Element])
-], MdPrefix);
+    };
+    MdPrefix = tslib_1.__decorate([
+        aurelia_framework_1.customAttribute("md-prefix"),
+        aurelia_framework_1.autoinject,
+        tslib_1.__metadata("design:paramtypes", [Element])
+    ], MdPrefix);
+    return MdPrefix;
+}());
 exports.MdPrefix = MdPrefix;

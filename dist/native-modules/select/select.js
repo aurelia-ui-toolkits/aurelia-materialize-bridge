@@ -1,12 +1,4 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
+import * as tslib_1 from "tslib";
 import { bindable, customAttribute, autoinject } from "aurelia-framework";
 import { BindingEngine } from "aurelia-binding";
 import { TaskQueue } from "aurelia-task-queue";
@@ -14,8 +6,9 @@ import { getLogger } from "aurelia-logging";
 import { fireEvent } from "../common/events";
 import { getBooleanFromAttributeValue } from "../common/attributes";
 import { DOM } from "aurelia-pal";
-let MdSelect = class MdSelect {
-    constructor(element, bindingEngine, taskQueue) {
+var MdSelect = /** @class */ (function () {
+    function MdSelect(element, bindingEngine, taskQueue) {
+        var _this = this;
         this.bindingEngine = bindingEngine;
         this.taskQueue = taskQueue;
         this.disabled = false;
@@ -39,30 +32,52 @@ let MdSelect = class MdSelect {
         // Edge ?
         //
         this.taskqueueRunning = false;
-        this.mdUnrenderValidateResults = (results, renderer) => {
-            if (!this.input) {
+        this.mdUnrenderValidateResults = function (results, renderer) {
+            if (!_this.input) {
                 return;
             }
-            for (let result of results) {
-                if (!result.valid) {
-                    renderer.removeMessage(this.inputField, result);
-                }
-            }
-            renderer.removeValidationClasses(this.input);
-        };
-        this.mdRenderValidateResults = (results, renderer) => {
-            if (!this.input) {
-                return;
-            }
-            for (let result of results) {
-                if (!result.valid) {
-                    result.target = this.input;
-                    if (!(this.input.hasAttribute("data-show-errortext") && this.input.getAttribute("data-show-errortext") === "false")) {
-                        renderer.addMessage(this.inputField, result);
+            try {
+                for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
+                    var result = results_1_1.value;
+                    if (!result.valid) {
+                        renderer.removeMessage(_this.inputField, result);
                     }
                 }
             }
-            renderer.addValidationClasses(this.input, !results.find(x => !x.valid));
+            catch (e_1_1) { e_1 = { error: e_1_1 }; }
+            finally {
+                try {
+                    if (results_1_1 && !results_1_1.done && (_a = results_1.return)) _a.call(results_1);
+                }
+                finally { if (e_1) throw e_1.error; }
+            }
+            renderer.removeValidationClasses(_this.input);
+            var e_1, _a;
+        };
+        this.mdRenderValidateResults = function (results, renderer) {
+            if (!_this.input) {
+                return;
+            }
+            try {
+                for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
+                    var result = results_2_1.value;
+                    if (!result.valid) {
+                        result.target = _this.input;
+                        if (!(_this.input.hasAttribute("data-show-errortext") && _this.input.getAttribute("data-show-errortext") === "false")) {
+                            renderer.addMessage(_this.inputField, result);
+                        }
+                    }
+                }
+            }
+            catch (e_2_1) { e_2 = { error: e_2_1 }; }
+            finally {
+                try {
+                    if (results_2_1 && !results_2_1.done && (_a = results_2.return)) _a.call(results_2);
+                }
+                finally { if (e_2) throw e_2.error; }
+            }
+            renderer.addValidationClasses(_this.input, !results.find(function (x) { return !x.valid; }));
+            var e_2, _a;
         };
         this.element = element;
         this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
@@ -71,101 +86,103 @@ let MdSelect = class MdSelect {
         this.log = getLogger("md-select");
         this.handleFocus = this.handleFocus.bind(this);
     }
-    readonlyChanged() {
+    MdSelect.prototype.readonlyChanged = function () {
         if (this.readonly) {
             this.makeReadonly($(this.element).siblings("input")[0]);
         }
         else {
             this.refresh();
         }
-    }
-    attached() {
+    };
+    MdSelect.prototype.attached = function () {
+        var _this = this;
         if (this.element.classList.contains("browser-default")) {
             return;
         }
-        let div = $("<div class='input-field'></div>");
-        let va = this.element.attributes.getNamedItem("validate");
+        var div = $("<div class='input-field'></div>");
+        var va = this.element.attributes.getNamedItem("validate");
         if (va) {
             div.attr(va.name, va.value);
         }
         $(this.element).wrap(div);
         if (this.label) {
-            $(`<label class="md-select-label">${this.label}</label>`).insertAfter(this.element);
+            $("<label class=\"md-select-label\">" + this.label + "</label>").insertAfter(this.element);
         }
-        this.taskQueue.queueTask(() => {
-            this.createMaterialSelect(false);
+        this.taskQueue.queueTask(function () {
+            _this.createMaterialSelect(false);
         });
         this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, "value").subscribe(this.handleChangeFromViewModel));
         this.inputField = this.element.closest(".input-field");
         $(this.element).on("change", this.handleChangeFromNativeSelect);
         this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
         this.element.mdRenderValidateResults = this.mdRenderValidateResults;
-    }
-    detached() {
+    };
+    MdSelect.prototype.detached = function () {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
-        let $element = $(this.element);
+        var $element = $(this.element);
         $element.off("change", this.handleChangeFromNativeSelect);
         this.observeVisibleDropdownContent(false);
         this.observeOptions(false);
         this.dropdownMutationObserver = null;
-        $element.siblings(`ul#select-options-${$element.data("select-id")}`).remove();
+        $element.siblings("ul#select-options-" + $element.data("select-id")).remove();
         $element.material_select("destroy");
         $element.siblings("label").remove();
         $element.siblings(".md-input-validation").remove();
         $element.unwrap();
-        this.subscriptions.forEach(sub => sub.dispose());
+        this.subscriptions.forEach(function (sub) { return sub.dispose(); });
         this.element.mdUnrenderValidateResults = undefined;
         this.element.mdRenderValidateResults = undefined;
-    }
-    refresh() {
+    };
+    MdSelect.prototype.refresh = function () {
+        var _this = this;
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
-        this.taskQueue.queueTask(() => {
-            this.createMaterialSelect(true);
+        this.taskQueue.queueTask(function () {
+            _this.createMaterialSelect(true);
         });
-    }
-    labelChanged(newValue) {
+    };
+    MdSelect.prototype.labelChanged = function (newValue) {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
         this.updateLabel();
-    }
-    updateLabel() {
+    };
+    MdSelect.prototype.updateLabel = function () {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
         if (this.label) {
-            const $label = $(this.element).parent(".select-wrapper").siblings(".md-select-label");
+            var $label = $(this.element).parent(".select-wrapper").siblings(".md-select-label");
             $label.text(this.label);
         }
-    }
-    disabledChanged(newValue) {
+    };
+    MdSelect.prototype.disabledChanged = function (newValue) {
         this.toggleControl(newValue);
-    }
-    showErrortextChanged() {
+    };
+    MdSelect.prototype.showErrortextChanged = function () {
         this.setErrorTextAttribute();
-    }
-    setErrorTextAttribute() {
+    };
+    MdSelect.prototype.setErrorTextAttribute = function () {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
-        let input = this.element.parentElement.querySelector("input.select-dropdown");
+        var input = this.element.parentElement.querySelector("input.select-dropdown");
         if (!input) {
             return;
         }
         this.log.debug("showErrortextChanged: " + this.showErrortext);
         input.setAttribute("data-show-errortext", getBooleanFromAttributeValue(this.showErrortext).toString());
-    }
-    notifyBindingEngine() {
+    };
+    MdSelect.prototype.notifyBindingEngine = function () {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
         this.log.debug("selectedOptions changed", arguments);
-    }
-    handleChangeFromNativeSelect() {
+    };
+    MdSelect.prototype.handleChangeFromNativeSelect = function () {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
@@ -175,8 +192,8 @@ let MdSelect = class MdSelect {
             fireEvent(this.element, "change");
             this.suspendUpdate = false;
         }
-    }
-    handleChangeFromViewModel(newValue) {
+    };
+    MdSelect.prototype.handleChangeFromViewModel = function (newValue) {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
@@ -184,12 +201,12 @@ let MdSelect = class MdSelect {
         if (!this.suspendUpdate) {
             this.createMaterialSelect(false);
         }
-    }
-    toggleControl(disable) {
+    };
+    MdSelect.prototype.toggleControl = function (disable) {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
-        let $wrapper = $(this.element).parent(".select-wrapper");
+        var $wrapper = $(this.element).parent(".select-wrapper");
         if ($wrapper.length > 0) {
             if (disable) {
                 $(".caret", $wrapper).addClass("disabled");
@@ -202,16 +219,16 @@ let MdSelect = class MdSelect {
                 $wrapper.attr("disabled", null);
             }
         }
-    }
-    createMaterialSelect(destroy) {
+    };
+    MdSelect.prototype.createMaterialSelect = function (destroy) {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
         this.observeVisibleDropdownContent(false);
         this.observeOptions(false);
-        let input = $(this.element).siblings("input");
-        let isValid = input.hasClass("valid");
-        let isInvalid = input.hasClass("invalid");
+        var input = $(this.element).siblings("input");
+        var isValid = input.hasClass("valid");
+        var isInvalid = input.hasClass("invalid");
         if (destroy) {
             $(this.element).material_select("destroy");
         }
@@ -231,8 +248,8 @@ let MdSelect = class MdSelect {
         if (this.readonly) {
             this.makeReadonly(input[0]);
         }
-    }
-    makeReadonly(input) {
+    };
+    MdSelect.prototype.makeReadonly = function (input) {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
@@ -240,27 +257,39 @@ let MdSelect = class MdSelect {
         $(input).off("focus");
         $(input).off("keydown");
         $(input).off("open");
-    }
-    observeVisibleDropdownContent(attach) {
+    };
+    MdSelect.prototype.observeVisibleDropdownContent = function (attach) {
+        var _this = this;
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
         if (attach) {
             if (!this.dropdownMutationObserver) {
-                this.dropdownMutationObserver = DOM.createMutationObserver(mutations => {
-                    let isHidden = false;
-                    for (let mutation of mutations) {
-                        if (window.getComputedStyle(mutation.target).getPropertyValue("display") === "none") {
-                            isHidden = true;
+                this.dropdownMutationObserver = DOM.createMutationObserver(function (mutations) {
+                    var isHidden = false;
+                    try {
+                        for (var mutations_1 = tslib_1.__values(mutations), mutations_1_1 = mutations_1.next(); !mutations_1_1.done; mutations_1_1 = mutations_1.next()) {
+                            var mutation = mutations_1_1.value;
+                            if (window.getComputedStyle(mutation.target).getPropertyValue("display") === "none") {
+                                isHidden = true;
+                            }
                         }
                     }
+                    catch (e_3_1) { e_3 = { error: e_3_1 }; }
+                    finally {
+                        try {
+                            if (mutations_1_1 && !mutations_1_1.done && (_a = mutations_1.return)) _a.call(mutations_1);
+                        }
+                        finally { if (e_3) throw e_3.error; }
+                    }
                     if (isHidden) {
-                        this.dropdownMutationObserver.takeRecords();
-                        this.handleBlur();
+                        _this.dropdownMutationObserver.takeRecords();
+                        _this.handleBlur();
                     }
                     else {
-                        this.handleFocus();
+                        _this.handleFocus();
                     }
+                    var e_3, _a;
                 });
             }
             this.dropdownMutationObserver.observe(this.element.parentElement.querySelector(".dropdown-content"), {
@@ -274,17 +303,18 @@ let MdSelect = class MdSelect {
                 this.dropdownMutationObserver.takeRecords();
             }
         }
-    }
-    observeOptions(attach) {
+    };
+    MdSelect.prototype.observeOptions = function (attach) {
+        var _this = this;
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
         if (getBooleanFromAttributeValue(this.enableOptionObserver)) {
             if (attach) {
                 if (!this.optionsMutationObserver) {
-                    this.optionsMutationObserver = DOM.createMutationObserver(mutations => {
+                    this.optionsMutationObserver = DOM.createMutationObserver(function (mutations) {
                         // this.log.debug('observeOptions', mutations);
-                        this.refresh();
+                        _this.refresh();
                     });
                 }
                 this.optionsMutationObserver.observe(this.element, {
@@ -300,14 +330,15 @@ let MdSelect = class MdSelect {
                 }
             }
         }
-    }
-    open() {
+    };
+    MdSelect.prototype.open = function () {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
         $(this.element).siblings("input.select-dropdown").trigger("focus");
-    }
-    handleBlur() {
+    };
+    MdSelect.prototype.handleBlur = function () {
+        var _this = this;
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
@@ -315,49 +346,50 @@ let MdSelect = class MdSelect {
             return;
         }
         this.taskqueueRunning = true;
-        this.taskQueue.queueTask(() => {
-            this.log.debug("fire blur event");
-            fireEvent(this.element, "blur");
-            this.taskqueueRunning = false;
-            if (this.label) {
-                const $label = $(this.element).parent(".select-wrapper").siblings(".md-select-label");
+        this.taskQueue.queueTask(function () {
+            _this.log.debug("fire blur event");
+            fireEvent(_this.element, "blur");
+            _this.taskqueueRunning = false;
+            if (_this.label) {
+                var $label = $(_this.element).parent(".select-wrapper").siblings(".md-select-label");
                 $label.removeClass("md-focused");
             }
         });
-    }
-    handleFocus() {
+    };
+    MdSelect.prototype.handleFocus = function () {
         if ((this.element).classList.contains("browser-default")) {
             return;
         }
         if (this.label) {
-            const $label = $(this.element).parent(".select-wrapper").siblings(".md-select-label");
+            var $label = $(this.element).parent(".select-wrapper").siblings(".md-select-label");
             $label.addClass("md-focused");
         }
-    }
-};
-__decorate([
-    bindable,
-    __metadata("design:type", Object)
-], MdSelect.prototype, "disabled", void 0);
-__decorate([
-    bindable,
-    __metadata("design:type", Object)
-], MdSelect.prototype, "readonly", void 0);
-__decorate([
-    bindable,
-    __metadata("design:type", Object)
-], MdSelect.prototype, "enableOptionObserver", void 0);
-__decorate([
-    bindable,
-    __metadata("design:type", String)
-], MdSelect.prototype, "label", void 0);
-__decorate([
-    bindable,
-    __metadata("design:type", Object)
-], MdSelect.prototype, "showErrortext", void 0);
-MdSelect = __decorate([
-    autoinject,
-    customAttribute("md-select"),
-    __metadata("design:paramtypes", [Element, BindingEngine, TaskQueue])
-], MdSelect);
+    };
+    tslib_1.__decorate([
+        bindable,
+        tslib_1.__metadata("design:type", Object)
+    ], MdSelect.prototype, "disabled", void 0);
+    tslib_1.__decorate([
+        bindable,
+        tslib_1.__metadata("design:type", Object)
+    ], MdSelect.prototype, "readonly", void 0);
+    tslib_1.__decorate([
+        bindable,
+        tslib_1.__metadata("design:type", Object)
+    ], MdSelect.prototype, "enableOptionObserver", void 0);
+    tslib_1.__decorate([
+        bindable,
+        tslib_1.__metadata("design:type", String)
+    ], MdSelect.prototype, "label", void 0);
+    tslib_1.__decorate([
+        bindable,
+        tslib_1.__metadata("design:type", Object)
+    ], MdSelect.prototype, "showErrortext", void 0);
+    MdSelect = tslib_1.__decorate([
+        autoinject,
+        customAttribute("md-select"),
+        tslib_1.__metadata("design:paramtypes", [Element, BindingEngine, TaskQueue])
+    ], MdSelect);
+    return MdSelect;
+}());
 export { MdSelect };

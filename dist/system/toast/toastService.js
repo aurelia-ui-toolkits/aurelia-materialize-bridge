@@ -5,18 +5,21 @@ System.register([], function (exports_1, context_1) {
     return {
         setters: [],
         execute: function () {
-            MdToastService = class MdToastService {
-                removeAll() {
-                    Materialize.Toast.removeAll();
+            MdToastService = /** @class */ (function () {
+                function MdToastService() {
                 }
-                show(message, displayLength, className) {
-                    return new Promise((resolve, reject) => {
-                        const toastInstance = Materialize.toast(message, displayLength, className, () => {
+                MdToastService.prototype.removeAll = function () {
+                    Materialize.Toast.removeAll();
+                };
+                MdToastService.prototype.show = function (message, displayLength, className) {
+                    return new Promise(function (resolve, reject) {
+                        var toastInstance = Materialize.toast(message, displayLength, className, function () {
                             resolve(toastInstance);
                         });
                     });
-                }
-            };
+                };
+                return MdToastService;
+            }());
             exports_1("MdToastService", MdToastService);
         }
     };

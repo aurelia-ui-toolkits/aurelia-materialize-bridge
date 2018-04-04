@@ -1,17 +1,12 @@
-// tslint:disable-next-line:no-reference
-/// <reference path="materialize.d.ts" />
-define(["require", "exports", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports"], function (require, exports, config_builder_1, scrollfire_patch_1, polyfills_1, exports_1) {
+define(["require", "exports", "tslib", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports", "./augmentation/element", "./augmentation/materialize"], function (require, exports, tslib_1, config_builder_1, scrollfire_patch_1, polyfills_1, exports_1) {
     "use strict";
-    function __export(m) {
-        for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-    }
     Object.defineProperty(exports, "__esModule", { value: true });
     function applyPolyfills() {
         polyfills_1.polyfillElementClosest();
     }
     function configure(frameworkConfiguration, configCallback) {
         applyPolyfills();
-        const builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
+        var builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
         if (configCallback !== undefined && typeof (configCallback) === "function") {
             configCallback(builder);
         }
@@ -24,6 +19,6 @@ define(["require", "exports", "./config-builder", "./scrollfire/scrollfire-patch
     }
     exports.configure = configure;
     // build-index-remove start
-    __export(exports_1);
+    tslib_1.__exportStar(exports_1, exports);
 });
 // build-index-remove end

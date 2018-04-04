@@ -1,20 +1,12 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
+import * as tslib_1 from "tslib";
 import { bindable, customElement, autoinject, bindingMode } from "aurelia-framework";
 import { getBooleanFromAttributeValue } from "../common/attributes";
 import { AttributeManager } from "../common/attributeManager";
-let MdNavbar = class MdNavbar {
-    constructor(element) {
+var MdNavbar = /** @class */ (function () {
+    function MdNavbar(element) {
         this.element = element;
     }
-    attached() {
+    MdNavbar.prototype.attached = function () {
         this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
         this.navAttributeManager = new AttributeManager(this.nav);
         if (getBooleanFromAttributeValue(this.mdFixed)) {
@@ -26,8 +18,8 @@ let MdNavbar = class MdNavbar {
         if (getBooleanFromAttributeValue(this.mdExtended)) {
             this.navAttributeManager.addClasses("nav-extended");
         }
-    }
-    detached() {
+    };
+    MdNavbar.prototype.detached = function () {
         if (getBooleanFromAttributeValue(this.mdFixed)) {
             this.fixedAttributeManager.removeClasses("navbar-fixed");
         }
@@ -37,23 +29,24 @@ let MdNavbar = class MdNavbar {
         if (getBooleanFromAttributeValue(this.mdExtended)) {
             this.navAttributeManager.removeClasses("nav-extended");
         }
-    }
-};
-__decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime }),
-    __metadata("design:type", Object)
-], MdNavbar.prototype, "mdExtended", void 0);
-__decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime }),
-    __metadata("design:type", Object)
-], MdNavbar.prototype, "mdFixed", void 0);
-__decorate([
-    bindable({ defaultBindingMode: bindingMode.oneTime }),
-    __metadata("design:type", Object)
-], MdNavbar.prototype, "mdAutoHeight", void 0);
-MdNavbar = __decorate([
-    customElement("md-navbar"),
-    autoinject,
-    __metadata("design:paramtypes", [Element])
-], MdNavbar);
+    };
+    tslib_1.__decorate([
+        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Object)
+    ], MdNavbar.prototype, "mdExtended", void 0);
+    tslib_1.__decorate([
+        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Object)
+    ], MdNavbar.prototype, "mdFixed", void 0);
+    tslib_1.__decorate([
+        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Object)
+    ], MdNavbar.prototype, "mdAutoHeight", void 0);
+    MdNavbar = tslib_1.__decorate([
+        customElement("md-navbar"),
+        autoinject,
+        tslib_1.__metadata("design:paramtypes", [Element])
+    ], MdNavbar);
+    return MdNavbar;
+}());
 export { MdNavbar };

@@ -1,8 +1,10 @@
-export class ClickCounter {
-    constructor() {
+var ClickCounter = /** @class */ (function () {
+    function ClickCounter() {
         this.count = 0;
     }
-    increment() {
+    ClickCounter.prototype.increment = function () {
         this.count++;
-    }
-}
+    };
+    return ClickCounter;
+}());
+export { ClickCounter };

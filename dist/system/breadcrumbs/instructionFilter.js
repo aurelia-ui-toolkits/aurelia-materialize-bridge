@@ -5,11 +5,14 @@ System.register([], function (exports_1, context_1) {
     return {
         setters: [],
         execute: function () {
-            InstructionFilterValueConverter = class InstructionFilterValueConverter {
-                toView(navigationInstructions) {
-                    return navigationInstructions.filter(i => !!i.config.title);
+            InstructionFilterValueConverter = /** @class */ (function () {
+                function InstructionFilterValueConverter() {
                 }
-            };
+                InstructionFilterValueConverter.prototype.toView = function (navigationInstructions) {
+                    return navigationInstructions.filter(function (i) { return !!i.config.title; });
+                };
+                return InstructionFilterValueConverter;
+            }());
             exports_1("InstructionFilterValueConverter", InstructionFilterValueConverter);
         }
     };

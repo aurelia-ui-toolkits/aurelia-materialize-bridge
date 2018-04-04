@@ -1,18 +1,12 @@
-System.register(["aurelia-framework", "../common/attributes"], function (exports_1, context_1) {
+System.register(["tslib", "aurelia-framework", "../common/attributes"], function (exports_1, context_1) {
     "use strict";
-    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    };
-    var __metadata = (this && this.__metadata) || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-    };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, attributes_1, MdFab;
+    var tslib_1, aurelia_framework_1, attributes_1, MdFab;
     return {
         setters: [
+            function (tslib_1_1) {
+                tslib_1 = tslib_1_1;
+            },
             function (aurelia_framework_1_1) {
                 aurelia_framework_1 = aurelia_framework_1_1;
             },
@@ -21,28 +15,29 @@ System.register(["aurelia-framework", "../common/attributes"], function (exports
             }
         ],
         execute: function () {
-            MdFab = class MdFab {
-                constructor() {
+            MdFab = /** @class */ (function () {
+                function MdFab() {
                     this.mdFixed = false;
                     this.mdLarge = false;
                 }
-                attached() {
+                MdFab.prototype.attached = function () {
                     this.mdFixed = attributes_1.getBooleanFromAttributeValue(this.mdFixed);
                     this.mdLarge = attributes_1.getBooleanFromAttributeValue(this.mdLarge);
-                }
-            };
-            __decorate([
-                aurelia_framework_1.bindable,
-                __metadata("design:type", Object)
-            ], MdFab.prototype, "mdFixed", void 0);
-            __decorate([
-                aurelia_framework_1.bindable,
-                __metadata("design:type", Object)
-            ], MdFab.prototype, "mdLarge", void 0);
-            MdFab = __decorate([
-                aurelia_framework_1.customElement("md-fab"),
-                aurelia_framework_1.autoinject
-            ], MdFab);
+                };
+                tslib_1.__decorate([
+                    aurelia_framework_1.bindable,
+                    tslib_1.__metadata("design:type", Object)
+                ], MdFab.prototype, "mdFixed", void 0);
+                tslib_1.__decorate([
+                    aurelia_framework_1.bindable,
+                    tslib_1.__metadata("design:type", Object)
+                ], MdFab.prototype, "mdLarge", void 0);
+                MdFab = tslib_1.__decorate([
+                    aurelia_framework_1.customElement("md-fab"),
+                    aurelia_framework_1.autoinject
+                ], MdFab);
+                return MdFab;
+            }());
             exports_1("MdFab", MdFab);
         }
     };

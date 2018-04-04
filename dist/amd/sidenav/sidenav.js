@@ -1,30 +1,23 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define(["require", "exports", "aurelia-framework", "../common/attributes", "../common/attributeManager", "aurelia-logging"], function (require, exports, aurelia_framework_1, attributes_1, attributeManager_1, aurelia_logging_1) {
+define(["require", "exports", "tslib", "aurelia-framework", "../common/attributes", "../common/attributeManager", "aurelia-logging"], function (require, exports, tslib_1, aurelia_framework_1, attributes_1, attributeManager_1, aurelia_logging_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    let MdSidenav = MdSidenav_1 = class MdSidenav {
-        constructor(element) {
+    var MdSidenav = /** @class */ (function () {
+        function MdSidenav(element) {
+            var _this = this;
             this.element = element;
             this.mdCloseOnClick = false;
             this.mdEdge = "left";
             this.mdFixed = false;
             this.mdWidth = 300;
-            this.whenAttached = new Promise((resolve, reject) => this.attachedResolver = resolve);
-            this.controlId = `md-sidenav-${MdSidenav_1.id++}`;
+            this.whenAttached = new Promise(function (resolve, reject) { return _this.attachedResolver = resolve; });
+            this.controlId = "md-sidenav-" + MdSidenav_1.id++;
             this.log = aurelia_logging_1.getLogger("md-sidenav");
-            this.whenAttached = new Promise((resolve, reject) => {
-                this.attachedResolver = resolve;
+            this.whenAttached = new Promise(function (resolve, reject) {
+                _this.attachedResolver = resolve;
             });
         }
-        attached() {
+        MdSidenav_1 = MdSidenav;
+        MdSidenav.prototype.attached = function () {
             this.attributeManager = new attributeManager_1.AttributeManager(this.sidenav);
             if (attributes_1.getBooleanFromAttributeValue(this.mdFixed)) {
                 this.attributeManager.addClasses("fixed");
@@ -34,11 +27,11 @@ define(["require", "exports", "aurelia-framework", "../common/attributes", "../c
                 }
             }
             this.attachedResolver();
-        }
-        detached() {
+        };
+        MdSidenav.prototype.detached = function () {
             this.attributeManager.removeClasses(["fixed", "right-aligned"]);
-        }
-        mdFixedChanged(newValue) {
+        };
+        MdSidenav.prototype.mdFixedChanged = function (newValue) {
             if (this.attributeManager) {
                 if (attributes_1.getBooleanFromAttributeValue(newValue)) {
                     this.attributeManager.addClasses("fixed");
@@ -47,30 +40,31 @@ define(["require", "exports", "aurelia-framework", "../common/attributes", "../c
                     this.attributeManager.removeClasses("fixed");
                 }
             }
-        }
-    };
-    MdSidenav.id = 0;
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], MdSidenav.prototype, "mdCloseOnClick", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", String)
-    ], MdSidenav.prototype, "mdEdge", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], MdSidenav.prototype, "mdFixed", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", Object)
-    ], MdSidenav.prototype, "mdWidth", void 0);
-    MdSidenav = MdSidenav_1 = __decorate([
-        aurelia_framework_1.customElement("md-sidenav"),
-        aurelia_framework_1.autoinject,
-        __metadata("design:paramtypes", [Element])
-    ], MdSidenav);
+        };
+        MdSidenav.id = 0;
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable,
+            tslib_1.__metadata("design:type", Object)
+        ], MdSidenav.prototype, "mdCloseOnClick", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable,
+            tslib_1.__metadata("design:type", String)
+        ], MdSidenav.prototype, "mdEdge", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable,
+            tslib_1.__metadata("design:type", Object)
+        ], MdSidenav.prototype, "mdFixed", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable,
+            tslib_1.__metadata("design:type", Object)
+        ], MdSidenav.prototype, "mdWidth", void 0);
+        MdSidenav = MdSidenav_1 = tslib_1.__decorate([
+            aurelia_framework_1.customElement("md-sidenav"),
+            aurelia_framework_1.autoinject,
+            tslib_1.__metadata("design:paramtypes", [Element])
+        ], MdSidenav);
+        return MdSidenav;
+        var MdSidenav_1;
+    }());
     exports.MdSidenav = MdSidenav;
-    var MdSidenav_1;
 });

@@ -5,14 +5,15 @@ System.register([], function (exports_1, context_1) {
     return {
         setters: [],
         execute: function () {
-            ClickCounter = class ClickCounter {
-                constructor() {
+            ClickCounter = /** @class */ (function () {
+                function ClickCounter() {
                     this.count = 0;
                 }
-                increment() {
+                ClickCounter.prototype.increment = function () {
                     this.count++;
-                }
-            };
+                };
+                return ClickCounter;
+            }());
             exports_1("ClickCounter", ClickCounter);
         }
     };

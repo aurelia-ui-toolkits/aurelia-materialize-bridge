@@ -7,7 +7,7 @@ System.register([], function (exports_1, context_1) {
         if (typeof (p) != "number" || p < -1 || p > 1 || typeof (from) != "string" || (from[0] != 'r' && from[0] != '#') || (typeof (to) != "string" && typeof (to) != "undefined")) {
             return null; //ErrorCheck
         }
-        let sbcRip = function (d) {
+        var sbcRip = function (d) {
             var l = d.length, RGB = new Object();
             if (l > 9) {
                 d = d.split(",");
@@ -42,18 +42,24 @@ System.register([], function (exports_1, context_1) {
         setters: [],
         execute: function () {
             // tslint:enable
-            DarkenValueConverter = class DarkenValueConverter {
-                toView(value, steps) {
-                    return shadeBlendConvert(-0.3 * parseFloat(steps), value);
+            DarkenValueConverter = /** @class */ (function () {
+                function DarkenValueConverter() {
                 }
-            };
+                DarkenValueConverter.prototype.toView = function (value, steps) {
+                    return shadeBlendConvert(-0.3 * parseFloat(steps), value);
+                };
+                return DarkenValueConverter;
+            }());
             exports_1("DarkenValueConverter", DarkenValueConverter);
             // tslint:disable-next-line:max-classes-per-file
-            LightenValueConverter = class LightenValueConverter {
-                toView(value, steps) {
-                    return shadeBlendConvert(0.3 * parseFloat(steps), value);
+            LightenValueConverter = /** @class */ (function () {
+                function LightenValueConverter() {
                 }
-            };
+                LightenValueConverter.prototype.toView = function (value, steps) {
+                    return shadeBlendConvert(0.3 * parseFloat(steps), value);
+                };
+                return LightenValueConverter;
+            }());
             exports_1("LightenValueConverter", LightenValueConverter);
         }
     };

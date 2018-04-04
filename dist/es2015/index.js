@@ -1,5 +1,5 @@
-// tslint:disable-next-line:no-reference
-/// <reference path="materialize.d.ts" />
+import "./augmentation/element";
+import "./augmentation/materialize";
 import { ConfigBuilder } from "./config-builder";
 import { ScrollfirePatch } from "./scrollfire/scrollfire-patch";
 import { polyfillElementClosest } from "./common/polyfills";
@@ -8,7 +8,7 @@ function applyPolyfills() {
 }
 export function configure(frameworkConfiguration, configCallback) {
     applyPolyfills();
-    const builder = frameworkConfiguration.container.get(ConfigBuilder);
+    var builder = frameworkConfiguration.container.get(ConfigBuilder);
     if (configCallback !== undefined && typeof (configCallback) === "function") {
         configCallback(builder);
     }

@@ -1,19 +1,17 @@
 "use strict";
-// tslint:disable-next-line:no-reference
-/// <reference path="materialize.d.ts" />
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
 Object.defineProperty(exports, "__esModule", { value: true });
-const config_builder_1 = require("./config-builder");
-const scrollfire_patch_1 = require("./scrollfire/scrollfire-patch");
-const polyfills_1 = require("./common/polyfills");
+var tslib_1 = require("tslib");
+require("./augmentation/element");
+require("./augmentation/materialize");
+var config_builder_1 = require("./config-builder");
+var scrollfire_patch_1 = require("./scrollfire/scrollfire-patch");
+var polyfills_1 = require("./common/polyfills");
 function applyPolyfills() {
     polyfills_1.polyfillElementClosest();
 }
 function configure(frameworkConfiguration, configCallback) {
     applyPolyfills();
-    const builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
+    var builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
     if (configCallback !== undefined && typeof (configCallback) === "function") {
         configCallback(builder);
     }
@@ -26,5 +24,5 @@ function configure(frameworkConfiguration, configCallback) {
 }
 exports.configure = configure;
 // build-index-remove start
-__export(require("./exports"));
+tslib_1.__exportStar(require("./exports"), exports);
 // build-index-remove end

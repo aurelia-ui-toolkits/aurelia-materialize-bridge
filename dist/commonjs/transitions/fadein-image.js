@@ -1,46 +1,39 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const aurelia_framework_1 = require("aurelia-framework");
-const aurelia_logging_1 = require("aurelia-logging");
-let MdFadeinImage = class MdFadeinImage {
-    constructor(element) {
+var tslib_1 = require("tslib");
+var aurelia_framework_1 = require("aurelia-framework");
+var aurelia_logging_1 = require("aurelia-logging");
+var MdFadeinImage = /** @class */ (function () {
+    function MdFadeinImage(element) {
         this.element = element;
         this.fadeInImage = this.fadeInImage.bind(this);
         this.log = aurelia_logging_1.getLogger("md-fadein-image");
     }
-    attached() {
+    MdFadeinImage.prototype.attached = function () {
         this.element.addEventListener("click", this.fadeInImage);
         this.ensureOpacity();
-    }
-    detached() {
+    };
+    MdFadeinImage.prototype.detached = function () {
         this.element.removeEventListener("click", this.fadeInImage);
-    }
-    fadeInImage() {
+    };
+    MdFadeinImage.prototype.fadeInImage = function () {
         Materialize.fadeInImage($(this.ref));
-    }
-    ensureOpacity() {
-        let opacity = window.getComputedStyle(this.ref).opacity;
+    };
+    MdFadeinImage.prototype.ensureOpacity = function () {
+        var opacity = window.getComputedStyle(this.ref).opacity;
         if (opacity !== "0") {
             this.ref.style.opacity = "0";
         }
-    }
-};
-__decorate([
-    aurelia_framework_1.bindable,
-    __metadata("design:type", HTMLElement)
-], MdFadeinImage.prototype, "ref", void 0);
-MdFadeinImage = __decorate([
-    aurelia_framework_1.customAttribute("md-fadein-image"),
-    aurelia_framework_1.autoinject,
-    __metadata("design:paramtypes", [Element])
-], MdFadeinImage);
+    };
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable,
+        tslib_1.__metadata("design:type", HTMLElement)
+    ], MdFadeinImage.prototype, "ref", void 0);
+    MdFadeinImage = tslib_1.__decorate([
+        aurelia_framework_1.customAttribute("md-fadein-image"),
+        aurelia_framework_1.autoinject,
+        tslib_1.__metadata("design:paramtypes", [Element])
+    ], MdFadeinImage);
+    return MdFadeinImage;
+}());
 exports.MdFadeinImage = MdFadeinImage;

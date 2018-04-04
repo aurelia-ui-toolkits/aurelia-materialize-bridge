@@ -1,23 +1,15 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
+import * as tslib_1 from "tslib";
 import { autoinject, bindable, customAttribute } from "aurelia-framework";
 import { fireEvent } from "../common/events";
-let MdAutoComplete = class MdAutoComplete {
-    constructor(element) {
+var MdAutoComplete = /** @class */ (function () {
+    function MdAutoComplete(element) {
         this.element = element;
         this.input = null;
         this.limit = 20;
         this.minLength = 1;
         this.values = {};
     }
-    attached() {
+    MdAutoComplete.prototype.attached = function () {
         if (this.element.tagName.toLowerCase() === "input") {
             this.input = this.element;
         }
@@ -28,42 +20,44 @@ let MdAutoComplete = class MdAutoComplete {
             throw new Error("md-autocomplete must be attached to either an input or md-input element");
         }
         this.refresh();
-    }
-    detached() {
+    };
+    MdAutoComplete.prototype.detached = function () {
         // remove .autocomplete-content children
         $(this.input).siblings(".autocomplete-content").off("click");
         $(this.input).siblings(".autocomplete-content").remove();
-    }
-    refresh() {
+    };
+    MdAutoComplete.prototype.refresh = function () {
+        var _this = this;
         this.detached();
         $(this.input).autocomplete({
             data: this.values,
             minLength: this.minLength,
             limit: this.limit
         });
-        $(this.input).siblings(".autocomplete-content").on("click", () => {
-            fireEvent(this.input, "change");
+        $(this.input).siblings(".autocomplete-content").on("click", function () {
+            fireEvent(_this.input, "change");
         });
-    }
-    valuesChanged(newValue) {
+    };
+    MdAutoComplete.prototype.valuesChanged = function (newValue) {
         this.refresh();
-    }
-};
-__decorate([
-    bindable,
-    __metadata("design:type", Number)
-], MdAutoComplete.prototype, "limit", void 0);
-__decorate([
-    bindable,
-    __metadata("design:type", Number)
-], MdAutoComplete.prototype, "minLength", void 0);
-__decorate([
-    bindable,
-    __metadata("design:type", Object)
-], MdAutoComplete.prototype, "values", void 0);
-MdAutoComplete = __decorate([
-    customAttribute("md-autocomplete"),
-    autoinject,
-    __metadata("design:paramtypes", [Element])
-], MdAutoComplete);
+    };
+    tslib_1.__decorate([
+        bindable,
+        tslib_1.__metadata("design:type", Number)
+    ], MdAutoComplete.prototype, "limit", void 0);
+    tslib_1.__decorate([
+        bindable,
+        tslib_1.__metadata("design:type", Number)
+    ], MdAutoComplete.prototype, "minLength", void 0);
+    tslib_1.__decorate([
+        bindable,
+        tslib_1.__metadata("design:type", Object)
+    ], MdAutoComplete.prototype, "values", void 0);
+    MdAutoComplete = tslib_1.__decorate([
+        customAttribute("md-autocomplete"),
+        autoinject,
+        tslib_1.__metadata("design:paramtypes", [Element])
+    ], MdAutoComplete);
+    return MdAutoComplete;
+}());
 export { MdAutoComplete };

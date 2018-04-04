@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class ClickCounter {
-    constructor() {
+var ClickCounter = /** @class */ (function () {
+    function ClickCounter() {
         this.count = 0;
     }
-    increment() {
+    ClickCounter.prototype.increment = function () {
         this.count++;
-    }
-}
+    };
+    return ClickCounter;
+}());
 exports.ClickCounter = ClickCounter;

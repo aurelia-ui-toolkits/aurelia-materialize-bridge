@@ -1,21 +1,24 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    class DatePickerDefaultParser {
-        canParse(value) {
+    var DatePickerDefaultParser = /** @class */ (function () {
+        function DatePickerDefaultParser() {
+        }
+        DatePickerDefaultParser.prototype.canParse = function (value) {
             if (value) {
                 return true;
             }
             return false;
-        }
-        parse(value) {
+        };
+        DatePickerDefaultParser.prototype.parse = function (value) {
             if (value) {
-                let result = value.split("/").join("-");
+                var result = value.split("/").join("-");
                 result = new Date(result);
                 return isNaN(result) ? null : result;
             }
             return null;
-        }
-    }
+        };
+        return DatePickerDefaultParser;
+    }());
     exports.DatePickerDefaultParser = DatePickerDefaultParser;
 });

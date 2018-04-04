@@ -1,17 +1,8 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define(["require", "exports", "aurelia-framework"], function (require, exports, aurelia_framework_1) {
+define(["require", "exports", "tslib", "aurelia-framework"], function (require, exports, tslib_1, aurelia_framework_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    let MdProgress = class MdProgress {
-        constructor(element) {
+    var MdProgress = /** @class */ (function () {
+        function MdProgress(element) {
             this.element = element;
             this.mdColor = null;
             this.mdPixelSize = null;
@@ -19,49 +10,50 @@ define(["require", "exports", "aurelia-framework"], function (require, exports, 
             this.mdType = "linear";
             this.mdValue = null;
         }
-        mdPixelSizeChanged(newValue) {
+        MdProgress.prototype.mdPixelSizeChanged = function (newValue) {
             if (this.wrapper) {
-                newValue = (newValue === null || newValue === "" || typeof newValue === "number" && isNaN(newValue)) ? "" : `${newValue}px`;
+                newValue = (newValue === null || newValue === "" || typeof newValue === "number" && isNaN(newValue)) ? "" : newValue + "px";
                 this.wrapper.style.height = newValue;
                 this.wrapper.style.width = newValue;
             }
-        }
-        bind() {
+        };
+        MdProgress.prototype.bind = function () {
             // DO NOT REMOVE!!!
             // This disables property changed callbacks for any bindable properties during initialization
             // Prevents mdPixelSize getting cleared by the mdSizeChanged event during binding
-        }
-        attached() {
+        };
+        MdProgress.prototype.attached = function () {
             this.mdPixelSizeChanged(this.mdPixelSize);
-        }
-        mdSizeChanged(newValue) {
+        };
+        MdProgress.prototype.mdSizeChanged = function (newValue) {
             this.mdPixelSize = null;
-        }
-    };
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", String)
-    ], MdProgress.prototype, "mdColor", void 0);
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
-        __metadata("design:type", Object)
-    ], MdProgress.prototype, "mdPixelSize", void 0);
-    __decorate([
-        aurelia_framework_1.bindable,
-        __metadata("design:type", String)
-    ], MdProgress.prototype, "mdSize", void 0);
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-        __metadata("design:type", String)
-    ], MdProgress.prototype, "mdType", void 0);
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
-        __metadata("design:type", Number)
-    ], MdProgress.prototype, "mdValue", void 0);
-    MdProgress = __decorate([
-        aurelia_framework_1.customElement("md-progress"),
-        aurelia_framework_1.autoinject,
-        __metadata("design:paramtypes", [Element])
-    ], MdProgress);
+        };
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable,
+            tslib_1.__metadata("design:type", String)
+        ], MdProgress.prototype, "mdColor", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+            tslib_1.__metadata("design:type", Object)
+        ], MdProgress.prototype, "mdPixelSize", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable,
+            tslib_1.__metadata("design:type", String)
+        ], MdProgress.prototype, "mdSize", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", String)
+        ], MdProgress.prototype, "mdType", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+            tslib_1.__metadata("design:type", Number)
+        ], MdProgress.prototype, "mdValue", void 0);
+        MdProgress = tslib_1.__decorate([
+            aurelia_framework_1.customElement("md-progress"),
+            aurelia_framework_1.autoinject,
+            tslib_1.__metadata("design:paramtypes", [Element])
+        ], MdProgress);
+        return MdProgress;
+    }());
     exports.MdProgress = MdProgress;
 });

@@ -1,17 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const aurelia_pal_1 = require("aurelia-pal");
+var aurelia_pal_1 = require("aurelia-pal");
 /**
  * Plugin configuration builder
  */
-class ConfigBuilder {
-    constructor() {
+var ConfigBuilder = /** @class */ (function () {
+    function ConfigBuilder() {
         this.globalResources = [];
         this.noWavesAttach = false;
         this.useGlobalResources = true;
         this.useScrollfirePatch = false;
     }
-    useAll() {
+    ConfigBuilder.prototype.useAll = function () {
         return this
             .useAutoComplete()
             .useBadge()
@@ -53,207 +53,208 @@ class ConfigBuilder {
             .useTransitions()
             .useWaves()
             .useWell();
-    }
-    useAutoComplete() {
+    };
+    ConfigBuilder.prototype.useAutoComplete = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./autocomplete/autocomplete"));
         return this;
-    }
-    useBadge() {
+    };
+    ConfigBuilder.prototype.useBadge = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./badge/badge"));
         return this;
-    }
-    useBox() {
+    };
+    ConfigBuilder.prototype.useBox = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./box/box"));
         return this;
-    }
-    useBreadcrumbs() {
+    };
+    ConfigBuilder.prototype.useBreadcrumbs = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./breadcrumbs/breadcrumbs"));
         return this;
-    }
-    useButton() {
+    };
+    ConfigBuilder.prototype.useButton = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./button/button"));
         return this;
-    }
-    useCarousel() {
+    };
+    ConfigBuilder.prototype.useCarousel = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./carousel/carousel"));
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./carousel/carousel-item"));
         return this;
-    }
-    useCharacterCounter() {
+    };
+    ConfigBuilder.prototype.useCharacterCounter = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./char-counter/char-counter"));
         return this;
-    }
-    useCard() {
+    };
+    ConfigBuilder.prototype.useCard = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./card/card"));
         return this;
-    }
-    useCheckbox() {
+    };
+    ConfigBuilder.prototype.useCheckbox = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./checkbox/checkbox"));
         return this;
-    }
-    useChip() {
+    };
+    ConfigBuilder.prototype.useChip = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./chip/chip"));
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./chip/chips"));
         return this;
-    }
+    };
     /**
      * Use my control
      */
-    useClickCounter() {
+    ConfigBuilder.prototype.useClickCounter = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./click-counter"));
         return this;
-    }
-    useCollapsible() {
+    };
+    ConfigBuilder.prototype.useCollapsible = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./collapsible/collapsible"));
         return this;
-    }
-    useCollection() {
+    };
+    ConfigBuilder.prototype.useCollection = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./collection/collection"));
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./collection/collection-item"));
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./collection/collection-header"));
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./collection/md-collection-selector"));
         return this;
-    }
-    useColors() {
+    };
+    ConfigBuilder.prototype.useColors = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./colors/md-colors"));
         return this;
-    }
-    useDatePicker() {
+    };
+    ConfigBuilder.prototype.useDatePicker = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./datepicker/datepicker"));
         return this;
-    }
-    useDropdown() {
+    };
+    ConfigBuilder.prototype.useDropdown = function () {
         // this.globalResources.push("./dropdown/dropdown-element");
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./dropdown/dropdown"));
         return this;
-    }
-    useFab() {
+    };
+    ConfigBuilder.prototype.useFab = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./fab/fab"));
         return this;
-    }
-    useFile() {
+    };
+    ConfigBuilder.prototype.useFile = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./file/file"));
         return this;
-    }
-    useFooter() {
+    };
+    ConfigBuilder.prototype.useFooter = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./footer/footer"));
         return this;
-    }
-    useInput() {
+    };
+    ConfigBuilder.prototype.useInput = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./input/input"));
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./input/input-prefix"));
         return this;
-    }
-    useModal() {
+    };
+    ConfigBuilder.prototype.useModal = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./modal/modal"));
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./modal/modal-trigger"));
         return this;
-    }
-    useNavbar() {
+    };
+    ConfigBuilder.prototype.useNavbar = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./navbar/navbar"));
         return this;
-    }
-    usePagination() {
+    };
+    ConfigBuilder.prototype.usePagination = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./pagination/pagination"));
         return this;
-    }
-    useParallax() {
+    };
+    ConfigBuilder.prototype.useParallax = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./parallax/parallax"));
         return this;
-    }
-    useProgress() {
+    };
+    ConfigBuilder.prototype.useProgress = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./progress/progress"));
         return this;
-    }
-    usePushpin() {
+    };
+    ConfigBuilder.prototype.usePushpin = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./pushpin/pushpin"));
         return this;
-    }
-    useRadio() {
+    };
+    ConfigBuilder.prototype.useRadio = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./radio/radio"));
         return this;
-    }
-    useRange() {
+    };
+    ConfigBuilder.prototype.useRange = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./range/range"));
         return this;
-    }
-    useScrollfire() {
+    };
+    ConfigBuilder.prototype.useScrollfire = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./scrollfire/scrollfire"));
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./scrollfire/scrollfire-target"));
         return this;
-    }
-    useScrollSpy() {
+    };
+    ConfigBuilder.prototype.useScrollSpy = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./scrollspy/scrollspy"));
         return this;
-    }
-    useSelect() {
+    };
+    ConfigBuilder.prototype.useSelect = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./select/select"));
         return this;
-    }
-    useSidenav() {
+    };
+    ConfigBuilder.prototype.useSidenav = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./sidenav/sidenav"));
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./sidenav/sidenav-collapse"));
         return this;
-    }
-    useSlider() {
+    };
+    ConfigBuilder.prototype.useSlider = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./slider/slider"));
         // this.globalResources.push("./slider/slide");
         return this;
-    }
-    useSwitch() {
+    };
+    ConfigBuilder.prototype.useSwitch = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./switch/switch"));
         return this;
-    }
+    };
     /**
      * Use materialized tabs
      */
-    useTabs() {
+    ConfigBuilder.prototype.useTabs = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./tabs/tabs"));
         return this;
-    }
-    useTapTarget() {
+    };
+    ConfigBuilder.prototype.useTapTarget = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./tap-target/tap-target"));
         return this;
-    }
-    useTimePicker() {
+    };
+    ConfigBuilder.prototype.useTimePicker = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./timepicker/timepicker"));
         return this;
-    }
-    useTooltip() {
+    };
+    ConfigBuilder.prototype.useTooltip = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./tooltip/tooltip"));
         return this;
-    }
-    useTransitions() {
+    };
+    ConfigBuilder.prototype.useTransitions = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./transitions/fadein-image"));
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./transitions/staggered-list"));
         return this;
-    }
+    };
     /**
      * Use ripple/waves effect
      */
-    useWaves() {
+    ConfigBuilder.prototype.useWaves = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./waves/waves"));
         return this;
-    }
-    useWell() {
+    };
+    ConfigBuilder.prototype.useWell = function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./well/md-well"));
         return this;
-    }
-    preventWavesAttach() {
+    };
+    ConfigBuilder.prototype.preventWavesAttach = function () {
         this.noWavesAttach = true;
         return this;
-    }
+    };
     /**
      * Don't globalize any resources
      * Allows you to import yourself via <require></require>
      */
-    withoutGlobalResources() {
+    ConfigBuilder.prototype.withoutGlobalResources = function () {
         this.useGlobalResources = false;
         return this;
-    }
-    withScrollfirePatch() {
+    };
+    ConfigBuilder.prototype.withScrollfirePatch = function () {
         this.useScrollfirePatch = true;
         return this;
-    }
-}
+    };
+    return ConfigBuilder;
+}());
 exports.ConfigBuilder = ConfigBuilder;

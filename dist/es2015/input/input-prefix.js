@@ -1,29 +1,22 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
+import * as tslib_1 from "tslib";
 import { customAttribute, autoinject } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
-let MdPrefix = class MdPrefix {
-    constructor(element) {
+var MdPrefix = /** @class */ (function () {
+    function MdPrefix(element) {
         this.element = element;
         this.attributeManager = new AttributeManager(this.element);
     }
-    bind() {
+    MdPrefix.prototype.bind = function () {
         this.attributeManager.addClasses("prefix");
-    }
-    unbind() {
+    };
+    MdPrefix.prototype.unbind = function () {
         this.attributeManager.removeClasses("prefix");
-    }
-};
-MdPrefix = __decorate([
-    customAttribute("md-prefix"),
-    autoinject,
-    __metadata("design:paramtypes", [Element])
-], MdPrefix);
+    };
+    MdPrefix = tslib_1.__decorate([
+        customAttribute("md-prefix"),
+        autoinject,
+        tslib_1.__metadata("design:paramtypes", [Element])
+    ], MdPrefix);
+    return MdPrefix;
+}());
 export { MdPrefix };

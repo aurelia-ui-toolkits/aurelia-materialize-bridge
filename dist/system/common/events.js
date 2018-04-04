@@ -7,8 +7,9 @@ System.register(["./constants"], function (exports_1, context_1) {
      * @param name The Event's name
      * @param data Addition data to attach to an event
      */
-    function fireEvent(element, name, data = {}) {
-        const event = new CustomEvent(name, {
+    function fireEvent(element, name, data) {
+        if (data === void 0) { data = {}; }
+        var event = new CustomEvent(name, {
             detail: data,
             bubbles: true
         });
@@ -22,8 +23,9 @@ System.register(["./constants"], function (exports_1, context_1) {
      * @param name The Event's name, without md-on prefix
      * @param data Addition data to attach to an event
      */
-    function fireMaterializeEvent(element, name, data = {}) {
-        return fireEvent(element, `${constants_1.constants.eventPrefix}${name}`, data);
+    function fireMaterializeEvent(element, name, data) {
+        if (data === void 0) { data = {}; }
+        return fireEvent(element, "" + constants_1.constants.eventPrefix + name, data);
     }
     exports_1("fireMaterializeEvent", fireMaterializeEvent);
     var constants_1;

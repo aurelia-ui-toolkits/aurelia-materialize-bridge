@@ -1,18 +1,12 @@
-System.register(["aurelia-framework", "aurelia-task-queue", "../common/attributes"], function (exports_1, context_1) {
+System.register(["tslib", "aurelia-framework", "aurelia-task-queue", "../common/attributes"], function (exports_1, context_1) {
     "use strict";
-    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    };
-    var __metadata = (this && this.__metadata) || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-    };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, aurelia_task_queue_1, attributes_1, MdCarousel;
+    var tslib_1, aurelia_framework_1, aurelia_task_queue_1, attributes_1, MdCarousel;
     return {
         setters: [
+            function (tslib_1_1) {
+                tslib_1 = tslib_1_1;
+            },
             function (aurelia_framework_1_1) {
                 aurelia_framework_1 = aurelia_framework_1_1;
             },
@@ -24,56 +18,58 @@ System.register(["aurelia-framework", "aurelia-task-queue", "../common/attribute
             }
         ],
         execute: function () {
-            MdCarousel = class MdCarousel {
-                constructor(element, taskQueue) {
+            MdCarousel = /** @class */ (function () {
+                function MdCarousel(element, taskQueue) {
                     this.element = element;
                     this.taskQueue = taskQueue;
                     this.mdIndicators = true;
                     this.mdSlider = false;
                     this.items = [];
                 }
-                attached() {
+                MdCarousel.prototype.attached = function () {
                     if (attributes_1.getBooleanFromAttributeValue(this.mdSlider)) {
                         this.element.classList.add("carousel-slider");
                     }
                     this.refresh();
-                }
-                detached() {
+                };
+                MdCarousel.prototype.detached = function () {
                     $(this.element).carousel("destroy");
-                }
-                itemsChanged(newValue) {
+                };
+                MdCarousel.prototype.itemsChanged = function (newValue) {
                     this.refresh();
-                }
-                refresh() {
+                };
+                MdCarousel.prototype.refresh = function () {
+                    var _this = this;
                     if (this.items.length > 0) {
-                        const options = {
+                        var options_1 = {
                             full_width: attributes_1.getBooleanFromAttributeValue(this.mdSlider),
                             fullWidth: attributes_1.getBooleanFromAttributeValue(this.mdSlider),
                             indicators: this.mdIndicators
                         };
-                        this.taskQueue.queueTask(() => {
-                            $(this.element).carousel(options);
+                        this.taskQueue.queueTask(function () {
+                            $(_this.element).carousel(options_1);
                         });
                     }
-                }
-            };
-            __decorate([
-                aurelia_framework_1.bindable,
-                __metadata("design:type", Object)
-            ], MdCarousel.prototype, "mdIndicators", void 0);
-            __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-                __metadata("design:type", Object)
-            ], MdCarousel.prototype, "mdSlider", void 0);
-            __decorate([
-                aurelia_framework_1.children("md-carousel-item"),
-                __metadata("design:type", Array)
-            ], MdCarousel.prototype, "items", void 0);
-            MdCarousel = __decorate([
-                aurelia_framework_1.customElement("md-carousel"),
-                aurelia_framework_1.autoinject,
-                __metadata("design:paramtypes", [Element, aurelia_task_queue_1.TaskQueue])
-            ], MdCarousel);
+                };
+                tslib_1.__decorate([
+                    aurelia_framework_1.bindable,
+                    tslib_1.__metadata("design:type", Object)
+                ], MdCarousel.prototype, "mdIndicators", void 0);
+                tslib_1.__decorate([
+                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Object)
+                ], MdCarousel.prototype, "mdSlider", void 0);
+                tslib_1.__decorate([
+                    aurelia_framework_1.children("md-carousel-item"),
+                    tslib_1.__metadata("design:type", Array)
+                ], MdCarousel.prototype, "items", void 0);
+                MdCarousel = tslib_1.__decorate([
+                    aurelia_framework_1.customElement("md-carousel"),
+                    aurelia_framework_1.autoinject,
+                    tslib_1.__metadata("design:paramtypes", [Element, aurelia_task_queue_1.TaskQueue])
+                ], MdCarousel);
+                return MdCarousel;
+            }());
             exports_1("MdCarousel", MdCarousel);
         }
     };

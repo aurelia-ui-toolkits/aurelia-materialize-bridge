@@ -1,19 +1,11 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const aurelia_framework_1 = require("aurelia-framework");
-const attributes_1 = require("../common/attributes");
-const aurelia_logging_1 = require("aurelia-logging");
-let MdSlider = class MdSlider {
-    constructor(element) {
+var tslib_1 = require("tslib");
+var aurelia_framework_1 = require("aurelia-framework");
+var attributes_1 = require("../common/attributes");
+var aurelia_logging_1 = require("aurelia-logging");
+var MdSlider = /** @class */ (function () {
+    function MdSlider(element) {
         this.element = element;
         this.mdFillContainer = false;
         this.mdHeight = 400;
@@ -22,26 +14,26 @@ let MdSlider = class MdSlider {
         this.mdTransition = 500;
         this.log = aurelia_logging_1.getLogger("md-slider");
     }
-    attached() {
+    MdSlider.prototype.attached = function () {
         if (attributes_1.getBooleanFromAttributeValue(this.mdFillContainer)) {
             this.element.classList.add("fullscreen");
         }
         this.refresh();
-    }
-    pause() {
+    };
+    MdSlider.prototype.pause = function () {
         $(this.element).slider("pause");
-    }
-    start() {
+    };
+    MdSlider.prototype.start = function () {
         $(this.element).slider("start");
-    }
-    next() {
+    };
+    MdSlider.prototype.next = function () {
         $(this.element).slider("next");
-    }
-    prev() {
+    };
+    MdSlider.prototype.prev = function () {
         $(this.element).slider("prev");
-    }
-    refresh() {
-        let options = {
+    };
+    MdSlider.prototype.refresh = function () {
+        var options = {
             height: parseInt(this.mdHeight.toString(), 10),
             indicators: attributes_1.getBooleanFromAttributeValue(this.mdIndicators),
             interval: parseInt(this.mdInterval.toString(), 10),
@@ -49,34 +41,35 @@ let MdSlider = class MdSlider {
         };
         this.log.debug("refreshing slider, params:", options);
         $(this.element).slider(options);
-    }
-    mdIndicatorsChanged() {
+    };
+    MdSlider.prototype.mdIndicatorsChanged = function () {
         this.refresh();
-    }
-};
-__decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-    __metadata("design:type", Object)
-], MdSlider.prototype, "mdFillContainer", void 0);
-__decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-    __metadata("design:type", Object)
-], MdSlider.prototype, "mdHeight", void 0);
-__decorate([
-    aurelia_framework_1.bindable,
-    __metadata("design:type", Object)
-], MdSlider.prototype, "mdIndicators", void 0);
-__decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-    __metadata("design:type", Object)
-], MdSlider.prototype, "mdInterval", void 0);
-__decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-    __metadata("design:type", Object)
-], MdSlider.prototype, "mdTransition", void 0);
-MdSlider = __decorate([
-    aurelia_framework_1.customElement("md-slider"),
-    aurelia_framework_1.autoinject,
-    __metadata("design:paramtypes", [Element])
-], MdSlider);
+    };
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Object)
+    ], MdSlider.prototype, "mdFillContainer", void 0);
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Object)
+    ], MdSlider.prototype, "mdHeight", void 0);
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable,
+        tslib_1.__metadata("design:type", Object)
+    ], MdSlider.prototype, "mdIndicators", void 0);
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Object)
+    ], MdSlider.prototype, "mdInterval", void 0);
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Object)
+    ], MdSlider.prototype, "mdTransition", void 0);
+    MdSlider = tslib_1.__decorate([
+        aurelia_framework_1.customElement("md-slider"),
+        aurelia_framework_1.autoinject,
+        tslib_1.__metadata("design:paramtypes", [Element])
+    ], MdSlider);
+    return MdSlider;
+}());
 exports.MdSlider = MdSlider;

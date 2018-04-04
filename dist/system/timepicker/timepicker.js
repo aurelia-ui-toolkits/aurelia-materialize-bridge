@@ -1,18 +1,12 @@
-System.register(["aurelia-framework", "../common/attributes"], function (exports_1, context_1) {
+System.register(["tslib", "aurelia-framework", "../common/attributes"], function (exports_1, context_1) {
     "use strict";
-    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        return c > 3 && r && Object.defineProperty(target, key, r), r;
-    };
-    var __metadata = (this && this.__metadata) || function (k, v) {
-        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-    };
     var __moduleName = context_1 && context_1.id;
-    var aurelia_framework_1, attributes_1, MdTimePicker;
+    var tslib_1, aurelia_framework_1, attributes_1, MdTimePicker;
     return {
         setters: [
+            function (tslib_1_1) {
+                tslib_1 = tslib_1_1;
+            },
             function (aurelia_framework_1_1) {
                 aurelia_framework_1 = aurelia_framework_1_1;
             },
@@ -21,47 +15,48 @@ System.register(["aurelia-framework", "../common/attributes"], function (exports
             }
         ],
         execute: function () {
-            MdTimePicker = class MdTimePicker {
-                constructor(element) {
+            MdTimePicker = /** @class */ (function () {
+                function MdTimePicker(element) {
                     this.twelveHour = false;
                     this.element = element;
                     this.updateFromElement = this.updateFromElement.bind(this);
                 }
-                bind() {
+                MdTimePicker.prototype.bind = function () {
                     this.twelveHour = attributes_1.getBooleanFromAttributeValue(this.twelveHour);
-                }
-                attached() {
-                    let options = {
+                };
+                MdTimePicker.prototype.attached = function () {
+                    var options = {
                         twelvehour: this.twelveHour
                     };
                     $(this.element).pickatime(options);
                     this.element.value = this.value;
                     $(this.element).on("change", this.updateFromElement);
-                }
-                detached() {
+                };
+                MdTimePicker.prototype.detached = function () {
                     $(this.element).off("change", this.updateFromElement);
                     $(this.element).pickatime("remove");
-                }
-                updateFromElement() {
+                };
+                MdTimePicker.prototype.updateFromElement = function () {
                     this.value = this.element.value;
-                }
-                valueChanged(newValue) {
+                };
+                MdTimePicker.prototype.valueChanged = function (newValue) {
                     this.element.value = newValue;
-                }
-            };
-            __decorate([
-                aurelia_framework_1.bindable,
-                __metadata("design:type", Object)
-            ], MdTimePicker.prototype, "twelveHour", void 0);
-            __decorate([
-                aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
-                __metadata("design:type", String)
-            ], MdTimePicker.prototype, "value", void 0);
-            MdTimePicker = __decorate([
-                aurelia_framework_1.autoinject,
-                aurelia_framework_1.customAttribute("md-timepicker"),
-                __metadata("design:paramtypes", [Element])
-            ], MdTimePicker);
+                };
+                tslib_1.__decorate([
+                    aurelia_framework_1.bindable,
+                    tslib_1.__metadata("design:type", Object)
+                ], MdTimePicker.prototype, "twelveHour", void 0);
+                tslib_1.__decorate([
+                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+                    tslib_1.__metadata("design:type", String)
+                ], MdTimePicker.prototype, "value", void 0);
+                MdTimePicker = tslib_1.__decorate([
+                    aurelia_framework_1.autoinject,
+                    aurelia_framework_1.customAttribute("md-timepicker"),
+                    tslib_1.__metadata("design:paramtypes", [Element])
+                ], MdTimePicker);
+                return MdTimePicker;
+            }());
             exports_1("MdTimePicker", MdTimePicker);
         }
     };

@@ -1,17 +1,8 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-define(["require", "exports", "aurelia-framework", "../common/attributes"], function (require, exports, aurelia_framework_1, attributes_1) {
+define(["require", "exports", "tslib", "aurelia-framework", "../common/attributes"], function (require, exports, tslib_1, aurelia_framework_1, attributes_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    let MdDropdownElement = MdDropdownElement_1 = class MdDropdownElement {
-        constructor(element) {
+    var MdDropdownElement = /** @class */ (function () {
+        function MdDropdownElement(element) {
             this.element = element;
             this.alignment = "left";
             this.belowOrigin = false;
@@ -21,9 +12,10 @@ define(["require", "exports", "aurelia-framework", "../common/attributes"], func
             this.inDuration = 300;
             this.outDuration = 225;
             this.stopPropagation = false;
-            this.controlId = `md-dropdown-${MdDropdownElement_1.id++}`;
+            this.controlId = "md-dropdown-" + MdDropdownElement_1.id++;
         }
-        attached() {
+        MdDropdownElement_1 = MdDropdownElement;
+        MdDropdownElement.prototype.attached = function () {
             $(this.element).dropdown({
                 alignment: this.alignment,
                 belowOrigin: attributes_1.getBooleanFromAttributeValue(this.belowOrigin),
@@ -34,50 +26,51 @@ define(["require", "exports", "aurelia-framework", "../common/attributes"], func
                 outDuration: parseInt(this.outDuration.toString(), 10),
                 stopPropagation: attributes_1.getBooleanFromAttributeValue(this.stopPropagation)
             });
-        }
-    };
-    MdDropdownElement.id = 0;
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-        __metadata("design:type", String)
-    ], MdDropdownElement.prototype, "alignment", void 0);
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-        __metadata("design:type", Object)
-    ], MdDropdownElement.prototype, "belowOrigin", void 0);
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-        __metadata("design:type", Object)
-    ], MdDropdownElement.prototype, "constrainWidth", void 0);
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-        __metadata("design:type", Number)
-    ], MdDropdownElement.prototype, "gutter", void 0);
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-        __metadata("design:type", Object)
-    ], MdDropdownElement.prototype, "hover", void 0);
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-        __metadata("design:type", String)
-    ], MdDropdownElement.prototype, "mdTitle", void 0);
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-        __metadata("design:type", Object)
-    ], MdDropdownElement.prototype, "inDuration", void 0);
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-        __metadata("design:type", Object)
-    ], MdDropdownElement.prototype, "outDuration", void 0);
-    __decorate([
-        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-        __metadata("design:type", Object)
-    ], MdDropdownElement.prototype, "stopPropagation", void 0);
-    MdDropdownElement = MdDropdownElement_1 = __decorate([
-        aurelia_framework_1.customElement("md-dropdown"),
-        aurelia_framework_1.autoinject,
-        __metadata("design:paramtypes", [Element])
-    ], MdDropdownElement);
+        };
+        MdDropdownElement.id = 0;
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", String)
+        ], MdDropdownElement.prototype, "alignment", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Object)
+        ], MdDropdownElement.prototype, "belowOrigin", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Object)
+        ], MdDropdownElement.prototype, "constrainWidth", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Number)
+        ], MdDropdownElement.prototype, "gutter", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Object)
+        ], MdDropdownElement.prototype, "hover", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", String)
+        ], MdDropdownElement.prototype, "mdTitle", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Object)
+        ], MdDropdownElement.prototype, "inDuration", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Object)
+        ], MdDropdownElement.prototype, "outDuration", void 0);
+        tslib_1.__decorate([
+            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Object)
+        ], MdDropdownElement.prototype, "stopPropagation", void 0);
+        MdDropdownElement = MdDropdownElement_1 = tslib_1.__decorate([
+            aurelia_framework_1.customElement("md-dropdown"),
+            aurelia_framework_1.autoinject,
+            tslib_1.__metadata("design:paramtypes", [Element])
+        ], MdDropdownElement);
+        return MdDropdownElement;
+        var MdDropdownElement_1;
+    }());
     exports.MdDropdownElement = MdDropdownElement;
-    var MdDropdownElement_1;
 });

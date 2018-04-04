@@ -1,22 +1,15 @@
 "use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const aurelia_framework_1 = require("aurelia-framework");
-const aurelia_task_queue_1 = require("aurelia-task-queue");
-const aurelia_logging_1 = require("aurelia-logging");
-const attributes_1 = require("../common/attributes");
-const datepicker_default_parser_1 = require("./datepicker-default-parser");
-const events_1 = require("../common/events");
-let MdDatePicker = class MdDatePicker {
-    constructor(element, taskQueue, defaultParser) {
+var tslib_1 = require("tslib");
+var aurelia_framework_1 = require("aurelia-framework");
+var aurelia_task_queue_1 = require("aurelia-task-queue");
+var aurelia_logging_1 = require("aurelia-logging");
+var attributes_1 = require("../common/attributes");
+var datepicker_default_parser_1 = require("./datepicker-default-parser");
+var events_1 = require("../common/events");
+var MdDatePicker = /** @class */ (function () {
+    function MdDatePicker(element, taskQueue, defaultParser) {
+        var _this = this;
         this.element = element;
         this.taskQueue = taskQueue;
         this.defaultParser = defaultParser;
@@ -26,29 +19,51 @@ let MdDatePicker = class MdDatePicker {
         this.options = {};
         this.showErrortext = true;
         this.calendarIcon = null;
-        this.mdUnrenderValidateResults = (results, renderer) => {
-            for (let result of results) {
-                if (!result.valid) {
-                    renderer.removeMessage(this.element.parentNode, result);
-                }
-            }
-            renderer.removeValidationClasses(this.element);
-        };
-        this.mdRenderValidateResults = (results, renderer) => {
-            if (!(this.element.hasAttribute("data-show-errortext") && this.element.getAttribute("data-show-errortext") === "false")) {
-                for (let result of results) {
+        this.mdUnrenderValidateResults = function (results, renderer) {
+            try {
+                for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
+                    var result = results_1_1.value;
                     if (!result.valid) {
-                        renderer.addMessage(this.element.parentNode, result);
+                        renderer.removeMessage(_this.element.parentElement, result);
                     }
                 }
             }
-            renderer.addValidationClasses(this.element, !results.find(x => !x.valid));
+            catch (e_1_1) { e_1 = { error: e_1_1 }; }
+            finally {
+                try {
+                    if (results_1_1 && !results_1_1.done && (_a = results_1.return)) _a.call(results_1);
+                }
+                finally { if (e_1) throw e_1.error; }
+            }
+            renderer.removeValidationClasses(_this.element);
+            var e_1, _a;
+        };
+        this.mdRenderValidateResults = function (results, renderer) {
+            if (!(_this.element.hasAttribute("data-show-errortext") && _this.element.getAttribute("data-show-errortext") === "false")) {
+                try {
+                    for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
+                        var result = results_2_1.value;
+                        if (!result.valid) {
+                            renderer.addMessage(_this.element.parentElement, result);
+                        }
+                    }
+                }
+                catch (e_2_1) { e_2 = { error: e_2_1 }; }
+                finally {
+                    try {
+                        if (results_2_1 && !results_2_1.done && (_a = results_2.return)) _a.call(results_2);
+                    }
+                    finally { if (e_2) throw e_2.error; }
+                }
+            }
+            renderer.addValidationClasses(_this.element, !results.find(function (x) { return !x.valid; }));
+            var e_2, _a;
         };
         this.log = aurelia_logging_1.getLogger("md-datepicker");
         this.parsers.push(defaultParser);
         this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
     }
-    valueChanged(newValue) {
+    MdDatePicker.prototype.valueChanged = function (newValue) {
         if (this.options.max && newValue > this.options.max) {
             this.value = this.options.max;
         }
@@ -56,27 +71,28 @@ let MdDatePicker = class MdDatePicker {
         // this.taskQueue.queueTask(() => {
         this.picker.set("select", this.value);
         // });
-    }
-    attached() {
+    };
+    MdDatePicker.prototype.attached = function () {
         this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
         this.element.mdRenderValidateResults = this.mdRenderValidateResults;
-    }
-    bind() {
+    };
+    MdDatePicker.prototype.bind = function () {
+        var _this = this;
         this.selectMonths = attributes_1.getBooleanFromAttributeValue(this.selectMonths);
         if (typeof this.selectYears === "string") {
             this.selectYears = parseInt(this.selectYears, 10);
         }
         this.element.classList.add("date-picker");
-        let options = {
+        var options = {
             selectMonths: this.selectMonths,
             selectYears: this.selectYears,
-            onClose() {
+            onClose: function () {
                 // see https://github.com/Dogfalo/materialize/issues/2067
                 // and: https://github.com/amsul/pickadate.js/issues/160
                 $(document.activeElement).blur();
             }
         };
-        let i18n = {};
+        var i18n = {};
         // let i18n = {
         //   selectMonths: true, // Creates a dropdown to control month
         //   selectYears: 15, // Creates a dropdown of 15 years to control year
@@ -96,8 +112,8 @@ let MdDatePicker = class MdDatePicker {
             Object.assign(options, this.options);
             // merge callback methods if there is a hook in the advanced options
             if (this.options.onClose) {
-                options.onClose = () => {
-                    this.options.onClose();
+                options.onClose = function () {
+                    _this.options.onClose();
                     $(document.activeElement).blur();
                 };
             }
@@ -113,24 +129,24 @@ let MdDatePicker = class MdDatePicker {
             this.picker.set("select", this.value);
         }
         if (this.options && this.options.editable) {
-            $(this.element).on("keydown", (e) => {
+            $(this.element).on("keydown", function (e) {
                 if (e.keyCode === 13 || e.keyCode === 9) {
-                    if (this.parseDate($(this.element).val())) {
-                        this.updateValue();
-                        this.closeDatePicker();
+                    if (_this.parseDate($(_this.element).val())) {
+                        _this.updateValue();
+                        _this.closeDatePicker();
                     }
                     else {
-                        this.openDatePicker();
+                        _this.openDatePicker();
                     }
                 }
                 else {
-                    this.value = null;
+                    _this.value = null;
                 }
             });
         }
         else {
-            $(this.element).on("focusin", () => {
-                this.openDatePicker();
+            $(this.element).on("focusin", function () {
+                _this.openDatePicker();
             });
         }
         if (this.options.showIcon) {
@@ -145,22 +161,33 @@ let MdDatePicker = class MdDatePicker {
             this.calendarIcon.classList.add(options.iconClass);
         }
         this.setErrorTextAttribute();
-    }
-    parseDate(value) {
+    };
+    MdDatePicker.prototype.parseDate = function (value) {
         if (this.parsers && this.parsers.length && this.parsers.length > 0) {
-            for (const parser of this.parsers) {
-                if (parser.canParse(value)) {
-                    const parsedDate = parser.parse(value);
-                    if (parsedDate !== null) {
-                        this.picker.set("select", parsedDate);
-                        return true;
+            try {
+                for (var _a = tslib_1.__values(this.parsers), _b = _a.next(); !_b.done; _b = _a.next()) {
+                    var parser = _b.value;
+                    if (parser.canParse(value)) {
+                        var parsedDate = parser.parse(value);
+                        if (parsedDate !== null) {
+                            this.picker.set("select", parsedDate);
+                            return true;
+                        }
                     }
                 }
             }
+            catch (e_3_1) { e_3 = { error: e_3_1 }; }
+            finally {
+                try {
+                    if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
+                }
+                finally { if (e_3) throw e_3.error; }
+            }
         }
         return false;
-    }
-    detached() {
+        var e_3, _c;
+    };
+    MdDatePicker.prototype.detached = function () {
         if (this.options.showIcon) {
             this.element.classList.remove("left");
             $(this.calendarIcon).off("click", this.onCalendarIconClick);
@@ -172,25 +199,25 @@ let MdDatePicker = class MdDatePicker {
         }
         this.element.mdUnrenderValidateResults = undefined;
         this.element.mdRenderValidateResults = undefined;
-    }
-    openDatePicker() {
+    };
+    MdDatePicker.prototype.openDatePicker = function () {
         $(this.element).pickadate("open");
-    }
-    closeDatePicker() {
+    };
+    MdDatePicker.prototype.closeDatePicker = function () {
         $(this.element).pickadate("close");
-    }
-    updateValue() {
-        let selected = this.picker.get("select");
+    };
+    MdDatePicker.prototype.updateValue = function () {
+        var selected = this.picker.get("select");
         this.value = selected ? selected.obj : null;
-    }
-    onClose() {
+    };
+    MdDatePicker.prototype.onClose = function () {
         this.updateValue();
         events_1.fireEvent(this.element, "blur");
-    }
-    onCalendarIconClick(event) {
+    };
+    MdDatePicker.prototype.onCalendarIconClick = function (event) {
         event.stopPropagation();
         this.openDatePicker();
-    }
+    };
     // onSet(value) {
     //   //handle this ourselves since Dogfalo removed this functionality from the original plugin
     //   if (this.options && this.options.closeOnSelect && value.select) {
@@ -199,52 +226,53 @@ let MdDatePicker = class MdDatePicker {
     //   }
     //   // this.value = new Date(value.select);
     // }
-    showErrortextChanged() {
+    MdDatePicker.prototype.showErrortextChanged = function () {
         this.setErrorTextAttribute();
-    }
-    setErrorTextAttribute() {
+    };
+    MdDatePicker.prototype.setErrorTextAttribute = function () {
         if (!this.element) {
             return;
         }
         this.log.debug("showErrortextChanged: " + this.showErrortext);
         this.element.setAttribute("data-show-errortext", attributes_1.getBooleanFromAttributeValue(this.showErrortext).toString());
-    }
-};
-__decorate([
-    aurelia_framework_1.bindable,
-    __metadata("design:type", Element)
-], MdDatePicker.prototype, "container", void 0);
-__decorate([
-    aurelia_framework_1.bindable,
-    __metadata("design:type", Object)
-], MdDatePicker.prototype, "translation", void 0);
-__decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
-    __metadata("design:type", Date)
-], MdDatePicker.prototype, "value", void 0);
-__decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
-    __metadata("design:type", Array)
-], MdDatePicker.prototype, "parsers", void 0);
-__decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-    __metadata("design:type", Boolean)
-], MdDatePicker.prototype, "selectMonths", void 0);
-__decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-    __metadata("design:type", Object)
-], MdDatePicker.prototype, "selectYears", void 0);
-__decorate([
-    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-    __metadata("design:type", Object)
-], MdDatePicker.prototype, "options", void 0);
-__decorate([
-    aurelia_framework_1.bindable,
-    __metadata("design:type", Object)
-], MdDatePicker.prototype, "showErrortext", void 0);
-MdDatePicker = __decorate([
-    aurelia_framework_1.autoinject,
-    aurelia_framework_1.customAttribute("md-datepicker"),
-    __metadata("design:paramtypes", [Element, aurelia_task_queue_1.TaskQueue, datepicker_default_parser_1.DatePickerDefaultParser])
-], MdDatePicker);
+    };
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable,
+        tslib_1.__metadata("design:type", Element)
+    ], MdDatePicker.prototype, "container", void 0);
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable,
+        tslib_1.__metadata("design:type", Object)
+    ], MdDatePicker.prototype, "translation", void 0);
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+        tslib_1.__metadata("design:type", Date)
+    ], MdDatePicker.prototype, "value", void 0);
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+        tslib_1.__metadata("design:type", Array)
+    ], MdDatePicker.prototype, "parsers", void 0);
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdDatePicker.prototype, "selectMonths", void 0);
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Object)
+    ], MdDatePicker.prototype, "selectYears", void 0);
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Object)
+    ], MdDatePicker.prototype, "options", void 0);
+    tslib_1.__decorate([
+        aurelia_framework_1.bindable,
+        tslib_1.__metadata("design:type", Object)
+    ], MdDatePicker.prototype, "showErrortext", void 0);
+    MdDatePicker = tslib_1.__decorate([
+        aurelia_framework_1.autoinject,
+        aurelia_framework_1.customAttribute("md-datepicker"),
+        tslib_1.__metadata("design:paramtypes", [Element, aurelia_task_queue_1.TaskQueue, datepicker_default_parser_1.DatePickerDefaultParser])
+    ], MdDatePicker);
+    return MdDatePicker;
+}());
 exports.MdDatePicker = MdDatePicker;

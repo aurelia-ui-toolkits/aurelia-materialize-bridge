@@ -1,15 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class MdToastService {
-    removeAll() {
-        Materialize.Toast.removeAll();
+var MdToastService = /** @class */ (function () {
+    function MdToastService() {
     }
-    show(message, displayLength, className) {
-        return new Promise((resolve, reject) => {
-            const toastInstance = Materialize.toast(message, displayLength, className, () => {
+    MdToastService.prototype.removeAll = function () {
+        Materialize.Toast.removeAll();
+    };
+    MdToastService.prototype.show = function (message, displayLength, className) {
+        return new Promise(function (resolve, reject) {
+            var toastInstance = Materialize.toast(message, displayLength, className, function () {
                 resolve(toastInstance);
             });
         });
-    }
-}
+    };
+    return MdToastService;
+}());
 exports.MdToastService = MdToastService;

@@ -1,47 +1,40 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
+import * as tslib_1 from "tslib";
 import { bindable, customAttribute, autoinject } from "aurelia-framework";
 import { getLogger } from "aurelia-logging";
-let MdStaggeredList = class MdStaggeredList {
-    constructor(element) {
+var MdStaggeredList = /** @class */ (function () {
+    function MdStaggeredList(element) {
         this.element = element;
         this.staggerList = this.staggerList.bind(this);
         this.log = getLogger("md-staggered-list");
     }
-    attached() {
+    MdStaggeredList.prototype.attached = function () {
         this.element.addEventListener("click", this.staggerList);
         this.ensureOpacity();
-    }
-    detached() {
+    };
+    MdStaggeredList.prototype.detached = function () {
         this.element.removeEventListener("click", this.staggerList);
-    }
-    staggerList() {
+    };
+    MdStaggeredList.prototype.staggerList = function () {
         Materialize.showStaggeredList($(this.ref));
-    }
-    ensureOpacity() {
-        let items = this.ref.querySelectorAll("li");
-        [].forEach.call(items, item => {
-            let opacity = window.getComputedStyle(item).opacity;
+    };
+    MdStaggeredList.prototype.ensureOpacity = function () {
+        var items = this.ref.querySelectorAll("li");
+        [].forEach.call(items, function (item) {
+            var opacity = window.getComputedStyle(item).opacity;
             if (opacity !== "0") {
                 item.style.opacity = 0;
             }
         });
-    }
-};
-__decorate([
-    bindable,
-    __metadata("design:type", HTMLElement)
-], MdStaggeredList.prototype, "ref", void 0);
-MdStaggeredList = __decorate([
-    customAttribute("md-staggered-list"),
-    autoinject,
-    __metadata("design:paramtypes", [Element])
-], MdStaggeredList);
+    };
+    tslib_1.__decorate([
+        bindable,
+        tslib_1.__metadata("design:type", HTMLElement)
+    ], MdStaggeredList.prototype, "ref", void 0);
+    MdStaggeredList = tslib_1.__decorate([
+        customAttribute("md-staggered-list"),
+        autoinject,
+        tslib_1.__metadata("design:paramtypes", [Element])
+    ], MdStaggeredList);
+    return MdStaggeredList;
+}());
 export { MdStaggeredList };

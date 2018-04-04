@@ -1,6 +1,4 @@
-// tslint:disable-next-line:no-reference
-/// <reference path="materialize.d.ts" />
-System.register(["./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports"], function (exports_1, context_1) {
+System.register(["./augmentation/element", "./augmentation/materialize", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function applyPolyfills() {
@@ -8,7 +6,7 @@ System.register(["./config-builder", "./scrollfire/scrollfire-patch", "./common/
     }
     function configure(frameworkConfiguration, configCallback) {
         applyPolyfills();
-        const builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
+        var builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
         if (configCallback !== undefined && typeof (configCallback) === "function") {
             configCallback(builder);
         }
@@ -33,6 +31,10 @@ System.register(["./config-builder", "./scrollfire/scrollfire-patch", "./common/
     }
     return {
         setters: [
+            function (_1) {
+            },
+            function (_2) {
+            },
             function (config_builder_1_1) {
                 config_builder_1 = config_builder_1_1;
             },
