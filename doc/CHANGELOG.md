@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.34.1"></a>
+## [0.34.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.34.0...v0.34.1) (2018-04-17)
+
+
+### Bug Fixes
+
+* **validation:** check for nulls when rendering ([44f0684](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/44f0684))
+
+
+
 <a name="0.34.0"></a>
 # [0.34.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.33.2...v0.34.0) (2018-04-04)
 
