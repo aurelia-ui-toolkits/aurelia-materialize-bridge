@@ -60,6 +60,10 @@ export class MaterializeFormValidationRenderer {
 	}
 
 	addMessage(element: Element, result: ValidateResult) {
+		if (!element) {
+			return;
+		}
+
 		let message = document.createElement("div");
 		message.id = `md-input-validation-${result.id}`;
 		message.textContent = result.message;
@@ -75,6 +79,10 @@ export class MaterializeFormValidationRenderer {
 	}
 
 	removeMessage(element: Element, result: ValidateResult) {
+		if (!element) {
+			return;
+		}
+
 		let message = element.querySelector(`#md-input-validation-${result.id}`);
 		if (message) {
 			element.removeChild(message);
@@ -82,11 +90,17 @@ export class MaterializeFormValidationRenderer {
 	}
 
 	removeValidationClasses(input: Element) {
-		input.classList.remove("valid");
-		input.classList.remove("invalid");
+		if (input) {
+			input.classList.remove("valid");
+			input.classList.remove("invalid");
+		}
 	}
 
 	addValidationClasses(input: Element, isValid: boolean) {
+		if (!input) {
+			return;
+		}
+
 		if (isValid) {
 			input.classList.remove("invalid");
 			input.classList.add("valid");
