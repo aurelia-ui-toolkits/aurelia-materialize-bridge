@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
+// the following two imports are needed for consumer TS projects
+// without them types will not be found
 require("./augmentation/element");
 require("./augmentation/materialize");
 var config_builder_1 = require("./config-builder");

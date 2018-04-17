@@ -1,3 +1,5 @@
+// the following two imports are needed for consumer TS projects
+// without them types will not be found
 import "./augmentation/element";
 import "./augmentation/materialize";
 import { ConfigBuilder } from "./config-builder";

@@ -120,6 +120,9 @@ define(["require", "exports", "tslib"], function (require, exports, tslib_1) {
             this.addValidationClasses(element, !results.find(function (x) { return !x.valid; }));
         };
         MaterializeFormValidationRenderer.prototype.addMessage = function (element, result) {
+            if (!element) {
+                return;
+            }
             var message = document.createElement("div");
             message.id = "md-input-validation-" + result.id;
             message.textContent = result.message;
@@ -134,16 +137,24 @@ define(["require", "exports", "tslib"], function (require, exports, tslib_1) {
             message.style.opacity = "1";
         };
         MaterializeFormValidationRenderer.prototype.removeMessage = function (element, result) {
+            if (!element) {
+                return;
+            }
             var message = element.querySelector("#md-input-validation-" + result.id);
             if (message) {
                 element.removeChild(message);
             }
         };
         MaterializeFormValidationRenderer.prototype.removeValidationClasses = function (input) {
-            input.classList.remove("valid");
-            input.classList.remove("invalid");
+            if (input) {
+                input.classList.remove("valid");
+                input.classList.remove("invalid");
+            }
         };
         MaterializeFormValidationRenderer.prototype.addValidationClasses = function (input, isValid) {
+            if (!input) {
+                return;
+            }
             if (isValid) {
                 input.classList.remove("invalid");
                 input.classList.add("valid");
