@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "aurelia-framework", "../common/attributeManager", "../common/attributes"], function (require, exports, tslib_1, aurelia_framework_1, attributeManager_1, attributes_1) {
+define(["require", "exports", "tslib", "aurelia-framework", "aurelia-typed-observable-plugin", "../common/attributeManager"], function (require, exports, tslib_1, aurelia_framework_1, aurelia_typed_observable_plugin_1, attributeManager_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdButton = /** @class */ (function () {
@@ -8,11 +8,12 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
             this.flat = false;
             this.floating = false;
             this.large = false;
+            this.small = false;
             this.pulse = false;
             this.attributeManager = new attributeManager_1.AttributeManager(element);
         }
         MdButton.prototype.disabledChanged = function (newValue) {
-            if (attributes_1.getBooleanFromAttributeValue(newValue)) {
+            if (newValue) {
                 this.attributeManager.addClasses("disabled");
             }
             else {
@@ -20,17 +21,15 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
             }
         };
         MdButton.prototype.flatChanged = function (newValue) {
-            if (attributes_1.getBooleanFromAttributeValue(newValue)) {
-                this.attributeManager.removeClasses(["btn", "accent"]);
+            if (newValue) {
                 this.attributeManager.addClasses("btn-flat");
             }
             else {
                 this.attributeManager.removeClasses("btn-flat");
-                this.attributeManager.addClasses(["btn", "accent"]);
             }
         };
         MdButton.prototype.pulseChanged = function (newValue) {
-            if (attributes_1.getBooleanFromAttributeValue(newValue)) {
+            if (newValue) {
                 this.attributeManager.addClasses("pulse");
             }
             else {
@@ -39,51 +38,53 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
         };
         MdButton.prototype.attached = function () {
             var classes = [];
-            if (attributes_1.getBooleanFromAttributeValue(this.flat)) {
+            if (this.flat) {
                 classes.push("btn-flat");
             }
-            if (attributes_1.getBooleanFromAttributeValue(this.floating)) {
+            if (this.floating) {
                 classes.push("btn-floating");
             }
-            if (attributes_1.getBooleanFromAttributeValue(this.large)) {
+            if (this.large) {
                 classes.push("btn-large");
             }
-            if (classes.length === 0) {
-                classes.push("btn");
+            if (this.small) {
+                classes.push("btn-small");
             }
-            if (attributes_1.getBooleanFromAttributeValue(this.disabled)) {
+            if (this.disabled) {
                 classes.push("disabled");
             }
-            if (!attributes_1.getBooleanFromAttributeValue(this.flat)) {
-                classes.push("accent");
-            }
-            if (attributes_1.getBooleanFromAttributeValue(this.pulse)) {
+            if (this.pulse) {
                 classes.push("pulse");
             }
+            classes.push("btn");
             this.attributeManager.addClasses(classes);
         };
         MdButton.prototype.detached = function () {
             this.attributeManager.removeClasses(["accent", "btn", "btn-flat", "btn-large", "disabled", "pulse"]);
         };
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
+            aurelia_typed_observable_plugin_1.bindable,
+            tslib_1.__metadata("design:type", Boolean)
         ], MdButton.prototype, "disabled", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
+            aurelia_typed_observable_plugin_1.bindable,
+            tslib_1.__metadata("design:type", Boolean)
         ], MdButton.prototype, "flat", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
+            aurelia_typed_observable_plugin_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdButton.prototype, "floating", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
+            aurelia_typed_observable_plugin_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdButton.prototype, "large", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
+            aurelia_typed_observable_plugin_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
+        ], MdButton.prototype, "small", void 0);
+        tslib_1.__decorate([
+            aurelia_typed_observable_plugin_1.bindable,
+            tslib_1.__metadata("design:type", Boolean)
         ], MdButton.prototype, "pulse", void 0);
         MdButton = tslib_1.__decorate([
             aurelia_framework_1.customAttribute("md-button"),

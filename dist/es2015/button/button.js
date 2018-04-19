@@ -1,7 +1,7 @@
 import * as tslib_1 from "tslib";
-import { autoinject, bindable, customAttribute } from "aurelia-framework";
+import { autoinject, customAttribute, bindingMode } from "aurelia-framework";
+import { bindable } from "aurelia-typed-observable-plugin";
 import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
 var MdButton = /** @class */ (function () {
     function MdButton(element) {
         this.element = element;
@@ -9,11 +9,12 @@ var MdButton = /** @class */ (function () {
         this.flat = false;
         this.floating = false;
         this.large = false;
+        this.small = false;
         this.pulse = false;
         this.attributeManager = new AttributeManager(element);
     }
     MdButton.prototype.disabledChanged = function (newValue) {
-        if (getBooleanFromAttributeValue(newValue)) {
+        if (newValue) {
             this.attributeManager.addClasses("disabled");
         }
         else {
@@ -21,17 +22,15 @@ var MdButton = /** @class */ (function () {
         }
     };
     MdButton.prototype.flatChanged = function (newValue) {
-        if (getBooleanFromAttributeValue(newValue)) {
-            this.attributeManager.removeClasses(["btn", "accent"]);
+        if (newValue) {
             this.attributeManager.addClasses("btn-flat");
         }
         else {
             this.attributeManager.removeClasses("btn-flat");
-            this.attributeManager.addClasses(["btn", "accent"]);
         }
     };
     MdButton.prototype.pulseChanged = function (newValue) {
-        if (getBooleanFromAttributeValue(newValue)) {
+        if (newValue) {
             this.attributeManager.addClasses("pulse");
         }
         else {
@@ -40,27 +39,25 @@ var MdButton = /** @class */ (function () {
     };
     MdButton.prototype.attached = function () {
         var classes = [];
-        if (getBooleanFromAttributeValue(this.flat)) {
+        if (this.flat) {
             classes.push("btn-flat");
         }
-        if (getBooleanFromAttributeValue(this.floating)) {
+        if (this.floating) {
             classes.push("btn-floating");
         }
-        if (getBooleanFromAttributeValue(this.large)) {
+        if (this.large) {
             classes.push("btn-large");
         }
-        if (classes.length === 0) {
-            classes.push("btn");
+        if (this.small) {
+            classes.push("btn-small");
         }
-        if (getBooleanFromAttributeValue(this.disabled)) {
+        if (this.disabled) {
             classes.push("disabled");
         }
-        if (!getBooleanFromAttributeValue(this.flat)) {
-            classes.push("accent");
-        }
-        if (getBooleanFromAttributeValue(this.pulse)) {
+        if (this.pulse) {
             classes.push("pulse");
         }
+        classes.push("btn");
         this.attributeManager.addClasses(classes);
     };
     MdButton.prototype.detached = function () {
@@ -68,23 +65,27 @@ var MdButton = /** @class */ (function () {
     };
     tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "disabled", void 0);
     tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "flat", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "floating", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "large", void 0);
     tslib_1.__decorate([
+        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdButton.prototype, "small", void 0);
+    tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "pulse", void 0);
     MdButton = tslib_1.__decorate([
         customAttribute("md-button"),
