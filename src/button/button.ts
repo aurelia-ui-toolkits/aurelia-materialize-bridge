@@ -1,14 +1,21 @@
-import { autoinject, bindable, customAttribute } from "aurelia-framework";
+import { autoinject, customAttribute, bindingMode } from "aurelia-framework";
+import { bindable } from "aurelia-typed-observable-plugin";
 import { AttributeManager } from "../common/attributeManager";
 import { getBooleanFromAttributeValue } from "../common/attributes";
 
 @customAttribute("md-button")
 @autoinject
 export class MdButton {
+	constructor(private element: Element) {
+		this.attributeManager = new AttributeManager(element);
+	}
+
+	attributeManager: AttributeManager;
+
 	@bindable
-	disabled: boolean | string = false;
-	disabledChanged(newValue: boolean | string) {
-		if (getBooleanFromAttributeValue(newValue)) {
+	disabled: boolean = false;
+	disabledChanged(newValue: boolean) {
+		if (newValue) {
 			this.attributeManager.addClasses("disabled");
 		} else {
 			this.attributeManager.removeClasses("disabled");
@@ -16,63 +23,56 @@ export class MdButton {
 	}
 
 	@bindable
-	flat: boolean | string = false;
-	flatChanged(newValue: boolean | string) {
-		if (getBooleanFromAttributeValue(newValue)) {
-			this.attributeManager.removeClasses(["btn", "accent"]);
+	flat: boolean = false;
+	flatChanged(newValue: boolean) {
+		if (newValue) {
 			this.attributeManager.addClasses("btn-flat");
 		} else {
 			this.attributeManager.removeClasses("btn-flat");
-			this.attributeManager.addClasses(["btn", "accent"]);
 		}
 	}
 
-	@bindable
-	floating = false;
+	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	floating: boolean = false;
+
+	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	large: boolean = false;
+
+	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	small: boolean = false;
 
 	@bindable
-	large = false;
-
-	@bindable
-	pulse: boolean | string = false;
-	pulseChanged(newValue) {
-		if (getBooleanFromAttributeValue(newValue)) {
+	pulse: boolean = false;
+	pulseChanged(newValue: boolean) {
+		if (newValue) {
 			this.attributeManager.addClasses("pulse");
 		} else {
 			this.attributeManager.removeClasses("pulse");
 		}
 	}
 
-	constructor(private element: Element) {
-		this.attributeManager = new AttributeManager(element);
-	}
-
-	attributeManager: AttributeManager;
-
 	attached() {
 		const classes = [];
 
-		if (getBooleanFromAttributeValue(this.flat)) {
+		if (this.flat) {
 			classes.push("btn-flat");
 		}
-		if (getBooleanFromAttributeValue(this.floating)) {
+		if (this.floating) {
 			classes.push("btn-floating");
 		}
-		if (getBooleanFromAttributeValue(this.large)) {
+		if (this.large) {
 			classes.push("btn-large");
 		}
-		if (classes.length === 0) {
-			classes.push("btn");
+		if (this.small) {
+			classes.push("btn-small");
 		}
-		if (getBooleanFromAttributeValue(this.disabled)) {
+		if (this.disabled) {
 			classes.push("disabled");
 		}
-		if (!getBooleanFromAttributeValue(this.flat)) {
-			classes.push("accent");
-		}
-		if (getBooleanFromAttributeValue(this.pulse)) {
+		if (this.pulse) {
 			classes.push("pulse");
 		}
+		classes.push("btn");
 		this.attributeManager.addClasses(classes);
 	}
 
