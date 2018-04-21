@@ -47,6 +47,7 @@
     "url": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge"
   },
   "devDependencies": {
+    "@types/materialize-css": "^1.0.1",
     "concurrently": "^3.5.1",
     "copyfiles": "^2.0.0",
     "isparta": "^4.0.0",
