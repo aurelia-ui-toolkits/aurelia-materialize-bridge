@@ -1,6 +1,6 @@
-import { bindable, customElement, autoinject, bindingMode } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import { customElement, autoinject, bindingMode } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
+import { bindable } from "aurelia-typed-observable-plugin";
 
 @customElement("md-navbar")
 @autoinject
@@ -11,13 +11,13 @@ export class MdNavbar {
 	nav: HTMLElement;
 
 	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdExtended;
+	mdExtended: boolean;
 
 	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdFixed;
+	mdFixed: boolean;
 
 	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdAutoHeight;
+	mdAutoHeight: boolean;
 
 	fixedAttributeManager: AttributeManager;
 	navAttributeManager: AttributeManager;
@@ -25,25 +25,25 @@ export class MdNavbar {
 	attached() {
 		this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
 		this.navAttributeManager = new AttributeManager(this.nav);
-		if (getBooleanFromAttributeValue(this.mdFixed)) {
+		if (this.mdFixed) {
 			this.fixedAttributeManager.addClasses("navbar-fixed");
 		}
-		if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
+		if (this.mdAutoHeight) {
 			this.navAttributeManager.addClasses("md-auto-height");
 		}
-		if (getBooleanFromAttributeValue(this.mdExtended)) {
+		if (this.mdExtended) {
 			this.navAttributeManager.addClasses("nav-extended");
 		}
 	}
 
 	detached() {
-		if (getBooleanFromAttributeValue(this.mdFixed)) {
+		if (this.mdFixed) {
 			this.fixedAttributeManager.removeClasses("navbar-fixed");
 		}
-		if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
+		if (this.mdAutoHeight) {
 			this.navAttributeManager.removeClasses("md-auto-height");
 		}
-		if (getBooleanFromAttributeValue(this.mdExtended)) {
+		if (this.mdExtended) {
 			this.navAttributeManager.removeClasses("nav-extended");
 		}
 	}
