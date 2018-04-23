@@ -1,4 +1,11 @@
 // tslint:disable:interface-name
+
+declare namespace M {
+	interface Tabs {
+		updateTabIndicator();
+	}
+}
+
 interface JQuery {
 	autocomplete(options: any);
 	materialbox();
