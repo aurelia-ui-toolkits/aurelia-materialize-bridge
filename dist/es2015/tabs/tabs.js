@@ -1,11 +1,12 @@
 import * as tslib_1 from "tslib";
-import { bindable, customAttribute, autoinject } from "aurelia-framework";
+import { customAttribute, autoinject } from "aurelia-framework";
 import { TaskQueue } from "aurelia-task-queue";
 import { fireMaterializeEvent } from "../common/events";
 import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import { bindable } from "aurelia-typed-observable-plugin";
 var MdTabs = /** @class */ (function () {
     function MdTabs(element, taskQueue) {
+        var _this = this;
         this.element = element;
         this.taskQueue = taskQueue;
         this.tabAttributeManagers = [];
@@ -14,67 +15,12 @@ var MdTabs = /** @class */ (function () {
         this.responsiveThreshold = Infinity;
         this.swipeable = false;
         this.transparent = false;
-        this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
+        this.fireTabSelectedEvent = function (e) {
+            var href = e.target.getAttribute("href");
+            fireMaterializeEvent(_this.element, "selected", href);
+        };
         this.attributeManager = new AttributeManager(this.element);
     }
-    MdTabs.prototype.attached = function () {
-        var _this = this;
-        this.attributeManager.addClasses("tabs");
-        var children = this.element.querySelectorAll("li");
-        [].forEach.call(children, function (child) {
-            var setter = new AttributeManager(child);
-            setter.addClasses(["tab", "primary-text"]);
-            _this.tabAttributeManagers.push(setter);
-        });
-        var self = this;
-        $(this.element).tabs({
-            onShow: function (jQueryElement) {
-                if (self.onShow) {
-                    self.onShow({ element: jQueryElement });
-                }
-            },
-            swipeable: getBooleanFromAttributeValue(this.swipeable),
-            responsiveThreshold: this.responsiveThreshold
-        });
-        var childAnchors = this.element.querySelectorAll("li a");
-        [].forEach.call(childAnchors, function (a) {
-            a.addEventListener("click", _this.fireTabSelectedEvent);
-        });
-    };
-    MdTabs.prototype.detached = function () {
-        var _this = this;
-        this.attributeManager.removeClasses("tabs");
-        // no destroy handler in tabs
-        this.tabAttributeManagers.forEach(function (setter) {
-            setter.removeClasses("tab");
-        });
-        this.tabAttributeManagers = [];
-        var childAnchors = this.element.querySelectorAll("li a");
-        [].forEach.call(childAnchors, function (a) {
-            a.removeEventListener("click", _this.fireTabSelectedEvent);
-        });
-    };
-    MdTabs.prototype.refresh = function () {
-        var _this = this;
-        this.taskQueue.queueTask(function () {
-            var hrefs = [];
-            $("li a", _this.element).each(function (i, tab) {
-                $(tab).parent().addClass("tab");
-                hrefs.push($(tab).attr("href"));
-                tab.removeEventListener("click", _this.fireTabSelectedEvent);
-                tab.addEventListener("click", _this.fireTabSelectedEvent);
-            });
-            $(hrefs).each(function (i, tab) {
-                if (_this.selectedTab.index !== i) {
-                    $(tab).hide();
-                }
-            });
-            _this.taskQueue.queueTask(function () {
-                // window resize adjusts Materialize tab indicator
-                $(window).trigger("resize");
-            });
-        });
-    };
     MdTabs.prototype.fixedChanged = function (newValue) {
         if (newValue) {
             this.attributeManager.addClasses("tabs-fixed-width");
@@ -91,37 +37,86 @@ var MdTabs = /** @class */ (function () {
             this.attributeManager.removeClasses("tabs-transparent");
         }
     };
-    MdTabs.prototype.fireTabSelectedEvent = function (e) {
-        var href = e.target.getAttribute("href");
-        fireMaterializeEvent(this.element, "selected", href);
-    };
-    MdTabs.prototype.selectTab = function (id) {
-        $(this.element).tabs("select_tab", id);
-        this.fireTabSelectedEvent({
-            target: { getAttribute: function () { return "#" + id; } }
+    MdTabs.prototype.attached = function () {
+        this.attributeManager.addClasses("tabs");
+        var children = this.element.querySelectorAll("li");
+        try {
+            for (var _a = tslib_1.__values(Array.from(children)), _b = _a.next(); !_b.done; _b = _a.next()) {
+                var child = _b.value;
+                var setter = new AttributeManager(child);
+                setter.addClasses(["tab", "primary-text"]);
+                this.tabAttributeManagers.push(setter);
+            }
+        }
+        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+        finally {
+            try {
+                if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
+            }
+            finally { if (e_1) throw e_1.error; }
+        }
+        this.instance = new M.Tabs(this.element, {
+            onShow: this.onShow,
+            swipeable: this.swipeable,
+            responsiveThreshold: this.responsiveThreshold
         });
+        var childAnchors = this.element.querySelectorAll("li a");
+        try {
+            for (var _d = tslib_1.__values(Array.from(childAnchors)), _e = _d.next(); !_e.done; _e = _d.next()) {
+                var a = _e.value;
+                a.addEventListener("click", this.fireTabSelectedEvent);
+            }
+        }
+        catch (e_2_1) { e_2 = { error: e_2_1 }; }
+        finally {
+            try {
+                if (_e && !_e.done && (_f = _d.return)) _f.call(_d);
+            }
+            finally { if (e_2) throw e_2.error; }
+        }
+        var e_1, _c, e_2, _f;
+    };
+    MdTabs.prototype.detached = function () {
+        this.instance.destroy();
+        this.attributeManager.removeClasses("tabs");
+        this.tabAttributeManagers.forEach(function (setter) {
+            setter.removeClasses("tab");
+        });
+        this.tabAttributeManagers = [];
+        var childAnchors = this.element.querySelectorAll("li a");
+        try {
+            for (var _a = tslib_1.__values(Array.from(childAnchors)), _b = _a.next(); !_b.done; _b = _a.next()) {
+                var a = _b.value;
+                a.removeEventListener("click", this.fireTabSelectedEvent);
+            }
+        }
+        catch (e_3_1) { e_3 = { error: e_3_1 }; }
+        finally {
+            try {
+                if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
+            }
+            finally { if (e_3) throw e_3.error; }
+        }
+        var e_3, _c;
+    };
+    MdTabs.prototype.updateTabIndicator = function () {
+        this.instance.updateTabIndicator();
+    };
+    MdTabs.prototype.select = function (id) {
+        this.instance.select(id);
+        fireMaterializeEvent(this.element, "selected", "#" + id);
     };
     Object.defineProperty(MdTabs.prototype, "selectedTab", {
         // FIXME: probably bad - binding this introduces dirty checking
         get: function () {
-            var children = this.element.querySelectorAll("li.tab a");
-            var index = -1;
-            var href = null;
-            [].forEach.call(children, function (a, i) {
-                if (a.classList.contains("active")) {
-                    index = i;
-                    href = a.href;
-                    return;
-                }
-            });
-            return { href: href, index: index };
+            return this.instance.index;
         },
         enumerable: true,
         configurable: true
     });
     tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Boolean)
     ], MdTabs.prototype, "fixed", void 0);
     tslib_1.__decorate([
         bindable,
@@ -129,15 +124,15 @@ var MdTabs = /** @class */ (function () {
     ], MdTabs.prototype, "onShow", void 0);
     tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Number)
     ], MdTabs.prototype, "responsiveThreshold", void 0);
     tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Boolean)
     ], MdTabs.prototype, "swipeable", void 0);
     tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Boolean)
     ], MdTabs.prototype, "transparent", void 0);
     MdTabs = tslib_1.__decorate([
         customAttribute("md-tabs"),

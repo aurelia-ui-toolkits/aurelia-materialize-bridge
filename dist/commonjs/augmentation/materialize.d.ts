@@ -1,3 +1,8 @@
+declare namespace M {
+    interface Tabs {
+        updateTabIndicator(): any;
+    }
+}
 interface JQuery {
     autocomplete(options: any): any;
     materialbox(): any;
