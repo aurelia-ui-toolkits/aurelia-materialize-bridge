@@ -1,7 +1,7 @@
 import * as tslib_1 from "tslib";
-import { bindable, customElement, autoinject, bindingMode } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import { customElement, autoinject, bindingMode } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
+import { bindable } from "aurelia-typed-observable-plugin";
 var MdNavbar = /** @class */ (function () {
     function MdNavbar(element) {
         this.element = element;
@@ -9,38 +9,38 @@ var MdNavbar = /** @class */ (function () {
     MdNavbar.prototype.attached = function () {
         this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
         this.navAttributeManager = new AttributeManager(this.nav);
-        if (getBooleanFromAttributeValue(this.mdFixed)) {
+        if (this.mdFixed) {
             this.fixedAttributeManager.addClasses("navbar-fixed");
         }
-        if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
+        if (this.mdAutoHeight) {
             this.navAttributeManager.addClasses("md-auto-height");
         }
-        if (getBooleanFromAttributeValue(this.mdExtended)) {
+        if (this.mdExtended) {
             this.navAttributeManager.addClasses("nav-extended");
         }
     };
     MdNavbar.prototype.detached = function () {
-        if (getBooleanFromAttributeValue(this.mdFixed)) {
+        if (this.mdFixed) {
             this.fixedAttributeManager.removeClasses("navbar-fixed");
         }
-        if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
+        if (this.mdAutoHeight) {
             this.navAttributeManager.removeClasses("md-auto-height");
         }
-        if (getBooleanFromAttributeValue(this.mdExtended)) {
+        if (this.mdExtended) {
             this.navAttributeManager.removeClasses("nav-extended");
         }
     };
     tslib_1.__decorate([
         bindable({ defaultBindingMode: bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Boolean)
     ], MdNavbar.prototype, "mdExtended", void 0);
     tslib_1.__decorate([
         bindable({ defaultBindingMode: bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Boolean)
     ], MdNavbar.prototype, "mdFixed", void 0);
     tslib_1.__decorate([
         bindable({ defaultBindingMode: bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Boolean)
     ], MdNavbar.prototype, "mdAutoHeight", void 0);
     MdNavbar = tslib_1.__decorate([
         customElement("md-navbar"),

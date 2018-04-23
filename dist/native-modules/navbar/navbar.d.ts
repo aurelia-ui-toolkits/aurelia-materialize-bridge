@@ -4,9 +4,9 @@ export declare class MdNavbar {
     constructor(element: Element);
     fixedAnchor: HTMLDivElement;
     nav: HTMLElement;
-    mdExtended: any;
-    mdFixed: any;
-    mdAutoHeight: any;
+    mdExtended: boolean;
+    mdFixed: boolean;
+    mdAutoHeight: boolean;
     fixedAttributeManager: AttributeManager;
     navAttributeManager: AttributeManager;
     attached(): void;

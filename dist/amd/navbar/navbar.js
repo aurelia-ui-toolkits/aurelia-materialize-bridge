@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "aurelia-framework", "../common/attributes", "../common/attributeManager"], function (require, exports, tslib_1, aurelia_framework_1, attributes_1, attributeManager_1) {
+define(["require", "exports", "tslib", "aurelia-framework", "../common/attributeManager", "aurelia-typed-observable-plugin"], function (require, exports, tslib_1, aurelia_framework_1, attributeManager_1, aurelia_typed_observable_plugin_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdNavbar = /** @class */ (function () {
@@ -8,38 +8,38 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
         MdNavbar.prototype.attached = function () {
             this.fixedAttributeManager = new attributeManager_1.AttributeManager(this.fixedAnchor);
             this.navAttributeManager = new attributeManager_1.AttributeManager(this.nav);
-            if (attributes_1.getBooleanFromAttributeValue(this.mdFixed)) {
+            if (this.mdFixed) {
                 this.fixedAttributeManager.addClasses("navbar-fixed");
             }
-            if (attributes_1.getBooleanFromAttributeValue(this.mdAutoHeight)) {
+            if (this.mdAutoHeight) {
                 this.navAttributeManager.addClasses("md-auto-height");
             }
-            if (attributes_1.getBooleanFromAttributeValue(this.mdExtended)) {
+            if (this.mdExtended) {
                 this.navAttributeManager.addClasses("nav-extended");
             }
         };
         MdNavbar.prototype.detached = function () {
-            if (attributes_1.getBooleanFromAttributeValue(this.mdFixed)) {
+            if (this.mdFixed) {
                 this.fixedAttributeManager.removeClasses("navbar-fixed");
             }
-            if (attributes_1.getBooleanFromAttributeValue(this.mdAutoHeight)) {
+            if (this.mdAutoHeight) {
                 this.navAttributeManager.removeClasses("md-auto-height");
             }
-            if (attributes_1.getBooleanFromAttributeValue(this.mdExtended)) {
+            if (this.mdExtended) {
                 this.navAttributeManager.removeClasses("nav-extended");
             }
         };
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            aurelia_typed_observable_plugin_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdNavbar.prototype, "mdExtended", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            aurelia_typed_observable_plugin_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdNavbar.prototype, "mdFixed", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            aurelia_typed_observable_plugin_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdNavbar.prototype, "mdAutoHeight", void 0);
         MdNavbar = tslib_1.__decorate([
             aurelia_framework_1.customElement("md-navbar"),

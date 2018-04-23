@@ -1,20 +1,19 @@
+/// <reference types="materialize-css" />
 import { AttributeManager } from "../common/attributeManager";
-import { Logger } from "aurelia-logging";
 export declare class MdSidenav {
     element: Element;
     constructor(element: Element);
+    static fixedClass: string;
     static id: number;
     controlId: string;
-    log: Logger;
     sidenav: HTMLDivElement;
+    instance: M.Sidenav;
     attributeManager: AttributeManager;
-    mdCloseOnClick: boolean | string;
-    mdEdge: string;
-    mdFixed: boolean | string;
-    mdWidth: number | string;
-    attachedResolver: () => void;
-    whenAttached: Promise<void>;
-    attached(): void;
-    detached(): void;
+    options: M.SidenavOptions;
+    mdFixed: boolean;
     mdFixedChanged(newValue: any): void;
+    attached(): void;
+    open(): void;
+    close(): void;
+    detached(): void;
 }
