@@ -11,20 +11,20 @@ export class MdSidenavCollapse {
 	@bindable
 	ref: MdSidenav;
 
-	isOpen: boolean;
-
-	async attached() {
-		this.element.addEventListener("click", () => this.click());
+	attached() {
+		this.element.addEventListener("click", this.click);
 	}
 
-	click() {
-		if (this.isOpen) {
+	detached(){
+		this.element.removeEventListener("click", this.click);
+	}
+
+	click = () => {
+		if (this.ref.instance.isOpen) {
 			this.ref.close();
-			this.isOpen = false;
 		}
 		else {
 			this.ref.open();
-			this.isOpen = true;
 		}
 	}
 }
