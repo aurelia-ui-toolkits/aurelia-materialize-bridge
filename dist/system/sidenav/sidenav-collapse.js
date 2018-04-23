@@ -17,27 +17,23 @@ System.register(["tslib", "aurelia-framework", "./sidenav"], function (exports_1
         execute: function () {
             MdSidenavCollapse = /** @class */ (function () {
                 function MdSidenavCollapse(element) {
+                    var _this = this;
                     this.element = element;
+                    this.click = function () {
+                        if (_this.ref.instance.isOpen) {
+                            _this.ref.close();
+                        }
+                        else {
+                            _this.ref.open();
+                        }
+                    };
                     this.element = element;
                 }
                 MdSidenavCollapse.prototype.attached = function () {
-                    return tslib_1.__awaiter(this, void 0, void 0, function () {
-                        var _this = this;
-                        return tslib_1.__generator(this, function (_a) {
-                            this.element.addEventListener("click", function () { return _this.click(); });
-                            return [2 /*return*/];
-                        });
-                    });
+                    this.element.addEventListener("click", this.click);
                 };
-                MdSidenavCollapse.prototype.click = function () {
-                    if (this.isOpen) {
-                        this.ref.close();
-                        this.isOpen = false;
-                    }
-                    else {
-                        this.ref.open();
-                        this.isOpen = true;
-                    }
+                MdSidenavCollapse.prototype.detached = function () {
+                    this.element.removeEventListener("click", this.click);
                 };
                 tslib_1.__decorate([
                     aurelia_framework_1.bindable,
