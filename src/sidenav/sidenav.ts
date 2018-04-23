@@ -1,6 +1,5 @@
 import { customElement, autoinject } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
-import { getLogger, Logger } from "aurelia-logging";
 import { bindable } from "aurelia-typed-observable-plugin";
 
 @customElement("md-sidenav")
@@ -8,14 +7,12 @@ import { bindable } from "aurelia-typed-observable-plugin";
 export class MdSidenav {
 	constructor(public element: Element) {
 		this.controlId = `md-sidenav-${MdSidenav.id++}`;
-		this.log = getLogger("md-sidenav");
 	}
 
 	static fixedClass: string = "sidenav-fixed";
 
 	static id = 0;
 	controlId: string;
-	log: Logger;
 	sidenav: HTMLDivElement;
 	instance: M.Sidenav;
 	attributeManager: AttributeManager;
@@ -36,16 +33,12 @@ export class MdSidenav {
 		}
 	}
 
-	attachedResolver: () => void;
-	whenAttached: Promise<void> = new Promise((resolve, reject) => this.attachedResolver = resolve);
-
 	attached() {
 		this.attributeManager = new AttributeManager(this.sidenav);
 		if (this.mdFixed) {
 			this.attributeManager.addClasses(MdSidenav.fixedClass);
 		}
 		this.instance = new M.Sidenav(this.sidenav, this.options);
-		this.attachedResolver();
 	}
 
 	open() {
