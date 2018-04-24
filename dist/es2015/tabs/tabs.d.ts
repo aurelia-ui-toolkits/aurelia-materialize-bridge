@@ -8,7 +8,7 @@ export declare class MdTabs {
     tabAttributeManagers: AttributeManager[];
     fixed: boolean;
     fixedChanged(newValue: any): void;
-    onShow: (this: M.Tabs, newContent: Element) => void;
+    onShow: ({newContent: Element}) => void;
     responsiveThreshold: number;
     swipeable: boolean;
     transparent: boolean;

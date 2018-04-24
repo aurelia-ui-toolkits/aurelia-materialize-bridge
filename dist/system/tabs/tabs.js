@@ -75,8 +75,13 @@ System.register(["tslib", "aurelia-framework", "aurelia-task-queue", "../common/
                         }
                         finally { if (e_1) throw e_1.error; }
                     }
+                    var self = this;
                     this.instance = new M.Tabs(this.element, {
-                        onShow: this.onShow,
+                        onShow: function (newContent) {
+                            if (self.onShow) {
+                                self.onShow({ newContent: newContent });
+                            }
+                        },
                         swipeable: this.swipeable,
                         responsiveThreshold: this.responsiveThreshold
                     });
