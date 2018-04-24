@@ -3,6 +3,7 @@
 declare namespace M {
 	interface Tabs {
 		updateTabIndicator();
+		_calcRightPos(el);
 	}
 }
 

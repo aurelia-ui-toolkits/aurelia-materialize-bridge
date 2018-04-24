@@ -80,6 +80,13 @@ export class MdTabs {
 		}
 	}
 
+	refresh() {
+		this.taskQueue.queueTask(() => {
+			this.detached();
+			this.attached();
+		});
+	}
+
 	updateTabIndicator() {
 		this.instance.updateTabIndicator();
 	}
