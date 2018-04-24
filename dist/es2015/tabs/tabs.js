@@ -99,6 +99,13 @@ var MdTabs = /** @class */ (function () {
         }
         var e_3, _c;
     };
+    MdTabs.prototype.refresh = function () {
+        var _this = this;
+        this.taskQueue.queueTask(function () {
+            _this.detached();
+            _this.attached();
+        });
+    };
     MdTabs.prototype.updateTabIndicator = function () {
         this.instance.updateTabIndicator();
     };

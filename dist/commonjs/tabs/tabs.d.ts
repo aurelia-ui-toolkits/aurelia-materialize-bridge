@@ -16,6 +16,7 @@ export declare class MdTabs {
     instance: M.Tabs;
     attached(): void;
     detached(): void;
+    refresh(): void;
     updateTabIndicator(): void;
     fireTabSelectedEvent: (e: Event) => void;
     select(id: string): void;

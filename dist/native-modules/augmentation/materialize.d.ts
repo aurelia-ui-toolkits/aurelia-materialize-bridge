@@ -1,6 +1,7 @@
 declare namespace M {
     interface Tabs {
         updateTabIndicator(): any;
+        _calcRightPos(el: any): any;
     }
 }
 interface JQuery {
