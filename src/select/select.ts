@@ -1,33 +1,34 @@
-import { bindable, customAttribute, autoinject } from "aurelia-framework";
+import { customAttribute, autoinject } from "aurelia-framework";
 import { BindingEngine } from "aurelia-binding";
 import { TaskQueue } from "aurelia-task-queue";
 import { getLogger, Logger } from "aurelia-logging";
 import { fireEvent } from "../common/events";
-import { getBooleanFromAttributeValue } from "../common/attributes";
 import { DOM } from "aurelia-pal";
 import { ValidateResult } from "aurelia-validation";
-import { MaterializeFormValidationRenderer } from "..";
+import { MaterializeFormValidationRenderer } from "../validation/validationRenderer";
+import { bindable } from "aurelia-typed-observable-plugin";
+import * as dom from "../common/dom";
 
 @autoinject
 @customAttribute("md-select")
 export class MdSelect {
 	constructor(element: Element, private bindingEngine: BindingEngine, private taskQueue: TaskQueue) {
 		this.element = element as HTMLInputElement;
-		this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
-		this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
 		this.log = getLogger("md-select");
 		this.handleFocus = this.handleFocus.bind(this);
 	}
 
+	instance: M.FormSelect;
 	log: Logger;
 	element: HTMLInputElement;
+	labelElement: HTMLLabelElement;
 
 	@bindable
-	disabled: boolean | string = false;
+	disabled: boolean = false;
 
 	@bindable
-	readonly: boolean | string = false;
+	readonly: boolean = false;
 	readonlyChanged() {
 		if (this.readonly) {
 			this.makeReadonly($(this.element).siblings("input")[0]);
@@ -37,18 +38,18 @@ export class MdSelect {
 	}
 
 	@bindable
-	enableOptionObserver: boolean | string = false;
+	enableOptionObserver: boolean = false;
 
 	@bindable
 	label: string = "";
 
 	@bindable
-	showErrortext: boolean | string = true;
+	showErrortext: boolean = true;
 
 	suspendUpdate: boolean = false;
 	subscriptions = [];
 	inputField: HTMLDivElement = null;
-	input: HTMLInputElement = null;
+	input: Element = null;
 	dropdownMutationObserver = null;
 	optionsMutationObserver = null;
 
@@ -56,15 +57,18 @@ export class MdSelect {
 		if (this.element.classList.contains("browser-default")) {
 			return;
 		}
-		let div = $("<div class='input-field'></div>");
-		let va = this.element.attributes.getNamedItem("validate");
+		this.inputField = document.createElement("div");
+		this.inputField.classList.add("input-field");
+		let va = this.element.getAttributeNode("validate");
 		if (va) {
-			div.attr(va.name, va.value);
+			this.inputField.setAttribute(va.name, va.value);
 		}
 
-		$(this.element).wrap(div);
+		dom.wrap(this.inputField, this.element);
 		if (this.label) {
-			$(`<label class="md-select-label">${this.label}</label>`).insertAfter(this.element);
+			this.labelElement = document.createElement("label");
+			this.labelElement.classList.add("md-select-label");
+			dom.insertAfter(this.element, this.labelElement);
 		}
 
 		this.taskQueue.queueTask(() => {
@@ -72,24 +76,24 @@ export class MdSelect {
 		});
 		this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, "value").subscribe(this.handleChangeFromViewModel));
 
-		this.inputField = this.element.closest(".input-field") as HTMLDivElement;
-		$(this.element).on("change", this.handleChangeFromNativeSelect);
+		this.element.addEventListener("change", this.handleChangeFromNativeSelect);
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
 	}
 
 	detached() {
-		if ((this.element).classList.contains("browser-default")) {
+		if (this.element.classList.contains("browser-default")) {
 			return;
 		}
-		let $element = $(this.element);
-		$element.off("change", this.handleChangeFromNativeSelect);
+
+		this.element.removeEventListener("change", this.handleChangeFromNativeSelect);
 		this.observeVisibleDropdownContent(false);
 		this.observeOptions(false);
 		this.dropdownMutationObserver = null;
 		$element.siblings(`ul#select-options-${$element.data("select-id")}`).remove();
-		$element.material_select("destroy");
-		$element.siblings("label").remove();
+		this.instance.destroy();
+		this.labelElement.remove();
+		this.element.remove
 		$element.siblings(".md-input-validation").remove();
 		$element.unwrap();
 		this.subscriptions.forEach(sub => sub.dispose());
@@ -138,7 +142,7 @@ export class MdSelect {
 		let input = this.element.parentElement.querySelector("input.select-dropdown");
 		if (!input) { return; }
 		this.log.debug("showErrortextChanged: " + this.showErrortext);
-		input.setAttribute("data-show-errortext", getBooleanFromAttributeValue(this.showErrortext).toString());
+		input.setAttribute("data-show-errortext", this.showErrortext.toString());
 	}
 
 	notifyBindingEngine() {
@@ -148,7 +152,7 @@ export class MdSelect {
 		this.log.debug("selectedOptions changed", arguments);
 	}
 
-	handleChangeFromNativeSelect() {
+	handleChangeFromNativeSelect = () => {
 		if ((this.element).classList.contains("browser-default")) {
 			return;
 		}
@@ -160,7 +164,7 @@ export class MdSelect {
 		}
 	}
 
-	handleChangeFromViewModel(newValue) {
+	handleChangeFromViewModel = (newValue) => {
 		if ((this.element).classList.contains("browser-default")) {
 			return;
 		}
@@ -194,32 +198,31 @@ export class MdSelect {
 		}
 		this.observeVisibleDropdownContent(false);
 		this.observeOptions(false);
-		let input = $(this.element).siblings("input");
-		let isValid = input.hasClass("valid");
-		let isInvalid = input.hasClass("invalid");
+		this.input = this.instance.input;
+		let isValid = this.input.classList.contains("valid");
+		let isInvalid = this.input.classList.contains("invalid");
 		if (destroy) {
-			$(this.element).material_select("destroy");
+			this.instance.destroy();
 		}
-		$(this.element).material_select();
-		input = $(this.element).siblings("input");
+		this.instance = new M.FormSelect(this.element, {});
 		if (isValid) {
-			input.addClass("valid");
+			this.instance.input.classList.add("valid");
 		}
 		if (isInvalid) {
-			input.addClass("invalid");
+			this.instance.input.classList.add("invalid");
 		}
-		this.input = input[0] as HTMLInputElement;
+		this.input = this.instance.input;
 		this.toggleControl(this.disabled);
 		this.observeVisibleDropdownContent(true);
 		this.observeOptions(true);
 		this.setErrorTextAttribute();
 		if (this.readonly) {
-			this.makeReadonly(input[0]);
+			this.makeReadonly(this.input);
 		}
 	}
 
-	makeReadonly(input) {
-		if ((this.element).classList.contains("browser-default")) {
+	makeReadonly(input: Element) {
+		if (this.element.classList.contains("browser-default")) {
 			return;
 		}
 		$(input).off("click");
@@ -265,7 +268,7 @@ export class MdSelect {
 		if ((this.element).classList.contains("browser-default")) {
 			return;
 		}
-		if (getBooleanFromAttributeValue(this.enableOptionObserver)) {
+		if (this.enableOptionObserver) {
 			if (attach) {
 				if (!this.optionsMutationObserver) {
 					this.optionsMutationObserver = DOM.createMutationObserver(mutations => {

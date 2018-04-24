@@ -5,6 +5,14 @@ declare namespace M {
 		updateTabIndicator();
 		_calcRightPos(el);
 	}
+
+	interface FormSelectOptions {
+		classes: string;
+	}
+
+	class FormSelect extends Component<FormSelectOptions> {
+		input: Element;
+	}
 }
 
 interface JQuery {
