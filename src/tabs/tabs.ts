@@ -25,7 +25,7 @@ export class MdTabs {
 	}
 
 	@bindable
-	onShow: (this: M.Tabs, newContent: Element) => void = null;
+	onShow: ({ newContent: Element }) => void = null;
 
 	@bindable
 	responsiveThreshold: number = Infinity;
@@ -55,8 +55,13 @@ export class MdTabs {
 			this.tabAttributeManagers.push(setter);
 		}
 
+		let self = this;
 		this.instance = new M.Tabs(this.element, {
-			onShow: this.onShow,
+			onShow(this: M.Tabs, newContent: Element) {
+				if (self.onShow) {
+					self.onShow({ newContent });
+				}
+			},
 			swipeable: this.swipeable,
 			responsiveThreshold: this.responsiveThreshold
 		});
