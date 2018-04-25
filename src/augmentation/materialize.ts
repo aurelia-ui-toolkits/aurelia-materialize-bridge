@@ -12,6 +12,7 @@ declare namespace M {
 
 	class FormSelect extends Component<FormSelectOptions> {
 		input: Element;
+		wrapper: Element;
 	}
 }
 
