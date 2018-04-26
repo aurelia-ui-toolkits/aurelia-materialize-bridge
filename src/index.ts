@@ -6,7 +6,7 @@ import { FrameworkConfiguration } from "aurelia-framework";
 import { ConfigBuilder } from "./config-builder";
 import { ScrollfirePatch } from "./scrollfire/scrollfire-patch";
 import { polyfillElementClosest } from "./common/polyfills";
-import {usePropertyTypeForBindable, usePropertyTypeForObservable} from "aurelia-typed-observable-plugin";
+import { usePropertyTypeForBindable, usePropertyTypeForObservable, coerceFunctions, mapCoerceFunction } from "aurelia-typed-observable-plugin";
 
 function applyPolyfills() {
 	polyfillElementClosest();
@@ -29,6 +29,7 @@ export function configure(frameworkConfiguration: FrameworkConfiguration, config
 
 	usePropertyTypeForBindable(true);
 	usePropertyTypeForObservable(true);
+	coerceFunctions.boolean = val => (val || val === "") && val !== "false" ? true : false;
 }
 
 // build-index-remove start

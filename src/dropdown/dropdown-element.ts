@@ -1,8 +1,7 @@
-import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customElement("md-dropdown")
-@autoinject
+@au.customElement("md-dropdown")
+@au.autoinject
 export class MdDropdownElement {
 	constructor(private element: Element) {
 		this.controlId = `md-dropdown-${MdDropdownElement.id++}`;
@@ -11,43 +10,77 @@ export class MdDropdownElement {
 	static id = 0;
 	controlId: string;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	alignment: string = "left";
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	belowOrigin: boolean | string = false;
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	autoTrigger: boolean = false;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	constrainWidth: boolean | string = true;
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	constrainWidth: boolean = true;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	gutter: number = 0;
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	container: Element = null;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	hover: boolean | string = false;
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	coverTrigger: boolean = false;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	closeOnClick: boolean = true;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	hover: boolean = false;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	mdTitle: string;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	inDuration: number | string = 300;
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	inDuration: number = 300;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	outDuration: number | string = 225;
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	outDuration: number = 225;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	stopPropagation: boolean | string = false;
+	instance: M.Dropdown;
 
 	attached() {
-		$(this.element).dropdown({
+		this.instance = new M.Dropdown(this.element, {
 			alignment: this.alignment,
-			belowOrigin: getBooleanFromAttributeValue(this.belowOrigin),
-			constrain_width: getBooleanFromAttributeValue(this.constrainWidth),
-			gutter: parseInt(this.gutter.toString(), 10),
-			hover: getBooleanFromAttributeValue(this.hover),
-			inDuration: parseInt(this.inDuration.toString(), 10),
-			outDuration: parseInt(this.outDuration.toString(), 10),
-			stopPropagation: getBooleanFromAttributeValue(this.stopPropagation)
+			autoTrigger: this.autoTrigger,
+			constrainWidth: this.constrainWidth,
+			container: this.container,
+			coverTrigger: this.coverTrigger,
+			closeOnClick: this.closeOnClick,
+			hover: this.hover,
+			inDuration: this.inDuration,
+			outDuration: this.outDuration,
+			onOpenStart: () => au.fireMaterializeEvent(this.element, "open-start"),
+			onOpenEnd: () => au.fireMaterializeEvent(this.element, "open-end"),
+			onCloseStart: () => au.fireMaterializeEvent(this.element, "close-start"),
+			onCloseEnd: () => au.fireMaterializeEvent(this.element, "close-end")
 		});
+	}
+
+	detached() {
+		if (this.instance) {
+			this.instance.destroy();
+		}
+	}
+
+	open() {
+		if (this.instance) {
+			this.instance.open();
+		}
+	}
+
+	close() {
+		if (this.instance) {
+			this.instance.close();
+		}
+	}
+
+	recalculateDimensions() {
+		if (this.instance) {
+			this.instance.recalculateDimensions();
+		}
 	}
 }
