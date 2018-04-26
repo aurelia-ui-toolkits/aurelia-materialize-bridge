@@ -1,32 +1,21 @@
-import { customAttribute, autoinject, bindingMode } from "aurelia-framework";
-import { BindingEngine } from "aurelia-binding";
-import { TaskQueue } from "aurelia-task-queue";
-import { getLogger, Logger } from "aurelia-logging";
-import { fireEvent } from "../common/events";
-import { DOM } from "aurelia-pal";
-import { ValidateResult } from "aurelia-validation";
-import { MaterializeFormValidationRenderer } from "../validation/validationRenderer";
-import { bindable } from "aurelia-typed-observable-plugin";
-import * as dom from "../common/dom";
+import * as au from "../aurelia";
 import "./select.css";
 
-@autoinject
-@customAttribute("md-select")
+@au.autoinject
+@au.customAttribute("md-select")
 export class MdSelect {
-	constructor(element: Element, private bindingEngine: BindingEngine, private taskQueue: TaskQueue) {
+	constructor(element: Element, private bindingEngine: au.BindingEngine, private taskQueue: au.TaskQueue) {
 		this.element = element as HTMLInputElement;
-		this.handleBlur = this.handleBlur.bind(this);
-		this.log = getLogger("md-select");
-		this.handleFocus = this.handleFocus.bind(this);
+		this.log = au.getLogger("md-select");
 	}
 
 	instance: M.FormSelect;
-	log: Logger;
+	log: au.Logger;
 	element: HTMLInputElement;
 	labelElement: HTMLLabelElement;
 	readonlyDiv: HTMLDivElement;
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
+	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	value: any;
 	suppressValueChanged: boolean;
 	valueChanged() {
@@ -41,14 +30,9 @@ export class MdSelect {
 		}
 		this.element.value = this.value;
 		this.createMaterialSelect(false);
-		// this.instance = new M.FormSelect(this.element, {});
-	}
-	setValue(newValue: any) {
-		this.suppressValueChanged = true;
-		this.value = newValue;
 	}
 
-	@bindable
+	@au.bindable
 	disabled: boolean = false;
 	disabledChanged() {
 		if (!this.instance) {
@@ -56,27 +40,38 @@ export class MdSelect {
 		}
 		if (this.disabled) {
 			this.instance.wrapper.querySelector(".caret").classList.add("disabled");
-			this.input.setAttribute("disabled", "disabled");
+			this.instance.input.setAttribute("disabled", "disabled");
 			this.instance.wrapper.setAttribute("disabled", "disabled");
 		} else {
 			this.instance.wrapper.querySelector(".caret").classList.remove("disabled");
-			this.input.removeAttribute("disabled");
+			this.instance.input.removeAttribute("disabled");
 			this.instance.wrapper.removeAttribute("disabled");
 		}
 	}
 
-	@bindable
+	@au.bindable
 	readonly: boolean = false;
 	readonlyChanged() {
-		if (this.readonlyDiv) {
-			this.readonlyDiv.hidden = !this.readonly;
+		if (!this.readonlyDiv) {
+			return;
+		}
+		this.readonlyDiv.hidden = !this.readonly;
+		if (this.readonly) {
+			this.instance.input.addEventListener("focus", this.triggerBlur);
+		}
+		else {
+			this.instance.input.removeEventListener("focus", this.triggerBlur);
 		}
 	}
 
-	@bindable
+	triggerBlur = () => {
+		(this.instance.input as HTMLInputElement).blur();
+	}
+
+	@au.bindable
 	enableOptionObserver: boolean = false;
 
-	@bindable
+	@au.bindable
 	label: string = "";
 	labelChanged() {
 		if (this.labelElement) {
@@ -84,26 +79,25 @@ export class MdSelect {
 		}
 	}
 
-	@bindable
+	@au.bindable
 	showErrortext: boolean = true;
 	showErrortextChanged() {
-		if (this.input) {
+		if (this.instance) {
 			this.log.debug("showErrortextChanged: " + this.showErrortext);
-			this.input.setAttribute("data-show-errortext", this.showErrortext.toString());
+			this.instance.input.setAttribute("data-show-errortext", this.showErrortext.toString());
 		}
 	}
 
 	suspendUpdate: boolean = false;
 	subscriptions = [];
 	inputField: HTMLDivElement = null;
-	input: Element = null;
-	dropdownMutationObserver = null;
 	optionsMutationObserver = null;
 
 	attached() {
 		if (this.element.classList.contains("browser-default")) {
 			return;
 		}
+
 		this.inputField = document.createElement("div");
 		this.inputField.classList.add("input-field");
 		let va = this.element.getAttributeNode("validate");
@@ -111,35 +105,26 @@ export class MdSelect {
 			this.inputField.setAttribute(va.name, va.value);
 		}
 
-		dom.wrap(this.inputField, this.element);
+		au.wrap(this.inputField, this.element);
 		this.labelElement = document.createElement("label");
 		this.labelElement.classList.add("md-select-label");
-		dom.insertAfter(this.element, this.labelElement);
+		au.insertAfter(this.element, this.labelElement);
 		this.labelChanged();
-
-		this.taskQueue.queueTask(() => {
-			this.createMaterialSelect(false);
-		});
-		// this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, "value").subscribe(this.handleChangeFromViewModel));
-
+		this.taskQueue.queueTask(() => this.createMaterialSelect(false));
 		this.element.addEventListener("change", this.handleChangeFromNativeSelect);
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
 	}
 
 	detached() {
-		if (this.element.classList.contains("browser-default")) {
+		if (!this.instance) {
 			return;
 		}
-
-		// this.element.removeEventListener("change", this.handleChangeFromNativeSelect);
-		// this.observeVisibleDropdownContent(false);
-		// this.observeOptions(false);
-		this.dropdownMutationObserver = null;
+		this.element.removeEventListener("change", this.handleChangeFromNativeSelect);
+		this.observeOptions(false);
 		this.instance.destroy();
 		// this will remove input-field wrapper and all its' content like validation messsages or a label
-		dom.unwrap(this.element);
-		this.input = null;
+		au.unwrap(this.element);
 		this.inputField = null;
 		this.labelElement = null;
 		this.readonlyDiv = null;
@@ -149,49 +134,26 @@ export class MdSelect {
 	}
 
 	refresh() {
-		if (this.element.classList.contains("browser-default")) {
+		if (!this.instance) {
 			return;
 		}
-		this.taskQueue.queueTask(() => {
-			this.createMaterialSelect(true);
-		});
+		this.taskQueue.queueTask(() => this.createMaterialSelect(true));
 	}
 
 	handleChangeFromNativeSelect = () => {
 		this.log.debug("handleChangeFromNativeSelect", this.element.value);
-		this.setValue(this.element.value);
-		// if (this.element.classList.contains("browser-default")) {
-		// 	return;
-		// }
-		// if (!this.suspendUpdate) {
-		// 	this.log.debug("handleChangeFromNativeSelect", this.element.value);
-		// 	this.suspendUpdate = true;
-		// 	fireEvent(this.element, "change");
-		// 	this.suspendUpdate = false;
-		// }
-	}
-
-	handleChangeFromViewModel = (newValue) => {
-		if (this.element.classList.contains("browser-default")) {
-			return;
-		}
-		this.log.debug("handleChangeFromViewModel", newValue, this.element.value);
-		if (!this.suspendUpdate) {
-			this.createMaterialSelect(false);
-		}
+		this.suppressValueChanged = true;
+		this.value = this.element.value;
+		au.fireEvent(this.element, "blur");
 	}
 
 	createMaterialSelect(destroy) {
-		if ((this.element).classList.contains("browser-default")) {
-			return;
-		}
-		// this.observeVisibleDropdownContent(false);
-		// this.observeOptions(false);
+		this.observeOptions(false);
 		let isValid = false;
 		let isInvalid = false;
 		if (this.instance) {
-			isValid = this.input.classList.contains("valid");
-			isInvalid = this.input.classList.contains("invalid");
+			isValid = this.instance.input.classList.contains("valid");
+			isInvalid = this.instance.input.classList.contains("invalid");
 			if (destroy) {
 				this.instance.destroy();
 			}
@@ -203,122 +165,58 @@ export class MdSelect {
 		if (isInvalid) {
 			this.instance.input.classList.add("invalid");
 		}
-		this.input = this.instance.input;
 		this.readonlyDiv = document.createElement("div");
 		this.readonlyDiv.classList.add("readonly-div");
-		this.input.parentElement.insertBefore(this.readonlyDiv, this.input);
-		// this.observeVisibleDropdownContent(true);
-		// this.observeOptions(true);
+		this.instance.input.parentElement.insertBefore(this.readonlyDiv, this.instance.input);
+		this.instance.input.addEventListener("focus", this.handleFocus);
+		this.instance.input.addEventListener("blur", this.handleBlur);
+		this.observeOptions(true);
 		this.showErrortextChanged();
 		this.readonlyChanged();
 		this.disabledChanged();
 	}
 
-	observeVisibleDropdownContent(attach) {
-		if (this.element.classList.contains("browser-default")) {
+	observeOptions(attach) {
+		if (!this.enableOptionObserver) {
 			return;
 		}
 		if (attach) {
-			if (!this.dropdownMutationObserver) {
-				this.dropdownMutationObserver = DOM.createMutationObserver(mutations => {
-					let isHidden = false;
-					for (let mutation of mutations) {
-						if (window.getComputedStyle(mutation.target).getPropertyValue("display") === "none") {
-							isHidden = true;
-						}
-					}
-					if (isHidden) {
-						this.dropdownMutationObserver.takeRecords();
-						this.handleBlur();
-					} else {
-						this.handleFocus();
-					}
+			if (!this.optionsMutationObserver) {
+				this.optionsMutationObserver = au.DOM.createMutationObserver(mutations => {
+					// this.log.debug('observeOptions', mutations);
+					this.refresh();
 				});
 			}
-			this.dropdownMutationObserver.observe(this.element.parentElement.querySelector(".dropdown-content"), {
-				attributes: true,
-				attributeFilter: ["style"]
+			this.optionsMutationObserver.observe(this.element, {
+				// childList: true,
+				characterData: true,
+				subtree: true
 			});
 		} else {
-			if (this.dropdownMutationObserver) {
-				this.dropdownMutationObserver.disconnect();
-				this.dropdownMutationObserver.takeRecords();
-			}
-		}
-	}
-
-	observeOptions(attach) {
-		if (this.element.classList.contains("browser-default")) {
-			return;
-		}
-		if (this.enableOptionObserver) {
-			if (attach) {
-				if (!this.optionsMutationObserver) {
-					this.optionsMutationObserver = DOM.createMutationObserver(mutations => {
-						// this.log.debug('observeOptions', mutations);
-						this.refresh();
-					});
-				}
-				this.optionsMutationObserver.observe(this.element, {
-					// childList: true,
-					characterData: true,
-					subtree: true
-				});
-			} else {
-				if (this.optionsMutationObserver) {
-					this.optionsMutationObserver.disconnect();
-					this.optionsMutationObserver.takeRecords();
-				}
+			if (this.optionsMutationObserver) {
+				this.optionsMutationObserver.disconnect();
+				this.optionsMutationObserver.takeRecords();
 			}
 		}
 	}
 
 	open() {
-		if (this.element.classList.contains("browser-default")) {
-			return;
-		}
 		if (!this.instance) {
 			return;
 		}
-		(this.input as HTMLInputElement).focus();
+		(this.instance.input as HTMLInputElement).focus();
 	}
 
-	//
-	// Firefox sometimes fire blur several times in a row
-	// observable at http://localhost:3000/#/samples/select/
-	// when enable 'Disable Functionality', open that list and
-	// then open 'Basic use' list.
-	// Chrome - ok
-	// IE 11 - ok
-	// Edge ?
-	//
-	taskqueueRunning = false;
-
-	handleBlur() {
-		if (this.element.classList.contains("browser-default")) {
-			return;
-		}
-		if (this.taskqueueRunning) {
-			return;
-		}
-		this.taskqueueRunning = true;
-		this.taskQueue.queueTask(() => {
-			this.log.debug("fire blur event");
-			fireEvent(this.element, "blur");
-			this.taskqueueRunning = false;
-			this.labelElement.classList.remove("md-focused");
-		});
-	}
-
-	handleFocus() {
-		if (this.element.classList.contains("browser-default")) {
-			return;
-		}
+	handleFocus = () => {
 		this.labelElement.classList.add("md-focused");
 	}
 
-	mdUnrenderValidateResults = (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => {
-		if (!this.input) {
+	handleBlur = () => {
+		this.labelElement.classList.remove("md-focused");
+	}
+
+	mdUnrenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
+		if (!this.instance.input) {
 			return;
 		}
 		for (let result of results) {
@@ -326,21 +224,21 @@ export class MdSelect {
 				renderer.removeMessage(this.inputField, result);
 			}
 		}
-		renderer.removeValidationClasses(this.input);
+		renderer.removeValidationClasses(this.instance.input);
 	}
 
-	mdRenderValidateResults = (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => {
-		if (!this.input) {
+	mdRenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
+		if (!this.instance.input) {
 			return;
 		}
 		for (let result of results) {
 			if (!result.valid) {
-				(result as any).target = this.input;
-				if (!(this.input.hasAttribute("data-show-errortext") && this.input.getAttribute("data-show-errortext") === "false")) {
+				(result as any).target = this.instance.input;
+				if (!(this.instance.input.hasAttribute("data-show-errortext") && this.instance.input.getAttribute("data-show-errortext") === "false")) {
 					renderer.addMessage(this.inputField, result);
 				}
 			}
 		}
-		renderer.addValidationClasses(this.input, !results.find(x => !x.valid));
+		renderer.addValidationClasses(this.instance.input, !results.find(x => !x.valid));
 	}
 }

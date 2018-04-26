@@ -4,10 +4,13 @@ export function wrap(parent: HTMLElement, child: HTMLElement) {
 }
 
 export function unwrap(element: HTMLElement) {
-	element.parentElement.parentElement.insertBefore(element, element.parentElement);
-	element.parentElement.remove();
+	let wrapper = element.parentElement;
+	if (wrapper.parentElement) {
+		wrapper.parentElement.insertBefore(element, wrapper);
+		wrapper.remove();
+	}
 }
 
-export function insertAfter(element: HTMLElement, newChild: HTMLElement){
+export function insertAfter(element: HTMLElement, newChild: HTMLElement) {
 	element.parentNode.insertBefore(newChild, element.nextSibling);
 }

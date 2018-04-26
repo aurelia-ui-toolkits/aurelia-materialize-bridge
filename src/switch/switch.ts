@@ -46,7 +46,9 @@ export class MdSwitch {
 	}
 
 	detached() {
-		this.checkbox.removeEventListener("change", this.handleChange);
+		if (this.checkbox) {
+			this.checkbox.removeEventListener("change", this.handleChange);
+		}
 	}
 
 	handleChange() {
