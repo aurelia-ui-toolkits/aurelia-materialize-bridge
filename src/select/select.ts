@@ -64,7 +64,7 @@ export class MdSelect {
 	}
 
 	triggerBlur = () => {
-		(this.instance.input as HTMLInputElement).blur();
+		this.instance.input.blur();
 	}
 
 	@au.bindable
@@ -208,7 +208,7 @@ export class MdSelect {
 		if (!this.instance) {
 			return;
 		}
-		(this.instance.input as HTMLInputElement).focus();
+		this.instance.input.focus();
 	}
 
 	handleFocus = () => {
