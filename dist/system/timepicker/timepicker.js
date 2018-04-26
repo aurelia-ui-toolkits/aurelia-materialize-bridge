@@ -61,3 +61,4 @@ System.register(["tslib", "aurelia-framework", "../common/attributes"], function
         }
     };
 });
+//# sourceMappingURL=timepicker.js.map

@@ -42,3 +42,4 @@ System.register(["tslib", "aurelia-framework", "../common/attributes"], function
         }
     };
 });
+//# sourceMappingURL=fab.js.map

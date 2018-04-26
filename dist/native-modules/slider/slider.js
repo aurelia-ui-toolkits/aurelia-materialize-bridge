@@ -71,3 +71,4 @@ var MdSlider = /** @class */ (function () {
     return MdSlider;
 }());
 export { MdSlider };
+//# sourceMappingURL=slider.js.map

@@ -12,3 +12,4 @@ define(["require", "exports", "tslib", "aurelia-router", "aurelia-templating"], 
     }());
     exports.MdWell = MdWell;
 });
+//# sourceMappingURL=md-well.js.map

@@ -24,3 +24,4 @@ define(["require", "exports", "tslib", "aurelia-framework"], function (require, 
     }());
     exports.MdCarouselItem = MdCarouselItem;
 });
+//# sourceMappingURL=carousel-item.js.map

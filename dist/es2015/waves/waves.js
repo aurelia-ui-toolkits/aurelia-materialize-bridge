@@ -54,3 +54,4 @@ var MdWaves = /** @class */ (function () {
     return MdWaves;
 }());
 export { MdWaves };
+//# sourceMappingURL=waves.js.map

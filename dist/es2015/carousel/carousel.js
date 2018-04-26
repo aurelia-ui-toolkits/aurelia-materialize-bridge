@@ -55,3 +55,4 @@ var MdCarousel = /** @class */ (function () {
     return MdCarousel;
 }());
 export { MdCarousel };
+//# sourceMappingURL=carousel.js.map

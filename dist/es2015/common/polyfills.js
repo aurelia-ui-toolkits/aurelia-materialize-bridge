@@ -24,3 +24,4 @@ export function polyfillElementClosest() {
         };
     }
 }
+//# sourceMappingURL=polyfills.js.map

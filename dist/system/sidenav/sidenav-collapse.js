@@ -50,3 +50,4 @@ System.register(["tslib", "aurelia-framework", "./sidenav"], function (exports_1
         }
     };
 });
+//# sourceMappingURL=sidenav-collapse.js.map

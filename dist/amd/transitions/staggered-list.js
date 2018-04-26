@@ -39,3 +39,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-logging"], 
     }());
     exports.MdStaggeredList = MdStaggeredList;
 });
+//# sourceMappingURL=staggered-list.js.map

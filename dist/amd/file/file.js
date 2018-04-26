@@ -55,3 +55,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/events", 
     }());
     exports.MdFileInput = MdFileInput;
 });
+//# sourceMappingURL=file.js.map

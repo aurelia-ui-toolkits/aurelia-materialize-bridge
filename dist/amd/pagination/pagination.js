@@ -109,3 +109,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/events", 
     }());
     exports.MdPagination = MdPagination;
 });
+//# sourceMappingURL=pagination.js.map

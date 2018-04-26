@@ -264,3 +264,4 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
     }());
     exports.ConfigBuilder = ConfigBuilder;
 });
+//# sourceMappingURL=config-builder.js.map

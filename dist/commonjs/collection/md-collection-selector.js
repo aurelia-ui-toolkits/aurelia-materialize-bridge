@@ -36,3 +36,4 @@ var MdCollectionSelector = /** @class */ (function () {
     return MdCollectionSelector;
 }());
 exports.MdCollectionSelector = MdCollectionSelector;
+//# sourceMappingURL=md-collection-selector.js.map

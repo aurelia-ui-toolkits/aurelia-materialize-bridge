@@ -39,3 +39,4 @@ var MdCollection = /** @class */ (function () {
     return MdCollection;
 }());
 export { MdCollection };
+//# sourceMappingURL=collection.js.map

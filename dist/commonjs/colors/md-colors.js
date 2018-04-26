@@ -29,3 +29,4 @@ var MdColors = /** @class */ (function () {
     return MdColors;
 }());
 exports.MdColors = MdColors;
+//# sourceMappingURL=md-colors.js.map

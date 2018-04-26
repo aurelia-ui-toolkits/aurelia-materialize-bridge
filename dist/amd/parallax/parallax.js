@@ -20,3 +20,4 @@ define(["require", "exports", "tslib", "aurelia-templating", "aurelia-dependency
     }());
     exports.MdParallax = MdParallax;
 });
+//# sourceMappingURL=parallax.js.map

@@ -62,3 +62,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
     }());
     exports.MdSidenav = MdSidenav;
 });
+//# sourceMappingURL=sidenav.js.map

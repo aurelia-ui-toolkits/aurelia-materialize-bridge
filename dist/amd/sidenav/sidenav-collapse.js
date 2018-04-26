@@ -34,3 +34,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "./sidenav"], functi
     }());
     exports.MdSidenavCollapse = MdSidenavCollapse;
 });
+//# sourceMappingURL=sidenav-collapse.js.map

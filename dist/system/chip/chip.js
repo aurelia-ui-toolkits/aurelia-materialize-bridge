@@ -44,3 +44,4 @@ System.register(["tslib", "aurelia-framework", "../common/attributes", "../commo
         }
     };
 });
+//# sourceMappingURL=chip.js.map

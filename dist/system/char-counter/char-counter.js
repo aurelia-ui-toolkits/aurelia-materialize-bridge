@@ -58,3 +58,4 @@ System.register(["tslib", "aurelia-framework", "../common/attributeManager"], fu
         }
     };
 });
+//# sourceMappingURL=char-counter.js.map

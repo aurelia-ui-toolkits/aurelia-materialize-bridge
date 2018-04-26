@@ -34,3 +34,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-router"], f
     }());
     exports.MdBreadcrumbs = MdBreadcrumbs;
 });
+//# sourceMappingURL=breadcrumbs.js.map

@@ -73,3 +73,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
     }());
     exports.MdCollapsible = MdCollapsible;
 });
+//# sourceMappingURL=collapsible.js.map

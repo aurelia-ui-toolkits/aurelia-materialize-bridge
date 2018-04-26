@@ -62,3 +62,4 @@ var MdSidenav = /** @class */ (function () {
     var MdSidenav_1;
 }());
 export { MdSidenav };
+//# sourceMappingURL=sidenav.js.map

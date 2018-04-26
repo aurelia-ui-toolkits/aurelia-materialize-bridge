@@ -128,3 +128,4 @@ System.register(["tslib", "aurelia-framework", "../common/events", "../common/at
         }
     };
 });
+//# sourceMappingURL=pagination.js.map

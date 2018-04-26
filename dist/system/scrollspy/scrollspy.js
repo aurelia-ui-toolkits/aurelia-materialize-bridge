@@ -37,3 +37,4 @@ System.register(["tslib", "aurelia-framework"], function (exports_1, context_1) 
         }
     };
 });
+//# sourceMappingURL=scrollspy.js.map

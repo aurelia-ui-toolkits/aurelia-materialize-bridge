@@ -48,3 +48,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
     }());
     exports.MdTimePicker = MdTimePicker;
 });
+//# sourceMappingURL=timepicker.js.map

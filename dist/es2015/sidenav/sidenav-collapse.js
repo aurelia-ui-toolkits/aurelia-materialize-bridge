@@ -33,3 +33,4 @@ var MdSidenavCollapse = /** @class */ (function () {
     return MdSidenavCollapse;
 }());
 export { MdSidenavCollapse };
+//# sourceMappingURL=sidenav-collapse.js.map

@@ -10,3 +10,4 @@ var ClickCounter = /** @class */ (function () {
     return ClickCounter;
 }());
 exports.ClickCounter = ClickCounter;
+//# sourceMappingURL=click-counter.js.map

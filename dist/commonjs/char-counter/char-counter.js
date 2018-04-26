@@ -43,3 +43,4 @@ var MdCharCounter = /** @class */ (function () {
     return MdCharCounter;
 }());
 exports.MdCharCounter = MdCharCounter;
+//# sourceMappingURL=char-counter.js.map

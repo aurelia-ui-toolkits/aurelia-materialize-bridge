@@ -1,15 +1,13 @@
-import { AttributeManager } from "../common/attributeManager";
+/// <reference types="materialize-css" />
 export declare class MdTooltip {
     private element;
     constructor(element: Element);
-    position: string;
-    delay: number | string;
-    html: boolean | string;
+    position: "top" | "right" | "bottom" | "left";
+    delay: number;
     text: string;
-    attributeManager: AttributeManager;
-    bind(): void;
+    textChanged(): void;
+    instance: M.Tooltip;
     attached(): void;
     detached(): void;
-    textChanged(): void;
     initTooltip(): void;
 }

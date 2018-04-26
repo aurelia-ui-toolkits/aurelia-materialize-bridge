@@ -95,3 +95,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-typed-obser
     }());
     exports.MdButton = MdButton;
 });
+//# sourceMappingURL=button.js.map

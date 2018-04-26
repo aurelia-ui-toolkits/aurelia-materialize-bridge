@@ -42,3 +42,4 @@ System.register(["tslib", "aurelia-framework"], function (exports_1, context_1) 
         }
     };
 });
+//# sourceMappingURL=md-colors.js.map

@@ -34,3 +34,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
     }());
     exports.MdModalTrigger = MdModalTrigger;
 });
+//# sourceMappingURL=modal-trigger.js.map

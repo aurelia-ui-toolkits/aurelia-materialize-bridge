@@ -41,3 +41,4 @@ define(["require", "exports", "tslib", "aurelia-framework"], function (require, 
     }());
     exports.MdCollection = MdCollection;
 });
+//# sourceMappingURL=collection.js.map

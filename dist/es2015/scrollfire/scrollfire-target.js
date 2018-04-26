@@ -20,3 +20,4 @@ var MdScrollfireTarget = /** @class */ (function () {
     return MdScrollfireTarget;
 }());
 export { MdScrollfireTarget };
+//# sourceMappingURL=scrollfire-target.js.map

@@ -62,3 +62,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/events"],
     }());
     exports.MdAutoComplete = MdAutoComplete;
 });
+//# sourceMappingURL=autocomplete.js.map

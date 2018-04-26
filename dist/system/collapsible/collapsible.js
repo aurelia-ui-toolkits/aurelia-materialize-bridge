@@ -92,3 +92,4 @@ System.register(["tslib", "aurelia-framework", "../common/attributeManager", "..
         }
     };
 });
+//# sourceMappingURL=collapsible.js.map

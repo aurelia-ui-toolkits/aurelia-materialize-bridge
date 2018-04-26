@@ -27,3 +27,4 @@ function polyfillElementClosest() {
     }
 }
 exports.polyfillElementClosest = polyfillElementClosest;
+//# sourceMappingURL=polyfills.js.map

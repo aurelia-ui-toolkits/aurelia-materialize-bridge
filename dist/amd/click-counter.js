@@ -12,3 +12,4 @@ define(["require", "exports"], function (require, exports) {
     }());
     exports.ClickCounter = ClickCounter;
 });
+//# sourceMappingURL=click-counter.js.map

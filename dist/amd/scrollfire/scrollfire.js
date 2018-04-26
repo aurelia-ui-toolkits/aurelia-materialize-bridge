@@ -39,3 +39,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-logging"], 
     }());
     exports.MdScrollfire = MdScrollfire;
 });
+//# sourceMappingURL=scrollfire.js.map

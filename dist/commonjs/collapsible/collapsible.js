@@ -75,3 +75,4 @@ var MdCollapsible = /** @class */ (function () {
     return MdCollapsible;
 }());
 exports.MdCollapsible = MdCollapsible;
+//# sourceMappingURL=collapsible.js.map

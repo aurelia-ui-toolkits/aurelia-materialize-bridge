@@ -22,3 +22,4 @@ var MdScrollSpy = /** @class */ (function () {
     return MdScrollSpy;
 }());
 export { MdScrollSpy };
+//# sourceMappingURL=scrollspy.js.map

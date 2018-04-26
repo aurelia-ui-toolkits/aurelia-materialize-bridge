@@ -20,3 +20,4 @@ var MdFooter = /** @class */ (function () {
     return MdFooter;
 }());
 export { MdFooter };
+//# sourceMappingURL=footer.js.map

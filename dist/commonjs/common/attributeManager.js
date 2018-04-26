@@ -73,3 +73,4 @@ var AttributeManager = /** @class */ (function () {
     return AttributeManager;
 }());
 exports.AttributeManager = AttributeManager;
+//# sourceMappingURL=attributeManager.js.map

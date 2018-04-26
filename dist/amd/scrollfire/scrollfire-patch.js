@@ -61,3 +61,4 @@ define(["require", "exports", "tslib"], function (require, exports, tslib_1) {
     }());
     exports.ScrollfirePatch = ScrollfirePatch;
 });
+//# sourceMappingURL=scrollfire-patch.js.map

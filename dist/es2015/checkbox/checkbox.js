@@ -1,7 +1,7 @@
 import * as tslib_1 from "tslib";
-import { autoinject, bindable, bindingMode, customElement } from "aurelia-framework";
+import { autoinject, bindingMode, customElement } from "aurelia-framework";
 import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import { bindable } from "aurelia-typed-observable-plugin";
 var MdCheckbox = /** @class */ (function () {
     function MdCheckbox(element) {
         this.element = element;
@@ -27,7 +27,7 @@ var MdCheckbox = /** @class */ (function () {
     };
     MdCheckbox.prototype.attached = function () {
         this.attributeManager = new AttributeManager(this.checkbox);
-        if (getBooleanFromAttributeValue(this.mdFilledIn)) {
+        if (this.mdFilledIn) {
             this.attributeManager.addClasses("filled-in");
         }
         if (this.mdChecked === null) {
@@ -36,10 +36,10 @@ var MdCheckbox = /** @class */ (function () {
         else {
             this.checkbox.indeterminate = false;
         }
-        if (getBooleanFromAttributeValue(this.mdDisabled)) {
+        if (this.mdDisabled) {
             this.checkbox.disabled = true;
         }
-        this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
+        this.mdReadonly = this.mdReadonly;
         this.mdReadonlyChanged();
     };
     MdCheckbox.prototype.detached = function () {
@@ -56,7 +56,7 @@ var MdCheckbox = /** @class */ (function () {
     ], MdCheckbox.prototype, "mdChecked", void 0);
     tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Boolean)
     ], MdCheckbox.prototype, "mdDisabled", void 0);
     tslib_1.__decorate([
         bindable,
@@ -64,7 +64,7 @@ var MdCheckbox = /** @class */ (function () {
     ], MdCheckbox.prototype, "mdReadonly", void 0);
     tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Boolean)
     ], MdCheckbox.prototype, "mdFilledIn", void 0);
     tslib_1.__decorate([
         bindable,
@@ -83,3 +83,4 @@ var MdCheckbox = /** @class */ (function () {
     var MdCheckbox_1;
 }());
 export { MdCheckbox };
+//# sourceMappingURL=checkbox.js.map

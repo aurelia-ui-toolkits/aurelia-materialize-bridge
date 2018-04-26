@@ -29,3 +29,4 @@ define(["require", "exports", "tslib", "aurelia-framework"], function (require, 
     }());
     exports.MdColors = MdColors;
 });
+//# sourceMappingURL=md-colors.js.map

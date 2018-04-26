@@ -6,12 +6,12 @@ export declare class MdCheckbox {
     controlId: string;
     attributeManager: AttributeManager;
     checkbox: HTMLInputElement;
-    mdChecked: boolean | any[];
-    mdDisabled: boolean | string;
+    mdChecked?: boolean | any[];
+    mdDisabled: boolean;
     mdDisabledChanged(newValue: any): void;
     mdReadonly: boolean;
     mdReadonlyChanged(): void;
-    mdFilledIn: boolean | string;
+    mdFilledIn: boolean;
     mdMatcher: (a: any, b: any) => boolean;
     mdModel: any;
     attached(): void;

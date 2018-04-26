@@ -53,3 +53,4 @@ System.register(["tslib", "aurelia-framework", "../common/attributes", "../commo
         }
     };
 });
+//# sourceMappingURL=md-collection-selector.js.map

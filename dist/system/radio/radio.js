@@ -89,3 +89,4 @@ System.register(["tslib", "aurelia-framework", "../common/attributeManager", "..
         }
     };
 });
+//# sourceMappingURL=radio.js.map

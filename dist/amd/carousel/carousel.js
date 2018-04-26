@@ -55,3 +55,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
     }());
     exports.MdCarousel = MdCarousel;
 });
+//# sourceMappingURL=carousel.js.map

@@ -11,3 +11,4 @@ var MdCollectionItem = /** @class */ (function () {
     return MdCollectionItem;
 }());
 exports.MdCollectionItem = MdCollectionItem;
+//# sourceMappingURL=collection-item.js.map

@@ -58,3 +58,4 @@ var ScrollfirePatch = /** @class */ (function () {
     return ScrollfirePatch;
 }());
 export { ScrollfirePatch };
+//# sourceMappingURL=scrollfire-patch.js.map

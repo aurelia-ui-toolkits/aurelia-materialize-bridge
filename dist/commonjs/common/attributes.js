@@ -4,3 +4,4 @@ function getBooleanFromAttributeValue(value) {
     return (value === true || value === "true");
 }
 exports.getBooleanFromAttributeValue = getBooleanFromAttributeValue;
+//# sourceMappingURL=attributes.js.map

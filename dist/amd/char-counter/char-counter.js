@@ -42,3 +42,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
     }());
     exports.MdCharCounter = MdCharCounter;
 });
+//# sourceMappingURL=char-counter.js.map

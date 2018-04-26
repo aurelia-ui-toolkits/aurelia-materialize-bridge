@@ -111,3 +111,4 @@ var MdPagination = /** @class */ (function () {
     return MdPagination;
 }());
 exports.MdPagination = MdPagination;
+//# sourceMappingURL=pagination.js.map

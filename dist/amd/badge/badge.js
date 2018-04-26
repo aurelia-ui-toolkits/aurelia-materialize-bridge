@@ -55,3 +55,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
     }());
     exports.MdBadge = MdBadge;
 });
+//# sourceMappingURL=badge.js.map

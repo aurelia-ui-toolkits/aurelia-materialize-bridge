@@ -177,3 +177,4 @@ System.register(["tslib", "aurelia-framework", "aurelia-task-queue", "../common/
         }
     };
 });
+//# sourceMappingURL=tabs.js.map

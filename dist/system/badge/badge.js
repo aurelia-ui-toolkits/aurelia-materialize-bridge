@@ -74,3 +74,4 @@ System.register(["tslib", "aurelia-framework", "../common/attributeManager", "..
         }
     };
 });
+//# sourceMappingURL=badge.js.map

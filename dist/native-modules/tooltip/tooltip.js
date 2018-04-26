@@ -1,39 +1,24 @@
 import * as tslib_1 from "tslib";
-import { bindable, customAttribute, autoinject } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import { customAttribute, autoinject } from "aurelia-framework";
+import { bindable } from "aurelia-typed-observable-plugin";
 var MdTooltip = /** @class */ (function () {
     function MdTooltip(element) {
         this.element = element;
         this.position = "bottom";
         this.delay = 50;
-        this.html = false;
         this.text = "";
-        this.attributeManager = new AttributeManager(this.element);
     }
-    MdTooltip.prototype.bind = function () {
-        this.html = getBooleanFromAttributeValue(this.html);
+    MdTooltip.prototype.textChanged = function () {
+        this.initTooltip();
     };
     MdTooltip.prototype.attached = function () {
-        this.attributeManager.addClasses("tooltipped");
-        this.attributeManager.addAttributes({ "data-position": this.position, "data-tooltip": this.text });
         this.initTooltip();
     };
     MdTooltip.prototype.detached = function () {
-        $(this.element).tooltip("remove");
-        this.attributeManager.removeClasses("tooltipped");
-        this.attributeManager.removeAttributes(["data-position", "data-tooltip"]);
-    };
-    MdTooltip.prototype.textChanged = function () {
-        this.attributeManager.addAttributes({ "data-tooltip": this.text });
-        this.initTooltip();
+        this.instance.destroy();
     };
     MdTooltip.prototype.initTooltip = function () {
-        $(this.element).tooltip("remove");
-        $(this.element).tooltip({
-            delay: parseInt(this.delay.toString(), 10),
-            html: this.html
-        });
+        this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
     };
     tslib_1.__decorate([
         bindable,
@@ -41,12 +26,8 @@ var MdTooltip = /** @class */ (function () {
     ], MdTooltip.prototype, "position", void 0);
     tslib_1.__decorate([
         bindable,
-        tslib_1.__metadata("design:type", Object)
+        tslib_1.__metadata("design:type", Number)
     ], MdTooltip.prototype, "delay", void 0);
-    tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdTooltip.prototype, "html", void 0);
     tslib_1.__decorate([
         bindable,
         tslib_1.__metadata("design:type", String)
@@ -59,3 +40,4 @@ var MdTooltip = /** @class */ (function () {
     return MdTooltip;
 }());
 export { MdTooltip };
+//# sourceMappingURL=tooltip.js.map

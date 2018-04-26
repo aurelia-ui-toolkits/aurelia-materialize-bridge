@@ -21,3 +21,4 @@ var MdParallax = /** @class */ (function () {
     return MdParallax;
 }());
 exports.MdParallax = MdParallax;
+//# sourceMappingURL=parallax.js.map

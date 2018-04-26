@@ -71,3 +71,4 @@ System.register(["tslib"], function (exports_1, context_1) {
         }
     };
 });
+//# sourceMappingURL=scrollfire-patch.js.map

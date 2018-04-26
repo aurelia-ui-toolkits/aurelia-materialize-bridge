@@ -53,3 +53,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
     }());
     exports.MdWaves = MdWaves;
 });
+//# sourceMappingURL=waves.js.map

@@ -81,3 +81,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-logging", "
     }());
     exports.MdChips = MdChips;
 });
+//# sourceMappingURL=chips.js.map

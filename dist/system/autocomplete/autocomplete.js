@@ -78,3 +78,4 @@ System.register(["tslib", "aurelia-framework", "../common/events"], function (ex
         }
     };
 });
+//# sourceMappingURL=autocomplete.js.map

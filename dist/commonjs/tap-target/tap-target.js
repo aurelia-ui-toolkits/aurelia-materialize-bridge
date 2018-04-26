@@ -43,3 +43,4 @@ var MdTapTarget = /** @class */ (function () {
     var MdTapTarget_1;
 }());
 exports.MdTapTarget = MdTapTarget;
+//# sourceMappingURL=tap-target.js.map

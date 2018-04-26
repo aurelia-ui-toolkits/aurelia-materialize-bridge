@@ -8,3 +8,4 @@ var ClickCounter = /** @class */ (function () {
     return ClickCounter;
 }());
 export { ClickCounter };
+//# sourceMappingURL=click-counter.js.map

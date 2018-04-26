@@ -39,3 +39,4 @@ define(["require", "exports", "tslib", "aurelia-framework"], function (require, 
     }());
     exports.MdPushpin = MdPushpin;
 });
+//# sourceMappingURL=pushpin.js.map

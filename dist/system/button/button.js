@@ -114,3 +114,4 @@ System.register(["tslib", "aurelia-framework", "aurelia-typed-observable-plugin"
         }
     };
 });
+//# sourceMappingURL=button.js.map

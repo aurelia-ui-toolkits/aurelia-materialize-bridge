@@ -58,3 +58,4 @@ System.register(["tslib", "aurelia-framework", "aurelia-logging"], function (exp
         }
     };
 });
+//# sourceMappingURL=tap-target.js.map

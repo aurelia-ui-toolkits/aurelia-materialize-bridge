@@ -57,3 +57,4 @@ var MdCarousel = /** @class */ (function () {
     return MdCarousel;
 }());
 exports.MdCarousel = MdCarousel;
+//# sourceMappingURL=carousel.js.map

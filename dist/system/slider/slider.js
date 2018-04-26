@@ -90,3 +90,4 @@ System.register(["tslib", "aurelia-framework", "../common/attributes", "aurelia-
         }
     };
 });
+//# sourceMappingURL=slider.js.map

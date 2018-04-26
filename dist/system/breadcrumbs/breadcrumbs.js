@@ -49,3 +49,4 @@ System.register(["tslib", "aurelia-framework", "aurelia-router"], function (expo
         }
     };
 });
+//# sourceMappingURL=breadcrumbs.js.map

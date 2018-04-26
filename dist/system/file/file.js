@@ -74,3 +74,4 @@ System.register(["tslib", "aurelia-framework", "../common/events", "../common/at
         }
     };
 });
+//# sourceMappingURL=file.js.map

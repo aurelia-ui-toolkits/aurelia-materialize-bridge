@@ -103,3 +103,4 @@ System.register(["tslib", "aurelia-logging", "aurelia-framework", "../common/att
         }
     };
 });
+//# sourceMappingURL=modal.js.map

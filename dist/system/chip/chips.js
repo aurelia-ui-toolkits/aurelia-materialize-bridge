@@ -100,3 +100,4 @@ System.register(["tslib", "aurelia-framework", "aurelia-logging", "../common/eve
         }
     };
 });
+//# sourceMappingURL=chips.js.map

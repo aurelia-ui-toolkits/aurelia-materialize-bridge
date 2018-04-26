@@ -21,3 +21,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
     }());
     exports.MdFooter = MdFooter;
 });
+//# sourceMappingURL=footer.js.map

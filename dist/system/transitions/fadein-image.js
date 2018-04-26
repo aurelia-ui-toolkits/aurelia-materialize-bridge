@@ -52,3 +52,4 @@ System.register(["tslib", "aurelia-framework", "aurelia-logging"], function (exp
         }
     };
 });
+//# sourceMappingURL=fadein-image.js.map

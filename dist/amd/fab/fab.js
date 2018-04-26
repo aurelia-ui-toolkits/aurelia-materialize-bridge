@@ -26,3 +26,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
     }());
     exports.MdFab = MdFab;
 });
+//# sourceMappingURL=fab.js.map

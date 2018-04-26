@@ -156,3 +156,4 @@ var MdTabs = /** @class */ (function () {
     return MdTabs;
 }());
 exports.MdTabs = MdTabs;
+//# sourceMappingURL=tabs.js.map

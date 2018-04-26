@@ -27,3 +27,4 @@ export function configure(frameworkConfiguration, configCallback) {
 // build-index-remove start
 export * from "./exports";
 // build-index-remove end
+//# sourceMappingURL=index.js.map

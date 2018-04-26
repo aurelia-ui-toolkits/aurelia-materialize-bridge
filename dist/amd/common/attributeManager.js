@@ -75,3 +75,4 @@ define(["require", "exports"], function (require, exports) {
     }());
     exports.AttributeManager = AttributeManager;
 });
+//# sourceMappingURL=attributeManager.js.map

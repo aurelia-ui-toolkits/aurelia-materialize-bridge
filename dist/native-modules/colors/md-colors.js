@@ -27,3 +27,4 @@ var MdColors = /** @class */ (function () {
     return MdColors;
 }());
 export { MdColors };
+//# sourceMappingURL=md-colors.js.map

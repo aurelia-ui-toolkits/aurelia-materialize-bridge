@@ -22,3 +22,4 @@ var MdCarouselItem = /** @class */ (function () {
     return MdCarouselItem;
 }());
 export { MdCarouselItem };
+//# sourceMappingURL=carousel-item.js.map

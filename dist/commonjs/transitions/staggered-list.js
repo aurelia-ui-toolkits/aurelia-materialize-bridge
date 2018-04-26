@@ -40,3 +40,4 @@ var MdStaggeredList = /** @class */ (function () {
     return MdStaggeredList;
 }());
 exports.MdStaggeredList = MdStaggeredList;
+//# sourceMappingURL=staggered-list.js.map

@@ -31,7 +31,9 @@ var MdSwitch = /** @class */ (function () {
         this.mdReadonly = attributes_1.getBooleanFromAttributeValue(this.mdReadonly);
     };
     MdSwitch.prototype.detached = function () {
-        this.checkbox.removeEventListener("change", this.handleChange);
+        if (this.checkbox) {
+            this.checkbox.removeEventListener("change", this.handleChange);
+        }
     };
     MdSwitch.prototype.handleChange = function () {
         this.mdChecked = this.checkbox.checked;
@@ -68,3 +70,4 @@ var MdSwitch = /** @class */ (function () {
     return MdSwitch;
 }());
 exports.MdSwitch = MdSwitch;
+//# sourceMappingURL=switch.js.map

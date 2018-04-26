@@ -78,3 +78,4 @@ define(["require", "exports", "tslib", "aurelia-logging", "aurelia-framework", "
     }());
     exports.MdModal = MdModal;
 });
+//# sourceMappingURL=modal.js.map

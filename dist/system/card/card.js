@@ -73,3 +73,4 @@ System.register(["tslib", "aurelia-framework", "../common/attributes"], function
         }
     };
 });
+//# sourceMappingURL=card.js.map

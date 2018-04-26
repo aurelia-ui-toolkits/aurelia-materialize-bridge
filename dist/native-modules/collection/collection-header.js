@@ -9,3 +9,4 @@ var MdCollectionHeader = /** @class */ (function () {
     return MdCollectionHeader;
 }());
 export { MdCollectionHeader };
+//# sourceMappingURL=collection-header.js.map

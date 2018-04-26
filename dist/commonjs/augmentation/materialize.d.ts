@@ -1,7 +1,15 @@
+/// <reference types="materialize-css" />
 declare namespace M {
     interface Tabs {
         updateTabIndicator(): any;
         _calcRightPos(el: any): any;
+    }
+    interface FormSelectOptions {
+        classes: string;
+    }
+    class FormSelect extends Component<FormSelectOptions> {
+        input: Element;
+        wrapper: Element;
     }
 }
 interface JQuery {

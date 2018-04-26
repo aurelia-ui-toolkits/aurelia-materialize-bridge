@@ -37,3 +37,4 @@ var MdModalTrigger = /** @class */ (function () {
     return MdModalTrigger;
 }());
 exports.MdModalTrigger = MdModalTrigger;
+//# sourceMappingURL=modal-trigger.js.map

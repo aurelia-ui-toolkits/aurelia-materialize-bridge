@@ -36,3 +36,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-logging"], 
     }());
     exports.MdFadeinImage = MdFadeinImage;
 });
+//# sourceMappingURL=fadein-image.js.map

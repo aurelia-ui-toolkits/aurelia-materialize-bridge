@@ -71,3 +71,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
     }());
     exports.MdSlider = MdSlider;
 });
+//# sourceMappingURL=slider.js.map

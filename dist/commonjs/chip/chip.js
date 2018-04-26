@@ -27,3 +27,4 @@ var MdChip = /** @class */ (function () {
     return MdChip;
 }());
 exports.MdChip = MdChip;
+//# sourceMappingURL=chip.js.map

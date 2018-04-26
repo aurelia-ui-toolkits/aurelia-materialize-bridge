@@ -29,3 +29,4 @@ define(["require", "exports"], function (require, exports) {
     }
     exports.polyfillElementClosest = polyfillElementClosest;
 });
+//# sourceMappingURL=polyfills.js.map

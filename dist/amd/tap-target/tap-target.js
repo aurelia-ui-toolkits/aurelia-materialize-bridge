@@ -42,3 +42,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-logging"], 
     }());
     exports.MdTapTarget = MdTapTarget;
 });
+//# sourceMappingURL=tap-target.js.map

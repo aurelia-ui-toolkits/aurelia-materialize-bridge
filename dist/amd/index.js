@@ -24,3 +24,4 @@ define(["require", "exports", "tslib", "./config-builder", "./scrollfire/scrollf
     tslib_1.__exportStar(exports_1, exports);
 });
 // build-index-remove end
+//# sourceMappingURL=index.js.map

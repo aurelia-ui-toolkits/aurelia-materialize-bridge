@@ -31,3 +31,4 @@ exports.configure = configure;
 // build-index-remove start
 tslib_1.__exportStar(require("./exports"), exports);
 // build-index-remove end
+//# sourceMappingURL=index.js.map

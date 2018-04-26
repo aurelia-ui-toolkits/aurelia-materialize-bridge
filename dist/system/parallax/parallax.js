@@ -36,3 +36,4 @@ System.register(["tslib", "aurelia-templating", "aurelia-dependency-injection"],
         }
     };
 });
+//# sourceMappingURL=parallax.js.map

@@ -57,3 +57,4 @@ var MdBadge = /** @class */ (function () {
     return MdBadge;
 }());
 exports.MdBadge = MdBadge;
+//# sourceMappingURL=badge.js.map

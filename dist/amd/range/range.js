@@ -37,3 +37,4 @@ define(["require", "exports", "tslib", "aurelia-framework"], function (require, 
     }());
     exports.MdRange = MdRange;
 });
+//# sourceMappingURL=range.js.map

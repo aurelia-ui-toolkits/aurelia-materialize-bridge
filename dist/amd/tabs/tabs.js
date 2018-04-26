@@ -152,3 +152,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
     }());
     exports.MdTabs = MdTabs;
 });
+//# sourceMappingURL=tabs.js.map

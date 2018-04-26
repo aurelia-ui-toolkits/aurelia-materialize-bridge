@@ -25,3 +25,4 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
     }());
     exports.MdChip = MdChip;
 });
+//# sourceMappingURL=chip.js.map

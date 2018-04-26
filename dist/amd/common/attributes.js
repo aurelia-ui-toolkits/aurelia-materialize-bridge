@@ -6,3 +6,4 @@ define(["require", "exports"], function (require, exports) {
     }
     exports.getBooleanFromAttributeValue = getBooleanFromAttributeValue;
 });
+//# sourceMappingURL=attributes.js.map

@@ -24,3 +24,4 @@ define(["require", "exports", "tslib", "aurelia-framework"], function (require, 
     }());
     exports.MdScrollSpy = MdScrollSpy;
 });
+//# sourceMappingURL=scrollspy.js.map
