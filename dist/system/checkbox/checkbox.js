@@ -1,20 +1,14 @@
-System.register(["tslib", "aurelia-framework", "../common/attributeManager", "aurelia-typed-observable-plugin"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, attributeManager_1, aurelia_typed_observable_plugin_1, MdCheckbox;
+    var tslib_1, au, MdCheckbox;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (attributeManager_1_1) {
-                attributeManager_1 = attributeManager_1_1;
-            },
-            function (aurelia_typed_observable_plugin_1_1) {
-                aurelia_typed_observable_plugin_1 = aurelia_typed_observable_plugin_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
@@ -42,7 +36,7 @@ System.register(["tslib", "aurelia-framework", "../common/attributeManager", "au
                     }
                 };
                 MdCheckbox.prototype.attached = function () {
-                    this.attributeManager = new attributeManager_1.AttributeManager(this.checkbox);
+                    this.attributeManager = new au.AttributeManager(this.checkbox);
                     if (this.mdFilledIn) {
                         this.attributeManager.addClasses("filled-in");
                     }
@@ -67,32 +61,32 @@ System.register(["tslib", "aurelia-framework", "../common/attributeManager", "au
                 };
                 MdCheckbox.id = 0;
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+                    au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
                     tslib_1.__metadata("design:type", Object)
                 ], MdCheckbox.prototype, "mdChecked", void 0);
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdCheckbox.prototype, "mdDisabled", void 0);
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdCheckbox.prototype, "mdReadonly", void 0);
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdCheckbox.prototype, "mdFilledIn", void 0);
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Function)
                 ], MdCheckbox.prototype, "mdMatcher", void 0);
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Object)
                 ], MdCheckbox.prototype, "mdModel", void 0);
                 MdCheckbox = MdCheckbox_1 = tslib_1.__decorate([
-                    aurelia_framework_1.customElement("md-checkbox"),
-                    aurelia_framework_1.autoinject,
+                    au.customElement("md-checkbox"),
+                    au.autoinject,
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdCheckbox);
                 return MdCheckbox;

@@ -1,11 +1,10 @@
-import { TaskQueue } from "aurelia-task-queue";
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 export declare class MdTabs {
     private element;
     private taskQueue;
-    constructor(element: Element, taskQueue: TaskQueue);
-    attributeManager: AttributeManager;
-    tabAttributeManagers: AttributeManager[];
+    constructor(element: Element, taskQueue: au.TaskQueue);
+    attributeManager: au.AttributeManager;
+    tabAttributeManagers: au.AttributeManager[];
     fixed: boolean;
     fixedChanged(newValue: any): void;
     onShow: ({newContent: Element}) => void;

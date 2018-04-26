@@ -1,9 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
-var aurelia_framework_1 = require("aurelia-framework");
-var aurelia_typed_observable_plugin_1 = require("aurelia-typed-observable-plugin");
-var attributeManager_1 = require("../common/attributeManager");
+var au = require("../aurelia");
 var MdButton = /** @class */ (function () {
     function MdButton(element) {
         this.element = element;
@@ -13,7 +11,7 @@ var MdButton = /** @class */ (function () {
         this.large = false;
         this.small = false;
         this.pulse = false;
-        this.attributeManager = new attributeManager_1.AttributeManager(element);
+        this.attributeManager = new au.AttributeManager(element);
     }
     MdButton.prototype.disabledChanged = function (newValue) {
         if (newValue) {
@@ -66,32 +64,32 @@ var MdButton = /** @class */ (function () {
         this.attributeManager.removeClasses(["accent", "btn", "btn-flat", "btn-large", "disabled", "pulse"]);
     };
     tslib_1.__decorate([
-        aurelia_typed_observable_plugin_1.bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "disabled", void 0);
     tslib_1.__decorate([
-        aurelia_typed_observable_plugin_1.bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "flat", void 0);
     tslib_1.__decorate([
-        aurelia_typed_observable_plugin_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "floating", void 0);
     tslib_1.__decorate([
-        aurelia_typed_observable_plugin_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "large", void 0);
     tslib_1.__decorate([
-        aurelia_typed_observable_plugin_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "small", void 0);
     tslib_1.__decorate([
-        aurelia_typed_observable_plugin_1.bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "pulse", void 0);
     MdButton = tslib_1.__decorate([
-        aurelia_framework_1.customAttribute("md-button"),
-        aurelia_framework_1.autoinject,
+        au.customAttribute("md-button"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdButton);
     return MdButton;

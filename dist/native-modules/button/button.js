@@ -1,7 +1,5 @@
 import * as tslib_1 from "tslib";
-import { autoinject, customAttribute, bindingMode } from "aurelia-framework";
-import { bindable } from "aurelia-typed-observable-plugin";
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 var MdButton = /** @class */ (function () {
     function MdButton(element) {
         this.element = element;
@@ -11,7 +9,7 @@ var MdButton = /** @class */ (function () {
         this.large = false;
         this.small = false;
         this.pulse = false;
-        this.attributeManager = new AttributeManager(element);
+        this.attributeManager = new au.AttributeManager(element);
     }
     MdButton.prototype.disabledChanged = function (newValue) {
         if (newValue) {
@@ -64,32 +62,32 @@ var MdButton = /** @class */ (function () {
         this.attributeManager.removeClasses(["accent", "btn", "btn-flat", "btn-large", "disabled", "pulse"]);
     };
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "disabled", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "flat", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "floating", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "large", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "small", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], MdButton.prototype, "pulse", void 0);
     MdButton = tslib_1.__decorate([
-        customAttribute("md-button"),
-        autoinject,
+        au.customAttribute("md-button"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdButton);
     return MdButton;

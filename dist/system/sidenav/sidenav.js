@@ -1,20 +1,14 @@
-System.register(["tslib", "aurelia-framework", "../common/attributeManager", "aurelia-typed-observable-plugin"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, attributeManager_1, aurelia_typed_observable_plugin_1, MdSidenav;
+    var tslib_1, au, MdSidenav;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (attributeManager_1_1) {
-                attributeManager_1 = attributeManager_1_1;
-            },
-            function (aurelia_typed_observable_plugin_1_1) {
-                aurelia_typed_observable_plugin_1 = aurelia_typed_observable_plugin_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
@@ -37,7 +31,7 @@ System.register(["tslib", "aurelia-framework", "../common/attributeManager", "au
                     }
                 };
                 MdSidenav.prototype.attached = function () {
-                    this.attributeManager = new attributeManager_1.AttributeManager(this.sidenav);
+                    this.attributeManager = new au.AttributeManager(this.sidenav);
                     if (this.mdFixed) {
                         this.attributeManager.addClasses(MdSidenav_1.fixedClass);
                     }
@@ -62,16 +56,16 @@ System.register(["tslib", "aurelia-framework", "../common/attributeManager", "au
                 MdSidenav.fixedClass = "sidenav-fixed";
                 MdSidenav.id = 0;
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Object)
                 ], MdSidenav.prototype, "options", void 0);
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdSidenav.prototype, "mdFixed", void 0);
                 MdSidenav = MdSidenav_1 = tslib_1.__decorate([
-                    aurelia_framework_1.customElement("md-sidenav"),
-                    aurelia_framework_1.autoinject,
+                    au.customElement("md-sidenav"),
+                    au.autoinject,
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdSidenav);
                 return MdSidenav;

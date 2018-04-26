@@ -1,7 +1,8 @@
-System.register(["aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/dom"], function (exports_1, context_1) {
+System.register(["aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/dom", "./common/attributeManager"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var exportedNames_1 = {
+        "customElement": true,
         "customAttribute": true,
         "autoinject": true,
         "bindingMode": true,
@@ -11,9 +12,11 @@ System.register(["aurelia-framework", "aurelia-logging", "./common/events", "aur
         "getLogger": true,
         "Logger": true,
         "fireEvent": true,
+        "fireMaterializeEvent": true,
         "ValidateResult": true,
         "MaterializeFormValidationRenderer": true,
-        "bindable": true
+        "bindable": true,
+        "AttributeManager": true
     };
     function exportStar_1(m) {
         var exports = {};
@@ -26,6 +29,7 @@ System.register(["aurelia-framework", "aurelia-logging", "./common/events", "aur
         setters: [
             function (aurelia_framework_1_1) {
                 exports_1({
+                    "customElement": aurelia_framework_1_1["customElement"],
                     "customAttribute": aurelia_framework_1_1["customAttribute"],
                     "autoinject": aurelia_framework_1_1["autoinject"],
                     "bindingMode": aurelia_framework_1_1["bindingMode"],
@@ -42,7 +46,8 @@ System.register(["aurelia-framework", "aurelia-logging", "./common/events", "aur
             },
             function (events_1_1) {
                 exports_1({
-                    "fireEvent": events_1_1["fireEvent"]
+                    "fireEvent": events_1_1["fireEvent"],
+                    "fireMaterializeEvent": events_1_1["fireMaterializeEvent"]
                 });
             },
             function (aurelia_validation_1_1) {
@@ -62,6 +67,11 @@ System.register(["aurelia-framework", "aurelia-logging", "./common/events", "aur
             },
             function (dom_1_1) {
                 exportStar_1(dom_1_1);
+            },
+            function (attributeManager_1_1) {
+                exports_1({
+                    "AttributeManager": attributeManager_1_1["AttributeManager"]
+                });
             }
         ],
         execute: function () {

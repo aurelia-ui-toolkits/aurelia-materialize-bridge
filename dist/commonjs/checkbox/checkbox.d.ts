@@ -1,10 +1,10 @@
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 export declare class MdCheckbox {
     private element;
     constructor(element: Element);
     static id: number;
     controlId: string;
-    attributeManager: AttributeManager;
+    attributeManager: au.AttributeManager;
     checkbox: HTMLInputElement;
     mdChecked?: boolean | any[];
     mdDisabled: boolean;

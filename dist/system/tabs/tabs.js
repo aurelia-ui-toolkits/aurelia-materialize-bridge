@@ -1,26 +1,14 @@
-System.register(["tslib", "aurelia-framework", "aurelia-task-queue", "../common/events", "../common/attributeManager", "aurelia-typed-observable-plugin"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, aurelia_task_queue_1, events_1, attributeManager_1, aurelia_typed_observable_plugin_1, MdTabs;
+    var tslib_1, au, MdTabs;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (aurelia_task_queue_1_1) {
-                aurelia_task_queue_1 = aurelia_task_queue_1_1;
-            },
-            function (events_1_1) {
-                events_1 = events_1_1;
-            },
-            function (attributeManager_1_1) {
-                attributeManager_1 = attributeManager_1_1;
-            },
-            function (aurelia_typed_observable_plugin_1_1) {
-                aurelia_typed_observable_plugin_1 = aurelia_typed_observable_plugin_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
@@ -37,9 +25,9 @@ System.register(["tslib", "aurelia-framework", "aurelia-task-queue", "../common/
                     this.transparent = false;
                     this.fireTabSelectedEvent = function (e) {
                         var href = e.target.getAttribute("href");
-                        events_1.fireMaterializeEvent(_this.element, "selected", href);
+                        au.fireMaterializeEvent(_this.element, "selected", href);
                     };
-                    this.attributeManager = new attributeManager_1.AttributeManager(this.element);
+                    this.attributeManager = new au.AttributeManager(this.element);
                 }
                 MdTabs.prototype.fixedChanged = function (newValue) {
                     if (newValue) {
@@ -63,7 +51,7 @@ System.register(["tslib", "aurelia-framework", "aurelia-task-queue", "../common/
                     try {
                         for (var _a = tslib_1.__values(Array.from(children)), _b = _a.next(); !_b.done; _b = _a.next()) {
                             var child = _b.value;
-                            var setter = new attributeManager_1.AttributeManager(child);
+                            var setter = new au.AttributeManager(child);
                             setter.addClasses(["tab", "primary-text"]);
                             this.tabAttributeManagers.push(setter);
                         }
@@ -136,7 +124,7 @@ System.register(["tslib", "aurelia-framework", "aurelia-task-queue", "../common/
                 };
                 MdTabs.prototype.select = function (id) {
                     this.instance.select(id);
-                    events_1.fireMaterializeEvent(this.element, "selected", "#" + id);
+                    au.fireMaterializeEvent(this.element, "selected", "#" + id);
                 };
                 Object.defineProperty(MdTabs.prototype, "selectedTab", {
                     // FIXME: probably bad - binding this introduces dirty checking
@@ -147,29 +135,29 @@ System.register(["tslib", "aurelia-framework", "aurelia-task-queue", "../common/
                     configurable: true
                 });
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdTabs.prototype, "fixed", void 0);
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Function)
                 ], MdTabs.prototype, "onShow", void 0);
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Number)
                 ], MdTabs.prototype, "responsiveThreshold", void 0);
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdTabs.prototype, "swipeable", void 0);
                 tslib_1.__decorate([
-                    aurelia_typed_observable_plugin_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdTabs.prototype, "transparent", void 0);
                 MdTabs = tslib_1.__decorate([
-                    aurelia_framework_1.customAttribute("md-tabs"),
-                    aurelia_framework_1.autoinject,
-                    tslib_1.__metadata("design:paramtypes", [Element, aurelia_task_queue_1.TaskQueue])
+                    au.customAttribute("md-tabs"),
+                    au.autoinject,
+                    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
                 ], MdTabs);
                 return MdTabs;
             }());

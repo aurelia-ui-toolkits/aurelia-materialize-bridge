@@ -1,5 +1,5 @@
 /// <reference types="materialize-css" />
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 export declare class MdSidenav {
     element: Element;
     constructor(element: Element);
@@ -8,7 +8,7 @@ export declare class MdSidenav {
     controlId: string;
     sidenav: HTMLDivElement;
     instance: M.Sidenav;
-    attributeManager: AttributeManager;
+    attributeManager: au.AttributeManager;
     options: M.SidenavOptions;
     mdFixed: boolean;
     mdFixedChanged(newValue: any): void;

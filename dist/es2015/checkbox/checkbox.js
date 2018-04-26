@@ -1,7 +1,5 @@
 import * as tslib_1 from "tslib";
-import { autoinject, bindingMode, customElement } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { bindable } from "aurelia-typed-observable-plugin";
+import * as au from "../aurelia";
 var MdCheckbox = /** @class */ (function () {
     function MdCheckbox(element) {
         this.element = element;
@@ -26,7 +24,7 @@ var MdCheckbox = /** @class */ (function () {
         }
     };
     MdCheckbox.prototype.attached = function () {
-        this.attributeManager = new AttributeManager(this.checkbox);
+        this.attributeManager = new au.AttributeManager(this.checkbox);
         if (this.mdFilledIn) {
             this.attributeManager.addClasses("filled-in");
         }
@@ -51,32 +49,32 @@ var MdCheckbox = /** @class */ (function () {
     };
     MdCheckbox.id = 0;
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.twoWay }),
+        au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
         tslib_1.__metadata("design:type", Object)
     ], MdCheckbox.prototype, "mdChecked", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], MdCheckbox.prototype, "mdDisabled", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], MdCheckbox.prototype, "mdReadonly", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], MdCheckbox.prototype, "mdFilledIn", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Function)
     ], MdCheckbox.prototype, "mdMatcher", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Object)
     ], MdCheckbox.prototype, "mdModel", void 0);
     MdCheckbox = MdCheckbox_1 = tslib_1.__decorate([
-        customElement("md-checkbox"),
-        autoinject,
+        au.customElement("md-checkbox"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdCheckbox);
     return MdCheckbox;

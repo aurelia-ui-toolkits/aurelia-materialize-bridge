@@ -1,14 +1,12 @@
 import * as tslib_1 from "tslib";
-import { customElement, autoinject, bindingMode } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { bindable } from "aurelia-typed-observable-plugin";
+import * as au from "../aurelia";
 var MdNavbar = /** @class */ (function () {
     function MdNavbar(element) {
         this.element = element;
     }
     MdNavbar.prototype.attached = function () {
-        this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
-        this.navAttributeManager = new AttributeManager(this.nav);
+        this.fixedAttributeManager = new au.AttributeManager(this.fixedAnchor);
+        this.navAttributeManager = new au.AttributeManager(this.nav);
         if (this.mdFixed) {
             this.fixedAttributeManager.addClasses("navbar-fixed");
         }
@@ -31,20 +29,20 @@ var MdNavbar = /** @class */ (function () {
         }
     };
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdNavbar.prototype, "mdExtended", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdNavbar.prototype, "mdFixed", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdNavbar.prototype, "mdAutoHeight", void 0);
     MdNavbar = tslib_1.__decorate([
-        customElement("md-navbar"),
-        autoinject,
+        au.customElement("md-navbar"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdNavbar);
     return MdNavbar;

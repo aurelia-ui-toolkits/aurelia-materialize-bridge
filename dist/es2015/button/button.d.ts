@@ -1,8 +1,8 @@
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 export declare class MdButton {
     private element;
     constructor(element: Element);
-    attributeManager: AttributeManager;
+    attributeManager: au.AttributeManager;
     disabled: boolean;
     disabledChanged(newValue: boolean): void;
     flat: boolean;

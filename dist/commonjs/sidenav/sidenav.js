@@ -1,9 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
-var aurelia_framework_1 = require("aurelia-framework");
-var attributeManager_1 = require("../common/attributeManager");
-var aurelia_typed_observable_plugin_1 = require("aurelia-typed-observable-plugin");
+var au = require("../aurelia");
 var MdSidenav = /** @class */ (function () {
     function MdSidenav(element) {
         this.element = element;
@@ -23,7 +21,7 @@ var MdSidenav = /** @class */ (function () {
         }
     };
     MdSidenav.prototype.attached = function () {
-        this.attributeManager = new attributeManager_1.AttributeManager(this.sidenav);
+        this.attributeManager = new au.AttributeManager(this.sidenav);
         if (this.mdFixed) {
             this.attributeManager.addClasses(MdSidenav_1.fixedClass);
         }
@@ -48,16 +46,16 @@ var MdSidenav = /** @class */ (function () {
     MdSidenav.fixedClass = "sidenav-fixed";
     MdSidenav.id = 0;
     tslib_1.__decorate([
-        aurelia_typed_observable_plugin_1.bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Object)
     ], MdSidenav.prototype, "options", void 0);
     tslib_1.__decorate([
-        aurelia_typed_observable_plugin_1.bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], MdSidenav.prototype, "mdFixed", void 0);
     MdSidenav = MdSidenav_1 = tslib_1.__decorate([
-        aurelia_framework_1.customElement("md-sidenav"),
-        aurelia_framework_1.autoinject,
+        au.customElement("md-sidenav"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdSidenav);
     return MdSidenav;

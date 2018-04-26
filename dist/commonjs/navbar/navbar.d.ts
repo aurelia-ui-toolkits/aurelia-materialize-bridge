@@ -1,4 +1,4 @@
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 export declare class MdNavbar {
     private element;
     constructor(element: Element);
@@ -7,8 +7,8 @@ export declare class MdNavbar {
     mdExtended: boolean;
     mdFixed: boolean;
     mdAutoHeight: boolean;
-    fixedAttributeManager: AttributeManager;
-    navAttributeManager: AttributeManager;
+    fixedAttributeManager: au.AttributeManager;
+    navAttributeManager: au.AttributeManager;
     attached(): void;
     detached(): void;
 }

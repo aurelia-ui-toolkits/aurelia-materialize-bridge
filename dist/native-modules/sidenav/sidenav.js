@@ -1,7 +1,5 @@
 import * as tslib_1 from "tslib";
-import { customElement, autoinject } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { bindable } from "aurelia-typed-observable-plugin";
+import * as au from "../aurelia";
 var MdSidenav = /** @class */ (function () {
     function MdSidenav(element) {
         this.element = element;
@@ -21,7 +19,7 @@ var MdSidenav = /** @class */ (function () {
         }
     };
     MdSidenav.prototype.attached = function () {
-        this.attributeManager = new AttributeManager(this.sidenav);
+        this.attributeManager = new au.AttributeManager(this.sidenav);
         if (this.mdFixed) {
             this.attributeManager.addClasses(MdSidenav_1.fixedClass);
         }
@@ -46,16 +44,16 @@ var MdSidenav = /** @class */ (function () {
     MdSidenav.fixedClass = "sidenav-fixed";
     MdSidenav.id = 0;
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Object)
     ], MdSidenav.prototype, "options", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Boolean)
     ], MdSidenav.prototype, "mdFixed", void 0);
     MdSidenav = MdSidenav_1 = tslib_1.__decorate([
-        customElement("md-sidenav"),
-        autoinject,
+        au.customElement("md-sidenav"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdSidenav);
     return MdSidenav;
