@@ -1,10 +1,7 @@
-import { autoinject, bindingMode, customElement } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { bindable } from "aurelia-typed-observable-plugin";
+import * as au from "../aurelia";
 
-@customElement("md-checkbox")
-@autoinject
+@au.customElement("md-checkbox")
+@au.autoinject
 export class MdCheckbox {
 	constructor(private element: Element) {
 		this.controlId = `md-checkbox-${MdCheckbox.id++}`;
@@ -12,13 +9,13 @@ export class MdCheckbox {
 
 	static id = 0;
 	controlId: string;
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 	checkbox: HTMLInputElement;
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
+	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	mdChecked?: boolean | any[];
 
-	@bindable
+	@au.bindable
 	mdDisabled: boolean;
 	mdDisabledChanged(newValue) {
 		if (this.checkbox) {
@@ -26,7 +23,7 @@ export class MdCheckbox {
 		}
 	}
 
-	@bindable
+	@au.bindable
 	mdReadonly: boolean = false;
 	mdReadonlyChanged() {
 		if (!this.checkbox) {
@@ -40,17 +37,17 @@ export class MdCheckbox {
 		}
 	}
 
-	@bindable
+	@au.bindable
 	mdFilledIn: boolean;
 
-	@bindable
+	@au.bindable
 	mdMatcher: (a: any, b: any) => boolean;
 
-	@bindable
+	@au.bindable
 	mdModel: any;
 
 	attached() {
-		this.attributeManager = new AttributeManager(this.checkbox);
+		this.attributeManager = new au.AttributeManager(this.checkbox);
 		if (this.mdFilledIn) {
 			this.attributeManager.addClasses("filled-in");
 		}

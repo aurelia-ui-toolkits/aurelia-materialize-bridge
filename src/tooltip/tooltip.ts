@@ -1,18 +1,17 @@
-import { customAttribute, autoinject } from "aurelia-framework";
-import { bindable } from "aurelia-typed-observable-plugin";
+import * as au from "../aurelia";
 
-@customAttribute("md-tooltip")
-@autoinject
+@au.customAttribute("md-tooltip")
+@au.autoinject
 export class MdTooltip {
 	constructor(private element: Element) { }
 
-	@bindable
+	@au.bindable
 	position: "top" | "right" | "bottom" | "left" = "bottom";
 
-	@bindable
+	@au.bindable
 	delay: number = 50;
 
-	@bindable
+	@au.bindable
 	text: string = "";
 	textChanged() {
 		this.initTooltip();

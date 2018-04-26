@@ -1,18 +1,15 @@
-import { autoinject, customAttribute, bindingMode } from "aurelia-framework";
-import { bindable } from "aurelia-typed-observable-plugin";
-import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customAttribute("md-button")
-@autoinject
+@au.customAttribute("md-button")
+@au.autoinject
 export class MdButton {
 	constructor(private element: Element) {
-		this.attributeManager = new AttributeManager(element);
+		this.attributeManager = new au.AttributeManager(element);
 	}
 
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 
-	@bindable
+	@au.bindable
 	disabled: boolean = false;
 	disabledChanged(newValue: boolean) {
 		if (newValue) {
@@ -22,7 +19,7 @@ export class MdButton {
 		}
 	}
 
-	@bindable
+	@au.bindable
 	flat: boolean = false;
 	flatChanged(newValue: boolean) {
 		if (newValue) {
@@ -32,16 +29,16 @@ export class MdButton {
 		}
 	}
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	floating: boolean = false;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	large: boolean = false;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	small: boolean = false;
 
-	@bindable
+	@au.bindable
 	pulse: boolean = false;
 	pulseChanged(newValue: boolean) {
 		if (newValue) {

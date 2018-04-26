@@ -1,30 +1,28 @@
-import { customElement, autoinject, bindingMode } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { bindable } from "aurelia-typed-observable-plugin";
+import * as au from "../aurelia";
 
-@customElement("md-navbar")
-@autoinject
+@au.customElement("md-navbar")
+@au.autoinject
 export class MdNavbar {
 	constructor(private element: Element) { }
 
 	fixedAnchor: HTMLDivElement;
 	nav: HTMLElement;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	mdExtended: boolean;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	mdFixed: boolean;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	mdAutoHeight: boolean;
 
-	fixedAttributeManager: AttributeManager;
-	navAttributeManager: AttributeManager;
+	fixedAttributeManager: au.AttributeManager;
+	navAttributeManager: au.AttributeManager;
 
 	attached() {
-		this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
-		this.navAttributeManager = new AttributeManager(this.nav);
+		this.fixedAttributeManager = new au.AttributeManager(this.fixedAnchor);
+		this.navAttributeManager = new au.AttributeManager(this.nav);
 		if (this.mdFixed) {
 			this.fixedAttributeManager.addClasses("navbar-fixed");
 		}

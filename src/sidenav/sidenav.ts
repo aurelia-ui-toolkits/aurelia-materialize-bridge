@@ -1,9 +1,7 @@
-import { customElement, autoinject } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { bindable } from "aurelia-typed-observable-plugin";
+import * as au from "../aurelia";
 
-@customElement("md-sidenav")
-@autoinject
+@au.customElement("md-sidenav")
+@au.autoinject
 export class MdSidenav {
 	constructor(public element: Element) {
 		this.controlId = `md-sidenav-${MdSidenav.id++}`;
@@ -15,12 +13,12 @@ export class MdSidenav {
 	controlId: string;
 	sidenav: HTMLDivElement;
 	instance: M.Sidenav;
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 
-	@bindable
+	@au.bindable
 	options: M.SidenavOptions;
 
-	@bindable
+	@au.bindable
 	mdFixed: boolean = false;
 	mdFixedChanged(newValue) {
 		if (!this.attributeManager) {
@@ -34,7 +32,7 @@ export class MdSidenav {
 	}
 
 	attached() {
-		this.attributeManager = new AttributeManager(this.sidenav);
+		this.attributeManager = new au.AttributeManager(this.sidenav);
 		if (this.mdFixed) {
 			this.attributeManager.addClasses(MdSidenav.fixedClass);
 		}

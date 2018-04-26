@@ -1,20 +1,16 @@
-import { customAttribute, autoinject, bindingMode } from "aurelia-framework";
-import { TaskQueue } from "aurelia-task-queue";
-import { fireMaterializeEvent } from "../common/events";
-import { AttributeManager } from "../common/attributeManager";
-import { bindable } from "aurelia-typed-observable-plugin";
+import * as au from "../aurelia";
 
-@customAttribute("md-tabs")
-@autoinject
+@au.customAttribute("md-tabs")
+@au.autoinject
 export class MdTabs {
-	constructor(private element: Element, private taskQueue: TaskQueue) {
-		this.attributeManager = new AttributeManager(this.element);
+	constructor(private element: Element, private taskQueue: au.TaskQueue) {
+		this.attributeManager = new au.AttributeManager(this.element);
 	}
 
-	attributeManager: AttributeManager;
-	tabAttributeManagers: AttributeManager[] = [];
+	attributeManager: au.AttributeManager;
+	tabAttributeManagers: au.AttributeManager[] = [];
 
-	@bindable
+	@au.bindable
 	fixed: boolean = false;
 	fixedChanged(newValue) {
 		if (newValue) {
@@ -24,16 +20,16 @@ export class MdTabs {
 		}
 	}
 
-	@bindable
+	@au.bindable
 	onShow: ({ newContent: Element }) => void = null;
 
-	@bindable
+	@au.bindable
 	responsiveThreshold: number = Infinity;
 
-	@bindable
+	@au.bindable
 	swipeable: boolean = false;
 
-	@bindable
+	@au.bindable
 	transparent: boolean = false;
 	transparentChanged(newValue) {
 		if (newValue) {
@@ -50,7 +46,7 @@ export class MdTabs {
 
 		let children = this.element.querySelectorAll("li");
 		for (let child of Array.from(children)) {
-			let setter = new AttributeManager(child);
+			let setter = new au.AttributeManager(child);
 			setter.addClasses(["tab", "primary-text"]);
 			this.tabAttributeManagers.push(setter);
 		}
@@ -98,12 +94,12 @@ export class MdTabs {
 
 	fireTabSelectedEvent = (e: Event) => {
 		let href = (e.target as HTMLAnchorElement).getAttribute("href");
-		fireMaterializeEvent(this.element, "selected", href);
+		au.fireMaterializeEvent(this.element, "selected", href);
 	}
 
 	select(id: string) {
 		this.instance.select(id);
-		fireMaterializeEvent(this.element, "selected", `#${id}`);
+		au.fireMaterializeEvent(this.element, "selected", `#${id}`);
 	}
 
 	// FIXME: probably bad - binding this introduces dirty checking
