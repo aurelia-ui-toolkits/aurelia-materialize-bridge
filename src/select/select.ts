@@ -1,5 +1,4 @@
 import * as au from "../aurelia";
-import "./select.css";
 
 @au.autoinject
 @au.customAttribute("md-select")
@@ -166,7 +165,12 @@ export class MdSelect {
 			this.instance.input.classList.add("invalid");
 		}
 		this.readonlyDiv = document.createElement("div");
-		this.readonlyDiv.classList.add("readonly-div");
+		this.readonlyDiv.style.position = "absolute";
+		this.readonlyDiv.style.top = "0";
+		this.readonlyDiv.style.width = "100%";
+		this.readonlyDiv.style.height = "100%";
+		this.readonlyDiv.style.zIndex = "2";
+		this.readonlyDiv.style.background = "transparent";
 		this.instance.input.parentElement.insertBefore(this.readonlyDiv, this.instance.input);
 		this.instance.input.addEventListener("focus", this.handleFocus);
 		this.instance.input.addEventListener("blur", this.handleBlur);
