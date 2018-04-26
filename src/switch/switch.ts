@@ -1,48 +1,38 @@
-import { bindable, customElement, autoinject, bindingMode } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { fireEvent } from "../common/events";
+import * as au from "../aurelia";
 
-@customElement("md-switch")
-@autoinject
+@au.customElement("md-switch")
+@au.autoinject
 export class MdSwitch {
-	constructor(private element: Element) {
-		this.handleChange = this.handleChange.bind(this);
-	}
+	constructor(private element: Element) { }
 
 	checkbox: HTMLInputElement;
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	mdChecked: boolean | string;
+	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
+	mdChecked: boolean;
 	mdCheckedChanged(newValue) {
 		if (this.checkbox) {
 			this.checkbox.checked = !!newValue;
 		}
 	}
 
-	@bindable
-	mdDisabled: boolean | string;
-	mdDisabledChanged(newValue) {
-		if (this.checkbox) {
-			this.checkbox.disabled = !!newValue;
-		}
-	}
+	@au.bindable
+	mdDisabled: boolean;
 
-	@bindable
-	mdReadonly: boolean | string = false;
+	@au.bindable
+	mdReadonly: boolean = false;
 
-	@bindable
+	@au.bindable
 	mdLabelOff: string = "Off";
 
-	@bindable
+	@au.bindable
 	mdLabelOn: string = "On";
 
 	attached() {
-		this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
-		if (getBooleanFromAttributeValue(this.mdDisabled)) {
+		this.checkbox.checked = this.mdChecked;
+		if (this.mdDisabled) {
 			this.checkbox.disabled = true;
 		}
 		this.checkbox.addEventListener("change", this.handleChange);
-		this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
 	}
 
 	detached() {
@@ -51,12 +41,12 @@ export class MdSwitch {
 		}
 	}
 
-	handleChange() {
+	handleChange = () => {
 		this.mdChecked = this.checkbox.checked;
-		fireEvent(this.element, "blur");
+		au.fireEvent(this.element, "blur");
 	}
 
 	blur() {
-		fireEvent(this.element, "blur");
+		au.fireEvent(this.element, "blur");
 	}
 }
