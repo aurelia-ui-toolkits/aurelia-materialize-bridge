@@ -1,4 +1,8 @@
 import { PLATFORM } from "aurelia-pal";
+import { bindable, createTypedBindable } from "aurelia-typed-observable-plugin";
+// import { createTypedBindable } from "./common/create-typed-bindable";
+
+bindable.trueBoolean = createTypedBindable("trueBoolean");
 
 /**
  * Plugin configuration builder

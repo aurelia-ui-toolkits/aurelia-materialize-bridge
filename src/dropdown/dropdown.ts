@@ -24,8 +24,7 @@ export class MdDropdown {
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	autoTrigger: boolean = false;
 
-	// @au.bindable.boolean({ defaultBindingMode: au.bindingMode.oneTime })
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.bindable.trueBoolean({ defaultBindingMode: au.bindingMode.oneTime })
 	constrainWidth: boolean = true;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
