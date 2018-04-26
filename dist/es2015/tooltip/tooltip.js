@@ -1,6 +1,5 @@
 import * as tslib_1 from "tslib";
-import { customAttribute, autoinject } from "aurelia-framework";
-import { bindable } from "aurelia-typed-observable-plugin";
+import * as au from "../aurelia";
 var MdTooltip = /** @class */ (function () {
     function MdTooltip(element) {
         this.element = element;
@@ -21,20 +20,20 @@ var MdTooltip = /** @class */ (function () {
         this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
     };
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", String)
     ], MdTooltip.prototype, "position", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Number)
     ], MdTooltip.prototype, "delay", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", String)
     ], MdTooltip.prototype, "text", void 0);
     MdTooltip = tslib_1.__decorate([
-        customAttribute("md-tooltip"),
-        autoinject,
+        au.customAttribute("md-tooltip"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdTooltip);
     return MdTooltip;
