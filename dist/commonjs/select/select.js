@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var au = require("../aurelia");
-require("./select.css");
 var MdSelect = /** @class */ (function () {
     function MdSelect(element, bindingEngine, taskQueue) {
         var _this = this;
@@ -196,7 +195,12 @@ var MdSelect = /** @class */ (function () {
             this.instance.input.classList.add("invalid");
         }
         this.readonlyDiv = document.createElement("div");
-        this.readonlyDiv.classList.add("readonly-div");
+        this.readonlyDiv.style.position = "absolute";
+        this.readonlyDiv.style.top = "0";
+        this.readonlyDiv.style.width = "100%";
+        this.readonlyDiv.style.height = "100%";
+        this.readonlyDiv.style.zIndex = "2";
+        this.readonlyDiv.style.background = "transparent";
         this.instance.input.parentElement.insertBefore(this.readonlyDiv, this.instance.input);
         this.instance.input.addEventListener("focus", this.handleFocus);
         this.instance.input.addEventListener("blur", this.handleBlur);

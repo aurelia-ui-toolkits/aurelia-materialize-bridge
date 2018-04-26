@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "../aurelia", "./select.css"], function (require, exports, tslib_1, au) {
+define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdSelect = /** @class */ (function () {
@@ -194,7 +194,12 @@ define(["require", "exports", "tslib", "../aurelia", "./select.css"], function (
                 this.instance.input.classList.add("invalid");
             }
             this.readonlyDiv = document.createElement("div");
-            this.readonlyDiv.classList.add("readonly-div");
+            this.readonlyDiv.style.position = "absolute";
+            this.readonlyDiv.style.top = "0";
+            this.readonlyDiv.style.width = "100%";
+            this.readonlyDiv.style.height = "100%";
+            this.readonlyDiv.style.zIndex = "2";
+            this.readonlyDiv.style.background = "transparent";
             this.instance.input.parentElement.insertBefore(this.readonlyDiv, this.instance.input);
             this.instance.input.addEventListener("focus", this.handleFocus);
             this.instance.input.addEventListener("blur", this.handleBlur);

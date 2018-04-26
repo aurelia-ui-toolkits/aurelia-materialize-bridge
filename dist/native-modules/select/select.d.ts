@@ -1,5 +1,4 @@
 import * as au from "../aurelia";
-import "./select.css";
 export declare class MdSelect {
     private bindingEngine;
     private taskQueue;

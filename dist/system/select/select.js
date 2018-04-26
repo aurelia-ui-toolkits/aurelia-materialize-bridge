@@ -1,4 +1,4 @@
-System.register(["tslib", "../aurelia", "./select.css"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var tslib_1, au, MdSelect;
@@ -9,8 +9,6 @@ System.register(["tslib", "../aurelia", "./select.css"], function (exports_1, co
             },
             function (au_1) {
                 au = au_1;
-            },
-            function (_1) {
             }
         ],
         execute: function () {
@@ -207,7 +205,12 @@ System.register(["tslib", "../aurelia", "./select.css"], function (exports_1, co
                         this.instance.input.classList.add("invalid");
                     }
                     this.readonlyDiv = document.createElement("div");
-                    this.readonlyDiv.classList.add("readonly-div");
+                    this.readonlyDiv.style.position = "absolute";
+                    this.readonlyDiv.style.top = "0";
+                    this.readonlyDiv.style.width = "100%";
+                    this.readonlyDiv.style.height = "100%";
+                    this.readonlyDiv.style.zIndex = "2";
+                    this.readonlyDiv.style.background = "transparent";
                     this.instance.input.parentElement.insertBefore(this.readonlyDiv, this.instance.input);
                     this.instance.input.addEventListener("focus", this.handleFocus);
                     this.instance.input.addEventListener("blur", this.handleBlur);
