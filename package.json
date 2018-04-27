@@ -131,7 +131,7 @@
     "aurelia-framework": "^1.1.5",
     "aurelia-router": "^1.5.0",
     "aurelia-templating": "^1.7.0",
-    "aurelia-typed-observable-plugin": "github:aurelia-contrib/aurelia-typed-observable-plugin",
+    "aurelia-typed-observable-plugin": "^0.3.5",
     "aurelia-validation": "^1.1.2",
     "tslib": "^1.9.0"
   }
