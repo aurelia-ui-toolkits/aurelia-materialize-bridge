@@ -9,7 +9,7 @@ export class MdButton {
 
 	attributeManager: au.AttributeManager;
 
-	@au.bindable
+	@au.bindable.booleanMd
 	disabled: boolean = false;
 	disabledChanged(newValue: boolean) {
 		if (newValue) {
@@ -19,7 +19,7 @@ export class MdButton {
 		}
 	}
 
-	@au.bindable
+	@au.bindable.booleanMd
 	flat: boolean = false;
 	flatChanged(newValue: boolean) {
 		if (newValue) {
@@ -29,16 +29,16 @@ export class MdButton {
 		}
 	}
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	floating: boolean = false;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	large: boolean = false;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	small: boolean = false;
 
-	@au.bindable
+	@au.bindable.booleanMd
 	pulse: boolean = false;
 	pulseChanged(newValue: boolean) {
 		if (newValue) {

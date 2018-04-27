@@ -1,16 +1,16 @@
-import { bindable, customElement } from "aurelia-framework";
+import * as au from "../aurelia";
 
-@customElement("md-colors")
+@au.customElement("md-colors")
 export class MdColors {
-	@bindable
+	@au.bindable
 	mdPrimaryColor: string;
 
-	@bindable
+	@au.bindable
 	mdAccentColor: string;
 
-	@bindable
+	@au.bindable
 	mdErrorColor: string = "#F44336";
 
-	@bindable
+	@au.bindable
 	mdSuccessColor: string = "#26A69A";
 }

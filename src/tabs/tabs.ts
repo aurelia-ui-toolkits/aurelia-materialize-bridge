@@ -10,7 +10,7 @@ export class MdTabs {
 	attributeManager: au.AttributeManager;
 	tabAttributeManagers: au.AttributeManager[] = [];
 
-	@au.bindable
+	@au.bindable.booleanMd
 	fixed: boolean = false;
 	fixedChanged(newValue) {
 		if (newValue) {
@@ -26,10 +26,10 @@ export class MdTabs {
 	@au.bindable
 	responsiveThreshold: number = Infinity;
 
-	@au.bindable
+	@au.bindable.booleanMd
 	swipeable: boolean = false;
 
-	@au.bindable
+	@au.bindable.booleanMd
 	transparent: boolean = false;
 	transparentChanged(newValue) {
 		if (newValue) {

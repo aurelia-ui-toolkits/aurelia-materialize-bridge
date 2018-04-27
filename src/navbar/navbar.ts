@@ -8,13 +8,13 @@ export class MdNavbar {
 	fixedAnchor: HTMLDivElement;
 	nav: HTMLElement;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdExtended: boolean;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdFixed: boolean;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdAutoHeight: boolean;
 
 	fixedAttributeManager: au.AttributeManager;

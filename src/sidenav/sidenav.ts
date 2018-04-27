@@ -18,7 +18,7 @@ export class MdSidenav {
 	@au.bindable
 	options: M.SidenavOptions;
 
-	@au.bindable
+	@au.bindable.booleanMd
 	mdFixed: boolean = false;
 	mdFixedChanged(newValue) {
 		if (!this.attributeManager) {
