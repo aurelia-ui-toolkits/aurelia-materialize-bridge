@@ -70,7 +70,7 @@ export class MdSelect {
 	@au.bindable.booleanMd
 	enableOptionObserver: boolean = false;
 
-	@au.bindable
+	@au.bindable.stringMd
 	label: string = "";
 	labelChanged() {
 		if (this.labelElement) {
