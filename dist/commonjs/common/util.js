@@ -17,4 +17,13 @@ function insertAfter(element, newChild) {
     element.parentNode.insertBefore(newChild, element.nextSibling);
 }
 exports.insertAfter = insertAfter;
-//# sourceMappingURL=dom.js.map
+/**
+ * Remove undefined fields from an object
+ *
+ * @param options An object to clean
+ */
+function cleanOptions(options) {
+    Object.keys(options).filter(function (key) { return options[key] === undefined; }).forEach(function (key) { return delete options[key]; });
+}
+exports.cleanOptions = cleanOptions;
+//# sourceMappingURL=util.js.map

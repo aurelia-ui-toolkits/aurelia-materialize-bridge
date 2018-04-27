@@ -21,7 +21,6 @@ export declare class MdSelect {
     labelChanged(): void;
     showErrortext: boolean;
     showErrortextChanged(): void;
-    suspendUpdate: boolean;
     subscriptions: any[];
     inputField: HTMLDivElement;
     optionsMutationObserver: any;

@@ -1,4 +1,4 @@
-System.register(["./augmentation/element", "./augmentation/materialize", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "aurelia-typed-observable-plugin", "./exports"], function (exports_1, context_1) {
+System.register(["./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function applyPolyfills() {
@@ -16,11 +16,9 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./conf
         if (builder.useScrollfirePatch) {
             new scrollfire_patch_1.ScrollfirePatch().patch();
         }
-        aurelia_typed_observable_plugin_1.usePropertyTypeForBindable(true);
-        aurelia_typed_observable_plugin_1.usePropertyTypeForObservable(true);
     }
     exports_1("configure", configure);
-    var config_builder_1, scrollfire_patch_1, polyfills_1, aurelia_typed_observable_plugin_1;
+    var config_builder_1, scrollfire_patch_1, polyfills_1;
     var exportedNames_1 = {
         "configure": true
     };
@@ -37,6 +35,8 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./conf
             },
             function (_2) {
             },
+            function (_3) {
+            },
             function (config_builder_1_1) {
                 config_builder_1 = config_builder_1_1;
             },
@@ -45,9 +45,6 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./conf
             },
             function (polyfills_1_1) {
                 polyfills_1 = polyfills_1_1;
-            },
-            function (aurelia_typed_observable_plugin_1_1) {
-                aurelia_typed_observable_plugin_1 = aurelia_typed_observable_plugin_1_1;
             },
             function (exports_2_1) {
                 exportStar_1(exports_2_1);

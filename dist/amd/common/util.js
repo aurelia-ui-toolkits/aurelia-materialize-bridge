@@ -18,5 +18,14 @@ define(["require", "exports"], function (require, exports) {
         element.parentNode.insertBefore(newChild, element.nextSibling);
     }
     exports.insertAfter = insertAfter;
+    /**
+     * Remove undefined fields from an object
+     *
+     * @param options An object to clean
+     */
+    function cleanOptions(options) {
+        Object.keys(options).filter(function (key) { return options[key] === undefined; }).forEach(function (key) { return delete options[key]; });
+    }
+    exports.cleanOptions = cleanOptions;
 });
-//# sourceMappingURL=dom.js.map
+//# sourceMappingURL=util.js.map

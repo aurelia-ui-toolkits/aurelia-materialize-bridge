@@ -1,31 +1,49 @@
-define(["require", "exports", "tslib", "aurelia-framework", "../common/attributeManager"], function (require, exports, tslib_1, aurelia_framework_1, attributeManager_1) {
+define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdBox = /** @class */ (function () {
         function MdBox(element) {
             this.element = element;
             this.element = element;
-            this.attributeManager = new attributeManager_1.AttributeManager(this.element);
+            this.attributeManager = new au.AttributeManager(this.element);
         }
         MdBox.prototype.attached = function () {
+            var _this = this;
             this.attributeManager.addClasses("materialboxed");
             if (this.caption) {
                 this.attributeManager.addAttributes({ "data-caption": this.caption });
             }
-            // FIXME:0 throws "Uncaught TypeError: Cannot read property "css" of undefined", but so does the original
-            $(this.element).materialbox();
+            var options = {
+                inDuration: this.inDuration,
+                outDuration: this.outDuration,
+                onOpenStart: function () { return au.fireMaterializeEvent(_this.element, "open-start"); },
+                onOpenEnd: function () { return au.fireMaterializeEvent(_this.element, "open-end"); },
+                onCloseStart: function () { return au.fireMaterializeEvent(_this.element, "close-start"); },
+                onCloseEnd: function () { return au.fireMaterializeEvent(_this.element, "close-end"); }
+            };
+            au.cleanOptions(options);
+            this.instance = new M.Materialbox(this.element, options);
         };
         MdBox.prototype.detached = function () {
+            this.instance.destroy();
             this.attributeManager.removeAttributes("data-caption");
             this.attributeManager.removeClasses("materialboxed");
         };
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", String)
         ], MdBox.prototype, "caption", void 0);
+        tslib_1.__decorate([
+            au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Number)
+        ], MdBox.prototype, "inDuration", void 0);
+        tslib_1.__decorate([
+            au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Number)
+        ], MdBox.prototype, "outDuration", void 0);
         MdBox = tslib_1.__decorate([
-            aurelia_framework_1.customAttribute("md-box"),
-            aurelia_framework_1.autoinject,
+            au.customAttribute("md-box"),
+            au.autoinject,
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdBox);
         return MdBox;

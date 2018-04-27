@@ -135,7 +135,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     configurable: true
                 });
                 tslib_1.__decorate([
-                    au.bindable,
+                    au.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdTabs.prototype, "fixed", void 0);
                 tslib_1.__decorate([
@@ -147,11 +147,11 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:type", Number)
                 ], MdTabs.prototype, "responsiveThreshold", void 0);
                 tslib_1.__decorate([
-                    au.bindable,
+                    au.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdTabs.prototype, "swipeable", void 0);
                 tslib_1.__decorate([
-                    au.bindable,
+                    au.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdTabs.prototype, "transparent", void 0);
                 MdTabs = tslib_1.__decorate([

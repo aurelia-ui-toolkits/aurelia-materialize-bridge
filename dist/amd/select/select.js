@@ -14,7 +14,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.enableOptionObserver = false;
             this.label = "";
             this.showErrortext = true;
-            this.suspendUpdate = false;
             this.subscriptions = [];
             this.inputField = null;
             this.optionsMutationObserver = null;
@@ -244,23 +243,23 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:type", Object)
         ], MdSelect.prototype, "value", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdSelect.prototype, "disabled", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdSelect.prototype, "readonly", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdSelect.prototype, "enableOptionObserver", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.stringMd,
             tslib_1.__metadata("design:type", String)
         ], MdSelect.prototype, "label", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdSelect.prototype, "showErrortext", void 0);
         MdSelect = tslib_1.__decorate([

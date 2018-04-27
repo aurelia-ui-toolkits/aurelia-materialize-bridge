@@ -1,7 +1,8 @@
-System.register(["aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/dom", "./common/attributeManager"], function (exports_1, context_1) {
+System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/util", "./common/attributeManager"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var exportedNames_1 = {
+        "Router": true,
         "customElement": true,
         "customAttribute": true,
         "autoinject": true,
@@ -27,6 +28,11 @@ System.register(["aurelia-framework", "aurelia-logging", "./common/events", "aur
     }
     return {
         setters: [
+            function (aurelia_router_1_1) {
+                exports_1({
+                    "Router": aurelia_router_1_1["Router"]
+                });
+            },
             function (aurelia_framework_1_1) {
                 exports_1({
                     "customElement": aurelia_framework_1_1["customElement"],
@@ -65,8 +71,8 @@ System.register(["aurelia-framework", "aurelia-logging", "./common/events", "aur
                     "bindable": aurelia_typed_observable_plugin_1_1["bindable"]
                 });
             },
-            function (dom_1_1) {
-                exportStar_1(dom_1_1);
+            function (util_1_1) {
+                exportStar_1(util_1_1);
             },
             function (attributeManager_1_1) {
                 exports_1({

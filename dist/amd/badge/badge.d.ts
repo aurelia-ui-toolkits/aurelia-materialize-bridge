@@ -1,12 +1,12 @@
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 export declare class MdBadge {
     private element;
     constructor(element: Element);
-    isNew: boolean | string;
-    isNewChanged(newValue: any): void;
+    isNew: boolean;
+    isNewChanged(): void;
     caption: string;
-    captionChanged(newValue: any): void;
-    attributeManager: AttributeManager;
+    captionChanged(): void;
+    attributeManager: au.AttributeManager;
     attached(): void;
     detached(): void;
 }

@@ -4,13 +4,19 @@ export declare class MdDropdownElement {
     static id: number;
     controlId: string;
     alignment: string;
-    belowOrigin: boolean | string;
-    constrainWidth: boolean | string;
-    gutter: number;
-    hover: boolean | string;
+    autoTrigger: boolean;
+    constrainWidth: boolean;
+    container: Element;
+    coverTrigger: boolean;
+    closeOnClick: boolean;
+    hover: boolean;
     mdTitle: string;
-    inDuration: number | string;
-    outDuration: number | string;
-    stopPropagation: boolean | string;
+    inDuration: number;
+    outDuration: number;
+    instance: M.Dropdown;
     attached(): void;
+    detached(): void;
+    open(): void;
+    close(): void;
+    recalculateDimensions(): void;
 }

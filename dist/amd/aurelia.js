@@ -1,6 +1,7 @@
-define(["require", "exports", "tslib", "aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/dom", "./common/attributeManager"], function (require, exports, tslib_1, aurelia_framework_1, aurelia_logging_1, events_1, aurelia_validation_1, validationRenderer_1, aurelia_typed_observable_plugin_1, dom_1, attributeManager_1) {
+define(["require", "exports", "tslib", "aurelia-router", "aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/util", "./common/attributeManager"], function (require, exports, tslib_1, aurelia_router_1, aurelia_framework_1, aurelia_logging_1, events_1, aurelia_validation_1, validationRenderer_1, aurelia_typed_observable_plugin_1, util_1, attributeManager_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.Router = aurelia_router_1.Router;
     exports.customElement = aurelia_framework_1.customElement;
     exports.customAttribute = aurelia_framework_1.customAttribute;
     exports.autoinject = aurelia_framework_1.autoinject;
@@ -15,7 +16,7 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-logging", "
     exports.ValidateResult = aurelia_validation_1.ValidateResult;
     exports.MaterializeFormValidationRenderer = validationRenderer_1.MaterializeFormValidationRenderer;
     exports.bindable = aurelia_typed_observable_plugin_1.bindable;
-    tslib_1.__exportStar(dom_1, exports);
+    tslib_1.__exportStar(util_1, exports);
     exports.AttributeManager = attributeManager_1.AttributeManager;
 });
 //# sourceMappingURL=aurelia.js.map

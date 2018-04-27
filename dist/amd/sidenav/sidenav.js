@@ -49,7 +49,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:type", Object)
         ], MdSidenav.prototype, "options", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdSidenav.prototype, "mdFixed", void 0);
         MdSidenav = MdSidenav_1 = tslib_1.__decorate([

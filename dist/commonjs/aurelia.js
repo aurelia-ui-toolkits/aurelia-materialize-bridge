@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
+var aurelia_router_1 = require("aurelia-router");
+exports.Router = aurelia_router_1.Router;
 var aurelia_framework_1 = require("aurelia-framework");
 exports.customElement = aurelia_framework_1.customElement;
 exports.customAttribute = aurelia_framework_1.customAttribute;
@@ -21,7 +23,7 @@ var validationRenderer_1 = require("./validation/validationRenderer");
 exports.MaterializeFormValidationRenderer = validationRenderer_1.MaterializeFormValidationRenderer;
 var aurelia_typed_observable_plugin_1 = require("aurelia-typed-observable-plugin");
 exports.bindable = aurelia_typed_observable_plugin_1.bindable;
-tslib_1.__exportStar(require("./common/dom"), exports);
+tslib_1.__exportStar(require("./common/util"), exports);
 var attributeManager_1 = require("./common/attributeManager");
 exports.AttributeManager = attributeManager_1.AttributeManager;
 //# sourceMappingURL=aurelia.js.map

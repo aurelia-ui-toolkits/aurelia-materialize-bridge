@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "aurelia-typed-observable-plugin", "./exports", "./augmentation/element", "./augmentation/materialize"], function (require, exports, tslib_1, config_builder_1, scrollfire_patch_1, polyfills_1, aurelia_typed_observable_plugin_1, exports_1) {
+define(["require", "exports", "tslib", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports", "./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable"], function (require, exports, tslib_1, config_builder_1, scrollfire_patch_1, polyfills_1, exports_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     function applyPolyfills() {
@@ -16,8 +16,6 @@ define(["require", "exports", "tslib", "./config-builder", "./scrollfire/scrollf
         if (builder.useScrollfirePatch) {
             new scrollfire_patch_1.ScrollfirePatch().patch();
         }
-        aurelia_typed_observable_plugin_1.usePropertyTypeForBindable(true);
-        aurelia_typed_observable_plugin_1.usePropertyTypeForObservable(true);
     }
     exports.configure = configure;
     // build-index-remove start

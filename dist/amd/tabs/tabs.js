@@ -124,7 +124,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             configurable: true
         });
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdTabs.prototype, "fixed", void 0);
         tslib_1.__decorate([
@@ -136,11 +136,11 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:type", Number)
         ], MdTabs.prototype, "responsiveThreshold", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdTabs.prototype, "swipeable", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdTabs.prototype, "transparent", void 0);
         MdTabs = tslib_1.__decorate([

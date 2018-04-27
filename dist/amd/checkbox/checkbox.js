@@ -54,15 +54,15 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:type", Object)
         ], MdCheckbox.prototype, "mdChecked", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdCheckbox.prototype, "mdDisabled", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdCheckbox.prototype, "mdReadonly", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdCheckbox.prototype, "mdFilledIn", void 0);
         tslib_1.__decorate([

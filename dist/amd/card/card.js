@@ -1,56 +1,47 @@
-define(["require", "exports", "tslib", "aurelia-framework", "../common/attributes"], function (require, exports, tslib_1, aurelia_framework_1, attributes_1) {
+define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdCard = /** @class */ (function () {
         function MdCard(element) {
             this.element = element;
             this.mdImage = null;
-            this.mdReveal = false;
-            this.mdAction = false;
-            this.mdStickyAction = false;
             this.mdSize = "";
         }
-        MdCard.prototype.attached = function () {
-            this.mdHorizontal = attributes_1.getBooleanFromAttributeValue(this.mdHorizontal);
-            this.mdReveal = attributes_1.getBooleanFromAttributeValue(this.mdReveal);
-            this.mdAction = attributes_1.getBooleanFromAttributeValue(this.mdAction);
-            this.mdStickyAction = attributes_1.getBooleanFromAttributeValue(this.mdStickyAction);
-        };
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdCard.prototype, "mdHorizontal", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", String)
         ], MdCard.prototype, "mdImage", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdCard.prototype, "mdReveal", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdCard.prototype, "mdAction", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdCard.prototype, "mdStickyAction", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneWay }),
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay }),
             tslib_1.__metadata("design:type", String)
         ], MdCard.prototype, "mdSize", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
         ], MdCard.prototype, "mdTitle", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
         ], MdCard.prototype, "mdClass", void 0);
         MdCard = tslib_1.__decorate([
-            aurelia_framework_1.customElement("md-card"),
-            aurelia_framework_1.autoinject,
+            au.customElement("md-card"),
+            au.autoinject,
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdCard);
         return MdCard;

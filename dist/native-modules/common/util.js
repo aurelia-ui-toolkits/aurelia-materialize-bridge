@@ -12,4 +12,12 @@ export function unwrap(element) {
 export function insertAfter(element, newChild) {
     element.parentNode.insertBefore(newChild, element.nextSibling);
 }
-//# sourceMappingURL=dom.js.map
+/**
+ * Remove undefined fields from an object
+ *
+ * @param options An object to clean
+ */
+export function cleanOptions(options) {
+    Object.keys(options).filter(function (key) { return options[key] === undefined; }).forEach(function (key) { return delete options[key]; });
+}
+//# sourceMappingURL=util.js.map

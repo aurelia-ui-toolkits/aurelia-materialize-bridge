@@ -1,1 +1,1 @@
-{"version":3,"file":"attributes.js","sourceRoot":"","sources":["../../../src/common/attributes.ts"],"names":[],"mappings":";;AAAA,sCAA6C,KAAuB;IACnE,MAAM,CAAC,CAAC,KAAK,KAAK,IAAI,IAAI,KAAK,KAAK,MAAM,CAAC,CAAC;AAC7C,CAAC;AAFD,oEAEC"}
+{"version":3,"file":"attributes.js","sourceRoot":"","sources":["../../../src/common/attributes.ts"],"names":[],"mappings":";;AAAA,sCAA6C,KAAuB;IACnE,OAAO,CAAC,KAAK,KAAK,IAAI,IAAI,KAAK,KAAK,MAAM,CAAC,CAAC;AAC7C,CAAC;AAFD,oEAEC"}
