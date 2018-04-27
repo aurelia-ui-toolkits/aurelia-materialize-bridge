@@ -1,17 +1,14 @@
-System.register(["tslib", "aurelia-framework", "aurelia-logging"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, aurelia_logging_1, MdFadeinImage;
+    var tslib_1, au, MdFadeinImage;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (aurelia_logging_1_1) {
-                aurelia_logging_1 = aurelia_logging_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
@@ -19,7 +16,7 @@ System.register(["tslib", "aurelia-framework", "aurelia-logging"], function (exp
                 function MdFadeinImage(element) {
                     this.element = element;
                     this.fadeInImage = this.fadeInImage.bind(this);
-                    this.log = aurelia_logging_1.getLogger("md-fadein-image");
+                    this.log = au.getLogger("md-fadein-image");
                 }
                 MdFadeinImage.prototype.attached = function () {
                     this.element.addEventListener("click", this.fadeInImage);
@@ -38,12 +35,12 @@ System.register(["tslib", "aurelia-framework", "aurelia-logging"], function (exp
                     }
                 };
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", HTMLElement)
                 ], MdFadeinImage.prototype, "ref", void 0);
                 MdFadeinImage = tslib_1.__decorate([
-                    aurelia_framework_1.customAttribute("md-fadein-image"),
-                    aurelia_framework_1.autoinject,
+                    au.customAttribute("md-fadein-image"),
+                    au.autoinject,
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdFadeinImage);
                 return MdFadeinImage;

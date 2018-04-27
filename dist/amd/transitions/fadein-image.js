@@ -1,11 +1,11 @@
-define(["require", "exports", "tslib", "aurelia-framework", "aurelia-logging"], function (require, exports, tslib_1, aurelia_framework_1, aurelia_logging_1) {
+define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdFadeinImage = /** @class */ (function () {
         function MdFadeinImage(element) {
             this.element = element;
             this.fadeInImage = this.fadeInImage.bind(this);
-            this.log = aurelia_logging_1.getLogger("md-fadein-image");
+            this.log = au.getLogger("md-fadein-image");
         }
         MdFadeinImage.prototype.attached = function () {
             this.element.addEventListener("click", this.fadeInImage);
@@ -24,12 +24,12 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-logging"], 
             }
         };
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
+            au.bindable,
             tslib_1.__metadata("design:type", HTMLElement)
         ], MdFadeinImage.prototype, "ref", void 0);
         MdFadeinImage = tslib_1.__decorate([
-            aurelia_framework_1.customAttribute("md-fadein-image"),
-            aurelia_framework_1.autoinject,
+            au.customAttribute("md-fadein-image"),
+            au.autoinject,
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdFadeinImage);
         return MdFadeinImage;

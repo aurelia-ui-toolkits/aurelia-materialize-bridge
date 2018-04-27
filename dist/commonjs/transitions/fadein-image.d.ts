@@ -1,8 +1,8 @@
-import { Logger } from "aurelia-logging";
+import * as au from "../aurelia";
 export declare class MdFadeinImage {
     private element;
     constructor(element: Element);
-    log: Logger;
+    log: au.Logger;
     ref: HTMLElement;
     attached(): void;
     detached(): void;

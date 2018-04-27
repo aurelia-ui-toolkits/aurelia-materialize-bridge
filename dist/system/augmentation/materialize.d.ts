@@ -185,6 +185,80 @@ declare namespace M {
          */
         close(): any;
     }
+    interface TapTargetOptions {
+        /**
+         * Callback function called when Tap Target is opened
+         * @default null
+         */
+        onOpen: (this: TapTarget, origin: Element) => void;
+        /**
+         * Callback function called when Tap Target is closed
+         * @default null
+         */
+        onClose: (this: TapTarget, origin: Element) => void;
+    }
+    class TapTarget extends Component<TapTargetOptions> {
+        /**
+         * Open Tap Target
+         */
+        open(): any;
+        /**
+         * Close Tap Target
+         */
+        close(): any;
+    }
+    interface SliderOptions {
+        /**
+         * Callback function called when Tap Target is opened
+         * @default Set to false to hide slide indicators
+         */
+        indicators: boolean;
+        /**
+         * Set height of slider
+         * @default 400
+         */
+        height: number;
+        /**
+         * Set the duration of the transition animation in ms
+         * @default 500
+         */
+        duration: number;
+        /**
+         * Set the duration between transitions in ms
+         * @default 6000
+         */
+        interval: number;
+    }
+    class Slider extends Component<SliderOptions> {
+        /**
+         * ID of the dropdown element
+         */
+        el: Element;
+        /**
+         * ID of the dropdown element
+         */
+        options: SliderOptions;
+        /**
+         * Index of current slide
+         */
+        activeIndex: number;
+        /**
+         * Pause slider autoslide
+         */
+        pause(): any;
+        /**
+         * Start slider autoslide
+         */
+        start(): any;
+        /**
+         * Move to next slider
+         */
+        next(): any;
+        /**
+         * Move to prev slider
+         */
+        prev(): any;
+    }
 }
 interface JQuery {
     autocomplete(options: any): any;

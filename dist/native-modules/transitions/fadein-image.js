@@ -1,11 +1,10 @@
 import * as tslib_1 from "tslib";
-import { bindable, customAttribute, autoinject } from "aurelia-framework";
-import { getLogger } from "aurelia-logging";
+import * as au from "../aurelia";
 var MdFadeinImage = /** @class */ (function () {
     function MdFadeinImage(element) {
         this.element = element;
         this.fadeInImage = this.fadeInImage.bind(this);
-        this.log = getLogger("md-fadein-image");
+        this.log = au.getLogger("md-fadein-image");
     }
     MdFadeinImage.prototype.attached = function () {
         this.element.addEventListener("click", this.fadeInImage);
@@ -24,12 +23,12 @@ var MdFadeinImage = /** @class */ (function () {
         }
     };
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", HTMLElement)
     ], MdFadeinImage.prototype, "ref", void 0);
     MdFadeinImage = tslib_1.__decorate([
-        customAttribute("md-fadein-image"),
-        autoinject,
+        au.customAttribute("md-fadein-image"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdFadeinImage);
     return MdFadeinImage;
