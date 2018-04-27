@@ -13,8 +13,8 @@ export class MdInputUpdateService {
 	updateCalled = false;
 
 	materializeUpdate() {
-		this.log.debug("executing Materialize.updateTextFields");
-		Materialize.updateTextFields();
+		this.log.debug("executing M.updateTextFields");
+		M.updateTextFields();
 		this.updateCalled = false;
 	}
 
