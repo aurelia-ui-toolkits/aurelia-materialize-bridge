@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue", "../common/attributes", "./input-update-service", "../common/events"], function (require, exports, tslib_1, aurelia_framework_1, aurelia_task_queue_1, attributes_1, input_update_service_1, events_1) {
+define(["require", "exports", "tslib", "../aurelia", "./input-update-service"], function (require, exports, tslib_1, au, input_update_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdInput = /** @class */ (function () {
@@ -7,7 +7,6 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
             this.element = element;
             this.taskQueue = taskQueue;
             this.updateService = updateService;
-            this.mdLabel = "";
             this.mdBlurOnEnter = false;
             this.mdDisabled = false;
             this.mdReadonly = false;
@@ -18,7 +17,6 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
             this.mdValidate = false;
             this.mdShowErrortext = true;
             this.mdUpdateTrigger = ["input", "change"];
-            this.mdValue = "";
             this.mdMin = null;
             this.mdMax = null;
             this.mdName = "";
@@ -29,7 +27,7 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
                     for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
                         var result = results_1_1.value;
                         if (!result.valid) {
-                            renderer.removeMessage(_this.element, result);
+                            renderer.removeMessage(_this.inputField, result);
                         }
                     }
                 }
@@ -54,7 +52,7 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
                             if (!result.valid) {
                                 result.target = _this.input;
                                 if (_this.input.hasAttribute("data-show-errortext")) {
-                                    renderer.addMessage(_this.element, result);
+                                    renderer.addMessage(_this.inputField, result);
                                 }
                             }
                         }
@@ -74,14 +72,29 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
             this.blurOnEnter = this.blurOnEnter.bind(this);
         }
         MdInput_1 = MdInput;
+        MdInput.prototype.mdValueChanged = function () {
+            if (this.input !== document.activeElement) {
+                // the following is copied from the updateTextFields method
+                // it is more efficient than updating all the inputs
+                if (this.mdValue && this.mdValue.length > 0 || this.input.autofocus || this.input.hasAttribute("placeholder")) {
+                    this.label.classList.add("active");
+                }
+                else if (this.input.validity) {
+                    this.label.classList.toggle("active", this.input.validity.badInput === true);
+                }
+                else {
+                    this.label.classList.remove("active");
+                }
+                if (this.mdTextArea) {
+                    M.textareaAutoResize(this.input);
+                }
+            }
+        };
         MdInput.prototype.bind = function () {
-            this.mdReadonly = attributes_1.getBooleanFromAttributeValue(this.mdReadonly);
-            this.mdTextArea = attributes_1.getBooleanFromAttributeValue(this.mdTextArea);
-            this.mdShowErrortext = attributes_1.getBooleanFromAttributeValue(this.mdShowErrortext);
-            this.mdBlurOnEnter = attributes_1.getBooleanFromAttributeValue(this.mdBlurOnEnter);
+            // this suppresses initial changed handlers calls
         };
         MdInput.prototype.attached = function () {
-            if (attributes_1.getBooleanFromAttributeValue(this.mdValidate)) {
+            if (this.mdValidate) {
                 this.input.classList.add("validate");
             }
             if (this.mdValidateError) {
@@ -99,7 +112,7 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
             this.updateService.update();
             // special case: time inputs are not covered by Materialize
             if (this.mdType === "time") {
-                $(this.input).siblings("label").addClass("active");
+                this.label.classList.add("active");
             }
             this.attachEventHandlers();
             this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
@@ -111,19 +124,11 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
             this.element.mdRenderValidateResults = undefined;
         };
         MdInput.prototype.blur = function () {
-            events_1.fireEvent(this.element, "blur");
+            au.fireEvent(this.element, "blur");
         };
         MdInput.prototype.focus = function () {
             this.input.focus();
-            events_1.fireEvent(this.element, "focus");
-        };
-        MdInput.prototype.mdValueChanged = function () {
-            if (!$(this.input).is(":focus")) {
-                this.updateService.update();
-            }
-            if (this.mdTextArea) {
-                $(this.input).trigger("autoresize");
-            }
+            au.fireEvent(this.element, "focus");
         };
         MdInput.prototype.attachEventHandlers = function () {
             if (this.mdBlurOnEnter) {
@@ -142,81 +147,81 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
         };
         MdInput.id = 0;
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay }),
             tslib_1.__metadata("design:type", String)
         ], MdInput.prototype, "mdLabel", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.booleanMd,
+            tslib_1.__metadata("design:type", Boolean)
         ], MdInput.prototype, "mdBlurOnEnter", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.booleanMd,
+            tslib_1.__metadata("design:type", Boolean)
         ], MdInput.prototype, "mdDisabled", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.booleanMd,
+            tslib_1.__metadata("design:type", Boolean)
         ], MdInput.prototype, "mdReadonly", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
         ], MdInput.prototype, "mdPlaceholder", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdInput.prototype, "mdTextArea", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
         ], MdInput.prototype, "mdType", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
         ], MdInput.prototype, "mdStep", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdInput.prototype, "mdValidate", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
+            au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
         ], MdInput.prototype, "mdShowErrortext", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", Array)
         ], MdInput.prototype, "mdUpdateTrigger", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
+            au.bindable.stringMd,
             tslib_1.__metadata("design:type", String)
         ], MdInput.prototype, "mdValidateError", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
+            au.bindable.stringMd,
             tslib_1.__metadata("design:type", String)
         ], MdInput.prototype, "mdValidateSuccess", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+            au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
             tslib_1.__metadata("design:type", String)
         ], MdInput.prototype, "mdValue", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
         ], MdInput.prototype, "mdMin", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
         ], MdInput.prototype, "mdMax", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
         ], MdInput.prototype, "mdName", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", Number)
         ], MdInput.prototype, "mdMaxlength", void 0);
         MdInput = MdInput_1 = tslib_1.__decorate([
-            aurelia_framework_1.customElement("md-input"),
-            aurelia_framework_1.autoinject,
-            tslib_1.__metadata("design:paramtypes", [Element, aurelia_task_queue_1.TaskQueue, input_update_service_1.MdInputUpdateService])
+            au.customElement("md-input"),
+            au.autoinject,
+            tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue, input_update_service_1.MdInputUpdateService])
         ], MdInput);
         return MdInput;
         var MdInput_1;

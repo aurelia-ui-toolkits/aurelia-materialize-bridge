@@ -1,7 +1,11 @@
 export declare class MdScrollSpy {
     private element;
     constructor(element: Element);
-    target: string;
+    instance: M.ScrollSpy;
+    throttle: number;
+    scrollOffset: number;
+    activeClass: string;
+    getActiveElement: (id: string) => string;
     attached(): void;
     detached(): void;
 }

@@ -16,7 +16,17 @@ aurelia_typed_observable_plugin_1.coerceFunctions.booleanMd = function (val) {
     }
 };
 aurelia_typed_observable_plugin_1.bindable.numberMd = aurelia_typed_observable_plugin_1.createTypedBindable("numberMd");
-aurelia_typed_observable_plugin_1.coerceFunctions.numberMd = function (val) { return (val === undefined || val === null || val === "") ? undefined : Number(val); };
+aurelia_typed_observable_plugin_1.coerceFunctions.numberMd = function (val) {
+    if (val === undefined || val === "") {
+        return undefined;
+    }
+    else if (val === null) {
+        return null;
+    }
+    else {
+        return Number(val);
+    }
+};
 aurelia_typed_observable_plugin_1.bindable.stringMd = aurelia_typed_observable_plugin_1.createTypedBindable("stringMd");
 aurelia_typed_observable_plugin_1.coerceFunctions.stringMd = function (val) {
     if (val === undefined) {

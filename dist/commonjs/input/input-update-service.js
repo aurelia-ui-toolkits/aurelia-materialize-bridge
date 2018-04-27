@@ -12,8 +12,8 @@ var MdInputUpdateService = /** @class */ (function () {
         this.taskQueue = taskQueue;
     }
     MdInputUpdateService.prototype.materializeUpdate = function () {
-        this.log.debug("executing Materialize.updateTextFields");
-        Materialize.updateTextFields();
+        this.log.debug("executing M.updateTextFields");
+        M.updateTextFields();
         this.updateCalled = false;
     };
     MdInputUpdateService.prototype.update = function () {
