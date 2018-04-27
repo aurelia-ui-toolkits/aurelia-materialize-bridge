@@ -224,6 +224,32 @@ declare namespace M {
 		 */
 		close();
 	}
+
+	interface TapTargetOptions {
+		/**
+		 * Callback function called when Tap Target is opened
+		 * @default null
+		 */
+		onOpen: (this: TapTarget, origin: Element) => void;
+
+		/**
+		 * Callback function called when Tap Target is closed
+		 * @default null
+		 */
+		onClose: (this: TapTarget, origin: Element) => void;
+	}
+
+	class TapTarget extends Component<TapTargetOptions> {
+		/**
+		 * Open Tap Target
+		 */
+		open();
+
+		/**
+		 * Close Tap Target
+		 */
+		close();
+	}
 }
 
 interface JQuery {

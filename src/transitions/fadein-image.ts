@@ -1,17 +1,16 @@
-import { bindable, customAttribute, autoinject, bindingMode } from "aurelia-framework";
-import { getLogger, Logger } from "aurelia-logging";
+import * as au from "../aurelia";
 
-@customAttribute("md-fadein-image")
-@autoinject
+@au.customAttribute("md-fadein-image")
+@au.autoinject
 export class MdFadeinImage {
 	constructor(private element: Element) {
 		this.fadeInImage = this.fadeInImage.bind(this);
-		this.log = getLogger("md-fadein-image");
+		this.log = au.getLogger("md-fadein-image");
 	}
 
-	log: Logger;
+	log: au.Logger;
 
-	@bindable
+	@au.bindable
 	ref: HTMLElement;
 
 	attached() {
