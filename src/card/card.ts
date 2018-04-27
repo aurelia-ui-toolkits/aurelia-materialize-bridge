@@ -1,40 +1,31 @@
-import { autoinject, bindable, bindingMode, customElement } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customElement("md-card")
-@autoinject
+@au.customElement("md-card")
+@au.autoinject
 export class MdCard {
-	constructor(private element: Element) {
-	}
+	constructor(private element: Element) { }
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdHorizontal: boolean | string;
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	mdHorizontal: boolean;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdImage = null;
+	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	mdImage: string = null;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdReveal: boolean | string = false;
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	mdReveal: boolean;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdAction: boolean | string = false;
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	mdAction: boolean;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdStickyAction: boolean | string = false;
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	mdStickyAction: boolean;
 
-	@bindable({ defaultBindingMode: bindingMode.oneWay })
+	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay })
 	mdSize: string = "";
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdTitle: string;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdClass: string;
-
-	attached() {
-		this.mdHorizontal = getBooleanFromAttributeValue(this.mdHorizontal);
-		this.mdReveal = getBooleanFromAttributeValue(this.mdReveal);
-		this.mdAction = getBooleanFromAttributeValue(this.mdAction);
-		this.mdStickyAction = getBooleanFromAttributeValue(this.mdStickyAction);
-	}
 }

@@ -11,7 +11,17 @@ bindable.numberMd = createTypedBindable("numberMd");
 coerceFunctions.numberMd = val => (val === undefined || val === null || val === "") ? undefined : Number(val);
 
 bindable.stringMd = createTypedBindable("stringMd");
-coerceFunctions.stringMd = val => val === undefined ? undefined : "" + val;
+coerceFunctions.stringMd = val => {
+	if (val === undefined) {
+		return undefined;
+	}
+	else if (val === null) {
+		return null;
+	}
+	else {
+		return "" + val;
+	}
+};
 
 declare module "aurelia-typed-observable-plugin/dist/types/bindable" {
 	interface IBindableDecorator {
