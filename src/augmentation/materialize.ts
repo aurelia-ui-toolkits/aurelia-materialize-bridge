@@ -342,6 +342,8 @@ declare namespace M {
 
 	class ScrollSpy extends Component<ScrollSpyOptions> {
 	}
+
+	function textareaAutoResize(textarea: Element): void;
 }
 
 interface JQuery {

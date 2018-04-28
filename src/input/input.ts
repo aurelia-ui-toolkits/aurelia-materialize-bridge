@@ -1,10 +1,9 @@
 import * as au from "../aurelia";
-import { MdInputUpdateService } from "./input-update-service";
 
 @au.customElement("md-input")
 @au.autoinject
 export class MdInput {
-	constructor(private element: Element, private taskQueue: au.TaskQueue, private updateService: MdInputUpdateService) {
+	constructor(private element: Element, private taskQueue: au.TaskQueue) {
 		this.controlId = `md-input-${MdInput.id++}`;
 		this.blurOnEnter = this.blurOnEnter.bind(this);
 	}
@@ -45,6 +44,9 @@ export class MdInput {
 	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdShowErrortext: boolean = true;
 
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	mdInline: boolean;
+
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	mdUpdateTrigger: string[] = ["input", "change"];
 
@@ -57,20 +59,10 @@ export class MdInput {
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	mdValue: string;
 	mdValueChanged() {
-		if (this.input !== document.activeElement) {
-			// the following is copied from the updateTextFields method
-			// it is more efficient than updating all the inputs
-			if (this.mdValue && this.mdValue.length > 0 || this.input.autofocus || this.input.hasAttribute("placeholder")) {
-				this.label.classList.add("active");
-			} else if (this.input.validity) {
-				this.label.classList.toggle("active", this.input.validity.badInput === true);
-			} else {
-				this.label.classList.remove("active");
-			}
-			if (this.mdTextArea) {
-				M.textareaAutoResize(this.input);
-			}
+		if (this.input === document.activeElement) {
+			return;
 		}
+		this.updateLabel();
 	}
 
 	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
@@ -88,7 +80,7 @@ export class MdInput {
 	suspendUpdate = false;
 
 	bind() {
-		// this suppresses initial changed handlers calls
+		// this suppresses initial changed handler calls
 	}
 
 	attached() {
@@ -107,12 +99,7 @@ export class MdInput {
 		if (this.mdShowErrortext) {
 			this.input.setAttribute("data-show-errortext", this.mdShowErrortext.toString());
 		}
-		this.updateService.update();
-
-		// special case: time inputs are not covered by Materialize
-		if (this.mdType === "time") {
-			this.label.classList.add("active");
-		}
+		this.updateLabel();
 		this.attachEventHandlers();
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
@@ -122,6 +109,21 @@ export class MdInput {
 		this.detachEventHandlers();
 		this.element.mdUnrenderValidateResults = undefined;
 		this.element.mdRenderValidateResults = undefined;
+	}
+
+	updateLabel() {
+		// the following is copied from the updateTextFields method
+		// it is more efficient than updating all the inputs
+		if (this.mdValue && this.mdValue.length > 0 || this.input.autofocus || this.input.hasAttribute("placeholder")) {
+			this.label.classList.add("active");
+		} else if (this.input.validity) {
+			this.label.classList.toggle("active", this.input.validity.badInput === true);
+		} else {
+			this.label.classList.remove("active");
+		}
+		if (this.mdTextArea) {
+			M.textareaAutoResize(this.input);
+		}
 	}
 
 	blur() {
