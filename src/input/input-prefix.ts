@@ -1,14 +1,13 @@
-import { customAttribute, autoinject } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 
-@customAttribute("md-prefix")
-@autoinject
+@au.customAttribute("md-prefix")
+@au.autoinject
 export class MdPrefix {
 	constructor(private element: Element) {
-		this.attributeManager = new AttributeManager(this.element);
+		this.attributeManager = new au.AttributeManager(this.element);
 	}
 
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 
 	bind() {
 		this.attributeManager.addClasses("prefix");
