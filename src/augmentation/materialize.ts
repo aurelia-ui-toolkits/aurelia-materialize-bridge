@@ -479,7 +479,104 @@ declare namespace M {
 		 * @param n Index of slide
 		 */
 		set(n: number);
-}
+	}
+
+	interface ChipData {
+		/**
+		 * Chip tag
+		 */
+		tag: string;
+
+		/**
+		 * Chip image
+		 */
+		img?: string;
+	}
+
+	interface ChipsOptions {
+		/**
+		 * Set the chip data
+		 * @default []
+		 */
+		data: ChipData[];
+
+		/**
+		 * Set first placeholder when there are no tags
+		 * @default ''
+		 */
+		placeholder: string;
+
+		/**
+		 * Set second placeholder when adding additional tags
+		 * @default ''
+		 */
+		secondaryPlaceholder: string;
+
+		/**
+		 * Set autocomplete options
+		 * @default {}
+		 */
+		autocompleteOptions: Partial<AutocompleteOptions>;
+
+		/**
+		 * Set chips limit
+		 * @default Infinity
+		 */
+		limit: number;
+
+		/**
+		 * Callback for chip add
+		 * @default null
+		 */
+		onChipAdd: (this: Chips, element: Element, chip: Element) => void;
+
+		/**
+		 * Callback for chip select
+		 * @default null
+		 */
+		onChipSelect: (this: Chips, element: Element, chip: Element) => void;
+
+		/**
+		 * Callback for chip delete
+		 * @default null
+		 */
+		onChipDelete: (this: Chips, element: Element, chip: Element) => void;
+	}
+
+	class Chips extends Component<ChipsOptions> {
+		/**
+		 * Array of the current chips data
+		 */
+		chipsData: ChipData[];
+
+		/**
+		 * If the chips has autocomplete enabled
+		 */
+		hasAutocomplete: boolean;
+
+		/**
+		 * Autocomplete instance, if any
+		 */
+		autocomplete: Autocomplete;
+
+		/**
+		 * Add chip to input
+		 * @param data Chip data object
+		 */
+		addChip(chip: any);
+
+		/**
+		 * Delete nth chip
+		 * @param n  Index of chip
+		 */
+		deleteChip(n?: number);
+
+		/**
+		 * Select nth chip
+		 * @param n Index of chip
+		 */
+		selectChip(n: number);
+	}
 
 	function textareaAutoResize(textarea: Element): void;
 }
