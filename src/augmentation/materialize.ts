@@ -379,6 +379,17 @@ declare namespace M {
 		originalOffset: number;
 	}
 
+	interface ParallaxOptions {
+		/**
+		 * The minimum width of the screen, in pixels, where the parallax functionality starts working
+		 * @default 0
+		 */
+		responsiveThreshold: number;
+	}
+
+	class Parallax extends Component<ParallaxOptions> {
+	}
+
 	function textareaAutoResize(textarea: Element): void;
 }
 
