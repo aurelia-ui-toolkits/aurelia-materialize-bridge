@@ -573,9 +573,41 @@ declare namespace M {
 
 		/**
 		 * Select nth chip
-		 * @param n Index of chip
+		 * @param n Index of chip`
 		 */
 		selectChip(n: number);
+	}
+
+	interface ModalOptions {
+		/**
+		 * Prevent page from scrolling while modal is open
+		 * @default true
+		 */
+		preventScrolling: boolean;
+
+		/**
+		 * Callback function called before modal is opened
+		 * @default null
+		 */
+		onOpenStart: (this: Modal, el: Element) => void;
+
+		/**
+		 * Callback function called after modal is opened
+		 * @default null
+		 */
+		onOpenEnd: (this: Modal, el: Element) => void;
+
+		/**
+		 * Callback function called before modal is closed
+		 * @default null
+		 */
+		onCloseStart: (this: Modal, el: Element) => void;
+
+		/**
+		 * Callback function called after modal is closed
+		 * @default null
+		 */
+		onCloseEnd: (this: Modal, el: Element) => void;
 	}
 
 	function textareaAutoResize(textarea: Element): void;
