@@ -1,4 +1,4 @@
-export { Router } from "aurelia-router";
+export { Router, NavigationInstruction } from "aurelia-router";
 export { customElement, customAttribute, autoinject, bindingMode, BindingEngine, TaskQueue, DOM } from "aurelia-framework";
 export { getLogger, Logger } from "aurelia-logging";
 export { fireEvent, fireMaterializeEvent } from "./common/events";
