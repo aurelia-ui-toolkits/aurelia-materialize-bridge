@@ -1,55 +1,51 @@
-import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customElement("md-radio")
-@autoinject
+@au.customElement("md-radio")
+@au.autoinject
 export class MdRadio {
 	constructor(private element: Element) {
 		this.controlId = `md-radio-${MdRadio.id++}`;
-		// this.handleChange = this.handleChange.bind(this);
 	}
 
 	static id = 0;
 	controlId: string;
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 	radio: HTMLInputElement;
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
+	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	mdChecked: boolean | string;
 
-	@bindable
-	mdDisabled: boolean | string = false;
-	mdDisabledChanged(newValue: boolean | string) {
+	@au.bindable.booleanMd
+	mdDisabled: boolean = false;
+	mdDisabledChanged(newValue: boolean) {
 		if (this.radio) {
-			this.radio.disabled = !!newValue;
+			this.radio.disabled = newValue;
 		}
 	}
 
-	@bindable
-	mdReadonly: boolean | string = false;
+	@au.bindable.booleanMd
+	mdReadonly: boolean = false;
 
-	@bindable
-	mdGap: boolean | string = false;
+	@au.bindable.booleanMd
+	mdGap: boolean = false;
 
-	@bindable
+	@au.bindable
 	mdModel: any;
 
-	@bindable
+	@au.bindable.stringMd
 	mdName: string = "";
 
-	@bindable
+	@au.bindable.stringMd
 	mdValue: string = "";
 
 	attached() {
-		this.attributeManager = new AttributeManager(this.radio);
-		if (getBooleanFromAttributeValue(this.mdGap)) {
+		this.attributeManager = new au.AttributeManager(this.radio);
+		if (this.mdGap) {
 			this.attributeManager.addClasses("with-gap");
 		}
-		if (getBooleanFromAttributeValue(this.mdDisabled)) {
+		if (this.mdDisabled) {
 			this.radio.disabled = true;
 		}
-		this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
 	}
 
 	detached() {
