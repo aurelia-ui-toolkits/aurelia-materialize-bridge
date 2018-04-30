@@ -1,7 +1,7 @@
-import { autoinject, customElement } from "aurelia-framework";
+import * as au from "../aurelia";
 
-@customElement("md-collection")
-@autoinject
+@au.customElement("md-collection")
+@au.autoinject
 export class MdCollection {
 	constructor(private element: Element) { }
 
@@ -15,7 +15,7 @@ export class MdCollection {
 	}
 
 	getSelected() {
-		const items = [].slice.call(this.element.querySelectorAll("md-collection-selector"));
+		const items = Array.from(this.element.querySelectorAll("md-collection-selector"));
 		return items.filter(i => i.au["md-collection-selector"].viewModel.isSelected)
 			.map(i => i.au["md-collection-selector"].viewModel.item);
 	}

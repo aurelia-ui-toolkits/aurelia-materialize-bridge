@@ -1,4 +1,4 @@
-import { customElement } from "aurelia-framework";
+import * as au from "../aurelia";
 
-@customElement("md-collection-item")
+@au.customElement("md-collection-item")
 export class MdCollectionItem { }
