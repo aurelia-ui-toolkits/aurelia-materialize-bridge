@@ -44,7 +44,7 @@ export class MdChips {
 	}
 
 	attached() {
-		this.taskQueue.queueTask(() => this.refresh());
+		this.refresh();
 	}
 
 	detached() {
