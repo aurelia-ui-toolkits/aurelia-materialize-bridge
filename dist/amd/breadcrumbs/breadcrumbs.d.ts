@@ -1,10 +1,10 @@
-import { NavigationInstruction, Router } from "aurelia-router";
+import * as au from "../aurelia";
 export declare class MdBreadcrumbs {
     private element;
     private aureliaRouter;
-    constructor(element: Element, aureliaRouter: Router);
-    router: Router;
-    childRouter: Router;
+    constructor(element: Element, aureliaRouter: au.Router);
+    router: au.Router;
+    childRouter: au.Router;
     bind(): void;
-    navigate(navigationInstruction: NavigationInstruction): void;
+    navigate(navigationInstruction: au.NavigationInstruction): void;
 }

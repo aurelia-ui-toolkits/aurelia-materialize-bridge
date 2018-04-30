@@ -1,7 +1,7 @@
-System.register(["tslib", "../aurelia", "./input-update-service"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, au, input_update_service_1, MdInput;
+    var tslib_1, au, MdInput;
     return {
         setters: [
             function (tslib_1_1) {
@@ -9,18 +9,14 @@ System.register(["tslib", "../aurelia", "./input-update-service"], function (exp
             },
             function (au_1) {
                 au = au_1;
-            },
-            function (input_update_service_1_1) {
-                input_update_service_1 = input_update_service_1_1;
             }
         ],
         execute: function () {
             MdInput = /** @class */ (function () {
-                function MdInput(element, taskQueue, updateService) {
+                function MdInput(element, taskQueue) {
                     var _this = this;
                     this.element = element;
                     this.taskQueue = taskQueue;
-                    this.updateService = updateService;
                     this.mdBlurOnEnter = false;
                     this.mdDisabled = false;
                     this.mdReadonly = false;
@@ -87,25 +83,13 @@ System.register(["tslib", "../aurelia", "./input-update-service"], function (exp
                 }
                 MdInput_1 = MdInput;
                 MdInput.prototype.mdValueChanged = function () {
-                    if (this.input !== document.activeElement) {
-                        // the following is copied from the updateTextFields method
-                        // it is more efficient than updating all the inputs
-                        if (this.mdValue && this.mdValue.length > 0 || this.input.autofocus || this.input.hasAttribute("placeholder")) {
-                            this.label.classList.add("active");
-                        }
-                        else if (this.input.validity) {
-                            this.label.classList.toggle("active", this.input.validity.badInput === true);
-                        }
-                        else {
-                            this.label.classList.remove("active");
-                        }
-                        if (this.mdTextArea) {
-                            M.textareaAutoResize(this.input);
-                        }
+                    if (this.input === document.activeElement) {
+                        return;
                     }
+                    this.updateLabel();
                 };
                 MdInput.prototype.bind = function () {
-                    // this suppresses initial changed handlers calls
+                    // this suppresses initial changed handler calls
                 };
                 MdInput.prototype.attached = function () {
                     if (this.mdValidate) {
@@ -123,11 +107,7 @@ System.register(["tslib", "../aurelia", "./input-update-service"], function (exp
                     if (this.mdShowErrortext) {
                         this.input.setAttribute("data-show-errortext", this.mdShowErrortext.toString());
                     }
-                    this.updateService.update();
-                    // special case: time inputs are not covered by Materialize
-                    if (this.mdType === "time") {
-                        this.label.classList.add("active");
-                    }
+                    this.updateLabel();
                     this.attachEventHandlers();
                     this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
                     this.element.mdRenderValidateResults = this.mdRenderValidateResults;
@@ -136,6 +116,22 @@ System.register(["tslib", "../aurelia", "./input-update-service"], function (exp
                     this.detachEventHandlers();
                     this.element.mdUnrenderValidateResults = undefined;
                     this.element.mdRenderValidateResults = undefined;
+                };
+                MdInput.prototype.updateLabel = function () {
+                    // the following is copied from the updateTextFields method
+                    // it is more efficient than updating all the inputs
+                    if (this.mdValue && this.mdValue.length > 0 || this.input.autofocus || this.input.hasAttribute("placeholder")) {
+                        this.label.classList.add("active");
+                    }
+                    else if (this.input.validity) {
+                        this.label.classList.toggle("active", this.input.validity.badInput === true);
+                    }
+                    else {
+                        this.label.classList.remove("active");
+                    }
+                    if (this.mdTextArea) {
+                        M.textareaAutoResize(this.input);
+                    }
                 };
                 MdInput.prototype.blur = function () {
                     au.fireEvent(this.element, "blur");
@@ -201,6 +197,10 @@ System.register(["tslib", "../aurelia", "./input-update-service"], function (exp
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdInput.prototype, "mdShowErrortext", void 0);
                 tslib_1.__decorate([
+                    au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdInput.prototype, "mdInline", void 0);
+                tslib_1.__decorate([
                     au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Array)
                 ], MdInput.prototype, "mdUpdateTrigger", void 0);
@@ -235,7 +235,7 @@ System.register(["tslib", "../aurelia", "./input-update-service"], function (exp
                 MdInput = MdInput_1 = tslib_1.__decorate([
                     au.customElement("md-input"),
                     au.autoinject,
-                    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue, input_update_service_1.MdInputUpdateService])
+                    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
                 ], MdInput);
                 return MdInput;
                 var MdInput_1;

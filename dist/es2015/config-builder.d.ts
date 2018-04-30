@@ -38,7 +38,6 @@ export declare class ConfigBuilder {
     usePushpin(): ConfigBuilder;
     useRadio(): ConfigBuilder;
     useRange(): ConfigBuilder;
-    useScrollfire(): ConfigBuilder;
     useScrollSpy(): ConfigBuilder;
     useSelect(): ConfigBuilder;
     useSidenav(): ConfigBuilder;
@@ -63,5 +62,4 @@ export declare class ConfigBuilder {
      * Allows you to import yourself via <require></require>
      */
     withoutGlobalResources(): ConfigBuilder;
-    withScrollfirePatch(): ConfigBuilder;
 }

@@ -4,14 +4,14 @@ export declare class MdButton {
     constructor(element: Element);
     attributeManager: au.AttributeManager;
     disabled: boolean;
-    disabledChanged(newValue: boolean): void;
+    disabledChanged(): void;
     flat: boolean;
-    flatChanged(newValue: boolean): void;
+    flatChanged(): void;
     floating: boolean;
     large: boolean;
     small: boolean;
     pulse: boolean;
-    pulseChanged(newValue: boolean): void;
+    pulseChanged(): void;
     attached(): void;
     detached(): void;
 }

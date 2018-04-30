@@ -1,7 +1,6 @@
 export declare class MdChip {
     private element;
     constructor(element: Element);
-    mdClose: boolean | string;
-    attached(): void;
+    mdClose: boolean;
     close(): void;
 }

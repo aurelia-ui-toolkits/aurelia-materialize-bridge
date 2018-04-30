@@ -1,17 +1,14 @@
-System.register(["tslib", "aurelia-framework", "../common/events"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, events_1, MdAutoComplete;
+    var tslib_1, au, MdAutoComplete;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (events_1_1) {
-                events_1 = events_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
@@ -19,11 +16,16 @@ System.register(["tslib", "aurelia-framework", "../common/events"], function (ex
                 function MdAutoComplete(element) {
                     this.element = element;
                     this.input = null;
-                    this.limit = 20;
-                    this.minLength = 1;
                     this.values = {};
                 }
+                MdAutoComplete.prototype.valuesChanged = function () {
+                    this.instance.updateData(this.values);
+                };
+                MdAutoComplete.prototype.bind = function () {
+                    // suppress initial change handler calls
+                };
                 MdAutoComplete.prototype.attached = function () {
+                    var _this = this;
                     if (this.element.tagName.toLowerCase() === "input") {
                         this.input = this.element;
                     }
@@ -33,43 +35,35 @@ System.register(["tslib", "aurelia-framework", "../common/events"], function (ex
                     else {
                         throw new Error("md-autocomplete must be attached to either an input or md-input element");
                     }
-                    this.refresh();
+                    var options = {
+                        data: this.values,
+                        limit: this.limit,
+                        minLength: this.minLength,
+                        onAutocomplete: function (text) {
+                            au.fireMaterializeEvent(_this.element, "autocomplete", { text: text });
+                        }
+                    };
+                    au.cleanOptions(options);
+                    this.instance = new M.Autocomplete(this.input, options);
                 };
                 MdAutoComplete.prototype.detached = function () {
-                    // remove .autocomplete-content children
-                    $(this.input).siblings(".autocomplete-content").off("click");
-                    $(this.input).siblings(".autocomplete-content").remove();
-                };
-                MdAutoComplete.prototype.refresh = function () {
-                    var _this = this;
-                    this.detached();
-                    $(this.input).autocomplete({
-                        data: this.values,
-                        minLength: this.minLength,
-                        limit: this.limit
-                    });
-                    $(this.input).siblings(".autocomplete-content").on("click", function () {
-                        events_1.fireEvent(_this.input, "change");
-                    });
-                };
-                MdAutoComplete.prototype.valuesChanged = function (newValue) {
-                    this.refresh();
+                    this.instance.destroy();
                 };
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
+                    au.bindable.numberMd,
                     tslib_1.__metadata("design:type", Number)
                 ], MdAutoComplete.prototype, "limit", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
+                    au.bindable.numberMd,
                     tslib_1.__metadata("design:type", Number)
                 ], MdAutoComplete.prototype, "minLength", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Object)
                 ], MdAutoComplete.prototype, "values", void 0);
                 MdAutoComplete = tslib_1.__decorate([
-                    aurelia_framework_1.customAttribute("md-autocomplete"),
-                    aurelia_framework_1.autoinject,
+                    au.customAttribute("md-autocomplete"),
+                    au.autoinject,
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdAutoComplete);
                 return MdAutoComplete;

@@ -15,10 +15,10 @@ coerceFunctions.booleanMd = function (val) {
 };
 bindable.numberMd = createTypedBindable("numberMd");
 coerceFunctions.numberMd = function (val) {
-    if (val === undefined || val === "") {
+    if (val === undefined || val === "" || val === "undefined" || val === "NaN") {
         return undefined;
     }
-    else if (val === null) {
+    else if (val === null || val === "null") {
         return null;
     }
     else {

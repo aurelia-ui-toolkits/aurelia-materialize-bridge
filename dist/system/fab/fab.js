@@ -1,40 +1,58 @@
-System.register(["tslib", "aurelia-framework", "../common/attributes"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, attributes_1, MdFab;
+    var tslib_1, au, MdFab;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (attributes_1_1) {
-                attributes_1 = attributes_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
             MdFab = /** @class */ (function () {
-                function MdFab() {
-                    this.mdFixed = false;
-                    this.mdLarge = false;
+                function MdFab(element, taskQueue) {
+                    this.element = element;
+                    this.taskQueue = taskQueue;
                 }
                 MdFab.prototype.attached = function () {
-                    this.mdFixed = attributes_1.getBooleanFromAttributeValue(this.mdFixed);
-                    this.mdLarge = attributes_1.getBooleanFromAttributeValue(this.mdLarge);
+                    var _this = this;
+                    this.element.classList.add("fixed-action-btn");
+                    var options = {
+                        direction: this.mdDirection,
+                        hoverEnabled: this.mdHoverEnabled,
+                        toolbarEnabled: this.toolbarEnabled
+                    };
+                    au.cleanOptions(options);
+                    this.taskQueue.queueTask(function () { return _this.instance = new M.FloatingActionButton(_this.element, options); });
+                };
+                MdFab.prototype.detached = function () {
+                    this.instance.destroy();
+                    this.element.classList.remove("fixed-action-btn");
+                };
+                MdFab.prototype.open = function () {
+                    this.instance.open();
+                };
+                MdFab.prototype.close = function () {
+                    this.instance.close();
                 };
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
-                    tslib_1.__metadata("design:type", Object)
-                ], MdFab.prototype, "mdFixed", void 0);
+                    au.bindable.stringMd,
+                    tslib_1.__metadata("design:type", String)
+                ], MdFab.prototype, "mdDirection", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
-                    tslib_1.__metadata("design:type", Object)
-                ], MdFab.prototype, "mdLarge", void 0);
+                    au.bindable.booleanMd,
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdFab.prototype, "mdHoverEnabled", void 0);
+                tslib_1.__decorate([
+                    au.bindable.booleanMd,
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdFab.prototype, "toolbarEnabled", void 0);
                 MdFab = tslib_1.__decorate([
-                    aurelia_framework_1.customElement("md-fab"),
-                    aurelia_framework_1.autoinject
+                    au.customElement("md-fab"),
+                    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
                 ], MdFab);
                 return MdFab;
             }());

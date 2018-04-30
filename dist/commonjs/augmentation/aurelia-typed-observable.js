@@ -17,10 +17,10 @@ aurelia_typed_observable_plugin_1.coerceFunctions.booleanMd = function (val) {
 };
 aurelia_typed_observable_plugin_1.bindable.numberMd = aurelia_typed_observable_plugin_1.createTypedBindable("numberMd");
 aurelia_typed_observable_plugin_1.coerceFunctions.numberMd = function (val) {
-    if (val === undefined || val === "") {
+    if (val === undefined || val === "" || val === "undefined" || val === "NaN") {
         return undefined;
     }
-    else if (val === null) {
+    else if (val === null || val === "null") {
         return null;
     }
     else {

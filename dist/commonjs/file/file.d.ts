@@ -3,7 +3,7 @@ export declare class MdFileInput {
     constructor(element: Element);
     mdCaption: string;
     mdMultiple: boolean;
-    mdLabelValue: any;
+    mdLabelValue: string;
     disabled: boolean;
     mdReadonly: boolean;
     filePath: HTMLInputElement;
@@ -11,5 +11,5 @@ export declare class MdFileInput {
     suspendUpdate: boolean;
     attached(): void;
     detached(): void;
-    handleChangeFromNativeInput(): void;
+    handleChangeFromNativeInput: () => void;
 }

@@ -1,12 +1,10 @@
 import * as tslib_1 from "tslib";
 import * as au from "../aurelia";
-import { MdInputUpdateService } from "./input-update-service";
 var MdInput = /** @class */ (function () {
-    function MdInput(element, taskQueue, updateService) {
+    function MdInput(element, taskQueue) {
         var _this = this;
         this.element = element;
         this.taskQueue = taskQueue;
-        this.updateService = updateService;
         this.mdBlurOnEnter = false;
         this.mdDisabled = false;
         this.mdReadonly = false;
@@ -73,25 +71,13 @@ var MdInput = /** @class */ (function () {
     }
     MdInput_1 = MdInput;
     MdInput.prototype.mdValueChanged = function () {
-        if (this.input !== document.activeElement) {
-            // the following is copied from the updateTextFields method
-            // it is more efficient than updating all the inputs
-            if (this.mdValue && this.mdValue.length > 0 || this.input.autofocus || this.input.hasAttribute("placeholder")) {
-                this.label.classList.add("active");
-            }
-            else if (this.input.validity) {
-                this.label.classList.toggle("active", this.input.validity.badInput === true);
-            }
-            else {
-                this.label.classList.remove("active");
-            }
-            if (this.mdTextArea) {
-                M.textareaAutoResize(this.input);
-            }
+        if (this.input === document.activeElement) {
+            return;
         }
+        this.updateLabel();
     };
     MdInput.prototype.bind = function () {
-        // this suppresses initial changed handlers calls
+        // this suppresses initial changed handler calls
     };
     MdInput.prototype.attached = function () {
         if (this.mdValidate) {
@@ -109,11 +95,7 @@ var MdInput = /** @class */ (function () {
         if (this.mdShowErrortext) {
             this.input.setAttribute("data-show-errortext", this.mdShowErrortext.toString());
         }
-        this.updateService.update();
-        // special case: time inputs are not covered by Materialize
-        if (this.mdType === "time") {
-            this.label.classList.add("active");
-        }
+        this.updateLabel();
         this.attachEventHandlers();
         this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
         this.element.mdRenderValidateResults = this.mdRenderValidateResults;
@@ -122,6 +104,22 @@ var MdInput = /** @class */ (function () {
         this.detachEventHandlers();
         this.element.mdUnrenderValidateResults = undefined;
         this.element.mdRenderValidateResults = undefined;
+    };
+    MdInput.prototype.updateLabel = function () {
+        // the following is copied from the updateTextFields method
+        // it is more efficient than updating all the inputs
+        if (this.mdValue && this.mdValue.length > 0 || this.input.autofocus || this.input.hasAttribute("placeholder")) {
+            this.label.classList.add("active");
+        }
+        else if (this.input.validity) {
+            this.label.classList.toggle("active", this.input.validity.badInput === true);
+        }
+        else {
+            this.label.classList.remove("active");
+        }
+        if (this.mdTextArea) {
+            M.textareaAutoResize(this.input);
+        }
     };
     MdInput.prototype.blur = function () {
         au.fireEvent(this.element, "blur");
@@ -187,6 +185,10 @@ var MdInput = /** @class */ (function () {
         tslib_1.__metadata("design:type", Boolean)
     ], MdInput.prototype, "mdShowErrortext", void 0);
     tslib_1.__decorate([
+        au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdInput.prototype, "mdInline", void 0);
+    tslib_1.__decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Array)
     ], MdInput.prototype, "mdUpdateTrigger", void 0);
@@ -221,7 +223,7 @@ var MdInput = /** @class */ (function () {
     MdInput = MdInput_1 = tslib_1.__decorate([
         au.customElement("md-input"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue, MdInputUpdateService])
+        tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
     ], MdInput);
     return MdInput;
     var MdInput_1;

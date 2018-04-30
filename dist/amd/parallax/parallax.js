@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "aurelia-templating", "aurelia-dependency-injection"], function (require, exports, tslib_1, aurelia_templating_1, aurelia_dependency_injection_1) {
+define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdParallax = /** @class */ (function () {
@@ -6,14 +6,24 @@ define(["require", "exports", "tslib", "aurelia-templating", "aurelia-dependency
             this.element = element;
         }
         MdParallax.prototype.attached = function () {
-            $(this.element).parallax();
+            this.element.classList.add("parallax");
+            var options = {
+                responsiveThreshold: this.responsiveThreshold
+            };
+            au.cleanOptions(options);
+            this.instance = new M.Parallax(this.element, options);
         };
         MdParallax.prototype.detached = function () {
-            // destroy handler not available
+            this.instance.destroy();
+            this.element.classList.remove("parallax");
         };
+        tslib_1.__decorate([
+            au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Number)
+        ], MdParallax.prototype, "responsiveThreshold", void 0);
         MdParallax = tslib_1.__decorate([
-            aurelia_templating_1.customAttribute("md-parallax"),
-            aurelia_dependency_injection_1.autoinject,
+            au.customAttribute("md-parallax"),
+            au.autoinject,
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdParallax);
         return MdParallax;

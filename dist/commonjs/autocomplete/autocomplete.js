@@ -1,17 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
-var aurelia_framework_1 = require("aurelia-framework");
-var events_1 = require("../common/events");
+var au = require("../aurelia");
 var MdAutoComplete = /** @class */ (function () {
     function MdAutoComplete(element) {
         this.element = element;
         this.input = null;
-        this.limit = 20;
-        this.minLength = 1;
         this.values = {};
     }
+    MdAutoComplete.prototype.valuesChanged = function () {
+        this.instance.updateData(this.values);
+    };
+    MdAutoComplete.prototype.bind = function () {
+        // suppress initial change handler calls
+    };
     MdAutoComplete.prototype.attached = function () {
+        var _this = this;
         if (this.element.tagName.toLowerCase() === "input") {
             this.input = this.element;
         }
@@ -21,43 +25,35 @@ var MdAutoComplete = /** @class */ (function () {
         else {
             throw new Error("md-autocomplete must be attached to either an input or md-input element");
         }
-        this.refresh();
+        var options = {
+            data: this.values,
+            limit: this.limit,
+            minLength: this.minLength,
+            onAutocomplete: function (text) {
+                au.fireMaterializeEvent(_this.element, "autocomplete", { text: text });
+            }
+        };
+        au.cleanOptions(options);
+        this.instance = new M.Autocomplete(this.input, options);
     };
     MdAutoComplete.prototype.detached = function () {
-        // remove .autocomplete-content children
-        $(this.input).siblings(".autocomplete-content").off("click");
-        $(this.input).siblings(".autocomplete-content").remove();
-    };
-    MdAutoComplete.prototype.refresh = function () {
-        var _this = this;
-        this.detached();
-        $(this.input).autocomplete({
-            data: this.values,
-            minLength: this.minLength,
-            limit: this.limit
-        });
-        $(this.input).siblings(".autocomplete-content").on("click", function () {
-            events_1.fireEvent(_this.input, "change");
-        });
-    };
-    MdAutoComplete.prototype.valuesChanged = function (newValue) {
-        this.refresh();
+        this.instance.destroy();
     };
     tslib_1.__decorate([
-        aurelia_framework_1.bindable,
+        au.bindable.numberMd,
         tslib_1.__metadata("design:type", Number)
     ], MdAutoComplete.prototype, "limit", void 0);
     tslib_1.__decorate([
-        aurelia_framework_1.bindable,
+        au.bindable.numberMd,
         tslib_1.__metadata("design:type", Number)
     ], MdAutoComplete.prototype, "minLength", void 0);
     tslib_1.__decorate([
-        aurelia_framework_1.bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Object)
     ], MdAutoComplete.prototype, "values", void 0);
     MdAutoComplete = tslib_1.__decorate([
-        aurelia_framework_1.customAttribute("md-autocomplete"),
-        aurelia_framework_1.autoinject,
+        au.customAttribute("md-autocomplete"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdAutoComplete);
     return MdAutoComplete;

@@ -1,17 +1,41 @@
-import { bindable, customElement, autoinject } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customElement("md-fab")
-@autoinject
+@au.customElement("md-fab")
 export class MdFab {
-	@bindable
-	mdFixed: boolean | string = false;
+	constructor(private element: Element, private taskQueue: au.TaskQueue) { }
 
-	@bindable
-	mdLarge: boolean | string = false;
+	@au.bindable.stringMd
+	mdDirection: "top" | "right" | "buttom" | "left";
+
+	@au.bindable.booleanMd
+	mdHoverEnabled: boolean;
+
+	@au.bindable.booleanMd
+	toolbarEnabled: boolean;
+
+	instance: M.FloatingActionButton;
 
 	attached() {
-		this.mdFixed = getBooleanFromAttributeValue(this.mdFixed);
-		this.mdLarge = getBooleanFromAttributeValue(this.mdLarge);
+		this.element.classList.add("fixed-action-btn");
+		let options: Partial<M.FloatingActionButtonOptions> = {
+			direction: this.mdDirection,
+			hoverEnabled: this.mdHoverEnabled,
+			toolbarEnabled: this.toolbarEnabled
+		};
+		au.cleanOptions(options);
+		this.taskQueue.queueTask(() => this.instance = new M.FloatingActionButton(this.element, options));
+	}
+
+	detached() {
+		this.instance.destroy();
+		this.element.classList.remove("fixed-action-btn");
+	}
+
+	open() {
+		this.instance.open();
+	}
+
+	close() {
+		this.instance.close();
 	}
 }

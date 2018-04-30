@@ -1,6 +1,6 @@
 <template>
 	<require from="./input.css"></require>
-	<div class="input-field" ref="inputField">
+	<div class="input-field ${mdInline ? 'inline' : ''}" ref="inputField">
 		<slot></slot>
 		<input if.bind="!mdTextArea" ref="input" id="${controlId}" type.bind="mdType" min.bind="mdMin" max.bind="mdMax"
 		 maxlength.bind="mdMaxlength" name.bind="mdName" step.bind="mdStep" value.bind="mdValue" readonly.bind="mdReadonly" disabled.bind="mdDisabled"

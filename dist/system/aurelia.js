@@ -3,6 +3,7 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
     var __moduleName = context_1 && context_1.id;
     var exportedNames_1 = {
         "Router": true,
+        "NavigationInstruction": true,
         "customElement": true,
         "customAttribute": true,
         "autoinject": true,
@@ -10,6 +11,7 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
         "BindingEngine": true,
         "TaskQueue": true,
         "DOM": true,
+        "children": true,
         "getLogger": true,
         "Logger": true,
         "fireEvent": true,
@@ -17,6 +19,7 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
         "ValidateResult": true,
         "MaterializeFormValidationRenderer": true,
         "bindable": true,
+        "observable": true,
         "AttributeManager": true
     };
     function exportStar_1(m) {
@@ -30,7 +33,8 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
         setters: [
             function (aurelia_router_1_1) {
                 exports_1({
-                    "Router": aurelia_router_1_1["Router"]
+                    "Router": aurelia_router_1_1["Router"],
+                    "NavigationInstruction": aurelia_router_1_1["NavigationInstruction"]
                 });
             },
             function (aurelia_framework_1_1) {
@@ -41,7 +45,8 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
                     "bindingMode": aurelia_framework_1_1["bindingMode"],
                     "BindingEngine": aurelia_framework_1_1["BindingEngine"],
                     "TaskQueue": aurelia_framework_1_1["TaskQueue"],
-                    "DOM": aurelia_framework_1_1["DOM"]
+                    "DOM": aurelia_framework_1_1["DOM"],
+                    "children": aurelia_framework_1_1["children"]
                 });
             },
             function (aurelia_logging_1_1) {
@@ -68,7 +73,8 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
             },
             function (aurelia_typed_observable_plugin_1_1) {
                 exports_1({
-                    "bindable": aurelia_typed_observable_plugin_1_1["bindable"]
+                    "bindable": aurelia_typed_observable_plugin_1_1["bindable"],
+                    "observable": aurelia_typed_observable_plugin_1_1["observable"]
                 });
             },
             function (util_1_1) {

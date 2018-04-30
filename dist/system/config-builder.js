@@ -48,7 +48,6 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                         .usePushpin()
                         .useRadio()
                         .useRange()
-                        .useScrollfire()
                         .useScrollSpy()
                         .useSelect()
                         .useSidenav()
@@ -154,7 +153,6 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                 };
                 ConfigBuilder.prototype.useModal = function () {
                     this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./modal/modal"));
-                    this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./modal/modal-trigger"));
                     return this;
                 };
                 ConfigBuilder.prototype.useNavbar = function () {
@@ -183,11 +181,6 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                 };
                 ConfigBuilder.prototype.useRange = function () {
                     this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./range/range"));
-                    return this;
-                };
-                ConfigBuilder.prototype.useScrollfire = function () {
-                    this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./scrollfire/scrollfire"));
-                    this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./scrollfire/scrollfire-target"));
                     return this;
                 };
                 ConfigBuilder.prototype.useScrollSpy = function () {
@@ -262,10 +255,6 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                  */
                 ConfigBuilder.prototype.withoutGlobalResources = function () {
                     this.useGlobalResources = false;
-                    return this;
-                };
-                ConfigBuilder.prototype.withScrollfirePatch = function () {
-                    this.useScrollfirePatch = true;
                     return this;
                 };
                 return ConfigBuilder;

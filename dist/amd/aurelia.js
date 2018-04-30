@@ -2,6 +2,7 @@ define(["require", "exports", "tslib", "aurelia-router", "aurelia-framework", "a
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Router = aurelia_router_1.Router;
+    exports.NavigationInstruction = aurelia_router_1.NavigationInstruction;
     exports.customElement = aurelia_framework_1.customElement;
     exports.customAttribute = aurelia_framework_1.customAttribute;
     exports.autoinject = aurelia_framework_1.autoinject;
@@ -9,6 +10,7 @@ define(["require", "exports", "tslib", "aurelia-router", "aurelia-framework", "a
     exports.BindingEngine = aurelia_framework_1.BindingEngine;
     exports.TaskQueue = aurelia_framework_1.TaskQueue;
     exports.DOM = aurelia_framework_1.DOM;
+    exports.children = aurelia_framework_1.children;
     exports.getLogger = aurelia_logging_1.getLogger;
     exports.Logger = aurelia_logging_1.Logger;
     exports.fireEvent = events_1.fireEvent;
@@ -16,6 +18,7 @@ define(["require", "exports", "tslib", "aurelia-router", "aurelia-framework", "a
     exports.ValidateResult = aurelia_validation_1.ValidateResult;
     exports.MaterializeFormValidationRenderer = validationRenderer_1.MaterializeFormValidationRenderer;
     exports.bindable = aurelia_typed_observable_plugin_1.bindable;
+    exports.observable = aurelia_typed_observable_plugin_1.observable;
     tslib_1.__exportStar(util_1, exports);
     exports.AttributeManager = attributeManager_1.AttributeManager;
 });

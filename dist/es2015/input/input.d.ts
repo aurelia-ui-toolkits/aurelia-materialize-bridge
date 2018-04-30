@@ -1,10 +1,8 @@
 import * as au from "../aurelia";
-import { MdInputUpdateService } from "./input-update-service";
 export declare class MdInput {
     private element;
     private taskQueue;
-    private updateService;
-    constructor(element: Element, taskQueue: au.TaskQueue, updateService: MdInputUpdateService);
+    constructor(element: Element, taskQueue: au.TaskQueue);
     static id: number;
     controlId: string;
     label: HTMLLabelElement;
@@ -20,6 +18,7 @@ export declare class MdInput {
     mdStep: string;
     mdValidate: boolean;
     mdShowErrortext: boolean;
+    mdInline: boolean;
     mdUpdateTrigger: string[];
     mdValidateError: string;
     mdValidateSuccess: string;
@@ -33,6 +32,7 @@ export declare class MdInput {
     bind(): void;
     attached(): void;
     detached(): void;
+    updateLabel(): void;
     blur(): void;
     focus(): void;
     attachEventHandlers(): void;

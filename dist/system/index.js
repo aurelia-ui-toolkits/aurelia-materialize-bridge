@@ -1,4 +1,4 @@
-System.register(["./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports"], function (exports_1, context_1) {
+System.register(["./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable", "./config-builder", "./common/polyfills", "./exports"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function applyPolyfills() {
@@ -13,12 +13,9 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./augm
         if (builder.useGlobalResources) {
             frameworkConfiguration.globalResources(builder.globalResources);
         }
-        if (builder.useScrollfirePatch) {
-            new scrollfire_patch_1.ScrollfirePatch().patch();
-        }
     }
     exports_1("configure", configure);
-    var config_builder_1, scrollfire_patch_1, polyfills_1;
+    var config_builder_1, polyfills_1;
     var exportedNames_1 = {
         "configure": true
     };
@@ -39,9 +36,6 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./augm
             },
             function (config_builder_1_1) {
                 config_builder_1 = config_builder_1_1;
-            },
-            function (scrollfire_patch_1_1) {
-                scrollfire_patch_1 = scrollfire_patch_1_1;
             },
             function (polyfills_1_1) {
                 polyfills_1 = polyfills_1_1;

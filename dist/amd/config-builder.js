@@ -40,7 +40,6 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
                 .usePushpin()
                 .useRadio()
                 .useRange()
-                .useScrollfire()
                 .useScrollSpy()
                 .useSelect()
                 .useSidenav()
@@ -146,7 +145,6 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
         };
         ConfigBuilder.prototype.useModal = function () {
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./modal/modal"));
-            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./modal/modal-trigger"));
             return this;
         };
         ConfigBuilder.prototype.useNavbar = function () {
@@ -175,11 +173,6 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
         };
         ConfigBuilder.prototype.useRange = function () {
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./range/range"));
-            return this;
-        };
-        ConfigBuilder.prototype.useScrollfire = function () {
-            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./scrollfire/scrollfire"));
-            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./scrollfire/scrollfire-target"));
             return this;
         };
         ConfigBuilder.prototype.useScrollSpy = function () {
@@ -254,10 +247,6 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
          */
         ConfigBuilder.prototype.withoutGlobalResources = function () {
             this.useGlobalResources = false;
-            return this;
-        };
-        ConfigBuilder.prototype.withScrollfirePatch = function () {
-            this.useScrollfirePatch = true;
             return this;
         };
         return ConfigBuilder;

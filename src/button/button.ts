@@ -11,8 +11,8 @@ export class MdButton {
 
 	@au.bindable.booleanMd
 	disabled: boolean = false;
-	disabledChanged(newValue: boolean) {
-		if (newValue) {
+	disabledChanged() {
+		if (this.disabled) {
 			this.attributeManager.addClasses("disabled");
 		} else {
 			this.attributeManager.removeClasses("disabled");
@@ -21,8 +21,8 @@ export class MdButton {
 
 	@au.bindable.booleanMd
 	flat: boolean = false;
-	flatChanged(newValue: boolean) {
-		if (newValue) {
+	flatChanged() {
+		if (this.flat) {
 			this.attributeManager.addClasses("btn-flat");
 		} else {
 			this.attributeManager.removeClasses("btn-flat");
@@ -40,8 +40,8 @@ export class MdButton {
 
 	@au.bindable.booleanMd
 	pulse: boolean = false;
-	pulseChanged(newValue: boolean) {
-		if (newValue) {
+	pulseChanged() {
+		if (this.pulse) {
 			this.attributeManager.addClasses("pulse");
 		} else {
 			this.attributeManager.removeClasses("pulse");
@@ -51,9 +51,7 @@ export class MdButton {
 	attached() {
 		const classes = [];
 
-		if (this.flat) {
-			classes.push("btn-flat");
-		}
+		this.flatChanged();
 		if (this.floating) {
 			classes.push("btn-floating");
 		}
@@ -63,12 +61,8 @@ export class MdButton {
 		if (this.small) {
 			classes.push("btn-small");
 		}
-		if (this.disabled) {
-			classes.push("disabled");
-		}
-		if (this.pulse) {
-			classes.push("pulse");
-		}
+		this.disabledChanged();
+		this.pulseChanged();
 		classes.push("btn");
 		this.attributeManager.addClasses(classes);
 	}

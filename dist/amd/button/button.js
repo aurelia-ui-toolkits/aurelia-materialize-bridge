@@ -12,24 +12,24 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.pulse = false;
             this.attributeManager = new au.AttributeManager(element);
         }
-        MdButton.prototype.disabledChanged = function (newValue) {
-            if (newValue) {
+        MdButton.prototype.disabledChanged = function () {
+            if (this.disabled) {
                 this.attributeManager.addClasses("disabled");
             }
             else {
                 this.attributeManager.removeClasses("disabled");
             }
         };
-        MdButton.prototype.flatChanged = function (newValue) {
-            if (newValue) {
+        MdButton.prototype.flatChanged = function () {
+            if (this.flat) {
                 this.attributeManager.addClasses("btn-flat");
             }
             else {
                 this.attributeManager.removeClasses("btn-flat");
             }
         };
-        MdButton.prototype.pulseChanged = function (newValue) {
-            if (newValue) {
+        MdButton.prototype.pulseChanged = function () {
+            if (this.pulse) {
                 this.attributeManager.addClasses("pulse");
             }
             else {
@@ -38,9 +38,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         };
         MdButton.prototype.attached = function () {
             var classes = [];
-            if (this.flat) {
-                classes.push("btn-flat");
-            }
+            this.flatChanged();
             if (this.floating) {
                 classes.push("btn-floating");
             }
@@ -50,12 +48,8 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             if (this.small) {
                 classes.push("btn-small");
             }
-            if (this.disabled) {
-                classes.push("disabled");
-            }
-            if (this.pulse) {
-                classes.push("pulse");
-            }
+            this.disabledChanged();
+            this.pulseChanged();
             classes.push("btn");
             this.attributeManager.addClasses(classes);
         };

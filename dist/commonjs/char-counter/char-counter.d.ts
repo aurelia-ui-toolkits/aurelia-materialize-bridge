@@ -1,9 +1,11 @@
-import { AttributeManager } from "../common/attributeManager";
+/// <reference types="materialize-css" />
+import * as au from "../aurelia";
 export declare class MdCharCounter {
     private element;
     constructor(element: Element);
-    attributeManager: AttributeManager;
-    length: number | string;
+    attributeManager: au.AttributeManager;
+    length: number;
+    instances: M.CharacterCounter[];
     attached(): void;
     detached(): void;
 }

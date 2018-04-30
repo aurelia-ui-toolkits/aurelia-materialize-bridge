@@ -1,7 +1,5 @@
 import * as tslib_1 from "tslib";
-import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 var MdRadio = /** @class */ (function () {
     function MdRadio(element) {
         this.element = element;
@@ -11,59 +9,57 @@ var MdRadio = /** @class */ (function () {
         this.mdName = "";
         this.mdValue = "";
         this.controlId = "md-radio-" + MdRadio_1.id++;
-        // this.handleChange = this.handleChange.bind(this);
     }
     MdRadio_1 = MdRadio;
     MdRadio.prototype.mdDisabledChanged = function (newValue) {
         if (this.radio) {
-            this.radio.disabled = !!newValue;
+            this.radio.disabled = newValue;
         }
     };
     MdRadio.prototype.attached = function () {
-        this.attributeManager = new AttributeManager(this.radio);
-        if (getBooleanFromAttributeValue(this.mdGap)) {
+        this.attributeManager = new au.AttributeManager(this.radio);
+        if (this.mdGap) {
             this.attributeManager.addClasses("with-gap");
         }
-        if (getBooleanFromAttributeValue(this.mdDisabled)) {
+        if (this.mdDisabled) {
             this.radio.disabled = true;
         }
-        this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
     };
     MdRadio.prototype.detached = function () {
         this.attributeManager.removeClasses(["with-gap", "disabled"]);
     };
     MdRadio.id = 0;
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.twoWay }),
+        au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
         tslib_1.__metadata("design:type", Object)
     ], MdRadio.prototype, "mdChecked", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        au.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
     ], MdRadio.prototype, "mdDisabled", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        au.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
     ], MdRadio.prototype, "mdReadonly", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        au.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
     ], MdRadio.prototype, "mdGap", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Object)
     ], MdRadio.prototype, "mdModel", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable.stringMd,
         tslib_1.__metadata("design:type", String)
     ], MdRadio.prototype, "mdName", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable.stringMd,
         tslib_1.__metadata("design:type", String)
     ], MdRadio.prototype, "mdValue", void 0);
     MdRadio = MdRadio_1 = tslib_1.__decorate([
-        customElement("md-radio"),
-        autoinject,
+        au.customElement("md-radio"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdRadio);
     return MdRadio;

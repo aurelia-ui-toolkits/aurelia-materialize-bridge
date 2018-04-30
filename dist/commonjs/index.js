@@ -7,7 +7,6 @@ require("./augmentation/element");
 require("./augmentation/materialize");
 require("./augmentation/aurelia-typed-observable");
 var config_builder_1 = require("./config-builder");
-var scrollfire_patch_1 = require("./scrollfire/scrollfire-patch");
 var polyfills_1 = require("./common/polyfills");
 function applyPolyfills() {
     polyfills_1.polyfillElementClosest();
@@ -20,9 +19,6 @@ function configure(frameworkConfiguration, configCallback) {
     }
     if (builder.useGlobalResources) {
         frameworkConfiguration.globalResources(builder.globalResources);
-    }
-    if (builder.useScrollfirePatch) {
-        new scrollfire_patch_1.ScrollfirePatch().patch();
     }
 }
 exports.configure = configure;

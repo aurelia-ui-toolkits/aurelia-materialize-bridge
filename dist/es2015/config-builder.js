@@ -38,7 +38,6 @@ var ConfigBuilder = /** @class */ (function () {
             .usePushpin()
             .useRadio()
             .useRange()
-            .useScrollfire()
             .useScrollSpy()
             .useSelect()
             .useSidenav()
@@ -144,7 +143,6 @@ var ConfigBuilder = /** @class */ (function () {
     };
     ConfigBuilder.prototype.useModal = function () {
         this.globalResources.push(PLATFORM.moduleName("./modal/modal"));
-        this.globalResources.push(PLATFORM.moduleName("./modal/modal-trigger"));
         return this;
     };
     ConfigBuilder.prototype.useNavbar = function () {
@@ -173,11 +171,6 @@ var ConfigBuilder = /** @class */ (function () {
     };
     ConfigBuilder.prototype.useRange = function () {
         this.globalResources.push(PLATFORM.moduleName("./range/range"));
-        return this;
-    };
-    ConfigBuilder.prototype.useScrollfire = function () {
-        this.globalResources.push(PLATFORM.moduleName("./scrollfire/scrollfire"));
-        this.globalResources.push(PLATFORM.moduleName("./scrollfire/scrollfire-target"));
         return this;
     };
     ConfigBuilder.prototype.useScrollSpy = function () {
@@ -252,10 +245,6 @@ var ConfigBuilder = /** @class */ (function () {
      */
     ConfigBuilder.prototype.withoutGlobalResources = function () {
         this.useGlobalResources = false;
-        return this;
-    };
-    ConfigBuilder.prototype.withScrollfirePatch = function () {
-        this.useScrollfirePatch = true;
         return this;
     };
     return ConfigBuilder;

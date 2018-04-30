@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports", "./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable"], function (require, exports, tslib_1, config_builder_1, scrollfire_patch_1, polyfills_1, exports_1) {
+define(["require", "exports", "tslib", "./config-builder", "./common/polyfills", "./exports", "./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable"], function (require, exports, tslib_1, config_builder_1, polyfills_1, exports_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     function applyPolyfills() {
@@ -12,9 +12,6 @@ define(["require", "exports", "tslib", "./config-builder", "./scrollfire/scrollf
         }
         if (builder.useGlobalResources) {
             frameworkConfiguration.globalResources(builder.globalResources);
-        }
-        if (builder.useScrollfirePatch) {
-            new scrollfire_patch_1.ScrollfirePatch().patch();
         }
     }
     exports.configure = configure;
