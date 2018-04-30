@@ -1,51 +1,45 @@
-import { bindable, customElement, autoinject, bindingMode } from "aurelia-framework";
-import { fireMaterializeEvent } from "../common/events";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customElement("md-pagination")
-@autoinject
+@au.customElement("md-pagination")
+@au.autoinject
 export class MdPagination {
 	constructor(private element: Element) { }
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
+	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
 	mdActivePage: number = 1;
 
-	@bindable({ defaultBindingMode: bindingMode.oneWay })
-	mdPages: number | string = 5;
+	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay })
+	mdPages: number = 5;
+	mdPagesChanged() {
+		this.setActivePage(1);
+	}
 
-	@bindable({ defaultBindingMode: bindingMode.oneWay })
-	mdVisiblePageLinks: number | string = 15;
-
-	@bindable({ defaultBindingMode: bindingMode.oneWay })
-	mdPageLinks: number[] = [];
-
-	@bindable
-	mdShowFirstLast: boolean | string = true;
-
-	@bindable
-	mdShowPrevNext: boolean | string = true;
-
-	@bindable
-	mdShowPageLinks: boolean | string = true;
-
-	// local variables to stop Changed events when parsing to int
-	numberOfLinks: number = 15;
-	pages: number = 5;
-
-	bind() {
-		// attached() throws unhandled exceptions
-		this.pages = parseInt(this.mdPages.toString(), 10);
-		// We don't want mdVisiblePageLinks to be greater than mdPages
-		this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks.toString(), 10), this.pages);
-		this.mdShowFirstLast = getBooleanFromAttributeValue(this.mdShowFirstLast);
-		this.mdShowPrevNext = getBooleanFromAttributeValue(this.mdShowPrevNext);
+	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay })
+	mdVisiblePageLinks: number = 15;
+	mdVisiblePageLinksChanged() {
 		this.mdPageLinks = this.generatePageLinks();
 	}
 
-	setActivePage(page) {
-		this.mdActivePage = parseInt(page, 10);
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneWay })
+	mdPageLinks: number[] = [];
+
+	@au.bindable.booleanMd
+	mdShowFirstLast: boolean = true;
+
+	@au.bindable.booleanMd
+	mdShowPrevNext: boolean = true;
+
+	@au.bindable.booleanMd
+	mdShowPageLinks: boolean = true;
+
+	bind() {
 		this.mdPageLinks = this.generatePageLinks();
-		fireMaterializeEvent(this.element, "page-changed", this.mdActivePage);
+	}
+
+	setActivePage(page: number) {
+		this.mdActivePage = page;
+		this.mdPageLinks = this.generatePageLinks();
+		au.fireMaterializeEvent(this.element, "page-changed", this.mdActivePage);
 	}
 
 	setFirstPage() {
@@ -55,8 +49,8 @@ export class MdPagination {
 	}
 
 	setLastPage() {
-		if (this.mdActivePage < this.pages) {
-			this.setActivePage(this.pages);
+		if (this.mdActivePage < this.mdPages) {
+			this.setActivePage(this.mdPages);
 		}
 	}
 
@@ -67,30 +61,20 @@ export class MdPagination {
 	}
 
 	setNextPage() {
-		if (this.mdActivePage < this.pages) {
+		if (this.mdActivePage < this.mdPages) {
 			this.setActivePage(this.mdActivePage + 1);
 		}
 	}
 
-	mdPagesChanged() {
-		this.pages = parseInt(this.mdPages.toString(), 10);
-		this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks.toString(), 10), this.pages);
-		this.setActivePage(1);
-	}
-
-	mdVisiblePageLinksChanged() {
-		this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks.toString(), 10), this.pages);
-		this.mdPageLinks = this.generatePageLinks();
-	}
-
 	generatePageLinks(): number[] {
-		let midPoint = this.numberOfLinks / 2;
+		let numberOfLinks = Math.min(this.mdVisiblePageLinks, this.mdPages);
+		let midPoint = Math.ceil(numberOfLinks / 2);
 		let start = Math.max(this.mdActivePage - midPoint, 0);
 		// respect visible links
-		if (start + midPoint * 2 > this.pages) {
-			start = this.pages - midPoint * 2;
+		if (start + midPoint * 2 > this.mdPages) {
+			start = this.mdPages - midPoint * 2;
 		}
-		let end = Math.min(start + this.numberOfLinks, this.pages);
+		let end = Math.min(start + numberOfLinks, this.mdPages);
 
 		let list: number[] = [];
 		for (let i = start; i < end; i++) {
