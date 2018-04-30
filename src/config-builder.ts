@@ -39,7 +39,6 @@ export class ConfigBuilder {
 			.usePushpin()
 			.useRadio()
 			.useRange()
-			.useScrollfire()
 			.useScrollSpy()
 			.useSelect()
 			.useSidenav()
@@ -205,12 +204,6 @@ export class ConfigBuilder {
 		return this;
 	}
 
-	useScrollfire(): ConfigBuilder {
-		this.globalResources.push(PLATFORM.moduleName("./scrollfire/scrollfire"));
-		this.globalResources.push(PLATFORM.moduleName("./scrollfire/scrollfire-target"));
-		return this;
-	}
-
 	useScrollSpy(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./scrollspy/scrollspy"));
 		return this;
@@ -296,11 +289,6 @@ export class ConfigBuilder {
 	 */
 	withoutGlobalResources(): ConfigBuilder {
 		this.useGlobalResources = false;
-		return this;
-	}
-
-	withScrollfirePatch(): ConfigBuilder {
-		this.useScrollfirePatch = true;
 		return this;
 	}
 }

@@ -5,7 +5,6 @@ import "./augmentation/materialize";
 import "./augmentation/aurelia-typed-observable";
 import { FrameworkConfiguration, autoinject } from "aurelia-framework";
 import { ConfigBuilder } from "./config-builder";
-import { ScrollfirePatch } from "./scrollfire/scrollfire-patch";
 import { polyfillElementClosest } from "./common/polyfills";
 
 function applyPolyfills() {
@@ -22,9 +21,6 @@ export function configure(frameworkConfiguration: FrameworkConfiguration, config
 
 	if (builder.useGlobalResources) {
 		frameworkConfiguration.globalResources(builder.globalResources);
-	}
-	if (builder.useScrollfirePatch) {
-		new ScrollfirePatch().patch();
 	}
 }
 
