@@ -343,6 +343,9 @@ declare namespace M {
 	class ScrollSpy extends Component<ScrollSpyOptions> {
 	}
 
+	class Range extends Component<undefined> {
+	}
+
 	function textareaAutoResize(textarea: Element): void;
 }
 
