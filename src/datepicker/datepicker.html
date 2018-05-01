@@ -1,0 +1,6 @@
+<template>
+	<div class="input-field ${inline ? 'inline' : ''}" ref="inputField">
+		<input ref="input" id="${controlId}" type="text" readonly disabled.bind="disabled" />
+		<label for="${controlId}" ref="labelElement">${label}</label>
+	</div>
+</template>

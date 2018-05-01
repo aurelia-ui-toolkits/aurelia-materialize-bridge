@@ -1,242 +1,187 @@
-import { bindable, customAttribute, autoinject, bindingMode } from "aurelia-framework";
-import { TaskQueue } from "aurelia-task-queue";
-import { getLogger, Logger } from "aurelia-logging";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { DatePickerDefaultParser } from "./datepicker-default-parser";
-import { fireEvent } from "../common/events";
-import { ValidateResult } from "aurelia-validation";
-import { MaterializeFormValidationRenderer } from "../index";
+import * as au from "../aurelia";
 
-@autoinject
-@customAttribute("md-datepicker")
+@au.autoinject
+@au.customElement("md-datepicker")
 export class MdDatePicker {
-	constructor(private element: Element, private taskQueue: TaskQueue, private defaultParser: DatePickerDefaultParser) {
-		this.log = getLogger("md-datepicker");
-		this.parsers.push(defaultParser);
-		this.onCalendarIconClick = this.onCalendarIconClick.bind(this);
-	}
+	constructor(private element: Element, private taskQueue: au.TaskQueue) { }
 
-	log: Logger;
-	picker: any;
+	static id = 0;
+	controlId: string = `md-datepicker-${MdDatePicker.id++}`;
+	input: HTMLInputElement;
+	labelElement: HTMLLabelElement;
+	inputField: HTMLDivElement;
 
-	@bindable
+	@au.bindable.stringMd
+	label: string = "";
+
+	@au.bindable.stringMd
+	placeholder: string = "";
+
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	autoClose: boolean;
+
+	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	format: string;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	parse: (value: string, format: string) => Date;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	defaultDate: Date;
+
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	setDefaultDate: boolean;
+
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	disableWeekends: boolean;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	disableDayFn: (day: Date) => boolean;
+
+	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	firstDay: number;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	minDate: Date;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	maxDate: Date;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	yearRange: number | number[];
+
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	isRTL: boolean;
+
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	showMonthAfterYear: boolean;
+
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	showDaysInNextAndPreviousMonths: boolean;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	container: Element;
 
-	@bindable
-	translation;
+	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	showClearBtn: boolean;
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	i18n: Partial<M.DatepickerI18nOptions>;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	events: string[];
+
+	instance: M.Datepicker;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	value: Date;
-	valueChanged(newValue: Date) {
-		if (this.options.max && newValue > this.options.max) {
-			this.value = this.options.max;
+	valueChangedSuppress: boolean;
+	valueChanged() {
+		if (this.valueChangedSuppress) {
+			this.valueChangedSuppress = false;
+			return;
 		}
-		this.log.debug("selectedChanged", this.value);
-		// this.taskQueue.queueTask(() => {
-		this.picker.set("select", this.value);
-		// });
+		this.instance.setDate(this.value);
+		this.instance.setInputValue();
+		// the widget can transform the value internally, so we need to update the final result
+		this.taskQueue.queueTask(() => {
+			this.setValue(this.instance.date);
+		});
 	}
-
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	parsers: any[] = [];
-
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	selectMonths: boolean = true;
-
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	selectYears: number | string = 15;
-
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	options: DatePickerOptions = {};
-
-	@bindable
-	showErrortext: boolean | string = true;
+	setValue(newValue: Date) {
+		if (this.value !== newValue) {
+			this.valueChangedSuppress = true;
+			this.value = newValue;
+		}
+	}
 
 	calendarIcon = null;
 
 	attached() {
+		if (this.placeholder) {
+			this.input.setAttribute("placeholder", this.placeholder);
+		}
+		let options: Partial<M.DatepickerOptions> = {
+			autoClose: this.autoClose,
+			format: this.format,
+			parse: this.parse,
+			defaultDate: this.defaultDate,
+			setDefaultDate: this.setDefaultDate,
+			disableWeekends: this.disableWeekends,
+			disableDayFn: this.disableDayFn,
+			firstDay: this.firstDay,
+			minDate: this.minDate,
+			maxDate: this.maxDate,
+			yearRange: this.yearRange,
+			isRTL: this.isRTL,
+			showMonthAfterYear: this.showMonthAfterYear,
+			showDaysInNextAndPreviousMonths: this.showDaysInNextAndPreviousMonths,
+			container: this.container,
+			showClearBtn: this.showClearBtn,
+			i18n: this.i18n,
+			events: this.events,
+			onSelect: selectedDate => au.fireMaterializeEvent(this.element, "select", { selectedDate }),
+			onOpen: () => au.fireMaterializeEvent(this.element, "open"),
+			onClose: () => au.fireMaterializeEvent(this.element, "close"),
+			onDraw: () => au.fireMaterializeEvent(this.element, "draw")
+		};
+		au.cleanOptions(options);
+		this.instance = new M.Datepicker(this.input, options);
+		// doneBtn is not documented but this is the cleanest way to get the value when a user actually confirmed the date
+		this.instance.doneBtn.addEventListener("click", this.done);
+		if (this.instance.clearBtn) {
+			this.instance.clearBtn.addEventListener("click", this.done);
+		}
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
+		this.valueChanged();
+	}
+
+	done = () => {
+		this.setValue(this.instance.date);
+		au.fireEvent(this.element, "blur");
 	}
 
 	bind() {
-		this.selectMonths = getBooleanFromAttributeValue(this.selectMonths);
-		if (typeof this.selectYears === "string") {
-			this.selectYears = parseInt(this.selectYears, 10);
-		}
-		this.element.classList.add("date-picker");
-
-		let options: DatePickerOptions = {
-			selectMonths: this.selectMonths,
-			selectYears: this.selectYears,
-			onClose() {
-				// see https://github.com/Dogfalo/materialize/issues/2067
-				// and: https://github.com/amsul/pickadate.js/issues/160
-				$(document.activeElement).blur();
-			}
-		};
-		let i18n = {};
-		// let i18n = {
-		//   selectMonths: true, // Creates a dropdown to control month
-		//   selectYears: 15, // Creates a dropdown of 15 years to control year
-		//   monthsFull: [ 'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember' ],
-		//   monthsShort: [ 'Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez' ],
-		//   weekdaysFull: [ 'Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag' ],
-		//   weekdaysShort: [ 'So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa' ],
-		//   today: 'Heute',
-		//   clear: 'Löschen',
-		//   close: 'Schließen',
-		//   firstDay: 1,
-		//   format: 'dddd, dd. mmmm yyyy',
-		//   formatSubmit: 'yyyy/mm/dd'
-		// };
-		Object.assign(options, i18n);
-
-		if (this.options) {
-			Object.assign(options, this.options);
-			// merge callback methods if there is a hook in the advanced options
-			if (this.options.onClose) {
-				options.onClose = () => {
-					this.options.onClose();
-					$(document.activeElement).blur();
-				};
-			}
-		}
-		if (this.container) {
-			options.container = this.container;
-		}
-		this.picker = $(this.element).pickadate(options).pickadate("picker");
-		this.picker.on({
-			close: this.onClose.bind(this)
-		});
-
-		if (this.value) {
-			this.picker.set("select", this.value);
-		}
-		if (this.options && this.options.editable) {
-			$(this.element).on("keydown", (e) => {
-				if (e.keyCode === 13 || e.keyCode === 9) {
-					if (this.parseDate($(this.element).val())) {
-						this.updateValue();
-						this.closeDatePicker();
-					} else {
-						this.openDatePicker();
-					}
-				} else {
-					this.value = null;
-				}
-			});
-		} else {
-			$(this.element).on("focusin", () => {
-				this.openDatePicker();
-			});
-		}
-		if (this.options.showIcon) {
-			this.element.classList.add("left");
-			this.calendarIcon = document.createElement("i");
-			this.calendarIcon.classList.add("right");
-			this.calendarIcon.classList.add("material-icons");
-			this.calendarIcon.textContent = "today";
-			this.element.parentNode.insertBefore(this.calendarIcon, this.element.nextSibling);
-			$(this.calendarIcon).on("click", this.onCalendarIconClick);
-
-			options.iconClass = options.iconClass || "std-icon-fixup";
-			this.calendarIcon.classList.add(options.iconClass);
-		}
-
-		this.setErrorTextAttribute();
-	}
-
-	parseDate(value) {
-		if (this.parsers && this.parsers.length && this.parsers.length > 0) {
-			for (const parser of this.parsers) {
-				if (parser.canParse(value)) {
-					const parsedDate = parser.parse(value);
-					if (parsedDate !== null) {
-						this.picker.set("select", parsedDate);
-						return true;
-					}
-				}
-			}
-		}
-		return false;
+		//
 	}
 
 	detached() {
-		if (this.options.showIcon) {
-			this.element.classList.remove("left");
-			$(this.calendarIcon).off("click", this.onCalendarIconClick);
-			$(this.calendarIcon).remove();
-			this.calendarIcon = null;
+		this.instance.doneBtn.removeEventListener("click", this.done);
+		if (this.instance.clearBtn) {
+			this.instance.clearBtn.removeEventListener("click", this.done);
 		}
-		if (this.picker) {
-			this.picker.stop();
-		}
+		// this.input.removeEventListener("change", this.onInputChange);
+		this.instance.destroy();
 		this.element.mdUnrenderValidateResults = undefined;
 		this.element.mdRenderValidateResults = undefined;
 	}
 
-	openDatePicker() {
-		$(this.element).pickadate("open");
+	open() {
+		this.instance.open();
 	}
 
-	closeDatePicker() {
-		$(this.element).pickadate("close");
+	close() {
+		this.instance.close();
 	}
 
-	updateValue() {
-		let selected = this.picker.get("select");
-		this.value = selected ? selected.obj : null;
-	}
-
-	onClose() {
-		this.updateValue();
-		fireEvent(this.element, "blur");
-	}
-
-	onCalendarIconClick(event) {
-		event.stopPropagation();
-		this.openDatePicker();
-	}
-
-	// onSet(value) {
-	//   //handle this ourselves since Dogfalo removed this functionality from the original plugin
-	//   if (this.options && this.options.closeOnSelect && value.select) {
-	//     this.value = value.select;
-	//     this.picker.close();
-	//   }
-	//   // this.value = new Date(value.select);
-	// }
-
-	showErrortextChanged() {
-		this.setErrorTextAttribute();
-	}
-
-	setErrorTextAttribute() {
-		if (!this.element) {
-			return;
-		}
-		this.log.debug("showErrortextChanged: " + this.showErrortext);
-		this.element.setAttribute("data-show-errortext", getBooleanFromAttributeValue(this.showErrortext).toString());
-	}
-
-	mdUnrenderValidateResults = (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => {
+	mdUnrenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
 		for (let result of results) {
 			if (!result.valid) {
-				renderer.removeMessage(this.element.parentElement, result);
+				renderer.removeMessage(this.inputField, result);
 			}
 		}
-		renderer.removeValidationClasses(this.element);
+		renderer.removeValidationClasses(this.input);
 	}
 
-	mdRenderValidateResults = (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => {
+	mdRenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
 		if (!(this.element.hasAttribute("data-show-errortext") && this.element.getAttribute("data-show-errortext") === "false")) {
 			for (let result of results) {
 				if (!result.valid) {
-					renderer.addMessage(this.element.parentElement, result);
+					renderer.addMessage(this.inputField, result);
 				}
 			}
 		}
-		renderer.addValidationClasses(this.element, !results.find(x => !x.valid));
+		renderer.addValidationClasses(this.input, !results.find(x => !x.valid));
 	}
 }
