@@ -38,39 +38,39 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.instance.close();
         };
         tslib_1.__decorate([
-            au.bindable.numberMd,
+            au.ato.bindable.numberMd,
             tslib_1.__metadata("design:type", Number)
         ], MdModal.prototype, "opacity", void 0);
         tslib_1.__decorate([
-            au.bindable.numberMd,
+            au.ato.bindable.numberMd,
             tslib_1.__metadata("design:type", Number)
         ], MdModal.prototype, "inDuration", void 0);
         tslib_1.__decorate([
-            au.bindable.numberMd,
+            au.ato.bindable.numberMd,
             tslib_1.__metadata("design:type", Number)
         ], MdModal.prototype, "outDuration", void 0);
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdModal.prototype, "preventScrolling", void 0);
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdModal.prototype, "dismissible", void 0);
         tslib_1.__decorate([
-            au.bindable.stringMd,
+            au.ato.bindable.stringMd,
             tslib_1.__metadata("design:type", String)
         ], MdModal.prototype, "startingTop", void 0);
         tslib_1.__decorate([
-            au.bindable.stringMd,
+            au.ato.bindable.stringMd,
             tslib_1.__metadata("design:type", String)
         ], MdModal.prototype, "endingTop", void 0);
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdModal.prototype, "fixedFooter", void 0);
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdModal.prototype, "bottomSheet", void 0);
         MdModal = tslib_1.__decorate([

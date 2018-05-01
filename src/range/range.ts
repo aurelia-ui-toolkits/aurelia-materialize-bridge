@@ -7,19 +7,19 @@ export class MdRange {
 
 	input: HTMLInputElement;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdReadonly: boolean = false;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdMin: number = 0;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdMax: number = 100;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdStep: number = 1;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
 	mdValue: number = 0;
 
 	instance: M.Range;

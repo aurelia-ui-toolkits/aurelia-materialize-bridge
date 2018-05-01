@@ -10,7 +10,7 @@ export class MdTabs {
 	attributeManager: au.AttributeManager;
 	tabAttributeManagers: au.AttributeManager[] = [];
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	fixed: boolean = false;
 	fixedChanged(newValue) {
 		if (newValue) {
@@ -23,13 +23,13 @@ export class MdTabs {
 	@au.bindable
 	onShow: ({ newContent: Element }) => void = null;
 
-	@au.bindable
-	responsiveThreshold: number = Infinity;
+	@au.ato.bindable.numberMd
+	responsiveThreshold: number;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	swipeable: boolean = false;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	transparent: boolean = false;
 	transparentChanged(newValue) {
 		if (newValue) {
@@ -52,7 +52,7 @@ export class MdTabs {
 		}
 
 		let self = this;
-		this.instance = new M.Tabs(this.element, {
+		let options: Partial<M.TabsOptions> = {
 			onShow(this: M.Tabs, newContent: Element) {
 				if (self.onShow) {
 					self.onShow({ newContent });
@@ -60,7 +60,9 @@ export class MdTabs {
 			},
 			swipeable: this.swipeable,
 			responsiveThreshold: this.responsiveThreshold
-		});
+		};
+		au.cleanOptions(options);
+		this.instance = new M.Tabs(this.element, options);
 
 		let childAnchors = this.element.querySelectorAll("li a");
 		for (let a of Array.from(childAnchors)) {

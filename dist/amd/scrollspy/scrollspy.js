@@ -19,15 +19,15 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.instance.destroy();
         };
         tslib_1.__decorate([
-            au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", Number)
         ], MdScrollSpy.prototype, "throttle", void 0);
         tslib_1.__decorate([
-            au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", Number)
         ], MdScrollSpy.prototype, "scrollOffset", void 0);
         tslib_1.__decorate([
-            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
         ], MdScrollSpy.prototype, "activeClass", void 0);
         tslib_1.__decorate([

@@ -54,19 +54,19 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.instance.close(index);
                 };
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdCollapsible.prototype, "accordion", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdCollapsible.prototype, "popout", void 0);
                 tslib_1.__decorate([
-                    au.bindable.numberMd,
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Number)
                 ], MdCollapsible.prototype, "inDuration", void 0);
                 tslib_1.__decorate([
-                    au.bindable.numberMd,
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Number)
                 ], MdCollapsible.prototype, "outDuration", void 0);
                 MdCollapsible = tslib_1.__decorate([

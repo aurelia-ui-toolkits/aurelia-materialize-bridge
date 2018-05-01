@@ -7,10 +7,10 @@ export class MdProgress {
 
 	wrapper: HTMLDivElement;
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	mdColor: string = null;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
 	mdPixelSize?: number = null;
 	mdPixelSizeChanged(newValue: number) {
 		if (this.wrapper) {
@@ -28,7 +28,7 @@ export class MdProgress {
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	mdType: "linear" | "circular" = "linear";
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
 	mdValue: number = null;
 
 	bind() {

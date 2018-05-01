@@ -14,46 +14,46 @@ export class MdInput {
 	input: HTMLInputElement;
 	inputField: HTMLDivElement;
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay })
 	mdLabel: string;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdBlurOnEnter: boolean = false;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdDisabled: boolean = false;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdReadonly: boolean = false;
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdPlaceholder: string = "";
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdTextArea: boolean = false;
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdType: string = "text";
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdStep: string = "any";
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdValidate: boolean = false;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdShowErrortext: boolean = true;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdInline: boolean;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	mdUpdateTrigger: string[] = ["input", "change"];
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	mdValidateError: string;
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	mdValidateSuccess: string;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
@@ -65,16 +65,16 @@ export class MdInput {
 		this.updateLabel();
 	}
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdMin: string = null;
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdMax: string = null;
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdName: string = "";
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdMaxlength: number = 524288;
 
 	suspendUpdate = false;

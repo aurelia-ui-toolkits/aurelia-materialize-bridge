@@ -1,7 +1,9 @@
 System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/util", "./common/attributeManager"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
+    var ato;
     var exportedNames_1 = {
+        "ato": true,
         "Router": true,
         "NavigationInstruction": true,
         "customElement": true,
@@ -12,14 +14,14 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
         "TaskQueue": true,
         "DOM": true,
         "children": true,
+        "bindable": true,
+        "observable": true,
         "getLogger": true,
         "Logger": true,
         "fireEvent": true,
         "fireMaterializeEvent": true,
         "ValidateResult": true,
         "MaterializeFormValidationRenderer": true,
-        "bindable": true,
-        "observable": true,
         "AttributeManager": true
     };
     function exportStar_1(m) {
@@ -46,7 +48,9 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
                     "BindingEngine": aurelia_framework_1_1["BindingEngine"],
                     "TaskQueue": aurelia_framework_1_1["TaskQueue"],
                     "DOM": aurelia_framework_1_1["DOM"],
-                    "children": aurelia_framework_1_1["children"]
+                    "children": aurelia_framework_1_1["children"],
+                    "bindable": aurelia_framework_1_1["bindable"],
+                    "observable": aurelia_framework_1_1["observable"]
                 });
             },
             function (aurelia_logging_1_1) {
@@ -71,11 +75,8 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
                     "MaterializeFormValidationRenderer": validationRenderer_1_1["MaterializeFormValidationRenderer"]
                 });
             },
-            function (aurelia_typed_observable_plugin_1_1) {
-                exports_1({
-                    "bindable": aurelia_typed_observable_plugin_1_1["bindable"],
-                    "observable": aurelia_typed_observable_plugin_1_1["observable"]
-                });
+            function (ato_1) {
+                ato = ato_1;
             },
             function (util_1_1) {
                 exportStar_1(util_1_1);
@@ -87,6 +88,7 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
             }
         ],
         execute: function () {
+            exports_1("ato", ato);
         }
     };
 });

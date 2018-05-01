@@ -20,10 +20,13 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 MdFab.prototype.attached = function () {
                     var _this = this;
                     this.element.classList.add("fixed-action-btn");
+                    if (this.mdToolbarEnabled) {
+                        this.element.classList.add("toolbar");
+                    }
                     var options = {
                         direction: this.mdDirection,
                         hoverEnabled: this.mdHoverEnabled,
-                        toolbarEnabled: this.toolbarEnabled
+                        toolbarEnabled: this.mdToolbarEnabled
                     };
                     au.cleanOptions(options);
                     this.taskQueue.queueTask(function () { return _this.instance = new M.FloatingActionButton(_this.element, options); });
@@ -31,6 +34,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 MdFab.prototype.detached = function () {
                     this.instance.destroy();
                     this.element.classList.remove("fixed-action-btn");
+                    this.element.classList.remove("toolbar");
                 };
                 MdFab.prototype.open = function () {
                     this.instance.open();
@@ -39,17 +43,17 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.instance.close();
                 };
                 tslib_1.__decorate([
-                    au.bindable.stringMd,
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", String)
                 ], MdFab.prototype, "mdDirection", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdFab.prototype, "mdHoverEnabled", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
-                ], MdFab.prototype, "toolbarEnabled", void 0);
+                ], MdFab.prototype, "mdToolbarEnabled", void 0);
                 MdFab = tslib_1.__decorate([
                     au.customElement("md-fab"),
                     tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])

@@ -5,15 +5,6 @@ var MdDropdown = /** @class */ (function () {
         this.element = element;
         this.activates = "";
         this.ref = null;
-        this.alignment = "left";
-        this.autoTrigger = false;
-        this.constrainWidth = true;
-        this.container = null;
-        this.coverTrigger = false;
-        this.closeOnClick = true;
-        this.hover = false;
-        this.inDuration = 300;
-        this.outDuration = 225;
         this.attributeManager = new au.AttributeManager(this.element);
     }
     MdDropdown_1 = MdDropdown;
@@ -23,7 +14,7 @@ var MdDropdown = /** @class */ (function () {
         this.contentAttributeManager = new au.AttributeManager(document.getElementById(this.activates));
         this.attributeManager.addClasses("dropdown-trigger");
         this.contentAttributeManager.addClasses("dropdown-content");
-        this.instance = new M.Dropdown(this.element, {
+        var options = {
             alignment: this.alignment,
             autoTrigger: this.autoTrigger,
             constrainWidth: this.constrainWidth,
@@ -37,7 +28,9 @@ var MdDropdown = /** @class */ (function () {
             onOpenEnd: function () { return au.fireMaterializeEvent(_this.element, "open-end"); },
             onCloseStart: function () { return au.fireMaterializeEvent(_this.element, "close-start"); },
             onCloseEnd: function () { return au.fireMaterializeEvent(_this.element, "close-end"); }
-        });
+        };
+        au.cleanOptions(options);
+        this.instance = new M.Dropdown(this.element, options);
     };
     MdDropdown.prototype.detached = function () {
         if (this.instance) {
@@ -84,15 +77,15 @@ var MdDropdown = /** @class */ (function () {
         tslib_1.__metadata("design:type", Element)
     ], MdDropdown.prototype, "ref", void 0);
     tslib_1.__decorate([
-        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
     ], MdDropdown.prototype, "alignment", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdDropdown.prototype, "autoTrigger", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdDropdown.prototype, "constrainWidth", void 0);
     tslib_1.__decorate([
@@ -100,27 +93,27 @@ var MdDropdown = /** @class */ (function () {
         tslib_1.__metadata("design:type", Element)
     ], MdDropdown.prototype, "container", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdDropdown.prototype, "coverTrigger", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdDropdown.prototype, "closeOnClick", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdDropdown.prototype, "hover", void 0);
     tslib_1.__decorate([
-        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
     ], MdDropdown.prototype, "mdTitle", void 0);
     tslib_1.__decorate([
-        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdDropdown.prototype, "inDuration", void 0);
     tslib_1.__decorate([
-        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdDropdown.prototype, "outDuration", void 0);
     MdDropdown = MdDropdown_1 = tslib_1.__decorate([

@@ -45,15 +45,15 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     au.fireEvent(this.element, "blur");
                 };
                 tslib_1.__decorate([
-                    au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay }),
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay }),
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdSwitch.prototype, "mdChecked", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdSwitch.prototype, "mdDisabled", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdSwitch.prototype, "mdReadonly", void 0);
                 tslib_1.__decorate([

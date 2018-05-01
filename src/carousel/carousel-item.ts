@@ -5,9 +5,9 @@ import * as au from "../aurelia";
 export class MdCarouselItem {
 	constructor(private element: Element) { }
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdHref: string = "";
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay })
 	mdImage: string = "";
 }

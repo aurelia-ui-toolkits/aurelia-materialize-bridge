@@ -22,7 +22,6 @@ export * from "./common/attributeManager";
 export * from "./common/attributes";
 export * from "./common/constants";
 export * from "./common/events";
-export * from "./datepicker/datepicker-default-parser";
 export * from "./datepicker/datepicker";
 export * from "./dropdown/dropdown-element";
 export * from "./dropdown/dropdown";

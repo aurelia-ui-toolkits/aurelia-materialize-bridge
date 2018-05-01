@@ -9,7 +9,7 @@ export class MdCharCounter {
 
 	attributeManager: au.AttributeManager;
 
-	@au.bindable.numberMd
+	@au.ato.bindable.numberMd
 	length: number = 120;
 
 	instances: M.CharacterCounter[] = [];

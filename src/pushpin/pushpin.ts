@@ -5,13 +5,13 @@ import * as au from "../aurelia";
 export class MdPushpin {
 	constructor(private element: Element) { }
 
-	@au.bindable.numberMd
+	@au.ato.bindable.numberMd
 	bottom: number;
 
-	@au.bindable.numberMd
+	@au.ato.bindable.numberMd
 	offset: number;
 
-	@au.bindable.numberMd
+	@au.ato.bindable.numberMd
 	top: number;
 
 	instance: M.Pushpin;

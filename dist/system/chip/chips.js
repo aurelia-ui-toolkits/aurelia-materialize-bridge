@@ -67,15 +67,15 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:type", Array)
                 ], MdChips.prototype, "data", void 0);
                 tslib_1.__decorate([
-                    au.bindable.stringMd,
+                    au.ato.bindable.stringMd,
                     tslib_1.__metadata("design:type", String)
                 ], MdChips.prototype, "placeholder", void 0);
                 tslib_1.__decorate([
-                    au.bindable.stringMd,
+                    au.ato.bindable.stringMd,
                     tslib_1.__metadata("design:type", String)
                 ], MdChips.prototype, "secondaryPlaceholder", void 0);
                 tslib_1.__decorate([
-                    au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Number)
                 ], MdChips.prototype, "limit", void 0);
                 MdChips = tslib_1.__decorate([

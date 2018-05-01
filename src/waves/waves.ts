@@ -10,10 +10,10 @@ export class MdWaves {
 
 	attributeManager: au.AttributeManager;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	circle: boolean = false;
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	color: string;
 
 	attached() {

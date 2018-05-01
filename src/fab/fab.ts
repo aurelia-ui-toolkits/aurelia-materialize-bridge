@@ -4,13 +4,13 @@ import * as au from "../aurelia";
 export class MdFab {
 	constructor(private element: Element, private taskQueue: au.TaskQueue) { }
 
-	@au.bindable.stringMd({defaultBindingMode: au.bindingMode.oneTime})
+	@au.ato.bindable.stringMd({defaultBindingMode: au.bindingMode.oneTime})
 	mdDirection: "top" | "right" | "buttom" | "left";
 
-	@au.bindable.booleanMd({defaultBindingMode: au.bindingMode.oneTime})
+	@au.ato.bindable.booleanMd({defaultBindingMode: au.bindingMode.oneTime})
 	mdHoverEnabled: boolean;
 
-	@au.bindable.booleanMd({defaultBindingMode: au.bindingMode.oneTime})
+	@au.ato.bindable.booleanMd({defaultBindingMode: au.bindingMode.oneTime})
 	mdToolbarEnabled: boolean;
 
 	instance: M.FloatingActionButton;

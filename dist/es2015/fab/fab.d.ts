@@ -6,7 +6,7 @@ export declare class MdFab {
     constructor(element: Element, taskQueue: au.TaskQueue);
     mdDirection: "top" | "right" | "buttom" | "left";
     mdHoverEnabled: boolean;
-    toolbarEnabled: boolean;
+    mdToolbarEnabled: boolean;
     instance: M.FloatingActionButton;
     attached(): void;
     detached(): void;

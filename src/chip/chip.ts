@@ -4,7 +4,7 @@ import * as au from "../aurelia";
 export class MdChip {
 	constructor(private element: Element) { }
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdClose: boolean = false;
 
 	close() {

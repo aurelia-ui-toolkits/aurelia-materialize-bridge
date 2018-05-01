@@ -42,23 +42,23 @@ var MdSlider = /** @class */ (function () {
         this.instance = new M.Slider(this.element, options);
     };
     tslib_1.__decorate([
-        au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdSlider.prototype, "mdFillContainer", void 0);
     tslib_1.__decorate([
-        au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdSlider.prototype, "mdHeight", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd,
+        au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdSlider.prototype, "mdIndicators", void 0);
     tslib_1.__decorate([
-        au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdSlider.prototype, "mdInterval", void 0);
     tslib_1.__decorate([
-        au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdSlider.prototype, "mdDuration", void 0);
     MdSlider = tslib_1.__decorate([

@@ -8,10 +8,10 @@ export class MdCollectionSelector {
 	@au.bindable
 	item: any;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdDisabled: boolean = false;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	isSelected: boolean = false;
 	isSelectedChanged(newValue) {
 		au.fireMaterializeEvent(this.element, "selection-changed", { item: this.item, isSelected: this.isSelected });

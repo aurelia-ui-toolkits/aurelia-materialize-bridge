@@ -26,7 +26,6 @@ tslib_1.__exportStar(require("./common/attributeManager"), exports);
 tslib_1.__exportStar(require("./common/attributes"), exports);
 tslib_1.__exportStar(require("./common/constants"), exports);
 tslib_1.__exportStar(require("./common/events"), exports);
-tslib_1.__exportStar(require("./datepicker/datepicker-default-parser"), exports);
 tslib_1.__exportStar(require("./datepicker/datepicker"), exports);
 tslib_1.__exportStar(require("./dropdown/dropdown-element"), exports);
 tslib_1.__exportStar(require("./dropdown/dropdown"), exports);

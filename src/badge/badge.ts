@@ -7,7 +7,7 @@ export class MdBadge {
 		this.attributeManager = new au.AttributeManager(this.element);
 	}
 
-	@au.bindable
+	@au.ato.bindable
 	isNew: boolean = false;
 	isNewChanged() {
 		if (this.isNew) {
@@ -18,7 +18,7 @@ export class MdBadge {
 		}
 	}
 
-	@au.bindable
+	@au.ato.bindable
 	caption: string = null;
 	captionChanged() {
 		if (this.caption !== null) {

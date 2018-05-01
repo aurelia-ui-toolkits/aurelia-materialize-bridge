@@ -28,7 +28,7 @@ var MdCharCounter = /** @class */ (function () {
         this.attributeManager.removeAttributes(["data-length"]);
     };
     tslib_1.__decorate([
-        au.bindable.numberMd,
+        au.ato.bindable.numberMd,
         tslib_1.__metadata("design:type", Number)
     ], MdCharCounter.prototype, "length", void 0);
     MdCharCounter = tslib_1.__decorate([

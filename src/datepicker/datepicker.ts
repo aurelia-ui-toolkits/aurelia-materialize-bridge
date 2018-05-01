@@ -11,16 +11,16 @@ export class MdDatePicker {
 	labelElement: HTMLLabelElement;
 	inputField: HTMLDivElement;
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	label: string = "";
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	placeholder: string = "";
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	autoClose: boolean;
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	format: string;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
@@ -29,16 +29,16 @@ export class MdDatePicker {
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	defaultDate: Date;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	setDefaultDate: boolean;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	disableWeekends: boolean;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	disableDayFn: (day: Date) => boolean;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	firstDay: number;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
@@ -50,19 +50,19 @@ export class MdDatePicker {
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	yearRange: number | number[];
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	isRTL: boolean;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	showMonthAfterYear: boolean;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	showDaysInNextAndPreviousMonths: boolean;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	container: Element;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	showClearBtn: boolean;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })

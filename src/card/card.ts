@@ -5,27 +5,27 @@ import * as au from "../aurelia";
 export class MdCard {
 	constructor(private element: Element) { }
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdHorizontal: boolean;
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdImage: string = null;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdReveal: boolean;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdAction: boolean;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdStickyAction: boolean;
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay })
 	mdSize: string = "";
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdTitle: string;
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdClass: string;
 }

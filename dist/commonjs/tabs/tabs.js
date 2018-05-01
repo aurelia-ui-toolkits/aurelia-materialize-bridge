@@ -10,7 +10,6 @@ var MdTabs = /** @class */ (function () {
         this.tabAttributeManagers = [];
         this.fixed = false;
         this.onShow = null;
-        this.responsiveThreshold = Infinity;
         this.swipeable = false;
         this.transparent = false;
         this.fireTabSelectedEvent = function (e) {
@@ -54,7 +53,7 @@ var MdTabs = /** @class */ (function () {
             finally { if (e_1) throw e_1.error; }
         }
         var self = this;
-        this.instance = new M.Tabs(this.element, {
+        var options = {
             onShow: function (newContent) {
                 if (self.onShow) {
                     self.onShow({ newContent: newContent });
@@ -62,7 +61,9 @@ var MdTabs = /** @class */ (function () {
             },
             swipeable: this.swipeable,
             responsiveThreshold: this.responsiveThreshold
-        });
+        };
+        au.cleanOptions(options);
+        this.instance = new M.Tabs(this.element, options);
         var childAnchors = this.element.querySelectorAll("li a");
         try {
             for (var _d = tslib_1.__values(Array.from(childAnchors)), _e = _d.next(); !_e.done; _e = _d.next()) {
@@ -125,7 +126,7 @@ var MdTabs = /** @class */ (function () {
         configurable: true
     });
     tslib_1.__decorate([
-        au.bindable.booleanMd,
+        au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdTabs.prototype, "fixed", void 0);
     tslib_1.__decorate([
@@ -133,15 +134,15 @@ var MdTabs = /** @class */ (function () {
         tslib_1.__metadata("design:type", Function)
     ], MdTabs.prototype, "onShow", void 0);
     tslib_1.__decorate([
-        au.bindable,
+        au.ato.bindable.numberMd,
         tslib_1.__metadata("design:type", Number)
     ], MdTabs.prototype, "responsiveThreshold", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd,
+        au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdTabs.prototype, "swipeable", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd,
+        au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdTabs.prototype, "transparent", void 0);
     MdTabs = tslib_1.__decorate([

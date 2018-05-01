@@ -15,7 +15,7 @@ export class MdRadio {
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	mdChecked: boolean | string;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdDisabled: boolean = false;
 	mdDisabledChanged(newValue: boolean) {
 		if (this.radio) {
@@ -23,19 +23,19 @@ export class MdRadio {
 		}
 	}
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdReadonly: boolean = false;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdGap: boolean = false;
 
 	@au.bindable
 	mdModel: any;
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	mdName: string = "";
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	mdValue: string = "";
 
 	attached() {

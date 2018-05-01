@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "aurelia-router", "aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/util", "./common/attributeManager"], function (require, exports, tslib_1, aurelia_router_1, aurelia_framework_1, aurelia_logging_1, events_1, aurelia_validation_1, validationRenderer_1, aurelia_typed_observable_plugin_1, util_1, attributeManager_1) {
+define(["require", "exports", "tslib", "aurelia-router", "aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/util", "./common/attributeManager"], function (require, exports, tslib_1, aurelia_router_1, aurelia_framework_1, aurelia_logging_1, events_1, aurelia_validation_1, validationRenderer_1, ato, util_1, attributeManager_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Router = aurelia_router_1.Router;
@@ -11,14 +11,15 @@ define(["require", "exports", "tslib", "aurelia-router", "aurelia-framework", "a
     exports.TaskQueue = aurelia_framework_1.TaskQueue;
     exports.DOM = aurelia_framework_1.DOM;
     exports.children = aurelia_framework_1.children;
+    exports.bindable = aurelia_framework_1.bindable;
+    exports.observable = aurelia_framework_1.observable;
     exports.getLogger = aurelia_logging_1.getLogger;
     exports.Logger = aurelia_logging_1.Logger;
     exports.fireEvent = events_1.fireEvent;
     exports.fireMaterializeEvent = events_1.fireMaterializeEvent;
     exports.ValidateResult = aurelia_validation_1.ValidateResult;
     exports.MaterializeFormValidationRenderer = validationRenderer_1.MaterializeFormValidationRenderer;
-    exports.bindable = aurelia_typed_observable_plugin_1.bindable;
-    exports.observable = aurelia_typed_observable_plugin_1.observable;
+    exports.ato = ato;
     tslib_1.__exportStar(util_1, exports);
     exports.AttributeManager = attributeManager_1.AttributeManager;
 });

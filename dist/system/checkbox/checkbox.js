@@ -65,15 +65,15 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:type", Object)
                 ], MdCheckbox.prototype, "mdChecked", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdCheckbox.prototype, "mdDisabled", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdCheckbox.prototype, "mdReadonly", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdCheckbox.prototype, "mdFilledIn", void 0);
                 tslib_1.__decorate([

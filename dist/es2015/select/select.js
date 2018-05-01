@@ -242,23 +242,23 @@ var MdSelect = /** @class */ (function () {
         tslib_1.__metadata("design:type", Object)
     ], MdSelect.prototype, "value", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd,
+        au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdSelect.prototype, "disabled", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd,
+        au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdSelect.prototype, "readonly", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd,
+        au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdSelect.prototype, "enableOptionObserver", void 0);
     tslib_1.__decorate([
-        au.bindable.stringMd,
+        au.ato.bindable.stringMd,
         tslib_1.__metadata("design:type", String)
     ], MdSelect.prototype, "label", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd,
+        au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdSelect.prototype, "showErrortext", void 0);
     MdSelect = tslib_1.__decorate([

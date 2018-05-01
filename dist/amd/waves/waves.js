@@ -29,11 +29,11 @@ define(["require", "exports", "tslib", "../aurelia", "../config-builder"], funct
             this.attributeManager.removeClasses(classes);
         };
         tslib_1.__decorate([
-            au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", Boolean)
         ], MdWaves.prototype, "circle", void 0);
         tslib_1.__decorate([
-            au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
         ], MdWaves.prototype, "color", void 0);
         MdWaves = tslib_1.__decorate([

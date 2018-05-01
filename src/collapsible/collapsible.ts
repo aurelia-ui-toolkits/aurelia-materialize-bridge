@@ -9,19 +9,19 @@ export class MdCollapsible {
 
 	attributeManager: au.AttributeManager;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	accordion: boolean;
 	accordionChanged() {
 		this.attached();
 	}
 
-	@au.bindable.booleanMd({defaultBindingMode: au.bindingMode.oneTime})
+	@au.ato.bindable.booleanMd({defaultBindingMode: au.bindingMode.oneTime})
 	popout: boolean;
 
-	@au.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
+	@au.ato.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
 	inDuration: number; // Transition in duration
 
-	@au.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
+	@au.ato.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
 	outDuration: number; // Transition out duration
 
 	instance: M.Collapsible;

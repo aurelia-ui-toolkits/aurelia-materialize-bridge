@@ -28,11 +28,11 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.mdPixelSizeChanged(this.mdPixelSize);
         };
         tslib_1.__decorate([
-            au.bindable.stringMd,
+            au.ato.bindable.stringMd,
             tslib_1.__metadata("design:type", String)
         ], MdProgress.prototype, "mdColor", void 0);
         tslib_1.__decorate([
-            au.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
+            au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
             tslib_1.__metadata("design:type", Number)
         ], MdProgress.prototype, "mdPixelSize", void 0);
         tslib_1.__decorate([
@@ -44,7 +44,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:type", String)
         ], MdProgress.prototype, "mdType", void 0);
         tslib_1.__decorate([
-            au.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
+            au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
             tslib_1.__metadata("design:type", Number)
         ], MdProgress.prototype, "mdValue", void 0);
         MdProgress = tslib_1.__decorate([

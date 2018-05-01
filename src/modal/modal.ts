@@ -11,31 +11,31 @@ export class MdModal {
 	log: au.Logger;
 	attributeManager: au.AttributeManager;
 
-	@au.bindable.numberMd
+	@au.ato.bindable.numberMd
 	opacity: number; // Opacity of modal background
 
-	@au.bindable.numberMd
+	@au.ato.bindable.numberMd
 	inDuration: number; // Transition in duration
 
-	@au.bindable.numberMd
+	@au.ato.bindable.numberMd
 	outDuration: number; // Transition out duration
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	preventScrolling: boolean;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	dismissible: boolean;
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	startingTop: string; // Starting top style attribute
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	endingTop: string; // Ending top style attribute
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	fixedFooter: boolean;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	bottomSheet: boolean;
 
 	instance: M.Modal;

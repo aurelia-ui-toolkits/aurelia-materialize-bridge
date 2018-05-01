@@ -5,28 +5,28 @@ import * as au from "../aurelia";
 export class MdCarousel {
 	constructor(private element: Element, private taskQueue: au.TaskQueue) { }
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdIndicators: boolean = true;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdFullWidth: boolean = false;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdDuration: number;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdDist: number;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdShift: number;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdPadding: number;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdNumVisible: number;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdNoWrap: boolean;
 
 	@au.children("md-carousel-item")

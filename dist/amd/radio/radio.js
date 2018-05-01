@@ -35,15 +35,15 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:type", Object)
         ], MdRadio.prototype, "mdChecked", void 0);
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdRadio.prototype, "mdDisabled", void 0);
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdRadio.prototype, "mdReadonly", void 0);
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdRadio.prototype, "mdGap", void 0);
         tslib_1.__decorate([
@@ -51,11 +51,11 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:type", Object)
         ], MdRadio.prototype, "mdModel", void 0);
         tslib_1.__decorate([
-            au.bindable.stringMd,
+            au.ato.bindable.stringMd,
             tslib_1.__metadata("design:type", String)
         ], MdRadio.prototype, "mdName", void 0);
         tslib_1.__decorate([
-            au.bindable.stringMd,
+            au.ato.bindable.stringMd,
             tslib_1.__metadata("design:type", String)
         ], MdRadio.prototype, "mdValue", void 0);
         MdRadio = MdRadio_1 = tslib_1.__decorate([

@@ -28,23 +28,23 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.instance.destroy();
                 };
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdRange.prototype, "mdReadonly", void 0);
                 tslib_1.__decorate([
-                    au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Number)
                 ], MdRange.prototype, "mdMin", void 0);
                 tslib_1.__decorate([
-                    au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Number)
                 ], MdRange.prototype, "mdMax", void 0);
                 tslib_1.__decorate([
-                    au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Number)
                 ], MdRange.prototype, "mdStep", void 0);
                 tslib_1.__decorate([
-                    au.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
                     tslib_1.__metadata("design:type", Number)
                 ], MdRange.prototype, "mdValue", void 0);
                 MdRange = tslib_1.__decorate([

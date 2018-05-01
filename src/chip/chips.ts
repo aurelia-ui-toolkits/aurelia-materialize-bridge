@@ -28,13 +28,13 @@ export class MdChips {
 		}
 	}
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	placeholder: string;
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	secondaryPlaceholder: string;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	limit: number;
 
 	instance: M.Chips;

@@ -39,11 +39,11 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.instance.destroy();
         };
         tslib_1.__decorate([
-            au.bindable.numberMd,
+            au.ato.bindable.numberMd,
             tslib_1.__metadata("design:type", Number)
         ], MdAutoComplete.prototype, "limit", void 0);
         tslib_1.__decorate([
-            au.bindable.numberMd,
+            au.ato.bindable.numberMd,
             tslib_1.__metadata("design:type", Number)
         ], MdAutoComplete.prototype, "minLength", void 0);
         tslib_1.__decorate([

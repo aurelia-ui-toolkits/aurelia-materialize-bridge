@@ -5,7 +5,7 @@ import * as au from "../aurelia";
 export class MdParallax {
 	constructor(private element: Element) { }
 
-	@au.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
+	@au.ato.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
 	responsiveThreshold: number;
 
 	instance: M.Parallax;

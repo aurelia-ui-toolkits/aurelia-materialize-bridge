@@ -38,11 +38,11 @@ var MdAutoComplete = /** @class */ (function () {
         this.instance.destroy();
     };
     tslib_1.__decorate([
-        au.bindable.numberMd,
+        au.ato.bindable.numberMd,
         tslib_1.__metadata("design:type", Number)
     ], MdAutoComplete.prototype, "limit", void 0);
     tslib_1.__decorate([
-        au.bindable.numberMd,
+        au.ato.bindable.numberMd,
         tslib_1.__metadata("design:type", Number)
     ], MdAutoComplete.prototype, "minLength", void 0);
     tslib_1.__decorate([

@@ -19,11 +19,11 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.mdImage = "";
                 }
                 tslib_1.__decorate([
-                    au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", String)
                 ], MdCarouselItem.prototype, "mdHref", void 0);
                 tslib_1.__decorate([
-                    au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay }),
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay }),
                     tslib_1.__metadata("design:type", String)
                 ], MdCarouselItem.prototype, "mdImage", void 0);
                 MdCarouselItem = tslib_1.__decorate([

@@ -8,10 +8,10 @@ export class MdAutoComplete {
 
 	input: Element = null;
 
-	@au.bindable.numberMd
+	@au.ato.bindable.numberMd
 	limit: number;
 
-	@au.bindable.numberMd
+	@au.ato.bindable.numberMd
 	minLength: number;
 
 	@au.bindable

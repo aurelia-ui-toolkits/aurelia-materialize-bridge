@@ -32,7 +32,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.childRouter.navigateToRoute(navigationInstruction.config.name);
                 };
                 tslib_1.__decorate([
-                    au.bindable,
+                    au.ato.bindable,
                     tslib_1.__metadata("design:type", au.Router)
                 ], MdBreadcrumbs.prototype, "router", void 0);
                 MdBreadcrumbs = tslib_1.__decorate([

@@ -68,27 +68,27 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.attributeManager.removeClasses(["accent", "btn", "btn-flat", "btn-large", "disabled", "pulse"]);
                 };
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdButton.prototype, "disabled", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdButton.prototype, "flat", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdButton.prototype, "floating", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdButton.prototype, "large", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdButton.prototype, "small", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdButton.prototype, "pulse", void 0);
                 MdButton = tslib_1.__decorate([

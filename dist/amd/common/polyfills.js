@@ -1,6 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    // MB: as far as I understand, this is to support IE11 which does not have closest
     // https://github.com/jonathantneal/closest/blob/master/closest.js
     function polyfillElementClosest() {
         if (typeof Element.prototype.matches !== "function") {

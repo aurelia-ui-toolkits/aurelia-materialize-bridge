@@ -29,15 +29,15 @@ var MdBox = /** @class */ (function () {
         this.attributeManager.removeClasses("materialboxed");
     };
     tslib_1.__decorate([
-        au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
     ], MdBox.prototype, "caption", void 0);
     tslib_1.__decorate([
-        au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdBox.prototype, "inDuration", void 0);
     tslib_1.__decorate([
-        au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdBox.prototype, "outDuration", void 0);
     MdBox = tslib_1.__decorate([

@@ -51,35 +51,35 @@ var MdCarousel = /** @class */ (function () {
         this.instance.set(n);
     };
     tslib_1.__decorate([
-        au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdCarousel.prototype, "mdIndicators", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdCarousel.prototype, "mdFullWidth", void 0);
     tslib_1.__decorate([
-        au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdCarousel.prototype, "mdDuration", void 0);
     tslib_1.__decorate([
-        au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdCarousel.prototype, "mdDist", void 0);
     tslib_1.__decorate([
-        au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdCarousel.prototype, "mdShift", void 0);
     tslib_1.__decorate([
-        au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdCarousel.prototype, "mdPadding", void 0);
     tslib_1.__decorate([
-        au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdCarousel.prototype, "mdNumVisible", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdCarousel.prototype, "mdNoWrap", void 0);
     tslib_1.__decorate([

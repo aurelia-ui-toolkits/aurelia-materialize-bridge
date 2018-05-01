@@ -5,19 +5,19 @@ import * as au from "../aurelia";
 export class MdFileInput {
 	constructor(private element: Element) { }
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	mdCaption = "File";
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdMultiple: boolean = false;
 
-	@au.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay })
 	mdLabelValue: string = "";
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	disabled: boolean = false;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdReadonly: boolean = false;
 
 	filePath: HTMLInputElement;

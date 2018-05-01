@@ -7,7 +7,7 @@ export class MdSwitch {
 
 	checkbox: HTMLInputElement;
 
-	@au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay })
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay })
 	mdChecked: boolean;
 	mdCheckedChanged(newValue) {
 		if (this.checkbox) {
@@ -15,10 +15,10 @@ export class MdSwitch {
 		}
 	}
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdDisabled: boolean;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdReadonly: boolean = false;
 
 	@au.bindable

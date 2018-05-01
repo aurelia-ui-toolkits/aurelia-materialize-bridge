@@ -15,11 +15,11 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:type", Object)
         ], MdCollectionSelector.prototype, "item", void 0);
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdCollectionSelector.prototype, "mdDisabled", void 0);
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdCollectionSelector.prototype, "isSelected", void 0);
         MdCollectionSelector = tslib_1.__decorate([

@@ -73,15 +73,15 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     return list;
                 };
                 tslib_1.__decorate([
-                    au.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
                     tslib_1.__metadata("design:type", Number)
                 ], MdPagination.prototype, "mdActivePage", void 0);
                 tslib_1.__decorate([
-                    au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay }),
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay }),
                     tslib_1.__metadata("design:type", Number)
                 ], MdPagination.prototype, "mdPages", void 0);
                 tslib_1.__decorate([
-                    au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay }),
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay }),
                     tslib_1.__metadata("design:type", Number)
                 ], MdPagination.prototype, "mdVisiblePageLinks", void 0);
                 tslib_1.__decorate([
@@ -89,15 +89,15 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:type", Array)
                 ], MdPagination.prototype, "mdPageLinks", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdPagination.prototype, "mdShowFirstLast", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdPagination.prototype, "mdShowPrevNext", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdPagination.prototype, "mdShowPageLinks", void 0);
                 MdPagination = tslib_1.__decorate([

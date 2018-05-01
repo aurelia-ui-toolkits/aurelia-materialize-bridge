@@ -11,7 +11,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             au.fireEvent(this.element, "close");
         };
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdChip.prototype, "mdClose", void 0);
         MdChip = tslib_1.__decorate([

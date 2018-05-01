@@ -28,23 +28,23 @@ var MdFileInput = /** @class */ (function () {
         this.filePath.removeEventListener("change", this.handleChangeFromNativeInput);
     };
     tslib_1.__decorate([
-        au.bindable.stringMd,
+        au.ato.bindable.stringMd,
         tslib_1.__metadata("design:type", Object)
     ], MdFileInput.prototype, "mdCaption", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
     ], MdFileInput.prototype, "mdMultiple", void 0);
     tslib_1.__decorate([
-        au.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay }),
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay }),
         tslib_1.__metadata("design:type", String)
     ], MdFileInput.prototype, "mdLabelValue", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd,
+        au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdFileInput.prototype, "disabled", void 0);
     tslib_1.__decorate([
-        au.bindable.booleanMd,
+        au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdFileInput.prototype, "mdReadonly", void 0);
     MdFileInput = tslib_1.__decorate([

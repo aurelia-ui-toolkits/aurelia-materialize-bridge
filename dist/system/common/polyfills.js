@@ -1,6 +1,7 @@
 System.register([], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
+    // MB: as far as I understand, this is to support IE11 which does not have closest
     // https://github.com/jonathantneal/closest/blob/master/closest.js
     function polyfillElementClosest() {
         if (typeof Element.prototype.matches !== "function") {

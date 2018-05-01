@@ -43,11 +43,11 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.attributeManager.removeAttributes(["data-badge-caption"]);
                 };
                 tslib_1.__decorate([
-                    au.bindable,
+                    au.ato.bindable,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdBadge.prototype, "isNew", void 0);
                 tslib_1.__decorate([
-                    au.bindable,
+                    au.ato.bindable,
                     tslib_1.__metadata("design:type", String)
                 ], MdBadge.prototype, "caption", void 0);
                 MdBadge = tslib_1.__decorate([

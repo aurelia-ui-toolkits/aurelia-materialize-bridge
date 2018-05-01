@@ -22,7 +22,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.childRouter.navigateToRoute(navigationInstruction.config.name);
         };
         tslib_1.__decorate([
-            au.bindable,
+            au.ato.bindable,
             tslib_1.__metadata("design:type", au.Router)
         ], MdBreadcrumbs.prototype, "router", void 0);
         MdBreadcrumbs = tslib_1.__decorate([

@@ -31,7 +31,7 @@ export class MdSelect {
 		this.createMaterialSelect(false);
 	}
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	disabled: boolean = false;
 	disabledChanged() {
 		if (!this.instance) {
@@ -48,7 +48,7 @@ export class MdSelect {
 		}
 	}
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	readonly: boolean = false;
 	readonlyChanged() {
 		if (!this.readonlyDiv) {
@@ -67,10 +67,10 @@ export class MdSelect {
 		this.instance.input.blur();
 	}
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	enableOptionObserver: boolean = false;
 
-	@au.bindable.stringMd
+	@au.ato.bindable.stringMd
 	label: string = "";
 	labelChanged() {
 		if (this.labelElement) {
@@ -78,7 +78,7 @@ export class MdSelect {
 		}
 	}
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	showErrortext: boolean = true;
 	showErrortextChanged() {
 		if (this.instance) {

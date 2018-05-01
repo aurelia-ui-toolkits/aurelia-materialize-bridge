@@ -9,7 +9,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.tabAttributeManagers = [];
             this.fixed = false;
             this.onShow = null;
-            this.responsiveThreshold = Infinity;
             this.swipeable = false;
             this.transparent = false;
             this.fireTabSelectedEvent = function (e) {
@@ -53,7 +52,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
                 finally { if (e_1) throw e_1.error; }
             }
             var self = this;
-            this.instance = new M.Tabs(this.element, {
+            var options = {
                 onShow: function (newContent) {
                     if (self.onShow) {
                         self.onShow({ newContent: newContent });
@@ -61,7 +60,9 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
                 },
                 swipeable: this.swipeable,
                 responsiveThreshold: this.responsiveThreshold
-            });
+            };
+            au.cleanOptions(options);
+            this.instance = new M.Tabs(this.element, options);
             var childAnchors = this.element.querySelectorAll("li a");
             try {
                 for (var _d = tslib_1.__values(Array.from(childAnchors)), _e = _d.next(); !_e.done; _e = _d.next()) {
@@ -124,7 +125,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             configurable: true
         });
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdTabs.prototype, "fixed", void 0);
         tslib_1.__decorate([
@@ -132,15 +133,15 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:type", Function)
         ], MdTabs.prototype, "onShow", void 0);
         tslib_1.__decorate([
-            au.bindable,
+            au.ato.bindable.numberMd,
             tslib_1.__metadata("design:type", Number)
         ], MdTabs.prototype, "responsiveThreshold", void 0);
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdTabs.prototype, "swipeable", void 0);
         tslib_1.__decorate([
-            au.bindable.booleanMd,
+            au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)
         ], MdTabs.prototype, "transparent", void 0);
         MdTabs = tslib_1.__decorate([

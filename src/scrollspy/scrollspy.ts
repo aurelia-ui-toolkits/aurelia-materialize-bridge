@@ -7,13 +7,13 @@ export class MdScrollSpy {
 
 	instance: M.ScrollSpy;
 
-	@au.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
+	@au.ato.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
 	throttle: number;
 
-	@au.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
+	@au.ato.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
 	scrollOffset: number;
 
-	@au.bindable.stringMd({defaultBindingMode: au.bindingMode.oneTime})
+	@au.ato.bindable.stringMd({defaultBindingMode: au.bindingMode.oneTime})
 	activeClass: string;
 
 	@au.bindable

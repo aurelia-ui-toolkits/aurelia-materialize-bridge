@@ -5,16 +5,16 @@ import * as au from "../aurelia";
 export class MdPagination {
 	constructor(private element: Element) { }
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
 	mdActivePage: number = 1;
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay })
 	mdPages: number = 5;
 	mdPagesChanged() {
 		this.setActivePage(1);
 	}
 
-	@au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay })
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay })
 	mdVisiblePageLinks: number = 15;
 	mdVisiblePageLinksChanged() {
 		this.mdPageLinks = this.generatePageLinks();
@@ -23,13 +23,13 @@ export class MdPagination {
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneWay })
 	mdPageLinks: number[] = [];
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdShowFirstLast: boolean = true;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdShowPrevNext: boolean = true;
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdShowPageLinks: boolean = true;
 
 	bind() {

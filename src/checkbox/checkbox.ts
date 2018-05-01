@@ -15,7 +15,7 @@ export class MdCheckbox {
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	mdChecked?: boolean | any[];
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdDisabled: boolean;
 	mdDisabledChanged(newValue) {
 		if (this.checkbox) {
@@ -23,7 +23,7 @@ export class MdCheckbox {
 		}
 	}
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdReadonly: boolean = false;
 	mdReadonlyChanged() {
 		if (!this.checkbox) {
@@ -37,7 +37,7 @@ export class MdCheckbox {
 		}
 	}
 
-	@au.bindable.booleanMd
+	@au.ato.bindable.booleanMd
 	mdFilledIn: boolean;
 
 	@au.bindable

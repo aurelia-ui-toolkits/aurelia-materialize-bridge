@@ -19,7 +19,7 @@ var MdParallax = /** @class */ (function () {
         this.element.classList.remove("parallax");
     };
     tslib_1.__decorate([
-        au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdParallax.prototype, "responsiveThreshold", void 0);
     MdParallax = tslib_1.__decorate([

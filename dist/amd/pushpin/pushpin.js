@@ -20,15 +20,15 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.instance.destroy();
         };
         tslib_1.__decorate([
-            au.bindable.numberMd,
+            au.ato.bindable.numberMd,
             tslib_1.__metadata("design:type", Number)
         ], MdPushpin.prototype, "bottom", void 0);
         tslib_1.__decorate([
-            au.bindable.numberMd,
+            au.ato.bindable.numberMd,
             tslib_1.__metadata("design:type", Number)
         ], MdPushpin.prototype, "offset", void 0);
         tslib_1.__decorate([
-            au.bindable.numberMd,
+            au.ato.bindable.numberMd,
             tslib_1.__metadata("design:type", Number)
         ], MdPushpin.prototype, "top", void 0);
         MdPushpin = tslib_1.__decorate([

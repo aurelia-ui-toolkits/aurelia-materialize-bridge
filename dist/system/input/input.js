@@ -157,47 +157,47 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 };
                 MdInput.id = 0;
                 tslib_1.__decorate([
-                    au.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay }),
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay }),
                     tslib_1.__metadata("design:type", String)
                 ], MdInput.prototype, "mdLabel", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdInput.prototype, "mdBlurOnEnter", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdInput.prototype, "mdDisabled", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd,
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdInput.prototype, "mdReadonly", void 0);
                 tslib_1.__decorate([
-                    au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", String)
                 ], MdInput.prototype, "mdPlaceholder", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdInput.prototype, "mdTextArea", void 0);
                 tslib_1.__decorate([
-                    au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", String)
                 ], MdInput.prototype, "mdType", void 0);
                 tslib_1.__decorate([
-                    au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", String)
                 ], MdInput.prototype, "mdStep", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdInput.prototype, "mdValidate", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdInput.prototype, "mdShowErrortext", void 0);
                 tslib_1.__decorate([
-                    au.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdInput.prototype, "mdInline", void 0);
                 tslib_1.__decorate([
@@ -205,11 +205,11 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:type", Array)
                 ], MdInput.prototype, "mdUpdateTrigger", void 0);
                 tslib_1.__decorate([
-                    au.bindable.stringMd,
+                    au.ato.bindable.stringMd,
                     tslib_1.__metadata("design:type", String)
                 ], MdInput.prototype, "mdValidateError", void 0);
                 tslib_1.__decorate([
-                    au.bindable.stringMd,
+                    au.ato.bindable.stringMd,
                     tslib_1.__metadata("design:type", String)
                 ], MdInput.prototype, "mdValidateSuccess", void 0);
                 tslib_1.__decorate([
@@ -217,19 +217,19 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:type", String)
                 ], MdInput.prototype, "mdValue", void 0);
                 tslib_1.__decorate([
-                    au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", String)
                 ], MdInput.prototype, "mdMin", void 0);
                 tslib_1.__decorate([
-                    au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", String)
                 ], MdInput.prototype, "mdMax", void 0);
                 tslib_1.__decorate([
-                    au.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", String)
                 ], MdInput.prototype, "mdName", void 0);
                 tslib_1.__decorate([
-                    au.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Number)
                 ], MdInput.prototype, "mdMaxlength", void 0);
                 MdInput = MdInput_1 = tslib_1.__decorate([
