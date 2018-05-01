@@ -32,6 +32,7 @@ var MdTabs = /** @class */ (function () {
         }
     };
     MdTabs.prototype.attached = function () {
+        var _this = this;
         this.attributeManager.addClasses("tabs");
         var children = this.element.querySelectorAll("li");
         try {
@@ -51,13 +52,9 @@ var MdTabs = /** @class */ (function () {
         }
         var self = this;
         var options = {
-            onShow: function (newContent) {
-                if (self.onShow) {
-                    self.onShow({ newContent: newContent });
-                }
-            },
             swipeable: this.swipeable,
-            responsiveThreshold: this.responsiveThreshold
+            responsiveThreshold: this.responsiveThreshold,
+            onShow: function (newContent) { return au.fireMaterializeEvent(_this.element, "show", { newContent: newContent }); }
         };
         au.cleanOptions(options);
         this.instance = new M.Tabs(this.element, options);
@@ -126,10 +123,6 @@ var MdTabs = /** @class */ (function () {
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdTabs.prototype, "fixed", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", Function)
-    ], MdTabs.prototype, "onShow", void 0);
     tslib_1.__decorate([
         au.ato.bindable.numberMd,
         tslib_1.__metadata("design:type", Number)

@@ -20,9 +20,6 @@ export class MdTabs {
 		}
 	}
 
-	@au.bindable
-	onShow: ({ newContent: Element }) => void;
-
 	@au.ato.bindable.numberMd
 	responsiveThreshold: number;
 
@@ -53,13 +50,9 @@ export class MdTabs {
 
 		let self = this;
 		let options: Partial<M.TabsOptions> = {
-			onShow(this: M.Tabs, newContent: Element) {
-				if (self.onShow) {
-					self.onShow({ newContent });
-				}
-			},
 			swipeable: this.swipeable,
-			responsiveThreshold: this.responsiveThreshold
+			responsiveThreshold: this.responsiveThreshold,
+			onShow: newContent => au.fireMaterializeEvent(this.element, "show", { newContent })
 		};
 		au.cleanOptions(options);
 		this.instance = new M.Tabs(this.element, options);
