@@ -7,7 +7,6 @@ var MdTabs = /** @class */ (function () {
         this.taskQueue = taskQueue;
         this.tabAttributeManagers = [];
         this.fixed = false;
-        this.onShow = null;
         this.swipeable = false;
         this.transparent = false;
         this.fireTabSelectedEvent = function (e) {

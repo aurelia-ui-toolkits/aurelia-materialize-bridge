@@ -21,7 +21,7 @@ var MdBreadcrumbs = /** @class */ (function () {
         this.childRouter.navigateToRoute(navigationInstruction.config.name);
     };
     tslib_1.__decorate([
-        au.ato.bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", au.Router)
     ], MdBreadcrumbs.prototype, "router", void 0);
     MdBreadcrumbs = tslib_1.__decorate([

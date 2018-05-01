@@ -21,7 +21,7 @@ export class MdTabs {
 	}
 
 	@au.bindable
-	onShow: ({ newContent: Element }) => void = null;
+	onShow: ({ newContent: Element }) => void;
 
 	@au.ato.bindable.numberMd
 	responsiveThreshold: number;

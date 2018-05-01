@@ -8,7 +8,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.taskQueue = taskQueue;
             this.tabAttributeManagers = [];
             this.fixed = false;
-            this.onShow = null;
             this.swipeable = false;
             this.transparent = false;
             this.fireTabSelectedEvent = function (e) {

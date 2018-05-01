@@ -7,7 +7,7 @@ import * as au from "../aurelia";
 export class MdBreadcrumbs {
 	constructor(private element: Element, private aureliaRouter: au.Router) { }
 
-	@au.ato.bindable
+	@au.bindable
 	router: au.Router;
 
 	childRouter: au.Router;
