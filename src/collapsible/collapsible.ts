@@ -15,13 +15,13 @@ export class MdCollapsible {
 		this.attached();
 	}
 
-	@au.bindable.booleanMd
+	@au.bindable.booleanMd({defaultBindingMode: au.bindingMode.oneTime})
 	popout: boolean;
 
-	@au.bindable.numberMd
+	@au.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
 	inDuration: number; // Transition in duration
 
-	@au.bindable.numberMd
+	@au.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
 	outDuration: number; // Transition out duration
 
 	instance: M.Collapsible;
