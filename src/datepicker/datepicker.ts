@@ -71,7 +71,7 @@ export class MdDatePicker {
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	events: string[];
 
-	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	@au.ato.bindable.booleanMd
 	showErrortext: boolean = true;
 
 	instance: M.Datepicker;

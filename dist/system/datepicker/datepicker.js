@@ -228,7 +228,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:type", Array)
                 ], MdDatePicker.prototype, "events", void 0);
                 tslib_1.__decorate([
-                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdDatePicker.prototype, "showErrortext", void 0);
                 tslib_1.__decorate([
