@@ -14,6 +14,9 @@ export class MdDatePicker {
 	@au.ato.bindable.stringMd
 	label: string = "";
 
+	@au.ato.bindable.booleanMd
+	inline: boolean;
+
 	@au.ato.bindable.stringMd
 	placeholder: string = "";
 
@@ -66,7 +69,7 @@ export class MdDatePicker {
 	showClearBtn: boolean;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	i18n: Partial<M.DatepickerI18nOptions>;
+	i18n: Partial<M.InternationalizationOptions>;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	events: string[];
@@ -139,6 +142,7 @@ export class MdDatePicker {
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
 		this.valueChanged();
+		au.updateLabel(this.input, this.labelElement);
 	}
 
 	done = () => {
