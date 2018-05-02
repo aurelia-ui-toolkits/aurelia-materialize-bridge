@@ -37,6 +37,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     }
                 };
                 MdCharCounter.prototype.detached = function () {
+                    this.instances.forEach(function (x) { return x.destroy(); });
                     this.attributeManager.removeAttributes(["data-length"]);
                 };
                 tslib_1.__decorate([

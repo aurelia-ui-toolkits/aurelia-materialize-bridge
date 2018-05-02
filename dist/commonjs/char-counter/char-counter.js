@@ -27,6 +27,7 @@ var MdCharCounter = /** @class */ (function () {
         }
     };
     MdCharCounter.prototype.detached = function () {
+        this.instances.forEach(function (x) { return x.destroy(); });
         this.attributeManager.removeAttributes(["data-length"]);
     };
     tslib_1.__decorate([

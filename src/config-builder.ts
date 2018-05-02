@@ -107,7 +107,7 @@ export class ConfigBuilder {
 	 * Use my control
 	 */
 	useClickCounter(): ConfigBuilder {
-		this.globalResources.push(PLATFORM.moduleName("./click-counter"));
+		this.globalResources.push(PLATFORM.moduleName("./click-counter/click-counter"));
 		return this;
 	}
 

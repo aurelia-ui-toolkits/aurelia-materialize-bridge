@@ -105,7 +105,7 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                  * Use my control
                  */
                 ConfigBuilder.prototype.useClickCounter = function () {
-                    this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./click-counter"));
+                    this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./click-counter/click-counter"));
                     return this;
                 };
                 ConfigBuilder.prototype.useCollapsible = function () {

@@ -95,7 +95,7 @@ var ConfigBuilder = /** @class */ (function () {
      * Use my control
      */
     ConfigBuilder.prototype.useClickCounter = function () {
-        this.globalResources.push(PLATFORM.moduleName("./click-counter"));
+        this.globalResources.push(PLATFORM.moduleName("./click-counter/click-counter"));
         return this;
     };
     ConfigBuilder.prototype.useCollapsible = function () {
