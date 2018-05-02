@@ -80,12 +80,6 @@ export class MdSelect {
 
 	@au.ato.bindable.booleanMd
 	showErrortext: boolean = true;
-	showErrortextChanged() {
-		if (this.instance) {
-			this.log.debug("showErrortextChanged: " + this.showErrortext);
-			this.instance.input.setAttribute("data-show-errortext", this.showErrortext.toString());
-		}
-	}
 
 	subscriptions = [];
 	inputField: HTMLDivElement = null;
@@ -174,7 +168,6 @@ export class MdSelect {
 		this.instance.input.addEventListener("focus", this.handleFocus);
 		this.instance.input.addEventListener("blur", this.handleBlur);
 		this.observeOptions(true);
-		this.showErrortextChanged();
 		this.readonlyChanged();
 		this.disabledChanged();
 	}
@@ -237,7 +230,7 @@ export class MdSelect {
 		for (let result of results) {
 			if (!result.valid) {
 				(result as any).target = this.instance.input;
-				if (!(this.instance.input.hasAttribute("data-show-errortext") && this.instance.input.getAttribute("data-show-errortext") === "false")) {
+				if (this.showErrortext) {
 					renderer.addMessage(this.inputField, result);
 				}
 			}

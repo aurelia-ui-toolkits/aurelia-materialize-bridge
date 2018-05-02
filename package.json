@@ -38,6 +38,7 @@
     "prebuild": "rimraf dist",
     "build": "concurrently \"npm run build:amd\" \"npm run build:commonjs\" \"npm run build:es2015\" \"npm run build:native-modules\" \"npm run build:system\"",
     "postbuild": "concurrently \"npm run postbuild:amd\" \"npm run postbuild:commonjs\" \"npm run postbuild:es2015\" \"npm run postbuild:native-modules\" \"npm run postbuild:system\"",
+    "copytodemo": "copyfiles --up 1 dist/**/*.* ../demo-materialize/node_modules/aurelia-materialize-bridge/dist",
     "release": "standard-version"
   },
   "main": "dist/commonjs/index.js",

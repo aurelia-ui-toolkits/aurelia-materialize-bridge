@@ -3,8 +3,6 @@ define(["require", "exports", "tslib"], function (require, exports, tslib_1) {
     Object.defineProperty(exports, "__esModule", { value: true });
     var MaterializeFormValidationRenderer = /** @class */ (function () {
         function MaterializeFormValidationRenderer() {
-            this.className = "md-input-validation";
-            this.classNameFirst = "md-input-validation-first";
         }
         MaterializeFormValidationRenderer.prototype.pushElementResult = function (elementResults, element, result) {
             if (elementResults.has(element)) {
@@ -123,18 +121,11 @@ define(["require", "exports", "tslib"], function (require, exports, tslib_1) {
             if (!element) {
                 return;
             }
-            var message = document.createElement("div");
+            var message = document.createElement("span");
             message.id = "md-input-validation-" + result.id;
-            message.textContent = result.message;
-            message.className = this.className;
-            if (element.querySelectorAll("." + this.className).length === 0) {
-                message.className += " " + this.classNameFirst;
-            }
-            message.style.opacity = "0";
+            message.setAttribute("data-" + (result.valid ? "success" : "error"), result.message);
+            message.className = "helper-text";
             element.appendChild(message);
-            // tslint:disable-next-line:no-unused-expression
-            window.getComputedStyle(message).opacity;
-            message.style.opacity = "1";
         };
         MaterializeFormValidationRenderer.prototype.removeMessage = function (element, result) {
             if (!element) {

@@ -28,6 +28,7 @@ export declare class MdDatePicker {
     showClearBtn: boolean;
     i18n: Partial<M.DatepickerI18nOptions>;
     events: string[];
+    showErrortext: boolean;
     instance: M.Datepicker;
     value: Date;
     valueChangedSuppress: boolean;

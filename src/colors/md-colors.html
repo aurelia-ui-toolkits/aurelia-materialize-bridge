@@ -270,18 +270,12 @@
 		box-shadow: 0 1px 0 0 ${mdSuccessColor};
 	}
 
-	/* text input aurelia-validation messages */
-	.md-input-validation {
-		left: 0;
-		/*color: #f44336;*/
-		color: ${mdErrorColor};
-		font-size: 0.8rem;
-		transition: opacity .2s ease-out;
-		margin-top: -4px;
-		margin-bottom: 0;
+	/* validation helper-text tweaks */
+	input:not(.invalid):not(.valid) ~ .helper-text[data-error] {
+		display: none;
 	}
-	.md-input-validation-first {
-		margin-top: -7px;
+	input:not(.invalid):not(.valid) ~ .helper-text[data-success] {
+		display: none;
 	}
 
 	/* pagination */

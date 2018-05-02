@@ -20,7 +20,6 @@ export declare class MdSelect {
     label: string;
     labelChanged(): void;
     showErrortext: boolean;
-    showErrortextChanged(): void;
     subscriptions: any[];
     inputField: HTMLDivElement;
     optionsMutationObserver: any;

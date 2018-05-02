@@ -71,7 +71,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                                 var result = results_2_1.value;
                                 if (!result.valid) {
                                     result.target = _this.instance.input;
-                                    if (!(_this.instance.input.hasAttribute("data-show-errortext") && _this.instance.input.getAttribute("data-show-errortext") === "false")) {
+                                    if (_this.showErrortext) {
                                         renderer.addMessage(_this.inputField, result);
                                     }
                                 }
@@ -133,12 +133,6 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 MdSelect.prototype.labelChanged = function () {
                     if (this.labelElement) {
                         this.labelElement.textContent = this.label;
-                    }
-                };
-                MdSelect.prototype.showErrortextChanged = function () {
-                    if (this.instance) {
-                        this.log.debug("showErrortextChanged: " + this.showErrortext);
-                        this.instance.input.setAttribute("data-show-errortext", this.showErrortext.toString());
                     }
                 };
                 MdSelect.prototype.attached = function () {
@@ -214,7 +208,6 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.instance.input.addEventListener("focus", this.handleFocus);
                     this.instance.input.addEventListener("blur", this.handleBlur);
                     this.observeOptions(true);
-                    this.showErrortextChanged();
                     this.readonlyChanged();
                     this.disabledChanged();
                 };

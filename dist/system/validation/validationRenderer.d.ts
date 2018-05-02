@@ -1,7 +1,5 @@
 import { ValidateResult, RenderInstruction } from "aurelia-validation";
 export declare class MaterializeFormValidationRenderer {
-    className: string;
-    classNameFirst: string;
     pushElementResult(elementResults: Map<Element, ValidateResult[]>, element: Element, result: ValidateResult): void;
     render(instruction: RenderInstruction): void;
     defaultUnrenderValidateResults(element: Element, results: ValidateResult[]): void;

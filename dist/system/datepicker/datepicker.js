@@ -20,6 +20,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.controlId = "md-datepicker-" + MdDatePicker_1.id++;
                     this.label = "";
                     this.placeholder = "";
+                    this.showErrortext = true;
                     this.calendarIcon = null;
                     this.done = function () {
                         _this.setValue(_this.instance.date);
@@ -45,7 +46,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         var e_1, _a;
                     };
                     this.mdRenderValidateResults = function (results, renderer) {
-                        if (!(_this.element.hasAttribute("data-show-errortext") && _this.element.getAttribute("data-show-errortext") === "false")) {
+                        if (_this.showErrortext && _this.inputField) {
                             try {
                                 for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
                                     var result = results_2_1.value;
@@ -226,6 +227,10 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Array)
                 ], MdDatePicker.prototype, "events", void 0);
+                tslib_1.__decorate([
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdDatePicker.prototype, "showErrortext", void 0);
                 tslib_1.__decorate([
                     au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
                     tslib_1.__metadata("design:type", Date)

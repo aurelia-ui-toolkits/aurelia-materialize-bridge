@@ -71,6 +71,9 @@ export class MdDatePicker {
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	events: string[];
 
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	showErrortext: boolean = true;
+
 	instance: M.Datepicker;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
@@ -175,7 +178,7 @@ export class MdDatePicker {
 	}
 
 	mdRenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		if (!(this.element.hasAttribute("data-show-errortext") && this.element.getAttribute("data-show-errortext") === "false")) {
+		if (this.showErrortext && this.inputField) {
 			for (let result of results) {
 				if (!result.valid) {
 					renderer.addMessage(this.inputField, result);

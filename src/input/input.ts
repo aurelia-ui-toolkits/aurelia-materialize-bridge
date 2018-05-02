@@ -87,17 +87,8 @@ export class MdInput {
 		if (this.mdValidate) {
 			this.input.classList.add("validate");
 		}
-		if (this.mdValidateError) {
-			this.label.setAttribute("data-error", this.mdValidateError);
-		}
-		if (this.mdValidateSuccess) {
-			this.label.setAttribute("data-success", this.mdValidateSuccess);
-		}
 		if (this.mdPlaceholder) {
 			this.input.setAttribute("placeholder", this.mdPlaceholder);
-		}
-		if (this.mdShowErrortext) {
-			this.input.setAttribute("data-show-errortext", this.mdShowErrortext.toString());
 		}
 		this.updateLabel();
 		this.attachEventHandlers();
@@ -163,16 +154,10 @@ export class MdInput {
 	}
 
 	mdRenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		if (this.label && results.find(x => !x.valid)) {
-			this.label.removeAttribute("data-error");
-		}
-		if (this.input) {
+		if (this.mdShowErrortext && this.inputField) {
 			for (let result of results) {
 				if (!result.valid) {
-					(result as any).target = this.input;
-					if (this.input.hasAttribute("data-show-errortext")) {
-						renderer.addMessage(this.inputField, result);
-					}
+					renderer.addMessage(this.inputField, result);
 				}
 			}
 		}

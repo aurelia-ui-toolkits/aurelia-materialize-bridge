@@ -1,10 +1,6 @@
 import { ValidateResult, RenderInstruction } from "aurelia-validation";
 
 export class MaterializeFormValidationRenderer {
-
-	className = "md-input-validation";
-	classNameFirst = "md-input-validation-first";
-
 	pushElementResult(elementResults: Map<Element, ValidateResult[]>, element: Element, result: ValidateResult) {
 		if (elementResults.has(element)) {
 			elementResults.get(element).push(result);
@@ -64,18 +60,11 @@ export class MaterializeFormValidationRenderer {
 			return;
 		}
 
-		let message = document.createElement("div");
+		let message = document.createElement("span");
 		message.id = `md-input-validation-${result.id}`;
-		message.textContent = result.message;
-		message.className = this.className;
-		if (element.querySelectorAll("." + this.className).length === 0) {
-			message.className += " " + this.classNameFirst;
-		}
-		message.style.opacity = "0";
+		message.setAttribute(`data-${result.valid ? "success" : "error"}`, result.message);
+		message.className = "helper-text";
 		element.appendChild(message);
-		// tslint:disable-next-line:no-unused-expression
-		window.getComputedStyle(message).opacity;
-		message.style.opacity = "1";
 	}
 
 	removeMessage(element: Element, result: ValidateResult) {

@@ -8,5 +8,6 @@
 		<textarea if.bind="mdTextArea" ref="input" id="${controlId}" value.bind="mdValue" class="materialize-textarea" readonly.bind="mdReadonly"
 		 disabled.bind="mdDisabled" maxlength.bind="mdMaxlength" blur.trigger="blur()" focus.trigger="focus()"></textarea>
 		<label for="${controlId}" ref="label">${mdLabel}</label>
+		<span if.bind="mdValidateSuccess || mdValidateError" class="helper-text" data-success.bind="mdValidateSuccess" data-error.bind="mdValidateError"></span>
 	</div>
 </template>

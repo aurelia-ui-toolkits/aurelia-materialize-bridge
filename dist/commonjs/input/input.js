@@ -42,18 +42,12 @@ var MdInput = /** @class */ (function () {
             var e_1, _a;
         };
         this.mdRenderValidateResults = function (results, renderer) {
-            if (_this.label && results.find(function (x) { return !x.valid; })) {
-                _this.label.removeAttribute("data-error");
-            }
-            if (_this.input) {
+            if (_this.mdShowErrortext && _this.inputField) {
                 try {
                     for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
                         var result = results_2_1.value;
                         if (!result.valid) {
-                            result.target = _this.input;
-                            if (_this.input.hasAttribute("data-show-errortext")) {
-                                renderer.addMessage(_this.inputField, result);
-                            }
+                            renderer.addMessage(_this.inputField, result);
                         }
                     }
                 }
@@ -85,17 +79,8 @@ var MdInput = /** @class */ (function () {
         if (this.mdValidate) {
             this.input.classList.add("validate");
         }
-        if (this.mdValidateError) {
-            this.label.setAttribute("data-error", this.mdValidateError);
-        }
-        if (this.mdValidateSuccess) {
-            this.label.setAttribute("data-success", this.mdValidateSuccess);
-        }
         if (this.mdPlaceholder) {
             this.input.setAttribute("placeholder", this.mdPlaceholder);
-        }
-        if (this.mdShowErrortext) {
-            this.input.setAttribute("data-show-errortext", this.mdShowErrortext.toString());
         }
         this.updateLabel();
         this.attachEventHandlers();
