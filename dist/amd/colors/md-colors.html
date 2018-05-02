@@ -271,10 +271,10 @@
 	}
 
 	/* validation helper-text tweaks */
-	input:not(.invalid):not(.valid) ~ .helper-text[data-error] {
-		display: none;
-	}
-	input:not(.invalid):not(.valid) ~ .helper-text[data-success] {
+	input:not(.invalid):not(.valid) ~ .helper-text[data-error],
+	input:not(.invalid):not(.valid) ~ .helper-text[data-success],
+	input.valid ~ .helper-text:not([data-success]),
+	input.invalid ~ .helper-text:not([data-error]) {
 		display: none;
 	}
 
