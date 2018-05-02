@@ -51,7 +51,7 @@ export class MdDatePicker {
 	yearRange: number | number[];
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	isRTL: boolean;
+	isRtl: boolean;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	showMonthAfterYear: boolean;
@@ -60,7 +60,7 @@ export class MdDatePicker {
 	showDaysInNextAndPreviousMonths: boolean;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	container: Element;
+	container: Element | string;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	showClearBtn: boolean;
@@ -104,6 +104,7 @@ export class MdDatePicker {
 		if (this.placeholder) {
 			this.input.setAttribute("placeholder", this.placeholder);
 		}
+		let container = typeof this.container === "string" ? document.querySelector(this.container) : this.container;
 		let options: Partial<M.DatepickerOptions> = {
 			autoClose: this.autoClose,
 			format: this.format,
@@ -116,10 +117,10 @@ export class MdDatePicker {
 			minDate: this.minDate,
 			maxDate: this.maxDate,
 			yearRange: this.yearRange,
-			isRTL: this.isRTL,
+			isRTL: this.isRtl,
 			showMonthAfterYear: this.showMonthAfterYear,
 			showDaysInNextAndPreviousMonths: this.showDaysInNextAndPreviousMonths,
-			container: this.container,
+			container,
 			showClearBtn: this.showClearBtn,
 			i18n: this.i18n,
 			events: this.events,

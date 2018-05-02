@@ -92,6 +92,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     if (this.placeholder) {
                         this.input.setAttribute("placeholder", this.placeholder);
                     }
+                    var container = typeof this.container === "string" ? document.querySelector(this.container) : this.container;
                     var options = {
                         autoClose: this.autoClose,
                         format: this.format,
@@ -104,10 +105,10 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         minDate: this.minDate,
                         maxDate: this.maxDate,
                         yearRange: this.yearRange,
-                        isRTL: this.isRTL,
+                        isRTL: this.isRtl,
                         showMonthAfterYear: this.showMonthAfterYear,
                         showDaysInNextAndPreviousMonths: this.showDaysInNextAndPreviousMonths,
-                        container: this.container,
+                        container: container,
                         showClearBtn: this.showClearBtn,
                         i18n: this.i18n,
                         events: this.events,
@@ -202,7 +203,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 tslib_1.__decorate([
                     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
-                ], MdDatePicker.prototype, "isRTL", void 0);
+                ], MdDatePicker.prototype, "isRtl", void 0);
                 tslib_1.__decorate([
                     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", Boolean)
@@ -213,7 +214,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 ], MdDatePicker.prototype, "showDaysInNextAndPreviousMonths", void 0);
                 tslib_1.__decorate([
                     au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
-                    tslib_1.__metadata("design:type", Element)
+                    tslib_1.__metadata("design:type", Object)
                 ], MdDatePicker.prototype, "container", void 0);
                 tslib_1.__decorate([
                     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),

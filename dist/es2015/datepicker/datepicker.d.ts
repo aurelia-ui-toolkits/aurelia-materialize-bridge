@@ -21,10 +21,10 @@ export declare class MdDatePicker {
     minDate: Date;
     maxDate: Date;
     yearRange: number | number[];
-    isRTL: boolean;
+    isRtl: boolean;
     showMonthAfterYear: boolean;
     showDaysInNextAndPreviousMonths: boolean;
-    container: Element;
+    container: Element | string;
     showClearBtn: boolean;
     i18n: Partial<M.DatepickerI18nOptions>;
     events: string[];
