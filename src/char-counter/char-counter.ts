@@ -32,6 +32,7 @@ export class MdCharCounter {
 	}
 
 	detached() {
+		this.instances.forEach(x => x.destroy());
 		this.attributeManager.removeAttributes(["data-length"]);
 	}
 }
