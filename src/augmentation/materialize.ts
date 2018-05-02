@@ -920,7 +920,7 @@ declare namespace M {
 		/**
 		 * Get Instance
 		 */
-		static getInstance(elem: Element): TimePicker;
+		static getInstance(elem: Element): Timepicker;
 
 		/**
 		 * If the picker is open.
