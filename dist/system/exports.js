@@ -1,4 +1,4 @@
-System.register(["./autocomplete/autocomplete", "./badge/badge", "./box/box", "./breadcrumbs/breadcrumbs", "./breadcrumbs/instructionFilter", "./button/button", "./card/card", "./carousel/carousel-item", "./carousel/carousel", "./char-counter/char-counter", "./checkbox/checkbox", "./chip/chip", "./chip/chips", "./collapsible/collapsible", "./collection/collection-header", "./collection/collection-item", "./collection/collection", "./collection/md-collection-selector", "./colors/color-value-converters", "./colors/md-colors", "./common/attributeManager", "./common/attributes", "./common/constants", "./common/events", "./datepicker/datepicker", "./dropdown/dropdown-element", "./dropdown/dropdown", "./fab/fab", "./file/file", "./footer/footer", "./input/input-prefix", "./input/input", "./modal/modal", "./navbar/navbar", "./pagination/pagination", "./parallax/parallax", "./progress/progress", "./pushpin/pushpin", "./radio/radio", "./range/range", "./scrollspy/scrollspy", "./select/select", "./sidenav/sidenav-collapse", "./sidenav/sidenav", "./slider/slider", "./switch/switch", "./tabs/tabs", "./tap-target/tap-target", "./timepicker/timepicker", "./toast/toastService", "./tooltip/tooltip", "./transitions/fadein-image", "./transitions/staggered-list", "./validation/validationRenderer", "./waves/waves", "./well/md-well", "./config-builder"], function (exports_1, context_1) {
+System.register(["./autocomplete/autocomplete", "./badge/badge", "./box/box", "./breadcrumbs/breadcrumbs", "./breadcrumbs/instructionFilter", "./button/button", "./card/card", "./carousel/carousel-item", "./carousel/carousel", "./char-counter/char-counter", "./checkbox/checkbox", "./chip/chip", "./chip/chips", "./collapsible/collapsible", "./collection/collection-header", "./collection/collection-item", "./collection/collection", "./collection/md-collection-selector", "./colors/color-value-converters", "./colors/md-colors", "./common/attributeManager", "./common/attributes", "./common/constants", "./common/events", "./datepicker/datepicker", "./dropdown/dropdown-element", "./dropdown/dropdown", "./fab/fab", "./file/file", "./footer/footer", "./input/input-prefix", "./input/input", "./modal/modal", "./navbar/navbar", "./pagination/pagination", "./parallax/parallax", "./progress/progress", "./pushpin/pushpin", "./radio/radio", "./range/range", "./scrollspy/scrollspy", "./select/select", "./sidenav/sidenav-collapse", "./sidenav/sidenav", "./slider/slider", "./switch/switch", "./tabs/tabs", "./tap-target/tap-target", "./timepicker/timepicker", "./toast/toastService", "./tooltip/tooltip", "./validation/validationRenderer", "./waves/waves", "./well/md-well", "./config-builder"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -162,12 +162,6 @@ System.register(["./autocomplete/autocomplete", "./badge/badge", "./box/box", ".
             },
             function (tooltip_1_1) {
                 exportStar_1(tooltip_1_1);
-            },
-            function (fadein_image_1_1) {
-                exportStar_1(fadein_image_1_1);
-            },
-            function (staggered_list_1_1) {
-                exportStar_1(staggered_list_1_1);
             },
             function (validationRenderer_1_1) {
                 exportStar_1(validationRenderer_1_1);

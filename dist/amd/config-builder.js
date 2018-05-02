@@ -9,7 +9,6 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
             this.globalResources = [];
             this.noWavesAttach = false;
             this.useGlobalResources = true;
-            this.useScrollfirePatch = false;
         }
         ConfigBuilder.prototype.useAll = function () {
             return this
@@ -49,7 +48,6 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
                 .useTapTarget()
                 .useTimePicker()
                 .useTooltip()
-                .useTransitions()
                 .useWaves()
                 .useWell();
         };
@@ -219,11 +217,6 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
         };
         ConfigBuilder.prototype.useTooltip = function () {
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./tooltip/tooltip"));
-            return this;
-        };
-        ConfigBuilder.prototype.useTransitions = function () {
-            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./transitions/fadein-image"));
-            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./transitions/staggered-list"));
             return this;
         };
         /**

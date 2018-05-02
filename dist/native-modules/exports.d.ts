@@ -49,8 +49,6 @@ export * from "./tap-target/tap-target";
 export * from "./timepicker/timepicker";
 export * from "./toast/toastService";
 export * from "./tooltip/tooltip";
-export * from "./transitions/fadein-image";
-export * from "./transitions/staggered-list";
 export * from "./validation/validationRenderer";
 export * from "./waves/waves";
 export * from "./well/md-well";

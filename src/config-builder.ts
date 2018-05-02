@@ -8,7 +8,6 @@ export class ConfigBuilder {
 	globalResources = [];
 	noWavesAttach: boolean = false;
 	useGlobalResources: boolean = true;
-	useScrollfirePatch: boolean = false;
 
 	useAll(): ConfigBuilder {
 		return this
@@ -48,7 +47,6 @@ export class ConfigBuilder {
 			.useTapTarget()
 			.useTimePicker()
 			.useTooltip()
-			.useTransitions()
 			.useWaves()
 			.useWell();
 	}
@@ -255,12 +253,6 @@ export class ConfigBuilder {
 
 	useTooltip(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./tooltip/tooltip"));
-		return this;
-	}
-
-	useTransitions(): ConfigBuilder {
-		this.globalResources.push(PLATFORM.moduleName("./transitions/fadein-image"));
-		this.globalResources.push(PLATFORM.moduleName("./transitions/staggered-list"));
 		return this;
 	}
 

@@ -5,7 +5,6 @@ export declare class ConfigBuilder {
     globalResources: any[];
     noWavesAttach: boolean;
     useGlobalResources: boolean;
-    useScrollfirePatch: boolean;
     useAll(): ConfigBuilder;
     useAutoComplete(): ConfigBuilder;
     useBadge(): ConfigBuilder;
@@ -50,7 +49,6 @@ export declare class ConfigBuilder {
     useTapTarget(): ConfigBuilder;
     useTimePicker(): ConfigBuilder;
     useTooltip(): ConfigBuilder;
-    useTransitions(): ConfigBuilder;
     /**
      * Use ripple/waves effect
      */

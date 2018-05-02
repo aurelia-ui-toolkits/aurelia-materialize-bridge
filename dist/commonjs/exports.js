@@ -53,8 +53,6 @@ tslib_1.__exportStar(require("./tap-target/tap-target"), exports);
 tslib_1.__exportStar(require("./timepicker/timepicker"), exports);
 tslib_1.__exportStar(require("./toast/toastService"), exports);
 tslib_1.__exportStar(require("./tooltip/tooltip"), exports);
-tslib_1.__exportStar(require("./transitions/fadein-image"), exports);
-tslib_1.__exportStar(require("./transitions/staggered-list"), exports);
 tslib_1.__exportStar(require("./validation/validationRenderer"), exports);
 tslib_1.__exportStar(require("./waves/waves"), exports);
 tslib_1.__exportStar(require("./well/md-well"), exports);
