@@ -62,7 +62,7 @@ export class MdInput {
 		if (this.input === document.activeElement) {
 			return;
 		}
-		this.updateLabel();
+		this.taskQueue.queueTask(() => this.updateLabel());
 	}
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })

@@ -115,6 +115,7 @@ var MdDatePicker = /** @class */ (function () {
         this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
         this.element.mdRenderValidateResults = this.mdRenderValidateResults;
         this.valueChanged();
+        au.updateLabel(this.input, this.labelElement);
     };
     MdDatePicker.prototype.bind = function () {
         //
@@ -140,6 +141,10 @@ var MdDatePicker = /** @class */ (function () {
         au.ato.bindable.stringMd,
         tslib_1.__metadata("design:type", String)
     ], MdDatePicker.prototype, "label", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdDatePicker.prototype, "inline", void 0);
     tslib_1.__decorate([
         au.ato.bindable.stringMd,
         tslib_1.__metadata("design:type", String)

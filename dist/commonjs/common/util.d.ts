@@ -7,3 +7,4 @@ export declare function insertAfter(element: HTMLElement, newChild: HTMLElement)
  * @param options An object to clean
  */
 export declare function cleanOptions(options: any): void;
+export declare function updateLabel(input: HTMLInputElement, label: HTMLLabelElement): void;

@@ -20,7 +20,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             else {
                 var elem = Array.from(this.element.querySelectorAll("input,textarea"));
                 elem.forEach(function (el) {
-                    $(el).attr("data-length", _this.length);
+                    el.setAttribute("data-length", _this.length.toString());
                     _this.instances.push(new M.CharacterCounter(el));
                 });
             }

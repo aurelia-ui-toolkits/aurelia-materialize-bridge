@@ -9,6 +9,7 @@ export declare class MdDatePicker {
     labelElement: HTMLLabelElement;
     inputField: HTMLDivElement;
     label: string;
+    inline: boolean;
     placeholder: string;
     autoClose: boolean;
     format: string;
@@ -26,7 +27,7 @@ export declare class MdDatePicker {
     showDaysInNextAndPreviousMonths: boolean;
     container: Element | string;
     showClearBtn: boolean;
-    i18n: Partial<M.DatepickerI18nOptions>;
+    i18n: Partial<M.InternationalizationOptions>;
     events: string[];
     showErrortext: boolean;
     instance: M.Datepicker;

@@ -25,7 +25,7 @@ export class MdCharCounter {
 		else {
 			const elem = Array.from(this.element.querySelectorAll("input,textarea"));
 			elem.forEach(el => {
-				$(el).attr("data-length", this.length);
+				el.setAttribute("data-length", this.length.toString());
 				this.instances.push(new M.CharacterCounter(el));
 			});
 		}

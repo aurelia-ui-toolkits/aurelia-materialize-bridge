@@ -31,7 +31,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     else {
                         var elem = Array.from(this.element.querySelectorAll("input,textarea"));
                         elem.forEach(function (el) {
-                            $(el).attr("data-length", _this.length);
+                            el.setAttribute("data-length", _this.length.toString());
                             _this.instances.push(new M.CharacterCounter(el));
                         });
                     }

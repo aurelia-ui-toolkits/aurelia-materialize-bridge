@@ -65,10 +65,11 @@ var MdInput = /** @class */ (function () {
     }
     MdInput_1 = MdInput;
     MdInput.prototype.mdValueChanged = function () {
+        var _this = this;
         if (this.input === document.activeElement) {
             return;
         }
-        this.updateLabel();
+        this.taskQueue.queueTask(function () { return _this.updateLabel(); });
     };
     MdInput.prototype.bind = function () {
         // this suppresses initial changed handler calls
@@ -91,17 +92,7 @@ var MdInput = /** @class */ (function () {
         this.element.mdRenderValidateResults = undefined;
     };
     MdInput.prototype.updateLabel = function () {
-        // the following is copied from the updateTextFields method
-        // it is more efficient than updating all the inputs
-        if (this.mdValue && this.mdValue.length > 0 || this.input.autofocus || this.input.hasAttribute("placeholder")) {
-            this.label.classList.add("active");
-        }
-        else if (this.input.validity) {
-            this.label.classList.toggle("active", this.input.validity.badInput === true);
-        }
-        else {
-            this.label.classList.remove("active");
-        }
+        au.updateLabel(this.input, this.label);
         if (this.mdTextArea) {
             M.textareaAutoResize(this.input);
         }

@@ -127,6 +127,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
                     this.element.mdRenderValidateResults = this.mdRenderValidateResults;
                     this.valueChanged();
+                    au.updateLabel(this.input, this.labelElement);
                 };
                 MdDatePicker.prototype.bind = function () {
                     //
@@ -152,6 +153,10 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     au.ato.bindable.stringMd,
                     tslib_1.__metadata("design:type", String)
                 ], MdDatePicker.prototype, "label", void 0);
+                tslib_1.__decorate([
+                    au.ato.bindable.booleanMd,
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdDatePicker.prototype, "inline", void 0);
                 tslib_1.__decorate([
                     au.ato.bindable.stringMd,
                     tslib_1.__metadata("design:type", String)
