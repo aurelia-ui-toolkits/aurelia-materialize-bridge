@@ -15,12 +15,21 @@ export class MdSidenav {
 	instance: M.Sidenav;
 	attributeManager: au.AttributeManager;
 
-	@au.bindable
-	options: M.SidenavOptions;
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	edge: "left" | "right";
+
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	draggable: boolean;
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	inDuration: number;
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	outDuration: number;
 
 	@au.ato.bindable.booleanMd
-	mdFixed: boolean = false;
-	mdFixedChanged(newValue) {
+	fixed: boolean = false;
+	fixedChanged(newValue) {
 		if (!this.attributeManager) {
 			return;
 		}
@@ -33,10 +42,21 @@ export class MdSidenav {
 
 	attached() {
 		this.attributeManager = new au.AttributeManager(this.sidenav);
-		if (this.mdFixed) {
+		if (this.fixed) {
 			this.attributeManager.addClasses(MdSidenav.fixedClass);
 		}
-		this.instance = new M.Sidenav(this.sidenav, this.options);
+		let options: Partial<M.SidenavOptions> = {
+			draggable: this.draggable,
+			edge: this.edge,
+			inDuration: this.inDuration,
+			outDuration: this.outDuration,
+			onOpenStart: elem => au.fireMaterializeEvent(this.element, "open-start", { elem }),
+			onOpenEnd: elem => au.fireMaterializeEvent(this.element, "open-end", { elem }),
+			onCloseStart: elem => au.fireMaterializeEvent(this.element, "close-start", { elem }),
+			onCloseEnd: elem => au.fireMaterializeEvent(this.element, "close-end", { elem })
+		};
+		au.cleanOptions(options);
+		this.instance = new M.Sidenav(this.sidenav, options);
 	}
 
 	open() {
