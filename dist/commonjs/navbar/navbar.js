@@ -13,7 +13,7 @@ var MdNavbar = /** @class */ (function () {
             this.fixedAttributeManager.addClasses("navbar-fixed");
         }
         if (this.autoHeight) {
-            this.navAttributeManager.addClasses("md-auto-height");
+            this.navAttributeManager.addClasses("auto-height");
         }
         if (this.extended) {
             this.navAttributeManager.addClasses("nav-extended");
@@ -24,7 +24,7 @@ var MdNavbar = /** @class */ (function () {
             this.fixedAttributeManager.removeClasses("navbar-fixed");
         }
         if (this.autoHeight) {
-            this.navAttributeManager.removeClasses("md-auto-height");
+            this.navAttributeManager.removeClasses("auto-height");
         }
         if (this.extended) {
             this.navAttributeManager.removeClasses("nav-extended");

@@ -23,7 +23,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         this.fixedAttributeManager.addClasses("navbar-fixed");
                     }
                     if (this.autoHeight) {
-                        this.navAttributeManager.addClasses("md-auto-height");
+                        this.navAttributeManager.addClasses("auto-height");
                     }
                     if (this.extended) {
                         this.navAttributeManager.addClasses("nav-extended");
@@ -34,7 +34,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         this.fixedAttributeManager.removeClasses("navbar-fixed");
                     }
                     if (this.autoHeight) {
-                        this.navAttributeManager.removeClasses("md-auto-height");
+                        this.navAttributeManager.removeClasses("auto-height");
                     }
                     if (this.extended) {
                         this.navAttributeManager.removeClasses("nav-extended");
