@@ -1,11 +1,11 @@
 export declare class MdFileInput {
     private element;
     constructor(element: Element);
-    mdCaption: string;
-    mdMultiple: boolean;
-    mdLabelValue: string;
+    caption: string;
+    multiple: boolean;
+    labelValue: string;
     disabled: boolean;
-    mdReadonly: boolean;
+    readonly: boolean;
     filePath: HTMLInputElement;
     files: FileList;
     suspendUpdate: boolean;

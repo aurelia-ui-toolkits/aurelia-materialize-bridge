@@ -3,14 +3,14 @@ import * as au from "../aurelia";
 var MdSlider = /** @class */ (function () {
     function MdSlider(element) {
         this.element = element;
-        this.mdFillContainer = false;
+        this.fillContainer = false;
         this.log = au.getLogger("md-slider");
     }
-    MdSlider.prototype.mdIndicatorsChanged = function () {
+    MdSlider.prototype.indicatorsChanged = function () {
         this.refresh();
     };
     MdSlider.prototype.attached = function () {
-        if (this.mdFillContainer) {
+        if (this.fillContainer) {
             this.element.classList.add("fullscreen");
         }
         this.refresh();
@@ -32,10 +32,10 @@ var MdSlider = /** @class */ (function () {
     };
     MdSlider.prototype.refresh = function () {
         var options = {
-            indicators: this.mdIndicators,
-            height: this.mdHeight,
-            duration: this.mdDuration,
-            interval: this.mdInterval
+            indicators: this.indicators,
+            height: this.height,
+            duration: this.duration,
+            interval: this.interval
         };
         this.log.debug("refreshing slider, params:", options);
         au.cleanOptions(options);
@@ -44,23 +44,23 @@ var MdSlider = /** @class */ (function () {
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdSlider.prototype, "mdFillContainer", void 0);
+    ], MdSlider.prototype, "fillContainer", void 0);
     tslib_1.__decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
-    ], MdSlider.prototype, "mdHeight", void 0);
+    ], MdSlider.prototype, "height", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
-    ], MdSlider.prototype, "mdIndicators", void 0);
+    ], MdSlider.prototype, "indicators", void 0);
     tslib_1.__decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
-    ], MdSlider.prototype, "mdInterval", void 0);
+    ], MdSlider.prototype, "interval", void 0);
     tslib_1.__decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
-    ], MdSlider.prototype, "mdDuration", void 0);
+    ], MdSlider.prototype, "duration", void 0);
     MdSlider = tslib_1.__decorate([
         au.customElement("md-slider"),
         au.autoinject,

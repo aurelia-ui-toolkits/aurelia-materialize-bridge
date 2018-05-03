@@ -3,14 +3,14 @@ import * as au from "../aurelia";
 @au.customElement("md-colors")
 export class MdColors {
 	@au.bindable
-	mdPrimaryColor: string;
+	primaryColor: string;
 
 	@au.bindable
-	mdAccentColor: string;
+	accentColor: string;
 
 	@au.bindable
-	mdErrorColor: string = "#F44336";
+	errorColor: string = "#F44336";
 
 	@au.bindable
-	mdSuccessColor: string = "#26A69A";
+	successColor: string = "#26A69A";
 }

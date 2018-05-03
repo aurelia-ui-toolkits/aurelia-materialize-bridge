@@ -33,9 +33,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         MdChips.prototype.refresh = function () {
             var _this = this;
             var options = {
-                autocompleteOptions: {
-                    data: this.autocompleteData
-                },
                 data: this.data,
                 placeholder: this.placeholder,
                 limit: this.limit,
@@ -44,6 +41,9 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
                 onChipDelete: function () { return _this.data = _this.instance.chipsData; },
                 onChipSelect: function (e, chip) { return au.fireEvent(_this.element, "selected", { target: chip }); }
             };
+            if (this.autocompleteData) {
+                options.autocompleteOptions = { data: this.autocompleteData };
+            }
             au.cleanOptions(options);
             this.instance = new M.Chips(this.element, options);
         };

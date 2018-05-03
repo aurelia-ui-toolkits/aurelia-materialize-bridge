@@ -1,5 +1,5 @@
 <template class="chip">
 	<require from="./chip.css"></require>
 	<slot></slot>
-	<i show.bind="mdClose" class="material-icons" click.delegate="close()">close</i>
+	<i show.bind="hasClose" class="material-icons" click.delegate="closeChip()">close</i>
 </template>

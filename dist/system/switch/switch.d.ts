@@ -2,12 +2,12 @@ export declare class MdSwitch {
     private element;
     constructor(element: Element);
     checkbox: HTMLInputElement;
-    mdChecked: boolean;
-    mdCheckedChanged(newValue: any): void;
-    mdDisabled: boolean;
-    mdReadonly: boolean;
-    mdLabelOff: string;
-    mdLabelOn: string;
+    checked: boolean;
+    checkedChanged(newValue: any): void;
+    disabled: boolean;
+    readonly: boolean;
+    labelOff: string;
+    labelOn: string;
     attached(): void;
     detached(): void;
     handleChange: () => void;

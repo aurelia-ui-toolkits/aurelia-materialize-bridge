@@ -14,25 +14,25 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
         execute: function () {
             MdColors = /** @class */ (function () {
                 function MdColors() {
-                    this.mdErrorColor = "#F44336";
-                    this.mdSuccessColor = "#26A69A";
+                    this.errorColor = "#F44336";
+                    this.successColor = "#26A69A";
                 }
                 tslib_1.__decorate([
                     au.bindable,
                     tslib_1.__metadata("design:type", String)
-                ], MdColors.prototype, "mdPrimaryColor", void 0);
+                ], MdColors.prototype, "primaryColor", void 0);
                 tslib_1.__decorate([
                     au.bindable,
                     tslib_1.__metadata("design:type", String)
-                ], MdColors.prototype, "mdAccentColor", void 0);
+                ], MdColors.prototype, "accentColor", void 0);
                 tslib_1.__decorate([
                     au.bindable,
                     tslib_1.__metadata("design:type", String)
-                ], MdColors.prototype, "mdErrorColor", void 0);
+                ], MdColors.prototype, "errorColor", void 0);
                 tslib_1.__decorate([
                     au.bindable,
                     tslib_1.__metadata("design:type", String)
-                ], MdColors.prototype, "mdSuccessColor", void 0);
+                ], MdColors.prototype, "successColor", void 0);
                 MdColors = tslib_1.__decorate([
                     au.customElement("md-colors")
                 ], MdColors);

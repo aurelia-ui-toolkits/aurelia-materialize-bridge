@@ -3,12 +3,12 @@ export declare class MdSlider {
     private element;
     constructor(element: Element);
     log: au.Logger;
-    mdFillContainer: boolean;
-    mdHeight: number;
-    mdIndicators: boolean;
-    mdIndicatorsChanged(): void;
-    mdInterval: number;
-    mdDuration: number;
+    fillContainer: boolean;
+    height: number;
+    indicators: boolean;
+    indicatorsChanged(): void;
+    interval: number;
+    duration: number;
     instance: M.Slider;
     attached(): void;
     detached(): void;

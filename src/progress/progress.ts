@@ -8,11 +8,11 @@ export class MdProgress {
 	wrapper: HTMLDivElement;
 
 	@au.ato.bindable.stringMd
-	mdColor: string = null;
+	color: string = null;
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
-	mdPixelSize?: number = null;
-	mdPixelSizeChanged(newValue: number) {
+	pixelSize?: number = null;
+	pixelSizeChanged(newValue: number) {
 		if (this.wrapper) {
 			this.wrapper.style.height = `${newValue}px`;
 			this.wrapper.style.width = `${newValue}px`;
@@ -20,16 +20,16 @@ export class MdProgress {
 	}
 
 	@au.bindable
-	mdSize: "big" | "default" | "small" = "big";
-	mdSizeChanged(newValue) {
-		this.mdPixelSize = null;
+	size: "big" | "default" | "small" = "big";
+	sizeChanged(newValue) {
+		this.pixelSize = null;
 	}
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	mdType: "linear" | "circular" = "linear";
+	type: "linear" | "circular" = "linear";
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
-	mdValue: number = null;
+	value: number = null;
 
 	bind() {
 		// DO NOT REMOVE!!!
@@ -38,6 +38,6 @@ export class MdProgress {
 	}
 
 	attached() {
-		this.mdPixelSizeChanged(this.mdPixelSize);
+		this.pixelSizeChanged(this.pixelSize);
 	}
 }

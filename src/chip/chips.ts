@@ -53,9 +53,6 @@ export class MdChips {
 
 	refresh() {
 		const options: Partial<M.ChipsOptions> = {
-			autocompleteOptions: {
-				data: this.autocompleteData
-			},
 			data: this.data,
 			placeholder: this.placeholder,
 			limit: this.limit,
@@ -64,6 +61,9 @@ export class MdChips {
 			onChipDelete: () => this.data = this.instance.chipsData,
 			onChipSelect: (e, chip) => au.fireEvent(this.element, "selected", { target: chip })
 		};
+		if (this.autocompleteData) {
+			options.autocompleteOptions = { data: this.autocompleteData };
+		}
 		au.cleanOptions(options);
 		this.instance = new M.Chips(this.element, options);
 	}

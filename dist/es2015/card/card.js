@@ -3,37 +3,37 @@ import * as au from "../aurelia";
 var MdCard = /** @class */ (function () {
     function MdCard(element) {
         this.element = element;
-        this.mdImage = null;
-        this.mdSize = "";
+        this.image = null;
+        this.size = "";
     }
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdCard.prototype, "mdHorizontal", void 0);
+    ], MdCard.prototype, "horizontal", void 0);
     tslib_1.__decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
-    ], MdCard.prototype, "mdImage", void 0);
+    ], MdCard.prototype, "image", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdCard.prototype, "mdReveal", void 0);
+    ], MdCard.prototype, "reveal", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdCard.prototype, "mdAction", void 0);
+    ], MdCard.prototype, "action", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdCard.prototype, "mdStickyAction", void 0);
+    ], MdCard.prototype, "stickyAction", void 0);
     tslib_1.__decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay }),
         tslib_1.__metadata("design:type", String)
-    ], MdCard.prototype, "mdSize", void 0);
+    ], MdCard.prototype, "size", void 0);
     tslib_1.__decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
-    ], MdCard.prototype, "mdTitle", void 0);
+    ], MdCard.prototype, "title", void 0);
     tslib_1.__decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)

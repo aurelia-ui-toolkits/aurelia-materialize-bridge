@@ -6,28 +6,28 @@ export class MdCarousel {
 	constructor(private element: Element, private taskQueue: au.TaskQueue) { }
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdIndicators: boolean = true;
+	indicators: boolean = true;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdFullWidth: boolean = false;
+	fullWidth: boolean = false;
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdDuration: number;
+	duration: number;
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdDist: number;
+	dist: number;
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdShift: number;
+	shift: number;
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdPadding: number;
+	padding: number;
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdNumVisible: number;
+	numVisible: number;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdNoWrap: boolean;
+	noWrap: boolean;
 
 	@au.children("md-carousel-item")
 	items: Element[] = [];
@@ -38,7 +38,7 @@ export class MdCarousel {
 	instance: M.Carousel;
 
 	attached() {
-		if (this.mdFullWidth) {
+		if (this.fullWidth) {
 			this.element.classList.add("carousel-slider");
 		}
 		this.refresh();
@@ -53,14 +53,14 @@ export class MdCarousel {
 			return;
 		}
 		const options: Partial<M.CarouselOptions> = {
-			fullWidth: this.mdFullWidth,
-			indicators: this.mdIndicators,
-			dist: this.mdDist,
-			duration: this.mdDuration,
-			noWrap: this.mdNoWrap,
-			numVisible: this.mdNumVisible,
-			padding: this.mdPadding,
-			shift: this.mdShift,
+			fullWidth: this.fullWidth,
+			indicators: this.indicators,
+			dist: this.dist,
+			duration: this.duration,
+			noWrap: this.noWrap,
+			numVisible: this.numVisible,
+			padding: this.padding,
+			shift: this.shift,
 			onCycleTo: (current, dragged) => au.fireMaterializeEvent(this.element, "cycle-to", { current, dragged })
 		};
 		au.cleanOptions(options);

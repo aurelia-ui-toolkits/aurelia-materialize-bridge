@@ -6,8 +6,8 @@ export class MdCarouselItem {
 	constructor(private element: Element) { }
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdHref: string = "";
+	href: string = "";
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay })
-	mdImage: string = "";
+	image: string = "";
 }

@@ -13,24 +13,24 @@ export class MdCheckbox {
 	checkbox: HTMLInputElement;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
-	mdChecked?: boolean | any[];
+	checked: boolean | any[];
 
 	@au.ato.bindable.booleanMd
-	mdDisabled: boolean;
-	mdDisabledChanged(newValue) {
+	disabled: boolean;
+	disabledChanged(newValue) {
 		if (this.checkbox) {
 			this.checkbox.disabled = !!newValue;
 		}
 	}
 
 	@au.ato.bindable.booleanMd
-	mdReadonly: boolean = false;
-	mdReadonlyChanged() {
+	readonly: boolean = false;
+	readonlyChanged() {
 		if (!this.checkbox) {
 			return;
 		}
 
-		if (this.mdReadonly) {
+		if (this.readonly) {
 			this.checkbox.addEventListener("change", this.preventChange);
 		} else {
 			this.checkbox.removeEventListener("change", this.preventChange);
@@ -38,29 +38,29 @@ export class MdCheckbox {
 	}
 
 	@au.ato.bindable.booleanMd
-	mdFilledIn: boolean;
+	filledIn: boolean;
 
 	@au.bindable
-	mdMatcher: (a: any, b: any) => boolean;
+	matcher: (a: any, b: any) => boolean;
 
 	@au.bindable
-	mdModel: any;
+	model: any;
 
 	attached() {
 		this.attributeManager = new au.AttributeManager(this.checkbox);
-		if (this.mdFilledIn) {
+		if (this.filledIn) {
 			this.attributeManager.addClasses("filled-in");
 		}
-		if (this.mdChecked === null) {
+		if (this.checked === null) {
 			this.checkbox.indeterminate = true;
 		} else {
 			this.checkbox.indeterminate = false;
 		}
-		if (this.mdDisabled) {
+		if (this.disabled) {
 			this.checkbox.disabled = true;
 		}
-		this.mdReadonly = this.mdReadonly;
-		this.mdReadonlyChanged();
+		this.readonly = this.readonly;
+		this.readonlyChanged();
 	}
 
 	detached() {

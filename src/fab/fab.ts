@@ -5,25 +5,25 @@ export class MdFab {
 	constructor(private element: Element, private taskQueue: au.TaskQueue) { }
 
 	@au.ato.bindable.stringMd({defaultBindingMode: au.bindingMode.oneTime})
-	mdDirection: "top" | "right" | "buttom" | "left";
+	direction: "top" | "right" | "buttom" | "left";
 
 	@au.ato.bindable.booleanMd({defaultBindingMode: au.bindingMode.oneTime})
-	mdHoverEnabled: boolean;
+	hoverEnabled: boolean;
 
 	@au.ato.bindable.booleanMd({defaultBindingMode: au.bindingMode.oneTime})
-	mdToolbarEnabled: boolean;
+	toolbarEnabled: boolean;
 
 	instance: M.FloatingActionButton;
 
 	attached() {
 		this.element.classList.add("fixed-action-btn");
-		if (this.mdToolbarEnabled) {
+		if (this.toolbarEnabled) {
 			this.element.classList.add("toolbar");
 		}
 		let options: Partial<M.FloatingActionButtonOptions> = {
-			direction: this.mdDirection,
-			hoverEnabled: this.mdHoverEnabled,
-			toolbarEnabled: this.mdToolbarEnabled
+			direction: this.direction,
+			hoverEnabled: this.hoverEnabled,
+			toolbarEnabled: this.toolbarEnabled
 		};
 		au.cleanOptions(options);
 		this.taskQueue.queueTask(() => this.instance = new M.FloatingActionButton(this.element, options));

@@ -9,9 +9,12 @@ export declare class MdSidenav {
     sidenav: HTMLDivElement;
     instance: M.Sidenav;
     attributeManager: au.AttributeManager;
-    options: M.SidenavOptions;
-    mdFixed: boolean;
-    mdFixedChanged(newValue: any): void;
+    edge: "left" | "right";
+    draggable: boolean;
+    inDuration: number;
+    outDuration: number;
+    fixed: boolean;
+    fixedChanged(newValue: any): void;
     attached(): void;
     open(): void;
     close(): void;

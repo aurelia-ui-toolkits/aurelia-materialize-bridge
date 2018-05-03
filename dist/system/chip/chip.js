@@ -15,16 +15,16 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
             MdChip = /** @class */ (function () {
                 function MdChip(element) {
                     this.element = element;
-                    this.mdClose = false;
+                    this.hasClose = false;
                 }
-                MdChip.prototype.close = function () {
+                MdChip.prototype.closeChip = function () {
                     this.element.parentElement.removeChild(this.element);
                     au.fireEvent(this.element, "close");
                 };
                 tslib_1.__decorate([
                     au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
-                ], MdChip.prototype, "mdClose", void 0);
+                ], MdChip.prototype, "hasClose", void 0);
                 MdChip = tslib_1.__decorate([
                     au.autoinject,
                     tslib_1.__metadata("design:paramtypes", [Element])

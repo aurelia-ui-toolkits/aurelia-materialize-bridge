@@ -6,75 +6,75 @@ export class MdPagination {
 	constructor(private element: Element) { }
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
-	mdActivePage: number = 1;
+	activePage: number = 1;
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay })
-	mdPages: number = 5;
-	mdPagesChanged() {
+	pages: number = 5;
+	pagesChanged() {
 		this.setActivePage(1);
 	}
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay })
-	mdVisiblePageLinks: number = 15;
-	mdVisiblePageLinksChanged() {
-		this.mdPageLinks = this.generatePageLinks();
+	visiblePageLinks: number = 15;
+	visiblePageLinksChanged() {
+		this.pageLinks = this.generatePageLinks();
 	}
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneWay })
-	mdPageLinks: number[] = [];
+	pageLinks: number[] = [];
 
 	@au.ato.bindable.booleanMd
-	mdShowFirstLast: boolean = true;
+	showFirstLast: boolean = true;
 
 	@au.ato.bindable.booleanMd
-	mdShowPrevNext: boolean = true;
+	showPrevNext: boolean = true;
 
 	@au.ato.bindable.booleanMd
-	mdShowPageLinks: boolean = true;
+	showPageLinks: boolean = true;
 
 	bind() {
-		this.mdPageLinks = this.generatePageLinks();
+		this.pageLinks = this.generatePageLinks();
 	}
 
 	setActivePage(page: number) {
-		this.mdActivePage = page;
-		this.mdPageLinks = this.generatePageLinks();
-		au.fireMaterializeEvent(this.element, "page-changed", this.mdActivePage);
+		this.activePage = page;
+		this.pageLinks = this.generatePageLinks();
+		au.fireMaterializeEvent(this.element, "page-changed", this.activePage);
 	}
 
 	setFirstPage() {
-		if (this.mdActivePage > 1) {
+		if (this.activePage > 1) {
 			this.setActivePage(1);
 		}
 	}
 
 	setLastPage() {
-		if (this.mdActivePage < this.mdPages) {
-			this.setActivePage(this.mdPages);
+		if (this.activePage < this.pages) {
+			this.setActivePage(this.pages);
 		}
 	}
 
 	setPreviousPage() {
-		if (this.mdActivePage > 1) {
-			this.setActivePage(this.mdActivePage - 1);
+		if (this.activePage > 1) {
+			this.setActivePage(this.activePage - 1);
 		}
 	}
 
 	setNextPage() {
-		if (this.mdActivePage < this.mdPages) {
-			this.setActivePage(this.mdActivePage + 1);
+		if (this.activePage < this.pages) {
+			this.setActivePage(this.activePage + 1);
 		}
 	}
 
 	generatePageLinks(): number[] {
-		let numberOfLinks = Math.min(this.mdVisiblePageLinks, this.mdPages);
+		let numberOfLinks = Math.min(this.visiblePageLinks, this.pages);
 		let midPoint = Math.ceil(numberOfLinks / 2);
-		let start = Math.max(this.mdActivePage - midPoint, 0);
+		let start = Math.max(this.activePage - midPoint, 0);
 		// respect visible links
-		if (start + midPoint * 2 > this.mdPages) {
-			start = this.mdPages - midPoint * 2;
+		if (start + midPoint * 2 > this.pages) {
+			start = this.pages - midPoint * 2;
 		}
-		let end = Math.min(start + numberOfLinks, this.mdPages);
+		let end = Math.min(start + numberOfLinks, this.pages);
 
 		let list: number[] = [];
 		for (let i = start; i < end; i++) {

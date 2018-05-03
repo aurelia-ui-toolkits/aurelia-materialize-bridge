@@ -11,17 +11,17 @@ export class MdTapTarget {
 	log: au.Logger;
 
 	@au.bindable
-	mdRef: HTMLElement;
+	ref: HTMLElement;
 	instance: M.TapTarget;
 
 	bind() {
-		if (!this.mdRef) {
+		if (!this.ref) {
 			throw new Error("md-tap-target needs a referenced element");
 		} else {
-			let id = this.mdRef.getAttribute("id");
+			let id = this.ref.getAttribute("id");
 			if (!id) {
 				id = `md-tap-target-${MdTapTarget.controlId++}`;
-				this.mdRef.setAttribute("id", id);
+				this.ref.setAttribute("id", id);
 			}
 			this.element.setAttribute("data-target", id);
 		}

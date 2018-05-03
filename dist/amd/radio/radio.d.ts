@@ -6,14 +6,14 @@ export declare class MdRadio {
     controlId: string;
     attributeManager: au.AttributeManager;
     radio: HTMLInputElement;
-    mdChecked: boolean | string;
-    mdDisabled: boolean;
-    mdDisabledChanged(newValue: boolean): void;
-    mdReadonly: boolean;
-    mdGap: boolean;
-    mdModel: any;
-    mdName: string;
-    mdValue: string;
+    checked: boolean | string;
+    disabled: boolean;
+    disabledChanged(newValue: boolean): void;
+    readonly: boolean;
+    gap: boolean;
+    model: any;
+    name: string;
+    value: string;
     attached(): void;
     detached(): void;
 }

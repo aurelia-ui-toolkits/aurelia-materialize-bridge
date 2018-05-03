@@ -1,12 +1,12 @@
 export declare class MdCard {
     private element;
     constructor(element: Element);
-    mdHorizontal: boolean;
-    mdImage: string;
-    mdReveal: boolean;
-    mdAction: boolean;
-    mdStickyAction: boolean;
-    mdSize: string;
-    mdTitle: string;
+    horizontal: boolean;
+    image: string;
+    reveal: boolean;
+    action: boolean;
+    stickyAction: boolean;
+    size: string;
+    title: string;
     mdClass: string;
 }

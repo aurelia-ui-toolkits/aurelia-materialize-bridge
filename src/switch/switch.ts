@@ -8,28 +8,28 @@ export class MdSwitch {
 	checkbox: HTMLInputElement;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay })
-	mdChecked: boolean;
-	mdCheckedChanged(newValue) {
+	checked: boolean;
+	checkedChanged(newValue) {
 		if (this.checkbox) {
 			this.checkbox.checked = !!newValue;
 		}
 	}
 
 	@au.ato.bindable.booleanMd
-	mdDisabled: boolean;
+	disabled: boolean;
 
 	@au.ato.bindable.booleanMd
-	mdReadonly: boolean = false;
+	readonly: boolean = false;
 
 	@au.bindable
-	mdLabelOff: string = "Off";
+	labelOff: string = "Off";
 
 	@au.bindable
-	mdLabelOn: string = "On";
+	labelOn: string = "On";
 
 	attached() {
-		this.checkbox.checked = this.mdChecked;
-		if (this.mdDisabled) {
+		this.checkbox.checked = this.checked;
+		if (this.disabled) {
 			this.checkbox.disabled = true;
 		}
 		this.checkbox.addEventListener("change", this.handleChange);
@@ -42,7 +42,7 @@ export class MdSwitch {
 	}
 
 	handleChange = () => {
-		this.mdChecked = this.checkbox.checked;
+		this.checked = this.checkbox.checked;
 		au.fireEvent(this.element, "blur");
 	}
 

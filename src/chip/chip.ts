@@ -5,9 +5,9 @@ export class MdChip {
 	constructor(private element: Element) { }
 
 	@au.ato.bindable.booleanMd
-	mdClose: boolean = false;
+	hasClose: boolean = false;
 
-	close() {
+	closeChip() {
 		this.element.parentElement.removeChild(this.element);
 		au.fireEvent(this.element, "close");
 	}

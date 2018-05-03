@@ -4,15 +4,15 @@ var MdCarousel = /** @class */ (function () {
     function MdCarousel(element, taskQueue) {
         this.element = element;
         this.taskQueue = taskQueue;
-        this.mdIndicators = true;
-        this.mdFullWidth = false;
+        this.indicators = true;
+        this.fullWidth = false;
         this.items = [];
     }
     MdCarousel.prototype.itemsChanged = function () {
         this.refresh();
     };
     MdCarousel.prototype.attached = function () {
-        if (this.mdFullWidth) {
+        if (this.fullWidth) {
             this.element.classList.add("carousel-slider");
         }
         this.refresh();
@@ -26,14 +26,14 @@ var MdCarousel = /** @class */ (function () {
             return;
         }
         var options = {
-            fullWidth: this.mdFullWidth,
-            indicators: this.mdIndicators,
-            dist: this.mdDist,
-            duration: this.mdDuration,
-            noWrap: this.mdNoWrap,
-            numVisible: this.mdNumVisible,
-            padding: this.mdPadding,
-            shift: this.mdShift,
+            fullWidth: this.fullWidth,
+            indicators: this.indicators,
+            dist: this.dist,
+            duration: this.duration,
+            noWrap: this.noWrap,
+            numVisible: this.numVisible,
+            padding: this.padding,
+            shift: this.shift,
             onCycleTo: function (current, dragged) { return au.fireMaterializeEvent(_this.element, "cycle-to", { current: current, dragged: dragged }); }
         };
         au.cleanOptions(options);
@@ -53,35 +53,35 @@ var MdCarousel = /** @class */ (function () {
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdCarousel.prototype, "mdIndicators", void 0);
+    ], MdCarousel.prototype, "indicators", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdCarousel.prototype, "mdFullWidth", void 0);
+    ], MdCarousel.prototype, "fullWidth", void 0);
     tslib_1.__decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
-    ], MdCarousel.prototype, "mdDuration", void 0);
+    ], MdCarousel.prototype, "duration", void 0);
     tslib_1.__decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
-    ], MdCarousel.prototype, "mdDist", void 0);
+    ], MdCarousel.prototype, "dist", void 0);
     tslib_1.__decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
-    ], MdCarousel.prototype, "mdShift", void 0);
+    ], MdCarousel.prototype, "shift", void 0);
     tslib_1.__decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
-    ], MdCarousel.prototype, "mdPadding", void 0);
+    ], MdCarousel.prototype, "padding", void 0);
     tslib_1.__decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
-    ], MdCarousel.prototype, "mdNumVisible", void 0);
+    ], MdCarousel.prototype, "numVisible", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdCarousel.prototype, "mdNoWrap", void 0);
+    ], MdCarousel.prototype, "noWrap", void 0);
     tslib_1.__decorate([
         au.children("md-carousel-item"),
         tslib_1.__metadata("design:type", Array)

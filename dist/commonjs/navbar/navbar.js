@@ -9,39 +9,39 @@ var MdNavbar = /** @class */ (function () {
     MdNavbar.prototype.attached = function () {
         this.fixedAttributeManager = new au.AttributeManager(this.fixedAnchor);
         this.navAttributeManager = new au.AttributeManager(this.nav);
-        if (this.mdFixed) {
+        if (this.fixed) {
             this.fixedAttributeManager.addClasses("navbar-fixed");
         }
-        if (this.mdAutoHeight) {
+        if (this.autoHeight) {
             this.navAttributeManager.addClasses("md-auto-height");
         }
-        if (this.mdExtended) {
+        if (this.extended) {
             this.navAttributeManager.addClasses("nav-extended");
         }
     };
     MdNavbar.prototype.detached = function () {
-        if (this.mdFixed) {
+        if (this.fixed) {
             this.fixedAttributeManager.removeClasses("navbar-fixed");
         }
-        if (this.mdAutoHeight) {
+        if (this.autoHeight) {
             this.navAttributeManager.removeClasses("md-auto-height");
         }
-        if (this.mdExtended) {
+        if (this.extended) {
             this.navAttributeManager.removeClasses("nav-extended");
         }
     };
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdNavbar.prototype, "mdExtended", void 0);
+    ], MdNavbar.prototype, "extended", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdNavbar.prototype, "mdFixed", void 0);
+    ], MdNavbar.prototype, "fixed", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdNavbar.prototype, "mdAutoHeight", void 0);
+    ], MdNavbar.prototype, "autoHeight", void 0);
     MdNavbar = tslib_1.__decorate([
         au.customElement("md-navbar"),
         au.autoinject,

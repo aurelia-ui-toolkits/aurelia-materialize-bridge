@@ -5,20 +5,20 @@ var au = require("../aurelia");
 var MdCheckbox = /** @class */ (function () {
     function MdCheckbox(element) {
         this.element = element;
-        this.mdReadonly = false;
+        this.readonly = false;
         this.controlId = "md-checkbox-" + MdCheckbox_1.id++;
     }
     MdCheckbox_1 = MdCheckbox;
-    MdCheckbox.prototype.mdDisabledChanged = function (newValue) {
+    MdCheckbox.prototype.disabledChanged = function (newValue) {
         if (this.checkbox) {
             this.checkbox.disabled = !!newValue;
         }
     };
-    MdCheckbox.prototype.mdReadonlyChanged = function () {
+    MdCheckbox.prototype.readonlyChanged = function () {
         if (!this.checkbox) {
             return;
         }
-        if (this.mdReadonly) {
+        if (this.readonly) {
             this.checkbox.addEventListener("change", this.preventChange);
         }
         else {
@@ -27,20 +27,20 @@ var MdCheckbox = /** @class */ (function () {
     };
     MdCheckbox.prototype.attached = function () {
         this.attributeManager = new au.AttributeManager(this.checkbox);
-        if (this.mdFilledIn) {
+        if (this.filledIn) {
             this.attributeManager.addClasses("filled-in");
         }
-        if (this.mdChecked === null) {
+        if (this.checked === null) {
             this.checkbox.indeterminate = true;
         }
         else {
             this.checkbox.indeterminate = false;
         }
-        if (this.mdDisabled) {
+        if (this.disabled) {
             this.checkbox.disabled = true;
         }
-        this.mdReadonly = this.mdReadonly;
-        this.mdReadonlyChanged();
+        this.readonly = this.readonly;
+        this.readonlyChanged();
     };
     MdCheckbox.prototype.detached = function () {
         this.attributeManager.removeClasses(["filled-in", "disabled"]);
@@ -53,27 +53,27 @@ var MdCheckbox = /** @class */ (function () {
     tslib_1.__decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
         tslib_1.__metadata("design:type", Object)
-    ], MdCheckbox.prototype, "mdChecked", void 0);
+    ], MdCheckbox.prototype, "checked", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
-    ], MdCheckbox.prototype, "mdDisabled", void 0);
+    ], MdCheckbox.prototype, "disabled", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
-    ], MdCheckbox.prototype, "mdReadonly", void 0);
+    ], MdCheckbox.prototype, "readonly", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
-    ], MdCheckbox.prototype, "mdFilledIn", void 0);
+    ], MdCheckbox.prototype, "filledIn", void 0);
     tslib_1.__decorate([
         au.bindable,
         tslib_1.__metadata("design:type", Function)
-    ], MdCheckbox.prototype, "mdMatcher", void 0);
+    ], MdCheckbox.prototype, "matcher", void 0);
     tslib_1.__decorate([
         au.bindable,
         tslib_1.__metadata("design:type", Object)
-    ], MdCheckbox.prototype, "mdModel", void 0);
+    ], MdCheckbox.prototype, "model", void 0);
     MdCheckbox = MdCheckbox_1 = tslib_1.__decorate([
         au.customElement("md-checkbox"),
         au.autoinject,

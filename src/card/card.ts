@@ -6,25 +6,25 @@ export class MdCard {
 	constructor(private element: Element) { }
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdHorizontal: boolean;
+	horizontal: boolean;
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdImage: string = null;
+	image: string = null;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdReveal: boolean;
+	reveal: boolean;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdAction: boolean;
+	action: boolean;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdStickyAction: boolean;
+	stickyAction: boolean;
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay })
-	mdSize: string = "";
+	size: string = "";
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdTitle: string;
+	title: string;
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdClass: string;

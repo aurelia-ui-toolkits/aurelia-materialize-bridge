@@ -4,7 +4,7 @@ export declare class MdTapTarget {
     constructor(element: Element);
     static controlId: number;
     log: au.Logger;
-    mdRef: HTMLElement;
+    ref: HTMLElement;
     instance: M.TapTarget;
     bind(): void;
     attached(): void;

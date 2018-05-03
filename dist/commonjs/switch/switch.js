@@ -6,22 +6,22 @@ var MdSwitch = /** @class */ (function () {
     function MdSwitch(element) {
         var _this = this;
         this.element = element;
-        this.mdReadonly = false;
-        this.mdLabelOff = "Off";
-        this.mdLabelOn = "On";
+        this.readonly = false;
+        this.labelOff = "Off";
+        this.labelOn = "On";
         this.handleChange = function () {
-            _this.mdChecked = _this.checkbox.checked;
+            _this.checked = _this.checkbox.checked;
             au.fireEvent(_this.element, "blur");
         };
     }
-    MdSwitch.prototype.mdCheckedChanged = function (newValue) {
+    MdSwitch.prototype.checkedChanged = function (newValue) {
         if (this.checkbox) {
             this.checkbox.checked = !!newValue;
         }
     };
     MdSwitch.prototype.attached = function () {
-        this.checkbox.checked = this.mdChecked;
-        if (this.mdDisabled) {
+        this.checkbox.checked = this.checked;
+        if (this.disabled) {
             this.checkbox.disabled = true;
         }
         this.checkbox.addEventListener("change", this.handleChange);
@@ -37,23 +37,23 @@ var MdSwitch = /** @class */ (function () {
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdSwitch.prototype, "mdChecked", void 0);
+    ], MdSwitch.prototype, "checked", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
-    ], MdSwitch.prototype, "mdDisabled", void 0);
+    ], MdSwitch.prototype, "disabled", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
-    ], MdSwitch.prototype, "mdReadonly", void 0);
+    ], MdSwitch.prototype, "readonly", void 0);
     tslib_1.__decorate([
         au.bindable,
         tslib_1.__metadata("design:type", String)
-    ], MdSwitch.prototype, "mdLabelOff", void 0);
+    ], MdSwitch.prototype, "labelOff", void 0);
     tslib_1.__decorate([
         au.bindable,
         tslib_1.__metadata("design:type", String)
-    ], MdSwitch.prototype, "mdLabelOn", void 0);
+    ], MdSwitch.prototype, "labelOn", void 0);
     MdSwitch = tslib_1.__decorate([
         au.customElement("md-switch"),
         au.autoinject,

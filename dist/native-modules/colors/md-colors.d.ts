@@ -1,6 +1,6 @@
 export declare class MdColors {
-    mdPrimaryColor: string;
-    mdAccentColor: string;
-    mdErrorColor: string;
-    mdSuccessColor: string;
+    primaryColor: string;
+    accentColor: string;
+    errorColor: string;
+    successColor: string;
 }

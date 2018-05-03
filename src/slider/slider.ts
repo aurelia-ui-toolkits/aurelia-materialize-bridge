@@ -10,27 +10,27 @@ export class MdSlider {
 	log: au.Logger;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdFillContainer: boolean = false;
+	fillContainer: boolean = false;
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdHeight: number;
+	height: number;
 
 	@au.ato.bindable.booleanMd
-	mdIndicators: boolean;
-	mdIndicatorsChanged() {
+	indicators: boolean;
+	indicatorsChanged() {
 		this.refresh();
 	}
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdInterval: number;
+	interval: number;
 
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdDuration: number;
+	duration: number;
 
 	instance: M.Slider;
 
 	attached() {
-		if (this.mdFillContainer) {
+		if (this.fillContainer) {
 			this.element.classList.add("fullscreen");
 		}
 		this.refresh();
@@ -58,10 +58,10 @@ export class MdSlider {
 
 	refresh() {
 		let options: M.SliderOptions = {
-			indicators: this.mdIndicators,
-			height: this.mdHeight,
-			duration: this.mdDuration,
-			interval: this.mdInterval
+			indicators: this.indicators,
+			height: this.height,
+			duration: this.duration,
+			interval: this.interval
 		};
 		this.log.debug("refreshing slider, params:", options);
 		au.cleanOptions(options);

@@ -2,11 +2,11 @@ export declare class MdRange {
     private element;
     constructor(element: Element);
     input: HTMLInputElement;
-    mdReadonly: boolean;
-    mdMin: number;
-    mdMax: number;
-    mdStep: number;
-    mdValue: number;
+    readonly: boolean;
+    min: number;
+    max: number;
+    step: number;
+    value: number;
     instance: M.Range;
     attached(): void;
     detached(): void;

@@ -9,14 +9,14 @@ var MdTapTarget = /** @class */ (function () {
     }
     MdTapTarget_1 = MdTapTarget;
     MdTapTarget.prototype.bind = function () {
-        if (!this.mdRef) {
+        if (!this.ref) {
             throw new Error("md-tap-target needs a referenced element");
         }
         else {
-            var id = this.mdRef.getAttribute("id");
+            var id = this.ref.getAttribute("id");
             if (!id) {
                 id = "md-tap-target-" + MdTapTarget_1.controlId++;
-                this.mdRef.setAttribute("id", id);
+                this.ref.setAttribute("id", id);
             }
             this.element.setAttribute("data-target", id);
         }
@@ -41,7 +41,7 @@ var MdTapTarget = /** @class */ (function () {
     tslib_1.__decorate([
         au.bindable,
         tslib_1.__metadata("design:type", HTMLElement)
-    ], MdTapTarget.prototype, "mdRef", void 0);
+    ], MdTapTarget.prototype, "ref", void 0);
     MdTapTarget = MdTapTarget_1 = tslib_1.__decorate([
         au.customElement("md-tap-target"),
         au.autoinject,

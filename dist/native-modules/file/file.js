@@ -4,11 +4,11 @@ var MdFileInput = /** @class */ (function () {
     function MdFileInput(element) {
         var _this = this;
         this.element = element;
-        this.mdCaption = "File";
-        this.mdMultiple = false;
-        this.mdLabelValue = "";
+        this.caption = "File";
+        this.multiple = false;
+        this.labelValue = "";
         this.disabled = false;
-        this.mdReadonly = false;
+        this.readonly = false;
         this.suspendUpdate = false;
         this.handleChangeFromNativeInput = function () {
             if (!_this.suspendUpdate) {
@@ -28,15 +28,15 @@ var MdFileInput = /** @class */ (function () {
     tslib_1.__decorate([
         au.ato.bindable.stringMd,
         tslib_1.__metadata("design:type", Object)
-    ], MdFileInput.prototype, "mdCaption", void 0);
+    ], MdFileInput.prototype, "caption", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Boolean)
-    ], MdFileInput.prototype, "mdMultiple", void 0);
+    ], MdFileInput.prototype, "multiple", void 0);
     tslib_1.__decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay }),
         tslib_1.__metadata("design:type", String)
-    ], MdFileInput.prototype, "mdLabelValue", void 0);
+    ], MdFileInput.prototype, "labelValue", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
@@ -44,7 +44,7 @@ var MdFileInput = /** @class */ (function () {
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
-    ], MdFileInput.prototype, "mdReadonly", void 0);
+    ], MdFileInput.prototype, "readonly", void 0);
     MdFileInput = tslib_1.__decorate([
         au.customElement("md-file"),
         au.autoinject,

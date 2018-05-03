@@ -2,13 +2,13 @@ export declare class MdProgress {
     private element;
     constructor(element: Element);
     wrapper: HTMLDivElement;
-    mdColor: string;
-    mdPixelSize?: number;
-    mdPixelSizeChanged(newValue: number): void;
-    mdSize: "big" | "default" | "small";
-    mdSizeChanged(newValue: any): void;
-    mdType: "linear" | "circular";
-    mdValue: number;
+    color: string;
+    pixelSize?: number;
+    pixelSizeChanged(newValue: number): void;
+    size: "big" | "default" | "small";
+    sizeChanged(newValue: any): void;
+    type: "linear" | "circular";
+    value: number;
     bind(): void;
     attached(): void;
 }

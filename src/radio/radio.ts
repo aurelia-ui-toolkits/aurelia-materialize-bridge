@@ -13,37 +13,37 @@ export class MdRadio {
 	radio: HTMLInputElement;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
-	mdChecked: boolean | string;
+	checked: boolean | string;
 
 	@au.ato.bindable.booleanMd
-	mdDisabled: boolean = false;
-	mdDisabledChanged(newValue: boolean) {
+	disabled: boolean = false;
+	disabledChanged(newValue: boolean) {
 		if (this.radio) {
 			this.radio.disabled = newValue;
 		}
 	}
 
 	@au.ato.bindable.booleanMd
-	mdReadonly: boolean = false;
+	readonly: boolean = false;
 
 	@au.ato.bindable.booleanMd
-	mdGap: boolean = false;
+	gap: boolean = false;
 
 	@au.bindable
-	mdModel: any;
+	model: any;
 
 	@au.ato.bindable.stringMd
-	mdName: string = "";
+	name: string = "";
 
 	@au.ato.bindable.stringMd
-	mdValue: string = "";
+	value: string = "";
 
 	attached() {
 		this.attributeManager = new au.AttributeManager(this.radio);
-		if (this.mdGap) {
+		if (this.gap) {
 			this.attributeManager.addClasses("with-gap");
 		}
-		if (this.mdDisabled) {
+		if (this.disabled) {
 			this.radio.disabled = true;
 		}
 	}

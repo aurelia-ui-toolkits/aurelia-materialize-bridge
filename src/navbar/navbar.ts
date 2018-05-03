@@ -9,13 +9,13 @@ export class MdNavbar {
 	nav: HTMLElement;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdExtended: boolean;
+	extended: boolean;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdFixed: boolean;
+	fixed: boolean;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdAutoHeight: boolean;
+	autoHeight: boolean;
 
 	fixedAttributeManager: au.AttributeManager;
 	navAttributeManager: au.AttributeManager;
@@ -23,25 +23,25 @@ export class MdNavbar {
 	attached() {
 		this.fixedAttributeManager = new au.AttributeManager(this.fixedAnchor);
 		this.navAttributeManager = new au.AttributeManager(this.nav);
-		if (this.mdFixed) {
+		if (this.fixed) {
 			this.fixedAttributeManager.addClasses("navbar-fixed");
 		}
-		if (this.mdAutoHeight) {
+		if (this.autoHeight) {
 			this.navAttributeManager.addClasses("md-auto-height");
 		}
-		if (this.mdExtended) {
+		if (this.extended) {
 			this.navAttributeManager.addClasses("nav-extended");
 		}
 	}
 
 	detached() {
-		if (this.mdFixed) {
+		if (this.fixed) {
 			this.fixedAttributeManager.removeClasses("navbar-fixed");
 		}
-		if (this.mdAutoHeight) {
+		if (this.autoHeight) {
 			this.navAttributeManager.removeClasses("md-auto-height");
 		}
-		if (this.mdExtended) {
+		if (this.extended) {
 			this.navAttributeManager.removeClasses("nav-extended");
 		}
 	}

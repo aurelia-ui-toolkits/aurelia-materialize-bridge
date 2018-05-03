@@ -6,19 +6,19 @@ export class MdFileInput {
 	constructor(private element: Element) { }
 
 	@au.ato.bindable.stringMd
-	mdCaption = "File";
+	caption = "File";
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
-	mdMultiple: boolean = false;
+	multiple: boolean = false;
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay })
-	mdLabelValue: string = "";
+	labelValue: string = "";
 
 	@au.ato.bindable.booleanMd
 	disabled: boolean = false;
 
 	@au.ato.bindable.booleanMd
-	mdReadonly: boolean = false;
+	readonly: boolean = false;
 
 	filePath: HTMLInputElement;
 

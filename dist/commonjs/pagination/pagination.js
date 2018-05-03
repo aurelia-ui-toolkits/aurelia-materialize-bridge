@@ -5,57 +5,57 @@ var au = require("../aurelia");
 var MdPagination = /** @class */ (function () {
     function MdPagination(element) {
         this.element = element;
-        this.mdActivePage = 1;
-        this.mdPages = 5;
-        this.mdVisiblePageLinks = 15;
-        this.mdPageLinks = [];
-        this.mdShowFirstLast = true;
-        this.mdShowPrevNext = true;
-        this.mdShowPageLinks = true;
+        this.activePage = 1;
+        this.pages = 5;
+        this.visiblePageLinks = 15;
+        this.pageLinks = [];
+        this.showFirstLast = true;
+        this.showPrevNext = true;
+        this.showPageLinks = true;
     }
-    MdPagination.prototype.mdPagesChanged = function () {
+    MdPagination.prototype.pagesChanged = function () {
         this.setActivePage(1);
     };
-    MdPagination.prototype.mdVisiblePageLinksChanged = function () {
-        this.mdPageLinks = this.generatePageLinks();
+    MdPagination.prototype.visiblePageLinksChanged = function () {
+        this.pageLinks = this.generatePageLinks();
     };
     MdPagination.prototype.bind = function () {
-        this.mdPageLinks = this.generatePageLinks();
+        this.pageLinks = this.generatePageLinks();
     };
     MdPagination.prototype.setActivePage = function (page) {
-        this.mdActivePage = page;
-        this.mdPageLinks = this.generatePageLinks();
-        au.fireMaterializeEvent(this.element, "page-changed", this.mdActivePage);
+        this.activePage = page;
+        this.pageLinks = this.generatePageLinks();
+        au.fireMaterializeEvent(this.element, "page-changed", this.activePage);
     };
     MdPagination.prototype.setFirstPage = function () {
-        if (this.mdActivePage > 1) {
+        if (this.activePage > 1) {
             this.setActivePage(1);
         }
     };
     MdPagination.prototype.setLastPage = function () {
-        if (this.mdActivePage < this.mdPages) {
-            this.setActivePage(this.mdPages);
+        if (this.activePage < this.pages) {
+            this.setActivePage(this.pages);
         }
     };
     MdPagination.prototype.setPreviousPage = function () {
-        if (this.mdActivePage > 1) {
-            this.setActivePage(this.mdActivePage - 1);
+        if (this.activePage > 1) {
+            this.setActivePage(this.activePage - 1);
         }
     };
     MdPagination.prototype.setNextPage = function () {
-        if (this.mdActivePage < this.mdPages) {
-            this.setActivePage(this.mdActivePage + 1);
+        if (this.activePage < this.pages) {
+            this.setActivePage(this.activePage + 1);
         }
     };
     MdPagination.prototype.generatePageLinks = function () {
-        var numberOfLinks = Math.min(this.mdVisiblePageLinks, this.mdPages);
+        var numberOfLinks = Math.min(this.visiblePageLinks, this.pages);
         var midPoint = Math.ceil(numberOfLinks / 2);
-        var start = Math.max(this.mdActivePage - midPoint, 0);
+        var start = Math.max(this.activePage - midPoint, 0);
         // respect visible links
-        if (start + midPoint * 2 > this.mdPages) {
-            start = this.mdPages - midPoint * 2;
+        if (start + midPoint * 2 > this.pages) {
+            start = this.pages - midPoint * 2;
         }
-        var end = Math.min(start + numberOfLinks, this.mdPages);
+        var end = Math.min(start + numberOfLinks, this.pages);
         var list = [];
         for (var i = start; i < end; i++) {
             list.push(i);
@@ -65,31 +65,31 @@ var MdPagination = /** @class */ (function () {
     tslib_1.__decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
         tslib_1.__metadata("design:type", Number)
-    ], MdPagination.prototype, "mdActivePage", void 0);
+    ], MdPagination.prototype, "activePage", void 0);
     tslib_1.__decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay }),
         tslib_1.__metadata("design:type", Number)
-    ], MdPagination.prototype, "mdPages", void 0);
+    ], MdPagination.prototype, "pages", void 0);
     tslib_1.__decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay }),
         tslib_1.__metadata("design:type", Number)
-    ], MdPagination.prototype, "mdVisiblePageLinks", void 0);
+    ], MdPagination.prototype, "visiblePageLinks", void 0);
     tslib_1.__decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.oneWay }),
         tslib_1.__metadata("design:type", Array)
-    ], MdPagination.prototype, "mdPageLinks", void 0);
+    ], MdPagination.prototype, "pageLinks", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
-    ], MdPagination.prototype, "mdShowFirstLast", void 0);
+    ], MdPagination.prototype, "showFirstLast", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
-    ], MdPagination.prototype, "mdShowPrevNext", void 0);
+    ], MdPagination.prototype, "showPrevNext", void 0);
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
-    ], MdPagination.prototype, "mdShowPageLinks", void 0);
+    ], MdPagination.prototype, "showPageLinks", void 0);
     MdPagination = tslib_1.__decorate([
         au.customElement("md-pagination"),
         au.autoinject,
