@@ -1,9 +1,16 @@
-System.register([], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var ClickCounter;
+    var tslib_1, au, ClickCounter;
     return {
-        setters: [],
+        setters: [
+            function (tslib_1_1) {
+                tslib_1 = tslib_1_1;
+            },
+            function (au_1) {
+                au = au_1;
+            }
+        ],
         execute: function () {
             ClickCounter = /** @class */ (function () {
                 function ClickCounter() {
@@ -12,6 +19,9 @@ System.register([], function (exports_1, context_1) {
                 ClickCounter.prototype.increment = function () {
                     this.count++;
                 };
+                ClickCounter = tslib_1.__decorate([
+                    au.customElement("click-counter")
+                ], ClickCounter);
                 return ClickCounter;
             }());
             exports_1("ClickCounter", ClickCounter);
