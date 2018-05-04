@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.34.2"></a>
+## [0.34.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.34.1...v0.34.2) (2018-05-04)
+
+
+### Bug Fixes
+
+* **input:** clean up validation messages on detached ([a80cfab](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a80cfab))
+
+
+
 <a name="0.34.1"></a>
 ## [0.34.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.34.0...v0.34.1) (2018-04-17)
 
