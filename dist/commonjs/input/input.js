@@ -6,6 +6,7 @@ var aurelia_task_queue_1 = require("aurelia-task-queue");
 var attributes_1 = require("../common/attributes");
 var input_update_service_1 = require("./input-update-service");
 var events_1 = require("../common/events");
+var __1 = require("..");
 var MdInput = /** @class */ (function () {
     function MdInput(element, taskQueue, updateService) {
         var _this = this;
@@ -34,7 +35,7 @@ var MdInput = /** @class */ (function () {
                 for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
                     var result = results_1_1.value;
                     if (!result.valid) {
-                        renderer.removeMessage(_this.element, result);
+                        renderer.removeMessage(_this.inputField, result);
                     }
                 }
             }
@@ -52,14 +53,14 @@ var MdInput = /** @class */ (function () {
             if (_this.label && results.find(function (x) { return !x.valid; })) {
                 _this.label.removeAttribute("data-error");
             }
-            if (_this.input) {
+            if (_this.inputField) {
                 try {
                     for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
                         var result = results_2_1.value;
                         if (!result.valid) {
                             result.target = _this.input;
                             if (_this.input.hasAttribute("data-show-errortext")) {
-                                renderer.addMessage(_this.element, result);
+                                renderer.addMessage(_this.inputField, result);
                             }
                         }
                     }
@@ -112,6 +113,10 @@ var MdInput = /** @class */ (function () {
     };
     MdInput.prototype.detached = function () {
         this.detachEventHandlers();
+        var validationMessages = Array.from(this.inputField.querySelectorAll("." + __1.MaterializeFormValidationRenderer.className));
+        validationMessages.forEach(function (x) { return x.remove(); });
+        this.input.classList.remove("valid");
+        this.input.classList.remove("invalid");
         this.element.mdUnrenderValidateResults = undefined;
         this.element.mdRenderValidateResults = undefined;
     };

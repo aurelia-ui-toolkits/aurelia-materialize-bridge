@@ -11,6 +11,7 @@ export declare class MdInput {
     controlId: string;
     label: HTMLLabelElement;
     input: HTMLInputElement;
+    inputField: HTMLDivElement;
     mdLabel: string;
     mdBlurOnEnter: boolean | string;
     mdDisabled: boolean | string;

@@ -1,6 +1,6 @@
 <template>
 	<require from="./input.css"></require>
-	<div class="input-field">
+	<div class="input-field" ref="inputField">
 		<!-- <content select="[md-prefix]"></content> -->
 		<slot></slot>
 		<input if.bind="mdTextArea === false" ref="input" id="${controlId}" type.bind="mdType" min.bind="mdMin" max.bind="mdMax"

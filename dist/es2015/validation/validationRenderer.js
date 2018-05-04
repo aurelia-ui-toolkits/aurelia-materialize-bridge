@@ -1,8 +1,6 @@
 import * as tslib_1 from "tslib";
 var MaterializeFormValidationRenderer = /** @class */ (function () {
     function MaterializeFormValidationRenderer() {
-        this.className = "md-input-validation";
-        this.classNameFirst = "md-input-validation-first";
     }
     MaterializeFormValidationRenderer.prototype.pushElementResult = function (elementResults, element, result) {
         if (elementResults.has(element)) {
@@ -124,9 +122,9 @@ var MaterializeFormValidationRenderer = /** @class */ (function () {
         var message = document.createElement("div");
         message.id = "md-input-validation-" + result.id;
         message.textContent = result.message;
-        message.className = this.className;
-        if (element.querySelectorAll("." + this.className).length === 0) {
-            message.className += " " + this.classNameFirst;
+        message.className = MaterializeFormValidationRenderer.className;
+        if (element.querySelectorAll("." + MaterializeFormValidationRenderer.className).length === 0) {
+            message.className += " " + MaterializeFormValidationRenderer.classNameFirst;
         }
         message.style.opacity = "0";
         element.appendChild(message);
@@ -162,6 +160,8 @@ var MaterializeFormValidationRenderer = /** @class */ (function () {
             input.classList.add("invalid");
         }
     };
+    MaterializeFormValidationRenderer.className = "md-input-validation";
+    MaterializeFormValidationRenderer.classNameFirst = "md-input-validation-first";
     return MaterializeFormValidationRenderer;
 }());
 export { MaterializeFormValidationRenderer };

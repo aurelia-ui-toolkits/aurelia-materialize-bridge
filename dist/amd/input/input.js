@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue", "../common/attributes", "./input-update-service", "../common/events"], function (require, exports, tslib_1, aurelia_framework_1, aurelia_task_queue_1, attributes_1, input_update_service_1, events_1) {
+define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue", "../common/attributes", "./input-update-service", "../common/events", ".."], function (require, exports, tslib_1, aurelia_framework_1, aurelia_task_queue_1, attributes_1, input_update_service_1, events_1, __1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdInput = /** @class */ (function () {
@@ -29,7 +29,7 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
                     for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
                         var result = results_1_1.value;
                         if (!result.valid) {
-                            renderer.removeMessage(_this.element, result);
+                            renderer.removeMessage(_this.inputField, result);
                         }
                     }
                 }
@@ -47,14 +47,14 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
                 if (_this.label && results.find(function (x) { return !x.valid; })) {
                     _this.label.removeAttribute("data-error");
                 }
-                if (_this.input) {
+                if (_this.inputField) {
                     try {
                         for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
                             var result = results_2_1.value;
                             if (!result.valid) {
                                 result.target = _this.input;
                                 if (_this.input.hasAttribute("data-show-errortext")) {
-                                    renderer.addMessage(_this.element, result);
+                                    renderer.addMessage(_this.inputField, result);
                                 }
                             }
                         }
@@ -107,6 +107,10 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-task-queue"
         };
         MdInput.prototype.detached = function () {
             this.detachEventHandlers();
+            var validationMessages = Array.from(this.inputField.querySelectorAll("." + __1.MaterializeFormValidationRenderer.className));
+            validationMessages.forEach(function (x) { return x.remove(); });
+            this.input.classList.remove("valid");
+            this.input.classList.remove("invalid");
             this.element.mdUnrenderValidateResults = undefined;
             this.element.mdRenderValidateResults = undefined;
         };
