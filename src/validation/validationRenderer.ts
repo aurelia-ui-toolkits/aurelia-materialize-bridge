@@ -2,8 +2,8 @@ import { ValidateResult, RenderInstruction } from "aurelia-validation";
 
 export class MaterializeFormValidationRenderer {
 
-	className = "md-input-validation";
-	classNameFirst = "md-input-validation-first";
+	static className = "md-input-validation";
+	static classNameFirst = "md-input-validation-first";
 
 	pushElementResult(elementResults: Map<Element, ValidateResult[]>, element: Element, result: ValidateResult) {
 		if (elementResults.has(element)) {
@@ -67,9 +67,9 @@ export class MaterializeFormValidationRenderer {
 		let message = document.createElement("div");
 		message.id = `md-input-validation-${result.id}`;
 		message.textContent = result.message;
-		message.className = this.className;
-		if (element.querySelectorAll("." + this.className).length === 0) {
-			message.className += " " + this.classNameFirst;
+		message.className = MaterializeFormValidationRenderer.className;
+		if (element.querySelectorAll("." + MaterializeFormValidationRenderer.className).length === 0) {
+			message.className += " " + MaterializeFormValidationRenderer.classNameFirst;
 		}
 		message.style.opacity = "0";
 		element.appendChild(message);

@@ -18,6 +18,7 @@ export class MdInput {
 	controlId: string;
 	label: HTMLLabelElement;
 	input: HTMLInputElement;
+	inputField: HTMLDivElement;
 
 	@bindable
 	mdLabel: string = "";
@@ -110,6 +111,10 @@ export class MdInput {
 
 	detached() {
 		this.detachEventHandlers();
+		let validationMessages = Array.from(this.inputField.querySelectorAll("." + MaterializeFormValidationRenderer.className));
+		validationMessages.forEach(x => x.remove());
+		this.input.classList.remove("valid");
+		this.input.classList.remove("invalid");
 		this.element.mdUnrenderValidateResults = undefined;
 		this.element.mdRenderValidateResults = undefined;
 	}
@@ -153,7 +158,7 @@ export class MdInput {
 	mdUnrenderValidateResults = (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => {
 		for (let result of results) {
 			if (!result.valid) {
-				renderer.removeMessage(this.element, result);
+				renderer.removeMessage(this.inputField, result);
 			}
 		}
 		renderer.removeValidationClasses(this.input);
@@ -163,12 +168,12 @@ export class MdInput {
 		if (this.label && results.find(x => !x.valid)) {
 			this.label.removeAttribute("data-error");
 		}
-		if (this.input) {
+		if (this.inputField) {
 			for (let result of results) {
 				if (!result.valid) {
 					(result as any).target = this.input;
 					if (this.input.hasAttribute("data-show-errortext")) {
-						renderer.addMessage(this.element, result);
+						renderer.addMessage(this.inputField, result);
 					}
 				}
 			}
