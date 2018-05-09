@@ -10,40 +10,40 @@ export class MdDropdownElement {
 	static id = 0;
 	controlId: string;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	alignment: string = "left";
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	alignment: "left" | "right";
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	autoTrigger: boolean = false;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	autoTrigger: boolean;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	constrainWidth: boolean = true;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	constrainWidth: boolean;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
 	container: Element = null;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	coverTrigger: boolean = false;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	coverTrigger: boolean;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	closeOnClick: boolean = true;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	closeOnClick: boolean;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	hover: boolean = false;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	hover: boolean;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	mdTitle: string;
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	title: string;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	inDuration: number = 300;
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	inDuration: number;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	outDuration: number = 225;
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	outDuration: number;
 
 	instance: M.Dropdown;
 
 	attached() {
-		this.instance = new M.Dropdown(this.element, {
+		let options: Partial<M.DropdownOptions> = {
 			alignment: this.alignment,
 			autoTrigger: this.autoTrigger,
 			constrainWidth: this.constrainWidth,
@@ -57,7 +57,9 @@ export class MdDropdownElement {
 			onOpenEnd: () => au.fireMaterializeEvent(this.element, "open-end"),
 			onCloseStart: () => au.fireMaterializeEvent(this.element, "close-start"),
 			onCloseEnd: () => au.fireMaterializeEvent(this.element, "close-end")
-		});
+		};
+		au.cleanOptions(options);
+		this.instance = new M.Dropdown(this.element, options);
 	}
 
 	detached() {

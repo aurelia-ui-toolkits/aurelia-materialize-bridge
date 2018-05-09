@@ -19,7 +19,7 @@ export class MdDropdown {
 	ref: Element = null;
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
-	alignment: string;
+	alignment: "left" | "right";
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	autoTrigger: boolean;
