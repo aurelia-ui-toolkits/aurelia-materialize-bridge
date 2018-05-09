@@ -1,6 +1,8 @@
 import { ValidateResult, RenderInstruction } from "aurelia-validation";
 
 export class MaterializeFormValidationRenderer {
+	static validationMessageClass = "helper-text";
+
 	pushElementResult(elementResults: Map<Element, ValidateResult[]>, element: Element, result: ValidateResult) {
 		if (elementResults.has(element)) {
 			elementResults.get(element).push(result);
@@ -63,7 +65,7 @@ export class MaterializeFormValidationRenderer {
 		let message = document.createElement("span");
 		message.id = `md-input-validation-${result.id}`;
 		message.setAttribute(`data-${result.valid ? "success" : "error"}`, result.message);
-		message.className = "helper-text";
+		message.className = MaterializeFormValidationRenderer.validationMessageClass;
 		element.appendChild(message);
 	}
 
@@ -96,6 +98,17 @@ export class MaterializeFormValidationRenderer {
 		} else {
 			input.classList.remove("valid");
 			input.classList.add("invalid");
+		}
+	}
+
+	static removeValidation(validationContainer: HTMLElement, input: HTMLInputElement) {
+		if (validationContainer) {
+			let validationMessages = Array.from(validationContainer.querySelectorAll("." + MaterializeFormValidationRenderer.validationMessageClass));
+			validationMessages.forEach(x => x.remove());
+		}
+		if (input) {
+			input.classList.remove("valid");
+			input.classList.remove("invalid");
 		}
 	}
 }
