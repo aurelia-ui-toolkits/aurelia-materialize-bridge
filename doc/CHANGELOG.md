@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.2"></a>
+# [1.0.0-alpha.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2018-05-09)
+
+
+### Bug Fixes
+
+* **declarations:** Remove redundant materialize declarations ([ea90bcd](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/ea90bcd))
+* **validation:** clean up validation messages and classes on detached ([1ec7124](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/1ec7124))
+
+
+
 <a name="0.34.1"></a>
 ## [0.34.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.34.0...v0.34.1) (2018-04-17)
 
