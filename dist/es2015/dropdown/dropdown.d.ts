@@ -1,4 +1,3 @@
-/// <reference types="materialize-css" />
 import * as au from "../aurelia";
 export declare class MdDropdown {
     private element;
@@ -9,7 +8,7 @@ export declare class MdDropdown {
     contentAttributeManager: au.AttributeManager;
     activates: string;
     ref: Element;
-    alignment: string;
+    alignment: "left" | "right";
     autoTrigger: boolean;
     constrainWidth: boolean;
     container: Element;

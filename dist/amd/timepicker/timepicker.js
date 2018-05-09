@@ -98,6 +98,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         };
         MdTimePicker.prototype.detached = function () {
             this.input.removeEventListener("change", this.done);
+            au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
             this.instance.destroy();
             this.element.mdUnrenderValidateResults = undefined;
             this.element.mdRenderValidateResults = undefined;

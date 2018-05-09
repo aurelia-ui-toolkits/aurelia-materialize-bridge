@@ -1,4 +1,3 @@
-/// <reference types="materialize-css" />
 import * as au from "../aurelia";
 export declare class MdChips {
     private element;

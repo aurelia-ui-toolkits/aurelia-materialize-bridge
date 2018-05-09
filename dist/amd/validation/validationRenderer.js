@@ -124,7 +124,7 @@ define(["require", "exports", "tslib"], function (require, exports, tslib_1) {
             var message = document.createElement("span");
             message.id = "md-input-validation-" + result.id;
             message.setAttribute("data-" + (result.valid ? "success" : "error"), result.message);
-            message.className = "helper-text";
+            message.className = MaterializeFormValidationRenderer.validationMessageClass;
             element.appendChild(message);
         };
         MaterializeFormValidationRenderer.prototype.removeMessage = function (element, result) {
@@ -155,6 +155,17 @@ define(["require", "exports", "tslib"], function (require, exports, tslib_1) {
                 input.classList.add("invalid");
             }
         };
+        MaterializeFormValidationRenderer.removeValidation = function (validationContainer, input) {
+            if (validationContainer) {
+                var validationMessages = Array.from(validationContainer.querySelectorAll("." + MaterializeFormValidationRenderer.validationMessageClass));
+                validationMessages.forEach(function (x) { return x.remove(); });
+            }
+            if (input) {
+                input.classList.remove("valid");
+                input.classList.remove("invalid");
+            }
+        };
+        MaterializeFormValidationRenderer.validationMessageClass = "helper-text";
         return MaterializeFormValidationRenderer;
     }());
     exports.MaterializeFormValidationRenderer = MaterializeFormValidationRenderer;

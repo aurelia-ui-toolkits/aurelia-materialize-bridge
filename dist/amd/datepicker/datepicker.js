@@ -126,7 +126,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             if (this.instance.clearBtn) {
                 this.instance.clearBtn.removeEventListener("click", this.done);
             }
-            // this.input.removeEventListener("change", this.onInputChange);
+            au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
             this.instance.destroy();
             this.element.mdUnrenderValidateResults = undefined;
             this.element.mdRenderValidateResults = undefined;

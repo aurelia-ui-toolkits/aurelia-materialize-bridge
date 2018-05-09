@@ -137,7 +137,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     if (this.instance.clearBtn) {
                         this.instance.clearBtn.removeEventListener("click", this.done);
                     }
-                    // this.input.removeEventListener("change", this.onInputChange);
+                    au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
                     this.instance.destroy();
                     this.element.mdUnrenderValidateResults = undefined;
                     this.element.mdRenderValidateResults = undefined;

@@ -94,6 +94,7 @@ var MdInput = /** @class */ (function () {
     };
     MdInput.prototype.detached = function () {
         this.detachEventHandlers();
+        au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
         this.element.mdUnrenderValidateResults = undefined;
         this.element.mdRenderValidateResults = undefined;
     };
