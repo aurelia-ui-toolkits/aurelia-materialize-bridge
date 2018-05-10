@@ -28,7 +28,7 @@ export class MdDropdown {
 	constrainWidth: boolean;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
-	container: Element;
+	container: Element | string;
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
 	coverTrigger: boolean;
@@ -55,11 +55,12 @@ export class MdDropdown {
 		this.contentAttributeManager = new au.AttributeManager(document.getElementById(this.activates));
 		this.attributeManager.addClasses("dropdown-trigger");
 		this.contentAttributeManager.addClasses("dropdown-content");
+		let container = typeof this.container === "string" ? document.querySelector(this.container) : this.container;
 		let options: Partial<M.DropdownOptions> = {
 			alignment: this.alignment,
 			autoTrigger: this.autoTrigger,
 			constrainWidth: this.constrainWidth,
-			container: this.container,
+			container,
 			coverTrigger: this.coverTrigger,
 			closeOnClick: this.closeOnClick,
 			hover: this.hover,
