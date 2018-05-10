@@ -31,7 +31,7 @@ export class MdAutoComplete {
 			this.input = this.element;
 		}
 		else if (this.element.tagName.toLowerCase() === "md-input") {
-			this.input = (this.element.au.controller.viewModel as MdInput).input;
+			this.input = this.element.au["md-input"].viewModel.input;
 		}
 		else {
 			throw new Error("md-autocomplete must be attached to either an input or md-input element");
