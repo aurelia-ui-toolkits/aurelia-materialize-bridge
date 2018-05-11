@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.3"></a>
+# [1.0.0-alpha.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/1.0.0-alpha.2...1.0.0-alpha.3) (2018-05-11)
+
+
+### Bug Fixes
+
+* **button:** clean up ([44a313a](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/44a313a))
+* **card:** display card title ([cf657ab](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/cf657ab))
+* **datepicker:** do not update the value if the widget didn't change it ([f23652c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/f23652c))
+* **dropdown:** accept query selector for the container ([e86c532](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e86c532))
+* **select:** enable option observer by default ([90ee0e5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/90ee0e5))
+* **validation:** fix helper-text occupying too much space ([c266953](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/c266953))
+
+
+### Features
+
+* **typings:** add useful declarations ([d01dfb8](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d01dfb8))
+
+
+
 <a name="1.0.0-alpha.2"></a>
 # [1.0.0-alpha.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2018-05-09)
 
