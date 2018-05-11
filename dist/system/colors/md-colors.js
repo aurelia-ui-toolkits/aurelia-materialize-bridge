@@ -17,10 +17,15 @@ System.register(["tslib", "../aurelia", "./shade-blend-convert"], function (expo
         execute: function () {
             MdColors = /** @class */ (function () {
                 function MdColors() {
+                    this.primaryColor = "#e57373";
+                    this.accentColor = "#26a69a";
                     this.errorColor = "#F44336";
-                    this.successColor = "#26A69A";
+                    this.successColor = "#4CAF50";
                 }
                 MdColors.prototype.toRgb = function (hex, lightenDarken) {
+                    if (!hex) {
+                        return hex;
+                    }
                     if (lightenDarken) {
                         hex = shade_blend_convert_1.shadeBlendConvert(0.3 * lightenDarken, hex);
                     }

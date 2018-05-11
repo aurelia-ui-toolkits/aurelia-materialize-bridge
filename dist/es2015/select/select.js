@@ -52,6 +52,7 @@ var MdSelect = /** @class */ (function () {
                 finally { if (e_1) throw e_1.error; }
             }
             renderer.removeValidationClasses(_this.instance.input);
+            renderer.removeValidationClasses(_this.instance.wrapper);
             var e_1, _a;
         };
         this.mdRenderValidateResults = function (results, renderer) {
@@ -77,6 +78,7 @@ var MdSelect = /** @class */ (function () {
                 finally { if (e_2) throw e_2.error; }
             }
             renderer.addValidationClasses(_this.instance.input, !results.find(function (x) { return !x.valid; }));
+            renderer.addValidationClasses(_this.instance.wrapper, !results.find(function (x) { return !x.valid; }));
             var e_2, _a;
         };
         this.element = element;
