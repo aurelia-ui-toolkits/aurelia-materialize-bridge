@@ -68,7 +68,7 @@ export class MdSelect {
 	}
 
 	@au.ato.bindable.booleanMd
-	enableOptionObserver: boolean = false;
+	enableOptionObserver: boolean = true;
 
 	@au.ato.bindable.stringMd
 	label: string = "";
@@ -81,7 +81,6 @@ export class MdSelect {
 	@au.ato.bindable.booleanMd
 	showErrortext: boolean = true;
 
-	subscriptions = [];
 	inputField: HTMLDivElement = null;
 	optionsMutationObserver = null;
 
@@ -120,7 +119,6 @@ export class MdSelect {
 		this.inputField = null;
 		this.labelElement = null;
 		this.readonlyDiv = null;
-		this.subscriptions.forEach(sub => sub.dispose());
 		this.element.mdUnrenderValidateResults = undefined;
 		this.element.mdRenderValidateResults = undefined;
 	}
@@ -132,11 +130,17 @@ export class MdSelect {
 		this.taskQueue.queueTask(() => this.createMaterialSelect(true));
 	}
 
+	suspendUpdate: boolean;
 	handleChangeFromNativeSelect = () => {
+		if (this.suspendUpdate) {
+			return;
+		}
 		this.log.debug("handleChangeFromNativeSelect", this.element.value);
 		this.suppressValueChanged = true;
 		this.value = this.element.value;
+		this.suspendUpdate = true;
 		au.fireEvent(this.element, "blur");
+		this.suspendUpdate = false;
 	}
 
 	createMaterialSelect(destroy) {
@@ -179,12 +183,12 @@ export class MdSelect {
 		if (attach) {
 			if (!this.optionsMutationObserver) {
 				this.optionsMutationObserver = au.DOM.createMutationObserver(mutations => {
-					// this.log.debug('observeOptions', mutations);
+					this.log.debug("observeOptions", mutations);
 					this.refresh();
 				});
 			}
 			this.optionsMutationObserver.observe(this.element, {
-				// childList: true,
+				childList: true,
 				characterData: true,
 				subtree: true
 			});
