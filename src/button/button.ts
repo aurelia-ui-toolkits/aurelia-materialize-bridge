@@ -68,6 +68,6 @@ export class MdButton {
 	}
 
 	detached() {
-		this.attributeManager.removeClasses(["accent", "btn", "btn-flat", "btn-large", "disabled", "pulse"]);
+		this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse"]);
 	}
 }
