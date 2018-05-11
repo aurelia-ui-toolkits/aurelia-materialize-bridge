@@ -90,9 +90,12 @@ export class MdDatePicker {
 		this.instance.setDate(this.value);
 		this.instance.setInputValue();
 		// the widget can transform the value internally, so we need to update the final result
-		this.taskQueue.queueTask(() => {
-			this.setValue(this.instance.date);
-		});
+		// (this.value || this.instance.date) prevents unnecessary update when value===undefined and instance.date===null
+		if (this.value !== this.instance.date && (this.value || this.instance.date)) {
+			this.taskQueue.queueTask(() => {
+				this.setValue(this.instance.date);
+			});
+		}
 	}
 	setValue(newValue: Date) {
 		if (this.value !== newValue) {
