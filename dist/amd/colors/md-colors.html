@@ -279,10 +279,8 @@
 	}
 
 	.input-field .helper-text {
-		/* original helper-text is too low and increases input-field height */
+		/* original helper-text is too low */
 		transform: translateY(-7px); 
-		position: absolute;
-		width: 100%;
 	}
 
 	/* pagination */
@@ -381,6 +379,10 @@
 	}
 	.tabs .indicator {
 		background-color: ${primaryColor | lighten:2};
+	}
+	.tabs .tab a:focus, .tabs .tab a:focus.active {
+		background-color: rgba(${toRgb(primaryColor, 2)}, 0.2);
+		outline: none;
 	}
 
 	/* well */

@@ -3,4 +3,5 @@ export declare class MdColors {
     accentColor: string;
     errorColor: string;
     successColor: string;
+    toRgb(hex: string, lightenDarken?: number): string;
 }
