@@ -382,6 +382,10 @@
 	.tabs .indicator {
 		background-color: ${primaryColor | lighten:2};
 	}
+	.tabs .tab a:focus, .tabs .tab a:focus.active {
+		background-color: rgba(${toRgb(primaryColor, 2)}, 0.2);
+		outline: none;
+	}
 
 	/* well */
 	md-well li.active {
