@@ -4,18 +4,21 @@ import { shadeBlendConvert } from "./shade-blend-convert";
 @au.customElement("md-colors")
 export class MdColors {
 	@au.bindable
-	primaryColor: string;
+	primaryColor: string = "#e57373";
 
 	@au.bindable
-	accentColor: string;
+	accentColor: string = "#26a69a";
 
 	@au.bindable
 	errorColor: string = "#F44336";
 
 	@au.bindable
-	successColor: string = "#26A69A";
+	successColor: string = "#4CAF50";
 
 	toRgb(hex: string, lightenDarken?: number) {
+		if (!hex) {
+			return hex;
+		}
 		if (lightenDarken) {
 			hex = shadeBlendConvert(0.3 * lightenDarken, hex);
 		}
