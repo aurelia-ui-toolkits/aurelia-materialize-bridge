@@ -225,6 +225,7 @@ export class MdSelect {
 			}
 		}
 		renderer.removeValidationClasses(this.instance.input);
+		renderer.removeValidationClasses(this.instance.wrapper);
 	}
 
 	mdRenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
@@ -240,5 +241,6 @@ export class MdSelect {
 			}
 		}
 		renderer.addValidationClasses(this.instance.input, !results.find(x => !x.valid));
+		renderer.addValidationClasses(this.instance.wrapper, !results.find(x => !x.valid));
 	}
 }
