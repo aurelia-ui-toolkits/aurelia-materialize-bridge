@@ -20,12 +20,12 @@ export declare class MdSelect {
     label: string;
     labelChanged(): void;
     showErrortext: boolean;
-    subscriptions: any[];
     inputField: HTMLDivElement;
     optionsMutationObserver: any;
     attached(): void;
     detached(): void;
     refresh(): void;
+    suspendUpdate: boolean;
     handleChangeFromNativeSelect: () => void;
     createMaterialSelect(destroy: any): void;
     observeOptions(attach: any): void;

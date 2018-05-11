@@ -67,9 +67,12 @@ var MdDatePicker = /** @class */ (function () {
         this.instance.setDate(this.value);
         this.instance.setInputValue();
         // the widget can transform the value internally, so we need to update the final result
-        this.taskQueue.queueTask(function () {
-            _this.setValue(_this.instance.date);
-        });
+        // (this.value || this.instance.date) prevents unnecessary update when value===undefined and instance.date===null
+        if (this.value !== this.instance.date && (this.value || this.instance.date)) {
+            this.taskQueue.queueTask(function () {
+                _this.setValue(_this.instance.date);
+            });
+        }
     };
     MdDatePicker.prototype.setValue = function (newValue) {
         if (this.value !== newValue) {

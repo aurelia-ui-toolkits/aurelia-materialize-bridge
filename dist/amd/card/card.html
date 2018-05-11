@@ -11,7 +11,7 @@
 				${title}
 				<i class="material-icons right">more_vert</i>
 			</span>
-			<span if.bind="image && !reveal" class="card-title">${title}</span>
+			<span if.bind="!image && !reveal" class="card-title">${title}</span>
 			<!-- 
         Print a title when image is null and card is not revealable.
         This condition should complement the other two if conditions. 

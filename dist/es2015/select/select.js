@@ -10,17 +10,21 @@ var MdSelect = /** @class */ (function () {
         this.triggerBlur = function () {
             _this.instance.input.blur();
         };
-        this.enableOptionObserver = false;
+        this.enableOptionObserver = true;
         this.label = "";
         this.showErrortext = true;
-        this.subscriptions = [];
         this.inputField = null;
         this.optionsMutationObserver = null;
         this.handleChangeFromNativeSelect = function () {
+            if (_this.suspendUpdate) {
+                return;
+            }
             _this.log.debug("handleChangeFromNativeSelect", _this.element.value);
             _this.suppressValueChanged = true;
             _this.value = _this.element.value;
+            _this.suspendUpdate = true;
             au.fireEvent(_this.element, "blur");
+            _this.suspendUpdate = false;
         };
         this.handleFocus = function () {
             _this.labelElement.classList.add("md-focused");
@@ -156,7 +160,6 @@ var MdSelect = /** @class */ (function () {
         this.inputField = null;
         this.labelElement = null;
         this.readonlyDiv = null;
-        this.subscriptions.forEach(function (sub) { return sub.dispose(); });
         this.element.mdUnrenderValidateResults = undefined;
         this.element.mdRenderValidateResults = undefined;
     };
@@ -207,12 +210,12 @@ var MdSelect = /** @class */ (function () {
         if (attach) {
             if (!this.optionsMutationObserver) {
                 this.optionsMutationObserver = au.DOM.createMutationObserver(function (mutations) {
-                    // this.log.debug('observeOptions', mutations);
+                    _this.log.debug("observeOptions", mutations);
                     _this.refresh();
                 });
             }
             this.optionsMutationObserver.observe(this.element, {
-                // childList: true,
+                childList: true,
                 characterData: true,
                 subtree: true
             });

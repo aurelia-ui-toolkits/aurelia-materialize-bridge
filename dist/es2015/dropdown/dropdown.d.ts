@@ -11,7 +11,7 @@ export declare class MdDropdown {
     alignment: "left" | "right";
     autoTrigger: boolean;
     constrainWidth: boolean;
-    container: Element;
+    container: Element | string;
     coverTrigger: boolean;
     closeOnClick: boolean;
     hover: boolean;

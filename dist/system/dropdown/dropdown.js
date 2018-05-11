@@ -26,11 +26,12 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.contentAttributeManager = new au.AttributeManager(document.getElementById(this.activates));
                     this.attributeManager.addClasses("dropdown-trigger");
                     this.contentAttributeManager.addClasses("dropdown-content");
+                    var container = typeof this.container === "string" ? document.querySelector(this.container) : this.container;
                     var options = {
                         alignment: this.alignment,
                         autoTrigger: this.autoTrigger,
                         constrainWidth: this.constrainWidth,
-                        container: this.container,
+                        container: container,
                         coverTrigger: this.coverTrigger,
                         closeOnClick: this.closeOnClick,
                         hover: this.hover,
@@ -102,7 +103,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 ], MdDropdown.prototype, "constrainWidth", void 0);
                 tslib_1.__decorate([
                     au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
-                    tslib_1.__metadata("design:type", Element)
+                    tslib_1.__metadata("design:type", Object)
                 ], MdDropdown.prototype, "container", void 0);
                 tslib_1.__decorate([
                     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),

@@ -55,7 +55,7 @@ var MdButton = /** @class */ (function () {
         this.attributeManager.addClasses(classes);
     };
     MdButton.prototype.detached = function () {
-        this.attributeManager.removeClasses(["accent", "btn", "btn-flat", "btn-large", "disabled", "pulse"]);
+        this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse"]);
     };
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,

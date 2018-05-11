@@ -19,7 +19,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
                 this.input = this.element;
             }
             else if (this.element.tagName.toLowerCase() === "md-input") {
-                this.input = this.element.au.controller.viewModel.input;
+                this.input = this.element.au["md-input"].viewModel.input;
             }
             else {
                 throw new Error("md-autocomplete must be attached to either an input or md-input element");

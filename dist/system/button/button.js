@@ -65,7 +65,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.attributeManager.addClasses(classes);
                 };
                 MdButton.prototype.detached = function () {
-                    this.attributeManager.removeClasses(["accent", "btn", "btn-flat", "btn-large", "disabled", "pulse"]);
+                    this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse"]);
                 };
                 tslib_1.__decorate([
                     au.ato.bindable.booleanMd,
