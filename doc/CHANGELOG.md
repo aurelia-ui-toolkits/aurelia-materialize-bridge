@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.4"></a>
+# [1.0.0-alpha.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2018-05-11)
+
+
+### Bug Fixes
+
+* **tabs:** fix focused tab header color ([34c55f9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/34c55f9))
+* **validation:** remove absolute positioning ([07ff219](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/07ff219))
+
+
+
 <a name="1.0.0-alpha.3"></a>
 # [1.0.0-alpha.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/1.0.0-alpha.2...1.0.0-alpha.3) (2018-05-11)
 
