@@ -278,6 +278,13 @@
 		display: none;
 	}
 
+	.input-field .helper-text {
+		/* original helper-text is too low and increases input-field height */
+		transform: translateY(-7px); 
+		position: absolute;
+		width: 100%;
+	}
+
 	/* pagination */
 	md-pagination .pagination li.active {
 		background-color: ${primaryColor}
