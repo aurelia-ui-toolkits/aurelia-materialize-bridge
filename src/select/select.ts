@@ -14,23 +14,6 @@ export class MdSelect {
 	labelElement: HTMLLabelElement;
 	readonlyDiv: HTMLDivElement;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
-	value: any;
-	suppressValueChanged: boolean;
-	valueChanged() {
-		this.log.debug("valueChanged");
-		if (!this.instance) {
-			return;
-		}
-		if (this.suppressValueChanged) {
-			this.log.debug("valueChanged suppressed");
-			this.suppressValueChanged = false;
-			return;
-		}
-		this.element.value = this.value;
-		this.createMaterialSelect(false);
-	}
-
 	@au.ato.bindable.booleanMd
 	disabled: boolean = false;
 	disabledChanged() {
@@ -83,6 +66,7 @@ export class MdSelect {
 
 	inputField: HTMLDivElement = null;
 	optionsMutationObserver = null;
+	subscription: au.Disposable;
 
 	attached() {
 		if (this.element.classList.contains("browser-default")) {
@@ -102,7 +86,8 @@ export class MdSelect {
 		au.insertAfter(this.element, this.labelElement);
 		this.labelChanged();
 		this.taskQueue.queueTask(() => this.createMaterialSelect(false));
-		this.element.addEventListener("change", this.handleChangeFromNativeSelect);
+		// observe native select value to update the widget
+		this.subscription = this.bindingEngine.propertyObserver(this.element, "value").subscribe(this.onSelectValueChanged);
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
 	}
@@ -111,7 +96,7 @@ export class MdSelect {
 		if (!this.instance) {
 			return;
 		}
-		this.element.removeEventListener("change", this.handleChangeFromNativeSelect);
+		this.subscription.dispose();
 		this.observeOptions(false);
 		this.instance.destroy();
 		// this will remove input-field wrapper and all its' content like validation messsages or a label
@@ -130,17 +115,8 @@ export class MdSelect {
 		this.taskQueue.queueTask(() => this.createMaterialSelect(true));
 	}
 
-	suspendUpdate: boolean;
-	handleChangeFromNativeSelect = () => {
-		if (this.suspendUpdate) {
-			return;
-		}
-		this.log.debug("handleChangeFromNativeSelect", this.element.value);
-		this.suppressValueChanged = true;
-		this.value = this.element.value;
-		this.suspendUpdate = true;
-		au.fireEvent(this.element, "blur");
-		this.suspendUpdate = false;
+	onSelectValueChanged = () => {
+		this.createMaterialSelect(false);
 	}
 
 	createMaterialSelect(destroy) {
@@ -204,7 +180,7 @@ export class MdSelect {
 		if (!this.instance) {
 			return;
 		}
-		this.instance.input.focus();
+		this.instance.dropdown.open();
 	}
 
 	handleFocus = () => {
