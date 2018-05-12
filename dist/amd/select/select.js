@@ -16,16 +16,8 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.showErrortext = true;
             this.inputField = null;
             this.optionsMutationObserver = null;
-            this.handleChangeFromNativeSelect = function () {
-                if (_this.suspendUpdate) {
-                    return;
-                }
-                _this.log.debug("handleChangeFromNativeSelect", _this.element.value);
-                _this.suppressValueChanged = true;
-                _this.value = _this.element.value;
-                _this.suspendUpdate = true;
-                au.fireEvent(_this.element, "blur");
-                _this.suspendUpdate = false;
+            this.onSelectValueChanged = function () {
+                _this.createMaterialSelect(false);
             };
             this.handleFocus = function () {
                 _this.labelElement.classList.add("md-focused");
@@ -85,19 +77,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.element = element;
             this.log = au.getLogger("md-select");
         }
-        MdSelect.prototype.valueChanged = function () {
-            this.log.debug("valueChanged");
-            if (!this.instance) {
-                return;
-            }
-            if (this.suppressValueChanged) {
-                this.log.debug("valueChanged suppressed");
-                this.suppressValueChanged = false;
-                return;
-            }
-            this.element.value = this.value;
-            this.createMaterialSelect(false);
-        };
         MdSelect.prototype.disabledChanged = function () {
             if (!this.instance) {
                 return;
@@ -147,7 +126,8 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             au.insertAfter(this.element, this.labelElement);
             this.labelChanged();
             this.taskQueue.queueTask(function () { return _this.createMaterialSelect(false); });
-            this.element.addEventListener("change", this.handleChangeFromNativeSelect);
+            // observe native select value to update the widget
+            this.subscription = this.bindingEngine.propertyObserver(this.element, "value").subscribe(this.onSelectValueChanged);
             this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
             this.element.mdRenderValidateResults = this.mdRenderValidateResults;
         };
@@ -155,7 +135,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             if (!this.instance) {
                 return;
             }
-            this.element.removeEventListener("change", this.handleChangeFromNativeSelect);
+            this.subscription.dispose();
             this.observeOptions(false);
             this.instance.destroy();
             // this will remove input-field wrapper and all its' content like validation messsages or a label
@@ -234,12 +214,8 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             if (!this.instance) {
                 return;
             }
-            this.instance.input.focus();
+            this.instance.dropdown.open();
         };
-        tslib_1.__decorate([
-            au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
-            tslib_1.__metadata("design:type", Object)
-        ], MdSelect.prototype, "value", void 0);
         tslib_1.__decorate([
             au.ato.bindable.booleanMd,
             tslib_1.__metadata("design:type", Boolean)

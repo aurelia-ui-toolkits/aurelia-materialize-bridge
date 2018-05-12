@@ -329,14 +329,6 @@
 		color: ${accentColor};
 	}
 
-	.select-wrapper input.select-dropdown {
-		-webkit-user-select:none;
-		-moz-user-select:none;
-		-ms-user-select:none;
-		-o-user-select:none;
-		user-select:none;
-	}
-
 	.select-wrapper input.select-dropdown:focus {
 		border-bottom: 1px solid ${accentColor};
 	}
@@ -394,47 +386,6 @@
 	/* footer */
 	footer.page-footer {
 		background-color: ${primaryColor};
-	}
-
-	/* md-select label */
-	.select-wrapper input.valid {
-		/* make input fit in div */
-		display: inline-block !important;
-		/* fix validation border thickness */
-		border-bottom: 1px solid ${successColor};
-	}
-
-	.select-wrapper input.invalid {
-		border-bottom: 1px solid ${errorColor};
-	}
-
-	.select-wrapper + label {
-		
-		width: 100%;
-	}
-	/* position validation label */
-	.select-wrapper + label:after {
-		display: block;
-		content: "";
-		position: absolute;
-		top: 60px;
-		opacity: 0;
-		transition: .2s opacity ease-out, .2s color ease-out;
-		transform: translateY(0) !important;
-	}
-	/* set validation text */
-	.select-wrapper.invalid + label:after {
-		content: attr(data-error);
-		color: ${errorColor};
-		opacity: 1;
-	}
-
-	.select-wrapper .md-select-label {
-		color: #9e9e9e;
-	}
-
-	.select-wrapper + .md-select-label.md-focused {
-		color: ${accentColor};
 	}
 
 	</style>

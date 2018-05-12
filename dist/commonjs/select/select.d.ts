@@ -8,9 +8,6 @@ export declare class MdSelect {
     element: HTMLInputElement;
     labelElement: HTMLLabelElement;
     readonlyDiv: HTMLDivElement;
-    value: any;
-    suppressValueChanged: boolean;
-    valueChanged(): void;
     disabled: boolean;
     disabledChanged(): void;
     readonly: boolean;
@@ -22,11 +19,11 @@ export declare class MdSelect {
     showErrortext: boolean;
     inputField: HTMLDivElement;
     optionsMutationObserver: any;
+    subscription: au.Disposable;
     attached(): void;
     detached(): void;
     refresh(): void;
-    suspendUpdate: boolean;
-    handleChangeFromNativeSelect: () => void;
+    onSelectValueChanged: () => void;
     createMaterialSelect(destroy: any): void;
     observeOptions(attach: any): void;
     open(): void;
