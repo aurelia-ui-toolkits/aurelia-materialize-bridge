@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.6"></a>
+# [1.0.0-alpha.6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2018-05-12)
+
+
+### Bug Fixes
+
+* **select:** clean up select styles ([905da57](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/905da57))
+* **select:** fix multiple and object use cases ([cf99151](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/cf99151))
+
+
+
 <a name="1.0.0-alpha.5"></a>
 # [1.0.0-alpha.5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2018-05-11)
 
