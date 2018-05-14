@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.7"></a>
+# [1.0.0-alpha.7](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.6...v1.0.0-alpha.7) (2018-05-14)
+
+
+### Bug Fixes
+
+* **collection:** use updated attribute names ([b629d2f](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b629d2f))
+* **datepicker:** colors ([3669f34](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/3669f34)), closes [#513](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/513)
+* **lookup:** move colors to md-colors element ([e23c7a4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e23c7a4))
+* **timepicker:** add colors ([6a43b82](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6a43b82))
+
+
+### Features
+
+* **colors:** add colors service ([08533a5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/08533a5))
+* **lookup:** add experimental lookup element ([f03e289](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/f03e289))
+
+
+
 <a name="1.0.0-alpha.6"></a>
 # [1.0.0-alpha.6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2018-05-12)
 
