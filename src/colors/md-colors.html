@@ -169,29 +169,30 @@
 
 
 	/* datepicker */
-	.picker__date-display {
-		background-color: ${accentColor | darken:0.5};
-	}
-	.picker__weekday-display {
-		background-color: ${accentColor | darken:0.5};
-	}
-	.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+	.datepicker-date-display {
 		background-color: ${accentColor};
 	}
-	.picker__day.picker__day--today {
-		color: ${accentColor}
+
+	.datepicker-table td.is-today {
+		color: ${accentColor};
 	}
-	.picker__footer button:not(.picker__clear) {
-		color: ${accentColor}
+
+	.datepicker-table td.is-selected {
+		background-color: ${accentColor};
 	}
-	.picker__footer button:focus {
-		background-color: ${accentColor | lighten:2};
+
+	.datepicker-day-button:focus {
+		background-color: rgba(${cs.toRgb(accentColor)}, 0.25);  /* $datepicker-day-focus;*/
 	}
-	[md-datepicker] + i.material-icons.std-icon-fixup {
-		margin-left: -24px;
-		line-height: 1;
-		margin-top: 12px;
-		cursor: pointer;
+
+	.datepicker-cancel,
+	.datepicker-today,
+	.datepicker-done {
+		color: ${accentColor};
+	}
+	
+	.datepicker-clear {
+		color: ${errorColor};
 	}
 
 	/* text input */
