@@ -378,6 +378,36 @@
 		outline: none;
 	}
 
+	/* timepicker */
+	.timepicker-digital-display {
+		background-color: ${accentColor};
+	}
+	
+	.timepicker-tick.active,
+	.timepicker-tick:hover {
+		background-color: rgba(${cs.toRgb(accentColor)}, 0.25);
+	}
+
+	.timepicker-canvas line {
+			stroke: ${accentColor};
+	}
+		
+	.timepicker-canvas-bearing {
+		fill: ${accentColor};
+	}
+
+	.timepicker-canvas-bg {
+		fill: ${accentColor};
+	}
+	
+	.timepicker-clear {
+		color: ${errorColor};
+	}
+	
+	.timepicker-close {
+		color: ${accentColor};
+	}
+		
 	/* well */
 	md-well li.active {
 		border-right: 2px solid ${primaryColor};
@@ -391,11 +421,11 @@
 
 	/* lookup */
 	md-lookup .dropdown-div li {
-		color: ${colorsService.accentColor};
+		color: ${accentColor};
 	}
 
 	md-lookup .dropdown-div li a {
-		color: ${colorsService.accentColor};
+		color: ${accentColor};
 	}
 
 	</style>
