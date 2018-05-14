@@ -1,4 +1,4 @@
-System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/util", "./common/attributeManager"], function (exports_1, context_1) {
+System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/util", "./common/attribute-manager", "./common/colors-service"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var ato;
@@ -22,7 +22,8 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
         "fireMaterializeEvent": true,
         "ValidateResult": true,
         "MaterializeFormValidationRenderer": true,
-        "AttributeManager": true
+        "AttributeManager": true,
+        "MdColorsService": true
     };
     function exportStar_1(m) {
         var exports = {};
@@ -81,9 +82,14 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
             function (util_1_1) {
                 exportStar_1(util_1_1);
             },
-            function (attributeManager_1_1) {
+            function (attribute_manager_1_1) {
                 exports_1({
-                    "AttributeManager": attributeManager_1_1["AttributeManager"]
+                    "AttributeManager": attribute_manager_1_1["AttributeManager"]
+                });
+            },
+            function (colors_service_1_1) {
+                exports_1({
+                    "MdColorsService": colors_service_1_1["MdColorsService"]
                 });
             }
         ],

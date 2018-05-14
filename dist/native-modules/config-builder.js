@@ -29,6 +29,7 @@ var ConfigBuilder = /** @class */ (function () {
             .useFile()
             .useFooter()
             .useInput()
+            .useLookup()
             .useModal()
             .useNavbar()
             .usePagination()
@@ -137,6 +138,10 @@ var ConfigBuilder = /** @class */ (function () {
     ConfigBuilder.prototype.useInput = function () {
         this.globalResources.push(PLATFORM.moduleName("./input/input"));
         this.globalResources.push(PLATFORM.moduleName("./input/input-prefix"));
+        return this;
+    };
+    ConfigBuilder.prototype.useLookup = function () {
+        this.globalResources.push(PLATFORM.moduleName("./lookup/lookup"));
         return this;
     };
     ConfigBuilder.prototype.useModal = function () {

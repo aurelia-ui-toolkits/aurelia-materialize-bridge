@@ -169,29 +169,30 @@
 
 
 	/* datepicker */
-	.picker__date-display {
-		background-color: ${accentColor | darken:0.5};
-	}
-	.picker__weekday-display {
-		background-color: ${accentColor | darken:0.5};
-	}
-	.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
+	.datepicker-date-display {
 		background-color: ${accentColor};
 	}
-	.picker__day.picker__day--today {
-		color: ${accentColor}
+
+	.datepicker-table td.is-today {
+		color: ${accentColor};
 	}
-	.picker__footer button:not(.picker__clear) {
-		color: ${accentColor}
+
+	.datepicker-table td.is-selected {
+		background-color: ${accentColor};
 	}
-	.picker__footer button:focus {
-		background-color: ${accentColor | lighten:2};
+
+	.datepicker-day-button:focus {
+		background-color: rgba(${cs.toRgb(accentColor)}, 0.25);  /* $datepicker-day-focus;*/
 	}
-	[md-datepicker] + i.material-icons.std-icon-fixup {
-		margin-left: -24px;
-		line-height: 1;
-		margin-top: 12px;
-		cursor: pointer;
+
+	.datepicker-cancel,
+	.datepicker-today,
+	.datepicker-done {
+		color: ${accentColor};
+	}
+	
+	.datepicker-clear {
+		color: ${errorColor};
 	}
 
 	/* text input */
@@ -373,10 +374,40 @@
 		background-color: ${primaryColor | lighten:2};
 	}
 	.tabs .tab a:focus, .tabs .tab a:focus.active {
-		background-color: rgba(${toRgb(primaryColor, 2)}, 0.2);
+		background-color: rgba(${cs.toRgb(primaryColor, 2)}, 0.2);
 		outline: none;
 	}
 
+	/* timepicker */
+	.timepicker-digital-display {
+		background-color: ${accentColor};
+	}
+	
+	.timepicker-tick.active,
+	.timepicker-tick:hover {
+		background-color: rgba(${cs.toRgb(accentColor)}, 0.25);
+	}
+
+	.timepicker-canvas line {
+			stroke: ${accentColor};
+	}
+		
+	.timepicker-canvas-bearing {
+		fill: ${accentColor};
+	}
+
+	.timepicker-canvas-bg {
+		fill: ${accentColor};
+	}
+	
+	.timepicker-clear {
+		color: ${errorColor};
+	}
+	
+	.timepicker-close {
+		color: ${accentColor};
+	}
+		
 	/* well */
 	md-well li.active {
 		border-right: 2px solid ${primaryColor};
@@ -386,6 +417,15 @@
 	/* footer */
 	footer.page-footer {
 		background-color: ${primaryColor};
+	}
+
+	/* lookup */
+	md-lookup .dropdown-div li {
+		color: ${accentColor};
+	}
+
+	md-lookup .dropdown-div li a {
+		color: ${accentColor};
 	}
 
 	</style>

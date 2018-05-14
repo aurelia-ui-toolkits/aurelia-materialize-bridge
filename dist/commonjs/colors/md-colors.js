@@ -2,25 +2,37 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var au = require("../aurelia");
-var shade_blend_convert_1 = require("./shade-blend-convert");
 var MdColors = /** @class */ (function () {
-    function MdColors() {
-        this.primaryColor = "#e57373";
-        this.accentColor = "#26a69a";
-        this.errorColor = "#F44336";
-        this.successColor = "#4CAF50";
+    function MdColors(cs, bindingEngine) {
+        this.cs = cs;
+        this.bindingEngine = bindingEngine;
+        this.primaryColor = this.cs.primaryColor;
+        this.accentColor = this.cs.accentColor;
+        this.errorColor = this.cs.errorColor;
+        this.successColor = this.cs.successColor;
+        this.subscriptions = [];
     }
-    MdColors.prototype.toRgb = function (hex, lightenDarken) {
-        if (!hex) {
-            return hex;
-        }
-        if (lightenDarken) {
-            hex = shade_blend_convert_1.shadeBlendConvert(0.3 * lightenDarken, hex);
-        }
-        var r = parseInt(hex.substring(1, 3), 16);
-        var g = parseInt(hex.substring(3, 5), 16);
-        var b = parseInt(hex.substring(5), 16);
-        return r + "," + g + "," + b;
+    MdColors.prototype.primaryColorChanged = function () {
+        this.cs.primaryColor = this.primaryColor;
+    };
+    MdColors.prototype.accentColorChanged = function () {
+        this.cs.accentColor = this.accentColor;
+    };
+    MdColors.prototype.errorColorChanged = function () {
+        this.cs.errorColor = this.errorColor;
+    };
+    MdColors.prototype.successColorChanged = function () {
+        this.cs.successColor = this.successColor;
+    };
+    MdColors.prototype.attached = function () {
+        var _this = this;
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "primaryColor").subscribe(function () { return _this.primaryColor = _this.cs.primaryColor; }));
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "accentColor").subscribe(function () { return _this.accentColor = _this.cs.accentColor; }));
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "errorColor").subscribe(function () { return _this.errorColor = _this.cs.errorColor; }));
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "successColor").subscribe(function () { return _this.successColor = _this.cs.successColor; }));
+    };
+    MdColors.prototype.detached = function () {
+        this.subscriptions.forEach(function (x) { return x.dispose(); });
     };
     tslib_1.__decorate([
         au.bindable,
@@ -39,7 +51,8 @@ var MdColors = /** @class */ (function () {
         tslib_1.__metadata("design:type", String)
     ], MdColors.prototype, "successColor", void 0);
     MdColors = tslib_1.__decorate([
-        au.customElement("md-colors")
+        au.customElement("md-colors"),
+        tslib_1.__metadata("design:paramtypes", [au.MdColorsService, au.BindingEngine])
     ], MdColors);
     return MdColors;
 }());

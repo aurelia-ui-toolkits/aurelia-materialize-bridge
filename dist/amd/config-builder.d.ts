@@ -29,6 +29,7 @@ export declare class ConfigBuilder {
     useFile(): ConfigBuilder;
     useFooter(): ConfigBuilder;
     useInput(): ConfigBuilder;
+    useLookup(): ConfigBuilder;
     useModal(): ConfigBuilder;
     useNavbar(): ConfigBuilder;
     usePagination(): ConfigBuilder;

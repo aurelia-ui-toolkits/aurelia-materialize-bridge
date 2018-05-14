@@ -1,4 +1,4 @@
-define(["require", "exports", "./shade-blend-convert"], function (require, exports, shade_blend_convert_1) {
+define(["require", "exports", "../common/shade-blend-convert"], function (require, exports, shade_blend_convert_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var DarkenValueConverter = /** @class */ (function () {

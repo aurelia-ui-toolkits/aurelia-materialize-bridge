@@ -1,4 +1,4 @@
-System.register(["./autocomplete/autocomplete", "./badge/badge", "./box/box", "./breadcrumbs/breadcrumbs", "./breadcrumbs/instructionFilter", "./button/button", "./card/card", "./carousel/carousel-item", "./carousel/carousel", "./char-counter/char-counter", "./checkbox/checkbox", "./chip/chip", "./chip/chips", "./collapsible/collapsible", "./collection/collection-header", "./collection/collection-item", "./collection/collection", "./collection/md-collection-selector", "./colors/color-value-converters", "./colors/md-colors", "./common/attributeManager", "./common/attributes", "./common/constants", "./common/events", "./datepicker/datepicker", "./dropdown/dropdown-element", "./dropdown/dropdown", "./fab/fab", "./file/file", "./footer/footer", "./input/input-prefix", "./input/input", "./modal/modal", "./navbar/navbar", "./pagination/pagination", "./parallax/parallax", "./progress/progress", "./pushpin/pushpin", "./radio/radio", "./range/range", "./scrollspy/scrollspy", "./select/select", "./sidenav/sidenav-collapse", "./sidenav/sidenav", "./slider/slider", "./switch/switch", "./tabs/tabs", "./tap-target/tap-target", "./timepicker/timepicker", "./toast/toastService", "./tooltip/tooltip", "./validation/validationRenderer", "./waves/waves", "./well/md-well", "./config-builder"], function (exports_1, context_1) {
+System.register(["./autocomplete/autocomplete", "./badge/badge", "./box/box", "./breadcrumbs/breadcrumbs", "./breadcrumbs/instructionFilter", "./button/button", "./card/card", "./carousel/carousel-item", "./carousel/carousel", "./char-counter/char-counter", "./checkbox/checkbox", "./chip/chip", "./chip/chips", "./collapsible/collapsible", "./collection/collection-header", "./collection/collection-item", "./collection/collection", "./collection/md-collection-selector", "./colors/color-value-converters", "./colors/md-colors", "./common/attribute-manager", "./common/attributes", "./common/constants", "./common/events", "./common/discardable-promise", "./common/colors-service", "./datepicker/datepicker", "./dropdown/dropdown-element", "./dropdown/dropdown", "./fab/fab", "./file/file", "./footer/footer", "./input/input-prefix", "./input/input", "./lookup/lookup", "./modal/modal", "./navbar/navbar", "./pagination/pagination", "./parallax/parallax", "./progress/progress", "./pushpin/pushpin", "./radio/radio", "./range/range", "./scrollspy/scrollspy", "./select/select", "./sidenav/sidenav-collapse", "./sidenav/sidenav", "./slider/slider", "./switch/switch", "./tabs/tabs", "./tap-target/tap-target", "./timepicker/timepicker", "./toast/toastService", "./tooltip/tooltip", "./validation/validationRenderer", "./waves/waves", "./well/md-well", "./config-builder"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -70,8 +70,8 @@ System.register(["./autocomplete/autocomplete", "./badge/badge", "./box/box", ".
             function (md_colors_1_1) {
                 exportStar_1(md_colors_1_1);
             },
-            function (attributeManager_1_1) {
-                exportStar_1(attributeManager_1_1);
+            function (attribute_manager_1_1) {
+                exportStar_1(attribute_manager_1_1);
             },
             function (attributes_1_1) {
                 exportStar_1(attributes_1_1);
@@ -81,6 +81,12 @@ System.register(["./autocomplete/autocomplete", "./badge/badge", "./box/box", ".
             },
             function (events_1_1) {
                 exportStar_1(events_1_1);
+            },
+            function (discardable_promise_1_1) {
+                exportStar_1(discardable_promise_1_1);
+            },
+            function (colors_service_1_1) {
+                exportStar_1(colors_service_1_1);
             },
             function (datepicker_1_1) {
                 exportStar_1(datepicker_1_1);
@@ -105,6 +111,9 @@ System.register(["./autocomplete/autocomplete", "./badge/badge", "./box/box", ".
             },
             function (input_1_1) {
                 exportStar_1(input_1_1);
+            },
+            function (lookup_1_1) {
+                exportStar_1(lookup_1_1);
             },
             function (modal_1_1) {
                 exportStar_1(modal_1_1);

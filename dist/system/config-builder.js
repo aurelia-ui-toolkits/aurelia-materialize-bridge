@@ -39,6 +39,7 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                         .useFile()
                         .useFooter()
                         .useInput()
+                        .useLookup()
                         .useModal()
                         .useNavbar()
                         .usePagination()
@@ -147,6 +148,10 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                 ConfigBuilder.prototype.useInput = function () {
                     this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./input/input"));
                     this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./input/input-prefix"));
+                    return this;
+                };
+                ConfigBuilder.prototype.useLookup = function () {
+                    this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./lookup/lookup"));
                     return this;
                 };
                 ConfigBuilder.prototype.useModal = function () {

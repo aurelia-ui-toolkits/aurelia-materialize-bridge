@@ -28,6 +28,8 @@ exports.MaterializeFormValidationRenderer = validationRenderer_1.MaterializeForm
 var ato = require("aurelia-typed-observable-plugin");
 exports.ato = ato;
 tslib_1.__exportStar(require("./common/util"), exports);
-var attributeManager_1 = require("./common/attributeManager");
-exports.AttributeManager = attributeManager_1.AttributeManager;
+var attribute_manager_1 = require("./common/attribute-manager");
+exports.AttributeManager = attribute_manager_1.AttributeManager;
+var colors_service_1 = require("./common/colors-service");
+exports.MdColorsService = colors_service_1.MdColorsService;
 //# sourceMappingURL=aurelia.js.map

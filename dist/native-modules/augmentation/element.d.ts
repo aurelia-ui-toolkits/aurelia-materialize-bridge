@@ -4,6 +4,7 @@ import { MdInput } from "../input/input";
 import { MdCheckbox } from "../checkbox/checkbox";
 import { MdSelect } from "../select/select";
 import { MdDropdown } from "../dropdown/dropdown";
+import { MdLookup } from "../lookup/lookup";
 export interface IController<T> {
     viewModel: T;
 }
@@ -12,6 +13,7 @@ export interface IElementAu {
     "md-checkbox": IController<MdCheckbox>;
     "md-select": IController<MdSelect>;
     "md-dropdown": IController<MdDropdown>;
+    "md-lookup": IController<MdLookup>;
 }
 declare global  {
     interface Element {

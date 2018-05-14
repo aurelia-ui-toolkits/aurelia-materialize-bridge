@@ -1,4 +1,4 @@
-import { shadeBlendConvert } from "./shade-blend-convert";
+import { shadeBlendConvert } from "../common/shade-blend-convert";
 var DarkenValueConverter = /** @class */ (function () {
     function DarkenValueConverter() {
     }

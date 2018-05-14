@@ -1,0 +1,34 @@
+﻿<template>
+	<require from="./lookup.css"></require>
+
+	<div style="position: relative">
+		<div class="input-field" ref="validationContainer">
+			<input type="text" value.bind="filter" ref="input" placeholder.bind="placeholder" readonly.bind="readonly" />
+			<label ref="labelElement">${label}</label>
+		</div>
+		<div ref="dropdown" if.bind="isOpen" class="dropdown-div z-depth-1">
+			<ul ref="dropdownUl" class="collection">
+				<li if.bind="state === LookupState.searching" class="disabled collection-item" md-wait-cursor.bind="searching">
+					<template replaceable part="searching-template">
+						Searching...
+					</template>
+				</li>
+				<li if.bind="state === LookupState.noMatches" class="disabled collection-item">
+					<template replaceable part="no-matches-template">
+						No Matches
+					</template>
+				</li>
+				<li if.bind="state === LookupState.error" class="disabled collection-item">
+					<span>${errorMessage}</span>
+				</li>
+				<li if.bind="state === LookupState.optionsVisible" repeat.for="option of options" mousedown.delegate="select(option)" class="collection-item">
+					<a>
+						<template replaceable part="option-template">
+							${option}
+						</template>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</template>

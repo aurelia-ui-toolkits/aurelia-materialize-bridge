@@ -31,6 +31,7 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
                 .useFile()
                 .useFooter()
                 .useInput()
+                .useLookup()
                 .useModal()
                 .useNavbar()
                 .usePagination()
@@ -139,6 +140,10 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
         ConfigBuilder.prototype.useInput = function () {
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./input/input"));
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./input/input-prefix"));
+            return this;
+        };
+        ConfigBuilder.prototype.useLookup = function () {
+            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./lookup/lookup"));
             return this;
         };
         ConfigBuilder.prototype.useModal = function () {
