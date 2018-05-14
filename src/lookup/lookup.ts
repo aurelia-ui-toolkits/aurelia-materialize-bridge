@@ -4,7 +4,7 @@ import { LookupState } from "./lookup-state";
 @au.customElement("md-lookup")
 @au.autoinject
 export class MdLookup {
-	constructor(private element: Element, private taskQueue: au.TaskQueue, private colorsService: au.MdColorsService) {
+	constructor(private element: Element, private taskQueue: au.TaskQueue) {
 		this.logger = au.getLogger("MdLookup");
 	}
 
