@@ -11,9 +11,6 @@ export class MdLookup {
 	static searching = Symbol("searching");
 	static error = Symbol("error");
 
-	searching: boolean;
-	noMatches: boolean;
-	showOptions: boolean;
 	errorMessage: string;
 	searchingMessage: string;
 
@@ -111,12 +108,7 @@ export class MdLookup {
 
 	updateFilterBasedOnValue() {
 		this.logger.debug("updateFilterBasedOnValue", this.value);
-		this.options = [this.value];
-		if (this.options && this.options.length) {
-			this.setFilter(this.getDisplayValue(this.options[0]));
-		} else {
-			this.setFilter(undefined);
-		}
+		this.setFilter(this.getDisplayValue(this.value));
 	}
 
 	fixDropdownSizeIfTooBig() {
@@ -153,6 +145,7 @@ export class MdLookup {
 			// use taskQueue to delay the update until all fields are bound
 			this.taskQueue.queueTask(() => this.updateFilterBasedOnValue());
 		}
+		this.optionsChanged();
 	}
 
 	attached() {
@@ -187,10 +180,13 @@ export class MdLookup {
 			this.value = option;
 		}
 		this.close();
-		au.fireEvent(this.element, "selected", { value: this.value });
+		au.fireEvent(this.element, "selected", this.value);
 	}
 
 	getDisplayValue(option: any): any {
+		if (option === null || option === undefined) {
+			return null;
+		}
 		if (!this.displayFieldName) {
 			return option;
 		}
