@@ -30,6 +30,7 @@ export class ConfigBuilder {
 			.useFile()
 			.useFooter()
 			.useInput()
+			.useLookup()
 			.useModal()
 			.useNavbar()
 			.usePagination()
@@ -158,6 +159,11 @@ export class ConfigBuilder {
 	useInput(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./input/input"));
 		this.globalResources.push(PLATFORM.moduleName("./input/input-prefix"));
+		return this;
+	}
+
+	useLookup(): ConfigBuilder {
+		this.globalResources.push(PLATFORM.moduleName("./lookup/lookup"));
 		return this;
 	}
 
