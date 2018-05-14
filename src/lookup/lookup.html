@@ -3,7 +3,7 @@
 
 	<div style="position: relative">
 		<div class="input-field" ref="validationContainer">
-			<input type="text" value.bind="filter" ref="input" placeholder.bind="placeholder" readonly.bind="readonly" />
+			<input type="text" value.bind="filter & debounce: debounce" ref="input" placeholder.bind="placeholder" readonly.bind="readonly" />
 			<label ref="labelElement">${label}</label>
 		</div>
 		<div ref="dropdown" if.bind="isOpen" class="dropdown-div z-depth-1">

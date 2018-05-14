@@ -24,7 +24,7 @@ export class MdLookup {
 	validationContainer: HTMLElement;
 	logger: au.Logger;
 
-	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
+	@au.observable
 	filter: string;
 	suppressFilterChanged: boolean;
 	filterChanged() {
@@ -33,6 +33,7 @@ export class MdLookup {
 			this.suppressFilterChanged = false;
 			return;
 		}
+		au.fireEvent(this.element, "filter-changed", this.filter);
 		this.setValue(undefined);
 	}
 	setFilter(filter: string) {
@@ -57,7 +58,7 @@ export class MdLookup {
 			return;
 		}
 		this.logger.debug("valueChanged", newValue);
-		await this.updateFilterBasedOnValue();
+		this.updateFilterBasedOnValue();
 	}
 	setValue(value: string) {
 		if (this.value === value) {
@@ -80,12 +81,16 @@ export class MdLookup {
 	@au.bindable
 	placeholder: string = "Start Typing To Search";
 
+	@au.ato.bindable.numberMd
+	debounce: number = 850;
+
 	LookupState = LookupState; // for usage from the html template
 	state: LookupState;
 
 	@au.bindable
 	options: any[];
 	optionsChanged() {
+		this.logger.debug("optionsChanged", this.options);
 		if (!this.options || !(this.options instanceof Array) || !this.options.length) {
 			this.state = LookupState.noMatches;
 		}
@@ -145,7 +150,8 @@ export class MdLookup {
 
 	bind(bindingContext: object, overrideContext: object) {
 		if (this.value) {
-			this.updateFilterBasedOnValue();
+			// use taskQueue to delay the update until all fields are bound
+			this.taskQueue.queueTask(() => this.updateFilterBasedOnValue());
 		}
 	}
 
