@@ -9,6 +9,7 @@ var MdLookup = /** @class */ (function () {
         this.element = element;
         this.taskQueue = taskQueue;
         this.placeholder = "Start Typing To Search";
+        this.debounce = 850;
         this.LookupState = lookup_state_1.LookupState; // for usage from the html template
         this.mdUnrenderValidateResults = function (results, renderer) {
             try {
@@ -57,6 +58,7 @@ var MdLookup = /** @class */ (function () {
             this.suppressFilterChanged = false;
             return;
         }
+        au.fireEvent(this.element, "filter-changed", this.filter);
         this.setValue(undefined);
     };
     MdLookup.prototype.setFilter = function (filter) {
@@ -70,19 +72,14 @@ var MdLookup = /** @class */ (function () {
     MdLookup.prototype.valueChanged = function (newValue, oldValue) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             return tslib_1.__generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (this.suppressValueChanged) {
-                            this.logger.debug("unsuppressed value changed");
-                            this.suppressValueChanged = false;
-                            return [2 /*return*/];
-                        }
-                        this.logger.debug("valueChanged", newValue);
-                        return [4 /*yield*/, this.updateFilterBasedOnValue()];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
+                if (this.suppressValueChanged) {
+                    this.logger.debug("unsuppressed value changed");
+                    this.suppressValueChanged = false;
+                    return [2 /*return*/];
                 }
+                this.logger.debug("valueChanged", newValue);
+                this.updateFilterBasedOnValue();
+                return [2 /*return*/];
             });
         });
     };
@@ -95,6 +92,7 @@ var MdLookup = /** @class */ (function () {
         this.value = value;
     };
     MdLookup.prototype.optionsChanged = function () {
+        this.logger.debug("optionsChanged", this.options);
         if (!this.options || !(this.options instanceof Array) || !this.options.length) {
             this.state = lookup_state_1.LookupState.noMatches;
         }
@@ -148,8 +146,10 @@ var MdLookup = /** @class */ (function () {
         this.isOpen = false;
     };
     MdLookup.prototype.bind = function (bindingContext, overrideContext) {
+        var _this = this;
         if (this.value) {
-            this.updateFilterBasedOnValue();
+            // use taskQueue to delay the update until all fields are bound
+            this.taskQueue.queueTask(function () { return _this.updateFilterBasedOnValue(); });
         }
     };
     MdLookup.prototype.attached = function () {
@@ -200,7 +200,7 @@ var MdLookup = /** @class */ (function () {
     MdLookup.searching = Symbol("searching");
     MdLookup.error = Symbol("error");
     tslib_1.__decorate([
-        au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
+        au.observable,
         tslib_1.__metadata("design:type", String)
     ], MdLookup.prototype, "filter", void 0);
     tslib_1.__decorate([
@@ -227,6 +227,10 @@ var MdLookup = /** @class */ (function () {
         au.bindable,
         tslib_1.__metadata("design:type", String)
     ], MdLookup.prototype, "placeholder", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.numberMd,
+        tslib_1.__metadata("design:type", Number)
+    ], MdLookup.prototype, "debounce", void 0);
     tslib_1.__decorate([
         au.bindable,
         tslib_1.__metadata("design:type", Array)

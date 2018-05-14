@@ -30,6 +30,7 @@ export declare class MdLookup {
     valueFieldName: ((option: any) => any) | string;
     readonly: boolean;
     placeholder: string;
+    debounce: number;
     LookupState: typeof LookupState;
     state: LookupState;
     options: any[];
