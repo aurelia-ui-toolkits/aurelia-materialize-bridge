@@ -1,4 +1,4 @@
-import { shadeBlendConvert } from "./shade-blend-convert";
+import { shadeBlendConvert } from "../common/shade-blend-convert";
 
 export class DarkenValueConverter {
 	toView(value: string, steps: string) {

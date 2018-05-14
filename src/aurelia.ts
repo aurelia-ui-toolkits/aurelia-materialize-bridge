@@ -8,3 +8,4 @@ import * as ato from "aurelia-typed-observable-plugin";
 export { ato };
 export * from "./common/util";
 export { AttributeManager } from "./common/attribute-manager";
+export { MdColorsService } from "./common/colors-service";
