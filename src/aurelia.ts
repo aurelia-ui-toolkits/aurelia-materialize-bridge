@@ -7,4 +7,4 @@ export { MaterializeFormValidationRenderer } from "./validation/validationRender
 import * as ato from "aurelia-typed-observable-plugin";
 export { ato };
 export * from "./common/util";
-export { AttributeManager } from "./common/attributeManager";
+export { AttributeManager } from "./common/attribute-manager";
