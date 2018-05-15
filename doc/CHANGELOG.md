@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.11"></a>
+# [1.0.0-alpha.11](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.10...v1.0.0-alpha.11) (2018-05-15)
+
+
+### Bug Fixes
+
+* **lookup:** do not set value or filter if values are the same ([a5cfe09](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a5cfe09))
+* **wait-cursor:** clean up ([371800e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/371800e))
+* **wait-cursor:** remove element on detached ([99bb6a5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/99bb6a5))
+
+
+
 <a name="1.0.0-alpha.10"></a>
 # [1.0.0-alpha.10](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.9...v1.0.0-alpha.10) (2018-05-15)
 
