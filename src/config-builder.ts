@@ -48,6 +48,7 @@ export class ConfigBuilder {
 			.useTapTarget()
 			.useTimePicker()
 			.useTooltip()
+			.useWaitCursor()
 			.useWaves()
 			.useWell();
 	}
@@ -234,9 +235,6 @@ export class ConfigBuilder {
 		return this;
 	}
 
-	/**
-	 * Use materialized tabs
-	 */
 	useTabs(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./tabs/tabs"));
 		// indicator size is calculated incorrectly when scrollbar is hidden/shown on tab switches
@@ -262,9 +260,11 @@ export class ConfigBuilder {
 		return this;
 	}
 
-	/**
-	 * Use ripple/waves effect
-	 */
+	useWaitCursor(): ConfigBuilder {
+		this.globalResources.push(PLATFORM.moduleName("./wait-cursor/wait-cursor"));
+		return this;
+	}
+
 	useWaves(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./waves/waves"));
 		return this;

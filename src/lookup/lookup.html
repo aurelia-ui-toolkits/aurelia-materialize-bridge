@@ -7,7 +7,7 @@
 			<label ref="labelElement">${label}</label>
 			<div ref="dropdown" if.bind="isOpen" class="dropdown-div z-depth-1">
 				<ul ref="dropdownUl" class="collection">
-					<li if.bind="state === LookupState.searching" class="disabled collection-item" md-wait-cursor.bind="searching">
+					<li if.bind="state === LookupState.searching" class="disabled collection-item" md-wait-cursor.bind="true">
 						<template replaceable part="searching-template">
 							Searching...
 						</template>
