@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.10"></a>
+# [1.0.0-alpha.10](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.9...v1.0.0-alpha.10) (2018-05-15)
+
+
+### Bug Fixes
+
+* **dropdown:** remove dropdown remains on detached ([f5786d8](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/f5786d8))
+* **lookup:** display error message ([6ee33ca](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6ee33ca))
+* **lookup:** remove placeholder binding and set label ref ([8828910](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/8828910))
+* **sidenav:** set required reference attribute ([933a654](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/933a654))
+
+
+### Features
+
+* **wait-cursor:** add wait-cursor attribute ([5fb103c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/5fb103c))
+
+
+
 <a name="1.0.0-alpha.9"></a>
 # [1.0.0-alpha.9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.8...v1.0.0-alpha.9) (2018-05-15)
 
