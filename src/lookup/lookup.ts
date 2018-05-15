@@ -39,7 +39,7 @@ export class MdLookup {
 			this.suppressFilterChanged = false;
 			return;
 		}
-		this.setValue(null);
+		this.setValue(undefined);
 		discard(this.searchPromise);
 		this.options = [MdLookup.searching];
 		try {
@@ -53,10 +53,13 @@ export class MdLookup {
 			}
 		}
 	}
-	setFilter(value: string) {
+	setFilter(filter: string) {
+		if (this.filter === filter) {
+			return;
+		}
 		this.logger.debug("suppressed filter changed");
 		this.suppressFilterChanged = true;
-		this.filter = value;
+		this.filter = filter;
 		this.taskQueue.queueTask(() => this.updateLabel());
 	}
 
@@ -76,6 +79,9 @@ export class MdLookup {
 		await this.updateFilterBasedOnValue();
 	}
 	setValue(value: string) {
+		if (this.value === value) {
+			return;
+		}
 		this.logger.debug("suppressed value changed");
 		this.suppressValueChanged = true;
 		this.value = value;
