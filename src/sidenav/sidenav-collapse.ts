@@ -13,9 +13,12 @@ export class MdSidenavCollapse {
 
 	attached() {
 		this.element.addEventListener("click", this.click);
+		if (this.ref) {
+			this.element.setAttribute("data-target", this.ref.controlId);
+		}
 	}
 
-	detached(){
+	detached() {
 		this.element.removeEventListener("click", this.click);
 	}
 
