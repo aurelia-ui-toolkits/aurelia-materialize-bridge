@@ -46,7 +46,7 @@ export class MdLookup {
 		}
 		catch (e) {
 			if (e !== DiscardablePromise.discarded) {
-				this.options = [MdLookup.error, e];
+				this.options = [MdLookup.error, e.message];
 			}
 		}
 	}
