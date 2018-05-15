@@ -19,6 +19,9 @@ var MdSidenavCollapse = /** @class */ (function () {
     }
     MdSidenavCollapse.prototype.attached = function () {
         this.element.addEventListener("click", this.click);
+        if (this.ref) {
+            this.element.setAttribute("data-target", this.ref.controlId);
+        }
     };
     MdSidenavCollapse.prototype.detached = function () {
         this.element.removeEventListener("click", this.click);

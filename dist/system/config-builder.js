@@ -57,6 +57,7 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                         .useTapTarget()
                         .useTimePicker()
                         .useTooltip()
+                        .useWaitCursor()
                         .useWaves()
                         .useWell();
                 };
@@ -208,9 +209,6 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                     this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./switch/switch"));
                     return this;
                 };
-                /**
-                 * Use materialized tabs
-                 */
                 ConfigBuilder.prototype.useTabs = function () {
                     this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./tabs/tabs"));
                     // indicator size is calculated incorrectly when scrollbar is hidden/shown on tab switches
@@ -232,9 +230,10 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                     this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./tooltip/tooltip"));
                     return this;
                 };
-                /**
-                 * Use ripple/waves effect
-                 */
+                ConfigBuilder.prototype.useWaitCursor = function () {
+                    this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./wait-cursor/wait-cursor"));
+                    return this;
+                };
                 ConfigBuilder.prototype.useWaves = function () {
                     this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./waves/waves"));
                     return this;

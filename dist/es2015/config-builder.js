@@ -47,6 +47,7 @@ var ConfigBuilder = /** @class */ (function () {
             .useTapTarget()
             .useTimePicker()
             .useTooltip()
+            .useWaitCursor()
             .useWaves()
             .useWell();
     };
@@ -198,9 +199,6 @@ var ConfigBuilder = /** @class */ (function () {
         this.globalResources.push(PLATFORM.moduleName("./switch/switch"));
         return this;
     };
-    /**
-     * Use materialized tabs
-     */
     ConfigBuilder.prototype.useTabs = function () {
         this.globalResources.push(PLATFORM.moduleName("./tabs/tabs"));
         // indicator size is calculated incorrectly when scrollbar is hidden/shown on tab switches
@@ -222,9 +220,10 @@ var ConfigBuilder = /** @class */ (function () {
         this.globalResources.push(PLATFORM.moduleName("./tooltip/tooltip"));
         return this;
     };
-    /**
-     * Use ripple/waves effect
-     */
+    ConfigBuilder.prototype.useWaitCursor = function () {
+        this.globalResources.push(PLATFORM.moduleName("./wait-cursor/wait-cursor"));
+        return this;
+    };
     ConfigBuilder.prototype.useWaves = function () {
         this.globalResources.push(PLATFORM.moduleName("./waves/waves"));
         return this;

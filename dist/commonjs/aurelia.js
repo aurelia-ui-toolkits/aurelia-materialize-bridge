@@ -15,6 +15,7 @@ exports.DOM = aurelia_framework_1.DOM;
 exports.children = aurelia_framework_1.children;
 exports.bindable = aurelia_framework_1.bindable;
 exports.observable = aurelia_framework_1.observable;
+exports.TemplatingEngine = aurelia_framework_1.TemplatingEngine;
 var aurelia_logging_1 = require("aurelia-logging");
 exports.getLogger = aurelia_logging_1.getLogger;
 exports.Logger = aurelia_logging_1.Logger;

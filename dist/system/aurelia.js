@@ -16,6 +16,7 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
         "children": true,
         "bindable": true,
         "observable": true,
+        "TemplatingEngine": true,
         "getLogger": true,
         "Logger": true,
         "fireEvent": true,
@@ -51,7 +52,8 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
                     "DOM": aurelia_framework_1_1["DOM"],
                     "children": aurelia_framework_1_1["children"],
                     "bindable": aurelia_framework_1_1["bindable"],
-                    "observable": aurelia_framework_1_1["observable"]
+                    "observable": aurelia_framework_1_1["observable"],
+                    "TemplatingEngine": aurelia_framework_1_1["TemplatingEngine"]
                 });
             },
             function (aurelia_logging_1_1) {

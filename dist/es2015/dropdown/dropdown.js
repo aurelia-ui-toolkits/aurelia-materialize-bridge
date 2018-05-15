@@ -36,6 +36,7 @@ var MdDropdown = /** @class */ (function () {
     MdDropdown.prototype.detached = function () {
         if (this.instance) {
             this.instance.destroy();
+            this.instance.dropdownEl.remove();
         }
         this.attributeManager.removeAttributes("data-target");
         this.attributeManager.removeClasses("dropdown-trigger");

@@ -13,6 +13,7 @@ define(["require", "exports", "tslib", "aurelia-router", "aurelia-framework", "a
     exports.children = aurelia_framework_1.children;
     exports.bindable = aurelia_framework_1.bindable;
     exports.observable = aurelia_framework_1.observable;
+    exports.TemplatingEngine = aurelia_framework_1.TemplatingEngine;
     exports.getLogger = aurelia_logging_1.getLogger;
     exports.Logger = aurelia_logging_1.Logger;
     exports.fireEvent = events_1.fireEvent;

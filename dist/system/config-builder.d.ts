@@ -43,16 +43,11 @@ export declare class ConfigBuilder {
     useSidenav(): ConfigBuilder;
     useSlider(): ConfigBuilder;
     useSwitch(): ConfigBuilder;
-    /**
-     * Use materialized tabs
-     */
     useTabs(): ConfigBuilder;
     useTapTarget(): ConfigBuilder;
     useTimePicker(): ConfigBuilder;
     useTooltip(): ConfigBuilder;
-    /**
-     * Use ripple/waves effect
-     */
+    useWaitCursor(): ConfigBuilder;
     useWaves(): ConfigBuilder;
     useWell(): ConfigBuilder;
     preventWavesAttach(): ConfigBuilder;

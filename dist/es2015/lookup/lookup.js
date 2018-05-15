@@ -49,6 +49,7 @@ var MdLookup = /** @class */ (function () {
             var e_2, _a;
         };
         this.logger = au.getLogger("MdLookup");
+        this.controlId = "md-lookup-" + MdLookup_1.id++;
     }
     MdLookup_1 = MdLookup;
     MdLookup.prototype.filterChanged = function () {
@@ -82,7 +83,7 @@ var MdLookup = /** @class */ (function () {
                     case 3:
                         e_3 = _b.sent();
                         if (e_3 !== DiscardablePromise.discarded) {
-                            this.options = [MdLookup_1.error, e_3];
+                            this.options = [MdLookup_1.error, e_3.message];
                         }
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
@@ -91,9 +92,11 @@ var MdLookup = /** @class */ (function () {
         });
     };
     MdLookup.prototype.setFilter = function (value) {
+        var _this = this;
         this.logger.debug("suppressed filter changed");
         this.suppressFilterChanged = true;
         this.filter = value;
+        this.taskQueue.queueTask(function () { return _this.updateLabel(); });
     };
     MdLookup.prototype.valueChanged = function (newValue, oldValue) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
@@ -190,6 +193,17 @@ var MdLookup = /** @class */ (function () {
         this.logger.debug("close");
         this.isOpen = false;
     };
+    MdLookup.prototype.blur = function () {
+        this.close();
+        au.fireEvent(this.element, "blur");
+    };
+    MdLookup.prototype.focus = function () {
+        this.input.focus();
+        au.fireEvent(this.element, "focus");
+    };
+    MdLookup.prototype.updateLabel = function () {
+        au.updateLabel(this.input, this.labelElement);
+    };
     MdLookup.prototype.bind = function (bindingContext, overrideContext) {
         return tslib_1.__awaiter(this, void 0, void 0, function () {
             return tslib_1.__generator(this, function (_a) {
@@ -212,13 +226,15 @@ var MdLookup = /** @class */ (function () {
     MdLookup.prototype.attached = function () {
         var _this = this;
         this.logger.debug("attached");
+        if (this.placeholder) {
+            this.input.setAttribute("placeholder", this.placeholder);
+        }
         // we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
         this.input.onselect = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
         this.input.onclick = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
-        this.input.onblur = function () { _this.close(); au.fireEvent(_this.element, "blur"); };
         this.element.mdRenderValidateResults = this.mdRenderValidateResults;
         this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
-        this.labelElement.classList.add(this.filter || this.placeholder ? "active" : "inactive");
+        this.updateLabel();
     };
     MdLookup.prototype.detached = function () {
         this.input.onselect = null;
@@ -261,6 +277,7 @@ var MdLookup = /** @class */ (function () {
     };
     MdLookup.searching = Symbol("searching");
     MdLookup.error = Symbol("error");
+    MdLookup.id = 0;
     tslib_1.__decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
         tslib_1.__metadata("design:type", String)

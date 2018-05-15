@@ -9,6 +9,8 @@ export declare class MdLookup {
     static searching: symbol;
     static error: symbol;
     errorMessage: string;
+    static id: number;
+    controlId: string;
     dropdown: HTMLElement;
     dropdownUl: HTMLElement;
     input: HTMLInputElement;
@@ -42,6 +44,9 @@ export declare class MdLookup {
     fixDropdownSizeIfTooBig(): void;
     open(): void;
     close(): void;
+    blur(): void;
+    focus(): void;
+    updateLabel(): void;
     bind(bindingContext: object, overrideContext: object): Promise<void>;
     attached(): void;
     detached(): void;
