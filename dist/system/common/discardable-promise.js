@@ -1,6 +1,10 @@
 System.register([], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
+    /**
+     * Sets the internal state of a promise to discarded
+     * @param discardable A promise to discard
+     */
     function discard(discardable) {
         if (discardable) {
             discardable.discard();

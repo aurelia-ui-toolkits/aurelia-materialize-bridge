@@ -20,6 +20,10 @@ var DiscardablePromise = /** @class */ (function () {
     return DiscardablePromise;
 }());
 export { DiscardablePromise };
+/**
+ * Sets the internal state of a promise to discarded
+ * @param discardable A promise to discard
+ */
 export function discard(discardable) {
     if (discardable) {
         discardable.discard();

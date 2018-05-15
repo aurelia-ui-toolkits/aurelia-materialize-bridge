@@ -33,6 +33,7 @@ export * from "./footer/footer";
 export * from "./input/input-prefix";
 export * from "./input/input";
 export * from "./lookup/lookup";
+export * from "./lookup/i-lookup-options-function-parameter";
 export * from "./modal/modal";
 export * from "./navbar/navbar";
 export * from "./pagination/pagination";

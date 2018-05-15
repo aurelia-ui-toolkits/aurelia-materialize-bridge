@@ -23,6 +23,10 @@ define(["require", "exports"], function (require, exports) {
         return DiscardablePromise;
     }());
     exports.DiscardablePromise = DiscardablePromise;
+    /**
+     * Sets the internal state of a promise to discarded
+     * @param discardable A promise to discard
+     */
     function discard(discardable) {
         if (discardable) {
             discardable.discard();

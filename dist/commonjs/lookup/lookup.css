@@ -1,7 +1,7 @@
 md-lookup .dropdown-div {
 		position: absolute;
 		z-index: 1000;
-		margin-top: -17px;
+		margin-top: -5px;
 		width: 100%;
 		cursor: pointer;
 		overflow: auto;
