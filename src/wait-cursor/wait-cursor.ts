@@ -23,7 +23,7 @@ export class MdWaitCursorCustomAttribute {
 	}
 
 	attachedMdInput() {
-		const inputField = this.element.querySelector("input-field");
+		const inputField = this.element.querySelector(".input-field");
 		if (!inputField) {
 			return;
 		}
@@ -73,7 +73,7 @@ export class MdWaitCursorCustomAttribute {
 		progress.innerHTML =
 			"<div show.bind='value'>" +
 			"<div style='opacity: 0.7; background: white; width: 100%; height: 100%;'></div>" +
-			"<md-progress md-type='circular' md-size='small' style='position: absolute; left: 50%; top: 50%; height: 36px; transform: translateX(-50%) translateY(-50%);'></md-progress>" +
+			"<md-progress type='circular' size='small' style='position: absolute; left: 50%; top: 50%; height: 36px; transform: translateX(-50%) translateY(-50%);'></md-progress>" +
 			"</div>";
 		progress = progress.firstChild as HTMLDivElement;
 		this.trResizeDelegate = () => {
