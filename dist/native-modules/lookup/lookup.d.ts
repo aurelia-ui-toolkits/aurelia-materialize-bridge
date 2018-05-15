@@ -21,7 +21,7 @@ export declare class MdLookup {
     searchPromise: DiscardablePromise<any[]>;
     suppressFilterChanged: boolean;
     filterChanged(): Promise<void>;
-    setFilter(value: string): void;
+    setFilter(filter: string): void;
     label: string;
     value: any;
     suppressValueChanged: boolean;

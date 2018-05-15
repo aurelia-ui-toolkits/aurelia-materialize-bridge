@@ -66,7 +66,7 @@ define(["require", "exports", "tslib", "../aurelia", "./lookup-state", "../commo
                                 this.suppressFilterChanged = false;
                                 return [2 /*return*/];
                             }
-                            this.setValue(null);
+                            this.setValue(undefined);
                             discardable_promise_1.discard(this.searchPromise);
                             this.options = [MdLookup_1.searching];
                             _b.label = 1;
@@ -90,11 +90,14 @@ define(["require", "exports", "tslib", "../aurelia", "./lookup-state", "../commo
                 });
             });
         };
-        MdLookup.prototype.setFilter = function (value) {
+        MdLookup.prototype.setFilter = function (filter) {
             var _this = this;
+            if (this.filter === filter) {
+                return;
+            }
             this.logger.debug("suppressed filter changed");
             this.suppressFilterChanged = true;
-            this.filter = value;
+            this.filter = filter;
             this.taskQueue.queueTask(function () { return _this.updateLabel(); });
         };
         MdLookup.prototype.valueChanged = function (newValue, oldValue) {
@@ -117,6 +120,9 @@ define(["require", "exports", "tslib", "../aurelia", "./lookup-state", "../commo
             });
         };
         MdLookup.prototype.setValue = function (value) {
+            if (this.value === value) {
+                return;
+            }
             this.logger.debug("suppressed value changed");
             this.suppressValueChanged = true;
             this.value = value;
