@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.9"></a>
+# [1.0.0-alpha.9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.8...v1.0.0-alpha.9) (2018-05-15)
+
+
+### Bug Fixes
+
+* **lookup:** finaly settle on this implementation ([0f50db3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0f50db3))
+
+
+### Features
+
+* **lookup:** rework bindings ([d5d269e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d5d269e))
+
+
+
 <a name="1.0.0-alpha.8"></a>
 # [1.0.0-alpha.8](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.7...v1.0.0-alpha.8) (2018-05-14)
 
