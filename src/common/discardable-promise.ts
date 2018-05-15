@@ -21,7 +21,11 @@ export class DiscardablePromise<T> implements PromiseLike<T> {
 	}
 }
 
-export function discard<T>(discardable: DiscardablePromise<T>) {
+/**
+ * Sets the internal state of a promise to discarded
+ * @param discardable A promise to discard
+ */
+export function discard<T>(discardable: DiscardablePromise<T> | null | undefined) {
 	if (discardable) {
 		discardable.discard();
 	}

@@ -1,5 +1,7 @@
 ﻿import * as au from "../aurelia";
 import { LookupState } from "./lookup-state";
+import { ILookupOptionsFunctionParameter } from "./i-lookup-options-function-parameter";
+import { DiscardablePromise, discard } from "../common/discardable-promise";
 
 @au.customElement("md-lookup")
 @au.autoinject
@@ -12,7 +14,6 @@ export class MdLookup {
 	static error = Symbol("error");
 
 	errorMessage: string;
-	searchingMessage: string;
 
 	dropdown: HTMLElement;
 	dropdownUl: HTMLElement;
@@ -21,25 +22,38 @@ export class MdLookup {
 	validationContainer: HTMLElement;
 	logger: au.Logger;
 
-	@au.observable
+	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	filter: string;
+	searchPromise: DiscardablePromise<any[]>;
 	suppressFilterChanged: boolean;
-	filterChanged() {
+	async filterChanged() {
+		this.logger.debug("filterChanged");
+		if (!this.optionsFunction) {
+			return;
+		}
 		if (this.suppressFilterChanged) {
 			this.logger.debug("unsuppressed filter changed");
 			this.suppressFilterChanged = false;
 			return;
 		}
-		au.fireEvent(this.element, "filter-changed", this.filter);
-		this.setValue(undefined);
-	}
-	setFilter(filter: string) {
-		if (this.filter === filter) {
-			return;
+		this.setValue(null);
+		discard(this.searchPromise);
+		this.options = [MdLookup.searching];
+		try {
+			this.searchPromise = new DiscardablePromise(this.getOptions({ filter: this.filter }));
+			this.options = await this.searchPromise;
+			this.fixDropdownSizeIfTooBig();
 		}
-		this.logger.debug("suppressed filter changed", filter);
+		catch (e) {
+			if (e !== DiscardablePromise.discarded) {
+				this.options = [MdLookup.error, e];
+			}
+		}
+	}
+	setFilter(value: string) {
+		this.logger.debug("suppressed filter changed");
 		this.suppressFilterChanged = true;
-		this.filter = filter;
+		this.filter = value;
 	}
 
 	@au.bindable
@@ -49,22 +63,23 @@ export class MdLookup {
 	value: any;
 	suppressValueChanged: boolean;
 	async valueChanged(newValue: any, oldValue: any) {
+		this.logger.debug("valueChanged", newValue);
 		if (this.suppressValueChanged) {
 			this.logger.debug("unsuppressed value changed");
 			this.suppressValueChanged = false;
 			return;
 		}
-		this.logger.debug("valueChanged", newValue);
-		this.updateFilterBasedOnValue();
+		await this.updateFilterBasedOnValue();
 	}
 	setValue(value: string) {
-		if (this.value === value) {
-			return;
-		}
-		this.logger.debug("suppressed value changed", value);
+		this.logger.debug("suppressed value changed");
 		this.suppressValueChanged = true;
 		this.value = value;
 	}
+
+	@au.bindable
+	optionsFunction: (p: ILookupOptionsFunctionParameter<any>) => Promise<any[]>;
+	getOptions: (p: ILookupOptionsFunctionParameter<any>) => Promise<any[]>;
 
 	@au.bindable
 	displayFieldName: ((option: any) => string) | string;
@@ -84,7 +99,9 @@ export class MdLookup {
 	LookupState = LookupState; // for usage from the html template
 	state: LookupState;
 
-	@au.bindable
+	bindingContext: object;
+
+	@au.observable
 	options: any[];
 	optionsChanged() {
 		this.logger.debug("optionsChanged", this.options);
@@ -93,7 +110,6 @@ export class MdLookup {
 		}
 		else if (this.options[0] === MdLookup.searching) {
 			this.state = LookupState.searching;
-			this.searchingMessage = this.options.length > 1 ? this.options[1] : "Searching...";
 		}
 		else if (this.options[0] === MdLookup.error) {
 			this.state = LookupState.error;
@@ -106,9 +122,19 @@ export class MdLookup {
 
 	isOpen: boolean;
 
-	updateFilterBasedOnValue() {
+	async updateFilterBasedOnValue() {
 		this.logger.debug("updateFilterBasedOnValue", this.value);
-		this.setFilter(this.getDisplayValue(this.value));
+		if (this.value) {
+			this.options = await this.getOptions({ value: this.value });
+		}
+		else {
+			this.options = [];
+		}
+		if (this.options && this.options.length) {
+			this.setFilter(this.getDisplayValue(this.options[0]));
+		} else {
+			this.setFilter(undefined);
+		}
 	}
 
 	fixDropdownSizeIfTooBig() {
@@ -140,12 +166,14 @@ export class MdLookup {
 		this.isOpen = false;
 	}
 
-	bind(bindingContext: object, overrideContext: object) {
-		if (this.value) {
-			// use taskQueue to delay the update until all fields are bound
-			this.taskQueue.queueTask(() => this.updateFilterBasedOnValue());
+	async bind(bindingContext: object, overrideContext: object) {
+		this.bindingContext = bindingContext;
+		if (this.optionsFunction) {
+			this.getOptions = this.optionsFunction.bind(this.bindingContext);
 		}
-		this.optionsChanged();
+		await this.updateFilterBasedOnValue();
+		// restore initial value because it is set by updateFilterBasedOnValue
+		this.suppressFilterChanged = false;
 	}
 
 	attached() {
@@ -153,7 +181,7 @@ export class MdLookup {
 		// we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
 		this.input.onselect = () => this.taskQueue.queueTask(() => this.open());
 		this.input.onclick = () => this.taskQueue.queueTask(() => this.open());
-		this.input.onblur = () => this.close();
+		this.input.onblur = () => { this.close(); au.fireEvent(this.element, "blur"); };
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
 		this.labelElement.classList.add(this.filter || this.placeholder ? "active" : "inactive");
@@ -179,8 +207,10 @@ export class MdLookup {
 		} else {
 			this.value = option;
 		}
+		// this.setFilter(this.getDisplayValue(option));
+		// this.options = [option];
 		this.close();
-		au.fireEvent(this.element, "selected", this.value);
+		au.fireEvent(this.element, "selected", { value: this.value });
 	}
 
 	getDisplayValue(option: any): any {
