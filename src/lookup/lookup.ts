@@ -8,6 +8,7 @@ import { DiscardablePromise, discard } from "../common/discardable-promise";
 export class MdLookup {
 	constructor(private element: Element, private taskQueue: au.TaskQueue) {
 		this.logger = au.getLogger("MdLookup");
+		this.controlId = `md-lookup-${MdLookup.id++}`;
 	}
 
 	static searching = Symbol("searching");
@@ -15,6 +16,8 @@ export class MdLookup {
 
 	errorMessage: string;
 
+	static id = 0;
+	controlId: string;
 	dropdown: HTMLElement;
 	dropdownUl: HTMLElement;
 	input: HTMLInputElement;
@@ -54,6 +57,7 @@ export class MdLookup {
 		this.logger.debug("suppressed filter changed");
 		this.suppressFilterChanged = true;
 		this.filter = value;
+		this.taskQueue.queueTask(() => this.updateLabel());
 	}
 
 	@au.bindable
@@ -166,6 +170,20 @@ export class MdLookup {
 		this.isOpen = false;
 	}
 
+	blur() {
+		this.close();
+		au.fireEvent(this.element, "blur");
+	}
+
+	focus() {
+		this.input.focus();
+		au.fireEvent(this.element, "focus");
+	}
+
+	updateLabel() {
+		au.updateLabel(this.input, this.labelElement);
+	}
+
 	async bind(bindingContext: object, overrideContext: object) {
 		this.bindingContext = bindingContext;
 		if (this.optionsFunction) {
@@ -178,13 +196,15 @@ export class MdLookup {
 
 	attached() {
 		this.logger.debug("attached");
+		if (this.placeholder) {
+			this.input.setAttribute("placeholder", this.placeholder);
+		}
 		// we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
 		this.input.onselect = () => this.taskQueue.queueTask(() => this.open());
 		this.input.onclick = () => this.taskQueue.queueTask(() => this.open());
-		this.input.onblur = () => { this.close(); au.fireEvent(this.element, "blur"); };
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
-		this.labelElement.classList.add(this.filter || this.placeholder ? "active" : "inactive");
+		this.updateLabel();
 	}
 
 	detached() {
