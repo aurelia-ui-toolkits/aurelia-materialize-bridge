@@ -106,6 +106,9 @@ export class MdLookup {
 	@au.ato.bindable.numberMd
 	debounce: number = 850;
 
+	@au.bindable
+	preloadOptions: boolean;
+
 	LookupState = LookupState; // for usage from the html template
 	state: LookupState;
 
@@ -200,7 +203,7 @@ export class MdLookup {
 		this.suppressFilterChanged = false;
 	}
 
-	attached() {
+	async attached() {
 		this.logger.debug("attached");
 		if (this.placeholder) {
 			this.input.setAttribute("placeholder", this.placeholder);
@@ -210,6 +213,9 @@ export class MdLookup {
 		this.input.onclick = () => this.taskQueue.queueTask(() => this.open());
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
+		if (this.preloadOptions) {
+			this.options = await this.getOptions({ value: this.value, filter: this.filter });
+		}
 		this.updateLabel();
 	}
 
