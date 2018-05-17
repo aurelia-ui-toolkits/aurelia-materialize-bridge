@@ -34,6 +34,11 @@ export class MdModal {
 
 	@au.ato.bindable.booleanMd
 	fixedFooter: boolean;
+	fixedFooterChanged() {
+		if (this.element) {
+			this.element.classList.toggle("modal-fixed-footer", this.fixedFooter);
+		}
+	}
 
 	@au.ato.bindable.booleanMd
 	bottomSheet: boolean;
