@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.12"></a>
+# [1.0.0-alpha.12](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.11...v1.0.0-alpha.12) (2018-05-24)
+
+
+### Bug Fixes
+
+* **datepicker:** do not display border on selects ([9a7969e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/9a7969e))
+* **modal:** toggle fixed footer class ([ff9db75](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/ff9db75))
+* **wait-cursor:** detached differently for buttons ([97b1fb1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/97b1fb1))
+
+
+### Features
+
+* **lookup:** add preload option ([d1088af](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d1088af))
+
+
+
 <a name="1.0.0-alpha.11"></a>
 # [1.0.0-alpha.11](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.10...v1.0.0-alpha.11) (2018-05-15)
 
