@@ -246,17 +246,33 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                     });
                 };
                 MdLookup.prototype.attached = function () {
-                    var _this = this;
-                    this.logger.debug("attached");
-                    if (this.placeholder) {
-                        this.input.setAttribute("placeholder", this.placeholder);
-                    }
-                    // we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
-                    this.input.onselect = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
-                    this.input.onclick = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
-                    this.element.mdRenderValidateResults = this.mdRenderValidateResults;
-                    this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
-                    this.updateLabel();
+                    return tslib_1.__awaiter(this, void 0, void 0, function () {
+                        var _this = this;
+                        var _a;
+                        return tslib_1.__generator(this, function (_b) {
+                            switch (_b.label) {
+                                case 0:
+                                    this.logger.debug("attached");
+                                    if (this.placeholder) {
+                                        this.input.setAttribute("placeholder", this.placeholder);
+                                    }
+                                    // we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
+                                    this.input.onselect = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
+                                    this.input.onclick = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
+                                    this.element.mdRenderValidateResults = this.mdRenderValidateResults;
+                                    this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
+                                    if (!this.preloadOptions) return [3 /*break*/, 2];
+                                    _a = this;
+                                    return [4 /*yield*/, this.getOptions({ value: this.value, filter: this.filter })];
+                                case 1:
+                                    _a.options = _b.sent();
+                                    _b.label = 2;
+                                case 2:
+                                    this.updateLabel();
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
                 };
                 MdLookup.prototype.detached = function () {
                     this.input.onselect = null;
@@ -336,6 +352,10 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                     au.ato.bindable.numberMd,
                     tslib_1.__metadata("design:type", Number)
                 ], MdLookup.prototype, "debounce", void 0);
+                tslib_1.__decorate([
+                    au.bindable,
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdLookup.prototype, "preloadOptions", void 0);
                 tslib_1.__decorate([
                     au.observable,
                     tslib_1.__metadata("design:type", Array)

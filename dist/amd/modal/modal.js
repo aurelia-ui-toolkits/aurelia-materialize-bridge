@@ -7,6 +7,11 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.log = au.getLogger("md-modal");
             this.attributeManager = new au.AttributeManager(this.element);
         }
+        MdModal.prototype.fixedFooterChanged = function () {
+            if (this.element) {
+                this.element.classList.toggle("modal-fixed-footer", this.fixedFooter);
+            }
+        };
         MdModal.prototype.attached = function () {
             var _this = this;
             var options = {

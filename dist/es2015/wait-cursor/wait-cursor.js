@@ -96,7 +96,13 @@ var MdWaitCursorCustomAttribute = /** @class */ (function () {
     };
     MdWaitCursorCustomAttribute.prototype.detached = function () {
         if (this.progress) {
-            this.progress.remove();
+            if (this.element.tagName === "BUTTON") {
+                this.progress.insertAdjacentElement("beforebegin", this.element);
+                this.progress.remove();
+            }
+            else {
+                this.progress.remove();
+            }
         }
         if (this.trResizeDelegate) {
             window.removeEventListener("resize", this.trResizeDelegate);

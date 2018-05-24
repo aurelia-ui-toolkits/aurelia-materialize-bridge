@@ -12,6 +12,7 @@ export declare class MdModal {
     startingTop: string;
     endingTop: string;
     fixedFooter: boolean;
+    fixedFooterChanged(): void;
     bottomSheet: boolean;
     instance: M.Modal;
     attached(): void;

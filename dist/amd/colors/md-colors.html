@@ -330,7 +330,8 @@
 		color: ${accentColor};
 	}
 
-	.select-wrapper input.select-dropdown:focus {
+	/* do not display border on selects in a datepicker*/
+	.select-wrapper:not(.select-month):not(.select-year) input.select-dropdown:focus {
 		border-bottom: 1px solid ${accentColor};
 	}
 

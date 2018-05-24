@@ -34,6 +34,7 @@ export declare class MdLookup {
     readonly: boolean;
     placeholder: string;
     debounce: number;
+    preloadOptions: boolean;
     LookupState: typeof LookupState;
     state: LookupState;
     bindingContext: object;
@@ -48,7 +49,7 @@ export declare class MdLookup {
     focus(): void;
     updateLabel(): void;
     bind(bindingContext: object, overrideContext: object): Promise<void>;
-    attached(): void;
+    attached(): Promise<void>;
     detached(): void;
     select(option: any): void;
     getDisplayValue(option: any): any;
