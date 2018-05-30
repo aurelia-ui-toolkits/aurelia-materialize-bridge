@@ -39,7 +39,8 @@ export class MdAutoComplete {
 		$(this.input).autocomplete({
 			data: this.values,
 			minLength: this.minLength,
-			limit: this.limit
+			limit: this.limit,
+			onAutocomplete: () => fireEvent(this.input, "change")
 		});
 		$(this.input).siblings(".autocomplete-content").on("click", () => {
 			fireEvent(this.input, "change");
