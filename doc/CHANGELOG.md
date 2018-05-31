@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.34.3"></a>
+## [0.34.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.34.2...v0.34.3) (2018-05-31)
+
+
+### Bug Fixes
+
+* **autocomplete:** firing a change event when onAutocomplete occurs ([7c85789](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/7c85789)), closes [#514](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/514)
+
+
+
 <a name="0.34.2"></a>
 ## [0.34.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v0.34.1...v0.34.2) (2018-05-04)
 
