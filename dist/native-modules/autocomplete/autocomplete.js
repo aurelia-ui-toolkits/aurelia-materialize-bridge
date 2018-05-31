@@ -32,7 +32,8 @@ var MdAutoComplete = /** @class */ (function () {
         $(this.input).autocomplete({
             data: this.values,
             minLength: this.minLength,
-            limit: this.limit
+            limit: this.limit,
+            onAutocomplete: function () { return fireEvent(_this.input, "change"); }
         });
         $(this.input).siblings(".autocomplete-content").on("click", function () {
             fireEvent(_this.input, "change");
