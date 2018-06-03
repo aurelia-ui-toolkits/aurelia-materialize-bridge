@@ -76,6 +76,9 @@ export class MdInput {
 	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
 	maxlength: number = 524288;
 
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	autocomplete: string = "";
+
 	suspendUpdate = false;
 
 	bind() {
@@ -88,6 +91,9 @@ export class MdInput {
 		}
 		if (this.placeholder) {
 			this.input.setAttribute("placeholder", this.placeholder);
+		}
+		if(this.autocomplete){
+			this.input.setAttribute("autocomplete", this.autocomplete);
 		}
 		this.updateLabel();
 		this.attachEventHandlers();
