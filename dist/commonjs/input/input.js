@@ -21,6 +21,7 @@ var MdInput = /** @class */ (function () {
         this.max = null;
         this.name = "";
         this.maxlength = 524288;
+        this.autocomplete = "";
         this.suspendUpdate = false;
         this.blurOnEnterHandler = function (e) {
             if (e.keyCode && e.keyCode === 13) {
@@ -86,6 +87,9 @@ var MdInput = /** @class */ (function () {
         }
         if (this.placeholder) {
             this.input.setAttribute("placeholder", this.placeholder);
+        }
+        if (this.autocomplete) {
+            this.input.setAttribute("autocomplete", this.autocomplete);
         }
         this.updateLabel();
         this.attachEventHandlers();
@@ -198,6 +202,10 @@ var MdInput = /** @class */ (function () {
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
     ], MdInput.prototype, "maxlength", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", String)
+    ], MdInput.prototype, "autocomplete", void 0);
     MdInput = MdInput_1 = tslib_1.__decorate([
         au.customElement("md-input"),
         au.autoinject,

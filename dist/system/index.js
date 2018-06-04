@@ -1,11 +1,7 @@
-System.register(["./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable", "./config-builder", "./common/polyfills", "./exports"], function (exports_1, context_1) {
+System.register(["./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable", "./config-builder", "./exports"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    function applyPolyfills() {
-        polyfills_1.polyfillElementClosest();
-    }
     function configure(frameworkConfiguration, configCallback) {
-        applyPolyfills();
         var builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
         if (configCallback !== undefined && typeof (configCallback) === "function") {
             configCallback(builder);
@@ -15,7 +11,7 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./augm
         }
     }
     exports_1("configure", configure);
-    var config_builder_1, polyfills_1;
+    var config_builder_1;
     var exportedNames_1 = {
         "configure": true
     };
@@ -36,9 +32,6 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./augm
             },
             function (config_builder_1_1) {
                 config_builder_1 = config_builder_1_1;
-            },
-            function (polyfills_1_1) {
-                polyfills_1 = polyfills_1_1;
             },
             function (exports_2_1) {
                 exportStar_1(exports_2_1);

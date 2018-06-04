@@ -195,6 +195,10 @@
 		color: ${errorColor};
 	}
 
+	.datepicker-controls .select-wrapper input:focus {
+			border-bottom: none; /* select styling sets the border so it needs to be reset again*/
+	}
+
 	/* text input */
 	input:not([type]):focus:not([readonly]),
 	input[type=text]:not(.browser-default):focus:not([readonly]),
@@ -330,8 +334,7 @@
 		color: ${accentColor};
 	}
 
-	/* do not display border on selects in a datepicker*/
-	.select-wrapper:not(.select-month):not(.select-year) input.select-dropdown:focus {
+	.select-wrapper input.select-dropdown:focus {
 		border-bottom: 1px solid ${accentColor};
 	}
 

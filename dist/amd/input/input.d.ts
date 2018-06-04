@@ -28,6 +28,7 @@ export declare class MdInput {
     max: string;
     name: string;
     maxlength: number;
+    autocomplete: string;
     suspendUpdate: boolean;
     bind(): void;
     attached(): void;

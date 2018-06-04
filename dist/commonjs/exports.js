@@ -23,7 +23,6 @@ tslib_1.__exportStar(require("./collection/md-collection-selector"), exports);
 tslib_1.__exportStar(require("./colors/color-value-converters"), exports);
 tslib_1.__exportStar(require("./colors/md-colors"), exports);
 tslib_1.__exportStar(require("./common/attribute-manager"), exports);
-tslib_1.__exportStar(require("./common/attributes"), exports);
 tslib_1.__exportStar(require("./common/constants"), exports);
 tslib_1.__exportStar(require("./common/events"), exports);
 tslib_1.__exportStar(require("./common/discardable-promise"), exports);

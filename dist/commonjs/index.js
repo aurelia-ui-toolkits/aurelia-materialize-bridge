@@ -7,12 +7,7 @@ require("./augmentation/element");
 require("./augmentation/materialize");
 require("./augmentation/aurelia-typed-observable");
 var config_builder_1 = require("./config-builder");
-var polyfills_1 = require("./common/polyfills");
-function applyPolyfills() {
-    polyfills_1.polyfillElementClosest();
-}
 function configure(frameworkConfiguration, configCallback) {
-    applyPolyfills();
     var builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
     if (configCallback !== undefined && typeof (configCallback) === "function") {
         configCallback(builder);
