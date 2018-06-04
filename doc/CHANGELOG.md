@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.13"></a>
+# [1.0.0-alpha.13](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.12...v1.0.0-alpha.13) (2018-06-04)
+
+
+### Bug Fixes
+
+* **datepicker:** do not display border on selects ([2aa8ab8](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/2aa8ab8))
+
+
+### Features
+
+* **input:** [#512](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/512) added autocomplete attribute ([f8b0b15](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/f8b0b15))
+
+
+
 <a name="1.0.0-alpha.12"></a>
 # [1.0.0-alpha.12](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.11...v1.0.0-alpha.12) (2018-05-24)
 
