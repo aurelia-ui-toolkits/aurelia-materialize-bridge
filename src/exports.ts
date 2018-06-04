@@ -20,7 +20,6 @@ export * from "./collection/md-collection-selector";
 export * from "./colors/color-value-converters";
 export * from "./colors/md-colors";
 export * from "./common/attribute-manager";
-export * from "./common/attributes";
 export * from "./common/constants";
 export * from "./common/events";
 export * from "./common/discardable-promise";
