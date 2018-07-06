@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.14"></a>
+# [1.0.0-alpha.14](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.13...v1.0.0-alpha.14) (2018-07-06)
+
+
+### Bug Fixes
+
+* **all:** polyfill remove for IE11 ([f6d4716](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/f6d4716)), closes [#517](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/517)
+
+
+
 <a name="1.0.0-alpha.13"></a>
 # [1.0.0-alpha.13](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.12...v1.0.0-alpha.13) (2018-06-04)
 
