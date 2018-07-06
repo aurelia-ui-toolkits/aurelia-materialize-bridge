@@ -1,7 +1,7 @@
 System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var tslib_1, au, MdSidenav;
+    var __moduleName = context_1 && context_1.id;
     return {
         setters: [
             function (tslib_1_1) {
@@ -65,6 +65,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         this.instance.destroy();
                     }
                 };
+                var MdSidenav_1;
                 MdSidenav.fixedClass = "sidenav-fixed";
                 MdSidenav.id = 0;
                 tslib_1.__decorate([
@@ -93,7 +94,6 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdSidenav);
                 return MdSidenav;
-                var MdSidenav_1;
             }());
             exports_1("MdSidenav", MdSidenav);
         }

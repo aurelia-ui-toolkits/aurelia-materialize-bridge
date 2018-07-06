@@ -13,6 +13,20 @@ define(["require", "exports", "tslib", "./config-builder", "./exports", "./augme
     exports.configure = configure;
     // build-index-remove start
     tslib_1.__exportStar(exports_1, exports);
+    // build-index-remove end
+    function remove() {
+        if (this.parentNode) {
+            this.parentNode.removeChild(this);
+        }
+    }
+    // polyfill remove for IE11
+    (function () {
+        if (!Element.prototype.remove) {
+            Element.prototype.remove = remove;
+        }
+        if (Text && !Text.prototype.remove) {
+            Text.prototype.remove = remove;
+        }
+    })();
 });
-// build-index-remove end
 //# sourceMappingURL=index.js.map

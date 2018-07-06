@@ -16,4 +16,18 @@ export function configure(frameworkConfiguration, configCallback) {
 // build-index-remove start
 export * from "./exports";
 // build-index-remove end
+function remove() {
+    if (this.parentNode) {
+        this.parentNode.removeChild(this);
+    }
+}
+// polyfill remove for IE11
+(function () {
+    if (!Element.prototype.remove) {
+        Element.prototype.remove = remove;
+    }
+    if (Text && !Text.prototype.remove) {
+        Text.prototype.remove = remove;
+    }
+})();
 //# sourceMappingURL=index.js.map

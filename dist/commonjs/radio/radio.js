@@ -30,6 +30,7 @@ var MdRadio = /** @class */ (function () {
     MdRadio.prototype.detached = function () {
         this.attributeManager.removeClasses(["with-gap", "disabled"]);
     };
+    var MdRadio_1;
     MdRadio.id = 0;
     tslib_1.__decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
@@ -65,7 +66,6 @@ var MdRadio = /** @class */ (function () {
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdRadio);
     return MdRadio;
-    var MdRadio_1;
 }());
 exports.MdRadio = MdRadio;
 //# sourceMappingURL=radio.js.map

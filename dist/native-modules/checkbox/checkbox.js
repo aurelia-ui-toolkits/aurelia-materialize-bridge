@@ -47,6 +47,7 @@ var MdCheckbox = /** @class */ (function () {
     MdCheckbox.prototype.preventChange = function () {
         this.checked = !this.checked;
     };
+    var MdCheckbox_1;
     MdCheckbox.id = 0;
     tslib_1.__decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
@@ -78,7 +79,6 @@ var MdCheckbox = /** @class */ (function () {
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdCheckbox);
     return MdCheckbox;
-    var MdCheckbox_1;
 }());
 export { MdCheckbox };
 //# sourceMappingURL=checkbox.js.map

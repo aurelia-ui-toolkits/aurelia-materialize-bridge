@@ -1,7 +1,7 @@
 System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var tslib_1, au, MdTapTarget;
+    var __moduleName = context_1 && context_1.id;
     return {
         setters: [
             function (tslib_1_1) {
@@ -47,6 +47,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 MdTapTarget.prototype.close = function () {
                     this.instance.close();
                 };
+                var MdTapTarget_1;
                 MdTapTarget.controlId = 0;
                 tslib_1.__decorate([
                     au.bindable,
@@ -58,7 +59,6 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdTapTarget);
                 return MdTapTarget;
-                var MdTapTarget_1;
             }());
             exports_1("MdTapTarget", MdTapTarget);
         }

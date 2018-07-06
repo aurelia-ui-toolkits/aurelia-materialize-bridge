@@ -1,7 +1,7 @@
 System.register(["./shade-blend-convert"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var shade_blend_convert_1, MdColorsService;
+    var __moduleName = context_1 && context_1.id;
     return {
         setters: [
             function (shade_blend_convert_1_1) {

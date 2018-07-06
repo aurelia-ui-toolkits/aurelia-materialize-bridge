@@ -29,6 +29,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         MdRadio.prototype.detached = function () {
             this.attributeManager.removeClasses(["with-gap", "disabled"]);
         };
+        var MdRadio_1;
         MdRadio.id = 0;
         tslib_1.__decorate([
             au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
@@ -64,7 +65,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdRadio);
         return MdRadio;
-        var MdRadio_1;
     }());
     exports.MdRadio = MdRadio;
 });
