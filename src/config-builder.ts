@@ -237,11 +237,6 @@ export class ConfigBuilder {
 
 	useTabs(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./tabs/tabs"));
-		// indicator size is calculated incorrectly when scrollbar is hidden/shown on tab switches
-		// see https://github.com/Dogfalo/materialize/issues/5058#issuecomment-371166237 for details
-		M.Tabs.prototype._calcRightPos = function(this: M.Tabs, el) {
-			return Math.ceil(this.el.clientWidth - el.position().left - el[0].getBoundingClientRect().width);
-		};
 		return this;
 	}
 
