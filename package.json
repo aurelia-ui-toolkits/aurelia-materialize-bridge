@@ -48,19 +48,25 @@
     "url": "https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge"
   },
   "devDependencies": {
+    "@types/materialize-css": "^1.0.3",
     "concurrently": "^3.6.0",
     "copyfiles": "^2.0.0",
-    "jasmine-core": "^3.1.0",
-    "karma-babel-preprocessor": "^7.0.0",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-coverage": "^1.1.2",
-    "karma-jspm": "^2.2.3",
-    "karma-sourcemap-loader": "^0.3.7",
-    "phantomjs-polyfill": "0.0.2",
     "rimraf": "^2.6.2",
     "standard-version": "^4.4.0",
     "tslint": "^5.10.0",
-    "typescript": "^2.9.2"
+    "typescript": "^2.9.2",
+    "aurelia-framework": ">=1.2.0",
+    "aurelia-router": ">=1.5.0",
+    "aurelia-typed-observable-plugin": ">=0.3.5",
+    "aurelia-validation": ">=1.1.3",
+    "tslib": ">=1.9.0"
+  },
+  "peerDependencies": {
+    "aurelia-framework": ">=1.2.0",
+    "aurelia-router": ">=1.5.0",
+    "aurelia-typed-observable-plugin": ">=0.3.5",
+    "aurelia-validation": ">=1.1.3",
+    "tslib": ">=1.9.0"
   },
   "jspm": {
     "main": "index",
@@ -109,15 +115,5 @@
         "1. in main.js add .plugin('aurelia-materialize-bridge')"
       ]
     }
-  },
-  "dependencies": {
-    "@types/materialize-css": "^1.0.3",
-    "aurelia-fetch-client": "^1.4.0",
-    "aurelia-framework": "^1.3.0",
-    "aurelia-router": "^1.6.1",
-    "aurelia-templating": "^1.8.1",
-    "aurelia-typed-observable-plugin": "^0.4.0",
-    "aurelia-validation": "^1.2.2",
-    "tslib": "^1.9.3"
   }
 }
