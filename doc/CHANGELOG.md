@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.16"></a>
+# [1.0.0-alpha.16](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.15...v1.0.0-alpha.16) (2018-07-09)
+
+
+### Bug Fixes
+
+* **packages:** switch to peer dependencies and make them less restrictive ([d553a2f](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/d553a2f))
+
+
+
 <a name="1.0.0-alpha.15"></a>
 # [1.0.0-alpha.15](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.14...v1.0.0-alpha.15) (2018-07-06)
 
