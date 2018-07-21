@@ -1,7 +1,7 @@
 System.register(["tslib", "../aurelia", "../config-builder"], function (exports_1, context_1) {
     "use strict";
-    var tslib_1, au, config_builder_1, MdWaves;
     var __moduleName = context_1 && context_1.id;
+    var tslib_1, au, config_builder_1, MdWaves;
     return {
         setters: [
             function (tslib_1_1) {

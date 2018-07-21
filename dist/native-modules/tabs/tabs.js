@@ -33,12 +33,11 @@ var MdTabs = /** @class */ (function () {
     };
     MdTabs.prototype.attached = function () {
         var _this = this;
-        var e_1, _a, e_2, _b;
         this.attributeManager.addClasses("tabs");
         var children = this.element.querySelectorAll("li");
         try {
-            for (var _c = tslib_1.__values(Array.from(children)), _d = _c.next(); !_d.done; _d = _c.next()) {
-                var child = _d.value;
+            for (var _a = tslib_1.__values(Array.from(children)), _b = _a.next(); !_b.done; _b = _a.next()) {
+                var child = _b.value;
                 var setter = new au.AttributeManager(child);
                 setter.addClasses(["tab", "primary-text"]);
                 this.tabAttributeManagers.push(setter);
@@ -47,7 +46,7 @@ var MdTabs = /** @class */ (function () {
         catch (e_1_1) { e_1 = { error: e_1_1 }; }
         finally {
             try {
-                if (_d && !_d.done && (_a = _c.return)) _a.call(_c);
+                if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
             }
             finally { if (e_1) throw e_1.error; }
         }
@@ -61,21 +60,21 @@ var MdTabs = /** @class */ (function () {
         this.instance = new M.Tabs(this.element, options);
         var childAnchors = this.element.querySelectorAll("li a");
         try {
-            for (var _e = tslib_1.__values(Array.from(childAnchors)), _f = _e.next(); !_f.done; _f = _e.next()) {
-                var a = _f.value;
+            for (var _d = tslib_1.__values(Array.from(childAnchors)), _e = _d.next(); !_e.done; _e = _d.next()) {
+                var a = _e.value;
                 a.addEventListener("click", this.fireTabSelectedEvent);
             }
         }
         catch (e_2_1) { e_2 = { error: e_2_1 }; }
         finally {
             try {
-                if (_f && !_f.done && (_b = _e.return)) _b.call(_e);
+                if (_e && !_e.done && (_f = _d.return)) _f.call(_d);
             }
             finally { if (e_2) throw e_2.error; }
         }
+        var e_1, _c, e_2, _f;
     };
     MdTabs.prototype.detached = function () {
-        var e_3, _a;
         this.instance.destroy();
         this.attributeManager.removeClasses("tabs");
         this.tabAttributeManagers.forEach(function (setter) {
@@ -84,18 +83,19 @@ var MdTabs = /** @class */ (function () {
         this.tabAttributeManagers = [];
         var childAnchors = this.element.querySelectorAll("li a");
         try {
-            for (var _b = tslib_1.__values(Array.from(childAnchors)), _c = _b.next(); !_c.done; _c = _b.next()) {
-                var a = _c.value;
+            for (var _a = tslib_1.__values(Array.from(childAnchors)), _b = _a.next(); !_b.done; _b = _a.next()) {
+                var a = _b.value;
                 a.removeEventListener("click", this.fireTabSelectedEvent);
             }
         }
         catch (e_3_1) { e_3 = { error: e_3_1 }; }
         finally {
             try {
-                if (_c && !_c.done && (_a = _b.return)) _a.call(_b);
+                if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
             }
             finally { if (e_3) throw e_3.error; }
         }
+        var e_3, _c;
     };
     MdTabs.prototype.refresh = function () {
         var _this = this;

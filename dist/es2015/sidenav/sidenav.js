@@ -53,7 +53,6 @@ var MdSidenav = /** @class */ (function () {
             this.instance.destroy();
         }
     };
-    var MdSidenav_1;
     MdSidenav.fixedClass = "sidenav-fixed";
     MdSidenav.id = 0;
     tslib_1.__decorate([
@@ -82,6 +81,7 @@ var MdSidenav = /** @class */ (function () {
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdSidenav);
     return MdSidenav;
+    var MdSidenav_1;
 }());
 export { MdSidenav };
 //# sourceMappingURL=sidenav.js.map

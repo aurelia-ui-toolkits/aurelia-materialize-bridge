@@ -54,7 +54,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
                 this.instance.destroy();
             }
         };
-        var MdSidenav_1;
         MdSidenav.fixedClass = "sidenav-fixed";
         MdSidenav.id = 0;
         tslib_1.__decorate([
@@ -83,6 +82,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdSidenav);
         return MdSidenav;
+        var MdSidenav_1;
     }());
     exports.MdSidenav = MdSidenav;
 });

@@ -15,7 +15,6 @@ var MdDatePicker = /** @class */ (function () {
             au.fireEvent(_this.element, "blur");
         };
         this.mdUnrenderValidateResults = function (results, renderer) {
-            var e_1, _a;
             try {
                 for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
                     var result = results_1_1.value;
@@ -32,9 +31,9 @@ var MdDatePicker = /** @class */ (function () {
                 finally { if (e_1) throw e_1.error; }
             }
             renderer.removeValidationClasses(_this.input);
+            var e_1, _a;
         };
         this.mdRenderValidateResults = function (results, renderer) {
-            var e_2, _a;
             if (_this.showErrortext && _this.inputField) {
                 try {
                     for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
@@ -53,6 +52,7 @@ var MdDatePicker = /** @class */ (function () {
                 }
             }
             renderer.addValidationClasses(_this.input, !results.find(function (x) { return !x.valid; }));
+            var e_2, _a;
         };
     }
     MdDatePicker_1 = MdDatePicker;
@@ -139,7 +139,6 @@ var MdDatePicker = /** @class */ (function () {
     MdDatePicker.prototype.close = function () {
         this.instance.close();
     };
-    var MdDatePicker_1;
     MdDatePicker.id = 0;
     tslib_1.__decorate([
         au.ato.bindable.stringMd,
@@ -239,6 +238,7 @@ var MdDatePicker = /** @class */ (function () {
         tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
     ], MdDatePicker);
     return MdDatePicker;
+    var MdDatePicker_1;
 }());
 export { MdDatePicker };
 //# sourceMappingURL=datepicker.js.map

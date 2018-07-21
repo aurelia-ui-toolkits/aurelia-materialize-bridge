@@ -47,7 +47,6 @@ var MdDropdownElement = /** @class */ (function () {
             this.instance.recalculateDimensions();
         }
     };
-    var MdDropdownElement_1;
     MdDropdownElement.id = 0;
     tslib_1.__decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
@@ -95,6 +94,7 @@ var MdDropdownElement = /** @class */ (function () {
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdDropdownElement);
     return MdDropdownElement;
+    var MdDropdownElement_1;
 }());
 export { MdDropdownElement };
 //# sourceMappingURL=dropdown-element.js.map

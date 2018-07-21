@@ -1,7 +1,7 @@
 System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
-    var tslib_1, au, MdSelect;
     var __moduleName = context_1 && context_1.id;
+    var tslib_1, au, MdSelect;
     return {
         setters: [
             function (tslib_1_1) {
@@ -37,7 +37,6 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         _this.labelElement.classList.remove("md-focused");
                     };
                     this.mdUnrenderValidateResults = function (results, renderer) {
-                        var e_1, _a;
                         if (!_this.instance.input) {
                             return;
                         }
@@ -58,9 +57,9 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         }
                         renderer.removeValidationClasses(_this.instance.input);
                         renderer.removeValidationClasses(_this.instance.wrapper);
+                        var e_1, _a;
                     };
                     this.mdRenderValidateResults = function (results, renderer) {
-                        var e_2, _a;
                         if (!_this.instance.input) {
                             return;
                         }
@@ -84,6 +83,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         }
                         renderer.addValidationClasses(_this.instance.input, !results.find(function (x) { return !x.valid; }));
                         renderer.addValidationClasses(_this.instance.wrapper, !results.find(function (x) { return !x.valid; }));
+                        var e_2, _a;
                     };
                     this.element = element;
                     this.log = au.getLogger("md-select");

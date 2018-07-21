@@ -1,7 +1,7 @@
 System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable-promise"], function (exports_1, context_1) {
     "use strict";
-    var tslib_1, au, lookup_state_1, discardable_promise_1, MdLookup;
     var __moduleName = context_1 && context_1.id;
+    var tslib_1, au, lookup_state_1, discardable_promise_1, MdLookup;
     return {
         setters: [
             function (tslib_1_1) {
@@ -27,7 +27,6 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                     this.debounce = 850;
                     this.LookupState = lookup_state_1.LookupState; // for usage from the html template
                     this.mdUnrenderValidateResults = function (results, renderer) {
-                        var e_1, _a;
                         try {
                             for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
                                 var result = results_1_1.value;
@@ -44,9 +43,9 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                             finally { if (e_1) throw e_1.error; }
                         }
                         renderer.removeValidationClasses(_this.input);
+                        var e_1, _a;
                     };
                     this.mdRenderValidateResults = function (results, renderer) {
-                        var e_2, _a;
                         try {
                             for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
                                 var result = results_2_1.value;
@@ -63,6 +62,7 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                             finally { if (e_2) throw e_2.error; }
                         }
                         renderer.addValidationClasses(_this.input, !results.find(function (x) { return !x.valid; }));
+                        var e_2, _a;
                     };
                     this.logger = au.getLogger("MdLookup");
                     this.controlId = "md-lookup-" + MdLookup_1.id++;
@@ -247,8 +247,8 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                 };
                 MdLookup.prototype.attached = function () {
                     return tslib_1.__awaiter(this, void 0, void 0, function () {
-                        var _a;
                         var _this = this;
+                        var _a;
                         return tslib_1.__generator(this, function (_b) {
                             switch (_b.label) {
                                 case 0:
@@ -313,7 +313,6 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                         return option[this.displayFieldName];
                     }
                 };
-                var MdLookup_1;
                 MdLookup.searching = Symbol("searching");
                 MdLookup.error = Symbol("error");
                 MdLookup.id = 0;
@@ -367,6 +366,7 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                     tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
                 ], MdLookup);
                 return MdLookup;
+                var MdLookup_1;
             }());
             exports_1("MdLookup", MdLookup);
         }

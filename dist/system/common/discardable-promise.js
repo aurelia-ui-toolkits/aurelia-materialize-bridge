@@ -1,6 +1,5 @@
 System.register([], function (exports_1, context_1) {
     "use strict";
-    var DiscardablePromise;
     var __moduleName = context_1 && context_1.id;
     /**
      * Sets the internal state of a promise to discarded
@@ -12,6 +11,7 @@ System.register([], function (exports_1, context_1) {
         }
     }
     exports_1("discard", discard);
+    var DiscardablePromise;
     return {
         setters: [],
         execute: function () {

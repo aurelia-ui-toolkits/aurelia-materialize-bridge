@@ -48,7 +48,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         MdCheckbox.prototype.preventChange = function () {
             this.checked = !this.checked;
         };
-        var MdCheckbox_1;
         MdCheckbox.id = 0;
         tslib_1.__decorate([
             au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
@@ -80,6 +79,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdCheckbox);
         return MdCheckbox;
+        var MdCheckbox_1;
     }());
     exports.MdCheckbox = MdCheckbox;
 });

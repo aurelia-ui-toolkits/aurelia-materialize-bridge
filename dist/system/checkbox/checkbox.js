@@ -1,7 +1,7 @@
 System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
-    var tslib_1, au, MdCheckbox;
     var __moduleName = context_1 && context_1.id;
+    var tslib_1, au, MdCheckbox;
     return {
         setters: [
             function (tslib_1_1) {
@@ -59,7 +59,6 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 MdCheckbox.prototype.preventChange = function () {
                     this.checked = !this.checked;
                 };
-                var MdCheckbox_1;
                 MdCheckbox.id = 0;
                 tslib_1.__decorate([
                     au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
@@ -91,6 +90,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdCheckbox);
                 return MdCheckbox;
+                var MdCheckbox_1;
             }());
             exports_1("MdCheckbox", MdCheckbox);
         }

@@ -1,7 +1,7 @@
 System.register(["../aurelia"], function (exports_1, context_1) {
     "use strict";
-    var au, MdToastService;
     var __moduleName = context_1 && context_1.id;
+    var au, MdToastService;
     return {
         setters: [
             function (au_1) {

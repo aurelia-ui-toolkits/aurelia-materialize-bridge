@@ -48,7 +48,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
                 this.instance.recalculateDimensions();
             }
         };
-        var MdDropdownElement_1;
         MdDropdownElement.id = 0;
         tslib_1.__decorate([
             au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
@@ -96,6 +95,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdDropdownElement);
         return MdDropdownElement;
+        var MdDropdownElement_1;
     }());
     exports.MdDropdownElement = MdDropdownElement;
 });

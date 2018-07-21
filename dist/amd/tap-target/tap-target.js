@@ -36,7 +36,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         MdTapTarget.prototype.close = function () {
             this.instance.close();
         };
-        var MdTapTarget_1;
         MdTapTarget.controlId = 0;
         tslib_1.__decorate([
             au.bindable,
@@ -48,6 +47,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdTapTarget);
         return MdTapTarget;
+        var MdTapTarget_1;
     }());
     exports.MdTapTarget = MdTapTarget;
 });

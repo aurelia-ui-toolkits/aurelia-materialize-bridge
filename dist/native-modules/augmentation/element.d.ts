@@ -15,7 +15,7 @@ export interface IElementAu {
     "md-dropdown": IController<MdDropdown>;
     "md-lookup": IController<MdLookup>;
 }
-declare global {
+declare global  {
     interface Element {
         mdUnrenderValidateResults(results: ValidateResult[], renderer: MaterializeFormValidationRenderer): any;
         mdRenderValidateResults(results: ValidateResult[], renderer: MaterializeFormValidationRenderer): any;

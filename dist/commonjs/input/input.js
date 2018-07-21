@@ -29,7 +29,6 @@ var MdInput = /** @class */ (function () {
             }
         };
         this.mdUnrenderValidateResults = function (results, renderer) {
-            var e_1, _a;
             try {
                 for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
                     var result = results_1_1.value;
@@ -46,9 +45,9 @@ var MdInput = /** @class */ (function () {
                 finally { if (e_1) throw e_1.error; }
             }
             renderer.removeValidationClasses(_this.input);
+            var e_1, _a;
         };
         this.mdRenderValidateResults = function (results, renderer) {
-            var e_2, _a;
             if (_this.showErrortext && _this.inputField) {
                 try {
                     for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
@@ -67,6 +66,7 @@ var MdInput = /** @class */ (function () {
                 }
             }
             renderer.addValidationClasses(_this.input, !results.find(function (x) { return !x.valid; }));
+            var e_2, _a;
         };
         this.controlId = "md-input-" + MdInput_1.id++;
     }
@@ -125,7 +125,6 @@ var MdInput = /** @class */ (function () {
             this.element.removeEventListener("keyup", this.blurOnEnterHandler);
         }
     };
-    var MdInput_1;
     MdInput.id = 0;
     tslib_1.__decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay }),
@@ -213,6 +212,7 @@ var MdInput = /** @class */ (function () {
         tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
     ], MdInput);
     return MdInput;
+    var MdInput_1;
 }());
 exports.MdInput = MdInput;
 //# sourceMappingURL=input.js.map

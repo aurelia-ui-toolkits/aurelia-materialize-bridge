@@ -37,7 +37,6 @@ var MdTapTarget = /** @class */ (function () {
     MdTapTarget.prototype.close = function () {
         this.instance.close();
     };
-    var MdTapTarget_1;
     MdTapTarget.controlId = 0;
     tslib_1.__decorate([
         au.bindable,
@@ -49,6 +48,7 @@ var MdTapTarget = /** @class */ (function () {
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdTapTarget);
     return MdTapTarget;
+    var MdTapTarget_1;
 }());
 exports.MdTapTarget = MdTapTarget;
 //# sourceMappingURL=tap-target.js.map

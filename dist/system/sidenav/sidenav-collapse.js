@@ -1,7 +1,7 @@
 System.register(["tslib", "aurelia-framework", "./sidenav"], function (exports_1, context_1) {
     "use strict";
-    var tslib_1, aurelia_framework_1, sidenav_1, MdSidenavCollapse;
     var __moduleName = context_1 && context_1.id;
+    var tslib_1, aurelia_framework_1, sidenav_1, MdSidenavCollapse;
     return {
         setters: [
             function (tslib_1_1) {
