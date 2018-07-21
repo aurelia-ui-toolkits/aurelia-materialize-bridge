@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.17"></a>
+# [1.0.0-alpha.17](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.16...v1.0.0-alpha.17) (2018-07-21)
+
+
+### Bug Fixes
+
+* **package:** add jspm configuration section ([77219b2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/77219b2))
+* **package:** remove jspm configuration section ([cdb3f21](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/cdb3f21))
+* **packages:** add materialize-css peer dependency ([da1687e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/da1687e))
+* **tabs:** remove temporary patch ([eb6f9d2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/eb6f9d2))
+
+
+
 <a name="1.0.0-alpha.16"></a>
 # [1.0.0-alpha.16](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.15...v1.0.0-alpha.16) (2018-07-09)
 
