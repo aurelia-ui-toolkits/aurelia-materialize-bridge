@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.18"></a>
+# [1.0.0-alpha.18](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.17...v1.0.0-alpha.18) (2018-08-02)
+
+
+### Bug Fixes
+
+* **datepicker:** fix focused month and year selector border ([cb202ab](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/cb202ab))
+* **tap-target:** set background colour to primary ([0a59ed0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/0a59ed0))
+
+
+
 <a name="1.0.0-alpha.17"></a>
 # [1.0.0-alpha.17](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.16...v1.0.0-alpha.17) (2018-07-21)
 
