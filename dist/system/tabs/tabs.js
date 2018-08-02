@@ -1,7 +1,7 @@
 System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var tslib_1, au, MdTabs;
+    var __moduleName = context_1 && context_1.id;
     return {
         setters: [
             function (tslib_1_1) {
@@ -45,11 +45,12 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 };
                 MdTabs.prototype.attached = function () {
                     var _this = this;
+                    var e_1, _a, e_2, _b;
                     this.attributeManager.addClasses("tabs");
                     var children = this.element.querySelectorAll("li");
                     try {
-                        for (var _a = tslib_1.__values(Array.from(children)), _b = _a.next(); !_b.done; _b = _a.next()) {
-                            var child = _b.value;
+                        for (var _c = tslib_1.__values(Array.from(children)), _d = _c.next(); !_d.done; _d = _c.next()) {
+                            var child = _d.value;
                             var setter = new au.AttributeManager(child);
                             setter.addClasses(["tab", "primary-text"]);
                             this.tabAttributeManagers.push(setter);
@@ -58,7 +59,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     catch (e_1_1) { e_1 = { error: e_1_1 }; }
                     finally {
                         try {
-                            if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
+                            if (_d && !_d.done && (_a = _c.return)) _a.call(_c);
                         }
                         finally { if (e_1) throw e_1.error; }
                     }
@@ -72,21 +73,21 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.instance = new M.Tabs(this.element, options);
                     var childAnchors = this.element.querySelectorAll("li a");
                     try {
-                        for (var _d = tslib_1.__values(Array.from(childAnchors)), _e = _d.next(); !_e.done; _e = _d.next()) {
-                            var a = _e.value;
+                        for (var _e = tslib_1.__values(Array.from(childAnchors)), _f = _e.next(); !_f.done; _f = _e.next()) {
+                            var a = _f.value;
                             a.addEventListener("click", this.fireTabSelectedEvent);
                         }
                     }
                     catch (e_2_1) { e_2 = { error: e_2_1 }; }
                     finally {
                         try {
-                            if (_e && !_e.done && (_f = _d.return)) _f.call(_d);
+                            if (_f && !_f.done && (_b = _e.return)) _b.call(_e);
                         }
                         finally { if (e_2) throw e_2.error; }
                     }
-                    var e_1, _c, e_2, _f;
                 };
                 MdTabs.prototype.detached = function () {
+                    var e_3, _a;
                     this.instance.destroy();
                     this.attributeManager.removeClasses("tabs");
                     this.tabAttributeManagers.forEach(function (setter) {
@@ -95,19 +96,18 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.tabAttributeManagers = [];
                     var childAnchors = this.element.querySelectorAll("li a");
                     try {
-                        for (var _a = tslib_1.__values(Array.from(childAnchors)), _b = _a.next(); !_b.done; _b = _a.next()) {
-                            var a = _b.value;
+                        for (var _b = tslib_1.__values(Array.from(childAnchors)), _c = _b.next(); !_c.done; _c = _b.next()) {
+                            var a = _c.value;
                             a.removeEventListener("click", this.fireTabSelectedEvent);
                         }
                     }
                     catch (e_3_1) { e_3 = { error: e_3_1 }; }
                     finally {
                         try {
-                            if (_b && !_b.done && (_c = _a.return)) _c.call(_a);
+                            if (_c && !_c.done && (_a = _b.return)) _a.call(_b);
                         }
                         finally { if (e_3) throw e_3.error; }
                     }
-                    var e_3, _c;
                 };
                 MdTabs.prototype.refresh = function () {
                     var _this = this;

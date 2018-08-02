@@ -1,7 +1,7 @@
 System.register(["aurelia-typed-observable-plugin"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var aurelia_typed_observable_plugin_1;
+    var __moduleName = context_1 && context_1.id;
     return {
         setters: [
             function (aurelia_typed_observable_plugin_1_1) {

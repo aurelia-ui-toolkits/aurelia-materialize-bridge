@@ -70,6 +70,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             }
             this.attributeManager.addAttributes({ "data-target": this.activates });
         };
+        var MdDropdown_1;
         MdDropdown.elementId = 0;
         tslib_1.__decorate([
             au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
@@ -125,7 +126,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdDropdown);
         return MdDropdown;
-        var MdDropdown_1;
     }());
     exports.MdDropdown = MdDropdown;
     // remove when https://github.com/Dogfalo/materialize/pull/5865 gets released

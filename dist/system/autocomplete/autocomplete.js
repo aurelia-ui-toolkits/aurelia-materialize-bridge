@@ -1,7 +1,7 @@
 System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var tslib_1, au, MdAutoComplete;
+    var __moduleName = context_1 && context_1.id;
     return {
         setters: [
             function (tslib_1_1) {

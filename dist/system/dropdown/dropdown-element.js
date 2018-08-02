@@ -1,7 +1,7 @@
 System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var tslib_1, au, MdDropdownElement;
+    var __moduleName = context_1 && context_1.id;
     return {
         setters: [
             function (tslib_1_1) {
@@ -59,6 +59,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         this.instance.recalculateDimensions();
                     }
                 };
+                var MdDropdownElement_1;
                 MdDropdownElement.id = 0;
                 tslib_1.__decorate([
                     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
@@ -106,7 +107,6 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdDropdownElement);
                 return MdDropdownElement;
-                var MdDropdownElement_1;
             }());
             exports_1("MdDropdownElement", MdDropdownElement);
         }

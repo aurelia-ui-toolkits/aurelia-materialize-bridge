@@ -1,7 +1,7 @@
 System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var tslib_1, au, MdDatePicker;
+    var __moduleName = context_1 && context_1.id;
     return {
         setters: [
             function (tslib_1_1) {
@@ -27,6 +27,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         au.fireEvent(_this.element, "blur");
                     };
                     this.mdUnrenderValidateResults = function (results, renderer) {
+                        var e_1, _a;
                         try {
                             for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
                                 var result = results_1_1.value;
@@ -43,9 +44,9 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                             finally { if (e_1) throw e_1.error; }
                         }
                         renderer.removeValidationClasses(_this.input);
-                        var e_1, _a;
                     };
                     this.mdRenderValidateResults = function (results, renderer) {
+                        var e_2, _a;
                         if (_this.showErrortext && _this.inputField) {
                             try {
                                 for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
@@ -64,7 +65,6 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                             }
                         }
                         renderer.addValidationClasses(_this.input, !results.find(function (x) { return !x.valid; }));
-                        var e_2, _a;
                     };
                 }
                 MdDatePicker_1 = MdDatePicker;
@@ -151,6 +151,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 MdDatePicker.prototype.close = function () {
                     this.instance.close();
                 };
+                var MdDatePicker_1;
                 MdDatePicker.id = 0;
                 tslib_1.__decorate([
                     au.ato.bindable.stringMd,
@@ -250,7 +251,6 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
                 ], MdDatePicker);
                 return MdDatePicker;
-                var MdDatePicker_1;
             }());
             exports_1("MdDatePicker", MdDatePicker);
         }

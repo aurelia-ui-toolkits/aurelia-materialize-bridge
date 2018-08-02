@@ -1,5 +1,6 @@
 System.register(["./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable", "./config-builder", "./exports"], function (exports_1, context_1) {
     "use strict";
+    var config_builder_1;
     var __moduleName = context_1 && context_1.id;
     function configure(frameworkConfiguration, configCallback) {
         var builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
@@ -17,7 +18,6 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./augm
             this.parentNode.removeChild(this);
         }
     }
-    var config_builder_1;
     var exportedNames_1 = {
         "configure": true
     };

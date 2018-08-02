@@ -25,6 +25,7 @@ var MdSelect = /** @class */ (function () {
             _this.labelElement.classList.remove("md-focused");
         };
         this.mdUnrenderValidateResults = function (results, renderer) {
+            var e_1, _a;
             if (!_this.instance.input) {
                 return;
             }
@@ -45,9 +46,9 @@ var MdSelect = /** @class */ (function () {
             }
             renderer.removeValidationClasses(_this.instance.input);
             renderer.removeValidationClasses(_this.instance.wrapper);
-            var e_1, _a;
         };
         this.mdRenderValidateResults = function (results, renderer) {
+            var e_2, _a;
             if (!_this.instance.input) {
                 return;
             }
@@ -71,7 +72,6 @@ var MdSelect = /** @class */ (function () {
             }
             renderer.addValidationClasses(_this.instance.input, !results.find(function (x) { return !x.valid; }));
             renderer.addValidationClasses(_this.instance.wrapper, !results.find(function (x) { return !x.valid; }));
-            var e_2, _a;
         };
         this.element = element;
         this.log = au.getLogger("md-select");

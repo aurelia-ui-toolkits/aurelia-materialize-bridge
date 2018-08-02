@@ -1,7 +1,7 @@
 System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./common/events", "aurelia-validation", "./validation/validationRenderer", "aurelia-typed-observable-plugin", "./common/util", "./common/attribute-manager", "./common/colors-service"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var ato;
+    var __moduleName = context_1 && context_1.id;
     var exportedNames_1 = {
         "ato": true,
         "Router": true,
