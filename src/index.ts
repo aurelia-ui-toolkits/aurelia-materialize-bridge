@@ -3,6 +3,8 @@
 import "./augmentation/element";
 import "./augmentation/materialize";
 import "./augmentation/aurelia-typed-observable";
+import "./polyfills/append";
+import "./polyfills/remove";
 import { FrameworkConfiguration, autoinject } from "aurelia-framework";
 import { ConfigBuilder } from "./config-builder";
 
@@ -21,19 +23,3 @@ export function configure(frameworkConfiguration: FrameworkConfiguration, config
 // build-index-remove start
 export * from "./exports";
 // build-index-remove end
-
-function remove(this: Element) {
-	if (this.parentNode) {
-		this.parentNode.removeChild(this);
-	}
-}
-
-// polyfill remove for IE11
-(function() {
-	if (!Element.prototype.remove) {
-		Element.prototype.remove = remove;
-	}
-	if (Text && !Text.prototype.remove) {
-		Text.prototype.remove = remove;
-	}
-})();
