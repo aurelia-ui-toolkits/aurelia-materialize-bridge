@@ -72,7 +72,7 @@ export class MdPagination {
 		let start = Math.max(this.activePage - midPoint, 0);
 		// respect visible links
 		if (start + midPoint * 2 > this.pages) {
-			start = this.pages - midPoint * 2;
+			start = Math.max(this.pages - midPoint * 2, 0);
 		}
 		let end = Math.min(start + numberOfLinks, this.pages);
 
