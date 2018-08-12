@@ -52,7 +52,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             var start = Math.max(this.activePage - midPoint, 0);
             // respect visible links
             if (start + midPoint * 2 > this.pages) {
-                start = this.pages - midPoint * 2;
+                start = Math.max(this.pages - midPoint * 2, 0);
             }
             var end = Math.min(start + numberOfLinks, this.pages);
             var list = [];

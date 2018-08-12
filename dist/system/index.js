@@ -1,4 +1,4 @@
-System.register(["./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable", "./config-builder", "./exports"], function (exports_1, context_1) {
+System.register(["./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable", "./polyfills/append", "./polyfills/remove", "./config-builder", "./exports"], function (exports_1, context_1) {
     "use strict";
     var config_builder_1;
     var __moduleName = context_1 && context_1.id;
@@ -12,12 +12,6 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./augm
         }
     }
     exports_1("configure", configure);
-    // build-index-remove end
-    function remove() {
-        if (this.parentNode) {
-            this.parentNode.removeChild(this);
-        }
-    }
     var exportedNames_1 = {
         "configure": true
     };
@@ -36,6 +30,10 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./augm
             },
             function (_3) {
             },
+            function (_4) {
+            },
+            function (_5) {
+            },
             function (config_builder_1_1) {
                 config_builder_1 = config_builder_1_1;
             },
@@ -44,15 +42,6 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./augm
             }
         ],
         execute: function () {
-            // polyfill remove for IE11
-            (function () {
-                if (!Element.prototype.remove) {
-                    Element.prototype.remove = remove;
-                }
-                if (Text && !Text.prototype.remove) {
-                    Text.prototype.remove = remove;
-                }
-            })();
         }
     };
 });

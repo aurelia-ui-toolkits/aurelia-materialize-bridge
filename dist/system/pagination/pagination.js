@@ -63,7 +63,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     var start = Math.max(this.activePage - midPoint, 0);
                     // respect visible links
                     if (start + midPoint * 2 > this.pages) {
-                        start = this.pages - midPoint * 2;
+                        start = Math.max(this.pages - midPoint * 2, 0);
                     }
                     var end = Math.min(start + numberOfLinks, this.pages);
                     var list = [];
