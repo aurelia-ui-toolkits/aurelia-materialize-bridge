@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0-alpha.19"></a>
+# [1.0.0-alpha.19](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.18...v1.0.0-alpha.19) (2018-08-12)
+
+
+### Bug Fixes
+
+* **pagination:** don't let start turn negative ([8c07b88](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/8c07b88))
+* **tap-target:** add append polyfill for ie11 ([a9373d4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a9373d4))
+
+
+
 <a name="1.0.0-alpha.18"></a>
 # [1.0.0-alpha.18](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.17...v1.0.0-alpha.18) (2018-08-02)
 
