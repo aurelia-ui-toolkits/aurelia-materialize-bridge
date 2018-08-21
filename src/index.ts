@@ -2,7 +2,7 @@
 // without them types will not be found
 import "./augmentation/element";
 import "./augmentation/materialize";
-import "./augmentation/aurelia-typed-observable";
+import { Dummy } from "./augmentation/aurelia-typed-observable";
 import "./polyfills/append";
 import "./polyfills/remove";
 import { FrameworkConfiguration, autoinject } from "aurelia-framework";
@@ -20,6 +20,9 @@ export function configure(frameworkConfiguration: FrameworkConfiguration, config
 	}
 }
 
-// build-index-remove start
-export * from "./exports";
-// build-index-remove end
+// this is needed to enforce loading order for requirejs
+// otherwise typescript optimises imports and loads augmentation/aurelia-typed-observable after exports
+let d = new Dummy();
+
+import * as exp from "./exports";
+export { exp };

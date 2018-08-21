@@ -50,3 +50,7 @@ declare module "aurelia-typed-observable-plugin/dist/types/bindable" {
 		stringMd: IBindableDecoratorFunction<string>;
 	}
 }
+
+// dummy export is needed to enforce loading order for requirejs
+export class Dummy {
+}
