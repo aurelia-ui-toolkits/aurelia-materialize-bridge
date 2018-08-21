@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.19...v1.0.0) (2018-08-21)
+
+
+### Bug Fixes
+
+* **all:** enforce module loading order for Aurelia CLI with requirejs ([7235cd1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/7235cd1))
+* **all:** re-export controllers correctly ([74d75d1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/74d75d1))
+* **tooltip:** destroy widget when text is not set ([5b60dc3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/5b60dc3))
+
+
+### Features
+
+* **auto-waves:** automatically add waves on all buttons ([2c8479b](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/2c8479b)), closes [#137](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/137)
+
+
+
 <a name="1.0.0-alpha.19"></a>
 # [1.0.0-alpha.19](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.18...v1.0.0-alpha.19) (2018-08-12)
 
