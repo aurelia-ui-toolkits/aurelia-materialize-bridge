@@ -1,32 +1,24 @@
-import { bindable, customAttribute, autoinject, bindingMode } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 import { ConfigBuilder } from "../config-builder";
 
-@customAttribute("md-waves")
-@autoinject
+@au.customAttribute("md-waves")
+@au.autoinject
 export class MdWaves {
 	constructor(private element: Element, private configBuilder: ConfigBuilder) {
-		this.attributeManager = new AttributeManager(this.element);
+		this.attributeManager = new au.AttributeManager(this.element);
 	}
 
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	block: boolean | string = false;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	circle: boolean = false;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	circle: boolean | string = false;
-
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	color: string;
 
 	attached() {
 		let classes = ["waves-effect"];
-		if (getBooleanFromAttributeValue(this.block)) {
-			classes.push("waves-block");
-		}
-		if (getBooleanFromAttributeValue(this.circle)) {
+		if (this.circle) {
 			classes.push("waves-circle");
 		}
 		if (this.color) {
@@ -44,7 +36,6 @@ export class MdWaves {
 		if (this.color) {
 			classes.push(`waves-${this.color}`);
 		}
-
 		this.attributeManager.removeClasses(classes);
 	}
 }

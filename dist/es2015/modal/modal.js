@@ -1,82 +1,88 @@
 import * as tslib_1 from "tslib";
-import { getLogger } from "aurelia-logging";
-import { bindable, customAttribute, autoinject } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { AttributeManager } from "../common/attributeManager";
-import { fireMaterializeEvent } from "../common/events";
+import * as au from "../aurelia";
 var MdModal = /** @class */ (function () {
     function MdModal(element) {
         this.element = element;
-        this.dismissible = true;
-        this.opacity = 0.5; // Opacity of modal background
-        this.inDuration = 300; // Transition in duration
-        this.outDuration = 200; // Transition out duration
-        this.startingTop = "4%"; // Starting top style attribute
-        this.endingTop = "10%"; // Ending top style attribute
-        this.log = getLogger("md-modal");
-        this.attributeManager = new AttributeManager(this.element);
-        this.onComplete = this.onComplete.bind(this);
-        this.onReady = this.onReady.bind(this);
+        this.log = au.getLogger("md-modal");
+        this.attributeManager = new au.AttributeManager(this.element);
     }
+    MdModal.prototype.fixedFooterChanged = function () {
+        if (this.element) {
+            this.element.classList.toggle("modal-fixed-footer", this.fixedFooter);
+        }
+    };
     MdModal.prototype.attached = function () {
+        var _this = this;
         var options = {
-            complete: this.onComplete,
-            dismissible: getBooleanFromAttributeValue(this.dismissible),
+            opacity: this.opacity,
+            inDuration: this.inDuration,
+            outDuration: this.outDuration,
+            preventScrolling: this.preventScrolling,
+            dismissible: this.dismissible,
+            startingTop: this.startingTop,
             endingTop: this.endingTop,
-            inDuration: parseInt(this.inDuration.toString(), 10),
-            opacity: parseFloat(this.opacity.toString()),
-            outDuration: parseInt(this.outDuration.toString(), 10),
-            ready: this.onReady,
-            startingTop: this.startingTop
+            onOpenStart: function () { return au.fireMaterializeEvent(_this.element, "open-start"); },
+            onOpenEnd: function () { return au.fireMaterializeEvent(_this.element, "open-end"); },
+            onCloseStart: function () { return au.fireMaterializeEvent(_this.element, "close-start"); },
+            onCloseEnd: function () { return au.fireMaterializeEvent(_this.element, "close-end"); }
         };
         this.log.debug("modal options: ", options);
+        au.cleanOptions(options);
         this.attributeManager.addClasses("modal");
-        $(this.element).modal(options);
+        this.instance = new M.Modal(this.element, options);
     };
     MdModal.prototype.detached = function () {
+        this.instance.destroy();
         this.attributeManager.removeClasses("modal");
     };
-    MdModal.prototype.onComplete = function () {
-        fireMaterializeEvent(this.element, "modal-complete");
-    };
-    MdModal.prototype.onReady = function (modal, trigger) {
-        fireMaterializeEvent(this.element, "modal-ready", { modal: modal, trigger: trigger });
-    };
     MdModal.prototype.open = function () {
-        $(this.element).modal("open");
+        this.instance.open();
     };
     MdModal.prototype.close = function () {
-        $(this.element).modal("close");
+        this.instance.close();
     };
     tslib_1.__decorate([
-        bindable(),
-        tslib_1.__metadata("design:type", Object)
-    ], MdModal.prototype, "dismissible", void 0);
-    tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        au.ato.bindable.numberMd,
+        tslib_1.__metadata("design:type", Number)
     ], MdModal.prototype, "opacity", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        au.ato.bindable.numberMd,
+        tslib_1.__metadata("design:type", Number)
     ], MdModal.prototype, "inDuration", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        au.ato.bindable.numberMd,
+        tslib_1.__metadata("design:type", Number)
     ], MdModal.prototype, "outDuration", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdModal.prototype, "preventScrolling", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdModal.prototype, "dismissible", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.stringMd,
         tslib_1.__metadata("design:type", String)
     ], MdModal.prototype, "startingTop", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.ato.bindable.stringMd,
         tslib_1.__metadata("design:type", String)
     ], MdModal.prototype, "endingTop", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdModal.prototype, "fixedFooter", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdModal.prototype, "bottomSheet", void 0);
     MdModal = tslib_1.__decorate([
-        customAttribute("md-modal"),
-        autoinject,
+        au.customAttribute("md-modal"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdModal);
     return MdModal;
 }());
 export { MdModal };
+//# sourceMappingURL=modal.js.map

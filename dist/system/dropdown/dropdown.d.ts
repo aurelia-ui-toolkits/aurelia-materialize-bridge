@@ -1,25 +1,28 @@
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 export declare class MdDropdown {
     private element;
     constructor(element: Element);
     static elementId: number;
     id: string;
-    attributeManager: AttributeManager;
-    contentAttributeManager: AttributeManager;
+    attributeManager: au.AttributeManager;
+    contentAttributeManager: au.AttributeManager;
     activates: string;
     ref: Element;
-    alignment: string;
-    belowOrigin: boolean | string;
-    constrainWidth: boolean | string;
-    gutter: number | string;
+    alignment: "left" | "right";
+    autoTrigger: boolean;
+    constrainWidth: boolean;
+    container: Element | string;
+    coverTrigger: boolean;
+    closeOnClick: boolean;
     hover: boolean;
     mdTitle: string;
-    inDuration: number | string;
-    outDuration: number | string;
-    stopPropagation: boolean;
+    inDuration: number;
+    outDuration: number;
+    instance: M.Dropdown;
     attached(): void;
     detached(): void;
     open(): void;
     close(): void;
+    recalculateDimensions(): void;
     handleActivateElement(): void;
 }

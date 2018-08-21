@@ -1,109 +1,101 @@
-import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
-import { TaskQueue } from "aurelia-task-queue";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { MdInputUpdateService } from "./input-update-service";
-import { fireEvent } from "../common/events";
-import { ValidateResult } from "aurelia-validation";
-import { MaterializeFormValidationRenderer } from "..";
+import * as au from "../aurelia";
 
-@customElement("md-input")
-@autoinject
+@au.customElement("md-input")
+@au.autoinject
 export class MdInput {
-	constructor(private element: Element, private taskQueue: TaskQueue, private updateService: MdInputUpdateService) {
+	constructor(private element: Element, private taskQueue: au.TaskQueue) {
 		this.controlId = `md-input-${MdInput.id++}`;
-		this.blurOnEnter = this.blurOnEnter.bind(this);
 	}
 
 	static id = 0;
 	controlId: string;
-	label: HTMLLabelElement;
+	labelEl: HTMLLabelElement;
 	input: HTMLInputElement;
 	inputField: HTMLDivElement;
 
-	@bindable
-	mdLabel: string = "";
-	@bindable
-	mdBlurOnEnter: boolean | string = false;
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay })
+	label: string;
 
-	@bindable
-	mdDisabled: boolean | string = false;
+	@au.ato.bindable.booleanMd
+	blurOnEnter: boolean = false;
 
-	@bindable
-	mdReadonly: boolean | string = false;
+	@au.ato.bindable.booleanMd
+	disabled: boolean = false;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdPlaceholder: string = "";
+	@au.ato.bindable.booleanMd
+	readonly: boolean = false;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdTextArea: boolean | string = false;
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	placeholder: string = "";
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdType: string = "text";
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	textArea: boolean = false;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdStep: string = "any";
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	type: string = "text";
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdValidate: boolean | string = false;
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	step: string = "any";
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdShowErrortext: boolean | string = true;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	validate: boolean = false;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdUpdateTrigger: string[] = ["input", "change"];
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	showErrortext: boolean = true;
 
-	@bindable
-	mdValidateError: string;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	inline: boolean;
 
-	@bindable
-	mdValidateSuccess: string;
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	updateTrigger: string[] = ["input", "change"];
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	mdValue: string = "";
+	@au.ato.bindable.stringMd
+	validateError: string;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdMin: string = null;
+	@au.ato.bindable.stringMd
+	validateSuccess: string;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdMax: string = null;
+	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
+	value: string;
+	valueChanged() {
+		if (this.input === document.activeElement) {
+			return;
+		}
+		this.taskQueue.queueTask(() => this.updateLabel());
+	}
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdName: string = "";
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	min: string = null;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdMaxlength: number = 524288;
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	max: string = null;
+
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	name: string = "";
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	maxlength: number = 524288;
+
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	autocomplete: string = "";
 
 	suspendUpdate = false;
 
 	bind() {
-		this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
-		this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
-		this.mdShowErrortext = getBooleanFromAttributeValue(this.mdShowErrortext);
-		this.mdBlurOnEnter = getBooleanFromAttributeValue(this.mdBlurOnEnter);
+		// this suppresses initial changed handler calls
 	}
 
 	attached() {
-		if (getBooleanFromAttributeValue(this.mdValidate)) {
+		if (this.validate) {
 			this.input.classList.add("validate");
 		}
-		if (this.mdValidateError) {
-			this.label.setAttribute("data-error", this.mdValidateError);
+		if (this.placeholder) {
+			this.input.setAttribute("placeholder", this.placeholder);
 		}
-		if (this.mdValidateSuccess) {
-			this.label.setAttribute("data-success", this.mdValidateSuccess);
+		if(this.autocomplete){
+			this.input.setAttribute("autocomplete", this.autocomplete);
 		}
-		if (this.mdPlaceholder) {
-			this.input.setAttribute("placeholder", this.mdPlaceholder);
-		}
-		if (this.mdShowErrortext) {
-			this.input.setAttribute("data-show-errortext", this.mdShowErrortext.toString());
-		}
-		this.updateService.update();
-
-		// special case: time inputs are not covered by Materialize
-		if (this.mdType === "time") {
-			$(this.input).siblings("label").addClass("active");
-		}
+		this.updateLabel();
 		this.attachEventHandlers();
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
@@ -111,51 +103,46 @@ export class MdInput {
 
 	detached() {
 		this.detachEventHandlers();
-		let validationMessages = Array.from(this.inputField.querySelectorAll("." + MaterializeFormValidationRenderer.className));
-		validationMessages.forEach(x => x.remove());
-		this.input.classList.remove("valid");
-		this.input.classList.remove("invalid");
+		au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
 		this.element.mdUnrenderValidateResults = undefined;
 		this.element.mdRenderValidateResults = undefined;
 	}
 
+	updateLabel() {
+		au.updateLabel(this.input, this.labelEl);
+		if (this.textArea) {
+			M.textareaAutoResize(this.input);
+		}
+	}
+
 	blur() {
-		fireEvent(this.element, "blur");
+		au.fireEvent(this.element, "blur");
 	}
 
 	focus() {
 		this.input.focus();
-		fireEvent(this.element, "focus");
-	}
-
-	mdValueChanged() {
-		if (!$(this.input).is(":focus")) {
-			this.updateService.update();
-		}
-		if (this.mdTextArea) {
-			$(this.input).trigger("autoresize");
-		}
+		au.fireEvent(this.element, "focus");
 	}
 
 	attachEventHandlers() {
-		if (this.mdBlurOnEnter) {
-			this.element.addEventListener("keyup", this.blurOnEnter);
+		if (this.blurOnEnter) {
+			this.element.addEventListener("keyup", this.blurOnEnterHandler);
 		}
 	}
 
 	detachEventHandlers() {
-		if (this.mdBlurOnEnter) {
-			this.element.removeEventListener("keyup", this.blurOnEnter);
+		if (this.blurOnEnter) {
+			this.element.removeEventListener("keyup", this.blurOnEnterHandler);
 		}
 	}
 
-	blurOnEnter(e) {
+	blurOnEnterHandler = (e) => {
 		if (e.keyCode && e.keyCode === 13) {
 			this.input.blur();
 		}
 	}
 
-	mdUnrenderValidateResults = (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => {
+	mdUnrenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
 		for (let result of results) {
 			if (!result.valid) {
 				renderer.removeMessage(this.inputField, result);
@@ -164,17 +151,11 @@ export class MdInput {
 		renderer.removeValidationClasses(this.input);
 	}
 
-	mdRenderValidateResults = (results: ValidateResult[], renderer: MaterializeFormValidationRenderer) => {
-		if (this.label && results.find(x => !x.valid)) {
-			this.label.removeAttribute("data-error");
-		}
-		if (this.inputField) {
+	mdRenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
+		if (this.showErrortext && this.inputField) {
 			for (let result of results) {
 				if (!result.valid) {
-					(result as any).target = this.input;
-					if (this.input.hasAttribute("data-show-errortext")) {
-						renderer.addMessage(this.inputField, result);
-					}
+					renderer.addMessage(this.inputField, result);
 				}
 			}
 		}

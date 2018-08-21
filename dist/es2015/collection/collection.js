@@ -1,5 +1,5 @@
 import * as tslib_1 from "tslib";
-import { autoinject, customElement } from "aurelia-framework";
+import * as au from "../aurelia";
 var MdCollection = /** @class */ (function () {
     function MdCollection(element) {
         this.element = element;
@@ -11,7 +11,7 @@ var MdCollection = /** @class */ (function () {
         }
     };
     MdCollection.prototype.getSelected = function () {
-        var items = [].slice.call(this.element.querySelectorAll("md-collection-selector"));
+        var items = Array.from(this.element.querySelectorAll("md-collection-selector"));
         return items.filter(function (i) { return i.au["md-collection-selector"].viewModel.isSelected; })
             .map(function (i) { return i.au["md-collection-selector"].viewModel.item; });
     };
@@ -32,10 +32,11 @@ var MdCollection = /** @class */ (function () {
         vm.isSelected = !vm.isSelected;
     };
     MdCollection = tslib_1.__decorate([
-        customElement("md-collection"),
-        autoinject,
+        au.customElement("md-collection"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdCollection);
     return MdCollection;
 }());
 export { MdCollection };
+//# sourceMappingURL=collection.js.map

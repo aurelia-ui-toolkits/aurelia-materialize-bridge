@@ -1,49 +1,50 @@
-System.register(["tslib", "aurelia-framework"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
+    var tslib_1, au, MdPushpin;
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, MdPushpin;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
             MdPushpin = /** @class */ (function () {
                 function MdPushpin(element) {
                     this.element = element;
-                    this.bottom = Infinity;
-                    this.offset = 0;
-                    this.top = 0;
                 }
                 MdPushpin.prototype.attached = function () {
-                    $(this.element).pushpin({
-                        bottom: (this.bottom === Infinity ? Infinity : parseInt(this.bottom.toString(), 10)),
-                        offset: parseInt(this.offset.toString(), 10),
-                        top: parseInt(this.top.toString(), 10)
-                    });
+                    var _this = this;
+                    var options = {
+                        bottom: this.bottom,
+                        offset: this.offset,
+                        top: this.top,
+                        onPositionChange: function (position) { return au.fireMaterializeEvent(_this.element, "position-change", { position: position }); }
+                    };
+                    au.cleanOptions(options);
+                    this.instance = new M.Pushpin(this.element, options);
                 };
                 MdPushpin.prototype.detached = function () {
-                    // destroy handler not available
+                    this.instance.destroy();
                 };
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
-                    tslib_1.__metadata("design:type", Object)
+                    au.ato.bindable.numberMd,
+                    tslib_1.__metadata("design:type", Number)
                 ], MdPushpin.prototype, "bottom", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
-                    tslib_1.__metadata("design:type", Object)
+                    au.ato.bindable.numberMd,
+                    tslib_1.__metadata("design:type", Number)
                 ], MdPushpin.prototype, "offset", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
-                    tslib_1.__metadata("design:type", Object)
+                    au.ato.bindable.numberMd,
+                    tslib_1.__metadata("design:type", Number)
                 ], MdPushpin.prototype, "top", void 0);
                 MdPushpin = tslib_1.__decorate([
-                    aurelia_framework_1.customAttribute("md-pushpin"),
-                    aurelia_framework_1.autoinject,
+                    au.customAttribute("md-pushpin"),
+                    au.autoinject,
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdPushpin);
                 return MdPushpin;
@@ -52,3 +53,4 @@ System.register(["tslib", "aurelia-framework"], function (exports_1, context_1) 
         }
     };
 });
+//# sourceMappingURL=pushpin.js.map

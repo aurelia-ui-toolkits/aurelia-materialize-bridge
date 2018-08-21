@@ -1,100 +1,97 @@
-System.register(["tslib", "aurelia-logging", "aurelia-framework", "../common/attributes", "../common/attributeManager", "../common/events"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
+    var tslib_1, au, MdModal;
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_logging_1, aurelia_framework_1, attributes_1, attributeManager_1, events_1, MdModal;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_logging_1_1) {
-                aurelia_logging_1 = aurelia_logging_1_1;
-            },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (attributes_1_1) {
-                attributes_1 = attributes_1_1;
-            },
-            function (attributeManager_1_1) {
-                attributeManager_1 = attributeManager_1_1;
-            },
-            function (events_1_1) {
-                events_1 = events_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
             MdModal = /** @class */ (function () {
                 function MdModal(element) {
                     this.element = element;
-                    this.dismissible = true;
-                    this.opacity = 0.5; // Opacity of modal background
-                    this.inDuration = 300; // Transition in duration
-                    this.outDuration = 200; // Transition out duration
-                    this.startingTop = "4%"; // Starting top style attribute
-                    this.endingTop = "10%"; // Ending top style attribute
-                    this.log = aurelia_logging_1.getLogger("md-modal");
-                    this.attributeManager = new attributeManager_1.AttributeManager(this.element);
-                    this.onComplete = this.onComplete.bind(this);
-                    this.onReady = this.onReady.bind(this);
+                    this.log = au.getLogger("md-modal");
+                    this.attributeManager = new au.AttributeManager(this.element);
                 }
+                MdModal.prototype.fixedFooterChanged = function () {
+                    if (this.element) {
+                        this.element.classList.toggle("modal-fixed-footer", this.fixedFooter);
+                    }
+                };
                 MdModal.prototype.attached = function () {
+                    var _this = this;
                     var options = {
-                        complete: this.onComplete,
-                        dismissible: attributes_1.getBooleanFromAttributeValue(this.dismissible),
+                        opacity: this.opacity,
+                        inDuration: this.inDuration,
+                        outDuration: this.outDuration,
+                        preventScrolling: this.preventScrolling,
+                        dismissible: this.dismissible,
+                        startingTop: this.startingTop,
                         endingTop: this.endingTop,
-                        inDuration: parseInt(this.inDuration.toString(), 10),
-                        opacity: parseFloat(this.opacity.toString()),
-                        outDuration: parseInt(this.outDuration.toString(), 10),
-                        ready: this.onReady,
-                        startingTop: this.startingTop
+                        onOpenStart: function () { return au.fireMaterializeEvent(_this.element, "open-start"); },
+                        onOpenEnd: function () { return au.fireMaterializeEvent(_this.element, "open-end"); },
+                        onCloseStart: function () { return au.fireMaterializeEvent(_this.element, "close-start"); },
+                        onCloseEnd: function () { return au.fireMaterializeEvent(_this.element, "close-end"); }
                     };
                     this.log.debug("modal options: ", options);
+                    au.cleanOptions(options);
                     this.attributeManager.addClasses("modal");
-                    $(this.element).modal(options);
+                    this.instance = new M.Modal(this.element, options);
                 };
                 MdModal.prototype.detached = function () {
+                    this.instance.destroy();
                     this.attributeManager.removeClasses("modal");
                 };
-                MdModal.prototype.onComplete = function () {
-                    events_1.fireMaterializeEvent(this.element, "modal-complete");
-                };
-                MdModal.prototype.onReady = function (modal, trigger) {
-                    events_1.fireMaterializeEvent(this.element, "modal-ready", { modal: modal, trigger: trigger });
-                };
                 MdModal.prototype.open = function () {
-                    $(this.element).modal("open");
+                    this.instance.open();
                 };
                 MdModal.prototype.close = function () {
-                    $(this.element).modal("close");
+                    this.instance.close();
                 };
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable(),
-                    tslib_1.__metadata("design:type", Object)
-                ], MdModal.prototype, "dismissible", void 0);
-                tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
-                    tslib_1.__metadata("design:type", Object)
+                    au.ato.bindable.numberMd,
+                    tslib_1.__metadata("design:type", Number)
                 ], MdModal.prototype, "opacity", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
-                    tslib_1.__metadata("design:type", Object)
+                    au.ato.bindable.numberMd,
+                    tslib_1.__metadata("design:type", Number)
                 ], MdModal.prototype, "inDuration", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
-                    tslib_1.__metadata("design:type", Object)
+                    au.ato.bindable.numberMd,
+                    tslib_1.__metadata("design:type", Number)
                 ], MdModal.prototype, "outDuration", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
+                    au.ato.bindable.booleanMd,
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdModal.prototype, "preventScrolling", void 0);
+                tslib_1.__decorate([
+                    au.ato.bindable.booleanMd,
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdModal.prototype, "dismissible", void 0);
+                tslib_1.__decorate([
+                    au.ato.bindable.stringMd,
                     tslib_1.__metadata("design:type", String)
                 ], MdModal.prototype, "startingTop", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
+                    au.ato.bindable.stringMd,
                     tslib_1.__metadata("design:type", String)
                 ], MdModal.prototype, "endingTop", void 0);
+                tslib_1.__decorate([
+                    au.ato.bindable.booleanMd,
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdModal.prototype, "fixedFooter", void 0);
+                tslib_1.__decorate([
+                    au.ato.bindable.booleanMd,
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdModal.prototype, "bottomSheet", void 0);
                 MdModal = tslib_1.__decorate([
-                    aurelia_framework_1.customAttribute("md-modal"),
-                    aurelia_framework_1.autoinject,
+                    au.customAttribute("md-modal"),
+                    au.autoinject,
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdModal);
                 return MdModal;
@@ -103,3 +100,4 @@ System.register(["tslib", "aurelia-logging", "aurelia-framework", "../common/att
         }
     };
 });
+//# sourceMappingURL=modal.js.map

@@ -1,34 +1,33 @@
 import * as tslib_1 from "tslib";
-import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
-import { TaskQueue } from "aurelia-task-queue";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { MdInputUpdateService } from "./input-update-service";
-import { fireEvent } from "../common/events";
-import { MaterializeFormValidationRenderer } from "..";
+import * as au from "../aurelia";
 var MdInput = /** @class */ (function () {
-    function MdInput(element, taskQueue, updateService) {
+    function MdInput(element, taskQueue) {
         var _this = this;
         this.element = element;
         this.taskQueue = taskQueue;
-        this.updateService = updateService;
-        this.mdLabel = "";
-        this.mdBlurOnEnter = false;
-        this.mdDisabled = false;
-        this.mdReadonly = false;
-        this.mdPlaceholder = "";
-        this.mdTextArea = false;
-        this.mdType = "text";
-        this.mdStep = "any";
-        this.mdValidate = false;
-        this.mdShowErrortext = true;
-        this.mdUpdateTrigger = ["input", "change"];
-        this.mdValue = "";
-        this.mdMin = null;
-        this.mdMax = null;
-        this.mdName = "";
-        this.mdMaxlength = 524288;
+        this.blurOnEnter = false;
+        this.disabled = false;
+        this.readonly = false;
+        this.placeholder = "";
+        this.textArea = false;
+        this.type = "text";
+        this.step = "any";
+        this.validate = false;
+        this.showErrortext = true;
+        this.updateTrigger = ["input", "change"];
+        this.min = null;
+        this.max = null;
+        this.name = "";
+        this.maxlength = 524288;
+        this.autocomplete = "";
         this.suspendUpdate = false;
+        this.blurOnEnterHandler = function (e) {
+            if (e.keyCode && e.keyCode === 13) {
+                _this.input.blur();
+            }
+        };
         this.mdUnrenderValidateResults = function (results, renderer) {
+            var e_1, _a;
             try {
                 for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
                     var result = results_1_1.value;
@@ -45,21 +44,15 @@ var MdInput = /** @class */ (function () {
                 finally { if (e_1) throw e_1.error; }
             }
             renderer.removeValidationClasses(_this.input);
-            var e_1, _a;
         };
         this.mdRenderValidateResults = function (results, renderer) {
-            if (_this.label && results.find(function (x) { return !x.valid; })) {
-                _this.label.removeAttribute("data-error");
-            }
-            if (_this.inputField) {
+            var e_2, _a;
+            if (_this.showErrortext && _this.inputField) {
                 try {
                     for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
                         var result = results_2_1.value;
                         if (!result.valid) {
-                            result.target = _this.input;
-                            if (_this.input.hasAttribute("data-show-errortext")) {
-                                renderer.addMessage(_this.inputField, result);
-                            }
+                            renderer.addMessage(_this.inputField, result);
                         }
                     }
                 }
@@ -72,161 +65,152 @@ var MdInput = /** @class */ (function () {
                 }
             }
             renderer.addValidationClasses(_this.input, !results.find(function (x) { return !x.valid; }));
-            var e_2, _a;
         };
         this.controlId = "md-input-" + MdInput_1.id++;
-        this.blurOnEnter = this.blurOnEnter.bind(this);
     }
     MdInput_1 = MdInput;
+    MdInput.prototype.valueChanged = function () {
+        var _this = this;
+        if (this.input === document.activeElement) {
+            return;
+        }
+        this.taskQueue.queueTask(function () { return _this.updateLabel(); });
+    };
     MdInput.prototype.bind = function () {
-        this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
-        this.mdTextArea = getBooleanFromAttributeValue(this.mdTextArea);
-        this.mdShowErrortext = getBooleanFromAttributeValue(this.mdShowErrortext);
-        this.mdBlurOnEnter = getBooleanFromAttributeValue(this.mdBlurOnEnter);
+        // this suppresses initial changed handler calls
     };
     MdInput.prototype.attached = function () {
-        if (getBooleanFromAttributeValue(this.mdValidate)) {
+        if (this.validate) {
             this.input.classList.add("validate");
         }
-        if (this.mdValidateError) {
-            this.label.setAttribute("data-error", this.mdValidateError);
+        if (this.placeholder) {
+            this.input.setAttribute("placeholder", this.placeholder);
         }
-        if (this.mdValidateSuccess) {
-            this.label.setAttribute("data-success", this.mdValidateSuccess);
+        if (this.autocomplete) {
+            this.input.setAttribute("autocomplete", this.autocomplete);
         }
-        if (this.mdPlaceholder) {
-            this.input.setAttribute("placeholder", this.mdPlaceholder);
-        }
-        if (this.mdShowErrortext) {
-            this.input.setAttribute("data-show-errortext", this.mdShowErrortext.toString());
-        }
-        this.updateService.update();
-        // special case: time inputs are not covered by Materialize
-        if (this.mdType === "time") {
-            $(this.input).siblings("label").addClass("active");
-        }
+        this.updateLabel();
         this.attachEventHandlers();
         this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
         this.element.mdRenderValidateResults = this.mdRenderValidateResults;
     };
     MdInput.prototype.detached = function () {
         this.detachEventHandlers();
-        var validationMessages = Array.from(this.inputField.querySelectorAll("." + MaterializeFormValidationRenderer.className));
-        validationMessages.forEach(function (x) { return x.remove(); });
-        this.input.classList.remove("valid");
-        this.input.classList.remove("invalid");
+        au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
         this.element.mdUnrenderValidateResults = undefined;
         this.element.mdRenderValidateResults = undefined;
     };
+    MdInput.prototype.updateLabel = function () {
+        au.updateLabel(this.input, this.labelEl);
+        if (this.textArea) {
+            M.textareaAutoResize(this.input);
+        }
+    };
     MdInput.prototype.blur = function () {
-        fireEvent(this.element, "blur");
+        au.fireEvent(this.element, "blur");
     };
     MdInput.prototype.focus = function () {
         this.input.focus();
-        fireEvent(this.element, "focus");
-    };
-    MdInput.prototype.mdValueChanged = function () {
-        if (!$(this.input).is(":focus")) {
-            this.updateService.update();
-        }
-        if (this.mdTextArea) {
-            $(this.input).trigger("autoresize");
-        }
+        au.fireEvent(this.element, "focus");
     };
     MdInput.prototype.attachEventHandlers = function () {
-        if (this.mdBlurOnEnter) {
-            this.element.addEventListener("keyup", this.blurOnEnter);
+        if (this.blurOnEnter) {
+            this.element.addEventListener("keyup", this.blurOnEnterHandler);
         }
     };
     MdInput.prototype.detachEventHandlers = function () {
-        if (this.mdBlurOnEnter) {
-            this.element.removeEventListener("keyup", this.blurOnEnter);
+        if (this.blurOnEnter) {
+            this.element.removeEventListener("keyup", this.blurOnEnterHandler);
         }
     };
-    MdInput.prototype.blurOnEnter = function (e) {
-        if (e.keyCode && e.keyCode === 13) {
-            this.input.blur();
-        }
-    };
+    var MdInput_1;
     MdInput.id = 0;
     tslib_1.__decorate([
-        bindable,
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay }),
         tslib_1.__metadata("design:type", String)
-    ], MdInput.prototype, "mdLabel", void 0);
+    ], MdInput.prototype, "label", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdInput.prototype, "mdBlurOnEnter", void 0);
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdInput.prototype, "blurOnEnter", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdInput.prototype, "mdDisabled", void 0);
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdInput.prototype, "disabled", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdInput.prototype, "mdReadonly", void 0);
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdInput.prototype, "readonly", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
-    ], MdInput.prototype, "mdPlaceholder", void 0);
+    ], MdInput.prototype, "placeholder", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
-    ], MdInput.prototype, "mdTextArea", void 0);
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdInput.prototype, "textArea", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
-    ], MdInput.prototype, "mdType", void 0);
+    ], MdInput.prototype, "type", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
-    ], MdInput.prototype, "mdStep", void 0);
+    ], MdInput.prototype, "step", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
-    ], MdInput.prototype, "mdValidate", void 0);
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdInput.prototype, "validate", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
-    ], MdInput.prototype, "mdShowErrortext", void 0);
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdInput.prototype, "showErrortext", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdInput.prototype, "inline", void 0);
+    tslib_1.__decorate([
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Array)
-    ], MdInput.prototype, "mdUpdateTrigger", void 0);
+    ], MdInput.prototype, "updateTrigger", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.ato.bindable.stringMd,
         tslib_1.__metadata("design:type", String)
-    ], MdInput.prototype, "mdValidateError", void 0);
+    ], MdInput.prototype, "validateError", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.ato.bindable.stringMd,
         tslib_1.__metadata("design:type", String)
-    ], MdInput.prototype, "mdValidateSuccess", void 0);
+    ], MdInput.prototype, "validateSuccess", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.twoWay }),
+        au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
         tslib_1.__metadata("design:type", String)
-    ], MdInput.prototype, "mdValue", void 0);
+    ], MdInput.prototype, "value", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
-    ], MdInput.prototype, "mdMin", void 0);
+    ], MdInput.prototype, "min", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
-    ], MdInput.prototype, "mdMax", void 0);
+    ], MdInput.prototype, "max", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
-    ], MdInput.prototype, "mdName", void 0);
+    ], MdInput.prototype, "name", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", Number)
-    ], MdInput.prototype, "mdMaxlength", void 0);
+    ], MdInput.prototype, "maxlength", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", String)
+    ], MdInput.prototype, "autocomplete", void 0);
     MdInput = MdInput_1 = tslib_1.__decorate([
-        customElement("md-input"),
-        autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element, TaskQueue, MdInputUpdateService])
+        au.customElement("md-input"),
+        au.autoinject,
+        tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
     ], MdInput);
     return MdInput;
-    var MdInput_1;
 }());
 export { MdInput };
+//# sourceMappingURL=input.js.map

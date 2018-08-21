@@ -8,8 +8,8 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
         function ConfigBuilder() {
             this.globalResources = [];
             this.noWavesAttach = false;
+            this.autoButtonWaves = false;
             this.useGlobalResources = true;
-            this.useScrollfirePatch = false;
         }
         ConfigBuilder.prototype.useAll = function () {
             return this
@@ -32,6 +32,7 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
                 .useFile()
                 .useFooter()
                 .useInput()
+                .useLookup()
                 .useModal()
                 .useNavbar()
                 .usePagination()
@@ -40,7 +41,6 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
                 .usePushpin()
                 .useRadio()
                 .useRange()
-                .useScrollfire()
                 .useScrollSpy()
                 .useSelect()
                 .useSidenav()
@@ -50,8 +50,9 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
                 .useTapTarget()
                 .useTimePicker()
                 .useTooltip()
-                .useTransitions()
+                .useWaitCursor()
                 .useWaves()
+                .useAutoButtonWaves(true)
                 .useWell();
         };
         ConfigBuilder.prototype.useAutoComplete = function () {
@@ -100,7 +101,7 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
          * Use my control
          */
         ConfigBuilder.prototype.useClickCounter = function () {
-            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./click-counter"));
+            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./click-counter/click-counter"));
             return this;
         };
         ConfigBuilder.prototype.useCollapsible = function () {
@@ -144,9 +145,12 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./input/input-prefix"));
             return this;
         };
+        ConfigBuilder.prototype.useLookup = function () {
+            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./lookup/lookup"));
+            return this;
+        };
         ConfigBuilder.prototype.useModal = function () {
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./modal/modal"));
-            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./modal/modal-trigger"));
             return this;
         };
         ConfigBuilder.prototype.useNavbar = function () {
@@ -177,11 +181,6 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./range/range"));
             return this;
         };
-        ConfigBuilder.prototype.useScrollfire = function () {
-            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./scrollfire/scrollfire"));
-            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./scrollfire/scrollfire-target"));
-            return this;
-        };
         ConfigBuilder.prototype.useScrollSpy = function () {
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./scrollspy/scrollspy"));
             return this;
@@ -204,9 +203,6 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./switch/switch"));
             return this;
         };
-        /**
-         * Use materialized tabs
-         */
         ConfigBuilder.prototype.useTabs = function () {
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./tabs/tabs"));
             return this;
@@ -223,14 +219,10 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./tooltip/tooltip"));
             return this;
         };
-        ConfigBuilder.prototype.useTransitions = function () {
-            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./transitions/fadein-image"));
-            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./transitions/staggered-list"));
+        ConfigBuilder.prototype.useWaitCursor = function () {
+            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./wait-cursor/wait-cursor"));
             return this;
         };
-        /**
-         * Use ripple/waves effect
-         */
         ConfigBuilder.prototype.useWaves = function () {
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./waves/waves"));
             return this;
@@ -243,6 +235,10 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
             this.noWavesAttach = true;
             return this;
         };
+        ConfigBuilder.prototype.useAutoButtonWaves = function (use) {
+            this.autoButtonWaves = use;
+            return this;
+        };
         /**
          * Don't globalize any resources
          * Allows you to import yourself via <require></require>
@@ -251,11 +247,8 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
             this.useGlobalResources = false;
             return this;
         };
-        ConfigBuilder.prototype.withScrollfirePatch = function () {
-            this.useScrollfirePatch = true;
-            return this;
-        };
         return ConfigBuilder;
     }());
     exports.ConfigBuilder = ConfigBuilder;
 });
+//# sourceMappingURL=config-builder.js.map

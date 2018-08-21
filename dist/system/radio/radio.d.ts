@@ -1,19 +1,19 @@
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 export declare class MdRadio {
     private element;
     constructor(element: Element);
     static id: number;
     controlId: string;
-    attributeManager: AttributeManager;
+    attributeManager: au.AttributeManager;
     radio: HTMLInputElement;
-    mdChecked: boolean | string;
-    mdDisabled: boolean | string;
-    mdDisabledChanged(newValue: boolean | string): void;
-    mdReadonly: boolean | string;
-    mdGap: boolean | string;
-    mdModel: any;
-    mdName: string;
-    mdValue: string;
+    checked: boolean | string;
+    disabled: boolean;
+    disabledChanged(newValue: boolean): void;
+    readonly: boolean;
+    gap: boolean;
+    model: any;
+    name: string;
+    value: string;
     attached(): void;
     detached(): void;
 }

@@ -1,48 +1,38 @@
-import { autoinject, bindable, customAttribute } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customAttribute("md-badge")
-@autoinject
+@au.customAttribute("md-badge")
+@au.autoinject
 export class MdBadge {
 	constructor(private element: Element) {
-		this.attributeManager = new AttributeManager(this.element);
+		this.attributeManager = new au.AttributeManager(this.element);
 	}
 
-	@bindable
-	isNew: boolean | string = false;
-	isNewChanged(newValue) {
-		if (getBooleanFromAttributeValue(newValue)) {
+	@au.ato.bindable
+	isNew: boolean = false;
+	isNewChanged() {
+		if (this.isNew) {
 			this.attributeManager.addClasses("new");
-		} else {
+		}
+		else {
 			this.attributeManager.removeClasses("new");
 		}
 	}
 
-	@bindable
+	@au.ato.bindable
 	caption: string = null;
-	captionChanged(newValue) {
-		if (newValue !== null) {
-			this.attributeManager.addAttributes({ "data-badge-caption": newValue });
-		} else {
+	captionChanged() {
+		if (this.caption !== null) {
+			this.attributeManager.addAttributes({ "data-badge-caption": this.caption });
+		}
+		else {
 			this.attributeManager.removeAttributes(["data-badge-caption"]);
 		}
 	}
 
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 
 	attached() {
-		const classes = ["badge"];
-
-		if (getBooleanFromAttributeValue(this.isNew)) {
-			classes.push("new");
-		}
-
-		if (this.caption !== null) {
-			this.attributeManager.addAttributes({ "data-badge-caption": this.caption });
-		}
-
-		this.attributeManager.addClasses(classes);
+		this.element.classList.add("badge");
 	}
 
 	detached() {

@@ -24,3 +24,4 @@ export function fireMaterializeEvent(element, name, data) {
     if (data === void 0) { data = {}; }
     return fireEvent(element, "" + constants.eventPrefix + name, data);
 }
+//# sourceMappingURL=events.js.map

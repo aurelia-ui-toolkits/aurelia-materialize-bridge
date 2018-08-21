@@ -1,7 +1,13 @@
 export declare class MdRange {
-    mdReadonly: boolean | string;
-    mdMin: number | string;
-    mdMax: number | string;
-    mdStep: number | string;
-    mdValue: number | string;
+    private element;
+    constructor(element: Element);
+    input: HTMLInputElement;
+    readonly: boolean;
+    min: number;
+    max: number;
+    step: number;
+    value: number;
+    instance: M.Range;
+    attached(): void;
+    detached(): void;
 }

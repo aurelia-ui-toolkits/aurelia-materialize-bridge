@@ -1,47 +1,83 @@
-import { autoinject, bindable, bindingMode, children, customElement } from "aurelia-framework";
-import { TaskQueue } from "aurelia-task-queue";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customElement("md-carousel")
-@autoinject
+@au.customElement("md-carousel")
+@au.autoinject
 export class MdCarousel {
-	constructor(private element: Element, private taskQueue: TaskQueue) { }
+	constructor(private element: Element, private taskQueue: au.TaskQueue) { }
 
-	@bindable
-	mdIndicators: boolean | string = true;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	indicators: boolean = true;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdSlider: boolean | string = false;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	fullWidth: boolean = false;
 
-	@children("md-carousel-item")
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	duration: number;
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	dist: number;
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	shift: number;
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	padding: number;
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	numVisible: number;
+
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	noWrap: boolean;
+
+	@au.children("md-carousel-item")
 	items: Element[] = [];
+	itemsChanged() {
+		this.refresh();
+	}
+
+	instance: M.Carousel;
 
 	attached() {
-		if (getBooleanFromAttributeValue(this.mdSlider)) {
+		if (this.fullWidth) {
 			this.element.classList.add("carousel-slider");
 		}
 		this.refresh();
 	}
 
 	detached() {
-		$(this.element).carousel("destroy");
-	}
-
-	itemsChanged(newValue) {
-		this.refresh();
+		this.instance.destroy();
 	}
 
 	refresh() {
-		if (this.items.length > 0) {
-			const options = {
-				full_width: getBooleanFromAttributeValue(this.mdSlider),
-				fullWidth: getBooleanFromAttributeValue(this.mdSlider),
-				indicators: this.mdIndicators
-			};
-
-			this.taskQueue.queueTask(() => {
-				$(this.element).carousel(options);
-			});
+		if (!this.items.length) {
+			return;
 		}
+		const options: Partial<M.CarouselOptions> = {
+			fullWidth: this.fullWidth,
+			indicators: this.indicators,
+			dist: this.dist,
+			duration: this.duration,
+			noWrap: this.noWrap,
+			numVisible: this.numVisible,
+			padding: this.padding,
+			shift: this.shift,
+			onCycleTo: (current, dragged) => au.fireMaterializeEvent(this.element, "cycle-to", { current, dragged })
+		};
+		au.cleanOptions(options);
+		this.taskQueue.queueTask(() => {
+			this.instance = new M.Carousel(this.element, options);
+		});
+	}
+
+	next(n?: number) {
+		this.instance.next(n);
+	}
+
+	prev(n?: number) {
+		this.instance.prev(n);
+	}
+
+	set(n?: number) {
+		this.instance.set(n);
 	}
 }

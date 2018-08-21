@@ -1,24 +1,44 @@
 import * as tslib_1 from "tslib";
-import { bindable, customAttribute, autoinject } from "aurelia-framework";
+import * as au from "../aurelia";
 var MdScrollSpy = /** @class */ (function () {
     function MdScrollSpy(element) {
         this.element = element;
     }
     MdScrollSpy.prototype.attached = function () {
-        $(this.target, this.element).scrollSpy();
+        var options = {
+            throttle: this.throttle,
+            scrollOffset: this.scrollOffset,
+            activeClass: this.activeClass,
+            getActiveElement: this.getActiveElement
+        };
+        au.cleanOptions(options);
+        this.instance = new M.ScrollSpy(this.element, options);
     };
     MdScrollSpy.prototype.detached = function () {
-        // destroy handler not available
+        this.instance.destroy();
     };
     tslib_1.__decorate([
-        bindable,
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Number)
+    ], MdScrollSpy.prototype, "throttle", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Number)
+    ], MdScrollSpy.prototype, "scrollOffset", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
-    ], MdScrollSpy.prototype, "target", void 0);
+    ], MdScrollSpy.prototype, "activeClass", void 0);
+    tslib_1.__decorate([
+        au.bindable,
+        tslib_1.__metadata("design:type", Function)
+    ], MdScrollSpy.prototype, "getActiveElement", void 0);
     MdScrollSpy = tslib_1.__decorate([
-        customAttribute("md-scrollspy"),
-        autoinject,
+        au.customAttribute("md-scrollspy"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdScrollSpy);
     return MdScrollSpy;
 }());
 export { MdScrollSpy };
+//# sourceMappingURL=scrollspy.js.map

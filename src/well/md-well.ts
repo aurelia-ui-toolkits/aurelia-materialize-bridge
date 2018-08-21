@@ -1,7 +1,6 @@
-import { Router } from "aurelia-router";
-import { bindable } from "aurelia-templating";
+import * as au from "../aurelia";
 
 export class MdWell {
-	@bindable
-	router: Router;
+	@au.bindable
+	router: au.Router;
 }

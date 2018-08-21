@@ -1,53 +1,54 @@
-import { autoinject, bindable, customAttribute } from "aurelia-framework";
-import { fireEvent } from "../common/events";
+import * as au from "../aurelia";
+import { MdInput } from "../input/input";
 
-@customAttribute("md-autocomplete")
-@autoinject
+@au.customAttribute("md-autocomplete")
+@au.autoinject
 export class MdAutoComplete {
 	constructor(private element: Element) { }
 
 	input: Element = null;
 
-	@bindable
-	limit: number = 20;
+	@au.ato.bindable.numberMd
+	limit: number;
 
-	@bindable
-	minLength: number = 1;
+	@au.ato.bindable.numberMd
+	minLength: number;
 
-	@bindable
+	@au.bindable
 	values: any = {};
+	valuesChanged() {
+		this.instance.updateData(this.values);
+	}
+
+	instance: M.Autocomplete;
+
+	bind() {
+		// suppress initial change handler calls
+	}
 
 	attached() {
 		if (this.element.tagName.toLowerCase() === "input") {
 			this.input = this.element;
-		} else if (this.element.tagName.toLowerCase() === "md-input") {
-			this.input = this.element.au.controller.viewModel.input;
-		} else {
+		}
+		else if (this.element.tagName.toLowerCase() === "md-input") {
+			this.input = this.element.au["md-input"].viewModel.input;
+		}
+		else {
 			throw new Error("md-autocomplete must be attached to either an input or md-input element");
 		}
-		this.refresh();
+		let options: Partial<M.AutocompleteOptions> = {
+			data: this.values,
+			limit: this.limit,
+			minLength: this.minLength,
+			onAutocomplete: text => {
+				au.fireMaterializeEvent(this.element, "autocomplete", { text });
+			}
+		};
+		au.cleanOptions(options);
+		this.instance = new M.Autocomplete(this.input, options);
 	}
 
 	detached() {
-		// remove .autocomplete-content children
-		$(this.input).siblings(".autocomplete-content").off("click");
-		$(this.input).siblings(".autocomplete-content").remove();
-	}
-
-	refresh() {
-		this.detached();
-		$(this.input).autocomplete({
-			data: this.values,
-			minLength: this.minLength,
-			limit: this.limit,
-			onAutocomplete: () => fireEvent(this.input, "change")
-		});
-		$(this.input).siblings(".autocomplete-content").on("click", () => {
-			fireEvent(this.input, "change");
-		});
-	}
-
-	valuesChanged(newValue) {
-		this.refresh();
+		this.instance.destroy();
 	}
 }

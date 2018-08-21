@@ -1,49 +1,47 @@
-import { bindable, customElement, autoinject, bindingMode } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 
-@customElement("md-navbar")
-@autoinject
+@au.customElement("md-navbar")
+@au.autoinject
 export class MdNavbar {
 	constructor(private element: Element) { }
 
 	fixedAnchor: HTMLDivElement;
 	nav: HTMLElement;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdExtended;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	extended: boolean;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdFixed;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	fixed: boolean;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdAutoHeight;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	autoHeight: boolean;
 
-	fixedAttributeManager: AttributeManager;
-	navAttributeManager: AttributeManager;
+	fixedAttributeManager: au.AttributeManager;
+	navAttributeManager: au.AttributeManager;
 
 	attached() {
-		this.fixedAttributeManager = new AttributeManager(this.fixedAnchor);
-		this.navAttributeManager = new AttributeManager(this.nav);
-		if (getBooleanFromAttributeValue(this.mdFixed)) {
+		this.fixedAttributeManager = new au.AttributeManager(this.fixedAnchor);
+		this.navAttributeManager = new au.AttributeManager(this.nav);
+		if (this.fixed) {
 			this.fixedAttributeManager.addClasses("navbar-fixed");
 		}
-		if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
-			this.navAttributeManager.addClasses("md-auto-height");
+		if (this.autoHeight) {
+			this.navAttributeManager.addClasses("auto-height");
 		}
-		if (getBooleanFromAttributeValue(this.mdExtended)) {
+		if (this.extended) {
 			this.navAttributeManager.addClasses("nav-extended");
 		}
 	}
 
 	detached() {
-		if (getBooleanFromAttributeValue(this.mdFixed)) {
+		if (this.fixed) {
 			this.fixedAttributeManager.removeClasses("navbar-fixed");
 		}
-		if (getBooleanFromAttributeValue(this.mdAutoHeight)) {
-			this.navAttributeManager.removeClasses("md-auto-height");
+		if (this.autoHeight) {
+			this.navAttributeManager.removeClasses("auto-height");
 		}
-		if (getBooleanFromAttributeValue(this.mdExtended)) {
+		if (this.extended) {
 			this.navAttributeManager.removeClasses("nav-extended");
 		}
 	}

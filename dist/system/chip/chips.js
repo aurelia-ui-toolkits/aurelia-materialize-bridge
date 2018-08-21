@@ -1,98 +1,87 @@
-System.register(["tslib", "aurelia-framework", "aurelia-logging", "../common/events"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
+    var tslib_1, au, MdChips;
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, aurelia_logging_1, events_1, MdChips;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (aurelia_logging_1_1) {
-                aurelia_logging_1 = aurelia_logging_1_1;
-            },
-            function (events_1_1) {
-                events_1 = events_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
             MdChips = /** @class */ (function () {
-                function MdChips(element) {
+                function MdChips(element, taskQueue) {
                     this.element = element;
+                    this.taskQueue = taskQueue;
                     this.autocompleteData = {};
                     this.data = [];
-                    this.placeholder = "";
-                    this.secondaryPlaceholder = "";
-                    this.log = aurelia_logging_1.getLogger("md-chips");
-                    this.onChipAdd = this.onChipAdd.bind(this);
-                    this.onChipDelete = this.onChipDelete.bind(this);
-                    this.onChipSelect = this.onChipSelect.bind(this);
+                    this.log = au.getLogger("md-chips");
                 }
                 MdChips.prototype.dataChanged = function (newValue, oldValue) {
                     this.refresh();
                     // I know this is a bit naive..
                     if (newValue.length > oldValue.length) {
                         var chip = newValue.find(function (i) { return !oldValue.includes(i); });
-                        events_1.fireEvent(this.element, "change", { source: "dataChanged", operation: "add", target: chip, data: newValue });
+                        au.fireEvent(this.element, "change", { source: "dataChanged", operation: "add", target: chip, data: newValue });
                     }
                     if (newValue.length < oldValue.length) {
                         var chip = oldValue.find(function (i) { return !newValue.includes(i); });
-                        events_1.fireEvent(this.element, "change", { source: "dataChanged", operation: "delete", target: chip, data: newValue });
+                        au.fireEvent(this.element, "change", { source: "dataChanged", operation: "delete", target: chip, data: newValue });
                     }
+                };
+                MdChips.prototype.bind = function () {
+                    // suppress initial change handler calls
                 };
                 MdChips.prototype.attached = function () {
                     this.refresh();
-                    $(this.element).on("chip.add", this.onChipAdd);
-                    $(this.element).on("chip.delete", this.onChipDelete);
-                    $(this.element).on("chip.select", this.onChipSelect);
                 };
                 MdChips.prototype.detached = function () {
-                    $(this.element).off("chip.add", this.onChipAdd);
-                    $(this.element).off("chip.delete", this.onChipDelete);
-                    $(this.element).off("chip.select", this.onChipSelect);
+                    this.instance.destroy();
                 };
                 MdChips.prototype.refresh = function () {
+                    var _this = this;
                     var options = {
-                        autocompleteOptions: {
-                            data: this.autocompleteData
-                        },
                         data: this.data,
                         placeholder: this.placeholder,
-                        secondaryPlaceholder: this.secondaryPlaceholder
+                        limit: this.limit,
+                        secondaryPlaceholder: this.secondaryPlaceholder,
+                        onChipAdd: function () { return _this.data = _this.instance.chipsData; },
+                        onChipDelete: function () { return _this.data = _this.instance.chipsData; },
+                        onChipSelect: function (e, chip) { return au.fireEvent(_this.element, "selected", { target: chip }); }
                     };
-                    $(this.element).material_chip(options);
-                };
-                MdChips.prototype.onChipAdd = function (e, chip) {
-                    this.data = $(this.element).material_chip("data");
-                };
-                MdChips.prototype.onChipDelete = function (e, chip) {
-                    this.data = $(this.element).material_chip("data");
-                };
-                MdChips.prototype.onChipSelect = function (e, chip) {
-                    events_1.fireEvent(this.element, "selected", { target: chip });
+                    if (this.autocompleteData) {
+                        options.autocompleteOptions = { data: this.autocompleteData };
+                    }
+                    au.cleanOptions(options);
+                    this.instance = new M.Chips(this.element, options);
                 };
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", Object)
                 ], MdChips.prototype, "autocompleteData", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+                    au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
                     tslib_1.__metadata("design:type", Array)
                 ], MdChips.prototype, "data", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
+                    au.ato.bindable.stringMd,
                     tslib_1.__metadata("design:type", String)
                 ], MdChips.prototype, "placeholder", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
+                    au.ato.bindable.stringMd,
                     tslib_1.__metadata("design:type", String)
                 ], MdChips.prototype, "secondaryPlaceholder", void 0);
+                tslib_1.__decorate([
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Number)
+                ], MdChips.prototype, "limit", void 0);
                 MdChips = tslib_1.__decorate([
-                    aurelia_framework_1.customAttribute("md-chips"),
-                    aurelia_framework_1.autoinject,
-                    tslib_1.__metadata("design:paramtypes", [Element])
+                    au.customAttribute("md-chips"),
+                    au.autoinject,
+                    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
                 ], MdChips);
                 return MdChips;
             }());
@@ -100,3 +89,4 @@ System.register(["tslib", "aurelia-framework", "aurelia-logging", "../common/eve
         }
     };
 });
+//# sourceMappingURL=chips.js.map

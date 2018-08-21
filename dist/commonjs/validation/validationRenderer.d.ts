@@ -1,7 +1,6 @@
 import { ValidateResult, RenderInstruction } from "aurelia-validation";
 export declare class MaterializeFormValidationRenderer {
-    static className: string;
-    static classNameFirst: string;
+    static validationMessageClass: string;
     pushElementResult(elementResults: Map<Element, ValidateResult[]>, element: Element, result: ValidateResult): void;
     render(instruction: RenderInstruction): void;
     defaultUnrenderValidateResults(element: Element, results: ValidateResult[]): void;
@@ -10,4 +9,5 @@ export declare class MaterializeFormValidationRenderer {
     removeMessage(element: Element, result: ValidateResult): void;
     removeValidationClasses(input: Element): void;
     addValidationClasses(input: Element, isValid: boolean): void;
+    static removeValidation(validationContainer: HTMLElement, input: HTMLInputElement): void;
 }

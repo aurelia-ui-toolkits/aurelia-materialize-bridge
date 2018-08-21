@@ -1,9 +1,7 @@
 <template>
-	<input if.bind="!mdModel" type="radio" name="${mdName}" value.bind="mdValue" id="${controlId}" checked.bind="mdChecked" ref="radio"
-	 readonly.bind="mdReadonly" />
-	<input if.bind="!!mdModel" type="radio" name="${mdName}" model.bind="mdModel" id="${controlId}" checked.bind="mdChecked"
-	 ref="radio" readonly.bind="mdReadonly" />
 	<label for="${controlId}">
-		<slot></slot>
+		<input if.bind="!model" type="radio" name="${name}" value.bind="value" id="${controlId}" checked.bind="checked" ref="radio" readonly.bind="readonly" />
+		<input if.bind="!!model" type="radio" name="${name}" model.bind="model" id="${controlId}" checked.bind="checked" ref="radio" readonly.bind="readonly" />
+		<span><slot></slot></span>
 	</label>
 </template>

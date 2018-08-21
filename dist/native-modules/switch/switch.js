@@ -1,68 +1,63 @@
 import * as tslib_1 from "tslib";
-import { bindable, customElement, autoinject, bindingMode } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { fireEvent } from "../common/events";
+import * as au from "../aurelia";
 var MdSwitch = /** @class */ (function () {
     function MdSwitch(element) {
+        var _this = this;
         this.element = element;
-        this.mdReadonly = false;
-        this.mdLabelOff = "Off";
-        this.mdLabelOn = "On";
-        this.handleChange = this.handleChange.bind(this);
+        this.readonly = false;
+        this.labelOff = "Off";
+        this.labelOn = "On";
+        this.handleChange = function () {
+            _this.checked = _this.checkbox.checked;
+            au.fireEvent(_this.element, "blur");
+        };
     }
-    MdSwitch.prototype.mdCheckedChanged = function (newValue) {
+    MdSwitch.prototype.checkedChanged = function (newValue) {
         if (this.checkbox) {
             this.checkbox.checked = !!newValue;
         }
     };
-    MdSwitch.prototype.mdDisabledChanged = function (newValue) {
-        if (this.checkbox) {
-            this.checkbox.disabled = !!newValue;
-        }
-    };
     MdSwitch.prototype.attached = function () {
-        this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
-        if (getBooleanFromAttributeValue(this.mdDisabled)) {
+        this.checkbox.checked = this.checked;
+        if (this.disabled) {
             this.checkbox.disabled = true;
         }
         this.checkbox.addEventListener("change", this.handleChange);
-        this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
     };
     MdSwitch.prototype.detached = function () {
-        this.checkbox.removeEventListener("change", this.handleChange);
-    };
-    MdSwitch.prototype.handleChange = function () {
-        this.mdChecked = this.checkbox.checked;
-        fireEvent(this.element, "blur");
+        if (this.checkbox) {
+            this.checkbox.removeEventListener("change", this.handleChange);
+        }
     };
     MdSwitch.prototype.blur = function () {
-        fireEvent(this.element, "blur");
+        au.fireEvent(this.element, "blur");
     };
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", Object)
-    ], MdSwitch.prototype, "mdChecked", void 0);
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay }),
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdSwitch.prototype, "checked", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdSwitch.prototype, "mdDisabled", void 0);
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdSwitch.prototype, "disabled", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdSwitch.prototype, "mdReadonly", void 0);
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdSwitch.prototype, "readonly", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", String)
-    ], MdSwitch.prototype, "mdLabelOff", void 0);
+    ], MdSwitch.prototype, "labelOff", void 0);
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", String)
-    ], MdSwitch.prototype, "mdLabelOn", void 0);
+    ], MdSwitch.prototype, "labelOn", void 0);
     MdSwitch = tslib_1.__decorate([
-        customElement("md-switch"),
-        autoinject,
+        au.customElement("md-switch"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdSwitch);
     return MdSwitch;
 }());
 export { MdSwitch };
+//# sourceMappingURL=switch.js.map

@@ -1,9 +1,7 @@
-import { autoinject, bindable, bindingMode, customElement } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customElement("md-checkbox")
-@autoinject
+@au.customElement("md-checkbox")
+@au.autoinject
 export class MdCheckbox {
 	constructor(private element: Element) {
 		this.controlId = `md-checkbox-${MdCheckbox.id++}`;
@@ -11,58 +9,58 @@ export class MdCheckbox {
 
 	static id = 0;
 	controlId: string;
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 	checkbox: HTMLInputElement;
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	mdChecked: boolean | any[];
+	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
+	checked: boolean | any[];
 
-	@bindable
-	mdDisabled: boolean | string;
-	mdDisabledChanged(newValue) {
+	@au.ato.bindable.booleanMd
+	disabled: boolean;
+	disabledChanged(newValue) {
 		if (this.checkbox) {
 			this.checkbox.disabled = !!newValue;
 		}
 	}
 
-	@bindable
-	mdReadonly: boolean = false;
-	mdReadonlyChanged() {
+	@au.ato.bindable.booleanMd
+	readonly: boolean = false;
+	readonlyChanged() {
 		if (!this.checkbox) {
 			return;
 		}
 
-		if (this.mdReadonly) {
+		if (this.readonly) {
 			this.checkbox.addEventListener("change", this.preventChange);
 		} else {
 			this.checkbox.removeEventListener("change", this.preventChange);
 		}
 	}
 
-	@bindable
-	mdFilledIn: boolean | string;
+	@au.ato.bindable.booleanMd
+	filledIn: boolean;
 
-	@bindable
-	mdMatcher: (a: any, b: any) => boolean;
+	@au.bindable
+	matcher: (a: any, b: any) => boolean;
 
-	@bindable
-	mdModel: any;
+	@au.bindable
+	model: any;
 
 	attached() {
-		this.attributeManager = new AttributeManager(this.checkbox);
-		if (getBooleanFromAttributeValue(this.mdFilledIn)) {
+		this.attributeManager = new au.AttributeManager(this.checkbox);
+		if (this.filledIn) {
 			this.attributeManager.addClasses("filled-in");
 		}
-		if (this.mdChecked === null) {
+		if (this.checked === null) {
 			this.checkbox.indeterminate = true;
 		} else {
 			this.checkbox.indeterminate = false;
 		}
-		if (getBooleanFromAttributeValue(this.mdDisabled)) {
+		if (this.disabled) {
 			this.checkbox.disabled = true;
 		}
-		this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
-		this.mdReadonlyChanged();
+		this.readonly = this.readonly;
+		this.readonlyChanged();
 	}
 
 	detached() {

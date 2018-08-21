@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "aurelia-framework", "aurelia-router"], function (require, exports, tslib_1, aurelia_framework_1, aurelia_router_1) {
+define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     // taken from: https://github.com/heruan/aurelia-breadcrumbs
@@ -22,15 +22,16 @@ define(["require", "exports", "tslib", "aurelia-framework", "aurelia-router"], f
             this.childRouter.navigateToRoute(navigationInstruction.config.name);
         };
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", aurelia_router_1.Router)
+            au.bindable,
+            tslib_1.__metadata("design:type", au.Router)
         ], MdBreadcrumbs.prototype, "router", void 0);
         MdBreadcrumbs = tslib_1.__decorate([
-            aurelia_framework_1.customElement("md-breadcrumbs"),
-            aurelia_framework_1.autoinject,
-            tslib_1.__metadata("design:paramtypes", [Element, aurelia_router_1.Router])
+            au.customElement("md-breadcrumbs"),
+            au.autoinject,
+            tslib_1.__metadata("design:paramtypes", [Element, au.Router])
         ], MdBreadcrumbs);
         return MdBreadcrumbs;
     }());
     exports.MdBreadcrumbs = MdBreadcrumbs;
 });
+//# sourceMappingURL=breadcrumbs.js.map

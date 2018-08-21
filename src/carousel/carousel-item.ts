@@ -1,13 +1,13 @@
-import { autoinject, bindable, bindingMode, customElement } from "aurelia-framework";
+import * as au from "../aurelia";
 
-@customElement("md-carousel-item")
-@autoinject
+@au.customElement("md-carousel-item")
+@au.autoinject
 export class MdCarouselItem {
-	constructor(private element: Element) {}
+	constructor(private element: Element) { }
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdHref: string = "";
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	href: string = "";
 
-	@bindable({ defaultBindingMode: bindingMode.oneWay })
-	mdImage: string = "";
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay })
+	image: string = "";
 }

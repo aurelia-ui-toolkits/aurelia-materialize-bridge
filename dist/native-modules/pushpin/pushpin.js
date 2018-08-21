@@ -1,39 +1,41 @@
 import * as tslib_1 from "tslib";
-import { bindable, customAttribute, autoinject } from "aurelia-framework";
+import * as au from "../aurelia";
 var MdPushpin = /** @class */ (function () {
     function MdPushpin(element) {
         this.element = element;
-        this.bottom = Infinity;
-        this.offset = 0;
-        this.top = 0;
     }
     MdPushpin.prototype.attached = function () {
-        $(this.element).pushpin({
-            bottom: (this.bottom === Infinity ? Infinity : parseInt(this.bottom.toString(), 10)),
-            offset: parseInt(this.offset.toString(), 10),
-            top: parseInt(this.top.toString(), 10)
-        });
+        var _this = this;
+        var options = {
+            bottom: this.bottom,
+            offset: this.offset,
+            top: this.top,
+            onPositionChange: function (position) { return au.fireMaterializeEvent(_this.element, "position-change", { position: position }); }
+        };
+        au.cleanOptions(options);
+        this.instance = new M.Pushpin(this.element, options);
     };
     MdPushpin.prototype.detached = function () {
-        // destroy handler not available
+        this.instance.destroy();
     };
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        au.ato.bindable.numberMd,
+        tslib_1.__metadata("design:type", Number)
     ], MdPushpin.prototype, "bottom", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        au.ato.bindable.numberMd,
+        tslib_1.__metadata("design:type", Number)
     ], MdPushpin.prototype, "offset", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        au.ato.bindable.numberMd,
+        tslib_1.__metadata("design:type", Number)
     ], MdPushpin.prototype, "top", void 0);
     MdPushpin = tslib_1.__decorate([
-        customAttribute("md-pushpin"),
-        autoinject,
+        au.customAttribute("md-pushpin"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdPushpin);
     return MdPushpin;
 }());
 export { MdPushpin };
+//# sourceMappingURL=pushpin.js.map

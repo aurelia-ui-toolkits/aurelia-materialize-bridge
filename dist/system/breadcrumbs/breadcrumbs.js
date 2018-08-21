@@ -1,17 +1,14 @@
-System.register(["tslib", "aurelia-framework", "aurelia-router"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
+    var tslib_1, au, MdBreadcrumbs;
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, aurelia_router_1, MdBreadcrumbs;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (aurelia_router_1_1) {
-                aurelia_router_1 = aurelia_router_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
@@ -35,13 +32,13 @@ System.register(["tslib", "aurelia-framework", "aurelia-router"], function (expo
                     this.childRouter.navigateToRoute(navigationInstruction.config.name);
                 };
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
-                    tslib_1.__metadata("design:type", aurelia_router_1.Router)
+                    au.bindable,
+                    tslib_1.__metadata("design:type", au.Router)
                 ], MdBreadcrumbs.prototype, "router", void 0);
                 MdBreadcrumbs = tslib_1.__decorate([
-                    aurelia_framework_1.customElement("md-breadcrumbs"),
-                    aurelia_framework_1.autoinject,
-                    tslib_1.__metadata("design:paramtypes", [Element, aurelia_router_1.Router])
+                    au.customElement("md-breadcrumbs"),
+                    au.autoinject,
+                    tslib_1.__metadata("design:paramtypes", [Element, au.Router])
                 ], MdBreadcrumbs);
                 return MdBreadcrumbs;
             }());
@@ -49,3 +46,4 @@ System.register(["tslib", "aurelia-framework", "aurelia-router"], function (expo
         }
     };
 });
+//# sourceMappingURL=breadcrumbs.js.map

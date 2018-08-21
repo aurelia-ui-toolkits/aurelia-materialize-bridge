@@ -1,17 +1,16 @@
-import { autoinject, bindable, bindingMode, customElement } from "aurelia-framework";
-import { NavigationInstruction, Router } from "aurelia-router";
+import * as au from "../aurelia";
 
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 
-@customElement("md-breadcrumbs")
-@autoinject
+@au.customElement("md-breadcrumbs")
+@au.autoinject
 export class MdBreadcrumbs {
-	constructor(private element: Element, private aureliaRouter: Router) { }
+	constructor(private element: Element, private aureliaRouter: au.Router) { }
 
-	@bindable
-	router: Router;
+	@au.bindable
+	router: au.Router;
 
-	childRouter: Router;
+	childRouter: au.Router;
 
 	bind() {
 		if (!this.router) {
@@ -25,7 +24,7 @@ export class MdBreadcrumbs {
 		this.router = router;
 	}
 
-	navigate(navigationInstruction: NavigationInstruction) {
+	navigate(navigationInstruction: au.NavigationInstruction) {
 		this.childRouter.navigateToRoute(navigationInstruction.config.name);
 	}
 }

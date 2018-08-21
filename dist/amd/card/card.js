@@ -1,59 +1,51 @@
-define(["require", "exports", "tslib", "aurelia-framework", "../common/attributes"], function (require, exports, tslib_1, aurelia_framework_1, attributes_1) {
+define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdCard = /** @class */ (function () {
         function MdCard(element) {
             this.element = element;
-            this.mdImage = null;
-            this.mdReveal = false;
-            this.mdAction = false;
-            this.mdStickyAction = false;
-            this.mdSize = "";
+            this.image = null;
+            this.size = "";
         }
-        MdCard.prototype.attached = function () {
-            this.mdHorizontal = attributes_1.getBooleanFromAttributeValue(this.mdHorizontal);
-            this.mdReveal = attributes_1.getBooleanFromAttributeValue(this.mdReveal);
-            this.mdAction = attributes_1.getBooleanFromAttributeValue(this.mdAction);
-            this.mdStickyAction = attributes_1.getBooleanFromAttributeValue(this.mdStickyAction);
-        };
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
-        ], MdCard.prototype, "mdHorizontal", void 0);
+            au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
+        ], MdCard.prototype, "horizontal", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
-        ], MdCard.prototype, "mdImage", void 0);
-        tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
-        ], MdCard.prototype, "mdReveal", void 0);
-        tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
-        ], MdCard.prototype, "mdAction", void 0);
-        tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-            tslib_1.__metadata("design:type", Object)
-        ], MdCard.prototype, "mdStickyAction", void 0);
-        tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneWay }),
+            au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
-        ], MdCard.prototype, "mdSize", void 0);
+        ], MdCard.prototype, "image", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
+        ], MdCard.prototype, "reveal", void 0);
+        tslib_1.__decorate([
+            au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
+        ], MdCard.prototype, "action", void 0);
+        tslib_1.__decorate([
+            au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", Boolean)
+        ], MdCard.prototype, "stickyAction", void 0);
+        tslib_1.__decorate([
+            au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay }),
             tslib_1.__metadata("design:type", String)
-        ], MdCard.prototype, "mdTitle", void 0);
+        ], MdCard.prototype, "size", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+            au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+            tslib_1.__metadata("design:type", String)
+        ], MdCard.prototype, "title", void 0);
+        tslib_1.__decorate([
+            au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
             tslib_1.__metadata("design:type", String)
         ], MdCard.prototype, "mdClass", void 0);
         MdCard = tslib_1.__decorate([
-            aurelia_framework_1.customElement("md-card"),
-            aurelia_framework_1.autoinject,
+            au.customElement("md-card"),
+            au.autoinject,
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdCard);
         return MdCard;
     }());
     exports.MdCard = MdCard;
 });
+//# sourceMappingURL=card.js.map

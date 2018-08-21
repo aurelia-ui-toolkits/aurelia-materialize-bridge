@@ -1,8 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
-var aurelia_framework_1 = require("aurelia-framework");
-var aurelia_router_1 = require("aurelia-router");
+var au = require("../aurelia");
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 var MdBreadcrumbs = /** @class */ (function () {
     function MdBreadcrumbs(element, aureliaRouter) {
@@ -24,14 +23,15 @@ var MdBreadcrumbs = /** @class */ (function () {
         this.childRouter.navigateToRoute(navigationInstruction.config.name);
     };
     tslib_1.__decorate([
-        aurelia_framework_1.bindable,
-        tslib_1.__metadata("design:type", aurelia_router_1.Router)
+        au.bindable,
+        tslib_1.__metadata("design:type", au.Router)
     ], MdBreadcrumbs.prototype, "router", void 0);
     MdBreadcrumbs = tslib_1.__decorate([
-        aurelia_framework_1.customElement("md-breadcrumbs"),
-        aurelia_framework_1.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element, aurelia_router_1.Router])
+        au.customElement("md-breadcrumbs"),
+        au.autoinject,
+        tslib_1.__metadata("design:paramtypes", [Element, au.Router])
     ], MdBreadcrumbs);
     return MdBreadcrumbs;
 }());
 exports.MdBreadcrumbs = MdBreadcrumbs;
+//# sourceMappingURL=breadcrumbs.js.map

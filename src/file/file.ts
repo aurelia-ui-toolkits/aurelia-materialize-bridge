@@ -1,28 +1,24 @@
-import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
-import { fireEvent, fireMaterializeEvent } from "../common/events";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customElement("md-file")
-@autoinject
+@au.customElement("md-file")
+@au.autoinject
 export class MdFileInput {
-	constructor(private element: Element) {
-		this.handleChangeFromNativeInput = this.handleChangeFromNativeInput.bind(this);
-	}
+	constructor(private element: Element) { }
 
-	@bindable
-	mdCaption = "File";
+	@au.ato.bindable.stringMd
+	caption = "File";
 
-	@bindable({defaultBindingMode: bindingMode.oneTime})
-	mdMultiple = false;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	multiple: boolean = false;
 
-	@bindable({defaultBindingMode: bindingMode.twoWay})
-	mdLabelValue;
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay })
+	labelValue: string = "";
 
-	@bindable
-	disabled = false;
+	@au.ato.bindable.booleanMd
+	disabled: boolean = false;
 
-	@bindable
-	mdReadonly = false;
+	@au.ato.bindable.booleanMd
+	readonly: boolean = false;
 
 	filePath: HTMLInputElement;
 
@@ -31,19 +27,18 @@ export class MdFileInput {
 	suspendUpdate = false;
 
 	attached() {
-		this.mdMultiple = getBooleanFromAttributeValue(this.mdMultiple);
-		$(this.filePath).on("change", this.handleChangeFromNativeInput);
+		this.filePath.addEventListener("change", this.handleChangeFromNativeInput);
 	}
 
 	detached() {
-		$(this.element).off("change", this.handleChangeFromNativeInput);
+		this.filePath.removeEventListener("change", this.handleChangeFromNativeInput);
 	}
 
-	handleChangeFromNativeInput() {
+	handleChangeFromNativeInput = () => {
 		if (!this.suspendUpdate) {
 			this.suspendUpdate = true;
-			fireEvent(this.filePath, "change", { files: this.files });
-			fireMaterializeEvent(this.filePath, "change", { files: this.files });
+			au.fireEvent(this.filePath, "change", { files: this.files });
+			au.fireMaterializeEvent(this.filePath, "change", { files: this.files });
 			this.suspendUpdate = false;
 		}
 	}

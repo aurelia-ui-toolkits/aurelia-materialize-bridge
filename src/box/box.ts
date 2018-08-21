@@ -1,29 +1,45 @@
-import { autoinject, bindable, bindingMode, customAttribute } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 
-@customAttribute("md-box")
-@autoinject
+@au.customAttribute("md-box")
+@au.autoinject
 export class MdBox {
 	constructor(private element: Element) {
 		this.element = element;
-		this.attributeManager = new AttributeManager(this.element);
+		this.attributeManager = new au.AttributeManager(this.element);
 	}
 
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	caption;
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	caption: string;
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	inDuration: number;
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	outDuration: number;
+
+	instance: M.Materialbox;
 
 	attached() {
 		this.attributeManager.addClasses("materialboxed");
 		if (this.caption) {
 			this.attributeManager.addAttributes({ "data-caption": this.caption });
 		}
-		// FIXME:0 throws "Uncaught TypeError: Cannot read property "css" of undefined", but so does the original
-		$(this.element).materialbox();
+		let options: Partial<M.MaterialboxOptions> = {
+			inDuration: this.inDuration,
+			outDuration: this.outDuration,
+			onOpenStart: () => au.fireMaterializeEvent(this.element, "open-start"),
+			onOpenEnd: () => au.fireMaterializeEvent(this.element, "open-end"),
+			onCloseStart: () => au.fireMaterializeEvent(this.element, "close-start"),
+			onCloseEnd: () => au.fireMaterializeEvent(this.element, "close-end")
+		};
+		au.cleanOptions(options);
+		this.instance = new M.Materialbox(this.element, options);
 	}
 
 	detached() {
+		this.instance.destroy();
 		this.attributeManager.removeAttributes("data-caption");
 		this.attributeManager.removeClasses("materialboxed");
 	}

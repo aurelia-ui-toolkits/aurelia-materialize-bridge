@@ -1,20 +1,14 @@
-import { autoinject, bindable, bindingMode } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { fireEvent } from "../common/events";
+import * as au from "../aurelia";
 
-@autoinject
+@au.autoinject
 export class MdChip {
 	constructor(private element: Element) { }
 
-	@bindable
-	mdClose: boolean | string = false;
+	@au.ato.bindable.booleanMd
+	hasClose: boolean = false;
 
-	attached() {
-		this.mdClose = getBooleanFromAttributeValue(this.mdClose);
-	}
-
-	close() {
+	closeChip() {
 		this.element.parentElement.removeChild(this.element);
-		fireEvent(this.element, "close");
+		au.fireEvent(this.element, "close");
 	}
 }

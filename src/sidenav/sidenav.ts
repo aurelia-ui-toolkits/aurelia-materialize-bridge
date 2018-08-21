@@ -1,64 +1,81 @@
-import { bindable, customElement, autoinject } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { AttributeManager } from "../common/attributeManager";
-import { getLogger, Logger } from "aurelia-logging";
+import * as au from "../aurelia";
 
-@customElement("md-sidenav")
-@autoinject
+@au.customElement("md-sidenav")
+@au.autoinject
 export class MdSidenav {
 	constructor(public element: Element) {
 		this.controlId = `md-sidenav-${MdSidenav.id++}`;
-		this.log = getLogger("md-sidenav");
-		this.whenAttached = new Promise((resolve, reject) => {
-			this.attachedResolver = resolve;
-		});
 	}
+
+	static fixedClass: string = "sidenav-fixed";
 
 	static id = 0;
 	controlId: string;
-	log: Logger;
 	sidenav: HTMLDivElement;
-	attributeManager: AttributeManager;
+	instance: M.Sidenav;
+	attributeManager: au.AttributeManager;
 
-	@bindable
-	mdCloseOnClick: boolean | string = false;
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	edge: "left" | "right";
 
-	@bindable
-	mdEdge: string = "left";
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	draggable: boolean;
 
-	@bindable
-	mdFixed: boolean | string = false;
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	inDuration: number;
 
-	@bindable
-	mdWidth: number | string = 300;
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	outDuration: number;
 
-	attachedResolver: () => void;
-	whenAttached: Promise<void> = new Promise((resolve, reject) => this.attachedResolver = resolve);
+	@au.ato.bindable.booleanMd
+	fixed: boolean = false;
+	fixedChanged(newValue) {
+		if (!this.attributeManager) {
+			return;
+		}
+		if (newValue) {
+			this.attributeManager.addClasses(MdSidenav.fixedClass);
+		} else {
+			this.attributeManager.removeClasses(MdSidenav.fixedClass);
+		}
+	}
 
 	attached() {
-		this.attributeManager = new AttributeManager(this.sidenav);
-		if (getBooleanFromAttributeValue(this.mdFixed)) {
-			this.attributeManager.addClasses("fixed");
-			if (this.mdEdge === "right") {
-				// see: https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/53
-				this.attributeManager.addClasses("right-aligned");
-			}
+		this.attributeManager = new au.AttributeManager(this.sidenav);
+		if (this.fixed) {
+			this.attributeManager.addClasses(MdSidenav.fixedClass);
 		}
+		let options: Partial<M.SidenavOptions> = {
+			draggable: this.draggable,
+			edge: this.edge,
+			inDuration: this.inDuration,
+			outDuration: this.outDuration,
+			onOpenStart: elem => au.fireMaterializeEvent(this.element, "open-start", { elem }),
+			onOpenEnd: elem => au.fireMaterializeEvent(this.element, "open-end", { elem }),
+			onCloseStart: elem => au.fireMaterializeEvent(this.element, "close-start", { elem }),
+			onCloseEnd: elem => au.fireMaterializeEvent(this.element, "close-end", { elem })
+		};
+		au.cleanOptions(options);
+		this.instance = new M.Sidenav(this.sidenav, options);
+	}
 
-		this.attachedResolver();
+	open() {
+		if (this.instance) {
+			this.instance.open();
+		}
+	}
+
+	close() {
+		if (this.instance) {
+			this.instance.close();
+		}
 	}
 
 	detached() {
-		this.attributeManager.removeClasses(["fixed", "right-aligned"]);
-	}
-
-	mdFixedChanged(newValue) {
-		if (this.attributeManager) {
-			if (getBooleanFromAttributeValue(newValue)) {
-				this.attributeManager.addClasses("fixed");
-			} else {
-				this.attributeManager.removeClasses("fixed");
-			}
+		this.attributeManager.removeClasses([MdSidenav.fixedClass]);
+		if (this.instance) {
+			this.instance.destroy();
 		}
 	}
+
 }

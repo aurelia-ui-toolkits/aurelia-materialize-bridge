@@ -1,92 +1,115 @@
-System.register(["tslib", "aurelia-framework", "../common/attributes"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
+    var tslib_1, au, MdDropdownElement;
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, attributes_1, MdDropdownElement;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (attributes_1_1) {
-                attributes_1 = attributes_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
             MdDropdownElement = /** @class */ (function () {
                 function MdDropdownElement(element) {
                     this.element = element;
-                    this.alignment = "left";
-                    this.belowOrigin = false;
-                    this.constrainWidth = true;
-                    this.gutter = 0;
-                    this.hover = false;
-                    this.inDuration = 300;
-                    this.outDuration = 225;
-                    this.stopPropagation = false;
+                    this.container = null;
                     this.controlId = "md-dropdown-" + MdDropdownElement_1.id++;
                 }
                 MdDropdownElement_1 = MdDropdownElement;
                 MdDropdownElement.prototype.attached = function () {
-                    $(this.element).dropdown({
+                    var _this = this;
+                    var options = {
                         alignment: this.alignment,
-                        belowOrigin: attributes_1.getBooleanFromAttributeValue(this.belowOrigin),
-                        constrain_width: attributes_1.getBooleanFromAttributeValue(this.constrainWidth),
-                        gutter: parseInt(this.gutter.toString(), 10),
-                        hover: attributes_1.getBooleanFromAttributeValue(this.hover),
-                        inDuration: parseInt(this.inDuration.toString(), 10),
-                        outDuration: parseInt(this.outDuration.toString(), 10),
-                        stopPropagation: attributes_1.getBooleanFromAttributeValue(this.stopPropagation)
-                    });
+                        autoTrigger: this.autoTrigger,
+                        constrainWidth: this.constrainWidth,
+                        container: this.container,
+                        coverTrigger: this.coverTrigger,
+                        closeOnClick: this.closeOnClick,
+                        hover: this.hover,
+                        inDuration: this.inDuration,
+                        outDuration: this.outDuration,
+                        onOpenStart: function () { return au.fireMaterializeEvent(_this.element, "open-start"); },
+                        onOpenEnd: function () { return au.fireMaterializeEvent(_this.element, "open-end"); },
+                        onCloseStart: function () { return au.fireMaterializeEvent(_this.element, "close-start"); },
+                        onCloseEnd: function () { return au.fireMaterializeEvent(_this.element, "close-end"); }
+                    };
+                    au.cleanOptions(options);
+                    this.instance = new M.Dropdown(this.element, options);
                 };
+                MdDropdownElement.prototype.detached = function () {
+                    if (this.instance) {
+                        this.instance.destroy();
+                    }
+                };
+                MdDropdownElement.prototype.open = function () {
+                    if (this.instance) {
+                        this.instance.open();
+                    }
+                };
+                MdDropdownElement.prototype.close = function () {
+                    if (this.instance) {
+                        this.instance.close();
+                    }
+                };
+                MdDropdownElement.prototype.recalculateDimensions = function () {
+                    if (this.instance) {
+                        this.instance.recalculateDimensions();
+                    }
+                };
+                var MdDropdownElement_1;
                 MdDropdownElement.id = 0;
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", String)
                 ], MdDropdownElement.prototype, "alignment", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-                    tslib_1.__metadata("design:type", Object)
-                ], MdDropdownElement.prototype, "belowOrigin", void 0);
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdDropdownElement.prototype, "autoTrigger", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-                    tslib_1.__metadata("design:type", Object)
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Boolean)
                 ], MdDropdownElement.prototype, "constrainWidth", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-                    tslib_1.__metadata("design:type", Number)
-                ], MdDropdownElement.prototype, "gutter", void 0);
+                    au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Element)
+                ], MdDropdownElement.prototype, "container", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-                    tslib_1.__metadata("design:type", Object)
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdDropdownElement.prototype, "coverTrigger", void 0);
+                tslib_1.__decorate([
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Boolean)
+                ], MdDropdownElement.prototype, "closeOnClick", void 0);
+                tslib_1.__decorate([
+                    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Boolean)
                 ], MdDropdownElement.prototype, "hover", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
                     tslib_1.__metadata("design:type", String)
-                ], MdDropdownElement.prototype, "mdTitle", void 0);
+                ], MdDropdownElement.prototype, "title", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-                    tslib_1.__metadata("design:type", Object)
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Number)
                 ], MdDropdownElement.prototype, "inDuration", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-                    tslib_1.__metadata("design:type", Object)
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Number)
                 ], MdDropdownElement.prototype, "outDuration", void 0);
-                tslib_1.__decorate([
-                    aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
-                    tslib_1.__metadata("design:type", Object)
-                ], MdDropdownElement.prototype, "stopPropagation", void 0);
                 MdDropdownElement = MdDropdownElement_1 = tslib_1.__decorate([
-                    aurelia_framework_1.customElement("md-dropdown"),
-                    aurelia_framework_1.autoinject,
+                    au.customElement("md-dropdown"),
+                    au.autoinject,
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdDropdownElement);
                 return MdDropdownElement;
-                var MdDropdownElement_1;
             }());
             exports_1("MdDropdownElement", MdDropdownElement);
         }
     };
 });
+//# sourceMappingURL=dropdown-element.js.map

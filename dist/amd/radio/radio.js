@@ -1,72 +1,71 @@
-define(["require", "exports", "tslib", "aurelia-framework", "../common/attributeManager", "../common/attributes"], function (require, exports, tslib_1, aurelia_framework_1, attributeManager_1, attributes_1) {
+define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdRadio = /** @class */ (function () {
         function MdRadio(element) {
             this.element = element;
-            this.mdDisabled = false;
-            this.mdReadonly = false;
-            this.mdGap = false;
-            this.mdName = "";
-            this.mdValue = "";
+            this.disabled = false;
+            this.readonly = false;
+            this.gap = false;
+            this.name = "";
+            this.value = "";
             this.controlId = "md-radio-" + MdRadio_1.id++;
-            // this.handleChange = this.handleChange.bind(this);
         }
         MdRadio_1 = MdRadio;
-        MdRadio.prototype.mdDisabledChanged = function (newValue) {
+        MdRadio.prototype.disabledChanged = function (newValue) {
             if (this.radio) {
-                this.radio.disabled = !!newValue;
+                this.radio.disabled = newValue;
             }
         };
         MdRadio.prototype.attached = function () {
-            this.attributeManager = new attributeManager_1.AttributeManager(this.radio);
-            if (attributes_1.getBooleanFromAttributeValue(this.mdGap)) {
+            this.attributeManager = new au.AttributeManager(this.radio);
+            if (this.gap) {
                 this.attributeManager.addClasses("with-gap");
             }
-            if (attributes_1.getBooleanFromAttributeValue(this.mdDisabled)) {
+            if (this.disabled) {
                 this.radio.disabled = true;
             }
-            this.mdReadonly = attributes_1.getBooleanFromAttributeValue(this.mdReadonly);
         };
         MdRadio.prototype.detached = function () {
             this.attributeManager.removeClasses(["with-gap", "disabled"]);
         };
+        var MdRadio_1;
         MdRadio.id = 0;
         tslib_1.__decorate([
-            aurelia_framework_1.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.twoWay }),
+            au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
             tslib_1.__metadata("design:type", Object)
-        ], MdRadio.prototype, "mdChecked", void 0);
+        ], MdRadio.prototype, "checked", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
+            au.ato.bindable.booleanMd,
+            tslib_1.__metadata("design:type", Boolean)
+        ], MdRadio.prototype, "disabled", void 0);
+        tslib_1.__decorate([
+            au.ato.bindable.booleanMd,
+            tslib_1.__metadata("design:type", Boolean)
+        ], MdRadio.prototype, "readonly", void 0);
+        tslib_1.__decorate([
+            au.ato.bindable.booleanMd,
+            tslib_1.__metadata("design:type", Boolean)
+        ], MdRadio.prototype, "gap", void 0);
+        tslib_1.__decorate([
+            au.bindable,
             tslib_1.__metadata("design:type", Object)
-        ], MdRadio.prototype, "mdDisabled", void 0);
+        ], MdRadio.prototype, "model", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
-        ], MdRadio.prototype, "mdReadonly", void 0);
-        tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
-        ], MdRadio.prototype, "mdGap", void 0);
-        tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
-        ], MdRadio.prototype, "mdModel", void 0);
-        tslib_1.__decorate([
-            aurelia_framework_1.bindable,
+            au.ato.bindable.stringMd,
             tslib_1.__metadata("design:type", String)
-        ], MdRadio.prototype, "mdName", void 0);
+        ], MdRadio.prototype, "name", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
+            au.ato.bindable.stringMd,
             tslib_1.__metadata("design:type", String)
-        ], MdRadio.prototype, "mdValue", void 0);
+        ], MdRadio.prototype, "value", void 0);
         MdRadio = MdRadio_1 = tslib_1.__decorate([
-            aurelia_framework_1.customElement("md-radio"),
-            aurelia_framework_1.autoinject,
+            au.customElement("md-radio"),
+            au.autoinject,
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdRadio);
         return MdRadio;
-        var MdRadio_1;
     }());
     exports.MdRadio = MdRadio;
 });
+//# sourceMappingURL=radio.js.map

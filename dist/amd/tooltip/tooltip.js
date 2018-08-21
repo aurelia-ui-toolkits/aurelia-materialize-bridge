@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "aurelia-framework", "../common/attributeManager", "../common/attributes"], function (require, exports, tslib_1, aurelia_framework_1, attributeManager_1, attributes_1) {
+define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdTooltip = /** @class */ (function () {
@@ -6,56 +6,44 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
             this.element = element;
             this.position = "bottom";
             this.delay = 50;
-            this.html = false;
             this.text = "";
-            this.attributeManager = new attributeManager_1.AttributeManager(this.element);
         }
-        MdTooltip.prototype.bind = function () {
-            this.html = attributes_1.getBooleanFromAttributeValue(this.html);
+        MdTooltip.prototype.textChanged = function () {
+            this.initTooltip();
         };
         MdTooltip.prototype.attached = function () {
-            this.attributeManager.addClasses("tooltipped");
-            this.attributeManager.addAttributes({ "data-position": this.position, "data-tooltip": this.text });
             this.initTooltip();
         };
         MdTooltip.prototype.detached = function () {
-            $(this.element).tooltip("remove");
-            this.attributeManager.removeClasses("tooltipped");
-            this.attributeManager.removeAttributes(["data-position", "data-tooltip"]);
-        };
-        MdTooltip.prototype.textChanged = function () {
-            this.attributeManager.addAttributes({ "data-tooltip": this.text });
-            this.initTooltip();
+            this.instance.destroy();
         };
         MdTooltip.prototype.initTooltip = function () {
-            $(this.element).tooltip("remove");
-            $(this.element).tooltip({
-                delay: parseInt(this.delay.toString(), 10),
-                html: this.html
-            });
+            if (this.text) {
+                this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
+            }
+            else if (this.instance) {
+                this.instance.destroy();
+            }
         };
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
+            au.bindable,
             tslib_1.__metadata("design:type", String)
         ], MdTooltip.prototype, "position", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
+            au.bindable,
+            tslib_1.__metadata("design:type", Number)
         ], MdTooltip.prototype, "delay", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
-        ], MdTooltip.prototype, "html", void 0);
-        tslib_1.__decorate([
-            aurelia_framework_1.bindable,
+            au.bindable,
             tslib_1.__metadata("design:type", String)
         ], MdTooltip.prototype, "text", void 0);
         MdTooltip = tslib_1.__decorate([
-            aurelia_framework_1.customAttribute("md-tooltip"),
-            aurelia_framework_1.autoinject,
+            au.customAttribute("md-tooltip"),
+            au.autoinject,
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdTooltip);
         return MdTooltip;
     }());
     exports.MdTooltip = MdTooltip;
 });
+//# sourceMappingURL=tooltip.js.map

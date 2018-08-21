@@ -1,7 +1,6 @@
 <template>
 	<require from="./range.css"></require>
 	<p class="range-field">
-		<input type="range" min.one-way="mdMin" max.one-way="mdMax" step.one-way="mdStep" value.bind="mdValue" readonly.bind="mdReadonly"
-		 ref="input" />
+		<input type="range" min.to-view="min" max.to-view="max" step.to-view="step" value.bind="value" readonly.bind="readonly" ref="input" />
 	</p>
 </template>

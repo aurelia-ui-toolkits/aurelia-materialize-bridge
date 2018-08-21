@@ -1,73 +1,63 @@
-import { autoinject, bindable, bindingMode, customAttribute } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customAttribute("md-collapsible")
-@autoinject
+@au.customAttribute("md-collapsible")
+@au.autoinject
 export class MdCollapsible {
 	constructor(private element: Element) {
-		this.attributeManager = new AttributeManager(this.element);
+		this.attributeManager = new au.AttributeManager(this.element);
 	}
 
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 
-	@bindable
-	accordion: boolean | string = false;
+	@au.ato.bindable.booleanMd
+	accordion: boolean;
+	accordionChanged() {
+		this.attached();
+	}
 
-	@bindable
-	popout: boolean | string = false;
+	@au.ato.bindable.booleanMd({defaultBindingMode: au.bindingMode.oneTime})
+	popout: boolean;
 
-	@bindable
-	onOpen: (element: Element) => {};
+	@au.ato.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
+	inDuration: number; // Transition in duration
 
-	@bindable
-	onClose: (element: Element) => {};
+	@au.ato.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
+	outDuration: number; // Transition out duration
+
+	instance: M.Collapsible;
+
+	bind() {
+		//
+	}
 
 	attached() {
 		this.attributeManager.addClasses("collapsible");
-		if (getBooleanFromAttributeValue(this.popout)) {
+		if (this.popout) {
 			this.attributeManager.addClasses("popout");
 		}
-		this.refresh();
+		let options: Partial<M.CollapsibleOptions> = {
+			accordion: this.accordion,
+			inDuration: this.inDuration,
+			outDuration: this.outDuration,
+			onOpenStart: el => au.fireMaterializeEvent(this.element, "open-start", { el }),
+			onOpenEnd: el => au.fireMaterializeEvent(this.element, "open-end", { el }),
+			onCloseStart: el => au.fireMaterializeEvent(this.element, "close-start", { el }),
+			onCloseEnd: el => au.fireMaterializeEvent(this.element, "close-end", { el })
+		};
+		au.cleanOptions(options);
+		this.instance = new M.Collapsible(this.element, options);
 	}
 
 	detached() {
 		this.attributeManager.removeClasses(["collapsible", "popout"]);
-		this.attributeManager.removeAttributes(["data-collapsible"]);
-		$(this.element).collapsible("destroy");
-	}
-
-	refresh() {
-		const accordion = getBooleanFromAttributeValue(this.accordion);
-		const dataCollapsibleAttributeValue = accordion ? "accordion" : "expandable";
-
-		this.attributeManager.addAttributes({ "data-collapsible": dataCollapsibleAttributeValue });
-
-		$(this.element).collapsible({
-			accordion,
-			onOpen: this.buildCollapsibleOpenCloseCallbackHandler(this.onOpen),
-			onClose: this.buildCollapsibleOpenCloseCallbackHandler(this.onClose)
-		});
-	}
-
-	accordionChanged() {
-		this.refresh();
-	}
-
-	buildCollapsibleOpenCloseCallbackHandler(handler: (element: Element) => {}) {
-		return typeof (handler) === "function" ?
-			(targetElementJquery: JQuery) => {
-				const targetElement = targetElementJquery[0];
-
-				handler(targetElement);
-			} : null;
+		this.instance.destroy();
 	}
 
 	open(index = 0) {
-		$(this.element).collapsible("open", index);
+		this.instance.open(index);
 	}
 
 	close(index = 0) {
-		$(this.element).collapsible("close", index);
+		this.instance.close(index);
 	}
 }

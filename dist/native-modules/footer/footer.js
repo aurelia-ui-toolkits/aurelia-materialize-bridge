@@ -1,10 +1,9 @@
 import * as tslib_1 from "tslib";
-import { customAttribute, autoinject } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 var MdFooter = /** @class */ (function () {
     function MdFooter(element) {
         this.element = element;
-        this.attributeManager = new AttributeManager(this.element);
+        this.attributeManager = new au.AttributeManager(this.element);
     }
     MdFooter.prototype.bind = function () {
         this.attributeManager.addClasses("page-footer");
@@ -13,10 +12,11 @@ var MdFooter = /** @class */ (function () {
         this.attributeManager.removeClasses("page-footer");
     };
     MdFooter = tslib_1.__decorate([
-        customAttribute("md-footer"),
-        autoinject,
+        au.customAttribute("md-footer"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdFooter);
     return MdFooter;
 }());
 export { MdFooter };
+//# sourceMappingURL=footer.js.map

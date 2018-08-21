@@ -1,73 +1,80 @@
-import { getLogger, Logger } from "aurelia-logging";
-import { bindable, customAttribute, autoinject } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { AttributeManager } from "../common/attributeManager";
-import { fireMaterializeEvent } from "../common/events";
+import * as au from "../aurelia";
 
-@customAttribute("md-modal")
-@autoinject
+@au.customAttribute("md-modal")
+@au.autoinject
 export class MdModal {
 	constructor(private element: Element) {
-		this.log = getLogger("md-modal");
-		this.attributeManager = new AttributeManager(this.element);
-		this.onComplete = this.onComplete.bind(this);
-		this.onReady = this.onReady.bind(this);
+		this.log = au.getLogger("md-modal");
+		this.attributeManager = new au.AttributeManager(this.element);
 	}
 
-	log: Logger;
-	attributeManager: AttributeManager;
+	log: au.Logger;
+	attributeManager: au.AttributeManager;
 
-	@bindable()
-	dismissible: boolean | string = true;
+	@au.ato.bindable.numberMd
+	opacity: number; // Opacity of modal background
 
-	@bindable
-	opacity: number | string = 0.5; // Opacity of modal background
+	@au.ato.bindable.numberMd
+	inDuration: number; // Transition in duration
 
-	@bindable
-	inDuration: number | string = 300; // Transition in duration
+	@au.ato.bindable.numberMd
+	outDuration: number; // Transition out duration
 
-	@bindable
-	outDuration: number | string = 200; // Transition out duration
+	@au.ato.bindable.booleanMd
+	preventScrolling: boolean;
 
-	@bindable
-	startingTop: string = "4%"; // Starting top style attribute
+	@au.ato.bindable.booleanMd
+	dismissible: boolean;
 
-	@bindable
-	endingTop: string = "10%"; // Ending top style attribute
+	@au.ato.bindable.stringMd
+	startingTop: string; // Starting top style attribute
+
+	@au.ato.bindable.stringMd
+	endingTop: string; // Ending top style attribute
+
+	@au.ato.bindable.booleanMd
+	fixedFooter: boolean;
+	fixedFooterChanged() {
+		if (this.element) {
+			this.element.classList.toggle("modal-fixed-footer", this.fixedFooter);
+		}
+	}
+
+	@au.ato.bindable.booleanMd
+	bottomSheet: boolean;
+
+	instance: M.Modal;
 
 	attached() {
-		const options = {
-			complete: this.onComplete,
-			dismissible: getBooleanFromAttributeValue(this.dismissible),
+		const options: Partial<M.ModalOptions> = {
+			opacity: this.opacity,
+			inDuration: this.inDuration,
+			outDuration: this.outDuration,
+			preventScrolling: this.preventScrolling,
+			dismissible: this.dismissible,
+			startingTop: this.startingTop,
 			endingTop: this.endingTop,
-			inDuration: parseInt(this.inDuration.toString(), 10),
-			opacity: parseFloat(this.opacity.toString()),
-			outDuration: parseInt(this.outDuration.toString(), 10),
-			ready: this.onReady,
-			startingTop: this.startingTop
+			onOpenStart: () => au.fireMaterializeEvent(this.element, "open-start"),
+			onOpenEnd: () => au.fireMaterializeEvent(this.element, "open-end"),
+			onCloseStart: () => au.fireMaterializeEvent(this.element, "close-start"),
+			onCloseEnd: () => au.fireMaterializeEvent(this.element, "close-end")
 		};
 		this.log.debug("modal options: ", options);
+		au.cleanOptions(options);
 		this.attributeManager.addClasses("modal");
-		$(this.element).modal(options);
+		this.instance = new M.Modal(this.element, options);
 	}
 
 	detached() {
+		this.instance.destroy();
 		this.attributeManager.removeClasses("modal");
 	}
 
-	onComplete() {
-		fireMaterializeEvent(this.element, "modal-complete");
-	}
-
-	onReady(modal, trigger) {
-		fireMaterializeEvent(this.element, "modal-ready", { modal, trigger });
-	}
-
 	open() {
-		$(this.element).modal("open");
+		this.instance.open();
 	}
 
 	close() {
-		$(this.element).modal("close");
+		this.instance.close();
 	}
 }

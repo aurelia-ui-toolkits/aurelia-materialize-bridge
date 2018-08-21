@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "aurelia-framework"], function (require, exports, tslib_1, aurelia_framework_1) {
+define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdCollection = /** @class */ (function () {
@@ -12,7 +12,7 @@ define(["require", "exports", "tslib", "aurelia-framework"], function (require, 
             }
         };
         MdCollection.prototype.getSelected = function () {
-            var items = [].slice.call(this.element.querySelectorAll("md-collection-selector"));
+            var items = Array.from(this.element.querySelectorAll("md-collection-selector"));
             return items.filter(function (i) { return i.au["md-collection-selector"].viewModel.isSelected; })
                 .map(function (i) { return i.au["md-collection-selector"].viewModel.item; });
         };
@@ -33,11 +33,12 @@ define(["require", "exports", "tslib", "aurelia-framework"], function (require, 
             vm.isSelected = !vm.isSelected;
         };
         MdCollection = tslib_1.__decorate([
-            aurelia_framework_1.customElement("md-collection"),
-            aurelia_framework_1.autoinject,
+            au.customElement("md-collection"),
+            au.autoinject,
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdCollection);
         return MdCollection;
     }());
     exports.MdCollection = MdCollection;
 });
+//# sourceMappingURL=collection.js.map

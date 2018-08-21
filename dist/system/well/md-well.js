@@ -1,17 +1,14 @@
-System.register(["tslib", "aurelia-router", "aurelia-templating"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
+    var tslib_1, au, MdWell;
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_router_1, aurelia_templating_1, MdWell;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_router_1_1) {
-                aurelia_router_1 = aurelia_router_1_1;
-            },
-            function (aurelia_templating_1_1) {
-                aurelia_templating_1 = aurelia_templating_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
@@ -19,8 +16,8 @@ System.register(["tslib", "aurelia-router", "aurelia-templating"], function (exp
                 function MdWell() {
                 }
                 tslib_1.__decorate([
-                    aurelia_templating_1.bindable,
-                    tslib_1.__metadata("design:type", aurelia_router_1.Router)
+                    au.bindable,
+                    tslib_1.__metadata("design:type", au.Router)
                 ], MdWell.prototype, "router", void 0);
                 return MdWell;
             }());
@@ -28,3 +25,4 @@ System.register(["tslib", "aurelia-router", "aurelia-templating"], function (exp
         }
     };
 });
+//# sourceMappingURL=md-well.js.map

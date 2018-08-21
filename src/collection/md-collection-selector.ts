@@ -1,25 +1,19 @@
-import { autoinject, bindable, bindingMode, customElement, observable } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { fireMaterializeEvent } from "../common/events";
+import * as au from "../aurelia";
 
-@customElement("md-collection-selector")
-@autoinject
+@au.customElement("md-collection-selector")
+@au.autoinject
 export class MdCollectionSelector {
 	constructor(private element: Element) { }
 
-	@bindable
+	@au.bindable
 	item: any;
 
-	@bindable
-	mdDisabled: boolean | string = false;
-	mdDisabledChanged(newValue: boolean | string) {
-		this.mdDisabled = getBooleanFromAttributeValue(newValue);
-	}
+	@au.ato.bindable.booleanMd
+	mdDisabled: boolean = false;
 
-	@observable
-	isSelected: boolean | string = false;
-
+	@au.ato.bindable.booleanMd
+	isSelected: boolean = false;
 	isSelectedChanged(newValue) {
-		fireMaterializeEvent(this.element, "selection-changed", { item: this.item, isSelected: this.isSelected });
+		au.fireMaterializeEvent(this.element, "selection-changed", { item: this.item, isSelected: this.isSelected });
 	}
 }

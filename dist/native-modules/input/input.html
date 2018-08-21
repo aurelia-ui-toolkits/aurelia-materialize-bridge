@@ -1,13 +1,13 @@
 <template>
 	<require from="./input.css"></require>
-	<div class="input-field" ref="inputField">
-		<!-- <content select="[md-prefix]"></content> -->
+	<div class="input-field ${inline ? 'inline' : ''}" ref="inputField">
 		<slot></slot>
-		<input if.bind="mdTextArea === false" ref="input" id="${controlId}" type.bind="mdType" min.bind="mdMin" max.bind="mdMax"
-		 maxlength.bind="mdMaxlength" name.bind="mdName" step.bind="mdStep" value.bind="mdValue" readonly.bind="mdReadonly" disabled.bind="mdDisabled"
+		<input if.bind="!textArea" ref="input" id="${controlId}" type.bind="type" min.bind="min" max.bind="max"
+		 maxlength.bind="maxlength" name.bind="name" step.bind="step" value.bind="value" readonly.bind="readonly" disabled.bind="disabled"
 		 blur.trigger="blur()" focus.trigger="focus()" />
-		<textarea if.bind="mdTextArea === true" ref="input" id="${controlId}" value.bind="mdValue" class="materialize-textarea" readonly.bind="mdReadonly"
-		 disabled.bind="mdDisabled" maxlength.bind="mdMaxlength" blur.trigger="blur()" focus.trigger="focus()"></textarea>
-		<label for="${controlId}" ref="label">${mdLabel}</label>
+		<textarea if.bind="textArea" ref="input" id="${controlId}" value.bind="value" class="materialize-textarea" readonly.bind="readonly"
+		 disabled.bind="disabled" maxlength.bind="maxlength" blur.trigger="blur()" focus.trigger="focus()"></textarea>
+		<label for="${controlId}" ref="labelEl">${label}</label>
+		<span if.bind="validateSuccess || validateError" class="helper-text" data-success.bind="validateSuccess" data-error.bind="validateError"></span>
 	</div>
 </template>

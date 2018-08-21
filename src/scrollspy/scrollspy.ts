@@ -1,18 +1,36 @@
-import { bindable, customAttribute, autoinject } from "aurelia-framework";
+import * as au from "../aurelia";
 
-@customAttribute("md-scrollspy")
-@autoinject
+@au.customAttribute("md-scrollspy")
+@au.autoinject
 export class MdScrollSpy {
 	constructor(private element: Element) { }
 
-	@bindable
-	target: string;
+	instance: M.ScrollSpy;
+
+	@au.ato.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
+	throttle: number;
+
+	@au.ato.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
+	scrollOffset: number;
+
+	@au.ato.bindable.stringMd({defaultBindingMode: au.bindingMode.oneTime})
+	activeClass: string;
+
+	@au.bindable
+	getActiveElement: (id: string) => string;
 
 	attached() {
-		$(this.target, this.element).scrollSpy();
+		let options: Partial<M.ScrollSpyOptions> = {
+			throttle: this.throttle,
+			scrollOffset: this.scrollOffset,
+			activeClass: this.activeClass,
+			getActiveElement: this.getActiveElement
+		};
+		au.cleanOptions(options);
+		this.instance = new M.ScrollSpy(this.element, options);
 	}
 
 	detached() {
-		// destroy handler not available
+		this.instance.destroy();
 	}
 }

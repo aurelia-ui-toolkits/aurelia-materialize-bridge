@@ -4,8 +4,8 @@
 export declare class ConfigBuilder {
     globalResources: any[];
     noWavesAttach: boolean;
+    autoButtonWaves: boolean;
     useGlobalResources: boolean;
-    useScrollfirePatch: boolean;
     useAll(): ConfigBuilder;
     useAutoComplete(): ConfigBuilder;
     useBadge(): ConfigBuilder;
@@ -30,6 +30,7 @@ export declare class ConfigBuilder {
     useFile(): ConfigBuilder;
     useFooter(): ConfigBuilder;
     useInput(): ConfigBuilder;
+    useLookup(): ConfigBuilder;
     useModal(): ConfigBuilder;
     useNavbar(): ConfigBuilder;
     usePagination(): ConfigBuilder;
@@ -38,30 +39,23 @@ export declare class ConfigBuilder {
     usePushpin(): ConfigBuilder;
     useRadio(): ConfigBuilder;
     useRange(): ConfigBuilder;
-    useScrollfire(): ConfigBuilder;
     useScrollSpy(): ConfigBuilder;
     useSelect(): ConfigBuilder;
     useSidenav(): ConfigBuilder;
     useSlider(): ConfigBuilder;
     useSwitch(): ConfigBuilder;
-    /**
-     * Use materialized tabs
-     */
     useTabs(): ConfigBuilder;
     useTapTarget(): ConfigBuilder;
     useTimePicker(): ConfigBuilder;
     useTooltip(): ConfigBuilder;
-    useTransitions(): ConfigBuilder;
-    /**
-     * Use ripple/waves effect
-     */
+    useWaitCursor(): ConfigBuilder;
     useWaves(): ConfigBuilder;
     useWell(): ConfigBuilder;
     preventWavesAttach(): ConfigBuilder;
+    useAutoButtonWaves(use: boolean): ConfigBuilder;
     /**
      * Don't globalize any resources
      * Allows you to import yourself via <require></require>
      */
     withoutGlobalResources(): ConfigBuilder;
-    withScrollfirePatch(): ConfigBuilder;
 }

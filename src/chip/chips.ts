@@ -1,80 +1,70 @@
-import { autoinject, bindable, bindingMode, customAttribute } from "aurelia-framework";
-import { getLogger, Logger } from "aurelia-logging";
+import * as au from "../aurelia";
 
-import { fireEvent } from "../common/events";
-
-@customAttribute("md-chips")
-@autoinject
+@au.customAttribute("md-chips")
+@au.autoinject
 export class MdChips {
-	constructor(private element: Element) {
-		this.log = getLogger("md-chips");
-
-		this.onChipAdd = this.onChipAdd.bind(this);
-		this.onChipDelete = this.onChipDelete.bind(this);
-		this.onChipSelect = this.onChipSelect.bind(this);
+	constructor(private element: Element, private taskQueue: au.TaskQueue) {
+		this.log = au.getLogger("md-chips");
 	}
 
-	log: Logger;
+	log: au.Logger;
 
-	@bindable
-	autocompleteData: any = {};
+	@au.bindable
+	autocompleteData: M.AutocompleteData = {};
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	data: any[] = [];
+	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
+	data: M.ChipData[] = [];
 	dataChanged(newValue: any[], oldValue: any[]) {
 		this.refresh();
 
 		// I know this is a bit naive..
 		if (newValue.length > oldValue.length) {
 			const chip = newValue.find(i => !oldValue.includes(i));
-			fireEvent(this.element, "change", { source: "dataChanged", operation: "add", target: chip, data: newValue });
+			au.fireEvent(this.element, "change", { source: "dataChanged", operation: "add", target: chip, data: newValue });
 		}
 		if (newValue.length < oldValue.length) {
 			const chip = oldValue.find(i => !newValue.includes(i));
-			fireEvent(this.element, "change", { source: "dataChanged", operation: "delete", target: chip, data: newValue });
+			au.fireEvent(this.element, "change", { source: "dataChanged", operation: "delete", target: chip, data: newValue });
 		}
 	}
 
-	@bindable
-	placeholder: string = "";
+	@au.ato.bindable.stringMd
+	placeholder: string;
 
-	@bindable
-	secondaryPlaceholder: string = "";
+	@au.ato.bindable.stringMd
+	secondaryPlaceholder: string;
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	limit: number;
+
+	instance: M.Chips;
+
+	bind() {
+		// suppress initial change handler calls
+	}
 
 	attached() {
 		this.refresh();
-		$(this.element).on("chip.add", this.onChipAdd);
-		$(this.element).on("chip.delete", this.onChipDelete);
-		$(this.element).on("chip.select", this.onChipSelect);
 	}
 
 	detached() {
-		$(this.element).off("chip.add", this.onChipAdd);
-		$(this.element).off("chip.delete", this.onChipDelete);
-		$(this.element).off("chip.select", this.onChipSelect);
+		this.instance.destroy();
 	}
 
 	refresh() {
-		const options = {
-			autocompleteOptions: {
-				data: this.autocompleteData
-			},
+		const options: Partial<M.ChipsOptions> = {
 			data: this.data,
 			placeholder: this.placeholder,
-			secondaryPlaceholder: this.secondaryPlaceholder
+			limit: this.limit,
+			secondaryPlaceholder: this.secondaryPlaceholder,
+			onChipAdd: () => this.data = this.instance.chipsData,
+			onChipDelete: () => this.data = this.instance.chipsData,
+			onChipSelect: (e, chip) => au.fireEvent(this.element, "selected", { target: chip })
 		};
-		$(this.element).material_chip(options);
-	}
-
-	onChipAdd(e, chip) {
-		this.data = $(this.element).material_chip("data");
-	}
-
-	onChipDelete(e, chip) {
-		this.data = $(this.element).material_chip("data");
-	}
-
-	onChipSelect(e, chip) {
-		fireEvent(this.element, "selected", { target: chip });
+		if (this.autocompleteData) {
+			options.autocompleteOptions = { data: this.autocompleteData };
+		}
+		au.cleanOptions(options);
+		this.instance = new M.Chips(this.element, options);
 	}
 }

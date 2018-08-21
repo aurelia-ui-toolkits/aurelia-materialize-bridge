@@ -28,3 +28,4 @@ function fireMaterializeEvent(element, name, data) {
     return fireEvent(element, "" + constants_1.constants.eventPrefix + name, data);
 }
 exports.fireMaterializeEvent = fireMaterializeEvent;
+//# sourceMappingURL=events.js.map

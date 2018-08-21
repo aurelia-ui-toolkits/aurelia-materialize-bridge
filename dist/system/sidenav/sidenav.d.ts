@@ -1,20 +1,21 @@
-import { AttributeManager } from "../common/attributeManager";
-import { Logger } from "aurelia-logging";
+import * as au from "../aurelia";
 export declare class MdSidenav {
     element: Element;
     constructor(element: Element);
+    static fixedClass: string;
     static id: number;
     controlId: string;
-    log: Logger;
     sidenav: HTMLDivElement;
-    attributeManager: AttributeManager;
-    mdCloseOnClick: boolean | string;
-    mdEdge: string;
-    mdFixed: boolean | string;
-    mdWidth: number | string;
-    attachedResolver: () => void;
-    whenAttached: Promise<void>;
+    instance: M.Sidenav;
+    attributeManager: au.AttributeManager;
+    edge: "left" | "right";
+    draggable: boolean;
+    inDuration: number;
+    outDuration: number;
+    fixed: boolean;
+    fixedChanged(newValue: any): void;
     attached(): void;
+    open(): void;
+    close(): void;
     detached(): void;
-    mdFixedChanged(newValue: any): void;
 }

@@ -1,11 +1,8 @@
-System.register(["./augmentation/element", "./augmentation/materialize", "./config-builder", "./scrollfire/scrollfire-patch", "./common/polyfills", "./exports"], function (exports_1, context_1) {
+System.register(["./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable", "./polyfills/append", "./polyfills/remove", "./config-builder", "./exports"], function (exports_1, context_1) {
     "use strict";
+    var aurelia_typed_observable_1, config_builder_1, d;
     var __moduleName = context_1 && context_1.id;
-    function applyPolyfills() {
-        polyfills_1.polyfillElementClosest();
-    }
     function configure(frameworkConfiguration, configCallback) {
-        applyPolyfills();
         var builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
         if (configCallback !== undefined && typeof (configCallback) === "function") {
             configCallback(builder);
@@ -13,12 +10,8 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./conf
         if (builder.useGlobalResources) {
             frameworkConfiguration.globalResources(builder.globalResources);
         }
-        if (builder.useScrollfirePatch) {
-            new scrollfire_patch_1.ScrollfirePatch().patch();
-        }
     }
     exports_1("configure", configure);
-    var config_builder_1, scrollfire_patch_1, polyfills_1;
     var exportedNames_1 = {
         "configure": true
     };
@@ -35,20 +28,25 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./conf
             },
             function (_2) {
             },
+            function (aurelia_typed_observable_1_1) {
+                aurelia_typed_observable_1 = aurelia_typed_observable_1_1;
+            },
+            function (_3) {
+            },
+            function (_4) {
+            },
             function (config_builder_1_1) {
                 config_builder_1 = config_builder_1_1;
-            },
-            function (scrollfire_patch_1_1) {
-                scrollfire_patch_1 = scrollfire_patch_1_1;
-            },
-            function (polyfills_1_1) {
-                polyfills_1 = polyfills_1_1;
             },
             function (exports_2_1) {
                 exportStar_1(exports_2_1);
             }
         ],
         execute: function () {
+            // this is needed to enforce loading order for requirejs
+            // otherwise typescript optimises imports and loads augmentation/aurelia-typed-observable after exports
+            d = new aurelia_typed_observable_1.Dummy();
         }
     };
 });
+//# sourceMappingURL=index.js.map

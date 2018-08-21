@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "aurelia-framework", "../common/attributeManager", "../common/attributes"], function (require, exports, tslib_1, aurelia_framework_1, attributeManager_1, attributes_1) {
+define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdBadge = /** @class */ (function () {
@@ -6,52 +6,46 @@ define(["require", "exports", "tslib", "aurelia-framework", "../common/attribute
             this.element = element;
             this.isNew = false;
             this.caption = null;
-            this.attributeManager = new attributeManager_1.AttributeManager(this.element);
+            this.attributeManager = new au.AttributeManager(this.element);
         }
-        MdBadge.prototype.isNewChanged = function (newValue) {
-            if (attributes_1.getBooleanFromAttributeValue(newValue)) {
+        MdBadge.prototype.isNewChanged = function () {
+            if (this.isNew) {
                 this.attributeManager.addClasses("new");
             }
             else {
                 this.attributeManager.removeClasses("new");
             }
         };
-        MdBadge.prototype.captionChanged = function (newValue) {
-            if (newValue !== null) {
-                this.attributeManager.addAttributes({ "data-badge-caption": newValue });
+        MdBadge.prototype.captionChanged = function () {
+            if (this.caption !== null) {
+                this.attributeManager.addAttributes({ "data-badge-caption": this.caption });
             }
             else {
                 this.attributeManager.removeAttributes(["data-badge-caption"]);
             }
         };
         MdBadge.prototype.attached = function () {
-            var classes = ["badge"];
-            if (attributes_1.getBooleanFromAttributeValue(this.isNew)) {
-                classes.push("new");
-            }
-            if (this.caption !== null) {
-                this.attributeManager.addAttributes({ "data-badge-caption": this.caption });
-            }
-            this.attributeManager.addClasses(classes);
+            this.element.classList.add("badge");
         };
         MdBadge.prototype.detached = function () {
             this.attributeManager.removeClasses(["badge", "new"]);
             this.attributeManager.removeAttributes(["data-badge-caption"]);
         };
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
-            tslib_1.__metadata("design:type", Object)
+            au.ato.bindable,
+            tslib_1.__metadata("design:type", Boolean)
         ], MdBadge.prototype, "isNew", void 0);
         tslib_1.__decorate([
-            aurelia_framework_1.bindable,
+            au.ato.bindable,
             tslib_1.__metadata("design:type", String)
         ], MdBadge.prototype, "caption", void 0);
         MdBadge = tslib_1.__decorate([
-            aurelia_framework_1.customAttribute("md-badge"),
-            aurelia_framework_1.autoinject,
+            au.customAttribute("md-badge"),
+            au.autoinject,
             tslib_1.__metadata("design:paramtypes", [Element])
         ], MdBadge);
         return MdBadge;
     }());
     exports.MdBadge = MdBadge;
 });
+//# sourceMappingURL=badge.js.map

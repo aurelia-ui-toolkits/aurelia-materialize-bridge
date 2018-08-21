@@ -1,75 +1,70 @@
-import { bindable, customElement, autoinject, bindingMode } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { getLogger, Logger } from "aurelia-logging";
+import * as au from "../aurelia";
 
-@customElement("md-slider")
-@autoinject
+@au.customElement("md-slider")
+@au.autoinject
 export class MdSlider {
 	constructor(private element: Element) {
-		this.log = getLogger("md-slider");
+		this.log = au.getLogger("md-slider");
 	}
 
-	log: Logger;
+	log: au.Logger;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdFillContainer: boolean | string = false;
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime })
+	fillContainer: boolean = false;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdHeight: number | string = 400;
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	height: number;
 
-	@bindable
-	mdIndicators: boolean | string = true;
+	@au.ato.bindable.booleanMd
+	indicators: boolean;
+	indicatorsChanged() {
+		this.refresh();
+	}
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdInterval: number | string = 6000;
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	interval: number;
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdTransition: number | string = 500;
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	duration: number;
+
+	instance: M.Slider;
 
 	attached() {
-		if (getBooleanFromAttributeValue(this.mdFillContainer)) {
+		if (this.fillContainer) {
 			this.element.classList.add("fullscreen");
 		}
 		this.refresh();
 	}
 
+	detached() {
+		this.instance.destroy();
+	}
+
 	pause() {
-		$(this.element).slider("pause");
+		this.instance.pause();
 	}
 
 	start() {
-		$(this.element).slider("start");
+		this.instance.start();
 	}
 
 	next() {
-		$(this.element).slider("next");
+		this.instance.next();
 	}
 
 	prev() {
-		$(this.element).slider("prev");
+		this.instance.prev();
 	}
 
 	refresh() {
-		let options = {
-			height: parseInt(this.mdHeight.toString(), 10),
-			indicators: getBooleanFromAttributeValue(this.mdIndicators),
-			interval: parseInt(this.mdInterval.toString(), 10),
-			transition: parseInt(this.mdTransition.toString(), 10)
+		let options: M.SliderOptions = {
+			indicators: this.indicators,
+			height: this.height,
+			duration: this.duration,
+			interval: this.interval
 		};
 		this.log.debug("refreshing slider, params:", options);
-		$(this.element).slider(options);
+		au.cleanOptions(options);
+		this.instance = new M.Slider(this.element, options);
 	}
-
-	mdIndicatorsChanged() {
-		this.refresh();
-	}
-
-	// commented since that leads to strange effects
-	// mdIntervalChanged() {
-	//   this.refresh();
-	// }
-	//
-	// mdTransitionChanged() {
-	//   this.refresh();
-	// }
 }

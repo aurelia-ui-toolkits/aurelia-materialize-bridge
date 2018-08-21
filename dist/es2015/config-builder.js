@@ -6,8 +6,8 @@ var ConfigBuilder = /** @class */ (function () {
     function ConfigBuilder() {
         this.globalResources = [];
         this.noWavesAttach = false;
+        this.autoButtonWaves = false;
         this.useGlobalResources = true;
-        this.useScrollfirePatch = false;
     }
     ConfigBuilder.prototype.useAll = function () {
         return this
@@ -30,6 +30,7 @@ var ConfigBuilder = /** @class */ (function () {
             .useFile()
             .useFooter()
             .useInput()
+            .useLookup()
             .useModal()
             .useNavbar()
             .usePagination()
@@ -38,7 +39,6 @@ var ConfigBuilder = /** @class */ (function () {
             .usePushpin()
             .useRadio()
             .useRange()
-            .useScrollfire()
             .useScrollSpy()
             .useSelect()
             .useSidenav()
@@ -48,8 +48,9 @@ var ConfigBuilder = /** @class */ (function () {
             .useTapTarget()
             .useTimePicker()
             .useTooltip()
-            .useTransitions()
+            .useWaitCursor()
             .useWaves()
+            .useAutoButtonWaves(true)
             .useWell();
     };
     ConfigBuilder.prototype.useAutoComplete = function () {
@@ -98,7 +99,7 @@ var ConfigBuilder = /** @class */ (function () {
      * Use my control
      */
     ConfigBuilder.prototype.useClickCounter = function () {
-        this.globalResources.push(PLATFORM.moduleName("./click-counter"));
+        this.globalResources.push(PLATFORM.moduleName("./click-counter/click-counter"));
         return this;
     };
     ConfigBuilder.prototype.useCollapsible = function () {
@@ -142,9 +143,12 @@ var ConfigBuilder = /** @class */ (function () {
         this.globalResources.push(PLATFORM.moduleName("./input/input-prefix"));
         return this;
     };
+    ConfigBuilder.prototype.useLookup = function () {
+        this.globalResources.push(PLATFORM.moduleName("./lookup/lookup"));
+        return this;
+    };
     ConfigBuilder.prototype.useModal = function () {
         this.globalResources.push(PLATFORM.moduleName("./modal/modal"));
-        this.globalResources.push(PLATFORM.moduleName("./modal/modal-trigger"));
         return this;
     };
     ConfigBuilder.prototype.useNavbar = function () {
@@ -175,11 +179,6 @@ var ConfigBuilder = /** @class */ (function () {
         this.globalResources.push(PLATFORM.moduleName("./range/range"));
         return this;
     };
-    ConfigBuilder.prototype.useScrollfire = function () {
-        this.globalResources.push(PLATFORM.moduleName("./scrollfire/scrollfire"));
-        this.globalResources.push(PLATFORM.moduleName("./scrollfire/scrollfire-target"));
-        return this;
-    };
     ConfigBuilder.prototype.useScrollSpy = function () {
         this.globalResources.push(PLATFORM.moduleName("./scrollspy/scrollspy"));
         return this;
@@ -202,9 +201,6 @@ var ConfigBuilder = /** @class */ (function () {
         this.globalResources.push(PLATFORM.moduleName("./switch/switch"));
         return this;
     };
-    /**
-     * Use materialized tabs
-     */
     ConfigBuilder.prototype.useTabs = function () {
         this.globalResources.push(PLATFORM.moduleName("./tabs/tabs"));
         return this;
@@ -221,14 +217,10 @@ var ConfigBuilder = /** @class */ (function () {
         this.globalResources.push(PLATFORM.moduleName("./tooltip/tooltip"));
         return this;
     };
-    ConfigBuilder.prototype.useTransitions = function () {
-        this.globalResources.push(PLATFORM.moduleName("./transitions/fadein-image"));
-        this.globalResources.push(PLATFORM.moduleName("./transitions/staggered-list"));
+    ConfigBuilder.prototype.useWaitCursor = function () {
+        this.globalResources.push(PLATFORM.moduleName("./wait-cursor/wait-cursor"));
         return this;
     };
-    /**
-     * Use ripple/waves effect
-     */
     ConfigBuilder.prototype.useWaves = function () {
         this.globalResources.push(PLATFORM.moduleName("./waves/waves"));
         return this;
@@ -241,6 +233,10 @@ var ConfigBuilder = /** @class */ (function () {
         this.noWavesAttach = true;
         return this;
     };
+    ConfigBuilder.prototype.useAutoButtonWaves = function (use) {
+        this.autoButtonWaves = use;
+        return this;
+    };
     /**
      * Don't globalize any resources
      * Allows you to import yourself via <require></require>
@@ -249,10 +245,7 @@ var ConfigBuilder = /** @class */ (function () {
         this.useGlobalResources = false;
         return this;
     };
-    ConfigBuilder.prototype.withScrollfirePatch = function () {
-        this.useScrollfirePatch = true;
-        return this;
-    };
     return ConfigBuilder;
 }());
 export { ConfigBuilder };
+//# sourceMappingURL=config-builder.js.map

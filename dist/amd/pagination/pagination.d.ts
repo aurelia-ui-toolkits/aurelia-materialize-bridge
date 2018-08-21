@@ -1,22 +1,20 @@
 export declare class MdPagination {
     private element;
     constructor(element: Element);
-    mdActivePage: number;
-    mdPages: number | string;
-    mdVisiblePageLinks: number | string;
-    mdPageLinks: number[];
-    mdShowFirstLast: boolean | string;
-    mdShowPrevNext: boolean | string;
-    mdShowPageLinks: boolean | string;
-    numberOfLinks: number;
+    activePage: number;
     pages: number;
+    pagesChanged(): void;
+    visiblePageLinks: number;
+    visiblePageLinksChanged(): void;
+    pageLinks: number[];
+    showFirstLast: boolean;
+    showPrevNext: boolean;
+    showPageLinks: boolean;
     bind(): void;
-    setActivePage(page: any): void;
+    setActivePage(page: number): void;
     setFirstPage(): void;
     setLastPage(): void;
     setPreviousPage(): void;
     setNextPage(): void;
-    mdPagesChanged(): void;
-    mdVisiblePageLinksChanged(): void;
     generatePageLinks(): number[];
 }

@@ -1,33 +1,35 @@
-import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
+import * as au from "../aurelia";
 
-@customElement("md-progress")
-@autoinject
+@au.customElement("md-progress")
+@au.autoinject
 export class MdProgress {
 	constructor(private element: Element) { }
 
 	wrapper: HTMLDivElement;
 
-	@bindable
-	mdColor: string = null;
+	@au.ato.bindable.stringMd
+	color: string = null;
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	mdPixelSize?: number | string = null;
-	mdPixelSizeChanged(newValue: number | string) {
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
+	pixelSize?: number = null;
+	pixelSizeChanged(newValue: number) {
 		if (this.wrapper) {
-			newValue = (newValue === null || newValue === "" || typeof newValue === "number" && isNaN(newValue)) ? "" : `${newValue}px`;
-			this.wrapper.style.height = newValue;
-			this.wrapper.style.width = newValue;
+			this.wrapper.style.height = `${newValue}px`;
+			this.wrapper.style.width = `${newValue}px`;
 		}
 	}
 
-	@bindable
-	mdSize: "big" | "default" | "small" = "big";
+	@au.bindable
+	size: "big" | "default" | "small" = "big";
+	sizeChanged(newValue) {
+		this.pixelSize = null;
+	}
 
-	@bindable({ defaultBindingMode: bindingMode.oneTime })
-	mdType: "linear" | "circular" = "linear";
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	type: "linear" | "circular" = "linear";
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	mdValue: number = null;
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
+	value: number = null;
 
 	bind() {
 		// DO NOT REMOVE!!!
@@ -36,10 +38,6 @@ export class MdProgress {
 	}
 
 	attached() {
-		this.mdPixelSizeChanged(this.mdPixelSize);
-	}
-
-	mdSizeChanged(newValue) {
-		this.mdPixelSize = null;
+		this.pixelSizeChanged(this.pixelSize);
 	}
 }

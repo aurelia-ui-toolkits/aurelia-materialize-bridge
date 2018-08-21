@@ -1,60 +1,52 @@
-import { bindable, customElement, autoinject, bindingMode } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { fireEvent } from "../common/events";
+import * as au from "../aurelia";
 
-@customElement("md-switch")
-@autoinject
+@au.customElement("md-switch")
+@au.autoinject
 export class MdSwitch {
-	constructor(private element: Element) {
-		this.handleChange = this.handleChange.bind(this);
-	}
+	constructor(private element: Element) { }
 
 	checkbox: HTMLInputElement;
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	mdChecked: boolean | string;
-	mdCheckedChanged(newValue) {
+	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay })
+	checked: boolean;
+	checkedChanged(newValue) {
 		if (this.checkbox) {
 			this.checkbox.checked = !!newValue;
 		}
 	}
 
-	@bindable
-	mdDisabled: boolean | string;
-	mdDisabledChanged(newValue) {
-		if (this.checkbox) {
-			this.checkbox.disabled = !!newValue;
-		}
-	}
+	@au.ato.bindable.booleanMd
+	disabled: boolean;
 
-	@bindable
-	mdReadonly: boolean | string = false;
+	@au.ato.bindable.booleanMd
+	readonly: boolean = false;
 
-	@bindable
-	mdLabelOff: string = "Off";
+	@au.bindable
+	labelOff: string = "Off";
 
-	@bindable
-	mdLabelOn: string = "On";
+	@au.bindable
+	labelOn: string = "On";
 
 	attached() {
-		this.checkbox.checked = getBooleanFromAttributeValue(this.mdChecked);
-		if (getBooleanFromAttributeValue(this.mdDisabled)) {
+		this.checkbox.checked = this.checked;
+		if (this.disabled) {
 			this.checkbox.disabled = true;
 		}
 		this.checkbox.addEventListener("change", this.handleChange);
-		this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
 	}
 
 	detached() {
-		this.checkbox.removeEventListener("change", this.handleChange);
+		if (this.checkbox) {
+			this.checkbox.removeEventListener("change", this.handleChange);
+		}
 	}
 
-	handleChange() {
-		this.mdChecked = this.checkbox.checked;
-		fireEvent(this.element, "blur");
+	handleChange = () => {
+		this.checked = this.checkbox.checked;
+		au.fireEvent(this.element, "blur");
 	}
 
 	blur() {
-		fireEvent(this.element, "blur");
+		au.fireEvent(this.element, "blur");
 	}
 }

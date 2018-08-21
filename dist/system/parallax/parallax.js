@@ -1,17 +1,14 @@
-System.register(["tslib", "aurelia-templating", "aurelia-dependency-injection"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
+    var tslib_1, au, MdParallax;
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_templating_1, aurelia_dependency_injection_1, MdParallax;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_templating_1_1) {
-                aurelia_templating_1 = aurelia_templating_1_1;
-            },
-            function (aurelia_dependency_injection_1_1) {
-                aurelia_dependency_injection_1 = aurelia_dependency_injection_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
@@ -20,14 +17,24 @@ System.register(["tslib", "aurelia-templating", "aurelia-dependency-injection"],
                     this.element = element;
                 }
                 MdParallax.prototype.attached = function () {
-                    $(this.element).parallax();
+                    this.element.classList.add("parallax");
+                    var options = {
+                        responsiveThreshold: this.responsiveThreshold
+                    };
+                    au.cleanOptions(options);
+                    this.instance = new M.Parallax(this.element, options);
                 };
                 MdParallax.prototype.detached = function () {
-                    // destroy handler not available
+                    this.instance.destroy();
+                    this.element.classList.remove("parallax");
                 };
+                tslib_1.__decorate([
+                    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Number)
+                ], MdParallax.prototype, "responsiveThreshold", void 0);
                 MdParallax = tslib_1.__decorate([
-                    aurelia_templating_1.customAttribute("md-parallax"),
-                    aurelia_dependency_injection_1.autoinject,
+                    au.customAttribute("md-parallax"),
+                    au.autoinject,
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdParallax);
                 return MdParallax;
@@ -36,3 +43,4 @@ System.register(["tslib", "aurelia-templating", "aurelia-dependency-injection"],
         }
     };
 });
+//# sourceMappingURL=parallax.js.map

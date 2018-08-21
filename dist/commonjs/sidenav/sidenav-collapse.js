@@ -2,55 +2,29 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var aurelia_framework_1 = require("aurelia-framework");
-var aurelia_logging_1 = require("aurelia-logging");
-var attributes_1 = require("../common/attributes");
-var events_1 = require("../common/events");
 var sidenav_1 = require("./sidenav");
 var MdSidenavCollapse = /** @class */ (function () {
     function MdSidenavCollapse(element) {
+        var _this = this;
         this.element = element;
+        this.click = function () {
+            if (_this.ref.instance.isOpen) {
+                _this.ref.close();
+            }
+            else {
+                _this.ref.open();
+            }
+        };
         this.element = element;
-        this.log = aurelia_logging_1.getLogger("md-sidenav-collapse");
     }
     MdSidenavCollapse.prototype.attached = function () {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var closeOnClick, sideNavConfig;
-            return tslib_1.__generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.ref.whenAttached];
-                    case 1:
-                        _a.sent();
-                        closeOnClick = this.ref.mdFixed && window.innerWidth > 992 ? false : attributes_1.getBooleanFromAttributeValue(this.ref.mdCloseOnClick);
-                        this.onHide = this.onHide.bind(this);
-                        this.onShow = this.onShow.bind(this);
-                        this.element.setAttribute("data-activates", this.ref.controlId);
-                        sideNavConfig = {
-                            edge: this.ref.mdEdge || "left",
-                            closeOnClick: closeOnClick,
-                            menuWidth: parseInt(this.ref.mdWidth.toString(), 10),
-                            onClose: this.onHide,
-                            onOpen: this.onShow
-                        };
-                        $(this.element).sideNav(sideNavConfig);
-                        return [2 /*return*/];
-                }
-            });
-        });
+        this.element.addEventListener("click", this.click);
+        if (this.ref) {
+            this.element.setAttribute("data-target", this.ref.controlId);
+        }
     };
     MdSidenavCollapse.prototype.detached = function () {
-        // destroy handler not available
-    };
-    MdSidenavCollapse.prototype.show = function () {
-        $(this.element).sideNav("show");
-    };
-    MdSidenavCollapse.prototype.hide = function () {
-        $(this.element).sideNav("hide");
-    };
-    MdSidenavCollapse.prototype.onShow = function (el) {
-        events_1.fireMaterializeEvent(this.ref.element, "sidenav-show");
-    };
-    MdSidenavCollapse.prototype.onHide = function (el) {
-        events_1.fireMaterializeEvent(this.ref.element, "sidenav-hide");
+        this.element.removeEventListener("click", this.click);
     };
     tslib_1.__decorate([
         aurelia_framework_1.bindable,
@@ -64,3 +38,4 @@ var MdSidenavCollapse = /** @class */ (function () {
     return MdSidenavCollapse;
 }());
 exports.MdSidenavCollapse = MdSidenavCollapse;
+//# sourceMappingURL=sidenav-collapse.js.map

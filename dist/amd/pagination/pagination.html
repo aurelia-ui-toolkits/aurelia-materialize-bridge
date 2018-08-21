@@ -1,25 +1,25 @@
 <template>
 	<ul class="pagination">
-		<template if.bind="mdShowFirstLast">
-			<li md-waves click.delegate="setFirstPage()" class="${ mdActivePage === 1 ? 'disabled' : '' }"><a><i class="material-icons">first_page</i></a></li>
+		<template if.bind="showFirstLast">
+			<li md-waves click.delegate="setFirstPage()" class="${ activePage === 1 ? 'disabled' : '' }"><a><i class="material-icons">first_page</i></a></li>
 		</template>
-		<template if.bind="mdShowPrevNext">
-			<li md-waves click.delegate="setPreviousPage()" class="${ mdActivePage === 1 ? 'disabled' : '' }"><a><i class="material-icons">chevron_left</i></a></li>
+		<template if.bind="showPrevNext">
+			<li md-waves click.delegate="setPreviousPage()" class="${ activePage === 1 ? 'disabled' : '' }"><a><i class="material-icons">chevron_left</i></a></li>
 		</template>
-		<template if.bind="mdShowPageLinks">
-			<template repeat.for="p of mdPageLinks">
+		<template if.bind="showPageLinks">
+			<template repeat.for="p of pageLinks">
 				<li md-waves click.delegate="setActivePage(p+1)"><span if.bind="$first && p > 0"><a>...</a></span></li>
-				<li md-waves click.delegate="setActivePage(p+1)" class="${ p+1 === mdActivePage ? 'active' : ''}">
+				<li md-waves click.delegate="setActivePage(p+1)" class="${ p+1 === activePage ? 'active' : ''}">
           <a>${p+1}</a>
         </li>
 				<li md-waves click.delegate="setActivePage(p+1)"><span if.bind="$last && p < pages - 1"><a>...</a></span></li>
 			</template>
 		</template>
-		<template if.bind="mdShowPrevNext">
-			<li md-waves click.delegate="setNextPage()" class="${ mdActivePage == pages ? 'disabled' : '' }"><a><i class="material-icons">chevron_right</i></a></li>
+		<template if.bind="showPrevNext">
+			<li md-waves click.delegate="setNextPage()" class="${ activePage == pages ? 'disabled' : '' }"><a><i class="material-icons">chevron_right</i></a></li>
 		</template>
-		<template if.bind="mdShowFirstLast">
-			<li md-waves click.delegate="setLastPage()" class="${ mdActivePage == pages ? 'disabled' : '' }"><a><i class="material-icons">last_page</i></a></li>
+		<template if.bind="showFirstLast">
+			<li md-waves click.delegate="setLastPage()" class="${ activePage == pages ? 'disabled' : '' }"><a><i class="material-icons">last_page</i></a></li>
 		</template>
 	</ul>
 </template>

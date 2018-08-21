@@ -3,7 +3,7 @@ export declare class MdCollection {
     constructor(element: Element);
     anchor: HTMLDivElement;
     attached(): void;
-    getSelected(): any;
+    getSelected(): any[];
     clearSelection(): void;
     selectAll(): void;
     toggleIndex(index: any): void;

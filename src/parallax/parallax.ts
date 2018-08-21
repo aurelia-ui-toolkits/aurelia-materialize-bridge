@@ -1,16 +1,26 @@
-import { customAttribute } from "aurelia-templating";
-import { autoinject } from "aurelia-dependency-injection";
+import * as au from "../aurelia";
 
-@customAttribute("md-parallax")
-@autoinject
+@au.customAttribute("md-parallax")
+@au.autoinject
 export class MdParallax {
 	constructor(private element: Element) { }
 
+	@au.ato.bindable.numberMd({defaultBindingMode: au.bindingMode.oneTime})
+	responsiveThreshold: number;
+
+	instance: M.Parallax;
+
 	attached() {
-		$(this.element).parallax();
+		this.element.classList.add("parallax");
+		let options: Partial<M.ParallaxOptions> = {
+			responsiveThreshold: this.responsiveThreshold
+		};
+		au.cleanOptions(options);
+		this.instance = new M.Parallax(this.element, options);
 	}
 
 	detached() {
-		// destroy handler not available
+		this.instance.destroy();
+		this.element.classList.remove("parallax");
 	}
 }

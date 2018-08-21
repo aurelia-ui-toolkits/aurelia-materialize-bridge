@@ -29,3 +29,4 @@ define(["require", "exports", "./constants"], function (require, exports, consta
     }
     exports.fireMaterializeEvent = fireMaterializeEvent;
 });
+//# sourceMappingURL=events.js.map

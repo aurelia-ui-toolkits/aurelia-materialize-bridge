@@ -1,5 +1,6 @@
 System.register(["./constants"], function (exports_1, context_1) {
     "use strict";
+    var constants_1;
     var __moduleName = context_1 && context_1.id;
     /**
      * Fire DOM event on an element
@@ -28,7 +29,6 @@ System.register(["./constants"], function (exports_1, context_1) {
         return fireEvent(element, "" + constants_1.constants.eventPrefix + name, data);
     }
     exports_1("fireMaterializeEvent", fireMaterializeEvent);
-    var constants_1;
     return {
         setters: [
             function (constants_1_1) {
@@ -39,3 +39,4 @@ System.register(["./constants"], function (exports_1, context_1) {
         }
     };
 });
+//# sourceMappingURL=events.js.map

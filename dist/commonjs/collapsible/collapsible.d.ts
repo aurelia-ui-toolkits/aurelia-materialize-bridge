@@ -1,17 +1,17 @@
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 export declare class MdCollapsible {
     private element;
     constructor(element: Element);
-    attributeManager: AttributeManager;
-    accordion: boolean | string;
-    popout: boolean | string;
-    onOpen: (element: Element) => {};
-    onClose: (element: Element) => {};
+    attributeManager: au.AttributeManager;
+    accordion: boolean;
+    accordionChanged(): void;
+    popout: boolean;
+    inDuration: number;
+    outDuration: number;
+    instance: M.Collapsible;
+    bind(): void;
     attached(): void;
     detached(): void;
-    refresh(): void;
-    accordionChanged(): void;
-    buildCollapsibleOpenCloseCallbackHandler(handler: (element: Element) => {}): (targetElementJquery: JQuery<HTMLElement>) => void;
     open(index?: number): void;
     close(index?: number): void;
 }

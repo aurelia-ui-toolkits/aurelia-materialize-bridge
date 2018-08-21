@@ -7,8 +7,8 @@ export class ConfigBuilder {
 
 	globalResources = [];
 	noWavesAttach: boolean = false;
+	autoButtonWaves: boolean = false;
 	useGlobalResources: boolean = true;
-	useScrollfirePatch: boolean = false;
 
 	useAll(): ConfigBuilder {
 		return this
@@ -31,6 +31,7 @@ export class ConfigBuilder {
 			.useFile()
 			.useFooter()
 			.useInput()
+			.useLookup()
 			.useModal()
 			.useNavbar()
 			.usePagination()
@@ -39,7 +40,6 @@ export class ConfigBuilder {
 			.usePushpin()
 			.useRadio()
 			.useRange()
-			.useScrollfire()
 			.useScrollSpy()
 			.useSelect()
 			.useSidenav()
@@ -49,8 +49,9 @@ export class ConfigBuilder {
 			.useTapTarget()
 			.useTimePicker()
 			.useTooltip()
-			.useTransitions()
+			.useWaitCursor()
 			.useWaves()
+			.useAutoButtonWaves(true)
 			.useWell();
 	}
 
@@ -110,7 +111,7 @@ export class ConfigBuilder {
 	 * Use my control
 	 */
 	useClickCounter(): ConfigBuilder {
-		this.globalResources.push(PLATFORM.moduleName("./click-counter"));
+		this.globalResources.push(PLATFORM.moduleName("./click-counter/click-counter"));
 		return this;
 	}
 
@@ -164,9 +165,13 @@ export class ConfigBuilder {
 		return this;
 	}
 
+	useLookup(): ConfigBuilder {
+		this.globalResources.push(PLATFORM.moduleName("./lookup/lookup"));
+		return this;
+	}
+
 	useModal(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./modal/modal"));
-		this.globalResources.push(PLATFORM.moduleName("./modal/modal-trigger"));
 		return this;
 	}
 
@@ -205,12 +210,6 @@ export class ConfigBuilder {
 		return this;
 	}
 
-	useScrollfire(): ConfigBuilder {
-		this.globalResources.push(PLATFORM.moduleName("./scrollfire/scrollfire"));
-		this.globalResources.push(PLATFORM.moduleName("./scrollfire/scrollfire-target"));
-		return this;
-	}
-
 	useScrollSpy(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./scrollspy/scrollspy"));
 		return this;
@@ -238,9 +237,6 @@ export class ConfigBuilder {
 		return this;
 	}
 
-	/**
-	 * Use materialized tabs
-	 */
 	useTabs(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./tabs/tabs"));
 		return this;
@@ -261,15 +257,11 @@ export class ConfigBuilder {
 		return this;
 	}
 
-	useTransitions(): ConfigBuilder {
-		this.globalResources.push(PLATFORM.moduleName("./transitions/fadein-image"));
-		this.globalResources.push(PLATFORM.moduleName("./transitions/staggered-list"));
+	useWaitCursor(): ConfigBuilder {
+		this.globalResources.push(PLATFORM.moduleName("./wait-cursor/wait-cursor"));
 		return this;
 	}
 
-	/**
-	 * Use ripple/waves effect
-	 */
 	useWaves(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./waves/waves"));
 		return this;
@@ -285,17 +277,17 @@ export class ConfigBuilder {
 		return this;
 	}
 
+	useAutoButtonWaves(use: boolean): ConfigBuilder {
+		this.autoButtonWaves = use;
+		return this;
+	}
+
 	/**
 	 * Don't globalize any resources
 	 * Allows you to import yourself via <require></require>
 	 */
 	withoutGlobalResources(): ConfigBuilder {
 		this.useGlobalResources = false;
-		return this;
-	}
-
-	withScrollfirePatch(): ConfigBuilder {
-		this.useScrollfirePatch = true;
 		return this;
 	}
 }

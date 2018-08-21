@@ -1,18 +1,20 @@
-import { Logger } from "aurelia-logging";
+import * as au from "../aurelia";
 export declare class MdSlider {
     private element;
     constructor(element: Element);
-    log: Logger;
-    mdFillContainer: boolean | string;
-    mdHeight: number | string;
-    mdIndicators: boolean | string;
-    mdInterval: number | string;
-    mdTransition: number | string;
+    log: au.Logger;
+    fillContainer: boolean;
+    height: number;
+    indicators: boolean;
+    indicatorsChanged(): void;
+    interval: number;
+    duration: number;
+    instance: M.Slider;
     attached(): void;
+    detached(): void;
     pause(): void;
     start(): void;
     next(): void;
     prev(): void;
     refresh(): void;
-    mdIndicatorsChanged(): void;
 }

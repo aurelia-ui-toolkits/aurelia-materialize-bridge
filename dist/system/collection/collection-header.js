@@ -1,14 +1,14 @@
-System.register(["tslib", "aurelia-framework"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
+    var tslib_1, au, MdCollectionHeader;
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, MdCollectionHeader;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
@@ -16,7 +16,7 @@ System.register(["tslib", "aurelia-framework"], function (exports_1, context_1) 
                 function MdCollectionHeader() {
                 }
                 MdCollectionHeader = tslib_1.__decorate([
-                    aurelia_framework_1.customElement("md-collection-header")
+                    au.customElement("md-collection-header")
                 ], MdCollectionHeader);
                 return MdCollectionHeader;
             }());
@@ -24,3 +24,4 @@ System.register(["tslib", "aurelia-framework"], function (exports_1, context_1) 
         }
     };
 });
+//# sourceMappingURL=collection-header.js.map

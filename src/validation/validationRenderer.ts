@@ -1,9 +1,7 @@
 import { ValidateResult, RenderInstruction } from "aurelia-validation";
 
 export class MaterializeFormValidationRenderer {
-
-	static className = "md-input-validation";
-	static classNameFirst = "md-input-validation-first";
+	static validationMessageClass = "helper-text";
 
 	pushElementResult(elementResults: Map<Element, ValidateResult[]>, element: Element, result: ValidateResult) {
 		if (elementResults.has(element)) {
@@ -64,18 +62,11 @@ export class MaterializeFormValidationRenderer {
 			return;
 		}
 
-		let message = document.createElement("div");
+		let message = document.createElement("span");
 		message.id = `md-input-validation-${result.id}`;
-		message.textContent = result.message;
-		message.className = MaterializeFormValidationRenderer.className;
-		if (element.querySelectorAll("." + MaterializeFormValidationRenderer.className).length === 0) {
-			message.className += " " + MaterializeFormValidationRenderer.classNameFirst;
-		}
-		message.style.opacity = "0";
+		message.setAttribute(`data-${result.valid ? "success" : "error"}`, result.message);
+		message.className = MaterializeFormValidationRenderer.validationMessageClass;
 		element.appendChild(message);
-		// tslint:disable-next-line:no-unused-expression
-		window.getComputedStyle(message).opacity;
-		message.style.opacity = "1";
 	}
 
 	removeMessage(element: Element, result: ValidateResult) {
@@ -107,6 +98,17 @@ export class MaterializeFormValidationRenderer {
 		} else {
 			input.classList.remove("valid");
 			input.classList.add("invalid");
+		}
+	}
+
+	static removeValidation(validationContainer: HTMLElement, input: HTMLInputElement) {
+		if (validationContainer) {
+			let validationMessages = Array.from(validationContainer.querySelectorAll("." + MaterializeFormValidationRenderer.validationMessageClass));
+			validationMessages.forEach(x => x.remove());
+		}
+		if (input) {
+			input.classList.remove("valid");
+			input.classList.remove("invalid");
 		}
 	}
 }

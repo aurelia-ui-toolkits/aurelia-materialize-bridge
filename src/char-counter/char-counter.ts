@@ -1,38 +1,38 @@
-import { autoinject, bindable, bindingMode, children, customAttribute } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 
-@customAttribute("md-char-counter")
-@autoinject
+@au.customAttribute("md-char-counter")
+@au.autoinject
 export class MdCharCounter {
 	constructor(private element: Element) {
-		this.element = element;
-		this.attributeManager = new AttributeManager(this.element);
+		this.attributeManager = new au.AttributeManager(this.element);
 	}
 
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 
-	@bindable
-	length: number | string = 120;
+	@au.ato.bindable.numberMd
+	length: number = 120;
+
+	instances: M.CharacterCounter[] = [];
 
 	attached() {
-		if (typeof this.length === "string") {
-			this.length = parseInt(this.length, 10);
-		}
-
 		// attach to input and textarea elements explicitly, so this counter can be
 		// used on containers (or custom elements like md-input)
 		const tagName = this.element.tagName.toUpperCase();
 		if (tagName === "INPUT" || tagName === "TEXTAREA") {
 			this.attributeManager.addAttributes({ "data-length": this.length });
-			$(this.element).characterCounter();
-		} else {
-			const elem = $(this.element).find("input,textarea");
-			elem.each((i, el) => { $(el).attr("data-length", this.length); });
-			elem.characterCounter();
+			this.instances.push(new M.CharacterCounter(this.element));
+		}
+		else {
+			const elem = Array.from(this.element.querySelectorAll("input,textarea"));
+			elem.forEach(el => {
+				el.setAttribute("data-length", this.length.toString());
+				this.instances.push(new M.CharacterCounter(el));
+			});
 		}
 	}
 
 	detached() {
+		this.instances.forEach(x => x.destroy());
 		this.attributeManager.removeAttributes(["data-length"]);
 	}
 }

@@ -1,20 +1,34 @@
-import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
+import * as au from "../aurelia";
 
-@customElement("md-range")
-@autoinject
+@au.customElement("md-range")
+@au.autoinject
 export class MdRange {
-	@bindable
-	mdReadonly: boolean | string = false;
+	constructor(private element: Element) { }
 
-	@bindable({defaultBindingMode: bindingMode.oneTime})
-	mdMin: number | string = 0;
+	input: HTMLInputElement;
 
-	@bindable({defaultBindingMode: bindingMode.oneTime})
-	mdMax: number | string = 100;
+	@au.ato.bindable.booleanMd
+	readonly: boolean = false;
 
-	@bindable({defaultBindingMode: bindingMode.oneTime})
-	mdStep: number | string = 1;
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	min: number = 0;
 
-	@bindable({defaultBindingMode: bindingMode.twoWay})
-	mdValue: number | string = 0;
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	max: number = 100;
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime })
+	step: number = 1;
+
+	@au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay })
+	value: number = 0;
+
+	instance: M.Range;
+
+	attached() {
+		this.instance = new M.Range(this.input);
+	}
+
+	detached(){
+		this.instance.destroy();
+	}
 }

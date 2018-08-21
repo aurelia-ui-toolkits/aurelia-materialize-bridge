@@ -1,4 +1,4 @@
-import { Router } from "aurelia-router";
+import * as au from "../aurelia";
 export declare class MdWell {
-    router: Router;
+    router: au.Router;
 }

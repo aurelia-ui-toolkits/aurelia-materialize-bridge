@@ -1,12 +1,12 @@
 <template>
-	<template if.bind="mdType === 'linear'">
+	<template if.bind="type === 'linear'">
 		<div class="progress">
-			<div class="${ mdValue === null ? 'indeterminate' : 'determinate' }" css="width: ${ mdValue ? mdValue : 0 }%"></div>
+			<div class="${ value ? 'determinate' : 'indeterminate' }" css="width: ${ value ? value : 0 }%"></div>
 		</div>
 	</template>
-	<template if.bind="mdType === 'circular' && mdColor !== 'flashing'">
-		<div class="preloader-wrapper ${mdSize} active" ref="wrapper">
-			<div class="spinner-layer spinner-${mdColor}-only">
+	<template if.bind="type === 'circular' && color !== 'flashing'">
+		<div class="preloader-wrapper ${size} active" ref="wrapper">
+			<div class="spinner-layer spinner-${color}-only">
 				<div class="circle-clipper left">
 					<div class="circle"></div>
 				</div>
@@ -19,8 +19,8 @@
 			</div>
 		</div>
 	</template>
-	<template if.bind="mdType === 'circular' && mdColor === 'flashing'">
-		<div class="preloader-wrapper ${mdSize} active" ref="wrapper">
+	<template if.bind="type === 'circular' && color === 'flashing'">
+		<div class="preloader-wrapper ${size} active" ref="wrapper">
 			<div class="spinner-layer spinner-blue">
 				<div class="circle-clipper left">
 					<div class="circle"></div>

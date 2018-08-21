@@ -1,14 +1,14 @@
-System.register(["tslib", "aurelia-framework"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
+    var tslib_1, au, MdCollection;
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, MdCollection;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
@@ -23,7 +23,7 @@ System.register(["tslib", "aurelia-framework"], function (exports_1, context_1) 
                     }
                 };
                 MdCollection.prototype.getSelected = function () {
-                    var items = [].slice.call(this.element.querySelectorAll("md-collection-selector"));
+                    var items = Array.from(this.element.querySelectorAll("md-collection-selector"));
                     return items.filter(function (i) { return i.au["md-collection-selector"].viewModel.isSelected; })
                         .map(function (i) { return i.au["md-collection-selector"].viewModel.item; });
                 };
@@ -44,8 +44,8 @@ System.register(["tslib", "aurelia-framework"], function (exports_1, context_1) 
                     vm.isSelected = !vm.isSelected;
                 };
                 MdCollection = tslib_1.__decorate([
-                    aurelia_framework_1.customElement("md-collection"),
-                    aurelia_framework_1.autoinject,
+                    au.customElement("md-collection"),
+                    au.autoinject,
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdCollection);
                 return MdCollection;
@@ -54,3 +54,4 @@ System.register(["tslib", "aurelia-framework"], function (exports_1, context_1) 
         }
     };
 });
+//# sourceMappingURL=collection.js.map

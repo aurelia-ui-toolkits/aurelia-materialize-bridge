@@ -1,12 +1,11 @@
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 import { ConfigBuilder } from "../config-builder";
 export declare class MdWaves {
     private element;
     private configBuilder;
     constructor(element: Element, configBuilder: ConfigBuilder);
-    attributeManager: AttributeManager;
-    block: boolean | string;
-    circle: boolean | string;
+    attributeManager: au.AttributeManager;
+    circle: boolean;
     color: string;
     attached(): void;
     detached(): void;

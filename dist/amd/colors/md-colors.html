@@ -17,48 +17,48 @@
 
 	<style>
 	.primary {
-		background-color: ${mdPrimaryColor};
+		background-color: ${primaryColor};
 		color: white;
 	}
 
 	.primary-text {
 		/*background-color: white;*/
-		color: ${mdPrimaryColor};
+		color: ${primaryColor};
 	}
 
 	.waves-effect.waves-primary .waves-ripple {
-		background-color: ${mdPrimaryColor};
+		background-color: ${primaryColor};
 	}
 
 	.waves-effect.waves-accent .waves-ripple {
-		background-color: ${mdAccentColor};
+		background-color: ${accentColor};
 	}
 
 	.accent {
-		background-color: ${mdAccentColor};
+		background-color: ${accentColor};
 		color: white;
 	}
 
 	.accent-text {
 		/*background-color: white;*/
-		color: ${mdAccentColor};
+		color: ${accentColor};
 	}
 
 	.error {
-		background-color: ${mdErrorColor};
+		background-color: ${errorColor};
 	}
 
 	.error-text {
-		color: ${mdErrorColor}
+		color: ${errorColor}
 	}
 
 	.success {
-		background-color: ${mdAccentColor};
+		background-color: ${accentColor};
 		color: white;
 	}
 
 	.success-text {
-		color: ${mdAccentColor};
+		color: ${accentColor};
 	}
 
 	/* buttons */
@@ -66,15 +66,15 @@
 		transition: .2s ease-out;
 	}
 	.btn.primary:hover, .btn-flat.primary:hover, .btn-large.primary:hover {
-		background-color: ${mdPrimaryColor | lighten:1};
+		background-color: ${primaryColor | lighten:1};
 		transition: .2s ease-out;
 	}
 	.btn.primary:focus, .btn-flat.primary:focus, .btn-large.primary:focus {
-		background-color: ${mdPrimaryColor | lighten:0.5};
+		background-color: ${primaryColor | lighten:0.5};
 		transition: .2s ease-out;
 	}
 	.btn-flat:not(.disabled):hover {
-		/*background-color: ${mdAccentColor | lighten:3};*/
+		/*background-color: ${accentColor | lighten:3};*/
 		background-color: rgba(50, 50, 50, .15);
 		box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 		border: none;
@@ -82,7 +82,7 @@
 		transition: .2s ease-out;
 	}
 	.btn-flat:focus {
-		/*background-color: ${mdAccentColor | lighten:2};*/
+		/*background-color: ${accentColor | lighten:2};*/
 		background-color: transparent;
 		border: none;
 		box-shadow: none;
@@ -93,11 +93,11 @@
 		transition: .2s ease-out;
 	}
 	.btn.accent:hover, .btn-flat.accent:hover, .btn-large.accent:hover, .btn-floating:hover {
-		background-color: ${mdAccentColor | lighten:1};
+		background-color: ${accentColor | lighten:1};
 		transition: .2s ease-out;
 	}
 	.btn.accent:focus, .btn-flat.accent:focus, .btn-large.accent:focus, .btn-floating:focus {
-		background-color: ${mdAccentColor | lighten:0.5};
+		background-color: ${accentColor | lighten:0.5};
 		transition: .2s ease-out;
 	}
 
@@ -105,93 +105,98 @@
 		transition: .2s ease-out;
 	}
 	.btn.error:hover, .btn-flat.error:hover, .btn-large.error:hover, .btn-floating.error:hover {
-		background-color: ${mdErrorColor | lighten:1};
+		background-color: ${errorColor | lighten:1};
 		transition: .2s ease-out;
 	}
 	.btn.error:focus, .btn-flat.error:focus, .btn-large.error:focus, .btn-floating.error:focus {
-		background-color: ${mdErrorColor | lighten:0.5};
+		background-color: ${errorColor | lighten:0.5};
 		transition: .2s ease-out;
 	}
 		
 	/* checkbox */
 	[type="checkbox"]:checked + label:before {
-		border-right-color: ${mdAccentColor};
-		border-bottom-color: ${mdAccentColor};
+		border-right-color: ${accentColor};
+		border-bottom-color: ${accentColor};
 	}
 
 	[type="checkbox"].filled-in:checked + label:after {
-		border-color: ${mdAccentColor};
-		background-color: ${mdAccentColor};
+		border-color: ${accentColor};
+		background-color: ${accentColor};
 	}
 
 	[type="checkbox"]:indeterminate + label:before {
-		border-right-color: ${mdAccentColor};
+		border-right-color: ${accentColor};
 	}
 
 	/* collection */
 	md-collection .collection md-collection-item.collection-item.active {
-		background-color: ${mdAccentColor};
+		background-color: ${accentColor};
 		color: white;
 	}
 
 	md-collection .collection md-collection-item.collection-item .secondary-content {
-		color: ${mdAccentColor};
+		color: ${accentColor};
 	}
 
 	md-collection .collection md-collection-item.collection-item.avatar i.circle.primary {
-		background-color: ${mdPrimaryColor};
+		background-color: ${primaryColor};
 	}
 	md-collection .collection md-collection-item.collection-item.avatar i.circle.accent {
-		background-color: ${mdAccentColor};
+		background-color: ${accentColor};
 	}
 	md-collection .collection md-collection-item.collection-item.avatar i.circle.error {
-		background-color: ${mdErrorColor};
+		background-color: ${errorColor};
 	}
 	md-collection .collection md-collection-item.collection-item.avatar i.circle.success {
-		background-color: ${mdAccentColor};
+		background-color: ${accentColor};
 	}
 	md-collection .collection md-collection-item.collection-item.avatar i.circle.primary-text {
-		color: ${mdPrimaryColor};
+		color: ${primaryColor};
 		background-color: transparent;
 	}
 	md-collection .collection md-collection-item.collection-item.avatar i.circle.accent-text {
-		color: ${mdAccentColor};
+		color: ${accentColor};
 		background-color: transparent;
 	}
 	md-collection .collection md-collection-item.collection-item.avatar i.circle.error-text {
-		color: ${mdErrorColor};
+		color: ${errorColor};
 		background-color: transparent;
 	}
 	md-collection .collection md-collection-item.collection-item.avatar i.circle.success-text {
-		color: ${mdAccentColor};
+		color: ${accentColor};
 		background-color: transparent;
 	}	 
 
 
 	/* datepicker */
-	.picker__date-display {
-		background-color: ${mdAccentColor | darken:0.5};
+	.datepicker-date-display {
+		background-color: ${accentColor};
 	}
-	.picker__weekday-display {
-		background-color: ${mdAccentColor | darken:0.5};
+
+	.datepicker-table td.is-today {
+		color: ${accentColor};
 	}
-	.picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
-		background-color: ${mdAccentColor};
+
+	.datepicker-table td.is-selected {
+		background-color: ${accentColor};
 	}
-	.picker__day.picker__day--today {
-		color: ${mdAccentColor}
+
+	.datepicker-day-button:focus {
+		background-color: rgba(${cs.toRgb(accentColor)}, 0.25);  /* $datepicker-day-focus;*/
 	}
-	.picker__footer button:not(.picker__clear) {
-		color: ${mdAccentColor}
+
+	.datepicker-cancel,
+	.datepicker-today,
+	.datepicker-done {
+		color: ${accentColor};
 	}
-	.picker__footer button:focus {
-		background-color: ${mdAccentColor | lighten:2};
+	
+	.datepicker-clear {
+		color: ${errorColor};
 	}
-	[md-datepicker] + i.material-icons.std-icon-fixup {
-		margin-left: -24px;
-		line-height: 1;
-		margin-top: 12px;
-		cursor: pointer;
+
+	.datepicker-controls .select-wrapper input.select-dropdown:focus {
+			border-bottom: none; /* select styling sets the border so it needs to be reset again*/
 	}
 
 	/* text input */
@@ -208,12 +213,12 @@
 	input[type=number]:not(.browser-default):focus:not([readonly]),
 	input[type=search]:not(.browser-default):focus:not([readonly]),
 	textarea.materialize-textarea:focus:not([readonly]) {
-		border-bottom: 1px solid ${mdAccentColor};
-		box-shadow: 0 1px 0 0 ${mdAccentColor};
+		border-bottom: 1px solid ${accentColor};
+		box-shadow: 0 1px 0 0 ${accentColor};
 	}
 
 	.input-field .prefix.active {
-		color: ${mdAccentColor}
+		color: ${accentColor}
 	}
 
 	/* text input label */
@@ -230,7 +235,7 @@
 	input[type=number]:not(.browser-default):focus:not([readonly]) + label,
 	input[type=search]:not(.browser-default):focus:not([readonly]) + label,
 	textarea.materialize-textarea:focus:not([readonly]) + label {
-		color: ${mdAccentColor}
+		color: ${accentColor}
 	}
 
 	/* text input error label */
@@ -261,187 +266,175 @@
 	md-input textarea.materialize-textarea.invalid + label:after,
 	md-input textarea.materialize-textarea:focus.invalid + label:after
 	{
-		color: ${mdErrorColor}
+		color: ${errorColor}
 	}
 
 	/* text input success border */
 	input:not([type]).valid, input:not([type]):focus.valid, input[type=text]:not(.browser-default).valid, input[type=text]:not(.browser-default):focus.valid, input[type=password]:not(.browser-default).valid, input[type=password]:not(.browser-default):focus.valid, input[type=email]:not(.browser-default).valid, input[type=email]:not(.browser-default):focus.valid, input[type=url]:not(.browser-default).valid, input[type=url]:not(.browser-default):focus.valid, input[type=time]:not(.browser-default).valid, input[type=time]:not(.browser-default):focus.valid, input[type=date]:not(.browser-default).valid, input[type=date]:not(.browser-default):focus.valid, input[type=datetime]:not(.browser-default).valid, input[type=datetime]:not(.browser-default):focus.valid, input[type=datetime-local]:not(.browser-default).valid, input[type=datetime-local]:not(.browser-default):focus.valid, input[type=tel]:not(.browser-default).valid, input[type=tel]:not(.browser-default):focus.valid, input[type=number]:not(.browser-default).valid, input[type=number]:not(.browser-default):focus.valid, input[type=search]:not(.browser-default).valid, input[type=search]:not(.browser-default):focus.valid, textarea.materialize-textarea.valid, textarea.materialize-textarea:focus.valid {
-		border-bottom: 1px solid ${mdSuccessColor};
-		box-shadow: 0 1px 0 0 ${mdSuccessColor};
+		border-bottom: 1px solid ${successColor};
+		box-shadow: 0 1px 0 0 ${successColor};
 	}
 
-	/* text input aurelia-validation messages */
-	.md-input-validation {
-		left: 0;
-		/*color: #f44336;*/
-		color: ${mdErrorColor};
-		font-size: 0.8rem;
-		transition: opacity .2s ease-out;
-		margin-top: -4px;
-		margin-bottom: 0;
+	/* validation helper-text tweaks */
+	input:not(.invalid):not(.valid) ~ .helper-text[data-error],
+	input:not(.invalid):not(.valid) ~ .helper-text[data-success],
+	input.valid ~ .helper-text:not([data-success]),
+	input.invalid ~ .helper-text:not([data-error]) {
+		display: none;
 	}
-	@media only screen and (min-width: 0) {
-		.md-input-validation-first {
-			margin-top: -14px;
-			margin-bottom: -2px;
-		}
-	}
-	@media only screen and (min-width: 992px) {
-		.md-input-validation-first {
-			margin-top: -18px;
-			padding-bottom: 3px;
-		}
-	}
-	@media only screen and (min-width: 1200px) {
-		.md-input-validation-first {
-			margin-top: -19px;
-		}
+
+	.input-field .helper-text {
+		/* original helper-text is too low */
+		transform: translateY(-7px); 
 	}
 
 	/* pagination */
 	md-pagination .pagination li.active {
-		background-color: ${mdPrimaryColor}
+		background-color: ${primaryColor}
 	}
 
 	/* progress */
 	md-progress .progress {
-		background-color: ${mdAccentColor | lighten:2};
+		background-color: ${accentColor | lighten:2};
 	}
 
 	md-progress .progress .determinate, md-progress .progress .indeterminate {
-		background-color: ${mdAccentColor};
+		background-color: ${accentColor};
 	}
 
 	/* radio input */
 	md-radio input[type="radio"]:checked + label:after {
-		border: 2px solid ${mdAccentColor};
-		background-color: ${mdAccentColor};
+		border: 2px solid ${accentColor};
+		background-color: ${accentColor};
 	}
 	md-radio [type="radio"].with-gap:checked + label:before {
-		border: 2px solid ${mdAccentColor};
+		border: 2px solid ${accentColor};
 	}
 	md-radio [type="radio"].with-gap:checked + label:after {
-		border: 2px solid ${mdAccentColor};
-		background-color: ${mdAccentColor};
+		border: 2px solid ${accentColor};
+		background-color: ${accentColor};
 	}
 
 	/* range */
 	md-range .range-field input[type="range"]::-webkit-slider-thumb {
-		background: ${mdAccentColor};
+		background: ${accentColor};
 	}
 	md-range .range-field input[type="range"]::-moz-range-thumb {
-		background: ${mdAccentColor};
+		background: ${accentColor};
 	}
 	md-range .range-field input[type="range"]::-ms-thumb {
-		background: ${mdAccentColor};
+		background: ${accentColor};
 	}
 	md-range input[type="range"] + .thumb {
-		background-color: ${mdAccentColor} !important;
+		background-color: ${accentColor} !important;
 	}
 
 	/* select */
 	.dropdown-content li > a, .dropdown-content li > span {
-		color: ${mdAccentColor};
+		color: ${accentColor};
 	}
 
-	.select-wrapper input.select-dropdown {
-		-webkit-user-select:none;
-		-moz-user-select:none;
-		-ms-user-select:none;
-		-o-user-select:none;
-		user-select:none;
+	.select-wrapper input.select-dropdown:focus {
+		border-bottom: 1px solid ${accentColor};
 	}
 
 	/* side-nav */
 	md-sidenav .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {
-		background-color: ${mdPrimaryColor};
+		background-color: ${primaryColor};
 	}
 
 	.side-nav .collapsible-body > ul:not(.collapsible) > li.active, .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
-		background-color: ${mdPrimaryColor};
+		background-color: ${primaryColor};
 	}
 
 	/* slider */
 	.slider .indicators .indicator-item.active {
-		background-color: ${mdAccentColor};
+		background-color: ${accentColor};
 	}
 
 	/* switch */
 	md-switch.switch label input[type=checkbox]:checked + .lever {
-		background-color: ${mdAccentColor | lighten:1};
+		background-color: ${accentColor | lighten:1};
 	}
 	md-switch.switch label input[type=checkbox]:checked + .lever:after {
-		background-color: ${mdAccentColor};
+		background-color: ${accentColor};
 	}
 
 	/* tabs */
 
 	.tab.primary-text a {
-		color: ${mdPrimaryColor};
+		color: ${primaryColor};
 	}
 	.tab.primary-text a.active {
-		color: ${mdPrimaryColor};
+		color: ${primaryColor};
 	}
 	.tab.waves-effect {
 		position: static;
 	}
 	.tab.primary-text a:hover {
-		color: ${mdPrimaryColor | lighten:2};
+		color: ${primaryColor | lighten:2};
 	}
 	.tabs .indicator {
-		background-color: ${mdPrimaryColor | lighten:2};
+		background-color: ${primaryColor | lighten:2};
+	}
+	.tabs .tab a:focus, .tabs .tab a:focus.active {
+		background-color: rgba(${cs.toRgb(primaryColor, 2)}, 0.2);
+		outline: none;
 	}
 
+	/* timepicker */
+	.timepicker-digital-display {
+		background-color: ${accentColor};
+	}
+	
+	.timepicker-tick.active,
+	.timepicker-tick:hover {
+		background-color: rgba(${cs.toRgb(accentColor)}, 0.25);
+	}
+
+	.timepicker-canvas line {
+			stroke: ${accentColor};
+	}
+		
+	.timepicker-canvas-bearing {
+		fill: ${accentColor};
+	}
+
+	.timepicker-canvas-bg {
+		fill: ${accentColor};
+	}
+	
+	.timepicker-clear {
+		color: ${errorColor};
+	}
+	
+	.timepicker-close {
+		color: ${accentColor};
+	}
+		
 	/* well */
 	md-well li.active {
-		border-right: 2px solid ${mdPrimaryColor};
-		background-color: ${mdPrimaryColor | lighten:3};
+		border-right: 2px solid ${primaryColor};
+		background-color: ${primaryColor | lighten:3};
 	}
 
 	/* footer */
 	footer.page-footer {
-		background-color: ${mdPrimaryColor};
+		background-color: ${primaryColor};
 	}
 
-	/* md-select label */
-	.select-wrapper input {
-		/* make input fit in div */
-		display: inline-block !important;
-		/* fix validation border thickness */
-		border-bottom: 1px solid #4CAF50;
+	/* lookup */
+	md-lookup .dropdown-div li {
+		color: ${accentColor};
 	}
 
-	.select-wrapper input.invalid {
-		border-bottom: 1px solid ${mdErrorColor};
+	md-lookup .dropdown-div li a {
+		color: ${accentColor};
 	}
 
-	.select-wrapper + label {
-		
-		width: 100%;
-	}
-	/* position validation label */
-	.select-wrapper + label:after {
-		display: block;
-		content: "";
-		position: absolute;
-		top: 60px;
-		opacity: 0;
-		transition: .2s opacity ease-out, .2s color ease-out;
-		transform: translateY(0) !important;
-	}
-	/* set validation text */
-	.select-wrapper.invalid + label:after {
-		content: attr(data-error);
-		color: ${mdErrorColor};
-		opacity: 1;
-	}
-
-	.select-wrapper .md-select-label {
-		color: #9e9e9e;
-	}
-
-	.select-wrapper + .md-select-label.md-focused {
-		color: ${mdAccentColor};
+	/* tap target */
+	.tap-target {
+		background-color: ${primaryColor};
 	}
 
 	</style>

@@ -1,71 +1,87 @@
 import * as tslib_1 from "tslib";
-import { bindable, customElement, autoinject } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { AttributeManager } from "../common/attributeManager";
-import { getLogger } from "aurelia-logging";
+import * as au from "../aurelia";
 var MdSidenav = /** @class */ (function () {
     function MdSidenav(element) {
-        var _this = this;
         this.element = element;
-        this.mdCloseOnClick = false;
-        this.mdEdge = "left";
-        this.mdFixed = false;
-        this.mdWidth = 300;
-        this.whenAttached = new Promise(function (resolve, reject) { return _this.attachedResolver = resolve; });
+        this.fixed = false;
         this.controlId = "md-sidenav-" + MdSidenav_1.id++;
-        this.log = getLogger("md-sidenav");
-        this.whenAttached = new Promise(function (resolve, reject) {
-            _this.attachedResolver = resolve;
-        });
     }
     MdSidenav_1 = MdSidenav;
-    MdSidenav.prototype.attached = function () {
-        this.attributeManager = new AttributeManager(this.sidenav);
-        if (getBooleanFromAttributeValue(this.mdFixed)) {
-            this.attributeManager.addClasses("fixed");
-            if (this.mdEdge === "right") {
-                // see: https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/53
-                this.attributeManager.addClasses("right-aligned");
-            }
+    MdSidenav.prototype.fixedChanged = function (newValue) {
+        if (!this.attributeManager) {
+            return;
         }
-        this.attachedResolver();
+        if (newValue) {
+            this.attributeManager.addClasses(MdSidenav_1.fixedClass);
+        }
+        else {
+            this.attributeManager.removeClasses(MdSidenav_1.fixedClass);
+        }
+    };
+    MdSidenav.prototype.attached = function () {
+        var _this = this;
+        this.attributeManager = new au.AttributeManager(this.sidenav);
+        if (this.fixed) {
+            this.attributeManager.addClasses(MdSidenav_1.fixedClass);
+        }
+        var options = {
+            draggable: this.draggable,
+            edge: this.edge,
+            inDuration: this.inDuration,
+            outDuration: this.outDuration,
+            onOpenStart: function (elem) { return au.fireMaterializeEvent(_this.element, "open-start", { elem: elem }); },
+            onOpenEnd: function (elem) { return au.fireMaterializeEvent(_this.element, "open-end", { elem: elem }); },
+            onCloseStart: function (elem) { return au.fireMaterializeEvent(_this.element, "close-start", { elem: elem }); },
+            onCloseEnd: function (elem) { return au.fireMaterializeEvent(_this.element, "close-end", { elem: elem }); }
+        };
+        au.cleanOptions(options);
+        this.instance = new M.Sidenav(this.sidenav, options);
+    };
+    MdSidenav.prototype.open = function () {
+        if (this.instance) {
+            this.instance.open();
+        }
+    };
+    MdSidenav.prototype.close = function () {
+        if (this.instance) {
+            this.instance.close();
+        }
     };
     MdSidenav.prototype.detached = function () {
-        this.attributeManager.removeClasses(["fixed", "right-aligned"]);
-    };
-    MdSidenav.prototype.mdFixedChanged = function (newValue) {
-        if (this.attributeManager) {
-            if (getBooleanFromAttributeValue(newValue)) {
-                this.attributeManager.addClasses("fixed");
-            }
-            else {
-                this.attributeManager.removeClasses("fixed");
-            }
+        this.attributeManager.removeClasses([MdSidenav_1.fixedClass]);
+        if (this.instance) {
+            this.instance.destroy();
         }
     };
+    var MdSidenav_1;
+    MdSidenav.fixedClass = "sidenav-fixed";
     MdSidenav.id = 0;
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdSidenav.prototype, "mdCloseOnClick", void 0);
-    tslib_1.__decorate([
-        bindable,
+        au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
         tslib_1.__metadata("design:type", String)
-    ], MdSidenav.prototype, "mdEdge", void 0);
+    ], MdSidenav.prototype, "edge", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdSidenav.prototype, "mdFixed", void 0);
+        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdSidenav.prototype, "draggable", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdSidenav.prototype, "mdWidth", void 0);
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Number)
+    ], MdSidenav.prototype, "inDuration", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Number)
+    ], MdSidenav.prototype, "outDuration", void 0);
+    tslib_1.__decorate([
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdSidenav.prototype, "fixed", void 0);
     MdSidenav = MdSidenav_1 = tslib_1.__decorate([
-        customElement("md-sidenav"),
-        autoinject,
+        au.customElement("md-sidenav"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdSidenav);
     return MdSidenav;
-    var MdSidenav_1;
 }());
 export { MdSidenav };
+//# sourceMappingURL=sidenav.js.map

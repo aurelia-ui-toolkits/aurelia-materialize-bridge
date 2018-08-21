@@ -1,6 +1,5 @@
 import * as tslib_1 from "tslib";
-import { autoinject, bindable, customElement } from "aurelia-framework";
-import { Router } from "aurelia-router";
+import * as au from "../aurelia";
 // taken from: https://github.com/heruan/aurelia-breadcrumbs
 var MdBreadcrumbs = /** @class */ (function () {
     function MdBreadcrumbs(element, aureliaRouter) {
@@ -22,14 +21,15 @@ var MdBreadcrumbs = /** @class */ (function () {
         this.childRouter.navigateToRoute(navigationInstruction.config.name);
     };
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Router)
+        au.bindable,
+        tslib_1.__metadata("design:type", au.Router)
     ], MdBreadcrumbs.prototype, "router", void 0);
     MdBreadcrumbs = tslib_1.__decorate([
-        customElement("md-breadcrumbs"),
-        autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element, Router])
+        au.customElement("md-breadcrumbs"),
+        au.autoinject,
+        tslib_1.__metadata("design:paramtypes", [Element, au.Router])
     ], MdBreadcrumbs);
     return MdBreadcrumbs;
 }());
 export { MdBreadcrumbs };
+//# sourceMappingURL=breadcrumbs.js.map

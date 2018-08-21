@@ -1,55 +1,51 @@
-import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
-import { AttributeManager } from "../common/attributeManager";
-import { getBooleanFromAttributeValue } from "../common/attributes";
+import * as au from "../aurelia";
 
-@customElement("md-radio")
-@autoinject
+@au.customElement("md-radio")
+@au.autoinject
 export class MdRadio {
 	constructor(private element: Element) {
 		this.controlId = `md-radio-${MdRadio.id++}`;
-		// this.handleChange = this.handleChange.bind(this);
 	}
 
 	static id = 0;
 	controlId: string;
-	attributeManager: AttributeManager;
+	attributeManager: au.AttributeManager;
 	radio: HTMLInputElement;
 
-	@bindable({ defaultBindingMode: bindingMode.twoWay })
-	mdChecked: boolean | string;
+	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
+	checked: boolean | string;
 
-	@bindable
-	mdDisabled: boolean | string = false;
-	mdDisabledChanged(newValue: boolean | string) {
+	@au.ato.bindable.booleanMd
+	disabled: boolean = false;
+	disabledChanged(newValue: boolean) {
 		if (this.radio) {
-			this.radio.disabled = !!newValue;
+			this.radio.disabled = newValue;
 		}
 	}
 
-	@bindable
-	mdReadonly: boolean | string = false;
+	@au.ato.bindable.booleanMd
+	readonly: boolean = false;
 
-	@bindable
-	mdGap: boolean | string = false;
+	@au.ato.bindable.booleanMd
+	gap: boolean = false;
 
-	@bindable
-	mdModel: any;
+	@au.bindable
+	model: any;
 
-	@bindable
-	mdName: string = "";
+	@au.ato.bindable.stringMd
+	name: string = "";
 
-	@bindable
-	mdValue: string = "";
+	@au.ato.bindable.stringMd
+	value: string = "";
 
 	attached() {
-		this.attributeManager = new AttributeManager(this.radio);
-		if (getBooleanFromAttributeValue(this.mdGap)) {
+		this.attributeManager = new au.AttributeManager(this.radio);
+		if (this.gap) {
 			this.attributeManager.addClasses("with-gap");
 		}
-		if (getBooleanFromAttributeValue(this.mdDisabled)) {
+		if (this.disabled) {
 			this.radio.disabled = true;
 		}
-		this.mdReadonly = getBooleanFromAttributeValue(this.mdReadonly);
 	}
 
 	detached() {

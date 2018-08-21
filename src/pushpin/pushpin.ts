@@ -1,28 +1,33 @@
-import { bindable, customAttribute, bindingMode, autoinject } from "aurelia-framework";
+import * as au from "../aurelia";
 
-@customAttribute("md-pushpin")
-@autoinject
+@au.customAttribute("md-pushpin")
+@au.autoinject
 export class MdPushpin {
 	constructor(private element: Element) { }
 
-	@bindable
-	bottom: number | string = Infinity;
+	@au.ato.bindable.numberMd
+	bottom: number;
 
-	@bindable
-	offset: number | string = 0;
+	@au.ato.bindable.numberMd
+	offset: number;
 
-	@bindable
-	top: number | string = 0;
+	@au.ato.bindable.numberMd
+	top: number;
+
+	instance: M.Pushpin;
 
 	attached() {
-		$(this.element).pushpin({
-			bottom: (this.bottom === Infinity ? Infinity : parseInt(this.bottom.toString(), 10)),
-			offset: parseInt(this.offset.toString(), 10),
-			top: parseInt(this.top.toString(), 10)
-		});
+		let options: Partial<M.PushpinOptions> = {
+			bottom: this.bottom,
+			offset: this.offset,
+			top: this.top,
+			onPositionChange: position => au.fireMaterializeEvent(this.element, "position-change", { position })
+		};
+		au.cleanOptions(options);
+		this.instance = new M.Pushpin(this.element, options);
 	}
 
 	detached() {
-		// destroy handler not available
+		this.instance.destroy();
 	}
 }

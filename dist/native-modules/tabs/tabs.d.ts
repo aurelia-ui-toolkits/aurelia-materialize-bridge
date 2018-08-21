@@ -1,25 +1,22 @@
-import { TaskQueue } from "aurelia-task-queue";
-import { AttributeManager } from "../common/attributeManager";
+import * as au from "../aurelia";
 export declare class MdTabs {
     private element;
     private taskQueue;
-    constructor(element: Element, taskQueue: TaskQueue);
-    attributeManager: AttributeManager;
-    tabAttributeManagers: AttributeManager[];
-    fixed: boolean | string;
-    onShow: (event: any) => void;
-    responsiveThreshold: number | string;
-    swipeable: boolean | string;
-    transparent: boolean | string;
+    constructor(element: Element, taskQueue: au.TaskQueue);
+    attributeManager: au.AttributeManager;
+    tabAttributeManagers: au.AttributeManager[];
+    fixed: boolean;
+    fixedChanged(newValue: any): void;
+    responsiveThreshold: number;
+    swipeable: boolean;
+    transparent: boolean;
+    transparentChanged(newValue: any): void;
+    instance: M.Tabs;
     attached(): void;
     detached(): void;
     refresh(): void;
-    fixedChanged(newValue: any): void;
-    transparentChanged(newValue: any): void;
-    fireTabSelectedEvent(e: any): void;
-    selectTab(id: string): void;
-    readonly selectedTab: {
-        href: any;
-        index: number;
-    };
+    updateTabIndicator(): void;
+    fireTabSelectedEvent: (e: Event) => void;
+    select(id: string): void;
+    readonly selectedTab: number;
 }

@@ -2,14 +2,11 @@
 // without them types will not be found
 import "./augmentation/element";
 import "./augmentation/materialize";
+import { Dummy } from "./augmentation/aurelia-typed-observable";
+import "./polyfills/append";
+import "./polyfills/remove";
 import { ConfigBuilder } from "./config-builder";
-import { ScrollfirePatch } from "./scrollfire/scrollfire-patch";
-import { polyfillElementClosest } from "./common/polyfills";
-function applyPolyfills() {
-    polyfillElementClosest();
-}
 export function configure(frameworkConfiguration, configCallback) {
-    applyPolyfills();
     var builder = frameworkConfiguration.container.get(ConfigBuilder);
     if (configCallback !== undefined && typeof (configCallback) === "function") {
         configCallback(builder);
@@ -17,10 +14,11 @@ export function configure(frameworkConfiguration, configCallback) {
     if (builder.useGlobalResources) {
         frameworkConfiguration.globalResources(builder.globalResources);
     }
-    if (builder.useScrollfirePatch) {
-        new ScrollfirePatch().patch();
-    }
 }
+// this is needed to enforce loading order for requirejs
+// otherwise typescript optimises imports and loads augmentation/aurelia-typed-observable after exports
+var d = new Dummy();
 // build-index-remove start
 export * from "./exports";
 // build-index-remove end
+//# sourceMappingURL=index.js.map

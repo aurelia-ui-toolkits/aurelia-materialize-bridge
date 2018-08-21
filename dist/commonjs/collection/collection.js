@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
-var aurelia_framework_1 = require("aurelia-framework");
+var au = require("../aurelia");
 var MdCollection = /** @class */ (function () {
     function MdCollection(element) {
         this.element = element;
@@ -13,7 +13,7 @@ var MdCollection = /** @class */ (function () {
         }
     };
     MdCollection.prototype.getSelected = function () {
-        var items = [].slice.call(this.element.querySelectorAll("md-collection-selector"));
+        var items = Array.from(this.element.querySelectorAll("md-collection-selector"));
         return items.filter(function (i) { return i.au["md-collection-selector"].viewModel.isSelected; })
             .map(function (i) { return i.au["md-collection-selector"].viewModel.item; });
     };
@@ -34,10 +34,11 @@ var MdCollection = /** @class */ (function () {
         vm.isSelected = !vm.isSelected;
     };
     MdCollection = tslib_1.__decorate([
-        aurelia_framework_1.customElement("md-collection"),
-        aurelia_framework_1.autoinject,
+        au.customElement("md-collection"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdCollection);
     return MdCollection;
 }());
 exports.MdCollection = MdCollection;
+//# sourceMappingURL=collection.js.map

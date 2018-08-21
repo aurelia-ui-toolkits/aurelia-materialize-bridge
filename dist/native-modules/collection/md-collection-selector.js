@@ -1,36 +1,32 @@
 import * as tslib_1 from "tslib";
-import { autoinject, bindable, customElement, observable } from "aurelia-framework";
-import { getBooleanFromAttributeValue } from "../common/attributes";
-import { fireMaterializeEvent } from "../common/events";
+import * as au from "../aurelia";
 var MdCollectionSelector = /** @class */ (function () {
     function MdCollectionSelector(element) {
         this.element = element;
         this.mdDisabled = false;
         this.isSelected = false;
     }
-    MdCollectionSelector.prototype.mdDisabledChanged = function (newValue) {
-        this.mdDisabled = getBooleanFromAttributeValue(newValue);
-    };
     MdCollectionSelector.prototype.isSelectedChanged = function (newValue) {
-        fireMaterializeEvent(this.element, "selection-changed", { item: this.item, isSelected: this.isSelected });
+        au.fireMaterializeEvent(this.element, "selection-changed", { item: this.item, isSelected: this.isSelected });
     };
     tslib_1.__decorate([
-        bindable,
+        au.bindable,
         tslib_1.__metadata("design:type", Object)
     ], MdCollectionSelector.prototype, "item", void 0);
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
     ], MdCollectionSelector.prototype, "mdDisabled", void 0);
     tslib_1.__decorate([
-        observable,
-        tslib_1.__metadata("design:type", Object)
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
     ], MdCollectionSelector.prototype, "isSelected", void 0);
     MdCollectionSelector = tslib_1.__decorate([
-        customElement("md-collection-selector"),
-        autoinject,
+        au.customElement("md-collection-selector"),
+        au.autoinject,
         tslib_1.__metadata("design:paramtypes", [Element])
     ], MdCollectionSelector);
     return MdCollectionSelector;
 }());
 export { MdCollectionSelector };
+//# sourceMappingURL=md-collection-selector.js.map

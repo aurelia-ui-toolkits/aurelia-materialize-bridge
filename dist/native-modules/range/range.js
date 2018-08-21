@@ -1,37 +1,46 @@
 import * as tslib_1 from "tslib";
-import { bindable, customElement, bindingMode, autoinject } from "aurelia-framework";
+import * as au from "../aurelia";
 var MdRange = /** @class */ (function () {
-    function MdRange() {
-        this.mdReadonly = false;
-        this.mdMin = 0;
-        this.mdMax = 100;
-        this.mdStep = 1;
-        this.mdValue = 0;
+    function MdRange(element) {
+        this.element = element;
+        this.readonly = false;
+        this.min = 0;
+        this.max = 100;
+        this.step = 1;
+        this.value = 0;
     }
+    MdRange.prototype.attached = function () {
+        this.instance = new M.Range(this.input);
+    };
+    MdRange.prototype.detached = function () {
+        this.instance.destroy();
+    };
     tslib_1.__decorate([
-        bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdRange.prototype, "mdReadonly", void 0);
+        au.ato.bindable.booleanMd,
+        tslib_1.__metadata("design:type", Boolean)
+    ], MdRange.prototype, "readonly", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
-    ], MdRange.prototype, "mdMin", void 0);
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Number)
+    ], MdRange.prototype, "min", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
-    ], MdRange.prototype, "mdMax", void 0);
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Number)
+    ], MdRange.prototype, "max", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
-    ], MdRange.prototype, "mdStep", void 0);
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Number)
+    ], MdRange.prototype, "step", void 0);
     tslib_1.__decorate([
-        bindable({ defaultBindingMode: bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", Object)
-    ], MdRange.prototype, "mdValue", void 0);
+        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
+        tslib_1.__metadata("design:type", Number)
+    ], MdRange.prototype, "value", void 0);
     MdRange = tslib_1.__decorate([
-        customElement("md-range"),
-        autoinject
+        au.customElement("md-range"),
+        au.autoinject,
+        tslib_1.__metadata("design:paramtypes", [Element])
     ], MdRange);
     return MdRange;
 }());
 export { MdRange };
+//# sourceMappingURL=range.js.map

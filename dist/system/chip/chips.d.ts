@@ -1,17 +1,18 @@
-import { Logger } from "aurelia-logging";
+import * as au from "../aurelia";
 export declare class MdChips {
     private element;
-    constructor(element: Element);
-    log: Logger;
-    autocompleteData: any;
-    data: any[];
+    private taskQueue;
+    constructor(element: Element, taskQueue: au.TaskQueue);
+    log: au.Logger;
+    autocompleteData: M.AutocompleteData;
+    data: M.ChipData[];
     dataChanged(newValue: any[], oldValue: any[]): void;
     placeholder: string;
     secondaryPlaceholder: string;
+    limit: number;
+    instance: M.Chips;
+    bind(): void;
     attached(): void;
     detached(): void;
     refresh(): void;
-    onChipAdd(e: any, chip: any): void;
-    onChipDelete(e: any, chip: any): void;
-    onChipSelect(e: any, chip: any): void;
 }

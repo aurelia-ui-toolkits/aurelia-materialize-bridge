@@ -1,20 +1,14 @@
-System.register(["tslib", "aurelia-framework", "../common/attributeManager", "../common/attributes"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
     "use strict";
+    var tslib_1, au, MdTooltip;
     var __moduleName = context_1 && context_1.id;
-    var tslib_1, aurelia_framework_1, attributeManager_1, attributes_1, MdTooltip;
     return {
         setters: [
             function (tslib_1_1) {
                 tslib_1 = tslib_1_1;
             },
-            function (aurelia_framework_1_1) {
-                aurelia_framework_1 = aurelia_framework_1_1;
-            },
-            function (attributeManager_1_1) {
-                attributeManager_1 = attributeManager_1_1;
-            },
-            function (attributes_1_1) {
-                attributes_1 = attributes_1_1;
+            function (au_1) {
+                au = au_1;
             }
         ],
         execute: function () {
@@ -23,53 +17,40 @@ System.register(["tslib", "aurelia-framework", "../common/attributeManager", "..
                     this.element = element;
                     this.position = "bottom";
                     this.delay = 50;
-                    this.html = false;
                     this.text = "";
-                    this.attributeManager = new attributeManager_1.AttributeManager(this.element);
                 }
-                MdTooltip.prototype.bind = function () {
-                    this.html = attributes_1.getBooleanFromAttributeValue(this.html);
+                MdTooltip.prototype.textChanged = function () {
+                    this.initTooltip();
                 };
                 MdTooltip.prototype.attached = function () {
-                    this.attributeManager.addClasses("tooltipped");
-                    this.attributeManager.addAttributes({ "data-position": this.position, "data-tooltip": this.text });
                     this.initTooltip();
                 };
                 MdTooltip.prototype.detached = function () {
-                    $(this.element).tooltip("remove");
-                    this.attributeManager.removeClasses("tooltipped");
-                    this.attributeManager.removeAttributes(["data-position", "data-tooltip"]);
-                };
-                MdTooltip.prototype.textChanged = function () {
-                    this.attributeManager.addAttributes({ "data-tooltip": this.text });
-                    this.initTooltip();
+                    this.instance.destroy();
                 };
                 MdTooltip.prototype.initTooltip = function () {
-                    $(this.element).tooltip("remove");
-                    $(this.element).tooltip({
-                        delay: parseInt(this.delay.toString(), 10),
-                        html: this.html
-                    });
+                    if (this.text) {
+                        this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
+                    }
+                    else if (this.instance) {
+                        this.instance.destroy();
+                    }
                 };
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", String)
                 ], MdTooltip.prototype, "position", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
-                    tslib_1.__metadata("design:type", Object)
+                    au.bindable,
+                    tslib_1.__metadata("design:type", Number)
                 ], MdTooltip.prototype, "delay", void 0);
                 tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
-                    tslib_1.__metadata("design:type", Object)
-                ], MdTooltip.prototype, "html", void 0);
-                tslib_1.__decorate([
-                    aurelia_framework_1.bindable,
+                    au.bindable,
                     tslib_1.__metadata("design:type", String)
                 ], MdTooltip.prototype, "text", void 0);
                 MdTooltip = tslib_1.__decorate([
-                    aurelia_framework_1.customAttribute("md-tooltip"),
-                    aurelia_framework_1.autoinject,
+                    au.customAttribute("md-tooltip"),
+                    au.autoinject,
                     tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdTooltip);
                 return MdTooltip;
@@ -78,3 +59,4 @@ System.register(["tslib", "aurelia-framework", "../common/attributeManager", "..
         }
     };
 });
+//# sourceMappingURL=tooltip.js.map
