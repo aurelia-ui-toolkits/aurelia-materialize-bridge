@@ -28,6 +28,11 @@ export class MdTooltip {
 	}
 
 	initTooltip() {
-		this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
+		if (this.text) {
+			this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
+		}
+		else if (this.instance) {
+			this.instance.destroy();
+		}
 	}
 }
