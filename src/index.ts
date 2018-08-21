@@ -24,5 +24,6 @@ export function configure(frameworkConfiguration: FrameworkConfiguration, config
 // otherwise typescript optimises imports and loads augmentation/aurelia-typed-observable after exports
 let d = new Dummy();
 
-import * as exp from "./exports";
-export { exp };
+// build-index-remove start
+export * from "./exports";
+// build-index-remove end
