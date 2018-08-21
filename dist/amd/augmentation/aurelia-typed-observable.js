@@ -39,5 +39,12 @@ define(["require", "exports", "aurelia-typed-observable-plugin"], function (requ
             return "" + val;
         }
     };
+    // dummy export is needed to enforce loading order for requirejs
+    var Dummy = /** @class */ (function () {
+        function Dummy() {
+        }
+        return Dummy;
+    }());
+    exports.Dummy = Dummy;
 });
 //# sourceMappingURL=aurelia-typed-observable.js.map

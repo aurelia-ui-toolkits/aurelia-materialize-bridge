@@ -4,6 +4,7 @@
 export declare class ConfigBuilder {
     globalResources: any[];
     noWavesAttach: boolean;
+    autoButtonWaves: boolean;
     useGlobalResources: boolean;
     useAll(): ConfigBuilder;
     useAutoComplete(): ConfigBuilder;
@@ -51,6 +52,7 @@ export declare class ConfigBuilder {
     useWaves(): ConfigBuilder;
     useWell(): ConfigBuilder;
     preventWavesAttach(): ConfigBuilder;
+    useAutoButtonWaves(use: boolean): ConfigBuilder;
     /**
      * Don't globalize any resources
      * Allows you to import yourself via <require></require>

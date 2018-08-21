@@ -37,4 +37,11 @@ coerceFunctions.stringMd = function (val) {
         return "" + val;
     }
 };
+// dummy export is needed to enforce loading order for requirejs
+var Dummy = /** @class */ (function () {
+    function Dummy() {
+    }
+    return Dummy;
+}());
+export { Dummy };
 //# sourceMappingURL=aurelia-typed-observable.js.map

@@ -1,6 +1,6 @@
 System.register(["./augmentation/element", "./augmentation/materialize", "./augmentation/aurelia-typed-observable", "./polyfills/append", "./polyfills/remove", "./config-builder", "./exports"], function (exports_1, context_1) {
     "use strict";
-    var config_builder_1;
+    var aurelia_typed_observable_1, config_builder_1, d;
     var __moduleName = context_1 && context_1.id;
     function configure(frameworkConfiguration, configCallback) {
         var builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);
@@ -28,11 +28,12 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./augm
             },
             function (_2) {
             },
+            function (aurelia_typed_observable_1_1) {
+                aurelia_typed_observable_1 = aurelia_typed_observable_1_1;
+            },
             function (_3) {
             },
             function (_4) {
-            },
-            function (_5) {
             },
             function (config_builder_1_1) {
                 config_builder_1 = config_builder_1_1;
@@ -42,6 +43,9 @@ System.register(["./augmentation/element", "./augmentation/materialize", "./augm
             }
         ],
         execute: function () {
+            // this is needed to enforce loading order for requirejs
+            // otherwise typescript optimises imports and loads augmentation/aurelia-typed-observable after exports
+            d = new aurelia_typed_observable_1.Dummy();
         }
     };
 });

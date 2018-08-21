@@ -1,16 +1,17 @@
-define(["require", "exports", "tslib", "../aurelia"], function (require, exports, tslib_1, au) {
+define(["require", "exports", "tslib", "../aurelia", "../config-builder"], function (require, exports, tslib_1, au, config_builder_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdButton = /** @class */ (function () {
-        function MdButton(element) {
+        function MdButton(element, configBuilder) {
             this.element = element;
+            this.configBuilder = configBuilder;
             this.disabled = false;
             this.flat = false;
             this.floating = false;
             this.large = false;
             this.small = false;
             this.pulse = false;
-            this.attributeManager = new au.AttributeManager(element);
+            this.attributeManager = new au.AttributeManager(this.element);
         }
         MdButton.prototype.disabledChanged = function () {
             if (this.disabled) {
@@ -38,6 +39,16 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         };
         MdButton.prototype.attached = function () {
             var classes = [];
+            if (this.configBuilder.autoButtonWaves && !this.element.hasAttribute("md-waves")) {
+                classes.push("waves-effect");
+                if (this.flat) {
+                    classes.push("waves-accent");
+                }
+                else {
+                    classes.push("waves-light");
+                }
+                Waves.attach(this.element);
+            }
             this.flatChanged();
             if (this.floating) {
                 classes.push("btn-floating");
@@ -54,7 +65,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.attributeManager.addClasses(classes);
         };
         MdButton.prototype.detached = function () {
-            this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse"]);
+            this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse", "waves-accent", "waves-light", "waves-effect", "waves-block"]);
         };
         tslib_1.__decorate([
             au.ato.bindable.booleanMd,
@@ -83,7 +94,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         MdButton = tslib_1.__decorate([
             au.customAttribute("md-button"),
             au.autoinject,
-            tslib_1.__metadata("design:paramtypes", [Element])
+            tslib_1.__metadata("design:paramtypes", [Element, config_builder_1.ConfigBuilder])
         ], MdButton);
         return MdButton;
     }());

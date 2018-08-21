@@ -8,6 +8,7 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
         function ConfigBuilder() {
             this.globalResources = [];
             this.noWavesAttach = false;
+            this.autoButtonWaves = false;
             this.useGlobalResources = true;
         }
         ConfigBuilder.prototype.useAll = function () {
@@ -51,6 +52,7 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
                 .useTooltip()
                 .useWaitCursor()
                 .useWaves()
+                .useAutoButtonWaves(true)
                 .useWell();
         };
         ConfigBuilder.prototype.useAutoComplete = function () {
@@ -231,6 +233,10 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
         };
         ConfigBuilder.prototype.preventWavesAttach = function () {
             this.noWavesAttach = true;
+            return this;
+        };
+        ConfigBuilder.prototype.useAutoButtonWaves = function (use) {
+            this.autoButtonWaves = use;
             return this;
         };
         /**

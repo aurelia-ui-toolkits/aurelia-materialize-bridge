@@ -5,4 +5,5 @@ declare module "aurelia-typed-observable-plugin/dist/types/bindable" {
         stringMd: IBindableDecoratorFunction<string>;
     }
 }
-export {};
+export declare class Dummy {
+}

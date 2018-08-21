@@ -5,7 +5,7 @@ var tslib_1 = require("tslib");
 // without them types will not be found
 require("./augmentation/element");
 require("./augmentation/materialize");
-require("./augmentation/aurelia-typed-observable");
+var aurelia_typed_observable_1 = require("./augmentation/aurelia-typed-observable");
 require("./polyfills/append");
 require("./polyfills/remove");
 var config_builder_1 = require("./config-builder");
@@ -19,6 +19,9 @@ function configure(frameworkConfiguration, configCallback) {
     }
 }
 exports.configure = configure;
+// this is needed to enforce loading order for requirejs
+// otherwise typescript optimises imports and loads augmentation/aurelia-typed-observable after exports
+var d = new aurelia_typed_observable_1.Dummy();
 // build-index-remove start
 tslib_1.__exportStar(require("./exports"), exports);
 // build-index-remove end

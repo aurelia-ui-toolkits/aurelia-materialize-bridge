@@ -1,6 +1,6 @@
 System.register(["aurelia-typed-observable-plugin"], function (exports_1, context_1) {
     "use strict";
-    var aurelia_typed_observable_plugin_1;
+    var aurelia_typed_observable_plugin_1, Dummy;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
@@ -47,6 +47,13 @@ System.register(["aurelia-typed-observable-plugin"], function (exports_1, contex
                     return "" + val;
                 }
             };
+            // dummy export is needed to enforce loading order for requirejs
+            Dummy = /** @class */ (function () {
+                function Dummy() {
+                }
+                return Dummy;
+            }());
+            exports_1("Dummy", Dummy);
         }
     };
 });

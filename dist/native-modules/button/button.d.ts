@@ -1,7 +1,9 @@
 import * as au from "../aurelia";
+import { ConfigBuilder } from "../config-builder";
 export declare class MdButton {
     private element;
-    constructor(element: Element);
+    private configBuilder;
+    constructor(element: Element, configBuilder: ConfigBuilder);
     attributeManager: au.AttributeManager;
     disabled: boolean;
     disabledChanged(): void;

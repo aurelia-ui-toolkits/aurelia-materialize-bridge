@@ -18,7 +18,12 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.instance.destroy();
         };
         MdTooltip.prototype.initTooltip = function () {
-            this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
+            if (this.text) {
+                this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
+            }
+            else if (this.instance) {
+                this.instance.destroy();
+            }
         };
         tslib_1.__decorate([
             au.bindable,

@@ -29,7 +29,12 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.instance.destroy();
                 };
                 MdTooltip.prototype.initTooltip = function () {
-                    this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
+                    if (this.text) {
+                        this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
+                    }
+                    else if (this.instance) {
+                        this.instance.destroy();
+                    }
                 };
                 tslib_1.__decorate([
                     au.bindable,

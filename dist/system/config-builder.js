@@ -16,6 +16,7 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                 function ConfigBuilder() {
                     this.globalResources = [];
                     this.noWavesAttach = false;
+                    this.autoButtonWaves = false;
                     this.useGlobalResources = true;
                 }
                 ConfigBuilder.prototype.useAll = function () {
@@ -59,6 +60,7 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                         .useTooltip()
                         .useWaitCursor()
                         .useWaves()
+                        .useAutoButtonWaves(true)
                         .useWell();
                 };
                 ConfigBuilder.prototype.useAutoComplete = function () {
@@ -239,6 +241,10 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                 };
                 ConfigBuilder.prototype.preventWavesAttach = function () {
                     this.noWavesAttach = true;
+                    return this;
+                };
+                ConfigBuilder.prototype.useAutoButtonWaves = function (use) {
+                    this.autoButtonWaves = use;
                     return this;
                 };
                 /**

@@ -6,6 +6,7 @@ var ConfigBuilder = /** @class */ (function () {
     function ConfigBuilder() {
         this.globalResources = [];
         this.noWavesAttach = false;
+        this.autoButtonWaves = false;
         this.useGlobalResources = true;
     }
     ConfigBuilder.prototype.useAll = function () {
@@ -49,6 +50,7 @@ var ConfigBuilder = /** @class */ (function () {
             .useTooltip()
             .useWaitCursor()
             .useWaves()
+            .useAutoButtonWaves(true)
             .useWell();
     };
     ConfigBuilder.prototype.useAutoComplete = function () {
@@ -229,6 +231,10 @@ var ConfigBuilder = /** @class */ (function () {
     };
     ConfigBuilder.prototype.preventWavesAttach = function () {
         this.noWavesAttach = true;
+        return this;
+    };
+    ConfigBuilder.prototype.useAutoButtonWaves = function (use) {
+        this.autoButtonWaves = use;
         return this;
     };
     /**

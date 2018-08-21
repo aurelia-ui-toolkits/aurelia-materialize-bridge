@@ -2,7 +2,7 @@
 // without them types will not be found
 import "./augmentation/element";
 import "./augmentation/materialize";
-import "./augmentation/aurelia-typed-observable";
+import { Dummy } from "./augmentation/aurelia-typed-observable";
 import "./polyfills/append";
 import "./polyfills/remove";
 import { ConfigBuilder } from "./config-builder";
@@ -15,6 +15,9 @@ export function configure(frameworkConfiguration, configCallback) {
         frameworkConfiguration.globalResources(builder.globalResources);
     }
 }
+// this is needed to enforce loading order for requirejs
+// otherwise typescript optimises imports and loads augmentation/aurelia-typed-observable after exports
+var d = new Dummy();
 // build-index-remove start
 export * from "./exports";
 // build-index-remove end
