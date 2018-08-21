@@ -1,10 +1,11 @@
 import * as au from "../aurelia";
+import { ConfigBuilder } from "../config-builder";
 
 @au.customAttribute("md-button")
 @au.autoinject
 export class MdButton {
-	constructor(private element: Element) {
-		this.attributeManager = new au.AttributeManager(element);
+	constructor(private element: Element, private configBuilder: ConfigBuilder) {
+		this.attributeManager = new au.AttributeManager(this.element);
 	}
 
 	attributeManager: au.AttributeManager;
@@ -51,6 +52,17 @@ export class MdButton {
 	attached() {
 		const classes = [];
 
+		if (this.configBuilder.autoButtonWaves && !this.element.hasAttribute("md-waves")) {
+			classes.push("waves-effect");
+			if (this.flat) {
+				classes.push("waves-accent");
+			}
+			else {
+				classes.push("waves-light");
+			}
+			Waves.attach(this.element);
+		}
+
 		this.flatChanged();
 		if (this.floating) {
 			classes.push("btn-floating");
@@ -68,6 +80,6 @@ export class MdButton {
 	}
 
 	detached() {
-		this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse"]);
+		this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse", "waves-accent", "waves-light", "waves-effect", "waves-block"]);
 	}
 }

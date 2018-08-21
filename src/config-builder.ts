@@ -7,6 +7,7 @@ export class ConfigBuilder {
 
 	globalResources = [];
 	noWavesAttach: boolean = false;
+	autoButtonWaves: boolean = false;
 	useGlobalResources: boolean = true;
 
 	useAll(): ConfigBuilder {
@@ -50,6 +51,7 @@ export class ConfigBuilder {
 			.useTooltip()
 			.useWaitCursor()
 			.useWaves()
+			.useAutoButtonWaves(true)
 			.useWell();
 	}
 
@@ -272,6 +274,11 @@ export class ConfigBuilder {
 
 	preventWavesAttach(): ConfigBuilder {
 		this.noWavesAttach = true;
+		return this;
+	}
+
+	useAutoButtonWaves(use: boolean): ConfigBuilder {
+		this.autoButtonWaves = use;
 		return this;
 	}
 
