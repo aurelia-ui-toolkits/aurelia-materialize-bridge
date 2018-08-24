@@ -19,6 +19,7 @@ export * from "./collection/collection";
 export * from "./collection/md-collection-selector";
 export * from "./colors/color-value-converters";
 export * from "./colors/md-colors";
+export * from "./colors/md-colors-legacy";
 export * from "./common/attribute-manager";
 export * from "./common/constants";
 export * from "./common/events";

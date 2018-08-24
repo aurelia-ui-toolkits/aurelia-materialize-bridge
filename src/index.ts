@@ -5,7 +5,7 @@ import "./augmentation/materialize";
 import { Dummy } from "./augmentation/aurelia-typed-observable";
 import "./polyfills/append";
 import "./polyfills/remove";
-import { FrameworkConfiguration, autoinject } from "aurelia-framework";
+import { FrameworkConfiguration } from "aurelia-framework";
 import { ConfigBuilder } from "./config-builder";
 
 export function configure(frameworkConfiguration: FrameworkConfiguration, configCallback) {

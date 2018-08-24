@@ -133,6 +133,15 @@ export class ConfigBuilder {
 		return this;
 	}
 
+	useLegacyColors(): ConfigBuilder {
+		let i = this.globalResources.indexOf("./colors/md-colors");
+		if (i >= 0) {
+			this.globalResources.splice(i, 1);
+		}
+		this.globalResources.push(PLATFORM.moduleName("./colors/md-colors-legacy"));
+		return this;
+	}
+
 	useDatePicker(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./datepicker/datepicker"));
 		return this;
