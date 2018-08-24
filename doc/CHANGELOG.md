@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0...v1.1.0) (2018-08-24)
+
+
+### Bug Fixes
+
+* **fab:** set accent colour only when a selector present ([76b2109](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/76b2109))
+
+
+### Features
+
+* **colors:** build md-colors styles from Materialize SASS files ([71d8ae5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/71d8ae5))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.0.0-alpha.19...v1.0.0) (2018-08-21)
 
