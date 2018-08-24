@@ -5,12 +5,16 @@ export declare class MdColors {
     constructor(cs: au.MdColorsService, bindingEngine: au.BindingEngine);
     primaryColor: string;
     primaryColorChanged(): void;
-    accentColor: string;
-    accentColorChanged(): void;
+    primaryColorLight: string;
+    primaryColorDark: string;
+    secondaryColor: string;
+    secondaryColorChanged(): void;
     errorColor: string;
     errorColorChanged(): void;
     successColor: string;
     successColorChanged(): void;
+    linkColor: string;
+    linkColorChanged(): void;
     subscriptions: au.Disposable[];
     attached(): void;
     detached(): void;

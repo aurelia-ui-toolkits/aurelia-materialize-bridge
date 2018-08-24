@@ -24,6 +24,7 @@ export declare class ConfigBuilder {
     useCollapsible(): ConfigBuilder;
     useCollection(): ConfigBuilder;
     useColors(): ConfigBuilder;
+    useLegacyColors(): ConfigBuilder;
     useDatePicker(): ConfigBuilder;
     useDropdown(): ConfigBuilder;
     useFab(): ConfigBuilder;

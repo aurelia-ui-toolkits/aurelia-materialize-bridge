@@ -127,6 +127,14 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                     this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./colors/md-colors"));
                     return this;
                 };
+                ConfigBuilder.prototype.useLegacyColors = function () {
+                    var i = this.globalResources.indexOf("./colors/md-colors");
+                    if (i >= 0) {
+                        this.globalResources.splice(i, 1);
+                    }
+                    this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./colors/md-colors-legacy"));
+                    return this;
+                };
                 ConfigBuilder.prototype.useDatePicker = function () {
                     this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./datepicker/datepicker"));
                     return this;

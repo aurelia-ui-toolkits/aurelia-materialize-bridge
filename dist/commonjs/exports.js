@@ -22,6 +22,7 @@ tslib_1.__exportStar(require("./collection/collection"), exports);
 tslib_1.__exportStar(require("./collection/md-collection-selector"), exports);
 tslib_1.__exportStar(require("./colors/color-value-converters"), exports);
 tslib_1.__exportStar(require("./colors/md-colors"), exports);
+tslib_1.__exportStar(require("./colors/md-colors-legacy"), exports);
 tslib_1.__exportStar(require("./common/attribute-manager"), exports);
 tslib_1.__exportStar(require("./common/constants"), exports);
 tslib_1.__exportStar(require("./common/events"), exports);

@@ -5,16 +5,20 @@ var MdColors = /** @class */ (function () {
         this.cs = cs;
         this.bindingEngine = bindingEngine;
         this.primaryColor = this.cs.primaryColor;
-        this.accentColor = this.cs.accentColor;
+        this.primaryColorLight = this.cs.primaryColorLight;
+        this.primaryColorDark = this.cs.primaryColorDark;
+        this.secondaryColor = this.cs.secondaryColor;
         this.errorColor = this.cs.errorColor;
         this.successColor = this.cs.successColor;
+        this.linkColor = this.cs.linkColor;
         this.subscriptions = [];
     }
     MdColors.prototype.primaryColorChanged = function () {
         this.cs.primaryColor = this.primaryColor;
+        this.cs.updatePrimaryShades();
     };
-    MdColors.prototype.accentColorChanged = function () {
-        this.cs.accentColor = this.accentColor;
+    MdColors.prototype.secondaryColorChanged = function () {
+        this.cs.secondaryColor = this.secondaryColor;
     };
     MdColors.prototype.errorColorChanged = function () {
         this.cs.errorColor = this.errorColor;
@@ -22,12 +26,18 @@ var MdColors = /** @class */ (function () {
     MdColors.prototype.successColorChanged = function () {
         this.cs.successColor = this.successColor;
     };
+    MdColors.prototype.linkColorChanged = function () {
+        this.cs.linkColor = this.linkColor;
+    };
     MdColors.prototype.attached = function () {
         var _this = this;
         this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "primaryColor").subscribe(function () { return _this.primaryColor = _this.cs.primaryColor; }));
-        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "accentColor").subscribe(function () { return _this.accentColor = _this.cs.accentColor; }));
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "primaryColorLight").subscribe(function () { return _this.primaryColorLight = _this.cs.primaryColorLight; }));
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "primaryColorDark").subscribe(function () { return _this.primaryColorDark = _this.cs.primaryColorDark; }));
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "secondaryColor").subscribe(function () { return _this.secondaryColor = _this.cs.secondaryColor; }));
         this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "errorColor").subscribe(function () { return _this.errorColor = _this.cs.errorColor; }));
         this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "successColor").subscribe(function () { return _this.successColor = _this.cs.successColor; }));
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "linkColor").subscribe(function () { return _this.linkColor = _this.cs.linkColor; }));
     };
     MdColors.prototype.detached = function () {
         this.subscriptions.forEach(function (x) { return x.dispose(); });
@@ -39,7 +49,7 @@ var MdColors = /** @class */ (function () {
     tslib_1.__decorate([
         au.bindable,
         tslib_1.__metadata("design:type", String)
-    ], MdColors.prototype, "accentColor", void 0);
+    ], MdColors.prototype, "secondaryColor", void 0);
     tslib_1.__decorate([
         au.bindable,
         tslib_1.__metadata("design:type", String)
@@ -48,6 +58,10 @@ var MdColors = /** @class */ (function () {
         au.bindable,
         tslib_1.__metadata("design:type", String)
     ], MdColors.prototype, "successColor", void 0);
+    tslib_1.__decorate([
+        au.bindable,
+        tslib_1.__metadata("design:type", String)
+    ], MdColors.prototype, "linkColor", void 0);
     MdColors = tslib_1.__decorate([
         au.customElement("md-colors"),
         tslib_1.__metadata("design:paramtypes", [au.MdColorsService, au.BindingEngine])
