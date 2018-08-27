@@ -18,31 +18,76 @@
 
 	<style>
 
-	/* validation helper-text tweaks */
-	input:not(.invalid):not(.valid) ~ .helper-text[data-error],
-	input:not(.invalid):not(.valid) ~ .helper-text[data-success],
-	input.valid ~ .helper-text:not([data-success]),
-	input.invalid ~ .helper-text:not([data-error]) {
-		display: none;
-	}
+		/* theme color classes */
+		.primary {
+			background-color: ${primaryColor};
+			color: white;
+		}
+	
+		.primary-text {
+			color: ${primaryColor};
+		}
+	
+		.waves-effect.waves-primary .waves-ripple {
+			background-color: ${primaryColor};
+		}
+	
+		.waves-effect.waves-accent .waves-ripple {
+			background-color: ${accentColor};
+		}
+	
+		.secondary {
+			background-color: ${secondaryColor};
+			color: white;
+		}
+	
+		.secondary-text {
+			color: ${secondaryColor};
+		}
+	
+		.error {
+			background-color: ${errorColor};
+			color: white;
+		}
+	
+		.error-text {
+			color: ${errorColor}
+		}
+	
+		.success {
+			background-color: ${successColor};
+			color: white;
+		}
+	
+		.success-text {
+			color: ${successColor};
+		}
+	
+		/* validation helper-text tweaks */
+		input:not(.invalid):not(.valid) ~ .helper-text[data-error],
+		input:not(.invalid):not(.valid) ~ .helper-text[data-success],
+		input.valid ~ .helper-text:not([data-success]),
+		input.invalid ~ .helper-text:not([data-error]) {
+			display: none;
+		}
 
-	.input-field .helper-text {
-		/* original helper-text is too low */
-		transform: translateY(-7px); 
-	}
-		
-	/* lookup */
-	md-lookup .dropdown-div li {
-		color: ${secondaryColor};
-	}
+		.input-field .helper-text {
+			/* original helper-text is too low */
+			transform: translateY(-7px); 
+		}
+			
+		/* lookup */
+		md-lookup .dropdown-div li {
+			color: ${secondaryColor};
+		}
 
-	md-lookup .dropdown-div li a {
-		color: ${secondaryColor};
-	}
+		md-lookup .dropdown-div li a {
+			color: ${secondaryColor};
+		}
 
-	[md-tabs] .waves-effect {
-		position: static;
-	}	
+		[md-tabs] .waves-effect {
+			position: static;
+		}	
 
 	</style>
 </template>
