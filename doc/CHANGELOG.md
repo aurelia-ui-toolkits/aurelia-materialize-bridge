@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.1.1...v1.1.2) (2018-08-27)
+
+
+### Bug Fixes
+
+* **breadcrumbs:** remove redundant class ([567baee](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/567baee))
+* **md-colors:** add back theme color classes ([2f871ab](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/2f871ab))
+* **navbar:** remove redundant class ([dd4af4c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/dd4af4c))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.1.0...v1.1.1) (2018-08-24)
 
