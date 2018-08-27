@@ -25,8 +25,10 @@ export class MdButton {
 	flatChanged() {
 		if (this.flat) {
 			this.attributeManager.addClasses("btn-flat");
+			this.attributeManager.removeClasses("btn");
 		} else {
 			this.attributeManager.removeClasses("btn-flat");
+			this.attributeManager.addClasses("btn");
 		}
 	}
 
@@ -55,7 +57,7 @@ export class MdButton {
 		if (this.configBuilder.autoButtonWaves && !this.element.hasAttribute("md-waves")) {
 			classes.push("waves-effect");
 			if (this.flat) {
-				classes.push("waves-accent");
+				classes.push("waves-secondary");
 			}
 			else {
 				classes.push("waves-light");
@@ -75,11 +77,11 @@ export class MdButton {
 		}
 		this.disabledChanged();
 		this.pulseChanged();
-		classes.push("btn");
+		this.flatChanged();
 		this.attributeManager.addClasses(classes);
 	}
 
 	detached() {
-		this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse", "waves-accent", "waves-light", "waves-effect", "waves-block"]);
+		this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse", "waves-secondary", "waves-light", "waves-effect", "waves-block"]);
 	}
 }
