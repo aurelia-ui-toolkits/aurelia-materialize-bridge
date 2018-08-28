@@ -24,9 +24,11 @@ var MdButton = /** @class */ (function () {
     MdButton.prototype.flatChanged = function () {
         if (this.flat) {
             this.attributeManager.addClasses("btn-flat");
+            this.attributeManager.removeClasses("btn");
         }
         else {
             this.attributeManager.removeClasses("btn-flat");
+            this.attributeManager.addClasses("btn");
         }
     };
     MdButton.prototype.pulseChanged = function () {
@@ -42,7 +44,7 @@ var MdButton = /** @class */ (function () {
         if (this.configBuilder.autoButtonWaves && !this.element.hasAttribute("md-waves")) {
             classes.push("waves-effect");
             if (this.flat) {
-                classes.push("waves-accent");
+                classes.push("waves-secondary");
             }
             else {
                 classes.push("waves-light");
@@ -61,11 +63,11 @@ var MdButton = /** @class */ (function () {
         }
         this.disabledChanged();
         this.pulseChanged();
-        classes.push("btn");
+        this.flatChanged();
         this.attributeManager.addClasses(classes);
     };
     MdButton.prototype.detached = function () {
-        this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse", "waves-accent", "waves-light", "waves-effect", "waves-block"]);
+        this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse", "waves-secondary", "waves-light", "waves-effect", "waves-block"]);
     };
     tslib_1.__decorate([
         au.ato.bindable.booleanMd,
