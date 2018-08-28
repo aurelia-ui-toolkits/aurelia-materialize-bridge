@@ -9,7 +9,7 @@ export class MdSwitch {
 
 	@au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay })
 	checked: boolean;
-	checkedChanged(newValue) {
+	checkedChanged(newValue: boolean) {
 		if (this.checkbox) {
 			this.checkbox.checked = !!newValue;
 		}
@@ -17,6 +17,11 @@ export class MdSwitch {
 
 	@au.ato.bindable.booleanMd
 	disabled: boolean;
+	disabledChanged() {
+		if (this.checkbox) {
+			this.checkbox.disabled = this.disabled;
+		}
+	}
 
 	@au.ato.bindable.booleanMd
 	readonly: boolean = false;
@@ -29,9 +34,7 @@ export class MdSwitch {
 
 	attached() {
 		this.checkbox.checked = this.checked;
-		if (this.disabled) {
-			this.checkbox.disabled = true;
-		}
+		this.disabledChanged();
 		this.checkbox.addEventListener("change", this.handleChange);
 	}
 
