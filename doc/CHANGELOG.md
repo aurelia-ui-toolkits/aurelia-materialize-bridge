@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.1.3...v1.1.4) (2018-08-28)
+
+
+### Bug Fixes
+
+* **button:** fix btn classes usage and rename accent to secondary ([7a60b9f](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/7a60b9f))
+* **switch:** bind to correct fields ([969e5e9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/969e5e9)), closes [#525](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/525)
+
+
+
 <a name="1.1.3"></a>
 ## [1.1.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.1.2...v1.1.3) (2018-08-27)
 
