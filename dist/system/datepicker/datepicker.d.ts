@@ -37,7 +37,7 @@ export declare class MdDatePicker {
     setValue(newValue: Date): void;
     calendarIcon: any;
     attached(): void;
-    done: () => void;
+    done: (e: any) => void;
     bind(): void;
     detached(): void;
     open(): void;

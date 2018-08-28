@@ -29,11 +29,14 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         this.checkbox.checked = !!newValue;
                     }
                 };
+                MdSwitch.prototype.disabledChanged = function () {
+                    if (this.checkbox) {
+                        this.checkbox.disabled = this.disabled;
+                    }
+                };
                 MdSwitch.prototype.attached = function () {
                     this.checkbox.checked = this.checked;
-                    if (this.disabled) {
-                        this.checkbox.disabled = true;
-                    }
+                    this.disabledChanged();
                     this.checkbox.addEventListener("change", this.handleChange);
                 };
                 MdSwitch.prototype.detached = function () {
