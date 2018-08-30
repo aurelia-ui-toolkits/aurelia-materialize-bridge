@@ -155,6 +155,12 @@ export class MdLookup {
 			if (!this.isOpen) {
 				return;
 			}
+
+			// adjust dropdown top so it sits right below the input
+			// doing it with CSS will not work if input margin is redefined
+			let inputRect = this.input.getBoundingClientRect();
+			this.dropdown.style.top = `${inputRect.height + 3}px`;
+
 			const rect = this.dropdown.getBoundingClientRect();
 			let availableSpace = window.innerHeight - rect.top + document.body.scrollTop - 5;
 			if (this.dropdownUl.offsetHeight > availableSpace) {
