@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.6"></a>
+## [1.1.6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.1.5...v1.1.6) (2018-08-30)
+
+
+### Bug Fixes
+
+* **colors:** add padStart polyfill for IE11 ([6eb112e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6eb112e))
+
+
+
 <a name="1.1.5"></a>
 ## [1.1.5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.1.4...v1.1.5) (2018-08-28)
 
