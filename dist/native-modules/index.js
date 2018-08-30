@@ -5,6 +5,7 @@ import "./augmentation/materialize";
 import { Dummy } from "./augmentation/aurelia-typed-observable";
 import "./polyfills/append";
 import "./polyfills/remove";
+import "./polyfills/pad-start";
 import { ConfigBuilder } from "./config-builder";
 export function configure(frameworkConfiguration, configCallback) {
     var builder = frameworkConfiguration.container.get(ConfigBuilder);

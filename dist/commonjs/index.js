@@ -8,6 +8,7 @@ require("./augmentation/materialize");
 var aurelia_typed_observable_1 = require("./augmentation/aurelia-typed-observable");
 require("./polyfills/append");
 require("./polyfills/remove");
+require("./polyfills/pad-start");
 var config_builder_1 = require("./config-builder");
 function configure(frameworkConfiguration, configCallback) {
     var builder = frameworkConfiguration.container.get(config_builder_1.ConfigBuilder);

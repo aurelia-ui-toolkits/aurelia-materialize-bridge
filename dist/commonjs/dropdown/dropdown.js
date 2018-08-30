@@ -129,17 +129,4 @@ var MdDropdown = /** @class */ (function () {
     return MdDropdown;
 }());
 exports.MdDropdown = MdDropdown;
-// remove when https://github.com/Dogfalo/materialize/pull/5865 gets released
-M.Dropdown.prototype._removeEventHandlers = function () {
-    this.el.removeEventListener("keydown", this._handleTriggerKeydownBound);
-    this.dropdownEl.removeEventListener("click", this._handleDropdownClickBound);
-    if (this.options.hover) {
-        this.el.removeEventListener("mouseenter", this._handleMouseEnterBound);
-        this.el.removeEventListener("mouseleave", this._handleMouseLeaveBound);
-        this.dropdownEl.removeEventListener("mouseleave", this._handleMouseLeaveBound);
-    }
-    else {
-        this.el.removeEventListener("click", this._handleClickBound);
-    }
-};
 //# sourceMappingURL=dropdown.js.map

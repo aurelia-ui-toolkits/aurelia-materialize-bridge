@@ -1,4 +1,4 @@
-define(["require", "exports", "tslib", "./augmentation/aurelia-typed-observable", "./config-builder", "./exports", "./augmentation/element", "./augmentation/materialize", "./polyfills/append", "./polyfills/remove"], function (require, exports, tslib_1, aurelia_typed_observable_1, config_builder_1, exports_1) {
+define(["require", "exports", "tslib", "./augmentation/aurelia-typed-observable", "./config-builder", "./exports", "./augmentation/element", "./augmentation/materialize", "./polyfills/append", "./polyfills/remove", "./polyfills/pad-start"], function (require, exports, tslib_1, aurelia_typed_observable_1, config_builder_1, exports_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     function configure(frameworkConfiguration, configCallback) {
