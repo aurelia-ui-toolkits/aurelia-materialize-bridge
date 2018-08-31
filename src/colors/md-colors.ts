@@ -48,6 +48,8 @@ export class MdColors {
 		this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "errorColor").subscribe(() => this.errorColor = this.cs.errorColor));
 		this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "successColor").subscribe(() => this.successColor = this.cs.successColor));
 		this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "linkColor").subscribe(() => this.linkColor = this.cs.linkColor));
+		this.primaryColorLight = this.cs.primaryColorLight;
+		this.primaryColorDark = this.cs.primaryColorDark;
 	}
 
 	detached() {
