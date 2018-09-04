@@ -39,6 +39,8 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "errorColor").subscribe(function () { return _this.errorColor = _this.cs.errorColor; }));
             this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "successColor").subscribe(function () { return _this.successColor = _this.cs.successColor; }));
             this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "linkColor").subscribe(function () { return _this.linkColor = _this.cs.linkColor; }));
+            this.primaryColorLight = this.cs.primaryColorLight;
+            this.primaryColorDark = this.cs.primaryColorDark;
         };
         MdColors.prototype.detached = function () {
             this.subscriptions.forEach(function (x) { return x.dispose(); });
