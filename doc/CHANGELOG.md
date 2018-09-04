@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.7"></a>
+## [1.1.7](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.1.6...v1.1.7) (2018-09-04)
+
+
+### Bug Fixes
+
+* **colors:** do not mess with helper-text positions ([bf22e75](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/bf22e75))
+* **colors:** set primary shades on attached ([a2ff37c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a2ff37c))
+
+
+
 <a name="1.1.6"></a>
 ## [1.1.6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.1.5...v1.1.6) (2018-08-30)
 
