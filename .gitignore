@@ -7,5 +7,6 @@ devbuild
 .imdone/config.json
 npm-debug.log*
 sample/dist
+sass-copy
 
 /copyfiles.cmd

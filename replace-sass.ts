@@ -6,7 +6,7 @@ namespace sass {
 	let replace = require("replace-in-file");
 
 	const options = {
-		files: "node_modules/materialize-css/sass-copy/**/*.scss",
+		files: "sass-copy/**/*.scss",
 		from: [
 			/\$primary-color: .* !default;/g,
 			/\$primary-color-light: .* !default;/g,

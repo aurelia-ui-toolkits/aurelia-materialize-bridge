@@ -7,7 +7,7 @@ namespace css {
 	let fs = require("fs");
 
 	let optionsCss = {
-		files: "node_modules/materialize-css/sass-copy/materialize.css",
+		files: "sass-copy/materialize.css",
 		from: [
 			/p-primary-color-light/g,
 			/p-primary-color-dark/g,
