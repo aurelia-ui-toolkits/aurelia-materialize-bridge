@@ -17,7 +17,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.inputField = null;
             this.optionsMutationObserver = null;
             this.onSelectValueChanged = function () {
-                _this.createMaterialSelect(false);
+                _this.taskQueue.queueTask(function () { return _this.createMaterialSelect(false); });
             };
             this.handleFocus = function () {
                 _this.labelElement.classList.add("md-focused");
