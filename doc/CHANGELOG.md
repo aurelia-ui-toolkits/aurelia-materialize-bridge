@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.10"></a>
+## [1.1.10](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.1.9...v1.1.10) (2018-09-05)
+
+
+### Bug Fixes
+
+* **select:** reinitialize select in a queue ([a5c25fc](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a5c25fc)), closes [#528](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/528)
+
+
+
 <a name="1.1.9"></a>
 ## [1.1.9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.1.8...v1.1.9) (2018-09-05)
 
