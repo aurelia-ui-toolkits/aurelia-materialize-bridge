@@ -42,7 +42,7 @@
     "release": "standard-version",
     "sass:copy": "rimraf node_modules/materialize-css/sass-copy && copyfiles --up 3 node_modules/materialize-css/sass/**/*.scss node_modules/materialize-css/sass-copy",
     "sass:replace-sass": "ts-node ./replace-sass.ts",
-    "sass:build": "sass ./node_modules/materialize-css/sass-copy/materialize.scss ./node_modules/materialize-css/sass-copy/materialize.css --no-source-map --style=compressed",
+    "sass:build": "sass node_modules/materialize-css/sass-copy/materialize.scss node_modules/materialize-css/sass-copy/materialize.css --no-source-map --style=compressed",
     "sass:replace-css": "ts-node ./replace-css.ts",
     "build-md-colors": "npm run sass:copy && npm run sass:replace-sass && npm run sass:build && npm run sass:replace-css"
   },
