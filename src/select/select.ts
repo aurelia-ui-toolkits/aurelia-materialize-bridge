@@ -116,7 +116,7 @@ export class MdSelect {
 	}
 
 	onSelectValueChanged = () => {
-		this.createMaterialSelect(false);
+		this.taskQueue.queueTask(() => this.createMaterialSelect(false));
 	}
 
 	createMaterialSelect(destroy) {
