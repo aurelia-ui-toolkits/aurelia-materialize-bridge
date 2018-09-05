@@ -92,7 +92,7 @@ export class MdInput {
 		if (this.placeholder) {
 			this.input.setAttribute("placeholder", this.placeholder);
 		}
-		if(this.autocomplete){
+		if (this.autocomplete) {
 			this.input.setAttribute("autocomplete", this.autocomplete);
 		}
 		this.updateLabel();
