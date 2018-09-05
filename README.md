@@ -4,6 +4,8 @@
 <a href="https://zenhub.io"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png"></a>
 [![Build Status](https://travis-ci.org/aurelia-ui-toolkits/aurelia-materialize-bridge.svg?branch=master)](https://travis-ci.org/aurelia-ui-toolkits/aurelia-materialize-bridge)
 [![Coverage Status](https://coveralls.io/repos/github/aurelia-ui-toolkits/aurelia-materialize-bridge/badge.svg?branch=master)](https://coveralls.io/github/aurelia-ui-toolkits/aurelia-materialize-bridge?branch=master)
+[![Code Quality: Javascript](https://img.shields.io/lgtm/grade/javascript/g/aurelia-ui-toolkits/aurelia-materialize-bridge.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aurelia-ui-toolkits/aurelia-materialize-bridge/context:javascript)
+[![Total Alerts](https://img.shields.io/lgtm/alerts/g/aurelia-ui-toolkits/aurelia-materialize-bridge.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aurelia-ui-toolkits/aurelia-materialize-bridge/alerts)
 
 Aurelia components for http://materializecss.com/
 
