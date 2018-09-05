@@ -1,5 +1,4 @@
 import * as au from "../aurelia";
-import { shadeBlendConvert } from "../common/shade-blend-convert";
 
 @au.customElement("md-colors")
 export class MdColorsLegacy {

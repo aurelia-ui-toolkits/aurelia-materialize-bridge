@@ -48,7 +48,6 @@ export class MdTabs {
 			this.tabAttributeManagers.push(setter);
 		}
 
-		let self = this;
 		let options: Partial<M.TabsOptions> = {
 			swipeable: this.swipeable,
 			responsiveThreshold: this.responsiveThreshold,

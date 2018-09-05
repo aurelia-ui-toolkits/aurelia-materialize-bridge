@@ -1,6 +1,5 @@
 var isparta = require('isparta');
 var paths = require('./build/paths');
-var babelOptions = require('./build/babel-options');
 
 module.exports = function(config) {
   var configuration = {

@@ -1,5 +1,4 @@
 import * as au from "../aurelia";
-import { MdInput } from "../input/input";
 
 @au.customAttribute("md-autocomplete")
 @au.autoinject

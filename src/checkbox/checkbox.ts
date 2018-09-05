@@ -59,7 +59,6 @@ export class MdCheckbox {
 		if (this.disabled) {
 			this.checkbox.disabled = true;
 		}
-		this.readonly = this.readonly;
 		this.readonlyChanged();
 	}
 
