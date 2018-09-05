@@ -1,8 +1,7 @@
 import * as au from "../aurelia";
 export declare class MdDatePicker {
     private element;
-    private taskQueue;
-    constructor(element: Element, taskQueue: au.TaskQueue);
+    constructor(element: Element);
     static id: number;
     controlId: string;
     input: HTMLInputElement;
@@ -37,7 +36,8 @@ export declare class MdDatePicker {
     setValue(newValue: Date): void;
     calendarIcon: any;
     attached(): void;
-    done: (e: any) => void;
+    suppressDone: boolean;
+    done: (e: Event) => void;
     bind(): void;
     detached(): void;
     open(): void;

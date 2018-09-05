@@ -3,7 +3,7 @@ import * as au from "../aurelia";
 @au.autoinject
 @au.customElement("md-datepicker")
 export class MdDatePicker {
-	constructor(private element: Element, private taskQueue: au.TaskQueue) { }
+	constructor(private element: Element) { }
 
 	static id = 0;
 	controlId: string = `md-datepicker-${MdDatePicker.id++}`;

@@ -28,6 +28,7 @@ tslib_1.__exportStar(require("./common/constants"), exports);
 tslib_1.__exportStar(require("./common/events"), exports);
 tslib_1.__exportStar(require("./common/discardable-promise"), exports);
 tslib_1.__exportStar(require("./common/colors-service"), exports);
+tslib_1.__exportStar(require("./common/util"), exports);
 tslib_1.__exportStar(require("./datepicker/datepicker"), exports);
 tslib_1.__exportStar(require("./dropdown/dropdown-element"), exports);
 tslib_1.__exportStar(require("./dropdown/dropdown"), exports);

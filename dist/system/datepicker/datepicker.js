@@ -13,10 +13,9 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
         ],
         execute: function () {
             MdDatePicker = /** @class */ (function () {
-                function MdDatePicker(element, taskQueue) {
+                function MdDatePicker(element) {
                     var _this = this;
                     this.element = element;
-                    this.taskQueue = taskQueue;
                     this.controlId = "md-datepicker-" + MdDatePicker_1.id++;
                     this.label = "";
                     this.placeholder = "";
@@ -27,10 +26,15 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         if (e.firedBy !== _this.instance) {
                             return;
                         }
-                        _this.taskQueue.queueTask(function () {
-                            _this.setValue(_this.instance.date);
-                            au.fireEvent(_this.element, "blur");
-                        });
+                        // stop propagation for widget triggered change to retrigger it later on an the element
+                        e.stopPropagation();
+                        if (_this.suppressDone) {
+                            _this.suppressDone = false;
+                            return;
+                        }
+                        _this.setValue(_this.instance.date);
+                        au.fireEvent(_this.element, "blur");
+                        au.fireEvent(_this.element, "change");
                     };
                     this.mdUnrenderValidateResults = function (results, renderer) {
                         var e_1, _a;
@@ -77,11 +81,14 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 MdDatePicker.prototype.valueChanged = function () {
                     if (this.valueChangedSuppress) {
                         this.valueChangedSuppress = false;
+                        au.updateLabel(this.input, this.labelElement);
                         return;
                     }
                     this.instance.setDate(this.value);
-                    // next line will trigger this.done and update the value with widget's value
+                    // suppress done handler because setInputValue will trigger it, change value and possibly cause an infinite loop when a date has time components
+                    this.suppressDone = true;
                     this.instance.setInputValue();
+                    au.updateLabel(this.input, this.labelElement);
                 };
                 MdDatePicker.prototype.setValue = function (newValue) {
                     if (this.value !== newValue) {
@@ -121,20 +128,15 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     };
                     au.cleanOptions(options);
                     this.instance = new M.Datepicker(this.input, options);
-                    this.element.addEventListener("change", this.done);
+                    this.instance.el.addEventListener("change", this.done);
                     this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
                     this.element.mdRenderValidateResults = this.mdRenderValidateResults;
                     this.valueChanged();
-                    au.updateLabel(this.input, this.labelElement);
                 };
                 MdDatePicker.prototype.bind = function () {
                     //
                 };
                 MdDatePicker.prototype.detached = function () {
-                    this.instance.doneBtn.removeEventListener("click", this.done);
-                    if (this.instance.clearBtn) {
-                        this.instance.clearBtn.removeEventListener("click", this.done);
-                    }
                     au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
                     this.instance.destroy();
                     this.element.mdUnrenderValidateResults = undefined;
@@ -243,7 +245,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 MdDatePicker = MdDatePicker_1 = tslib_1.__decorate([
                     au.autoinject,
                     au.customElement("md-datepicker"),
-                    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
+                    tslib_1.__metadata("design:paramtypes", [Element])
                 ], MdDatePicker);
                 return MdDatePicker;
             }());

@@ -24,6 +24,7 @@ export * from "./common/constants";
 export * from "./common/events";
 export * from "./common/discardable-promise";
 export * from "./common/colors-service";
+export * from "./common/util";
 export * from "./datepicker/datepicker";
 export * from "./dropdown/dropdown-element";
 export * from "./dropdown/dropdown";
