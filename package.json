@@ -40,7 +40,7 @@
     "postbuild": "concurrently \"npm run postbuild:amd\" \"npm run postbuild:commonjs\" \"npm run postbuild:es2015\" \"npm run postbuild:native-modules\" \"npm run postbuild:system\"",
     "copytodemo": "copyfiles --up 1 dist/**/*.* ../demo-materialize/node_modules/aurelia-materialize-bridge/dist",
     "release": "standard-version",
-    "sass:copy": "rimraf sass-copy && copyfiles --up 3 node_modules/materialize-css/**/*.scss node_modules/materialize-css/sass/**/*.scss sass-copy",
+    "sass:copy": "rimraf sass-copy && copyfiles --up 3 \"node_modules/materialize-css/sass/**/*.scss\" sass-copy",
     "sass:replace-sass": "ts-node ./replace-sass.ts",
     "sass:build": "ls sass-copy && sass sass-copy/materialize.scss sass-copy/materialize.css --no-source-map --style=compressed",
     "sass:replace-css": "ts-node ./replace-css.ts",
