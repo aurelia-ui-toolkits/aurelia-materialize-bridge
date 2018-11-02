@@ -37,7 +37,6 @@ var MdCheckbox = /** @class */ (function () {
         if (this.disabled) {
             this.checkbox.disabled = true;
         }
-        this.readonly = this.readonly;
         this.readonlyChanged();
     };
     MdCheckbox.prototype.detached = function () {

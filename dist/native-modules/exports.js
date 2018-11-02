@@ -55,6 +55,7 @@ export * from "./timepicker/timepicker";
 export * from "./toast/toastService";
 export * from "./tooltip/tooltip";
 export * from "./validation/validationRenderer";
+export * from "./validation/validation-container";
 export * from "./wait-cursor/wait-cursor";
 export * from "./waves/waves";
 export * from "./well/md-well";

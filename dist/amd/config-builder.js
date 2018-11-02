@@ -53,6 +53,7 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
                 .useWaitCursor()
                 .useWaves()
                 .useAutoButtonWaves(true)
+                .useValidationContainer()
                 .useWell();
         };
         ConfigBuilder.prototype.useAutoComplete = function () {
@@ -233,6 +234,10 @@ define(["require", "exports", "aurelia-pal"], function (require, exports, aureli
         };
         ConfigBuilder.prototype.useWaves = function () {
             this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./waves/waves"));
+            return this;
+        };
+        ConfigBuilder.prototype.useValidationContainer = function () {
+            this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./validation/validation-container"));
             return this;
         };
         ConfigBuilder.prototype.useWell = function () {

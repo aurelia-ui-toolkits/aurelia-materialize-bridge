@@ -88,5 +88,51 @@
 			position: static;
 		}	
 
+		/* validation-container */
+		validation-container > div.wrapper {
+			position: relative;
+			margin: -1px; }
+			/*validation-container > div.wrapper > .helper-text {
+				font-size: 12px;
+				position: absolute;
+				bottom: -18px;
+				width: 100%; }*/
+			validation-container > div.wrapper > div {
+				margin-bottom: 8px;
+				border: 1px solid transparent; }
+			validation-container > div.wrapper:not(.invalid):not(.valid) > .helper-text {
+				display: none; }
+			validation-container > div.wrapper.valid > .helper-text[data-success] {
+				display: block; }
+				validation-container > div.wrapper.valid > .helper-text[data-success]::after {
+					content: attr(data-error); }
+			validation-container > div.wrapper.valid > .helper-text:not([data-success]) {
+				display: none; }
+			validation-container > div.wrapper.invalid > .helper-text[data-error] {
+				display: block; }
+				validation-container > div.wrapper.invalid > .helper-text[data-error]::after {
+					content: attr(data-error); }
+			validation-container > div.wrapper.invalid > .helper-text:not([data-error]) {
+				display: none; }
+		
+				validation-container div.wrapper.invalid > div {
+					border-bottom: 1px solid ${errorColor};
+					box-shadow: 0 1px 0 0 ${errorColor};
+				}
+		
+				validation-container div.wrapper.invalid .helper-text[data-error] {
+					color: ${errorColor};
+				}
+		
+				validation-container div.wrapper.valid > div {
+					border-bottom: 1px solid ${successColor};
+					box-shadow: 0 1px 0 0 ${successColor};
+				}
+		
+				validation-container div.wrapper.valid .helper-text[data-error] {
+					color: ${successColor};
+				}
+	
+
 	</style>
 </template>

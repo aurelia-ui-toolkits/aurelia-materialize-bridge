@@ -38,7 +38,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             if (this.disabled) {
                 this.checkbox.disabled = true;
             }
-            this.readonly = this.readonly;
             this.readonlyChanged();
         };
         MdCheckbox.prototype.detached = function () {

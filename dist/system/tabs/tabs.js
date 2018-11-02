@@ -63,7 +63,6 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                         }
                         finally { if (e_1) throw e_1.error; }
                     }
-                    var self = this;
                     var options = {
                         swipeable: this.swipeable,
                         responsiveThreshold: this.responsiveThreshold,

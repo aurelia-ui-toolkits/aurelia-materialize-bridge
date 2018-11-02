@@ -52,7 +52,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
                 }
                 finally { if (e_1) throw e_1.error; }
             }
-            var self = this;
             var options = {
                 swipeable: this.swipeable,
                 responsiveThreshold: this.responsiveThreshold,

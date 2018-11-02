@@ -51,6 +51,7 @@ export declare class ConfigBuilder {
     useTooltip(): ConfigBuilder;
     useWaitCursor(): ConfigBuilder;
     useWaves(): ConfigBuilder;
+    useValidationContainer(): ConfigBuilder;
     useWell(): ConfigBuilder;
     preventWavesAttach(): ConfigBuilder;
     useAutoButtonWaves(use: boolean): ConfigBuilder;

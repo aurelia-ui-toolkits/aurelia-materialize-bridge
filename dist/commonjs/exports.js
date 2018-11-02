@@ -58,6 +58,7 @@ tslib_1.__exportStar(require("./timepicker/timepicker"), exports);
 tslib_1.__exportStar(require("./toast/toastService"), exports);
 tslib_1.__exportStar(require("./tooltip/tooltip"), exports);
 tslib_1.__exportStar(require("./validation/validationRenderer"), exports);
+tslib_1.__exportStar(require("./validation/validation-container"), exports);
 tslib_1.__exportStar(require("./wait-cursor/wait-cursor"), exports);
 tslib_1.__exportStar(require("./waves/waves"), exports);
 tslib_1.__exportStar(require("./well/md-well"), exports);

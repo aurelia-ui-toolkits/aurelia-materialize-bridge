@@ -61,6 +61,7 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                         .useWaitCursor()
                         .useWaves()
                         .useAutoButtonWaves(true)
+                        .useValidationContainer()
                         .useWell();
                 };
                 ConfigBuilder.prototype.useAutoComplete = function () {
@@ -241,6 +242,10 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                 };
                 ConfigBuilder.prototype.useWaves = function () {
                     this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./waves/waves"));
+                    return this;
+                };
+                ConfigBuilder.prototype.useValidationContainer = function () {
+                    this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./validation/validation-container"));
                     return this;
                 };
                 ConfigBuilder.prototype.useWell = function () {
