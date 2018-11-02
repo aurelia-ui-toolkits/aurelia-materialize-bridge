@@ -52,6 +52,7 @@ export class ConfigBuilder {
 			.useWaitCursor()
 			.useWaves()
 			.useAutoButtonWaves(true)
+			.useValidationContainer()
 			.useWell();
 	}
 
@@ -273,6 +274,11 @@ export class ConfigBuilder {
 
 	useWaves(): ConfigBuilder {
 		this.globalResources.push(PLATFORM.moduleName("./waves/waves"));
+		return this;
+	}
+
+	useValidationContainer(): ConfigBuilder {
+		this.globalResources.push(PLATFORM.moduleName("./validation/validation-container"));
 		return this;
 	}
 
