@@ -21,4 +21,4 @@
 			}
 		});
 	});
-})([Element.prototype, Document.prototype, DocumentFragment.prototype]);
+})(typeof Document !== "undefined" ? [Element.prototype, Document.prototype, DocumentFragment.prototype] : []);

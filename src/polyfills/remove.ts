@@ -9,7 +9,7 @@ function remove(this: Element) {
 	if (!Element.prototype.remove) {
 		Element.prototype.remove = remove;
 	}
-	if (Text && !Text.prototype.remove) {
+	if (typeof Text !== "undefined" && Text && !Text.prototype.remove) {
 		Text.prototype.remove = remove;
 	}
 })();
