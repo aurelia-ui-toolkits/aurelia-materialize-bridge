@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.4"></a>
+## [1.2.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.3...v1.2.4) (2018-12-11)
+
+
+### Bug Fixes
+
+* **select:** split command for IE compatibility ([ef1ad8e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/ef1ad8e))
+
+
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.2...v1.2.3) (2018-12-11)
 
