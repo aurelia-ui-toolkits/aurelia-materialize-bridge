@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.2...v1.2.3) (2018-12-11)
+
+
+### Bug Fixes
+
+* **select:** Add a class for discoverability ([8128a59](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/8128a59))
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.1...v1.2.2) (2018-12-07)
 
