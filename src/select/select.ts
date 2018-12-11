@@ -74,7 +74,8 @@ export class MdSelect {
 		}
 
 		this.inputField = document.createElement("div");
-		this.inputField.classList.add("input-field", "md-select");
+		this.inputField.classList.add("input-field");
+		this.inputField.classList.add("md-select");
 		let va = this.element.getAttributeNode("validate");
 		if (va) {
 			this.inputField.setAttribute(va.name, va.value);
