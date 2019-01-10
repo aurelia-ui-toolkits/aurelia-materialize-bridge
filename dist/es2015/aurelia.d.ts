@@ -1,5 +1,5 @@
 export { Router, NavigationInstruction } from "aurelia-router";
-export { customElement, customAttribute, autoinject, bindingMode, BindingEngine, TaskQueue, DOM, children, bindable, observable, Disposable, TemplatingEngine } from "aurelia-framework";
+export { customElement, customAttribute, autoinject, bindingMode, BindingEngine, TaskQueue, DOM, children, bindable, observable, Disposable, TemplatingEngine, deprecated } from "aurelia-framework";
 export { getLogger, Logger } from "aurelia-logging";
 export { fireEvent, fireMaterializeEvent } from "./common/events";
 export { ValidateResult } from "aurelia-validation";

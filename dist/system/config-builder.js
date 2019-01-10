@@ -1,18 +1,24 @@
-System.register(["aurelia-pal"], function (exports_1, context_1) {
+System.register(["tslib", "aurelia-pal", "./aurelia"], function (exports_1, context_1) {
     "use strict";
-    var aurelia_pal_1, ConfigBuilder;
+    var tslib_1, aurelia_pal_1, aurelia_1, ConfigBuilder;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
+            function (tslib_1_1) {
+                tslib_1 = tslib_1_1;
+            },
             function (aurelia_pal_1_1) {
                 aurelia_pal_1 = aurelia_pal_1_1;
+            },
+            function (aurelia_1_1) {
+                aurelia_1 = aurelia_1_1;
             }
         ],
         execute: function () {
-            /**
-             * Plugin configuration builder
-             */
             ConfigBuilder = /** @class */ (function () {
+                /**
+                 * Plugin configuration builder
+                 */
                 function ConfigBuilder() {
                     this.globalResources = [];
                     this.noWavesAttach = false;
@@ -268,6 +274,12 @@ System.register(["aurelia-pal"], function (exports_1, context_1) {
                     this.useGlobalResources = false;
                     return this;
                 };
+                tslib_1.__decorate([
+                    aurelia_1.deprecated({ error: false, message: "Will be removed soon. Please consider using `useColors`." }),
+                    tslib_1.__metadata("design:type", Function),
+                    tslib_1.__metadata("design:paramtypes", []),
+                    tslib_1.__metadata("design:returntype", ConfigBuilder)
+                ], ConfigBuilder.prototype, "useLegacyColors", null);
                 return ConfigBuilder;
             }());
             exports_1("ConfigBuilder", ConfigBuilder);

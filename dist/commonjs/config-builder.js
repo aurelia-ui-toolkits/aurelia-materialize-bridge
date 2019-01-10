@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = require("tslib");
 var aurelia_pal_1 = require("aurelia-pal");
+var aurelia_1 = require("./aurelia");
 /**
  * Plugin configuration builder
  */
@@ -260,6 +262,12 @@ var ConfigBuilder = /** @class */ (function () {
         this.useGlobalResources = false;
         return this;
     };
+    tslib_1.__decorate([
+        aurelia_1.deprecated({ error: false, message: "Will be removed soon. Please consider using `useColors`." }),
+        tslib_1.__metadata("design:type", Function),
+        tslib_1.__metadata("design:paramtypes", []),
+        tslib_1.__metadata("design:returntype", ConfigBuilder)
+    ], ConfigBuilder.prototype, "useLegacyColors", null);
     return ConfigBuilder;
 }());
 exports.ConfigBuilder = ConfigBuilder;

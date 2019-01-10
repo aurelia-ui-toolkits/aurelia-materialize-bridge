@@ -1,4 +1,6 @@
+import * as tslib_1 from "tslib";
 import { PLATFORM } from "aurelia-pal";
+import { deprecated } from './aurelia';
 /**
  * Plugin configuration builder
  */
@@ -258,6 +260,12 @@ var ConfigBuilder = /** @class */ (function () {
         this.useGlobalResources = false;
         return this;
     };
+    tslib_1.__decorate([
+        deprecated({ error: false, message: "Will be removed soon. Please consider using `useColors`." }),
+        tslib_1.__metadata("design:type", Function),
+        tslib_1.__metadata("design:paramtypes", []),
+        tslib_1.__metadata("design:returntype", ConfigBuilder)
+    ], ConfigBuilder.prototype, "useLegacyColors", null);
     return ConfigBuilder;
 }());
 export { ConfigBuilder };

@@ -17,6 +17,7 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
         "bindable": true,
         "observable": true,
         "TemplatingEngine": true,
+        "deprecated": true,
         "getLogger": true,
         "Logger": true,
         "fireEvent": true,
@@ -53,7 +54,8 @@ System.register(["aurelia-router", "aurelia-framework", "aurelia-logging", "./co
                     "children": aurelia_framework_1_1["children"],
                     "bindable": aurelia_framework_1_1["bindable"],
                     "observable": aurelia_framework_1_1["observable"],
-                    "TemplatingEngine": aurelia_framework_1_1["TemplatingEngine"]
+                    "TemplatingEngine": aurelia_framework_1_1["TemplatingEngine"],
+                    "deprecated": aurelia_framework_1_1["deprecated"]
                 });
             },
             function (aurelia_logging_1_1) {

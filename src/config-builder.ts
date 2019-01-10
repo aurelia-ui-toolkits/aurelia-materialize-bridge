@@ -1,4 +1,5 @@
 import { PLATFORM } from "aurelia-pal";
+import { deprecated } from './aurelia';
 
 /**
  * Plugin configuration builder
@@ -134,6 +135,7 @@ export class ConfigBuilder {
 		return this;
 	}
 
+	@deprecated({error: false, message: "Will be removed soon. Please consider using `useColors`."})
 	useLegacyColors(): ConfigBuilder {
 		let i = this.globalResources.indexOf("./colors/md-colors");
 		if (i >= 0) {
