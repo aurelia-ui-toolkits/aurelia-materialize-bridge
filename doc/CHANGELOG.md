@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.5"></a>
+## [1.2.5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.4...v1.2.5) (2019-01-10)
+
+
+### Bug Fixes
+
+* **tooltip:** destroy the instance only if it was created ([293482c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/293482c))
+
+
+
 <a name="1.2.4"></a>
 ## [1.2.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.3...v1.2.4) (2018-12-11)
 
