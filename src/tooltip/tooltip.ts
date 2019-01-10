@@ -24,7 +24,9 @@ export class MdTooltip {
 	}
 
 	detached() {
-		this.instance.destroy();
+		if (this.instance) {
+			this.instance.destroy();
+		}
 	}
 
 	initTooltip() {
