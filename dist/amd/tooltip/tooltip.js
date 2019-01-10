@@ -15,7 +15,9 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.initTooltip();
         };
         MdTooltip.prototype.detached = function () {
-            this.instance.destroy();
+            if (this.instance) {
+                this.instance.destroy();
+            }
         };
         MdTooltip.prototype.initTooltip = function () {
             if (this.text) {

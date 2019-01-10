@@ -26,7 +26,9 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.initTooltip();
                 };
                 MdTooltip.prototype.detached = function () {
-                    this.instance.destroy();
+                    if (this.instance) {
+                        this.instance.destroy();
+                    }
                 };
                 MdTooltip.prototype.initTooltip = function () {
                     if (this.text) {
