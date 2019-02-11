@@ -262,9 +262,11 @@ define(["require", "exports", "tslib", "../aurelia", "./lookup-state", "../commo
             });
         };
         MdLookup.prototype.detached = function () {
-            this.input.onselect = null;
-            this.input.onfocus = null;
-            this.input.onblur = null;
+            if (this.input) {
+                this.input.onselect = null;
+                this.input.onfocus = null;
+                this.input.onblur = null;
+            }
             au.MaterializeFormValidationRenderer.removeValidation(this.validationContainer, this.input);
             this.element.mdRenderValidateResults = null;
             this.element.mdUnrenderValidateResults = null;
