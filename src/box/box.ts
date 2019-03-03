@@ -4,7 +4,6 @@ import * as au from "../aurelia";
 @au.autoinject
 export class MdBox {
 	constructor(private element: Element) {
-		this.element = element;
 		this.attributeManager = new au.AttributeManager(this.element);
 	}
 

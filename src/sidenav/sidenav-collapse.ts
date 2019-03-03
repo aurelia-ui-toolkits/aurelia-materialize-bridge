@@ -4,9 +4,7 @@ import { MdSidenav } from "./sidenav";
 @customAttribute("md-sidenav-collapse")
 @autoinject
 export class MdSidenavCollapse {
-	constructor(private element: Element) {
-		this.element = element;
-	}
+	constructor(private element: Element) { }
 
 	@bindable
 	ref: MdSidenav;
