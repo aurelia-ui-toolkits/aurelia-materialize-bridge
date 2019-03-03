@@ -27,7 +27,6 @@ System.register(["tslib", "aurelia-framework", "./sidenav"], function (exports_1
                             _this.ref.open();
                         }
                     };
-                    this.element = element;
                 }
                 MdSidenavCollapse.prototype.attached = function () {
                     this.element.addEventListener("click", this.click);

@@ -13,7 +13,6 @@ define(["require", "exports", "tslib", "aurelia-framework", "./sidenav"], functi
                     _this.ref.open();
                 }
             };
-            this.element = element;
         }
         MdSidenavCollapse.prototype.attached = function () {
             this.element.addEventListener("click", this.click);

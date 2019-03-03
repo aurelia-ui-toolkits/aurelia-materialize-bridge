@@ -4,7 +4,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
     var MdBox = /** @class */ (function () {
         function MdBox(element) {
             this.element = element;
-            this.element = element;
             this.attributeManager = new au.AttributeManager(this.element);
         }
         MdBox.prototype.attached = function () {
