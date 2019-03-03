@@ -6,7 +6,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             var _this = this;
             this.element = element;
             this.taskQueue = taskQueue;
-            this.controlId = "md-datepicker-" + MdTimePicker_1.id++;
+            this.controlId = "md-timepicker-" + MdTimePicker_1.id++;
             this.label = "";
             this.placeholder = "";
             this.showErrortext = true;

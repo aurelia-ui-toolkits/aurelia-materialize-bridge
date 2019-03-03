@@ -1,6 +1,6 @@
 import * as tslib_1 from "tslib";
 import { PLATFORM } from "aurelia-pal";
-import { deprecated } from './aurelia';
+import { deprecated } from "./aurelia";
 /**
  * Plugin configuration builder
  */
