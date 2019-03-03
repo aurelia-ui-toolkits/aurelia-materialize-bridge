@@ -6,7 +6,7 @@ export class MdTimePicker {
 	constructor(private element: Element, private taskQueue: au.TaskQueue) { }
 
 	static id = 0;
-	controlId: string = `md-datepicker-${MdTimePicker.id++}`;
+	controlId: string = `md-timepicker-${MdTimePicker.id++}`;
 	input: HTMLInputElement;
 	labelElement: HTMLLabelElement;
 	inputField: HTMLDivElement;
