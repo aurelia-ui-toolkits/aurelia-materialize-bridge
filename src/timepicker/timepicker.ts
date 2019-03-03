@@ -84,7 +84,12 @@ export class MdTimePicker {
 			i18n: this.i18n,
 			autoClose: this.autoClose,
 			twelveHour: this.twelveHour,
-			vibrate: this.vibrate
+			vibrate: this.vibrate,
+			onSelect: (hour: number, minute: number) => au.fireMaterializeEvent(this.element, "select", { hour, minute }),
+			onOpenStart: () => au.fireMaterializeEvent(this.element, "open"),
+			onOpenEnd: () => au.fireMaterializeEvent(this.element, "close"),
+			onCloseStart: () => au.fireMaterializeEvent(this.element, "open"),
+			onCloseEnd: () => au.fireMaterializeEvent(this.element, "close")
 		};
 		au.cleanOptions(options);
 		this.instance = new M.Timepicker(this.input, options);
