@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.8"></a>
+## [1.2.8](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.7...v1.2.8) (2019-03-03)
+
+
+### Bug Fixes
+
+* **timepicker:** add missing events ([03b9d9e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/03b9d9e))
+
+
+
 <a name="1.2.7"></a>
 ## [1.2.7](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.6...v1.2.7) (2019-03-03)
 
