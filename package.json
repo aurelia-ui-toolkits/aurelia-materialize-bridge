@@ -29,7 +29,7 @@
     "postbuild:amd": "copyfiles --up 1 src/**/*.html src/**/*.css src/**/*.map dist/amd",
     "build:commonjs": "tsc --outDir dist/commonjs --module commonjs",
     "postbuild:commonjs": "copyfiles --up 1 src/**/*.html src/**/*.css src/**/*.map dist/commonjs",
-    "build:es2015": "tsc --outDir dist/es2015 --module es2015",
+    "build:es2015": "tsc --outDir dist/es2015 --module es2015 --target es6",
     "postbuild:es2015": "copyfiles --up 1 src/**/*.html src/**/*.css src/**/*.map dist/es2015",
     "build:native-modules": "tsc --outDir dist/native-modules --module es2015",
     "postbuild:native-modules": "copyfiles --up 1 src/**/*.html src/**/*.css src/**/*.map dist/native-modules",
