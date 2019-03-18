@@ -5,70 +5,64 @@
  * set by the user.
  * Most useful in attached() and detached() handlers.
  */
-var AttributeManager = /** @class */ (function () {
-    function AttributeManager(element) {
+export class AttributeManager {
+    constructor(element) {
         this.element = element;
         this.colorClasses = ["accent", "primary"];
         this.addedClasses = [];
         this.addedAttributes = {};
     }
-    AttributeManager.prototype.addAttributes = function (attrs) {
-        var _this = this;
-        var keys = Object.keys(attrs);
-        keys.forEach(function (k) {
-            if (!_this.element.getAttribute(k)) {
-                _this.addedAttributes[k] = attrs[k];
-                _this.element.setAttribute(k, attrs[k]);
+    addAttributes(attrs) {
+        let keys = Object.keys(attrs);
+        keys.forEach(k => {
+            if (!this.element.getAttribute(k)) {
+                this.addedAttributes[k] = attrs[k];
+                this.element.setAttribute(k, attrs[k]);
             }
-            else if (_this.element.getAttribute(k) !== attrs[k]) {
-                _this.element.setAttribute(k, attrs[k]);
+            else if (this.element.getAttribute(k) !== attrs[k]) {
+                this.element.setAttribute(k, attrs[k]);
             }
         });
-    };
-    AttributeManager.prototype.removeAttributes = function (attrs) {
-        var _this = this;
+    }
+    removeAttributes(attrs) {
         if (typeof attrs === "string") {
             attrs = [attrs];
         }
-        attrs.forEach(function (a) {
-            if (_this.element.getAttribute(a) && !!_this.addedAttributes[a]) {
-                _this.element.removeAttribute(a);
-                _this.addedAttributes[a] = null;
-                delete _this.addedAttributes[a];
+        attrs.forEach(a => {
+            if (this.element.getAttribute(a) && !!this.addedAttributes[a]) {
+                this.element.removeAttribute(a);
+                this.addedAttributes[a] = null;
+                delete this.addedAttributes[a];
             }
         });
-    };
-    AttributeManager.prototype.addClasses = function (classes) {
-        var _this = this;
+    }
+    addClasses(classes) {
         if (typeof classes === "string") {
             classes = [classes];
         }
-        classes.forEach(function (c) {
-            var classListHasColor = _this.colorClasses.filter(function (cc) { return _this.element.classList.contains(cc); }).length > 0;
-            if (_this.colorClasses.indexOf(c) > -1 && classListHasColor) {
+        classes.forEach(c => {
+            let classListHasColor = this.colorClasses.filter(cc => this.element.classList.contains(cc)).length > 0;
+            if (this.colorClasses.indexOf(c) > -1 && classListHasColor) {
                 //
             }
             else {
-                if (!_this.element.classList.contains(c)) {
-                    _this.addedClasses.push(c);
-                    _this.element.classList.add(c);
+                if (!this.element.classList.contains(c)) {
+                    this.addedClasses.push(c);
+                    this.element.classList.add(c);
                 }
             }
         });
-    };
-    AttributeManager.prototype.removeClasses = function (classes) {
-        var _this = this;
+    }
+    removeClasses(classes) {
         if (typeof classes === "string") {
             classes = [classes];
         }
-        classes.forEach(function (c) {
-            if (_this.element.classList.contains(c) && _this.addedClasses.indexOf(c) > -1) {
-                _this.element.classList.remove(c);
-                _this.addedClasses.splice(_this.addedClasses.indexOf(c), 1);
+        classes.forEach(c => {
+            if (this.element.classList.contains(c) && this.addedClasses.indexOf(c) > -1) {
+                this.element.classList.remove(c);
+                this.addedClasses.splice(this.addedClasses.indexOf(c), 1);
             }
         });
-    };
-    return AttributeManager;
-}());
-export { AttributeManager };
+    }
+}
 //# sourceMappingURL=attribute-manager.js.map

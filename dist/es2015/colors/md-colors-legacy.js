@@ -1,7 +1,7 @@
 import * as tslib_1 from "tslib";
 import * as au from "../aurelia";
-var MdColorsLegacy = /** @class */ (function () {
-    function MdColorsLegacy(cs, bindingEngine) {
+let MdColorsLegacy = class MdColorsLegacy {
+    constructor(cs, bindingEngine) {
         this.cs = cs;
         this.bindingEngine = bindingEngine;
         this.primaryColor = this.cs.primaryColor;
@@ -10,49 +10,47 @@ var MdColorsLegacy = /** @class */ (function () {
         this.successColor = this.cs.successColor;
         this.subscriptions = [];
     }
-    MdColorsLegacy.prototype.primaryColorChanged = function () {
+    primaryColorChanged() {
         this.cs.primaryColor = this.primaryColor;
-    };
-    MdColorsLegacy.prototype.accentColorChanged = function () {
+    }
+    accentColorChanged() {
         this.cs.secondaryColor = this.accentColor;
-    };
-    MdColorsLegacy.prototype.errorColorChanged = function () {
+    }
+    errorColorChanged() {
         this.cs.errorColor = this.errorColor;
-    };
-    MdColorsLegacy.prototype.successColorChanged = function () {
+    }
+    successColorChanged() {
         this.cs.successColor = this.successColor;
-    };
-    MdColorsLegacy.prototype.attached = function () {
-        var _this = this;
-        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "primaryColor").subscribe(function () { return _this.primaryColor = _this.cs.primaryColor; }));
-        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "accentColor").subscribe(function () { return _this.accentColor = _this.cs.secondaryColor; }));
-        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "errorColor").subscribe(function () { return _this.errorColor = _this.cs.errorColor; }));
-        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "successColor").subscribe(function () { return _this.successColor = _this.cs.successColor; }));
-    };
-    MdColorsLegacy.prototype.detached = function () {
-        this.subscriptions.forEach(function (x) { return x.dispose(); });
-    };
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", String)
-    ], MdColorsLegacy.prototype, "primaryColor", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", String)
-    ], MdColorsLegacy.prototype, "accentColor", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", String)
-    ], MdColorsLegacy.prototype, "errorColor", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", String)
-    ], MdColorsLegacy.prototype, "successColor", void 0);
-    MdColorsLegacy = tslib_1.__decorate([
-        au.customElement("md-colors"),
-        tslib_1.__metadata("design:paramtypes", [au.MdColorsService, au.BindingEngine])
-    ], MdColorsLegacy);
-    return MdColorsLegacy;
-}());
+    }
+    attached() {
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "primaryColor").subscribe(() => this.primaryColor = this.cs.primaryColor));
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "accentColor").subscribe(() => this.accentColor = this.cs.secondaryColor));
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "errorColor").subscribe(() => this.errorColor = this.cs.errorColor));
+        this.subscriptions.push(this.bindingEngine.propertyObserver(this.cs, "successColor").subscribe(() => this.successColor = this.cs.successColor));
+    }
+    detached() {
+        this.subscriptions.forEach(x => x.dispose());
+    }
+};
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", String)
+], MdColorsLegacy.prototype, "primaryColor", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", String)
+], MdColorsLegacy.prototype, "accentColor", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", String)
+], MdColorsLegacy.prototype, "errorColor", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", String)
+], MdColorsLegacy.prototype, "successColor", void 0);
+MdColorsLegacy = tslib_1.__decorate([
+    au.customElement("md-colors"),
+    tslib_1.__metadata("design:paramtypes", [au.MdColorsService, au.BindingEngine])
+], MdColorsLegacy);
 export { MdColorsLegacy };
 //# sourceMappingURL=md-colors-legacy.js.map

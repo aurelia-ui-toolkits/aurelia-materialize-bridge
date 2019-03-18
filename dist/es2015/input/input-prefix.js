@@ -1,22 +1,21 @@
 import * as tslib_1 from "tslib";
 import * as au from "../aurelia";
-var MdPrefix = /** @class */ (function () {
-    function MdPrefix(element) {
+let MdPrefix = class MdPrefix {
+    constructor(element) {
         this.element = element;
         this.attributeManager = new au.AttributeManager(this.element);
     }
-    MdPrefix.prototype.bind = function () {
+    bind() {
         this.attributeManager.addClasses("prefix");
-    };
-    MdPrefix.prototype.unbind = function () {
+    }
+    unbind() {
         this.attributeManager.removeClasses("prefix");
-    };
-    MdPrefix = tslib_1.__decorate([
-        au.customAttribute("md-prefix"),
-        au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
-    ], MdPrefix);
-    return MdPrefix;
-}());
+    }
+};
+MdPrefix = tslib_1.__decorate([
+    au.customAttribute("md-prefix"),
+    au.autoinject,
+    tslib_1.__metadata("design:paramtypes", [Element])
+], MdPrefix);
 export { MdPrefix };
 //# sourceMappingURL=input-prefix.js.map

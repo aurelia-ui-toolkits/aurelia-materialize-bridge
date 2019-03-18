@@ -2,7 +2,7 @@ import { bindable, createTypedBindable, usePropertyTypeForBindable, usePropertyT
 usePropertyTypeForBindable(true);
 usePropertyTypeForObservable(true);
 bindable.booleanMd = createTypedBindable("booleanMd");
-coerceFunctions.booleanMd = function (val) {
+coerceFunctions.booleanMd = val => {
     if (val === undefined) {
         return undefined;
     }
@@ -14,7 +14,7 @@ coerceFunctions.booleanMd = function (val) {
     }
 };
 bindable.numberMd = createTypedBindable("numberMd");
-coerceFunctions.numberMd = function (val) {
+coerceFunctions.numberMd = val => {
     if (val === undefined || val === "" || val === "undefined" || val === "NaN") {
         return undefined;
     }
@@ -26,7 +26,7 @@ coerceFunctions.numberMd = function (val) {
     }
 };
 bindable.stringMd = createTypedBindable("stringMd");
-coerceFunctions.stringMd = function (val) {
+coerceFunctions.stringMd = val => {
     if (val === undefined) {
         return undefined;
     }
@@ -38,10 +38,6 @@ coerceFunctions.stringMd = function (val) {
     }
 };
 // dummy export is needed to enforce loading order for requirejs
-var Dummy = /** @class */ (function () {
-    function Dummy() {
-    }
-    return Dummy;
-}());
-export { Dummy };
+export class Dummy {
+}
 //# sourceMappingURL=aurelia-typed-observable.js.map

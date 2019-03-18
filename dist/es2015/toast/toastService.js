@@ -1,19 +1,15 @@
 import * as au from "../aurelia";
-var MdToastService = /** @class */ (function () {
-    function MdToastService() {
-    }
-    MdToastService.prototype.removeAll = function () {
+export class MdToastService {
+    removeAll() {
         M.Toast.dismissAll();
-    };
-    MdToastService.prototype.show = function (message, displayLength, className, activationPercent, inDuration, outDuration) {
-        var options = { html: message, displayLength: displayLength, classes: className, activationPercent: activationPercent, inDuration: inDuration, outDuration: outDuration };
+    }
+    show(message, displayLength, className, activationPercent, inDuration, outDuration) {
+        let options = { html: message, displayLength, classes: className, activationPercent, inDuration, outDuration };
         au.cleanOptions(options);
-        return new Promise(function (resolve) {
-            options.completeCallback = function () { return resolve(instance); };
-            var instance = new M.Toast(options);
+        return new Promise(resolve => {
+            options.completeCallback = () => resolve(instance);
+            let instance = new M.Toast(options);
         });
-    };
-    return MdToastService;
-}());
-export { MdToastService };
+    }
+}
 //# sourceMappingURL=toastService.js.map

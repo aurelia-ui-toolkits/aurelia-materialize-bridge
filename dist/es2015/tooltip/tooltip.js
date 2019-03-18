@@ -1,49 +1,48 @@
 import * as tslib_1 from "tslib";
 import * as au from "../aurelia";
-var MdTooltip = /** @class */ (function () {
-    function MdTooltip(element) {
+let MdTooltip = class MdTooltip {
+    constructor(element) {
         this.element = element;
         this.position = "bottom";
         this.delay = 50;
         this.text = "";
     }
-    MdTooltip.prototype.textChanged = function () {
+    textChanged() {
         this.initTooltip();
-    };
-    MdTooltip.prototype.attached = function () {
+    }
+    attached() {
         this.initTooltip();
-    };
-    MdTooltip.prototype.detached = function () {
+    }
+    detached() {
         if (this.instance) {
             this.instance.destroy();
         }
-    };
-    MdTooltip.prototype.initTooltip = function () {
+    }
+    initTooltip() {
         if (this.text) {
             this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
         }
         else if (this.instance) {
             this.instance.destroy();
         }
-    };
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", String)
-    ], MdTooltip.prototype, "position", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", Number)
-    ], MdTooltip.prototype, "delay", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", String)
-    ], MdTooltip.prototype, "text", void 0);
-    MdTooltip = tslib_1.__decorate([
-        au.customAttribute("md-tooltip"),
-        au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
-    ], MdTooltip);
-    return MdTooltip;
-}());
+    }
+};
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", String)
+], MdTooltip.prototype, "position", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", Number)
+], MdTooltip.prototype, "delay", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", String)
+], MdTooltip.prototype, "text", void 0);
+MdTooltip = tslib_1.__decorate([
+    au.customAttribute("md-tooltip"),
+    au.autoinject,
+    tslib_1.__metadata("design:paramtypes", [Element])
+], MdTooltip);
 export { MdTooltip };
 //# sourceMappingURL=tooltip.js.map

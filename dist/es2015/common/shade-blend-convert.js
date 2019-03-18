@@ -4,7 +4,7 @@ export function shadeBlendConvert(p, from, to) {
     if (typeof (p) != "number" || p < -1 || p > 1 || typeof (from) != "string" || (from[0] != 'r' && from[0] != '#') || (typeof (to) != "string" && typeof (to) != "undefined")) {
         return null; //ErrorCheck
     }
-    var sbcRip = function (d) {
+    let sbcRip = function (d) {
         var l = d.length, RGB = new Object();
         if (l > 9) {
             d = d.split(",");

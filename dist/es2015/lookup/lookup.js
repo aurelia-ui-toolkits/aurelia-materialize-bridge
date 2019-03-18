@@ -1,134 +1,89 @@
 import * as tslib_1 from "tslib";
+var MdLookup_1;
 import * as au from "../aurelia";
 import { LookupState } from "./lookup-state";
 import { DiscardablePromise, discard } from "../common/discardable-promise";
-var MdLookup = /** @class */ (function () {
-    function MdLookup(element, taskQueue) {
-        var _this = this;
+let MdLookup = MdLookup_1 = class MdLookup {
+    constructor(element, taskQueue) {
         this.element = element;
         this.taskQueue = taskQueue;
         this.placeholder = "Start Typing To Search";
         this.debounce = 850;
         this.LookupState = LookupState; // for usage from the html template
-        this.mdUnrenderValidateResults = function (results, renderer) {
-            var e_1, _a;
-            try {
-                for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
-                    var result = results_1_1.value;
-                    if (!result.valid) {
-                        renderer.removeMessage(_this.validationContainer, result);
-                    }
+        this.mdUnrenderValidateResults = (results, renderer) => {
+            for (let result of results) {
+                if (!result.valid) {
+                    renderer.removeMessage(this.validationContainer, result);
                 }
             }
-            catch (e_1_1) { e_1 = { error: e_1_1 }; }
-            finally {
-                try {
-                    if (results_1_1 && !results_1_1.done && (_a = results_1.return)) _a.call(results_1);
-                }
-                finally { if (e_1) throw e_1.error; }
-            }
-            renderer.removeValidationClasses(_this.input);
+            renderer.removeValidationClasses(this.input);
         };
-        this.mdRenderValidateResults = function (results, renderer) {
-            var e_2, _a;
-            try {
-                for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
-                    var result = results_2_1.value;
-                    if (!result.valid) {
-                        renderer.addMessage(_this.validationContainer, result);
-                    }
+        this.mdRenderValidateResults = (results, renderer) => {
+            for (let result of results) {
+                if (!result.valid) {
+                    renderer.addMessage(this.validationContainer, result);
                 }
             }
-            catch (e_2_1) { e_2 = { error: e_2_1 }; }
-            finally {
-                try {
-                    if (results_2_1 && !results_2_1.done && (_a = results_2.return)) _a.call(results_2);
-                }
-                finally { if (e_2) throw e_2.error; }
-            }
-            renderer.addValidationClasses(_this.input, !results.find(function (x) { return !x.valid; }));
+            renderer.addValidationClasses(this.input, !results.find(x => !x.valid));
         };
         this.logger = au.getLogger("MdLookup");
-        this.controlId = "md-lookup-" + MdLookup_1.id++;
+        this.controlId = `md-lookup-${MdLookup_1.id++}`;
     }
-    MdLookup_1 = MdLookup;
-    MdLookup.prototype.filterChanged = function () {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var _a, e_3;
-            return tslib_1.__generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        this.logger.debug("filterChanged");
-                        if (!this.optionsFunction) {
-                            return [2 /*return*/];
-                        }
-                        if (this.suppressFilterChanged) {
-                            this.logger.debug("unsuppressed filter changed");
-                            this.suppressFilterChanged = false;
-                            return [2 /*return*/];
-                        }
-                        this.setValue(undefined);
-                        discard(this.searchPromise);
-                        this.options = [MdLookup_1.searching];
-                        _b.label = 1;
-                    case 1:
-                        _b.trys.push([1, 3, , 4]);
-                        this.searchPromise = new DiscardablePromise(this.getOptions({ filter: this.filter }));
-                        _a = this;
-                        return [4 /*yield*/, this.searchPromise];
-                    case 2:
-                        _a.options = _b.sent();
-                        this.fixDropdownSizeIfTooBig();
-                        return [3 /*break*/, 4];
-                    case 3:
-                        e_3 = _b.sent();
-                        if (e_3 !== DiscardablePromise.discarded) {
-                            this.options = [MdLookup_1.error, e_3.message];
-                        }
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
+    filterChanged() {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            this.logger.debug("filterChanged");
+            if (!this.optionsFunction) {
+                return;
+            }
+            if (this.suppressFilterChanged) {
+                this.logger.debug("unsuppressed filter changed");
+                this.suppressFilterChanged = false;
+                return;
+            }
+            this.setValue(undefined);
+            discard(this.searchPromise);
+            this.options = [MdLookup_1.searching];
+            try {
+                this.searchPromise = new DiscardablePromise(this.getOptions({ filter: this.filter }));
+                this.options = yield this.searchPromise;
+                this.fixDropdownSizeIfTooBig();
+            }
+            catch (e) {
+                if (e !== DiscardablePromise.discarded) {
+                    this.options = [MdLookup_1.error, e.message];
                 }
-            });
+            }
         });
-    };
-    MdLookup.prototype.setFilter = function (filter) {
-        var _this = this;
+    }
+    setFilter(filter) {
         if (this.filter === filter) {
             return;
         }
         this.logger.debug("suppressed filter changed");
         this.suppressFilterChanged = true;
         this.filter = filter;
-        this.taskQueue.queueTask(function () { return _this.updateLabel(); });
-    };
-    MdLookup.prototype.valueChanged = function (newValue, oldValue) {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.logger.debug("valueChanged", newValue);
-                        if (this.suppressValueChanged) {
-                            this.logger.debug("unsuppressed value changed");
-                            this.suppressValueChanged = false;
-                            return [2 /*return*/];
-                        }
-                        return [4 /*yield*/, this.updateFilterBasedOnValue()];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
+        this.taskQueue.queueTask(() => this.updateLabel());
+    }
+    valueChanged(newValue, oldValue) {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            this.logger.debug("valueChanged", newValue);
+            if (this.suppressValueChanged) {
+                this.logger.debug("unsuppressed value changed");
+                this.suppressValueChanged = false;
+                return;
+            }
+            yield this.updateFilterBasedOnValue();
         });
-    };
-    MdLookup.prototype.setValue = function (value) {
+    }
+    setValue(value) {
         if (this.value === value) {
             return;
         }
         this.logger.debug("suppressed value changed");
         this.suppressValueChanged = true;
         this.value = value;
-    };
-    MdLookup.prototype.optionsChanged = function () {
+    }
+    optionsChanged() {
         this.logger.debug("optionsChanged", this.options);
         if (!this.options || !(this.options instanceof Array) || !this.options.length) {
             this.state = LookupState.noMatches;
@@ -143,126 +98,94 @@ var MdLookup = /** @class */ (function () {
         else {
             this.state = LookupState.optionsVisible;
         }
-    };
-    MdLookup.prototype.updateFilterBasedOnValue = function () {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var _a;
-            return tslib_1.__generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        this.logger.debug("updateFilterBasedOnValue", this.value);
-                        if (!this.value) return [3 /*break*/, 2];
-                        _a = this;
-                        return [4 /*yield*/, this.getOptions({ value: this.value })];
-                    case 1:
-                        _a.options = _b.sent();
-                        return [3 /*break*/, 3];
-                    case 2:
-                        this.options = [];
-                        _b.label = 3;
-                    case 3:
-                        if (this.options && this.options.length) {
-                            this.setFilter(this.getDisplayValue(this.options[0]));
-                        }
-                        else {
-                            this.setFilter(undefined);
-                        }
-                        return [2 /*return*/];
-                }
-            });
+    }
+    updateFilterBasedOnValue() {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            this.logger.debug("updateFilterBasedOnValue", this.value);
+            if (this.value) {
+                this.options = yield this.getOptions({ value: this.value });
+            }
+            else {
+                this.options = [];
+            }
+            if (this.options && this.options.length) {
+                this.setFilter(this.getDisplayValue(this.options[0]));
+            }
+            else {
+                this.setFilter(undefined);
+            }
         });
-    };
-    MdLookup.prototype.fixDropdownSizeIfTooBig = function () {
-        var _this = this;
-        this.taskQueue.queueTask(function () {
-            if (!_this.isOpen) {
+    }
+    fixDropdownSizeIfTooBig() {
+        this.taskQueue.queueTask(() => {
+            if (!this.isOpen) {
                 return;
             }
             // adjust dropdown top so it sits right below the input
             // doing it with CSS will not work if input margin is redefined
-            var inputRect = _this.input.getBoundingClientRect();
-            _this.dropdown.style.top = inputRect.height + 3 + "px";
-            var rect = _this.dropdown.getBoundingClientRect();
-            var availableSpace = window.innerHeight - rect.top + document.body.scrollTop - 5;
-            if (_this.dropdownUl.offsetHeight > availableSpace) {
-                _this.dropdown.style.height = availableSpace + "px";
+            let inputRect = this.input.getBoundingClientRect();
+            this.dropdown.style.top = `${inputRect.height + 3}px`;
+            const rect = this.dropdown.getBoundingClientRect();
+            let availableSpace = window.innerHeight - rect.top + document.body.scrollTop - 5;
+            if (this.dropdownUl.offsetHeight > availableSpace) {
+                this.dropdown.style.height = `${availableSpace}px`;
             }
             else {
-                _this.dropdown.style.height = "auto";
+                this.dropdown.style.height = "auto";
             }
         });
-    };
-    MdLookup.prototype.open = function () {
+    }
+    open() {
         if (!this.readonly) {
             this.logger.debug("open");
             this.isOpen = true;
             this.fixDropdownSizeIfTooBig();
         }
-    };
-    MdLookup.prototype.close = function () {
+    }
+    close() {
         this.logger.debug("close");
         this.isOpen = false;
-    };
-    MdLookup.prototype.blur = function () {
+    }
+    blur() {
         this.close();
         au.fireEvent(this.element, "blur");
-    };
-    MdLookup.prototype.focus = function () {
+    }
+    focus() {
         this.input.focus();
         au.fireEvent(this.element, "focus");
-    };
-    MdLookup.prototype.updateLabel = function () {
+    }
+    updateLabel() {
         au.updateLabel(this.input, this.labelElement);
-    };
-    MdLookup.prototype.bind = function (bindingContext, overrideContext) {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.bindingContext = bindingContext;
-                        if (this.optionsFunction) {
-                            this.getOptions = this.optionsFunction.bind(this.bindingContext);
-                        }
-                        return [4 /*yield*/, this.updateFilterBasedOnValue()];
-                    case 1:
-                        _a.sent();
-                        // restore initial value because it is set by updateFilterBasedOnValue
-                        this.suppressFilterChanged = false;
-                        return [2 /*return*/];
-                }
-            });
+    }
+    bind(bindingContext, overrideContext) {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            this.bindingContext = bindingContext;
+            if (this.optionsFunction) {
+                this.getOptions = this.optionsFunction.bind(this.bindingContext);
+            }
+            yield this.updateFilterBasedOnValue();
+            // restore initial value because it is set by updateFilterBasedOnValue
+            this.suppressFilterChanged = false;
         });
-    };
-    MdLookup.prototype.attached = function () {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var _a;
-            var _this = this;
-            return tslib_1.__generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        this.logger.debug("attached");
-                        if (this.placeholder) {
-                            this.input.setAttribute("placeholder", this.placeholder);
-                        }
-                        // we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
-                        this.input.onselect = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
-                        this.input.onclick = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
-                        this.element.mdRenderValidateResults = this.mdRenderValidateResults;
-                        this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
-                        if (!this.preloadOptions) return [3 /*break*/, 2];
-                        _a = this;
-                        return [4 /*yield*/, this.getOptions({ value: this.value, filter: this.filter })];
-                    case 1:
-                        _a.options = _b.sent();
-                        _b.label = 2;
-                    case 2:
-                        this.updateLabel();
-                        return [2 /*return*/];
-                }
-            });
+    }
+    attached() {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            this.logger.debug("attached");
+            if (this.placeholder) {
+                this.input.setAttribute("placeholder", this.placeholder);
+            }
+            // we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
+            this.input.onselect = () => this.taskQueue.queueTask(() => this.open());
+            this.input.onclick = () => this.taskQueue.queueTask(() => this.open());
+            this.element.mdRenderValidateResults = this.mdRenderValidateResults;
+            this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
+            if (this.preloadOptions) {
+                this.options = yield this.getOptions({ value: this.value, filter: this.filter });
+            }
+            this.updateLabel();
         });
-    };
-    MdLookup.prototype.detached = function () {
+    }
+    detached() {
         if (this.input) {
             this.input.onselect = null;
             this.input.onfocus = null;
@@ -271,8 +194,8 @@ var MdLookup = /** @class */ (function () {
         au.MaterializeFormValidationRenderer.removeValidation(this.validationContainer, this.input);
         this.element.mdRenderValidateResults = null;
         this.element.mdUnrenderValidateResults = null;
-    };
-    MdLookup.prototype.select = function (option) {
+    }
+    select(option) {
         if (this.valueFieldName) {
             if (this.valueFieldName instanceof Function) {
                 this.value = this.valueFieldName(option);
@@ -288,8 +211,8 @@ var MdLookup = /** @class */ (function () {
         // this.options = [option];
         this.close();
         au.fireEvent(this.element, "selected", { value: this.value });
-    };
-    MdLookup.prototype.getDisplayValue = function (option) {
+    }
+    getDisplayValue(option) {
         if (option === null || option === undefined) {
             return null;
         }
@@ -302,61 +225,59 @@ var MdLookup = /** @class */ (function () {
         else {
             return option[this.displayFieldName];
         }
-    };
-    var MdLookup_1;
-    MdLookup.searching = Symbol("searching");
-    MdLookup.error = Symbol("error");
-    MdLookup.id = 0;
-    tslib_1.__decorate([
-        au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", String)
-    ], MdLookup.prototype, "filter", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", String)
-    ], MdLookup.prototype, "label", void 0);
-    tslib_1.__decorate([
-        au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", Object)
-    ], MdLookup.prototype, "value", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", Function)
-    ], MdLookup.prototype, "optionsFunction", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdLookup.prototype, "displayFieldName", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", Object)
-    ], MdLookup.prototype, "valueFieldName", void 0);
-    tslib_1.__decorate([
-        au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", Boolean)
-    ], MdLookup.prototype, "readonly", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", String)
-    ], MdLookup.prototype, "placeholder", void 0);
-    tslib_1.__decorate([
-        au.ato.bindable.numberMd,
-        tslib_1.__metadata("design:type", Number)
-    ], MdLookup.prototype, "debounce", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", Boolean)
-    ], MdLookup.prototype, "preloadOptions", void 0);
-    tslib_1.__decorate([
-        au.observable,
-        tslib_1.__metadata("design:type", Array)
-    ], MdLookup.prototype, "options", void 0);
-    MdLookup = MdLookup_1 = tslib_1.__decorate([
-        au.customElement("md-lookup"),
-        au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
-    ], MdLookup);
-    return MdLookup;
-}());
+    }
+};
+MdLookup.searching = Symbol("searching");
+MdLookup.error = Symbol("error");
+MdLookup.id = 0;
+tslib_1.__decorate([
+    au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
+    tslib_1.__metadata("design:type", String)
+], MdLookup.prototype, "filter", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", String)
+], MdLookup.prototype, "label", void 0);
+tslib_1.__decorate([
+    au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
+    tslib_1.__metadata("design:type", Object)
+], MdLookup.prototype, "value", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", Function)
+], MdLookup.prototype, "optionsFunction", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", Object)
+], MdLookup.prototype, "displayFieldName", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", Object)
+], MdLookup.prototype, "valueFieldName", void 0);
+tslib_1.__decorate([
+    au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
+    tslib_1.__metadata("design:type", Boolean)
+], MdLookup.prototype, "readonly", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", String)
+], MdLookup.prototype, "placeholder", void 0);
+tslib_1.__decorate([
+    au.ato.bindable.numberMd,
+    tslib_1.__metadata("design:type", Number)
+], MdLookup.prototype, "debounce", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", Boolean)
+], MdLookup.prototype, "preloadOptions", void 0);
+tslib_1.__decorate([
+    au.observable,
+    tslib_1.__metadata("design:type", Array)
+], MdLookup.prototype, "options", void 0);
+MdLookup = MdLookup_1 = tslib_1.__decorate([
+    au.customElement("md-lookup"),
+    au.autoinject,
+    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
+], MdLookup);
 export { MdLookup };
 //# sourceMappingURL=lookup.js.map

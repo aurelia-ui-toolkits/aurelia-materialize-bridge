@@ -1,66 +1,64 @@
 import * as tslib_1 from "tslib";
 import * as au from "../aurelia";
-var MdSwitch = /** @class */ (function () {
-    function MdSwitch(element) {
-        var _this = this;
+let MdSwitch = class MdSwitch {
+    constructor(element) {
         this.element = element;
         this.readonly = false;
         this.labelOff = "Off";
         this.labelOn = "On";
-        this.handleChange = function () {
-            _this.checked = _this.checkbox.checked;
-            au.fireEvent(_this.element, "blur");
+        this.handleChange = () => {
+            this.checked = this.checkbox.checked;
+            au.fireEvent(this.element, "blur");
         };
     }
-    MdSwitch.prototype.checkedChanged = function (newValue) {
+    checkedChanged(newValue) {
         if (this.checkbox) {
             this.checkbox.checked = !!newValue;
         }
-    };
-    MdSwitch.prototype.disabledChanged = function () {
+    }
+    disabledChanged() {
         if (this.checkbox) {
             this.checkbox.disabled = this.disabled;
         }
-    };
-    MdSwitch.prototype.attached = function () {
+    }
+    attached() {
         this.checkbox.checked = this.checked;
         this.disabledChanged();
         this.checkbox.addEventListener("change", this.handleChange);
-    };
-    MdSwitch.prototype.detached = function () {
+    }
+    detached() {
         if (this.checkbox) {
             this.checkbox.removeEventListener("change", this.handleChange);
         }
-    };
-    MdSwitch.prototype.blur = function () {
+    }
+    blur() {
         au.fireEvent(this.element, "blur");
-    };
-    tslib_1.__decorate([
-        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", Boolean)
-    ], MdSwitch.prototype, "checked", void 0);
-    tslib_1.__decorate([
-        au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
-    ], MdSwitch.prototype, "disabled", void 0);
-    tslib_1.__decorate([
-        au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
-    ], MdSwitch.prototype, "readonly", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", String)
-    ], MdSwitch.prototype, "labelOff", void 0);
-    tslib_1.__decorate([
-        au.bindable,
-        tslib_1.__metadata("design:type", String)
-    ], MdSwitch.prototype, "labelOn", void 0);
-    MdSwitch = tslib_1.__decorate([
-        au.customElement("md-switch"),
-        au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
-    ], MdSwitch);
-    return MdSwitch;
-}());
+    }
+};
+tslib_1.__decorate([
+    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay }),
+    tslib_1.__metadata("design:type", Boolean)
+], MdSwitch.prototype, "checked", void 0);
+tslib_1.__decorate([
+    au.ato.bindable.booleanMd,
+    tslib_1.__metadata("design:type", Boolean)
+], MdSwitch.prototype, "disabled", void 0);
+tslib_1.__decorate([
+    au.ato.bindable.booleanMd,
+    tslib_1.__metadata("design:type", Boolean)
+], MdSwitch.prototype, "readonly", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", String)
+], MdSwitch.prototype, "labelOff", void 0);
+tslib_1.__decorate([
+    au.bindable,
+    tslib_1.__metadata("design:type", String)
+], MdSwitch.prototype, "labelOn", void 0);
+MdSwitch = tslib_1.__decorate([
+    au.customElement("md-switch"),
+    au.autoinject,
+    tslib_1.__metadata("design:paramtypes", [Element])
+], MdSwitch);
 export { MdSwitch };
 //# sourceMappingURL=switch.js.map

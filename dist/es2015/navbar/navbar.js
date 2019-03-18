@@ -1,10 +1,10 @@
 import * as tslib_1 from "tslib";
 import * as au from "../aurelia";
-var MdNavbar = /** @class */ (function () {
-    function MdNavbar(element) {
+let MdNavbar = class MdNavbar {
+    constructor(element) {
         this.element = element;
     }
-    MdNavbar.prototype.attached = function () {
+    attached() {
         this.fixedAttributeManager = new au.AttributeManager(this.fixedAnchor);
         this.navAttributeManager = new au.AttributeManager(this.nav);
         if (this.fixed) {
@@ -16,8 +16,8 @@ var MdNavbar = /** @class */ (function () {
         if (this.extended) {
             this.navAttributeManager.addClasses("nav-extended");
         }
-    };
-    MdNavbar.prototype.detached = function () {
+    }
+    detached() {
         if (this.fixed) {
             this.fixedAttributeManager.removeClasses("navbar-fixed");
         }
@@ -27,25 +27,24 @@ var MdNavbar = /** @class */ (function () {
         if (this.extended) {
             this.navAttributeManager.removeClasses("nav-extended");
         }
-    };
-    tslib_1.__decorate([
-        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
-    ], MdNavbar.prototype, "extended", void 0);
-    tslib_1.__decorate([
-        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
-    ], MdNavbar.prototype, "fixed", void 0);
-    tslib_1.__decorate([
-        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
-    ], MdNavbar.prototype, "autoHeight", void 0);
-    MdNavbar = tslib_1.__decorate([
-        au.customElement("md-navbar"),
-        au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
-    ], MdNavbar);
-    return MdNavbar;
-}());
+    }
+};
+tslib_1.__decorate([
+    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+    tslib_1.__metadata("design:type", Boolean)
+], MdNavbar.prototype, "extended", void 0);
+tslib_1.__decorate([
+    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+    tslib_1.__metadata("design:type", Boolean)
+], MdNavbar.prototype, "fixed", void 0);
+tslib_1.__decorate([
+    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+    tslib_1.__metadata("design:type", Boolean)
+], MdNavbar.prototype, "autoHeight", void 0);
+MdNavbar = tslib_1.__decorate([
+    au.customElement("md-navbar"),
+    au.autoinject,
+    tslib_1.__metadata("design:paramtypes", [Element])
+], MdNavbar);
 export { MdNavbar };
 //# sourceMappingURL=navbar.js.map

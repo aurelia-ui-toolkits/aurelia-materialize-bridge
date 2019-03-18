@@ -3,7 +3,7 @@ export function wrap(parent, child) {
     parent.appendChild(child);
 }
 export function unwrap(element) {
-    var wrapper = element.parentElement;
+    let wrapper = element.parentElement;
     if (wrapper.parentElement) {
         wrapper.parentElement.insertBefore(element, wrapper);
         wrapper.remove();
@@ -18,7 +18,7 @@ export function insertAfter(element, newChild) {
  * @param options An object to clean
  */
 export function cleanOptions(options) {
-    Object.keys(options).filter(function (key) { return options[key] === undefined; }).forEach(function (key) { return delete options[key]; });
+    Object.keys(options).filter(key => options[key] === undefined).forEach(key => delete options[key]);
 }
 export function updateLabel(input, label) {
     // the following is copied from the updateTextFields method

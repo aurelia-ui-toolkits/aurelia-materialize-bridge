@@ -8,7 +8,7 @@ import "./polyfills/remove";
 import "./polyfills/pad-start";
 import { ConfigBuilder } from "./config-builder";
 export function configure(frameworkConfiguration, configCallback) {
-    var builder = frameworkConfiguration.container.get(ConfigBuilder);
+    const builder = frameworkConfiguration.container.get(ConfigBuilder);
     if (configCallback !== undefined && typeof (configCallback) === "function") {
         configCallback(builder);
     }
@@ -18,7 +18,7 @@ export function configure(frameworkConfiguration, configCallback) {
 }
 // this is needed to enforce loading order for requirejs
 // otherwise typescript optimises imports and loads augmentation/aurelia-typed-observable after exports
-var d = new Dummy();
+let d = new Dummy();
 // build-index-remove start
 export * from "./exports";
 // build-index-remove end

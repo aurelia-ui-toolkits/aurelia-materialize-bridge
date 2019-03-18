@@ -5,9 +5,8 @@ import { constants } from "./constants";
  * @param name The Event's name
  * @param data Addition data to attach to an event
  */
-export function fireEvent(element, name, data) {
-    if (data === void 0) { data = {}; }
-    var event = new CustomEvent(name, {
+export function fireEvent(element, name, data = {}) {
+    const event = new CustomEvent(name, {
         detail: data,
         bubbles: true
     });
@@ -20,8 +19,7 @@ export function fireEvent(element, name, data) {
  * @param name The Event's name, without md-on prefix
  * @param data Addition data to attach to an event
  */
-export function fireMaterializeEvent(element, name, data) {
-    if (data === void 0) { data = {}; }
-    return fireEvent(element, "" + constants.eventPrefix + name, data);
+export function fireMaterializeEvent(element, name, data = {}) {
+    return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
 //# sourceMappingURL=events.js.map

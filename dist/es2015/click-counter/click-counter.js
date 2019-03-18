@@ -1,16 +1,15 @@
 import * as tslib_1 from "tslib";
 import * as au from "../aurelia";
-var ClickCounter = /** @class */ (function () {
-    function ClickCounter() {
+let ClickCounter = class ClickCounter {
+    constructor() {
         this.count = 0;
     }
-    ClickCounter.prototype.increment = function () {
+    increment() {
         this.count++;
-    };
-    ClickCounter = tslib_1.__decorate([
-        au.customElement("click-counter")
-    ], ClickCounter);
-    return ClickCounter;
-}());
+    }
+};
+ClickCounter = tslib_1.__decorate([
+    au.customElement("click-counter")
+], ClickCounter);
 export { ClickCounter };
 //# sourceMappingURL=click-counter.js.map

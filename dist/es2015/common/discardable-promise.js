@@ -1,25 +1,22 @@
-var DiscardablePromise = /** @class */ (function () {
-    function DiscardablePromise(promise) {
+export class DiscardablePromise {
+    constructor(promise) {
         this.promise = promise;
     }
-    DiscardablePromise.prototype.then = function (onfulfilled, onrejected) {
-        var _this = this;
-        return this.promise.then(function (x) {
-            if (_this.isDiscarded) {
+    then(onfulfilled, onrejected) {
+        return this.promise.then(x => {
+            if (this.isDiscarded) {
                 return Promise.reject(DiscardablePromise.discarded);
             }
             else {
                 return Promise.resolve(x);
             }
         }).then(onfulfilled, onrejected);
-    };
-    DiscardablePromise.prototype.discard = function () {
+    }
+    discard() {
         this.isDiscarded = true;
-    };
-    DiscardablePromise.discarded = Symbol("discarded");
-    return DiscardablePromise;
-}());
-export { DiscardablePromise };
+    }
+}
+DiscardablePromise.discarded = Symbol("discarded");
 /**
  * Sets the internal state of a promise to discarded
  * @param discardable A promise to discard

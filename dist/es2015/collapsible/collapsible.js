@@ -1,68 +1,64 @@
 import * as tslib_1 from "tslib";
 import * as au from "../aurelia";
-var MdCollapsible = /** @class */ (function () {
-    function MdCollapsible(element) {
+let MdCollapsible = class MdCollapsible {
+    constructor(element) {
         this.element = element;
         this.attributeManager = new au.AttributeManager(this.element);
     }
-    MdCollapsible.prototype.accordionChanged = function () {
+    accordionChanged() {
         this.attached();
-    };
-    MdCollapsible.prototype.bind = function () {
+    }
+    bind() {
         //
-    };
-    MdCollapsible.prototype.attached = function () {
-        var _this = this;
+    }
+    attached() {
         this.attributeManager.addClasses("collapsible");
         if (this.popout) {
             this.attributeManager.addClasses("popout");
         }
-        var options = {
+        let options = {
             accordion: this.accordion,
             inDuration: this.inDuration,
             outDuration: this.outDuration,
-            onOpenStart: function (el) { return au.fireMaterializeEvent(_this.element, "open-start", { el: el }); },
-            onOpenEnd: function (el) { return au.fireMaterializeEvent(_this.element, "open-end", { el: el }); },
-            onCloseStart: function (el) { return au.fireMaterializeEvent(_this.element, "close-start", { el: el }); },
-            onCloseEnd: function (el) { return au.fireMaterializeEvent(_this.element, "close-end", { el: el }); }
+            onOpenStart: el => au.fireMaterializeEvent(this.element, "open-start", { el }),
+            onOpenEnd: el => au.fireMaterializeEvent(this.element, "open-end", { el }),
+            onCloseStart: el => au.fireMaterializeEvent(this.element, "close-start", { el }),
+            onCloseEnd: el => au.fireMaterializeEvent(this.element, "close-end", { el })
         };
         au.cleanOptions(options);
         this.instance = new M.Collapsible(this.element, options);
-    };
-    MdCollapsible.prototype.detached = function () {
+    }
+    detached() {
         this.attributeManager.removeClasses(["collapsible", "popout"]);
         this.instance.destroy();
-    };
-    MdCollapsible.prototype.open = function (index) {
-        if (index === void 0) { index = 0; }
+    }
+    open(index = 0) {
         this.instance.open(index);
-    };
-    MdCollapsible.prototype.close = function (index) {
-        if (index === void 0) { index = 0; }
+    }
+    close(index = 0) {
         this.instance.close(index);
-    };
-    tslib_1.__decorate([
-        au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
-    ], MdCollapsible.prototype, "accordion", void 0);
-    tslib_1.__decorate([
-        au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
-    ], MdCollapsible.prototype, "popout", void 0);
-    tslib_1.__decorate([
-        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
-    ], MdCollapsible.prototype, "inDuration", void 0);
-    tslib_1.__decorate([
-        au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
-    ], MdCollapsible.prototype, "outDuration", void 0);
-    MdCollapsible = tslib_1.__decorate([
-        au.customAttribute("md-collapsible"),
-        au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
-    ], MdCollapsible);
-    return MdCollapsible;
-}());
+    }
+};
+tslib_1.__decorate([
+    au.ato.bindable.booleanMd,
+    tslib_1.__metadata("design:type", Boolean)
+], MdCollapsible.prototype, "accordion", void 0);
+tslib_1.__decorate([
+    au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
+    tslib_1.__metadata("design:type", Boolean)
+], MdCollapsible.prototype, "popout", void 0);
+tslib_1.__decorate([
+    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+    tslib_1.__metadata("design:type", Number)
+], MdCollapsible.prototype, "inDuration", void 0);
+tslib_1.__decorate([
+    au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
+    tslib_1.__metadata("design:type", Number)
+], MdCollapsible.prototype, "outDuration", void 0);
+MdCollapsible = tslib_1.__decorate([
+    au.customAttribute("md-collapsible"),
+    au.autoinject,
+    tslib_1.__metadata("design:paramtypes", [Element])
+], MdCollapsible);
 export { MdCollapsible };
 //# sourceMappingURL=collapsible.js.map
