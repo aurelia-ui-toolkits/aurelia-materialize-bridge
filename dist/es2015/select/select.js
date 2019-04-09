@@ -142,9 +142,11 @@ let MdSelect = class MdSelect {
         this.instance = new M.FormSelect(this.element, {});
         if (isValid) {
             this.instance.input.classList.add("valid");
+            this.instance.wrapper.classList.add("valid");
         }
         if (isInvalid) {
             this.instance.input.classList.add("invalid");
+            this.instance.wrapper.classList.add("invalid");
         }
         this.readonlyDiv = document.createElement("div");
         this.readonlyDiv.style.position = "absolute";
