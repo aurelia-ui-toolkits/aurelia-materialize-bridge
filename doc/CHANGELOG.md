@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.10"></a>
+## [1.2.10](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.9...v1.2.10) (2019-04-09)
+
+
+### Bug Fixes
+
+* **select:** restore validation status on the wrapper ([b7bb532](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/b7bb532))
+
+
+
 <a name="1.2.9"></a>
 ## [1.2.9](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.8...v1.2.9) (2019-03-18)
 
