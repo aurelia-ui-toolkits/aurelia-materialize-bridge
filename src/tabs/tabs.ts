@@ -42,6 +42,10 @@ export class MdTabs {
 		this.attributeManager.addClasses("tabs");
 
 		let children = this.element.querySelectorAll("li");
+		if (!children.length) {
+			return;
+		}
+
 		for (let child of Array.from(children)) {
 			let setter = new au.AttributeManager(child);
 			setter.addClasses(["tab", "primary-text"]);
@@ -63,8 +67,11 @@ export class MdTabs {
 	}
 
 	detached() {
-		this.instance.destroy();
 		this.attributeManager.removeClasses("tabs");
+		if (!this.instance) {
+			return;
+		}
+		this.instance.destroy();
 		this.tabAttributeManagers.forEach(setter => {
 			setter.removeClasses("tab");
 		});
