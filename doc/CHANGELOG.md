@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.11"></a>
+## [1.2.11](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.10...v1.2.11) (2019-04-17)
+
+
+### Bug Fixes
+
+* **datepicker:** check for not initialised instance ([fb3d350](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/fb3d350)), closes [#545](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/545)
+* **tabs:** do not init on an empty tabs list ([319446b](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/319446b)), closes [#547](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/547)
+* **toastService:** rename parameter ([8649988](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/8649988)), closes [#546](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/546)
+* **tooltip:** rename attribute ([76c6b51](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/76c6b51)), closes [#546](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/546)
+
+
+
 <a name="1.2.10"></a>
 ## [1.2.10](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.9...v1.2.10) (2019-04-09)
 
