@@ -5,7 +5,7 @@ var MdTooltip = /** @class */ (function () {
         this.element = element;
         this.position = "bottom";
         this.delay = 50;
-        this.text = "";
+        this.html = "";
     }
     MdTooltip.prototype.textChanged = function () {
         this.initTooltip();
@@ -19,8 +19,8 @@ var MdTooltip = /** @class */ (function () {
         }
     };
     MdTooltip.prototype.initTooltip = function () {
-        if (this.text) {
-            this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
+        if (this.html) {
+            this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.html, position: this.position });
         }
         else if (this.instance) {
             this.instance.destroy();
@@ -37,7 +37,7 @@ var MdTooltip = /** @class */ (function () {
     tslib_1.__decorate([
         au.bindable,
         tslib_1.__metadata("design:type", String)
-    ], MdTooltip.prototype, "text", void 0);
+    ], MdTooltip.prototype, "html", void 0);
     MdTooltip = tslib_1.__decorate([
         au.customAttribute("md-tooltip"),
         au.autoinject,

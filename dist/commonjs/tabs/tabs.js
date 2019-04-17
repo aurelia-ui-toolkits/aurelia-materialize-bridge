@@ -38,6 +38,9 @@ var MdTabs = /** @class */ (function () {
         var e_1, _a, e_2, _b;
         this.attributeManager.addClasses("tabs");
         var children = this.element.querySelectorAll("li");
+        if (!children.length) {
+            return;
+        }
         try {
             for (var _c = tslib_1.__values(Array.from(children)), _d = _c.next(); !_d.done; _d = _c.next()) {
                 var child = _d.value;
@@ -77,8 +80,11 @@ var MdTabs = /** @class */ (function () {
     };
     MdTabs.prototype.detached = function () {
         var e_3, _a;
-        this.instance.destroy();
         this.attributeManager.removeClasses("tabs");
+        if (!this.instance) {
+            return;
+        }
+        this.instance.destroy();
         this.tabAttributeManagers.forEach(function (setter) {
             setter.removeClasses("tab");
         });

@@ -73,6 +73,9 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
                 au.updateLabel(this.input, this.labelElement);
                 return;
             }
+            if (!this.instance) {
+                return;
+            }
             this.instance.setDate(this.value);
             // suppress done handler because setInputValue will trigger it, change value and possibly cause an infinite loop when a date has time components
             this.suppressDone = true;

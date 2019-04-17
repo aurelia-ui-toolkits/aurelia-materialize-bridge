@@ -7,8 +7,8 @@ define(["require", "exports", "../aurelia"], function (require, exports, au) {
         MdToastService.prototype.removeAll = function () {
             M.Toast.dismissAll();
         };
-        MdToastService.prototype.show = function (message, displayLength, className, activationPercent, inDuration, outDuration) {
-            var options = { html: message, displayLength: displayLength, classes: className, activationPercent: activationPercent, inDuration: inDuration, outDuration: outDuration };
+        MdToastService.prototype.show = function (html, displayLength, className, activationPercent, inDuration, outDuration) {
+            var options = { html: html, displayLength: displayLength, classes: className, activationPercent: activationPercent, inDuration: inDuration, outDuration: outDuration };
             au.cleanOptions(options);
             return new Promise(function (resolve) {
                 options.completeCallback = function () { return resolve(instance); };

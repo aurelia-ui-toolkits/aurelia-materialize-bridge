@@ -3,8 +3,8 @@ export class MdToastService {
     removeAll() {
         M.Toast.dismissAll();
     }
-    show(message, displayLength, className, activationPercent, inDuration, outDuration) {
-        let options = { html: message, displayLength, classes: className, activationPercent, inDuration, outDuration };
+    show(html, displayLength, className, activationPercent, inDuration, outDuration) {
+        let options = { html, displayLength, classes: className, activationPercent, inDuration, outDuration };
         au.cleanOptions(options);
         return new Promise(resolve => {
             options.completeCallback = () => resolve(instance);

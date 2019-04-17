@@ -3,7 +3,7 @@ export declare class MdTooltip {
     constructor(element: Element);
     position: "top" | "right" | "bottom" | "left";
     delay: number;
-    text: string;
+    html: string;
     textChanged(): void;
     instance: M.Tooltip;
     attached(): void;
