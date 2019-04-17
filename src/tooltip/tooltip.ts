@@ -12,7 +12,7 @@ export class MdTooltip {
 	delay: number = 50;
 
 	@au.bindable
-	text: string = "";
+	html: string = "";
 	textChanged() {
 		this.initTooltip();
 	}
@@ -30,8 +30,8 @@ export class MdTooltip {
 	}
 
 	initTooltip() {
-		if (this.text) {
-			this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.text, position: this.position });
+		if (this.html) {
+			this.instance = new M.Tooltip(this.element, { exitDelay: this.delay, html: this.html, position: this.position });
 		}
 		else if (this.instance) {
 			this.instance.destroy();
