@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.11...v1.3.0) (2019-04-23)
+
+
+### Bug Fixes
+
+* **select:** check for undefined instance ([493bddd](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/493bddd))
+
+
+### Features
+
+* **datepicker:** add slot support for datepicker ([#548](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/548)) ([72c0938](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/72c0938))
+
+
+
 <a name="1.2.11"></a>
 ## [1.2.11](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.2.10...v1.2.11) (2019-04-17)
 
