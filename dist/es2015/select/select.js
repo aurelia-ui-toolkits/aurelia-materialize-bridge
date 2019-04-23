@@ -24,7 +24,7 @@ let MdSelect = class MdSelect {
             this.labelElement.classList.remove("md-focused");
         };
         this.mdUnrenderValidateResults = (results, renderer) => {
-            if (!this.instance.input) {
+            if (!this.instance || !this.instance.input) {
                 return;
             }
             for (let result of results) {
@@ -36,7 +36,7 @@ let MdSelect = class MdSelect {
             renderer.removeValidationClasses(this.instance.wrapper);
         };
         this.mdRenderValidateResults = (results, renderer) => {
-            if (!this.instance.input) {
+            if (!this.instance || !this.instance.input) {
                 return;
             }
             for (let result of results) {
@@ -114,6 +114,7 @@ let MdSelect = class MdSelect {
         this.subscription.dispose();
         this.observeOptions(false);
         this.instance.destroy();
+        this.instance = undefined;
         // this will remove input-field wrapper and all its' content like validation messsages or a label
         au.unwrap(this.element);
         this.inputField = null;

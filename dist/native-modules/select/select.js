@@ -26,7 +26,7 @@ var MdSelect = /** @class */ (function () {
         };
         this.mdUnrenderValidateResults = function (results, renderer) {
             var e_1, _a;
-            if (!_this.instance.input) {
+            if (!_this.instance || !_this.instance.input) {
                 return;
             }
             try {
@@ -49,7 +49,7 @@ var MdSelect = /** @class */ (function () {
         };
         this.mdRenderValidateResults = function (results, renderer) {
             var e_2, _a;
-            if (!_this.instance.input) {
+            if (!_this.instance || !_this.instance.input) {
                 return;
             }
             try {
@@ -138,6 +138,7 @@ var MdSelect = /** @class */ (function () {
         this.subscription.dispose();
         this.observeOptions(false);
         this.instance.destroy();
+        this.instance = undefined;
         // this will remove input-field wrapper and all its' content like validation messsages or a label
         au.unwrap(this.element);
         this.inputField = null;

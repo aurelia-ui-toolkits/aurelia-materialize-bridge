@@ -38,7 +38,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     };
                     this.mdUnrenderValidateResults = function (results, renderer) {
                         var e_1, _a;
-                        if (!_this.instance.input) {
+                        if (!_this.instance || !_this.instance.input) {
                             return;
                         }
                         try {
@@ -61,7 +61,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     };
                     this.mdRenderValidateResults = function (results, renderer) {
                         var e_2, _a;
-                        if (!_this.instance.input) {
+                        if (!_this.instance || !_this.instance.input) {
                             return;
                         }
                         try {
@@ -150,6 +150,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.subscription.dispose();
                     this.observeOptions(false);
                     this.instance.destroy();
+                    this.instance = undefined;
                     // this will remove input-field wrapper and all its' content like validation messsages or a label
                     au.unwrap(this.element);
                     this.inputField = null;
