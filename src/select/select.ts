@@ -100,6 +100,7 @@ export class MdSelect {
 		this.subscription.dispose();
 		this.observeOptions(false);
 		this.instance.destroy();
+		this.instance = undefined;
 		// this will remove input-field wrapper and all its' content like validation messsages or a label
 		au.unwrap(this.element);
 		this.inputField = null;
@@ -195,7 +196,7 @@ export class MdSelect {
 	}
 
 	mdUnrenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		if (!this.instance.input) {
+		if (!this.instance || !this.instance.input) {
 			return;
 		}
 		for (let result of results) {
@@ -208,7 +209,7 @@ export class MdSelect {
 	}
 
 	mdRenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		if (!this.instance.input) {
+		if (!this.instance || !this.instance.input) {
 			return;
 		}
 		for (let result of results) {
