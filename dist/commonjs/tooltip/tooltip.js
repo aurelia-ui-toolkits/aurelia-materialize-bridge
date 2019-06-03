@@ -9,7 +9,7 @@ var MdTooltip = /** @class */ (function () {
         this.delay = 50;
         this.html = "";
     }
-    MdTooltip.prototype.textChanged = function () {
+    MdTooltip.prototype.htmlChanged = function () {
         this.initTooltip();
     };
     MdTooltip.prototype.attached = function () {

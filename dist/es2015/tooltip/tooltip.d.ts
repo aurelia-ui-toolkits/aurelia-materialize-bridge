@@ -4,7 +4,7 @@ export declare class MdTooltip {
     position: "top" | "right" | "bottom" | "left";
     delay: number;
     html: string;
-    textChanged(): void;
+    htmlChanged(): void;
     instance: M.Tooltip;
     attached(): void;
     detached(): void;

@@ -8,7 +8,7 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.delay = 50;
             this.html = "";
         }
-        MdTooltip.prototype.textChanged = function () {
+        MdTooltip.prototype.htmlChanged = function () {
             this.initTooltip();
         };
         MdTooltip.prototype.attached = function () {

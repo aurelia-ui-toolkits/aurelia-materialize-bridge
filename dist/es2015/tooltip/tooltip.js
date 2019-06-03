@@ -7,7 +7,7 @@ let MdTooltip = class MdTooltip {
         this.delay = 50;
         this.html = "";
     }
-    textChanged() {
+    htmlChanged() {
         this.initTooltip();
     }
     attached() {

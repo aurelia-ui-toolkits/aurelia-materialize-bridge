@@ -19,7 +19,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.delay = 50;
                     this.html = "";
                 }
-                MdTooltip.prototype.textChanged = function () {
+                MdTooltip.prototype.htmlChanged = function () {
                     this.initTooltip();
                 };
                 MdTooltip.prototype.attached = function () {
