@@ -13,7 +13,7 @@ export class MdTooltip {
 
 	@au.bindable
 	html: string = "";
-	textChanged() {
+	htmlChanged() {
 		this.initTooltip();
 	}
 
