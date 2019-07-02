@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.3"></a>
+## [1.3.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.3.2...v1.3.3) (2019-07-02)
+
+
+### Bug Fixes
+
+* **radio:** allow model binding with boolean value 'false' ([#549](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/549)) ([c37b4ff](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/c37b4ff))
+* **updateLabel:** make focused input label active ([85b1c7b](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/85b1c7b))
+
+
+
 <a name="1.3.2"></a>
 ## [1.3.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.3.1...v1.3.2) (2019-06-07)
 
