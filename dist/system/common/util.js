@@ -30,7 +30,7 @@ System.register([], function (exports_1, context_1) {
     function updateLabel(input, label) {
         // the following is copied from the updateTextFields method
         // it is more efficient than updating all the inputs
-        if (input.value && input.value.length > 0 || input.autofocus || input.hasAttribute("placeholder")) {
+        if (input.value && input.value.length > 0 || input.matches(":focus") || input.autofocus || input.hasAttribute("placeholder")) {
             label.classList.add("active");
         }
         else if (input.validity) {
