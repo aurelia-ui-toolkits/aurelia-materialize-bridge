@@ -17,10 +17,11 @@ var MdCarousel = /** @class */ (function () {
         if (this.fullWidth) {
             this.element.classList.add("carousel-slider");
         }
-        this.refresh();
     };
     MdCarousel.prototype.detached = function () {
-        this.instance.destroy();
+        if (this.instance) {
+            this.instance.destroy();
+        }
     };
     MdCarousel.prototype.refresh = function () {
         var _this = this;
@@ -40,6 +41,7 @@ var MdCarousel = /** @class */ (function () {
         };
         au.cleanOptions(options);
         this.taskQueue.queueTask(function () {
+            _this.detached();
             _this.instance = new M.Carousel(_this.element, options);
         });
     };

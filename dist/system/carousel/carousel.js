@@ -27,10 +27,11 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     if (this.fullWidth) {
                         this.element.classList.add("carousel-slider");
                     }
-                    this.refresh();
                 };
                 MdCarousel.prototype.detached = function () {
-                    this.instance.destroy();
+                    if (this.instance) {
+                        this.instance.destroy();
+                    }
                 };
                 MdCarousel.prototype.refresh = function () {
                     var _this = this;
@@ -50,6 +51,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     };
                     au.cleanOptions(options);
                     this.taskQueue.queueTask(function () {
+                        _this.detached();
                         _this.instance = new M.Carousel(_this.element, options);
                     });
                 };

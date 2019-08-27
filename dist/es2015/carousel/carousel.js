@@ -15,10 +15,11 @@ let MdCarousel = class MdCarousel {
         if (this.fullWidth) {
             this.element.classList.add("carousel-slider");
         }
-        this.refresh();
     }
     detached() {
-        this.instance.destroy();
+        if (this.instance) {
+            this.instance.destroy();
+        }
     }
     refresh() {
         if (!this.items.length) {
@@ -37,6 +38,7 @@ let MdCarousel = class MdCarousel {
         };
         au.cleanOptions(options);
         this.taskQueue.queueTask(() => {
+            this.detached();
             this.instance = new M.Carousel(this.element, options);
         });
     }
