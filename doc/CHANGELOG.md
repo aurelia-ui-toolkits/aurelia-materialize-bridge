@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.4"></a>
+## [1.3.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.3.3...v1.3.4) (2019-08-27)
+
+
+### Bug Fixes
+
+* **carousel:** prevent double initialisation ([2e6ea00](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/2e6ea00))
+
+
+
 <a name="1.3.3"></a>
 ## [1.3.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.3.2...v1.3.3) (2019-07-02)
 
