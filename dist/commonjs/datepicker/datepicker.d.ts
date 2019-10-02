@@ -29,6 +29,7 @@ export declare class MdDatePicker {
     i18n: Partial<M.InternationalizationOptions>;
     events: string[];
     showErrortext: boolean;
+    disabled: boolean;
     instance: M.Datepicker;
     value: Date;
     valueChangedSuppress: boolean;
