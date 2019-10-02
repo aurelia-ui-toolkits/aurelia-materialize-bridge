@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.5"></a>
+## [1.3.5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.3.4...v1.3.5) (2019-10-02)
+
+
+### Bug Fixes
+
+* **datepicker:** bind disabled attribute ([1d03f5e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/1d03f5e)), closes [#554](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/554)
+
+
+
 <a name="1.3.4"></a>
 ## [1.3.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.3.3...v1.3.4) (2019-08-27)
 
