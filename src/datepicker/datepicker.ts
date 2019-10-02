@@ -77,6 +77,9 @@ export class MdDatePicker {
 	@au.ato.bindable.booleanMd
 	showErrortext: boolean = true;
 
+	@au.ato.bindable.booleanMd
+	disabled: boolean = false;
+
 	instance: M.Datepicker;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
