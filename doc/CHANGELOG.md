@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.6"></a>
+## [1.3.6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.3.5...v1.3.6) (2019-10-11)
+
+
+### Bug Fixes
+
+* **travis:** remove unused commands ([c8992f1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/c8992f1))
+
+
+
 <a name="1.3.5"></a>
 ## [1.3.5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.3.4...v1.3.5) (2019-10-02)
 
