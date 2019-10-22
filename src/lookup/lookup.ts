@@ -3,6 +3,21 @@ import { LookupState } from "./lookup-state";
 import { ILookupOptionsFunctionParameter } from "./i-lookup-options-function-parameter";
 import { DiscardablePromise, discard } from "../common/discardable-promise";
 
+export enum BlurAction {
+	/**
+	 * Do nothing
+	 */
+	Nothing 			= 0,
+	/**
+	 * If filter matches no options, clear filter and value
+	 */
+	ClearOnNoMatch 		= 1 << 0,
+	/**
+	 * If there is one remaining option, set this option as the value
+	 */
+	SetOnMatch 			= 1 << 1
+}
+
 @au.customElement("md-lookup")
 @au.autoinject
 export class MdLookup {
@@ -24,6 +39,9 @@ export class MdLookup {
 	labelElement: HTMLLabelElement;
 	validationContainer: HTMLElement;
 	logger: au.Logger;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	blurAction: BlurAction = BlurAction.Nothing;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	filter: string;
@@ -186,8 +204,19 @@ export class MdLookup {
 	}
 
 	blur() {
+		if ((this.blurAction & BlurAction.SetOnMatch) && this.options && this.options.length === 1) {
+			this.setValue(this.options[0])
+			this.setFilter(this.getDisplayValue(this.options[0]))
+		} else if ((this.blurAction & BlurAction.ClearOnNoMatch) && this.optionsContainsText(this.filter)) {
+			this.setValue(undefined)
+			this.setFilter(undefined)
+		}
 		this.close();
 		au.fireEvent(this.element, "blur");
+	}
+
+	optionsContainsText(txt: string) {
+		return !this.options || !this.options.some(opt => this.getDisplayValue(opt) == txt)
 	}
 
 	focus() {
@@ -217,6 +246,7 @@ export class MdLookup {
 		// we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
 		this.input.onselect = () => this.taskQueue.queueTask(() => this.open());
 		this.input.onclick = () => this.taskQueue.queueTask(() => this.open());
+		this.input.onfocus = () => this.taskQueue.queueTask(() => this.open());
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
 		if (this.preloadOptions) {
@@ -230,6 +260,7 @@ export class MdLookup {
 			this.input.onselect = null;
 			this.input.onfocus = null;
 			this.input.onblur = null;
+			this.input.onfocus = null;
 		}
 		au.MaterializeFormValidationRenderer.removeValidation(this.validationContainer, this.input);
 		this.element.mdRenderValidateResults = null;
