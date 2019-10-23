@@ -1,6 +1,17 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.4.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.3.6...v1.4.0) (2019-10-23)
+
+
+### Features
+
+* **lookup:** open on focus, add blur action ([bfe6146](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/bfe614604d68df71fc9f2629386d4b8b4e4488df))
+
+### Refactoring
+
+* **inputs:** delegate error rendering to aurelia ([4e5a3cb](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/4e5a3cb2c930e3ff3f3a3916867930106bcba8f5))
 
 <a name="1.3.6"></a>
 ## [1.3.6](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.3.5...v1.3.6) (2019-10-11)
