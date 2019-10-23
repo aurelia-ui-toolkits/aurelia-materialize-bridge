@@ -3,6 +3,8 @@ import { LookupState } from "./lookup-state";
 import { ILookupOptionsFunctionParameter } from "./i-lookup-options-function-parameter";
 import { DiscardablePromise, discard } from "../common/discardable-promise";
 
+export type BlurAction = "Nothing" | "ClearOnNoMatch" | "SetOnMatch" | "Both";
+
 @au.customElement("md-lookup")
 @au.autoinject
 export class MdLookup {
@@ -25,6 +27,9 @@ export class MdLookup {
 	logger: au.Logger;
 	validateResults: au.ValidateResult[] = [];
 	validationClass: string;
+
+	@au.bindable({ defaultBindingMode: au.bindingMode.oneTime })
+	blurAction: BlurAction = "Nothing";
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	filter: string;
@@ -187,8 +192,19 @@ export class MdLookup {
 	}
 
 	blur() {
+		if ((["SetOnMatch", "Both"].includes(this.blurAction)) && this.options && this.options.length === 1) {
+			this.setValue(this.options[0]);
+			this.setFilter(this.getDisplayValue(this.options[0]));
+		} else if (["ClearOnNoMatch", "Both"].includes(this.blurAction) && this.optionsContainsText(this.filter)) {
+			this.setValue(undefined);
+			this.setFilter(undefined);
+		}
 		this.close();
 		au.fireEvent(this.element, "blur");
+	}
+
+	optionsContainsText(txt: string) {
+		return !this.options || !this.options.some(opt => this.getDisplayValue(opt) === txt);
 	}
 
 	focus() {
@@ -218,6 +234,7 @@ export class MdLookup {
 		// we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
 		this.input.onselect = () => this.taskQueue.queueTask(() => this.open());
 		this.input.onclick = () => this.taskQueue.queueTask(() => this.open());
+		this.input.onfocus = () => this.taskQueue.queueTask(() => this.open());
 		this.element.mdRenderValidateResults = this.mdRenderValidateResults;
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
 		if (this.preloadOptions) {
@@ -231,6 +248,7 @@ export class MdLookup {
 			this.input.onselect = null;
 			this.input.onfocus = null;
 			this.input.onblur = null;
+			this.input.onfocus = null;
 		}
 		this.element.mdRenderValidateResults = null;
 		this.element.mdUnrenderValidateResults = null;
