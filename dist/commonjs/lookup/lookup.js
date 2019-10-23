@@ -9,6 +9,7 @@ var MdLookup = /** @class */ (function () {
         var _this = this;
         this.element = element;
         this.taskQueue = taskQueue;
+        this.blurAction = "Nothing";
         this.placeholder = "Start Typing To Search";
         this.debounce = 850;
         this.LookupState = lookup_state_1.LookupState; // for usage from the html template
@@ -206,8 +207,20 @@ var MdLookup = /** @class */ (function () {
         this.isOpen = false;
     };
     MdLookup.prototype.blur = function () {
+        if ((["SetOnMatch", "Both"].includes(this.blurAction)) && this.options && this.options.length === 1) {
+            this.setValue(this.options[0]);
+            this.setFilter(this.getDisplayValue(this.options[0]));
+        }
+        else if (["ClearOnNoMatch", "Both"].includes(this.blurAction) && this.optionsContainsText(this.filter)) {
+            this.setValue(undefined);
+            this.setFilter(undefined);
+        }
         this.close();
         au.fireEvent(this.element, "blur");
+    };
+    MdLookup.prototype.optionsContainsText = function (txt) {
+        var _this = this;
+        return !this.options || !this.options.some(function (opt) { return _this.getDisplayValue(opt) === txt; });
     };
     MdLookup.prototype.focus = function () {
         this.input.focus();
@@ -249,6 +262,7 @@ var MdLookup = /** @class */ (function () {
                         // we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
                         this.input.onselect = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
                         this.input.onclick = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
+                        this.input.onfocus = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
                         this.element.mdRenderValidateResults = this.mdRenderValidateResults;
                         this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
                         if (!this.preloadOptions) return [3 /*break*/, 2];
@@ -269,6 +283,7 @@ var MdLookup = /** @class */ (function () {
             this.input.onselect = null;
             this.input.onfocus = null;
             this.input.onblur = null;
+            this.input.onfocus = null;
         }
         au.MaterializeFormValidationRenderer.removeValidation(this.validationContainer, this.input);
         this.element.mdRenderValidateResults = null;
@@ -309,6 +324,10 @@ var MdLookup = /** @class */ (function () {
     MdLookup.searching = Symbol("searching");
     MdLookup.error = Symbol("error");
     MdLookup.id = 0;
+    tslib_1.__decorate([
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", String)
+    ], MdLookup.prototype, "blurAction", void 0);
     tslib_1.__decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
         tslib_1.__metadata("design:type", String)

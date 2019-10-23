@@ -7,6 +7,7 @@ let MdLookup = MdLookup_1 = class MdLookup {
     constructor(element, taskQueue) {
         this.element = element;
         this.taskQueue = taskQueue;
+        this.blurAction = "Nothing";
         this.placeholder = "Start Typing To Search";
         this.debounce = 850;
         this.LookupState = LookupState; // for usage from the html template
@@ -147,8 +148,19 @@ let MdLookup = MdLookup_1 = class MdLookup {
         this.isOpen = false;
     }
     blur() {
+        if ((["SetOnMatch", "Both"].includes(this.blurAction)) && this.options && this.options.length === 1) {
+            this.setValue(this.options[0]);
+            this.setFilter(this.getDisplayValue(this.options[0]));
+        }
+        else if (["ClearOnNoMatch", "Both"].includes(this.blurAction) && this.optionsContainsText(this.filter)) {
+            this.setValue(undefined);
+            this.setFilter(undefined);
+        }
         this.close();
         au.fireEvent(this.element, "blur");
+    }
+    optionsContainsText(txt) {
+        return !this.options || !this.options.some(opt => this.getDisplayValue(opt) === txt);
     }
     focus() {
         this.input.focus();
@@ -177,6 +189,7 @@ let MdLookup = MdLookup_1 = class MdLookup {
             // we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
             this.input.onselect = () => this.taskQueue.queueTask(() => this.open());
             this.input.onclick = () => this.taskQueue.queueTask(() => this.open());
+            this.input.onfocus = () => this.taskQueue.queueTask(() => this.open());
             this.element.mdRenderValidateResults = this.mdRenderValidateResults;
             this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
             if (this.preloadOptions) {
@@ -190,6 +203,7 @@ let MdLookup = MdLookup_1 = class MdLookup {
             this.input.onselect = null;
             this.input.onfocus = null;
             this.input.onblur = null;
+            this.input.onfocus = null;
         }
         au.MaterializeFormValidationRenderer.removeValidation(this.validationContainer, this.input);
         this.element.mdRenderValidateResults = null;
@@ -230,6 +244,10 @@ let MdLookup = MdLookup_1 = class MdLookup {
 MdLookup.searching = Symbol("searching");
 MdLookup.error = Symbol("error");
 MdLookup.id = 0;
+tslib_1.__decorate([
+    au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
+    tslib_1.__metadata("design:type", String)
+], MdLookup.prototype, "blurAction", void 0);
 tslib_1.__decorate([
     au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
     tslib_1.__metadata("design:type", String)
