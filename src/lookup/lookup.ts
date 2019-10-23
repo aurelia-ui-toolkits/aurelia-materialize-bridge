@@ -195,7 +195,8 @@ export class MdLookup {
 		if ((["SetOnMatch", "Both"].includes(this.blurAction)) && this.options && this.options.length === 1) {
 			this.setValue(this.options[0]);
 			this.setFilter(this.getDisplayValue(this.options[0]));
-		} else if (["ClearOnNoMatch", "Both"].includes(this.blurAction) && this.optionsContainsText(this.filter)) {
+		}
+		else if (["ClearOnNoMatch", "Both"].includes(this.blurAction) && this.optionsContainsText(this.filter)) {
 			this.setValue(undefined);
 			this.setFilter(undefined);
 		}
