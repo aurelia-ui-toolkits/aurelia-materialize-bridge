@@ -22,8 +22,9 @@ export class MdLookup {
 	dropdownUl: HTMLElement;
 	input: HTMLInputElement;
 	labelElement: HTMLLabelElement;
-	validationContainer: HTMLElement;
 	logger: au.Logger;
+	validateResults: au.ValidateResult[] = [];
+	validationClass: string;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	filter: string;
@@ -231,7 +232,6 @@ export class MdLookup {
 			this.input.onfocus = null;
 			this.input.onblur = null;
 		}
-		au.MaterializeFormValidationRenderer.removeValidation(this.validationContainer, this.input);
 		this.element.mdRenderValidateResults = null;
 		this.element.mdUnrenderValidateResults = null;
 	}
@@ -269,20 +269,12 @@ export class MdLookup {
 	}
 
 	mdUnrenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		for (let result of results) {
-			if (!result.valid) {
-				renderer.removeMessage(this.validationContainer, result);
-			}
-		}
-		renderer.removeValidationClasses(this.input);
+		this.validateResults = this.validateResults.filter(x => !results.find(y => y.id === x.id));
+		this.validationClass = undefined;
 	}
 
 	mdRenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		for (let result of results) {
-			if (!result.valid) {
-				renderer.addMessage(this.validationContainer, result);
-			}
-		}
-		renderer.addValidationClasses(this.input, !results.find(x => !x.valid));
+		this.validateResults.push(...results.filter(x => !x.valid));
+		this.validationClass = results.find(x => !x.valid) ? "invalid" : "valid";
 	}
 }

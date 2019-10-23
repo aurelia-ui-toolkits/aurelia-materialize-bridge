@@ -1,13 +1,14 @@
 <template>
 	<require from="./input.css"></require>
-	<div class="input-field ${inline ? 'inline' : ''}" ref="inputField">
+	<div class="input-field ${inline ? 'inline' : ''}">
 		<slot></slot>
 		<input if.bind="!textArea" ref="input" id="${controlId}" type.bind="type" min.bind="min" max.bind="max"
 		 maxlength.bind="maxlength" name.bind="name" step.bind="step" value.bind="value" readonly.bind="readonly" disabled.bind="disabled"
-		 blur.trigger="blur()" focus.trigger="focus()" />
-		<textarea if.bind="textArea" ref="input" id="${controlId}" value.bind="value" class="materialize-textarea" readonly.bind="readonly"
+		 blur.trigger="blur()" focus.trigger="focus()" class="${validationClass}" />
+		<textarea if.bind="textArea" ref="input" id="${controlId}" value.bind="value" class="materialize-textarea ${validationClass}" readonly.bind="readonly"
 		 disabled.bind="disabled" maxlength.bind="maxlength" blur.trigger="blur()" focus.trigger="focus()"></textarea>
 		<label for="${controlId}" ref="labelEl">${label}</label>
 		<span if.bind="validateSuccess || validateError" class="helper-text" data-success.bind="validateSuccess" data-error.bind="validateError"></span>
+		<span repeat.for="r of validateResults" class="helper-text" data-error.bind="r.message"></span>
 	</div>
 </template>

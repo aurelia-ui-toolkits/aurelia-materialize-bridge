@@ -11,7 +11,6 @@ export class MdInput {
 	controlId: string;
 	labelEl: HTMLLabelElement;
 	input: HTMLInputElement;
-	inputField: HTMLDivElement;
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay })
 	label: string;
@@ -79,7 +78,8 @@ export class MdInput {
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	autocomplete: string = "";
 
-	suspendUpdate = false;
+	validateResults: au.ValidateResult[] = [];
+	validationClass: string;
 
 	bind() {
 		// this suppresses initial changed handler calls
@@ -103,7 +103,6 @@ export class MdInput {
 
 	detached() {
 		this.detachEventHandlers();
-		au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
 		this.element.mdUnrenderValidateResults = undefined;
 		this.element.mdRenderValidateResults = undefined;
 	}
@@ -143,22 +142,14 @@ export class MdInput {
 	}
 
 	mdUnrenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		for (let result of results) {
-			if (!result.valid) {
-				renderer.removeMessage(this.inputField, result);
-			}
-		}
-		renderer.removeValidationClasses(this.input);
+		this.validateResults = this.validateResults.filter(x => !results.find(y => y.id === x.id));
+		this.validationClass = undefined;
 	}
 
 	mdRenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		if (this.showErrortext && this.inputField) {
-			for (let result of results) {
-				if (!result.valid) {
-					renderer.addMessage(this.inputField, result);
-				}
-			}
+		if (this.showErrortext) {
+			this.validateResults.push(...results.filter(x => !x.valid));
 		}
-		renderer.addValidationClasses(this.input, !results.find(x => !x.valid));
+		this.validationClass = results.find(x => !x.valid) ? "invalid" : "valid";
 	}
 }

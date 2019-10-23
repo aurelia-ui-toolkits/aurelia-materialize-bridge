@@ -4,10 +4,11 @@ import * as au from "../aurelia";
 export class ValidationContainer {
 	constructor(private element: Element, private coloursService: au.MdColorsService) { }
 
-	containerDiv: HTMLDivElement;
-
 	@au.ato.bindable.booleanMd
 	showSuccess: boolean;
+
+	validateResults: au.ValidateResult[] = [];
+	validationClass: string;
 
 	attached() {
 		this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
@@ -15,25 +16,15 @@ export class ValidationContainer {
 	}
 
 	mdUnrenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		for (let result of results) {
-			if (!result.valid) {
-				renderer.removeMessage(this.containerDiv, result);
-			}
-		}
-		renderer.removeValidationClasses(this.containerDiv);
+		this.validateResults = this.validateResults.filter(x => !results.find(y => y.id === x.id));
+		this.validationClass = undefined;
 	}
 
 	mdRenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		if (this.containerDiv) {
-			for (let result of results) {
-				if (!result.valid) {
-					renderer.addMessage(this.containerDiv, result);
-				}
-			}
-		}
-		let valid = !results.find(x => !x.valid);
-		if (!valid || this.showSuccess) {
-			renderer.addValidationClasses(this.containerDiv, valid);
+		this.validateResults.push(...results.filter(x => !x.valid));
+		let invalid = results.find(x => !x.valid);
+		if (invalid || this.showSuccess) {
+			this.validationClass = invalid ? "invalid" : "valid";
 		}
 	}
 }

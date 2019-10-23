@@ -9,7 +9,6 @@ export class MdDatePicker {
 	controlId: string = `md-datepicker-${MdDatePicker.id++}`;
 	input: HTMLInputElement;
 	labelElement: HTMLLabelElement;
-	inputField: HTMLDivElement;
 
 	@au.ato.bindable.stringMd
 	label: string = "";
@@ -81,6 +80,8 @@ export class MdDatePicker {
 	disabled: boolean = false;
 
 	instance: M.Datepicker;
+	validateResults: au.ValidateResult[] = [];
+	validationClass: string;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	value: Date;
@@ -168,7 +169,6 @@ export class MdDatePicker {
 	}
 
 	detached() {
-		au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
 		this.instance.destroy();
 		this.element.mdUnrenderValidateResults = undefined;
 		this.element.mdRenderValidateResults = undefined;
@@ -183,22 +183,14 @@ export class MdDatePicker {
 	}
 
 	mdUnrenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		for (let result of results) {
-			if (!result.valid) {
-				renderer.removeMessage(this.inputField, result);
-			}
-		}
-		renderer.removeValidationClasses(this.input);
+		this.validateResults = this.validateResults.filter(x => !results.find(y => y.id === x.id));
+		this.validationClass = undefined;
 	}
 
 	mdRenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
-		if (this.showErrortext && this.inputField) {
-			for (let result of results) {
-				if (!result.valid) {
-					renderer.addMessage(this.inputField, result);
-				}
-			}
+		if (this.showErrortext) {
+			this.validateResults.push(...results.filter(x => !x.valid));
 		}
-		renderer.addValidationClasses(this.input, !results.find(x => !x.valid));
+		this.validationClass = results.find(x => !x.valid) ? "invalid" : "valid";
 	}
 }
