@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdCollection = /** @class */ (function () {
     function MdCollection(element) {
@@ -31,10 +31,10 @@ var MdCollection = /** @class */ (function () {
         var vm = items[index].au["md-collection-selector"].viewModel;
         vm.isSelected = !vm.isSelected;
     };
-    MdCollection = tslib_1.__decorate([
+    MdCollection = __decorate([
         au.customElement("md-collection"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdCollection);
     return MdCollection;
 }());

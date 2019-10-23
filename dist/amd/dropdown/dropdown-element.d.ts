@@ -1,3 +1,4 @@
+/// <reference types="materialize-css" />
 export declare class MdDropdownElement {
     private element;
     constructor(element: Element);

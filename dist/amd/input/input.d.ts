@@ -7,7 +7,6 @@ export declare class MdInput {
     controlId: string;
     labelEl: HTMLLabelElement;
     input: HTMLInputElement;
-    inputField: HTMLDivElement;
     label: string;
     blurOnEnter: boolean;
     disabled: boolean;
@@ -29,7 +28,8 @@ export declare class MdInput {
     name: string;
     maxlength: number;
     autocomplete: string;
-    suspendUpdate: boolean;
+    validateResults: au.ValidateResult[];
+    validationClass: string;
     bind(): void;
     attached(): void;
     detached(): void;

@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdPagination = /** @class */ (function () {
     function MdPagination(element) {
@@ -60,38 +60,38 @@ var MdPagination = /** @class */ (function () {
         }
         return list;
     };
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdPagination.prototype, "activePage", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdPagination.prototype, "pages", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneWay }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdPagination.prototype, "visiblePageLinks", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.oneWay }),
-        tslib_1.__metadata("design:type", Array)
+        __metadata("design:type", Array)
     ], MdPagination.prototype, "pageLinks", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdPagination.prototype, "showFirstLast", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdPagination.prototype, "showPrevNext", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdPagination.prototype, "showPageLinks", void 0);
-    MdPagination = tslib_1.__decorate([
+    MdPagination = __decorate([
         au.customElement("md-pagination"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdPagination);
     return MdPagination;
 }());

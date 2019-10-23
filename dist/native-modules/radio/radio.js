@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdRadio = /** @class */ (function () {
     function MdRadio(element) {
@@ -30,38 +30,38 @@ var MdRadio = /** @class */ (function () {
     };
     var MdRadio_1;
     MdRadio.id = 0;
-    tslib_1.__decorate([
+    __decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], MdRadio.prototype, "checked", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdRadio.prototype, "disabled", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdRadio.prototype, "readonly", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdRadio.prototype, "gap", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], MdRadio.prototype, "model", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdRadio.prototype, "name", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdRadio.prototype, "value", void 0);
-    MdRadio = MdRadio_1 = tslib_1.__decorate([
+    MdRadio = MdRadio_1 = __decorate([
         au.customElement("md-radio"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdRadio);
     return MdRadio;
 }());

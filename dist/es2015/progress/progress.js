@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdProgress = class MdProgress {
     constructor(element) {
@@ -27,30 +27,30 @@ let MdProgress = class MdProgress {
         this.pixelSizeChanged(this.pixelSize);
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd,
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdProgress.prototype, "color", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdProgress.prototype, "pixelSize", void 0);
-tslib_1.__decorate([
+__decorate([
     au.bindable,
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdProgress.prototype, "size", void 0);
-tslib_1.__decorate([
+__decorate([
     au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdProgress.prototype, "type", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdProgress.prototype, "value", void 0);
-MdProgress = tslib_1.__decorate([
+MdProgress = __decorate([
     au.customElement("md-progress"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdProgress);
 export { MdProgress };
 //# sourceMappingURL=progress.js.map

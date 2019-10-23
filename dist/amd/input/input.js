@@ -21,51 +21,22 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.name = "";
             this.maxlength = 524288;
             this.autocomplete = "";
-            this.suspendUpdate = false;
+            this.validateResults = [];
             this.blurOnEnterHandler = function (e) {
                 if (e.keyCode && e.keyCode === 13) {
                     _this.input.blur();
                 }
             };
             this.mdUnrenderValidateResults = function (results, renderer) {
-                var e_1, _a;
-                try {
-                    for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
-                        var result = results_1_1.value;
-                        if (!result.valid) {
-                            renderer.removeMessage(_this.inputField, result);
-                        }
-                    }
-                }
-                catch (e_1_1) { e_1 = { error: e_1_1 }; }
-                finally {
-                    try {
-                        if (results_1_1 && !results_1_1.done && (_a = results_1.return)) _a.call(results_1);
-                    }
-                    finally { if (e_1) throw e_1.error; }
-                }
-                renderer.removeValidationClasses(_this.input);
+                _this.validateResults = _this.validateResults.filter(function (x) { return !results.find(function (y) { return y.id === x.id; }); });
+                _this.validationClass = undefined;
             };
             this.mdRenderValidateResults = function (results, renderer) {
-                var e_2, _a;
-                if (_this.showErrortext && _this.inputField) {
-                    try {
-                        for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
-                            var result = results_2_1.value;
-                            if (!result.valid) {
-                                renderer.addMessage(_this.inputField, result);
-                            }
-                        }
-                    }
-                    catch (e_2_1) { e_2 = { error: e_2_1 }; }
-                    finally {
-                        try {
-                            if (results_2_1 && !results_2_1.done && (_a = results_2.return)) _a.call(results_2);
-                        }
-                        finally { if (e_2) throw e_2.error; }
-                    }
+                var _a;
+                if (_this.showErrortext) {
+                    (_a = _this.validateResults).push.apply(_a, tslib_1.__spread(results.filter(function (x) { return !x.valid; })));
                 }
-                renderer.addValidationClasses(_this.input, !results.find(function (x) { return !x.valid; }));
+                _this.validationClass = results.find(function (x) { return !x.valid; }) ? "invalid" : "valid";
             };
             this.controlId = "md-input-" + MdInput_1.id++;
         }
@@ -97,7 +68,6 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         };
         MdInput.prototype.detached = function () {
             this.detachEventHandlers();
-            au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
             this.element.mdUnrenderValidateResults = undefined;
             this.element.mdRenderValidateResults = undefined;
         };

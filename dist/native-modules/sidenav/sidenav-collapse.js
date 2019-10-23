@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import { bindable, customAttribute, autoinject } from "aurelia-framework";
 import { MdSidenav } from "./sidenav";
 var MdSidenavCollapse = /** @class */ (function () {
@@ -23,14 +23,14 @@ var MdSidenavCollapse = /** @class */ (function () {
     MdSidenavCollapse.prototype.detached = function () {
         this.element.removeEventListener("click", this.click);
     };
-    tslib_1.__decorate([
+    __decorate([
         bindable,
-        tslib_1.__metadata("design:type", MdSidenav)
+        __metadata("design:type", MdSidenav)
     ], MdSidenavCollapse.prototype, "ref", void 0);
-    MdSidenavCollapse = tslib_1.__decorate([
+    MdSidenavCollapse = __decorate([
         customAttribute("md-sidenav-collapse"),
         autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdSidenavCollapse);
     return MdSidenavCollapse;
 }());

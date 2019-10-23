@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdModal = class MdModal {
     constructor(element) {
@@ -41,46 +41,46 @@ let MdModal = class MdModal {
         this.instance.close();
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd,
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdModal.prototype, "opacity", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd,
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdModal.prototype, "inDuration", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd,
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdModal.prototype, "outDuration", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdModal.prototype, "preventScrolling", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdModal.prototype, "dismissible", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd,
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdModal.prototype, "startingTop", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd,
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdModal.prototype, "endingTop", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdModal.prototype, "fixedFooter", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdModal.prototype, "bottomSheet", void 0);
-MdModal = tslib_1.__decorate([
+MdModal = __decorate([
     au.customAttribute("md-modal"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdModal);
 export { MdModal };
 //# sourceMappingURL=modal.js.map

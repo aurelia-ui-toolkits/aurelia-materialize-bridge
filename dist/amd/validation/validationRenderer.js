@@ -20,7 +20,7 @@ define(["require", "exports", "tslib"], function (require, exports, tslib_1) {
                 for (var _g = tslib_1.__values(instruction.unrender), _h = _g.next(); !_h.done; _h = _g.next()) {
                     var _j = _h.value, result = _j.result, elements = _j.elements;
                     try {
-                        for (var elements_1 = tslib_1.__values(elements), elements_1_1 = elements_1.next(); !elements_1_1.done; elements_1_1 = elements_1.next()) {
+                        for (var elements_1 = (e_2 = void 0, tslib_1.__values(elements)), elements_1_1 = elements_1.next(); !elements_1_1.done; elements_1_1 = elements_1.next()) {
                             var element = elements_1_1.value;
                             this.pushElementResult(elementResultsToUnrender, element, result);
                         }
@@ -65,7 +65,7 @@ define(["require", "exports", "tslib"], function (require, exports, tslib_1) {
                 for (var _l = tslib_1.__values(instruction.render), _m = _l.next(); !_m.done; _m = _l.next()) {
                     var _o = _m.value, result = _o.result, elements = _o.elements;
                     try {
-                        for (var elements_2 = tslib_1.__values(elements), elements_2_1 = elements_2.next(); !elements_2_1.done; elements_2_1 = elements_2.next()) {
+                        for (var elements_2 = (e_5 = void 0, tslib_1.__values(elements)), elements_2_1 = elements_2.next(); !elements_2_1.done; elements_2_1 = elements_2.next()) {
                             var element = elements_2_1.value;
                             this.pushElementResult(elementResultsToRender, element, result);
                         }

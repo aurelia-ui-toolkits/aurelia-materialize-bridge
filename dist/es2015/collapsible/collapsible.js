@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdCollapsible = class MdCollapsible {
     constructor(element) {
@@ -39,26 +39,26 @@ let MdCollapsible = class MdCollapsible {
         this.instance.close(index);
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdCollapsible.prototype, "accordion", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdCollapsible.prototype, "popout", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdCollapsible.prototype, "inDuration", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdCollapsible.prototype, "outDuration", void 0);
-MdCollapsible = tslib_1.__decorate([
+MdCollapsible = __decorate([
     au.customAttribute("md-collapsible"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdCollapsible);
 export { MdCollapsible };
 //# sourceMappingURL=collapsible.js.map

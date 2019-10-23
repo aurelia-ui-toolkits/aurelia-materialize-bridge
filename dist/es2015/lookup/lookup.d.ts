@@ -2,6 +2,7 @@ import * as au from "../aurelia";
 import { LookupState } from "./lookup-state";
 import { ILookupOptionsFunctionParameter } from "./i-lookup-options-function-parameter";
 import { DiscardablePromise } from "../common/discardable-promise";
+export declare type BlurAction = "Nothing" | "ClearOnNoMatch" | "SetOnMatch" | "Both";
 export declare class MdLookup {
     private element;
     private taskQueue;
@@ -15,8 +16,10 @@ export declare class MdLookup {
     dropdownUl: HTMLElement;
     input: HTMLInputElement;
     labelElement: HTMLLabelElement;
-    validationContainer: HTMLElement;
     logger: au.Logger;
+    validateResults: au.ValidateResult[];
+    validationClass: string;
+    blurAction: BlurAction;
     filter: string;
     searchPromise: DiscardablePromise<any[]>;
     suppressFilterChanged: boolean;
@@ -46,6 +49,7 @@ export declare class MdLookup {
     open(): void;
     close(): void;
     blur(): void;
+    optionsContainsText(txt: string): boolean;
     focus(): void;
     updateLabel(): void;
     bind(bindingContext: object, overrideContext: object): Promise<void>;

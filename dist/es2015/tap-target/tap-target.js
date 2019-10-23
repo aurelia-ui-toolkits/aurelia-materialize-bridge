@@ -1,5 +1,5 @@
-import * as tslib_1 from "tslib";
 var MdTapTarget_1;
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdTapTarget = MdTapTarget_1 = class MdTapTarget {
     constructor(element) {
@@ -36,14 +36,14 @@ let MdTapTarget = MdTapTarget_1 = class MdTapTarget {
     }
 };
 MdTapTarget.controlId = 0;
-tslib_1.__decorate([
+__decorate([
     au.bindable,
-    tslib_1.__metadata("design:type", HTMLElement)
+    __metadata("design:type", HTMLElement)
 ], MdTapTarget.prototype, "ref", void 0);
-MdTapTarget = MdTapTarget_1 = tslib_1.__decorate([
+MdTapTarget = MdTapTarget_1 = __decorate([
     au.customElement("md-tap-target"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdTapTarget);
 export { MdTapTarget };
 //# sourceMappingURL=tap-target.js.map

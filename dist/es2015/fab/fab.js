@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdFab = class MdFab {
     constructor(element, taskQueue) {
@@ -30,21 +30,21 @@ let MdFab = class MdFab {
         this.instance.close();
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdFab.prototype, "direction", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdFab.prototype, "hoverEnabled", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdFab.prototype, "toolbarEnabled", void 0);
-MdFab = tslib_1.__decorate([
+MdFab = __decorate([
     au.customElement("md-fab"),
-    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
+    __metadata("design:paramtypes", [Element, au.TaskQueue])
 ], MdFab);
 export { MdFab };
 //# sourceMappingURL=fab.js.map

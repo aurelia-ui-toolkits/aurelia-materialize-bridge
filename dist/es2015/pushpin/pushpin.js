@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdPushpin = class MdPushpin {
     constructor(element) {
@@ -18,22 +18,22 @@ let MdPushpin = class MdPushpin {
         this.instance.destroy();
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd,
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdPushpin.prototype, "bottom", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd,
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdPushpin.prototype, "offset", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd,
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdPushpin.prototype, "top", void 0);
-MdPushpin = tslib_1.__decorate([
+MdPushpin = __decorate([
     au.customAttribute("md-pushpin"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdPushpin);
 export { MdPushpin };
 //# sourceMappingURL=pushpin.js.map

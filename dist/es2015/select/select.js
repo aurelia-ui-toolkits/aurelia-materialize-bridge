@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdSelect = class MdSelect {
     constructor(element, bindingEngine, taskQueue) {
@@ -194,30 +194,30 @@ let MdSelect = class MdSelect {
         this.instance.dropdown.open();
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdSelect.prototype, "disabled", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdSelect.prototype, "readonly", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdSelect.prototype, "enableOptionObserver", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd,
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdSelect.prototype, "label", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdSelect.prototype, "showErrortext", void 0);
-MdSelect = tslib_1.__decorate([
+MdSelect = __decorate([
     au.autoinject,
     au.customAttribute("md-select"),
-    tslib_1.__metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue])
+    __metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue])
 ], MdSelect);
 export { MdSelect };
 //# sourceMappingURL=select.js.map

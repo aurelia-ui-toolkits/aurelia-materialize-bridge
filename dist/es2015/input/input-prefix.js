@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdPrefix = class MdPrefix {
     constructor(element) {
@@ -12,10 +12,10 @@ let MdPrefix = class MdPrefix {
         this.attributeManager.removeClasses("prefix");
     }
 };
-MdPrefix = tslib_1.__decorate([
+MdPrefix = __decorate([
     au.customAttribute("md-prefix"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdPrefix);
 export { MdPrefix };
 //# sourceMappingURL=input-prefix.js.map

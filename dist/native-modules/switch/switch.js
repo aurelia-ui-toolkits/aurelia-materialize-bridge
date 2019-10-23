@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdSwitch = /** @class */ (function () {
     function MdSwitch(element) {
@@ -35,30 +35,30 @@ var MdSwitch = /** @class */ (function () {
     MdSwitch.prototype.blur = function () {
         au.fireEvent(this.element, "blur");
     };
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdSwitch.prototype, "checked", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdSwitch.prototype, "disabled", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdSwitch.prototype, "readonly", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdSwitch.prototype, "labelOff", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdSwitch.prototype, "labelOn", void 0);
-    MdSwitch = tslib_1.__decorate([
+    MdSwitch = __decorate([
         au.customElement("md-switch"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdSwitch);
     return MdSwitch;
 }());

@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdFileInput = /** @class */ (function () {
     function MdFileInput(element) {
@@ -25,30 +25,30 @@ var MdFileInput = /** @class */ (function () {
     MdFileInput.prototype.detached = function () {
         this.filePath.removeEventListener("change", this.handleChangeFromNativeInput);
     };
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd,
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], MdFileInput.prototype, "caption", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdFileInput.prototype, "multiple", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdFileInput.prototype, "labelValue", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdFileInput.prototype, "disabled", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdFileInput.prototype, "readonly", void 0);
-    MdFileInput = tslib_1.__decorate([
+    MdFileInput = __decorate([
         au.customElement("md-file"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdFileInput);
     return MdFileInput;
 }());

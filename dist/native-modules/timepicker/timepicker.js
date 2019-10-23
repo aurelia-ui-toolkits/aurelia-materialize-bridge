@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata, __read, __spread } from "tslib";
 import * as au from "../aurelia";
 var MdTimePicker = /** @class */ (function () {
     function MdTimePicker(element, taskQueue) {
@@ -6,6 +6,7 @@ var MdTimePicker = /** @class */ (function () {
         this.element = element;
         this.taskQueue = taskQueue;
         this.controlId = "md-timepicker-" + MdTimePicker_1.id++;
+        this.validateResults = [];
         this.label = "";
         this.placeholder = "";
         this.showErrortext = true;
@@ -15,44 +16,15 @@ var MdTimePicker = /** @class */ (function () {
             au.fireEvent(_this.element, "blur");
         };
         this.mdUnrenderValidateResults = function (results, renderer) {
-            var e_1, _a;
-            try {
-                for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
-                    var result = results_1_1.value;
-                    if (!result.valid) {
-                        renderer.removeMessage(_this.inputField, result);
-                    }
-                }
-            }
-            catch (e_1_1) { e_1 = { error: e_1_1 }; }
-            finally {
-                try {
-                    if (results_1_1 && !results_1_1.done && (_a = results_1.return)) _a.call(results_1);
-                }
-                finally { if (e_1) throw e_1.error; }
-            }
-            renderer.removeValidationClasses(_this.input);
+            _this.validateResults = _this.validateResults.filter(function (x) { return !results.find(function (y) { return y.id === x.id; }); });
+            _this.validationClass = undefined;
         };
         this.mdRenderValidateResults = function (results, renderer) {
-            var e_2, _a;
-            if (_this.showErrortext && _this.inputField) {
-                try {
-                    for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
-                        var result = results_2_1.value;
-                        if (!result.valid) {
-                            renderer.addMessage(_this.inputField, result);
-                        }
-                    }
-                }
-                catch (e_2_1) { e_2 = { error: e_2_1 }; }
-                finally {
-                    try {
-                        if (results_2_1 && !results_2_1.done && (_a = results_2.return)) _a.call(results_2);
-                    }
-                    finally { if (e_2) throw e_2.error; }
-                }
+            var _a;
+            if (_this.showErrortext) {
+                (_a = _this.validateResults).push.apply(_a, __spread(results.filter(function (x) { return !x.valid; })));
             }
-            renderer.addValidationClasses(_this.input, !results.find(function (x) { return !x.valid; }));
+            _this.validationClass = results.find(function (x) { return !x.valid; }) ? "invalid" : "valid";
         };
     }
     MdTimePicker_1 = MdTimePicker;
@@ -103,7 +75,6 @@ var MdTimePicker = /** @class */ (function () {
     };
     MdTimePicker.prototype.detached = function () {
         this.input.removeEventListener("change", this.done);
-        au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
         this.instance.destroy();
         this.element.mdUnrenderValidateResults = undefined;
         this.element.mdRenderValidateResults = undefined;
@@ -116,66 +87,66 @@ var MdTimePicker = /** @class */ (function () {
     };
     var MdTimePicker_1;
     MdTimePicker.id = 0;
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdTimePicker.prototype, "label", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdTimePicker.prototype, "inline", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdTimePicker.prototype, "placeholder", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdTimePicker.prototype, "duration", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdTimePicker.prototype, "container", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdTimePicker.prototype, "showClearBtn", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdTimePicker.prototype, "defaultTime", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdTimePicker.prototype, "fromNow", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], MdTimePicker.prototype, "i18n", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdTimePicker.prototype, "autoClose", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdTimePicker.prototype, "twelveHour", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdTimePicker.prototype, "vibrate", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdTimePicker.prototype, "showErrortext", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdTimePicker.prototype, "value", void 0);
-    MdTimePicker = MdTimePicker_1 = tslib_1.__decorate([
+    MdTimePicker = MdTimePicker_1 = __decorate([
         au.autoinject,
         au.customElement("md-timepicker"),
-        tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
+        __metadata("design:paramtypes", [Element, au.TaskQueue])
     ], MdTimePicker);
     return MdTimePicker;
 }());

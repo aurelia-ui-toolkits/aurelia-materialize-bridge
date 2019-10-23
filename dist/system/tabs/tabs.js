@@ -44,8 +44,8 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     }
                 };
                 MdTabs.prototype.attached = function () {
-                    var _this = this;
                     var e_1, _a, e_2, _b;
+                    var _this = this;
                     this.attributeManager.addClasses("tabs");
                     var children = this.element.querySelectorAll("li");
                     if (!children.length) {

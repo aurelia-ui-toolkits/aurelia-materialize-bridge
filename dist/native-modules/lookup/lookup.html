@@ -2,8 +2,9 @@
 	<require from="./lookup.css"></require>
 
 	<div style="position: relative">
-		<div class="input-field" ref="validationContainer">
-			<input id="${controlId}" type="text" value.bind="filter & debounce: debounce" ref="input" readonly.bind="readonly" blur.trigger="blur()" focus.trigger="focus()" />
+		<div class="input-field">
+			<input id="${controlId}" type="text" value.bind="filter & debounce: debounce" ref="input" readonly.bind="readonly" blur.trigger="blur()" 
+				focus.trigger="focus()" class="${validationClass}"/>
 			<label for="${controlId}" ref="labelElement">${label}</label>
 			<div ref="dropdown" if.bind="isOpen" class="dropdown-div z-depth-1">
 				<ul ref="dropdownUl" class="collection">
@@ -29,6 +30,7 @@
 					</li>
 				</ul>
 			</div>
+			<span repeat.for="r of validateResults" class="helper-text" data-error.bind="r.message"></span>
 		</div>
 	</div>
 </template>

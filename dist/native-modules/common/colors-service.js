@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __read } from "tslib";
 import { shadeBlendConvert } from "./shade-blend-convert";
 var MdColorsService = /** @class */ (function () {
     function MdColorsService() {
@@ -20,7 +20,7 @@ var MdColorsService = /** @class */ (function () {
         return [parseInt(hex.substring(1, 3), 16), parseInt(hex.substring(3, 5), 16), parseInt(hex.substring(5), 16)];
     };
     MdColorsService.prototype.rgbToHex = function (_a) {
-        var _b = tslib_1.__read(_a, 3), r = _b[0], g = _b[1], b = _b[2];
+        var _b = __read(_a, 3), r = _b[0], g = _b[1], b = _b[2];
         return "#" + r.toString(16).padStart(2, "0") + g.toString(16).padStart(2, "0") + b.toString(16).padStart(2, "0");
     };
     MdColorsService.prototype.toRgb = function (hex, lightenDarken) {
@@ -36,7 +36,7 @@ var MdColorsService = /** @class */ (function () {
         return r + "," + g + "," + b;
     };
     MdColorsService.prototype.rgba = function (hex, alpha) {
-        var _a = tslib_1.__read(this.hexToRgb(hex), 3), r = _a[0], g = _a[1], b = _a[2];
+        var _a = __read(this.hexToRgb(hex), 3), r = _a[0], g = _a[1], b = _a[2];
         return "rgba(" + r + "," + g + "," + b + "," + alpha + ")";
     };
     MdColorsService.prototype.lighten = function (hex, amount) {
@@ -60,7 +60,7 @@ var MdColorsService = /** @class */ (function () {
         return this.rgbToHex(rgb);
     };
     MdColorsService.prototype.rgbToHsl = function (_a) {
-        var _b = tslib_1.__read(_a, 3), r = _b[0], g = _b[1], b = _b[2];
+        var _b = __read(_a, 3), r = _b[0], g = _b[1], b = _b[2];
         r /= 255;
         g /= 255;
         b /= 255;
@@ -109,7 +109,7 @@ var MdColorsService = /** @class */ (function () {
         return p;
     };
     MdColorsService.prototype.hslToRgb = function (_a) {
-        var _b = tslib_1.__read(_a, 3), h = _b[0], s = _b[1], l = _b[2];
+        var _b = __read(_a, 3), h = _b[0], s = _b[1], l = _b[2];
         var r;
         var g;
         var b;

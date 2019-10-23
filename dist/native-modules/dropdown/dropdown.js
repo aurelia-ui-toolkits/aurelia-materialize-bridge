@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdDropdown = /** @class */ (function () {
     function MdDropdown(element) {
@@ -71,58 +71,58 @@ var MdDropdown = /** @class */ (function () {
     };
     var MdDropdown_1;
     MdDropdown.elementId = 0;
-    tslib_1.__decorate([
+    __decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], MdDropdown.prototype, "activates", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Element)
+        __metadata("design:type", Element)
     ], MdDropdown.prototype, "ref", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdDropdown.prototype, "alignment", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdDropdown.prototype, "autoTrigger", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdDropdown.prototype, "constrainWidth", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], MdDropdown.prototype, "container", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdDropdown.prototype, "coverTrigger", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdDropdown.prototype, "closeOnClick", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdDropdown.prototype, "hover", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdDropdown.prototype, "mdTitle", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdDropdown.prototype, "inDuration", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdDropdown.prototype, "outDuration", void 0);
-    MdDropdown = MdDropdown_1 = tslib_1.__decorate([
+    MdDropdown = MdDropdown_1 = __decorate([
         au.customAttribute("md-dropdown"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdDropdown);
     return MdDropdown;
 }());

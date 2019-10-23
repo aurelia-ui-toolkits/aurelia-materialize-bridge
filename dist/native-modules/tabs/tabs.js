@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata, __values } from "tslib";
 import * as au from "../aurelia";
 var MdTabs = /** @class */ (function () {
     function MdTabs(element, taskQueue) {
@@ -32,15 +32,15 @@ var MdTabs = /** @class */ (function () {
         }
     };
     MdTabs.prototype.attached = function () {
-        var _this = this;
         var e_1, _a, e_2, _b;
+        var _this = this;
         this.attributeManager.addClasses("tabs");
         var children = this.element.querySelectorAll("li");
         if (!children.length) {
             return;
         }
         try {
-            for (var _c = tslib_1.__values(Array.from(children)), _d = _c.next(); !_d.done; _d = _c.next()) {
+            for (var _c = __values(Array.from(children)), _d = _c.next(); !_d.done; _d = _c.next()) {
                 var child = _d.value;
                 var setter = new au.AttributeManager(child);
                 setter.addClasses(["tab", "primary-text"]);
@@ -63,7 +63,7 @@ var MdTabs = /** @class */ (function () {
         this.instance = new M.Tabs(this.element, options);
         var childAnchors = this.element.querySelectorAll("li a");
         try {
-            for (var _e = tslib_1.__values(Array.from(childAnchors)), _f = _e.next(); !_f.done; _f = _e.next()) {
+            for (var _e = __values(Array.from(childAnchors)), _f = _e.next(); !_f.done; _f = _e.next()) {
                 var a = _f.value;
                 a.addEventListener("click", this.fireTabSelectedEvent);
             }
@@ -89,7 +89,7 @@ var MdTabs = /** @class */ (function () {
         this.tabAttributeManagers = [];
         var childAnchors = this.element.querySelectorAll("li a");
         try {
-            for (var _b = tslib_1.__values(Array.from(childAnchors)), _c = _b.next(); !_c.done; _c = _b.next()) {
+            for (var _b = __values(Array.from(childAnchors)), _c = _b.next(); !_c.done; _c = _b.next()) {
                 var a = _c.value;
                 a.removeEventListener("click", this.fireTabSelectedEvent);
             }
@@ -124,26 +124,26 @@ var MdTabs = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdTabs.prototype, "fixed", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd,
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdTabs.prototype, "responsiveThreshold", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdTabs.prototype, "swipeable", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdTabs.prototype, "transparent", void 0);
-    MdTabs = tslib_1.__decorate([
+    MdTabs = __decorate([
         au.customAttribute("md-tabs"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
+        __metadata("design:paramtypes", [Element, au.TaskQueue])
     ], MdTabs);
     return MdTabs;
 }());

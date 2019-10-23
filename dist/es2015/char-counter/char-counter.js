@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdCharCounter = class MdCharCounter {
     constructor(element) {
@@ -28,14 +28,14 @@ let MdCharCounter = class MdCharCounter {
         this.attributeManager.removeAttributes(["data-length"]);
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd,
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdCharCounter.prototype, "length", void 0);
-MdCharCounter = tslib_1.__decorate([
+MdCharCounter = __decorate([
     au.customAttribute("md-char-counter"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdCharCounter);
 export { MdCharCounter };
 //# sourceMappingURL=char-counter.js.map

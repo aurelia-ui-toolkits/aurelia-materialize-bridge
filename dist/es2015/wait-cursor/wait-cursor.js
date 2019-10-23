@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdWaitCursorCustomAttribute = class MdWaitCursorCustomAttribute {
     constructor(element, templatingEngine) {
@@ -109,10 +109,10 @@ let MdWaitCursorCustomAttribute = class MdWaitCursorCustomAttribute {
         }
     }
 };
-MdWaitCursorCustomAttribute = tslib_1.__decorate([
+MdWaitCursorCustomAttribute = __decorate([
     au.customAttribute("md-wait-cursor"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element, au.TemplatingEngine])
+    __metadata("design:paramtypes", [Element, au.TemplatingEngine])
 ], MdWaitCursorCustomAttribute);
 export { MdWaitCursorCustomAttribute };
 //# sourceMappingURL=wait-cursor.js.map

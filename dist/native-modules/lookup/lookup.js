@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __awaiter, __decorate, __generator, __metadata, __read, __spread } from "tslib";
 import * as au from "../aurelia";
 import { LookupState } from "./lookup-state";
 import { DiscardablePromise, discard } from "../common/discardable-promise";
@@ -7,55 +7,28 @@ var MdLookup = /** @class */ (function () {
         var _this = this;
         this.element = element;
         this.taskQueue = taskQueue;
+        this.validateResults = [];
+        this.blurAction = "Nothing";
         this.placeholder = "Start Typing To Search";
         this.debounce = 850;
         this.LookupState = LookupState; // for usage from the html template
         this.mdUnrenderValidateResults = function (results, renderer) {
-            var e_1, _a;
-            try {
-                for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
-                    var result = results_1_1.value;
-                    if (!result.valid) {
-                        renderer.removeMessage(_this.validationContainer, result);
-                    }
-                }
-            }
-            catch (e_1_1) { e_1 = { error: e_1_1 }; }
-            finally {
-                try {
-                    if (results_1_1 && !results_1_1.done && (_a = results_1.return)) _a.call(results_1);
-                }
-                finally { if (e_1) throw e_1.error; }
-            }
-            renderer.removeValidationClasses(_this.input);
+            _this.validateResults = _this.validateResults.filter(function (x) { return !results.find(function (y) { return y.id === x.id; }); });
+            _this.validationClass = undefined;
         };
         this.mdRenderValidateResults = function (results, renderer) {
-            var e_2, _a;
-            try {
-                for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
-                    var result = results_2_1.value;
-                    if (!result.valid) {
-                        renderer.addMessage(_this.validationContainer, result);
-                    }
-                }
-            }
-            catch (e_2_1) { e_2 = { error: e_2_1 }; }
-            finally {
-                try {
-                    if (results_2_1 && !results_2_1.done && (_a = results_2.return)) _a.call(results_2);
-                }
-                finally { if (e_2) throw e_2.error; }
-            }
-            renderer.addValidationClasses(_this.input, !results.find(function (x) { return !x.valid; }));
+            var _a;
+            (_a = _this.validateResults).push.apply(_a, __spread(results.filter(function (x) { return !x.valid; })));
+            _this.validationClass = results.find(function (x) { return !x.valid; }) ? "invalid" : "valid";
         };
         this.logger = au.getLogger("MdLookup");
         this.controlId = "md-lookup-" + MdLookup_1.id++;
     }
     MdLookup_1 = MdLookup;
     MdLookup.prototype.filterChanged = function () {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var _a, e_3;
-            return tslib_1.__generator(this, function (_b) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, e_1;
+            return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         this.logger.debug("filterChanged");
@@ -81,9 +54,9 @@ var MdLookup = /** @class */ (function () {
                         this.fixDropdownSizeIfTooBig();
                         return [3 /*break*/, 4];
                     case 3:
-                        e_3 = _b.sent();
-                        if (e_3 !== DiscardablePromise.discarded) {
-                            this.options = [MdLookup_1.error, e_3.message];
+                        e_1 = _b.sent();
+                        if (e_1 !== DiscardablePromise.discarded) {
+                            this.options = [MdLookup_1.error, e_1.message];
                         }
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
@@ -102,8 +75,8 @@ var MdLookup = /** @class */ (function () {
         this.taskQueue.queueTask(function () { return _this.updateLabel(); });
     };
     MdLookup.prototype.valueChanged = function (newValue, oldValue) {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         this.logger.debug("valueChanged", newValue);
@@ -145,9 +118,9 @@ var MdLookup = /** @class */ (function () {
         }
     };
     MdLookup.prototype.updateFilterBasedOnValue = function () {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, void 0, void 0, function () {
             var _a;
-            return tslib_1.__generator(this, function (_b) {
+            return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         this.logger.debug("updateFilterBasedOnValue", this.value);
@@ -204,8 +177,20 @@ var MdLookup = /** @class */ (function () {
         this.isOpen = false;
     };
     MdLookup.prototype.blur = function () {
+        if ((["SetOnMatch", "Both"].includes(this.blurAction)) && this.options && this.options.length === 1) {
+            this.setValue(this.options[0]);
+            this.setFilter(this.getDisplayValue(this.options[0]));
+        }
+        else if (["ClearOnNoMatch", "Both"].includes(this.blurAction) && this.optionsContainsText(this.filter)) {
+            this.setValue(undefined);
+            this.setFilter(undefined);
+        }
         this.close();
         au.fireEvent(this.element, "blur");
+    };
+    MdLookup.prototype.optionsContainsText = function (txt) {
+        var _this = this;
+        return !this.options || !this.options.some(function (opt) { return _this.getDisplayValue(opt) === txt; });
     };
     MdLookup.prototype.focus = function () {
         this.input.focus();
@@ -215,8 +200,8 @@ var MdLookup = /** @class */ (function () {
         au.updateLabel(this.input, this.labelElement);
     };
     MdLookup.prototype.bind = function (bindingContext, overrideContext) {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            return tslib_1.__generator(this, function (_a) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         this.bindingContext = bindingContext;
@@ -234,10 +219,10 @@ var MdLookup = /** @class */ (function () {
         });
     };
     MdLookup.prototype.attached = function () {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
+        return __awaiter(this, void 0, void 0, function () {
             var _a;
             var _this = this;
-            return tslib_1.__generator(this, function (_b) {
+            return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         this.logger.debug("attached");
@@ -247,6 +232,7 @@ var MdLookup = /** @class */ (function () {
                         // we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
                         this.input.onselect = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
                         this.input.onclick = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
+                        this.input.onfocus = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
                         this.element.mdRenderValidateResults = this.mdRenderValidateResults;
                         this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
                         if (!this.preloadOptions) return [3 /*break*/, 2];
@@ -267,8 +253,8 @@ var MdLookup = /** @class */ (function () {
             this.input.onselect = null;
             this.input.onfocus = null;
             this.input.onblur = null;
+            this.input.onfocus = null;
         }
-        au.MaterializeFormValidationRenderer.removeValidation(this.validationContainer, this.input);
         this.element.mdRenderValidateResults = null;
         this.element.mdUnrenderValidateResults = null;
     };
@@ -307,54 +293,58 @@ var MdLookup = /** @class */ (function () {
     MdLookup.searching = Symbol("searching");
     MdLookup.error = Symbol("error");
     MdLookup.id = 0;
-    tslib_1.__decorate([
+    __decorate([
+        au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
+        __metadata("design:type", String)
+    ], MdLookup.prototype, "blurAction", void 0);
+    __decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdLookup.prototype, "filter", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdLookup.prototype, "label", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], MdLookup.prototype, "value", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", Function)
+        __metadata("design:type", Function)
     ], MdLookup.prototype, "optionsFunction", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], MdLookup.prototype, "displayFieldName", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], MdLookup.prototype, "valueFieldName", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdLookup.prototype, "readonly", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdLookup.prototype, "placeholder", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd,
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdLookup.prototype, "debounce", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdLookup.prototype, "preloadOptions", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.observable,
-        tslib_1.__metadata("design:type", Array)
+        __metadata("design:type", Array)
     ], MdLookup.prototype, "options", void 0);
-    MdLookup = MdLookup_1 = tslib_1.__decorate([
+    MdLookup = MdLookup_1 = __decorate([
         au.customElement("md-lookup"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
+        __metadata("design:paramtypes", [Element, au.TaskQueue])
     ], MdLookup);
     return MdLookup;
 }());

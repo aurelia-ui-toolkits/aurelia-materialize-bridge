@@ -1,5 +1,5 @@
-import * as tslib_1 from "tslib";
 var MdCheckbox_1;
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdCheckbox = MdCheckbox_1 = class MdCheckbox {
     constructor(element) {
@@ -48,34 +48,34 @@ let MdCheckbox = MdCheckbox_1 = class MdCheckbox {
     }
 };
 MdCheckbox.id = 0;
-tslib_1.__decorate([
+__decorate([
     au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
-    tslib_1.__metadata("design:type", Object)
+    __metadata("design:type", Object)
 ], MdCheckbox.prototype, "checked", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdCheckbox.prototype, "disabled", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdCheckbox.prototype, "readonly", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdCheckbox.prototype, "filledIn", void 0);
-tslib_1.__decorate([
+__decorate([
     au.bindable,
-    tslib_1.__metadata("design:type", Function)
+    __metadata("design:type", Function)
 ], MdCheckbox.prototype, "matcher", void 0);
-tslib_1.__decorate([
+__decorate([
     au.bindable,
-    tslib_1.__metadata("design:type", Object)
+    __metadata("design:type", Object)
 ], MdCheckbox.prototype, "model", void 0);
-MdCheckbox = MdCheckbox_1 = tslib_1.__decorate([
+MdCheckbox = MdCheckbox_1 = __decorate([
     au.customElement("md-checkbox"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdCheckbox);
 export { MdCheckbox };
 //# sourceMappingURL=checkbox.js.map

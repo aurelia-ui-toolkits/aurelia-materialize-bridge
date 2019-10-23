@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import * as au from "../aurelia";
 let ClickCounter = class ClickCounter {
     constructor() {
@@ -8,7 +8,7 @@ let ClickCounter = class ClickCounter {
         this.count++;
     }
 };
-ClickCounter = tslib_1.__decorate([
+ClickCounter = __decorate([
     au.customElement("click-counter")
 ], ClickCounter);
 export { ClickCounter };

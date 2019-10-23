@@ -1,5 +1,5 @@
-import * as tslib_1 from "tslib";
 var MdInput_1;
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdInput = MdInput_1 = class MdInput {
     constructor(element, taskQueue) {
@@ -20,29 +20,21 @@ let MdInput = MdInput_1 = class MdInput {
         this.name = "";
         this.maxlength = 524288;
         this.autocomplete = "";
-        this.suspendUpdate = false;
+        this.validateResults = [];
         this.blurOnEnterHandler = (e) => {
             if (e.keyCode && e.keyCode === 13) {
                 this.input.blur();
             }
         };
         this.mdUnrenderValidateResults = (results, renderer) => {
-            for (let result of results) {
-                if (!result.valid) {
-                    renderer.removeMessage(this.inputField, result);
-                }
-            }
-            renderer.removeValidationClasses(this.input);
+            this.validateResults = this.validateResults.filter(x => !results.find(y => y.id === x.id));
+            this.validationClass = undefined;
         };
         this.mdRenderValidateResults = (results, renderer) => {
-            if (this.showErrortext && this.inputField) {
-                for (let result of results) {
-                    if (!result.valid) {
-                        renderer.addMessage(this.inputField, result);
-                    }
-                }
+            if (this.showErrortext) {
+                this.validateResults.push(...results.filter(x => !x.valid));
             }
-            renderer.addValidationClasses(this.input, !results.find(x => !x.valid));
+            this.validationClass = results.find(x => !x.valid) ? "invalid" : "valid";
         };
         this.controlId = `md-input-${MdInput_1.id++}`;
     }
@@ -72,7 +64,6 @@ let MdInput = MdInput_1 = class MdInput {
     }
     detached() {
         this.detachEventHandlers();
-        au.MaterializeFormValidationRenderer.removeValidation(this.inputField, this.input);
         this.element.mdUnrenderValidateResults = undefined;
         this.element.mdRenderValidateResults = undefined;
     }
@@ -101,90 +92,90 @@ let MdInput = MdInput_1 = class MdInput {
     }
 };
 MdInput.id = 0;
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.twoWay }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdInput.prototype, "label", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdInput.prototype, "blurOnEnter", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdInput.prototype, "disabled", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdInput.prototype, "readonly", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdInput.prototype, "placeholder", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdInput.prototype, "textArea", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdInput.prototype, "type", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdInput.prototype, "step", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdInput.prototype, "validate", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdInput.prototype, "showErrortext", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdInput.prototype, "inline", void 0);
-tslib_1.__decorate([
+__decorate([
     au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Array)
+    __metadata("design:type", Array)
 ], MdInput.prototype, "updateTrigger", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd,
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdInput.prototype, "validateError", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd,
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdInput.prototype, "validateSuccess", void 0);
-tslib_1.__decorate([
+__decorate([
     au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdInput.prototype, "value", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdInput.prototype, "min", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdInput.prototype, "max", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdInput.prototype, "name", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdInput.prototype, "maxlength", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdInput.prototype, "autocomplete", void 0);
-MdInput = MdInput_1 = tslib_1.__decorate([
+MdInput = MdInput_1 = __decorate([
     au.customElement("md-input"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
+    __metadata("design:paramtypes", [Element, au.TaskQueue])
 ], MdInput);
 export { MdInput };
 //# sourceMappingURL=input.js.map

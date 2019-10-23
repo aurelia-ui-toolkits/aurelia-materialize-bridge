@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdRange = /** @class */ (function () {
     function MdRange(element) {
@@ -15,30 +15,30 @@ var MdRange = /** @class */ (function () {
     MdRange.prototype.detached = function () {
         this.instance.destroy();
     };
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdRange.prototype, "readonly", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdRange.prototype, "min", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdRange.prototype, "max", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdRange.prototype, "step", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.twoWay }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdRange.prototype, "value", void 0);
-    MdRange = tslib_1.__decorate([
+    MdRange = __decorate([
         au.customElement("md-range"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdRange);
     return MdRange;
 }());

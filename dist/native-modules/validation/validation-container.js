@@ -1,51 +1,21 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata, __read, __spread } from "tslib";
 import * as au from "../aurelia";
 var ValidationContainer = /** @class */ (function () {
     function ValidationContainer(element, coloursService) {
         var _this = this;
         this.element = element;
         this.coloursService = coloursService;
+        this.validateResults = [];
         this.mdUnrenderValidateResults = function (results, renderer) {
-            var e_1, _a;
-            try {
-                for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
-                    var result = results_1_1.value;
-                    if (!result.valid) {
-                        renderer.removeMessage(_this.containerDiv, result);
-                    }
-                }
-            }
-            catch (e_1_1) { e_1 = { error: e_1_1 }; }
-            finally {
-                try {
-                    if (results_1_1 && !results_1_1.done && (_a = results_1.return)) _a.call(results_1);
-                }
-                finally { if (e_1) throw e_1.error; }
-            }
-            renderer.removeValidationClasses(_this.containerDiv);
+            _this.validateResults = _this.validateResults.filter(function (x) { return !results.find(function (y) { return y.id === x.id; }); });
+            _this.validationClass = undefined;
         };
         this.mdRenderValidateResults = function (results, renderer) {
-            var e_2, _a;
-            if (_this.containerDiv) {
-                try {
-                    for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
-                        var result = results_2_1.value;
-                        if (!result.valid) {
-                            renderer.addMessage(_this.containerDiv, result);
-                        }
-                    }
-                }
-                catch (e_2_1) { e_2 = { error: e_2_1 }; }
-                finally {
-                    try {
-                        if (results_2_1 && !results_2_1.done && (_a = results_2.return)) _a.call(results_2);
-                    }
-                    finally { if (e_2) throw e_2.error; }
-                }
-            }
-            var valid = !results.find(function (x) { return !x.valid; });
-            if (!valid || _this.showSuccess) {
-                renderer.addValidationClasses(_this.containerDiv, valid);
+            var _a;
+            (_a = _this.validateResults).push.apply(_a, __spread(results.filter(function (x) { return !x.valid; })));
+            var invalid = results.find(function (x) { return !x.valid; });
+            if (invalid || _this.showSuccess) {
+                _this.validationClass = invalid ? "invalid" : "valid";
             }
         };
     }
@@ -53,13 +23,13 @@ var ValidationContainer = /** @class */ (function () {
         this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
         this.element.mdRenderValidateResults = this.mdRenderValidateResults;
     };
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], ValidationContainer.prototype, "showSuccess", void 0);
-    ValidationContainer = tslib_1.__decorate([
+    ValidationContainer = __decorate([
         au.customElement("validation-container"),
-        tslib_1.__metadata("design:paramtypes", [Element, au.MdColorsService])
+        __metadata("design:paramtypes", [Element, au.MdColorsService])
     ], ValidationContainer);
     return ValidationContainer;
 }());

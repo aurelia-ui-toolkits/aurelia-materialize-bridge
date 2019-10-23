@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate } from "tslib";
 import * as au from "../aurelia";
 var ClickCounter = /** @class */ (function () {
     function ClickCounter() {
@@ -7,7 +7,7 @@ var ClickCounter = /** @class */ (function () {
     ClickCounter.prototype.increment = function () {
         this.count++;
     };
-    ClickCounter = tslib_1.__decorate([
+    ClickCounter = __decorate([
         au.customElement("click-counter")
     ], ClickCounter);
     return ClickCounter;

@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdCard = class MdCard {
     constructor(element) {
@@ -7,42 +7,42 @@ let MdCard = class MdCard {
         this.size = "";
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdCard.prototype, "horizontal", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdCard.prototype, "image", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdCard.prototype, "reveal", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdCard.prototype, "action", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdCard.prototype, "stickyAction", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneWay }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdCard.prototype, "size", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdCard.prototype, "title", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdCard.prototype, "mdClass", void 0);
-MdCard = tslib_1.__decorate([
+MdCard = __decorate([
     au.customElement("md-card"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdCard);
 export { MdCard };
 //# sourceMappingURL=card.js.map

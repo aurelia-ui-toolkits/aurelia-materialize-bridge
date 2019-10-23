@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdParallax = /** @class */ (function () {
     function MdParallax(element) {
@@ -16,14 +16,14 @@ var MdParallax = /** @class */ (function () {
         this.instance.destroy();
         this.element.classList.remove("parallax");
     };
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdParallax.prototype, "responsiveThreshold", void 0);
-    MdParallax = tslib_1.__decorate([
+    MdParallax = __decorate([
         au.customAttribute("md-parallax"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdParallax);
     return MdParallax;
 }());

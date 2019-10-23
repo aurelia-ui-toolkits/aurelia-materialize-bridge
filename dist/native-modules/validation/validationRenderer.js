@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __read, __values } from "tslib";
 var MaterializeFormValidationRenderer = /** @class */ (function () {
     function MaterializeFormValidationRenderer() {
     }
@@ -15,10 +15,10 @@ var MaterializeFormValidationRenderer = /** @class */ (function () {
         var elementResultsToUnrender = new Map();
         try {
             // group validation results to unrender by elements
-            for (var _g = tslib_1.__values(instruction.unrender), _h = _g.next(); !_h.done; _h = _g.next()) {
+            for (var _g = __values(instruction.unrender), _h = _g.next(); !_h.done; _h = _g.next()) {
                 var _j = _h.value, result = _j.result, elements = _j.elements;
                 try {
-                    for (var elements_1 = tslib_1.__values(elements), elements_1_1 = elements_1.next(); !elements_1_1.done; elements_1_1 = elements_1.next()) {
+                    for (var elements_1 = (e_2 = void 0, __values(elements)), elements_1_1 = elements_1.next(); !elements_1_1.done; elements_1_1 = elements_1.next()) {
                         var element = elements_1_1.value;
                         this.pushElementResult(elementResultsToUnrender, element, result);
                     }
@@ -40,8 +40,8 @@ var MaterializeFormValidationRenderer = /** @class */ (function () {
             finally { if (e_1) throw e_1.error; }
         }
         try {
-            for (var elementResultsToUnrender_1 = tslib_1.__values(elementResultsToUnrender), elementResultsToUnrender_1_1 = elementResultsToUnrender_1.next(); !elementResultsToUnrender_1_1.done; elementResultsToUnrender_1_1 = elementResultsToUnrender_1.next()) {
-                var _k = tslib_1.__read(elementResultsToUnrender_1_1.value, 2), element = _k[0], results = _k[1];
+            for (var elementResultsToUnrender_1 = __values(elementResultsToUnrender), elementResultsToUnrender_1_1 = elementResultsToUnrender_1.next(); !elementResultsToUnrender_1_1.done; elementResultsToUnrender_1_1 = elementResultsToUnrender_1.next()) {
+                var _k = __read(elementResultsToUnrender_1_1.value, 2), element = _k[0], results = _k[1];
                 if (element.mdUnrenderValidateResults) {
                     element.mdUnrenderValidateResults(results, this);
                 }
@@ -60,10 +60,10 @@ var MaterializeFormValidationRenderer = /** @class */ (function () {
         // group validation results to render by elements
         var elementResultsToRender = new Map();
         try {
-            for (var _l = tslib_1.__values(instruction.render), _m = _l.next(); !_m.done; _m = _l.next()) {
+            for (var _l = __values(instruction.render), _m = _l.next(); !_m.done; _m = _l.next()) {
                 var _o = _m.value, result = _o.result, elements = _o.elements;
                 try {
-                    for (var elements_2 = tslib_1.__values(elements), elements_2_1 = elements_2.next(); !elements_2_1.done; elements_2_1 = elements_2.next()) {
+                    for (var elements_2 = (e_5 = void 0, __values(elements)), elements_2_1 = elements_2.next(); !elements_2_1.done; elements_2_1 = elements_2.next()) {
                         var element = elements_2_1.value;
                         this.pushElementResult(elementResultsToRender, element, result);
                     }
@@ -85,8 +85,8 @@ var MaterializeFormValidationRenderer = /** @class */ (function () {
             finally { if (e_4) throw e_4.error; }
         }
         try {
-            for (var elementResultsToRender_1 = tslib_1.__values(elementResultsToRender), elementResultsToRender_1_1 = elementResultsToRender_1.next(); !elementResultsToRender_1_1.done; elementResultsToRender_1_1 = elementResultsToRender_1.next()) {
-                var _p = tslib_1.__read(elementResultsToRender_1_1.value, 2), element = _p[0], results = _p[1];
+            for (var elementResultsToRender_1 = __values(elementResultsToRender), elementResultsToRender_1_1 = elementResultsToRender_1.next(); !elementResultsToRender_1_1.done; elementResultsToRender_1_1 = elementResultsToRender_1.next()) {
+                var _p = __read(elementResultsToRender_1_1.value, 2), element = _p[0], results = _p[1];
                 if (element.mdRenderValidateResults) {
                     element.mdRenderValidateResults(results, this);
                 }

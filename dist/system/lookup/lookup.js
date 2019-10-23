@@ -23,46 +23,19 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                     var _this = this;
                     this.element = element;
                     this.taskQueue = taskQueue;
+                    this.validateResults = [];
+                    this.blurAction = "Nothing";
                     this.placeholder = "Start Typing To Search";
                     this.debounce = 850;
                     this.LookupState = lookup_state_1.LookupState; // for usage from the html template
                     this.mdUnrenderValidateResults = function (results, renderer) {
-                        var e_1, _a;
-                        try {
-                            for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
-                                var result = results_1_1.value;
-                                if (!result.valid) {
-                                    renderer.removeMessage(_this.validationContainer, result);
-                                }
-                            }
-                        }
-                        catch (e_1_1) { e_1 = { error: e_1_1 }; }
-                        finally {
-                            try {
-                                if (results_1_1 && !results_1_1.done && (_a = results_1.return)) _a.call(results_1);
-                            }
-                            finally { if (e_1) throw e_1.error; }
-                        }
-                        renderer.removeValidationClasses(_this.input);
+                        _this.validateResults = _this.validateResults.filter(function (x) { return !results.find(function (y) { return y.id === x.id; }); });
+                        _this.validationClass = undefined;
                     };
                     this.mdRenderValidateResults = function (results, renderer) {
-                        var e_2, _a;
-                        try {
-                            for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
-                                var result = results_2_1.value;
-                                if (!result.valid) {
-                                    renderer.addMessage(_this.validationContainer, result);
-                                }
-                            }
-                        }
-                        catch (e_2_1) { e_2 = { error: e_2_1 }; }
-                        finally {
-                            try {
-                                if (results_2_1 && !results_2_1.done && (_a = results_2.return)) _a.call(results_2);
-                            }
-                            finally { if (e_2) throw e_2.error; }
-                        }
-                        renderer.addValidationClasses(_this.input, !results.find(function (x) { return !x.valid; }));
+                        var _a;
+                        (_a = _this.validateResults).push.apply(_a, tslib_1.__spread(results.filter(function (x) { return !x.valid; })));
+                        _this.validationClass = results.find(function (x) { return !x.valid; }) ? "invalid" : "valid";
                     };
                     this.logger = au.getLogger("MdLookup");
                     this.controlId = "md-lookup-" + MdLookup_1.id++;
@@ -70,7 +43,7 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                 MdLookup_1 = MdLookup;
                 MdLookup.prototype.filterChanged = function () {
                     return tslib_1.__awaiter(this, void 0, void 0, function () {
-                        var _a, e_3;
+                        var _a, e_1;
                         return tslib_1.__generator(this, function (_b) {
                             switch (_b.label) {
                                 case 0:
@@ -97,9 +70,9 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                                     this.fixDropdownSizeIfTooBig();
                                     return [3 /*break*/, 4];
                                 case 3:
-                                    e_3 = _b.sent();
-                                    if (e_3 !== discardable_promise_1.DiscardablePromise.discarded) {
-                                        this.options = [MdLookup_1.error, e_3.message];
+                                    e_1 = _b.sent();
+                                    if (e_1 !== discardable_promise_1.DiscardablePromise.discarded) {
+                                        this.options = [MdLookup_1.error, e_1.message];
                                     }
                                     return [3 /*break*/, 4];
                                 case 4: return [2 /*return*/];
@@ -220,8 +193,20 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                     this.isOpen = false;
                 };
                 MdLookup.prototype.blur = function () {
+                    if ((["SetOnMatch", "Both"].includes(this.blurAction)) && this.options && this.options.length === 1) {
+                        this.setValue(this.options[0]);
+                        this.setFilter(this.getDisplayValue(this.options[0]));
+                    }
+                    else if (["ClearOnNoMatch", "Both"].includes(this.blurAction) && this.optionsContainsText(this.filter)) {
+                        this.setValue(undefined);
+                        this.setFilter(undefined);
+                    }
                     this.close();
                     au.fireEvent(this.element, "blur");
+                };
+                MdLookup.prototype.optionsContainsText = function (txt) {
+                    var _this = this;
+                    return !this.options || !this.options.some(function (opt) { return _this.getDisplayValue(opt) === txt; });
                 };
                 MdLookup.prototype.focus = function () {
                     this.input.focus();
@@ -263,6 +248,7 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                                     // we need to use queueTask because open sometimes happens before browser bubbles the click further thus closing just opened dropdown
                                     this.input.onselect = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
                                     this.input.onclick = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
+                                    this.input.onfocus = function () { return _this.taskQueue.queueTask(function () { return _this.open(); }); };
                                     this.element.mdRenderValidateResults = this.mdRenderValidateResults;
                                     this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
                                     if (!this.preloadOptions) return [3 /*break*/, 2];
@@ -283,8 +269,8 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                         this.input.onselect = null;
                         this.input.onfocus = null;
                         this.input.onblur = null;
+                        this.input.onfocus = null;
                     }
-                    au.MaterializeFormValidationRenderer.removeValidation(this.validationContainer, this.input);
                     this.element.mdRenderValidateResults = null;
                     this.element.mdUnrenderValidateResults = null;
                 };
@@ -323,6 +309,10 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                 MdLookup.searching = Symbol("searching");
                 MdLookup.error = Symbol("error");
                 MdLookup.id = 0;
+                tslib_1.__decorate([
+                    au.bindable({ defaultBindingMode: au.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", String)
+                ], MdLookup.prototype, "blurAction", void 0);
                 tslib_1.__decorate([
                     au.bindable({ defaultBindingMode: au.bindingMode.twoWay }),
                     tslib_1.__metadata("design:type", String)

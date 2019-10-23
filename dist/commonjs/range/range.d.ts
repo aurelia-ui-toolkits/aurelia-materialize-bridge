@@ -1,3 +1,4 @@
+/// <reference types="materialize-css" />
 export declare class MdRange {
     private element;
     constructor(element: Element);

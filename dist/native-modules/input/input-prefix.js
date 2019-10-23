@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdPrefix = /** @class */ (function () {
     function MdPrefix(element) {
@@ -11,10 +11,10 @@ var MdPrefix = /** @class */ (function () {
     MdPrefix.prototype.unbind = function () {
         this.attributeManager.removeClasses("prefix");
     };
-    MdPrefix = tslib_1.__decorate([
+    MdPrefix = __decorate([
         au.customAttribute("md-prefix"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdPrefix);
     return MdPrefix;
 }());

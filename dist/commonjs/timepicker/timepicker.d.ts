@@ -1,3 +1,4 @@
+/// <reference types="materialize-css" />
 import * as au from "../aurelia";
 export declare class MdTimePicker {
     private element;
@@ -7,7 +8,8 @@ export declare class MdTimePicker {
     controlId: string;
     input: HTMLInputElement;
     labelElement: HTMLLabelElement;
-    inputField: HTMLDivElement;
+    validateResults: au.ValidateResult[];
+    validationClass: string;
     label: string;
     inline: boolean;
     placeholder: string;

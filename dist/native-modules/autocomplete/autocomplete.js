@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdAutoComplete = /** @class */ (function () {
     function MdAutoComplete(element) {
@@ -37,22 +37,22 @@ var MdAutoComplete = /** @class */ (function () {
     MdAutoComplete.prototype.detached = function () {
         this.instance.destroy();
     };
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd,
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdAutoComplete.prototype, "limit", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd,
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdAutoComplete.prototype, "minLength", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", Object)
+        __metadata("design:type", Object)
     ], MdAutoComplete.prototype, "values", void 0);
-    MdAutoComplete = tslib_1.__decorate([
+    MdAutoComplete = __decorate([
         au.customAttribute("md-autocomplete"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdAutoComplete);
     return MdAutoComplete;
 }());

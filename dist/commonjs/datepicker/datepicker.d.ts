@@ -1,3 +1,4 @@
+/// <reference types="materialize-css" />
 import * as au from "../aurelia";
 export declare class MdDatePicker {
     private element;
@@ -6,7 +7,6 @@ export declare class MdDatePicker {
     controlId: string;
     input: HTMLInputElement;
     labelElement: HTMLLabelElement;
-    inputField: HTMLDivElement;
     label: string;
     inline: boolean;
     placeholder: string;
@@ -31,6 +31,8 @@ export declare class MdDatePicker {
     showErrortext: boolean;
     disabled: boolean;
     instance: M.Datepicker;
+    validateResults: au.ValidateResult[];
+    validationClass: string;
     value: Date;
     valueChangedSuppress: boolean;
     valueChanged(): void;

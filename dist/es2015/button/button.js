@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 import { ConfigBuilder } from "../config-builder";
 let MdButton = class MdButton {
@@ -70,34 +70,34 @@ let MdButton = class MdButton {
         this.attributeManager.removeClasses(["btn", "btn-flat", "btn-large", "disabled", "pulse", "waves-secondary", "waves-light", "waves-effect", "waves-block"]);
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdButton.prototype, "disabled", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdButton.prototype, "flat", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdButton.prototype, "floating", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdButton.prototype, "large", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdButton.prototype, "small", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdButton.prototype, "pulse", void 0);
-MdButton = tslib_1.__decorate([
+MdButton = __decorate([
     au.customAttribute("md-button"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element, ConfigBuilder])
+    __metadata("design:paramtypes", [Element, ConfigBuilder])
 ], MdButton);
 export { MdButton };
 //# sourceMappingURL=button.js.map

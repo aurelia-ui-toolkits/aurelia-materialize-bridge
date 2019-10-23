@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdBox = class MdBox {
     constructor(element) {
@@ -27,22 +27,22 @@ let MdBox = class MdBox {
         this.attributeManager.removeClasses("materialboxed");
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdBox.prototype, "caption", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdBox.prototype, "inDuration", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdBox.prototype, "outDuration", void 0);
-MdBox = tslib_1.__decorate([
+MdBox = __decorate([
     au.customAttribute("md-box"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdBox);
 export { MdBox };
 //# sourceMappingURL=box.js.map

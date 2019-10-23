@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdSidenav = /** @class */ (function () {
     function MdSidenav(element) {
@@ -56,30 +56,30 @@ var MdSidenav = /** @class */ (function () {
     var MdSidenav_1;
     MdSidenav.fixedClass = "sidenav-fixed";
     MdSidenav.id = 0;
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdSidenav.prototype, "edge", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdSidenav.prototype, "draggable", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdSidenav.prototype, "inDuration", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.numberMd({ defaultBindingMode: au.bindingMode.oneTime }),
-        tslib_1.__metadata("design:type", Number)
+        __metadata("design:type", Number)
     ], MdSidenav.prototype, "outDuration", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdSidenav.prototype, "fixed", void 0);
-    MdSidenav = MdSidenav_1 = tslib_1.__decorate([
+    MdSidenav = MdSidenav_1 = __decorate([
         au.customElement("md-sidenav"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdSidenav);
     return MdSidenav;
 }());

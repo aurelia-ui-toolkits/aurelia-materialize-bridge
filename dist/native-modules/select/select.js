@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata, __values } from "tslib";
 import * as au from "../aurelia";
 var MdSelect = /** @class */ (function () {
     function MdSelect(element, bindingEngine, taskQueue) {
@@ -30,7 +30,7 @@ var MdSelect = /** @class */ (function () {
                 return;
             }
             try {
-                for (var results_1 = tslib_1.__values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
+                for (var results_1 = __values(results), results_1_1 = results_1.next(); !results_1_1.done; results_1_1 = results_1.next()) {
                     var result = results_1_1.value;
                     if (!result.valid) {
                         renderer.removeMessage(_this.inputField, result);
@@ -53,7 +53,7 @@ var MdSelect = /** @class */ (function () {
                 return;
             }
             try {
-                for (var results_2 = tslib_1.__values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
+                for (var results_2 = __values(results), results_2_1 = results_2.next(); !results_2_1.done; results_2_1 = results_2.next()) {
                     var result = results_2_1.value;
                     if (!result.valid) {
                         result.target = _this.instance.input;
@@ -219,30 +219,30 @@ var MdSelect = /** @class */ (function () {
         }
         this.instance.dropdown.open();
     };
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdSelect.prototype, "disabled", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdSelect.prototype, "readonly", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdSelect.prototype, "enableOptionObserver", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.stringMd,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdSelect.prototype, "label", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.ato.bindable.booleanMd,
-        tslib_1.__metadata("design:type", Boolean)
+        __metadata("design:type", Boolean)
     ], MdSelect.prototype, "showErrortext", void 0);
-    MdSelect = tslib_1.__decorate([
+    MdSelect = __decorate([
         au.autoinject,
         au.customAttribute("md-select"),
-        tslib_1.__metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue])
+        __metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue])
     ], MdSelect);
     return MdSelect;
 }());

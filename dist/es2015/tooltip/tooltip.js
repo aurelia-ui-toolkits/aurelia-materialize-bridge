@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdTooltip = class MdTooltip {
     constructor(element) {
@@ -27,22 +27,22 @@ let MdTooltip = class MdTooltip {
         }
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.bindable,
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdTooltip.prototype, "position", void 0);
-tslib_1.__decorate([
+__decorate([
     au.bindable,
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdTooltip.prototype, "delay", void 0);
-tslib_1.__decorate([
+__decorate([
     au.bindable,
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdTooltip.prototype, "html", void 0);
-MdTooltip = tslib_1.__decorate([
+MdTooltip = __decorate([
     au.customAttribute("md-tooltip"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdTooltip);
 export { MdTooltip };
 //# sourceMappingURL=tooltip.js.map

@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdTapTarget = /** @class */ (function () {
     function MdTapTarget(element) {
@@ -37,14 +37,14 @@ var MdTapTarget = /** @class */ (function () {
     };
     var MdTapTarget_1;
     MdTapTarget.controlId = 0;
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", HTMLElement)
+        __metadata("design:type", HTMLElement)
     ], MdTapTarget.prototype, "ref", void 0);
-    MdTapTarget = MdTapTarget_1 = tslib_1.__decorate([
+    MdTapTarget = MdTapTarget_1 = __decorate([
         au.customElement("md-tap-target"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element])
+        __metadata("design:paramtypes", [Element])
     ], MdTapTarget);
     return MdTapTarget;
 }());

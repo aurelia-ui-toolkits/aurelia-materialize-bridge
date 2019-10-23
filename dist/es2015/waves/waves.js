@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 import { ConfigBuilder } from "../config-builder";
 let MdWaves = class MdWaves {
@@ -29,18 +29,18 @@ let MdWaves = class MdWaves {
         this.attributeManager.removeClasses(classes);
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdWaves.prototype, "circle", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdWaves.prototype, "color", void 0);
-MdWaves = tslib_1.__decorate([
+MdWaves = __decorate([
     au.customAttribute("md-waves"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element, ConfigBuilder])
+    __metadata("design:paramtypes", [Element, ConfigBuilder])
 ], MdWaves);
 export { MdWaves };
 //# sourceMappingURL=waves.js.map

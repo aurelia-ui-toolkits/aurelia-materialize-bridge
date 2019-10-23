@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import { PLATFORM } from "aurelia-pal";
 import { deprecated } from "./aurelia";
 /**
@@ -261,10 +261,10 @@ export class ConfigBuilder {
         return this;
     }
 }
-tslib_1.__decorate([
+__decorate([
     deprecated({ error: false, message: "Will be removed soon. Please consider using `useColors`." }),
-    tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", []),
-    tslib_1.__metadata("design:returntype", ConfigBuilder)
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", ConfigBuilder)
 ], ConfigBuilder.prototype, "useLegacyColors", null);
 //# sourceMappingURL=config-builder.js.map

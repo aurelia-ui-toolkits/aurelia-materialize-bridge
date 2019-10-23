@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdTabs = class MdTabs {
     constructor(element, taskQueue) {
@@ -86,26 +86,26 @@ let MdTabs = class MdTabs {
         return this.instance.index;
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdTabs.prototype, "fixed", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.numberMd,
-    tslib_1.__metadata("design:type", Number)
+    __metadata("design:type", Number)
 ], MdTabs.prototype, "responsiveThreshold", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdTabs.prototype, "swipeable", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable.booleanMd,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdTabs.prototype, "transparent", void 0);
-MdTabs = tslib_1.__decorate([
+MdTabs = __decorate([
     au.customAttribute("md-tabs"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
+    __metadata("design:paramtypes", [Element, au.TaskQueue])
 ], MdTabs);
 export { MdTabs };
 //# sourceMappingURL=tabs.js.map

@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdWaitCursorCustomAttribute = /** @class */ (function () {
     function MdWaitCursorCustomAttribute(element, templatingEngine) {
@@ -109,10 +109,10 @@ var MdWaitCursorCustomAttribute = /** @class */ (function () {
             this.trResizeDelegate = null;
         }
     };
-    MdWaitCursorCustomAttribute = tslib_1.__decorate([
+    MdWaitCursorCustomAttribute = __decorate([
         au.customAttribute("md-wait-cursor"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element, au.TemplatingEngine])
+        __metadata("design:paramtypes", [Element, au.TemplatingEngine])
     ], MdWaitCursorCustomAttribute);
     return MdWaitCursorCustomAttribute;
 }());

@@ -1,3 +1,4 @@
+/// <reference types="materialize-css" />
 export declare class MdTooltip {
     private element;
     constructor(element: Element);

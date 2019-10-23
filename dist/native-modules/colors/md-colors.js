@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 var MdColors = /** @class */ (function () {
     function MdColors(cs, bindingEngine) {
@@ -44,29 +44,29 @@ var MdColors = /** @class */ (function () {
     MdColors.prototype.detached = function () {
         this.subscriptions.forEach(function (x) { return x.dispose(); });
     };
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdColors.prototype, "primaryColor", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdColors.prototype, "secondaryColor", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdColors.prototype, "errorColor", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdColors.prototype, "successColor", void 0);
-    tslib_1.__decorate([
+    __decorate([
         au.bindable,
-        tslib_1.__metadata("design:type", String)
+        __metadata("design:type", String)
     ], MdColors.prototype, "linkColor", void 0);
-    MdColors = tslib_1.__decorate([
+    MdColors = __decorate([
         au.customElement("md-colors"),
-        tslib_1.__metadata("design:paramtypes", [au.MdColorsService, au.BindingEngine])
+        __metadata("design:paramtypes", [au.MdColorsService, au.BindingEngine])
     ], MdColors);
     return MdColors;
 }());

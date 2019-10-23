@@ -1,4 +1,4 @@
-import * as tslib_1 from "tslib";
+import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 let MdBadge = class MdBadge {
     constructor(element) {
@@ -31,18 +31,18 @@ let MdBadge = class MdBadge {
         this.attributeManager.removeAttributes(["data-badge-caption"]);
     }
 };
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable,
-    tslib_1.__metadata("design:type", Boolean)
+    __metadata("design:type", Boolean)
 ], MdBadge.prototype, "isNew", void 0);
-tslib_1.__decorate([
+__decorate([
     au.ato.bindable,
-    tslib_1.__metadata("design:type", String)
+    __metadata("design:type", String)
 ], MdBadge.prototype, "caption", void 0);
-MdBadge = tslib_1.__decorate([
+MdBadge = __decorate([
     au.customAttribute("md-badge"),
     au.autoinject,
-    tslib_1.__metadata("design:paramtypes", [Element])
+    __metadata("design:paramtypes", [Element])
 ], MdBadge);
 export { MdBadge };
 //# sourceMappingURL=badge.js.map
