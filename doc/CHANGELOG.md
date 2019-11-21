@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.4.0...v1.4.1) (2019-11-21)
+
+
+### Bug Fixes
+
+* **lookup:** move error messages higher ([6d09d7e](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/6d09d7e1d3cc78abc4d3254dcb6806d343faf34d))
+
 ## [1.4.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.3.6...v1.4.0) (2019-10-23)
 
 
