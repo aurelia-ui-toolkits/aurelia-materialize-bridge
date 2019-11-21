@@ -6,6 +6,7 @@
 			<input id="${controlId}" type="text" value.bind="filter & debounce: debounce" ref="input" readonly.bind="readonly" blur.trigger="blur()" 
 				focus.trigger="focus()" class="${validationClass}"/>
 			<label for="${controlId}" ref="labelElement">${label}</label>
+			<span repeat.for="r of validateResults" class="helper-text" data-error.bind="r.message"></span>
 			<div ref="dropdown" if.bind="isOpen" class="dropdown-div z-depth-1">
 				<ul ref="dropdownUl" class="collection">
 					<li if.bind="state === LookupState.searching" class="disabled collection-item" md-wait-cursor.bind="true">
@@ -30,7 +31,6 @@
 					</li>
 				</ul>
 			</div>
-			<span repeat.for="r of validateResults" class="helper-text" data-error.bind="r.message"></span>
 		</div>
 	</div>
 </template>
