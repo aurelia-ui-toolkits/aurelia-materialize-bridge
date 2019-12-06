@@ -4,11 +4,13 @@ var tslib_1 = require("tslib");
 var au = require("../aurelia");
 var lookup_state_1 = require("./lookup-state");
 var discardable_promise_1 = require("../common/discardable-promise");
+var config_builder_1 = require("../config-builder");
 var MdLookup = /** @class */ (function () {
-    function MdLookup(element, taskQueue) {
+    function MdLookup(element, taskQueue, configBuilder) {
         var _this = this;
         this.element = element;
         this.taskQueue = taskQueue;
+        this.configBuilder = configBuilder;
         this.validateResults = [];
         this.blurAction = "Nothing";
         this.placeholder = "Start Typing To Search";
@@ -346,7 +348,7 @@ var MdLookup = /** @class */ (function () {
     MdLookup = MdLookup_1 = tslib_1.__decorate([
         au.customElement("md-lookup"),
         au.autoinject,
-        tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
+        tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue, config_builder_1.ConfigBuilder])
     ], MdLookup);
     return MdLookup;
 }());

@@ -1,6 +1,6 @@
-System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable-promise"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable-promise", "../config-builder"], function (exports_1, context_1) {
     "use strict";
-    var tslib_1, au, lookup_state_1, discardable_promise_1, MdLookup;
+    var tslib_1, au, lookup_state_1, discardable_promise_1, config_builder_1, MdLookup;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
@@ -15,14 +15,18 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
             },
             function (discardable_promise_1_1) {
                 discardable_promise_1 = discardable_promise_1_1;
+            },
+            function (config_builder_1_1) {
+                config_builder_1 = config_builder_1_1;
             }
         ],
         execute: function () {
             MdLookup = /** @class */ (function () {
-                function MdLookup(element, taskQueue) {
+                function MdLookup(element, taskQueue, configBuilder) {
                     var _this = this;
                     this.element = element;
                     this.taskQueue = taskQueue;
+                    this.configBuilder = configBuilder;
                     this.validateResults = [];
                     this.blurAction = "Nothing";
                     this.placeholder = "Start Typing To Search";
@@ -360,7 +364,7 @@ System.register(["tslib", "../aurelia", "./lookup-state", "../common/discardable
                 MdLookup = MdLookup_1 = tslib_1.__decorate([
                     au.customElement("md-lookup"),
                     au.autoinject,
-                    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
+                    tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue, config_builder_1.ConfigBuilder])
                 ], MdLookup);
                 return MdLookup;
             }());

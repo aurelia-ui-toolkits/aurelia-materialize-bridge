@@ -6,6 +6,8 @@ export declare class ConfigBuilder {
     noWavesAttach: boolean;
     autoButtonWaves: boolean;
     useGlobalResources: boolean;
+    lookupSearchingText: string;
+    lookupNoMatchesText: string;
     useAll(): ConfigBuilder;
     useAutoComplete(): ConfigBuilder;
     useBadge(): ConfigBuilder;

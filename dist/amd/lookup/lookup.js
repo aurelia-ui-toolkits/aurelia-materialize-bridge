@@ -1,11 +1,12 @@
-define(["require", "exports", "tslib", "../aurelia", "./lookup-state", "../common/discardable-promise"], function (require, exports, tslib_1, au, lookup_state_1, discardable_promise_1) {
+define(["require", "exports", "tslib", "../aurelia", "./lookup-state", "../common/discardable-promise", "../config-builder"], function (require, exports, tslib_1, au, lookup_state_1, discardable_promise_1, config_builder_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdLookup = /** @class */ (function () {
-        function MdLookup(element, taskQueue) {
+        function MdLookup(element, taskQueue, configBuilder) {
             var _this = this;
             this.element = element;
             this.taskQueue = taskQueue;
+            this.configBuilder = configBuilder;
             this.validateResults = [];
             this.blurAction = "Nothing";
             this.placeholder = "Start Typing To Search";
@@ -343,7 +344,7 @@ define(["require", "exports", "tslib", "../aurelia", "./lookup-state", "../commo
         MdLookup = MdLookup_1 = tslib_1.__decorate([
             au.customElement("md-lookup"),
             au.autoinject,
-            tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue])
+            tslib_1.__metadata("design:paramtypes", [Element, au.TaskQueue, config_builder_1.ConfigBuilder])
         ], MdLookup);
         return MdLookup;
     }());

@@ -2,11 +2,13 @@ import * as au from "../aurelia";
 import { LookupState } from "./lookup-state";
 import { ILookupOptionsFunctionParameter } from "./i-lookup-options-function-parameter";
 import { DiscardablePromise } from "../common/discardable-promise";
+import { ConfigBuilder } from "../config-builder";
 export declare type BlurAction = "Nothing" | "ClearOnNoMatch" | "SetOnMatch" | "Both";
 export declare class MdLookup {
     private element;
     private taskQueue;
-    constructor(element: Element, taskQueue: au.TaskQueue);
+    private configBuilder;
+    constructor(element: Element, taskQueue: au.TaskQueue, configBuilder: ConfigBuilder);
     static searching: symbol;
     static error: symbol;
     errorMessage: string;

@@ -3,20 +3,19 @@
 
 	<div style="position: relative">
 		<div class="input-field">
-			<input id="${controlId}" type="text" value.bind="filter & debounce: debounce" ref="input" readonly.bind="readonly" blur.trigger="blur()" 
-				focus.trigger="focus()" class="${validationClass}"/>
+			<input id="${controlId}" type="text" value.bind="filter & debounce: debounce" ref="input" readonly.bind="readonly" blur.trigger="blur()" focus.trigger="focus()" class="${validationClass}" />
 			<label for="${controlId}" ref="labelElement">${label}</label>
 			<span repeat.for="r of validateResults" class="helper-text" data-error.bind="r.message"></span>
 			<div ref="dropdown" if.bind="isOpen" class="dropdown-div z-depth-1">
 				<ul ref="dropdownUl" class="collection">
 					<li if.bind="state === LookupState.searching" class="disabled collection-item" md-wait-cursor.bind="true">
 						<template replaceable part="searching-template">
-							Searching...
+							${configBuilder.lookupSearchingText}
 						</template>
 					</li>
 					<li if.bind="state === LookupState.noMatches" class="disabled collection-item">
 						<template replaceable part="no-matches-template">
-							No Matches
+							${configBuilder.lookupNoMatchesText}
 						</template>
 					</li>
 					<li if.bind="state === LookupState.error" class="disabled collection-item">

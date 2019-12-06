@@ -10,6 +10,8 @@ define(["require", "exports", "tslib", "aurelia-pal", "./aurelia"], function (re
             this.noWavesAttach = false;
             this.autoButtonWaves = false;
             this.useGlobalResources = true;
+            this.lookupSearchingText = "Searching...";
+            this.lookupNoMatchesText = "No Matches";
         }
         ConfigBuilder.prototype.useAll = function () {
             return this

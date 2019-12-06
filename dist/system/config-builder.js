@@ -24,6 +24,8 @@ System.register(["tslib", "aurelia-pal", "./aurelia"], function (exports_1, cont
                     this.noWavesAttach = false;
                     this.autoButtonWaves = false;
                     this.useGlobalResources = true;
+                    this.lookupSearchingText = "Searching...";
+                    this.lookupNoMatchesText = "No Matches";
                 }
                 ConfigBuilder.prototype.useAll = function () {
                     return this

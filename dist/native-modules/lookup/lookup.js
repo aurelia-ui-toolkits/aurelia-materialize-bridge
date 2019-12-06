@@ -2,11 +2,13 @@ import { __awaiter, __decorate, __generator, __metadata, __read, __spread } from
 import * as au from "../aurelia";
 import { LookupState } from "./lookup-state";
 import { DiscardablePromise, discard } from "../common/discardable-promise";
+import { ConfigBuilder } from "../config-builder";
 var MdLookup = /** @class */ (function () {
-    function MdLookup(element, taskQueue) {
+    function MdLookup(element, taskQueue, configBuilder) {
         var _this = this;
         this.element = element;
         this.taskQueue = taskQueue;
+        this.configBuilder = configBuilder;
         this.validateResults = [];
         this.blurAction = "Nothing";
         this.placeholder = "Start Typing To Search";
@@ -344,7 +346,7 @@ var MdLookup = /** @class */ (function () {
     MdLookup = MdLookup_1 = __decorate([
         au.customElement("md-lookup"),
         au.autoinject,
-        __metadata("design:paramtypes", [Element, au.TaskQueue])
+        __metadata("design:paramtypes", [Element, au.TaskQueue, ConfigBuilder])
     ], MdLookup);
     return MdLookup;
 }());

@@ -3,10 +3,12 @@ import { __awaiter, __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
 import { LookupState } from "./lookup-state";
 import { DiscardablePromise, discard } from "../common/discardable-promise";
+import { ConfigBuilder } from "../config-builder";
 let MdLookup = MdLookup_1 = class MdLookup {
-    constructor(element, taskQueue) {
+    constructor(element, taskQueue, configBuilder) {
         this.element = element;
         this.taskQueue = taskQueue;
+        this.configBuilder = configBuilder;
         this.validateResults = [];
         this.blurAction = "Nothing";
         this.placeholder = "Start Typing To Search";
@@ -287,7 +289,7 @@ __decorate([
 MdLookup = MdLookup_1 = __decorate([
     au.customElement("md-lookup"),
     au.autoinject,
-    __metadata("design:paramtypes", [Element, au.TaskQueue])
+    __metadata("design:paramtypes", [Element, au.TaskQueue, ConfigBuilder])
 ], MdLookup);
 export { MdLookup };
 //# sourceMappingURL=lookup.js.map
