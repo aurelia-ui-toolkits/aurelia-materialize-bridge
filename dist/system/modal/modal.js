@@ -14,7 +14,13 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
         execute: function () {
             MdModal = /** @class */ (function () {
                 function MdModal(element) {
+                    var _this = this;
                     this.element = element;
+                    this.keydown = function (e) {
+                        if (e.keyCode === 13) {
+                            _this.defaultActionElement.click();
+                        }
+                    };
                     this.log = au.getLogger("md-modal");
                     this.attributeManager = new au.AttributeManager(this.element);
                 }
@@ -42,10 +48,17 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     au.cleanOptions(options);
                     this.attributeManager.addClasses("modal");
                     this.instance = new M.Modal(this.element, options);
+                    this.defaultActionElement = this.element.querySelector(".modal-action.default");
+                    if (this.defaultActionElement) {
+                        this.element.addEventListener("keydown", this.keydown);
+                    }
                 };
                 MdModal.prototype.detached = function () {
                     this.instance.destroy();
                     this.attributeManager.removeClasses("modal");
+                    if (this.defaultActionElement) {
+                        this.element.removeEventListener("keydown", this.keydown);
+                    }
                 };
                 MdModal.prototype.open = function () {
                     this.instance.open();

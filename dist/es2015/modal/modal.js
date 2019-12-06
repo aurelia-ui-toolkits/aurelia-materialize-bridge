@@ -3,6 +3,11 @@ import * as au from "../aurelia";
 let MdModal = class MdModal {
     constructor(element) {
         this.element = element;
+        this.keydown = (e) => {
+            if (e.keyCode === 13) {
+                this.defaultActionElement.click();
+            }
+        };
         this.log = au.getLogger("md-modal");
         this.attributeManager = new au.AttributeManager(this.element);
     }
@@ -29,10 +34,17 @@ let MdModal = class MdModal {
         au.cleanOptions(options);
         this.attributeManager.addClasses("modal");
         this.instance = new M.Modal(this.element, options);
+        this.defaultActionElement = this.element.querySelector(".modal-action.default");
+        if (this.defaultActionElement) {
+            this.element.addEventListener("keydown", this.keydown);
+        }
     }
     detached() {
         this.instance.destroy();
         this.attributeManager.removeClasses("modal");
+        if (this.defaultActionElement) {
+            this.element.removeEventListener("keydown", this.keydown);
+        }
     }
     open() {
         this.instance.open();

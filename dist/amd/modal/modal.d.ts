@@ -16,7 +16,9 @@ export declare class MdModal {
     fixedFooterChanged(): void;
     bottomSheet: boolean;
     instance: M.Modal;
+    defaultActionElement: HTMLElement;
     attached(): void;
+    keydown: (e: KeyboardEvent) => void;
     detached(): void;
     open(): void;
     close(): void;
