@@ -44,6 +44,7 @@ export class MdModal {
 	bottomSheet: boolean;
 
 	instance: M.Modal;
+	defaultActionElement: HTMLElement;
 
 	attached() {
 		const options: Partial<M.ModalOptions> = {
@@ -63,11 +64,24 @@ export class MdModal {
 		au.cleanOptions(options);
 		this.attributeManager.addClasses("modal");
 		this.instance = new M.Modal(this.element, options);
+		this.defaultActionElement = this.element.querySelector(".modal-action.default");
+		if (this.defaultActionElement) {
+			(this.element as HTMLElement).addEventListener("keydown", this.keydown);
+		}
+	}
+
+	keydown = (e: KeyboardEvent) => {
+		if (e.keyCode === 13) {
+			this.defaultActionElement.click();
+		}
 	}
 
 	detached() {
 		this.instance.destroy();
 		this.attributeManager.removeClasses("modal");
+		if (this.defaultActionElement) {
+			(this.element as HTMLElement).removeEventListener("keydown", this.keydown);
+		}
 	}
 
 	open() {
