@@ -10,6 +10,8 @@ export class ConfigBuilder {
 	noWavesAttach: boolean = false;
 	autoButtonWaves: boolean = false;
 	useGlobalResources: boolean = true;
+	lookupSearchingText: string = "Searching...";
+	lookupNoMatchesText: string = "No Matches";
 
 	useAll(): ConfigBuilder {
 		return this

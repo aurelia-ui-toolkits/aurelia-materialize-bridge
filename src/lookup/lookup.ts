@@ -2,13 +2,14 @@
 import { LookupState } from "./lookup-state";
 import { ILookupOptionsFunctionParameter } from "./i-lookup-options-function-parameter";
 import { DiscardablePromise, discard } from "../common/discardable-promise";
+import { ConfigBuilder } from "../config-builder";
 
 export type BlurAction = "Nothing" | "ClearOnNoMatch" | "SetOnMatch" | "Both";
 
 @au.customElement("md-lookup")
 @au.autoinject
 export class MdLookup {
-	constructor(private element: Element, private taskQueue: au.TaskQueue) {
+	constructor(private element: Element, private taskQueue: au.TaskQueue, private configBuilder: ConfigBuilder) {
 		this.logger = au.getLogger("MdLookup");
 		this.controlId = `md-lookup-${MdLookup.id++}`;
 	}
