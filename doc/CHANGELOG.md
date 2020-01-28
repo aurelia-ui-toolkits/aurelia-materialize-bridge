@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.5.1...v1.5.2) (2020-01-28)
+
+
+### Bug Fixes
+
+* **updateLabel:** fails if input or label parameter is null (already destroyed element) ([#560](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/560)) ([582887f](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/582887f3b33a4de36a528a8dd9981a7cd9bc5b9d))
+
 ### [1.5.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.5.0...v1.5.1) (2019-12-06)
 
 ## [1.5.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.4.1...v1.5.0) (2019-12-06)
