@@ -23,10 +23,14 @@ export function cleanOptions(options) {
 export function updateLabel(input, label) {
     // the following is copied from the updateTextFields method
     // it is more efficient than updating all the inputs
-    if (input.value && input.value.length > 0 || input.matches(":focus") || input.autofocus || input.hasAttribute("placeholder")) {
+    if (!label) {
+        // already invalid reference to label
+        return;
+    }
+    if (input && input.value && input.value.length > 0 || input.matches(":focus") || input.autofocus || input.hasAttribute("placeholder")) {
         label.classList.add("active");
     }
-    else if (input.validity) {
+    else if (input && input.validity) {
         label.classList.toggle("active", input.validity.badInput === true);
     }
     else {
