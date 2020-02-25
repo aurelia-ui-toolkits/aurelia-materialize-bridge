@@ -1,8 +1,0 @@
-<template>
-	<div class="input-field ${inline ? 'inline' : ''}">
-		<slot></slot>
-		<input ref="input" id="${controlId}" type="text" readonly disabled.bind="disabled" class="${validationClass}" />
-		<label for="${controlId}" ref="labelElement">${label}</label>
-		<span repeat.for="r of validateResults" class="helper-text" data-error.bind="r.message"></span>
-	</div>
-</template>

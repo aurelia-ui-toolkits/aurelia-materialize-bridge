@@ -1,8 +1,0 @@
-<template>
-	<div class="wrapper ${validationClass}">
-		<div>
-			<slot></slot>
-		</div>
-		<span repeat.for="r of validateResults" class="helper-text" data-error.bind="r.message"></span>
-	</div>
-</template>

@@ -1,1 +1,0 @@
-import 'aurelia-polyfills';

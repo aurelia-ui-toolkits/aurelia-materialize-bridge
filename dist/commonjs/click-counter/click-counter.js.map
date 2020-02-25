@@ -1,1 +1,0 @@
-{"version":3,"file":"click-counter.js","sourceRoot":"","sources":["../../../src/click-counter/click-counter.ts"],"names":[],"mappings":";;;AAAA,+BAAiC;AAGjC;IAAA;QACC,UAAK,GAAG,CAAC,CAAC;IAKX,CAAC;IAHA,gCAAS,GAAT;QACC,IAAI,CAAC,KAAK,EAAE,CAAC;IACd,CAAC;IALW,YAAY;QADxB,EAAE,CAAC,aAAa,CAAC,eAAe,CAAC;OACrB,YAAY,CAMxB;IAAD,mBAAC;CAAA,AAND,IAMC;AANY,oCAAY"}
