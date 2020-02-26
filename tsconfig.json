@@ -1,32 +1,29 @@
 {
 	"compilerOptions": {
-		"module": "es2015",
+		"rootDir": "src",
+		"declarationDir": "dist",
+		"outDir": "dist/esnext",
+		"lib": ["esnext", "dom"],
+		"pretty": true,
+		"target": "es2018",
+		"module": "esnext",
 		"moduleResolution": "node",
-		"target": "es5",
-		"lib": [
-			"es2017",
-			"dom"
-		],
-		"outDir": "devbuild/es2015",
-		"noImplicitAny": false,
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
-		"noImplicitReturns": true,
-		"strictNullChecks": false,
-		"declaration": true,
-		"forceConsistentCasingInFileNames": true,
+		"importHelpers": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
-		"noEmitHelpers": false,
+
+		"declaration": true,
+		"declarationMap": true,
+		"sourceMap": true,
+		"composite": true,
+		"noEmitOnError": true,
+		"skipLibCheck": true,
+		"preserveConstEnums": true,
 		"stripInternal": true,
-		"strict": true,
-		"importHelpers": true,
-		"downlevelIteration": true,
-		"sourceMap": true
+
+		"strict": true
 	},
-	"include": [
-		"src/**/*"
-	],
+	"include": ["src"],
 	"exclude": [
 		".vscode",
 		"dist",
