@@ -5,7 +5,7 @@ import { fireEvent } from '../../../events';
 import { template } from './md-input.html';
 import { toBoolean } from '../../../bindable-interceptors';
 
-@customElement({ name: "md-input", template })
+@customElement({ name: 'md-input', template })
 @inject()
 export class MdInput {
 	public constructor(private element: HTMLElement, @IScheduler private scheduler: IScheduler) { }
@@ -144,11 +144,11 @@ export class MdInput {
 		}
 	}
 
-	blurOnEnterHandler = (e: KeyboardEvent) => {
+	blurOnEnterHandler: (this: HTMLElement, ev: KeyboardEvent) => unknown = (e: KeyboardEvent) => {
 		if (e.keyCode && e.keyCode === 13) {
 			this.input.blur();
 		}
-	}
+	};
 
 	// mdUnrenderValidateResults = (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => {
 	// 	this.validateResults = this.validateResults.filter(x => !results.find(y => y.id === x.id));

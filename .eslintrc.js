@@ -17,8 +17,7 @@ module.exports = {
 		tsconfigRootDir: '.'
 	},
 	env: {
-		es6: true,
-		broser: true
+		es6: true
 	},
 	globals: {
 		MutationObserver: 'readonly',
@@ -243,7 +242,7 @@ module.exports = {
 		'require-atomic-updates': 'warn',
 
 		// Off for now as they create way to much noise
-		'@typescript-eslint/quotes': ['error', 'double']
+		'@typescript-eslint/quotes': ['error', 'single']
 	},
 	overrides: [{ // Specific overrides for JS files as some TS rules don't make sense there.
 		files: ['**/*.js'],
