@@ -1,5 +1,6 @@
 <div class="input-field ${inline ? 'inline' : ''}">
-	<input if.bind="!textArea" ref="input" id="${id}" type.bind="type" min.bind="min" max.bind="max" maxlength.bind="maxlength" name.bind="name" step.bind="step" value.bind="value" readonly.bind="readonly" disabled.bind="disabled" blur.trigger="blur()" focus.trigger="focus()" class="${validationClass}" />
+	<!-- <slot></slot> -->
+	<input if.bind="!textArea" ref="input" id="${id}" min.bind="min" max.bind="max" name.bind="name" step.bind="step" value.bind="value" readonly.bind="readonly" disabled.bind="disabled" blur.trigger="blur()" focus.trigger="focus()" class="${validationClass}" />
 	<textarea if.bind="textArea" ref="input" id="${id}" value.bind="value" class="materialize-textarea ${validationClass}" readonly.bind="readonly" disabled.bind="disabled" maxlength.bind="maxlength" blur.trigger="blur()" focus.trigger="focus()"></textarea>
 	<label for="${controlId}" ref="labelEl">${label}</label>
 	<span if.bind="validateSuccess || validateError" class="helper-text" data-success.bind="validateSuccess" data-error.bind="validateError"></span>

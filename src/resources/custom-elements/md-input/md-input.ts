@@ -1,16 +1,14 @@
 import { inject, nextId } from '@aurelia/kernel';
 import { customElement, bindable, BindingMode, IScheduler } from '@aurelia/runtime';
-import { styles } from '@aurelia/runtime-html';
 import { updateLabel } from '../../../util';
 import { fireEvent } from '../../../events';
 import { template } from './md-input.html';
-import * as css from "./md-input.scss";
+import { toBoolean } from '../../../bindable-interceptors';
 
-// styles are not replaced without explicit import
-@customElement({ name: "md-input", template, dependencies: [styles(css)] })
+@customElement({ name: "md-input", template })
 @inject()
 export class MdInput {
-	public constructor(private element: HTMLElement, private scheduler: IScheduler) { }
+	public constructor(private element: HTMLElement, @IScheduler private scheduler: IScheduler) { }
 
 	id: number = nextId('au$component');
 	labelEl!: HTMLLabelElement;
@@ -77,7 +75,7 @@ export class MdInput {
 	name: string = '';
 
 	@bindable({ mode: BindingMode.oneTime })
-	maxlength: number = 0;
+	maxlength?: number;
 
 	@bindable({ mode: BindingMode.oneTime })
 	autocomplete: string = '';
@@ -89,10 +87,11 @@ export class MdInput {
 	// 	// this suppresses initial changed handler calls
 	// }
 
-	beforeAttached() {
+	beforeAttach() {
 		if (this.input === undefined) {
 			return;
 		}
+		this.input.setAttribute('type', this.type);
 		if (this.validate) {
 			this.input.classList.add('validate');
 		}
@@ -102,13 +101,16 @@ export class MdInput {
 		if (this.autocomplete !== undefined) {
 			this.input.setAttribute('autocomplete', this.autocomplete);
 		}
+		if (this.maxlength !== undefined) {
+			this.input.setAttribute('maxlength', this.maxlength.toString());
+		}
 		this.updateLabel();
 		this.attachEventHandlers();
 		// this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
 		// this.element.mdRenderValidateResults = this.mdRenderValidateResults;
 	}
 
-	afterDetached() {
+	afterDetach() {
 		this.detachEventHandlers();
 		// this.element.mdUnrenderValidateResults = undefined;
 		// this.element.mdRenderValidateResults = undefined;

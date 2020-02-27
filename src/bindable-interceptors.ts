@@ -1,4 +1,4 @@
-function toBoolean(val: unknown): unknown {
+export function toBoolean(val: unknown): unknown {
 	if (val === undefined) {
 		return undefined;
 	}
