@@ -1,11 +1,9 @@
 import { inject, nextId } from '@aurelia/kernel';
-import { customElement, bindable, BindingMode, IScheduler } from '@aurelia/runtime';
+import { bindable, BindingMode, IScheduler } from '@aurelia/runtime';
 import { updateLabel } from '../../../util';
 import { fireEvent } from '../../../events';
-import { template } from './md-input.html';
 import { toBoolean } from '../../../bindable-interceptors';
 
-@customElement({ name: 'md-input', template })
 @inject()
 export class MdInput {
 	public constructor(private element: HTMLElement, @IScheduler private scheduler: IScheduler) { }

@@ -6,7 +6,7 @@
 		"lib": ["esnext", "dom"],
 		"pretty": true,
 		"target": "es2018",
-		"module": "esnext",
+		"module": "ESNext",
 		"moduleResolution": "node",
 		"importHelpers": true,
 		"experimentalDecorators": true,

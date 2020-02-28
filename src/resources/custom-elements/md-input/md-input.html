@@ -1,8 +1,8 @@
-<div class="input-field ${inline ? 'inline' : ''}">
+<div class="input-field ${inline ? 'inline' : ''}" validation-errors.bind="errors">
 	<!-- <slot></slot> -->
 	<input if.bind="!textArea" ref="input" id="${id}" min.bind="min" max.bind="max" name.bind="name" step.bind="step" value.bind="value" readonly.bind="readonly" disabled.bind="disabled" blur.trigger="blur()" focus.trigger="focus()" class="${validationClass}" />
 	<textarea if.bind="textArea" ref="input" id="${id}" value.bind="value" class="materialize-textarea ${validationClass}" readonly.bind="readonly" disabled.bind="disabled" maxlength.bind="maxlength" blur.trigger="blur()" focus.trigger="focus()"></textarea>
 	<label for="${controlId}" ref="labelEl">${label}</label>
 	<span if.bind="validateSuccess || validateError" class="helper-text" data-success.bind="validateSuccess" data-error.bind="validateError"></span>
-	<span repeat.for="r of validateResults" class="helper-text" data-error.bind="r.message"></span>
+	<span repeat.for="errorInfo of errors" class="helper-text" data-error.bind="errorInfo.result.message"></span>
 </div>

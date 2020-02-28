@@ -1,4 +1,4 @@
-import { MdInput } from "./resources/custom-elements/md-input/md-input";
+import { MdInput } from './resources/custom-elements/md-input/md-input';
 import { IContainer, DI, IRegistry } from '@aurelia/kernel';
 
 export { MdInput };
@@ -6,7 +6,6 @@ export { MdInput };
 export const DefaultResources: IRegistry[] = [
   MdInput as unknown as IRegistry
 ];
-
 
 export const BridgeConfiguration = {
   /**
