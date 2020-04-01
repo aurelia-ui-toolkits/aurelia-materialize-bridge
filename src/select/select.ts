@@ -1,4 +1,6 @@
 import * as au from "../aurelia";
+import { bindingMode } from 'aurelia-framework';
+import { DropdownOptions } from 'materialize-css';
 
 @au.autoinject
 @au.customAttribute("md-select")
@@ -63,6 +65,9 @@ export class MdSelect {
 
 	@au.ato.bindable.booleanMd
 	showErrortext: boolean = true;
+
+	@au.bindable({ defaultBindingMode: bindingMode.oneTime })
+	dropdownOptions: DropdownOptions;
 
 	inputField: HTMLDivElement = null;
 	optionsMutationObserver = null;
@@ -132,7 +137,7 @@ export class MdSelect {
 				this.instance.destroy();
 			}
 		}
-		this.instance = new M.FormSelect(this.element, {});
+		this.instance = new M.FormSelect(this.element, { dropdownOptions: this.dropdownOptions });
 		if (isValid) {
 			this.instance.input.classList.add("valid");
 			this.instance.wrapper.classList.add("valid");
