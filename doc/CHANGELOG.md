@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.5.3...v1.5.4) (2020-04-01)
+
+
+### Bug Fixes
+
+* **select:** add default select dropdown options ([78d1f69](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/78d1f69a49119f03560ce7058360e83e7cc37328))
+
 ### [1.5.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.5.2...v1.5.3) (2020-04-01)
 
 
