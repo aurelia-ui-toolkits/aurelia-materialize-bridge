@@ -1,11 +1,13 @@
-import { __decorate, __metadata, __values } from "tslib";
+import { __assign, __decorate, __metadata, __values } from "tslib";
 import * as au from "../aurelia";
-import { bindingMode } from 'aurelia-framework';
+import { bindingMode } from "aurelia-framework";
+import { ConfigBuilder } from "../config-builder";
 var MdSelect = /** @class */ (function () {
-    function MdSelect(element, bindingEngine, taskQueue) {
+    function MdSelect(element, bindingEngine, taskQueue, configBuilder) {
         var _this = this;
         this.bindingEngine = bindingEngine;
         this.taskQueue = taskQueue;
+        this.configBuilder = configBuilder;
         this.disabled = false;
         this.readonly = false;
         this.triggerBlur = function () {
@@ -166,7 +168,7 @@ var MdSelect = /** @class */ (function () {
                 this.instance.destroy();
             }
         }
-        this.instance = new M.FormSelect(this.element, { dropdownOptions: this.dropdownOptions });
+        this.instance = new M.FormSelect(this.element, { dropdownOptions: __assign(__assign({}, this.configBuilder.selectDropdownOptions), this.dropdownOptions) });
         if (isValid) {
             this.instance.input.classList.add("valid");
             this.instance.wrapper.classList.add("valid");
@@ -247,7 +249,7 @@ var MdSelect = /** @class */ (function () {
     MdSelect = __decorate([
         au.autoinject,
         au.customAttribute("md-select"),
-        __metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue])
+        __metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue, ConfigBuilder])
     ], MdSelect);
     return MdSelect;
 }());

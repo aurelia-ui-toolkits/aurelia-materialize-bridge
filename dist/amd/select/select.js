@@ -1,11 +1,12 @@
-define(["require", "exports", "tslib", "../aurelia", "aurelia-framework"], function (require, exports, tslib_1, au, aurelia_framework_1) {
+define(["require", "exports", "tslib", "../aurelia", "aurelia-framework", "../config-builder"], function (require, exports, tslib_1, au, aurelia_framework_1, config_builder_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MdSelect = /** @class */ (function () {
-        function MdSelect(element, bindingEngine, taskQueue) {
+        function MdSelect(element, bindingEngine, taskQueue, configBuilder) {
             var _this = this;
             this.bindingEngine = bindingEngine;
             this.taskQueue = taskQueue;
+            this.configBuilder = configBuilder;
             this.disabled = false;
             this.readonly = false;
             this.triggerBlur = function () {
@@ -166,7 +167,7 @@ define(["require", "exports", "tslib", "../aurelia", "aurelia-framework"], funct
                     this.instance.destroy();
                 }
             }
-            this.instance = new M.FormSelect(this.element, { dropdownOptions: this.dropdownOptions });
+            this.instance = new M.FormSelect(this.element, { dropdownOptions: tslib_1.__assign(tslib_1.__assign({}, this.configBuilder.selectDropdownOptions), this.dropdownOptions) });
             if (isValid) {
                 this.instance.input.classList.add("valid");
                 this.instance.wrapper.classList.add("valid");
@@ -247,7 +248,7 @@ define(["require", "exports", "tslib", "../aurelia", "aurelia-framework"], funct
         MdSelect = tslib_1.__decorate([
             au.autoinject,
             au.customAttribute("md-select"),
-            tslib_1.__metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue])
+            tslib_1.__metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue, config_builder_1.ConfigBuilder])
         ], MdSelect);
         return MdSelect;
     }());

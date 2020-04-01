@@ -1,9 +1,11 @@
+/// <reference types="materialize-css" />
 import * as au from "../aurelia";
-import { DropdownOptions } from 'materialize-css';
+import { ConfigBuilder } from "../config-builder";
 export declare class MdSelect {
     private bindingEngine;
     private taskQueue;
-    constructor(element: Element, bindingEngine: au.BindingEngine, taskQueue: au.TaskQueue);
+    private configBuilder;
+    constructor(element: Element, bindingEngine: au.BindingEngine, taskQueue: au.TaskQueue, configBuilder: ConfigBuilder);
     instance: M.FormSelect;
     log: au.Logger;
     element: HTMLInputElement;
@@ -18,7 +20,7 @@ export declare class MdSelect {
     label: string;
     labelChanged(): void;
     showErrortext: boolean;
-    dropdownOptions: DropdownOptions;
+    dropdownOptions: Partial<M.DropdownOptions>;
     inputField: HTMLDivElement;
     optionsMutationObserver: any;
     subscription: au.Disposable;

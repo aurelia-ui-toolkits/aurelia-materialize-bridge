@@ -198,7 +198,8 @@ var ConfigBuilder = /** @class */ (function () {
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./scrollspy/scrollspy"));
         return this;
     };
-    ConfigBuilder.prototype.useSelect = function () {
+    ConfigBuilder.prototype.useSelect = function (dropdownOptions) {
+        this.selectDropdownOptions = dropdownOptions;
         this.globalResources.push(aurelia_pal_1.PLATFORM.moduleName("./select/select"));
         return this;
     };

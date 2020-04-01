@@ -1,6 +1,6 @@
-System.register(["tslib", "../aurelia", "aurelia-framework"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia", "aurelia-framework", "../config-builder"], function (exports_1, context_1) {
     "use strict";
-    var tslib_1, au, aurelia_framework_1, MdSelect;
+    var tslib_1, au, aurelia_framework_1, config_builder_1, MdSelect;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
@@ -12,14 +12,18 @@ System.register(["tslib", "../aurelia", "aurelia-framework"], function (exports_
             },
             function (aurelia_framework_1_1) {
                 aurelia_framework_1 = aurelia_framework_1_1;
+            },
+            function (config_builder_1_1) {
+                config_builder_1 = config_builder_1_1;
             }
         ],
         execute: function () {
             MdSelect = /** @class */ (function () {
-                function MdSelect(element, bindingEngine, taskQueue) {
+                function MdSelect(element, bindingEngine, taskQueue, configBuilder) {
                     var _this = this;
                     this.bindingEngine = bindingEngine;
                     this.taskQueue = taskQueue;
+                    this.configBuilder = configBuilder;
                     this.disabled = false;
                     this.readonly = false;
                     this.triggerBlur = function () {
@@ -180,7 +184,7 @@ System.register(["tslib", "../aurelia", "aurelia-framework"], function (exports_
                             this.instance.destroy();
                         }
                     }
-                    this.instance = new M.FormSelect(this.element, { dropdownOptions: this.dropdownOptions });
+                    this.instance = new M.FormSelect(this.element, { dropdownOptions: tslib_1.__assign(tslib_1.__assign({}, this.configBuilder.selectDropdownOptions), this.dropdownOptions) });
                     if (isValid) {
                         this.instance.input.classList.add("valid");
                         this.instance.wrapper.classList.add("valid");
@@ -261,7 +265,7 @@ System.register(["tslib", "../aurelia", "aurelia-framework"], function (exports_
                 MdSelect = tslib_1.__decorate([
                     au.autoinject,
                     au.customAttribute("md-select"),
-                    tslib_1.__metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue])
+                    tslib_1.__metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue, config_builder_1.ConfigBuilder])
                 ], MdSelect);
                 return MdSelect;
             }());

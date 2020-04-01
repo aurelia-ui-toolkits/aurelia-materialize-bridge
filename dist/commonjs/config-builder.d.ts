@@ -1,3 +1,4 @@
+/// <reference types="materialize-css" />
 /**
  * Plugin configuration builder
  */
@@ -8,6 +9,7 @@ export declare class ConfigBuilder {
     useGlobalResources: boolean;
     lookupSearchingText: string;
     lookupNoMatchesText: string;
+    selectDropdownOptions: Partial<M.DropdownOptions>;
     useAll(): ConfigBuilder;
     useAutoComplete(): ConfigBuilder;
     useBadge(): ConfigBuilder;
@@ -43,7 +45,7 @@ export declare class ConfigBuilder {
     useRadio(): ConfigBuilder;
     useRange(): ConfigBuilder;
     useScrollSpy(): ConfigBuilder;
-    useSelect(): ConfigBuilder;
+    useSelect(dropdownOptions?: Partial<M.DropdownOptions>): ConfigBuilder;
     useSidenav(): ConfigBuilder;
     useSlider(): ConfigBuilder;
     useSwitch(): ConfigBuilder;

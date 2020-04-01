@@ -1,10 +1,12 @@
 import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
-import { bindingMode } from 'aurelia-framework';
+import { bindingMode } from "aurelia-framework";
+import { ConfigBuilder } from "../config-builder";
 let MdSelect = class MdSelect {
-    constructor(element, bindingEngine, taskQueue) {
+    constructor(element, bindingEngine, taskQueue, configBuilder) {
         this.bindingEngine = bindingEngine;
         this.taskQueue = taskQueue;
+        this.configBuilder = configBuilder;
         this.disabled = false;
         this.readonly = false;
         this.triggerBlur = () => {
@@ -141,7 +143,7 @@ let MdSelect = class MdSelect {
                 this.instance.destroy();
             }
         }
-        this.instance = new M.FormSelect(this.element, { dropdownOptions: this.dropdownOptions });
+        this.instance = new M.FormSelect(this.element, { dropdownOptions: Object.assign(Object.assign({}, this.configBuilder.selectDropdownOptions), this.dropdownOptions) });
         if (isValid) {
             this.instance.input.classList.add("valid");
             this.instance.wrapper.classList.add("valid");
@@ -222,7 +224,7 @@ __decorate([
 MdSelect = __decorate([
     au.autoinject,
     au.customAttribute("md-select"),
-    __metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue])
+    __metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue, ConfigBuilder])
 ], MdSelect);
 export { MdSelect };
 //# sourceMappingURL=select.js.map

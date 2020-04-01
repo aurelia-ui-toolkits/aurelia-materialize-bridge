@@ -196,7 +196,8 @@ export class ConfigBuilder {
         this.globalResources.push(PLATFORM.moduleName("./scrollspy/scrollspy"));
         return this;
     }
-    useSelect() {
+    useSelect(dropdownOptions) {
+        this.selectDropdownOptions = dropdownOptions;
         this.globalResources.push(PLATFORM.moduleName("./select/select"));
         return this;
     }

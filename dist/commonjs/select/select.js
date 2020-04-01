@@ -3,11 +3,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var au = require("../aurelia");
 var aurelia_framework_1 = require("aurelia-framework");
+var config_builder_1 = require("../config-builder");
 var MdSelect = /** @class */ (function () {
-    function MdSelect(element, bindingEngine, taskQueue) {
+    function MdSelect(element, bindingEngine, taskQueue, configBuilder) {
         var _this = this;
         this.bindingEngine = bindingEngine;
         this.taskQueue = taskQueue;
+        this.configBuilder = configBuilder;
         this.disabled = false;
         this.readonly = false;
         this.triggerBlur = function () {
@@ -168,7 +170,7 @@ var MdSelect = /** @class */ (function () {
                 this.instance.destroy();
             }
         }
-        this.instance = new M.FormSelect(this.element, { dropdownOptions: this.dropdownOptions });
+        this.instance = new M.FormSelect(this.element, { dropdownOptions: tslib_1.__assign(tslib_1.__assign({}, this.configBuilder.selectDropdownOptions), this.dropdownOptions) });
         if (isValid) {
             this.instance.input.classList.add("valid");
             this.instance.wrapper.classList.add("valid");
@@ -249,7 +251,7 @@ var MdSelect = /** @class */ (function () {
     MdSelect = tslib_1.__decorate([
         au.autoinject,
         au.customAttribute("md-select"),
-        tslib_1.__metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue])
+        tslib_1.__metadata("design:paramtypes", [Element, au.BindingEngine, au.TaskQueue, config_builder_1.ConfigBuilder])
     ], MdSelect);
     return MdSelect;
 }());
