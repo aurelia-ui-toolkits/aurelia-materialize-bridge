@@ -12,6 +12,7 @@ export class ConfigBuilder {
 	useGlobalResources: boolean = true;
 	lookupSearchingText: string = "Searching...";
 	lookupNoMatchesText: string = "No Matches";
+	selectDropdownOptions: Partial<M.DropdownOptions>;
 
 	useAll(): ConfigBuilder {
 		return this
@@ -229,7 +230,8 @@ export class ConfigBuilder {
 		return this;
 	}
 
-	useSelect(): ConfigBuilder {
+	useSelect(dropdownOptions?: Partial<M.DropdownOptions>): ConfigBuilder {
+		this.selectDropdownOptions = dropdownOptions;
 		this.globalResources.push(PLATFORM.moduleName("./select/select"));
 		return this;
 	}

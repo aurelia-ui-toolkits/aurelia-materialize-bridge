@@ -1,11 +1,11 @@
 import * as au from "../aurelia";
-import { bindingMode } from 'aurelia-framework';
-import { DropdownOptions } from 'materialize-css';
+import { bindingMode } from "aurelia-framework";
+import { ConfigBuilder } from "../config-builder";
 
 @au.autoinject
 @au.customAttribute("md-select")
 export class MdSelect {
-	constructor(element: Element, private bindingEngine: au.BindingEngine, private taskQueue: au.TaskQueue) {
+	constructor(element: Element, private bindingEngine: au.BindingEngine, private taskQueue: au.TaskQueue, private configBuilder: ConfigBuilder) {
 		this.element = element as HTMLInputElement;
 		this.log = au.getLogger("md-select");
 	}
@@ -67,7 +67,7 @@ export class MdSelect {
 	showErrortext: boolean = true;
 
 	@au.bindable({ defaultBindingMode: bindingMode.oneTime })
-	dropdownOptions: DropdownOptions;
+	dropdownOptions: Partial<M.DropdownOptions>;
 
 	inputField: HTMLDivElement = null;
 	optionsMutationObserver = null;
@@ -137,7 +137,7 @@ export class MdSelect {
 				this.instance.destroy();
 			}
 		}
-		this.instance = new M.FormSelect(this.element, { dropdownOptions: this.dropdownOptions });
+		this.instance = new M.FormSelect(this.element, { dropdownOptions: { ...this.configBuilder.selectDropdownOptions, ...this.dropdownOptions } });
 		if (isValid) {
 			this.instance.input.classList.add("valid");
 			this.instance.wrapper.classList.add("valid");
