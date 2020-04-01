@@ -1,5 +1,6 @@
 import { __decorate, __metadata, __values } from "tslib";
 import * as au from "../aurelia";
+import { bindingMode } from 'aurelia-framework';
 var MdSelect = /** @class */ (function () {
     function MdSelect(element, bindingEngine, taskQueue) {
         var _this = this;
@@ -165,7 +166,7 @@ var MdSelect = /** @class */ (function () {
                 this.instance.destroy();
             }
         }
-        this.instance = new M.FormSelect(this.element, {});
+        this.instance = new M.FormSelect(this.element, { dropdownOptions: this.dropdownOptions });
         if (isValid) {
             this.instance.input.classList.add("valid");
             this.instance.wrapper.classList.add("valid");
@@ -239,6 +240,10 @@ var MdSelect = /** @class */ (function () {
         au.ato.bindable.booleanMd,
         __metadata("design:type", Boolean)
     ], MdSelect.prototype, "showErrortext", void 0);
+    __decorate([
+        au.bindable({ defaultBindingMode: bindingMode.oneTime }),
+        __metadata("design:type", Object)
+    ], MdSelect.prototype, "dropdownOptions", void 0);
     MdSelect = __decorate([
         au.autoinject,
         au.customAttribute("md-select"),

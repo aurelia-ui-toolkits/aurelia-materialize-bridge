@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var au = require("../aurelia");
+var aurelia_framework_1 = require("aurelia-framework");
 var MdSelect = /** @class */ (function () {
     function MdSelect(element, bindingEngine, taskQueue) {
         var _this = this;
@@ -167,7 +168,7 @@ var MdSelect = /** @class */ (function () {
                 this.instance.destroy();
             }
         }
-        this.instance = new M.FormSelect(this.element, {});
+        this.instance = new M.FormSelect(this.element, { dropdownOptions: this.dropdownOptions });
         if (isValid) {
             this.instance.input.classList.add("valid");
             this.instance.wrapper.classList.add("valid");
@@ -241,6 +242,10 @@ var MdSelect = /** @class */ (function () {
         au.ato.bindable.booleanMd,
         tslib_1.__metadata("design:type", Boolean)
     ], MdSelect.prototype, "showErrortext", void 0);
+    tslib_1.__decorate([
+        au.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+        tslib_1.__metadata("design:type", Object)
+    ], MdSelect.prototype, "dropdownOptions", void 0);
     MdSelect = tslib_1.__decorate([
         au.autoinject,
         au.customAttribute("md-select"),

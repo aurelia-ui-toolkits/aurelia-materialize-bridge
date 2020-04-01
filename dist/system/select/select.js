@@ -1,6 +1,6 @@
-System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
+System.register(["tslib", "../aurelia", "aurelia-framework"], function (exports_1, context_1) {
     "use strict";
-    var tslib_1, au, MdSelect;
+    var tslib_1, au, aurelia_framework_1, MdSelect;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
@@ -9,6 +9,9 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
             },
             function (au_1) {
                 au = au_1;
+            },
+            function (aurelia_framework_1_1) {
+                aurelia_framework_1 = aurelia_framework_1_1;
             }
         ],
         execute: function () {
@@ -177,7 +180,7 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                             this.instance.destroy();
                         }
                     }
-                    this.instance = new M.FormSelect(this.element, {});
+                    this.instance = new M.FormSelect(this.element, { dropdownOptions: this.dropdownOptions });
                     if (isValid) {
                         this.instance.input.classList.add("valid");
                         this.instance.wrapper.classList.add("valid");
@@ -251,6 +254,10 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     au.ato.bindable.booleanMd,
                     tslib_1.__metadata("design:type", Boolean)
                 ], MdSelect.prototype, "showErrortext", void 0);
+                tslib_1.__decorate([
+                    au.bindable({ defaultBindingMode: aurelia_framework_1.bindingMode.oneTime }),
+                    tslib_1.__metadata("design:type", Object)
+                ], MdSelect.prototype, "dropdownOptions", void 0);
                 MdSelect = tslib_1.__decorate([
                     au.autoinject,
                     au.customAttribute("md-select"),

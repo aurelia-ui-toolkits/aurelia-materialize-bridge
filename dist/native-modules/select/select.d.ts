@@ -1,5 +1,5 @@
-/// <reference types="materialize-css" />
 import * as au from "../aurelia";
+import { DropdownOptions } from 'materialize-css';
 export declare class MdSelect {
     private bindingEngine;
     private taskQueue;
@@ -18,6 +18,7 @@ export declare class MdSelect {
     label: string;
     labelChanged(): void;
     showErrortext: boolean;
+    dropdownOptions: DropdownOptions;
     inputField: HTMLDivElement;
     optionsMutationObserver: any;
     subscription: au.Disposable;
