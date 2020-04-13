@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.5.4...v1.5.5) (2020-04-13)
+
+
+### Bug Fixes
+
+* **lookup:** position fixed to avoid overflow issues ([979b521](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/979b521921ebc846ec7d7d219dc2425d9eed24a7))
+
 ### [1.5.4](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.5.3...v1.5.4) (2020-04-01)
 
 
