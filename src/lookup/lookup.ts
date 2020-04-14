@@ -34,7 +34,7 @@ export class MdLookup {
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	filter: string;
-	searchPromise: DiscardablePromise<any[]>;
+	searchPromise: DiscardablePromise<unknown[]>;
 	suppressFilterChanged: boolean;
 	async filterChanged() {
 		this.logger.debug("filterChanged");
@@ -74,9 +74,9 @@ export class MdLookup {
 	label: string;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
-	value: any;
+	value: unknown;
 	suppressValueChanged: boolean;
-	async valueChanged(newValue: any, oldValue: any) {
+	async valueChanged(newValue: unknown) {
 		this.logger.debug("valueChanged", newValue);
 		if (this.suppressValueChanged) {
 			this.logger.debug("unsuppressed value changed");
@@ -85,7 +85,7 @@ export class MdLookup {
 		}
 		await this.updateFilterBasedOnValue();
 	}
-	setValue(value: string) {
+	setValue(value: unknown) {
 		if (this.value === value) {
 			return;
 		}
@@ -95,14 +95,14 @@ export class MdLookup {
 	}
 
 	@au.bindable
-	optionsFunction: (p: ILookupOptionsFunctionParameter<any>) => Promise<any[]>;
-	getOptions: (p: ILookupOptionsFunctionParameter<any>) => Promise<any[]>;
+	optionsFunction: ((p: ILookupOptionsFunctionParameter<unknown>) => Promise<unknown[]>) | unknown[];
+	getOptions: (p: ILookupOptionsFunctionParameter<unknown>) => Promise<unknown[]>;
 
 	@au.bindable
-	displayFieldName: ((option: any) => string) | string;
+	displayFieldName: ((option: unknown) => string) | string;
 
 	@au.bindable
-	valueFieldName: ((option: any) => any) | string;
+	valueFieldName: ((option: unknown) => unknown) | string;
 
 	@au.bindable({ defaultBindingMode: au.bindingMode.twoWay })
 	readonly: boolean;
@@ -122,7 +122,7 @@ export class MdLookup {
 	bindingContext: object;
 
 	@au.observable
-	options: any[];
+	options: unknown[];
 	optionsChanged() {
 		this.logger.debug("optionsChanged", this.options);
 		if (!this.options || !(this.options instanceof Array) || !this.options.length) {
@@ -222,7 +222,19 @@ export class MdLookup {
 	async bind(bindingContext: object, overrideContext: object) {
 		this.bindingContext = bindingContext;
 		if (this.optionsFunction) {
-			this.getOptions = this.optionsFunction.bind(this.bindingContext);
+			if (this.optionsFunction instanceof Function) {
+				this.getOptions = this.optionsFunction.bind(this.bindingContext);
+			}
+			else if (this.optionsFunction instanceof Array) {
+				this.getOptions = (p: ILookupOptionsFunctionParameter<unknown>): Promise<unknown[]> => {
+					const options = this.optionsFunction as unknown[];
+					if (p.value) {
+						return Promise.resolve([options.find(x => this.getValue(x) === p.value)]);
+					} else {
+						return Promise.resolve(options.filter(x => this.getDisplayValue(x).toString().toUpperCase().includes(p.filter.toUpperCase())));
+					}
+				};
+			}
 		}
 		await this.updateFilterBasedOnValue();
 		// restore initial value because it is set by updateFilterBasedOnValue
@@ -257,29 +269,31 @@ export class MdLookup {
 		this.element.mdUnrenderValidateResults = null;
 	}
 
-	select(option: any) {
-		if (this.valueFieldName) {
-			if (this.valueFieldName instanceof Function) {
-				this.value = this.valueFieldName(option);
-			}
-			else {
-				this.value = option[this.valueFieldName];
-			}
-		} else {
-			this.value = option;
-		}
-		// this.setFilter(this.getDisplayValue(option));
-		// this.options = [option];
+	select(option: unknown) {
+		this.value = this.getValue(option);
 		this.close();
 		au.fireEvent(this.element, "selected", { value: this.value });
 	}
 
-	getDisplayValue(option: any): any {
+	getValue(option: unknown): unknown {
+		if (this.valueFieldName) {
+			if (this.valueFieldName instanceof Function) {
+				return this.valueFieldName(option);
+			}
+			else {
+				return option[this.valueFieldName];
+			}
+		} else {
+			return option;
+		}
+	}
+
+	getDisplayValue(option: unknown): string {
 		if (option === null || option === undefined) {
 			return null;
 		}
 		if (!this.displayFieldName) {
-			return option;
+			return option.toString();
 		}
 		else if (this.displayFieldName instanceof Function) {
 			return this.displayFieldName(option);
