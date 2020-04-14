@@ -60,7 +60,7 @@ let MdLookup = MdLookup_1 = class MdLookup {
         this.filter = filter;
         this.taskQueue.queueTask(() => this.updateLabel());
     }
-    valueChanged(newValue, oldValue) {
+    valueChanged(newValue) {
         return __awaiter(this, void 0, void 0, function* () {
             this.logger.debug("valueChanged", newValue);
             if (this.suppressValueChanged) {
@@ -169,7 +169,20 @@ let MdLookup = MdLookup_1 = class MdLookup {
         return __awaiter(this, void 0, void 0, function* () {
             this.bindingContext = bindingContext;
             if (this.optionsFunction) {
-                this.getOptions = this.optionsFunction.bind(this.bindingContext);
+                if (this.optionsFunction instanceof Function) {
+                    this.getOptions = this.optionsFunction.bind(this.bindingContext);
+                }
+                else if (this.optionsFunction instanceof Array) {
+                    this.getOptions = (p) => {
+                        const options = this.optionsFunction;
+                        if (p.value) {
+                            return Promise.resolve([options.find(x => this.getValue(x) === p.value)]);
+                        }
+                        else {
+                            return Promise.resolve(options.filter(x => this.getDisplayValue(x).toString().toUpperCase().includes(p.filter.toUpperCase())));
+                        }
+                    };
+                }
             }
             yield this.updateFilterBasedOnValue();
             // restore initial value because it is set by updateFilterBasedOnValue
@@ -205,28 +218,29 @@ let MdLookup = MdLookup_1 = class MdLookup {
         this.element.mdUnrenderValidateResults = null;
     }
     select(option) {
+        this.value = this.getValue(option);
+        this.close();
+        au.fireEvent(this.element, "selected", { value: this.value });
+    }
+    getValue(option) {
         if (this.valueFieldName) {
             if (this.valueFieldName instanceof Function) {
-                this.value = this.valueFieldName(option);
+                return this.valueFieldName(option);
             }
             else {
-                this.value = option[this.valueFieldName];
+                return option[this.valueFieldName];
             }
         }
         else {
-            this.value = option;
+            return option;
         }
-        // this.setFilter(this.getDisplayValue(option));
-        // this.options = [option];
-        this.close();
-        au.fireEvent(this.element, "selected", { value: this.value });
     }
     getDisplayValue(option) {
         if (option === null || option === undefined) {
             return null;
         }
         if (!this.displayFieldName) {
-            return option;
+            return option.toString();
         }
         else if (this.displayFieldName instanceof Function) {
             return this.displayFieldName(option);
@@ -257,7 +271,7 @@ __decorate([
 ], MdLookup.prototype, "value", void 0);
 __decorate([
     au.bindable,
-    __metadata("design:type", Function)
+    __metadata("design:type", Object)
 ], MdLookup.prototype, "optionsFunction", void 0);
 __decorate([
     au.bindable,

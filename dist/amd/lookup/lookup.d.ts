@@ -28,14 +28,14 @@ export declare class MdLookup {
     filterChanged(): Promise<void>;
     setFilter(filter: string): void;
     label: string;
-    value: any;
+    value: unknown;
     suppressValueChanged: boolean;
-    valueChanged(newValue: any, oldValue: any): Promise<void>;
-    setValue(value: string): void;
-    optionsFunction: (p: ILookupOptionsFunctionParameter<any>) => Promise<any[]>;
-    getOptions: (p: ILookupOptionsFunctionParameter<any>) => Promise<any[]>;
-    displayFieldName: ((option: any) => string) | string;
-    valueFieldName: ((option: any) => any) | string;
+    valueChanged(newValue: unknown): Promise<void>;
+    setValue(value: unknown): void;
+    optionsFunction: ((p: ILookupOptionsFunctionParameter<any>) => Promise<unknown[]>) | unknown[];
+    getOptions: (p: ILookupOptionsFunctionParameter<unknown>) => Promise<unknown[]>;
+    displayFieldName: ((option: unknown) => string) | string;
+    valueFieldName: ((option: unknown) => unknown) | string;
     readonly: boolean;
     placeholder: string;
     debounce: number;
@@ -43,7 +43,7 @@ export declare class MdLookup {
     LookupState: typeof LookupState;
     state: LookupState;
     bindingContext: object;
-    options: any[];
+    options: unknown[];
     optionsChanged(): void;
     isOpen: boolean;
     updateFilterBasedOnValue(): Promise<void>;
@@ -57,8 +57,9 @@ export declare class MdLookup {
     bind(bindingContext: object, overrideContext: object): Promise<void>;
     attached(): Promise<void>;
     detached(): void;
-    select(option: any): void;
-    getDisplayValue(option: any): any;
+    select(option: unknown): void;
+    getValue(option: unknown): unknown;
+    getDisplayValue(option: unknown): string;
     mdUnrenderValidateResults: (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => void;
     mdRenderValidateResults: (results: au.ValidateResult[], renderer: au.MaterializeFormValidationRenderer) => void;
 }
