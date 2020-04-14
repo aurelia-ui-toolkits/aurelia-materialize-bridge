@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.5.5...v1.6.0) (2020-04-14)
+
+
+### Features
+
+* **lookup:** allow binding to options array directly ([71b0812](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/71b08127b40f72a7bc8974a841c5d5fcb2ceb3a6))
+
 ### [1.5.5](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.5.4...v1.5.5) (2020-04-13)
 
 
