@@ -49,10 +49,12 @@ export class MdDropdown {
 	outDuration: number;
 
 	instance: M.Dropdown;
+	dropdownContentParent: HTMLElement;
 
 	attached() {
 		this.handleActivateElement();
-		this.contentAttributeManager = new au.AttributeManager(document.getElementById(this.activates));
+		const dropdownContent = document.getElementById(this.activates);
+		this.contentAttributeManager = new au.AttributeManager(dropdownContent);
 		this.attributeManager.addClasses("dropdown-trigger");
 		this.contentAttributeManager.addClasses("dropdown-content");
 		let container = typeof this.container === "string" ? document.querySelector(this.container) : this.container;
@@ -72,13 +74,14 @@ export class MdDropdown {
 			onCloseEnd: () => au.fireMaterializeEvent(this.element, "close-end")
 		};
 		au.cleanOptions(options);
+		this.dropdownContentParent = dropdownContent.parentElement;
 		this.instance = new M.Dropdown(this.element, options);
 	}
 
 	detached() {
 		if (this.instance) {
 			this.instance.destroy();
-			this.instance.dropdownEl.remove();
+			this.dropdownContentParent.appendChild(this.instance.dropdownEl);
 		}
 		this.attributeManager.removeAttributes("data-target");
 		this.attributeManager.removeClasses("dropdown-trigger");
