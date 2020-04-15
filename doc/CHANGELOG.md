@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.6.0...v1.6.1) (2020-04-15)
+
+
+### Bug Fixes
+
+* **dropdown:** restore dropdown content location in DOM ([e99b4cb](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/e99b4cb56268535cb0b23807a12c83f10f1d70bb))
+* **lookup:** use display-field-name for default option template ([38ef432](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/38ef432d7250ad2c1f5c89296ea104a0e63c6751))
+
 ## [1.6.0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.5.5...v1.6.0) (2020-04-14)
 
 
