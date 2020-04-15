@@ -1,4 +1,5 @@
 import * as au from "../aurelia";
+import { deprecated } from "aurelia-framework";
 
 @au.customElement("md-card")
 @au.autoinject
@@ -25,6 +26,13 @@ export class MdCard {
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	title: string;
+	@deprecated({ error: false, message: "Please use md-title instead." })
+	titleChanged() {
+		this.mdTitle = this.title;
+	}
+
+	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
+	mdTitle: string;
 
 	@au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime })
 	mdClass: string;
