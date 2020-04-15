@@ -24,7 +24,7 @@
 					<li if.bind="state === LookupState.optionsVisible" repeat.for="option of options" mousedown.delegate="select(option)" class="collection-item">
 						<a>
 							<template replaceable part="option-template">
-								${option}
+								${getDisplayValue(option)}
 							</template>
 						</a>
 					</li>

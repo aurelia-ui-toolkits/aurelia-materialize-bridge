@@ -13,7 +13,8 @@ var MdDropdown = /** @class */ (function () {
     MdDropdown.prototype.attached = function () {
         var _this = this;
         this.handleActivateElement();
-        this.contentAttributeManager = new au.AttributeManager(document.getElementById(this.activates));
+        var dropdownContent = document.getElementById(this.activates);
+        this.contentAttributeManager = new au.AttributeManager(dropdownContent);
         this.attributeManager.addClasses("dropdown-trigger");
         this.contentAttributeManager.addClasses("dropdown-content");
         var container = typeof this.container === "string" ? document.querySelector(this.container) : this.container;
@@ -33,12 +34,13 @@ var MdDropdown = /** @class */ (function () {
             onCloseEnd: function () { return au.fireMaterializeEvent(_this.element, "close-end"); }
         };
         au.cleanOptions(options);
+        this.dropdownContentParent = dropdownContent.parentElement;
         this.instance = new M.Dropdown(this.element, options);
     };
     MdDropdown.prototype.detached = function () {
         if (this.instance) {
             this.instance.destroy();
-            this.instance.dropdownEl.remove();
+            this.dropdownContentParent.appendChild(this.instance.dropdownEl);
         }
         this.attributeManager.removeAttributes("data-target");
         this.attributeManager.removeClasses("dropdown-trigger");

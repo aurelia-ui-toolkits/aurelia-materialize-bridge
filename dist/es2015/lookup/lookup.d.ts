@@ -23,7 +23,7 @@ export declare class MdLookup {
     validationClass: string;
     blurAction: BlurAction;
     filter: string;
-    searchPromise: DiscardablePromise<any[]>;
+    searchPromise: DiscardablePromise<unknown[]>;
     suppressFilterChanged: boolean;
     filterChanged(): Promise<void>;
     setFilter(filter: string): void;
@@ -32,7 +32,7 @@ export declare class MdLookup {
     suppressValueChanged: boolean;
     valueChanged(newValue: unknown): Promise<void>;
     setValue(value: unknown): void;
-    optionsFunction: ((p: ILookupOptionsFunctionParameter<any>) => Promise<unknown[]>) | unknown[];
+    optionsFunction: ((p: ILookupOptionsFunctionParameter<unknown>) => Promise<unknown[]>) | unknown[];
     getOptions: (p: ILookupOptionsFunctionParameter<unknown>) => Promise<unknown[]>;
     displayFieldName: ((option: unknown) => string) | string;
     valueFieldName: ((option: unknown) => unknown) | string;

@@ -20,6 +20,7 @@ export declare class MdDropdown {
     inDuration: number;
     outDuration: number;
     instance: M.Dropdown;
+    dropdownContentParent: HTMLElement;
     attached(): void;
     detached(): void;
     open(): void;
