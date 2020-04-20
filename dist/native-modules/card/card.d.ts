@@ -8,5 +8,7 @@ export declare class MdCard {
     stickyAction: boolean;
     size: string;
     title: string;
+    titleChanged(): void;
+    mdTitle: string;
     mdClass: string;
 }

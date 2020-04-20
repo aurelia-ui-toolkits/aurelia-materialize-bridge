@@ -1,10 +1,14 @@
 import { __decorate, __metadata } from "tslib";
 import * as au from "../aurelia";
+import { deprecated } from "aurelia-framework";
 let MdCard = class MdCard {
     constructor(element) {
         this.element = element;
         this.image = null;
         this.size = "";
+    }
+    titleChanged() {
+        this.mdTitle = this.title;
     }
 };
 __decorate([
@@ -35,6 +39,16 @@ __decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
     __metadata("design:type", String)
 ], MdCard.prototype, "title", void 0);
+__decorate([
+    deprecated({ error: false, message: "Please use md-title instead." }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], MdCard.prototype, "titleChanged", null);
+__decorate([
+    au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
+    __metadata("design:type", String)
+], MdCard.prototype, "mdTitle", void 0);
 __decorate([
     au.ato.bindable.stringMd({ defaultBindingMode: au.bindingMode.oneTime }),
     __metadata("design:type", String)

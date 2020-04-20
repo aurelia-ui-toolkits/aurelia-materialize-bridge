@@ -9,5 +9,5 @@
 	},
 	"typescript.tsdk": "node_modules\\typescript\\lib",
 	"typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
-	"html.format.wrapLineLength": 0
+	"beautify.config": ""
 }

@@ -3,15 +3,15 @@
 	<div class="card ${horizontal ? 'horizontal' : ''} ${size || ''} ${stickyAction ? 'sticky-action' : ''} ${mdClass}">
 		<div if.bind="image" md-waves="color: light; block: true;" class="card-image">
 			<img class="${reveal ? 'activator' : '' }" src.bind="image" />
-			<span if.bind="!reveal" class="card-title">${title}</span>
+			<span if.bind="!reveal" class="card-title">${mdTitle}</span>
 		</div>
 
 		<div class="card-content">
 			<span if.bind="reveal" class="card-title activator">
-				${title}
+				${mdTitle}
 				<i class="material-icons right">more_vert</i>
 			</span>
-			<span if.bind="!image && !reveal" class="card-title">${title}</span>
+			<span if.bind="!image && !reveal" class="card-title">${mdTitle}</span>
 			<!-- 
         Print a title when image is null and card is not revealable.
         This condition should complement the other two if conditions. 
@@ -21,7 +21,7 @@
 
 		<div show.bind="reveal" class="${reveal ? 'card-reveal' : ''}">
 			<span class="card-title ${reveal ? 'activator' : ''}">
-				${title}
+				${mdTitle}
 				<i class="material-icons right">close</i>
 			</span>
 			<slot name="reveal-text"></slot>
