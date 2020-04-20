@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.6.1...v1.6.2) (2020-04-20)
+
+
+### Bug Fixes
+
+* **card:** replace title with md-title ([a4aff9c](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/a4aff9c7a9d9f6f31e058c3e9211bb722b87c1d7))
+* **input:** pass update-trigger to the behaviour ([28cd4cb](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/28cd4cb833e271010ef11fa5aa4dfa23a267ddc4))
+
 ### [1.6.1](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.6.0...v1.6.1) (2020-04-15)
 
 
