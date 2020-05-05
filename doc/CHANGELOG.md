@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.3](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.6.2...v1.6.3) (2020-05-05)
+
+
+### Bug Fixes
+
+* **validation:** remove errors on detached ([65bf2e0](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/commit/65bf2e0417861a46db74b44d3497fe52a676b30a))
+
 ### [1.6.2](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/compare/v1.6.1...v1.6.2) (2020-04-20)
 
 
