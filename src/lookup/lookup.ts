@@ -265,6 +265,8 @@ export class MdLookup {
 			this.input.onblur = null;
 			this.input.onfocus = null;
 		}
+		this.validateResults = [];
+		this.validationClass = undefined;
 		this.element.mdRenderValidateResults = null;
 		this.element.mdUnrenderValidateResults = null;
 	}
