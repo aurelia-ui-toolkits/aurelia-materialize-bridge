@@ -274,6 +274,8 @@ var MdLookup = /** @class */ (function () {
             this.input.onblur = null;
             this.input.onfocus = null;
         }
+        this.validateResults = [];
+        this.validationClass = undefined;
         this.element.mdRenderValidateResults = null;
         this.element.mdUnrenderValidateResults = null;
     };

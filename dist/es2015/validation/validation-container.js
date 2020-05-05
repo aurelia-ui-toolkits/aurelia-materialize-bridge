@@ -18,6 +18,8 @@ let ValidationContainer = class ValidationContainer {
         };
     }
     attached() {
+        this.validateResults = [];
+        this.validationClass = undefined;
         this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
         this.element.mdRenderValidateResults = this.mdRenderValidateResults;
     }

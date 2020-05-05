@@ -114,6 +114,8 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 };
                 MdDatePicker.prototype.detached = function () {
                     this.instance.destroy();
+                    this.validateResults = [];
+                    this.validationClass = undefined;
                     this.element.mdUnrenderValidateResults = undefined;
                     this.element.mdRenderValidateResults = undefined;
                 };

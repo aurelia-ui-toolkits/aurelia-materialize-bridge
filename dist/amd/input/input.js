@@ -68,6 +68,8 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         };
         MdInput.prototype.detached = function () {
             this.detachEventHandlers();
+            this.validateResults = [];
+            this.validationClass = undefined;
             this.element.mdUnrenderValidateResults = undefined;
             this.element.mdRenderValidateResults = undefined;
         };

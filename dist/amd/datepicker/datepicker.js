@@ -103,6 +103,8 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         };
         MdDatePicker.prototype.detached = function () {
             this.instance.destroy();
+            this.validateResults = [];
+            this.validationClass = undefined;
             this.element.mdUnrenderValidateResults = undefined;
             this.element.mdRenderValidateResults = undefined;
         };

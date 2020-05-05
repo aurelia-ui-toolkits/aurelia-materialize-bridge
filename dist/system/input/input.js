@@ -79,6 +79,8 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                 };
                 MdInput.prototype.detached = function () {
                     this.detachEventHandlers();
+                    this.validateResults = [];
+                    this.validationClass = undefined;
                     this.element.mdUnrenderValidateResults = undefined;
                     this.element.mdRenderValidateResults = undefined;
                 };

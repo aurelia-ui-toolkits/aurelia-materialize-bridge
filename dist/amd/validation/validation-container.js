@@ -21,6 +21,8 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             };
         }
         ValidationContainer.prototype.attached = function () {
+            this.validateResults = [];
+            this.validationClass = undefined;
             this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
             this.element.mdRenderValidateResults = this.mdRenderValidateResults;
         };

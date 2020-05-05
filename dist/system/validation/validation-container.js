@@ -32,6 +32,8 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     };
                 }
                 ValidationContainer.prototype.attached = function () {
+                    this.validateResults = [];
+                    this.validationClass = undefined;
                     this.element.mdUnrenderValidateResults = this.mdUnrenderValidateResults;
                     this.element.mdRenderValidateResults = this.mdRenderValidateResults;
                 };

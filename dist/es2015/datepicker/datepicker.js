@@ -99,6 +99,8 @@ let MdDatePicker = MdDatePicker_1 = class MdDatePicker {
     }
     detached() {
         this.instance.destroy();
+        this.validateResults = [];
+        this.validationClass = undefined;
         this.element.mdUnrenderValidateResults = undefined;
         this.element.mdRenderValidateResults = undefined;
     }

@@ -73,6 +73,8 @@ let MdTimePicker = MdTimePicker_1 = class MdTimePicker {
     detached() {
         this.input.removeEventListener("change", this.done);
         this.instance.destroy();
+        this.validateResults = [];
+        this.validationClass = undefined;
         this.element.mdUnrenderValidateResults = undefined;
         this.element.mdRenderValidateResults = undefined;
     }

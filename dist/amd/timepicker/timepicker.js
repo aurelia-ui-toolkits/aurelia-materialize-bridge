@@ -77,6 +77,8 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
         MdTimePicker.prototype.detached = function () {
             this.input.removeEventListener("change", this.done);
             this.instance.destroy();
+            this.validateResults = [];
+            this.validationClass = undefined;
             this.element.mdUnrenderValidateResults = undefined;
             this.element.mdRenderValidateResults = undefined;
         };
