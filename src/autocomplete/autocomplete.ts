@@ -16,7 +16,7 @@ export class MdAutoComplete {
 	@au.bindable
 	values: any = {};
 	valuesChanged() {
-		if(this.instance) {
+		if (this.instance) {
 			this.instance.updateData(this.values);
 		}
 	}
