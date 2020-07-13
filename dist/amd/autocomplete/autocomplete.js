@@ -8,7 +8,9 @@ define(["require", "exports", "tslib", "../aurelia"], function (require, exports
             this.values = {};
         }
         MdAutoComplete.prototype.valuesChanged = function () {
-            this.instance.updateData(this.values);
+            if (this.instance) {
+                this.instance.updateData(this.values);
+            }
         };
         MdAutoComplete.prototype.bind = function () {
             // suppress initial change handler calls

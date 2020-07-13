@@ -19,7 +19,9 @@ System.register(["tslib", "../aurelia"], function (exports_1, context_1) {
                     this.values = {};
                 }
                 MdAutoComplete.prototype.valuesChanged = function () {
-                    this.instance.updateData(this.values);
+                    if (this.instance) {
+                        this.instance.updateData(this.values);
+                    }
                 };
                 MdAutoComplete.prototype.bind = function () {
                     // suppress initial change handler calls

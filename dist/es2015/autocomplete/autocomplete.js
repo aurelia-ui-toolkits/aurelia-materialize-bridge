@@ -7,7 +7,9 @@ let MdAutoComplete = class MdAutoComplete {
         this.values = {};
     }
     valuesChanged() {
-        this.instance.updateData(this.values);
+        if (this.instance) {
+            this.instance.updateData(this.values);
+        }
     }
     bind() {
         // suppress initial change handler calls
