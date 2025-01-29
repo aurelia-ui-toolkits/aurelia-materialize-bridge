@@ -1,22 +1,35 @@
-# This package will be retired pretty soon!
+This package is a bridge that allows easy integration of [MaterializeCSS 1.0](https://github.com/Dogfalo/materialize) with the JavaScript framework [Aurelia](https://aurelia.io/).
 
-Please consider switching to [Aurelia Material Design Components](https://github.com/aurelia-ui-toolkits/aurelia-mdc-web).
+For using [Materialize 2 and later](https://github.com/materializecss/materialize), refer to [this issue](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/579). With some dirty hacks, you can utilize features like Google Material Design 3's color management.
 
-# aurelia-materialize-bridge
+# Demo
 
-[![Join the chat at https://gitter.im/aurelia-ui-toolkits/aurelia-materialize-bridge](https://badges.gitter.im/aurelia-ui-toolkits/aurelia-materialize-bridge.svg)](https://gitter.im/aurelia-ui-toolkits/aurelia-materialize-bridge?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-<a href="https://zenhub.io"><img src="https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png"></a>
-[![Build Status](https://travis-ci.org/aurelia-ui-toolkits/aurelia-materialize-bridge.svg?branch=master)](https://travis-ci.org/aurelia-ui-toolkits/aurelia-materialize-bridge)
-[![Coverage Status](https://coveralls.io/repos/github/aurelia-ui-toolkits/aurelia-materialize-bridge/badge.svg?branch=master)](https://coveralls.io/github/aurelia-ui-toolkits/aurelia-materialize-bridge?branch=master)
-[![Code Quality: Javascript](https://img.shields.io/lgtm/grade/javascript/g/aurelia-ui-toolkits/aurelia-materialize-bridge.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aurelia-ui-toolkits/aurelia-materialize-bridge/context:javascript)
-[![Total Alerts](https://img.shields.io/lgtm/alerts/g/aurelia-ui-toolkits/aurelia-materialize-bridge.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/aurelia-ui-toolkits/aurelia-materialize-bridge/alerts)
+- [Component catalog (demos)](http://aurelia-ui-toolkits.github.io/demo-materialize/)
+- [Gist.run playground](https://gist.run/?id=e8eed34e8bba17f5213535bcdd004a9e)
 
-Aurelia components for http://materializecss.com/
+# History and status
 
-### NOTE: This plugin is in active development and we would love to hear your feedback
+1. @Thanood originally developed this package to use [MaterializeCSS](https://github.com/Dogfalo/materialize) (which follows Google Material Design 1) with Aurelia, and @MaximBalaganskiy took over its maintenance.
+2. Development of [MaterializeCSS](https://github.com/Dogfalo/materialize) was discontinued, leading to this package being frozen at release 1.6.4 and archived in 2020.
+3. A forked version, [Materialize 2 and later](https://github.com/materializecss/materialize) of [MaterializeCSS](https://github.com/Dogfalo/materialize), was created, with ongoing improvements toward compliance with Google Material Design 3.
+4. [This issue](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/579) confirmed that it is possible to use this package with [Materialize 2](https://github.com/materializecss/materialize).
 
-### [Component catalog (demos)](http://aurelia-ui-toolkits.github.io/demo-materialize/)
-### [Gist.run playground](https://gist.run/?id=e8eed34e8bba17f5213535bcdd004a9e)
+Currently, the archived status has been lifted and @HIRANO-Satoshi has become the maintainer, but it remains based on [MaterializeCSS](https://github.com/materializecss/materialize).
+
+# Before you send issues or pull requests
+
+Sorry, but the maintainer does not process new issues and has no concrete plans for improvements. If anyone is interested in taking over active development, please create an issue to discuss it.
+
+Nevertheless, pull requests for Materialize 2 and later, as well as Aurelia 2, are welcome.
+
+Please make two separate pull requests for each, so that we can have different releases for the users of Materialize 2 and the users of Aurelia 2.
+
+Please check [contributing.md](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/blob/master/CONTRIBUTING.md) - and if these instructions look "too terse" here is a **[great set of lessons](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
+
+
+# Alternative
+
+[Aurelia Material Design Components](https://github.com/aurelia-ui-toolkits/aurelia-mdc-web). Note: Since Google's Material Design Components have been discontinued, the development of the package was also halted.
 
 ## Installing the plugin
 [![Installation](http://dabuttonfactory.com/button.png?t=Installation+instructions&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)](https://aurelia-ui-toolkits.gitbooks.io/materialize-bridge-docs/content/installation.html)
@@ -25,7 +38,3 @@ Aurelia components for http://materializecss.com/
 1. `npm install`
 2. `jspm install`
 3. `gulp test`
-
-
-## Contributing
-Do you want to help us develop the `aurelia-materialize-bridge`? Great! We would love for you to send us pull requests. For more information, please check [contributing.md](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/blob/master/CONTRIBUTING.md) - and if these instructions look "too terse" here is a **[great set of lessons](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
