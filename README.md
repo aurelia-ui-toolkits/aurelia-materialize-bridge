@@ -1,6 +1,6 @@
 This package is a bridge that allows easy integration of [MaterializeCSS 1.0](https://github.com/Dogfalo/materialize) with the JavaScript framework [Aurelia](https://aurelia.io/).
 
-For using [Materialize 2 and later](https://github.com/materializecss/materialize), refer to [this issue](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/579). With some dirty hacks, you can utilize features like Google Material Design 3's color management.
+For use with [Materialize 2 and later](https://github.com/materializecss/materialize), refer to [this issue](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/579). With some dirty hacks, you can utilize features like Google Material Design 3's color management.
 
 # Demo
 
@@ -12,7 +12,7 @@ For using [Materialize 2 and later](https://github.com/materializecss/materializ
 1. @Thanood originally developed this package to use [MaterializeCSS](https://github.com/Dogfalo/materialize) (which follows Google Material Design 1) with Aurelia, and @MaximBalaganskiy took over its maintenance.
 2. Development of [MaterializeCSS](https://github.com/Dogfalo/materialize) was discontinued, leading to this package being frozen at release 1.6.4 and archived in 2020.
 3. A forked version, [Materialize 2 and later](https://github.com/materializecss/materialize) of [MaterializeCSS](https://github.com/Dogfalo/materialize), was created, with ongoing improvements toward compliance with Google Material Design 3.
-4. [This issue](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/579) confirmed that it is possible to use this package with [Materialize 2](https://github.com/materializecss/materialize).
+4. In 2024, [This issue](https://github.com/aurelia-ui-toolkits/aurelia-materialize-bridge/issues/579) confirmed that it is possible to use this package with [Materialize 2](https://github.com/materializecss/materialize).
 
 Currently, the archived status has been lifted and @HIRANO-Satoshi has become the maintainer, but it remains based on [MaterializeCSS](https://github.com/materializecss/materialize).
 
